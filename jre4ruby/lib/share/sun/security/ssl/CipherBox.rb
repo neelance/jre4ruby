@@ -348,11 +348,11 @@ module Sun::Security::Ssl
       
       typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, ::Java::Int, ProtocolVersion] }
       # Typical TLS padding format for a 64 bit block cipher is as follows:
-      # xx xx xx xx xx xx xx 00
-      # xx xx xx xx xx xx 01 01
-      # ...
-      # xx 06 06 06 06 06 06 06
-      # 07 07 07 07 07 07 07 07
+      #   xx xx xx xx xx xx xx 00
+      #   xx xx xx xx xx xx 01 01
+      #   ...
+      #   xx 06 06 06 06 06 06 06
+      #   07 07 07 07 07 07 07 07
       # TLS also allows any amount of padding from 1 and 256 bytes as long
       # as it makes the data a multiple of the block size
       def remove_padding(buf, offset, len, block_size, protocol_version)

@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996 - 1998 - All Rights Reserved
 # 
@@ -50,15 +48,6 @@ module Sun::Text::Resources
     typesig { [] }
     # Overrides ListResourceBundle
     def get_contents
-      # full time pattern
-      # long time pattern
-      # medium time pattern
-      # short time pattern
-      # full date pattern
-      # long date pattern
-      # medium date pattern
-      # short date pattern
-      # date-time pattern
       return Array.typed(Array.typed(Object)).new([Array.typed(Object).new(["DateTimePatterns", Array.typed(String).new(["h:mm:ss a z", "h:mm:ss a", "h:mm:ss a", "h:mm a", "EEEE, d MMMM yyyy", "d MMMM yyyy", "dd/MM/yyyy", "d/MM/yy", "{1} {0}"])])])
     end
     

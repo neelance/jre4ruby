@@ -181,11 +181,11 @@ module Sun::Security::X509
     
     typesig { [GeneralNameInterface] }
     # Return type of constraint inputName places on this name:<ul>
-    # <li>NAME_DIFF_TYPE = -1: input name is different type from name (i.e. does not constrain).
-    # <li>NAME_MATCH = 0: input name matches name.
-    # <li>NAME_NARROWS = 1: input name narrows name (is lower in the naming subtree)
-    # <li>NAME_WIDENS = 2: input name widens name (is higher in the naming subtree)
-    # <li>NAME_SAME_TYPE = 3: input name does not match or narrow name, but is same type.
+    #   <li>NAME_DIFF_TYPE = -1: input name is different type from name (i.e. does not constrain).
+    #   <li>NAME_MATCH = 0: input name matches name.
+    #   <li>NAME_NARROWS = 1: input name narrows name (is lower in the naming subtree)
+    #   <li>NAME_WIDENS = 2: input name widens name (is higher in the naming subtree)
+    #   <li>NAME_SAME_TYPE = 3: input name does not match or narrow name, but is same type.
     # </ul>.  These results are used in checking NameConstraints during
     # certification path verification.
     # <p>
@@ -207,7 +207,7 @@ module Sun::Security::X509
     # @param inputName to be checked for being constrained
     # @returns constraint type above
     # @throws UnsupportedOperationException if name is not exact match, but narrowing and widening are
-    # not supported for this name type.
+    #          not supported for this name type.
     def constrains(input_name)
       constraint_type = 0
       if ((input_name).nil?)

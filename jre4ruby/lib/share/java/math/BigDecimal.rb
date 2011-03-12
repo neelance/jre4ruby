@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # Portions Copyright IBM Corporation, 2001. All Rights Reserved.
 module Java::Math
   module BigDecimalImports #:nodoc:
@@ -244,7 +242,6 @@ module Java::Math
     
     # Note: this may have any value, so
     # calculations must be done in longs
-    # 
     # The number of decimal digits in this BigDecimal, or 0 if the
     # number of digits are not known (lookaside information).  If
     # nonzero, the value is guaranteed correct.  Use the precision()
@@ -295,11 +292,10 @@ module Java::Math
       const_attr_reader  :SerialVersionUID
       
       # Cache of common small BigDecimal values.
-      const_set_lazy(:ZeroThroughTen) { Array.typed(BigDecimal).new([BigDecimal.new(BigInteger::ZERO, 0, 0), BigDecimal.new(BigInteger::ONE, 1, 0), BigDecimal.new(BigInteger.value_of(2), 2, 0), BigDecimal.new(BigInteger.value_of(3), 3, 0), BigDecimal.new(BigInteger.value_of(4), 4, 0), BigDecimal.new(BigInteger.value_of(5), 5, 0), BigDecimal.new(BigInteger.value_of(6), 6, 0), BigDecimal.new(BigInteger.value_of(7), 7, 0), BigDecimal.new(BigInteger.value_of(8), 8, 0), BigDecimal.new(BigInteger.value_of(9), 9, 0), BigDecimal.new(BigInteger::TEN, 10, 0), ]) }
+      const_set_lazy(:ZeroThroughTen) { Array.typed(BigDecimal).new([BigDecimal.new(BigInteger::ZERO, 0, 0), BigDecimal.new(BigInteger::ONE, 1, 0), BigDecimal.new(BigInteger.value_of(2), 2, 0), BigDecimal.new(BigInteger.value_of(3), 3, 0), BigDecimal.new(BigInteger.value_of(4), 4, 0), BigDecimal.new(BigInteger.value_of(5), 5, 0), BigDecimal.new(BigInteger.value_of(6), 6, 0), BigDecimal.new(BigInteger.value_of(7), 7, 0), BigDecimal.new(BigInteger.value_of(8), 8, 0), BigDecimal.new(BigInteger.value_of(9), 9, 0), BigDecimal.new(BigInteger::TEN, 10, 0)]) }
       const_attr_reader  :ZeroThroughTen
       
       # Constants
-      # 
       # The value 0, with a scale of 0.
       # 
       # @since  1.5
@@ -321,7 +317,6 @@ module Java::Math
     
     typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int] }
     # Constructors
-    # 
     # Translates a character array representation of a
     # {@code BigDecimal} into a {@code BigDecimal}, accepting the
     # same sequence of characters as the {@link #BigDecimal(String)}
@@ -336,8 +331,8 @@ module Java::Math
     # @param  offset first character in the array to inspect.
     # @param  len number of characters to consider.
     # @throws NumberFormatException if {@code in} is not a valid
-    # representation of a {@code BigDecimal} or the defined subarray
-    # is not wholly within {@code in}.
+    #         representation of a {@code BigDecimal} or the defined subarray
+    #         is not wholly within {@code in}.
     # @since  1.5
     def initialize(in_, offset, len)
       @int_val = nil
@@ -455,7 +450,7 @@ module Java::Math
             exp = -exp
           end
           # Next test is required for backwards compatibility
-          if (!(RJava.cast_to_int(exp)).equal?(exp))
+          if (!((exp).to_int).equal?(exp))
             # overflow
             raise NumberFormatException.new
           end
@@ -491,9 +486,9 @@ module Java::Math
         # Copy significand to exact-sized array, with sign if
         # negative
         # Later use: BigInteger(coeff, first, precision) for
-        # both cases, by allowing an extra char at the front of
-        # coeff.
-        quick = 0
+        #   both cases, by allowing an extra char at the front of
+        #   coeff.
+        quick = nil
         if (!isneg)
           quick = CharArray.new(@precision)
           System.arraycopy(coeff, first, quick, 0, @precision)
@@ -532,10 +527,10 @@ module Java::Math
     # @param  len number of characters to consider..
     # @param  mc the context to use.
     # @throws ArithmeticException if the result is inexact but the
-    # rounding mode is {@code UNNECESSARY}.
+    #         rounding mode is {@code UNNECESSARY}.
     # @throws NumberFormatException if {@code in} is not a valid
-    # representation of a {@code BigDecimal} or the defined subarray
-    # is not wholly within {@code in}.
+    #         representation of a {@code BigDecimal} or the defined subarray
+    #         is not wholly within {@code in}.
     # @since  1.5
     def initialize(in_, offset, len, mc)
       initialize__big_decimal(in_, offset, len)
@@ -557,7 +552,7 @@ module Java::Math
     # 
     # @param in {@code char} array that is the source of characters.
     # @throws NumberFormatException if {@code in} is not a valid
-    # representation of a {@code BigDecimal}.
+    #         representation of a {@code BigDecimal}.
     # @since  1.5
     def initialize(in_)
       initialize__big_decimal(in_, 0, in_.attr_length)
@@ -578,9 +573,9 @@ module Java::Math
     # @param  in {@code char} array that is the source of characters.
     # @param  mc the context to use.
     # @throws ArithmeticException if the result is inexact but the
-    # rounding mode is {@code UNNECESSARY}.
+    #         rounding mode is {@code UNNECESSARY}.
     # @throws NumberFormatException if {@code in} is not a valid
-    # representation of a {@code BigDecimal}.
+    #         representation of a {@code BigDecimal}.
     # @since  1.5
     def initialize(in_, mc)
       initialize__big_decimal(in_, 0, in_.attr_length, mc)
@@ -694,7 +689,7 @@ module Java::Math
     # @param val String representation of {@code BigDecimal}.
     # 
     # @throws NumberFormatException if {@code val} is not a valid
-    # representation of a {@code BigDecimal}.
+    #         representation of a {@code BigDecimal}.
     def initialize(val)
       initialize__big_decimal(val.to_char_array, 0, val.length)
     end
@@ -708,9 +703,9 @@ module Java::Math
     # @param  val string representation of a {@code BigDecimal}.
     # @param  mc the context to use.
     # @throws ArithmeticException if the result is inexact but the
-    # rounding mode is {@code UNNECESSARY}.
+    #         rounding mode is {@code UNNECESSARY}.
     # @throws NumberFormatException if {@code val} is not a valid
-    # representation of a BigDecimal.
+    #         representation of a BigDecimal.
     # @since  1.5
     def initialize(val, mc)
       initialize__big_decimal(val.to_char_array, 0, val.length)
@@ -760,7 +755,7 @@ module Java::Math
     # </ol>
     # 
     # @param val {@code double} value to be converted to
-    # {@code BigDecimal}.
+    #        {@code BigDecimal}.
     # @throws NumberFormatException if {@code val} is infinite or NaN.
     def initialize(val)
       @int_val = nil
@@ -780,11 +775,10 @@ module Java::Math
       # to the formulae in JLS, Section 20.10.22.
       val_bits = Double.double_to_long_bits(val)
       sign = (((val_bits >> 63)).equal?(0) ? 1 : -1)
-      exponent = RJava.cast_to_int(((val_bits >> 52) & 0x7ff))
+      exponent = (((val_bits >> 52) & 0x7ff)).to_int
       significand = ((exponent).equal?(0) ? (val_bits & ((1 << 52) - 1)) << 1 : (val_bits & ((1 << 52) - 1)) | (1 << 52))
       exponent -= 1075
       # At this point, val == sign * significand * 2**exponent.
-      # 
       # Special case zero to supress nonterminating normalization
       # and bogus scale calculation.
       if ((significand).equal?(0))
@@ -795,7 +789,7 @@ module Java::Math
       end
       # Normalize
       while (((significand & 1)).equal?(0))
-        # i.e., significand is even
+        #  i.e., significand is even
         significand >>= 1
         exponent += 1
       end
@@ -825,10 +819,10 @@ module Java::Math
     # the {@link #BigDecimal(double)} constructor.
     # 
     # @param  val {@code double} value to be converted to
-    # {@code BigDecimal}.
+    #         {@code BigDecimal}.
     # @param  mc the context to use.
     # @throws ArithmeticException if the result is inexact but the
-    # RoundingMode is UNNECESSARY.
+    #         RoundingMode is UNNECESSARY.
     # @throws NumberFormatException if {@code val} is infinite or NaN.
     # @since  1.5
     def initialize(val, mc)
@@ -843,7 +837,7 @@ module Java::Math
     # The scale of the {@code BigDecimal} is zero.
     # 
     # @param val {@code BigInteger} value to be converted to
-    # {@code BigDecimal}.
+    #            {@code BigDecimal}.
     def initialize(val)
       @int_val = nil
       @scale = 0
@@ -867,10 +861,10 @@ module Java::Math
     # {@code BigDecimal} is zero.
     # 
     # @param val {@code BigInteger} value to be converted to
-    # {@code BigDecimal}.
+    #            {@code BigDecimal}.
     # @param  mc the context to use.
     # @throws ArithmeticException if the result is inexact but the
-    # rounding mode is {@code UNNECESSARY}.
+    #         rounding mode is {@code UNNECESSARY}.
     # @since  1.5
     def initialize(val, mc)
       @int_val = nil
@@ -928,7 +922,7 @@ module Java::Math
     # @param  scale scale of the {@code BigDecimal}.
     # @param  mc the context to use.
     # @throws ArithmeticException if the result is inexact but the
-    # rounding mode is {@code UNNECESSARY}.
+    #         rounding mode is {@code UNNECESSARY}.
     # @since  1.5
     def initialize(unscaled_val, scale, mc)
       @int_val = nil
@@ -953,7 +947,7 @@ module Java::Math
     # scale of the {@code BigDecimal} is zero.
     # 
     # @param val {@code int} value to be converted to
-    # {@code BigDecimal}.
+    #            {@code BigDecimal}.
     # @since  1.5
     def initialize(val)
       @int_val = nil
@@ -977,7 +971,7 @@ module Java::Math
     # @param  val {@code int} value to be converted to {@code BigDecimal}.
     # @param  mc the context to use.
     # @throws ArithmeticException if the result is inexact but the
-    # rounding mode is {@code UNNECESSARY}.
+    #         rounding mode is {@code UNNECESSARY}.
     # @since  1.5
     def initialize(val, mc)
       @int_val = nil
@@ -1028,7 +1022,7 @@ module Java::Math
     # @param  val {@code long} value to be converted to {@code BigDecimal}.
     # @param  mc the context to use.
     # @throws ArithmeticException if the result is inexact but the
-    # rounding mode is {@code UNNECESSARY}.
+    #         rounding mode is {@code UNNECESSARY}.
     # @since  1.5
     def initialize(val, mc)
       @int_val = nil
@@ -1089,7 +1083,6 @@ module Java::Math
     class_module.module_eval {
       typesig { [::Java::Long, ::Java::Int] }
       # Static Factory Methods
-      # 
       # Translates a {@code long} unscaled value and an
       # {@code int} scale into a {@code BigDecimal}.  This
       # {@literal "static factory method"} is provided in preference to
@@ -1099,10 +1092,10 @@ module Java::Math
       # @param unscaledVal unscaled value of the {@code BigDecimal}.
       # @param scale scale of the {@code BigDecimal}.
       # @return a {@code BigDecimal} whose value is
-      # <tt>(unscaledVal &times; 10<sup>-scale</sup>)</tt>.
+      #         <tt>(unscaledVal &times; 10<sup>-scale</sup>)</tt>.
       def value_of(unscaled_val, scale)
         if ((scale).equal?(0) && unscaled_val >= 0 && unscaled_val <= 10)
-          return ZeroThroughTen[RJava.cast_to_int(unscaled_val)]
+          return ZeroThroughTen[(unscaled_val).to_int]
         end
         if (compact_long(unscaled_val))
           return BigDecimal.new(unscaled_val, scale)
@@ -1136,7 +1129,7 @@ module Java::Math
       # 
       # @param  val {@code double} to convert to a {@code BigDecimal}.
       # @return a {@code BigDecimal} whose value is equal to or approximately
-      # equal to the value of {@code val}.
+      #         equal to the value of {@code val}.
       # @throws NumberFormatException if {@code val} is infinite or NaN.
       # @since  1.5
       def value_of(val)
@@ -1150,7 +1143,6 @@ module Java::Math
     
     typesig { [BigDecimal] }
     # Arithmetic Operations
-    # 
     # Returns a {@code BigDecimal} whose value is {@code (this +
     # augend)}, and whose scale is {@code max(this.scale(),
     # augend.scale())}.
@@ -1190,7 +1182,7 @@ module Java::Math
     # @param  mc the context to use.
     # @return {@code this + augend}, rounded as necessary.
     # @throws ArithmeticException if the result is inexact but the
-    # rounding mode is {@code UNNECESSARY}.
+    #         rounding mode is {@code UNNECESSARY}.
     # @since  1.5
     def add(augend, mc)
       if ((mc.attr_precision).equal?(0))
@@ -1222,8 +1214,7 @@ module Java::Math
             precision_diff = mc.attr_precision - result.precision
             scale_diff = preferred_scale - result.scale
             if (precision_diff >= scale_diff)
-              return result.set_scale(preferred_scale)
-               # can achieve target scale
+              return result.set_scale(preferred_scale) # can achieve target scale
             else
               return result.set_scale(result.scale + precision_diff)
             end
@@ -1287,8 +1278,7 @@ module Java::Math
       # condensation, the digit positions of big and small must be
       # disjoint *and* the digit positions of small should not be
       # directly visible in the result.
-      small_high_digit_pos = small.attr_scale - small.precision + 1
-      # big and small disjoint
+      small_high_digit_pos = small.attr_scale - small.precision + 1 # big and small disjoint
       if (small_high_digit_pos > big.attr_scale + 2 && small_high_digit_pos > est_result_ulp_scale + 2)
         # small digits not visible
         small = BigDecimal.value_of(small.signum, self.check_scale(Math.max(big.attr_scale, est_result_ulp_scale) + 3))
@@ -1339,7 +1329,7 @@ module Java::Math
     # @param  mc the context to use.
     # @return {@code this - subtrahend}, rounded as necessary.
     # @throws ArithmeticException if the result is inexact but the
-    # rounding mode is {@code UNNECESSARY}.
+    #         rounding mode is {@code UNNECESSARY}.
     # @since  1.5
     def subtract(subtrahend, mc)
       if ((mc.attr_precision).equal?(0))
@@ -1390,7 +1380,7 @@ module Java::Math
     # @param  mc the context to use.
     # @return {@code this * multiplicand}, rounded as necessary.
     # @throws ArithmeticException if the result is inexact but the
-    # rounding mode is {@code UNNECESSARY}.
+    #         rounding mode is {@code UNNECESSARY}.
     # @since  1.5
     def multiply(multiplicand, mc)
       if ((mc.attr_precision).equal?(0))
@@ -1414,11 +1404,11 @@ module Java::Math
     # @param  roundingMode rounding mode to apply.
     # @return {@code this / divisor}
     # @throws ArithmeticException if {@code divisor} is zero,
-    # {@code roundingMode==ROUND_UNNECESSARY} and
-    # the specified scale is insufficient to represent the result
-    # of the division exactly.
+    #         {@code roundingMode==ROUND_UNNECESSARY} and
+    #         the specified scale is insufficient to represent the result
+    #         of the division exactly.
     # @throws IllegalArgumentException if {@code roundingMode} does not
-    # represent a valid rounding mode.
+    #         represent a valid rounding mode.
     # @see    #ROUND_UP
     # @see    #ROUND_DOWN
     # @see    #ROUND_CEILING
@@ -1549,9 +1539,9 @@ module Java::Math
     # @param  roundingMode rounding mode to apply.
     # @return {@code this / divisor}
     # @throws ArithmeticException if {@code divisor} is zero,
-    # {@code roundingMode==RoundingMode.UNNECESSARY} and
-    # the specified scale is insufficient to represent the result
-    # of the division exactly.
+    #         {@code roundingMode==RoundingMode.UNNECESSARY} and
+    #         the specified scale is insufficient to represent the result
+    #         of the division exactly.
     # @since 1.5
     def divide(divisor, scale_, rounding_mode)
       return divide(divisor, scale_, rounding_mode.attr_old_mode)
@@ -1570,11 +1560,11 @@ module Java::Math
     # @param  roundingMode rounding mode to apply.
     # @return {@code this / divisor}
     # @throws ArithmeticException if {@code divisor==0}, or
-    # {@code roundingMode==ROUND_UNNECESSARY} and
-    # {@code this.scale()} is insufficient to represent the result
-    # of the division exactly.
+    #         {@code roundingMode==ROUND_UNNECESSARY} and
+    #         {@code this.scale()} is insufficient to represent the result
+    #         of the division exactly.
     # @throws IllegalArgumentException if {@code roundingMode} does not
-    # represent a valid rounding mode.
+    #         represent a valid rounding mode.
     # @see    #ROUND_UP
     # @see    #ROUND_DOWN
     # @see    #ROUND_CEILING
@@ -1597,9 +1587,9 @@ module Java::Math
     # @param  roundingMode rounding mode to apply.
     # @return {@code this / divisor}
     # @throws ArithmeticException if {@code divisor==0}, or
-    # {@code roundingMode==RoundingMode.UNNECESSARY} and
-    # {@code this.scale()} is insufficient to represent the result
-    # of the division exactly.
+    #         {@code roundingMode==RoundingMode.UNNECESSARY} and
+    #         {@code this.scale()} is insufficient to represent the result
+    #         of the division exactly.
     # @since 1.5
     def divide(divisor, rounding_mode)
       return self.divide(divisor, @scale, rounding_mode.attr_old_mode)
@@ -1614,7 +1604,7 @@ module Java::Math
     # 
     # @param  divisor value by which this {@code BigDecimal} is to be divided.
     # @throws ArithmeticException if the exact quotient does not have a
-    # terminating decimal expansion
+    #         terminating decimal expansion
     # @return {@code this / divisor}
     # @since 1.5
     # @author Joseph D. Darcy
@@ -1629,7 +1619,7 @@ module Java::Math
         raise ArithmeticException.new("Division by zero")
       end
       # Calculate preferred scale
-      preferred_scale = RJava.cast_to_int(Math.max(Math.min(self.scale - divisor.scale, JavaInteger::MAX_VALUE), JavaInteger::MIN_VALUE))
+      preferred_scale = (Math.max(Math.min(self.scale - divisor.scale, JavaInteger::MAX_VALUE), JavaInteger::MIN_VALUE)).to_int
       if ((self.signum).equal?(0))
         # 0/y
         return BigDecimal.new(0, preferred_scale)
@@ -1642,7 +1632,7 @@ module Java::Math
         # Therefore, create a MathContext object with this
         # precision and do a divide with the UNNECESSARY rounding
         # mode.
-        mc = MathContext.new(RJava.cast_to_int(Math.min(self.precision + Math.ceil(10.0 * divisor.precision / 3.0), JavaInteger::MAX_VALUE)), RoundingMode::UNNECESSARY)
+        mc = MathContext.new((Math.min(self.precision + Math.ceil(10.0 * divisor.precision / 3.0), JavaInteger::MAX_VALUE)).to_int, RoundingMode::UNNECESSARY)
         quotient = nil
         begin
           quotient = self.divide(divisor, mc)
@@ -1669,9 +1659,9 @@ module Java::Math
     # @param  mc the context to use.
     # @return {@code this / divisor}, rounded as necessary.
     # @throws ArithmeticException if the result is inexact but the
-    # rounding mode is {@code UNNECESSARY} or
-    # {@code mc.precision == 0} and the quotient has a
-    # non-terminating decimal expansion.
+    #         rounding mode is {@code UNNECESSARY} or
+    #         {@code mc.precision == 0} and the quotient has a
+    #         non-terminating decimal expansion.
     # @since  1.5
     def divide(divisor, mc)
       if ((mc.attr_precision).equal?(0))
@@ -1686,8 +1676,8 @@ module Java::Math
       # to normalize the values here to achieve the desired result.
       # For x/y we first handle y=0 and x=0, and then normalize x and
       # y to give x' and y' with the following constraints:
-      # (a) 0.1 <= x' < 1
-      # (b)  x' <= y' < 10*x'
+      #   (a) 0.1 <= x' < 1
+      #   (b)  x' <= y' < 10*x'
       # Dividing x'/y' with the required scale set to mc.precision then
       # will give a result in the range 0.1 to 1 rounded to exactly
       # the right number of digits (except in the case of a result of
@@ -1703,7 +1693,7 @@ module Java::Math
       end
       if ((lhs.signum).equal?(0))
         # 0/y
-        return BigDecimal.new(BigInteger::ZERO, RJava.cast_to_int(Math.max(Math.min(preferred_scale, JavaInteger::MAX_VALUE), JavaInteger::MIN_VALUE)))
+        return BigDecimal.new(BigInteger::ZERO, (Math.max(Math.min(preferred_scale, JavaInteger::MAX_VALUE), JavaInteger::MIN_VALUE)).to_int)
       end
       xprime = BigDecimal.new(lhs.attr_int_val.abs, lhs.precision)
       yprime = BigDecimal.new(rhs.attr_int_val.abs, rhs.precision)
@@ -1751,7 +1741,7 @@ module Java::Math
     # @since  1.5
     def divide_to_integral_value(divisor)
       # Calculate preferred scale
-      preferred_scale = RJava.cast_to_int(Math.max(Math.min(self.scale - divisor.scale, JavaInteger::MAX_VALUE), JavaInteger::MIN_VALUE))
+      preferred_scale = (Math.max(Math.min(self.scale - divisor.scale, JavaInteger::MAX_VALUE), JavaInteger::MIN_VALUE)).to_int
       self.inflate
       divisor.inflate
       if ((self.abs <=> divisor.abs) < 0)
@@ -1763,7 +1753,7 @@ module Java::Math
       end
       # Perform a divide with enough digits to round to a correct
       # integer value; then remove any fractional digits
-      max_digits = RJava.cast_to_int(Math.min(self.precision + Math.ceil(10.0 * divisor.precision / 3.0) + Math.abs(self.scale - divisor.scale) + 2, JavaInteger::MAX_VALUE))
+      max_digits = (Math.min(self.precision + Math.ceil(10.0 * divisor.precision / 3.0) + Math.abs(self.scale - divisor.scale) + 2, JavaInteger::MAX_VALUE)).to_int
       quotient = self.divide(divisor, MathContext.new(max_digits, RoundingMode::DOWN))
       if (quotient.attr_scale > 0)
         quotient = quotient.set_scale(0, RoundingMode::DOWN).strip_zeros_to_match_scale(preferred_scale)
@@ -1791,7 +1781,7 @@ module Java::Math
     # @return The integer part of {@code this / divisor}.
     # @throws ArithmeticException if {@code divisor==0}
     # @throws ArithmeticException if {@code mc.precision} {@literal >} 0 and the result
-    # requires a precision of more than {@code mc.precision} digits.
+    #         requires a precision of more than {@code mc.precision} digits.
     # @since  1.5
     # @author Joseph D. Darcy
     def divide_to_integral_value(divisor, mc)
@@ -1801,7 +1791,7 @@ module Java::Math
         return divide_to_integral_value(divisor)
       end
       # Calculate preferred scale
-      preferred_scale = RJava.cast_to_int(Math.max(Math.min(self.scale - divisor.scale, JavaInteger::MAX_VALUE), JavaInteger::MIN_VALUE))
+      preferred_scale = (Math.max(Math.min(self.scale - divisor.scale, JavaInteger::MAX_VALUE), JavaInteger::MIN_VALUE)).to_int
       # Perform a normal divide to mc.precision digits.  If the
       # remainder has absolute value less than the divisor, the
       # integer portion of the quotient fits into mc.precision
@@ -1871,9 +1861,9 @@ module Java::Math
     # @return {@code this % divisor}, rounded as necessary.
     # @throws ArithmeticException if {@code divisor==0}
     # @throws ArithmeticException if the result is inexact but the
-    # rounding mode is {@code UNNECESSARY}, or {@code mc.precision}
-    # {@literal >} 0 and the result of {@code this.divideToIntgralValue(divisor)} would
-    # require a precision of more than {@code mc.precision} digits.
+    #         rounding mode is {@code UNNECESSARY}, or {@code mc.precision}
+    #         {@literal >} 0 and the result of {@code this.divideToIntgralValue(divisor)} would
+    #         require a precision of more than {@code mc.precision} digits.
     # @see    #divideToIntegralValue(java.math.BigDecimal, java.math.MathContext)
     # @since  1.5
     def remainder(divisor, mc)
@@ -1892,10 +1882,10 @@ module Java::Math
     # separately because the division need only be carried out once.
     # 
     # @param  divisor value by which this {@code BigDecimal} is to be divided,
-    # and the remainder computed.
+    #         and the remainder computed.
     # @return a two element {@code BigDecimal} array: the quotient
-    # (the result of {@code divideToIntegralValue}) is the initial element
-    # and the remainder is the final element.
+    #         (the result of {@code divideToIntegralValue}) is the initial element
+    #         and the remainder is the final element.
     # @throws ArithmeticException if {@code divisor==0}
     # @see    #divideToIntegralValue(java.math.BigDecimal, java.math.MathContext)
     # @see    #remainder(java.math.BigDecimal, java.math.MathContext)
@@ -1920,16 +1910,16 @@ module Java::Math
     # separately because the division need only be carried out once.
     # 
     # @param  divisor value by which this {@code BigDecimal} is to be divided,
-    # and the remainder computed.
+    #         and the remainder computed.
     # @param  mc the context to use.
     # @return a two element {@code BigDecimal} array: the quotient
-    # (the result of {@code divideToIntegralValue}) is the
-    # initial element and the remainder is the final element.
+    #         (the result of {@code divideToIntegralValue}) is the
+    #         initial element and the remainder is the final element.
     # @throws ArithmeticException if {@code divisor==0}
     # @throws ArithmeticException if the result is inexact but the
-    # rounding mode is {@code UNNECESSARY}, or {@code mc.precision}
-    # {@literal >} 0 and the result of {@code this.divideToIntgralValue(divisor)} would
-    # require a precision of more than {@code mc.precision} digits.
+    #         rounding mode is {@code UNNECESSARY}, or {@code mc.precision}
+    #         {@literal >} 0 and the result of {@code this.divideToIntgralValue(divisor)} would
+    #         require a precision of more than {@code mc.precision} digits.
     # @see    #divideToIntegralValue(java.math.BigDecimal, java.math.MathContext)
     # @see    #remainder(java.math.BigDecimal, java.math.MathContext)
     # @since  1.5
@@ -1985,40 +1975,40 @@ module Java::Math
     # 
     # <ul>
     # <li> An {@code ArithmeticException} exception is thrown if
-    # <ul>
-    # <li>{@code abs(n) > 999999999}
-    # <li>{@code mc.precision == 0} and {@code n < 0}
-    # <li>{@code mc.precision > 0} and {@code n} has more than
-    # {@code mc.precision} decimal digits
-    # </ul>
+    #  <ul>
+    #    <li>{@code abs(n) > 999999999}
+    #    <li>{@code mc.precision == 0} and {@code n < 0}
+    #    <li>{@code mc.precision > 0} and {@code n} has more than
+    #    {@code mc.precision} decimal digits
+    #  </ul>
     # 
     # <li> if {@code n} is zero, {@link #ONE} is returned even if
     # {@code this} is zero, otherwise
     # <ul>
-    # <li> if {@code n} is positive, the result is calculated via
-    # the repeated squaring technique into a single accumulator.
-    # The individual multiplications with the accumulator use the
-    # same math context settings as in {@code mc} except for a
-    # precision increased to {@code mc.precision + elength + 1}
-    # where {@code elength} is the number of decimal digits in
-    # {@code n}.
+    #   <li> if {@code n} is positive, the result is calculated via
+    #   the repeated squaring technique into a single accumulator.
+    #   The individual multiplications with the accumulator use the
+    #   same math context settings as in {@code mc} except for a
+    #   precision increased to {@code mc.precision + elength + 1}
+    #   where {@code elength} is the number of decimal digits in
+    #   {@code n}.
     # 
-    # <li> if {@code n} is negative, the result is calculated as if
-    # {@code n} were positive; this value is then divided into one
-    # using the working precision specified above.
+    #   <li> if {@code n} is negative, the result is calculated as if
+    #   {@code n} were positive; this value is then divided into one
+    #   using the working precision specified above.
     # 
-    # <li> The final value from either the positive or negative case
-    # is then rounded to the destination precision.
-    # </ul>
+    #   <li> The final value from either the positive or negative case
+    #   is then rounded to the destination precision.
+    #   </ul>
     # </ul>
     # 
     # @param  n power to raise this {@code BigDecimal} to.
     # @param  mc the context to use.
     # @return <tt>this<sup>n</sup></tt> using the ANSI standard X3.274-1996
-    # algorithm
+    #         algorithm
     # @throws ArithmeticException if the result is inexact but the
-    # rounding mode is {@code UNNECESSARY}, or {@code n} is out
-    # of range.
+    #         rounding mode is {@code UNNECESSARY}, or {@code n} is out
+    #         of range.
     # @since  1.5
     def pow(n, mc)
       if ((mc.attr_precision).equal?(0))
@@ -2089,7 +2079,7 @@ module Java::Math
     # @param mc the context to use.
     # @return {@code abs(this)}, rounded as necessary.
     # @throws ArithmeticException if the result is inexact but the
-    # rounding mode is {@code UNNECESSARY}.
+    #         rounding mode is {@code UNNECESSARY}.
     # @since 1.5
     def abs(mc)
       return (signum < 0 ? negate(mc) : plus(mc))
@@ -2118,7 +2108,7 @@ module Java::Math
     # @param mc the context to use.
     # @return {@code -this}, rounded as necessary.
     # @throws ArithmeticException if the result is inexact but the
-    # rounding mode is {@code UNNECESSARY}.
+    #         rounding mode is {@code UNNECESSARY}.
     # @since  1.5
     def negate(mc)
       return negate.plus(mc)
@@ -2148,9 +2138,9 @@ module Java::Math
     # 
     # @param mc the context to use.
     # @return {@code this}, rounded as necessary.  A zero result will
-    # have a scale of 0.
+    #         have a scale of 0.
     # @throws ArithmeticException if the result is inexact but the
-    # rounding mode is {@code UNNECESSARY}.
+    #         rounding mode is {@code UNNECESSARY}.
     # @see    #round(MathContext)
     # @since  1.5
     def plus(mc)
@@ -2165,7 +2155,7 @@ module Java::Math
     # Returns the signum function of this {@code BigDecimal}.
     # 
     # @return -1, 0, or 1 as the value of this {@code BigDecimal}
-    # is negative, zero, or positive.
+    #         is negative, zero, or positive.
     def signum
       return (!(@int_compact).equal?(INFLATED)) ? Long.signum(@int_compact) : @int_val.signum
     end
@@ -2213,7 +2203,6 @@ module Java::Math
     
     class_module.module_eval {
       # Rounding Modes
-      # 
       # Rounding mode to round away from zero.  Always increments the
       # digit prior to a nonzero discarded fraction.  Note that this rounding
       # mode never decreases the magnitude of the calculated value.
@@ -2280,7 +2269,6 @@ module Java::Math
     
     typesig { [MathContext] }
     # Scaling/Rounding Operations
-    # 
     # Returns a {@code BigDecimal} rounded according to the
     # {@code MathContext} settings.  If the precision setting is 0 then
     # no rounding takes place.
@@ -2290,10 +2278,10 @@ module Java::Math
     # 
     # @param mc the context to use.
     # @return a {@code BigDecimal} rounded according to the
-    # {@code MathContext} settings.
+    #         {@code MathContext} settings.
     # @throws ArithmeticException if the rounding mode is
-    # {@code UNNECESSARY} and the
-    # {@code BigDecimal}  operation would require rounding.
+    #         {@code UNNECESSARY} and the
+    #         {@code BigDecimal}  operation would require rounding.
     # @see    #plus(MathContext)
     # @since  1.5
     def round(mc)
@@ -2320,12 +2308,12 @@ module Java::Math
     # @param  newScale scale of the {@code BigDecimal} value to be returned.
     # @param  roundingMode The rounding mode to apply.
     # @return a {@code BigDecimal} whose scale is the specified value,
-    # and whose unscaled value is determined by multiplying or
-    # dividing this {@code BigDecimal}'s unscaled value by the
-    # appropriate power of ten to maintain its overall value.
+    #         and whose unscaled value is determined by multiplying or
+    #         dividing this {@code BigDecimal}'s unscaled value by the
+    #         appropriate power of ten to maintain its overall value.
     # @throws ArithmeticException if {@code roundingMode==UNNECESSARY}
-    # and the specified scaling operation would require
-    # rounding.
+    #         and the specified scaling operation would require
+    #         rounding.
     # @see    RoundingMode
     # @since  1.5
     def set_scale(new_scale, rounding_mode)
@@ -2355,14 +2343,14 @@ module Java::Math
     # @param  newScale scale of the {@code BigDecimal} value to be returned.
     # @param  roundingMode The rounding mode to apply.
     # @return a {@code BigDecimal} whose scale is the specified value,
-    # and whose unscaled value is determined by multiplying or
-    # dividing this {@code BigDecimal}'s unscaled value by the
-    # appropriate power of ten to maintain its overall value.
+    #         and whose unscaled value is determined by multiplying or
+    #         dividing this {@code BigDecimal}'s unscaled value by the
+    #         appropriate power of ten to maintain its overall value.
     # @throws ArithmeticException if {@code roundingMode==ROUND_UNNECESSARY}
-    # and the specified scaling operation would require
-    # rounding.
+    #         and the specified scaling operation would require
+    #         rounding.
     # @throws IllegalArgumentException if {@code roundingMode} does not
-    # represent a valid rounding mode.
+    #         represent a valid rounding mode.
     # @see    #ROUND_UP
     # @see    #ROUND_DOWN
     # @see    #ROUND_CEILING
@@ -2432,11 +2420,11 @@ module Java::Math
     # 
     # @param  newScale scale of the {@code BigDecimal} value to be returned.
     # @return a {@code BigDecimal} whose scale is the specified value, and
-    # whose unscaled value is determined by multiplying or dividing
-    # this {@code BigDecimal}'s unscaled value by the appropriate
-    # power of ten to maintain its overall value.
+    #         whose unscaled value is determined by multiplying or dividing
+    #         this {@code BigDecimal}'s unscaled value by the appropriate
+    #         power of ten to maintain its overall value.
     # @throws ArithmeticException if the specified scaling operation would
-    # require rounding.
+    #         require rounding.
     # @see    #setScale(int, int)
     # @see    #setScale(int, RoundingMode)
     def set_scale(new_scale)
@@ -2445,7 +2433,6 @@ module Java::Math
     
     typesig { [::Java::Int] }
     # Decimal Point Motion Operations
-    # 
     # Returns a {@code BigDecimal} which is equivalent to this one
     # with the decimal point moved {@code n} places to the left.  If
     # {@code n} is non-negative, the call merely adds {@code n} to
@@ -2457,7 +2444,7 @@ module Java::Math
     # 
     # @param  n number of places to move the decimal point to the left.
     # @return a {@code BigDecimal} which is equivalent to this one with the
-    # decimal point moved {@code n} places to the left.
+    #         decimal point moved {@code n} places to the left.
     # @throws ArithmeticException if scale overflows.
     def move_point_left(n)
       # Cannot use movePointRight(-n) in case of n==Integer.MIN_VALUE
@@ -2483,7 +2470,7 @@ module Java::Math
     # 
     # @param  n number of places to move the decimal point to the right.
     # @return a {@code BigDecimal} which is equivalent to this one
-    # with the decimal point moved {@code n} places to the right.
+    #         with the decimal point moved {@code n} places to the right.
     # @throws ArithmeticException if scale overflows.
     def move_point_right(n)
       # Cannot use movePointLeft(-n) in case of n==Integer.MIN_VALUE
@@ -2503,7 +2490,7 @@ module Java::Math
     # the result is {@code (this.scale() - n)}.
     # 
     # @throws ArithmeticException if the scale would be
-    # outside the range of a 32-bit integer.
+    #         outside the range of a 32-bit integer.
     # 
     # @since 1.5
     def scale_by_power_of_ten(n)
@@ -2532,7 +2519,6 @@ module Java::Math
     
     typesig { [BigDecimal] }
     # Comparison Operations
-    # 
     # Compares this {@code BigDecimal} with the specified
     # {@code BigDecimal}.  Two {@code BigDecimal} objects that are
     # equal in value but have a different scale (like 2.0 and 2.00)
@@ -2545,9 +2531,9 @@ module Java::Math
     # &lt;<i>op</i>&gt; is one of the six comparison operators.
     # 
     # @param  val {@code BigDecimal} to which this {@code BigDecimal} is
-    # to be compared.
+    #         to be compared.
     # @return -1, 0, or 1 as this {@code BigDecimal} is numerically
-    # less than, equal to, or greater than {@code val}.
+    #          less than, equal to, or greater than {@code val}.
     def compare_to(val)
       if ((@scale).equal?(val.attr_scale) && !(@int_compact).equal?(INFLATED) && !(val.attr_int_compact).equal?(INFLATED))
         return long_compare_to(@int_compact, val.attr_int_compact)
@@ -2586,10 +2572,10 @@ module Java::Math
     # this method).
     # 
     # @param  x {@code Object} to which this {@code BigDecimal} is
-    # to be compared.
+    #         to be compared.
     # @return {@code true} if and only if the specified {@code Object} is a
-    # {@code BigDecimal} whose value and scale are equal to this
-    # {@code BigDecimal}'s.
+    #         {@code BigDecimal} whose value and scale are equal to this
+    #         {@code BigDecimal}'s.
     # @see    #compareTo(java.math.BigDecimal)
     # @see    #hashCode
     def ==(x)
@@ -2612,9 +2598,9 @@ module Java::Math
     # 
     # @param  val value with which the minimum is to be computed.
     # @return the {@code BigDecimal} whose value is the lesser of this
-    # {@code BigDecimal} and {@code val}.  If they are equal,
-    # as defined by the {@link #compareTo(BigDecimal) compareTo}
-    # method, {@code this} is returned.
+    #         {@code BigDecimal} and {@code val}.  If they are equal,
+    #         as defined by the {@link #compareTo(BigDecimal) compareTo}
+    #         method, {@code this} is returned.
     # @see    #compareTo(java.math.BigDecimal)
     def min(val)
       return (compare_to(val) <= 0 ? self : val)
@@ -2625,9 +2611,9 @@ module Java::Math
     # 
     # @param  val value with which the maximum is to be computed.
     # @return the {@code BigDecimal} whose value is the greater of this
-    # {@code BigDecimal} and {@code val}.  If they are equal,
-    # as defined by the {@link #compareTo(BigDecimal) compareTo}
-    # method, {@code this} is returned.
+    #         {@code BigDecimal} and {@code val}.  If they are equal,
+    #         as defined by the {@link #compareTo(BigDecimal) compareTo}
+    #         method, {@code this} is returned.
     # @see    #compareTo(java.math.BigDecimal)
     def max(val)
       return (compare_to(val) >= 0 ? self : val)
@@ -2635,7 +2621,6 @@ module Java::Math
     
     typesig { [] }
     # Hash Function
-    # 
     # Returns the hash code for this {@code BigDecimal}.  Note that
     # two {@code BigDecimal} objects that are numerically equal but
     # differ in scale (like 2.0 and 2.00) will generally <i>not</i>
@@ -2646,7 +2631,7 @@ module Java::Math
     def hash_code
       if (!(@int_compact).equal?(INFLATED))
         val2 = (@int_compact < 0) ? -@int_compact : @int_compact
-        temp = RJava.cast_to_int(((RJava.cast_to_int((val2 >> 32))) * 31 + (val2 & 0xffffffff)))
+        temp = (((((val2 >> 32)).to_int) * 31 + (val2 & 0xffffffff))).to_int
         return 31 * ((@int_compact < 0) ? -temp : temp) + @scale
       else
         return 31 * @int_val.hash_code + @scale
@@ -2655,7 +2640,6 @@ module Java::Math
     
     typesig { [] }
     # Format Converters
-    # 
     # Returns the string representation of this {@code BigDecimal},
     # using scientific notation if an exponent is needed.
     # 
@@ -2781,7 +2765,7 @@ module Java::Math
     # result from applying the string constructor to the method's output.
     # 
     # @return string representation of this {@code BigDecimal}, using
-    # engineering notation if an exponent is needed.
+    #         engineering notation if an exponent is needed.
     # @since  1.5
     def to_engineering_string
       return layout_chars(false)
@@ -2893,7 +2877,7 @@ module Java::Math
     # 
     # @return this {@code BigDecimal} converted to a {@code BigInteger}.
     # @throws ArithmeticException if {@code this} has a nonzero
-    # fractional part.
+    #         fractional part.
     # @since  1.5
     def to_big_integer_exact
       # round to an integer, with Exception if decimal part non-0
@@ -2929,7 +2913,7 @@ module Java::Math
     # 
     # @return this {@code BigDecimal} converted to a {@code long}.
     # @throws ArithmeticException if {@code this} has a nonzero
-    # fractional part, or will not fit in a {@code long}.
+    #         fractional part, or will not fit in a {@code long}.
     # @since  1.5
     def long_value_exact
       if (!(@int_compact).equal?(INFLATED) && (@scale).equal?(0))
@@ -3004,7 +2988,7 @@ module Java::Math
     # 
     # @return this {@code BigDecimal} converted to an {@code int}.
     def int_value
-      return (!(@int_compact).equal?(INFLATED) && (@scale).equal?(0)) ? RJava.cast_to_int(@int_compact) : to_big_integer.int_value
+      return (!(@int_compact).equal?(INFLATED) && (@scale).equal?(0)) ? (@int_compact).to_int : to_big_integer.int_value
     end
     
     typesig { [] }
@@ -3016,15 +3000,15 @@ module Java::Math
     # 
     # @return this {@code BigDecimal} converted to an {@code int}.
     # @throws ArithmeticException if {@code this} has a nonzero
-    # fractional part, or will not fit in an {@code int}.
+    #         fractional part, or will not fit in an {@code int}.
     # @since  1.5
     def int_value_exact
       num = 0
       num = self.long_value_exact # will check decimal part
-      if (!(RJava.cast_to_int(num)).equal?(num))
+      if (!((num).to_int).equal?(num))
         raise Java::Lang::ArithmeticException.new("Overflow")
       end
-      return RJava.cast_to_int(num)
+      return (num).to_int
     end
     
     typesig { [] }
@@ -3036,7 +3020,7 @@ module Java::Math
     # 
     # @return this {@code BigDecimal} converted to a {@code short}.
     # @throws ArithmeticException if {@code this} has a nonzero
-    # fractional part, or will not fit in a {@code short}.
+    #         fractional part, or will not fit in a {@code short}.
     # @since  1.5
     def short_value_exact
       num = 0
@@ -3056,7 +3040,7 @@ module Java::Math
     # 
     # @return this {@code BigDecimal} converted to a {@code byte}.
     # @throws ArithmeticException if {@code this} has a nonzero
-    # fractional part, or will not fit in a {@code byte}.
+    #         fractional part, or will not fit in a {@code byte}.
     # @since  1.5
     def byte_value_exact
       num = 0
@@ -3134,21 +3118,20 @@ module Java::Math
     
     typesig { [::Java::Boolean] }
     # Private "Helper" Methods
-    # 
     # Lay out this {@code BigDecimal} into a {@code char[]} array.
     # The Java 1.2 equivalent to this was called {@code getValueString}.
     # 
     # @param  sci {@code true} for Scientific exponential notation;
-    # {@code false} for Engineering
+    #          {@code false} for Engineering
     # @return string with canonical string representation of this
-    # {@code BigDecimal}
+    #         {@code BigDecimal}
     def layout_chars(sci)
       if ((@scale).equal?(0))
         # zero scale is trivial
         return (!(@int_compact).equal?(INFLATED)) ? Long.to_s(@int_compact) : @int_val.to_s
       end
       # Get the significand as an absolute value
-      coeff = 0
+      coeff = nil
       if (!(@int_compact).equal?(INFLATED))
         coeff = Long.to_s(Math.abs(@int_compact)).to_char_array
       else
@@ -3194,7 +3177,7 @@ module Java::Math
           end
         else
           # Engineering notation
-          sig = RJava.cast_to_int((adjusted % 3))
+          sig = ((adjusted % 3)).to_int
           if (sig < 0)
             sig += 3
           end # [adjusted was negative]
@@ -3309,7 +3292,7 @@ module Java::Math
       # 13
       
       def thresholds
-        defined?(@@thresholds) ? @@thresholds : @@thresholds= Array.typed(Array.typed(::Java::Long)).new([Array.typed(::Java::Long).new([Long::MAX_VALUE, 1]), Array.typed(::Java::Long).new([Long::MAX_VALUE / 10, 10]), Array.typed(::Java::Long).new([Long::MAX_VALUE / 100, 100]), Array.typed(::Java::Long).new([Long::MAX_VALUE / 1000, 1000]), Array.typed(::Java::Long).new([Long::MAX_VALUE / 10000, 10000]), Array.typed(::Java::Long).new([Long::MAX_VALUE / 100000, 100000]), Array.typed(::Java::Long).new([Long::MAX_VALUE / 1000000, 1000000]), Array.typed(::Java::Long).new([Long::MAX_VALUE / 10000000, 10000000]), Array.typed(::Java::Long).new([Long::MAX_VALUE / 100000000, 100000000]), Array.typed(::Java::Long).new([Long::MAX_VALUE / 1000000000, 1000000000]), Array.typed(::Java::Long).new([Long::MAX_VALUE / 10000000000, 10000000000]), Array.typed(::Java::Long).new([Long::MAX_VALUE / 100000000000, 100000000000]), Array.typed(::Java::Long).new([Long::MAX_VALUE / 1000000000000, 1000000000000]), Array.typed(::Java::Long).new([Long::MAX_VALUE / 100000000000000, 10000000000000]), ])
+        defined?(@@thresholds) ? @@thresholds : @@thresholds= Array.typed(Array.typed(::Java::Long)).new([Array.typed(::Java::Long).new([Long::MAX_VALUE, 1]), Array.typed(::Java::Long).new([Long::MAX_VALUE / 10, 10]), Array.typed(::Java::Long).new([Long::MAX_VALUE / 100, 100]), Array.typed(::Java::Long).new([Long::MAX_VALUE / 1000, 1000]), Array.typed(::Java::Long).new([Long::MAX_VALUE / 10000, 10000]), Array.typed(::Java::Long).new([Long::MAX_VALUE / 100000, 100000]), Array.typed(::Java::Long).new([Long::MAX_VALUE / 1000000, 1000000]), Array.typed(::Java::Long).new([Long::MAX_VALUE / 10000000, 10000000]), Array.typed(::Java::Long).new([Long::MAX_VALUE / 100000000, 100000000]), Array.typed(::Java::Long).new([Long::MAX_VALUE / 1000000000, 1000000000]), Array.typed(::Java::Long).new([Long::MAX_VALUE / 10000000000, 10000000000]), Array.typed(::Java::Long).new([Long::MAX_VALUE / 100000000000, 100000000000]), Array.typed(::Java::Long).new([Long::MAX_VALUE / 1000000000000, 1000000000000]), Array.typed(::Java::Long).new([Long::MAX_VALUE / 100000000000000, 10000000000000])])
       end
       alias_method :attr_thresholds, :thresholds
       
@@ -3346,7 +3329,7 @@ module Java::Math
       # the other {@code BigDecimal}.
       # 
       # @param  val array of two elements referring to the two
-      # {@code BigDecimal}s to be aligned.
+      #         {@code BigDecimal}s to be aligned.
       def match_scale(val)
         if (val[0].attr_scale < val[1].attr_scale)
           val[0] = val[0].set_scale(val[1].attr_scale)
@@ -3389,29 +3372,29 @@ module Java::Math
     end
     
     typesig { [] }
-    # Returns the length of this {@code BigDecimal}, in decimal digits.
+    #  Returns the length of this {@code BigDecimal}, in decimal digits.
     # 
-    # Notes:
+    #  Notes:
     # <ul>
-    # <li> This is performance-critical; most operations where a
-    # context is supplied will need at least one call to this
-    # method.
+    #  <li> This is performance-critical; most operations where a
+    #       context is supplied will need at least one call to this
+    #       method.
     # 
-    # <li> This should be a method on BigInteger; the call to this
-    # method in precision() can then be replaced with the
-    # term: intVal.digitLength().  It could also be called
-    # precision() in BigInteger.
+    #  <li> This should be a method on BigInteger; the call to this
+    #       method in precision() can then be replaced with the
+    #       term: intVal.digitLength().  It could also be called
+    #       precision() in BigInteger.
     # 
-    # Better still -- the precision lookaside could be moved to
-    # BigInteger, too.
+    #       Better still -- the precision lookaside could be moved to
+    #       BigInteger, too.
     # 
-    # <li> This could/should use MutableBigIntegers directly for the
-    # reduction loop.
+    #  <li> This could/should use MutableBigIntegers directly for the
+    #       reduction loop.
     # <ul>
-    # @return the length of the unscaled value, in decimal digits
+    #  @return the length of the unscaled value, in decimal digits
     def digit_length
       if (!(@int_compact).equal?(INFLATED) && Math.abs(@int_compact) <= JavaInteger::MAX_VALUE)
-        return int_length(Math.abs(RJava.cast_to_int(@int_compact)))
+        return int_length(Math.abs((@int_compact).to_int))
       end
       if ((signum).equal?(0))
         # 0 is one decimal digit
@@ -3522,10 +3505,10 @@ module Java::Math
     # 
     # @param val The new scale.
     # @throws ArithmeticException (overflow or underflow) if the new
-    # scale is out of range.
+    #         scale is out of range.
     # @return validated scale as an int.
     def check_scale(val)
-      if (!(RJava.cast_to_int(val)).equal?(val))
+      if (!((val).to_int).equal?(val))
         if ((!(@int_compact).equal?(INFLATED) && !(@int_compact).equal?(0)) || (!(@int_val).nil? && !(self.signum).equal?(0)) || ((@int_val).nil? && (@int_compact).equal?(INFLATED)))
           if (val > JavaInteger::MAX_VALUE)
             raise ArithmeticException.new("Underflow")
@@ -3537,7 +3520,7 @@ module Java::Math
           return (val > JavaInteger::MAX_VALUE) ? JavaInteger::MAX_VALUE : JavaInteger::MIN_VALUE
         end
       end
-      return RJava.cast_to_int(val)
+      return (val).to_int
     end
     
     typesig { [MathContext] }
@@ -3547,23 +3530,23 @@ module Java::Math
     # 
     # @param mc the context to use.
     # @throws ArithmeticException if the result is inexact but the
-    # rounding mode is {@code UNNECESSARY}.
+    #         rounding mode is {@code UNNECESSARY}.
     def round_op(mc)
       rounded = do_round(mc)
       return rounded
     end
     
     typesig { [MathContext] }
-    # Round this BigDecimal according to the MathContext settings;
-    # used only if precision {@literal >} 0.
+    #  Round this BigDecimal according to the MathContext settings;
+    #  used only if precision {@literal >} 0.
     # 
     # <p>WARNING: This method should only be called on new objects as
     # it mutates the value fields.
     # 
     # @param mc the context to use.
     # @throws ArithmeticException if the rounding mode is
-    # {@code RoundingMode.UNNECESSARY} and the
-    # {@code BigDecimal} operation would require rounding.
+    #         {@code RoundingMode.UNNECESSARY} and the
+    #         {@code BigDecimal} operation would require rounding.
     def round_this(mc)
       rounded = do_round(mc)
       if ((rounded).equal?(self))
@@ -3584,10 +3567,10 @@ module Java::Math
     # 
     # @param mc the context to use.
     # @return a {@code BigDecimal} rounded according to the MathContext
-    # settings.  May return this, if no rounding needed.
+    #         settings.  May return this, if no rounding needed.
     # @throws ArithmeticException if the rounding mode is
-    # {@code RoundingMode.UNNECESSARY} and the
-    # result is inexact.
+    #         {@code RoundingMode.UNNECESSARY} and the
+    #         result is inexact.
     def do_round(mc)
       self.inflate
       if ((@precision).equal?(0))
@@ -3620,10 +3603,10 @@ module Java::Math
     # @param mc the context to use.
     # @param drop the number of digits to drop, must be {@literal >} 0
     # @return a {@code BigDecimal} rounded according to the MathContext
-    # settings.  May return {@code this}, if no rounding needed.
+    #         settings.  May return {@code this}, if no rounding needed.
     # @throws ArithmeticException if the rounding mode is
-    # {@code RoundingMode.UNNECESSARY} and the
-    # result is inexact.
+    #         {@code RoundingMode.UNNECESSARY} and the
+    #         result is inexact.
     def drop_digits(mc, drop)
       # here if we need to round; make the divisor = 10**drop)
       # [calculating the BigInteger here saves setScale later]

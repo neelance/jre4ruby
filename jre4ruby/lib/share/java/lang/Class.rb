@@ -90,10 +90,10 @@ module Java::Lang
   # class name of an object:
   # 
   # <p> <blockquote><pre>
-  # void printClassName(Object obj) {
-  # System.out.println("The class of " + obj +
-  # " is " + obj.getClass().getName());
-  # }
+  #     void printClassName(Object obj) {
+  #         System.out.println("The class of " + obj +
+  #                            " is " + obj.getClass().getName());
+  #     }
   # </pre></blockquote>
   # 
   # <p> It is also possible to get the {@code Class} object for a named
@@ -102,7 +102,7 @@ module Java::Lang
   # For example:
   # 
   # <p> <blockquote>
-  # {@code System.out.println("The name of class Foo is: "+Foo.class.getName());}
+  #     {@code System.out.println("The name of class Foo is: "+Foo.class.getName());}
   # </blockquote>
   # 
   # @param <T> the type of the class modeled by this {@code Class}
@@ -187,7 +187,7 @@ module Java::Lang
       # equivalent to:
       # 
       # <blockquote>
-      # {@code Class.forName(className, true, currentLoader)}
+      #  {@code Class.forName(className, true, currentLoader)}
       # </blockquote>
       # 
       # where {@code currentLoader} denotes the defining class loader of
@@ -198,7 +198,7 @@ module Java::Lang
       # {@code java.lang.Thread}:
       # 
       # <blockquote>
-      # {@code Class t = Class.forName("java.lang.Thread")}
+      #   {@code Class t = Class.forName("java.lang.Thread")}
       # </blockquote>
       # <p>
       # A call to {@code forName("X")} causes the class named
@@ -206,10 +206,10 @@ module Java::Lang
       # 
       # @param      className   the fully qualified name of the desired class.
       # @return     the {@code Class} object for the class with the
-      # specified name.
+      #             specified name.
       # @exception LinkageError if the linkage fails
       # @exception ExceptionInInitializerError if the initialization provoked
-      # by this method fails
+      #            by this method fails
       # @exception ClassNotFoundException if the class cannot be located
       def for_name(class_name)
         return for_name0(class_name, true, ClassLoader.get_caller_class_loader)
@@ -239,13 +239,13 @@ module Java::Lang
       # <p> For example, in an instance method the expression:
       # 
       # <blockquote>
-      # {@code Class.forName("Foo")}
+      #  {@code Class.forName("Foo")}
       # </blockquote>
       # 
       # is equivalent to:
       # 
       # <blockquote>
-      # {@code Class.forName("Foo", true, this.getClass().getClassLoader())}
+      #  {@code Class.forName("Foo", true, this.getClass().getClassLoader())}
       # </blockquote>
       # 
       # Note that this method throws errors related to loading, linking or
@@ -267,9 +267,9 @@ module Java::Lang
       # 
       # @exception LinkageError if the linkage fails
       # @exception ExceptionInInitializerError if the initialization provoked
-      # by this method fails
+      #            by this method fails
       # @exception ClassNotFoundException if the class cannot be located by
-      # the specified class loader
+      #            the specified class loader
       # 
       # @see       java.lang.Class#forName(String)
       # @see       java.lang.ClassLoader
@@ -312,34 +312,34 @@ module Java::Lang
     # java.lang.reflect.InvocationTargetException}.
     # 
     # @return     a newly allocated instance of the class represented by this
-    # object.
+    #             object.
     # @exception  IllegalAccessException  if the class or its nullary
-    # constructor is not accessible.
+    #               constructor is not accessible.
     # @exception  InstantiationException
-    # if this {@code Class} represents an abstract class,
-    # an interface, an array class, a primitive type, or void;
-    # or if the class has no nullary constructor;
-    # or if the instantiation fails for some other reason.
+    #               if this {@code Class} represents an abstract class,
+    #               an interface, an array class, a primitive type, or void;
+    #               or if the class has no nullary constructor;
+    #               or if the instantiation fails for some other reason.
     # @exception  ExceptionInInitializerError if the initialization
-    # provoked by this method fails.
+    #               provoked by this method fails.
     # @exception  SecurityException
-    # If a security manager, <i>s</i>, is present and any of the
-    # following conditions is met:
+    #             If a security manager, <i>s</i>, is present and any of the
+    #             following conditions is met:
     # 
-    # <ul>
+    #             <ul>
     # 
-    # <li> invocation of
-    # {@link SecurityManager#checkMemberAccess
-    # s.checkMemberAccess(this, Member.PUBLIC)} denies
-    # creation of new instances of this class
+    #             <li> invocation of
+    #             {@link SecurityManager#checkMemberAccess
+    #             s.checkMemberAccess(this, Member.PUBLIC)} denies
+    #             creation of new instances of this class
     # 
-    # <li> the caller's class loader is not the same as or an
-    # ancestor of the class loader for the current class and
-    # invocation of {@link SecurityManager#checkPackageAccess
-    # s.checkPackageAccess()} denies access to the package
-    # of this class
+    #             <li> the caller's class loader is not the same as or an
+    #             ancestor of the class loader for the current class and
+    #             invocation of {@link SecurityManager#checkPackageAccess
+    #             s.checkPackageAccess()} denies access to the package
+    #             of this class
     # 
-    # </ul>
+    #             </ul>
     def new_instance
       if (!(System.get_security_manager).nil?)
         check_member_access(Member::PUBLIC, ClassLoader.get_caller_class_loader)
@@ -475,7 +475,7 @@ module Java::Lang
     # @return the {@code boolean} value indicating whether objects of the
     # type {@code cls} can be assigned to objects of this class
     # @exception NullPointerException if the specified Class parameter is
-    # null.
+    #            null.
     # @since JDK1.1
     def is_assignable_from(cls)
       JNI.call_native_method(:Java_java_lang_Class_isAssignableFrom, JNI.env, self.jni_id, cls.jni_id) != 0
@@ -487,7 +487,7 @@ module Java::Lang
     # interface type.
     # 
     # @return  {@code true} if this object represents an interface;
-    # {@code false} otherwise.
+    #          {@code false} otherwise.
     def is_interface
       JNI.call_native_method(:Java_java_lang_Class_isInterface, JNI.env, self.jni_id) != 0
     end
@@ -497,7 +497,7 @@ module Java::Lang
     # Determines if this {@code Class} object represents an array class.
     # 
     # @return  {@code true} if this object represents an array class;
-    # {@code false} otherwise.
+    #          {@code false} otherwise.
     # @since   JDK1.1
     def is_array
       JNI.call_native_method(:Java_java_lang_Class_isArray, JNI.env, self.jni_id) != 0
@@ -541,7 +541,7 @@ module Java::Lang
     # would also return true, as all annotation types are also interfaces.
     # 
     # @return {@code true} if this class object represents an annotation
-    # type; {@code false} otherwise
+    #      type; {@code false} otherwise
     # @since 1.5
     def is_annotation
       return !((get_modifiers & ANNOTATION)).equal?(0)
@@ -551,7 +551,7 @@ module Java::Lang
     # Returns {@code true} if this class is a synthetic class;
     # returns {@code false} otherwise.
     # @return {@code true} if and only if this class is a synthetic class as
-    # defined by the Java Language Specification.
+    #         defined by the Java Language Specification.
     # @since 1.5
     def is_synthetic
       return !((get_modifiers & SYNTHETIC)).equal?(0)
@@ -581,7 +581,7 @@ module Java::Lang
     # <tr><td> byte         <td> &nbsp;&nbsp;&nbsp; <td align=center> B
     # <tr><td> char         <td> &nbsp;&nbsp;&nbsp; <td align=center> C
     # <tr><td> class or interface
-    # <td> &nbsp;&nbsp;&nbsp; <td align=center> L<i>classname</i>;
+    #                       <td> &nbsp;&nbsp;&nbsp; <td align=center> L<i>classname</i>;
     # <tr><td> double       <td> &nbsp;&nbsp;&nbsp; <td align=center> D
     # <tr><td> float        <td> &nbsp;&nbsp;&nbsp; <td align=center> F
     # <tr><td> int          <td> &nbsp;&nbsp;&nbsp; <td align=center> I
@@ -595,17 +595,17 @@ module Java::Lang
     # <p> Examples:
     # <blockquote><pre>
     # String.class.getName()
-    # returns "java.lang.String"
+    #     returns "java.lang.String"
     # byte.class.getName()
-    # returns "byte"
+    #     returns "byte"
     # (new Object[3]).getClass().getName()
-    # returns "[Ljava.lang.Object;"
+    #     returns "[Ljava.lang.Object;"
     # (new int[3][4][5][6][7][8][9]).getClass().getName()
-    # returns "[[[[[[[I"
+    #     returns "[[[[[[[I"
     # </pre></blockquote>
     # 
     # @return  the name of the class or interface
-    # represented by this object.
+    #          represented by this object.
     def get_name
       if ((@name).nil?)
         @name = RJava.cast_to_string(get_name0)
@@ -643,11 +643,11 @@ module Java::Lang
     # represents a primitive type or void, null is returned.
     # 
     # @return  the class loader that loaded the class or interface
-    # represented by this object.
+    #          represented by this object.
     # @throws SecurityException
-    # if a security manager exists and its
-    # {@code checkPermission} method denies
-    # access to the class loader for the class.
+    #    if a security manager exists and its
+    #    {@code checkPermission} method denies
+    #    access to the class loader for the class.
     # @see java.lang.ClassLoader
     # @see SecurityManager#checkPermission
     # @see java.lang.RuntimePermission
@@ -681,11 +681,11 @@ module Java::Lang
     # variables.
     # 
     # @return an array of {@code TypeVariable} objects that represent
-    # the type variables declared by this generic declaration
+    #     the type variables declared by this generic declaration
     # @throws GenericSignatureFormatError if the generic
-    # signature of this generic declaration does not conform to
-    # the format specified in the Java Virtual Machine Specification,
-    # 3rd edition
+    #     signature of this generic declaration does not conform to
+    #     the format specified in the Java Virtual Machine Specification,
+    #     3rd edition
     # @since 1.5
     def get_type_parameters
       if (!(get_generic_signature).nil?)
@@ -729,13 +729,13 @@ module Java::Lang
     # returned.
     # 
     # @throws GenericSignatureFormatError if the generic
-    # class signature does not conform to the format specified in the
-    # Java Virtual Machine Specification, 3rd edition
+    #     class signature does not conform to the format specified in the
+    #     Java Virtual Machine Specification, 3rd edition
     # @throws TypeNotPresentException if the generic superclass
-    # refers to a non-existent type declaration
+    #     refers to a non-existent type declaration
     # @throws MalformedParameterizedTypeException if the
-    # generic superclass refers to a parameterized type that cannot be
-    # instantiated  for any reason
+    #     generic superclass refers to a parameterized type that cannot be
+    #     instantiated  for any reason
     # @return the superclass of the class represented by this object
     # @since 1.5
     def get_generic_superclass
@@ -765,7 +765,7 @@ module Java::Lang
     # from the manifest.
     # 
     # @return the package of the class, or null if no package
-    # information is available from the archive or codebase.
+    #         information is available from the archive or codebase.
     def get_package
       return Package.get_package(self)
     end
@@ -852,13 +852,13 @@ module Java::Lang
     # method returns an array of length 0.
     # 
     # @throws GenericSignatureFormatError
-    # if the generic class signature does not conform to the format
-    # specified in the Java Virtual Machine Specification, 3rd edition
+    #     if the generic class signature does not conform to the format
+    #     specified in the Java Virtual Machine Specification, 3rd edition
     # @throws TypeNotPresentException if any of the generic
-    # superinterfaces refers to a non-existent type declaration
+    #     superinterfaces refers to a non-existent type declaration
     # @throws MalformedParameterizedTypeException if any of the
-    # generic superinterfaces refer to a parameterized type that cannot
-    # be instantiated  for any reason
+    #     generic superinterfaces refer to a parameterized type that cannot
+    #     be instantiated  for any reason
     # @return an array of interfaces implemented by this class
     # @since 1.5
     def get_generic_interfaces
@@ -919,8 +919,8 @@ module Java::Lang
     # Gets the signers of this class.
     # 
     # @return  the signers of this class, or null if there are no signers.  In
-    # particular, this method returns null if this object represents
-    # a primitive type or void.
+    #          particular, this method returns null if this object represents
+    #          a primitive type or void.
     # @since   JDK1.1
     def get_signers
       JNI.call_native_method(:Java_java_lang_Class_getSigners, JNI.env, self.jni_id)
@@ -945,7 +945,7 @@ module Java::Lang
     # declaration, instance initializer or static initializer.
     # 
     # @return the immediately enclosing method of the underlying class, if
-    # that class is a local or anonymous class; otherwise {@code null}.
+    #     that class is a local or anonymous class; otherwise {@code null}.
     # @since 1.5
     def get_enclosing_method
       enclosing_info = get_enclosing_method_info
@@ -1114,7 +1114,7 @@ module Java::Lang
     # instance initializer or static initializer.
     # 
     # @return the immediately enclosing constructor of the underlying class, if
-    # that class is a local or anonymous class; otherwise {@code null}.
+    #     that class is a local or anonymous class; otherwise {@code null}.
     # @since 1.5
     def get_enclosing_constructor
       enclosing_info = get_enclosing_method_info
@@ -1365,23 +1365,23 @@ module Java::Lang
     # @return the array of {@code Class} objects representing the public
     # members of this class
     # @exception  SecurityException
-    # If a security manager, <i>s</i>, is present and any of the
-    # following conditions is met:
+    #             If a security manager, <i>s</i>, is present and any of the
+    #             following conditions is met:
     # 
-    # <ul>
+    #             <ul>
     # 
-    # <li> invocation of
-    # {@link SecurityManager#checkMemberAccess
-    # s.checkMemberAccess(this, Member.PUBLIC)} method
-    # denies access to the classes within this class
+    #             <li> invocation of
+    #             {@link SecurityManager#checkMemberAccess
+    #             s.checkMemberAccess(this, Member.PUBLIC)} method
+    #             denies access to the classes within this class
     # 
-    # <li> the caller's class loader is not the same as or an
-    # ancestor of the class loader for the current class and
-    # invocation of {@link SecurityManager#checkPackageAccess
-    # s.checkPackageAccess()} denies access to the package
-    # of this class
+    #             <li> the caller's class loader is not the same as or an
+    #             ancestor of the class loader for the current class and
+    #             invocation of {@link SecurityManager#checkPackageAccess
+    #             s.checkPackageAccess()} denies access to the package
+    #             of this class
     # 
-    # </ul>
+    #             </ul>
     # 
     # @since JDK1.1
     def get_classes
@@ -1452,23 +1452,23 @@ module Java::Lang
     # @return the array of {@code Field} objects representing the
     # public fields
     # @exception  SecurityException
-    # If a security manager, <i>s</i>, is present and any of the
-    # following conditions is met:
+    #             If a security manager, <i>s</i>, is present and any of the
+    #             following conditions is met:
     # 
-    # <ul>
+    #             <ul>
     # 
-    # <li> invocation of
-    # {@link SecurityManager#checkMemberAccess
-    # s.checkMemberAccess(this, Member.PUBLIC)} denies
-    # access to the fields within this class
+    #             <li> invocation of
+    #             {@link SecurityManager#checkMemberAccess
+    #             s.checkMemberAccess(this, Member.PUBLIC)} denies
+    #             access to the fields within this class
     # 
-    # <li> the caller's class loader is not the same as or an
-    # ancestor of the class loader for the current class and
-    # invocation of {@link SecurityManager#checkPackageAccess
-    # s.checkPackageAccess()} denies access to the package
-    # of this class
+    #             <li> the caller's class loader is not the same as or an
+    #             ancestor of the class loader for the current class and
+    #             invocation of {@link SecurityManager#checkPackageAccess
+    #             s.checkPackageAccess()} denies access to the package
+    #             of this class
     # 
-    # </ul>
+    #             </ul>
     # 
     # @since JDK1.1
     def get_fields
@@ -1501,23 +1501,23 @@ module Java::Lang
     # @return the array of {@code Method} objects representing the
     # public methods of this class
     # @exception  SecurityException
-    # If a security manager, <i>s</i>, is present and any of the
-    # following conditions is met:
+    #             If a security manager, <i>s</i>, is present and any of the
+    #             following conditions is met:
     # 
-    # <ul>
+    #             <ul>
     # 
-    # <li> invocation of
-    # {@link SecurityManager#checkMemberAccess
-    # s.checkMemberAccess(this, Member.PUBLIC)} denies
-    # access to the methods within this class
+    #             <li> invocation of
+    #             {@link SecurityManager#checkMemberAccess
+    #             s.checkMemberAccess(this, Member.PUBLIC)} denies
+    #             access to the methods within this class
     # 
-    # <li> the caller's class loader is not the same as or an
-    # ancestor of the class loader for the current class and
-    # invocation of {@link SecurityManager#checkPackageAccess
-    # s.checkPackageAccess()} denies access to the package
-    # of this class
+    #             <li> the caller's class loader is not the same as or an
+    #             ancestor of the class loader for the current class and
+    #             invocation of {@link SecurityManager#checkPackageAccess
+    #             s.checkPackageAccess()} denies access to the package
+    #             of this class
     # 
-    # </ul>
+    #             </ul>
     # 
     # @since JDK1.1
     def get_methods
@@ -1546,25 +1546,25 @@ module Java::Lang
     # {@code Constructor<T>[]}.
     # 
     # @return the array of {@code Constructor} objects representing the
-    # public constructors of this class
+    #  public constructors of this class
     # @exception  SecurityException
-    # If a security manager, <i>s</i>, is present and any of the
-    # following conditions is met:
+    #             If a security manager, <i>s</i>, is present and any of the
+    #             following conditions is met:
     # 
-    # <ul>
+    #             <ul>
     # 
-    # <li> invocation of
-    # {@link SecurityManager#checkMemberAccess
-    # s.checkMemberAccess(this, Member.PUBLIC)} denies
-    # access to the constructors within this class
+    #             <li> invocation of
+    #             {@link SecurityManager#checkMemberAccess
+    #             s.checkMemberAccess(this, Member.PUBLIC)} denies
+    #             access to the constructors within this class
     # 
-    # <li> the caller's class loader is not the same as or an
-    # ancestor of the class loader for the current class and
-    # invocation of {@link SecurityManager#checkPackageAccess
-    # s.checkPackageAccess()} denies access to the package
-    # of this class
+    #             <li> the caller's class loader is not the same as or an
+    #             ancestor of the class loader for the current class and
+    #             invocation of {@link SecurityManager#checkPackageAccess
+    #             s.checkPackageAccess()} denies access to the package
+    #             of this class
     # 
-    # </ul>
+    #             </ul>
     # 
     # @since JDK1.1
     def get_constructors
@@ -1585,14 +1585,14 @@ module Java::Lang
     # follows.  Let C be the class represented by this object:
     # <OL>
     # <LI> If C declares a public field with the name specified, that is the
-    # field to be reflected.</LI>
+    #      field to be reflected.</LI>
     # <LI> If no field was found in step 1 above, this algorithm is applied
-    # recursively to each direct superinterface of C. The direct
-    # superinterfaces are searched in the order they were declared.</LI>
+    #      recursively to each direct superinterface of C. The direct
+    #      superinterfaces are searched in the order they were declared.</LI>
     # <LI> If no field was found in steps 1 and 2 above, and C has a
-    # superclass S, then this algorithm is invoked recursively upon S.
-    # If C has no superclass, then a {@code NoSuchFieldException}
-    # is thrown.</LI>
+    #      superclass S, then this algorithm is invoked recursively upon S.
+    #      If C has no superclass, then a {@code NoSuchFieldException}
+    #      is thrown.</LI>
     # </OL>
     # 
     # <p> See <em>The Java Language Specification</em>, sections 8.2 and 8.3.
@@ -1601,26 +1601,26 @@ module Java::Lang
     # @return  the {@code Field} object of this class specified by
     # {@code name}
     # @exception NoSuchFieldException if a field with the specified name is
-    # not found.
+    #              not found.
     # @exception NullPointerException if {@code name} is {@code null}
     # @exception  SecurityException
-    # If a security manager, <i>s</i>, is present and any of the
-    # following conditions is met:
+    #             If a security manager, <i>s</i>, is present and any of the
+    #             following conditions is met:
     # 
-    # <ul>
+    #             <ul>
     # 
-    # <li> invocation of
-    # {@link SecurityManager#checkMemberAccess
-    # s.checkMemberAccess(this, Member.PUBLIC)} denies
-    # access to the field
+    #             <li> invocation of
+    #             {@link SecurityManager#checkMemberAccess
+    #             s.checkMemberAccess(this, Member.PUBLIC)} denies
+    #             access to the field
     # 
-    # <li> the caller's class loader is not the same as or an
-    # ancestor of the class loader for the current class and
-    # invocation of {@link SecurityManager#checkPackageAccess
-    # s.checkPackageAccess()} denies access to the package
-    # of this class
+    #             <li> the caller's class loader is not the same as or an
+    #             ancestor of the class loader for the current class and
+    #             invocation of {@link SecurityManager#checkPackageAccess
+    #             s.checkPackageAccess()} denies access to the package
+    #             of this class
     # 
-    # </ul>
+    #             </ul>
     # 
     # @since JDK1.1
     def get_field(name)
@@ -1651,11 +1651,11 @@ module Java::Lang
     # class represented by this object:
     # <OL>
     # <LI> C is searched for any <I>matching methods</I>. If no matching
-    # method is found, the algorithm of step 1 is invoked recursively on
-    # the superclass of C.</LI>
+    #      method is found, the algorithm of step 1 is invoked recursively on
+    #      the superclass of C.</LI>
     # <LI> If no method was found in step 1 above, the superinterfaces of C
-    # are searched for a matching method. If any such method is found, it
-    # is reflected.</LI>
+    #      are searched for a matching method. If any such method is found, it
+    #      is reflected.</LI>
     # </OL>
     # 
     # To find a matching method in a class C:&nbsp; If C declares exactly one
@@ -1683,26 +1683,26 @@ module Java::Lang
     # @return the {@code Method} object that matches the specified
     # {@code name} and {@code parameterTypes}
     # @exception NoSuchMethodException if a matching method is not found
-    # or if the name is "&lt;init&gt;"or "&lt;clinit&gt;".
+    #            or if the name is "&lt;init&gt;"or "&lt;clinit&gt;".
     # @exception NullPointerException if {@code name} is {@code null}
     # @exception  SecurityException
-    # If a security manager, <i>s</i>, is present and any of the
-    # following conditions is met:
+    #             If a security manager, <i>s</i>, is present and any of the
+    #             following conditions is met:
     # 
-    # <ul>
+    #             <ul>
     # 
-    # <li> invocation of
-    # {@link SecurityManager#checkMemberAccess
-    # s.checkMemberAccess(this, Member.PUBLIC)} denies
-    # access to the method
+    #             <li> invocation of
+    #             {@link SecurityManager#checkMemberAccess
+    #             s.checkMemberAccess(this, Member.PUBLIC)} denies
+    #             access to the method
     # 
-    # <li> the caller's class loader is not the same as or an
-    # ancestor of the class loader for the current class and
-    # invocation of {@link SecurityManager#checkPackageAccess
-    # s.checkPackageAccess()} denies access to the package
-    # of this class
+    #             <li> the caller's class loader is not the same as or an
+    #             ancestor of the class loader for the current class and
+    #             invocation of {@link SecurityManager#checkPackageAccess
+    #             s.checkPackageAccess()} denies access to the package
+    #             of this class
     # 
-    # </ul>
+    #             </ul>
     # 
     # @since JDK1.1
     def get_method(name, *parameter_types)
@@ -1742,23 +1742,23 @@ module Java::Lang
     # matches the specified {@code parameterTypes}
     # @exception NoSuchMethodException if a matching method is not found.
     # @exception  SecurityException
-    # If a security manager, <i>s</i>, is present and any of the
-    # following conditions is met:
+    #             If a security manager, <i>s</i>, is present and any of the
+    #             following conditions is met:
     # 
-    # <ul>
+    #             <ul>
     # 
-    # <li> invocation of
-    # {@link SecurityManager#checkMemberAccess
-    # s.checkMemberAccess(this, Member.PUBLIC)} denies
-    # access to the constructor
+    #             <li> invocation of
+    #             {@link SecurityManager#checkMemberAccess
+    #             s.checkMemberAccess(this, Member.PUBLIC)} denies
+    #             access to the constructor
     # 
-    # <li> the caller's class loader is not the same as or an
-    # ancestor of the class loader for the current class and
-    # invocation of {@link SecurityManager#checkPackageAccess
-    # s.checkPackageAccess()} denies access to the package
-    # of this class
+    #             <li> the caller's class loader is not the same as or an
+    #             ancestor of the class loader for the current class and
+    #             invocation of {@link SecurityManager#checkPackageAccess
+    #             s.checkPackageAccess()} denies access to the package
+    #             of this class
     # 
-    # </ul>
+    #             </ul>
     # 
     # @since JDK1.1
     def get_constructor(*parameter_types)
@@ -1787,23 +1787,23 @@ module Java::Lang
     # @return the array of {@code Class} objects representing all the
     # declared members of this class
     # @exception  SecurityException
-    # If a security manager, <i>s</i>, is present and any of the
-    # following conditions is met:
+    #             If a security manager, <i>s</i>, is present and any of the
+    #             following conditions is met:
     # 
-    # <ul>
+    #             <ul>
     # 
-    # <li> invocation of
-    # {@link SecurityManager#checkMemberAccess
-    # s.checkMemberAccess(this, Member.DECLARED)} denies
-    # access to the declared classes within this class
+    #             <li> invocation of
+    #             {@link SecurityManager#checkMemberAccess
+    #             s.checkMemberAccess(this, Member.DECLARED)} denies
+    #             access to the declared classes within this class
     # 
-    # <li> the caller's class loader is not the same as or an
-    # ancestor of the class loader for the current class and
-    # invocation of {@link SecurityManager#checkPackageAccess
-    # s.checkPackageAccess()} denies access to the package
-    # of this class
+    #             <li> the caller's class loader is not the same as or an
+    #             ancestor of the class loader for the current class and
+    #             invocation of {@link SecurityManager#checkPackageAccess
+    #             s.checkPackageAccess()} denies access to the package
+    #             of this class
     # 
-    # </ul>
+    #             </ul>
     # 
     # @since JDK1.1
     def get_declared_classes
@@ -1829,23 +1829,23 @@ module Java::Lang
     # @return    the array of {@code Field} objects representing all the
     # declared fields of this class
     # @exception  SecurityException
-    # If a security manager, <i>s</i>, is present and any of the
-    # following conditions is met:
+    #             If a security manager, <i>s</i>, is present and any of the
+    #             following conditions is met:
     # 
-    # <ul>
+    #             <ul>
     # 
-    # <li> invocation of
-    # {@link SecurityManager#checkMemberAccess
-    # s.checkMemberAccess(this, Member.DECLARED)} denies
-    # access to the declared fields within this class
+    #             <li> invocation of
+    #             {@link SecurityManager#checkMemberAccess
+    #             s.checkMemberAccess(this, Member.DECLARED)} denies
+    #             access to the declared fields within this class
     # 
-    # <li> the caller's class loader is not the same as or an
-    # ancestor of the class loader for the current class and
-    # invocation of {@link SecurityManager#checkPackageAccess
-    # s.checkPackageAccess()} denies access to the package
-    # of this class
+    #             <li> the caller's class loader is not the same as or an
+    #             ancestor of the class loader for the current class and
+    #             invocation of {@link SecurityManager#checkPackageAccess
+    #             s.checkPackageAccess()} denies access to the package
+    #             of this class
     # 
-    # </ul>
+    #             </ul>
     # 
     # @since JDK1.1
     def get_declared_fields
@@ -1875,23 +1875,23 @@ module Java::Lang
     # @return    the array of {@code Method} objects representing all the
     # declared methods of this class
     # @exception  SecurityException
-    # If a security manager, <i>s</i>, is present and any of the
-    # following conditions is met:
+    #             If a security manager, <i>s</i>, is present and any of the
+    #             following conditions is met:
     # 
-    # <ul>
+    #             <ul>
     # 
-    # <li> invocation of
-    # {@link SecurityManager#checkMemberAccess
-    # s.checkMemberAccess(this, Member.DECLARED)} denies
-    # access to the declared methods within this class
+    #             <li> invocation of
+    #             {@link SecurityManager#checkMemberAccess
+    #             s.checkMemberAccess(this, Member.DECLARED)} denies
+    #             access to the declared methods within this class
     # 
-    # <li> the caller's class loader is not the same as or an
-    # ancestor of the class loader for the current class and
-    # invocation of {@link SecurityManager#checkPackageAccess
-    # s.checkPackageAccess()} denies access to the package
-    # of this class
+    #             <li> the caller's class loader is not the same as or an
+    #             ancestor of the class loader for the current class and
+    #             invocation of {@link SecurityManager#checkPackageAccess
+    #             s.checkPackageAccess()} denies access to the package
+    #             of this class
     # 
-    # </ul>
+    #             </ul>
     # 
     # @since JDK1.1
     def get_declared_methods
@@ -1918,23 +1918,23 @@ module Java::Lang
     # @return    the array of {@code Constructor} objects representing all the
     # declared constructors of this class
     # @exception  SecurityException
-    # If a security manager, <i>s</i>, is present and any of the
-    # following conditions is met:
+    #             If a security manager, <i>s</i>, is present and any of the
+    #             following conditions is met:
     # 
-    # <ul>
+    #             <ul>
     # 
-    # <li> invocation of
-    # {@link SecurityManager#checkMemberAccess
-    # s.checkMemberAccess(this, Member.DECLARED)} denies
-    # access to the declared constructors within this class
+    #             <li> invocation of
+    #             {@link SecurityManager#checkMemberAccess
+    #             s.checkMemberAccess(this, Member.DECLARED)} denies
+    #             access to the declared constructors within this class
     # 
-    # <li> the caller's class loader is not the same as or an
-    # ancestor of the class loader for the current class and
-    # invocation of {@link SecurityManager#checkPackageAccess
-    # s.checkPackageAccess()} denies access to the package
-    # of this class
+    #             <li> the caller's class loader is not the same as or an
+    #             ancestor of the class loader for the current class and
+    #             invocation of {@link SecurityManager#checkPackageAccess
+    #             s.checkPackageAccess()} denies access to the package
+    #             of this class
     # 
-    # </ul>
+    #             </ul>
     # 
     # @since JDK1.1
     def get_declared_constructors
@@ -1956,26 +1956,26 @@ module Java::Lang
     # @return the {@code Field} object for the specified field in this
     # class
     # @exception NoSuchFieldException if a field with the specified name is
-    # not found.
+    #              not found.
     # @exception NullPointerException if {@code name} is {@code null}
     # @exception  SecurityException
-    # If a security manager, <i>s</i>, is present and any of the
-    # following conditions is met:
+    #             If a security manager, <i>s</i>, is present and any of the
+    #             following conditions is met:
     # 
-    # <ul>
+    #             <ul>
     # 
-    # <li> invocation of
-    # {@link SecurityManager#checkMemberAccess
-    # s.checkMemberAccess(this, Member.DECLARED)} denies
-    # access to the declared field
+    #             <li> invocation of
+    #             {@link SecurityManager#checkMemberAccess
+    #             s.checkMemberAccess(this, Member.DECLARED)} denies
+    #             access to the declared field
     # 
-    # <li> the caller's class loader is not the same as or an
-    # ancestor of the class loader for the current class and
-    # invocation of {@link SecurityManager#checkPackageAccess
-    # s.checkPackageAccess()} denies access to the package
-    # of this class
+    #             <li> the caller's class loader is not the same as or an
+    #             ancestor of the class loader for the current class and
+    #             invocation of {@link SecurityManager#checkPackageAccess
+    #             s.checkPackageAccess()} denies access to the package
+    #             of this class
     # 
-    # </ul>
+    #             </ul>
     # 
     # @since JDK1.1
     def get_declared_field(name)
@@ -2011,23 +2011,23 @@ module Java::Lang
     # @exception NoSuchMethodException if a matching method is not found.
     # @exception NullPointerException if {@code name} is {@code null}
     # @exception  SecurityException
-    # If a security manager, <i>s</i>, is present and any of the
-    # following conditions is met:
+    #             If a security manager, <i>s</i>, is present and any of the
+    #             following conditions is met:
     # 
-    # <ul>
+    #             <ul>
     # 
-    # <li> invocation of
-    # {@link SecurityManager#checkMemberAccess
-    # s.checkMemberAccess(this, Member.DECLARED)} denies
-    # access to the declared method
+    #             <li> invocation of
+    #             {@link SecurityManager#checkMemberAccess
+    #             s.checkMemberAccess(this, Member.DECLARED)} denies
+    #             access to the declared method
     # 
-    # <li> the caller's class loader is not the same as or an
-    # ancestor of the class loader for the current class and
-    # invocation of {@link SecurityManager#checkPackageAccess
-    # s.checkPackageAccess()} denies access to the package
-    # of this class
+    #             <li> the caller's class loader is not the same as or an
+    #             ancestor of the class loader for the current class and
+    #             invocation of {@link SecurityManager#checkPackageAccess
+    #             s.checkPackageAccess()} denies access to the package
+    #             of this class
     # 
-    # </ul>
+    #             </ul>
     # 
     # @since JDK1.1
     def get_declared_method(name, *parameter_types)
@@ -2063,23 +2063,23 @@ module Java::Lang
     # specified parameter list
     # @exception NoSuchMethodException if a matching method is not found.
     # @exception  SecurityException
-    # If a security manager, <i>s</i>, is present and any of the
-    # following conditions is met:
+    #             If a security manager, <i>s</i>, is present and any of the
+    #             following conditions is met:
     # 
-    # <ul>
+    #             <ul>
     # 
-    # <li> invocation of
-    # {@link SecurityManager#checkMemberAccess
-    # s.checkMemberAccess(this, Member.DECLARED)} denies
-    # access to the declared constructor
+    #             <li> invocation of
+    #             {@link SecurityManager#checkMemberAccess
+    #             s.checkMemberAccess(this, Member.DECLARED)} denies
+    #             access to the declared constructor
     # 
-    # <li> the caller's class loader is not the same as or an
-    # ancestor of the class loader for the current class and
-    # invocation of {@link SecurityManager#checkPackageAccess
-    # s.checkPackageAccess()} denies access to the package
-    # of this class
+    #             <li> the caller's class loader is not the same as or an
+    #             ancestor of the class loader for the current class and
+    #             invocation of {@link SecurityManager#checkPackageAccess
+    #             s.checkPackageAccess()} denies access to the package
+    #             of this class
     # 
-    # </ul>
+    #             </ul>
     # 
     # @since JDK1.1
     def get_declared_constructor(*parameter_types)
@@ -2115,7 +2115,7 @@ module Java::Lang
     # <li> Otherwise, the absolute name is of the following form:
     # 
     # <blockquote>
-    # {@code modified_package_name/name}
+    #   {@code modified_package_name/name}
     # </blockquote>
     # 
     # <p> Where the {@code modified_package_name} is the package name of this
@@ -2126,7 +2126,7 @@ module Java::Lang
     # 
     # @param  name name of the desired resource
     # @return      A {@link java.io.InputStream} object or {@code null} if
-    # no resource with this name is found
+    #              no resource with this name is found
     # @throws  NullPointerException If {@code name} is {@code null}
     # @since  JDK1.1
     def get_resource_as_stream(name)
@@ -2159,7 +2159,7 @@ module Java::Lang
     # <li> Otherwise, the absolute name is of the following form:
     # 
     # <blockquote>
-    # {@code modified_package_name/name}
+    #   {@code modified_package_name/name}
     # </blockquote>
     # 
     # <p> Where the {@code modified_package_name} is the package name of this
@@ -2170,7 +2170,7 @@ module Java::Lang
     # 
     # @param  name name of the desired resource
     # @return      A  {@link java.net.URL} object or {@code null} if no
-    # resource with this name is found
+    #              resource with this name is found
     # @since  JDK1.1
     def get_resource(name)
       name = RJava.cast_to_string(resolve_name(name))
@@ -2207,9 +2207,9 @@ module Java::Lang
     # @return the ProtectionDomain of this class
     # 
     # @throws SecurityException
-    # if a security manager exists and its
-    # {@code checkPermission} method doesn't allow
-    # getting the ProtectionDomain.
+    #        if a security manager exists and its
+    #        {@code checkPermission} method doesn't allow
+    #        getting the ProtectionDomain.
     # 
     # @see java.security.ProtectionDomain
     # @see SecurityManager#checkPermission
@@ -2307,7 +2307,6 @@ module Java::Lang
     
     class_module.module_eval {
       # Reflection support.
-      # 
       # Caches for certain reflective results
       
       def use_caches
@@ -2450,6 +2449,8 @@ module Java::Lang
     end
     
     typesig { [::Java::Boolean] }
+    # 
+    # 
     # java.lang.reflect.Field handling
     # 
     # 
@@ -2549,6 +2550,8 @@ module Java::Lang
     }
     
     typesig { [::Java::Boolean] }
+    # 
+    # 
     # java.lang.reflect.Constructor handling
     # 
     # 
@@ -2590,6 +2593,8 @@ module Java::Lang
     end
     
     typesig { [::Java::Boolean] }
+    # 
+    # 
     # java.lang.reflect.Method handling
     # 
     # 
@@ -2824,7 +2829,9 @@ module Java::Lang
     end
     
     typesig { [Array.typed(Field), String] }
+    # 
     # Helpers for fetchers of one field, method, or constructor
+    # 
     def search_fields(fields, name)
       interned_name = name.intern
       i = 0
@@ -2942,7 +2949,9 @@ module Java::Lang
     
     class_module.module_eval {
       typesig { [Array.typed(Object), Array.typed(Object)] }
+      # 
       # Other helpers and base implementation
+      # 
       def array_contents_eq(a1, a2)
         if ((a1).nil?)
           return (a2).nil? || (a2.attr_length).equal?(0)
@@ -3053,9 +3062,9 @@ module Java::Lang
       # A Class instance is written initially into an ObjectOutputStream in the
       # following format:
       # <pre>
-      # {@code TC_CLASS} ClassDescriptor
-      # A ClassDescriptor is a special cased serialization of
-      # a {@code java.io.ObjectStreamClass} instance.
+      #      {@code TC_CLASS} ClassDescriptor
+      #      A ClassDescriptor is a special cased serialization of
+      #      a {@code java.io.ObjectStreamClass} instance.
       # </pre>
       # A new handle is generated for the initial time the class descriptor
       # is written into the stream. Future references to the class descriptor
@@ -3117,7 +3126,7 @@ module Java::Lang
     # source code.
     # 
     # @return true if and only if this class was declared as an enum in the
-    # source code
+    #     source code
     # @since 1.5
     def is_enum
       # An enum must both directly extend java.lang.Enum and have
@@ -3207,9 +3216,9 @@ module Java::Lang
     # Class object does not represent an enum type.
     # 
     # @return an array containing the values comprising the enum class
-    # represented by this Class object in the order they're
-    # declared, or null if this Class object does not
-    # represent an enum type
+    #     represented by this Class object in the order they're
+    #     declared, or null if this Class object does not
+    #     represent an enum type
     # @since 1.5
     def get_enum_constants
       values = get_enum_constants_shared
@@ -3248,9 +3257,9 @@ module Java::Lang
             alias_method :initialize_anonymous, :initialize
           end.new_local(self))
           @enum_constants = values.invoke(nil)
-        # These can happen when users concoct enum-like classes
-        # that don't comply with the enum spec.
         rescue InvocationTargetException => ex
+          # These can happen when users concoct enum-like classes
+          # that don't comply with the enum spec.
           return nil
         rescue NoSuchMethodException => ex
           return nil
@@ -3270,7 +3279,7 @@ module Java::Lang
     typesig { [] }
     # Returns a map from simple name to enum constant.  This package-private
     # method is used internally by Enum to implement
-    # public static <T extends Enum<T>> T valueOf(Class<T>, String)
+    #     public static <T extends Enum<T>> T valueOf(Class<T>, String)
     # efficiently.  Note that the map is returned by this method is
     # created lazily on first use.  Typically it won't ever get created.
     def enum_constant_directory
@@ -3331,10 +3340,10 @@ module Java::Lang
     # by erasure).
     # 
     # @return this {@code Class} object, cast to represent a subclass of
-    # the specified class object.
+    #    the specified class object.
     # @throws ClassCastException if this {@code Class} object does not
-    # represent a subclass of the specified class (here "subclass" includes
-    # the class itself).
+    #    represent a subclass of the specified class (here "subclass" includes
+    #    the class itself).
     # @since 1.5
     def as_subclass(clazz)
       if (clazz.is_assignable_from(self))

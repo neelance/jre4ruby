@@ -38,9 +38,9 @@ module Java::Security::Cert
   # 
   # <p>The ASN.1 definition is as follows:
   # <p><pre>
-  # PolicyQualifierInfo ::= SEQUENCE {
-  # policyQualifierId       PolicyQualifierId,
-  # qualifier               ANY DEFINED BY policyQualifierId }
+  #   PolicyQualifierInfo ::= SEQUENCE {
+  #        policyQualifierId       PolicyQualifierId,
+  #        qualifier               ANY DEFINED BY policyQualifierId }
   # </pre>
   # <p>
   # A certificate policies extension, if present in an X.509 version 3
@@ -175,7 +175,7 @@ module Java::Security::Cert
     # <code>PolicyQualifierInfo</code>.
     # 
     # @return a <code>String</code> describing the contents of this
-    # <code>PolicyQualifierInfo</code>
+    #         <code>PolicyQualifierInfo</code>
     def to_s
       if (!(@pqi_string).nil?)
         return @pqi_string

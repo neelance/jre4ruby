@@ -63,7 +63,7 @@ module Java::Util::Jar
     # @param name the JAR file entry name
     # @exception NullPointerException if the entry name is <code>null</code>
     # @exception IllegalArgumentException if the entry name is longer than
-    # 0xFFFF bytes.
+    #            0xFFFF bytes.
     def initialize(name)
       @attr = nil
       @certs = nil
@@ -75,7 +75,7 @@ module Java::Util::Jar
     # Creates a new <code>JarEntry</code> with fields taken from the
     # specified <code>ZipEntry</code> object.
     # @param ze the <code>ZipEntry</code> object to create the
-    # <code>JarEntry</code> from
+    #           <code>JarEntry</code> from
     def initialize(ze)
       @attr = nil
       @certs = nil

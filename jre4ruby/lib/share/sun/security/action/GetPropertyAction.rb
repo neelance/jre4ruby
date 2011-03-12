@@ -41,7 +41,7 @@ module Sun::Security::Action
   # 
   # <pre>
   # String s = java.security.AccessController.doPrivileged
-  # (new GetPropertyAction("prop"));
+  #                      (new GetPropertyAction("prop"));
   # </pre>
   # 
   # @author Roland Schemers
@@ -93,7 +93,7 @@ module Sun::Security::Action
     # name was specified in the constructor.
     # 
     # @return the string value of the system property,
-    # or the default value if there is no property with that key.
+    #         or the default value if there is no property with that key.
     def run
       value = System.get_property(@the_prop)
       return ((value).nil?) ? @default_val : value

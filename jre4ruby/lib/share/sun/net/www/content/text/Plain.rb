@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # Plain text file handler.
 # @author  Steven B. Byrne
 module Sun::Net::Www::Content::Text

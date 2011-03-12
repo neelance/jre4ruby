@@ -49,14 +49,14 @@ module Sun::Security::X509
   # the extension to be included in end-entity or CA certificates,
   # and it must be marked as non-critical. Its ASN.1 definition is as follows:
   # <pre>
-  # id-pe-authorityInfoAccess OBJECT IDENTIFIER ::= { id-pe 1 }
+  #   id-pe-authorityInfoAccess OBJECT IDENTIFIER ::= { id-pe 1 }
   # 
-  # AuthorityInfoAccessSyntax  ::=
-  # SEQUENCE SIZE (1..MAX) OF AccessDescription
+  #   AuthorityInfoAccessSyntax  ::=
+  #         SEQUENCE SIZE (1..MAX) OF AccessDescription
   # 
-  # AccessDescription  ::=  SEQUENCE {
-  # accessMethod          OBJECT IDENTIFIER,
-  # accessLocation        GeneralName  }
+  #   AccessDescription  ::=  SEQUENCE {
+  #         accessMethod          OBJECT IDENTIFIER,
+  #         accessLocation        GeneralName  }
   # </pre>
   # <p>
   # @see Extension

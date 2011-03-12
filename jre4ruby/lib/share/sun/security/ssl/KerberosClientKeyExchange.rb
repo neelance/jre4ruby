@@ -58,13 +58,13 @@ module Sun::Security::Ssl
   # (CLIENT -> SERVER). It holds the Kerberos ticket and the encrypted
   # premaster secret encrypted with the session key sealed in the ticket.
   # From RFC 2712:
-  # struct
-  # {
-  # opaque Ticket;
-  # opaque authenticator;            // optional
-  # opaque EncryptedPreMasterSecret; // encrypted with the session key
-  # // which is sealed in the ticket
-  # } KerberosWrapper;
+  #  struct
+  #  {
+  #    opaque Ticket;
+  #    opaque authenticator;            // optional
+  #    opaque EncryptedPreMasterSecret; // encrypted with the session key
+  #                                     // which is sealed in the ticket
+  #  } KerberosWrapper;
   # 
   # 
   # Ticket and authenticator are encrypted as per RFC 1510 (in ASN.1)
@@ -106,11 +106,11 @@ module Sun::Security::Ssl
     # Called by client handshaker.
     # 
     # @param serverName name of server with which to do handshake;
-    # this is used to get the Kerberos service ticket
+    #             this is used to get the Kerberos service ticket
     # @param protocolVersion Maximum version supported by client (i.e,
-    # version it requested in client hello)
+    #          version it requested in client hello)
     # @param rand random number generator to use for generating pre-master
-    # secret
+    #          secret
     def initialize(server_name, is_loopback, acc, protocol_version, rand)
       @pre_master = nil
       @encoded_ticket = nil
@@ -136,9 +136,9 @@ module Sun::Security::Ssl
     # 
     # @param protocolVersion current protocol version
     # @param clientVersion version requested by client in its ClientHello;
-    # used by premaster secret version check
+    #          used by premaster secret version check
     # @param rand random number generator used for generating random
-    # premaster secret if ticket and/or premaster verification fails
+    #          premaster secret if ticket and/or premaster verification fails
     # @param input inputstream from which to get ASN.1-encoded KerberosWrapper
     # @param serverKey server's master secret key
     def initialize(protocol_version, client_version, rand, input, server_keys)
@@ -163,7 +163,6 @@ module Sun::Security::Ssl
         # "host" service is done in ServerHandshaker.getKerberosKeys()
         # to ensure server has the permission to use the secret key
         # before promising the client
-        # 
         # Check that ticket Sname matches serverPrincipal
         ticket_princ = ticket_sname.to_s.concat("@" + RJava.cast_to_string(ticket_realm.to_s))
         if (!(ticket_princ == server_principal))

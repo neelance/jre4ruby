@@ -64,7 +64,7 @@ module Java::Io
     # set to zero.
     # 
     # @param   out   the underlying output stream, to be saved for later
-    # use.
+    #                use.
     # @see     java.io.FilterOutputStream#out
     def initialize(out)
       @written = 0

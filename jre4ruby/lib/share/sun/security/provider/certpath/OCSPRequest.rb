@@ -42,32 +42,32 @@ module Sun::Security::Provider::Certpath
   # <pre>
   # 
   # OCSPRequest     ::=     SEQUENCE {
-  # tbsRequest                  TBSRequest,
-  # optionalSignature   [0]     EXPLICIT Signature OPTIONAL }
+  #      tbsRequest                  TBSRequest,
+  #      optionalSignature   [0]     EXPLICIT Signature OPTIONAL }
   # 
-  # TBSRequest      ::=     SEQUENCE {
-  # version             [0]     EXPLICIT Version DEFAULT v1,
-  # requestorName       [1]     EXPLICIT GeneralName OPTIONAL,
-  # requestList                 SEQUENCE OF Request,
-  # requestExtensions   [2]     EXPLICIT Extensions OPTIONAL }
+  #   TBSRequest      ::=     SEQUENCE {
+  #      version             [0]     EXPLICIT Version DEFAULT v1,
+  #      requestorName       [1]     EXPLICIT GeneralName OPTIONAL,
+  #      requestList                 SEQUENCE OF Request,
+  #      requestExtensions   [2]     EXPLICIT Extensions OPTIONAL }
   # 
-  # Signature       ::=     SEQUENCE {
-  # signatureAlgorithm      AlgorithmIdentifier,
-  # signature               BIT STRING,
-  # certs               [0] EXPLICIT SEQUENCE OF Certificate OPTIONAL
-  # }
+  #  Signature       ::=     SEQUENCE {
+  #      signatureAlgorithm      AlgorithmIdentifier,
+  #      signature               BIT STRING,
+  #      certs               [0] EXPLICIT SEQUENCE OF Certificate OPTIONAL
+  #   }
   # 
-  # Version         ::=             INTEGER  {  v1(0) }
+  #  Version         ::=             INTEGER  {  v1(0) }
   # 
-  # Request         ::=     SEQUENCE {
-  # reqCert                     CertID,
-  # singleRequestExtensions     [0] EXPLICIT Extensions OPTIONAL }
+  #  Request         ::=     SEQUENCE {
+  #      reqCert                     CertID,
+  #      singleRequestExtensions     [0] EXPLICIT Extensions OPTIONAL }
   # 
-  # CertID          ::= SEQUENCE {
-  # hashAlgorithm  AlgorithmIdentifier,
-  # issuerNameHash OCTET STRING, -- Hash of Issuer's DN
-  # issuerKeyHash  OCTET STRING, -- Hash of Issuers public key
-  # serialNumber   CertificateSerialNumber
+  #  CertID          ::= SEQUENCE {
+  #       hashAlgorithm  AlgorithmIdentifier,
+  #       issuerNameHash OCTET STRING, -- Hash of Issuer's DN
+  #       issuerKeyHash  OCTET STRING, -- Hash of Issuers public key
+  #       serialNumber   CertificateSerialNumber
   # }
   # 
   # </pre>
@@ -108,7 +108,6 @@ module Sun::Security::Provider::Certpath
     typesig { [X509CertImpl, X509CertImpl] }
     # Constructs an OCSPRequest. This constructor is used
     # to construct an unsigned OCSP Request for a single user cert.
-    # 
     # used by OCSPChecker
     def initialize(user_cert, issuer_cert)
       @serial_number = nil

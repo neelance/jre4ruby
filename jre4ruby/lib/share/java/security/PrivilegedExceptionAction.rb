@@ -41,7 +41,7 @@ module Java::Security
   # @see AccessController
   # @see AccessController#doPrivileged(PrivilegedExceptionAction)
   # @see AccessController#doPrivileged(PrivilegedExceptionAction,
-  # AccessControlContext)
+  #                                              AccessControlContext)
   # @see PrivilegedAction
   module PrivilegedExceptionAction
     include_class_members PrivilegedExceptionActionImports
@@ -51,12 +51,12 @@ module Java::Security
     # <code>AccessController.doPrivileged</code> after enabling privileges.
     # 
     # @return a class-dependent value that may represent the results of the
-    # computation.  Each class that implements
-    # <code>PrivilegedExceptionAction</code> should document what
-    # (if anything) this value represents.
+    #         computation.  Each class that implements
+    #         <code>PrivilegedExceptionAction</code> should document what
+    #         (if anything) this value represents.
     # @throws Exception an exceptional condition has occurred.  Each class
-    # that implements <code>PrivilegedExceptionAction</code> should
-    # document the exceptions that its run method can throw.
+    #         that implements <code>PrivilegedExceptionAction</code> should
+    #         document the exceptions that its run method can throw.
     # @see AccessController#doPrivileged(PrivilegedExceptionAction)
     # @see AccessController#doPrivileged(PrivilegedExceptionAction,AccessControlContext)
     def run

@@ -48,10 +48,10 @@ module Java::Util
   # can be used to produce a copy of a map that has the same order as the
   # original, regardless of the original map's implementation:
   # <pre>
-  # void foo(Map m) {
-  # Map copy = new LinkedHashMap(m);
-  # ...
-  # }
+  #     void foo(Map m) {
+  #         Map copy = new LinkedHashMap(m);
+  #         ...
+  #     }
   # </pre>
   # This technique is particularly useful if a module takes a map on input,
   # copies it, and later returns results whose order is determined by that of
@@ -104,7 +104,7 @@ module Java::Util
   # {@link Collections#synchronizedMap Collections.synchronizedMap}
   # method.  This is best done at creation time, to prevent accidental
   # unsynchronized access to the map:<pre>
-  # Map m = Collections.synchronizedMap(new LinkedHashMap(...));</pre>
+  #   Map m = Collections.synchronizedMap(new LinkedHashMap(...));</pre>
   # 
   # A structural modification is any operation that adds or deletes one or more
   # mappings or, in the case of access-ordered linked hash maps, affects
@@ -181,7 +181,7 @@ module Java::Util
     # @param  initialCapacity the initial capacity
     # @param  loadFactor      the load factor
     # @throws IllegalArgumentException if the initial capacity is negative
-    # or the load factor is nonpositive
+    #         or the load factor is nonpositive
     def initialize(initial_capacity, load_factor)
       @header = nil
       @access_order = false
@@ -234,9 +234,9 @@ module Java::Util
     # @param  initialCapacity the initial capacity
     # @param  loadFactor      the load factor
     # @param  accessOrder     the ordering mode - <tt>true</tt> for
-    # access-order, <tt>false</tt> for insertion-order
+    #         access-order, <tt>false</tt> for insertion-order
     # @throws IllegalArgumentException if the initial capacity is negative
-    # or the load factor is nonpositive
+    #         or the load factor is nonpositive
     def initialize(initial_capacity, load_factor, access_order)
       @header = nil
       @access_order = false
@@ -274,7 +274,7 @@ module Java::Util
     # 
     # @param value value whose presence in this map is to be tested
     # @return <tt>true</tt> if this map maps one or more keys to the
-    # specified value
+    #         specified value
     def contains_value(value)
       # Overridden to take advantage of faster iterator
       if ((value).nil?)
@@ -571,11 +571,11 @@ module Java::Util
     # entries and then delete the eldest entry each time a new entry is
     # added, maintaining a steady state of 100 entries.
     # <pre>
-    # private static final int MAX_ENTRIES = 100;
+    #     private static final int MAX_ENTRIES = 100;
     # 
-    # protected boolean removeEldestEntry(Map.Entry eldest) {
-    # return size() > MAX_ENTRIES;
-    # }
+    #     protected boolean removeEldestEntry(Map.Entry eldest) {
+    #        return size() > MAX_ENTRIES;
+    #     }
     # </pre>
     # 
     # <p>This method typically does not modify the map in any way,
@@ -590,15 +590,15 @@ module Java::Util
     # map acts like a normal map - the eldest element is never removed).
     # 
     # @param    eldest The least recently inserted entry in the map, or if
-    # this is an access-ordered map, the least recently accessed
-    # entry.  This is the entry that will be removed it this
-    # method returns <tt>true</tt>.  If the map was empty prior
-    # to the <tt>put</tt> or <tt>putAll</tt> invocation resulting
-    # in this invocation, this will be the entry that was just
-    # inserted; in other words, if the map contains a single
-    # entry, the eldest entry is also the newest.
+    #           this is an access-ordered map, the least recently accessed
+    #           entry.  This is the entry that will be removed it this
+    #           method returns <tt>true</tt>.  If the map was empty prior
+    #           to the <tt>put</tt> or <tt>putAll</tt> invocation resulting
+    #           in this invocation, this will be the entry that was just
+    #           inserted; in other words, if the map contains a single
+    #           entry, the eldest entry is also the newest.
     # @return   <tt>true</tt> if the eldest entry should be removed
-    # from the map; <tt>false</tt> if it should be retained.
+    #           from the map; <tt>false</tt> if it should be retained.
     def remove_eldest_entry(eldest)
       return false
     end

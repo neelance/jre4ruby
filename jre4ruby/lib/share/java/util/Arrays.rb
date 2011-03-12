@@ -65,7 +65,6 @@ module Java::Util
     class_module.module_eval {
       typesig { [Array.typed(::Java::Long)] }
       # Sorting
-      # 
       # Sorts the specified array of longs into ascending numerical order.
       # The sorting algorithm is a tuned quicksort, adapted from Jon
       # L. Bentley and M. Douglas McIlroy's "Engineering a Sort Function",
@@ -92,7 +91,7 @@ module Java::Util
       # 
       # @param a the array to be sorted
       # @param fromIndex the index of the first element (inclusive) to be
-      # sorted
+      #        sorted
       # @param toIndex the index of the last element (exclusive) to be sorted
       # @throws IllegalArgumentException if <tt>fromIndex &gt; toIndex</tt>
       # @throws ArrayIndexOutOfBoundsException if <tt>fromIndex &lt; 0</tt> or
@@ -129,11 +128,11 @@ module Java::Util
       # 
       # @param a the array to be sorted
       # @param fromIndex the index of the first element (inclusive) to be
-      # sorted
+      #        sorted
       # @param toIndex the index of the last element (exclusive) to be sorted
       # @throws IllegalArgumentException if <tt>fromIndex &gt; toIndex</tt>
       # @throws ArrayIndexOutOfBoundsException if <tt>fromIndex &lt; 0</tt> or
-      # <tt>toIndex &gt; a.length</tt>
+      #         <tt>toIndex &gt; a.length</tt>
       def sort(a, from_index, to_index)
         range_check(a.attr_length, from_index, to_index)
         sort1(a, from_index, to_index - from_index)
@@ -166,11 +165,11 @@ module Java::Util
       # 
       # @param a the array to be sorted
       # @param fromIndex the index of the first element (inclusive) to be
-      # sorted
+      #        sorted
       # @param toIndex the index of the last element (exclusive) to be sorted
       # @throws IllegalArgumentException if <tt>fromIndex &gt; toIndex</tt>
       # @throws ArrayIndexOutOfBoundsException if <tt>fromIndex &lt; 0</tt> or
-      # <tt>toIndex &gt; a.length</tt>
+      #         <tt>toIndex &gt; a.length</tt>
       def sort(a, from_index, to_index)
         range_check(a.attr_length, from_index, to_index)
         sort1(a, from_index, to_index - from_index)
@@ -203,11 +202,11 @@ module Java::Util
       # 
       # @param a the array to be sorted
       # @param fromIndex the index of the first element (inclusive) to be
-      # sorted
+      #        sorted
       # @param toIndex the index of the last element (exclusive) to be sorted
       # @throws IllegalArgumentException if <tt>fromIndex &gt; toIndex</tt>
       # @throws ArrayIndexOutOfBoundsException if <tt>fromIndex &lt; 0</tt> or
-      # <tt>toIndex &gt; a.length</tt>
+      #         <tt>toIndex &gt; a.length</tt>
       def sort(a, from_index, to_index)
         range_check(a.attr_length, from_index, to_index)
         sort1(a, from_index, to_index - from_index)
@@ -240,11 +239,11 @@ module Java::Util
       # 
       # @param a the array to be sorted
       # @param fromIndex the index of the first element (inclusive) to be
-      # sorted
+      #        sorted
       # @param toIndex the index of the last element (exclusive) to be sorted
       # @throws IllegalArgumentException if <tt>fromIndex &gt; toIndex</tt>
       # @throws ArrayIndexOutOfBoundsException if <tt>fromIndex &lt; 0</tt> or
-      # <tt>toIndex &gt; a.length</tt>
+      #         <tt>toIndex &gt; a.length</tt>
       def sort(a, from_index, to_index)
         range_check(a.attr_length, from_index, to_index)
         sort1(a, from_index, to_index - from_index)
@@ -306,11 +305,11 @@ module Java::Util
       # 
       # @param a the array to be sorted
       # @param fromIndex the index of the first element (inclusive) to be
-      # sorted
+      #        sorted
       # @param toIndex the index of the last element (exclusive) to be sorted
       # @throws IllegalArgumentException if <tt>fromIndex &gt; toIndex</tt>
       # @throws ArrayIndexOutOfBoundsException if <tt>fromIndex &lt; 0</tt> or
-      # <tt>toIndex &gt; a.length</tt>
+      #         <tt>toIndex &gt; a.length</tt>
       def sort(a, from_index, to_index)
         range_check(a.attr_length, from_index, to_index)
         sort2(a, from_index, to_index)
@@ -372,11 +371,11 @@ module Java::Util
       # 
       # @param a the array to be sorted
       # @param fromIndex the index of the first element (inclusive) to be
-      # sorted
+      #        sorted
       # @param toIndex the index of the last element (exclusive) to be sorted
       # @throws IllegalArgumentException if <tt>fromIndex &gt; toIndex</tt>
       # @throws ArrayIndexOutOfBoundsException if <tt>fromIndex &lt; 0</tt> or
-      # <tt>toIndex &gt; a.length</tt>
+      #         <tt>toIndex &gt; a.length</tt>
       def sort(a, from_index, to_index)
         range_check(a.attr_length, from_index, to_index)
         sort2(a, from_index, to_index)
@@ -387,8 +386,6 @@ module Java::Util
         neg_zero_bits = Double.double_to_long_bits(-0.0)
         # The sort is done in three phases to avoid the expense of using
         # NaN and -0.0 aware comparisons during the main sort.
-        # 
-        # 
         # Preprocessing phase:  Move any NaN's to end of array, count the
         # number of -0.0's, and turn them into 0.0's.
         num_neg_zeros = 0
@@ -427,8 +424,6 @@ module Java::Util
         neg_zero_bits = Float.float_to_int_bits(-0.0)
         # The sort is done in three phases to avoid the expense of using
         # NaN and -0.0 aware comparisons during the main sort.
-        # 
-        # 
         # Preprocessing phase:  Move any NaN's to end of array, count the
         # number of -0.0's, and turn them into 0.0's.
         num_neg_zeros = 0
@@ -465,8 +460,6 @@ module Java::Util
       typesig { [Array.typed(::Java::Long), ::Java::Int, ::Java::Int] }
       # The code for each of the seven primitive types is largely identical.
       # C'est la vie.
-      # 
-      # 
       # Sorts the specified sub-array of longs into ascending order.
       def sort1(x, off, len)
         # Insertion sort on smallest arrays
@@ -1157,7 +1150,7 @@ module Java::Util
       # 
       # @param a the array to be sorted
       # @throws  ClassCastException if the array contains elements that are not
-      # <i>mutually comparable</i> (for example, strings and integers).
+      #          <i>mutually comparable</i> (for example, strings and integers).
       def sort(a)
         aux = a.clone
         merge_sort(aux, a, 0, a.attr_length, 0)
@@ -1186,14 +1179,14 @@ module Java::Util
       # 
       # @param a the array to be sorted
       # @param fromIndex the index of the first element (inclusive) to be
-      # sorted
+      #        sorted
       # @param toIndex the index of the last element (exclusive) to be sorted
       # @throws IllegalArgumentException if <tt>fromIndex &gt; toIndex</tt>
       # @throws ArrayIndexOutOfBoundsException if <tt>fromIndex &lt; 0</tt> or
-      # <tt>toIndex &gt; a.length</tt>
+      #         <tt>toIndex &gt; a.length</tt>
       # @throws    ClassCastException if the array contains elements that are
-      # not <i>mutually comparable</i> (for example, strings and
-      # integers).
+      #            not <i>mutually comparable</i> (for example, strings and
+      #            integers).
       def sort(a, from_index, to_index)
         range_check(a.attr_length, from_index, to_index)
         aux = copy_of_range(a, from_index, to_index)
@@ -1279,10 +1272,10 @@ module Java::Util
       # 
       # @param a the array to be sorted
       # @param c the comparator to determine the order of the array.  A
-      # <tt>null</tt> value indicates that the elements'
-      # {@linkplain Comparable natural ordering} should be used.
+      #        <tt>null</tt> value indicates that the elements'
+      #        {@linkplain Comparable natural ordering} should be used.
       # @throws  ClassCastException if the array contains elements that are
-      # not <i>mutually comparable</i> using the specified comparator.
+      #          not <i>mutually comparable</i> using the specified comparator.
       def sort(a, c)
         aux = a.clone
         if ((c).nil?)
@@ -1312,16 +1305,16 @@ module Java::Util
       # 
       # @param a the array to be sorted
       # @param fromIndex the index of the first element (inclusive) to be
-      # sorted
+      #        sorted
       # @param toIndex the index of the last element (exclusive) to be sorted
       # @param c the comparator to determine the order of the array.  A
-      # <tt>null</tt> value indicates that the elements'
-      # {@linkplain Comparable natural ordering} should be used.
+      #        <tt>null</tt> value indicates that the elements'
+      #        {@linkplain Comparable natural ordering} should be used.
       # @throws ClassCastException if the array contains elements that are not
-      # <i>mutually comparable</i> using the specified comparator.
+      #         <i>mutually comparable</i> using the specified comparator.
       # @throws IllegalArgumentException if <tt>fromIndex &gt; toIndex</tt>
       # @throws ArrayIndexOutOfBoundsException if <tt>fromIndex &lt; 0</tt> or
-      # <tt>toIndex &gt; a.length</tt>
+      #         <tt>toIndex &gt; a.length</tt>
       def sort(a, from_index, to_index, c)
         range_check(a.attr_length, from_index, to_index)
         aux = copy_of_range(a, from_index, to_index)
@@ -1398,7 +1391,6 @@ module Java::Util
       
       typesig { [Array.typed(::Java::Long), ::Java::Long] }
       # Searching
-      # 
       # Searches the specified array of longs for the specified value using the
       # binary search algorithm.  The array must be sorted (as
       # by the {@link #sort(long[])} method) prior to making this call.  If it
@@ -1409,13 +1401,13 @@ module Java::Util
       # @param a the array to be searched
       # @param key the value to be searched for
       # @return index of the search key, if it is contained in the array;
-      # otherwise, <tt>(-(<i>insertion point</i>) - 1)</tt>.  The
-      # <i>insertion point</i> is defined as the point at which the
-      # key would be inserted into the array: the index of the first
-      # element greater than the key, or <tt>a.length</tt> if all
-      # elements in the array are less than the specified key.  Note
-      # that this guarantees that the return value will be &gt;= 0 if
-      # and only if the key is found.
+      #         otherwise, <tt>(-(<i>insertion point</i>) - 1)</tt>.  The
+      #         <i>insertion point</i> is defined as the point at which the
+      #         key would be inserted into the array: the index of the first
+      #         element greater than the key, or <tt>a.length</tt> if all
+      #         elements in the array are less than the specified key.  Note
+      #         that this guarantees that the return value will be &gt;= 0 if
+      #         and only if the key is found.
       def binary_search(a, key)
         return binary_search0(a, 0, a.attr_length, key)
       end
@@ -1433,23 +1425,23 @@ module Java::Util
       # 
       # @param a the array to be searched
       # @param fromIndex the index of the first element (inclusive) to be
-      # searched
+      #          searched
       # @param toIndex the index of the last element (exclusive) to be searched
       # @param key the value to be searched for
       # @return index of the search key, if it is contained in the array
-      # within the specified range;
-      # otherwise, <tt>(-(<i>insertion point</i>) - 1)</tt>.  The
-      # <i>insertion point</i> is defined as the point at which the
-      # key would be inserted into the array: the index of the first
-      # element in the range greater than the key,
-      # or <tt>toIndex</tt> if all
-      # elements in the range are less than the specified key.  Note
-      # that this guarantees that the return value will be &gt;= 0 if
-      # and only if the key is found.
+      #         within the specified range;
+      #         otherwise, <tt>(-(<i>insertion point</i>) - 1)</tt>.  The
+      #         <i>insertion point</i> is defined as the point at which the
+      #         key would be inserted into the array: the index of the first
+      #         element in the range greater than the key,
+      #         or <tt>toIndex</tt> if all
+      #         elements in the range are less than the specified key.  Note
+      #         that this guarantees that the return value will be &gt;= 0 if
+      #         and only if the key is found.
       # @throws IllegalArgumentException
-      # if {@code fromIndex > toIndex}
+      #         if {@code fromIndex > toIndex}
       # @throws ArrayIndexOutOfBoundsException
-      # if {@code fromIndex < 0 or toIndex > a.length}
+      #         if {@code fromIndex < 0 or toIndex > a.length}
       # @since 1.6
       def binary_search(a, from_index, to_index, key)
         range_check(a.attr_length, from_index, to_index)
@@ -1488,13 +1480,13 @@ module Java::Util
       # @param a the array to be searched
       # @param key the value to be searched for
       # @return index of the search key, if it is contained in the array;
-      # otherwise, <tt>(-(<i>insertion point</i>) - 1)</tt>.  The
-      # <i>insertion point</i> is defined as the point at which the
-      # key would be inserted into the array: the index of the first
-      # element greater than the key, or <tt>a.length</tt> if all
-      # elements in the array are less than the specified key.  Note
-      # that this guarantees that the return value will be &gt;= 0 if
-      # and only if the key is found.
+      #         otherwise, <tt>(-(<i>insertion point</i>) - 1)</tt>.  The
+      #         <i>insertion point</i> is defined as the point at which the
+      #         key would be inserted into the array: the index of the first
+      #         element greater than the key, or <tt>a.length</tt> if all
+      #         elements in the array are less than the specified key.  Note
+      #         that this guarantees that the return value will be &gt;= 0 if
+      #         and only if the key is found.
       def binary_search(a, key)
         return binary_search0(a, 0, a.attr_length, key)
       end
@@ -1512,23 +1504,23 @@ module Java::Util
       # 
       # @param a the array to be searched
       # @param fromIndex the index of the first element (inclusive) to be
-      # searched
+      #          searched
       # @param toIndex the index of the last element (exclusive) to be searched
       # @param key the value to be searched for
       # @return index of the search key, if it is contained in the array
-      # within the specified range;
-      # otherwise, <tt>(-(<i>insertion point</i>) - 1)</tt>.  The
-      # <i>insertion point</i> is defined as the point at which the
-      # key would be inserted into the array: the index of the first
-      # element in the range greater than the key,
-      # or <tt>toIndex</tt> if all
-      # elements in the range are less than the specified key.  Note
-      # that this guarantees that the return value will be &gt;= 0 if
-      # and only if the key is found.
+      #         within the specified range;
+      #         otherwise, <tt>(-(<i>insertion point</i>) - 1)</tt>.  The
+      #         <i>insertion point</i> is defined as the point at which the
+      #         key would be inserted into the array: the index of the first
+      #         element in the range greater than the key,
+      #         or <tt>toIndex</tt> if all
+      #         elements in the range are less than the specified key.  Note
+      #         that this guarantees that the return value will be &gt;= 0 if
+      #         and only if the key is found.
       # @throws IllegalArgumentException
-      # if {@code fromIndex > toIndex}
+      #         if {@code fromIndex > toIndex}
       # @throws ArrayIndexOutOfBoundsException
-      # if {@code fromIndex < 0 or toIndex > a.length}
+      #         if {@code fromIndex < 0 or toIndex > a.length}
       # @since 1.6
       def binary_search(a, from_index, to_index, key)
         range_check(a.attr_length, from_index, to_index)
@@ -1567,13 +1559,13 @@ module Java::Util
       # @param a the array to be searched
       # @param key the value to be searched for
       # @return index of the search key, if it is contained in the array;
-      # otherwise, <tt>(-(<i>insertion point</i>) - 1)</tt>.  The
-      # <i>insertion point</i> is defined as the point at which the
-      # key would be inserted into the array: the index of the first
-      # element greater than the key, or <tt>a.length</tt> if all
-      # elements in the array are less than the specified key.  Note
-      # that this guarantees that the return value will be &gt;= 0 if
-      # and only if the key is found.
+      #         otherwise, <tt>(-(<i>insertion point</i>) - 1)</tt>.  The
+      #         <i>insertion point</i> is defined as the point at which the
+      #         key would be inserted into the array: the index of the first
+      #         element greater than the key, or <tt>a.length</tt> if all
+      #         elements in the array are less than the specified key.  Note
+      #         that this guarantees that the return value will be &gt;= 0 if
+      #         and only if the key is found.
       def binary_search(a, key)
         return binary_search0(a, 0, a.attr_length, key)
       end
@@ -1591,23 +1583,23 @@ module Java::Util
       # 
       # @param a the array to be searched
       # @param fromIndex the index of the first element (inclusive) to be
-      # searched
+      #          searched
       # @param toIndex the index of the last element (exclusive) to be searched
       # @param key the value to be searched for
       # @return index of the search key, if it is contained in the array
-      # within the specified range;
-      # otherwise, <tt>(-(<i>insertion point</i>) - 1)</tt>.  The
-      # <i>insertion point</i> is defined as the point at which the
-      # key would be inserted into the array: the index of the first
-      # element in the range greater than the key,
-      # or <tt>toIndex</tt> if all
-      # elements in the range are less than the specified key.  Note
-      # that this guarantees that the return value will be &gt;= 0 if
-      # and only if the key is found.
+      #         within the specified range;
+      #         otherwise, <tt>(-(<i>insertion point</i>) - 1)</tt>.  The
+      #         <i>insertion point</i> is defined as the point at which the
+      #         key would be inserted into the array: the index of the first
+      #         element in the range greater than the key,
+      #         or <tt>toIndex</tt> if all
+      #         elements in the range are less than the specified key.  Note
+      #         that this guarantees that the return value will be &gt;= 0 if
+      #         and only if the key is found.
       # @throws IllegalArgumentException
-      # if {@code fromIndex > toIndex}
+      #         if {@code fromIndex > toIndex}
       # @throws ArrayIndexOutOfBoundsException
-      # if {@code fromIndex < 0 or toIndex > a.length}
+      #         if {@code fromIndex < 0 or toIndex > a.length}
       # @since 1.6
       def binary_search(a, from_index, to_index, key)
         range_check(a.attr_length, from_index, to_index)
@@ -1646,13 +1638,13 @@ module Java::Util
       # @param a the array to be searched
       # @param key the value to be searched for
       # @return index of the search key, if it is contained in the array;
-      # otherwise, <tt>(-(<i>insertion point</i>) - 1)</tt>.  The
-      # <i>insertion point</i> is defined as the point at which the
-      # key would be inserted into the array: the index of the first
-      # element greater than the key, or <tt>a.length</tt> if all
-      # elements in the array are less than the specified key.  Note
-      # that this guarantees that the return value will be &gt;= 0 if
-      # and only if the key is found.
+      #         otherwise, <tt>(-(<i>insertion point</i>) - 1)</tt>.  The
+      #         <i>insertion point</i> is defined as the point at which the
+      #         key would be inserted into the array: the index of the first
+      #         element greater than the key, or <tt>a.length</tt> if all
+      #         elements in the array are less than the specified key.  Note
+      #         that this guarantees that the return value will be &gt;= 0 if
+      #         and only if the key is found.
       def binary_search(a, key)
         return binary_search0(a, 0, a.attr_length, key)
       end
@@ -1670,23 +1662,23 @@ module Java::Util
       # 
       # @param a the array to be searched
       # @param fromIndex the index of the first element (inclusive) to be
-      # searched
+      #          searched
       # @param toIndex the index of the last element (exclusive) to be searched
       # @param key the value to be searched for
       # @return index of the search key, if it is contained in the array
-      # within the specified range;
-      # otherwise, <tt>(-(<i>insertion point</i>) - 1)</tt>.  The
-      # <i>insertion point</i> is defined as the point at which the
-      # key would be inserted into the array: the index of the first
-      # element in the range greater than the key,
-      # or <tt>toIndex</tt> if all
-      # elements in the range are less than the specified key.  Note
-      # that this guarantees that the return value will be &gt;= 0 if
-      # and only if the key is found.
+      #         within the specified range;
+      #         otherwise, <tt>(-(<i>insertion point</i>) - 1)</tt>.  The
+      #         <i>insertion point</i> is defined as the point at which the
+      #         key would be inserted into the array: the index of the first
+      #         element in the range greater than the key,
+      #         or <tt>toIndex</tt> if all
+      #         elements in the range are less than the specified key.  Note
+      #         that this guarantees that the return value will be &gt;= 0 if
+      #         and only if the key is found.
       # @throws IllegalArgumentException
-      # if {@code fromIndex > toIndex}
+      #         if {@code fromIndex > toIndex}
       # @throws ArrayIndexOutOfBoundsException
-      # if {@code fromIndex < 0 or toIndex > a.length}
+      #         if {@code fromIndex < 0 or toIndex > a.length}
       # @since 1.6
       def binary_search(a, from_index, to_index, key)
         range_check(a.attr_length, from_index, to_index)
@@ -1725,13 +1717,13 @@ module Java::Util
       # @param a the array to be searched
       # @param key the value to be searched for
       # @return index of the search key, if it is contained in the array;
-      # otherwise, <tt>(-(<i>insertion point</i>) - 1)</tt>.  The
-      # <i>insertion point</i> is defined as the point at which the
-      # key would be inserted into the array: the index of the first
-      # element greater than the key, or <tt>a.length</tt> if all
-      # elements in the array are less than the specified key.  Note
-      # that this guarantees that the return value will be &gt;= 0 if
-      # and only if the key is found.
+      #         otherwise, <tt>(-(<i>insertion point</i>) - 1)</tt>.  The
+      #         <i>insertion point</i> is defined as the point at which the
+      #         key would be inserted into the array: the index of the first
+      #         element greater than the key, or <tt>a.length</tt> if all
+      #         elements in the array are less than the specified key.  Note
+      #         that this guarantees that the return value will be &gt;= 0 if
+      #         and only if the key is found.
       def binary_search(a, key)
         return binary_search0(a, 0, a.attr_length, key)
       end
@@ -1749,23 +1741,23 @@ module Java::Util
       # 
       # @param a the array to be searched
       # @param fromIndex the index of the first element (inclusive) to be
-      # searched
+      #          searched
       # @param toIndex the index of the last element (exclusive) to be searched
       # @param key the value to be searched for
       # @return index of the search key, if it is contained in the array
-      # within the specified range;
-      # otherwise, <tt>(-(<i>insertion point</i>) - 1)</tt>.  The
-      # <i>insertion point</i> is defined as the point at which the
-      # key would be inserted into the array: the index of the first
-      # element in the range greater than the key,
-      # or <tt>toIndex</tt> if all
-      # elements in the range are less than the specified key.  Note
-      # that this guarantees that the return value will be &gt;= 0 if
-      # and only if the key is found.
+      #         within the specified range;
+      #         otherwise, <tt>(-(<i>insertion point</i>) - 1)</tt>.  The
+      #         <i>insertion point</i> is defined as the point at which the
+      #         key would be inserted into the array: the index of the first
+      #         element in the range greater than the key,
+      #         or <tt>toIndex</tt> if all
+      #         elements in the range are less than the specified key.  Note
+      #         that this guarantees that the return value will be &gt;= 0 if
+      #         and only if the key is found.
       # @throws IllegalArgumentException
-      # if {@code fromIndex > toIndex}
+      #         if {@code fromIndex > toIndex}
       # @throws ArrayIndexOutOfBoundsException
-      # if {@code fromIndex < 0 or toIndex > a.length}
+      #         if {@code fromIndex < 0 or toIndex > a.length}
       # @since 1.6
       def binary_search(a, from_index, to_index, key)
         range_check(a.attr_length, from_index, to_index)
@@ -1805,13 +1797,13 @@ module Java::Util
       # @param a the array to be searched
       # @param key the value to be searched for
       # @return index of the search key, if it is contained in the array;
-      # otherwise, <tt>(-(<i>insertion point</i>) - 1)</tt>.  The
-      # <i>insertion point</i> is defined as the point at which the
-      # key would be inserted into the array: the index of the first
-      # element greater than the key, or <tt>a.length</tt> if all
-      # elements in the array are less than the specified key.  Note
-      # that this guarantees that the return value will be &gt;= 0 if
-      # and only if the key is found.
+      #         otherwise, <tt>(-(<i>insertion point</i>) - 1)</tt>.  The
+      #         <i>insertion point</i> is defined as the point at which the
+      #         key would be inserted into the array: the index of the first
+      #         element greater than the key, or <tt>a.length</tt> if all
+      #         elements in the array are less than the specified key.  Note
+      #         that this guarantees that the return value will be &gt;= 0 if
+      #         and only if the key is found.
       def binary_search(a, key)
         return binary_search0(a, 0, a.attr_length, key)
       end
@@ -1830,23 +1822,23 @@ module Java::Util
       # 
       # @param a the array to be searched
       # @param fromIndex the index of the first element (inclusive) to be
-      # searched
+      #          searched
       # @param toIndex the index of the last element (exclusive) to be searched
       # @param key the value to be searched for
       # @return index of the search key, if it is contained in the array
-      # within the specified range;
-      # otherwise, <tt>(-(<i>insertion point</i>) - 1)</tt>.  The
-      # <i>insertion point</i> is defined as the point at which the
-      # key would be inserted into the array: the index of the first
-      # element in the range greater than the key,
-      # or <tt>toIndex</tt> if all
-      # elements in the range are less than the specified key.  Note
-      # that this guarantees that the return value will be &gt;= 0 if
-      # and only if the key is found.
+      #         within the specified range;
+      #         otherwise, <tt>(-(<i>insertion point</i>) - 1)</tt>.  The
+      #         <i>insertion point</i> is defined as the point at which the
+      #         key would be inserted into the array: the index of the first
+      #         element in the range greater than the key,
+      #         or <tt>toIndex</tt> if all
+      #         elements in the range are less than the specified key.  Note
+      #         that this guarantees that the return value will be &gt;= 0 if
+      #         and only if the key is found.
       # @throws IllegalArgumentException
-      # if {@code fromIndex > toIndex}
+      #         if {@code fromIndex > toIndex}
       # @throws ArrayIndexOutOfBoundsException
-      # if {@code fromIndex < 0 or toIndex > a.length}
+      #         if {@code fromIndex < 0 or toIndex > a.length}
       # @since 1.6
       def binary_search(a, from_index, to_index, key)
         range_check(a.attr_length, from_index, to_index)
@@ -1862,19 +1854,16 @@ module Java::Util
           mid = (low + high) >> 1
           mid_val = a[mid]
           if (mid_val < key)
-            low = mid + 1
-             # Neither val is NaN, thisVal is smaller
+            low = mid + 1 # Neither val is NaN, thisVal is smaller
           else
             if (mid_val > key)
-              high = mid - 1
-               # Neither val is NaN, thisVal is larger
+              high = mid - 1 # Neither val is NaN, thisVal is larger
             else
               mid_bits = Double.double_to_long_bits(mid_val)
               key_bits = Double.double_to_long_bits(key)
               if ((mid_bits).equal?(key_bits))
                 # Values are equal
-                return mid
-                 # Key found
+                return mid # Key found
               else
                 if (mid_bits < key_bits)
                   # (-0.0, 0.0) or (!NaN, NaN)
@@ -1902,13 +1891,13 @@ module Java::Util
       # @param a the array to be searched
       # @param key the value to be searched for
       # @return index of the search key, if it is contained in the array;
-      # otherwise, <tt>(-(<i>insertion point</i>) - 1)</tt>.  The
-      # <i>insertion point</i> is defined as the point at which the
-      # key would be inserted into the array: the index of the first
-      # element greater than the key, or <tt>a.length</tt> if all
-      # elements in the array are less than the specified key.  Note
-      # that this guarantees that the return value will be &gt;= 0 if
-      # and only if the key is found.
+      #         otherwise, <tt>(-(<i>insertion point</i>) - 1)</tt>.  The
+      #         <i>insertion point</i> is defined as the point at which the
+      #         key would be inserted into the array: the index of the first
+      #         element greater than the key, or <tt>a.length</tt> if all
+      #         elements in the array are less than the specified key.  Note
+      #         that this guarantees that the return value will be &gt;= 0 if
+      #         and only if the key is found.
       def binary_search(a, key)
         return binary_search0(a, 0, a.attr_length, key)
       end
@@ -1927,23 +1916,23 @@ module Java::Util
       # 
       # @param a the array to be searched
       # @param fromIndex the index of the first element (inclusive) to be
-      # searched
+      #          searched
       # @param toIndex the index of the last element (exclusive) to be searched
       # @param key the value to be searched for
       # @return index of the search key, if it is contained in the array
-      # within the specified range;
-      # otherwise, <tt>(-(<i>insertion point</i>) - 1)</tt>.  The
-      # <i>insertion point</i> is defined as the point at which the
-      # key would be inserted into the array: the index of the first
-      # element in the range greater than the key,
-      # or <tt>toIndex</tt> if all
-      # elements in the range are less than the specified key.  Note
-      # that this guarantees that the return value will be &gt;= 0 if
-      # and only if the key is found.
+      #         within the specified range;
+      #         otherwise, <tt>(-(<i>insertion point</i>) - 1)</tt>.  The
+      #         <i>insertion point</i> is defined as the point at which the
+      #         key would be inserted into the array: the index of the first
+      #         element in the range greater than the key,
+      #         or <tt>toIndex</tt> if all
+      #         elements in the range are less than the specified key.  Note
+      #         that this guarantees that the return value will be &gt;= 0 if
+      #         and only if the key is found.
       # @throws IllegalArgumentException
-      # if {@code fromIndex > toIndex}
+      #         if {@code fromIndex > toIndex}
       # @throws ArrayIndexOutOfBoundsException
-      # if {@code fromIndex < 0 or toIndex > a.length}
+      #         if {@code fromIndex < 0 or toIndex > a.length}
       # @since 1.6
       def binary_search(a, from_index, to_index, key)
         range_check(a.attr_length, from_index, to_index)
@@ -1959,19 +1948,16 @@ module Java::Util
           mid = (low + high) >> 1
           mid_val = a[mid]
           if (mid_val < key)
-            low = mid + 1
-             # Neither val is NaN, thisVal is smaller
+            low = mid + 1 # Neither val is NaN, thisVal is smaller
           else
             if (mid_val > key)
-              high = mid - 1
-               # Neither val is NaN, thisVal is larger
+              high = mid - 1 # Neither val is NaN, thisVal is larger
             else
               mid_bits = Float.float_to_int_bits(mid_val)
               key_bits = Float.float_to_int_bits(key)
               if ((mid_bits).equal?(key_bits))
                 # Values are equal
-                return mid
-                 # Key found
+                return mid # Key found
               else
                 if (mid_bits < key_bits)
                   # (-0.0, 0.0) or (!NaN, NaN)
@@ -2005,15 +1991,15 @@ module Java::Util
       # @param a the array to be searched
       # @param key the value to be searched for
       # @return index of the search key, if it is contained in the array;
-      # otherwise, <tt>(-(<i>insertion point</i>) - 1)</tt>.  The
-      # <i>insertion point</i> is defined as the point at which the
-      # key would be inserted into the array: the index of the first
-      # element greater than the key, or <tt>a.length</tt> if all
-      # elements in the array are less than the specified key.  Note
-      # that this guarantees that the return value will be &gt;= 0 if
-      # and only if the key is found.
+      #         otherwise, <tt>(-(<i>insertion point</i>) - 1)</tt>.  The
+      #         <i>insertion point</i> is defined as the point at which the
+      #         key would be inserted into the array: the index of the first
+      #         element greater than the key, or <tt>a.length</tt> if all
+      #         elements in the array are less than the specified key.  Note
+      #         that this guarantees that the return value will be &gt;= 0 if
+      #         and only if the key is found.
       # @throws ClassCastException if the search key is not comparable to the
-      # elements of the array.
+      #         elements of the array.
       def binary_search(a, key)
         return binary_search0(a, 0, a.attr_length, key)
       end
@@ -2037,25 +2023,25 @@ module Java::Util
       # 
       # @param a the array to be searched
       # @param fromIndex the index of the first element (inclusive) to be
-      # searched
+      #          searched
       # @param toIndex the index of the last element (exclusive) to be searched
       # @param key the value to be searched for
       # @return index of the search key, if it is contained in the array
-      # within the specified range;
-      # otherwise, <tt>(-(<i>insertion point</i>) - 1)</tt>.  The
-      # <i>insertion point</i> is defined as the point at which the
-      # key would be inserted into the array: the index of the first
-      # element in the range greater than the key,
-      # or <tt>toIndex</tt> if all
-      # elements in the range are less than the specified key.  Note
-      # that this guarantees that the return value will be &gt;= 0 if
-      # and only if the key is found.
+      #         within the specified range;
+      #         otherwise, <tt>(-(<i>insertion point</i>) - 1)</tt>.  The
+      #         <i>insertion point</i> is defined as the point at which the
+      #         key would be inserted into the array: the index of the first
+      #         element in the range greater than the key,
+      #         or <tt>toIndex</tt> if all
+      #         elements in the range are less than the specified key.  Note
+      #         that this guarantees that the return value will be &gt;= 0 if
+      #         and only if the key is found.
       # @throws ClassCastException if the search key is not comparable to the
-      # elements of the array within the specified range.
+      #         elements of the array within the specified range.
       # @throws IllegalArgumentException
-      # if {@code fromIndex > toIndex}
+      #         if {@code fromIndex > toIndex}
       # @throws ArrayIndexOutOfBoundsException
-      # if {@code fromIndex < 0 or toIndex > a.length}
+      #         if {@code fromIndex < 0 or toIndex > a.length}
       # @since 1.6
       def binary_search(a, from_index, to_index, key)
         range_check(a.attr_length, from_index, to_index)
@@ -2098,20 +2084,20 @@ module Java::Util
       # @param a the array to be searched
       # @param key the value to be searched for
       # @param c the comparator by which the array is ordered.  A
-      # <tt>null</tt> value indicates that the elements'
-      # {@linkplain Comparable natural ordering} should be used.
+      #        <tt>null</tt> value indicates that the elements'
+      #        {@linkplain Comparable natural ordering} should be used.
       # @return index of the search key, if it is contained in the array;
-      # otherwise, <tt>(-(<i>insertion point</i>) - 1)</tt>.  The
-      # <i>insertion point</i> is defined as the point at which the
-      # key would be inserted into the array: the index of the first
-      # element greater than the key, or <tt>a.length</tt> if all
-      # elements in the array are less than the specified key.  Note
-      # that this guarantees that the return value will be &gt;= 0 if
-      # and only if the key is found.
+      #         otherwise, <tt>(-(<i>insertion point</i>) - 1)</tt>.  The
+      #         <i>insertion point</i> is defined as the point at which the
+      #         key would be inserted into the array: the index of the first
+      #         element greater than the key, or <tt>a.length</tt> if all
+      #         elements in the array are less than the specified key.  Note
+      #         that this guarantees that the return value will be &gt;= 0 if
+      #         and only if the key is found.
       # @throws ClassCastException if the array contains elements that are not
-      # <i>mutually comparable</i> using the specified comparator,
-      # or the search key is not comparable to the
-      # elements of the array using this comparator.
+      #         <i>mutually comparable</i> using the specified comparator,
+      #         or the search key is not comparable to the
+      #         elements of the array using this comparator.
       def binary_search(a, key, c)
         return binary_search0(a, 0, a.attr_length, key, c)
       end
@@ -2131,30 +2117,30 @@ module Java::Util
       # 
       # @param a the array to be searched
       # @param fromIndex the index of the first element (inclusive) to be
-      # searched
+      #          searched
       # @param toIndex the index of the last element (exclusive) to be searched
       # @param key the value to be searched for
       # @param c the comparator by which the array is ordered.  A
-      # <tt>null</tt> value indicates that the elements'
-      # {@linkplain Comparable natural ordering} should be used.
+      #        <tt>null</tt> value indicates that the elements'
+      #        {@linkplain Comparable natural ordering} should be used.
       # @return index of the search key, if it is contained in the array
-      # within the specified range;
-      # otherwise, <tt>(-(<i>insertion point</i>) - 1)</tt>.  The
-      # <i>insertion point</i> is defined as the point at which the
-      # key would be inserted into the array: the index of the first
-      # element in the range greater than the key,
-      # or <tt>toIndex</tt> if all
-      # elements in the range are less than the specified key.  Note
-      # that this guarantees that the return value will be &gt;= 0 if
-      # and only if the key is found.
+      #         within the specified range;
+      #         otherwise, <tt>(-(<i>insertion point</i>) - 1)</tt>.  The
+      #         <i>insertion point</i> is defined as the point at which the
+      #         key would be inserted into the array: the index of the first
+      #         element in the range greater than the key,
+      #         or <tt>toIndex</tt> if all
+      #         elements in the range are less than the specified key.  Note
+      #         that this guarantees that the return value will be &gt;= 0 if
+      #         and only if the key is found.
       # @throws ClassCastException if the range contains elements that are not
-      # <i>mutually comparable</i> using the specified comparator,
-      # or the search key is not comparable to the
-      # elements in the range using this comparator.
+      #         <i>mutually comparable</i> using the specified comparator,
+      #         or the search key is not comparable to the
+      #         elements in the range using this comparator.
       # @throws IllegalArgumentException
-      # if {@code fromIndex > toIndex}
+      #         if {@code fromIndex > toIndex}
       # @throws ArrayIndexOutOfBoundsException
-      # if {@code fromIndex < 0 or toIndex > a.length}
+      #         if {@code fromIndex < 0 or toIndex > a.length}
       # @since 1.6
       def binary_search(a, from_index, to_index, key, c)
         range_check(a.attr_length, from_index, to_index)
@@ -2188,7 +2174,6 @@ module Java::Util
       
       typesig { [Array.typed(::Java::Long), Array.typed(::Java::Long)] }
       # Equality Testing
-      # 
       # Returns <tt>true</tt> if the two specified arrays of longs are
       # <i>equal</i> to one another.  Two arrays are considered equal if both
       # arrays contain the same number of elements, and all corresponding pairs
@@ -2494,7 +2479,6 @@ module Java::Util
       
       typesig { [Array.typed(::Java::Long), ::Java::Long] }
       # Filling
-      # 
       # Assigns the specified long value to each element of the specified array
       # of longs.
       # 
@@ -2518,13 +2502,13 @@ module Java::Util
       # 
       # @param a the array to be filled
       # @param fromIndex the index of the first element (inclusive) to be
-      # filled with the specified value
+      #        filled with the specified value
       # @param toIndex the index of the last element (exclusive) to be
-      # filled with the specified value
+      #        filled with the specified value
       # @param val the value to be stored in all elements of the array
       # @throws IllegalArgumentException if <tt>fromIndex &gt; toIndex</tt>
       # @throws ArrayIndexOutOfBoundsException if <tt>fromIndex &lt; 0</tt> or
-      # <tt>toIndex &gt; a.length</tt>
+      #         <tt>toIndex &gt; a.length</tt>
       def fill(a, from_index, to_index, val)
         range_check(a.attr_length, from_index, to_index)
         i = from_index
@@ -2558,13 +2542,13 @@ module Java::Util
       # 
       # @param a the array to be filled
       # @param fromIndex the index of the first element (inclusive) to be
-      # filled with the specified value
+      #        filled with the specified value
       # @param toIndex the index of the last element (exclusive) to be
-      # filled with the specified value
+      #        filled with the specified value
       # @param val the value to be stored in all elements of the array
       # @throws IllegalArgumentException if <tt>fromIndex &gt; toIndex</tt>
       # @throws ArrayIndexOutOfBoundsException if <tt>fromIndex &lt; 0</tt> or
-      # <tt>toIndex &gt; a.length</tt>
+      #         <tt>toIndex &gt; a.length</tt>
       def fill(a, from_index, to_index, val)
         range_check(a.attr_length, from_index, to_index)
         i = from_index
@@ -2598,13 +2582,13 @@ module Java::Util
       # 
       # @param a the array to be filled
       # @param fromIndex the index of the first element (inclusive) to be
-      # filled with the specified value
+      #        filled with the specified value
       # @param toIndex the index of the last element (exclusive) to be
-      # filled with the specified value
+      #        filled with the specified value
       # @param val the value to be stored in all elements of the array
       # @throws IllegalArgumentException if <tt>fromIndex &gt; toIndex</tt>
       # @throws ArrayIndexOutOfBoundsException if <tt>fromIndex &lt; 0</tt> or
-      # <tt>toIndex &gt; a.length</tt>
+      #         <tt>toIndex &gt; a.length</tt>
       def fill(a, from_index, to_index, val)
         range_check(a.attr_length, from_index, to_index)
         i = from_index
@@ -2638,13 +2622,13 @@ module Java::Util
       # 
       # @param a the array to be filled
       # @param fromIndex the index of the first element (inclusive) to be
-      # filled with the specified value
+      #        filled with the specified value
       # @param toIndex the index of the last element (exclusive) to be
-      # filled with the specified value
+      #        filled with the specified value
       # @param val the value to be stored in all elements of the array
       # @throws IllegalArgumentException if <tt>fromIndex &gt; toIndex</tt>
       # @throws ArrayIndexOutOfBoundsException if <tt>fromIndex &lt; 0</tt> or
-      # <tt>toIndex &gt; a.length</tt>
+      #         <tt>toIndex &gt; a.length</tt>
       def fill(a, from_index, to_index, val)
         range_check(a.attr_length, from_index, to_index)
         i = from_index
@@ -2678,13 +2662,13 @@ module Java::Util
       # 
       # @param a the array to be filled
       # @param fromIndex the index of the first element (inclusive) to be
-      # filled with the specified value
+      #        filled with the specified value
       # @param toIndex the index of the last element (exclusive) to be
-      # filled with the specified value
+      #        filled with the specified value
       # @param val the value to be stored in all elements of the array
       # @throws IllegalArgumentException if <tt>fromIndex &gt; toIndex</tt>
       # @throws ArrayIndexOutOfBoundsException if <tt>fromIndex &lt; 0</tt> or
-      # <tt>toIndex &gt; a.length</tt>
+      #         <tt>toIndex &gt; a.length</tt>
       def fill(a, from_index, to_index, val)
         range_check(a.attr_length, from_index, to_index)
         i = from_index
@@ -2718,13 +2702,13 @@ module Java::Util
       # 
       # @param a the array to be filled
       # @param fromIndex the index of the first element (inclusive) to be
-      # filled with the specified value
+      #        filled with the specified value
       # @param toIndex the index of the last element (exclusive) to be
-      # filled with the specified value
+      #        filled with the specified value
       # @param val the value to be stored in all elements of the array
       # @throws IllegalArgumentException if <tt>fromIndex &gt; toIndex</tt>
       # @throws ArrayIndexOutOfBoundsException if <tt>fromIndex &lt; 0</tt> or
-      # <tt>toIndex &gt; a.length</tt>
+      #         <tt>toIndex &gt; a.length</tt>
       def fill(a, from_index, to_index, val)
         range_check(a.attr_length, from_index, to_index)
         i = from_index
@@ -2758,13 +2742,13 @@ module Java::Util
       # 
       # @param a the array to be filled
       # @param fromIndex the index of the first element (inclusive) to be
-      # filled with the specified value
+      #        filled with the specified value
       # @param toIndex the index of the last element (exclusive) to be
-      # filled with the specified value
+      #        filled with the specified value
       # @param val the value to be stored in all elements of the array
       # @throws IllegalArgumentException if <tt>fromIndex &gt; toIndex</tt>
       # @throws ArrayIndexOutOfBoundsException if <tt>fromIndex &lt; 0</tt> or
-      # <tt>toIndex &gt; a.length</tt>
+      #         <tt>toIndex &gt; a.length</tt>
       def fill(a, from_index, to_index, val)
         range_check(a.attr_length, from_index, to_index)
         i = from_index
@@ -2798,13 +2782,13 @@ module Java::Util
       # 
       # @param a the array to be filled
       # @param fromIndex the index of the first element (inclusive) to be
-      # filled with the specified value
+      #        filled with the specified value
       # @param toIndex the index of the last element (exclusive) to be
-      # filled with the specified value
+      #        filled with the specified value
       # @param val the value to be stored in all elements of the array
       # @throws IllegalArgumentException if <tt>fromIndex &gt; toIndex</tt>
       # @throws ArrayIndexOutOfBoundsException if <tt>fromIndex &lt; 0</tt> or
-      # <tt>toIndex &gt; a.length</tt>
+      #         <tt>toIndex &gt; a.length</tt>
       def fill(a, from_index, to_index, val)
         range_check(a.attr_length, from_index, to_index)
         i = from_index
@@ -2821,7 +2805,7 @@ module Java::Util
       # @param a the array to be filled
       # @param val the value to be stored in all elements of the array
       # @throws ArrayStoreException if the specified value is not of a
-      # runtime type that can be stored in the specified array
+      #         runtime type that can be stored in the specified array
       def fill(a, val)
         i = 0
         len = a.attr_length
@@ -2840,15 +2824,15 @@ module Java::Util
       # 
       # @param a the array to be filled
       # @param fromIndex the index of the first element (inclusive) to be
-      # filled with the specified value
+      #        filled with the specified value
       # @param toIndex the index of the last element (exclusive) to be
-      # filled with the specified value
+      #        filled with the specified value
       # @param val the value to be stored in all elements of the array
       # @throws IllegalArgumentException if <tt>fromIndex &gt; toIndex</tt>
       # @throws ArrayIndexOutOfBoundsException if <tt>fromIndex &lt; 0</tt> or
-      # <tt>toIndex &gt; a.length</tt>
+      #         <tt>toIndex &gt; a.length</tt>
       # @throws ArrayStoreException if the specified value is not of a
-      # runtime type that can be stored in the specified array
+      #         runtime type that can be stored in the specified array
       def fill(a, from_index, to_index, val)
         range_check(a.attr_length, from_index, to_index)
         i = from_index
@@ -2860,7 +2844,6 @@ module Java::Util
       
       typesig { [Array.typed(Object), ::Java::Int] }
       # Cloning
-      # 
       # Copies the specified array, truncating or padding with nulls (if necessary)
       # so the copy has the specified length.  For all indices that are
       # valid in both the original array and the copy, the two arrays will
@@ -2873,7 +2856,7 @@ module Java::Util
       # @param original the array to be copied
       # @param newLength the length of the copy to be returned
       # @return a copy of the original array, truncated or padded with nulls
-      # to obtain the specified length
+      #     to obtain the specified length
       # @throws NegativeArraySizeException if <tt>newLength</tt> is negative
       # @throws NullPointerException if <tt>original</tt> is null
       # @since 1.6
@@ -2895,12 +2878,12 @@ module Java::Util
       # @param newLength the length of the copy to be returned
       # @param newType the class of the copy to be returned
       # @return a copy of the original array, truncated or padded with nulls
-      # to obtain the specified length
+      #     to obtain the specified length
       # @throws NegativeArraySizeException if <tt>newLength</tt> is negative
       # @throws NullPointerException if <tt>original</tt> is null
       # @throws ArrayStoreException if an element copied from
-      # <tt>original</tt> is not of a runtime type that can be stored in
-      # an array of class <tt>newType</tt>
+      #     <tt>original</tt> is not of a runtime type that can be stored in
+      #     an array of class <tt>newType</tt>
       # @since 1.6
       def copy_of(original, new_length, new_type)
         copy = ((new_type).equal?(Array[])) ? Array.typed(Object).new(new_length) { nil } : Array.new_instance(new_type.get_component_type, new_length)
@@ -2920,7 +2903,7 @@ module Java::Util
       # @param original the array to be copied
       # @param newLength the length of the copy to be returned
       # @return a copy of the original array, truncated or padded with zeros
-      # to obtain the specified length
+      #     to obtain the specified length
       # @throws NegativeArraySizeException if <tt>newLength</tt> is negative
       # @throws NullPointerException if <tt>original</tt> is null
       # @since 1.6
@@ -2942,7 +2925,7 @@ module Java::Util
       # @param original the array to be copied
       # @param newLength the length of the copy to be returned
       # @return a copy of the original array, truncated or padded with zeros
-      # to obtain the specified length
+      #     to obtain the specified length
       # @throws NegativeArraySizeException if <tt>newLength</tt> is negative
       # @throws NullPointerException if <tt>original</tt> is null
       # @since 1.6
@@ -2964,7 +2947,7 @@ module Java::Util
       # @param original the array to be copied
       # @param newLength the length of the copy to be returned
       # @return a copy of the original array, truncated or padded with zeros
-      # to obtain the specified length
+      #     to obtain the specified length
       # @throws NegativeArraySizeException if <tt>newLength</tt> is negative
       # @throws NullPointerException if <tt>original</tt> is null
       # @since 1.6
@@ -2986,7 +2969,7 @@ module Java::Util
       # @param original the array to be copied
       # @param newLength the length of the copy to be returned
       # @return a copy of the original array, truncated or padded with zeros
-      # to obtain the specified length
+      #     to obtain the specified length
       # @throws NegativeArraySizeException if <tt>newLength</tt> is negative
       # @throws NullPointerException if <tt>original</tt> is null
       # @since 1.6
@@ -3008,7 +2991,7 @@ module Java::Util
       # @param original the array to be copied
       # @param newLength the length of the copy to be returned
       # @return a copy of the original array, truncated or padded with null characters
-      # to obtain the specified length
+      #     to obtain the specified length
       # @throws NegativeArraySizeException if <tt>newLength</tt> is negative
       # @throws NullPointerException if <tt>original</tt> is null
       # @since 1.6
@@ -3030,7 +3013,7 @@ module Java::Util
       # @param original the array to be copied
       # @param newLength the length of the copy to be returned
       # @return a copy of the original array, truncated or padded with zeros
-      # to obtain the specified length
+      #     to obtain the specified length
       # @throws NegativeArraySizeException if <tt>newLength</tt> is negative
       # @throws NullPointerException if <tt>original</tt> is null
       # @since 1.6
@@ -3052,7 +3035,7 @@ module Java::Util
       # @param original the array to be copied
       # @param newLength the length of the copy to be returned
       # @return a copy of the original array, truncated or padded with zeros
-      # to obtain the specified length
+      #     to obtain the specified length
       # @throws NegativeArraySizeException if <tt>newLength</tt> is negative
       # @throws NullPointerException if <tt>original</tt> is null
       # @since 1.6
@@ -3074,7 +3057,7 @@ module Java::Util
       # @param original the array to be copied
       # @param newLength the length of the copy to be returned
       # @return a copy of the original array, truncated or padded with false elements
-      # to obtain the specified length
+      #     to obtain the specified length
       # @throws NegativeArraySizeException if <tt>newLength</tt> is negative
       # @throws NullPointerException if <tt>original</tt> is null
       # @since 1.6
@@ -3103,11 +3086,11 @@ module Java::Util
       # @param original the array from which a range is to be copied
       # @param from the initial index of the range to be copied, inclusive
       # @param to the final index of the range to be copied, exclusive.
-      # (This index may lie outside the array.)
+      #     (This index may lie outside the array.)
       # @return a new array containing the specified range from the original array,
-      # truncated or padded with nulls to obtain the required length
+      #     truncated or padded with nulls to obtain the required length
       # @throws ArrayIndexOutOfBoundsException if {@code from < 0}
-      # or {@code from > original.length}
+      #     or {@code from > original.length}
       # @throws IllegalArgumentException if <tt>from &gt; to</tt>
       # @throws NullPointerException if <tt>original</tt> is null
       # @since 1.6
@@ -3133,17 +3116,17 @@ module Java::Util
       # @param original the array from which a range is to be copied
       # @param from the initial index of the range to be copied, inclusive
       # @param to the final index of the range to be copied, exclusive.
-      # (This index may lie outside the array.)
+      #     (This index may lie outside the array.)
       # @param newType the class of the copy to be returned
       # @return a new array containing the specified range from the original array,
-      # truncated or padded with nulls to obtain the required length
+      #     truncated or padded with nulls to obtain the required length
       # @throws ArrayIndexOutOfBoundsException if {@code from < 0}
-      # or {@code from > original.length}
+      #     or {@code from > original.length}
       # @throws IllegalArgumentException if <tt>from &gt; to</tt>
       # @throws NullPointerException if <tt>original</tt> is null
       # @throws ArrayStoreException if an element copied from
-      # <tt>original</tt> is not of a runtime type that can be stored in
-      # an array of class <tt>newType</tt>.
+      #     <tt>original</tt> is not of a runtime type that can be stored in
+      #     an array of class <tt>newType</tt>.
       # @since 1.6
       def copy_of_range(original, from, to, new_type)
         new_length = to - from
@@ -3172,11 +3155,11 @@ module Java::Util
       # @param original the array from which a range is to be copied
       # @param from the initial index of the range to be copied, inclusive
       # @param to the final index of the range to be copied, exclusive.
-      # (This index may lie outside the array.)
+      #     (This index may lie outside the array.)
       # @return a new array containing the specified range from the original array,
-      # truncated or padded with zeros to obtain the required length
+      #     truncated or padded with zeros to obtain the required length
       # @throws ArrayIndexOutOfBoundsException if {@code from < 0}
-      # or {@code from > original.length}
+      #     or {@code from > original.length}
       # @throws IllegalArgumentException if <tt>from &gt; to</tt>
       # @throws NullPointerException if <tt>original</tt> is null
       # @since 1.6
@@ -3207,11 +3190,11 @@ module Java::Util
       # @param original the array from which a range is to be copied
       # @param from the initial index of the range to be copied, inclusive
       # @param to the final index of the range to be copied, exclusive.
-      # (This index may lie outside the array.)
+      #     (This index may lie outside the array.)
       # @return a new array containing the specified range from the original array,
-      # truncated or padded with zeros to obtain the required length
+      #     truncated or padded with zeros to obtain the required length
       # @throws ArrayIndexOutOfBoundsException if {@code from < 0}
-      # or {@code from > original.length}
+      #     or {@code from > original.length}
       # @throws IllegalArgumentException if <tt>from &gt; to</tt>
       # @throws NullPointerException if <tt>original</tt> is null
       # @since 1.6
@@ -3242,11 +3225,11 @@ module Java::Util
       # @param original the array from which a range is to be copied
       # @param from the initial index of the range to be copied, inclusive
       # @param to the final index of the range to be copied, exclusive.
-      # (This index may lie outside the array.)
+      #     (This index may lie outside the array.)
       # @return a new array containing the specified range from the original array,
-      # truncated or padded with zeros to obtain the required length
+      #     truncated or padded with zeros to obtain the required length
       # @throws ArrayIndexOutOfBoundsException if {@code from < 0}
-      # or {@code from > original.length}
+      #     or {@code from > original.length}
       # @throws IllegalArgumentException if <tt>from &gt; to</tt>
       # @throws NullPointerException if <tt>original</tt> is null
       # @since 1.6
@@ -3277,11 +3260,11 @@ module Java::Util
       # @param original the array from which a range is to be copied
       # @param from the initial index of the range to be copied, inclusive
       # @param to the final index of the range to be copied, exclusive.
-      # (This index may lie outside the array.)
+      #     (This index may lie outside the array.)
       # @return a new array containing the specified range from the original array,
-      # truncated or padded with zeros to obtain the required length
+      #     truncated or padded with zeros to obtain the required length
       # @throws ArrayIndexOutOfBoundsException if {@code from < 0}
-      # or {@code from > original.length}
+      #     or {@code from > original.length}
       # @throws IllegalArgumentException if <tt>from &gt; to</tt>
       # @throws NullPointerException if <tt>original</tt> is null
       # @since 1.6
@@ -3312,11 +3295,11 @@ module Java::Util
       # @param original the array from which a range is to be copied
       # @param from the initial index of the range to be copied, inclusive
       # @param to the final index of the range to be copied, exclusive.
-      # (This index may lie outside the array.)
+      #     (This index may lie outside the array.)
       # @return a new array containing the specified range from the original array,
-      # truncated or padded with null characters to obtain the required length
+      #     truncated or padded with null characters to obtain the required length
       # @throws ArrayIndexOutOfBoundsException if {@code from < 0}
-      # or {@code from > original.length}
+      #     or {@code from > original.length}
       # @throws IllegalArgumentException if <tt>from &gt; to</tt>
       # @throws NullPointerException if <tt>original</tt> is null
       # @since 1.6
@@ -3347,11 +3330,11 @@ module Java::Util
       # @param original the array from which a range is to be copied
       # @param from the initial index of the range to be copied, inclusive
       # @param to the final index of the range to be copied, exclusive.
-      # (This index may lie outside the array.)
+      #     (This index may lie outside the array.)
       # @return a new array containing the specified range from the original array,
-      # truncated or padded with zeros to obtain the required length
+      #     truncated or padded with zeros to obtain the required length
       # @throws ArrayIndexOutOfBoundsException if {@code from < 0}
-      # or {@code from > original.length}
+      #     or {@code from > original.length}
       # @throws IllegalArgumentException if <tt>from &gt; to</tt>
       # @throws NullPointerException if <tt>original</tt> is null
       # @since 1.6
@@ -3382,11 +3365,11 @@ module Java::Util
       # @param original the array from which a range is to be copied
       # @param from the initial index of the range to be copied, inclusive
       # @param to the final index of the range to be copied, exclusive.
-      # (This index may lie outside the array.)
+      #     (This index may lie outside the array.)
       # @return a new array containing the specified range from the original array,
-      # truncated or padded with zeros to obtain the required length
+      #     truncated or padded with zeros to obtain the required length
       # @throws ArrayIndexOutOfBoundsException if {@code from < 0}
-      # or {@code from > original.length}
+      #     or {@code from > original.length}
       # @throws IllegalArgumentException if <tt>from &gt; to</tt>
       # @throws NullPointerException if <tt>original</tt> is null
       # @since 1.6
@@ -3417,11 +3400,11 @@ module Java::Util
       # @param original the array from which a range is to be copied
       # @param from the initial index of the range to be copied, inclusive
       # @param to the final index of the range to be copied, exclusive.
-      # (This index may lie outside the array.)
+      #     (This index may lie outside the array.)
       # @return a new array containing the specified range from the original array,
-      # truncated or padded with false elements to obtain the required length
+      #     truncated or padded with false elements to obtain the required length
       # @throws ArrayIndexOutOfBoundsException if {@code from < 0}
-      # or {@code from > original.length}
+      #     or {@code from > original.length}
       # @throws IllegalArgumentException if <tt>from &gt; to</tt>
       # @throws NullPointerException if <tt>original</tt> is null
       # @since 1.6
@@ -3437,7 +3420,6 @@ module Java::Util
       
       typesig { [Vararg.new(Object)] }
       # Misc
-      # 
       # Returns a fixed-size list backed by the specified array.  (Changes to
       # the returned list "write through" to the array.)  This method acts
       # as bridge between array-based and collection-based APIs, in
@@ -3447,7 +3429,7 @@ module Java::Util
       # <p>This method also provides a convenient way to create a fixed-size
       # list initialized to contain several elements:
       # <pre>
-      # List&lt;String&gt; stooges = Arrays.asList("Larry", "Moe", "Curly");
+      #     List&lt;String&gt; stooges = Arrays.asList("Larry", "Moe", "Curly");
       # </pre>
       # 
       # @param a the array by which the list will be backed
@@ -3577,7 +3559,7 @@ module Java::Util
         end
         result = 1
         a.each do |element|
-          element_hash = RJava.cast_to_int((element ^ (element >> 32)))
+          element_hash = ((element ^ (element >> 32))).to_int
           result = 31 * result + element_hash
         end
         return result
@@ -3761,7 +3743,7 @@ module Java::Util
         result = 1
         a.each do |element|
           bits = Double.double_to_long_bits(element)
-          result = 31 * result + RJava.cast_to_int((bits ^ (bits >> 32)))
+          result = 31 * result + ((bits ^ (bits >> 32))).to_int
         end
         return result
       end
@@ -3890,13 +3872,13 @@ module Java::Util
       # <p>Two possibly <tt>null</tt> elements <tt>e1</tt> and <tt>e2</tt> are
       # deeply equal if any of the following conditions hold:
       # <ul>
-      # <li> <tt>e1</tt> and <tt>e2</tt> are both arrays of object reference
-      # types, and <tt>Arrays.deepEquals(e1, e2) would return true</tt>
-      # <li> <tt>e1</tt> and <tt>e2</tt> are arrays of the same primitive
-      # type, and the appropriate overloading of
-      # <tt>Arrays.equals(e1, e2)</tt> would return true.
-      # <li> <tt>e1 == e2</tt>
-      # <li> <tt>e1.equals(e2)</tt> would return true.
+      #    <li> <tt>e1</tt> and <tt>e2</tt> are both arrays of object reference
+      #         types, and <tt>Arrays.deepEquals(e1, e2) would return true</tt>
+      #    <li> <tt>e1</tt> and <tt>e2</tt> are arrays of the same primitive
+      #         type, and the appropriate overloading of
+      #         <tt>Arrays.equals(e1, e2)</tt> would return true.
+      #    <li> <tt>e1 == e2</tt>
+      #    <li> <tt>e1.equals(e2)</tt> would return true.
       # </ul>
       # Note that this definition permits <tt>null</tt> elements at any depth.
       # 

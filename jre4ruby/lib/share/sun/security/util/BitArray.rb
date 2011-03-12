@@ -99,8 +99,8 @@ module Sun::Security::Util
       unused_bits = rep_length * BITS_PER_UNIT - length
       bit_mask = (0xff << unused_bits)
       # normalize the representation:
-      # 1. discard extra bytes
-      # 2. zero out extra bits in the last byte
+      #  1. discard extra bytes
+      #  2. zero out extra bits in the last byte
       @repn = Array.typed(::Java::Byte).new(rep_length) { 0 }
       System.arraycopy(a, 0, @repn, 0, rep_length)
       if (rep_length > 0)

@@ -53,8 +53,8 @@ module Sun::Security::X509
   # The ASN.1 syntax for this is:
   # <pre>
   # NameConstraints ::= SEQUENCE {
-  # permittedSubtrees [0]  GeneralSubtrees OPTIONAL,
-  # excludedSubtrees  [1]  GeneralSubtrees OPTIONAL
+  #    permittedSubtrees [0]  GeneralSubtrees OPTIONAL,
+  #    excludedSubtrees  [1]  GeneralSubtrees OPTIONAL
   # }
   # GeneralSubtrees ::= SEQUENCE SIZE (1..MAX) OF GeneralSubtree
   # </pre>
@@ -521,8 +521,8 @@ module Sun::Security::X509
           # if name matches or narrows any excluded subtree,
           # return false
           case (ex_name.constrains(name))
-          # name widens excluded
           when GeneralNameInterface::NAME_DIFF_TYPE, GeneralNameInterface::NAME_WIDENS, GeneralNameInterface::NAME_SAME_TYPE
+            # name widens excluded
           when GeneralNameInterface::NAME_MATCH, GeneralNameInterface::NAME_NARROWS
             # subject name excluded
             return false
@@ -554,27 +554,28 @@ module Sun::Security::X509
           # and Name does not match or narrow some permitted subtree,
           # return false
           case (per_name.constrains(name))
-          # continue checking other permitted names
-          # name widens permitted
-          # continue to look for a match or narrow
           when GeneralNameInterface::NAME_DIFF_TYPE
             i += 1
-            next
+            next # continue checking other permitted names # name widens permitted
             same_type = true
             i += 1
-            next
+            next # continue to look for a match or narrow
             # name narrows permitted
             return true
           when GeneralNameInterface::NAME_WIDENS, GeneralNameInterface::NAME_SAME_TYPE
+            # continue checking other permitted names
+            # name widens permitted
             same_type = true
             i += 1
-            next
+            next # continue to look for a match or narrow
             # name narrows permitted
             return true
           when GeneralNameInterface::NAME_MATCH, GeneralNameInterface::NAME_NARROWS
+            # continue to look for a match or narrow
             # name narrows permitted
             return true
-          end # name is definitely OK, so break out of loop
+          # name is definitely OK, so break out of loop
+          end
           i += 1
         end
         if (same_type)

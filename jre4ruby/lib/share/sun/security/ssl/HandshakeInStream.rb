@@ -73,7 +73,6 @@ module Sun::Security::Ssl
     
     typesig { [] }
     # overridden InputStream methods
-    # 
     # Return the number of bytes available for read().
     # 
     # Note that this returns the bytes remaining in the buffer, not
@@ -132,7 +131,6 @@ module Sun::Security::Ssl
     
     typesig { [InputRecord] }
     # handshake management functions
-    # 
     # Here's an incoming record with handshake data.  Queue the contents;
     # it might be one or more entire messages, complete a message that's
     # partly queued, or both.
@@ -158,7 +156,6 @@ module Sun::Security::Ssl
     
     typesig { [] }
     # Message parsing methods
-    # 
     # Read 8, 16, 24, and 32 bit SSL integer data types, encoded
     # in standard big-endian form.
     def get_int8

@@ -39,8 +39,8 @@ module Sun::Security::Jgss::Spnego
   # Implementation is based on RFC 2478
   # 
   # NegotiationToken ::= CHOICE {
-  # negTokenInit  [0]        NegTokenInit,
-  # negTokenTarg  [1]        NegTokenTarg }
+  #      negTokenInit  [0]        NegTokenInit,
+  #      negTokenTarg  [1]        NegTokenTarg }
   # 
   # 
   # @author Seema Malkani

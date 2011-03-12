@@ -105,13 +105,13 @@ module Java::Util
     # @param e element to be appended to this list
     # @return {@code true} (as specified by {@link Collection#add})
     # @throws UnsupportedOperationException if the {@code add} operation
-    # is not supported by this list
+    #         is not supported by this list
     # @throws ClassCastException if the class of the specified element
-    # prevents it from being added to this list
+    #         prevents it from being added to this list
     # @throws NullPointerException if the specified element is null and this
-    # list does not permit null elements
+    #         list does not permit null elements
     # @throws IllegalArgumentException if some property of this element
-    # prevents it from being added to this list
+    #         prevents it from being added to this list
     def add(e)
       add(size, e)
       return true
@@ -169,7 +169,6 @@ module Java::Util
     
     typesig { [Object] }
     # Search Operations
-    # 
     # {@inheritDoc}
     # 
     # <p>This implementation first gets a list iterator (with
@@ -226,7 +225,6 @@ module Java::Util
     
     typesig { [] }
     # Bulk Operations
-    # 
     # Removes all of the elements from this list (optional operation).
     # The list will be empty after this call returns.
     # 
@@ -238,7 +236,7 @@ module Java::Util
     # overridden.
     # 
     # @throws UnsupportedOperationException if the {@code clear} operation
-    # is not supported by this list
+    #         is not supported by this list
     def clear
       remove_range(0, size)
     end
@@ -274,7 +272,6 @@ module Java::Util
     
     typesig { [] }
     # Iterators
-    # 
     # Returns an iterator over the elements in this list in proper sequence.
     # 
     # <p>This implementation returns a straightforward implementation of the
@@ -524,16 +521,15 @@ module Java::Util
     # {@code ConcurrentModificationException} if it is not.
     # 
     # @throws IndexOutOfBoundsException if an endpoint index value is out of range
-    # {@code (fromIndex < 0 || toIndex > size)}
+    #         {@code (fromIndex < 0 || toIndex > size)}
     # @throws IllegalArgumentException if the endpoint indices are out of order
-    # {@code (fromIndex > toIndex)}
+    #         {@code (fromIndex > toIndex)}
     def sub_list(from_index, to_index)
       return (self.is_a?(RandomAccess) ? RandomAccessSubList.new(self, from_index, to_index) : SubList.new(self, from_index, to_index))
     end
     
     typesig { [Object] }
     # Comparison and hashing
-    # 
     # Compares the specified object with this list for equality.  Returns
     # {@code true} if and only if the specified object is also a list, both
     # lists have the same size, and all corresponding pairs of elements in

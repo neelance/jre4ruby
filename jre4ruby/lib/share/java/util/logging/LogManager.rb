@@ -44,10 +44,10 @@ module Java::Util::Logging
   # This LogManager object:
   # <ul>
   # <li> Manages a hierarchical namespace of Logger objects.  All
-  # named Loggers are stored in this namespace.
+  #      named Loggers are stored in this namespace.
   # <li> Manages a set of logging control properties.  These are
-  # simple key-value pairs that can be used by Handlers and
-  # other logging objects to configure themselves.
+  #      simple key-value pairs that can be used by Handlers and
+  #      other logging objects to configure themselves.
   # </ul>
   # <p>
   # The global LogManager object can be retrieved using LogManager.getLogManager().
@@ -254,7 +254,7 @@ module Java::Util::Logging
               self.attr_manager = self.class::LogManager.new
             end
             # Create and retain Logger for the root of the namespace.
-            self.attr_manager.attr_root_logger = RootLogger.new
+            self.attr_manager.attr_root_logger = self.class::RootLogger.new
             self.attr_manager.add_logger(self.attr_manager.attr_root_logger)
             # Adding the global Logger. Doing so in the Logger.<clinit>
             # would deadlock with the LogManager.<clinit>.
@@ -392,7 +392,7 @@ module Java::Util::Logging
     # 
     # @param l  event listener
     # @exception  SecurityException  if a security manager exists and if
-    # the caller does not have LoggingPermission("control").
+    #             the caller does not have LoggingPermission("control").
     # @exception NullPointerException if the PropertyChangeListener is null.
     def add_property_change_listener(l)
       if ((l).nil?)
@@ -414,7 +414,7 @@ module Java::Util::Logging
     # 
     # @param l  event listener (can be null)
     # @exception  SecurityException  if a security manager exists and if
-    # the caller does not have LoggingPermission("control").
+    #             the caller does not have LoggingPermission("control").
     def remove_property_change_listener(l)
       check_access
       @changes.remove_property_change_listener(l)
@@ -530,7 +530,7 @@ module Java::Util::Logging
     # 
     # @param   logger the new logger.
     # @return  true if the argument logger was registered successfully,
-    # false if a logger of that name already exists.
+    #          false if a logger of that name already exists.
     # @exception NullPointerException if the logger name is null.
     def add_logger(logger)
       synchronized(self) do
@@ -736,7 +736,7 @@ module Java::Util::Logging
     # A PropertyChangeEvent will be fired after the properties are read.
     # 
     # @exception  SecurityException  if a security manager exists and if
-    # the caller does not have LoggingPermission("control").
+    #             the caller does not have LoggingPermission("control").
     # @exception  IOException if there are IO problems reading the configuration.
     def read_configuration
       check_access
@@ -791,7 +791,7 @@ module Java::Util::Logging
     # to null.  The root logger's level is set to Level.INFO.
     # 
     # @exception  SecurityException  if a security manager exists and if
-    # the caller does not have LoggingPermission("control").
+    #             the caller does not have LoggingPermission("control").
     def reset
       check_access
       synchronized((self)) do
@@ -877,7 +877,7 @@ module Java::Util::Logging
     # 
     # @param ins       stream to read properties from
     # @exception  SecurityException  if a security manager exists and if
-    # the caller does not have LoggingPermission("control").
+    #             the caller does not have LoggingPermission("control").
     # @exception  IOException if there are problems reading from the stream.
     def read_configuration(ins)
       check_access
@@ -1059,7 +1059,7 @@ module Java::Util::Logging
     # we return normally.
     # 
     # @exception  SecurityException  if a security manager exists and if
-    # the caller does not have LoggingPermission("control").
+    #             the caller does not have LoggingPermission("control").
     def check_access
       sm = System.get_security_manager
       if ((sm).nil?)

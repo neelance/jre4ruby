@@ -76,8 +76,8 @@ module Java::Nio::Charset::Spi
     # Initializes a new charset provider. </p>
     # 
     # @throws  SecurityException
-    # If a security manager has been installed and it denies
-    # {@link RuntimePermission}<tt>("charsetProvider")</tt>
+    #          If a security manager has been installed and it denies
+    #          {@link RuntimePermission}<tt>("charsetProvider")</tt>
     def initialize
       sm = System.get_security_manager
       if (!(sm).nil?)
@@ -100,12 +100,12 @@ module Java::Nio::Charset::Spi
     # Retrieves a charset for the given charset name. </p>
     # 
     # @param  charsetName
-    # The name of the requested charset; may be either
-    # a canonical name or an alias
+    #         The name of the requested charset; may be either
+    #         a canonical name or an alias
     # 
     # @return  A charset object for the named charset,
-    # or <tt>null</tt> if the named charset
-    # is not supported by this provider
+    #          or <tt>null</tt> if the named charset
+    #          is not supported by this provider
     def charset_for_name(charset_name)
       raise NotImplementedError
     end

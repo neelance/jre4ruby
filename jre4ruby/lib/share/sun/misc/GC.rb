@@ -306,7 +306,7 @@ module Sun::Misc
         # Cancels this latency request.
         # 
         # @throws  IllegalStateException
-        # If this request has already been cancelled
+        #          If this request has already been cancelled
         def cancel
           synchronized((self.attr_lock)) do
             if ((@latency).equal?(NO_TARGET))
@@ -349,10 +349,10 @@ module Sun::Misc
       # exceeds the smallest of the currently active requests.
       # 
       # @param   latency
-      # The requested latency
+      #          The requested latency
       # 
       # @throws  IllegalArgumentException
-      # If the given <code>latency</code> is non-positive
+      #          If the given <code>latency</code> is non-positive
       def request_latency(latency)
         return LatencyRequest.new(latency)
       end

@@ -429,9 +429,9 @@ module Sun::Security::Tools
               System.exit(1)
             end
           end
-          # if (debug) {
-          # SignatureFileVerifier.setDebug(true);
-          # ManifestEntryVerifier.setDebug(true);
+          #                 if (debug) {
+          #     SignatureFileVerifier.setDebug(true);
+          #     ManifestEntryVerifier.setDebug(true);
           # }
           verify_jar(@jarfile)
         else
@@ -1172,9 +1172,9 @@ module Sun::Security::Tools
         # 
         # - if entry is not contained in manifest, add it to manifest;
         # - if entry is contained in manifest, calculate its hash and
-        # compare it with the one in the manifest; if they are
-        # different, replace the hash in the manifest with the newly
-        # generated one. (This may invalidate existing signatures!)
+        #   compare it with the one in the manifest; if they are
+        #   different, replace the hash in the manifest with the newly
+        #   generated one. (This may invalidate existing signatures!)
         encoder = JarBASE64Encoder.new
         mf_files = Vector.new
         enum_ = @zip_file.entries
@@ -1394,7 +1394,7 @@ module Sun::Security::Tools
       # no IOException thrown in the above try clause, so disable
       # the catch clause.
       # } catch(IOException ioe) {
-      # error(rb.getString("unable to sign jar: ")+ioe, ioe);
+      #     error(rb.getString("unable to sign jar: ")+ioe, ioe);
       # }
     end
     
@@ -1544,9 +1544,9 @@ module Sun::Security::Tools
     # Check if userCert is designed to be a code signer
     # @param userCert the certificate to be examined
     # @param bad 3 booleans to show if the KeyUsage, ExtendedKeyUsage,
-    # NetscapeCertType has codeSigning flag turned on.
-    # If null, the class field badKeyUsage, badExtendedKeyUsage,
-    # badNetscapeCertType will be set.
+    #            NetscapeCertType has codeSigning flag turned on.
+    #            If null, the class field badKeyUsage, badExtendedKeyUsage,
+    #            badNetscapeCertType will be set.
     def check_cert_usage(user_cert, bad)
       # Can act as a signer?
       # 1. if KeyUsage, then [0] should be true
@@ -1600,6 +1600,7 @@ module Sun::Security::Tools
           end
         end
       rescue IOException => e
+        # 
       end
     end
     
@@ -1842,7 +1843,7 @@ module Sun::Security::Tools
     # Returns true if the manifest entry has been changed, and false
     # otherwise.
     def update_digests(ze, zf, digests, encoder, mf)
-      update = false
+      update_ = false
       attrs = mf.get_attributes(ze.get_name)
       base64digests = get_digests(ze, zf, digests, encoder)
       i = 0
@@ -1856,18 +1857,18 @@ module Sun::Security::Tools
         if ((mf_digest).nil?)
           # compute digest and add it to list of attributes
           attrs.put_value(name, base64digests[i])
-          update = true
+          update_ = true
         else
           # compare digests, and replace the one in the manifest
           # if they are different
           if (!mf_digest.equals_ignore_case(base64digests[i]))
             attrs.put_value(name, base64digests[i])
-            update = true
+            update_ = true
           end
         end
         i += 1
       end
-      return update
+      return update_
     end
     
     typesig { [String, String] }
@@ -2060,9 +2061,9 @@ module Sun::Security::Tools
     # 
     # @param sigalg signature algorithm to use, or null to use default
     # @param tsaUrl The location of the Timestamping Authority. If null
-    # then no timestamp is requested.
+    #               then no timestamp is requested.
     # @param tsaCert The certificate for the Timestamping Authority. If null
-    # then no timestamp is requested.
+    #               then no timestamp is requested.
     # @param signingMechanism The signing mechanism to use.
     # @param args The command-line arguments to jarsigner.
     # @param zipFile The original source Zip file.
@@ -2324,5 +2325,6 @@ module Sun::Security::Tools
     alias_method :initialize__jar_signer_parameters, :initialize
   end
   
-  JarSigner.main($*) if $0 == __FILE__
 end
+
+Sun::Security::Tools::JarSigner.main($*) if $0 == __FILE__

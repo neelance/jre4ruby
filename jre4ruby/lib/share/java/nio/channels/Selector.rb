@@ -51,20 +51,20 @@ module Java::Nio::Channels
   # 
   # <ul>
   # 
-  # <li><p> The <i>key set</i> contains the keys representing the current
-  # channel registrations of this selector.  This set is returned by the
-  # {@link #keys() keys} method. </p></li>
+  #   <li><p> The <i>key set</i> contains the keys representing the current
+  #   channel registrations of this selector.  This set is returned by the
+  #   {@link #keys() keys} method. </p></li>
   # 
-  # <li><p> The <i>selected-key set</i> is the set of keys such that each
-  # key's channel was detected to be ready for at least one of the operations
-  # identified in the key's interest set during a prior selection operation.
-  # This set is returned by the {@link #selectedKeys() selectedKeys} method.
-  # The selected-key set is always a subset of the key set. </p></li>
+  #   <li><p> The <i>selected-key set</i> is the set of keys such that each
+  #   key's channel was detected to be ready for at least one of the operations
+  #   identified in the key's interest set during a prior selection operation.
+  #   This set is returned by the {@link #selectedKeys() selectedKeys} method.
+  #   The selected-key set is always a subset of the key set. </p></li>
   # 
-  # <li><p> The <i>cancelled-key</i> set is the set of keys that have been
-  # cancelled but whose channels have not yet been deregistered.  This set is
-  # not directly accessible.  The cancelled-key set is always a subset of the
-  # key set. </p></li>
+  #   <li><p> The <i>cancelled-key</i> set is the set of keys that have been
+  #   cancelled but whose channels have not yet been deregistered.  This set is
+  #   not directly accessible.  The cancelled-key set is always a subset of the
+  #   key set. </p></li>
   # 
   # </ul>
   # 
@@ -102,39 +102,39 @@ module Java::Nio::Channels
   # 
   # <ol>
   # 
-  # <li><p> Each key in the cancelled-key set is removed from each key set of
-  # which it is a member, and its channel is deregistered.  This step leaves
-  # the cancelled-key set empty. </p></li>
+  #   <li><p> Each key in the cancelled-key set is removed from each key set of
+  #   which it is a member, and its channel is deregistered.  This step leaves
+  #   the cancelled-key set empty. </p></li>
   # 
-  # <li><p> The underlying operating system is queried for an update as to the
-  # readiness of each remaining channel to perform any of the operations
-  # identified by its key's interest set as of the moment that the selection
-  # operation began.  For a channel that is ready for at least one such
-  # operation, one of the following two actions is performed: </p>
+  #   <li><p> The underlying operating system is queried for an update as to the
+  #   readiness of each remaining channel to perform any of the operations
+  #   identified by its key's interest set as of the moment that the selection
+  #   operation began.  For a channel that is ready for at least one such
+  #   operation, one of the following two actions is performed: </p>
   # 
-  # <ol type=a>
+  #   <ol type=a>
   # 
-  # <li><p> If the channel's key is not already in the selected-key set then
-  # it is added to that set and its ready-operation set is modified to
-  # identify exactly those operations for which the channel is now reported
-  # to be ready.  Any readiness information previously recorded in the ready
-  # set is discarded.  </p></li>
+  #     <li><p> If the channel's key is not already in the selected-key set then
+  #     it is added to that set and its ready-operation set is modified to
+  #     identify exactly those operations for which the channel is now reported
+  #     to be ready.  Any readiness information previously recorded in the ready
+  #     set is discarded.  </p></li>
   # 
-  # <li><p> Otherwise the channel's key is already in the selected-key set,
-  # so its ready-operation set is modified to identify any new operations
-  # for which the channel is reported to be ready.  Any readiness
-  # information previously recorded in the ready set is preserved; in other
-  # words, the ready set returned by the underlying system is
-  # bitwise-disjoined into the key's current ready set. </p></li>
+  #     <li><p> Otherwise the channel's key is already in the selected-key set,
+  #     so its ready-operation set is modified to identify any new operations
+  #     for which the channel is reported to be ready.  Any readiness
+  #     information previously recorded in the ready set is preserved; in other
+  #     words, the ready set returned by the underlying system is
+  #     bitwise-disjoined into the key's current ready set. </p></li>
   # 
-  # </ol></li>
+  #   </ol></li>
   # 
-  # If all of the keys in the key set at the start of this step have empty
-  # interest sets then neither the selected-key set nor any of the keys'
-  # ready-operation sets will be updated.
+  #   If all of the keys in the key set at the start of this step have empty
+  #   interest sets then neither the selected-key set nor any of the keys'
+  #   ready-operation sets will be updated.
   # 
-  # <li><p> If any keys were added to the cancelled-key set while step (2) was
-  # in progress then they are processed as in step (1). </p></li>
+  #   <li><p> If any keys were added to the cancelled-key set while step (2) was
+  #   in progress then they are processed as in step (1). </p></li>
   # 
   # </ol>
   # 
@@ -168,16 +168,16 @@ module Java::Nio::Channels
   # 
   # <ul>
   # 
-  # <li><p> By invoking the selector's {@link #wakeup wakeup} method,
-  # </p></li>
+  #   <li><p> By invoking the selector's {@link #wakeup wakeup} method,
+  #   </p></li>
   # 
-  # <li><p> By invoking the selector's {@link #close close} method, or
-  # </p></li>
+  #   <li><p> By invoking the selector's {@link #close close} method, or
+  #   </p></li>
   # 
-  # <li><p> By invoking the blocked thread's {@link
-  # java.lang.Thread#interrupt() interrupt} method, in which case its
-  # interrupt status will be set and the selector's {@link #wakeup wakeup}
-  # method will be invoked. </p></li>
+  #   <li><p> By invoking the blocked thread's {@link
+  #   java.lang.Thread#interrupt() interrupt} method, in which case its
+  #   interrupt status will be set and the selector's {@link #wakeup wakeup}
+  #   method will be invoked. </p></li>
   # 
   # </ul>
   # 
@@ -222,7 +222,7 @@ module Java::Nio::Channels
       # @return  A new selector
       # 
       # @throws  IOException
-      # If an I/O error occurs
+      #          If an I/O error occurs
       def open
         return SelectorProvider.provider.open_selector
       end
@@ -257,7 +257,7 @@ module Java::Nio::Channels
     # @return  This selector's key set
     # 
     # @throws  ClosedSelectorException
-    # If this selector is closed
+    #          If this selector is closed
     def keys
       raise NotImplementedError
     end
@@ -274,7 +274,7 @@ module Java::Nio::Channels
     # @return  This selector's selected-key set
     # 
     # @throws  ClosedSelectorException
-    # If this selector is closed
+    #          If this selector is closed
     def selected_keys
       raise NotImplementedError
     end
@@ -291,13 +291,13 @@ module Java::Nio::Channels
     # of the {@link #wakeup wakeup} method.  </p>
     # 
     # @return  The number of keys, possibly zero, whose ready-operation sets
-    # were updated by the selection operation
+    #          were updated by the selection operation
     # 
     # @throws  IOException
-    # If an I/O error occurs
+    #          If an I/O error occurs
     # 
     # @throws  ClosedSelectorException
-    # If this selector is closed
+    #          If this selector is closed
     def select_now
       raise NotImplementedError
     end
@@ -316,21 +316,21 @@ module Java::Nio::Channels
     # timeout as if by invoking the {@link Object#wait(long)} method. </p>
     # 
     # @param  timeout  If positive, block for up to <tt>timeout</tt>
-    # milliseconds, more or less, while waiting for a
-    # channel to become ready; if zero, block indefinitely;
-    # must not be negative
+    #                  milliseconds, more or less, while waiting for a
+    #                  channel to become ready; if zero, block indefinitely;
+    #                  must not be negative
     # 
     # @return  The number of keys, possibly zero,
-    # whose ready-operation sets were updated
+    #          whose ready-operation sets were updated
     # 
     # @throws  IOException
-    # If an I/O error occurs
+    #          If an I/O error occurs
     # 
     # @throws  ClosedSelectorException
-    # If this selector is closed
+    #          If this selector is closed
     # 
     # @throws  IllegalArgumentException
-    # If the value of the timeout argument is negative
+    #          If the value of the timeout argument is negative
     def select(timeout)
       raise NotImplementedError
     end
@@ -345,13 +345,13 @@ module Java::Nio::Channels
     # thread is interrupted, whichever comes first.  </p>
     # 
     # @return  The number of keys, possibly zero,
-    # whose ready-operation sets were updated
+    #          whose ready-operation sets were updated
     # 
     # @throws  IOException
-    # If an I/O error occurs
+    #          If an I/O error occurs
     # 
     # @throws  ClosedSelectorException
-    # If this selector is closed
+    #          If this selector is closed
     def select
       raise NotImplementedError
     end
@@ -397,7 +397,7 @@ module Java::Nio::Channels
     # {@link ClosedSelectorException} to be thrown. </p>
     # 
     # @throws  IOException
-    # If an I/O error occurs
+    #          If an I/O error occurs
     def close
       raise NotImplementedError
     end

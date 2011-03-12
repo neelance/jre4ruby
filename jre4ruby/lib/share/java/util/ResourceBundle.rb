@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996 - 1999 - All Rights Reserved
 # 
@@ -109,7 +107,7 @@ module Java::Util
   # <blockquote>
   # <pre>
   # ResourceBundle myResources =
-  # ResourceBundle.getBundle("MyResources", currentLocale);
+  #      ResourceBundle.getBundle("MyResources", currentLocale);
   # </pre>
   # </blockquote>
   # 
@@ -121,14 +119,14 @@ module Java::Util
   # <blockquote>
   # <pre>
   # public class MyResources extends ListResourceBundle {
-  # protected Object[][] getContents() {
-  # return new Object[][] {
-  # // LOCALIZE THE SECOND STRING OF EACH ARRAY (e.g., "OK")
-  # {"OkKey", "OK"},
-  # {"CancelKey", "Cancel"},
-  # // END OF MATERIAL TO LOCALIZE
-  # };
-  # }
+  #     protected Object[][] getContents() {
+  #         return new Object[][] {
+  #             // LOCALIZE THE SECOND STRING OF EACH ARRAY (e.g., "OK")
+  #             {"OkKey", "OK"},
+  #             {"CancelKey", "Cancel"},
+  #             // END OF MATERIAL TO LOCALIZE
+  #        };
+  #     }
   # }
   # </pre>
   # </blockquote>
@@ -218,34 +216,34 @@ module Java::Util
   # <pre>
   # // default (English language, United States)
   # public class MyResources extends ResourceBundle {
-  # public Object handleGetObject(String key) {
-  # if (key.equals("okKey")) return "Ok";
-  # if (key.equals("cancelKey")) return "Cancel";
-  # return null;
-  # }
+  #     public Object handleGetObject(String key) {
+  #         if (key.equals("okKey")) return "Ok";
+  #         if (key.equals("cancelKey")) return "Cancel";
+  #         return null;
+  #     }
   # 
-  # public Enumeration&lt;String&gt; getKeys() {
-  # return Collections.enumeration(keySet());
-  # }
+  #     public Enumeration&lt;String&gt; getKeys() {
+  #         return Collections.enumeration(keySet());
+  #     }
   # 
-  # // Overrides handleKeySet() so that the getKeys() implementation
-  # // can rely on the keySet() value.
-  # protected Set&lt;String&gt; handleKeySet() {
-  # return new HashSet&lt;String&gt;(Arrays.asList("okKey", "cancelKey"));
-  # }
+  #     // Overrides handleKeySet() so that the getKeys() implementation
+  #     // can rely on the keySet() value.
+  #     protected Set&lt;String&gt; handleKeySet() {
+  #         return new HashSet&lt;String&gt;(Arrays.asList("okKey", "cancelKey"));
+  #     }
   # }
   # 
   # // German language
   # public class MyResources_de extends MyResources {
-  # public Object handleGetObject(String key) {
-  # // don't need okKey, since parent level handles it.
-  # if (key.equals("cancelKey")) return "Abbrechen";
-  # return null;
-  # }
+  #     public Object handleGetObject(String key) {
+  #         // don't need okKey, since parent level handles it.
+  #         if (key.equals("cancelKey")) return "Abbrechen";
+  #         return null;
+  #     }
   # 
-  # protected Set&lt;String&gt; handleKeySet() {
-  # return new HashSet&lt;String&gt;(Arrays.asList("cancelKey"));
-  # }
+  #     protected Set&lt;String&gt; handleKeySet() {
+  #         return new HashSet&lt;String&gt;(Arrays.asList("cancelKey"));
+  #     }
   # }
   # </pre>
   # </blockquote>
@@ -698,9 +696,6 @@ module Java::Util
               return (other_entry.attr_loader_ref).nil?
             end
             loader = @loader_ref.get
-            # with a null reference we can no longer find
-            # out which class loader was referenced; so
-            # treat it as unequal
             return (!(other_entry.attr_loader_ref).nil?) && (!(loader).nil?) && ((loader).equal?(other_entry.attr_loader_ref.get))
           rescue self.class::NullPointerException => e
           rescue self.class::ClassCastException => e
@@ -869,12 +864,11 @@ module Java::Util
       # 
       # @param baseName the base name of the resource bundle, a fully qualified class name
       # @exception java.lang.NullPointerException
-      # if <code>baseName</code> is <code>null</code>
+      #     if <code>baseName</code> is <code>null</code>
       # @exception MissingResourceException
-      # if no resource bundle for the specified base name can be found
+      #     if no resource bundle for the specified base name can be found
       # @return a resource bundle for the given base name and the default locale
       def get_bundle(base_name)
-        # must determine loader here, else we break stack invariant
         return get_bundle_impl(base_name, Locale.get_default, get_loader, Control::INSTANCE)
       end
       
@@ -884,7 +878,7 @@ module Java::Util
       # is equivalent to calling
       # <pre>
       # getBundle(baseName, Locale.getDefault(),
-      # this.getClass().getClassLoader(), control),
+      #           this.getClass().getClassLoader(), control),
       # </pre>
       # except that <code>getClassLoader()</code> is run with the security
       # privileges of <code>ResourceBundle</code>.  See {@link
@@ -893,26 +887,25 @@ module Java::Util
       # <code>ResourceBundle.Control</code>.
       # 
       # @param baseName
-      # the base name of the resource bundle, a fully qualified class
-      # name
+      #        the base name of the resource bundle, a fully qualified class
+      #        name
       # @param control
-      # the control which gives information for the resource bundle
-      # loading process
+      #        the control which gives information for the resource bundle
+      #        loading process
       # @return a resource bundle for the given base name and the default
-      # locale
+      #        locale
       # @exception NullPointerException
-      # if <code>baseName</code> or <code>control</code> is
-      # <code>null</code>
+      #        if <code>baseName</code> or <code>control</code> is
+      #        <code>null</code>
       # @exception MissingResourceException
-      # if no resource bundle for the specified base name can be found
+      #        if no resource bundle for the specified base name can be found
       # @exception IllegalArgumentException
-      # if the given <code>control</code> doesn't perform properly
-      # (e.g., <code>control.getCandidateLocales</code> returns null.)
-      # Note that validation of <code>control</code> is performed as
-      # needed.
+      #        if the given <code>control</code> doesn't perform properly
+      #        (e.g., <code>control.getCandidateLocales</code> returns null.)
+      #        Note that validation of <code>control</code> is performed as
+      #        needed.
       # @since 1.6
       def get_bundle(base_name, control)
-        # must determine loader here, else we break stack invariant
         return get_bundle_impl(base_name, Locale.get_default, get_loader, control)
       end
       
@@ -928,16 +921,15 @@ module Java::Util
       # for a complete description of the search and instantiation strategy.
       # 
       # @param baseName
-      # the base name of the resource bundle, a fully qualified class name
+      #        the base name of the resource bundle, a fully qualified class name
       # @param locale
-      # the locale for which a resource bundle is desired
+      #        the locale for which a resource bundle is desired
       # @exception NullPointerException
-      # if <code>baseName</code> or <code>locale</code> is <code>null</code>
+      #        if <code>baseName</code> or <code>locale</code> is <code>null</code>
       # @exception MissingResourceException
-      # if no resource bundle for the specified base name can be found
+      #        if no resource bundle for the specified base name can be found
       # @return a resource bundle for the given base name and locale
       def get_bundle(base_name, locale)
-        # must determine loader here, else we break stack invariant
         return get_bundle_impl(base_name, locale, get_loader, Control::INSTANCE)
       end
       
@@ -947,7 +939,7 @@ module Java::Util
       # method is equivalent to calling
       # <pre>
       # getBundle(baseName, targetLocale, this.getClass().getClassLoader(),
-      # control),
+      #           control),
       # </pre>
       # except that <code>getClassLoader()</code> is run with the security
       # privileges of <code>ResourceBundle</code>.  See {@link
@@ -956,29 +948,28 @@ module Java::Util
       # <code>ResourceBundle.Control</code>.
       # 
       # @param baseName
-      # the base name of the resource bundle, a fully qualified
-      # class name
+      #        the base name of the resource bundle, a fully qualified
+      #        class name
       # @param targetLocale
-      # the locale for which a resource bundle is desired
+      #        the locale for which a resource bundle is desired
       # @param control
-      # the control which gives information for the resource
-      # bundle loading process
+      #        the control which gives information for the resource
+      #        bundle loading process
       # @return a resource bundle for the given base name and a
-      # <code>Locale</code> in <code>locales</code>
+      #        <code>Locale</code> in <code>locales</code>
       # @exception NullPointerException
-      # if <code>baseName</code>, <code>locales</code> or
-      # <code>control</code> is <code>null</code>
+      #        if <code>baseName</code>, <code>locales</code> or
+      #        <code>control</code> is <code>null</code>
       # @exception MissingResourceException
-      # if no resource bundle for the specified base name in any
-      # of the <code>locales</code> can be found.
+      #        if no resource bundle for the specified base name in any
+      #        of the <code>locales</code> can be found.
       # @exception IllegalArgumentException
-      # if the given <code>control</code> doesn't perform properly
-      # (e.g., <code>control.getCandidateLocales</code> returns null.)
-      # Note that validation of <code>control</code> is performed as
-      # needed.
+      #        if the given <code>control</code> doesn't perform properly
+      #        (e.g., <code>control.getCandidateLocales</code> returns null.)
+      #        Note that validation of <code>control</code> is performed as
+      #        needed.
       # @since 1.6
       def get_bundle(base_name, target_locale, control)
-        # must determine loader here, else we break stack invariant
         return get_bundle_impl(base_name, target_locale, get_loader, control)
       end
       
@@ -1065,13 +1056,13 @@ module Java::Util
       # <p><a name="default_behavior_example"/>
       # <strong>Example:</strong><br>The following class and property files are provided:
       # <pre>
-      # MyResources.class
-      # MyResources.properties
-      # MyResources_fr.properties
-      # MyResources_fr_CH.class
-      # MyResources_fr_CH.properties
-      # MyResources_en.properties
-      # MyResources_es_ES.class
+      #     MyResources.class
+      #     MyResources.properties
+      #     MyResources_fr.properties
+      #     MyResources_fr_CH.class
+      #     MyResources_fr_CH.properties
+      #     MyResources_en.properties
+      #     MyResources_es_ES.class
       # </pre>
       # The contents of all files are valid (that is, public non-abstract subclasses of <code>ResourceBundle</code> for
       # the ".class" files, syntactically correct ".properties" files).
@@ -1095,9 +1086,9 @@ module Java::Util
       # @param loader the class loader from which to load the resource bundle
       # @return a resource bundle for the given base name and locale
       # @exception java.lang.NullPointerException
-      # if <code>baseName</code>, <code>locale</code>, or <code>loader</code> is <code>null</code>
+      #        if <code>baseName</code>, <code>locale</code>, or <code>loader</code> is <code>null</code>
       # @exception MissingResourceException
-      # if no resource bundle for the specified base name can be found
+      #        if no resource bundle for the specified base name can be found
       # @since 1.2
       def get_bundle(base_name, locale, loader)
         if ((loader).nil?)
@@ -1155,7 +1146,7 @@ module Java::Util
       # <code>control.newBundle</code>.
       # 
       # <table style="width: 50%; text-align: left; margin-left: 40px;"
-      # border="0" cellpadding="2" cellspacing="2">
+      #  border="0" cellpadding="2" cellspacing="2">
       # <tbody><code>
       # <tr>
       # <td
@@ -1297,27 +1288,27 @@ module Java::Util
       # <code>foo/bar/Messages_fr.properties</code>.
       # 
       # @param baseName
-      # the base name of the resource bundle, a fully qualified
-      # class name
+      #        the base name of the resource bundle, a fully qualified
+      #        class name
       # @param targetLocale
-      # the locale for which a resource bundle is desired
+      #        the locale for which a resource bundle is desired
       # @param loader
-      # the class loader from which to load the resource bundle
+      #        the class loader from which to load the resource bundle
       # @param control
-      # the control which gives information for the resource
-      # bundle loading process
+      #        the control which gives information for the resource
+      #        bundle loading process
       # @return a resource bundle for the given base name and locale
       # @exception NullPointerException
-      # if <code>baseName</code>, <code>targetLocale</code>,
-      # <code>loader</code>, or <code>control</code> is
-      # <code>null</code>
+      #        if <code>baseName</code>, <code>targetLocale</code>,
+      #        <code>loader</code>, or <code>control</code> is
+      #        <code>null</code>
       # @exception MissingResourceException
-      # if no resource bundle for the specified base name can be found
+      #        if no resource bundle for the specified base name can be found
       # @exception IllegalArgumentException
-      # if the given <code>control</code> doesn't perform properly
-      # (e.g., <code>control.getCandidateLocales</code> returns null.)
-      # Note that validation of <code>control</code> is performed as
-      # needed.
+      #        if the given <code>control</code> doesn't perform properly
+      #        (e.g., <code>control.getCandidateLocales</code> returns null.)
+      #        Note that validation of <code>control</code> is performed as
+      #        needed.
       # @since 1.6
       def get_bundle(base_name, target_locale, loader, control)
         if ((loader).nil? || (control).nil?)
@@ -1626,8 +1617,6 @@ module Java::Util
         if (cause.is_a?(MissingResourceException))
           cause = nil
         end
-        # className
-        # key
         raise MissingResourceException.new("Can't find bundle for base name " + base_name + ", locale " + RJava.cast_to_string(locale), base_name + "_" + RJava.cast_to_string(locale), "", cause)
       end
       
@@ -1664,7 +1653,7 @@ module Java::Util
         # tree.
         # 
         # base <- ja (new)
-        # "   <- ja (expired) <- ja_JP <- ja_JP_JP
+        #  "   <- ja (expired) <- ja_JP <- ja_JP_JP
         # 
         # When looking up ja_JP in the cache, it finds ja_JP in the cache
         # which references to the expired ja. Then, ja_JP is marked as
@@ -1832,7 +1821,7 @@ module Java::Util
     # Returns an enumeration of the keys.
     # 
     # @return an <code>Enumeration</code> of the keys contained in
-    # this <code>ResourceBundle</code> and its parent bundles.
+    #         this <code>ResourceBundle</code> and its parent bundles.
     def get_keys
       raise NotImplementedError
     end
@@ -1842,12 +1831,12 @@ module Java::Util
     # this <code>ResourceBundle</code> or its parent bundles.
     # 
     # @param key
-    # the resource <code>key</code>
+    #        the resource <code>key</code>
     # @return <code>true</code> if the given <code>key</code> is
-    # contained in this <code>ResourceBundle</code> or its
-    # parent bundles; <code>false</code> otherwise.
+    #        contained in this <code>ResourceBundle</code> or its
+    #        parent bundles; <code>false</code> otherwise.
     # @exception NullPointerException
-    # if <code>key</code> is <code>null</code>
+    #         if <code>key</code> is <code>null</code>
     # @since 1.6
     def contains_key(key)
       if ((key).nil?)
@@ -1868,7 +1857,7 @@ module Java::Util
     # <code>ResourceBundle</code> and its parent bundles.
     # 
     # @return a <code>Set</code> of all keys contained in this
-    # <code>ResourceBundle</code> and its parent bundles.
+    #         <code>ResourceBundle</code> and its parent bundles.
     # @since 1.6
     def key_set
       keys = HashSet.new
@@ -1894,7 +1883,7 @@ module Java::Util
     # in subclass implementations for faster handling.
     # 
     # @return a <code>Set</code> of the keys contained only in this
-    # <code>ResourceBundle</code>
+    #        <code>ResourceBundle</code>
     # @since 1.6
     def handle_key_set
       if ((@key_set).nil?)
@@ -1976,8 +1965,8 @@ module Java::Util
       # import static java.util.ResourceBundle.Control.*;
       # ...
       # ResourceBundle bundle =
-      # ResourceBundle.getBundle("MyResources", new Locale("fr", "CH"),
-      # ResourceBundle.Control.getControl(FORMAT_PROPERTIES));
+      #   ResourceBundle.getBundle("MyResources", new Locale("fr", "CH"),
+      #                            ResourceBundle.Control.getControl(FORMAT_PROPERTIES));
       # </pre>
       # 
       # Given the resource bundles in the <a
@@ -1997,66 +1986,66 @@ module Java::Util
       # 
       # <pre>
       # ResourceBundle rb = ResourceBundle.getBundle("Messages",
-      # new ResourceBundle.Control() {
-      # public List&lt;String&gt; getFormats(String baseName) {
-      # if (baseName == null)
-      # throw new NullPointerException();
-      # return Arrays.asList("xml");
-      # }
-      # public ResourceBundle newBundle(String baseName,
-      # Locale locale,
-      # String format,
-      # ClassLoader loader,
-      # boolean reload)
-      # throws IllegalAccessException,
-      # InstantiationException,
-      # IOException {
-      # if (baseName == null || locale == null
-      # || format == null || loader == null)
-      # throw new NullPointerException();
-      # ResourceBundle bundle = null;
-      # if (format.equals("xml")) {
-      # String bundleName = toBundleName(baseName, locale);
-      # String resourceName = toResourceName(bundleName, format);
-      # InputStream stream = null;
-      # if (reload) {
-      # URL url = loader.getResource(resourceName);
-      # if (url != null) {
-      # URLConnection connection = url.openConnection();
-      # if (connection != null) {
-      # // Disable caches to get fresh data for
-      # // reloading.
-      # connection.setUseCaches(false);
-      # stream = connection.getInputStream();
-      # }
-      # }
-      # } else {
-      # stream = loader.getResourceAsStream(resourceName);
-      # }
-      # if (stream != null) {
-      # BufferedInputStream bis = new BufferedInputStream(stream);
-      # bundle = new XMLResourceBundle(bis);
-      # bis.close();
-      # }
-      # }
-      # return bundle;
-      # }
-      # });
+      #     new ResourceBundle.Control() {
+      #         public List&lt;String&gt; getFormats(String baseName) {
+      #             if (baseName == null)
+      #                 throw new NullPointerException();
+      #             return Arrays.asList("xml");
+      #         }
+      #         public ResourceBundle newBundle(String baseName,
+      #                                         Locale locale,
+      #                                         String format,
+      #                                         ClassLoader loader,
+      #                                         boolean reload)
+      #                          throws IllegalAccessException,
+      #                                 InstantiationException,
+      #                                 IOException {
+      #             if (baseName == null || locale == null
+      #                   || format == null || loader == null)
+      #                 throw new NullPointerException();
+      #             ResourceBundle bundle = null;
+      #             if (format.equals("xml")) {
+      #                 String bundleName = toBundleName(baseName, locale);
+      #                 String resourceName = toResourceName(bundleName, format);
+      #                 InputStream stream = null;
+      #                 if (reload) {
+      #                     URL url = loader.getResource(resourceName);
+      #                     if (url != null) {
+      #                         URLConnection connection = url.openConnection();
+      #                         if (connection != null) {
+      #                             // Disable caches to get fresh data for
+      #                             // reloading.
+      #                             connection.setUseCaches(false);
+      #                             stream = connection.getInputStream();
+      #                         }
+      #                     }
+      #                 } else {
+      #                     stream = loader.getResourceAsStream(resourceName);
+      #                 }
+      #                 if (stream != null) {
+      #                     BufferedInputStream bis = new BufferedInputStream(stream);
+      #                     bundle = new XMLResourceBundle(bis);
+      #                     bis.close();
+      #                 }
+      #             }
+      #             return bundle;
+      #         }
+      #     });
       # 
       # ...
       # 
       # private static class XMLResourceBundle extends ResourceBundle {
-      # private Properties props;
-      # XMLResourceBundle(InputStream stream) throws IOException {
-      # props = new Properties();
-      # props.loadFromXML(stream);
-      # }
-      # protected Object handleGetObject(String key) {
-      # return props.getProperty(key);
-      # }
-      # public Enumeration&lt;String&gt; getKeys() {
-      # ...
-      # }
+      #     private Properties props;
+      #     XMLResourceBundle(InputStream stream) throws IOException {
+      #         props = new Properties();
+      #         props.loadFromXML(stream);
+      #     }
+      #     protected Object handleGetObject(String key) {
+      #         return props.getProperty(key);
+      #     }
+      #     public Enumeration&lt;String&gt; getKeys() {
+      #         ...
+      #     }
       # }
       # </pre>
       # 
@@ -2129,14 +2118,14 @@ module Java::Util
           # except that this method returns a singleton.
           # 
           # @param formats
-          # the formats to be returned by the
-          # <code>ResourceBundle.Control.getFormats</code> method
+          #        the formats to be returned by the
+          #        <code>ResourceBundle.Control.getFormats</code> method
           # @return a <code>ResourceBundle.Control</code> supporting the
-          # specified <code>formats</code>
+          #        specified <code>formats</code>
           # @exception NullPointerException
-          # if <code>formats</code> is <code>null</code>
+          #        if <code>formats</code> is <code>null</code>
           # @exception IllegalArgumentException
-          # if <code>formats</code> is unknown
+          #        if <code>formats</code> is unknown
           def get_control(formats)
             if ((formats == Control::FORMAT_PROPERTIES))
               return SingleFormatControl::PROPERTIES_ONLY
@@ -2162,15 +2151,15 @@ module Java::Util
           # method are singletons and thread-safe.
           # 
           # @param formats
-          # the formats to be returned by the
-          # <code>ResourceBundle.Control.getFormats</code> method
+          #        the formats to be returned by the
+          #        <code>ResourceBundle.Control.getFormats</code> method
           # @return a <code>ResourceBundle.Control</code> supporting the
-          # specified <code>formats</code> with no fallback
-          # <code>Locale</code> support
+          #        specified <code>formats</code> with no fallback
+          #        <code>Locale</code> support
           # @exception NullPointerException
-          # if <code>formats</code> is <code>null</code>
+          #        if <code>formats</code> is <code>null</code>
           # @exception IllegalArgumentException
-          # if <code>formats</code> is unknown
+          #        if <code>formats</code> is unknown
           def get_no_fallback_control(formats)
             if ((formats == Control::FORMAT_DEFAULT))
               return NoFallbackControl::NO_FALLBACK
@@ -2209,12 +2198,12 @@ module Java::Util
         # properties-based ones.
         # 
         # @param baseName
-        # the base name of the resource bundle, a fully qualified class
-        # name
+        #        the base name of the resource bundle, a fully qualified class
+        #        name
         # @return a <code>List</code> of <code>String</code>s containing
-        # formats for loading resource bundles.
+        #        formats for loading resource bundles.
         # @exception NullPointerException
-        # if <code>baseName</code> is null
+        #        if <code>baseName</code> is null
         # @see #FORMAT_DEFAULT
         # @see #FORMAT_CLASS
         # @see #FORMAT_PROPERTIES
@@ -2254,10 +2243,10 @@ module Java::Util
         # <p>The default implementation returns a <code>List</code> containing
         # <code>Locale</code>s in the following sequence:
         # <pre>
-        # Locale(language, country, variant)
-        # Locale(language, country)
-        # Locale(language)
-        # Locale.ROOT
+        #     Locale(language, country, variant)
+        #     Locale(language, country)
+        #     Locale(language)
+        #     Locale.ROOT
         # </pre>
         # where <code>language</code>, <code>country</code> and
         # <code>variant</code> are the language, country and variant values
@@ -2274,27 +2263,27 @@ module Java::Util
         # <code>Locale("ja",&nbsp;"",&nbsp;"XX")</code>, then a
         # <code>List</code> of <code>Locale</code>s:
         # <pre>
-        # Locale("ja", "", "XX")
-        # Locale("ja")
-        # Locale.ROOT
+        #     Locale("ja", "", "XX")
+        #     Locale("ja")
+        #     Locale.ROOT
         # </pre>
         # is returned. And if the resource bundles for the "ja" and
         # "" <code>Locale</code>s are found, then the runtime resource
         # lookup path (parent chain) is:
         # <pre>
-        # Messages_ja -> Messages
+        #     Messages_ja -> Messages
         # </pre>
         # 
         # @param baseName
-        # the base name of the resource bundle, a fully
-        # qualified class name
+        #        the base name of the resource bundle, a fully
+        #        qualified class name
         # @param locale
-        # the locale for which a resource bundle is desired
+        #        the locale for which a resource bundle is desired
         # @return a <code>List</code> of candidate
-        # <code>Locale</code>s for the given <code>locale</code>
+        #        <code>Locale</code>s for the given <code>locale</code>
         # @exception NullPointerException
-        # if <code>baseName</code> or <code>locale</code> is
-        # <code>null</code>
+        #        if <code>baseName</code> or <code>locale</code> is
+        #        <code>null</code>
         def get_candidate_locales(base_name, locale)
           if ((base_name).nil?)
             raise self.class::NullPointerException.new
@@ -2335,22 +2324,22 @@ module Java::Util
         # <code>null</code> is returned.
         # 
         # @param baseName
-        # the base name of the resource bundle, a fully
-        # qualified class name for which
-        # <code>ResourceBundle.getBundle</code> has been
-        # unable to find any resource bundles (except for the
-        # base bundle)
+        #        the base name of the resource bundle, a fully
+        #        qualified class name for which
+        #        <code>ResourceBundle.getBundle</code> has been
+        #        unable to find any resource bundles (except for the
+        #        base bundle)
         # @param locale
-        # the <code>Locale</code> for which
-        # <code>ResourceBundle.getBundle</code> has been
-        # unable to find any resource bundles (except for the
-        # base bundle)
+        #        the <code>Locale</code> for which
+        #        <code>ResourceBundle.getBundle</code> has been
+        #        unable to find any resource bundles (except for the
+        #        base bundle)
         # @return a <code>Locale</code> for the fallback search,
-        # or <code>null</code> if no further fallback search
-        # is desired.
+        #        or <code>null</code> if no further fallback search
+        #        is desired.
         # @exception NullPointerException
-        # if <code>baseName</code> or <code>locale</code>
-        # is <code>null</code>
+        #        if <code>baseName</code> or <code>locale</code>
+        #        is <code>null</code>
         def get_fallback_locale(base_name, locale)
           if ((base_name).nil?)
             raise self.class::NullPointerException.new
@@ -2414,46 +2403,46 @@ module Java::Util
         # </ul>
         # 
         # @param baseName
-        # the base bundle name of the resource bundle, a fully
-        # qualified class name
+        #        the base bundle name of the resource bundle, a fully
+        #        qualified class name
         # @param locale
-        # the locale for which the resource bundle should be
-        # instantiated
+        #        the locale for which the resource bundle should be
+        #        instantiated
         # @param format
-        # the resource bundle format to be loaded
+        #        the resource bundle format to be loaded
         # @param loader
-        # the <code>ClassLoader</code> to use to load the bundle
+        #        the <code>ClassLoader</code> to use to load the bundle
         # @param reload
-        # the flag to indicate bundle reloading; <code>true</code>
-        # if reloading an expired resource bundle,
-        # <code>false</code> otherwise
+        #        the flag to indicate bundle reloading; <code>true</code>
+        #        if reloading an expired resource bundle,
+        #        <code>false</code> otherwise
         # @return the resource bundle instance,
-        # or <code>null</code> if none could be found.
+        #        or <code>null</code> if none could be found.
         # @exception NullPointerException
-        # if <code>bundleName</code>, <code>locale</code>,
-        # <code>format</code>, or <code>loader</code> is
-        # <code>null</code>, or if <code>null</code> is returned by
-        # {@link #toBundleName(String, Locale) toBundleName}
+        #        if <code>bundleName</code>, <code>locale</code>,
+        #        <code>format</code>, or <code>loader</code> is
+        #        <code>null</code>, or if <code>null</code> is returned by
+        #        {@link #toBundleName(String, Locale) toBundleName}
         # @exception IllegalArgumentException
-        # if <code>format</code> is unknown, or if the resource
-        # found for the given parameters contains malformed data.
+        #        if <code>format</code> is unknown, or if the resource
+        #        found for the given parameters contains malformed data.
         # @exception ClassCastException
-        # if the loaded class cannot be cast to <code>ResourceBundle</code>
+        #        if the loaded class cannot be cast to <code>ResourceBundle</code>
         # @exception IllegalAccessException
-        # if the class or its nullary constructor is not
-        # accessible.
+        #        if the class or its nullary constructor is not
+        #        accessible.
         # @exception InstantiationException
-        # if the instantiation of a class fails for some other
-        # reason.
+        #        if the instantiation of a class fails for some other
+        #        reason.
         # @exception ExceptionInInitializerError
-        # if the initialization provoked by this method fails.
+        #        if the initialization provoked by this method fails.
         # @exception SecurityException
-        # If a security manager is present and creation of new
-        # instances is denied. See {@link Class#newInstance()}
-        # for details.
+        #        If a security manager is present and creation of new
+        #        instances is denied. See {@link Class#newInstance()}
+        #        for details.
         # @exception IOException
-        # if an error occurred when reading resources using
-        # any I/O operations
+        #        if an error occurred when reading resources using
+        #        any I/O operations
         def new_bundle(base_name, locale, format, loader, reload)
           bundle_name = to_bundle_name(base_name, locale)
           bundle = nil
@@ -2558,19 +2547,19 @@ module Java::Util
         # <p>The default implementation returns {@link #TTL_NO_EXPIRATION_CONTROL}.
         # 
         # @param baseName
-        # the base name of the resource bundle for which the
-        # expiration value is specified.
+        #        the base name of the resource bundle for which the
+        #        expiration value is specified.
         # @param locale
-        # the locale of the resource bundle for which the
-        # expiration value is specified.
+        #        the locale of the resource bundle for which the
+        #        expiration value is specified.
         # @return the time (0 or a positive millisecond offset from the
-        # cached time) to get loaded bundles expired in the cache,
-        # {@link #TTL_NO_EXPIRATION_CONTROL} to disable the
-        # expiration control, or {@link #TTL_DONT_CACHE} to disable
-        # caching.
+        #        cached time) to get loaded bundles expired in the cache,
+        #        {@link #TTL_NO_EXPIRATION_CONTROL} to disable the
+        #        expiration control, or {@link #TTL_DONT_CACHE} to disable
+        #        caching.
         # @exception NullPointerException
-        # if <code>baseName</code> or <code>locale</code> is
-        # <code>null</code>
+        #        if <code>baseName</code> or <code>locale</code> is
+        #        <code>null</code>
         def get_time_to_live(base_name, locale)
           if ((base_name).nil? || (locale).nil?)
             raise self.class::NullPointerException.new
@@ -2604,27 +2593,27 @@ module Java::Util
         # <code>"java.properties"</code>.
         # 
         # @param baseName
-        # the base bundle name of the resource bundle, a
-        # fully qualified class name
+        #        the base bundle name of the resource bundle, a
+        #        fully qualified class name
         # @param locale
-        # the locale for which the resource bundle
-        # should be instantiated
+        #        the locale for which the resource bundle
+        #        should be instantiated
         # @param format
-        # the resource bundle format to be loaded
+        #        the resource bundle format to be loaded
         # @param loader
-        # the <code>ClassLoader</code> to use to load the bundle
+        #        the <code>ClassLoader</code> to use to load the bundle
         # @param bundle
-        # the resource bundle instance that has been expired
-        # in the cache
+        #        the resource bundle instance that has been expired
+        #        in the cache
         # @param loadTime
-        # the time when <code>bundle</code> was loaded and put
-        # in the cache
+        #        the time when <code>bundle</code> was loaded and put
+        #        in the cache
         # @return <code>true</code> if the expired bundle needs to be
-        # reloaded; <code>false</code> otherwise.
+        #        reloaded; <code>false</code> otherwise.
         # @exception NullPointerException
-        # if <code>baseName</code>, <code>locale</code>,
-        # <code>format</code>, <code>loader</code>, or
-        # <code>bundle</code> is <code>null</code>
+        #        if <code>baseName</code>, <code>locale</code>,
+        #        <code>format</code>, <code>loader</code>, or
+        #        <code>bundle</code> is <code>null</code>
         def needs_reload(base_name, locale, format, loader, bundle, load_time)
           if ((bundle).nil?)
             raise self.class::NullPointerException.new
@@ -2674,7 +2663,7 @@ module Java::Util
         # 
         # <p>This implementation returns the following value:
         # <pre>
-        # baseName + "_" + language + "_" + country + "_" + variant
+        #     baseName + "_" + language + "_" + country + "_" + variant
         # </pre>
         # where <code>language</code>, <code>country</code> and
         # <code>variant</code> are the language, country and variant values
@@ -2695,15 +2684,15 @@ module Java::Util
         # resources.
         # 
         # @param baseName
-        # the base name of the resource bundle, a fully
-        # qualified class name
+        #        the base name of the resource bundle, a fully
+        #        qualified class name
         # @param locale
-        # the locale for which a resource bundle should be
-        # loaded
+        #        the locale for which a resource bundle should be
+        #        loaded
         # @return the bundle name for the resource bundle
         # @exception NullPointerException
-        # if <code>baseName</code> or <code>locale</code>
-        # is <code>null</code>
+        #        if <code>baseName</code> or <code>locale</code>
+        #        is <code>null</code>
         def to_bundle_name(base_name, locale)
           if ((locale).equal?(Locale::ROOT))
             return base_name
@@ -2740,13 +2729,13 @@ module Java::Util
         # <code>"foo/bar/MyResources_ja_JP.properties"</code> is returned.
         # 
         # @param bundleName
-        # the bundle name
+        #        the bundle name
         # @param suffix
-        # the file type suffix
+        #        the file type suffix
         # @return the converted resource name
         # @exception NullPointerException
-        # if <code>bundleName</code> or <code>suffix</code>
-        # is <code>null</code>
+        #         if <code>bundleName</code> or <code>suffix</code>
+        #         is <code>null</code>
         def to_resource_name(bundle_name, suffix)
           sb = self.class::StringBuilder.new(bundle_name.length + 1 + suffix.length)
           sb.append(bundle_name.replace(Character.new(?..ord), Character.new(?/.ord))).append(Character.new(?..ord)).append(suffix)

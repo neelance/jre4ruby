@@ -157,7 +157,7 @@ module Java::Lang
     # @param   command  The list containing the program and its arguments
     # 
     # @throws  NullPointerException
-    # If the argument is <code>null</code>
+    #          If the argument is <code>null</code>
     def initialize(command)
       @command = nil
       @directory = nil
@@ -202,7 +202,7 @@ module Java::Lang
     # @return  This process builder
     # 
     # @throws  NullPointerException
-    # If the argument is <code>null</code>
+    #          If the argument is <code>null</code>
     def command(command)
       if ((command).nil?)
         raise NullPointerException.new
@@ -307,9 +307,9 @@ module Java::Lang
     # @return  This process builder's environment
     # 
     # @throws  SecurityException
-    # If a security manager exists and its
-    # {@link SecurityManager#checkPermission checkPermission}
-    # method doesn't allow access to the process environment
+    #          If a security manager exists and its
+    #          {@link SecurityManager#checkPermission checkPermission}
+    #          method doesn't allow access to the process environment
     # 
     # @see     Runtime#exec(String[],String[],java.io.File)
     # @see     System#getenv()
@@ -338,8 +338,8 @@ module Java::Lang
           # We would like to throw an exception, but do not,
           # for compatibility with old broken code.
           # Silently discard any trailing junk.
-          if (!(envstring.index_of(RJava.cast_to_int(Character.new(0x0000)))).equal?(-1))
-            envstring = RJava.cast_to_string(envstring.replace_first(("".to_u << 0x0000 << ".*"), ""))
+          if (!(envstring.index_of((Character.new(0x0000)).to_int)).equal?(-1))
+            envstring = envstring.replace_first(("".to_u << 0x0000 << ".*"), "")
           end
           eqlsign = envstring.index_of(Character.new(?=.ord), ProcessEnvironment::MIN_NAME_LENGTH)
           # Silently ignore envstrings lacking the required `='.
@@ -455,18 +455,18 @@ module Java::Lang
     # @return  A new {@link Process} object for managing the subprocess
     # 
     # @throws  NullPointerException
-    # If an element of the command list is null
+    #          If an element of the command list is null
     # 
     # @throws  IndexOutOfBoundsException
-    # If the command is an empty list (has size <code>0</code>)
+    #          If the command is an empty list (has size <code>0</code>)
     # 
     # @throws  SecurityException
-    # If a security manager exists and its
-    # {@link SecurityManager#checkExec checkExec}
-    # method doesn't allow creation of the subprocess
+    #          If a security manager exists and its
+    #          {@link SecurityManager#checkExec checkExec}
+    #          method doesn't allow creation of the subprocess
     # 
     # @throws  IOException
-    # If an I/O error occurs
+    #          If an I/O error occurs
     # 
     # @see     Runtime#exec(String[], String[], java.io.File)
     # @see     SecurityManager#checkExec(String)

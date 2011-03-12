@@ -35,19 +35,19 @@ module Java::Security
     }
   end
   
-  # This class defines the <i>Service Provider Interface</i> (<b>SPI</b>)
-  # for the <code>Signature</code> class, which is used to provide the
-  # functionality of a digital signature algorithm. Digital signatures are used
-  # for authentication and integrity assurance of digital data.
+  #  This class defines the <i>Service Provider Interface</i> (<b>SPI</b>)
+  #  for the <code>Signature</code> class, which is used to provide the
+  #  functionality of a digital signature algorithm. Digital signatures are used
+  #  for authentication and integrity assurance of digital data.
   # .
-  # <p> All the abstract methods in this class must be implemented by each
-  # cryptographic service provider who wishes to supply the implementation
-  # of a particular signature algorithm.
+  #  <p> All the abstract methods in this class must be implemented by each
+  #  cryptographic service provider who wishes to supply the implementation
+  #  of a particular signature algorithm.
   # 
-  # @author Benjamin Renaud
+  #  @author Benjamin Renaud
   # 
   # 
-  # @see Signature
+  #  @see Signature
   class SignatureSpi 
     include_class_members SignatureSpiImports
     

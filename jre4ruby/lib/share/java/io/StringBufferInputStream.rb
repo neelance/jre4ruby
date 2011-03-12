@@ -43,8 +43,8 @@ module Java::Io
   # @see        java.io.StringReader
   # @since      JDK1.0
   # @deprecated This class does not properly convert characters into bytes.  As
-  # of JDK&nbsp;1.1, the preferred way to create a stream from a
-  # string is via the <code>StringReader</code> class.
+  #             of JDK&nbsp;1.1, the preferred way to create a stream from a
+  #             string is via the <code>StringReader</code> class.
   class StringBufferInputStream < StringBufferInputStreamImports.const_get :InputStream
     include_class_members StringBufferInputStreamImports
     
@@ -98,7 +98,7 @@ module Java::Io
     # low eight bits of the next character in this input stream's buffer.
     # 
     # @return     the next byte of data, or <code>-1</code> if the end of the
-    # stream is reached.
+    #             stream is reached.
     def read
       synchronized(self) do
         return (@pos < @count) ? (@buffer.char_at(((@pos += 1) - 1)) & 0xff) : -1
@@ -118,8 +118,8 @@ module Java::Io
     # @param      off   the start offset of the data.
     # @param      len   the maximum number of bytes read.
     # @return     the total number of bytes read into the buffer, or
-    # <code>-1</code> if there is no more data because the end of
-    # the stream has been reached.
+    #             <code>-1</code> if there is no more data because the end of
+    #             the stream has been reached.
     def read(b, off, len)
       synchronized(self) do
         if ((b).nil?)
@@ -171,7 +171,7 @@ module Java::Io
     # stream without blocking.
     # 
     # @return     the value of <code>count&nbsp;-&nbsp;pos</code>, which is the
-    # number of bytes remaining to be read from the input buffer.
+    #             number of bytes remaining to be read from the input buffer.
     def available
       synchronized(self) do
         return @count - @pos

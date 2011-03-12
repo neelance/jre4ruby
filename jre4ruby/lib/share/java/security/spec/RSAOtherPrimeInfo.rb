@@ -37,10 +37,10 @@ module Java::Security::Spec
   # 
   # <pre>
   # OtherPrimeInfo ::= SEQUENCE {
-  # prime INTEGER,
-  # exponent INTEGER,
-  # coefficient INTEGER
-  # }
+  #   prime INTEGER,
+  #   exponent INTEGER,
+  #   coefficient INTEGER
+  #   }
   # 
   # </pre>
   # 

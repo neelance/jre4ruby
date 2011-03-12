@@ -1,48 +1,46 @@
 require "rjava"
-
-# Portions Copyright 2003-2005 Sun Microsystems, Inc.  All Rights Reserved.
-# 
+ # * Portions Copyright 2003-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # Copyright  (c) 2002 Graz University of Technology. All rights reserved.
 # 
 # Redistribution and use in  source and binary forms, with or without
 # modification, are permitted  provided that the following conditions are met:
 # 
 # 1. Redistributions of  source code must retain the above copyright notice,
-# this list of conditions and the following disclaimer.
+#    this list of conditions and the following disclaimer.
 # 
 # 2. Redistributions in  binary form must reproduce the above copyright notice,
-# this list of conditions and the following disclaimer in the documentation
-# and/or other materials provided with the distribution.
+#    this list of conditions and the following disclaimer in the documentation
+#    and/or other materials provided with the distribution.
 # 
 # 3. The end-user documentation included with the redistribution, if any, must
-# include the following acknowledgment:
+#    include the following acknowledgment:
 # 
-# "This product includes software developed by IAIK of Graz University of
-# Technology."
+#    "This product includes software developed by IAIK of Graz University of
+#     Technology."
 # 
-# Alternately, this acknowledgment may appear in the software itself, if
-# and wherever such third-party acknowledgments normally appear.
+#    Alternately, this acknowledgment may appear in the software itself, if
+#    and wherever such third-party acknowledgments normally appear.
 # 
 # 4. The names "Graz University of Technology" and "IAIK of Graz University of
-# Technology" must not be used to endorse or promote products derived from
-# this software without prior written permission.
+#    Technology" must not be used to endorse or promote products derived from
+#    this software without prior written permission.
 # 
 # 5. Products derived from this software may not be called
-# "IAIK PKCS Wrapper", nor may "IAIK" appear in their name, without prior
-# written permission of Graz University of Technology.
+#    "IAIK PKCS Wrapper", nor may "IAIK" appear in their name, without prior
+#    written permission of Graz University of Technology.
 # 
-# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED
-# WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
-# PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE LICENSOR BE
-# LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
-# OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
-# PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
-# OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
-# ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-# OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
-# OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-# POSSIBILITY  OF SUCH DAMAGE.
+#  THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED
+#  WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+#  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+#  PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE LICENSOR BE
+#  LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
+#  OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+#  PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
+#  OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+#  ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+#  OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+#  OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+#  POSSIBILITY  OF SUCH DAMAGE.
 module Sun::Security::Pkcs11::Wrapper
   module PKCS11Imports #:nodoc:
     class_module.module_eval {
@@ -137,7 +135,6 @@ module Sun::Security::Pkcs11::Wrapper
       JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_finalizeLibrary, [:pointer, :long], :void
       typesig { [] }
       # XXX
-      # 
       # This method does the finalization of the native library. It is called
       # exactly once for this class. The library uses this method for a clean-up
       # of any resources.
@@ -229,16 +226,13 @@ module Sun::Security::Pkcs11::Wrapper
     JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1Initialize, [:pointer, :long, :long], :void
     typesig { [Object] }
     # Implementation of PKCS11 methods delegated to native pkcs11wrapper library
-    # *****************************************************************************
     # General-purpose
-    # 
-    # 
     # C_Initialize initializes the Cryptoki library.
     # (General-purpose)
     # 
     # @param pInitArgs if pInitArgs is not NULL it gets casted to
-    # CK_C_INITIALIZE_ARGS_PTR and dereferenced
-    # (PKCS#11 param: CK_VOID_PTR pInitArgs)
+    #         CK_C_INITIALIZE_ARGS_PTR and dereferenced
+    #         (PKCS#11 param: CK_VOID_PTR pInitArgs)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions
     # @postconditions
@@ -253,7 +247,7 @@ module Sun::Security::Pkcs11::Wrapper
     # (General-purpose)
     # 
     # @param pReserved is reserved. Should be NULL_PTR
-    # (PKCS#11 param: CK_VOID_PTR pReserved)
+    #         (PKCS#11 param: CK_VOID_PTR pReserved)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions (pReserved == null)
     # @postconditions
@@ -267,7 +261,7 @@ module Sun::Security::Pkcs11::Wrapper
     # (General-purpose)
     # 
     # @return the information.
-    # (PKCS#11 param: CK_INFO_PTR pInfo)
+    #         (PKCS#11 param: CK_INFO_PTR pInfo)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions
     # @postconditions (result <> null)
@@ -277,17 +271,14 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1GetSlotList, [:pointer, :long, :int8], :long
     typesig { [::Java::Boolean] }
-    # *****************************************************************************
     # Slot and token management
-    # 
-    # 
     # C_GetSlotList obtains a list of slots in the system.
     # (Slot and token management)
     # 
     # @param tokenPresent if true only Slot IDs with a token are returned
-    # (PKCS#11 param: CK_BBOOL tokenPresent)
+    #         (PKCS#11 param: CK_BBOOL tokenPresent)
     # @return a long array of slot IDs and number of Slot IDs
-    # (PKCS#11 param: CK_SLOT_ID_PTR pSlotList, CK_ULONG_PTR pulCount)
+    #         (PKCS#11 param: CK_SLOT_ID_PTR pSlotList, CK_ULONG_PTR pulCount)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions
     # @postconditions (result <> null)
@@ -302,9 +293,9 @@ module Sun::Security::Pkcs11::Wrapper
     # (Slot and token management)
     # 
     # @param slotID the ID of the slot
-    # (PKCS#11 param: CK_SLOT_ID slotID)
+    #         (PKCS#11 param: CK_SLOT_ID slotID)
     # @return the slot information
-    # (PKCS#11 param: CK_SLOT_INFO_PTR pInfo)
+    #         (PKCS#11 param: CK_SLOT_INFO_PTR pInfo)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions
     # @postconditions (result <> null)
@@ -319,9 +310,9 @@ module Sun::Security::Pkcs11::Wrapper
     # (Slot and token management)
     # 
     # @param slotID ID of the token's slot
-    # (PKCS#11 param: CK_SLOT_ID slotID)
+    #         (PKCS#11 param: CK_SLOT_ID slotID)
     # @return the token information
-    # (PKCS#11 param: CK_TOKEN_INFO_PTR pInfo)
+    #         (PKCS#11 param: CK_TOKEN_INFO_PTR pInfo)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions
     # @postconditions (result <> null)
@@ -336,10 +327,10 @@ module Sun::Security::Pkcs11::Wrapper
     # (Slot and token management)
     # 
     # @param slotID ID of the token's slot
-    # (PKCS#11 param: CK_SLOT_ID slotID)
+    #         (PKCS#11 param: CK_SLOT_ID slotID)
     # @return a long array of mechanism types and number of mechanism types
-    # (PKCS#11 param: CK_MECHANISM_TYPE_PTR pMechanismList,
-    # CK_ULONG_PTR pulCount)
+    #         (PKCS#11 param: CK_MECHANISM_TYPE_PTR pMechanismList,
+    #                         CK_ULONG_PTR pulCount)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions
     # @postconditions (result <> null)
@@ -354,11 +345,11 @@ module Sun::Security::Pkcs11::Wrapper
     # (Slot and token management)
     # 
     # @param slotID ID of the token's slot
-    # (PKCS#11 param: CK_SLOT_ID slotID)
+    #         (PKCS#11 param: CK_SLOT_ID slotID)
     # @param type type of mechanism
-    # (PKCS#11 param: CK_MECHANISM_TYPE type)
+    #         (PKCS#11 param: CK_MECHANISM_TYPE type)
     # @return the mechanism info
-    # (PKCS#11 param: CK_MECHANISM_INFO_PTR pInfo)
+    #         (PKCS#11 param: CK_MECHANISM_INFO_PTR pInfo)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions
     # @postconditions (result <> null)
@@ -372,62 +363,54 @@ module Sun::Security::Pkcs11::Wrapper
     # (Slot and token management)
     # 
     # @param slotID ID of the token's slot
-    # (PKCS#11 param: CK_SLOT_ID slotID)
+    #         (PKCS#11 param: CK_SLOT_ID slotID)
     # @param pPin the SO's initial PIN and the length in bytes of the PIN
-    # (PKCS#11 param: CK_CHAR_PTR pPin, CK_ULONG ulPinLen)
+    #         (PKCS#11 param: CK_CHAR_PTR pPin, CK_ULONG ulPinLen)
     # @param pLabel 32-byte token label (blank padded)
-    # (PKCS#11 param: CK_UTF8CHAR_PTR pLabel)
+    #         (PKCS#11 param: CK_UTF8CHAR_PTR pLabel)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions
     # @postconditions
-    # 
-    # public native void C_InitToken(long slotID, char[] pPin, char[] pLabel) throws PKCS11Exception;
-    # 
+    #    public native void C_InitToken(long slotID, char[] pPin, char[] pLabel) throws PKCS11Exception;
     # C_InitPIN initializes the normal user's PIN.
     # (Slot and token management)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @param pPin the normal user's PIN and the length in bytes of the PIN
-    # (PKCS#11 param: CK_CHAR_PTR pPin, CK_ULONG ulPinLen)
+    #         (PKCS#11 param: CK_CHAR_PTR pPin, CK_ULONG ulPinLen)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions
     # @postconditions
-    # 
-    # public native void C_InitPIN(long hSession, char[] pPin) throws PKCS11Exception;
-    # 
+    #    public native void C_InitPIN(long hSession, char[] pPin) throws PKCS11Exception;
     # C_SetPIN modifies the PIN of the user who is logged in.
     # (Slot and token management)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @param pOldPin the old PIN and the length of the old PIN
-    # (PKCS#11 param: CK_CHAR_PTR pOldPin, CK_ULONG ulOldLen)
+    #         (PKCS#11 param: CK_CHAR_PTR pOldPin, CK_ULONG ulOldLen)
     # @param pNewPin the new PIN and the length of the new PIN
-    # (PKCS#11 param: CK_CHAR_PTR pNewPin, CK_ULONG ulNewLen)
+    #         (PKCS#11 param: CK_CHAR_PTR pNewPin, CK_ULONG ulNewLen)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions
     # @postconditions
-    # 
-    # public native void C_SetPIN(long hSession, char[] pOldPin, char[] pNewPin) throws PKCS11Exception;
-    # *****************************************************************************
+    #    public native void C_SetPIN(long hSession, char[] pOldPin, char[] pNewPin) throws PKCS11Exception;
     # Session management
-    # 
-    # 
     # C_OpenSession opens a session between an application and a
     # token.
     # (Session management)
     # 
     # @param slotID the slot's ID
-    # (PKCS#11 param: CK_SLOT_ID slotID)
+    #         (PKCS#11 param: CK_SLOT_ID slotID)
     # @param flags of CK_SESSION_INFO
-    # (PKCS#11 param: CK_FLAGS flags)
+    #         (PKCS#11 param: CK_FLAGS flags)
     # @param pApplication passed to callback
-    # (PKCS#11 param: CK_VOID_PTR pApplication)
+    #         (PKCS#11 param: CK_VOID_PTR pApplication)
     # @param Notify the callback function
-    # (PKCS#11 param: CK_NOTIFY Notify)
+    #         (PKCS#11 param: CK_NOTIFY Notify)
     # @return the session handle
-    # (PKCS#11 param: CK_SESSION_HANDLE_PTR phSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE_PTR phSession)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions
     # @postconditions
@@ -442,7 +425,7 @@ module Sun::Security::Pkcs11::Wrapper
     # (Session management)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions
     # @postconditions
@@ -456,20 +439,18 @@ module Sun::Security::Pkcs11::Wrapper
     # (Session management)
     # 
     # @param slotID the ID of the token's slot
-    # (PKCS#11 param: CK_SLOT_ID slotID)
+    #         (PKCS#11 param: CK_SLOT_ID slotID)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions
     # @postconditions
-    # 
-    # public native void C_CloseAllSessions(long slotID) throws PKCS11Exception;
-    # 
+    #    public native void C_CloseAllSessions(long slotID) throws PKCS11Exception;
     # C_GetSessionInfo obtains information about the session.
     # (Session management)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @return the session info
-    # (PKCS#11 param: CK_SESSION_INFO_PTR pInfo)
+    #         (PKCS#11 param: CK_SESSION_INFO_PTR pInfo)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions
     # @postconditions (result <> null)
@@ -484,44 +465,40 @@ module Sun::Security::Pkcs11::Wrapper
     # (Session management)
     # 
     # @param hSession session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @return the state and the state length
-    # (PKCS#11 param: CK_BYTE_PTR pOperationState,
-    # CK_ULONG_PTR pulOperationStateLen)
+    #         (PKCS#11 param: CK_BYTE_PTR pOperationState,
+    #                         CK_ULONG_PTR pulOperationStateLen)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions
     # @postconditions (result <> null)
-    # 
-    # public native byte[] C_GetOperationState(long hSession) throws PKCS11Exception;
-    # 
+    #    public native byte[] C_GetOperationState(long hSession) throws PKCS11Exception;
     # C_SetOperationState restores the state of the cryptographic
     # operation in a session.
     # (Session management)
     # 
     # @param hSession session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @param pOperationState the state and the state length
-    # (PKCS#11 param: CK_BYTE_PTR pOperationState,
-    # CK_ULONG ulOperationStateLen)
+    #         (PKCS#11 param: CK_BYTE_PTR pOperationState,
+    #                         CK_ULONG ulOperationStateLen)
     # @param hEncryptionKey en/decryption key
-    # (PKCS#11 param: CK_OBJECT_HANDLE hEncryptionKey)
+    #         (PKCS#11 param: CK_OBJECT_HANDLE hEncryptionKey)
     # @param hAuthenticationKey sign/verify key
-    # (PKCS#11 param: CK_OBJECT_HANDLE hAuthenticationKey)
+    #         (PKCS#11 param: CK_OBJECT_HANDLE hAuthenticationKey)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions
     # @postconditions
-    # 
-    # public native void C_SetOperationState(long hSession, byte[] pOperationState, long hEncryptionKey, long hAuthenticationKey) throws PKCS11Exception;
-    # 
+    #    public native void C_SetOperationState(long hSession, byte[] pOperationState, long hEncryptionKey, long hAuthenticationKey) throws PKCS11Exception;
     # C_Login logs a user into a token.
     # (Session management)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @param userType the user type
-    # (PKCS#11 param: CK_USER_TYPE userType)
+    #         (PKCS#11 param: CK_USER_TYPE userType)
     # @param pPin the user's PIN and the length of the PIN
-    # (PKCS#11 param: CK_CHAR_PTR pPin, CK_ULONG ulPinLen)
+    #         (PKCS#11 param: CK_CHAR_PTR pPin, CK_ULONG ulPinLen)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions
     # @postconditions
@@ -535,7 +512,7 @@ module Sun::Security::Pkcs11::Wrapper
     # (Session management)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions
     # @postconditions
@@ -545,20 +522,17 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1CreateObject, [:pointer, :long, :int64, :long], :int64
     typesig { [::Java::Long, Array.typed(CK_ATTRIBUTE)] }
-    # *****************************************************************************
     # Object management
-    # 
-    # 
     # C_CreateObject creates a new object.
     # (Object management)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @param pTemplate the object's template and number of attributes in
-    # template
-    # (PKCS#11 param: CK_ATTRIBUTE_PTR pTemplate, CK_ULONG ulCount)
+    #         template
+    #         (PKCS#11 param: CK_ATTRIBUTE_PTR pTemplate, CK_ULONG ulCount)
     # @return the object's handle
-    # (PKCS#11 param: CK_OBJECT_HANDLE_PTR phObject)
+    #         (PKCS#11 param: CK_OBJECT_HANDLE_PTR phObject)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions
     # @postconditions
@@ -573,14 +547,14 @@ module Sun::Security::Pkcs11::Wrapper
     # (Object management)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @param hObject the object's handle
-    # (PKCS#11 param: CK_OBJECT_HANDLE hObject)
+    #         (PKCS#11 param: CK_OBJECT_HANDLE hObject)
     # @param pTemplate the template for the new object and number of attributes
-    # in template
-    # (PKCS#11 param: CK_ATTRIBUTE_PTR pTemplate, CK_ULONG ulCount)
+    #         in template
+    #         (PKCS#11 param: CK_ATTRIBUTE_PTR pTemplate, CK_ULONG ulCount)
     # @return the handle of the copy
-    # (PKCS#11 param: CK_OBJECT_HANDLE_PTR phNewObject)
+    #         (PKCS#11 param: CK_OBJECT_HANDLE_PTR phNewObject)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions
     # @postconditions
@@ -594,9 +568,9 @@ module Sun::Security::Pkcs11::Wrapper
     # (Object management)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @param hObject the object's handle
-    # (PKCS#11 param: CK_OBJECT_HANDLE hObject)
+    #         (PKCS#11 param: CK_OBJECT_HANDLE hObject)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions
     # @postconditions
@@ -610,29 +584,27 @@ module Sun::Security::Pkcs11::Wrapper
     # (Object management)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @param hObject the object's handle
-    # (PKCS#11 param: CK_OBJECT_HANDLE hObject)
+    #         (PKCS#11 param: CK_OBJECT_HANDLE hObject)
     # @return the size of the object
-    # (PKCS#11 param: CK_ULONG_PTR pulSize)
+    #         (PKCS#11 param: CK_ULONG_PTR pulSize)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions
     # @postconditions
-    # 
-    # public native long C_GetObjectSize(long hSession, long hObject) throws PKCS11Exception;
-    # 
+    #    public native long C_GetObjectSize(long hSession, long hObject) throws PKCS11Exception;
     # C_GetAttributeValue obtains the value of one or more object
     # attributes. The template attributes also receive the values.
     # (Object management)
     # note: in PKCS#11 pTemplate and the result template are the same
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @param hObject the object's handle
-    # (PKCS#11 param: CK_OBJECT_HANDLE hObject)
+    #         (PKCS#11 param: CK_OBJECT_HANDLE hObject)
     # @param pTemplate specifies the attributes and number of attributes to get
-    # The template attributes also receive the values.
-    # (PKCS#11 param: CK_ATTRIBUTE_PTR pTemplate, CK_ULONG ulCount)
+    #                  The template attributes also receive the values.
+    #         (PKCS#11 param: CK_ATTRIBUTE_PTR pTemplate, CK_ULONG ulCount)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions (pTemplate <> null)
     # @postconditions (result <> null)
@@ -647,12 +619,12 @@ module Sun::Security::Pkcs11::Wrapper
     # (Object management)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @param hObject the object's handle
-    # (PKCS#11 param: CK_OBJECT_HANDLE hObject)
+    #         (PKCS#11 param: CK_OBJECT_HANDLE hObject)
     # @param pTemplate specifies the attributes and values to get; number of
-    # attributes in the template
-    # (PKCS#11 param: CK_ATTRIBUTE_PTR pTemplate, CK_ULONG ulCount)
+    #         attributes in the template
+    #         (PKCS#11 param: CK_ATTRIBUTE_PTR pTemplate, CK_ULONG ulCount)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions (pTemplate <> null)
     # @postconditions
@@ -667,10 +639,10 @@ module Sun::Security::Pkcs11::Wrapper
     # (Object management)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @param pTemplate the object's attribute values to match and the number of
-    # attributes in search template
-    # (PKCS#11 param: CK_ATTRIBUTE_PTR pTemplate, CK_ULONG ulCount)
+    #         attributes in search template
+    #         (PKCS#11 param: CK_ATTRIBUTE_PTR pTemplate, CK_ULONG ulCount)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions
     # @postconditions
@@ -686,11 +658,11 @@ module Sun::Security::Pkcs11::Wrapper
     # (Object management)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @param ulMaxObjectCount the max. object handles to get
-    # (PKCS#11 param: CK_ULONG ulMaxObjectCount)
+    #         (PKCS#11 param: CK_ULONG ulMaxObjectCount)
     # @return the object's handles and the actual number of objects returned
-    # (PKCS#11 param: CK_ULONG_PTR pulObjectCount)
+    #         (PKCS#11 param: CK_ULONG_PTR pulObjectCount)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions
     # @postconditions (result <> null)
@@ -705,7 +677,7 @@ module Sun::Security::Pkcs11::Wrapper
     # (Object management)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions
     # @postconditions
@@ -715,19 +687,16 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1EncryptInit, [:pointer, :long, :int64, :long, :int64], :void
     typesig { [::Java::Long, CK_MECHANISM, ::Java::Long] }
-    # *****************************************************************************
     # Encryption and decryption
-    # 
-    # 
     # C_EncryptInit initializes an encryption operation.
     # (Encryption and decryption)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @param pMechanism the encryption mechanism
-    # (PKCS#11 param: CK_MECHANISM_PTR pMechanism)
+    #         (PKCS#11 param: CK_MECHANISM_PTR pMechanism)
     # @param hKey the handle of the encryption key
-    # (PKCS#11 param: CK_OBJECT_HANDLE hKey)
+    #         (PKCS#11 param: CK_OBJECT_HANDLE hKey)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions
     # @postconditions
@@ -741,12 +710,12 @@ module Sun::Security::Pkcs11::Wrapper
     # (Encryption and decryption)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @param pData the data to get encrypted and the data's length
-    # (PKCS#11 param: CK_BYTE_PTR pData, CK_ULONG ulDataLen)
+    #         (PKCS#11 param: CK_BYTE_PTR pData, CK_ULONG ulDataLen)
     # @return the encrypted data and the encrypted data's length
-    # (PKCS#11 param: CK_BYTE_PTR pEncryptedData,
-    # CK_ULONG_PTR pulEncryptedDataLen)
+    #         (PKCS#11 param: CK_BYTE_PTR pEncryptedData,
+    #                         CK_ULONG_PTR pulEncryptedDataLen)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions (pData <> null)
     # @postconditions (result <> null)
@@ -761,12 +730,12 @@ module Sun::Security::Pkcs11::Wrapper
     # (Encryption and decryption)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @param pPart the data part to get encrypted and the data part's length
-    # (PKCS#11 param: CK_BYTE_PTR pPart, CK_ULONG ulPartLen)
+    #         (PKCS#11 param: CK_BYTE_PTR pPart, CK_ULONG ulPartLen)
     # @return the encrypted data part and the encrypted data part's length
-    # (PKCS#11 param: CK_BYTE_PTR pEncryptedPart,
-    # CK_ULONG_PTR pulEncryptedPartLen)
+    #         (PKCS#11 param: CK_BYTE_PTR pEncryptedPart,
+    #                       CK_ULONG_PTR pulEncryptedPartLen)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions (pPart <> null)
     # @postconditions
@@ -781,10 +750,10 @@ module Sun::Security::Pkcs11::Wrapper
     # (Encryption and decryption)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @return the last encrypted data part and the last data part's length
-    # (PKCS#11 param: CK_BYTE_PTR pLastEncryptedPart,
-    # CK_ULONG_PTR pulLastEncryptedPartLen)
+    #         (PKCS#11 param: CK_BYTE_PTR pLastEncryptedPart,
+    #                       CK_ULONG_PTR pulLastEncryptedPartLen)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions
     # @postconditions (result <> null)
@@ -798,11 +767,11 @@ module Sun::Security::Pkcs11::Wrapper
     # (Encryption and decryption)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @param pMechanism the decryption mechanism
-    # (PKCS#11 param: CK_MECHANISM_PTR pMechanism)
+    #         (PKCS#11 param: CK_MECHANISM_PTR pMechanism)
     # @param hKey the handle of the decryption key
-    # (PKCS#11 param: CK_OBJECT_HANDLE hKey)
+    #         (PKCS#11 param: CK_OBJECT_HANDLE hKey)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions
     # @postconditions
@@ -816,13 +785,13 @@ module Sun::Security::Pkcs11::Wrapper
     # (Encryption and decryption)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @param pEncryptedData the encrypted data to get decrypted and the
-    # encrypted data's length
-    # (PKCS#11 param: CK_BYTE_PTR pEncryptedData,
-    # CK_ULONG ulEncryptedDataLen)
+    #         encrypted data's length
+    #         (PKCS#11 param: CK_BYTE_PTR pEncryptedData,
+    #                         CK_ULONG ulEncryptedDataLen)
     # @return the decrypted data and the data's length
-    # (PKCS#11 param: CK_BYTE_PTR pData, CK_ULONG_PTR pulDataLen)
+    #         (PKCS#11 param: CK_BYTE_PTR pData, CK_ULONG_PTR pulDataLen)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions (pEncryptedPart <> null)
     # @postconditions (result <> null)
@@ -837,13 +806,13 @@ module Sun::Security::Pkcs11::Wrapper
     # (Encryption and decryption)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @param pEncryptedPart the encrypted data part to get decrypted and the
-    # encrypted data part's length
-    # (PKCS#11 param: CK_BYTE_PTR pEncryptedPart,
-    # CK_ULONG ulEncryptedPartLen)
+    #         encrypted data part's length
+    #         (PKCS#11 param: CK_BYTE_PTR pEncryptedPart,
+    #                         CK_ULONG ulEncryptedPartLen)
     # @return the decrypted data part and the data part's length
-    # (PKCS#11 param: CK_BYTE_PTR pPart, CK_ULONG_PTR pulPartLen)
+    #         (PKCS#11 param: CK_BYTE_PTR pPart, CK_ULONG_PTR pulPartLen)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions (pEncryptedPart <> null)
     # @postconditions
@@ -858,10 +827,10 @@ module Sun::Security::Pkcs11::Wrapper
     # (Encryption and decryption)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @return the last decrypted data part and the last data part's length
-    # (PKCS#11 param: CK_BYTE_PTR pLastPart,
-    # CK_ULONG_PTR pulLastPartLen)
+    #         (PKCS#11 param: CK_BYTE_PTR pLastPart,
+    #                         CK_ULONG_PTR pulLastPartLen)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions
     # @postconditions (result <> null)
@@ -871,17 +840,14 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1DigestInit, [:pointer, :long, :int64, :long], :void
     typesig { [::Java::Long, CK_MECHANISM] }
-    # *****************************************************************************
     # Message digesting
-    # 
-    # 
     # C_DigestInit initializes a message-digesting operation.
     # (Message digesting)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @param pMechanism the digesting mechanism
-    # (PKCS#11 param: CK_MECHANISM_PTR pMechanism)
+    #         (PKCS#11 param: CK_MECHANISM_PTR pMechanism)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions
     # @postconditions
@@ -895,16 +861,15 @@ module Sun::Security::Pkcs11::Wrapper
     # we combined the C_DigestInit and C_Digest into a single function
     # to save on Java<->C transitions and save 5-10% on small digests
     # this made the C_Digest method redundant, it has been removed
-    # 
     # C_Digest digests data in a single part.
     # (Message digesting)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @param data the data to get digested and the data's length
-    # (PKCS#11 param: CK_BYTE_PTR pData, CK_ULONG ulDataLen)
+    #         (PKCS#11 param: CK_BYTE_PTR pData, CK_ULONG ulDataLen)
     # @return the message digest and the length of the message digest
-    # (PKCS#11 param: CK_BYTE_PTR pDigest, CK_ULONG_PTR pulDigestLen)
+    #         (PKCS#11 param: CK_BYTE_PTR pDigest, CK_ULONG_PTR pulDigestLen)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions (data <> null)
     # @postconditions (result <> null)
@@ -919,9 +884,9 @@ module Sun::Security::Pkcs11::Wrapper
     # (Message digesting)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @param pPart the data to get digested and the data's length
-    # (PKCS#11 param: CK_BYTE_PTR pPart, CK_ULONG ulPartLen)
+    #         (PKCS#11 param: CK_BYTE_PTR pPart, CK_ULONG ulPartLen)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions (pPart <> null)
     # @postconditions
@@ -937,9 +902,9 @@ module Sun::Security::Pkcs11::Wrapper
     # (Message digesting)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @param hKey the handle of the secret key to be digested
-    # (PKCS#11 param: CK_OBJECT_HANDLE hKey)
+    #         (PKCS#11 param: CK_OBJECT_HANDLE hKey)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions
     # @postconditions
@@ -954,9 +919,9 @@ module Sun::Security::Pkcs11::Wrapper
     # (Message digesting)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @return the message digest and the length of the message digest
-    # (PKCS#11 param: CK_BYTE_PTR pDigest, CK_ULONG_PTR pulDigestLen)
+    #         (PKCS#11 param: CK_BYTE_PTR pDigest, CK_ULONG_PTR pulDigestLen)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions
     # @postconditions (result <> null)
@@ -966,10 +931,7 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1SignInit, [:pointer, :long, :int64, :long, :int64], :void
     typesig { [::Java::Long, CK_MECHANISM, ::Java::Long] }
-    # *****************************************************************************
     # Signing and MACing
-    # 
-    # 
     # C_SignInit initializes a signature (private key encryption)
     # operation, where the signature is (will be) an appendix to
     # the data, and plaintext cannot be recovered from the
@@ -977,11 +939,11 @@ module Sun::Security::Pkcs11::Wrapper
     # (Signing and MACing)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @param pMechanism the signature mechanism
-    # (PKCS#11 param: CK_MECHANISM_PTR pMechanism)
+    #         (PKCS#11 param: CK_MECHANISM_PTR pMechanism)
     # @param hKey the handle of the signature key
-    # (PKCS#11 param: CK_OBJECT_HANDLE hKey)
+    #         (PKCS#11 param: CK_OBJECT_HANDLE hKey)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions
     # @postconditions
@@ -997,12 +959,12 @@ module Sun::Security::Pkcs11::Wrapper
     # (Signing and MACing)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @param pData the data to sign and the data's length
-    # (PKCS#11 param: CK_BYTE_PTR pData, CK_ULONG ulDataLen)
+    #         (PKCS#11 param: CK_BYTE_PTR pData, CK_ULONG ulDataLen)
     # @return the signature and the signature's length
-    # (PKCS#11 param: CK_BYTE_PTR pSignature,
-    # CK_ULONG_PTR pulSignatureLen)
+    #         (PKCS#11 param: CK_BYTE_PTR pSignature,
+    #                         CK_ULONG_PTR pulSignatureLen)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions (pData <> null)
     # @postconditions (result <> null)
@@ -1018,9 +980,9 @@ module Sun::Security::Pkcs11::Wrapper
     # (Signing and MACing)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @param pPart the data part to sign and the data part's length
-    # (PKCS#11 param: CK_BYTE_PTR pPart, CK_ULONG ulPartLen)
+    #         (PKCS#11 param: CK_BYTE_PTR pPart, CK_ULONG ulPartLen)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions (pPart <> null)
     # @postconditions
@@ -1035,10 +997,10 @@ module Sun::Security::Pkcs11::Wrapper
     # (Signing and MACing)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @return the signature and the signature's length
-    # (PKCS#11 param: CK_BYTE_PTR pSignature,
-    # CK_ULONG_PTR pulSignatureLen)
+    #         (PKCS#11 param: CK_BYTE_PTR pSignature,
+    #                         CK_ULONG_PTR pulSignatureLen)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions
     # @postconditions (result <> null)
@@ -1053,11 +1015,11 @@ module Sun::Security::Pkcs11::Wrapper
     # (Signing and MACing)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @param pMechanism the signature mechanism
-    # (PKCS#11 param: CK_MECHANISM_PTR pMechanism)
+    #         (PKCS#11 param: CK_MECHANISM_PTR pMechanism)
     # @param hKey the handle of the signature key
-    # (PKCS#11 param: CK_OBJECT_HANDLE hKey)
+    #         (PKCS#11 param: CK_OBJECT_HANDLE hKey)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions
     # @postconditions
@@ -1072,12 +1034,12 @@ module Sun::Security::Pkcs11::Wrapper
     # (Signing and MACing)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @param pData the data to sign and the data's length
-    # (PKCS#11 param: CK_BYTE_PTR pData, CK_ULONG ulDataLen)
+    #         (PKCS#11 param: CK_BYTE_PTR pData, CK_ULONG ulDataLen)
     # @return the signature and the signature's length
-    # (PKCS#11 param: CK_BYTE_PTR pSignature,
-    # CK_ULONG_PTR pulSignatureLen)
+    #         (PKCS#11 param: CK_BYTE_PTR pSignature,
+    #                         CK_ULONG_PTR pulSignatureLen)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions (pData <> null)
     # @postconditions (result <> null)
@@ -1087,21 +1049,18 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1VerifyInit, [:pointer, :long, :int64, :long, :int64], :void
     typesig { [::Java::Long, CK_MECHANISM, ::Java::Long] }
-    # *****************************************************************************
     # Verifying signatures and MACs
-    # 
-    # 
     # C_VerifyInit initializes a verification operation, where the
     # signature is an appendix to the data, and plaintext cannot
     # cannot be recovered from the signature (e.g. DSA).
     # (Signing and MACing)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @param pMechanism the verification mechanism
-    # (PKCS#11 param: CK_MECHANISM_PTR pMechanism)
+    #         (PKCS#11 param: CK_MECHANISM_PTR pMechanism)
     # @param hKey the handle of the verification key
-    # (PKCS#11 param: CK_OBJECT_HANDLE hKey)
+    #         (PKCS#11 param: CK_OBJECT_HANDLE hKey)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions
     # @postconditions
@@ -1117,11 +1076,11 @@ module Sun::Security::Pkcs11::Wrapper
     # (Signing and MACing)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @param pData the signed data and the signed data's length
-    # (PKCS#11 param: CK_BYTE_PTR pData, CK_ULONG ulDataLen)
+    #         (PKCS#11 param: CK_BYTE_PTR pData, CK_ULONG ulDataLen)
     # @param pSignature the signature to verify and the signature's length
-    # (PKCS#11 param: CK_BYTE_PTR pSignature, CK_ULONG ulSignatureLen)
+    #         (PKCS#11 param: CK_BYTE_PTR pSignature, CK_ULONG ulSignatureLen)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions (pData <> null) and (pSignature <> null)
     # @postconditions
@@ -1137,9 +1096,9 @@ module Sun::Security::Pkcs11::Wrapper
     # (Signing and MACing)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @param pPart the signed data part and the signed data part's length
-    # (PKCS#11 param: CK_BYTE_PTR pPart, CK_ULONG ulPartLen)
+    #         (PKCS#11 param: CK_BYTE_PTR pPart, CK_ULONG ulPartLen)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions (pPart <> null)
     # @postconditions
@@ -1154,9 +1113,9 @@ module Sun::Security::Pkcs11::Wrapper
     # (Signing and MACing)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @param pSignature the signature to verify and the signature's length
-    # (PKCS#11 param: CK_BYTE_PTR pSignature, CK_ULONG ulSignatureLen)
+    #         (PKCS#11 param: CK_BYTE_PTR pSignature, CK_ULONG ulSignatureLen)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions (pSignature <> null)
     # @postconditions
@@ -1171,11 +1130,11 @@ module Sun::Security::Pkcs11::Wrapper
     # (Signing and MACing)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @param pMechanism the verification mechanism
-    # (PKCS#11 param: CK_MECHANISM_PTR pMechanism)
+    #         (PKCS#11 param: CK_MECHANISM_PTR pMechanism)
     # @param hKey the handle of the verification key
-    # (PKCS#11 param: CK_OBJECT_HANDLE hKey)
+    #         (PKCS#11 param: CK_OBJECT_HANDLE hKey)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions
     # @postconditions
@@ -1190,11 +1149,11 @@ module Sun::Security::Pkcs11::Wrapper
     # (Signing and MACing)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @param pSignature the signature to verify and the signature's length
-    # (PKCS#11 param: CK_BYTE_PTR pSignature, CK_ULONG ulSignatureLen)
+    #         (PKCS#11 param: CK_BYTE_PTR pSignature, CK_ULONG ulSignatureLen)
     # @return the recovered data and the recovered data's length
-    # (PKCS#11 param: CK_BYTE_PTR pData, CK_ULONG_PTR pulDataLen)
+    #         (PKCS#11 param: CK_BYTE_PTR pData, CK_ULONG_PTR pulDataLen)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions (pSignature <> null)
     # @postconditions (result <> null)
@@ -1204,97 +1163,84 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1GenerateKey, [:pointer, :long, :int64, :long, :long], :int64
     typesig { [::Java::Long, CK_MECHANISM, Array.typed(CK_ATTRIBUTE)] }
-    # *****************************************************************************
     # Dual-function cryptographic operations
-    # 
-    # 
     # C_DigestEncryptUpdate continues a multiple-part digesting
     # and encryption operation.
     # (Dual-function cryptographic operations)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @param pPart the data part to digest and to encrypt and the data's length
-    # (PKCS#11 param: CK_BYTE_PTR pPart, CK_ULONG ulPartLen)
+    #         (PKCS#11 param: CK_BYTE_PTR pPart, CK_ULONG ulPartLen)
     # @return the digested and encrypted data part and the data part's length
-    # (PKCS#11 param: CK_BYTE_PTR pEncryptedPart,
-    # CK_ULONG_PTR pulEncryptedPartLen)
+    #         (PKCS#11 param: CK_BYTE_PTR pEncryptedPart,
+    #                         CK_ULONG_PTR pulEncryptedPartLen)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions (pPart <> null)
     # @postconditions
-    # 
-    # public native byte[] C_DigestEncryptUpdate(long hSession, byte[] pPart) throws PKCS11Exception;
-    # 
+    #    public native byte[] C_DigestEncryptUpdate(long hSession, byte[] pPart) throws PKCS11Exception;
     # C_DecryptDigestUpdate continues a multiple-part decryption and
     # digesting operation.
     # (Dual-function cryptographic operations)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @param pEncryptedPart the encrypted data part to decrypt and to digest
-    # and encrypted data part's length
-    # (PKCS#11 param: CK_BYTE_PTR pEncryptedPart,
-    # CK_ULONG ulEncryptedPartLen)
+    #         and encrypted data part's length
+    #         (PKCS#11 param: CK_BYTE_PTR pEncryptedPart,
+    #                         CK_ULONG ulEncryptedPartLen)
     # @return the decrypted and digested data part and the data part's length
-    # (PKCS#11 param: CK_BYTE_PTR pPart, CK_ULONG_PTR pulPartLen)
+    #         (PKCS#11 param: CK_BYTE_PTR pPart, CK_ULONG_PTR pulPartLen)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions (pEncryptedPart <> null)
     # @postconditions
-    # 
-    # public native byte[] C_DecryptDigestUpdate(long hSession, byte[] pEncryptedPart) throws PKCS11Exception;
-    # 
+    #    public native byte[] C_DecryptDigestUpdate(long hSession, byte[] pEncryptedPart) throws PKCS11Exception;
     # C_SignEncryptUpdate continues a multiple-part signing and
     # encryption operation.
     # (Dual-function cryptographic operations)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @param pPart the data part to sign and to encrypt and the data part's
-    # length
-    # (PKCS#11 param: CK_BYTE_PTR pPart, CK_ULONG ulPartLen)
+    #         length
+    #         (PKCS#11 param: CK_BYTE_PTR pPart, CK_ULONG ulPartLen)
     # @return the signed and encrypted data part and the data part's length
-    # (PKCS#11 param: CK_BYTE_PTR pEncryptedPart,
-    # CK_ULONG_PTR pulEncryptedPartLen)
+    #         (PKCS#11 param: CK_BYTE_PTR pEncryptedPart,
+    #                         CK_ULONG_PTR pulEncryptedPartLen)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions (pPart <> null)
     # @postconditions
-    # 
-    # public native byte[] C_SignEncryptUpdate(long hSession, byte[] pPart) throws PKCS11Exception;
-    # 
+    #    public native byte[] C_SignEncryptUpdate(long hSession, byte[] pPart) throws PKCS11Exception;
     # C_DecryptVerifyUpdate continues a multiple-part decryption and
     # verify operation.
     # (Dual-function cryptographic operations)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @param pEncryptedPart the encrypted data part to decrypt and to verify
-    # and the data part's length
-    # (PKCS#11 param: CK_BYTE_PTR pEncryptedPart,
-    # CK_ULONG ulEncryptedPartLen)
+    #         and the data part's length
+    #         (PKCS#11 param: CK_BYTE_PTR pEncryptedPart,
+    #                         CK_ULONG ulEncryptedPartLen)
     # @return the decrypted and verified data part and the data part's length
-    # (PKCS#11 param: CK_BYTE_PTR pPart, CK_ULONG_PTR pulPartLen)
+    #         (PKCS#11 param: CK_BYTE_PTR pPart, CK_ULONG_PTR pulPartLen)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions (pEncryptedPart <> null)
     # @postconditions
-    # 
-    # public native byte[] C_DecryptVerifyUpdate(long hSession, byte[] pEncryptedPart) throws PKCS11Exception;
-    # *****************************************************************************
+    #    public native byte[] C_DecryptVerifyUpdate(long hSession, byte[] pEncryptedPart) throws PKCS11Exception;
     # Key management
-    # 
-    # 
     # C_GenerateKey generates a secret key, creating a new key
     # object.
     # (Key management)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @param pMechanism the key generation mechanism
-    # (PKCS#11 param: CK_MECHANISM_PTR pMechanism)
+    #         (PKCS#11 param: CK_MECHANISM_PTR pMechanism)
     # @param pTemplate the template for the new key and the number of
-    # attributes in the template
-    # (PKCS#11 param: CK_ATTRIBUTE_PTR pTemplate, CK_ULONG ulCount)
+    #         attributes in the template
+    #         (PKCS#11 param: CK_ATTRIBUTE_PTR pTemplate, CK_ULONG ulCount)
     # @return the handle of the new key
-    # (PKCS#11 param: CK_OBJECT_HANDLE_PTR phKey)
+    #         (PKCS#11 param: CK_OBJECT_HANDLE_PTR phKey)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions
     # @postconditions
@@ -1309,22 +1255,22 @@ module Sun::Security::Pkcs11::Wrapper
     # (Key management)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @param pMechanism the key generation mechanism
-    # (PKCS#11 param: CK_MECHANISM_PTR pMechanism)
+    #         (PKCS#11 param: CK_MECHANISM_PTR pMechanism)
     # @param pPublicKeyTemplate the template for the new public key and the
-    # number of attributes in the template
-    # (PKCS#11 param: CK_ATTRIBUTE_PTR pPublicKeyTemplate,
-    # CK_ULONG ulPublicKeyAttributeCount)
+    #         number of attributes in the template
+    #         (PKCS#11 param: CK_ATTRIBUTE_PTR pPublicKeyTemplate,
+    #                         CK_ULONG ulPublicKeyAttributeCount)
     # @param pPrivateKeyTemplate the template for the new private key and the
-    # number of attributes in the template
-    # (PKCS#11 param: CK_ATTRIBUTE_PTR pPrivateKeyTemplate
-    # CK_ULONG ulPrivateKeyAttributeCount)
+    #         number of attributes in the template
+    #         (PKCS#11 param: CK_ATTRIBUTE_PTR pPrivateKeyTemplate
+    #                         CK_ULONG ulPrivateKeyAttributeCount)
     # @return a long array with exactly two elements and the public key handle
-    # as the first element and the private key handle as the second
-    # element
-    # (PKCS#11 param: CK_OBJECT_HANDLE_PTR phPublicKey,
-    # CK_OBJECT_HANDLE_PTR phPrivateKey)
+    #         as the first element and the private key handle as the second
+    #         element
+    #         (PKCS#11 param: CK_OBJECT_HANDLE_PTR phPublicKey,
+    #                         CK_OBJECT_HANDLE_PTR phPrivateKey)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions (pMechanism <> null)
     # @postconditions (result <> null) and (result.length == 2)
@@ -1338,16 +1284,16 @@ module Sun::Security::Pkcs11::Wrapper
     # (Key management)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @param pMechanism the wrapping mechanism
-    # (PKCS#11 param: CK_MECHANISM_PTR pMechanism)
+    #         (PKCS#11 param: CK_MECHANISM_PTR pMechanism)
     # @param hWrappingKey the handle of the wrapping key
-    # (PKCS#11 param: CK_OBJECT_HANDLE hWrappingKey)
+    #         (PKCS#11 param: CK_OBJECT_HANDLE hWrappingKey)
     # @param hKey the handle of the key to be wrapped
-    # (PKCS#11 param: CK_OBJECT_HANDLE hKey)
+    #         (PKCS#11 param: CK_OBJECT_HANDLE hKey)
     # @return the wrapped key and the length of the wrapped key
-    # (PKCS#11 param: CK_BYTE_PTR pWrappedKey,
-    # CK_ULONG_PTR pulWrappedKeyLen)
+    #         (PKCS#11 param: CK_BYTE_PTR pWrappedKey,
+    #                         CK_ULONG_PTR pulWrappedKeyLen)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions
     # @postconditions (result <> null)
@@ -1362,18 +1308,18 @@ module Sun::Security::Pkcs11::Wrapper
     # (Key management)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @param pMechanism the unwrapping mechanism
-    # (PKCS#11 param: CK_MECHANISM_PTR pMechanism)
+    #         (PKCS#11 param: CK_MECHANISM_PTR pMechanism)
     # @param hUnwrappingKey the handle of the unwrapping key
-    # (PKCS#11 param: CK_OBJECT_HANDLE hUnwrappingKey)
+    #         (PKCS#11 param: CK_OBJECT_HANDLE hUnwrappingKey)
     # @param pWrappedKey the wrapped key to unwrap and the wrapped key's length
-    # (PKCS#11 param: CK_BYTE_PTR pWrappedKey, CK_ULONG ulWrappedKeyLen)
+    #         (PKCS#11 param: CK_BYTE_PTR pWrappedKey, CK_ULONG ulWrappedKeyLen)
     # @param pTemplate the template for the new key and the number of
-    # attributes in the template
-    # (PKCS#11 param: CK_ATTRIBUTE_PTR pTemplate, CK_ULONG ulCount)
+    #         attributes in the template
+    #         (PKCS#11 param: CK_ATTRIBUTE_PTR pTemplate, CK_ULONG ulCount)
     # @return the handle of the unwrapped key
-    # (PKCS#11 param: CK_OBJECT_HANDLE_PTR phKey)
+    #         (PKCS#11 param: CK_OBJECT_HANDLE_PTR phKey)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions (pWrappedKey <> null)
     # @postconditions
@@ -1388,16 +1334,16 @@ module Sun::Security::Pkcs11::Wrapper
     # (Key management)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @param pMechanism the key derivation mechanism
-    # (PKCS#11 param: CK_MECHANISM_PTR pMechanism)
+    #         (PKCS#11 param: CK_MECHANISM_PTR pMechanism)
     # @param hBaseKey the handle of the base key
-    # (PKCS#11 param: CK_OBJECT_HANDLE hBaseKey)
+    #         (PKCS#11 param: CK_OBJECT_HANDLE hBaseKey)
     # @param pTemplate the template for the new key and the number of
-    # attributes in the template
-    # (PKCS#11 param: CK_ATTRIBUTE_PTR pTemplate, CK_ULONG ulCount)
+    #         attributes in the template
+    #         (PKCS#11 param: CK_ATTRIBUTE_PTR pTemplate, CK_ULONG ulCount)
     # @return the handle of the derived key
-    # (PKCS#11 param: CK_OBJECT_HANDLE_PTR phKey)
+    #         (PKCS#11 param: CK_OBJECT_HANDLE_PTR phKey)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions
     # @postconditions
@@ -1407,18 +1353,15 @@ module Sun::Security::Pkcs11::Wrapper
     
     JNI.load_native_method :Java_sun_security_pkcs11_wrapper_PKCS11_C_1SeedRandom, [:pointer, :long, :int64, :long], :void
     typesig { [::Java::Long, Array.typed(::Java::Byte)] }
-    # *****************************************************************************
     # Random number generation
-    # 
-    # 
     # C_SeedRandom mixes additional seed material into the token's
     # random number generator.
     # (Random number generation)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @param pSeed the seed material and the seed material's length
-    # (PKCS#11 param: CK_BYTE_PTR pSeed, CK_ULONG ulSeedLen)
+    #         (PKCS#11 param: CK_BYTE_PTR pSeed, CK_ULONG ulSeedLen)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions (pSeed <> null)
     # @postconditions
@@ -1432,10 +1375,10 @@ module Sun::Security::Pkcs11::Wrapper
     # (Random number generation)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @param RandomData receives the random data and the length of RandomData
-    # is the length of random data to be generated
-    # (PKCS#11 param: CK_BYTE_PTR pRandomData, CK_ULONG ulRandomLen)
+    #         is the length of random data to be generated
+    #         (PKCS#11 param: CK_BYTE_PTR pRandomData, CK_ULONG ulRandomLen)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions (randomData <> null)
     # @postconditions
@@ -1444,54 +1387,43 @@ module Sun::Security::Pkcs11::Wrapper
     end
     
     typesig { [] }
-    # *****************************************************************************
     # Parallel function management
-    # 
-    # 
     # C_GetFunctionStatus is a legacy function; it obtains an
     # updated status of a function running in parallel with an
     # application.
     # (Parallel function management)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions
     # @postconditions
-    # 
-    # public native void C_GetFunctionStatus(long hSession) throws PKCS11Exception;
-    # 
+    #    public native void C_GetFunctionStatus(long hSession) throws PKCS11Exception;
     # C_CancelFunction is a legacy function; it cancels a function
     # running in parallel.
     # (Parallel function management)
     # 
     # @param hSession the session's handle
-    # (PKCS#11 param: CK_SESSION_HANDLE hSession)
+    #         (PKCS#11 param: CK_SESSION_HANDLE hSession)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions
     # @postconditions
-    # 
-    # public native void C_CancelFunction(long hSession) throws PKCS11Exception;
-    # *****************************************************************************
+    #    public native void C_CancelFunction(long hSession) throws PKCS11Exception;
     # Functions added in for Cryptoki Version 2.01 or later
-    # 
-    # 
     # C_WaitForSlotEvent waits for a slot event (token insertion,
     # removal, etc.) to occur.
     # (General-purpose)
     # 
     # @param flags blocking/nonblocking flag
-    # (PKCS#11 param: CK_FLAGS flags)
+    #         (PKCS#11 param: CK_FLAGS flags)
     # @param pReserved reserved. Should be null
-    # (PKCS#11 param: CK_VOID_PTR pReserved)
+    #         (PKCS#11 param: CK_VOID_PTR pReserved)
     # @return the slot ID where the event occured
-    # (PKCS#11 param: CK_SLOT_ID_PTR pSlot)
+    #         (PKCS#11 param: CK_SLOT_ID_PTR pSlot)
     # @exception PKCS11Exception If function returns other value than CKR_OK.
     # @preconditions (pRserved == null)
     # @postconditions
-    # 
-    # public native long C_WaitForSlotEvent(long flags, Object pRserved) throws PKCS11Exception;
-    # 
+    #    public native long C_WaitForSlotEvent(long flags, Object pRserved) throws PKCS11Exception;
     # Returns the string representation of this object.
     # 
     # @return The string representation of object

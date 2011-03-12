@@ -59,8 +59,8 @@ module Sun::Net::Www::Protocol::Http
     
     # the cookies are indexed by its domain and associated uri (if present)
     # CAUTION: when a cookie removed from main data structure (i.e. cookieJar),
-    # it won't be cleared in domainIndex & uriIndex. Double-check the
-    # presence of cookie when retrieve one form index store.
+    #          it won't be cleared in domainIndex & uriIndex. Double-check the
+    #          presence of cookie when retrieve one form index store.
     attr_accessor :domain_index
     alias_method :attr_domain_index, :domain_index
     undef_method :domain_index
@@ -119,9 +119,9 @@ module Sun::Net::Www::Protocol::Http
     
     typesig { [URI] }
     # Get all cookies, which:
-    # 1) given uri domain-matches with, or, associated with
-    # given uri when added to the cookie store.
-    # 3) not expired.
+    #  1) given uri domain-matches with, or, associated with
+    #     given uri when added to the cookie store.
+    #  3) not expired.
     # See RFC 2965 sec. 3.3.4 for more detail.
     def get(uri)
       # argument can't be null
@@ -251,7 +251,7 @@ module Sun::Net::Www::Protocol::Http
     # @param cookies           [OUT] contains the found cookies
     # @param cookieIndex       the index
     # @param comparator        the prediction to decide whether or not
-    # a cookie in index should be returned
+    #                          a cookie in index should be returned
     def get_internal(cookies, cookie_index, comparator)
       cookie_index.key_set.each do |index|
         if (((comparator <=> index)).equal?(0))
@@ -301,8 +301,10 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [URI] }
+    # 
     # for cookie purpose, the effective uri should only be scheme://authority
     # the path will be taken into account when path-match algorithm applied
+    # 
     def get_effective_uri(uri)
       effective_uri = nil
       begin

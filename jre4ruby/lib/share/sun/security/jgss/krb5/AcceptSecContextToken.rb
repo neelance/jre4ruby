@@ -53,8 +53,8 @@ module Sun::Security::Jgss::Krb5
       super()
       @ap_rep = nil
       # RFC 1964, section 1.2 states:
-      # (1) context key: uses Kerberos session key (or subkey, if
-      # present in authenticator emitted by context initiator) directly
+      #  (1) context key: uses Kerberos session key (or subkey, if
+      #  present in authenticator emitted by context initiator) directly
       # 
       # This does not mention context acceptor. Hence we will not
       # generate a subkey on the acceptor side. Note: Our initiator will
@@ -87,7 +87,7 @@ module Sun::Security::Jgss::Krb5
       if (!(sub_key).nil?)
         context.set_key(sub_key)
         # System.out.println("\n\nSub-Session key from AP-REP is: " +
-        # getHexBytes(subKey.getBytes()) + "\n");
+        #                    getHexBytes(subKey.getBytes()) + "\n");
       end
       ap_rep_seq_number = ap_rep.get_seq_number
       peer_seq_number = (!(ap_rep_seq_number).nil? ? ap_rep_seq_number.int_value : 0)

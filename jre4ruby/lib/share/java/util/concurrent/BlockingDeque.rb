@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # This file is available under and governed by the GNU General Public
 # License version 2 only, as published by the Free Software Foundation.
 # However, the following notice accompanied the original version of this
@@ -55,68 +53,68 @@ module Java::Util::Concurrent
   # 
   # <p>
   # <table BORDER CELLPADDING=3 CELLSPACING=1>
-  # <tr>
-  # <td ALIGN=CENTER COLSPAN = 5> <b>First Element (Head)</b></td>
-  # </tr>
-  # <tr>
-  # <td></td>
-  # <td ALIGN=CENTER><em>Throws exception</em></td>
-  # <td ALIGN=CENTER><em>Special value</em></td>
-  # <td ALIGN=CENTER><em>Blocks</em></td>
-  # <td ALIGN=CENTER><em>Times out</em></td>
-  # </tr>
-  # <tr>
-  # <td><b>Insert</b></td>
-  # <td>{@link #addFirst addFirst(e)}</td>
-  # <td>{@link #offerFirst(Object) offerFirst(e)}</td>
-  # <td>{@link #putFirst putFirst(e)}</td>
-  # <td>{@link #offerFirst(Object, long, TimeUnit) offerFirst(e, time, unit)}</td>
-  # </tr>
-  # <tr>
-  # <td><b>Remove</b></td>
-  # <td>{@link #removeFirst removeFirst()}</td>
-  # <td>{@link #pollFirst pollFirst()}</td>
-  # <td>{@link #takeFirst takeFirst()}</td>
-  # <td>{@link #pollFirst(long, TimeUnit) pollFirst(time, unit)}</td>
-  # </tr>
-  # <tr>
-  # <td><b>Examine</b></td>
-  # <td>{@link #getFirst getFirst()}</td>
-  # <td>{@link #peekFirst peekFirst()}</td>
-  # <td><em>not applicable</em></td>
-  # <td><em>not applicable</em></td>
-  # </tr>
-  # <tr>
-  # <td ALIGN=CENTER COLSPAN = 5> <b>Last Element (Tail)</b></td>
-  # </tr>
-  # <tr>
-  # <td></td>
-  # <td ALIGN=CENTER><em>Throws exception</em></td>
-  # <td ALIGN=CENTER><em>Special value</em></td>
-  # <td ALIGN=CENTER><em>Blocks</em></td>
-  # <td ALIGN=CENTER><em>Times out</em></td>
-  # </tr>
-  # <tr>
-  # <td><b>Insert</b></td>
-  # <td>{@link #addLast addLast(e)}</td>
-  # <td>{@link #offerLast(Object) offerLast(e)}</td>
-  # <td>{@link #putLast putLast(e)}</td>
-  # <td>{@link #offerLast(Object, long, TimeUnit) offerLast(e, time, unit)}</td>
-  # </tr>
-  # <tr>
-  # <td><b>Remove</b></td>
-  # <td>{@link #removeLast() removeLast()}</td>
-  # <td>{@link #pollLast() pollLast()}</td>
-  # <td>{@link #takeLast takeLast()}</td>
-  # <td>{@link #pollLast(long, TimeUnit) pollLast(time, unit)}</td>
-  # </tr>
-  # <tr>
-  # <td><b>Examine</b></td>
-  # <td>{@link #getLast getLast()}</td>
-  # <td>{@link #peekLast peekLast()}</td>
-  # <td><em>not applicable</em></td>
-  # <td><em>not applicable</em></td>
-  # </tr>
+  #  <tr>
+  #    <td ALIGN=CENTER COLSPAN = 5> <b>First Element (Head)</b></td>
+  #  </tr>
+  #  <tr>
+  #    <td></td>
+  #    <td ALIGN=CENTER><em>Throws exception</em></td>
+  #    <td ALIGN=CENTER><em>Special value</em></td>
+  #    <td ALIGN=CENTER><em>Blocks</em></td>
+  #    <td ALIGN=CENTER><em>Times out</em></td>
+  #  </tr>
+  #  <tr>
+  #    <td><b>Insert</b></td>
+  #    <td>{@link #addFirst addFirst(e)}</td>
+  #    <td>{@link #offerFirst(Object) offerFirst(e)}</td>
+  #    <td>{@link #putFirst putFirst(e)}</td>
+  #    <td>{@link #offerFirst(Object, long, TimeUnit) offerFirst(e, time, unit)}</td>
+  #  </tr>
+  #  <tr>
+  #    <td><b>Remove</b></td>
+  #    <td>{@link #removeFirst removeFirst()}</td>
+  #    <td>{@link #pollFirst pollFirst()}</td>
+  #    <td>{@link #takeFirst takeFirst()}</td>
+  #    <td>{@link #pollFirst(long, TimeUnit) pollFirst(time, unit)}</td>
+  #  </tr>
+  #  <tr>
+  #    <td><b>Examine</b></td>
+  #    <td>{@link #getFirst getFirst()}</td>
+  #    <td>{@link #peekFirst peekFirst()}</td>
+  #    <td><em>not applicable</em></td>
+  #    <td><em>not applicable</em></td>
+  #  </tr>
+  #  <tr>
+  #    <td ALIGN=CENTER COLSPAN = 5> <b>Last Element (Tail)</b></td>
+  #  </tr>
+  #  <tr>
+  #    <td></td>
+  #    <td ALIGN=CENTER><em>Throws exception</em></td>
+  #    <td ALIGN=CENTER><em>Special value</em></td>
+  #    <td ALIGN=CENTER><em>Blocks</em></td>
+  #    <td ALIGN=CENTER><em>Times out</em></td>
+  #  </tr>
+  #  <tr>
+  #    <td><b>Insert</b></td>
+  #    <td>{@link #addLast addLast(e)}</td>
+  #    <td>{@link #offerLast(Object) offerLast(e)}</td>
+  #    <td>{@link #putLast putLast(e)}</td>
+  #    <td>{@link #offerLast(Object, long, TimeUnit) offerLast(e, time, unit)}</td>
+  #  </tr>
+  #  <tr>
+  #    <td><b>Remove</b></td>
+  #    <td>{@link #removeLast() removeLast()}</td>
+  #    <td>{@link #pollLast() pollLast()}</td>
+  #    <td>{@link #takeLast takeLast()}</td>
+  #    <td>{@link #pollLast(long, TimeUnit) pollLast(time, unit)}</td>
+  #  </tr>
+  #  <tr>
+  #    <td><b>Examine</b></td>
+  #    <td>{@link #getLast getLast()}</td>
+  #    <td>{@link #peekLast peekLast()}</td>
+  #    <td><em>not applicable</em></td>
+  #    <td><em>not applicable</em></td>
+  #  </tr>
   # </table>
   # 
   # <p>Like any {@link BlockingQueue}, a <tt>BlockingDeque</tt> is thread safe,
@@ -130,59 +128,59 @@ module Java::Util::Concurrent
   # 
   # <p>
   # <table BORDER CELLPADDING=3 CELLSPACING=1>
-  # <tr>
-  # <td ALIGN=CENTER> <b><tt>BlockingQueue</tt> Method</b></td>
-  # <td ALIGN=CENTER> <b>Equivalent <tt>BlockingDeque</tt> Method</b></td>
-  # </tr>
-  # <tr>
-  # <td ALIGN=CENTER COLSPAN = 2> <b>Insert</b></td>
-  # </tr>
-  # <tr>
-  # <td>{@link #add(Object) add(e)}</td>
-  # <td>{@link #addLast(Object) addLast(e)}</td>
-  # </tr>
-  # <tr>
-  # <td>{@link #offer(Object) offer(e)}</td>
-  # <td>{@link #offerLast(Object) offerLast(e)}</td>
-  # </tr>
-  # <tr>
-  # <td>{@link #put(Object) put(e)}</td>
-  # <td>{@link #putLast(Object) putLast(e)}</td>
-  # </tr>
-  # <tr>
-  # <td>{@link #offer(Object, long, TimeUnit) offer(e, time, unit)}</td>
-  # <td>{@link #offerLast(Object, long, TimeUnit) offerLast(e, time, unit)}</td>
-  # </tr>
-  # <tr>
-  # <td ALIGN=CENTER COLSPAN = 2> <b>Remove</b></td>
-  # </tr>
-  # <tr>
-  # <td>{@link #remove() remove()}</td>
-  # <td>{@link #removeFirst() removeFirst()}</td>
-  # </tr>
-  # <tr>
-  # <td>{@link #poll() poll()}</td>
-  # <td>{@link #pollFirst() pollFirst()}</td>
-  # </tr>
-  # <tr>
-  # <td>{@link #take() take()}</td>
-  # <td>{@link #takeFirst() takeFirst()}</td>
-  # </tr>
-  # <tr>
-  # <td>{@link #poll(long, TimeUnit) poll(time, unit)}</td>
-  # <td>{@link #pollFirst(long, TimeUnit) pollFirst(time, unit)}</td>
-  # </tr>
-  # <tr>
-  # <td ALIGN=CENTER COLSPAN = 2> <b>Examine</b></td>
-  # </tr>
-  # <tr>
-  # <td>{@link #element() element()}</td>
-  # <td>{@link #getFirst() getFirst()}</td>
-  # </tr>
-  # <tr>
-  # <td>{@link #peek() peek()}</td>
-  # <td>{@link #peekFirst() peekFirst()}</td>
-  # </tr>
+  #  <tr>
+  #    <td ALIGN=CENTER> <b><tt>BlockingQueue</tt> Method</b></td>
+  #    <td ALIGN=CENTER> <b>Equivalent <tt>BlockingDeque</tt> Method</b></td>
+  #  </tr>
+  #  <tr>
+  #    <td ALIGN=CENTER COLSPAN = 2> <b>Insert</b></td>
+  #  </tr>
+  #  <tr>
+  #    <td>{@link #add(Object) add(e)}</td>
+  #    <td>{@link #addLast(Object) addLast(e)}</td>
+  #  </tr>
+  #  <tr>
+  #    <td>{@link #offer(Object) offer(e)}</td>
+  #    <td>{@link #offerLast(Object) offerLast(e)}</td>
+  #  </tr>
+  #  <tr>
+  #    <td>{@link #put(Object) put(e)}</td>
+  #    <td>{@link #putLast(Object) putLast(e)}</td>
+  #  </tr>
+  #  <tr>
+  #    <td>{@link #offer(Object, long, TimeUnit) offer(e, time, unit)}</td>
+  #    <td>{@link #offerLast(Object, long, TimeUnit) offerLast(e, time, unit)}</td>
+  #  </tr>
+  #  <tr>
+  #    <td ALIGN=CENTER COLSPAN = 2> <b>Remove</b></td>
+  #  </tr>
+  #  <tr>
+  #    <td>{@link #remove() remove()}</td>
+  #    <td>{@link #removeFirst() removeFirst()}</td>
+  #  </tr>
+  #  <tr>
+  #    <td>{@link #poll() poll()}</td>
+  #    <td>{@link #pollFirst() pollFirst()}</td>
+  #  </tr>
+  #  <tr>
+  #    <td>{@link #take() take()}</td>
+  #    <td>{@link #takeFirst() takeFirst()}</td>
+  #  </tr>
+  #  <tr>
+  #    <td>{@link #poll(long, TimeUnit) poll(time, unit)}</td>
+  #    <td>{@link #pollFirst(long, TimeUnit) pollFirst(time, unit)}</td>
+  #  </tr>
+  #  <tr>
+  #    <td ALIGN=CENTER COLSPAN = 2> <b>Examine</b></td>
+  #  </tr>
+  #  <tr>
+  #    <td>{@link #element() element()}</td>
+  #    <td>{@link #getFirst() getFirst()}</td>
+  #  </tr>
+  #  <tr>
+  #    <td>{@link #peek() peek()}</td>
+  #    <td>{@link #peekFirst() peekFirst()}</td>
+  #  </tr>
   # </table>
   # 
   # <p>Memory consistency effects: As with other concurrent
@@ -209,8 +207,6 @@ module Java::Util::Concurrent
     # introduces ambiguities.  Methods might end up with different
     # specs depending on the branch chosen by javadoc.  Thus a lot of
     # methods specs here are copied from superinterfaces.
-    # 
-    # 
     # Inserts the specified element at the front of this deque if it is
     # possible to do so immediately without violating capacity restrictions,
     # throwing an <tt>IllegalStateException</tt> if no space is currently
@@ -283,10 +279,10 @@ module Java::Util::Concurrent
     # @param e the element to add
     # @throws InterruptedException if interrupted while waiting
     # @throws ClassCastException if the class of the specified element
-    # prevents it from being added to this deque
+    #         prevents it from being added to this deque
     # @throws NullPointerException if the specified element is null
     # @throws IllegalArgumentException if some property of the specified
-    # element prevents it from being added to this deque
+    #         element prevents it from being added to this deque
     def put_first(e)
       raise NotImplementedError
     end
@@ -298,10 +294,10 @@ module Java::Util::Concurrent
     # @param e the element to add
     # @throws InterruptedException if interrupted while waiting
     # @throws ClassCastException if the class of the specified element
-    # prevents it from being added to this deque
+    #         prevents it from being added to this deque
     # @throws NullPointerException if the specified element is null
     # @throws IllegalArgumentException if some property of the specified
-    # element prevents it from being added to this deque
+    #         element prevents it from being added to this deque
     def put_last(e)
       raise NotImplementedError
     end
@@ -313,17 +309,17 @@ module Java::Util::Concurrent
     # 
     # @param e the element to add
     # @param timeout how long to wait before giving up, in units of
-    # <tt>unit</tt>
+    #        <tt>unit</tt>
     # @param unit a <tt>TimeUnit</tt> determining how to interpret the
-    # <tt>timeout</tt> parameter
+    #        <tt>timeout</tt> parameter
     # @return <tt>true</tt> if successful, or <tt>false</tt> if
-    # the specified waiting time elapses before space is available
+    #         the specified waiting time elapses before space is available
     # @throws InterruptedException if interrupted while waiting
     # @throws ClassCastException if the class of the specified element
-    # prevents it from being added to this deque
+    #         prevents it from being added to this deque
     # @throws NullPointerException if the specified element is null
     # @throws IllegalArgumentException if some property of the specified
-    # element prevents it from being added to this deque
+    #         element prevents it from being added to this deque
     def offer_first(e, timeout, unit)
       raise NotImplementedError
     end
@@ -335,17 +331,17 @@ module Java::Util::Concurrent
     # 
     # @param e the element to add
     # @param timeout how long to wait before giving up, in units of
-    # <tt>unit</tt>
+    #        <tt>unit</tt>
     # @param unit a <tt>TimeUnit</tt> determining how to interpret the
-    # <tt>timeout</tt> parameter
+    #        <tt>timeout</tt> parameter
     # @return <tt>true</tt> if successful, or <tt>false</tt> if
-    # the specified waiting time elapses before space is available
+    #         the specified waiting time elapses before space is available
     # @throws InterruptedException if interrupted while waiting
     # @throws ClassCastException if the class of the specified element
-    # prevents it from being added to this deque
+    #         prevents it from being added to this deque
     # @throws NullPointerException if the specified element is null
     # @throws IllegalArgumentException if some property of the specified
-    # element prevents it from being added to this deque
+    #         element prevents it from being added to this deque
     def offer_last(e, timeout, unit)
       raise NotImplementedError
     end
@@ -376,11 +372,11 @@ module Java::Util::Concurrent
     # become available.
     # 
     # @param timeout how long to wait before giving up, in units of
-    # <tt>unit</tt>
+    #        <tt>unit</tt>
     # @param unit a <tt>TimeUnit</tt> determining how to interpret the
-    # <tt>timeout</tt> parameter
+    #        <tt>timeout</tt> parameter
     # @return the head of this deque, or <tt>null</tt> if the specified
-    # waiting time elapses before an element is available
+    #         waiting time elapses before an element is available
     # @throws InterruptedException if interrupted while waiting
     def poll_first(timeout, unit)
       raise NotImplementedError
@@ -392,11 +388,11 @@ module Java::Util::Concurrent
     # become available.
     # 
     # @param timeout how long to wait before giving up, in units of
-    # <tt>unit</tt>
+    #        <tt>unit</tt>
     # @param unit a <tt>TimeUnit</tt> determining how to interpret the
-    # <tt>timeout</tt> parameter
+    #        <tt>timeout</tt> parameter
     # @return the tail of this deque, or <tt>null</tt> if the specified
-    # waiting time elapses before an element is available
+    #         waiting time elapses before an element is available
     # @throws InterruptedException if interrupted while waiting
     def poll_last(timeout, unit)
       raise NotImplementedError
@@ -413,7 +409,7 @@ module Java::Util::Concurrent
     # @param o element to be removed from this deque, if present
     # @return <tt>true</tt> if an element was removed as a result of this call
     # @throws ClassCastException if the class of the specified element
-    # is incompatible with this deque (optional)
+    #         is incompatible with this deque (optional)
     # @throws NullPointerException if the specified element is null (optional)
     def remove_first_occurrence(o)
       raise NotImplementedError
@@ -430,7 +426,7 @@ module Java::Util::Concurrent
     # @param o element to be removed from this deque, if present
     # @return <tt>true</tt> if an element was removed as a result of this call
     # @throws ClassCastException if the class of the specified element
-    # is incompatible with this deque (optional)
+    #         is incompatible with this deque (optional)
     # @throws NullPointerException if the specified element is null (optional)
     def remove_last_occurrence(o)
       raise NotImplementedError
@@ -438,7 +434,6 @@ module Java::Util::Concurrent
     
     typesig { [Object] }
     # *** BlockingQueue methods ***
-    # 
     # Inserts the specified element into the queue represented by this deque
     # (in other words, at the tail of this deque) if it is possible to do so
     # immediately without violating capacity restrictions, returning
@@ -452,10 +447,10 @@ module Java::Util::Concurrent
     # @param e the element to add
     # @throws IllegalStateException {@inheritDoc}
     # @throws ClassCastException if the class of the specified element
-    # prevents it from being added to this deque
+    #         prevents it from being added to this deque
     # @throws NullPointerException if the specified element is null
     # @throws IllegalArgumentException if some property of the specified
-    # element prevents it from being added to this deque
+    #         element prevents it from being added to this deque
     def add(e)
       raise NotImplementedError
     end
@@ -473,10 +468,10 @@ module Java::Util::Concurrent
     # 
     # @param e the element to add
     # @throws ClassCastException if the class of the specified element
-    # prevents it from being added to this deque
+    #         prevents it from being added to this deque
     # @throws NullPointerException if the specified element is null
     # @throws IllegalArgumentException if some property of the specified
-    # element prevents it from being added to this deque
+    #         element prevents it from being added to this deque
     def offer(e)
       raise NotImplementedError
     end
@@ -491,10 +486,10 @@ module Java::Util::Concurrent
     # @param e the element to add
     # @throws InterruptedException {@inheritDoc}
     # @throws ClassCastException if the class of the specified element
-    # prevents it from being added to this deque
+    #         prevents it from being added to this deque
     # @throws NullPointerException if the specified element is null
     # @throws IllegalArgumentException if some property of the specified
-    # element prevents it from being added to this deque
+    #         element prevents it from being added to this deque
     def put(e)
       raise NotImplementedError
     end
@@ -509,13 +504,13 @@ module Java::Util::Concurrent
     # 
     # @param e the element to add
     # @return <tt>true</tt> if the element was added to this deque, else
-    # <tt>false</tt>
+    #         <tt>false</tt>
     # @throws InterruptedException {@inheritDoc}
     # @throws ClassCastException if the class of the specified element
-    # prevents it from being added to this deque
+    #         prevents it from being added to this deque
     # @throws NullPointerException if the specified element is null
     # @throws IllegalArgumentException if some property of the specified
-    # element prevents it from being added to this deque
+    #         element prevents it from being added to this deque
     def offer(e, timeout, unit)
       raise NotImplementedError
     end
@@ -568,7 +563,7 @@ module Java::Util::Concurrent
     # {@link #pollFirst(long,TimeUnit) pollFirst}.
     # 
     # @return the head of this deque, or <tt>null</tt> if the
-    # specified waiting time elapses before an element is available
+    #         specified waiting time elapses before an element is available
     # @throws InterruptedException if interrupted while waiting
     def poll(timeout, unit)
       raise NotImplementedError
@@ -614,7 +609,7 @@ module Java::Util::Concurrent
     # @param o element to be removed from this deque, if present
     # @return <tt>true</tt> if this deque changed as a result of the call
     # @throws ClassCastException if the class of the specified element
-    # is incompatible with this deque (optional)
+    #         is incompatible with this deque (optional)
     # @throws NullPointerException if the specified element is null (optional)
     def remove(o)
       raise NotImplementedError
@@ -628,7 +623,7 @@ module Java::Util::Concurrent
     # @param o object to be checked for containment in this deque
     # @return <tt>true</tt> if this deque contains the specified element
     # @throws ClassCastException if the class of the specified element
-    # is incompatible with this deque (optional)
+    #         is incompatible with this deque (optional)
     # @throws NullPointerException if the specified element is null (optional)
     def contains(o)
       raise NotImplementedError
@@ -653,7 +648,6 @@ module Java::Util::Concurrent
     
     typesig { [Object] }
     # *** Stack methods ***
-    # 
     # Pushes an element onto the stack represented by this deque.  In other
     # words, inserts the element at the front of this deque unless it would
     # violate capacity restrictions.

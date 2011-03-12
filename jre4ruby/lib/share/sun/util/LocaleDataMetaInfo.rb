@@ -22,9 +22,7 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
 # -- This file was mechanically generated: Do not edit! -- //
-# 
 # This class contains a map which records the locale list string for
 # each resource in sun.util.resources & sun.text.resources.
 # It is used to avoid loading non-existent localized resources so that

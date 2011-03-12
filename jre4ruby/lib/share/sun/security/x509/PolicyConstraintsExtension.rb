@@ -48,8 +48,8 @@ module Sun::Security::X509
   # module definition):
   # <pre>
   # PolicyConstraints ::= SEQUENCE {
-  # requireExplicitPolicy [0] SkipCerts OPTIONAL,
-  # inhibitPolicyMapping  [1] SkipCerts OPTIONAL
+  #     requireExplicitPolicy [0] SkipCerts OPTIONAL,
+  #     inhibitPolicyMapping  [1] SkipCerts OPTIONAL
   # }
   # SkipCerts ::= INTEGER (0..MAX)
   # </pre>

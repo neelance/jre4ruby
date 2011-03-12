@@ -62,7 +62,7 @@ module Java::Nio
       
       typesig { [::Java::Long] }
       def swap(x)
-        return ((swap(RJava.cast_to_int(x)) << 32) | (swap(RJava.cast_to_int((x >> 32))) & 0xffffffff))
+        return ((swap((x).to_int) << 32) | (swap(((x >> 32)).to_int) & 0xffffffff))
       end
       
       typesig { [::Java::Byte, ::Java::Byte] }

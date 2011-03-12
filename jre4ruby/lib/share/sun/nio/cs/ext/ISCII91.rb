@@ -341,7 +341,6 @@ module Sun::Nio::Cs::Ext
       
       typesig { [] }
       # end of table definition
-      # 
       # This accessor is temporarily supplied while sun.io
       # converters co-exist with the sun.nio.cs.{ext} charset coders
       # These facilitate sharing of conversion tables between the
@@ -484,7 +483,6 @@ module Sun::Nio::Cs::Ext
       
       typesig { [] }
       # end of table definition
-      # 
       # This accessor is temporarily supplied while sun.io
       # converters co-exist with the sun.nio.cs.{ext} charset coders
       # These facilitate sharing of conversion tables between the
@@ -545,9 +543,9 @@ module Sun::Nio::Cs::Ext
         
         typesig { [class_self::ByteBuffer, class_self::CharBuffer] }
         # Rules:
-        # 1)ATR,EXT,following character to be replaced with '\ufffd'
-        # 2)Halant + Halant => '\u094d' (Virama) + '\u200c'(ZWNJ)
-        # 3)Halant + Nukta => '\u094d' (Virama) + '\u200d'(ZWJ)
+        #  1)ATR,EXT,following character to be replaced with '\ufffd'
+        #  2)Halant + Halant => '\u094d' (Virama) + '\u200c'(ZWNJ)
+        #  3)Halant + Nukta => '\u094d' (Virama) + '\u200d'(ZWJ)
         def decode_array_loop(src, dst)
           sa = src.array
           sp = src.array_offset + src.position
@@ -636,160 +634,20 @@ module Sun::Nio::Cs::Ext
                   case (@context_char)
                   when Character.new(0x0901)
                     da[((dp += 1) - 1)] = Character.new(0x0950)
-                    da[((dp += 1) - 1)] = Character.new(0x090c)
-                    da[((dp += 1) - 1)] = Character.new(0x0961)
-                    da[((dp += 1) - 1)] = Character.new(0x0960)
-                    da[((dp += 1) - 1)] = Character.new(0x0962)
-                    da[((dp += 1) - 1)] = Character.new(0x0963)
-                    da[((dp += 1) - 1)] = Character.new(0x0944)
-                    da[((dp += 1) - 1)] = Character.new(0x093d)
-                    if (@need_flushing)
-                      da[((dp += 1) - 1)] = @context_char
-                      @context_char = current_char
-                      sp += 1
-                      next
-                    end
-                    da[((dp += 1) - 1)] = self.class::ZWJ_CHAR
-                    if (@need_flushing)
-                      da[((dp += 1) - 1)] = @context_char
-                      @context_char = current_char
-                      sp += 1
-                      next
-                    end
-                    da[((dp += 1) - 1)] = NUKTA_CHAR
                   when Character.new(0x0907)
                     da[((dp += 1) - 1)] = Character.new(0x090c)
-                    da[((dp += 1) - 1)] = Character.new(0x0961)
-                    da[((dp += 1) - 1)] = Character.new(0x0960)
-                    da[((dp += 1) - 1)] = Character.new(0x0962)
-                    da[((dp += 1) - 1)] = Character.new(0x0963)
-                    da[((dp += 1) - 1)] = Character.new(0x0944)
-                    da[((dp += 1) - 1)] = Character.new(0x093d)
-                    if (@need_flushing)
-                      da[((dp += 1) - 1)] = @context_char
-                      @context_char = current_char
-                      sp += 1
-                      next
-                    end
-                    da[((dp += 1) - 1)] = self.class::ZWJ_CHAR
-                    if (@need_flushing)
-                      da[((dp += 1) - 1)] = @context_char
-                      @context_char = current_char
-                      sp += 1
-                      next
-                    end
-                    da[((dp += 1) - 1)] = NUKTA_CHAR
                   when Character.new(0x0908)
                     da[((dp += 1) - 1)] = Character.new(0x0961)
-                    da[((dp += 1) - 1)] = Character.new(0x0960)
-                    da[((dp += 1) - 1)] = Character.new(0x0962)
-                    da[((dp += 1) - 1)] = Character.new(0x0963)
-                    da[((dp += 1) - 1)] = Character.new(0x0944)
-                    da[((dp += 1) - 1)] = Character.new(0x093d)
-                    if (@need_flushing)
-                      da[((dp += 1) - 1)] = @context_char
-                      @context_char = current_char
-                      sp += 1
-                      next
-                    end
-                    da[((dp += 1) - 1)] = self.class::ZWJ_CHAR
-                    if (@need_flushing)
-                      da[((dp += 1) - 1)] = @context_char
-                      @context_char = current_char
-                      sp += 1
-                      next
-                    end
-                    da[((dp += 1) - 1)] = NUKTA_CHAR
                   when Character.new(0x090b)
                     da[((dp += 1) - 1)] = Character.new(0x0960)
-                    da[((dp += 1) - 1)] = Character.new(0x0962)
-                    da[((dp += 1) - 1)] = Character.new(0x0963)
-                    da[((dp += 1) - 1)] = Character.new(0x0944)
-                    da[((dp += 1) - 1)] = Character.new(0x093d)
-                    if (@need_flushing)
-                      da[((dp += 1) - 1)] = @context_char
-                      @context_char = current_char
-                      sp += 1
-                      next
-                    end
-                    da[((dp += 1) - 1)] = self.class::ZWJ_CHAR
-                    if (@need_flushing)
-                      da[((dp += 1) - 1)] = @context_char
-                      @context_char = current_char
-                      sp += 1
-                      next
-                    end
-                    da[((dp += 1) - 1)] = NUKTA_CHAR
                   when Character.new(0x093f)
                     da[((dp += 1) - 1)] = Character.new(0x0962)
-                    da[((dp += 1) - 1)] = Character.new(0x0963)
-                    da[((dp += 1) - 1)] = Character.new(0x0944)
-                    da[((dp += 1) - 1)] = Character.new(0x093d)
-                    if (@need_flushing)
-                      da[((dp += 1) - 1)] = @context_char
-                      @context_char = current_char
-                      sp += 1
-                      next
-                    end
-                    da[((dp += 1) - 1)] = self.class::ZWJ_CHAR
-                    if (@need_flushing)
-                      da[((dp += 1) - 1)] = @context_char
-                      @context_char = current_char
-                      sp += 1
-                      next
-                    end
-                    da[((dp += 1) - 1)] = NUKTA_CHAR
                   when Character.new(0x0940)
                     da[((dp += 1) - 1)] = Character.new(0x0963)
-                    da[((dp += 1) - 1)] = Character.new(0x0944)
-                    da[((dp += 1) - 1)] = Character.new(0x093d)
-                    if (@need_flushing)
-                      da[((dp += 1) - 1)] = @context_char
-                      @context_char = current_char
-                      sp += 1
-                      next
-                    end
-                    da[((dp += 1) - 1)] = self.class::ZWJ_CHAR
-                    if (@need_flushing)
-                      da[((dp += 1) - 1)] = @context_char
-                      @context_char = current_char
-                      sp += 1
-                      next
-                    end
-                    da[((dp += 1) - 1)] = NUKTA_CHAR
                   when Character.new(0x0943)
                     da[((dp += 1) - 1)] = Character.new(0x0944)
-                    da[((dp += 1) - 1)] = Character.new(0x093d)
-                    if (@need_flushing)
-                      da[((dp += 1) - 1)] = @context_char
-                      @context_char = current_char
-                      sp += 1
-                      next
-                    end
-                    da[((dp += 1) - 1)] = self.class::ZWJ_CHAR
-                    if (@need_flushing)
-                      da[((dp += 1) - 1)] = @context_char
-                      @context_char = current_char
-                      sp += 1
-                      next
-                    end
-                    da[((dp += 1) - 1)] = NUKTA_CHAR
                   when Character.new(0x0964)
                     da[((dp += 1) - 1)] = Character.new(0x093d)
-                    if (@need_flushing)
-                      da[((dp += 1) - 1)] = @context_char
-                      @context_char = current_char
-                      sp += 1
-                      next
-                    end
-                    da[((dp += 1) - 1)] = self.class::ZWJ_CHAR
-                    if (@need_flushing)
-                      da[((dp += 1) - 1)] = @context_char
-                      @context_char = current_char
-                      sp += 1
-                      next
-                    end
-                    da[((dp += 1) - 1)] = NUKTA_CHAR
                   when HALANT_CHAR
                     if (@need_flushing)
                       da[((dp += 1) - 1)] = @context_char
@@ -798,13 +656,6 @@ module Sun::Nio::Cs::Ext
                       next
                     end
                     da[((dp += 1) - 1)] = self.class::ZWJ_CHAR
-                    if (@need_flushing)
-                      da[((dp += 1) - 1)] = @context_char
-                      @context_char = current_char
-                      sp += 1
-                      next
-                    end
-                    da[((dp += 1) - 1)] = NUKTA_CHAR
                   else
                     if (@need_flushing)
                       da[((dp += 1) - 1)] = @context_char
@@ -852,8 +703,7 @@ module Sun::Nio::Cs::Ext
                   end
                   da[((dp += 1) - 1)] = current_char
                 end
-              end == :thrown or break
-              # end switch
+              end == :thrown or break # end switch
               @context_char = current_char
               @need_flushing = false
               sp += 1
@@ -945,160 +795,20 @@ module Sun::Nio::Cs::Ext
                   case (@context_char)
                   when Character.new(0x0901)
                     dst.put(Character.new(0x0950))
-                    dst.put(Character.new(0x090c))
-                    dst.put(Character.new(0x0961))
-                    dst.put(Character.new(0x0960))
-                    dst.put(Character.new(0x0962))
-                    dst.put(Character.new(0x0963))
-                    dst.put(Character.new(0x0944))
-                    dst.put(Character.new(0x093d))
-                    if (@need_flushing)
-                      dst.put(@context_char)
-                      @context_char = current_char
-                      mark += 1
-                      next
-                    end
-                    dst.put(self.class::ZWJ_CHAR)
-                    if (@need_flushing)
-                      dst.put(@context_char)
-                      @context_char = current_char
-                      mark += 1
-                      next
-                    end
-                    dst.put(NUKTA_CHAR)
                   when Character.new(0x0907)
                     dst.put(Character.new(0x090c))
-                    dst.put(Character.new(0x0961))
-                    dst.put(Character.new(0x0960))
-                    dst.put(Character.new(0x0962))
-                    dst.put(Character.new(0x0963))
-                    dst.put(Character.new(0x0944))
-                    dst.put(Character.new(0x093d))
-                    if (@need_flushing)
-                      dst.put(@context_char)
-                      @context_char = current_char
-                      mark += 1
-                      next
-                    end
-                    dst.put(self.class::ZWJ_CHAR)
-                    if (@need_flushing)
-                      dst.put(@context_char)
-                      @context_char = current_char
-                      mark += 1
-                      next
-                    end
-                    dst.put(NUKTA_CHAR)
                   when Character.new(0x0908)
                     dst.put(Character.new(0x0961))
-                    dst.put(Character.new(0x0960))
-                    dst.put(Character.new(0x0962))
-                    dst.put(Character.new(0x0963))
-                    dst.put(Character.new(0x0944))
-                    dst.put(Character.new(0x093d))
-                    if (@need_flushing)
-                      dst.put(@context_char)
-                      @context_char = current_char
-                      mark += 1
-                      next
-                    end
-                    dst.put(self.class::ZWJ_CHAR)
-                    if (@need_flushing)
-                      dst.put(@context_char)
-                      @context_char = current_char
-                      mark += 1
-                      next
-                    end
-                    dst.put(NUKTA_CHAR)
                   when Character.new(0x090b)
                     dst.put(Character.new(0x0960))
-                    dst.put(Character.new(0x0962))
-                    dst.put(Character.new(0x0963))
-                    dst.put(Character.new(0x0944))
-                    dst.put(Character.new(0x093d))
-                    if (@need_flushing)
-                      dst.put(@context_char)
-                      @context_char = current_char
-                      mark += 1
-                      next
-                    end
-                    dst.put(self.class::ZWJ_CHAR)
-                    if (@need_flushing)
-                      dst.put(@context_char)
-                      @context_char = current_char
-                      mark += 1
-                      next
-                    end
-                    dst.put(NUKTA_CHAR)
                   when Character.new(0x093f)
                     dst.put(Character.new(0x0962))
-                    dst.put(Character.new(0x0963))
-                    dst.put(Character.new(0x0944))
-                    dst.put(Character.new(0x093d))
-                    if (@need_flushing)
-                      dst.put(@context_char)
-                      @context_char = current_char
-                      mark += 1
-                      next
-                    end
-                    dst.put(self.class::ZWJ_CHAR)
-                    if (@need_flushing)
-                      dst.put(@context_char)
-                      @context_char = current_char
-                      mark += 1
-                      next
-                    end
-                    dst.put(NUKTA_CHAR)
                   when Character.new(0x0940)
                     dst.put(Character.new(0x0963))
-                    dst.put(Character.new(0x0944))
-                    dst.put(Character.new(0x093d))
-                    if (@need_flushing)
-                      dst.put(@context_char)
-                      @context_char = current_char
-                      mark += 1
-                      next
-                    end
-                    dst.put(self.class::ZWJ_CHAR)
-                    if (@need_flushing)
-                      dst.put(@context_char)
-                      @context_char = current_char
-                      mark += 1
-                      next
-                    end
-                    dst.put(NUKTA_CHAR)
                   when Character.new(0x0943)
                     dst.put(Character.new(0x0944))
-                    dst.put(Character.new(0x093d))
-                    if (@need_flushing)
-                      dst.put(@context_char)
-                      @context_char = current_char
-                      mark += 1
-                      next
-                    end
-                    dst.put(self.class::ZWJ_CHAR)
-                    if (@need_flushing)
-                      dst.put(@context_char)
-                      @context_char = current_char
-                      mark += 1
-                      next
-                    end
-                    dst.put(NUKTA_CHAR)
                   when Character.new(0x0964)
                     dst.put(Character.new(0x093d))
-                    if (@need_flushing)
-                      dst.put(@context_char)
-                      @context_char = current_char
-                      mark += 1
-                      next
-                    end
-                    dst.put(self.class::ZWJ_CHAR)
-                    if (@need_flushing)
-                      dst.put(@context_char)
-                      @context_char = current_char
-                      mark += 1
-                      next
-                    end
-                    dst.put(NUKTA_CHAR)
                   when HALANT_CHAR
                     if (@need_flushing)
                       dst.put(@context_char)
@@ -1107,13 +817,6 @@ module Sun::Nio::Cs::Ext
                       next
                     end
                     dst.put(self.class::ZWJ_CHAR)
-                    if (@need_flushing)
-                      dst.put(@context_char)
-                      @context_char = current_char
-                      mark += 1
-                      next
-                    end
-                    dst.put(NUKTA_CHAR)
                   else
                     if (@need_flushing)
                       dst.put(@context_char)
@@ -1161,8 +864,7 @@ module Sun::Nio::Cs::Ext
                   end
                   dst.put(current_char)
                 end
-              end == :thrown or break
-              # end switch
+              end == :thrown or break # end switch
               @context_char = current_char
               @need_flushing = false
               mark += 1
@@ -1251,7 +953,7 @@ module Sun::Nio::Cs::Ext
                 end
               end
               if (input_char >= 0x900 && input_char <= 0x97f)
-                index = (RJava.cast_to_int((input_char)) - 0x900) * 2
+                index = (((input_char)).to_int - 0x900) * 2
               end
               if (Surrogate.is(input_char))
                 if (@sgp.parse(input_char, sa, sp, sl) < 0)
@@ -1310,7 +1012,7 @@ module Sun::Nio::Cs::Ext
                 end
               end
               if (input_char >= 0x900 && input_char <= 0x97f)
-                index = (RJava.cast_to_int((input_char)) - 0x900) * 2
+                index = (((input_char)).to_int - 0x900) * 2
               end
               if (Surrogate.is(input_char))
                 if (@sgp.parse(input_char, src) < 0)

@@ -72,47 +72,46 @@ module Sun::Net::Www::Protocol::Https
   # "sun.net.www" HTTP protocol handler.  HTTPS is the same protocol as HTTP,
   # but differs in the transport layer which it uses:  <UL>
   # 
-  # <LI>There's a <em>Secure Sockets Layer</em> between TCP
-  # and the HTTP protocol code.
+  #      <LI>There's a <em>Secure Sockets Layer</em> between TCP
+  #      and the HTTP protocol code.
   # 
-  # <LI>It uses a different default TCP port.
+  #      <LI>It uses a different default TCP port.
   # 
-  # <LI>It doesn't use application level proxies, which can see and
-  # manipulate HTTP user level data, compromising privacy.  It uses
-  # low level tunneling instead, which hides HTTP protocol and data
-  # from all third parties.  (Traffic analysis is still possible).
+  #      <LI>It doesn't use application level proxies, which can see and
+  #      manipulate HTTP user level data, compromising privacy.  It uses
+  #      low level tunneling instead, which hides HTTP protocol and data
+  #      from all third parties.  (Traffic analysis is still possible).
   # 
-  # <LI>It does basic server authentication, to protect
-  # against "URL spoofing" attacks.  This involves deciding
-  # whether the X.509 certificate chain identifying the server
-  # is trusted, and verifying that the name of the server is
-  # found in the certificate.  (The application may enable an
-  # anonymous SSL cipher suite, and such checks are not done
-  # for anonymous ciphers.)
+  #      <LI>It does basic server authentication, to protect
+  #      against "URL spoofing" attacks.  This involves deciding
+  #      whether the X.509 certificate chain identifying the server
+  #      is trusted, and verifying that the name of the server is
+  #      found in the certificate.  (The application may enable an
+  #      anonymous SSL cipher suite, and such checks are not done
+  #      for anonymous ciphers.)
   # 
-  # <LI>It exposes key SSL session attributes, specifically the
-  # cipher suite in use and the server's X509 certificates, to
-  # application software which knows about this protocol handler.
+  #      <LI>It exposes key SSL session attributes, specifically the
+  #      cipher suite in use and the server's X509 certificates, to
+  #      application software which knows about this protocol handler.
   # 
-  # </UL>
+  #      </UL>
   # 
   # <P> System properties used include:  <UL>
   # 
-  # <LI><em>https.proxyHost</em> ... the host supporting SSL
-  # tunneling using the conventional CONNECT syntax
+  #      <LI><em>https.proxyHost</em> ... the host supporting SSL
+  #      tunneling using the conventional CONNECT syntax
   # 
-  # <LI><em>https.proxyPort</em> ... port to use on proxyHost
+  #      <LI><em>https.proxyPort</em> ... port to use on proxyHost
   # 
-  # <LI><em>https.cipherSuites</em> ... comma separated list of
-  # SSL cipher suite names to enable.
+  #      <LI><em>https.cipherSuites</em> ... comma separated list of
+  #      SSL cipher suite names to enable.
   # 
-  # <LI><em>http.nonProxyHosts</em> ...
+  #      <LI><em>http.nonProxyHosts</em> ...
   # 
-  # </UL>
+  #      </UL>
   # 
   # @author David Brownell
   # @author Bill Foote
-  # 
   # final for export control reasons (access to APIs); remove with care
   class HttpsClient < HttpsClientImports.const_get :HttpClient
     include_class_members HttpsClientImports
@@ -158,7 +157,9 @@ module Sun::Net::Www::Protocol::Https
     
     typesig { [] }
     def get_cipher_suites
+      # 
       # If ciphers are assigned, sort them into an array.
+      # 
       ciphers = nil
       cipher_string = AccessController.do_privileged(GetPropertyAction.new("https.cipherSuites"))
       if ((cipher_string).nil? || ("" == cipher_string))
@@ -182,7 +183,9 @@ module Sun::Net::Www::Protocol::Https
     
     typesig { [] }
     def get_protocols
+      # 
       # If protocols are assigned, sort them into an array.
+      # 
       protocols = nil
       protocol_string = AccessController.do_privileged(GetPropertyAction.new("https.protocols"))
       if ((protocol_string).nil? || ("" == protocol_string))
@@ -247,7 +250,6 @@ module Sun::Net::Www::Protocol::Https
     
     typesig { [SSLSocketFactory, URL] }
     # CONSTRUCTOR, FACTORY
-    # 
     # Create an HTTPS client URL.  Traffic will be tunneled through any
     # intermediate nodes rather than proxied, so that confidentiality
     # of data exchanged can be preserved.  However, note that all the
@@ -261,20 +263,20 @@ module Sun::Net::Www::Protocol::Https
     # 
     # @param URL https URL with which a connection must be established
     def initialize(sf, url)
+      initialize__https_client(sf, url, nil, -1)
       # HttpClient-level proxying is always disabled,
       # because we override doConnect to do tunneling instead.
-      initialize__https_client(sf, url, nil, -1)
     end
     
     typesig { [SSLSocketFactory, URL, String, ::Java::Int] }
-    # Create an HTTPS client URL.  Traffic will be tunneled through
+    #  Create an HTTPS client URL.  Traffic will be tunneled through
     # the specified proxy server.
     def initialize(sf, url, proxy_host, proxy_port)
       initialize__https_client(sf, url, proxy_host, proxy_port, -1)
     end
     
     typesig { [SSLSocketFactory, URL, String, ::Java::Int, ::Java::Int] }
-    # Create an HTTPS client URL.  Traffic will be tunneled through
+    #  Create an HTTPS client URL.  Traffic will be tunneled through
     # the specified proxy server, with a connect timeout
     def initialize(sf, url, proxy_host, proxy_port, connect_timeout)
       initialize__https_client(sf, url, ((proxy_host).nil? ? nil : HttpsClient.new_http_proxy(proxy_host, proxy_port)), connect_timeout)
@@ -416,9 +418,11 @@ module Sun::Net::Www::Protocol::Https
             raise ex
           end
         end
+        # 
         # Force handshaking, so that we get any authentication.
         # Register a handshake callback so our session state tracks any
         # later session renegotiations.
+        # 
         protocols = get_protocols
         ciphers = get_cipher_suites
         if (!(protocols).nil?)
@@ -459,7 +463,9 @@ module Sun::Net::Www::Protocol::Https
     # Server identity checking is done according to RFC 2818: HTTP over TLS
     # Section 3.1 Server Identity
     def check_urlspoofing(hostname_verifier)
+      # 
       # Get authenticated server name, if any
+      # 
       done = false
       host = self.attr_url.get_host
       # if IPv6 strip off the "[]"
@@ -488,6 +494,7 @@ module Sun::Net::Www::Protocol::Https
         # if it doesn't throw an exception, we passed. Return.
         return
       rescue SSLPeerUnverifiedException => e
+        # 
         # client explicitly changed default policy and enabled
         # anonymous ciphers; we can't check the standard policy
         # 
@@ -590,7 +597,7 @@ module Sun::Net::Www::Protocol::Https
     
     typesig { [] }
     # @return the proxy host being used for this client, or null
-    # if we're not going through a proxy
+    #          if we're not going through a proxy
     def get_proxy_host_used
       if (!needs_tunneling)
         return nil
@@ -601,7 +608,7 @@ module Sun::Net::Www::Protocol::Https
     
     typesig { [] }
     # @return the proxy port being used for this client.  Meaningless
-    # if getProxyHostUsed() gives null.
+    #          if getProxyHostUsed() gives null.
     def get_proxy_port_used
       return ((self.attr_proxy).nil? || (self.attr_proxy.type).equal?(Proxy::Type::DIRECT) || (self.attr_proxy.type).equal?(Proxy::Type::SOCKS)) ? -1 : (self.attr_proxy.address).get_port
     end

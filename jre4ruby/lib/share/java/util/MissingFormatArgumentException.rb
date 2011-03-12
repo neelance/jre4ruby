@@ -58,7 +58,7 @@ module Java::Util
     # specifier.
     # 
     # @param  s
-    # Format specifier which does not have a corresponding argument
+    #         Format specifier which does not have a corresponding argument
     def initialize(s)
       @s = nil
       super()

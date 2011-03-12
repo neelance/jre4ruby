@@ -72,14 +72,14 @@ module Sun::Nio::Cs
     
     typesig { [Charset, ::Java::Int, ::Java::Boolean] }
     def initialize(cs, bo, m)
-      # Four bytes max if you need a BOM
-      # Replacement depends upon byte order
       @byte_order = 0
       @uses_mark = false
       @needs_mark = false
       @sgp = nil
       super(cs, 2.0, m ? 4.0 : 2.0, (((bo).equal?(BIG)) ? Array.typed(::Java::Byte).new([0xff, 0xfd]) : Array.typed(::Java::Byte).new([0xfd, 0xff])))
       @sgp = Surrogate::Parser.new
+      # Four bytes max if you need a BOM
+      # Replacement depends upon byte order
       @uses_mark = @needs_mark = m
       @byte_order = bo
     end

@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5::Internal::Ktab
@@ -113,7 +111,7 @@ module Sun::Security::Krb5::Internal::Ktab
       # Gets the single instance of KeyTab class.
       # @param file the key tab file.
       # @return single instance of KeyTab;
-      # return null if error occurs while reading data out of the file.
+      #  return null if error occurs while reading data out of the file.
       def get_instance(file)
         begin
           if (!(file.exists))
@@ -146,7 +144,7 @@ module Sun::Security::Krb5::Internal::Ktab
       typesig { [] }
       # Gets the single instance of KeyTab class.
       # @return single instance of KeyTab; return null if default keytab file
-      # does not exist, or error occurs while reading data from the file.
+      #  does not exist, or error occurs while reading data from the file.
       def get_instance
         begin
           self.attr_name = RJava.cast_to_string(get_default_key_tab)

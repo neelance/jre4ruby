@@ -96,7 +96,7 @@ module Java::Io
     # 
     # @param target the buffer to read characters into
     # @return The number of characters added to the buffer, or
-    # -1 if this source of characters is at its end
+    #         -1 if this source of characters is at its end
     # @throws IOException if an I/O error occurs
     # @throws NullPointerException if target is null
     # @throws ReadOnlyBufferException if target is a read only buffer
@@ -119,8 +119,8 @@ module Java::Io
     # should override this method.
     # 
     # @return     The character read, as an integer in the range 0 to 65535
-    # (<tt>0x00-0xffff</tt>), or -1 if the end of the stream has
-    # been reached
+    #             (<tt>0x00-0xffff</tt>), or -1 if the end of the stream has
+    #             been reached
     # 
     # @exception  IOException  If an I/O error occurs
     def read
@@ -139,8 +139,8 @@ module Java::Io
     # @param       cbuf  Destination buffer
     # 
     # @return      The number of characters read, or -1
-    # if the end of the stream
-    # has been reached
+    #              if the end of the stream
+    #              has been reached
     # 
     # @exception   IOException  If an I/O error occurs
     def read(cbuf)
@@ -157,7 +157,7 @@ module Java::Io
     # @param      len   Maximum number of characters to read
     # 
     # @return     The number of characters read, or -1 if the end of the
-    # stream has been reached
+    #             stream has been reached
     # 
     # @exception  IOException  If an I/O error occurs
     def read(cbuf, off, len)
@@ -191,14 +191,14 @@ module Java::Io
       if (n < 0)
         raise IllegalArgumentException.new("skip value is negative")
       end
-      nn = RJava.cast_to_int(Math.min(n, MaxSkipBufferSize))
+      nn = (Math.min(n, MaxSkipBufferSize)).to_int
       synchronized((@lock)) do
         if (((@skip_buffer).nil?) || (@skip_buffer.attr_length < nn))
           @skip_buffer = CharArray.new(nn)
         end
         r = n
         while (r > 0)
-          nc = read(@skip_buffer, 0, RJava.cast_to_int(Math.min(r, nn)))
+          nc = read(@skip_buffer, 0, (Math.min(r, nn)).to_int)
           if ((nc).equal?(-1))
             break
           end
@@ -236,12 +236,12 @@ module Java::Io
     # character-input streams support the mark() operation.
     # 
     # @param  readAheadLimit  Limit on the number of characters that may be
-    # read while still preserving the mark.  After
-    # reading this many characters, attempting to
-    # reset the stream may fail.
+    #                         read while still preserving the mark.  After
+    #                         reading this many characters, attempting to
+    #                         reset the stream may fail.
     # 
     # @exception  IOException  If the stream does not support mark(),
-    # or if some other I/O error occurs
+    #                          or if some other I/O error occurs
     def mark(read_ahead_limit)
       raise IOException.new("mark() not supported")
     end
@@ -255,9 +255,9 @@ module Java::Io
     # reset() without supporting mark().
     # 
     # @exception  IOException  If the stream has not been marked,
-    # or if the mark has been invalidated,
-    # or if the stream does not support reset(),
-    # or if some other I/O error occurs
+    #                          or if the mark has been invalidated,
+    #                          or if the stream does not support reset(),
+    #                          or if some other I/O error occurs
     def reset
       raise IOException.new("reset() not supported")
     end

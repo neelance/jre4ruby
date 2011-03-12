@@ -36,39 +36,39 @@ module Java::Lang
     
     typesig { [::Java::Int] }
     # The character properties are currently encoded into 32 bits in the following manner:
-    # 1 bit   mirrored property
-    # 4 bits  directionality property
-    # 9 bits  signed offset used for converting case
-    # 1 bit   if 1, adding the signed offset converts the character to lowercase
-    # 1 bit   if 1, subtracting the signed offset converts the character to uppercase
-    # 1 bit   if 1, this character has a titlecase equivalent (possibly itself)
-    # 3 bits  0  may not be part of an identifier
-    # 1  ignorable control; may continue a Unicode identifier or Java identifier
-    # 2  may continue a Java identifier but not a Unicode identifier (unused)
-    # 3  may continue a Unicode identifier or Java identifier
-    # 4  is a Java whitespace character
-    # 5  may start or continue a Java identifier;
-    # may continue but not start a Unicode identifier (underscores)
-    # 6  may start or continue a Java identifier but not a Unicode identifier ($)
-    # 7  may start or continue a Unicode identifier or Java identifier
-    # Thus:
-    # 5, 6, 7 may start a Java identifier
-    # 1, 2, 3, 5, 6, 7 may continue a Java identifier
-    # 7 may start a Unicode identifier
-    # 1, 3, 5, 7 may continue a Unicode identifier
-    # 1 is ignorable within an identifier
-    # 4 is Java whitespace
-    # 2 bits  0  this character has no numeric property
-    # 1  adding the digit offset to the character code and then
-    # masking with 0x1F will produce the desired numeric value
-    # 2  this character has a "strange" numeric value
-    # 3  a Java supradecimal digit: adding the digit offset to the
-    # character code, then masking with 0x1F, then adding 10
-    # will produce the desired numeric value
-    # 5 bits  digit offset
-    # 5 bits  character type
+    #  1 bit   mirrored property
+    #  4 bits  directionality property
+    #  9 bits  signed offset used for converting case
+    #  1 bit   if 1, adding the signed offset converts the character to lowercase
+    #  1 bit   if 1, subtracting the signed offset converts the character to uppercase
+    #  1 bit   if 1, this character has a titlecase equivalent (possibly itself)
+    #  3 bits  0  may not be part of an identifier
+    #          1  ignorable control; may continue a Unicode identifier or Java identifier
+    #          2  may continue a Java identifier but not a Unicode identifier (unused)
+    #          3  may continue a Unicode identifier or Java identifier
+    #          4  is a Java whitespace character
+    #          5  may start or continue a Java identifier;
+    #             may continue but not start a Unicode identifier (underscores)
+    #          6  may start or continue a Java identifier but not a Unicode identifier ($)
+    #          7  may start or continue a Unicode identifier or Java identifier
+    #          Thus:
+    #             5, 6, 7 may start a Java identifier
+    #             1, 2, 3, 5, 6, 7 may continue a Java identifier
+    #             7 may start a Unicode identifier
+    #             1, 3, 5, 7 may continue a Unicode identifier
+    #             1 is ignorable within an identifier
+    #             4 is Java whitespace
+    #  2 bits  0  this character has no numeric property
+    #          1  adding the digit offset to the character code and then
+    #             masking with 0x1F will produce the desired numeric value
+    #          2  this character has a "strange" numeric value
+    #          3  a Java supradecimal digit: adding the digit offset to the
+    #             character code, then masking with 0x1F, then adding 10
+    #             will produce the desired numeric value
+    #  5 bits  digit offset
+    #  5 bits  character type
     # 
-    # The encoding of character properties is subject to change at any time.
+    #  The encoding of character properties is subject to change at any time.
     def get_properties(ch)
       offset = RJava.cast_to_char(ch)
       props = A[Y[X[offset >> 5] | ((offset >> 1) & 0xf)] | (offset & 0x1)]
@@ -118,10 +118,8 @@ module Java::Lang
       if (!((val & 0x20000)).equal?(0))
         if (((val & 0x7fc0000)).equal?(0x7fc0000))
           case (ch)
-          # map the offset overflow chars
-          # map the titlecase chars with both a 1:M uppercase map
-          # and a lowercase map
           when 0x130
+            # map the offset overflow chars
             map_char = 0x69
           when 0x2126
             map_char = 0x3c9
@@ -130,6 +128,8 @@ module Java::Lang
           when 0x212b
             map_char = 0xe5
           when 0x1f88
+            # map the titlecase chars with both a 1:M uppercase map
+            # and a lowercase map
             map_char = 0x1f80
           when 0x1f89
             map_char = 0x1f81
@@ -183,10 +183,10 @@ module Java::Lang
             map_char = 0x1fc3
           when 0x1ffc
             map_char = 0x1ff3
-          end
           # default mapChar is already set, so no
           # need to redo it here.
           # default       : mapChar = ch;
+          end
         else
           offset = val << 5 >> (5 + 18)
           map_char = ch + offset
@@ -202,15 +202,15 @@ module Java::Lang
       if (!((val & 0x10000)).equal?(0))
         if (((val & 0x7fc0000)).equal?(0x7fc0000))
           case (ch)
-          # map chars with overflow offsets
-          # map char that have both a 1:1 and 1:M map
           when 0xb5
+            # map chars with overflow offsets
             map_char = 0x39c
           when 0x17f
             map_char = 0x53
           when 0x1fbe
             map_char = 0x399
           when 0x1f80
+            # map char that have both a 1:1 and 1:M map
             map_char = 0x1f88
           when 0x1f81
             map_char = 0x1f89
@@ -264,12 +264,12 @@ module Java::Lang
             map_char = 0x1fcc
           when 0x1ff3
             map_char = 0x1ffc
-          end
           # ch must have a 1:M case mapping, but we
           # can't handle it here. Return ch.
           # since mapChar is already set, no need
           # to redo it here.
           # default       : mapChar = ch;
+          end
         else
           offset = val << 5 >> (5 + 18)
           map_char = ch - offset
@@ -333,8 +333,8 @@ module Java::Lang
       val = get_properties(ch)
       retval = -1
       case (val & 0xc00)
-      # cannot occur
       when (0x0)
+        # cannot occur
         # not numeric
         retval = -1
       when (0x400)
@@ -343,135 +343,136 @@ module Java::Lang
       when (0x800)
         # "strange" numeric
         case (ch)
-        # TAMIL NUMBER ONE HUNDRED
-        # TAMIL NUMBER ONE THOUSAND
-        # ETHIOPIC NUMBER FORTY
-        # ETHIOPIC NUMBER FIFTY
-        # ETHIOPIC NUMBER SIXTY
-        # ETHIOPIC NUMBER SEVENTY
-        # ETHIOPIC NUMBER EIGHTY
-        # ETHIOPIC NUMBER NINETY
-        # ETHIOPIC NUMBER HUNDRED
-        # ETHIOPIC NUMBER TEN THOUSAND
-        # FRACTION NUMERATOR ONE
-        # ROMAN NUMERAL FIFTY
-        # ROMAN NUMERAL ONE HUNDRED
-        # ROMAN NUMERAL FIVE HUNDRED
-        # ROMAN NUMERAL ONE THOUSAND
-        # SMALL ROMAN NUMERAL FIFTY
-        # SMALL ROMAN NUMERAL ONE HUNDRED
-        # SMALL ROMAN NUMERAL FIVE HUNDRED
-        # SMALL ROMAN NUMERAL ONE THOUSAND
-        # ROMAN NUMERAL ONE THOUSAND C D
-        # ROMAN NUMERAL FIVE THOUSAND
-        # ROMAN NUMERAL TEN THOUSAND
-        # CIRCLED NUMBER THIRTY THREE
-        # CIRCLED NUMBER THIRTY FOUR
-        # CIRCLED NUMBER THIRTY FIVE
-        # CIRCLED NUMBER THIRTY SIX
-        # CIRCLED NUMBER THIRTY SEVEN
-        # CIRCLED NUMBER THIRTY EIGHT
-        # CIRCLED NUMBER THIRTY NINE
-        # CIRCLED NUMBER FORTY
-        # CIRCLED NUMBER FORTY ONE
-        # CIRCLED NUMBER FORTY TWO
-        # CIRCLED NUMBER FORTY THREE
-        # CIRCLED NUMBER FORTY FOUR
-        # CIRCLED NUMBER FORTY FIVE
-        # CIRCLED NUMBER FORTY SIX
-        # CIRCLED NUMBER FORTY SEVEN
-        # CIRCLED NUMBER FORTY EIGHT
-        # CIRCLED NUMBER FORTY NINE
-        # CIRCLED NUMBER FIFTY
         when 0xbf1
           retval = 100
         when 0xbf2
+          # TAMIL NUMBER ONE HUNDRED
           retval = 1000
         when 0x1375
+          # TAMIL NUMBER ONE THOUSAND
           retval = 40
         when 0x1376
+          # ETHIOPIC NUMBER FORTY
           retval = 50
         when 0x1377
+          # ETHIOPIC NUMBER FIFTY
           retval = 60
         when 0x1378
+          # ETHIOPIC NUMBER SIXTY
           retval = 70
         when 0x1379
+          # ETHIOPIC NUMBER SEVENTY
           retval = 80
         when 0x137a
+          # ETHIOPIC NUMBER EIGHTY
           retval = 90
         when 0x137b
+          # ETHIOPIC NUMBER NINETY
           retval = 100
         when 0x137c
+          # ETHIOPIC NUMBER HUNDRED
           retval = 10000
         when 0x215f
+          # ETHIOPIC NUMBER TEN THOUSAND
           retval = 1
         when 0x216c
+          # FRACTION NUMERATOR ONE
           retval = 50
         when 0x216d
+          # ROMAN NUMERAL FIFTY
           retval = 100
         when 0x216e
+          # ROMAN NUMERAL ONE HUNDRED
           retval = 500
         when 0x216f
+          # ROMAN NUMERAL FIVE HUNDRED
           retval = 1000
         when 0x217c
+          # ROMAN NUMERAL ONE THOUSAND
           retval = 50
         when 0x217d
+          # SMALL ROMAN NUMERAL FIFTY
           retval = 100
         when 0x217e
+          # SMALL ROMAN NUMERAL ONE HUNDRED
           retval = 500
         when 0x217f
+          # SMALL ROMAN NUMERAL FIVE HUNDRED
           retval = 1000
         when 0x2180
+          # SMALL ROMAN NUMERAL ONE THOUSAND
           retval = 1000
         when 0x2181
+          # ROMAN NUMERAL ONE THOUSAND C D
           retval = 5000
         when 0x2182
+          # ROMAN NUMERAL FIVE THOUSAND
           retval = 10000
         when 0x325c
+          # ROMAN NUMERAL TEN THOUSAND
           retval = 32
         when 0x325d
           retval = 33
         when 0x325e
+          # CIRCLED NUMBER THIRTY THREE
           retval = 34
         when 0x325f
+          # CIRCLED NUMBER THIRTY FOUR
           retval = 35
         when 0x32b1
+          # CIRCLED NUMBER THIRTY FIVE
           retval = 36
         when 0x32b2
+          # CIRCLED NUMBER THIRTY SIX
           retval = 37
         when 0x32b3
+          # CIRCLED NUMBER THIRTY SEVEN
           retval = 38
         when 0x32b4
+          # CIRCLED NUMBER THIRTY EIGHT
           retval = 39
         when 0x32b5
+          # CIRCLED NUMBER THIRTY NINE
           retval = 40
         when 0x32b6
+          # CIRCLED NUMBER FORTY
           retval = 41
         when 0x32b7
+          # CIRCLED NUMBER FORTY ONE
           retval = 42
         when 0x32b8
+          # CIRCLED NUMBER FORTY TWO
           retval = 43
         when 0x32b9
+          # CIRCLED NUMBER FORTY THREE
           retval = 44
         when 0x32ba
+          # CIRCLED NUMBER FORTY FOUR
           retval = 45
         when 0x32bb
+          # CIRCLED NUMBER FORTY FIVE
           retval = 46
         when 0x32bc
+          # CIRCLED NUMBER FORTY SIX
           retval = 47
         when 0x32bd
+          # CIRCLED NUMBER FORTY SEVEN
           retval = 48
         when 0x32be
+          # CIRCLED NUMBER FORTY EIGHT
           retval = 49
         when 0x32bf
+          # CIRCLED NUMBER FORTY NINE
           retval = 50
         else
+          # CIRCLED NUMBER FIFTY
           retval = -2
         end
       when (0xc00)
         # Java supradecimal
         retval = (ch + ((val & 0x3e0) >> 5) & 0x1f) + 10
       else
+        # cannot occur
         # not numeric
         retval = -1
       end
@@ -528,8 +529,8 @@ module Java::Lang
           map_char = ch - offset
         else
           case (ch)
-          # map overflow characters
           when 0xb5
+            # map overflow characters
             map_char = 0x39c
           when 0x17f
             map_char = 0x53
@@ -613,8 +614,7 @@ module Java::Lang
       
       # In all, the character property tables require 15920 bytes.
       when_class_loaded do
-        const_set :CharMap, Array.typed(Array.typed(Array.typed(::Java::Char))).new([Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x00DF)]), Array.typed(::Java::Char).new([Character.new(0x0053), Character.new(0x0053), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x0130)]), Array.typed(::Java::Char).new([Character.new(0x0130), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x0149)]), Array.typed(::Java::Char).new([Character.new(0x02BC), Character.new(0x004E), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x01F0)]), Array.typed(::Java::Char).new([Character.new(0x004A), Character.new(0x030C), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x0390)]), Array.typed(::Java::Char).new([Character.new(0x0399), Character.new(0x0308), Character.new(0x0301), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x03B0)]), Array.typed(::Java::Char).new([Character.new(0x03A5), Character.new(0x0308), Character.new(0x0301), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x0587)]), Array.typed(::Java::Char).new([Character.new(0x0535), Character.new(0x0552), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1E96)]), Array.typed(::Java::Char).new([Character.new(0x0048), Character.new(0x0331), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1E97)]), Array.typed(::Java::Char).new([Character.new(0x0054), Character.new(0x0308), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1E98)]), Array.typed(::Java::Char).new([Character.new(0x0057), Character.new(0x030A), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1E99)]), Array.typed(::Java::Char).new([Character.new(0x0059), Character.new(0x030A), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1E9A)]), Array.typed(::Java::Char).new([Character.new(0x0041), Character.new(0x02BE), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F50)]), Array.typed(::Java::Char).new([Character.new(0x03A5), Character.new(0x0313), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F52)]), Array.typed(::Java::Char).new([Character.new(0x03A5), Character.new(0x0313), Character.new(0x0300), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F54)]), Array.typed(::Java::Char).new([Character.new(0x03A5), Character.new(0x0313), Character.new(0x0301), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F56)]), Array.typed(::Java::Char).new([Character.new(0x03A5), Character.new(0x0313), Character.new(0x0342), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F80)]), Array.typed(::Java::Char).new([Character.new(0x1F08), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F81)]), Array.typed(::Java::Char).new([Character.new(0x1F09), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F82)]), Array.typed(::Java::Char).new([Character.new(0x1F0A), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F83)]), Array.typed(::Java::Char).new([Character.new(0x1F0B), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F84)]), Array.typed(::Java::Char).new([Character.new(0x1F0C), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F85)]), Array.typed(::Java::Char).new([Character.new(0x1F0D), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F86)]), Array.typed(::Java::Char).new([Character.new(0x1F0E), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F87)]), Array.typed(::Java::Char).new([Character.new(0x1F0F), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F88)]), Array.typed(::Java::Char).new([Character.new(0x1F08), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F89)]), Array.typed(::Java::Char).new([Character.new(0x1F09), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F8A)]), Array.typed(::Java::Char).new([Character.new(0x1F0A), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F8B)]), Array.typed(::Java::Char).new([Character.new(0x1F0B), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F8C)]), Array.typed(::Java::Char).new([Character.new(0x1F0C), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F8D)]), Array.typed(::Java::Char).new([Character.new(0x1F0D), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F8E)]), Array.typed(::Java::Char).new([Character.new(0x1F0E), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F8F)]), Array.typed(::Java::Char).new([Character.new(0x1F0F), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F90)]), Array.typed(::Java::Char).new([Character.new(0x1F28), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F91)]), Array.typed(::Java::Char).new([Character.new(0x1F29), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F92)]), Array.typed(::Java::Char).new([Character.new(0x1F2A), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F93)]), Array.typed(::Java::Char).new([Character.new(0x1F2B), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F94)]), Array.typed(::Java::Char).new([Character.new(0x1F2C), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F95)]), Array.typed(::Java::Char).new([Character.new(0x1F2D), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F96)]), Array.typed(::Java::Char).new([Character.new(0x1F2E), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F97)]), Array.typed(::Java::Char).new([Character.new(0x1F2F), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F98)]), Array.typed(::Java::Char).new([Character.new(0x1F28), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F99)]), Array.typed(::Java::Char).new([Character.new(0x1F29), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F9A)]), Array.typed(::Java::Char).new([Character.new(0x1F2A), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F9B)]), Array.typed(::Java::Char).new([Character.new(0x1F2B), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F9C)]), Array.typed(::Java::Char).new([Character.new(0x1F2C), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F9D)]), Array.typed(::Java::Char).new([Character.new(0x1F2D), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F9E)]), Array.typed(::Java::Char).new([Character.new(0x1F2E), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F9F)]), Array.typed(::Java::Char).new([Character.new(0x1F2F), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FA0)]), Array.typed(::Java::Char).new([Character.new(0x1F68), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FA1)]), Array.typed(::Java::Char).new([Character.new(0x1F69), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FA2)]), Array.typed(::Java::Char).new([Character.new(0x1F6A), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FA3)]), Array.typed(::Java::Char).new([Character.new(0x1F6B), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FA4)]), Array.typed(::Java::Char).new([Character.new(0x1F6C), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FA5)]), Array.typed(::Java::Char).new([Character.new(0x1F6D), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FA6)]), Array.typed(::Java::Char).new([Character.new(0x1F6E), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FA7)]), Array.typed(::Java::Char).new([Character.new(0x1F6F), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FA8)]), Array.typed(::Java::Char).new([Character.new(0x1F68), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FA9)]), Array.typed(::Java::Char).new([Character.new(0x1F69), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FAA)]), Array.typed(::Java::Char).new([Character.new(0x1F6A), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FAB)]), Array.typed(::Java::Char).new([Character.new(0x1F6B), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FAC)]), Array.typed(::Java::Char).new([Character.new(0x1F6C), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FAD)]), Array.typed(::Java::Char).new([Character.new(0x1F6D), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FAE)]), Array.typed(::Java::Char).new([Character.new(0x1F6E), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FAF)]), Array.typed(::Java::Char).new([Character.new(0x1F6F), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FB2)]), Array.typed(::Java::Char).new([Character.new(0x1FBA), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FB3)]), Array.typed(::Java::Char).new([Character.new(0x0391), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FB4)]), Array.typed(::Java::Char).new([Character.new(0x0386), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FB6)]), Array.typed(::Java::Char).new([Character.new(0x0391), Character.new(0x0342), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FB7)]), Array.typed(::Java::Char).new([Character.new(0x0391), Character.new(0x0342), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FBC)]), Array.typed(::Java::Char).new([Character.new(0x0391), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FC2)]), Array.typed(::Java::Char).new([Character.new(0x1FCA), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FC3)]), Array.typed(::Java::Char).new([Character.new(0x0397), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FC4)]), Array.typed(::Java::Char).new([Character.new(0x0389), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FC6)]), Array.typed(::Java::Char).new([Character.new(0x0397), Character.new(0x0342), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FC7)]), Array.typed(::Java::Char).new([Character.new(0x0397), Character.new(0x0342), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FCC)]), Array.typed(::Java::Char).new([Character.new(0x0397), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FD2)]), Array.typed(::Java::Char).new([Character.new(0x0399), Character.new(0x0308), Character.new(0x0300), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FD3)]), Array.typed(::Java::Char).new([Character.new(0x0399), Character.new(0x0308), Character.new(0x0301), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FD6)]), Array.typed(::Java::Char).new([Character.new(0x0399), Character.new(0x0342), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FD7)]), Array.typed(::Java::Char).new([Character.new(0x0399), Character.new(0x0308), Character.new(0x0342), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FE2)]), Array.typed(::Java::Char).new([Character.new(0x03A5), Character.new(0x0308), Character.new(0x0300), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FE3)]), Array.typed(::Java::Char).new([Character.new(0x03A5), Character.new(0x0308), Character.new(0x0301), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FE4)]), Array.typed(::Java::Char).new([Character.new(0x03A1), Character.new(0x0313), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FE6)]), Array.typed(::Java::Char).new([Character.new(0x03A5), Character.new(0x0342), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FE7)]), Array.typed(::Java::Char).new([Character.new(0x03A5), Character.new(0x0308), Character.new(0x0342), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FF2)]), Array.typed(::Java::Char).new([Character.new(0x1FFA), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FF3)]), Array.typed(::Java::Char).new([Character.new(0x03A9), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FF4)]), Array.typed(::Java::Char).new([Character.new(0x038F), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FF6)]), Array.typed(::Java::Char).new([Character.new(0x03A9), Character.new(0x0342), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FF7)]), Array.typed(::Java::Char).new([Character.new(0x03A9), Character.new(0x0342), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FFC)]), Array.typed(::Java::Char).new([Character.new(0x03A9), Character.new(0x0399), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0xFB00)]), Array.typed(::Java::Char).new([Character.new(0x0046), Character.new(0x0046), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0xFB01)]), Array.typed(::Java::Char).new([Character.new(0x0046), Character.new(0x0049), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0xFB02)]), Array.typed(::Java::Char).new([Character.new(0x0046), Character.new(0x004C), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0xFB03)]), Array.typed(::Java::Char).new([Character.new(0x0046), Character.new(0x0046), Character.new(0x0049), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0xFB04)]), Array.typed(::Java::Char).new([Character.new(0x0046), Character.new(0x0046), Character.new(0x004C), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0xFB05)]), Array.typed(::Java::Char).new([Character.new(0x0053), Character.new(0x0054), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0xFB06)]), Array.typed(::Java::Char).new([Character.new(0x0053), Character.new(0x0054), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0xFB13)]), Array.typed(::Java::Char).new([Character.new(0x0544), Character.new(0x0546), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0xFB14)]), Array.typed(::Java::Char).new([Character.new(0x0544), Character.new(0x0535), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0xFB15)]), Array.typed(::Java::Char).new([Character.new(0x0544), Character.new(0x053B), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0xFB16)]), Array.typed(::Java::Char).new([Character.new(0x054E), Character.new(0x0546), ])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0xFB17)]), Array.typed(::Java::Char).new([Character.new(0x0544), Character.new(0x053D), ])]), ])
-        # THIS CODE WAS AUTOMATICALLY CREATED BY GenerateCharacter:
+        const_set :CharMap, Array.typed(Array.typed(Array.typed(::Java::Char))).new([Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x00DF)]), Array.typed(::Java::Char).new([Character.new(0x0053), Character.new(0x0053)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x0130)]), Array.typed(::Java::Char).new([Character.new(0x0130)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x0149)]), Array.typed(::Java::Char).new([Character.new(0x02BC), Character.new(0x004E)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x01F0)]), Array.typed(::Java::Char).new([Character.new(0x004A), Character.new(0x030C)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x0390)]), Array.typed(::Java::Char).new([Character.new(0x0399), Character.new(0x0308), Character.new(0x0301)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x03B0)]), Array.typed(::Java::Char).new([Character.new(0x03A5), Character.new(0x0308), Character.new(0x0301)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x0587)]), Array.typed(::Java::Char).new([Character.new(0x0535), Character.new(0x0552)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1E96)]), Array.typed(::Java::Char).new([Character.new(0x0048), Character.new(0x0331)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1E97)]), Array.typed(::Java::Char).new([Character.new(0x0054), Character.new(0x0308)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1E98)]), Array.typed(::Java::Char).new([Character.new(0x0057), Character.new(0x030A)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1E99)]), Array.typed(::Java::Char).new([Character.new(0x0059), Character.new(0x030A)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1E9A)]), Array.typed(::Java::Char).new([Character.new(0x0041), Character.new(0x02BE)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F50)]), Array.typed(::Java::Char).new([Character.new(0x03A5), Character.new(0x0313)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F52)]), Array.typed(::Java::Char).new([Character.new(0x03A5), Character.new(0x0313), Character.new(0x0300)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F54)]), Array.typed(::Java::Char).new([Character.new(0x03A5), Character.new(0x0313), Character.new(0x0301)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F56)]), Array.typed(::Java::Char).new([Character.new(0x03A5), Character.new(0x0313), Character.new(0x0342)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F80)]), Array.typed(::Java::Char).new([Character.new(0x1F08), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F81)]), Array.typed(::Java::Char).new([Character.new(0x1F09), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F82)]), Array.typed(::Java::Char).new([Character.new(0x1F0A), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F83)]), Array.typed(::Java::Char).new([Character.new(0x1F0B), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F84)]), Array.typed(::Java::Char).new([Character.new(0x1F0C), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F85)]), Array.typed(::Java::Char).new([Character.new(0x1F0D), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F86)]), Array.typed(::Java::Char).new([Character.new(0x1F0E), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F87)]), Array.typed(::Java::Char).new([Character.new(0x1F0F), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F88)]), Array.typed(::Java::Char).new([Character.new(0x1F08), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F89)]), Array.typed(::Java::Char).new([Character.new(0x1F09), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F8A)]), Array.typed(::Java::Char).new([Character.new(0x1F0A), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F8B)]), Array.typed(::Java::Char).new([Character.new(0x1F0B), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F8C)]), Array.typed(::Java::Char).new([Character.new(0x1F0C), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F8D)]), Array.typed(::Java::Char).new([Character.new(0x1F0D), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F8E)]), Array.typed(::Java::Char).new([Character.new(0x1F0E), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F8F)]), Array.typed(::Java::Char).new([Character.new(0x1F0F), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F90)]), Array.typed(::Java::Char).new([Character.new(0x1F28), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F91)]), Array.typed(::Java::Char).new([Character.new(0x1F29), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F92)]), Array.typed(::Java::Char).new([Character.new(0x1F2A), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F93)]), Array.typed(::Java::Char).new([Character.new(0x1F2B), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F94)]), Array.typed(::Java::Char).new([Character.new(0x1F2C), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F95)]), Array.typed(::Java::Char).new([Character.new(0x1F2D), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F96)]), Array.typed(::Java::Char).new([Character.new(0x1F2E), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F97)]), Array.typed(::Java::Char).new([Character.new(0x1F2F), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F98)]), Array.typed(::Java::Char).new([Character.new(0x1F28), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F99)]), Array.typed(::Java::Char).new([Character.new(0x1F29), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F9A)]), Array.typed(::Java::Char).new([Character.new(0x1F2A), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F9B)]), Array.typed(::Java::Char).new([Character.new(0x1F2B), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F9C)]), Array.typed(::Java::Char).new([Character.new(0x1F2C), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F9D)]), Array.typed(::Java::Char).new([Character.new(0x1F2D), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F9E)]), Array.typed(::Java::Char).new([Character.new(0x1F2E), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1F9F)]), Array.typed(::Java::Char).new([Character.new(0x1F2F), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FA0)]), Array.typed(::Java::Char).new([Character.new(0x1F68), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FA1)]), Array.typed(::Java::Char).new([Character.new(0x1F69), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FA2)]), Array.typed(::Java::Char).new([Character.new(0x1F6A), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FA3)]), Array.typed(::Java::Char).new([Character.new(0x1F6B), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FA4)]), Array.typed(::Java::Char).new([Character.new(0x1F6C), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FA5)]), Array.typed(::Java::Char).new([Character.new(0x1F6D), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FA6)]), Array.typed(::Java::Char).new([Character.new(0x1F6E), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FA7)]), Array.typed(::Java::Char).new([Character.new(0x1F6F), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FA8)]), Array.typed(::Java::Char).new([Character.new(0x1F68), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FA9)]), Array.typed(::Java::Char).new([Character.new(0x1F69), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FAA)]), Array.typed(::Java::Char).new([Character.new(0x1F6A), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FAB)]), Array.typed(::Java::Char).new([Character.new(0x1F6B), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FAC)]), Array.typed(::Java::Char).new([Character.new(0x1F6C), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FAD)]), Array.typed(::Java::Char).new([Character.new(0x1F6D), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FAE)]), Array.typed(::Java::Char).new([Character.new(0x1F6E), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FAF)]), Array.typed(::Java::Char).new([Character.new(0x1F6F), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FB2)]), Array.typed(::Java::Char).new([Character.new(0x1FBA), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FB3)]), Array.typed(::Java::Char).new([Character.new(0x0391), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FB4)]), Array.typed(::Java::Char).new([Character.new(0x0386), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FB6)]), Array.typed(::Java::Char).new([Character.new(0x0391), Character.new(0x0342)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FB7)]), Array.typed(::Java::Char).new([Character.new(0x0391), Character.new(0x0342), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FBC)]), Array.typed(::Java::Char).new([Character.new(0x0391), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FC2)]), Array.typed(::Java::Char).new([Character.new(0x1FCA), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FC3)]), Array.typed(::Java::Char).new([Character.new(0x0397), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FC4)]), Array.typed(::Java::Char).new([Character.new(0x0389), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FC6)]), Array.typed(::Java::Char).new([Character.new(0x0397), Character.new(0x0342)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FC7)]), Array.typed(::Java::Char).new([Character.new(0x0397), Character.new(0x0342), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FCC)]), Array.typed(::Java::Char).new([Character.new(0x0397), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FD2)]), Array.typed(::Java::Char).new([Character.new(0x0399), Character.new(0x0308), Character.new(0x0300)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FD3)]), Array.typed(::Java::Char).new([Character.new(0x0399), Character.new(0x0308), Character.new(0x0301)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FD6)]), Array.typed(::Java::Char).new([Character.new(0x0399), Character.new(0x0342)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FD7)]), Array.typed(::Java::Char).new([Character.new(0x0399), Character.new(0x0308), Character.new(0x0342)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FE2)]), Array.typed(::Java::Char).new([Character.new(0x03A5), Character.new(0x0308), Character.new(0x0300)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FE3)]), Array.typed(::Java::Char).new([Character.new(0x03A5), Character.new(0x0308), Character.new(0x0301)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FE4)]), Array.typed(::Java::Char).new([Character.new(0x03A1), Character.new(0x0313)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FE6)]), Array.typed(::Java::Char).new([Character.new(0x03A5), Character.new(0x0342)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FE7)]), Array.typed(::Java::Char).new([Character.new(0x03A5), Character.new(0x0308), Character.new(0x0342)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FF2)]), Array.typed(::Java::Char).new([Character.new(0x1FFA), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FF3)]), Array.typed(::Java::Char).new([Character.new(0x03A9), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FF4)]), Array.typed(::Java::Char).new([Character.new(0x038F), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FF6)]), Array.typed(::Java::Char).new([Character.new(0x03A9), Character.new(0x0342)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FF7)]), Array.typed(::Java::Char).new([Character.new(0x03A9), Character.new(0x0342), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0x1FFC)]), Array.typed(::Java::Char).new([Character.new(0x03A9), Character.new(0x0399)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0xFB00)]), Array.typed(::Java::Char).new([Character.new(0x0046), Character.new(0x0046)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0xFB01)]), Array.typed(::Java::Char).new([Character.new(0x0046), Character.new(0x0049)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0xFB02)]), Array.typed(::Java::Char).new([Character.new(0x0046), Character.new(0x004C)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0xFB03)]), Array.typed(::Java::Char).new([Character.new(0x0046), Character.new(0x0046), Character.new(0x0049)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0xFB04)]), Array.typed(::Java::Char).new([Character.new(0x0046), Character.new(0x0046), Character.new(0x004C)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0xFB05)]), Array.typed(::Java::Char).new([Character.new(0x0053), Character.new(0x0054)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0xFB06)]), Array.typed(::Java::Char).new([Character.new(0x0053), Character.new(0x0054)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0xFB13)]), Array.typed(::Java::Char).new([Character.new(0x0544), Character.new(0x0546)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0xFB14)]), Array.typed(::Java::Char).new([Character.new(0x0544), Character.new(0x0535)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0xFB15)]), Array.typed(::Java::Char).new([Character.new(0x0544), Character.new(0x053B)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0xFB16)]), Array.typed(::Java::Char).new([Character.new(0x054E), Character.new(0x0546)])]), Array.typed(Array.typed(::Java::Char)).new([Array.typed(::Java::Char).new([Character.new(0xFB17)]), Array.typed(::Java::Char).new([Character.new(0x0544), Character.new(0x053D)])])]) # THIS CODE WAS AUTOMATICALLY CREATED BY GenerateCharacter:
         data = A_DATA.to_char_array
         raise AssertError if not (((data.attr_length).equal?((748 * 2))))
         i = 0

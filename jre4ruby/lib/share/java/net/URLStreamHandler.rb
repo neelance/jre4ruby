@@ -71,7 +71,7 @@ module Java::Net
     # @param      u   the URL that this connects to.
     # @return     a <code>URLConnection</code> object for the <code>URL</code>.
     # @exception  IOException  if an I/O error occurs while opening the
-    # connection.
+    #               connection.
     def open_connection(u)
       raise NotImplementedError
     end
@@ -87,15 +87,15 @@ module Java::Net
     # 
     # @param      u   the URL that this connects to.
     # @param      p   the proxy through which the connection will be made.
-    # If direct connection is desired, Proxy.NO_PROXY
-    # should be specified.
+    #                 If direct connection is desired, Proxy.NO_PROXY
+    #                 should be specified.
     # @return     a <code>URLConnection</code> object for the <code>URL</code>.
     # @exception  IOException  if an I/O error occurs while opening the
-    # connection.
+    #               connection.
     # @exception  IllegalArgumentException if either u or p is null,
-    # or p has the wrong type.
+    #               or p has the wrong type.
     # @exception  UnsupportedOperationException if the subclass that
-    # implements the protocol doesn't support this method.
+    #               implements the protocol doesn't support this method.
     # @since      1.5
     def open_connection(u, p)
       raise UnsupportedOperationException.new("Method not implemented.")
@@ -115,16 +115,16 @@ module Java::Net
     # a different syntax must override this routine.
     # 
     # @param   u       the <code>URL</code> to receive the result of parsing
-    # the spec.
+    #                  the spec.
     # @param   spec    the <code>String</code> representing the URL that
-    # must be parsed.
+    #                  must be parsed.
     # @param   start   the character index at which to begin parsing. This is
-    # just past the '<code>:</code>' (if there is one) that
-    # specifies the determination of the protocol name.
+    #                  just past the '<code>:</code>' (if there is one) that
+    #                  specifies the determination of the protocol name.
     # @param   limit   the character position to stop parsing at. This is the
-    # end of the string or the position of the
-    # "<code>#</code>" character, if present. All information
-    # after the sharp sign indicates an anchor.
+    #                  end of the string or the position of the
+    #                  "<code>#</code>" character, if present. All information
+    #                  after the sharp sign indicates an anchor.
     def parse_url(u, spec, start, limit)
       # These fields may receive context content if this was relative URL
       protocol = u.get_protocol
@@ -505,7 +505,7 @@ module Java::Net
     # @param   query     the query part for the URL.
     # @param   ref       the reference.
     # @exception       SecurityException       if the protocol handler of the URL is
-    # different from this one
+    #                                  different from this one
     # @see     java.net.URL#set(java.lang.String, java.lang.String, int, java.lang.String, java.lang.String)
     # @since 1.3
     def set_url(u, protocol, host, port, authority, user_info, path, query, ref)
@@ -528,9 +528,9 @@ module Java::Net
     # @param   file      the file.
     # @param   ref       the reference.
     # @exception       SecurityException       if the protocol handler of the URL is
-    # different from this one
+    #                                  different from this one
     # @deprecated Use setURL(URL, String, String, int, String, String, String,
-    # String);
+    #             String);
     def set_url(u, protocol, host, port, file, ref)
       # Only old URL handlers call this, so assume that the host
       # field might contain "user:passwd@host". Fix as necessary.

@@ -43,7 +43,7 @@ module Sun::Security::Ssl
       # to this level (along with the maximum record size)
       # 
       # enum { change_cipher_spec(20), alert(21), handshake(22),
-      # application_data(23), (255) } ContentType;
+      #      application_data(23), (255) } ContentType;
       const_set_lazy(:Ct_change_cipher_spec) { 20 }
       const_attr_reader  :Ct_change_cipher_spec
       
@@ -76,12 +76,10 @@ module Sun::Security::Ssl
       const_attr_reader  :MaxPadding
       
       # block cipher padding
-      # 
       # SSL has a maximum record size.  It's header, (compressed) data,
       # padding, and a trailer for the MAC.
       # Some compression algorithms have rare cases where they expand the data.
       # As we don't support compression at this time, leave that out.
-      # 
       # header
       # data
       # padding
@@ -89,7 +87,6 @@ module Sun::Security::Ssl
       const_attr_reader  :MaxRecordSize
       
       # MAC
-      # 
       # The maximum large record size.
       # 
       # Some SSL/TLS implementations support large fragment upto 2^15 bytes,
@@ -97,13 +94,11 @@ module Sun::Security::Ssl
       # 
       # The maximum large record size is defined as maxRecordSize plus 2^14,
       # this is the amount OpenSSL is using.
-      # 
       # Max size with a conforming implemenation
       const_set_lazy(:MaxLargeRecordSize) { MaxRecordSize + MaxDataSize }
       const_attr_reader  :MaxLargeRecordSize
       
       # extra 2^14 bytes for large data packets.
-      # 
       # Maximum record size for alert and change cipher spec records.
       # They only contain 2 and 1 bytes of data, respectively.
       # Allocate a smaller array.

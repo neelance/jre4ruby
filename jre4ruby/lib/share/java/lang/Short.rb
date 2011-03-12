@@ -72,7 +72,7 @@ module Java::Lang
       # @return the string representation of the specified {@code short}
       # @see java.lang.Integer#toString(int)
       def to_s(s)
-        return JavaInteger.to_s(RJava.cast_to_int(s), 10)
+        return JavaInteger.to_s((s).to_int, 10)
       end
       
       typesig { [String, ::Java::Int] }
@@ -105,12 +105,12 @@ module Java::Lang
       # </ul>
       # 
       # @param s         the {@code String} containing the
-      # {@code short} representation to be parsed
+      #                  {@code short} representation to be parsed
       # @param radix     the radix to be used while parsing {@code s}
       # @return          the {@code short} represented by the string
-      # argument in the specified radix.
+      #                  argument in the specified radix.
       # @throws          NumberFormatException If the {@code String}
-      # does not contain a parsable {@code short}.
+      #                  does not contain a parsable {@code short}.
       def parse_short(s, radix)
         i = JavaInteger.parse_int(s, radix)
         if (i < MIN_VALUE || i > MAX_VALUE)
@@ -130,11 +130,11 @@ module Java::Lang
       # method.
       # 
       # @param s a {@code String} containing the {@code short}
-      # representation to be parsed
+      #          representation to be parsed
       # @return  the {@code short} value represented by the
-      # argument in decimal.
+      #          argument in decimal.
       # @throws  NumberFormatException If the string does not
-      # contain a parsable {@code short}.
+      #          contain a parsable {@code short}.
       def parse_short(s)
         return parse_short(s, 10)
       end
@@ -153,16 +153,16 @@ module Java::Lang
       # equal to the value of:
       # 
       # <blockquote>
-      # {@code new Short(Short.parseShort(s, radix))}
+      #  {@code new Short(Short.parseShort(s, radix))}
       # </blockquote>
       # 
       # @param s         the string to be parsed
       # @param radix     the radix to be used in interpreting {@code s}
       # @return          a {@code Short} object holding the value
-      # represented by the string argument in the
-      # specified radix.
+      #                  represented by the string argument in the
+      #                  specified radix.
       # @throws          NumberFormatException If the {@code String} does
-      # not contain a parsable {@code short}.
+      #                  not contain a parsable {@code short}.
       def value_of(s, radix)
         return Short.new(parse_short(s, radix))
       end
@@ -180,14 +180,14 @@ module Java::Lang
       # equal to the value of:
       # 
       # <blockquote>
-      # {@code new Short(Short.parseShort(s))}
+      #  {@code new Short(Short.parseShort(s))}
       # </blockquote>
       # 
       # @param s the string to be parsed
       # @return  a {@code Short} object holding the value
-      # represented by the string argument
+      #          represented by the string argument
       # @throws  NumberFormatException If the {@code String} does
-      # not contain a parsable {@code short}.
+      #          not contain a parsable {@code short}.
       def value_of(s)
         return value_of(s, 10)
       end
@@ -274,9 +274,9 @@ module Java::Lang
       # 
       # @param     nm the {@code String} to decode.
       # @return    a {@code Short} object holding the {@code short}
-      # value represented by {@code nm}
+      #            value represented by {@code nm}
       # @throws    NumberFormatException  if the {@code String} does not
-      # contain a parsable {@code short}.
+      #            contain a parsable {@code short}.
       # @see java.lang.Short#parseShort(java.lang.String, int)
       def decode(nm)
         i = JavaInteger.decode(nm)
@@ -301,7 +301,7 @@ module Java::Lang
     # represents the specified {@code short} value.
     # 
     # @param value     the value to be represented by the
-    # {@code Short}.
+    #                  {@code Short}.
     def initialize(value)
       @value = 0
       super()
@@ -316,9 +316,9 @@ module Java::Lang
     # {@code parseShort} method for radix 10.
     # 
     # @param s the {@code String} to be converted to a
-    # {@code Short}
+    #          {@code Short}
     # @throws  NumberFormatException If the {@code String}
-    # does not contain a parsable {@code short}.
+    #          does not contain a parsable {@code short}.
     # @see     java.lang.Short#parseShort(java.lang.String, int)
     def initialize(s)
       @value = 0
@@ -344,7 +344,7 @@ module Java::Lang
     # Returns the value of this {@code Short} as an
     # {@code int}.
     def int_value
-      return RJava.cast_to_int(@value)
+      return (@value).to_int
     end
     
     typesig { [] }
@@ -376,15 +376,15 @@ module Java::Lang
     # {@link java.lang.Short#toString(short)} method.
     # 
     # @return  a string representation of the value of this object in
-    # base&nbsp;10.
+    #          base&nbsp;10.
     def to_s
-      return String.value_of(RJava.cast_to_int(@value))
+      return String.value_of((@value).to_int)
     end
     
     typesig { [] }
     # Returns a hash code for this {@code Short}.
     def hash_code
-      return RJava.cast_to_int(@value)
+      return (@value).to_int
     end
     
     typesig { [Object] }
@@ -395,7 +395,7 @@ module Java::Lang
     # 
     # @param obj       the object to compare with
     # @return          {@code true} if the objects are the same;
-    # {@code false} otherwise.
+    #                  {@code false} otherwise.
     def ==(obj)
       if (obj.is_a?(Short))
         return (@value).equal?((obj).short_value)
@@ -408,12 +408,12 @@ module Java::Lang
     # 
     # @param   anotherShort   the {@code Short} to be compared.
     # @return  the value {@code 0} if this {@code Short} is
-    # equal to the argument {@code Short}; a value less than
-    # {@code 0} if this {@code Short} is numerically less
-    # than the argument {@code Short}; and a value greater than
-    # {@code 0} if this {@code Short} is numerically
-    # greater than the argument {@code Short} (signed
-    # comparison).
+    #          equal to the argument {@code Short}; a value less than
+    #          {@code 0} if this {@code Short} is numerically less
+    #          than the argument {@code Short}; and a value greater than
+    #           {@code 0} if this {@code Short} is numerically
+    #           greater than the argument {@code Short} (signed
+    #           comparison).
     # @since   1.2
     def compare_to(another_short)
       return @value - another_short.attr_value
@@ -431,7 +431,7 @@ module Java::Lang
       # two's complement representation of the specified {@code short} value.
       # 
       # @return the value obtained by reversing (or, equivalently, swapping)
-      # the bytes in the specified {@code short} value.
+      #     the bytes in the specified {@code short} value.
       # @since 1.5
       def reverse_bytes(i)
         return RJava.cast_to_short((((i & 0xff00) >> 8) | (i << 8)))

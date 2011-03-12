@@ -22,11 +22,8 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
-# 
 # (C) Copyright IBM Corp. 1996-2005 - All Rights Reserved                     *
-# *
+#                                                                             *
 # The original version of this source code and documentation is copyrighted   *
 # and owned by IBM, These materials are provided under terms of a License     *
 # Agreement between IBM and Sun. This technology is protected by multiple     *
@@ -73,26 +70,26 @@ module Sun::Text::Normalizer
   # properties, the main differences between UCharacter and Character are:
   # <ul>
   # <li> UCharacter is not designed to be a char wrapper and does not have
-  # APIs to which involves management of that single char.<br>
-  # These include:
-  # <ul>
-  # <li> char charValue(),
-  # <li> int compareTo(java.lang.Character, java.lang.Character), etc.
-  # </ul>
+  #      APIs to which involves management of that single char.<br>
+  #      These include:
+  #      <ul>
+  #        <li> char charValue(),
+  #        <li> int compareTo(java.lang.Character, java.lang.Character), etc.
+  #      </ul>
   # <li> UCharacter does not include Character APIs that are deprecated, not
-  # does it include the Java-specific character information, such as
-  # boolean isJavaIdentifierPart(char ch).
+  #      does it include the Java-specific character information, such as
+  #      boolean isJavaIdentifierPart(char ch).
   # <li> Character maps characters 'A' - 'Z' and 'a' - 'z' to the numeric
-  # values '10' - '35'. UCharacter also does this in digit and
-  # getNumericValue, to adhere to the java semantics of these
-  # methods.  New methods unicodeDigit, and
-  # getUnicodeNumericValue do not treat the above code points
-  # as having numeric values.  This is a semantic change from ICU4J 1.3.1.
+  #      values '10' - '35'. UCharacter also does this in digit and
+  #      getNumericValue, to adhere to the java semantics of these
+  #      methods.  New methods unicodeDigit, and
+  #      getUnicodeNumericValue do not treat the above code points
+  #      as having numeric values.  This is a semantic change from ICU4J 1.3.1.
   # </ul>
   # <p>
   # Further detail differences can be determined from the program
-  # <a href = http://oss.software.ibm.com/developerworks/opensource/cvs/icu4j/~checkout~/icu4j/src/com/ibm/icu/dev/test/lang/UCharacterCompare.java>
-  # com.ibm.icu.dev.test.lang.UCharacterCompare</a>
+  #        <a href = http://oss.software.ibm.com/developerworks/opensource/cvs/icu4j/~checkout~/icu4j/src/com/ibm/icu/dev/test/lang/UCharacterCompare.java>
+  #        com.ibm.icu.dev.test.lang.UCharacterCompare</a>
   # </p>
   # <p>
   # This class is not subclassable
@@ -147,37 +144,31 @@ module Sun::Text::Normalizer
           
           # [NA]
           # See note !!
-          # 
           # @stable ICU 2.6
           const_set_lazy(:LEADING_JAMO) { 1 }
           const_attr_reader  :LEADING_JAMO
           
           # [L]
-          # 
           # @stable ICU 2.6
           const_set_lazy(:VOWEL_JAMO) { 2 }
           const_attr_reader  :VOWEL_JAMO
           
           # [V]
-          # 
           # @stable ICU 2.6
           const_set_lazy(:TRAILING_JAMO) { 3 }
           const_attr_reader  :TRAILING_JAMO
           
           # [T]
-          # 
           # @stable ICU 2.6
           const_set_lazy(:LV_SYLLABLE) { 4 }
           const_attr_reader  :LV_SYLLABLE
           
           # [LV]
-          # 
           # @stable ICU 2.6
           const_set_lazy(:LVT_SYLLABLE) { 5 }
           const_attr_reader  :LVT_SYLLABLE
           
           # [LVT]
-          # 
           # @stable ICU 2.6
           const_set_lazy(:COUNT) { 6 }
           const_attr_reader  :COUNT
@@ -214,7 +205,6 @@ module Sun::Text::Normalizer
       end }
       
       # public data members -----------------------------------------------
-      # 
       # The lowest Unicode code point value.
       # @stable ICU 2.1
       const_set_lazy(:MIN_VALUE) { UTF16::CODEPOINT_MIN_VALUE }
@@ -242,7 +232,6 @@ module Sun::Text::Normalizer
       
       typesig { [::Java::Int, ::Java::Int] }
       # public methods ----------------------------------------------------
-      # 
       # Retrieves the numeric value of a decimal digit code point.
       # <br>This method observes the semantics of
       # <code>java.lang.Character.digit()</code>.  Note that this
@@ -255,8 +244,8 @@ module Sun::Text::Normalizer
       # This has been changed to conform to the java semantics.
       # <br>A code point is a valid digit if and only if:
       # <ul>
-      # <li>ch is a decimal digit or one of the european letters, and
-      # <li>the value of ch is less than the specified radix.
+      #   <li>ch is a decimal digit or one of the european letters, and
+      #   <li>the value of ch is less than the specified radix.
       # </ul>
       # @param ch the code point to query
       # @param radix the radix
@@ -278,7 +267,7 @@ module Sun::Text::Normalizer
           # Optimization
           # int result = UCharacterProperty.getSignedValue(props);
           # if (result >= 0) {
-          # return result;
+          #    return result;
           # }
           if (props >= 0)
             return UCharacterProperty.get_signed_value(props)
@@ -386,13 +375,12 @@ module Sun::Text::Normalizer
       
       typesig { [::Java::Char, ::Java::Char] }
       # // for StringPrep
-      # 
       # Returns a code point corresponding to the two UTF16 characters.
       # @param lead the lead char
       # @param trail the trail char
       # @return code point if surrogate characters are valid.
       # @exception IllegalArgumentException thrown when argument characters do
-      # not form a valid codepoint
+      #            not form a valid codepoint
       # @stable ICU 2.1
       def get_code_point(lead, trail)
         if (lead >= UTF16::LEAD_SURROGATE_MIN_VALUE && lead <= UTF16::LEAD_SURROGATE_MAX_VALUE && trail >= UTF16::TRAIL_SURROGATE_MIN_VALUE && trail <= UTF16::TRAIL_SURROGATE_MAX_VALUE)
@@ -403,7 +391,6 @@ module Sun::Text::Normalizer
       
       typesig { [::Java::Int] }
       # // for StringPrep
-      # 
       # Returns the Bidirection property of a code point.
       # For example, 0x0041 (letter A) has the LEFT_TO_RIGHT directional
       # property.<br>
@@ -426,11 +413,11 @@ module Sun::Text::Normalizer
       # foldCase(int ch, boolean defaultmapping).
       # @param str            the String to be converted
       # @param defaultmapping Indicates if all mappings defined in
-      # CaseFolding.txt is to be used, otherwise the
-      # mappings for dotted I and dotless i marked with
-      # 'I' in CaseFolding.txt will be skipped.
+      #                       CaseFolding.txt is to be used, otherwise the
+      #                       mappings for dotted I and dotless i marked with
+      #                       'I' in CaseFolding.txt will be skipped.
       # @return               the case folding equivalent of the character, if
-      # any; otherwise the character itself.
+      #                       any; otherwise the character itself.
       # @see                  #foldCase(int, boolean)
       # @stable ICU 2.1
       def fold_case(str, defaultmapping)
@@ -540,19 +527,19 @@ module Sun::Text::Normalizer
       # </pre>
       # @param ch code point to test.
       # @param type UProperty selector constant, identifies which binary
-      # property to check. Must be
-      # UProperty.BINARY_START &lt;= type &lt; UProperty.BINARY_LIMIT or
-      # UProperty.INT_START &lt;= type &lt; UProperty.INT_LIMIT or
-      # UProperty.MASK_START &lt;= type &lt; UProperty.MASK_LIMIT.
+      #        property to check. Must be
+      #        UProperty.BINARY_START &lt;= type &lt; UProperty.BINARY_LIMIT or
+      #        UProperty.INT_START &lt;= type &lt; UProperty.INT_LIMIT or
+      #        UProperty.MASK_START &lt;= type &lt; UProperty.MASK_LIMIT.
       # @return numeric value that is directly the property value or,
-      # for enumerated properties, corresponds to the numeric value of
-      # the enumerated constant of the respective property value
-      # enumeration type (cast to enum type if necessary).
-      # Returns 0 or 1 (for false / true) for binary Unicode properties.
-      # Returns a bit-mask for mask properties.
-      # Returns 0 if 'type' is out of bounds or if the Unicode version
-      # does not have data for the property at all, or not for this code
-      # point.
+      #         for enumerated properties, corresponds to the numeric value of
+      #         the enumerated constant of the respective property value
+      #         enumeration type (cast to enum type if necessary).
+      #         Returns 0 or 1 (for false / true) for binary Unicode properties.
+      #         Returns a bit-mask for mask properties.
+      #         Returns 0 if 'type' is out of bounds or if the Unicode version
+      #         does not have data for the property at all, or not for this code
+      #         point.
       # @see UProperty
       # @see #hasBinaryProperty
       # @see #getIntPropertyMinValue
@@ -599,8 +586,7 @@ module Sun::Text::Normalizer
             end
           end
         end
-        return 0
-        # NA
+        return 0 # NA
       end
       
       # block to initialise character property database
@@ -621,13 +607,9 @@ module Sun::Text::Normalizer
       const_attr_reader  :LAST_CHAR_MASK_
       
       # To get the last byte out from a data type
-      # 
-      # private static final int LAST_BYTE_MASK_ = 0xFF;
-      # 
+      #    private static final int LAST_BYTE_MASK_ = 0xFF;
       # Shift 16 bits
-      # 
-      # private static final int SHIFT_16_ = 16;
-      # 
+      #    private static final int SHIFT_16_ = 16;
       # Shift 24 bits
       const_set_lazy(:SHIFT_24_) { 24 }
       const_attr_reader  :SHIFT_24_
@@ -719,7 +701,6 @@ module Sun::Text::Normalizer
     typesig { [] }
     # private constructor -----------------------------------------------
     # /CLOVER:OFF
-    # 
     # Private constructor to prevent instantiation
     def initialize
     end
@@ -728,13 +709,12 @@ module Sun::Text::Normalizer
       typesig { [::Java::Int] }
       # /CLOVER:ON
       # private methods ---------------------------------------------------
-      # 
       # Getting the digit values of characters like 'A' - 'Z', normal,
       # half-width and full-width. This method assumes that the other digit
       # characters are checked by the calling method.
       # @param ch character to test
       # @return -1 if ch is not a character of the form 'A' - 'Z', otherwise
-      # its corresponding digit will be returned.
+      #         its corresponding digit will be returned.
       def get_european_digit(ch)
         if ((ch > 0x7a && ch < 0xff21) || ch < 0x41 || (ch > 0x5a && ch < 0x61) || ch > 0xff5a || (ch > 0xff31 && ch < 0xff41))
           return -1
@@ -763,7 +743,7 @@ module Sun::Text::Normalizer
       # Checks if the property value has a exception indicator
       # @param props 32 bit property value
       # @return true if property does not have a exception indicator, false
-      # otherwise
+      #          otherwise
       def is_not_exception_indicator(props)
         return ((props & UCharacterProperty::EXCEPTION_MASK)).equal?(0)
       end

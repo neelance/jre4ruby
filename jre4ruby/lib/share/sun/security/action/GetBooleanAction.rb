@@ -41,7 +41,7 @@ module Sun::Security::Action
   # 
   # <pre>
   # boolean b = java.security.AccessController.doPrivileged
-  # (new GetBooleanAction("prop")).booleanValue();
+  #              (new GetBooleanAction("prop")).booleanValue();
   # </pre>
   # 
   # @author Roland Schemers

@@ -39,14 +39,14 @@ module Java::Util::Regex
   # 
   # <ul>
   # 
-  # <li><p> The {@link #matches matches} method attempts to match the entire
-  # input sequence against the pattern.  </p></li>
+  #   <li><p> The {@link #matches matches} method attempts to match the entire
+  #   input sequence against the pattern.  </p></li>
   # 
-  # <li><p> The {@link #lookingAt lookingAt} method attempts to match the
-  # input sequence, starting at the beginning, against the pattern.  </p></li>
+  #   <li><p> The {@link #lookingAt lookingAt} method attempts to match the
+  #   input sequence, starting at the beginning, against the pattern.  </p></li>
   # 
-  # <li><p> The {@link #find find} method scans the input sequence looking for
-  # the next subsequence that matches the pattern.  </p></li>
+  #   <li><p> The {@link #find find} method scans the input sequence looking for
+  #   the next subsequence that matches the pattern.  </p></li>
   # 
   # </ul>
   # 
@@ -338,10 +338,10 @@ module Java::Util::Regex
     # last append position is unaffected.</p>
     # 
     # @param  newPattern
-    # The new pattern used by this matcher
+    #         The new pattern used by this matcher
     # @return  This matcher
     # @throws  IllegalArgumentException
-    # If newPattern is <tt>null</tt>
+    #          If newPattern is <tt>null</tt>
     # @since 1.5
     def use_pattern(new_pattern)
       if ((new_pattern).nil?)
@@ -404,7 +404,7 @@ module Java::Util::Regex
     # unaffected.
     # 
     # @param  input
-    # The new input character sequence
+    #         The new input character sequence
     # 
     # @return  This matcher
     def reset(input)
@@ -418,8 +418,8 @@ module Java::Util::Regex
     # @return  The index of the first character matched
     # 
     # @throws  IllegalStateException
-    # If no match has yet been attempted,
-    # or if the previous match operation failed
+    #          If no match has yet been attempted,
+    #          or if the previous match operation failed
     def start
       if (@first < 0)
         raise IllegalStateException.new("No match available")
@@ -437,19 +437,19 @@ module Java::Util::Regex
     # <i>m.</i><tt>start()</tt>.  </p>
     # 
     # @param  group
-    # The index of a capturing group in this matcher's pattern
+    #         The index of a capturing group in this matcher's pattern
     # 
     # @return  The index of the first character captured by the group,
-    # or <tt>-1</tt> if the match was successful but the group
-    # itself did not match anything
+    #          or <tt>-1</tt> if the match was successful but the group
+    #          itself did not match anything
     # 
     # @throws  IllegalStateException
-    # If no match has yet been attempted,
-    # or if the previous match operation failed
+    #          If no match has yet been attempted,
+    #          or if the previous match operation failed
     # 
     # @throws  IndexOutOfBoundsException
-    # If there is no capturing group in the pattern
-    # with the given index
+    #          If there is no capturing group in the pattern
+    #          with the given index
     def start(group)
       if (@first < 0)
         raise IllegalStateException.new("No match available")
@@ -466,8 +466,8 @@ module Java::Util::Regex
     # @return  The offset after the last character matched
     # 
     # @throws  IllegalStateException
-    # If no match has yet been attempted,
-    # or if the previous match operation failed
+    #          If no match has yet been attempted,
+    #          or if the previous match operation failed
     def end_
       if (@first < 0)
         raise IllegalStateException.new("No match available")
@@ -485,19 +485,19 @@ module Java::Util::Regex
     # <i>m.</i><tt>end()</tt>.  </p>
     # 
     # @param  group
-    # The index of a capturing group in this matcher's pattern
+    #         The index of a capturing group in this matcher's pattern
     # 
     # @return  The offset after the last character captured by the group,
-    # or <tt>-1</tt> if the match was successful
-    # but the group itself did not match anything
+    #          or <tt>-1</tt> if the match was successful
+    #          but the group itself did not match anything
     # 
     # @throws  IllegalStateException
-    # If no match has yet been attempted,
-    # or if the previous match operation failed
+    #          If no match has yet been attempted,
+    #          or if the previous match operation failed
     # 
     # @throws  IndexOutOfBoundsException
-    # If there is no capturing group in the pattern
-    # with the given index
+    #          If there is no capturing group in the pattern
+    #          with the given index
     def end_(group)
       if (@first < 0)
         raise IllegalStateException.new("No match available")
@@ -521,11 +521,11 @@ module Java::Util::Regex
     # successfully matches the empty string in the input.  </p>
     # 
     # @return The (possibly empty) subsequence matched by the previous match,
-    # in string form
+    #         in string form
     # 
     # @throws  IllegalStateException
-    # If no match has yet been attempted,
-    # or if the previous match operation failed
+    #          If no match has yet been attempted,
+    #          or if the previous match operation failed
     def group
       return group(0)
     end
@@ -551,19 +551,19 @@ module Java::Util::Regex
     # matches the empty string in the input.  </p>
     # 
     # @param  group
-    # The index of a capturing group in this matcher's pattern
+    #         The index of a capturing group in this matcher's pattern
     # 
     # @return  The (possibly empty) subsequence captured by the group
-    # during the previous match, or <tt>null</tt> if the group
-    # failed to match part of the input
+    #          during the previous match, or <tt>null</tt> if the group
+    #          failed to match part of the input
     # 
     # @throws  IllegalStateException
-    # If no match has yet been attempted,
-    # or if the previous match operation failed
+    #          If no match has yet been attempted,
+    #          or if the previous match operation failed
     # 
     # @throws  IndexOutOfBoundsException
-    # If there is no capturing group in the pattern
-    # with the given index
+    #          If there is no capturing group in the pattern
+    #          with the given index
     def group(group_)
       if (@first < 0)
         raise IllegalStateException.new("No match found")
@@ -599,7 +599,7 @@ module Java::Util::Regex
     # <tt>start</tt>, <tt>end</tt>, and <tt>group</tt> methods.  </p>
     # 
     # @return  <tt>true</tt> if, and only if, the entire region sequence
-    # matches this matcher's pattern
+    #          matches this matcher's pattern
     def matches
       return match(@from, ENDANCHOR)
     end
@@ -617,7 +617,7 @@ module Java::Util::Regex
     # <tt>start</tt>, <tt>end</tt>, and <tt>group</tt> methods.  </p>
     # 
     # @return  <tt>true</tt> if, and only if, a subsequence of the input
-    # sequence matches this matcher's pattern
+    #          sequence matches this matcher's pattern
     def find
       next_search_index = @last
       if ((next_search_index).equal?(@first))
@@ -650,12 +650,12 @@ module Java::Util::Regex
     # character not matched by this match.  </p>
     # 
     # @throws  IndexOutOfBoundsException
-    # If start is less than zero or if start is greater than the
-    # length of the input sequence.
+    #          If start is less than zero or if start is greater than the
+    #          length of the input sequence.
     # 
     # @return  <tt>true</tt> if, and only if, a subsequence of the input
-    # sequence starting at the given index matches this matcher's
-    # pattern
+    #          sequence starting at the given index matches this matcher's
+    #          pattern
     def find(start)
       limit = get_text_length
       if ((start < 0) || (start > limit))
@@ -677,7 +677,7 @@ module Java::Util::Regex
     # <tt>start</tt>, <tt>end</tt>, and <tt>group</tt> methods.  </p>
     # 
     # @return  <tt>true</tt> if, and only if, a prefix of the input
-    # sequence matches this matcher's pattern
+    #          sequence matches this matcher's pattern
     def looking_at
       return match(@from, NOANCHOR)
     end
@@ -722,18 +722,18 @@ module Java::Util::Regex
     # 
     # <ol>
     # 
-    # <li><p> It reads characters from the input sequence, starting at the
-    # append position, and appends them to the given string buffer.  It
-    # stops after reading the last character preceding the previous match,
-    # that is, the character at index {@link
-    # #start()}&nbsp;<tt>-</tt>&nbsp;<tt>1</tt>.  </p></li>
+    #   <li><p> It reads characters from the input sequence, starting at the
+    #   append position, and appends them to the given string buffer.  It
+    #   stops after reading the last character preceding the previous match,
+    #   that is, the character at index {@link
+    #   #start()}&nbsp;<tt>-</tt>&nbsp;<tt>1</tt>.  </p></li>
     # 
-    # <li><p> It appends the given replacement string to the string buffer.
-    # </p></li>
+    #   <li><p> It appends the given replacement string to the string buffer.
+    #   </p></li>
     # 
-    # <li><p> It sets the append position of this matcher to the index of
-    # the last character matched, plus one, that is, to {@link #end()}.
-    # </p></li>
+    #   <li><p> It sets the append position of this matcher to the index of
+    #   the last character matched, plus one, that is, to {@link #end()}.
+    #   </p></li>
     # 
     # </ol>
     # 
@@ -768,26 +768,26 @@ module Java::Util::Regex
     # Matcher m = p.matcher("one cat two cats in the yard");
     # StringBuffer sb = new StringBuffer();
     # while (m.find()) {
-    # m.appendReplacement(sb, "dog");
+    #     m.appendReplacement(sb, "dog");
     # }
     # m.appendTail(sb);
     # System.out.println(sb.toString());</pre></blockquote>
     # 
     # @param  sb
-    # The target string buffer
+    #         The target string buffer
     # 
     # @param  replacement
-    # The replacement string
+    #         The replacement string
     # 
     # @return  This matcher
     # 
     # @throws  IllegalStateException
-    # If no match has yet been attempted,
-    # or if the previous match operation failed
+    #          If no match has yet been attempted,
+    #          or if the previous match operation failed
     # 
     # @throws  IndexOutOfBoundsException
-    # If the replacement string refers to a capturing group
-    # that does not exist in the pattern
+    #          If the replacement string refers to a capturing group
+    #          that does not exist in the pattern
     def append_replacement(sb, replacement)
       # If no match, return error
       if (@first < 0)
@@ -808,7 +808,7 @@ module Java::Util::Regex
             # Skip past $
             cursor += 1
             # The first number is always a group
-            ref_num = RJava.cast_to_int(replacement.char_at(cursor)) - Character.new(?0.ord)
+            ref_num = (replacement.char_at(cursor)).to_int - Character.new(?0.ord)
             if ((ref_num < 0) || (ref_num > 9))
               raise IllegalArgumentException.new("Illegal group reference")
             end
@@ -860,7 +860,7 @@ module Java::Util::Regex
     # remainder of the input sequence.  </p>
     # 
     # @param  sb
-    # The target string buffer
+    #         The target string buffer
     # 
     # @return  The target string buffer
     def append_tail(sb)
@@ -896,11 +896,11 @@ module Java::Util::Regex
     # reset.  </p>
     # 
     # @param  replacement
-    # The replacement string
+    #         The replacement string
     # 
     # @return  The string constructed by replacing each matching subsequence
-    # by the replacement string, substituting captured subsequences
-    # as needed
+    #          by the replacement string, substituting captured subsequences
+    #          as needed
     def replace_all(replacement)
       reset
       result = find
@@ -944,10 +944,10 @@ module Java::Util::Regex
     # reset.  </p>
     # 
     # @param  replacement
-    # The replacement string
+    #         The replacement string
     # @return  The string constructed by replacing the first matching
-    # subsequence by the replacement string, substituting captured
-    # subsequences as needed
+    #          subsequence by the replacement string, substituting captured
+    #          subsequences as needed
     def replace_first(replacement)
       if ((replacement).nil?)
         raise NullPointerException.new("replacement")
@@ -976,14 +976,14 @@ module Java::Util::Regex
     # region.
     # 
     # @param  start
-    # The index to start searching at (inclusive)
+    #         The index to start searching at (inclusive)
     # @param  end
-    # The index to end searching at (exclusive)
+    #         The index to end searching at (exclusive)
     # @throws  IndexOutOfBoundsException
-    # If start or end is less than zero, if
-    # start is greater than the length of the input sequence, if
-    # end is greater than the length of the input sequence, or if
-    # start is greater than end.
+    #          If start or end is less than zero, if
+    #          start is greater than the length of the input sequence, if
+    #          end is greater than the length of the input sequence, or if
+    #          start is greater than end.
     # @return  this matcher
     # @since 1.5
     def region(start_, end__)
@@ -1039,7 +1039,7 @@ module Java::Util::Regex
     # <p> By default, a matcher uses opaque region boundaries.
     # 
     # @return <tt>true</tt> iff this matcher is using transparent bounds,
-    # <tt>false</tt> otherwise.
+    #         <tt>false</tt> otherwise.
     # @see java.util.regex.Matcher#useTransparentBounds(boolean)
     # @since 1.5
     def has_transparent_bounds
@@ -1067,7 +1067,7 @@ module Java::Util::Regex
     # <p> By default, a matcher uses opaque bounds.
     # 
     # @param  b a boolean indicating whether to use opaque or transparent
-    # regions
+    #         regions
     # @return this matcher
     # @see java.util.regex.Matcher#hasTransparentBounds
     # @since 1.5
@@ -1088,7 +1088,7 @@ module Java::Util::Regex
     # <p> By default, a matcher uses anchoring region boundaries.
     # 
     # @return <tt>true</tt> iff this matcher is using anchoring bounds,
-    # <tt>false</tt> otherwise.
+    #         <tt>false</tt> otherwise.
     # @see java.util.regex.Matcher#useAnchoringBounds(boolean)
     # @since 1.5
     def has_anchoring_bounds
@@ -1149,7 +1149,7 @@ module Java::Util::Regex
     # would have changed the result of the last search.
     # 
     # @return  true iff the end of input was hit in the last match; false
-    # otherwise
+    #          otherwise
     # @since 1.5
     def hit_end
       return @hit_end
@@ -1166,7 +1166,7 @@ module Java::Util::Regex
     # meaning.
     # 
     # @return  true iff more input could change a positive match into a
-    # negative one.
+    #          negative one.
     # @since 1.5
     def require_end
       return @require_end

@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # This file is available under and governed by the GNU General Public
 # License version 2 only, as published by the Free Software Foundation.
 # However, the following notice accompanied the original version of this
@@ -57,34 +55,34 @@ module Java::Util::Concurrent
   # 
   # <p>
   # <table BORDER CELLPADDING=3 CELLSPACING=1>
-  # <tr>
-  # <td></td>
-  # <td ALIGN=CENTER><em>Throws exception</em></td>
-  # <td ALIGN=CENTER><em>Special value</em></td>
-  # <td ALIGN=CENTER><em>Blocks</em></td>
-  # <td ALIGN=CENTER><em>Times out</em></td>
-  # </tr>
-  # <tr>
-  # <td><b>Insert</b></td>
-  # <td>{@link #add add(e)}</td>
-  # <td>{@link #offer offer(e)}</td>
-  # <td>{@link #put put(e)}</td>
-  # <td>{@link #offer(Object, long, TimeUnit) offer(e, time, unit)}</td>
-  # </tr>
-  # <tr>
-  # <td><b>Remove</b></td>
-  # <td>{@link #remove remove()}</td>
-  # <td>{@link #poll poll()}</td>
-  # <td>{@link #take take()}</td>
-  # <td>{@link #poll(long, TimeUnit) poll(time, unit)}</td>
-  # </tr>
-  # <tr>
-  # <td><b>Examine</b></td>
-  # <td>{@link #element element()}</td>
-  # <td>{@link #peek peek()}</td>
-  # <td><em>not applicable</em></td>
-  # <td><em>not applicable</em></td>
-  # </tr>
+  #  <tr>
+  #    <td></td>
+  #    <td ALIGN=CENTER><em>Throws exception</em></td>
+  #    <td ALIGN=CENTER><em>Special value</em></td>
+  #    <td ALIGN=CENTER><em>Blocks</em></td>
+  #    <td ALIGN=CENTER><em>Times out</em></td>
+  #  </tr>
+  #  <tr>
+  #    <td><b>Insert</b></td>
+  #    <td>{@link #add add(e)}</td>
+  #    <td>{@link #offer offer(e)}</td>
+  #    <td>{@link #put put(e)}</td>
+  #    <td>{@link #offer(Object, long, TimeUnit) offer(e, time, unit)}</td>
+  #  </tr>
+  #  <tr>
+  #    <td><b>Remove</b></td>
+  #    <td>{@link #remove remove()}</td>
+  #    <td>{@link #poll poll()}</td>
+  #    <td>{@link #take take()}</td>
+  #    <td>{@link #poll(long, TimeUnit) poll(time, unit)}</td>
+  #  </tr>
+  #  <tr>
+  #    <td><b>Examine</b></td>
+  #    <td>{@link #element element()}</td>
+  #    <td>{@link #peek peek()}</td>
+  #    <td><em>not applicable</em></td>
+  #    <td><em>not applicable</em></td>
+  #  </tr>
   # </table>
   # 
   # <p>A <tt>BlockingQueue</tt> does not accept <tt>null</tt> elements.
@@ -131,37 +129,37 @@ module Java::Util::Concurrent
   # producers and multiple consumers.
   # <pre>
   # class Producer implements Runnable {
-  # private final BlockingQueue queue;
-  # Producer(BlockingQueue q) { queue = q; }
-  # public void run() {
-  # try {
-  # while (true) { queue.put(produce()); }
-  # } catch (InterruptedException ex) { ... handle ...}
-  # }
-  # Object produce() { ... }
+  #   private final BlockingQueue queue;
+  #   Producer(BlockingQueue q) { queue = q; }
+  #   public void run() {
+  #     try {
+  #       while (true) { queue.put(produce()); }
+  #     } catch (InterruptedException ex) { ... handle ...}
+  #   }
+  #   Object produce() { ... }
   # }
   # 
   # class Consumer implements Runnable {
-  # private final BlockingQueue queue;
-  # Consumer(BlockingQueue q) { queue = q; }
-  # public void run() {
-  # try {
-  # while (true) { consume(queue.take()); }
-  # } catch (InterruptedException ex) { ... handle ...}
-  # }
-  # void consume(Object x) { ... }
+  #   private final BlockingQueue queue;
+  #   Consumer(BlockingQueue q) { queue = q; }
+  #   public void run() {
+  #     try {
+  #       while (true) { consume(queue.take()); }
+  #     } catch (InterruptedException ex) { ... handle ...}
+  #   }
+  #   void consume(Object x) { ... }
   # }
   # 
   # class Setup {
-  # void main() {
-  # BlockingQueue q = new SomeQueueImplementation();
-  # Producer p = new Producer(q);
-  # Consumer c1 = new Consumer(q);
-  # Consumer c2 = new Consumer(q);
-  # new Thread(p).start();
-  # new Thread(c1).start();
-  # new Thread(c2).start();
-  # }
+  #   void main() {
+  #     BlockingQueue q = new SomeQueueImplementation();
+  #     Producer p = new Producer(q);
+  #     Consumer c1 = new Consumer(q);
+  #     Consumer c2 = new Consumer(q);
+  #     new Thread(p).start();
+  #     new Thread(c1).start();
+  #     new Thread(c2).start();
+  #   }
   # }
   # </pre>
   # 
@@ -194,12 +192,12 @@ module Java::Util::Concurrent
     # @param e the element to add
     # @return <tt>true</tt> (as specified by {@link Collection#add})
     # @throws IllegalStateException if the element cannot be added at this
-    # time due to capacity restrictions
+    #         time due to capacity restrictions
     # @throws ClassCastException if the class of the specified element
-    # prevents it from being added to this queue
+    #         prevents it from being added to this queue
     # @throws NullPointerException if the specified element is null
     # @throws IllegalArgumentException if some property of the specified
-    # element prevents it from being added to this queue
+    #         element prevents it from being added to this queue
     def add(e)
       raise NotImplementedError
     end
@@ -214,12 +212,12 @@ module Java::Util::Concurrent
     # 
     # @param e the element to add
     # @return <tt>true</tt> if the element was added to this queue, else
-    # <tt>false</tt>
+    #         <tt>false</tt>
     # @throws ClassCastException if the class of the specified element
-    # prevents it from being added to this queue
+    #         prevents it from being added to this queue
     # @throws NullPointerException if the specified element is null
     # @throws IllegalArgumentException if some property of the specified
-    # element prevents it from being added to this queue
+    #         element prevents it from being added to this queue
     def offer(e)
       raise NotImplementedError
     end
@@ -231,10 +229,10 @@ module Java::Util::Concurrent
     # @param e the element to add
     # @throws InterruptedException if interrupted while waiting
     # @throws ClassCastException if the class of the specified element
-    # prevents it from being added to this queue
+    #         prevents it from being added to this queue
     # @throws NullPointerException if the specified element is null
     # @throws IllegalArgumentException if some property of the specified
-    # element prevents it from being added to this queue
+    #         element prevents it from being added to this queue
     def put(e)
       raise NotImplementedError
     end
@@ -245,17 +243,17 @@ module Java::Util::Concurrent
     # 
     # @param e the element to add
     # @param timeout how long to wait before giving up, in units of
-    # <tt>unit</tt>
+    #        <tt>unit</tt>
     # @param unit a <tt>TimeUnit</tt> determining how to interpret the
-    # <tt>timeout</tt> parameter
+    #        <tt>timeout</tt> parameter
     # @return <tt>true</tt> if successful, or <tt>false</tt> if
-    # the specified waiting time elapses before space is available
+    #         the specified waiting time elapses before space is available
     # @throws InterruptedException if interrupted while waiting
     # @throws ClassCastException if the class of the specified element
-    # prevents it from being added to this queue
+    #         prevents it from being added to this queue
     # @throws NullPointerException if the specified element is null
     # @throws IllegalArgumentException if some property of the specified
-    # element prevents it from being added to this queue
+    #         element prevents it from being added to this queue
     def offer(e, timeout, unit)
       raise NotImplementedError
     end
@@ -275,11 +273,11 @@ module Java::Util::Concurrent
     # specified wait time if necessary for an element to become available.
     # 
     # @param timeout how long to wait before giving up, in units of
-    # <tt>unit</tt>
+    #        <tt>unit</tt>
     # @param unit a <tt>TimeUnit</tt> determining how to interpret the
-    # <tt>timeout</tt> parameter
+    #        <tt>timeout</tt> parameter
     # @return the head of this queue, or <tt>null</tt> if the
-    # specified waiting time elapses before an element is available
+    #         specified waiting time elapses before an element is available
     # @throws InterruptedException if interrupted while waiting
     def poll(timeout, unit)
       raise NotImplementedError
@@ -312,7 +310,7 @@ module Java::Util::Concurrent
     # @param o element to be removed from this queue, if present
     # @return <tt>true</tt> if this queue changed as a result of the call
     # @throws ClassCastException if the class of the specified element
-    # is incompatible with this queue (optional)
+    #         is incompatible with this queue (optional)
     # @throws NullPointerException if the specified element is null (optional)
     def remove(o)
       raise NotImplementedError
@@ -326,7 +324,7 @@ module Java::Util::Concurrent
     # @param o object to be checked for containment in this queue
     # @return <tt>true</tt> if this queue contains the specified element
     # @throws ClassCastException if the class of the specified element
-    # is incompatible with this queue (optional)
+    #         is incompatible with this queue (optional)
     # @throws NullPointerException if the specified element is null (optional)
     def contains(o)
       raise NotImplementedError
@@ -347,13 +345,13 @@ module Java::Util::Concurrent
     # @param c the collection to transfer elements into
     # @return the number of elements transferred
     # @throws UnsupportedOperationException if addition of elements
-    # is not supported by the specified collection
+    #         is not supported by the specified collection
     # @throws ClassCastException if the class of an element of this queue
-    # prevents it from being added to the specified collection
+    #         prevents it from being added to the specified collection
     # @throws NullPointerException if the specified collection is null
     # @throws IllegalArgumentException if the specified collection is this
-    # queue, or some property of an element of this queue prevents
-    # it from being added to the specified collection
+    #         queue, or some property of an element of this queue prevents
+    #         it from being added to the specified collection
     def drain_to(c)
       raise NotImplementedError
     end
@@ -373,13 +371,13 @@ module Java::Util::Concurrent
     # @param maxElements the maximum number of elements to transfer
     # @return the number of elements transferred
     # @throws UnsupportedOperationException if addition of elements
-    # is not supported by the specified collection
+    #         is not supported by the specified collection
     # @throws ClassCastException if the class of an element of this queue
-    # prevents it from being added to the specified collection
+    #         prevents it from being added to the specified collection
     # @throws NullPointerException if the specified collection is null
     # @throws IllegalArgumentException if the specified collection is this
-    # queue, or some property of an element of this queue prevents
-    # it from being added to the specified collection
+    #         queue, or some property of an element of this queue prevents
+    #         it from being added to the specified collection
     def drain_to(c, max_elements)
       raise NotImplementedError
     end

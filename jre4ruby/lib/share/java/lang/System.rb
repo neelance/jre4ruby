@@ -99,7 +99,7 @@ module Java::Lang
       # For simple stand-alone Java applications, a typical way to write
       # a line of output data is:
       # <blockquote><pre>
-      # System.out.println(data)
+      #     System.out.println(data)
       # </pre></blockquote>
       # <p>
       # See the <code>println</code> methods in class <code>PrintStream</code>.
@@ -163,15 +163,15 @@ module Java::Lang
       # 
       # <p>First, if there is a security manager, its <code>checkPermission</code>
       # method is called with a <code>RuntimePermission("setIO")</code> permission
-      # to see if it's ok to reassign the "standard" input stream.
+      #  to see if it's ok to reassign the "standard" input stream.
       # <p>
       # 
       # @param in the new standard input stream.
       # 
       # @throws SecurityException
-      # if a security manager exists and its
-      # <code>checkPermission</code> method doesn't allow
-      # reassigning of the standard input stream.
+      #        if a security manager exists and its
+      #        <code>checkPermission</code> method doesn't allow
+      #        reassigning of the standard input stream.
       # 
       # @see SecurityManager#checkPermission
       # @see java.lang.RuntimePermission
@@ -187,14 +187,14 @@ module Java::Lang
       # 
       # <p>First, if there is a security manager, its <code>checkPermission</code>
       # method is called with a <code>RuntimePermission("setIO")</code> permission
-      # to see if it's ok to reassign the "standard" output stream.
+      #  to see if it's ok to reassign the "standard" output stream.
       # 
       # @param out the new standard output stream
       # 
       # @throws SecurityException
-      # if a security manager exists and its
-      # <code>checkPermission</code> method doesn't allow
-      # reassigning of the standard output stream.
+      #        if a security manager exists and its
+      #        <code>checkPermission</code> method doesn't allow
+      #        reassigning of the standard output stream.
       # 
       # @see SecurityManager#checkPermission
       # @see java.lang.RuntimePermission
@@ -210,14 +210,14 @@ module Java::Lang
       # 
       # <p>First, if there is a security manager, its <code>checkPermission</code>
       # method is called with a <code>RuntimePermission("setIO")</code> permission
-      # to see if it's ok to reassign the "standard" error output stream.
+      #  to see if it's ok to reassign the "standard" error output stream.
       # 
       # @param err the new standard error output stream.
       # 
       # @throws SecurityException
-      # if a security manager exists and its
-      # <code>checkPermission</code> method doesn't allow
-      # reassigning of the standard error output stream.
+      #        if a security manager exists and its
+      #        <code>checkPermission</code> method doesn't allow
+      #        reassigning of the standard error output stream.
       # 
       # @see SecurityManager#checkPermission
       # @see java.lang.RuntimePermission
@@ -272,11 +272,11 @@ module Java::Lang
       # @return  The inherited channel, if any, otherwise <tt>null</tt>.
       # 
       # @throws  IOException
-      # If an I/O error occurs
+      #          If an I/O error occurs
       # 
       # @throws  SecurityException
-      # If a security manager is present and it does not
-      # permit access to the channel.
+      #          If a security manager is present and it does not
+      #          permit access to the channel.
       # 
       # @since 1.5
       def inherited_channel
@@ -326,8 +326,8 @@ module Java::Lang
       # 
       # @param      s   the security manager.
       # @exception  SecurityException  if the security manager has already
-      # been set and its <code>checkPermission</code> method
-      # doesn't allow it to be replaced.
+      #             been set and its <code>checkPermission</code> method
+      #             doesn't allow it to be replaced.
       # @see #getSecurityManager
       # @see SecurityManager#checkPermission
       # @see java.lang.RuntimePermission
@@ -387,8 +387,8 @@ module Java::Lang
       # Gets the system security interface.
       # 
       # @return  if a security manager has already been established for the
-      # current application, then that security manager is returned;
-      # otherwise, <code>null</code> is returned.
+      #          current application, then that security manager is returned;
+      #          otherwise, <code>null</code> is returned.
       # @see     #setSecurityManager
       def get_security_manager
         return self.attr_security
@@ -408,7 +408,7 @@ module Java::Lang
       # "computer time" and coordinated universal time (UTC).
       # 
       # @return  the difference, measured in milliseconds, between
-      # the current time and midnight, January 1, 1970 UTC.
+      #          the current time and midnight, January 1, 1970 UTC.
       # @see     java.util.Date
       def current_time_millis
         JNI.call_native_method(:Java_java_lang_System_currentTimeMillis, JNI.env, self.jni_id)
@@ -432,9 +432,9 @@ module Java::Lang
       # 
       # <p> For example, to measure how long some code takes to execute:
       # <pre>
-      # long startTime = System.nanoTime();
-      # // ... the code being measured ...
-      # long estimatedTime = System.nanoTime() - startTime;
+      #   long startTime = System.nanoTime();
+      #   // ... the code being measured ...
+      #   long estimatedTime = System.nanoTime() - startTime;
       # </pre>
       # 
       # @return The current value of the system timer, in nanoseconds.
@@ -478,17 +478,17 @@ module Java::Lang
       # not modified:
       # <ul>
       # <li>The <code>src</code> argument refers to an object that is not an
-      # array.
+      #     array.
       # <li>The <code>dest</code> argument refers to an object that is not an
-      # array.
+      #     array.
       # <li>The <code>src</code> argument and <code>dest</code> argument refer
-      # to arrays whose component types are different primitive types.
+      #     to arrays whose component types are different primitive types.
       # <li>The <code>src</code> argument refers to an array with a primitive
-      # component type and the <code>dest</code> argument refers to an array
-      # with a reference component type.
+      #    component type and the <code>dest</code> argument refers to an array
+      #     with a reference component type.
       # <li>The <code>src</code> argument refers to an array with a reference
-      # component type and the <code>dest</code> argument refers to an array
-      # with a primitive component type.
+      #    component type and the <code>dest</code> argument refers to an array
+      #     with a primitive component type.
       # </ul>
       # <p>
       # Otherwise, if any of the following is true, an
@@ -499,9 +499,9 @@ module Java::Lang
       # <li>The <code>destPos</code> argument is negative.
       # <li>The <code>length</code> argument is negative.
       # <li><code>srcPos+length</code> is greater than
-      # <code>src.length</code>, the length of the source array.
+      #     <code>src.length</code>, the length of the source array.
       # <li><code>destPos+length</code> is greater than
-      # <code>dest.length</code>, the length of the destination array.
+      #     <code>dest.length</code>, the length of the destination array.
       # </ul>
       # <p>
       # Otherwise, if any actual component of the source array from
@@ -529,12 +529,12 @@ module Java::Lang
       # @param      destPos  starting position in the destination data.
       # @param      length   the number of array elements to be copied.
       # @exception  IndexOutOfBoundsException  if copying would cause
-      # access of data outside array bounds.
+      #               access of data outside array bounds.
       # @exception  ArrayStoreException  if an element in the <code>src</code>
-      # array could not be stored into the <code>dest</code> array
-      # because of a type mismatch.
+      #               array could not be stored into the <code>dest</code> array
+      #               because of a type mismatch.
       # @exception  NullPointerException if either <code>src</code> or
-      # <code>dest</code> is <code>null</code>.
+      #               <code>dest</code> is <code>null</code>.
       def arraycopy(src, src_pos, dest, dest_pos, length)
         JNI.call_native_method(:Java_java_lang_System_arraycopy, JNI.env, self.jni_id, src.jni_id, src_pos.to_int, dest.jni_id, dest_pos.to_int, length.to_int)
       end
@@ -604,63 +604,63 @@ module Java::Lang
       # for the following keys:
       # <table summary="Shows property keys and associated values">
       # <tr><th>Key</th>
-      # <th>Description of Associated Value</th></tr>
+      #     <th>Description of Associated Value</th></tr>
       # <tr><td><code>java.version</code></td>
-      # <td>Java Runtime Environment version</td></tr>
+      #     <td>Java Runtime Environment version</td></tr>
       # <tr><td><code>java.vendor</code></td>
-      # <td>Java Runtime Environment vendor</td></tr
+      #     <td>Java Runtime Environment vendor</td></tr
       # <tr><td><code>java.vendor.url</code></td>
-      # <td>Java vendor URL</td></tr>
+      #     <td>Java vendor URL</td></tr>
       # <tr><td><code>java.home</code></td>
-      # <td>Java installation directory</td></tr>
+      #     <td>Java installation directory</td></tr>
       # <tr><td><code>java.vm.specification.version</code></td>
-      # <td>Java Virtual Machine specification version</td></tr>
+      #     <td>Java Virtual Machine specification version</td></tr>
       # <tr><td><code>java.vm.specification.vendor</code></td>
-      # <td>Java Virtual Machine specification vendor</td></tr>
+      #     <td>Java Virtual Machine specification vendor</td></tr>
       # <tr><td><code>java.vm.specification.name</code></td>
-      # <td>Java Virtual Machine specification name</td></tr>
+      #     <td>Java Virtual Machine specification name</td></tr>
       # <tr><td><code>java.vm.version</code></td>
-      # <td>Java Virtual Machine implementation version</td></tr>
+      #     <td>Java Virtual Machine implementation version</td></tr>
       # <tr><td><code>java.vm.vendor</code></td>
-      # <td>Java Virtual Machine implementation vendor</td></tr>
+      #     <td>Java Virtual Machine implementation vendor</td></tr>
       # <tr><td><code>java.vm.name</code></td>
-      # <td>Java Virtual Machine implementation name</td></tr>
+      #     <td>Java Virtual Machine implementation name</td></tr>
       # <tr><td><code>java.specification.version</code></td>
-      # <td>Java Runtime Environment specification  version</td></tr>
+      #     <td>Java Runtime Environment specification  version</td></tr>
       # <tr><td><code>java.specification.vendor</code></td>
-      # <td>Java Runtime Environment specification  vendor</td></tr>
+      #     <td>Java Runtime Environment specification  vendor</td></tr>
       # <tr><td><code>java.specification.name</code></td>
-      # <td>Java Runtime Environment specification  name</td></tr>
+      #     <td>Java Runtime Environment specification  name</td></tr>
       # <tr><td><code>java.class.version</code></td>
-      # <td>Java class format version number</td></tr>
+      #     <td>Java class format version number</td></tr>
       # <tr><td><code>java.class.path</code></td>
-      # <td>Java class path</td></tr>
+      #     <td>Java class path</td></tr>
       # <tr><td><code>java.library.path</code></td>
-      # <td>List of paths to search when loading libraries</td></tr>
+      #     <td>List of paths to search when loading libraries</td></tr>
       # <tr><td><code>java.io.tmpdir</code></td>
-      # <td>Default temp file path</td></tr>
+      #     <td>Default temp file path</td></tr>
       # <tr><td><code>java.compiler</code></td>
-      # <td>Name of JIT compiler to use</td></tr>
+      #     <td>Name of JIT compiler to use</td></tr>
       # <tr><td><code>java.ext.dirs</code></td>
-      # <td>Path of extension directory or directories</td></tr>
+      #     <td>Path of extension directory or directories</td></tr>
       # <tr><td><code>os.name</code></td>
-      # <td>Operating system name</td></tr>
+      #     <td>Operating system name</td></tr>
       # <tr><td><code>os.arch</code></td>
-      # <td>Operating system architecture</td></tr>
+      #     <td>Operating system architecture</td></tr>
       # <tr><td><code>os.version</code></td>
-      # <td>Operating system version</td></tr>
+      #     <td>Operating system version</td></tr>
       # <tr><td><code>file.separator</code></td>
-      # <td>File separator ("/" on UNIX)</td></tr>
+      #     <td>File separator ("/" on UNIX)</td></tr>
       # <tr><td><code>path.separator</code></td>
-      # <td>Path separator (":" on UNIX)</td></tr>
+      #     <td>Path separator (":" on UNIX)</td></tr>
       # <tr><td><code>line.separator</code></td>
-      # <td>Line separator ("\n" on UNIX)</td></tr>
+      #     <td>Line separator ("\n" on UNIX)</td></tr>
       # <tr><td><code>user.name</code></td>
-      # <td>User's account name</td></tr>
+      #     <td>User's account name</td></tr>
       # <tr><td><code>user.home</code></td>
-      # <td>User's home directory</td></tr>
+      #     <td>User's home directory</td></tr>
       # <tr><td><code>user.dir</code></td>
-      # <td>User's current working directory</td></tr>
+      #     <td>User's current working directory</td></tr>
       # </table>
       # <p>
       # Multiple paths in a system property value are separated by the path
@@ -672,8 +672,8 @@ module Java::Lang
       # 
       # @return     the system properties
       # @exception  SecurityException  if a security manager exists and its
-      # <code>checkPropertiesAccess</code> method doesn't allow access
-      # to the system properties.
+      #             <code>checkPropertiesAccess</code> method doesn't allow access
+      #              to the system properties.
       # @see        #setProperties
       # @see        java.lang.SecurityException
       # @see        java.lang.SecurityManager#checkPropertiesAccess()
@@ -701,8 +701,8 @@ module Java::Lang
       # 
       # @param      props   the new system properties.
       # @exception  SecurityException  if a security manager exists and its
-      # <code>checkPropertiesAccess</code> method doesn't allow access
-      # to the system properties.
+      #             <code>checkPropertiesAccess</code> method doesn't allow access
+      #              to the system properties.
       # @see        #getProperties
       # @see        java.util.Properties
       # @see        java.lang.SecurityException
@@ -732,13 +732,13 @@ module Java::Lang
       # 
       # @param      key   the name of the system property.
       # @return     the string value of the system property,
-      # or <code>null</code> if there is no property with that key.
+      #             or <code>null</code> if there is no property with that key.
       # 
       # @exception  SecurityException  if a security manager exists and its
-      # <code>checkPropertyAccess</code> method doesn't allow
-      # access to the specified system property.
+      #             <code>checkPropertyAccess</code> method doesn't allow
+      #              access to the specified system property.
       # @exception  NullPointerException if <code>key</code> is
-      # <code>null</code>.
+      #             <code>null</code>.
       # @exception  IllegalArgumentException if <code>key</code> is empty.
       # @see        #setProperty
       # @see        java.lang.SecurityException
@@ -767,13 +767,13 @@ module Java::Lang
       # @param      key   the name of the system property.
       # @param      def   a default value.
       # @return     the string value of the system property,
-      # or the default value if there is no property with that key.
+      #             or the default value if there is no property with that key.
       # 
       # @exception  SecurityException  if a security manager exists and its
-      # <code>checkPropertyAccess</code> method doesn't allow
-      # access to the specified system property.
+      #             <code>checkPropertyAccess</code> method doesn't allow
+      #             access to the specified system property.
       # @exception  NullPointerException if <code>key</code> is
-      # <code>null</code>.
+      #             <code>null</code>.
       # @exception  IllegalArgumentException if <code>key</code> is empty.
       # @see        #setProperty
       # @see        java.lang.SecurityManager#checkPropertyAccess(java.lang.String)
@@ -801,13 +801,13 @@ module Java::Lang
       # @param      key   the name of the system property.
       # @param      value the value of the system property.
       # @return     the previous value of the system property,
-      # or <code>null</code> if it did not have one.
+      #             or <code>null</code> if it did not have one.
       # 
       # @exception  SecurityException  if a security manager exists and its
-      # <code>checkPermission</code> method doesn't allow
-      # setting of the specified property.
+      #             <code>checkPermission</code> method doesn't allow
+      #             setting of the specified property.
       # @exception  NullPointerException if <code>key</code> or
-      # <code>value</code> is <code>null</code>.
+      #             <code>value</code> is <code>null</code>.
       # @exception  IllegalArgumentException if <code>key</code> is empty.
       # @see        #getProperty
       # @see        java.lang.System#getProperty(java.lang.String)
@@ -836,13 +836,13 @@ module Java::Lang
       # 
       # @param      key   the name of the system property to be removed.
       # @return     the previous string value of the system property,
-      # or <code>null</code> if there was no property with that key.
+      #             or <code>null</code> if there was no property with that key.
       # 
       # @exception  SecurityException  if a security manager exists and its
-      # <code>checkPropertyAccess</code> method doesn't allow
-      # access to the specified system property.
+      #             <code>checkPropertyAccess</code> method doesn't allow
+      #              access to the specified system property.
       # @exception  NullPointerException if <code>key</code> is
-      # <code>null</code>.
+      #             <code>null</code>.
       # @exception  IllegalArgumentException if <code>key</code> is empty.
       # @see        #getProperty
       # @see        #setProperty
@@ -905,13 +905,13 @@ module Java::Lang
       # 
       # @param  name the name of the environment variable
       # @return the string value of the variable, or <code>null</code>
-      # if the variable is not defined in the system environment
+      #         if the variable is not defined in the system environment
       # @throws NullPointerException if <code>name</code> is <code>null</code>
       # @throws SecurityException
-      # if a security manager exists and its
-      # {@link SecurityManager#checkPermission checkPermission}
-      # method doesn't allow access to the environment variable
-      # <code>name</code>
+      #         if a security manager exists and its
+      #         {@link SecurityManager#checkPermission checkPermission}
+      #         method doesn't allow access to the environment variable
+      #         <code>name</code>
       # @see    #getenv()
       # @see    ProcessBuilder#environment()
       def getenv(name)
@@ -955,9 +955,9 @@ module Java::Lang
       # 
       # @return the environment as a map of variable names to values
       # @throws SecurityException
-      # if a security manager exists and its
-      # {@link SecurityManager#checkPermission checkPermission}
-      # method doesn't allow access to the process environment
+      #         if a security manager exists and its
+      #         {@link SecurityManager#checkPermission checkPermission}
+      #         method doesn't allow access to the process environment
       # @see    #getenv(String)
       # @see    ProcessBuilder#environment()
       # @since  1.5
@@ -985,8 +985,8 @@ module Java::Lang
       # 
       # @param      status   exit status.
       # @throws  SecurityException
-      # if a security manager exists and its <code>checkExit</code>
-      # method doesn't allow exit with the specified status.
+      #        if a security manager exists and its <code>checkExit</code>
+      #        method doesn't allow exit with the specified status.
       # @see        java.lang.Runtime#exit(int)
       def exit(status)
         Runtime.get_runtime.exit(status)
@@ -1046,13 +1046,13 @@ module Java::Lang
       # This could result in a SecurityException.
       # 
       # @deprecated  This method is inherently unsafe.  It may result in
-      # finalizers being called on live objects while other threads are
-      # concurrently manipulating those objects, resulting in erratic
-      # behavior or deadlock.
+      #      finalizers being called on live objects while other threads are
+      #      concurrently manipulating those objects, resulting in erratic
+      #      behavior or deadlock.
       # @param value indicating enabling or disabling of finalization
       # @throws  SecurityException
-      # if a security manager exists and its <code>checkExit</code>
-      # method doesn't allow the exit.
+      #        if a security manager exists and its <code>checkExit</code>
+      #        method doesn't allow the exit.
       # 
       # @see     java.lang.Runtime#exit(int)
       # @see     java.lang.Runtime#gc()
@@ -1075,11 +1075,11 @@ module Java::Lang
       # 
       # @param      filename   the file to load.
       # @exception  SecurityException  if a security manager exists and its
-      # <code>checkLink</code> method doesn't allow
-      # loading of the specified dynamic library
+      #             <code>checkLink</code> method doesn't allow
+      #             loading of the specified dynamic library
       # @exception  UnsatisfiedLinkError  if the file does not exist.
       # @exception  NullPointerException if <code>filename</code> is
-      # <code>null</code>
+      #             <code>null</code>
       # @see        java.lang.Runtime#load(java.lang.String)
       # @see        java.lang.SecurityManager#checkLink(java.lang.String)
       def load(filename)
@@ -1099,11 +1099,11 @@ module Java::Lang
       # 
       # @param      libname   the name of the library.
       # @exception  SecurityException  if a security manager exists and its
-      # <code>checkLink</code> method doesn't allow
-      # loading of the specified dynamic library
+      #             <code>checkLink</code> method doesn't allow
+      #             loading of the specified dynamic library
       # @exception  UnsatisfiedLinkError  if the library does not exist.
       # @exception  NullPointerException if <code>libname</code> is
-      # <code>null</code>
+      #             <code>null</code>
       # @see        java.lang.Runtime#loadLibrary(java.lang.String)
       # @see        java.lang.SecurityManager#checkLink(java.lang.String)
       def load_library(libname)
@@ -1118,7 +1118,7 @@ module Java::Lang
       # @param      libname the name of the library.
       # @return     a platform-dependent native library name.
       # @exception  NullPointerException if <code>libname</code> is
-      # <code>null</code>
+      #             <code>null</code>
       # @see        java.lang.System#loadLibrary(java.lang.String)
       # @see        java.lang.ClassLoader#findLibrary(java.lang.String)
       # @since      1.2

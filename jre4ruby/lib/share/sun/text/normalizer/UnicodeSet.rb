@@ -22,11 +22,8 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
-# 
 # (C) Copyright IBM Corp. 1996-2005 - All Rights Reserved                     *
-# *
+#                                                                             *
 # The original version of this source code and documentation is copyrighted   *
 # and owned by IBM, These materials are provided under terms of a License     *
 # Agreement between IBM and Sun. This technology is protected by multiple     *
@@ -90,36 +87,36 @@ module Sun::Text::Normalizer
   # classes.  Here are some simple examples:
   # 
   # <blockquote>
-  # <table>
-  # <tr align="top">
-  # <td nowrap valign="top" align="left"><code>[]</code></td>
-  # <td valign="top">No characters</td>
-  # </tr><tr align="top">
-  # <td nowrap valign="top" align="left"><code>[a]</code></td>
-  # <td valign="top">The character 'a'</td>
-  # </tr><tr align="top">
-  # <td nowrap valign="top" align="left"><code>[ae]</code></td>
-  # <td valign="top">The characters 'a' and 'e'</td>
-  # </tr>
-  # <tr>
-  # <td nowrap valign="top" align="left"><code>[a-e]</code></td>
-  # <td valign="top">The characters 'a' through 'e' inclusive, in Unicode code
-  # point order</td>
-  # </tr>
-  # <tr>
-  # <td nowrap valign="top" align="left"><code>[\\u4E01]</code></td>
-  # <td valign="top">The character U+4E01</td>
-  # </tr>
-  # <tr>
-  # <td nowrap valign="top" align="left"><code>[a{ab}{ac}]</code></td>
-  # <td valign="top">The character 'a' and the multicharacter strings &quot;ab&quot; and
-  # &quot;ac&quot;</td>
-  # </tr>
-  # <tr>
-  # <td nowrap valign="top" align="left"><code>[\p{Lu}]</code></td>
-  # <td valign="top">All characters in the general category Uppercase Letter</td>
-  # </tr>
-  # </table>
+  #   <table>
+  #     <tr align="top">
+  #       <td nowrap valign="top" align="left"><code>[]</code></td>
+  #       <td valign="top">No characters</td>
+  #     </tr><tr align="top">
+  #       <td nowrap valign="top" align="left"><code>[a]</code></td>
+  #       <td valign="top">The character 'a'</td>
+  #     </tr><tr align="top">
+  #       <td nowrap valign="top" align="left"><code>[ae]</code></td>
+  #       <td valign="top">The characters 'a' and 'e'</td>
+  #     </tr>
+  #     <tr>
+  #       <td nowrap valign="top" align="left"><code>[a-e]</code></td>
+  #       <td valign="top">The characters 'a' through 'e' inclusive, in Unicode code
+  #       point order</td>
+  #     </tr>
+  #     <tr>
+  #       <td nowrap valign="top" align="left"><code>[\\u4E01]</code></td>
+  #       <td valign="top">The character U+4E01</td>
+  #     </tr>
+  #     <tr>
+  #       <td nowrap valign="top" align="left"><code>[a{ab}{ac}]</code></td>
+  #       <td valign="top">The character 'a' and the multicharacter strings &quot;ab&quot; and
+  #       &quot;ac&quot;</td>
+  #     </tr>
+  #     <tr>
+  #       <td nowrap valign="top" align="left"><code>[\p{Lu}]</code></td>
+  #       <td valign="top">All characters in the general category Uppercase Letter</td>
+  #     </tr>
+  #   </table>
   # </blockquote>
   # 
   # Any character may be preceded by a backslash in order to remove any special
@@ -190,87 +187,87 @@ module Sun::Text::Normalizer
   # <p><b>Formal syntax</b></p>
   # 
   # <blockquote>
-  # <table>
-  # <tr align="top">
-  # <td nowrap valign="top" align="right"><code>pattern :=&nbsp; </code></td>
-  # <td valign="top"><code>('[' '^'? item* ']') |
-  # property</code></td>
-  # </tr>
-  # <tr align="top">
-  # <td nowrap valign="top" align="right"><code>item :=&nbsp; </code></td>
-  # <td valign="top"><code>char | (char '-' char) | pattern-expr<br>
-  # </code></td>
-  # </tr>
-  # <tr align="top">
-  # <td nowrap valign="top" align="right"><code>pattern-expr :=&nbsp; </code></td>
-  # <td valign="top"><code>pattern | pattern-expr pattern |
-  # pattern-expr op pattern<br>
-  # </code></td>
-  # </tr>
-  # <tr align="top">
-  # <td nowrap valign="top" align="right"><code>op :=&nbsp; </code></td>
-  # <td valign="top"><code>'&amp;' | '-'<br>
-  # </code></td>
-  # </tr>
-  # <tr align="top">
-  # <td nowrap valign="top" align="right"><code>special :=&nbsp; </code></td>
-  # <td valign="top"><code>'[' | ']' | '-'<br>
-  # </code></td>
-  # </tr>
-  # <tr align="top">
-  # <td nowrap valign="top" align="right"><code>char :=&nbsp; </code></td>
-  # <td valign="top"><em>any character that is not</em><code> special<br>
-  # | ('\\' </code><em>any character</em><code>)<br>
-  # | ('&#92;u' hex hex hex hex)<br>
-  # </code></td>
-  # </tr>
-  # <tr align="top">
-  # <td nowrap valign="top" align="right"><code>hex :=&nbsp; </code></td>
-  # <td valign="top"><em>any character for which
-  # </em><code>Character.digit(c, 16)</code><em>
-  # returns a non-negative result</em></td>
-  # </tr>
-  # <tr>
-  # <td nowrap valign="top" align="right"><code>property :=&nbsp; </code></td>
-  # <td valign="top"><em>a Unicode property set pattern</td>
-  # </tr>
-  # </table>
-  # <br>
-  # <table border="1">
-  # <tr>
-  # <td>Legend: <table>
-  # <tr>
-  # <td nowrap valign="top"><code>a := b</code></td>
-  # <td width="20" valign="top">&nbsp; </td>
-  # <td valign="top"><code>a</code> may be replaced by <code>b</code> </td>
-  # </tr>
-  # <tr>
-  # <td nowrap valign="top"><code>a?</code></td>
-  # <td valign="top"></td>
-  # <td valign="top">zero or one instance of <code>a</code><br>
-  # </td>
-  # </tr>
-  # <tr>
-  # <td nowrap valign="top"><code>a*</code></td>
-  # <td valign="top"></td>
-  # <td valign="top">one or more instances of <code>a</code><br>
-  # </td>
-  # </tr>
-  # <tr>
-  # <td nowrap valign="top"><code>a | b</code></td>
-  # <td valign="top"></td>
-  # <td valign="top">either <code>a</code> or <code>b</code><br>
-  # </td>
-  # </tr>
-  # <tr>
-  # <td nowrap valign="top"><code>'a'</code></td>
-  # <td valign="top"></td>
-  # <td valign="top">the literal string between the quotes </td>
-  # </tr>
-  # </table>
-  # </td>
-  # </tr>
-  # </table>
+  #   <table>
+  #     <tr align="top">
+  #       <td nowrap valign="top" align="right"><code>pattern :=&nbsp; </code></td>
+  #       <td valign="top"><code>('[' '^'? item* ']') |
+  #       property</code></td>
+  #     </tr>
+  #     <tr align="top">
+  #       <td nowrap valign="top" align="right"><code>item :=&nbsp; </code></td>
+  #       <td valign="top"><code>char | (char '-' char) | pattern-expr<br>
+  #       </code></td>
+  #     </tr>
+  #     <tr align="top">
+  #       <td nowrap valign="top" align="right"><code>pattern-expr :=&nbsp; </code></td>
+  #       <td valign="top"><code>pattern | pattern-expr pattern |
+  #       pattern-expr op pattern<br>
+  #       </code></td>
+  #     </tr>
+  #     <tr align="top">
+  #       <td nowrap valign="top" align="right"><code>op :=&nbsp; </code></td>
+  #       <td valign="top"><code>'&amp;' | '-'<br>
+  #       </code></td>
+  #     </tr>
+  #     <tr align="top">
+  #       <td nowrap valign="top" align="right"><code>special :=&nbsp; </code></td>
+  #       <td valign="top"><code>'[' | ']' | '-'<br>
+  #       </code></td>
+  #     </tr>
+  #     <tr align="top">
+  #       <td nowrap valign="top" align="right"><code>char :=&nbsp; </code></td>
+  #       <td valign="top"><em>any character that is not</em><code> special<br>
+  #       | ('\\' </code><em>any character</em><code>)<br>
+  #       | ('&#92;u' hex hex hex hex)<br>
+  #       </code></td>
+  #     </tr>
+  #     <tr align="top">
+  #       <td nowrap valign="top" align="right"><code>hex :=&nbsp; </code></td>
+  #       <td valign="top"><em>any character for which
+  #       </em><code>Character.digit(c, 16)</code><em>
+  #       returns a non-negative result</em></td>
+  #     </tr>
+  #     <tr>
+  #       <td nowrap valign="top" align="right"><code>property :=&nbsp; </code></td>
+  #       <td valign="top"><em>a Unicode property set pattern</td>
+  #     </tr>
+  #   </table>
+  #   <br>
+  #   <table border="1">
+  #     <tr>
+  #       <td>Legend: <table>
+  #         <tr>
+  #           <td nowrap valign="top"><code>a := b</code></td>
+  #           <td width="20" valign="top">&nbsp; </td>
+  #           <td valign="top"><code>a</code> may be replaced by <code>b</code> </td>
+  #         </tr>
+  #         <tr>
+  #           <td nowrap valign="top"><code>a?</code></td>
+  #           <td valign="top"></td>
+  #           <td valign="top">zero or one instance of <code>a</code><br>
+  #           </td>
+  #         </tr>
+  #         <tr>
+  #           <td nowrap valign="top"><code>a*</code></td>
+  #           <td valign="top"></td>
+  #           <td valign="top">one or more instances of <code>a</code><br>
+  #           </td>
+  #         </tr>
+  #         <tr>
+  #           <td nowrap valign="top"><code>a | b</code></td>
+  #           <td valign="top"></td>
+  #           <td valign="top">either <code>a</code> or <code>b</code><br>
+  #           </td>
+  #         </tr>
+  #         <tr>
+  #           <td nowrap valign="top"><code>'a'</code></td>
+  #           <td valign="top"></td>
+  #           <td valign="top">the literal string between the quotes </td>
+  #         </tr>
+  #       </table>
+  #       </td>
+  #     </tr>
+  #   </table>
   # </blockquote>
   # 
   # @author Alan Liu
@@ -289,7 +286,6 @@ module Sun::Text::Normalizer
       
       # HIGH > all valid values. 10000 for code units.
       # 110000 for codepoints
-      # 
       # Minimum value that can be stored in a UnicodeSet.
       # @stable ICU 2.0
       const_set_lazy(:MIN_VALUE) { LOW }
@@ -359,7 +355,6 @@ module Sun::Text::Normalizer
       const_attr_reader  :GROW_EXTRA
       
       # extra amount for growth. Must be >= 0
-      # 
       # A set of all characters _except_ the second through last characters of
       # certain ranges.  These ranges are ranges of characters whose
       # properties are all exactly alike, e.g. CJK Ideographs from
@@ -380,7 +375,6 @@ module Sun::Text::Normalizer
     # ----------------------------------------------------------------
     # Public API
     # ----------------------------------------------------------------
-    # 
     # Constructs an empty set.
     # @stable ICU 2.0
     def initialize
@@ -468,13 +462,13 @@ module Sun::Text::Normalizer
         end
         # Okay to let ':' pass through
         case (c)
-        # SET_OPEN:
-        # SET_CLOSE:
-        # HYPHEN:
-        # COMPLEMENT:
-        # INTERSECTION:
-        # BACKSLASH:
         when Character.new(?[.ord), Character.new(?].ord), Character.new(?-.ord), Character.new(?^.ord), Character.new(?&.ord), Character.new(?\\.ord), Character.new(?{.ord), Character.new(?}.ord), Character.new(?$.ord), Character.new(?:.ord)
+          # SET_OPEN:
+          # SET_CLOSE:
+          # HYPHEN:
+          # COMPLEMENT:
+          # INTERSECTION:
+          # BACKSLASH:
           buf.append(Character.new(?\\.ord))
         else
           # Escape whitespace
@@ -549,7 +543,7 @@ module Sun::Text::Normalizer
           end
           (i += 1)
         end
-      # Default; emit the ranges as pairs
+        # Default; emit the ranges as pairs
       else
         i = 0
         while i < count
@@ -626,8 +620,8 @@ module Sun::Text::Normalizer
       # empty = [HIGH]
       # [start_0, limit_0, start_1, limit_1, HIGH]
       # [..., start_k-1, limit_k-1, start_k, limit_k, ..., HIGH]
-      # ^
-      # list[i]
+      #                             ^
+      #                             list[i]
       # i == 0 means c is before the first range
       if ((c).equal?(@list[i] - 1))
         # c is before start of next range
@@ -640,8 +634,8 @@ module Sun::Text::Normalizer
         if (i > 0 && (c).equal?(@list[i - 1]))
           # collapse adjacent ranges
           # [..., start_k-1, c, c, limit_k, ..., HIGH]
-          # ^
-          # list[i]
+          #                     ^
+          #                     list[i]
           System.arraycopy(@list, i + 1, @list, i - 1, @len - i - 1)
           @len -= 2
         end
@@ -654,11 +648,11 @@ module Sun::Text::Normalizer
           # At this point we know the new char is not adjacent to
           # any existing ranges, and it is not 10FFFF.
           # [..., start_k-1, limit_k-1, start_k, limit_k, ..., HIGH]
-          # ^
-          # list[i]
+          #                             ^
+          #                             list[i]
           # [..., start_k-1, limit_k-1, c, c+1, start_k, limit_k, ..., HIGH]
-          # ^
-          # list[i]
+          #                             ^
+          #                             list[i]
           # Don't use ensureCapacity() to save on copying.
           # NOTE: This has no measurable impact on performance,
           # but it might help in some usage patterns.
@@ -782,7 +776,7 @@ module Sun::Text::Normalizer
       # // We know we will terminate without length test!
       # int i = -1;
       # while (true) {
-      # if (c < list[++i]) break;
+      #     if (c < list[++i]) break;
       # }
       i = find_code_point(c)
       return (!((i & 1)).equal?(0)) # return true if odd
@@ -798,14 +792,13 @@ module Sun::Text::Normalizer
     # inclusive, such that c < list[i]
     def find_code_point(c)
       # Examples:
-      # findCodePoint(c)
+      #                                 findCodePoint(c)
       # set              list[]         c=0 1 3 4 7 8
       # ===              ==============   ===========
       # []               [110000]         0 0 0 0 0 0
       # [\u0000-\u0003]  [0, 4, 110000]   1 1 1 2 2 2
       # [\u0004-\u0007]  [4, 8, 110000]   0 0 0 1 1 2
       # [:all:]          [0, 110000]      1 1 1 1 1 1
-      # 
       # Return the smallest i such that c < list[i].  Assume
       # list[len - 1] == HIGH and that c is legal (0..HIGH-1).
       if (c < @list[0])
@@ -870,7 +863,7 @@ module Sun::Text::Normalizer
     # the two sets.
     # 
     # @param c set that defines which elements will be removed from
-    # this set.
+    #          this set.
     # @stable ICU 2.0
     def remove_all(c)
       retain(c.attr_list, c.attr_len, 2)
@@ -928,7 +921,6 @@ module Sun::Text::Normalizer
     # ----------------------------------------------------------------
     # Implementation: Pattern parsing
     # ----------------------------------------------------------------
-    # 
     # Parses the given pattern, starting at the given position.  The character
     # at pattern.charAt(pos.getIndex()) must be '[', or the parse fails.
     # Parsing continues until the corresponding closing ']'.  If a syntax error
@@ -1024,13 +1016,13 @@ module Sun::Text::Normalizer
         set_mode = 0
         if (resembles_property_pattern(chars, opts))
           set_mode = 2
-        # -------- Parse '[' of opening delimiter OR nested set.
-        # If there is a nested set, use `setMode' to define how
-        # the set should be parsed.  If the '[' is part of the
-        # opening delimiter for this pattern, parse special
-        # strings "[", "[^", "[-", and "[^-".  Check for stand-in
-        # characters representing a nested set in the symbol
-        # table.
+          # -------- Parse '[' of opening delimiter OR nested set.
+          # If there is a nested set, use `setMode' to define how
+          # the set should be parsed.  If the '[' is part of the
+          # opening delimiter for this pattern, parse special
+          # strings "[", "[^", "[-", and "[^-".  Check for stand-in
+          # characters representing a nested set in the symbol
+          # table.
         else
           # Prepare to backup if necessary
           backup = chars.get_pos(backup)
@@ -1212,7 +1204,7 @@ module Sun::Text::Normalizer
               __append_to_pat(pat, buf.to_s, false)
               pat.append(Character.new(?}.ord))
               next
-              # symbols  nosymbols
+              #         symbols  nosymbols
               # [a-$]   error    error (ambiguous)
               # [a$]    anchor   anchor
               # [a-$x]  var "x"* literal '$'
@@ -1297,7 +1289,7 @@ module Sun::Text::Normalizer
               __append_to_pat(pat, buf.to_s, false)
               pat.append(Character.new(?}.ord))
               next
-              # symbols  nosymbols
+              #         symbols  nosymbols
               # [a-$]   error    error (ambiguous)
               # [a$]    anchor   anchor
               # [a-$x]  var "x"* literal '$'
@@ -1365,7 +1357,7 @@ module Sun::Text::Normalizer
               __append_to_pat(pat, buf.to_s, false)
               pat.append(Character.new(?}.ord))
               next
-              # symbols  nosymbols
+              #         symbols  nosymbols
               # [a-$]   error    error (ambiguous)
               # [a$]    anchor   anchor
               # [a-$x]  var "x"* literal '$'
@@ -1428,7 +1420,7 @@ module Sun::Text::Normalizer
               __append_to_pat(pat, buf.to_s, false)
               pat.append(Character.new(?}.ord))
               next
-              # symbols  nosymbols
+              #         symbols  nosymbols
               # [a-$]   error    error (ambiguous)
               # [a$]    anchor   anchor
               # [a-$x]  var "x"* literal '$'
@@ -1490,7 +1482,7 @@ module Sun::Text::Normalizer
               __append_to_pat(pat, buf.to_s, false)
               pat.append(Character.new(?}.ord))
               next
-              # symbols  nosymbols
+              #         symbols  nosymbols
               # [a-$]   error    error (ambiguous)
               # [a$]    anchor   anchor
               # [a-$x]  var "x"* literal '$'
@@ -1518,7 +1510,7 @@ module Sun::Text::Normalizer
               end
               syntax_error(chars, "Unquoted '$'")
             when SymbolTable::SYMBOL_REF
-              # symbols  nosymbols
+              #         symbols  nosymbols
               # [a-$]   error    error (ambiguous)
               # [a$]    anchor   anchor
               # [a-$x]  var "x"* literal '$'
@@ -2097,7 +2089,6 @@ module Sun::Text::Normalizer
     # ----------------------------------------------------------------
     # Property set API
     # ----------------------------------------------------------------
-    # 
     # Modifies this set to contain those code points which have the
     # given value for the given property.  Prior contents of this
     # set are lost.
@@ -2243,7 +2234,6 @@ module Sun::Text::Normalizer
       # ----------------------------------------------------------------
       # Case folding API
       # ----------------------------------------------------------------
-      # 
       # Bitmask for constructor and applyPattern() indicating that
       # white space should be ignored.  If set, ignore characters for
       # which UCharacterProperty.isRuleWhiteSpace() returns true,

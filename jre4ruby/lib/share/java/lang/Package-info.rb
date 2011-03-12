@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # Provides classes that are fundamental to the design of the Java
 # programming language. The most important classes are {@code
 # Object}, which is the root of the class hierarchy, and {@code
@@ -68,10 +66,4 @@ require "rjava"
 # 
 # @since JDK1.0
 module Java::Lang
-  module Package-infoImports #:nodoc:
-    class_module.module_eval {
-      include ::Java::Lang
-    }
-  end
-  
 end

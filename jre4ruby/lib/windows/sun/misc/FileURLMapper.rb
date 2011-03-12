@@ -61,7 +61,7 @@ module Sun::Misc
     
     typesig { [] }
     # @returns the platform specific path corresponding to the URL, and in particular
-    # returns a UNC when the authority contains a hostname
+    #  returns a UNC when the authority contains a hostname
     def get_path
       if (!(@file).nil?)
         return @file

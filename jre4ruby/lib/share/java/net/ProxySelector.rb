@@ -90,7 +90,7 @@ module Java::Net
       # Gets the system-wide proxy selector.
       # 
       # @throws  SecurityException
-      # If a security manager has been installed and it denies
+      #          If a security manager has been installed and it denies
       # {@link NetPermission}<tt>("getProxySelector")</tt>
       # @see #setDefault(ProxySelector)
       # @return the system-wide <code>ProxySelector</code>
@@ -109,10 +109,10 @@ module Java::Net
       # Note: non-standard protocol handlers may ignore this setting.
       # 
       # @param ps The HTTP proxy selector, or
-      # <code>null</code> to unset the proxy selector.
+      #          <code>null</code> to unset the proxy selector.
       # 
       # @throws  SecurityException
-      # If a security manager has been installed and it denies
+      #          If a security manager has been installed and it denies
       # {@link NetPermission}<tt>("setProxySelector")</tt>
       # 
       # @see #getDefault()
@@ -136,19 +136,19 @@ module Java::Net
     # <LI>https URI for https connections
     # <LI>ftp URI for ftp connections</LI>
     # <LI><code>socket://host:port</code><br>
-    # for tcp client sockets connections</LI>
+    #     for tcp client sockets connections</LI>
     # </UL>
     # 
     # @param   uri
-    # The URI that a connection is required to
+    #          The URI that a connection is required to
     # 
     # @return  a List of Proxies. Each element in the
-    # the List is of type
-    # {@link java.net.Proxy Proxy};
-    # when no proxy is available, the list will
-    # contain one element of type
-    # {@link java.net.Proxy Proxy}
-    # that represents a direct connection.
+    #          the List is of type
+    #          {@link java.net.Proxy Proxy};
+    #          when no proxy is available, the list will
+    #          contain one element of type
+    #          {@link java.net.Proxy Proxy}
+    #          that represents a direct connection.
     # @throws IllegalArgumentException if the argument is null
     def select(uri)
       raise NotImplementedError
@@ -162,12 +162,12 @@ module Java::Net
     # and the IOException caught when trying to connect.
     # 
     # @param   uri
-    # The URI that the proxy at sa failed to serve.
+    #          The URI that the proxy at sa failed to serve.
     # @param   sa
-    # The socket address of the proxy/SOCKS server
+    #          The socket address of the proxy/SOCKS server
     # 
     # @param   ioe
-    # The I/O exception thrown when the connect failed.
+    #          The I/O exception thrown when the connect failed.
     # @throws IllegalArgumentException if either argument is null
     def connect_failed(uri, sa, ioe)
       raise NotImplementedError

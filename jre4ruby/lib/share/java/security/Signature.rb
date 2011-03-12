@@ -66,17 +66,17 @@ module Java::Security
   # 
   # <li>Initialization, with either
   # 
-  # <ul>
+  #     <ul>
   # 
-  # <li>a public key, which initializes the signature for
-  # verification (see {@link #initVerify(PublicKey) initVerify}), or
+  #     <li>a public key, which initializes the signature for
+  #     verification (see {@link #initVerify(PublicKey) initVerify}), or
   # 
-  # <li>a private key (and optionally a Secure Random Number Generator),
-  # which initializes the signature for signing
-  # (see {@link #initSign(PrivateKey)}
-  # and {@link #initSign(PrivateKey, SecureRandom)}).
+  #     <li>a private key (and optionally a Secure Random Number Generator),
+  #     which initializes the signature for signing
+  #     (see {@link #initSign(PrivateKey)}
+  #     and {@link #initSign(PrivateKey, SecureRandom)}).
   # 
-  # </ul><p>
+  #     </ul><p>
   # 
   # <li>Updating<p>
   # 
@@ -173,7 +173,7 @@ module Java::Security
       const_attr_reader  :RSA_CIPHER
       
       # all the services we need to lookup for compatibility with Cipher
-      const_set_lazy(:RsaIds) { Arrays.as_list(Array.typed(ServiceId).new([ServiceId.new("Signature", "NONEwithRSA"), ServiceId.new("Cipher", "RSA/ECB/PKCS1Padding"), ServiceId.new("Cipher", "RSA/ECB"), ServiceId.new("Cipher", "RSA//PKCS1Padding"), ServiceId.new("Cipher", "RSA"), ])) }
+      const_set_lazy(:RsaIds) { Arrays.as_list(Array.typed(ServiceId).new([ServiceId.new("Signature", "NONEwithRSA"), ServiceId.new("Cipher", "RSA/ECB/PKCS1Padding"), ServiceId.new("Cipher", "RSA/ECB"), ServiceId.new("Cipher", "RSA//PKCS1Padding"), ServiceId.new("Cipher", "RSA")])) }
       const_attr_reader  :RsaIds
       
       typesig { [String] }
@@ -198,8 +198,8 @@ module Java::Security
       # @return the new Signature object.
       # 
       # @exception NoSuchAlgorithmException if no Provider supports a
-      # Signature implementation for the
-      # specified algorithm.
+      #          Signature implementation for the
+      #          specified algorithm.
       # 
       # @see Provider
       def get_instance(algorithm)
@@ -313,14 +313,14 @@ module Java::Security
       # @return the new Signature object.
       # 
       # @exception NoSuchAlgorithmException if a SignatureSpi
-      # implementation for the specified algorithm is not
-      # available from the specified provider.
+      #          implementation for the specified algorithm is not
+      #          available from the specified provider.
       # 
       # @exception NoSuchProviderException if the specified provider is not
-      # registered in the security provider list.
+      #          registered in the security provider list.
       # 
       # @exception IllegalArgumentException if the provider name is null
-      # or empty.
+      #          or empty.
       # 
       # @see Provider
       def get_instance(algorithm, provider)
@@ -359,8 +359,8 @@ module Java::Security
       # @return the new Signature object.
       # 
       # @exception NoSuchAlgorithmException if a SignatureSpi
-      # implementation for the specified algorithm is not available
-      # from the specified Provider object.
+      #          implementation for the specified algorithm is not available
+      #          from the specified Provider object.
       # 
       # @exception IllegalArgumentException if the provider is null.
       # 

@@ -42,12 +42,12 @@ module Sun::Misc
   # 
   # <pre>
   # class Main implements Timeable {
-  # public void tick(Timer timer) {
-  # System.out.println("tick");
-  # }
-  # public static void main(String args[]) {
-  # (new Timer(this, 5000)).cont();
-  # }
+  #     public void tick(Timer timer) {
+  #         System.out.println("tick");
+  #     }
+  #     public static void main(String args[]) {
+  #         (new Timer(this, 5000)).cont();
+  #     }
   # }
   # </pre>
   # 
@@ -70,8 +70,6 @@ module Sun::Misc
   # the Timer class will deadlock.
   # 
   # @author     Patrick Chan
-  # 
-  # 
   # Synchronization issues:  there are two data structures that
   # require locking.  A Timer object and the Timer queue
   # (described in the TimerThread class).  To avoid deadlock,
@@ -140,10 +138,7 @@ module Sun::Misc
     alias_method :attr_stopped=, :stopped=
     undef_method :stopped=
     
-    # **************************************************************
     # Timer queue-related variables
-    # **************************************************************
-    # 
     # A link to another timer object.  This is used while the
     # timer object is enqueued in the timer queue.
     attr_accessor :next
@@ -153,10 +148,7 @@ module Sun::Misc
     undef_method :next=
     
     class_module.module_eval {
-      # **************************************************************
       # Timer methods
-      # **************************************************************
-      # 
       # This variable holds a handle to the TimerThread class for
       # the purpose of getting at the class monitor.  The reason
       # why Class.forName("TimerThread") is not used is because it
@@ -461,10 +453,7 @@ module Sun::Misc
     end
     
     class_module.module_eval {
-      # *******************************************************
       # Timer Queue
-      # 
-      # 
       # The timer queue is a queue of timers waiting to tick.
       
       def timer_queue

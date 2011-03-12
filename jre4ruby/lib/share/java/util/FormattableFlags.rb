@@ -31,7 +31,6 @@ module Java::Util
   end
   
   # '#'
-  # 
   # FomattableFlags are passed to the {@link Formattable#formatTo
   # Formattable.formatTo()} method and modify the output format for {@linkplain
   # Formattable Formattables}.  Implementations of {@link Formattable} are
@@ -58,7 +57,6 @@ module Java::Util
       const_attr_reader  :LEFT_JUSTIFY
       
       # '-'
-      # 
       # Converts the output to upper case according to the rules of the
       # {@linkplain java.util.Locale locale} given during creation of the
       # <tt>formatter</tt> argument of the {@link Formattable#formatTo
@@ -66,7 +64,7 @@ module Java::Util
       # invocation of {@link String#toUpperCase(java.util.Locale)}
       # 
       # <pre>
-      # out.toUpperCase() </pre>
+      #     out.toUpperCase() </pre>
       # 
       # <p> This flag corresponds to <tt>'^'</tt> (<tt>'&#92;u005e'</tt>) in
       # the format specifier.
@@ -74,7 +72,6 @@ module Java::Util
       const_attr_reader  :UPPERCASE
       
       # '^'
-      # 
       # Requires the output to use an alternate form.  The definition of the
       # form is specified by the <tt>Formattable</tt>.
       # 

@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # Derived from Common Locale Data Repository data.
 # COPYRIGHT AND PERMISSION NOTICE
 # 
@@ -58,8 +56,6 @@ require "rjava"
 # be used in advertising or otherwise to promote the sale, use or other
 # dealings in these Data Files or Software without prior written
 # authorization of the copyright holder.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996 - 1998 - All Rights Reserved
 # 
@@ -94,7 +90,7 @@ module Sun::Util::Resources
     
     typesig { [] }
     def get_contents
-      return Array.typed(Array.typed(Object)).new([Array.typed(Object).new(["HKD", "HK$"]), Array.typed(Object).new(["TWD", "TWD"]), ])
+      return Array.typed(Array.typed(Object)).new([Array.typed(Object).new(["HKD", "HK$"]), Array.typed(Object).new(["TWD", "TWD"])])
     end
     
     private

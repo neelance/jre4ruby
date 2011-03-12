@@ -22,10 +22,8 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # Compare: an interface to enable users to define the result of
-# a comparison of two objects.
+#          a comparison of two objects.
 # 
 # @author Sunita Mani
 module Sun::Misc

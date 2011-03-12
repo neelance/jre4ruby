@@ -31,7 +31,6 @@ module Java::Util::Zip
   end
   
   # zip file comment length
-  # 
   # This interface defines the constants that are used by the classes
   # which manipulate ZIP files.
   # 
@@ -57,7 +56,6 @@ module Java::Util::Zip
       const_attr_reader  :ENDSIG
       
       # "PK\005\006"
-      # 
       # Header sizes in bytes (including signatures)
       const_set_lazy(:LOCHDR) { 30 }
       const_attr_reader  :LOCHDR
@@ -75,7 +73,6 @@ module Java::Util::Zip
       const_attr_reader  :ENDHDR
       
       # END header size
-      # 
       # Local file (LOC) header field offsets
       const_set_lazy(:LOCVER) { 4 }
       const_attr_reader  :LOCVER
@@ -113,7 +110,6 @@ module Java::Util::Zip
       const_attr_reader  :LOCEXT
       
       # extra field length
-      # 
       # Extra local (EXT) header field offsets
       const_set_lazy(:EXTCRC) { 4 }
       const_attr_reader  :EXTCRC
@@ -127,7 +123,6 @@ module Java::Util::Zip
       const_attr_reader  :EXTLEN
       
       # uncompressed size
-      # 
       # Central directory (CEN) header field offsets
       const_set_lazy(:CENVEM) { 4 }
       const_attr_reader  :CENVEM
@@ -189,7 +184,6 @@ module Java::Util::Zip
       const_attr_reader  :CENOFF
       
       # LOC header offset
-      # 
       # End of central directory (END) header field offsets
       const_set_lazy(:ENDSUB) { 8 }
       const_attr_reader  :ENDSUB

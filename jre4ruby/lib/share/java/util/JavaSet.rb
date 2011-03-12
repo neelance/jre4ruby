@@ -90,7 +90,6 @@ module Java::Util
     
     typesig { [] }
     # Query Operations
-    # 
     # Returns the number of elements in this set (its cardinality).  If this
     # set contains more than <tt>Integer.MAX_VALUE</tt> elements, returns
     # <tt>Integer.MAX_VALUE</tt>.
@@ -117,9 +116,9 @@ module Java::Util
     # @param o element whose presence in this set is to be tested
     # @return <tt>true</tt> if this set contains the specified element
     # @throws ClassCastException if the type of the specified element
-    # is incompatible with this set (optional)
+    #         is incompatible with this set (optional)
     # @throws NullPointerException if the specified element is null and this
-    # set does not permit null elements (optional)
+    #         set does not permit null elements (optional)
     def contains(o)
       raise NotImplementedError
     end
@@ -181,18 +180,18 @@ module Java::Util
     # array of <tt>String</tt>:
     # 
     # <pre>
-    # String[] y = x.toArray(new String[0]);</pre>
+    #     String[] y = x.toArray(new String[0]);</pre>
     # 
     # Note that <tt>toArray(new Object[0])</tt> is identical in function to
     # <tt>toArray()</tt>.
     # 
     # @param a the array into which the elements of this set are to be
-    # stored, if it is big enough; otherwise, a new array of the same
-    # runtime type is allocated for this purpose.
+    #        stored, if it is big enough; otherwise, a new array of the same
+    #        runtime type is allocated for this purpose.
     # @return an array containing all the elements in this set
     # @throws ArrayStoreException if the runtime type of the specified array
-    # is not a supertype of the runtime type of every element in this
-    # set
+    #         is not a supertype of the runtime type of every element in this
+    #         set
     # @throws NullPointerException if the specified array is null
     def to_array(a)
       raise NotImplementedError
@@ -200,7 +199,6 @@ module Java::Util
     
     typesig { [Object] }
     # Modification Operations
-    # 
     # Adds the specified element to this set if it is not already present
     # (optional operation).  More formally, adds the specified element
     # <tt>e</tt> to this set if the set contains no element <tt>e2</tt>
@@ -220,15 +218,15 @@ module Java::Util
     # 
     # @param e element to be added to this set
     # @return <tt>true</tt> if this set did not already contain the specified
-    # element
+    #         element
     # @throws UnsupportedOperationException if the <tt>add</tt> operation
-    # is not supported by this set
+    #         is not supported by this set
     # @throws ClassCastException if the class of the specified element
-    # prevents it from being added to this set
+    #         prevents it from being added to this set
     # @throws NullPointerException if the specified element is null and this
-    # set does not permit null elements
+    #         set does not permit null elements
     # @throws IllegalArgumentException if some property of the specified element
-    # prevents it from being added to this set
+    #         prevents it from being added to this set
     def add(e)
       raise NotImplementedError
     end
@@ -246,31 +244,30 @@ module Java::Util
     # @param o object to be removed from this set, if present
     # @return <tt>true</tt> if this set contained the specified element
     # @throws ClassCastException if the type of the specified element
-    # is incompatible with this set (optional)
+    #         is incompatible with this set (optional)
     # @throws NullPointerException if the specified element is null and this
-    # set does not permit null elements (optional)
+    #         set does not permit null elements (optional)
     # @throws UnsupportedOperationException if the <tt>remove</tt> operation
-    # is not supported by this set
+    #         is not supported by this set
     def remove(o)
       raise NotImplementedError
     end
     
     typesig { [Collection] }
     # Bulk Operations
-    # 
     # Returns <tt>true</tt> if this set contains all of the elements of the
     # specified collection.  If the specified collection is also a set, this
     # method returns <tt>true</tt> if it is a <i>subset</i> of this set.
     # 
     # @param  c collection to be checked for containment in this set
     # @return <tt>true</tt> if this set contains all of the elements of the
-    # specified collection
+    #         specified collection
     # @throws ClassCastException if the types of one or more elements
-    # in the specified collection are incompatible with this
-    # set (optional)
+    #         in the specified collection are incompatible with this
+    #         set (optional)
     # @throws NullPointerException if the specified collection contains one
-    # or more null elements and this set does not permit null
-    # elements (optional), or if the specified collection is null
+    #         or more null elements and this set does not permit null
+    #         elements (optional), or if the specified collection is null
     # @see    #contains(Object)
     def contains_all(c)
       raise NotImplementedError
@@ -288,14 +285,14 @@ module Java::Util
     # @return <tt>true</tt> if this set changed as a result of the call
     # 
     # @throws UnsupportedOperationException if the <tt>addAll</tt> operation
-    # is not supported by this set
+    #         is not supported by this set
     # @throws ClassCastException if the class of an element of the
-    # specified collection prevents it from being added to this set
+    #         specified collection prevents it from being added to this set
     # @throws NullPointerException if the specified collection contains one
-    # or more null elements and this set does not permit null
-    # elements, or if the specified collection is null
+    #         or more null elements and this set does not permit null
+    #         elements, or if the specified collection is null
     # @throws IllegalArgumentException if some property of an element of the
-    # specified collection prevents it from being added to this set
+    #         specified collection prevents it from being added to this set
     # @see #add(Object)
     def add_all(c)
       raise NotImplementedError
@@ -312,12 +309,12 @@ module Java::Util
     # @param  c collection containing elements to be retained in this set
     # @return <tt>true</tt> if this set changed as a result of the call
     # @throws UnsupportedOperationException if the <tt>retainAll</tt> operation
-    # is not supported by this set
+    #         is not supported by this set
     # @throws ClassCastException if the class of an element of this set
-    # is incompatible with the specified collection (optional)
+    #         is incompatible with the specified collection (optional)
     # @throws NullPointerException if this set contains a null element and the
-    # specified collection does not permit null elements (optional),
-    # or if the specified collection is null
+    #         specified collection does not permit null elements (optional),
+    #         or if the specified collection is null
     # @see #remove(Object)
     def retain_all(c)
       raise NotImplementedError
@@ -333,12 +330,12 @@ module Java::Util
     # @param  c collection containing elements to be removed from this set
     # @return <tt>true</tt> if this set changed as a result of the call
     # @throws UnsupportedOperationException if the <tt>removeAll</tt> operation
-    # is not supported by this set
+    #         is not supported by this set
     # @throws ClassCastException if the class of an element of this set
-    # is incompatible with the specified collection (optional)
+    #         is incompatible with the specified collection (optional)
     # @throws NullPointerException if this set contains a null element and the
-    # specified collection does not permit null elements (optional),
-    # or if the specified collection is null
+    #         specified collection does not permit null elements (optional),
+    #         or if the specified collection is null
     # @see #remove(Object)
     # @see #contains(Object)
     def remove_all(c)
@@ -350,14 +347,13 @@ module Java::Util
     # The set will be empty after this call returns.
     # 
     # @throws UnsupportedOperationException if the <tt>clear</tt> method
-    # is not supported by this set
+    #         is not supported by this set
     def clear
       raise NotImplementedError
     end
     
     typesig { [Object] }
     # Comparison and hashing
-    # 
     # Compares the specified object with this set for equality.  Returns
     # <tt>true</tt> if the specified object is also a set, the two sets
     # have the same size, and every member of the specified set is

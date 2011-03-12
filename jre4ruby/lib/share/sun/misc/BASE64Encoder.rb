@@ -65,7 +65,7 @@ module Sun::Misc
     
     class_module.module_eval {
       # This array maps the characters to their 6 bit values
-      # 0   1   2   3   4   5   6   7
+      #       0   1   2   3   4   5   6   7
       # 0
       # 1
       # 2

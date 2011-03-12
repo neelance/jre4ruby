@@ -80,7 +80,6 @@ module Java::Math
     
     typesig { [] }
     # Constructors
-    # 
     # The default constructor. An empty MutableBigInteger is created with
     # a one word capacity.
     def initialize
@@ -470,11 +469,11 @@ module Java::Math
       j = a.attr_length - 1
       while j >= 0
         sum = (a[j] & LONG_MASK) + (result[j + offset] & LONG_MASK) + carry
-        result[j + offset] = RJava.cast_to_int(sum)
+        result[j + offset] = (sum).to_int
         carry = sum >> 32
         j -= 1
       end
-      return RJava.cast_to_int(carry)
+      return (carry).to_int
     end
     
     typesig { [Array.typed(::Java::Int), Array.typed(::Java::Int), ::Java::Int, ::Java::Int, ::Java::Int] }
@@ -489,11 +488,11 @@ module Java::Math
       while j >= 0
         product = (a[j] & LONG_MASK) * x_long + carry
         difference = q[offset] - product
-        q[((offset -= 1) + 1)] = RJava.cast_to_int(difference)
-        carry = (product >> 32) + (((difference & LONG_MASK) > (((~RJava.cast_to_int(product)) & LONG_MASK))) ? 1 : 0)
+        q[((offset -= 1) + 1)] = (difference).to_int
+        carry = (product >> 32) + (((difference & LONG_MASK) > (((~(product).to_int) & LONG_MASK))) ? 1 : 0)
         j -= 1
       end
-      return RJava.cast_to_int(carry)
+      return (carry).to_int
     end
     
     typesig { [::Java::Int] }
@@ -549,18 +548,18 @@ module Java::Math
         x -= 1
         y -= 1
         sum = (@value[x + @offset] & LONG_MASK) + (addend.attr_value[y + addend.attr_offset] & LONG_MASK) + (sum >> 32)
-        result[((rstart -= 1) + 1)] = RJava.cast_to_int(sum)
+        result[((rstart -= 1) + 1)] = (sum).to_int
       end
       # Add remainder of the longer number
       while (x > 0)
         x -= 1
         sum = (@value[x + @offset] & LONG_MASK) + (sum >> 32)
-        result[((rstart -= 1) + 1)] = RJava.cast_to_int(sum)
+        result[((rstart -= 1) + 1)] = (sum).to_int
       end
       while (y > 0)
         y -= 1
         sum = (addend.attr_value[y + addend.attr_offset] & LONG_MASK) + (sum >> 32)
-        result[((rstart -= 1) + 1)] = RJava.cast_to_int(sum)
+        result[((rstart -= 1) + 1)] = (sum).to_int
       end
       if ((sum >> 32) > 0)
         # Result must grow in length
@@ -611,14 +610,14 @@ module Java::Math
       while (y > 0)
         x -= 1
         y -= 1
-        diff = (a.attr_value[x + a.attr_offset] & LONG_MASK) - (b.attr_value[y + b.attr_offset] & LONG_MASK) - (RJava.cast_to_int(-(diff >> 32)))
-        result[((rstart -= 1) + 1)] = RJava.cast_to_int(diff)
+        diff = (a.attr_value[x + a.attr_offset] & LONG_MASK) - (b.attr_value[y + b.attr_offset] & LONG_MASK) - ((-(diff >> 32)).to_int)
+        result[((rstart -= 1) + 1)] = (diff).to_int
       end
       # Subtract remainder of longer number
       while (x > 0)
         x -= 1
-        diff = (a.attr_value[x + a.attr_offset] & LONG_MASK) - (RJava.cast_to_int(-(diff >> 32)))
-        result[((rstart -= 1) + 1)] = RJava.cast_to_int(diff)
+        diff = (a.attr_value[x + a.attr_offset] & LONG_MASK) - ((-(diff >> 32)).to_int)
+        result[((rstart -= 1) + 1)] = (diff).to_int
       end
       @value = result
       @int_len = result_len
@@ -649,14 +648,14 @@ module Java::Math
       while (y > 0)
         x -= 1
         y -= 1
-        diff = (a.attr_value[a.attr_offset + x] & LONG_MASK) - (b.attr_value[b.attr_offset + y] & LONG_MASK) - (RJava.cast_to_int(-(diff >> 32)))
-        a.attr_value[a.attr_offset + x] = RJava.cast_to_int(diff)
+        diff = (a.attr_value[a.attr_offset + x] & LONG_MASK) - (b.attr_value[b.attr_offset + y] & LONG_MASK) - ((-(diff >> 32)).to_int)
+        a.attr_value[a.attr_offset + x] = (diff).to_int
       end
       # Subtract remainder of longer number
       while (x > 0)
         x -= 1
-        diff = (a.attr_value[a.attr_offset + x] & LONG_MASK) - (RJava.cast_to_int(-(diff >> 32)))
-        a.attr_value[a.attr_offset + x] = RJava.cast_to_int(diff)
+        diff = (a.attr_value[a.attr_offset + x] & LONG_MASK) - ((-(diff >> 32)).to_int)
+        a.attr_value[a.attr_offset + x] = (diff).to_int
       end
       a.normalize
       return sign
@@ -681,12 +680,12 @@ module Java::Math
       k = y_len + x_len - 1
       while j >= 0
         product = (y.attr_value[j + y.attr_offset] & LONG_MASK) * (@value[x_len - 1 + @offset] & LONG_MASK) + carry
-        z.attr_value[k] = RJava.cast_to_int(product)
+        z.attr_value[k] = (product).to_int
         carry = product >> 32
         j -= 1
         k -= 1
       end
-      z.attr_value[x_len - 1] = RJava.cast_to_int(carry)
+      z.attr_value[x_len - 1] = (carry).to_int
       # Perform the multiplication word by word
       i = x_len - 2
       while i >= 0
@@ -695,12 +694,12 @@ module Java::Math
         k_ = y_len + i
         while j_ >= 0
           product = (y.attr_value[j_ + y.attr_offset] & LONG_MASK) * (@value[i + @offset] & LONG_MASK) + (z.attr_value[k_] & LONG_MASK) + carry
-          z.attr_value[k_] = RJava.cast_to_int(product)
+          z.attr_value[k_] = (product).to_int
           carry = product >> 32
           j_ -= 1
           k_ -= 1
         end
-        z.attr_value[i] = RJava.cast_to_int(carry)
+        z.attr_value[i] = (carry).to_int
         i -= 1
       end
       # Remove leading zeros from product
@@ -726,7 +725,7 @@ module Java::Math
       i = @int_len - 1
       while i >= 0
         product = ylong * (@value[i + @offset] & LONG_MASK) + carry
-        zval[i + 1] = RJava.cast_to_int(product)
+        zval[i + 1] = (product).to_int
         carry = product >> 32
         i -= 1
       end
@@ -736,7 +735,7 @@ module Java::Math
       else
         z.attr_offset = 0
         z.attr_int_len = @int_len + 1
-        zval[0] = RJava.cast_to_int(carry)
+        zval[0] = (carry).to_int
       end
       z.attr_value = zval
     end
@@ -753,10 +752,10 @@ module Java::Math
       # Special case of one word dividend
       if ((@int_len).equal?(1))
         rem_value = @value[@offset] & LONG_MASK
-        quotient.attr_value[0] = RJava.cast_to_int((rem_value / div_long))
+        quotient.attr_value[0] = ((rem_value / div_long)).to_int
         quotient.attr_int_len = ((quotient.attr_value[0]).equal?(0)) ? 0 : 1
         quotient.attr_offset = 0
-        @value[0] = RJava.cast_to_int((rem_value - (quotient.attr_value[0] * div_long)))
+        @value[0] = ((rem_value - (quotient.attr_value[0] * div_long))).to_int
         @offset = 0
         @int_len = ((@value[0]).equal?(0)) ? 0 : 1
         return
@@ -773,8 +772,8 @@ module Java::Math
       if (rem_long < div_long)
         quotient.attr_value[0] = 0
       else
-        quotient.attr_value[0] = RJava.cast_to_int((rem_long / div_long))
-        rem = RJava.cast_to_int((rem_long - (quotient.attr_value[0] * div_long)))
+        quotient.attr_value[0] = ((rem_long / div_long)).to_int
+        rem = ((rem_long - (quotient.attr_value[0] * div_long))).to_int
         rem_long = rem & LONG_MASK
       end
       xlen = @int_len
@@ -782,8 +781,8 @@ module Java::Math
       while ((xlen -= 1) > 0)
         dividend_estimate = (rem_long << 32) | (@value[@offset + @int_len - xlen] & LONG_MASK)
         if (dividend_estimate >= 0)
-          q_word[0] = RJava.cast_to_int((dividend_estimate / div_long))
-          q_word[1] = RJava.cast_to_int((dividend_estimate - (q_word[0] * div_long)))
+          q_word[0] = ((dividend_estimate / div_long)).to_int
+          q_word[1] = ((dividend_estimate - (q_word[0] * div_long))).to_int
         else
           div_word(q_word, dividend_estimate, divisor)
         end
@@ -903,8 +902,8 @@ module Java::Math
         else
           n_chunk = ((nh) << 32) | (nm & LONG_MASK)
           if (n_chunk >= 0)
-            qhat = RJava.cast_to_int((n_chunk / dh_long))
-            qrem = RJava.cast_to_int((n_chunk - (qhat * dh_long)))
+            qhat = ((n_chunk / dh_long)).to_int
+            qrem = ((n_chunk - (qhat * dh_long))).to_int
           else
             div_word(q_word, n_chunk, dh)
             qhat = q_word[0]
@@ -922,7 +921,7 @@ module Java::Math
           est_product = (dl & LONG_MASK) * (qhat & LONG_MASK)
           if (unsigned_long_compare(est_product, rs))
             qhat -= 1
-            qrem = RJava.cast_to_int(((qrem & LONG_MASK) + dh_long))
+            qrem = (((qrem & LONG_MASK) + dh_long)).to_int
             if ((qrem & LONG_MASK) >= dh_long)
               est_product = (dl & LONG_MASK) * (qhat & LONG_MASK)
               rs = ((qrem & LONG_MASK) << 32) | nl
@@ -967,7 +966,7 @@ module Java::Math
     def div_word(result, n, d)
       d_long = d & LONG_MASK
       if ((d_long).equal?(1))
-        result[0] = RJava.cast_to_int(n)
+        result[0] = (n).to_int
         result[1] = 0
         return
       end
@@ -984,8 +983,8 @@ module Java::Math
         q += 1
       end
       # n - q*dlong == r && 0 <= r <dLong, hence we're done.
-      result[0] = RJava.cast_to_int(q)
-      result[1] = RJava.cast_to_int(r)
+      result[0] = (q).to_int
+      result[1] = (r).to_int
     end
     
     typesig { [MutableBigInteger] }
@@ -1172,8 +1171,8 @@ module Java::Math
       t_long = t_long * (2 - p_long * t_long) # 1 more Newton iter step
       t_long = ((k).equal?(64) ? t_long : t_long & ((1 << k) - 1))
       result = MutableBigInteger.new(Array.typed(::Java::Int).new(2) { 0 })
-      result.attr_value[0] = RJava.cast_to_int((t_long >> 32))
-      result.attr_value[1] = RJava.cast_to_int(t_long)
+      result.attr_value[0] = ((t_long >> 32)).to_int
+      result.attr_value[1] = (t_long).to_int
       result.attr_int_len = 2
       result.normalize
       return result

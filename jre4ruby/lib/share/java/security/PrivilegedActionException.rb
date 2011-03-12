@@ -86,11 +86,11 @@ module Java::Security
     # obtaining this information.
     # 
     # @return the exception thrown by the privileged computation that
-    # resulted in this <code>PrivilegedActionException</code>.
+    #         resulted in this <code>PrivilegedActionException</code>.
     # @see PrivilegedExceptionAction
     # @see AccessController#doPrivileged(PrivilegedExceptionAction)
     # @see AccessController#doPrivileged(PrivilegedExceptionAction,
-    # AccessControlContext)
+    #                                            AccessControlContext)
     def get_exception
       return @exception
     end

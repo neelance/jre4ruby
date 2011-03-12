@@ -134,7 +134,7 @@ module Java::Util
   # 
   # <blockquote><pre>
   # private static ServiceLoader&lt;CodecSet&gt; codecSetLoader
-  # = ServiceLoader.load(CodecSet.class);</pre></blockquote>
+  #     = ServiceLoader.load(CodecSet.class);</pre></blockquote>
   # 
   # <p> To locate an encoder for a given encoding name it defines a static
   # factory method which iterates through the known and available providers,
@@ -143,12 +143,12 @@ module Java::Util
   # 
   # <blockquote><pre>
   # public static Encoder getEncoder(String encodingName) {
-  # for (CodecSet cp : codecSetLoader) {
-  # Encoder enc = cp.getEncoder(encodingName);
-  # if (enc != null)
-  # return enc;
-  # }
-  # return null;
+  #     for (CodecSet cp : codecSetLoader) {
+  #         Encoder enc = cp.getEncoder(encodingName);
+  #         if (enc != null)
+  #             return enc;
+  #     }
+  #     return null;
   # }</pre></blockquote>
   # 
   # <p> A <tt>getDecoder</tt> method is defined similarly.
@@ -174,7 +174,7 @@ module Java::Util
   # response code (HTTP 404) along with the HTML error page.
   # 
   # @param  <S>
-  # The type of the service to be loaded by this loader
+  #         The type of the service to be loaded by this loader
   # 
   # @author Mark Reinhold
   # @since 1.6
@@ -261,6 +261,7 @@ module Java::Util
     typesig { [Class, URL, BufferedReader, ::Java::Int, JavaList] }
     # Parse a single line from the given configuration file, adding the name
     # on the line to the names list.
+    # 
     def parse_line(service, u, r, lc, names)
       ln = r.read_line
       if ((ln).nil?)
@@ -299,19 +300,20 @@ module Java::Util
     # Parse the content of the given URL as a provider-configuration file.
     # 
     # @param  service
-    # The service type for which providers are being sought;
-    # used to construct error detail strings
+    #         The service type for which providers are being sought;
+    #         used to construct error detail strings
     # 
     # @param  u
-    # The URL naming the configuration file to be parsed
+    #         The URL naming the configuration file to be parsed
     # 
     # @return A (possibly empty) iterator that will yield the provider-class
-    # names in the given configuration file that are not yet members
-    # of the returned set
+    #         names in the given configuration file that are not yet members
+    #         of the returned set
     # 
     # @throws ServiceConfigurationError
-    # If an I/O error occurs while reading from the given URL, or
-    # if a configuration-file format error is detected
+    #         If an I/O error occurs while reading from the given URL, or
+    #         if a configuration-file format error is detected
+    # 
     def parse(service, u)
       in_ = nil
       r = nil
@@ -341,6 +343,7 @@ module Java::Util
     
     class_module.module_eval {
       # Private inner class implementing fully-lazy provider lookup
+      # 
       const_set_lazy(:LazyIterator) { Class.new do
         local_class_in ServiceLoader
         include_class_members ServiceLoader
@@ -481,7 +484,7 @@ module Java::Util
     # cause an {@link UnsupportedOperationException} to be thrown.
     # 
     # @return  An iterator that lazily loads providers for this loader's
-    # service
+    #          service
     def iterator
       return Class.new(Iterator.class == Class ? Iterator : Object) do
         local_class_in ServiceLoader
@@ -533,13 +536,13 @@ module Java::Util
       # loader.
       # 
       # @param  service
-      # The interface or abstract class representing the service
+      #         The interface or abstract class representing the service
       # 
       # @param  loader
-      # The class loader to be used to load provider-configuration files
-      # and provider classes, or <tt>null</tt> if the system class
-      # loader (or, failing that, the bootstrap class loader) is to be
-      # used
+      #         The class loader to be used to load provider-configuration files
+      #         and provider classes, or <tt>null</tt> if the system class
+      #         loader (or, failing that, the bootstrap class loader) is to be
+      #         used
       # 
       # @return A new service loader
       def load(service, loader)
@@ -560,10 +563,10 @@ module Java::Util
       # 
       # <blockquote><pre>
       # ServiceLoader.load(<i>service</i>,
-      # Thread.currentThread().getContextClassLoader())</pre></blockquote>
+      #                    Thread.currentThread().getContextClassLoader())</pre></blockquote>
       # 
       # @param  service
-      # The interface or abstract class representing the service
+      #         The interface or abstract class representing the service
       # 
       # @return A new service loader
       def load(service)
@@ -591,7 +594,7 @@ module Java::Util
       # the application's class path will be ignored.
       # 
       # @param  service
-      # The interface or abstract class representing the service
+      #         The interface or abstract class representing the service
       # 
       # @return A new service loader
       def load_installed(service)

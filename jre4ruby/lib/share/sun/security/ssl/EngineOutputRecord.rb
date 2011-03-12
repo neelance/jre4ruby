@@ -60,8 +60,6 @@ module Sun::Security::Ssl
     
     typesig { [::Java::Byte, SSLEngineImpl] }
     # All handshake hashing is done by the superclass
-    # 
-    # 
     # Default constructor makes a record supporting the maximum
     # SSL record size.  It allocates the header bytes directly.
     # 
@@ -154,7 +152,7 @@ module Sun::Security::Ssl
     # generated.
     def write_buffer(s, buf, off, len)
       # Copy data out of buffer, it's ready to go.
-      net_bb = ByteBuffer.allocate(len).put(buf, 0, len).flip
+      net_bb = ByteBuffer.allocate_(len).put(buf, 0, len).flip
       @writer.put_outbound_data(net_bb)
     end
     

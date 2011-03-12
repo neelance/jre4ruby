@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # This file is available under and governed by the GNU General Public
 # License version 2 only, as published by the Free Software Foundation.
 # However, the following notice accompanied the original version of this
@@ -50,18 +48,18 @@ module Java::Util::Concurrent::Atomic
   # 
   # <pre>
   # class Node {
-  # private volatile Node left, right;
+  #   private volatile Node left, right;
   # 
-  # private static final AtomicReferenceFieldUpdater&lt;Node, Node&gt; leftUpdater =
-  # AtomicReferenceFieldUpdater.newUpdater(Node.class, Node.class, "left");
-  # private static AtomicReferenceFieldUpdater&lt;Node, Node&gt; rightUpdater =
-  # AtomicReferenceFieldUpdater.newUpdater(Node.class, Node.class, "right");
+  #   private static final AtomicReferenceFieldUpdater&lt;Node, Node&gt; leftUpdater =
+  #     AtomicReferenceFieldUpdater.newUpdater(Node.class, Node.class, "left");
+  #   private static AtomicReferenceFieldUpdater&lt;Node, Node&gt; rightUpdater =
+  #     AtomicReferenceFieldUpdater.newUpdater(Node.class, Node.class, "right");
   # 
-  # Node getLeft() { return left;  }
-  # boolean compareAndSetLeft(Node expect, Node update) {
-  # return leftUpdater.compareAndSet(this, expect, update);
-  # }
-  # // ... and so on
+  #   Node getLeft() { return left;  }
+  #   boolean compareAndSetLeft(Node expect, Node update) {
+  #     return leftUpdater.compareAndSet(this, expect, update);
+  #   }
+  #   // ... and so on
   # }
   # </pre>
   # 

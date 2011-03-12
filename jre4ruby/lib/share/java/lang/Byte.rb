@@ -72,7 +72,7 @@ module Java::Lang
       # @return the string representation of the specified {@code byte}
       # @see java.lang.Integer#toString(int)
       def to_s(b)
-        return JavaInteger.to_s(RJava.cast_to_int(b), 10)
+        return JavaInteger.to_s((b).to_int, 10)
       end
       
       const_set_lazy(:ByteCache) { Class.new do
@@ -113,7 +113,7 @@ module Java::Lang
       # @since  1.5
       def value_of(b)
         offset = 128
-        return ByteCache.attr_cache[RJava.cast_to_int(b) + offset]
+        return ByteCache.attr_cache[(b).to_int + offset]
       end
       
       typesig { [String, ::Java::Int] }
@@ -146,13 +146,13 @@ module Java::Lang
       # </ul>
       # 
       # @param s         the {@code String} containing the
-      # {@code byte}
-      # representation to be parsed
+      #                  {@code byte}
+      #                  representation to be parsed
       # @param radix     the radix to be used while parsing {@code s}
       # @return          the {@code byte} value represented by the string
-      # argument in the specified radix
+      #                   argument in the specified radix
       # @throws          NumberFormatException If the string does
-      # not contain a parsable {@code byte}.
+      #                  not contain a parsable {@code byte}.
       def parse_byte(s, radix)
         i = JavaInteger.parse_int(s, radix)
         if (i < MIN_VALUE || i > MAX_VALUE)
@@ -171,11 +171,11 @@ module Java::Lang
       # {@link #parseByte(java.lang.String, int)} method.
       # 
       # @param s         a {@code String} containing the
-      # {@code byte} representation to be parsed
+      #                  {@code byte} representation to be parsed
       # @return          the {@code byte} value represented by the
-      # argument in decimal
+      #                  argument in decimal
       # @throws          NumberFormatException if the string does not
-      # contain a parsable {@code byte}.
+      #                  contain a parsable {@code byte}.
       def parse_byte(s)
         return parse_byte(s, 10)
       end
@@ -200,10 +200,10 @@ module Java::Lang
       # @param s         the string to be parsed
       # @param radix     the radix to be used in interpreting {@code s}
       # @return          a {@code Byte} object holding the value
-      # represented by the string argument in the
-      # specified radix.
+      #                  represented by the string argument in the
+      #                  specified radix.
       # @throws          NumberFormatException If the {@code String} does
-      # not contain a parsable {@code byte}.
+      #                  not contain a parsable {@code byte}.
       def value_of(s, radix)
         return Byte.new(parse_byte(s, radix))
       end
@@ -226,9 +226,9 @@ module Java::Lang
       # 
       # @param s         the string to be parsed
       # @return          a {@code Byte} object holding the value
-      # represented by the string argument
+      #                  represented by the string argument
       # @throws          NumberFormatException If the {@code String} does
-      # not contain a parsable {@code byte}.
+      #                  not contain a parsable {@code byte}.
       def value_of(s)
         return value_of(s, 10)
       end
@@ -269,9 +269,9 @@ module Java::Lang
       # 
       # @param     nm the {@code String} to decode.
       # @return   a {@code Byte} object holding the {@code byte}
-      # value represented by {@code nm}
+      #          value represented by {@code nm}
       # @throws  NumberFormatException  if the {@code String} does not
-      # contain a parsable {@code byte}.
+      #            contain a parsable {@code byte}.
       # @see java.lang.Byte#parseByte(java.lang.String, int)
       def decode(nm)
         i = JavaInteger.decode(nm)
@@ -296,7 +296,7 @@ module Java::Lang
     # represents the specified {@code byte} value.
     # 
     # @param value     the value to be represented by the
-    # {@code Byte}.
+    #                  {@code Byte}.
     def initialize(value)
       @value = 0
       super()
@@ -311,9 +311,9 @@ module Java::Lang
     # {@code parseByte} method for radix 10.
     # 
     # @param s         the {@code String} to be converted to a
-    # {@code Byte}
+    #                  {@code Byte}
     # @throws           NumberFormatException If the {@code String}
-    # does not contain a parsable {@code byte}.
+    #                  does not contain a parsable {@code byte}.
     # @see        java.lang.Byte#parseByte(java.lang.String, int)
     def initialize(s)
       @value = 0
@@ -339,7 +339,7 @@ module Java::Lang
     # Returns the value of this {@code Byte} as an
     # {@code int}.
     def int_value
-      return RJava.cast_to_int(@value)
+      return (@value).to_int
     end
     
     typesig { [] }
@@ -371,15 +371,15 @@ module Java::Lang
     # {@link java.lang.Byte#toString(byte)} method.
     # 
     # @return  a string representation of the value of this object in
-    # base&nbsp;10.
+    #          base&nbsp;10.
     def to_s
-      return String.value_of(RJava.cast_to_int(@value))
+      return String.value_of((@value).to_int)
     end
     
     typesig { [] }
     # Returns a hash code for this {@code Byte}.
     def hash_code
-      return RJava.cast_to_int(@value)
+      return (@value).to_int
     end
     
     typesig { [Object] }
@@ -390,7 +390,7 @@ module Java::Lang
     # 
     # @param obj       the object to compare with
     # @return          {@code true} if the objects are the same;
-    # {@code false} otherwise.
+    #                  {@code false} otherwise.
     def ==(obj)
       if (obj.is_a?(Byte))
         return (@value).equal?((obj).byte_value)
@@ -403,12 +403,12 @@ module Java::Lang
     # 
     # @param   anotherByte   the {@code Byte} to be compared.
     # @return  the value {@code 0} if this {@code Byte} is
-    # equal to the argument {@code Byte}; a value less than
-    # {@code 0} if this {@code Byte} is numerically less
-    # than the argument {@code Byte}; and a value greater than
-    # {@code 0} if this {@code Byte} is numerically
-    # greater than the argument {@code Byte} (signed
-    # comparison).
+    #          equal to the argument {@code Byte}; a value less than
+    #          {@code 0} if this {@code Byte} is numerically less
+    #          than the argument {@code Byte}; and a value greater than
+    #           {@code 0} if this {@code Byte} is numerically
+    #           greater than the argument {@code Byte} (signed
+    #           comparison).
     # @since   1.2
     def compare_to(another_byte)
       return @value - another_byte.attr_value

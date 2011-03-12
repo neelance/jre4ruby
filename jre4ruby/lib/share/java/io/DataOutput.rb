@@ -340,7 +340,7 @@ module Java::Io
     # in the order shown:<p> <pre><code>
     # (byte)(0xc0 | (0x1f &amp; (c &gt;&gt; 6)))
     # (byte)(0x80 | (0x3f &amp; c))
-    # </code></pre>  <p> If a character
+    #  </code></pre>  <p> If a character
     # <code>c</code> is in the range <code>&#92;u0800</code>
     # through <code>uffff</code>, then it is
     # represented by three bytes, to be written
@@ -348,7 +348,7 @@ module Java::Io
     # (byte)(0xe0 | (0x0f &amp; (c &gt;&gt; 12)))
     # (byte)(0x80 | (0x3f &amp; (c &gt;&gt;  6)))
     # (byte)(0x80 | (0x3f &amp; c))
-    # </code></pre>  <p> First,
+    #  </code></pre>  <p> First,
     # the total number of bytes needed to represent
     # all the characters of <code>s</code> is
     # calculated. If this number is larger than

@@ -22,11 +22,8 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
-# 
 # (C) Copyright IBM Corp. 1996-2005 - All Rights Reserved                     *
-# *
+#                                                                             *
 # The original version of this source code and documentation is copyrighted   *
 # and owned by IBM, These materials are provided under terms of a License     *
 # Agreement between IBM and Sun. This technology is protected by multiple     *
@@ -54,8 +51,7 @@ module Sun::Text::Normalizer
   # @author Syn Wee Quek
   # @since release 2.1, February 1st 2002
   # @draft 2.1
-  # 
-  # Unicode character properties file format ------------------------------------
+  #    Unicode character properties file format ------------------------------------
   # 
   # The file format prepared and written here contains several data
   # structures that store indexes or data.
@@ -77,35 +73,35 @@ module Sun::Text::Normalizer
   # It is assumed that client code keeps a uint32_t pointer
   # to the beginning of the data:
   # 
-  # const uint32_t *p32;
+  #     const uint32_t *p32;
   # 
   # Formally, the file contains the following structures:
   # 
-  # const int32_t indexes[16] with values i0..i15:
+  #     const int32_t indexes[16] with values i0..i15:
   # 
-  # i0 propsIndex; -- 32-bit unit index to the table of 32-bit properties words
-  # i1 exceptionsIndex;  -- 32-bit unit index to the table of 32-bit exception words
-  # i2 exceptionsTopIndex; -- 32-bit unit index to the array of UChars for special mappings
+  #     i0 propsIndex; -- 32-bit unit index to the table of 32-bit properties words
+  #     i1 exceptionsIndex;  -- 32-bit unit index to the table of 32-bit exception words
+  #     i2 exceptionsTopIndex; -- 32-bit unit index to the array of UChars for special mappings
   # 
-  # i3 additionalTrieIndex; -- 32-bit unit index to the additional trie for more properties
-  # i4 additionalVectorsIndex; -- 32-bit unit index to the table of properties vectors
-  # i5 additionalVectorsColumns; -- number of 32-bit words per properties vector
+  #     i3 additionalTrieIndex; -- 32-bit unit index to the additional trie for more properties
+  #     i4 additionalVectorsIndex; -- 32-bit unit index to the table of properties vectors
+  #     i5 additionalVectorsColumns; -- number of 32-bit words per properties vector
   # 
-  # i6 reservedItemIndex; -- 32-bit unit index to the top of the properties vectors table
-  # i7..i9 reservedIndexes; -- reserved values; 0 for now
+  #     i6 reservedItemIndex; -- 32-bit unit index to the top of the properties vectors table
+  #     i7..i9 reservedIndexes; -- reserved values; 0 for now
   # 
-  # i10 maxValues; -- maximum code values for vector word 0, see uprops.h (format version 3.1+)
-  # i11 maxValues2; -- maximum code values for vector word 2, see uprops.h (format version 3.2)
-  # i12..i15 reservedIndexes; -- reserved values; 0 for now
+  #     i10 maxValues; -- maximum code values for vector word 0, see uprops.h (format version 3.1+)
+  #     i11 maxValues2; -- maximum code values for vector word 2, see uprops.h (format version 3.2)
+  #     i12..i15 reservedIndexes; -- reserved values; 0 for now
   # 
-  # PT serialized properties trie, see utrie.h (byte size: 4*(i0-16))
+  #     PT serialized properties trie, see utrie.h (byte size: 4*(i0-16))
   # 
-  # P  const uint32_t props32[i1-i0];
-  # E  const uint32_t exceptions[i2-i1];
-  # U  const UChar uchars[2*(i3-i2)];
+  #     P  const uint32_t props32[i1-i0];
+  #     E  const uint32_t exceptions[i2-i1];
+  #     U  const UChar uchars[2*(i3-i2)];
   # 
-  # AT serialized trie for additional properties (byte size: 4*(i4-i3))
-  # PV const uint32_t propsVectors[(i6-i4)/i5][i5]==uint32_t propsVectors[i6-i4];
+  #     AT serialized trie for additional properties (byte size: 4*(i4-i3))
+  #     PV const uint32_t propsVectors[(i6-i4)/i5][i5]==uint32_t propsVectors[i6-i4];
   # 
   # Trie lookup and properties:
   # 
@@ -130,26 +126,26 @@ module Sun::Text::Normalizer
   # 
   # With a given Unicode code point
   # 
-  # UChar32 c;
+  #     UChar32 c;
   # 
   # and 0<=c<0x110000, the lookup is done like this:
   # 
-  # uint16_t i;
-  # UTRIE_GET16(c, i);
-  # uint32_t props=p32[i];
+  #     uint16_t i;
+  #     UTRIE_GET16(c, i);
+  #     uint32_t props=p32[i];
   # 
   # For some characters, not all of the properties can be efficiently encoded
   # using 32 bits. For them, the 32-bit word contains an index into the exceptions[]
   # array:
   # 
-  # if(props&EXCEPTION_BIT)) {
-  # uint16_t e=(uint16_t)(props>>VALUE_SHIFT);
-  # ...
-  # }
+  #     if(props&EXCEPTION_BIT)) {
+  #         uint16_t e=(uint16_t)(props>>VALUE_SHIFT);
+  #         ...
+  #     }
   # 
   # The exception values are a variable number of uint32_t starting at
   # 
-  # const uint32_t *pe=p32+exceptionsIndex+e;
+  #     const uint32_t *pe=p32+exceptionsIndex+e;
   # 
   # The first uint32_t there contains flags about what values actually follow it.
   # Some of the exception values are UChar32 code points for the case mappings,
@@ -159,33 +155,33 @@ module Sun::Text::Normalizer
   # 
   # Each 32-bit properties word contains:
   # 
-  # 0.. 4  general category
-  # 5      has exception values
-  # 6..10  BiDi category
+  #  0.. 4  general category
+  #  5      has exception values
+  #  6..10  BiDi category
   # 11      is mirrored
   # 12..14  numericType:
-  # 0 no numeric value
-  # 1 decimal digit value
-  # 2 digit value
-  # 3 numeric value
-  # ### TODO: type 4 for Han digits & numbers?!
+  #             0 no numeric value
+  #             1 decimal digit value
+  #             2 digit value
+  #             3 numeric value
+  #             ### TODO: type 4 for Han digits & numbers?!
   # 15..19  reserved
   # 20..31  value according to bits 0..5:
-  # if(has exception) {
-  # exception index;
-  # } else switch(general category) {
-  # case Ll: delta to uppercase; -- same as titlecase
-  # case Lu: -delta to lowercase; -- titlecase is same as c
-  # case Lt: -delta to lowercase; -- uppercase is same as c
-  # default:
-  # if(is mirrored) {
-  # delta to mirror;
-  # } else if(numericType!=0) {
-  # numericValue;
-  # } else {
-  # 0;
-  # };
-  # }
+  #         if(has exception) {
+  #             exception index;
+  #         } else switch(general category) {
+  #         case Ll: delta to uppercase; -- same as titlecase
+  #         case Lu: -delta to lowercase; -- titlecase is same as c
+  #         case Lt: -delta to lowercase; -- uppercase is same as c
+  #         default:
+  #             if(is mirrored) {
+  #                 delta to mirror;
+  #             } else if(numericType!=0) {
+  #                 numericValue;
+  #             } else {
+  #                 0;
+  #             };
+  #         }
   # 
   # Exception values:
   # 
@@ -195,16 +191,16 @@ module Sun::Text::Normalizer
   # 15..0   flags that indicate which values follow:
   # 
   # bit
-  # 0      has uppercase mapping
-  # 1      has lowercase mapping
-  # 2      has titlecase mapping
-  # 3      unused
-  # 4      has numeric value (numerator)
-  # if numericValue=0x7fffff00+x then numericValue=10^x
-  # 5      has denominator value
-  # 6      has a mirror-image Unicode code point
-  # 7      has SpecialCasing.txt entries
-  # 8      has CaseFolding.txt entries
+  #  0      has uppercase mapping
+  #  1      has lowercase mapping
+  #  2      has titlecase mapping
+  #  3      unused
+  #  4      has numeric value (numerator)
+  #             if numericValue=0x7fffff00+x then numericValue=10^x
+  #  5      has denominator value
+  #  6      has a mirror-image Unicode code point
+  #  7      has SpecialCasing.txt entries
+  #  8      has CaseFolding.txt entries
   # 
   # According to the flags in this word, one or more uint32_t words follow it
   # in the sequence of the bit flags in the flags word; if a flag is not set,
@@ -221,11 +217,11 @@ module Sun::Text::Normalizer
   # For the numeric/numerator value, an int32_t word contains the value directly,
   # except for when there is no numerator but a denominator, then the numerator
   # is implicitly 1. This means:
-  # numerator denominator result
-  # none      none        none
-  # x         none        x
-  # none      y           1/y
-  # x         y           x/y
+  #     numerator denominator result
+  #     none      none        none
+  #     x         none        x
+  #     none      y           1/y
+  #     x         y           x/y
   # 
   # If the numerator value is 0x7fffff00+x then it is replaced with 10^x.
   # 
@@ -233,18 +229,18 @@ module Sun::Text::Normalizer
   # 
   # For special casing mappings, the 32-bit exception word contains:
   # 31      if set, this character has complex, conditional mappings
-  # that are not stored;
-  # otherwise, the mappings are stored according to the following bits
+  #         that are not stored;
+  #         otherwise, the mappings are stored according to the following bits
   # 30..24  number of UChars used for mappings
   # 23..16  reserved
   # 15.. 0  UChar offset from the beginning of the UChars array where the
-  # UChars for the special case mappings are stored in the following format:
+  #         UChars for the special case mappings are stored in the following format:
   # 
   # Format of special casing UChars:
   # One UChar value with lengths as follows:
   # 14..10  number of UChars for titlecase mapping
-  # 9.. 5  number of UChars for uppercase mapping
-  # 4.. 0  number of UChars for lowercase mapping
+  #  9.. 5  number of UChars for uppercase mapping
+  #  4.. 0  number of UChars for lowercase mapping
   # 
   # Followed by the UChars for lowercase, uppercase, titlecase mappings in this order.
   # 
@@ -252,13 +248,13 @@ module Sun::Text::Normalizer
   # 31..24  number of UChars used for the full mapping
   # 23..16  reserved
   # 15.. 0  UChar offset from the beginning of the UChars array where the
-  # UChars for the special case mappings are stored in the following format:
+  #         UChars for the special case mappings are stored in the following format:
   # 
   # Format of case folding UChars:
   # Two UChars contain the simple mapping as follows:
-  # 0,  0   no simple mapping
-  # BMP,0   a simple mapping to a BMP code point
-  # s1, s2  a simple mapping to a supplementary code point stored as two surrogates
+  #     0,  0   no simple mapping
+  #     BMP,0   a simple mapping to a BMP code point
+  #     s1, s2  a simple mapping to a supplementary code point stored as two surrogates
   # This is followed by the UChars for the full case folding mappings.
   # 
   # Example:
@@ -289,10 +285,10 @@ module Sun::Text::Normalizer
   # 
   # - The tries use linear Latin-1 ranges.
   # - The additional properties bits store full properties XYZ instead
-  # of partial Other_XYZ, so that changes in the derivation formulas
-  # need not be tracked in runtime library code.
+  #   of partial Other_XYZ, so that changes in the derivation formulas
+  #   need not be tracked in runtime library code.
   # - Joining Type and Line Break are also stored completely, so that uprops.c
-  # needs no runtime formulas for enumerated properties either.
+  #   needs no runtime formulas for enumerated properties either.
   # - Store the case-sensitive flag in the main properties word.
   # - i10 also contains U_LB_COUNT and U_EA_COUNT.
   # - i11 contains maxValues2 for vector word 2.
@@ -310,7 +306,6 @@ module Sun::Text::Normalizer
     
     typesig { [InputStream] }
     # protected constructor ---------------------------------------------
-    # 
     # <p>Protected constructor.</p>
     # @param inputStream ICU uprop.dat file input stream
     # @exception IOException throw if data file fails authentication
@@ -331,7 +326,6 @@ module Sun::Text::Normalizer
     
     typesig { [UCharacterProperty] }
     # protected methods -------------------------------------------------
-    # 
     # <p>Reads uprops.icu, parse it into blocks of data to be stored in
     # UCharacterProperty.</P
     # @param ucharppty UCharacterProperty instance
@@ -400,12 +394,11 @@ module Sun::Text::Normalizer
       end
       @m_data_input_stream_.close
       ucharppty.attr_m_additional_columns_count_ = @m_additional_columns_count_
-      ucharppty.attr_m_unicode_version_ = VersionInfo.get_instance(RJava.cast_to_int(@m_unicode_version_[0]), RJava.cast_to_int(@m_unicode_version_[1]), RJava.cast_to_int(@m_unicode_version_[2]), RJava.cast_to_int(@m_unicode_version_[3]))
+      ucharppty.attr_m_unicode_version_ = VersionInfo.get_instance((@m_unicode_version_[0]).to_int, (@m_unicode_version_[1]).to_int, (@m_unicode_version_[2]).to_int, (@m_unicode_version_[3]).to_int)
     end
     
     class_module.module_eval {
       # private variables -------------------------------------------------
-      # 
       # Index size
       const_set_lazy(:INDEX_SIZE_) { 16 }
       const_attr_reader  :INDEX_SIZE_

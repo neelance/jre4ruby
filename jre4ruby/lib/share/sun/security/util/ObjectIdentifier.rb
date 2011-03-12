@@ -32,7 +32,6 @@ module Sun::Security::Util
   end
   
   # >= 2
-  # 
   # Represent an ISO Object Identifier.
   # 
   # <P>Object Identifiers are arbitrary length hierarchical identifiers.
@@ -112,8 +111,8 @@ module Sun::Security::Util
     # 
     # @param values the components that will make the OID
     # @param len the number of components to check. Note that the allocation
-    # size of <code>values</code> may be longer than <code>len</code>.
-    # In this case, only the first <code>len</code> items are checked.
+    #        size of <code>values</code> may be longer than <code>len</code>.
+    #        In this case, only the first <code>len</code> items are checked.
     # @exception IOException if this is not a legal OID
     def check_valid_oid(values, len)
       if ((values).nil? || len < 2)
@@ -248,7 +247,7 @@ module Sun::Security::Util
           # Other components are encoded less exotically.  The only
           # potential trouble is the need to grow the array.
           if (@component_len >= @components.attr_length)
-            tmp_components = 0
+            tmp_components = nil
             tmp_components = Array.typed(::Java::Int).new(@components.attr_length + AllocationQuantum) { 0 }
             System.arraycopy(@components, 0, tmp_components, 0, @components.attr_length)
             @components = tmp_components
@@ -338,13 +337,12 @@ module Sun::Security::Util
     
     typesig { [ObjectIdentifier] }
     # XXX this API should probably facilitate the JDK sort utility
-    # 
     # Compares this identifier with another, for sorting purposes.
     # An identifier does not precede itself.
     # 
     # @param other identifer that may precede this one.
     # @return true iff <em>other</em> precedes this one
-    # in a particular sorting order.
+    #          in a particular sorting order.
     def precedes(other)
       i = 0
       # shorter IDs go first

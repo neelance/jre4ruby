@@ -48,25 +48,25 @@ module Sun::Security::Jgss::Krb5
   # MicToken. This structure can be represented as:
   # <p>
   # <pre>
-  # 0..1           TOK_ID          Identification field.
-  # 01 01 - Mic token
-  # 02 01 - Wrap token
-  # 2..3           SGN_ALG         Checksum algorithm indicator.
-  # 00 00 - DES MAC MD5
-  # 01 00 - MD2.5
-  # 02 00 - DES MAC
-  # 04 00 - HMAC SHA1 DES3-KD
-  # 11 00 - RC4-HMAC
-  # 4..5           SEAL_ALG        ff ff - none
-  # 00 00 - DES
-  # 02 00 - DES3-KD
-  # 10 00 - RC4-HMAC
-  # 6..7           Filler          Contains ff ff
-  # 8..15          SND_SEQ         Encrypted sequence number field.
-  # 16..s+15       SGN_CKSUM       Checksum of plaintext padded data,
-  # calculated according to algorithm
-  # specified in SGN_ALG field.
-  # s+16..last     Data            encrypted or plaintext padded data
+  #     0..1           TOK_ID          Identification field.
+  #                                    01 01 - Mic token
+  #                                    02 01 - Wrap token
+  #     2..3           SGN_ALG         Checksum algorithm indicator.
+  #                                    00 00 - DES MAC MD5
+  #                                    01 00 - MD2.5
+  #                                    02 00 - DES MAC
+  #                                    04 00 - HMAC SHA1 DES3-KD
+  #                                    11 00 - RC4-HMAC
+  #     4..5           SEAL_ALG        ff ff - none
+  #                                    00 00 - DES
+  #                                    02 00 - DES3-KD
+  #                                    10 00 - RC4-HMAC
+  #     6..7           Filler          Contains ff ff
+  #     8..15          SND_SEQ         Encrypted sequence number field.
+  #     16..s+15       SGN_CKSUM       Checksum of plaintext padded data,
+  #                                   calculated according to algorithm
+  #                                  specified in SGN_ALG field.
+  #     s+16..last     Data            encrypted or plaintext padded data
   # </pre>
   # Where "s" indicates the size of the checksum.
   # <p>
@@ -105,7 +105,6 @@ module Sun::Security::Jgss::Krb5
       
       # Sealing algorithm values (for the SEAL_ALG field)
       # RFC 1964
-      # 
       # A value for the SEAL_ALG field that indicates that no encryption was
       # used.
       const_set_lazy(:SEAL_ALG_NONE) { 0xffff }
@@ -116,7 +115,6 @@ module Sun::Security::Jgss::Krb5
       const_attr_reader  :SEAL_ALG_DES
       
       # From draft-raeburn-cat-gssapi-krb5-3des-00
-      # 
       # Use DES3-KD sealing algorithm. (draft-raeburn-cat-gssapi-krb5-3des-00)
       # This algorithm uses triple-DES with key derivation, with a usage
       # value KG_USAGE_SEAL.  Padding is still to 8-byte multiples, and the
@@ -322,16 +320,16 @@ module Sun::Security::Jgss::Krb5
     # checksum and sealing algorithm should be used. The lower byte
     # of qop determines the checksum algorithm while the upper byte
     # determines the signing algorithm.
-    # Checksum values are:
-    # 0 - default (DES_MAC)
-    # 1 - MD5
-    # 2 - DES_MD5
-    # 3 - DES_MAC
-    # 4 - HMAC_SHA1
-    # Sealing values are:
-    # 0 - default (DES)
-    # 1 - DES
-    # 2 - DES3-KD
+    #       Checksum values are:
+    #           0 - default (DES_MAC)
+    #           1 - MD5
+    #           2 - DES_MD5
+    #           3 - DES_MAC
+    #           4 - HMAC_SHA1
+    #       Sealing values are:
+    #           0 - default (DES)
+    #           1 - DES
+    #           2 - DES3-KD
     # 
     # @param optionalHeader an optional header that will be processed first
     # during  checksum calculation
@@ -347,7 +345,7 @@ module Sun::Security::Jgss::Krb5
     # @throws GSSException if an error occurs in the checksum calculation or
     # encryption sequence number calculation.
     def gen_sign_and_seq_number(prop, optional_header, data, offset, len, optional_trailer)
-      # debug("Inside MessageToken.genSignAndSeqNumber:\n");
+      #    debug("Inside MessageToken.genSignAndSeqNumber:\n");
       qop = prop.get_qop
       if (!(qop).equal?(0))
         qop = 0
@@ -381,9 +379,9 @@ module Sun::Security::Jgss::Krb5
       end
       @enc_seq_number = @cipher_helper.encrypt_seq(@checksum, @seq_number_data, 0, 8)
       # debug("\n\tCalc seqNum=" +
-      # getHexBytes(seqNumberData, seqNumberData.length));
+      #    getHexBytes(seqNumberData, seqNumberData.length));
       # debug("\n\tCalc encSeqNum=" +
-      # getHexBytes(encSeqNumber, encSeqNumber.length));
+      #    getHexBytes(encSeqNumber, encSeqNumber.length));
     end
     
     typesig { [Array.typed(::Java::Byte), Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, Array.typed(::Java::Byte)] }
@@ -412,10 +410,9 @@ module Sun::Security::Jgss::Krb5
       if (MessageDigest.is_equal(@checksum, my_checksum))
         @seq_number_data = @cipher_helper.decrypt_seq(@checksum, @enc_seq_number, 0, 8)
         # debug("\t\tencSeqNumber:   [" + getHexBytes(encSeqNumber)
-        # + "]\n");
+        #  + "]\n");
         # debug("\t\tseqNumberData:   [" + getHexBytes(seqNumberData)
-        # + "]\n");
-        # 
+        #  + "]\n");
         # The token from the initiator has direction bytes 0x00 and
         # the token from the acceptor has direction bytes 0xff.
         direction_byte = 0
@@ -457,8 +454,7 @@ module Sun::Security::Jgss::Krb5
     # 
     # @throws GSSException if an error occurs in the checksum calculation.
     def get_checksum(optional_header, data, offset, len, optional_trailer)
-      # debug("Will do getChecksum:\n");
-      # 
+      #      debug("Will do getChecksum:\n");
       # For checksum calculation the token header bytes i.e., the first 8
       # bytes following the GSSHeader, are logically prepended to the
       # application data to bind the data to this particular token.
@@ -523,7 +519,7 @@ module Sun::Security::Jgss::Krb5
       @conf_state = context.get_conf_state
       @initiator = context.is_initiator
       @cipher_helper = context.get_cipher_helper(nil)
-      # debug("In MessageToken.Cons");
+      #    debug("In MessageToken.Cons");
     end
     
     typesig { [OutputStream] }
@@ -564,13 +560,9 @@ module Sun::Security::Jgss::Krb5
     typesig { [::Java::Boolean, ::Java::Int] }
     # Obtains the conext key that is associated with this token.
     # @return the context key
-    # 
-    # 
     # public final byte[] getContextKey() {
-    # return contextKey;
+    #     return contextKey;
     # }
-    # 
-    # 
     # Obtains the encryption algorithm that should be used in this token
     # given the state of confidentiality the application requested.
     # Requested qop must be consistent with negotiated session key.
@@ -578,35 +570,34 @@ module Sun::Security::Jgss::Krb5
     # on this token, false otherwise
     # @param qop the qop requested by the application
     # @throws GSSException if qop is incompatible with the negotiated
-    # session key
+    #         session key
     def get_seal_alg(conf_requested, qop)
       raise NotImplementedError
     end
     
     class_module.module_eval {
       # ******************************************* //
-      # I N N E R    C L A S S E S    F O L L O W
+      #  I N N E R    C L A S S E S    F O L L O W
       # ******************************************* //
-      # 
       # This inner class represents the initial portion of the message token
       # and contains information about the checksum and encryption algorithms
       # that are in use. It constitutes the first 8 bytes of the
       # message token:
       # <pre>
-      # 0..1           TOK_ID          Identification field.
-      # 01 01 - Mic token
-      # 02 01 - Wrap token
-      # 2..3           SGN_ALG         Checksum algorithm indicator.
-      # 00 00 - DES MAC MD5
-      # 01 00 - MD2.5
-      # 02 00 - DES MAC
-      # 04 00 - HMAC SHA1 DES3-KD
-      # 11 00 - RC4-HMAC
-      # 4..5           SEAL_ALG        ff ff - none
-      # 00 00 - DES
-      # 02 00 - DES3-KD
-      # 10 00 - RC4-HMAC
-      # 6..7           Filler          Contains ff ff
+      #     0..1           TOK_ID          Identification field.
+      #                                    01 01 - Mic token
+      #                                    02 01 - Wrap token
+      #     2..3           SGN_ALG         Checksum algorithm indicator.
+      #                                    00 00 - DES MAC MD5
+      #                                    01 00 - MD2.5
+      #                                    02 00 - DES MAC
+      #                                    04 00 - HMAC SHA1 DES3-KD
+      #                                    11 00 - RC4-HMAC
+      #     4..5           SEAL_ALG        ff ff - none
+      #                                    00 00 - DES
+      #                                    02 00 - DES3-KD
+      #                                    10 00 - RC4-HMAC
+      #     6..7           Filler          Contains ff ff
       # </pre>
       const_set_lazy(:MessageTokenHeader) { Class.new do
         local_class_in MessageToken
@@ -681,11 +672,11 @@ module Sun::Security::Jgss::Krb5
           @token_id = read_int(@bytes, TOKEN_ID_POS)
           @sign_alg = read_int(@bytes, SIGN_ALG_POS)
           @seal_alg = read_int(@bytes, SEAL_ALG_POS)
-          # debug("\nMessageTokenHeader read tokenId=" +
-          # getHexBytes(bytes) + "\n");
+          #          debug("\nMessageTokenHeader read tokenId=" +
+          #                getHexBytes(bytes) + "\n");
           # XXX compare to FILLER
           temp = read_int(@bytes, SEAL_ALG_POS + 2)
-          # debug("SIGN_ALG=" + signAlg);
+          #              debug("SIGN_ALG=" + signAlg);
           case (@seal_alg)
           when SEAL_ALG_DES, SEAL_ALG_DES3_KD, SEAL_ALG_ARCFOUR_HMAC
             prop.set_privacy(true)
@@ -744,7 +735,6 @@ module Sun::Security::Jgss::Krb5
     
     typesig { [::Java::Int] }
     # end of class MessageTokenHeader
-    # 
     # Determine signing algorithm based on QOP.
     def get_sgn_alg(qop)
       # QOP ignored

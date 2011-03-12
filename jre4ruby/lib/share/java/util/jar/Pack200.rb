@@ -50,50 +50,50 @@ module Java::Util::Jar
   # <p>
   # Here is an example using  packer and unpacker:<p>
   # <blockquote><pre>
-  # import java.util.jar.Pack200;
-  # import java.util.jar.Pack200.*;
-  # ...
-  # // Create the Packer object
-  # Packer packer = Pack200.newPacker();
+  #    import java.util.jar.Pack200;
+  #    import java.util.jar.Pack200.*;
+  #    ...
+  #    // Create the Packer object
+  #    Packer packer = Pack200.newPacker();
   # 
-  # // Initialize the state by setting the desired properties
-  # Map p = packer.properties();
-  # // take more time choosing codings for better compression
-  # p.put(Packer.EFFORT, "7");  // default is "5"
-  # // use largest-possible archive segments (>10% better compression).
-  # p.put(Packer.SEGMENT_LIMIT, "-1");
-  # // reorder files for better compression.
-  # p.put(Packer.KEEP_FILE_ORDER, Packer.FALSE);
-  # // smear modification times to a single value.
-  # p.put(Packer.MODIFICATION_TIME, Packer.LATEST);
-  # // ignore all JAR deflation requests,
-  # // transmitting a single request to use "store" mode.
-  # p.put(Packer.DEFLATE_HINT, Packer.FALSE);
-  # // discard debug attributes
-  # p.put(Packer.CODE_ATTRIBUTE_PFX+"LineNumberTable", Packer.STRIP);
-  # // throw an error if an attribute is unrecognized
-  # p.put(Packer.UNKNOWN_ATTRIBUTE, Packer.ERROR);
-  # // pass one class file uncompressed:
-  # p.put(Packer.PASS_FILE_PFX+0, "mutants/Rogue.class");
-  # try {
-  # JarFile jarFile = new JarFile("/tmp/testref.jar");
-  # FileOutputStream fos = new FileOutputStream("/tmp/test.pack");
-  # // Call the packer
-  # packer.pack(jarFile, fos);
-  # jarFile.close();
-  # fos.close();
+  #    // Initialize the state by setting the desired properties
+  #    Map p = packer.properties();
+  #    // take more time choosing codings for better compression
+  #    p.put(Packer.EFFORT, "7");  // default is "5"
+  #    // use largest-possible archive segments (>10% better compression).
+  #    p.put(Packer.SEGMENT_LIMIT, "-1");
+  #    // reorder files for better compression.
+  #    p.put(Packer.KEEP_FILE_ORDER, Packer.FALSE);
+  #    // smear modification times to a single value.
+  #    p.put(Packer.MODIFICATION_TIME, Packer.LATEST);
+  #    // ignore all JAR deflation requests,
+  #    // transmitting a single request to use "store" mode.
+  #    p.put(Packer.DEFLATE_HINT, Packer.FALSE);
+  #    // discard debug attributes
+  #    p.put(Packer.CODE_ATTRIBUTE_PFX+"LineNumberTable", Packer.STRIP);
+  #    // throw an error if an attribute is unrecognized
+  #    p.put(Packer.UNKNOWN_ATTRIBUTE, Packer.ERROR);
+  #    // pass one class file uncompressed:
+  #    p.put(Packer.PASS_FILE_PFX+0, "mutants/Rogue.class");
+  #    try {
+  #        JarFile jarFile = new JarFile("/tmp/testref.jar");
+  #        FileOutputStream fos = new FileOutputStream("/tmp/test.pack");
+  #        // Call the packer
+  #        packer.pack(jarFile, fos);
+  #        jarFile.close();
+  #        fos.close();
   # 
-  # File f = new File("/tmp/test.pack");
-  # FileOutputStream fostream = new FileOutputStream("/tmp/test.jar");
-  # JarOutputStream jostream = new JarOutputStream(fostream);
-  # Unpacker unpacker = Pack200.newUnpacker();
-  # // Call the unpacker
-  # unpacker.unpack(f, jostream);
-  # // Must explicitly close the output.
-  # jostream.close();
-  # } catch (IOException ioe) {
-  # ioe.printStackTrace();
-  # }
+  #        File f = new File("/tmp/test.pack");
+  #        FileOutputStream fostream = new FileOutputStream("/tmp/test.jar");
+  #        JarOutputStream jostream = new JarOutputStream(fostream);
+  #        Unpacker unpacker = Pack200.newUnpacker();
+  #        // Call the unpacker
+  #        unpacker.unpack(f, jostream);
+  #        // Must explicitly close the output.
+  #        jostream.close();
+  #    } catch (IOException ioe) {
+  #        ioe.printStackTrace();
+  #    }
   # </pre></blockquote>
   # <p>
   # A Pack200 file compressed with gzip can be hosted on HTTP/1.1 web servers.
@@ -120,7 +120,6 @@ module Java::Util::Jar
       typesig { [] }
       # prevent instantiation
       # Static methods of the Pack200 class.
-      # 
       # Obtain new instance of a class that implements Packer.
       # 
       # <li><p>If the system property <tt>java.util.jar.Pack200.Packer</tt>
@@ -169,7 +168,6 @@ module Java::Util::Jar
       end
       
       # Interfaces
-      # 
       # The packer engine applies various transformations to the input JAR file,
       # making the pack stream highly compressible by a compressor such as
       # gzip or zip. An instance of the engine can be obtained
@@ -341,18 +339,17 @@ module Java::Util::Jar
           # <p>
           # Examples:
           # <pre><code>
-          # Map p = packer.properties();
-          # p.put(PASS_FILE_PFX+0, "mutants/Rogue.class");
-          # p.put(PASS_FILE_PFX+1, "mutants/Wolverine.class");
-          # p.put(PASS_FILE_PFX+2, "mutants/Storm.class");
-          # # Pass all files in an entire directory hierarchy:
-          # p.put(PASS_FILE_PFX+3, "police/");
+          #     Map p = packer.properties();
+          #     p.put(PASS_FILE_PFX+0, "mutants/Rogue.class");
+          #     p.put(PASS_FILE_PFX+1, "mutants/Wolverine.class");
+          #     p.put(PASS_FILE_PFX+2, "mutants/Storm.class");
+          #     # Pass all files in an entire directory hierarchy:
+          #     p.put(PASS_FILE_PFX+3, "police/");
           # </pre></code>.
           const_set_lazy(:PASS_FILE_PFX) { "pack.pass.file." }
           const_attr_reader  :PASS_FILE_PFX
           
           # / Attribute control.
-          # 
           # Indicates the action to take when a class-file containing an unknown
           # attribute is encountered.  Possible values are the strings {@link #ERROR},
           # {@link #STRIP}, and {@link #PASS}.
@@ -368,10 +365,10 @@ module Java::Util::Jar
           # <p>
           # Examples:
           # <pre><code>
-          # Map p = pack200.getProperties();
-          # p.put(UNKNOWN_ATTRIBUTE, ERROR);
-          # p.put(UNKNOWN_ATTRIBUTE, STRIP);
-          # p.put(UNKNOWN_ATTRIBUTE, PASS);
+          #     Map p = pack200.getProperties();
+          #     p.put(UNKNOWN_ATTRIBUTE, ERROR);
+          #     p.put(UNKNOWN_ATTRIBUTE, STRIP);
+          #     p.put(UNKNOWN_ATTRIBUTE, PASS);
           # </pre></code>
           const_set_lazy(:UNKNOWN_ATTRIBUTE) { "pack.unknown.attribute" }
           const_attr_reader  :UNKNOWN_ATTRIBUTE
@@ -390,19 +387,19 @@ module Java::Util::Jar
           # <p>
           # Code like this might be used to support attributes for JCOV:
           # <pre><code>
-          # Map p = packer.properties();
-          # p.put(CODE_ATTRIBUTE_PFX+"CoverageTable",       "NH[PHHII]");
-          # p.put(CODE_ATTRIBUTE_PFX+"CharacterRangeTable", "NH[PHPOHIIH]");
-          # p.put(CLASS_ATTRIBUTE_PFX+"SourceID",           "RUH");
-          # p.put(CLASS_ATTRIBUTE_PFX+"CompilationID",      "RUH");
+          #     Map p = packer.properties();
+          #     p.put(CODE_ATTRIBUTE_PFX+"CoverageTable",       "NH[PHHII]");
+          #     p.put(CODE_ATTRIBUTE_PFX+"CharacterRangeTable", "NH[PHPOHIIH]");
+          #     p.put(CLASS_ATTRIBUTE_PFX+"SourceID",           "RUH");
+          #     p.put(CLASS_ATTRIBUTE_PFX+"CompilationID",      "RUH");
           # </code></pre>
           # <p>
           # Code like this might be used to strip debugging attributes:
           # <pre><code>
-          # Map p = packer.properties();
-          # p.put(CODE_ATTRIBUTE_PFX+"LineNumberTable",    STRIP);
-          # p.put(CODE_ATTRIBUTE_PFX+"LocalVariableTable", STRIP);
-          # p.put(CLASS_ATTRIBUTE_PFX+"SourceFile",        STRIP);
+          #     Map p = packer.properties();
+          #     p.put(CODE_ATTRIBUTE_PFX+"LineNumberTable",    STRIP);
+          #     p.put(CODE_ATTRIBUTE_PFX+"LocalVariableTable", STRIP);
+          #     p.put(CLASS_ATTRIBUTE_PFX+"SourceFile",        STRIP);
           # </code></pre>
           const_set_lazy(:CLASS_ATTRIBUTE_PFX) { "pack.class.attribute." }
           const_attr_reader  :CLASS_ATTRIBUTE_PFX
@@ -449,13 +446,13 @@ module Java::Util::Jar
           const_set_lazy(:PROGRESS) { "pack.progress" }
           const_attr_reader  :PROGRESS
           
-          # The string "keep", a possible value for certain properties.
+          #  The string "keep", a possible value for certain properties.
           # @see #DEFLATE_HINT
           # @see #MODIFICATION_TIME
           const_set_lazy(:KEEP) { "keep" }
           const_attr_reader  :KEEP
           
-          # The string "pass", a possible value for certain properties.
+          #  The string "pass", a possible value for certain properties.
           # @see #UNKNOWN_ATTRIBUTE
           # @see #CLASS_ATTRIBUTE_PFX
           # @see #FIELD_ATTRIBUTE_PFX
@@ -464,7 +461,7 @@ module Java::Util::Jar
           const_set_lazy(:PASS) { "pass" }
           const_attr_reader  :PASS
           
-          # The string "strip", a possible value for certain properties.
+          #  The string "strip", a possible value for certain properties.
           # @see #UNKNOWN_ATTRIBUTE
           # @see #CLASS_ATTRIBUTE_PFX
           # @see #FIELD_ATTRIBUTE_PFX
@@ -473,7 +470,7 @@ module Java::Util::Jar
           const_set_lazy(:STRIP) { "strip" }
           const_attr_reader  :STRIP
           
-          # The string "error", a possible value for certain properties.
+          #  The string "error", a possible value for certain properties.
           # @see #UNKNOWN_ATTRIBUTE
           # @see #CLASS_ATTRIBUTE_PFX
           # @see #FIELD_ATTRIBUTE_PFX
@@ -482,19 +479,19 @@ module Java::Util::Jar
           const_set_lazy(:ERROR) { "error" }
           const_attr_reader  :ERROR
           
-          # The string "true", a possible value for certain properties.
+          #  The string "true", a possible value for certain properties.
           # @see #KEEP_FILE_ORDER
           # @see #DEFLATE_HINT
           const_set_lazy(:TRUE) { "true" }
           const_attr_reader  :TRUE
           
-          # The string "false", a possible value for certain properties.
+          #  The string "false", a possible value for certain properties.
           # @see #KEEP_FILE_ORDER
           # @see #DEFLATE_HINT
           const_set_lazy(:FALSE) { "false" }
           const_attr_reader  :FALSE
           
-          # The string "latest", a possible value for certain properties.
+          #  The string "latest", a possible value for certain properties.
           # @see #MODIFICATION_TIME
           const_set_lazy(:LATEST) { "latest" }
           const_attr_reader  :LATEST
@@ -594,17 +591,17 @@ module Java::Util::Jar
         include_class_members Pack200
         
         class_module.module_eval {
-          # The string "keep", a possible value for certain properties.
+          #  The string "keep", a possible value for certain properties.
           # @see #DEFLATE_HINT
           const_set_lazy(:KEEP) { "keep" }
           const_attr_reader  :KEEP
           
-          # The string "true", a possible value for certain properties.
+          #  The string "true", a possible value for certain properties.
           # @see #DEFLATE_HINT
           const_set_lazy(:TRUE) { "true" }
           const_attr_reader  :TRUE
           
-          # The string "false", a possible value for certain properties.
+          #  The string "false", a possible value for certain properties.
           # @see #DEFLATE_HINT
           const_set_lazy(:FALSE) { "false" }
           const_attr_reader  :FALSE

@@ -70,8 +70,6 @@ module Sun::Net::Www::Protocol::Https
     # No user application is able to call these routines, as no one
     # should ever get access to an instance of
     # DelegateHttpsURLConnection (sun.* or com.*)
-    # 
-    # 
     # Create a new HttpClient object, bypassing the cache of
     # HTTP client objects/connections.
     # 
@@ -93,7 +91,7 @@ module Sun::Net::Www::Protocol::Https
     # 
     # @param url       the URL being accessed
     # @param useCache  whether the cached connection should be used
-    # if present
+    #        if present
     def set_new_client(url, use_cache)
       self.attr_http = HttpsClient._new(get_sslsocket_factory, url, get_hostname_verifier, use_cache)
       (self.attr_http).after_connect
@@ -128,7 +126,7 @@ module Sun::Net::Www::Protocol::Https
     # @param proxyHost the proxy host to use
     # @param proxyPort the proxy port to use
     # @param useCache  whether the cached connection should be used
-    # if present
+    #        if present
     def set_proxied_client(url, proxy_host, proxy_port, use_cache)
       proxied_connect(url, proxy_host, proxy_port, use_cache)
       if (!self.attr_http.is_cached_connection)

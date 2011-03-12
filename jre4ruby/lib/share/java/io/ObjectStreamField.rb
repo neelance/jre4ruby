@@ -107,8 +107,8 @@ module Java::Io
     # @param   name field name
     # @param   type field type
     # @param   unshared if false, write/read field values in the same manner
-    # as writeObject/readObject; if true, write/read in the same
-    # manner as writeUnshared/readUnshared
+    #          as writeObject/readObject; if true, write/read in the same
+    #          manner as writeUnshared/readUnshared
     # @since   1.4
     def initialize(name, type, unshared)
       @name = nil
@@ -194,7 +194,7 @@ module Java::Io
     # Get the name of this field.
     # 
     # @return  a <code>String</code> representing the name of the serializable
-    # field
+    #          field
     def get_name
       return @name
     end
@@ -207,7 +207,7 @@ module Java::Io
     # returned.
     # 
     # @return  a <code>Class</code> object representing the type of the
-    # serializable field
+    #          serializable field
     def get_type
       return @type
     end
@@ -228,7 +228,6 @@ module Java::Io
     # </pre></blockquote>
     # 
     # @return  the typecode of the serializable field
-    # 
     # REMIND: deprecate?
     def get_type_code
       return @signature.char_at(0)
@@ -238,7 +237,6 @@ module Java::Io
     # Return the JVM type signature.
     # 
     # @return  null if this field has a primitive type.
-    # 
     # REMIND: deprecate?
     def get_type_string
       return is_primitive ? nil : @signature
@@ -249,7 +247,6 @@ module Java::Io
     # 
     # @return  the offset of this field
     # @see #setOffset
-    # 
     # REMIND: deprecate?
     def get_offset
       return @offset
@@ -260,7 +257,6 @@ module Java::Io
     # 
     # @param   offset the offset of the field
     # @see #getOffset
-    # 
     # REMIND: deprecate?
     def set_offset(offset)
       @offset = offset
@@ -270,7 +266,6 @@ module Java::Io
     # Return true if this field has a primitive type.
     # 
     # @return  true if and only if this field corresponds to a primitive type
-    # 
     # REMIND: deprecate?
     def is_primitive
       tcode = @signature.char_at(0)
@@ -291,7 +286,6 @@ module Java::Io
     # -1 if this is smaller, 0 if equal, 1 if greater.  Types that are
     # primitives are "smaller" than object types.  If equal, the field names
     # are compared.
-    # 
     # REMIND: deprecate?
     def compare_to(obj)
       other = obj

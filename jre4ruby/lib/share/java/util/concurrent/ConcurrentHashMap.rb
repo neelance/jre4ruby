@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # This file is available under and governed by the GNU General Public
 # License version 2 only, as published by the Free Software Foundation.
 # However, the following notice accompanied the original version of this
@@ -114,9 +112,7 @@ module Java::Util::Concurrent
       
       # The basic strategy is to subdivide the table among Segments,
       # each of which itself is a concurrently readable hash table.
-      # 
       # ---------------- Constants --------------
-      # 
       # The default initial capacity for this table,
       # used when not otherwise specified in a constructor.
       const_set_lazy(:DEFAULT_INITIAL_CAPACITY) { 16 }
@@ -145,7 +141,6 @@ module Java::Util::Concurrent
       const_attr_reader  :MAX_SEGMENTS
       
       # slightly conservative
-      # 
       # Number of unsynchronized retries in size and containsValue
       # methods before resorting to locking. This is used to avoid
       # unbounded retries if tables undergo continuous modification
@@ -155,7 +150,6 @@ module Java::Util::Concurrent
     }
     
     # ---------------- Fields --------------
-    # 
     # Mask value for indexing into segments. The upper bits of a
     # key's hash code are used to choose the segment.
     attr_accessor :segment_mask
@@ -199,7 +193,6 @@ module Java::Util::Concurrent
     class_module.module_eval {
       typesig { [::Java::Int] }
       # ---------------- Small Utilities --------------
-      # 
       # Applies a supplemental hash function to a given hashCode, which
       # defends against poor quality hash functions.  This is critical
       # because ConcurrentHashMap uses power-of-two length hash tables,
@@ -227,7 +220,6 @@ module Java::Util::Concurrent
     
     class_module.module_eval {
       # ---------------- Inner Classes --------------
-      # 
       # ConcurrentHashMap list entry. Note that this is never exported
       # out as a user-visible Map.Entry.
       # 
@@ -316,19 +308,19 @@ module Java::Util::Concurrent
           # ensuring visibility.  This is convenient because this field
           # needs to be read in many read operations anyway:
           # 
-          # - All (unsynchronized) read operations must first read the
-          # "count" field, and should not look at table entries if
-          # it is 0.
+          #   - All (unsynchronized) read operations must first read the
+          #     "count" field, and should not look at table entries if
+          #     it is 0.
           # 
-          # - All (synchronized) write operations should write to
-          # the "count" field after structurally changing any bin.
-          # The operations must not take any action that could even
-          # momentarily cause a concurrent read operation to see
-          # inconsistent data. This is made easier by the nature of
-          # the read operations in Map. For example, no operation
-          # can reveal that the table has grown but the threshold
-          # has not yet been updated, so there are no atomicity
-          # requirements for this with respect to reads.
+          #   - All (synchronized) write operations should write to
+          #     the "count" field after structurally changing any bin.
+          #     The operations must not take any action that could even
+          #     momentarily cause a concurrent read operation to see
+          #     inconsistent data. This is made easier by the nature of
+          #     the read operations in Map. For example, no operation
+          #     can reveal that the table has grown but the threshold
+          #     has not yet been updated, so there are no atomicity
+          #     requirements for this with respect to reads.
           # 
           # As a guide, all critical volatile reads and writes to the
           # count field are marked in code comments.
@@ -404,7 +396,7 @@ module Java::Util::Concurrent
         # Sets table to new HashEntry array.
         # Call only while holding lock or in constructor.
         def set_table(new_table)
-          @threshold = RJava.cast_to_int((new_table.attr_length * @load_factor))
+          @threshold = ((new_table.attr_length * @load_factor)).to_int
           @table = new_table
         end
         
@@ -582,17 +574,17 @@ module Java::Util::Concurrent
           # reader thread that may be in the midst of traversing table
           # right now.
           new_table = HashEntry.new_array(old_capacity << 1)
-          @threshold = RJava.cast_to_int((new_table.attr_length * @load_factor))
+          @threshold = ((new_table.attr_length * @load_factor)).to_int
           size_mask = new_table.attr_length - 1
           i = 0
           while i < old_capacity
             # We need to guarantee that any existing reads of old Map can
-            # proceed. So we cannot yet null out each bin.
+            #  proceed. So we cannot yet null out each bin.
             e = old_table[i]
             if (!(e).nil?)
               next_ = e.attr_next
               idx = e.attr_hash & size_mask
-              # Single node on list
+              #  Single node on list
               if ((next_).nil?)
                 new_table[idx] = e
               else
@@ -688,7 +680,6 @@ module Java::Util::Concurrent
     
     typesig { [::Java::Int, ::Java::Float, ::Java::Int] }
     # ---------------- Public operations --------------
-    # 
     # Creates a new, empty map with the specified initial
     # capacity, load factor and concurrency level.
     # 
@@ -789,7 +780,7 @@ module Java::Util::Concurrent
     # 
     # @param m the map
     def initialize(m)
-      initialize__concurrent_hash_map(Math.max(RJava.cast_to_int((m.size / DEFAULT_LOAD_FACTOR)) + 1, DEFAULT_INITIAL_CAPACITY), DEFAULT_LOAD_FACTOR, DEFAULT_CONCURRENCY_LEVEL)
+      initialize__concurrent_hash_map(Math.max(((m.size / DEFAULT_LOAD_FACTOR)).to_int + 1, DEFAULT_INITIAL_CAPACITY), DEFAULT_LOAD_FACTOR, DEFAULT_CONCURRENCY_LEVEL)
       put_all(m)
     end
     
@@ -894,7 +885,7 @@ module Java::Util::Concurrent
       if (sum > JavaInteger::MAX_VALUE)
         return JavaInteger::MAX_VALUE
       else
-        return RJava.cast_to_int(sum)
+        return (sum).to_int
       end
     end
     
@@ -918,8 +909,8 @@ module Java::Util::Concurrent
     # 
     # @param  key   possible key
     # @return <tt>true</tt> if and only if the specified object
-    # is a key in this table, as determined by the
-    # <tt>equals</tt> method; <tt>false</tt> otherwise.
+    #         is a key in this table, as determined by the
+    #         <tt>equals</tt> method; <tt>false</tt> otherwise.
     # @throws NullPointerException if the specified key is null
     def contains_key(key)
       hash_ = hash(key.hash_code)
@@ -934,7 +925,7 @@ module Java::Util::Concurrent
     # 
     # @param value value whose presence in this map is to be tested
     # @return <tt>true</tt> if this map maps one or more keys to the
-    # specified value
+    #         specified value
     # @throws NullPointerException if the specified value is null
     def contains_value(value)
       if ((value).nil?)
@@ -1010,9 +1001,9 @@ module Java::Util::Concurrent
     # 
     # @param  value a value to search for
     # @return <tt>true</tt> if and only if some key maps to the
-    # <tt>value</tt> argument in this table as
-    # determined by the <tt>equals</tt> method;
-    # <tt>false</tt> otherwise
+    #         <tt>value</tt> argument in this table as
+    #         determined by the <tt>equals</tt> method;
+    #         <tt>false</tt> otherwise
     # @throws NullPointerException if the specified value is null
     def contains(value)
       return contains_value(value)
@@ -1028,7 +1019,7 @@ module Java::Util::Concurrent
     # @param key key with which the specified value is to be associated
     # @param value value to be associated with the specified key
     # @return the previous value associated with <tt>key</tt>, or
-    # <tt>null</tt> if there was no mapping for <tt>key</tt>
+    #         <tt>null</tt> if there was no mapping for <tt>key</tt>
     # @throws NullPointerException if the specified key or value is null
     def put(key, value)
       if ((value).nil?)
@@ -1042,7 +1033,7 @@ module Java::Util::Concurrent
     # {@inheritDoc}
     # 
     # @return the previous value associated with the specified key,
-    # or <tt>null</tt> if there was no mapping for the key
+    #         or <tt>null</tt> if there was no mapping for the key
     # @throws NullPointerException if the specified key or value is null
     def put_if_absent(key, value)
       if ((value).nil?)
@@ -1070,7 +1061,7 @@ module Java::Util::Concurrent
     # 
     # @param  key the key that needs to be removed
     # @return the previous value associated with <tt>key</tt>, or
-    # <tt>null</tt> if there was no mapping for <tt>key</tt>
+    #         <tt>null</tt> if there was no mapping for <tt>key</tt>
     # @throws NullPointerException if the specified key is null
     def remove(key)
       hash_ = hash(key.hash_code)
@@ -1105,7 +1096,7 @@ module Java::Util::Concurrent
     # {@inheritDoc}
     # 
     # @return the previous value associated with the specified key,
-    # or <tt>null</tt> if there was no mapping for the key
+    #         or <tt>null</tt> if there was no mapping for the key
     # @throws NullPointerException if the specified key or value is null
     def replace(key, value)
       if ((value).nil?)
@@ -1554,7 +1545,6 @@ module Java::Util::Concurrent
     
     typesig { [Java::Io::ObjectOutputStream] }
     # ---------------- Serialization Support --------------
-    # 
     # Save the state of the <tt>ConcurrentHashMap</tt> instance to a
     # stream (i.e., serialize it).
     # @param s the stream

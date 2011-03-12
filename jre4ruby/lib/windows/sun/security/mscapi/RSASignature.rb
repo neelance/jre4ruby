@@ -50,9 +50,9 @@ module Sun::Security::Mscapi
   # Objects should be instantiated by calling Signature.getInstance() using the
   # following algorithm names:
   # 
-  # . "SHA1withRSA"
-  # . "MD5withRSA"
-  # . "MD2withRSA"
+  #  . "SHA1withRSA"
+  #  . "MD5withRSA"
+  #  . "MD2withRSA"
   # 
   # Note: RSA keys must be at least 512 bits long
   # 

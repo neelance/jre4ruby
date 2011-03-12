@@ -141,9 +141,9 @@ module Java::Io
     # input stream and returns the result.
     # 
     # @return an estimate of the number of bytes that can be read (or
-    # skipped over) from the current underlying input stream
-    # without blocking or {@code 0} if this input stream
-    # has been closed by invoking its {@link #close()} method
+    #         skipped over) from the current underlying input stream
+    #         without blocking or {@code 0} if this input stream
+    #         has been closed by invoking its {@link #close()} method
     # @exception  IOException  if an I/O error occurs.
     # 
     # @since   JDK1.1
@@ -169,7 +169,7 @@ module Java::Io
     # substream.
     # 
     # @return     the next byte of data, or <code>-1</code> if the end of the
-    # stream is reached.
+    #             stream is reached.
     # @exception  IOException  if an I/O error occurs.
     def read
       if ((@in).nil?)
@@ -197,7 +197,7 @@ module Java::Io
     # 
     # @param      b     the buffer into which the data is read.
     # @param      off   the start offset in array <code>b</code>
-    # at which the data is written.
+    #                   at which the data is written.
     # @param      len   the maximum number of bytes read.
     # @return     int   the number of bytes read.
     # @exception  NullPointerException If <code>b</code> is <code>null</code>.

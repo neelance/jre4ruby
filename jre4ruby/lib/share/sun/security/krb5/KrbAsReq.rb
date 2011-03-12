@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5
@@ -121,33 +119,16 @@ module Sun::Security::Krb5
     # Creates a KRB-AS-REQ to send to the default KDC
     # @throws KrbException
     # @throws IOException
-    # 
     # Called by Credentials
     def initialize(principal, keys)
-      # for pre-authentication
-      # pre-auth values
-      # PrincipalName sname
-      # KerberosTime from
-      # KerberosTime till
-      # KerberosTime rtime
-      # int[] eTypes
-      # HostAddresses addresses
-      initialize__krb_as_req(keys, false, 0, nil, nil, self.attr_default_kdcoptions, principal, nil, nil, nil, nil, nil, nil, nil) # Ticket[] additionalTickets
+      initialize__krb_as_req(keys, false, 0, nil, nil, self.attr_default_kdcoptions, principal, nil, nil, nil, nil, nil, nil, nil) # for pre-authentication # pre-auth values # PrincipalName sname # KerberosTime from # KerberosTime till # KerberosTime rtime # int[] eTypes # HostAddresses addresses # Ticket[] additionalTickets
     end
     
     typesig { [PrincipalName, Array.typed(EncryptionKey), ::Java::Boolean, ::Java::Int, Array.typed(::Java::Byte), Array.typed(::Java::Byte)] }
     # Creates a KRB-AS-REQ to send to the default KDC
     # with pre-authentication values
     def initialize(principal, keys, pa_exists, etype, salt, s2kparams)
-      # for pre-authentication
-      # pre-auth values
-      # PrincipalName sname
-      # KerberosTime from
-      # KerberosTime till
-      # KerberosTime rtime
-      # int[] eTypes
-      # HostAddresses addresses
-      initialize__krb_as_req(keys, pa_exists, etype, salt, s2kparams, self.attr_default_kdcoptions, principal, nil, nil, nil, nil, nil, nil, nil) # Ticket[] additionalTickets
+      initialize__krb_as_req(keys, pa_exists, etype, salt, s2kparams, self.attr_default_kdcoptions, principal, nil, nil, nil, nil, nil, nil, nil) # for pre-authentication # pre-auth values # PrincipalName sname # KerberosTime from # KerberosTime till # KerberosTime rtime # int[] eTypes # HostAddresses addresses # Ticket[] additionalTickets
     end
     
     class_module.module_eval {
@@ -185,14 +166,7 @@ module Sun::Security::Krb5
     typesig { [Array.typed(::Java::Char), KDCOptions, PrincipalName, PrincipalName, KerberosTime, KerberosTime, KerberosTime, Array.typed(::Java::Int), HostAddresses, Array.typed(Ticket)] }
     # Used by Kinit
     def initialize(password, options, cname, sname, from, till, rtime, e_types, addresses, additional_tickets)
-      # pre-auth values
-      # PrincipalName sname
-      # KerberosTime from
-      # KerberosTime till
-      # KerberosTime rtime
-      # int[] eTypes
-      # HostAddresses addresses
-      initialize__krb_as_req(password, false, 0, nil, nil, options, cname, sname, from, till, rtime, e_types, addresses, additional_tickets) # Ticket[] additionalTickets
+      initialize__krb_as_req(password, false, 0, nil, nil, options, cname, sname, from, till, rtime, e_types, addresses, additional_tickets) # pre-auth values # PrincipalName sname # KerberosTime from # KerberosTime till # KerberosTime rtime # int[] eTypes # HostAddresses addresses # Ticket[] additionalTickets
     end
     
     typesig { [Array.typed(::Java::Char), ::Java::Boolean, ::Java::Int, Array.typed(::Java::Byte), Array.typed(::Java::Byte), KDCOptions, PrincipalName, PrincipalName, KerberosTime, KerberosTime, KerberosTime, Array.typed(::Java::Int), HostAddresses, Array.typed(Ticket)] }
@@ -244,14 +218,7 @@ module Sun::Security::Krb5
     typesig { [Array.typed(EncryptionKey), KDCOptions, PrincipalName, PrincipalName, KerberosTime, KerberosTime, KerberosTime, Array.typed(::Java::Int), HostAddresses, Array.typed(Ticket)] }
     # Used in Kinit
     def initialize(keys, options, cname, sname, from, till, rtime, e_types, addresses, additional_tickets)
-      # pre-auth values
-      # PrincipalName sname
-      # KerberosTime from
-      # KerberosTime till
-      # KerberosTime rtime
-      # int[] eTypes
-      # HostAddresses addresses
-      initialize__krb_as_req(keys, false, 0, nil, nil, options, cname, sname, from, till, rtime, e_types, addresses, additional_tickets) # Ticket[] additionalTickets
+      initialize__krb_as_req(keys, false, 0, nil, nil, options, cname, sname, from, till, rtime, e_types, addresses, additional_tickets) # pre-auth values # PrincipalName sname # KerberosTime from # KerberosTime till # KerberosTime rtime # int[] eTypes # HostAddresses addresses # Ticket[] additionalTickets
     end
     
     typesig { [Array.typed(EncryptionKey), ::Java::Boolean, ::Java::Int, Array.typed(::Java::Byte), Array.typed(::Java::Byte), KDCOptions, PrincipalName, PrincipalName, KerberosTime, KerberosTime, KerberosTime, Array.typed(::Java::Int), HostAddresses, Array.typed(Ticket)] }
@@ -287,25 +254,25 @@ module Sun::Security::Krb5
     
     typesig { [Array.typed(EncryptionKey), KDCOptions, PrincipalName, PrincipalName, KerberosTime, KerberosTime, KerberosTime, Array.typed(::Java::Int), HostAddresses, Array.typed(Ticket)] }
     # private KrbAsReq(KDCOptions options,
-    # PrincipalName cname,
-    # PrincipalName sname,
-    # KerberosTime from,
-    # KerberosTime till,
-    # KerberosTime rtime,
-    # int[] eTypes,
-    # HostAddresses addresses,
-    # Ticket[] additionalTickets)
-    # throws KrbException, IOException {
-    # init(null,
-    # options,
-    # cname,
-    # sname,
-    # from,
-    # till,
-    # rtime,
-    # eTypes,
-    # addresses,
-    # additionalTickets);
+    #          PrincipalName cname,
+    #          PrincipalName sname,
+    #          KerberosTime from,
+    #          KerberosTime till,
+    #          KerberosTime rtime,
+    #          int[] eTypes,
+    #          HostAddresses addresses,
+    #          Ticket[] additionalTickets)
+    #     throws KrbException, IOException {
+    #     init(null,
+    #          options,
+    #          cname,
+    #          sname,
+    #          from,
+    #          till,
+    #          rtime,
+    #          eTypes,
+    #          addresses,
+    #          additionalTickets);
     # }
     def init(keys, options, cname, sname, from, till, rtime, e_types, addresses, additional_tickets)
       # check if they are valid arguments. The optional fields should be
@@ -316,16 +283,16 @@ module Sun::Security::Krb5
         raise KrbException.new(Krb5::KRB_AP_ERR_REQ_OPTIONS)
       end
       if (options.get(KDCOptions::POSTDATED))
-        # if (from == null)
-        # throw new KrbException(Krb5.KRB_AP_ERR_REQ_OPTIONS);
+        #  if (from == null)
+        #          throw new KrbException(Krb5.KRB_AP_ERR_REQ_OPTIONS);
       else
         if (!(from).nil?)
           from = nil
         end
       end
       if (options.get(KDCOptions::RENEWABLE))
-        # if (rtime == null)
-        # throw new KrbException(Krb5.KRB_AP_ERR_REQ_OPTIONS);
+        #  if (rtime == null)
+        #          throw new KrbException(Krb5.KRB_AP_ERR_REQ_OPTIONS);
       else
         if (!(rtime).nil?)
           rtime = nil

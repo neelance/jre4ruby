@@ -159,7 +159,6 @@ module Java::Util
     
     typesig { [Array.typed(::Java::Byte)] }
     # Constructors and Factories
-    # 
     # Private constructor which uses a byte array to construct the new UUID.
     def initialize(data)
       @most_sig_bits = 0
@@ -194,10 +193,10 @@ module Java::Util
     # the {@code UUID}.
     # 
     # @param  mostSigBits
-    # The most significant bits of the {@code UUID}
+    #         The most significant bits of the {@code UUID}
     # 
     # @param  leastSigBits
-    # The least significant bits of the {@code UUID}
+    #         The least significant bits of the {@code UUID}
     def initialize(most_sig_bits, least_sig_bits)
       @most_sig_bits = 0
       @least_sig_bits = 0
@@ -226,14 +225,10 @@ module Java::Util
         end
         random_bytes = Array.typed(::Java::Byte).new(16) { 0 }
         ng.next_bytes(random_bytes)
-        random_bytes[6] &= 0xf
-        # clear version
-        random_bytes[6] |= 0x40
-        # set to version 4
-        random_bytes[8] &= 0x3f
-        # clear variant
-        random_bytes[8] |= 0x80
-        # set to IETF variant
+        random_bytes[6] &= 0xf # clear version
+        random_bytes[6] |= 0x40 # set to version 4
+        random_bytes[8] &= 0x3f # clear variant
+        random_bytes[8] |= 0x80 # set to IETF variant
         return UUID.new(random_bytes)
       end
       
@@ -242,7 +237,7 @@ module Java::Util
       # the specified byte array.
       # 
       # @param  name
-      # A byte array to be used to construct a {@code UUID}
+      #         A byte array to be used to construct a {@code UUID}
       # 
       # @return  A {@code UUID} generated from the specified array
       def name_uuidfrom_bytes(name)
@@ -253,14 +248,10 @@ module Java::Util
           raise InternalError.new("MD5 not supported")
         end
         md5bytes = md.digest(name)
-        md5bytes[6] &= 0xf
-        # clear version
-        md5bytes[6] |= 0x30
-        # set to version 3
-        md5bytes[8] &= 0x3f
-        # clear variant
-        md5bytes[8] |= 0x80
-        # set to IETF variant
+        md5bytes[6] &= 0xf # clear version
+        md5bytes[6] |= 0x30 # set to version 3
+        md5bytes[8] &= 0x3f # clear variant
+        md5bytes[8] |= 0x80 # set to IETF variant
         return UUID.new(md5bytes)
       end
       
@@ -269,13 +260,13 @@ module Java::Util
       # described in the {@link #toString} method.
       # 
       # @param  name
-      # A string that specifies a {@code UUID}
+      #         A string that specifies a {@code UUID}
       # 
       # @return  A {@code UUID} with the specified value
       # 
       # @throws  IllegalArgumentException
-      # If name does not conform to the string representation as
-      # described in {@link #toString}
+      #          If name does not conform to the string representation as
+      #          described in {@link #toString}
       def from_string(name)
         components = name.split(Regexp.new("-"))
         if (!(components.attr_length).equal?(5))
@@ -300,7 +291,6 @@ module Java::Util
     
     typesig { [] }
     # Field Accessor Methods
-    # 
     # Returns the least significant 64 bits of this UUID's 128 bit value.
     # 
     # @return  The least significant 64 bits of this UUID's 128 bit value
@@ -332,7 +322,7 @@ module Java::Util
     def version
       if (@version < 0)
         # Version is bits masked by 0x000000000000F000 in MS long
-        @version = RJava.cast_to_int(((@most_sig_bits >> 12) & 0xf))
+        @version = (((@most_sig_bits >> 12) & 0xf)).to_int
       end
       return @version
     end
@@ -359,7 +349,7 @@ module Java::Util
           if (((@least_sig_bits >> 62)).equal?(2))
             @variant = 2
           else
-            @variant = RJava.cast_to_int((@least_sig_bits >> 61))
+            @variant = ((@least_sig_bits >> 61)).to_int
           end
         end
       end
@@ -379,7 +369,7 @@ module Java::Util
     # this method throws UnsupportedOperationException.
     # 
     # @throws UnsupportedOperationException
-    # If this UUID is not a version 1 UUID
+    #         If this UUID is not a version 1 UUID
     def timestamp
       if (!(version).equal?(1))
         raise UnsupportedOperationException.new("Not a time-based UUID")
@@ -408,13 +398,13 @@ module Java::Util
     # @return  The clock sequence of this {@code UUID}
     # 
     # @throws  UnsupportedOperationException
-    # If this UUID is not a version 1 UUID
+    #          If this UUID is not a version 1 UUID
     def clock_sequence
       if (!(version).equal?(1))
         raise UnsupportedOperationException.new("Not a time-based UUID")
       end
       if (@sequence < 0)
-        @sequence = RJava.cast_to_int(((@least_sig_bits & 0x3fff000000000000) >> 48))
+        @sequence = (((@least_sig_bits & 0x3fff000000000000) >> 48)).to_int
       end
       return @sequence
     end
@@ -433,7 +423,7 @@ module Java::Util
     # @return  The node value of this {@code UUID}
     # 
     # @throws  UnsupportedOperationException
-    # If this UUID is not a version 1 UUID
+    #          If this UUID is not a version 1 UUID
     def node
       if (!(version).equal?(1))
         raise UnsupportedOperationException.new("Not a time-based UUID")
@@ -446,16 +436,15 @@ module Java::Util
     
     typesig { [] }
     # Object Inherited Methods
-    # 
     # Returns a {@code String} object representing this {@code UUID}.
     # 
     # <p> The UUID string representation is as described by this BNF:
     # <blockquote><pre>
     # {@code
     # UUID                   = <time_low> "-" <time_mid> "-"
-    # <time_high_and_version> "-"
-    # <variant_and_sequence> "-"
-    # <node>
+    #                          <time_high_and_version> "-"
+    #                          <variant_and_sequence> "-"
+    #                          <node>
     # time_low               = 4*<hexOctet>
     # time_mid               = 2*<hexOctet>
     # time_high_and_version  = 2*<hexOctet>
@@ -463,9 +452,9 @@ module Java::Util
     # node                   = 6*<hexOctet>
     # hexOctet               = <hexDigit><hexDigit>
     # hexDigit               =
-    # "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
-    # | "a" | "b" | "c" | "d" | "e" | "f"
-    # | "A" | "B" | "C" | "D" | "E" | "F"
+    #       "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+    #       | "a" | "b" | "c" | "d" | "e" | "f"
+    #       | "A" | "B" | "C" | "D" | "E" | "F"
     # }</pre></blockquote>
     # 
     # @return  A string representation of this {@code UUID}
@@ -488,7 +477,7 @@ module Java::Util
     # @return  A hash code value for this {@code UUID}
     def hash_code
       if ((@hash_code).equal?(-1))
-        @hash_code = RJava.cast_to_int(((@most_sig_bits >> 32) ^ @most_sig_bits ^ (@least_sig_bits >> 32) ^ @least_sig_bits))
+        @hash_code = (((@most_sig_bits >> 32) ^ @most_sig_bits ^ (@least_sig_bits >> 32) ^ @least_sig_bits)).to_int
       end
       return @hash_code
     end
@@ -500,10 +489,10 @@ module Java::Util
     # as this {@code UUID}.
     # 
     # @param  obj
-    # The object to be compared
+    #         The object to be compared
     # 
     # @return  {@code true} if the objects are the same; {@code false}
-    # otherwise
+    #          otherwise
     def ==(obj)
       if (!(obj.is_a?(UUID)))
         return false
@@ -517,7 +506,6 @@ module Java::Util
     
     typesig { [UUID] }
     # Comparison Operations
-    # 
     # Compares this UUID with the specified UUID.
     # 
     # <p> The first of two UUIDs is greater than the second if the most
@@ -525,10 +513,10 @@ module Java::Util
     # UUID.
     # 
     # @param  val
-    # {@code UUID} to which this {@code UUID} is to be compared
+    #         {@code UUID} to which this {@code UUID} is to be compared
     # 
     # @return  -1, 0 or 1 as this {@code UUID} is less than, equal to, or
-    # greater than {@code val}
+    #          greater than {@code val}
     def compare_to(val)
       # The ordering is intentionally set up so that the UUIDs
       # can simply be numerically compared as two numbers

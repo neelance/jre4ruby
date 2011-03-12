@@ -102,7 +102,7 @@ module Sun::Nio::Ch
             # accepted)
             sa = self.class::InetSocketAddress.new(lb, ssc.socket.get_local_port)
             sc1 = SocketChannel.open(sa)
-            bb = ByteBuffer.allocate(8)
+            bb = ByteBuffer.allocate_(8)
             secret = Rnd.next_long
             bb.put_long(secret).flip
             sc1.write(bb)

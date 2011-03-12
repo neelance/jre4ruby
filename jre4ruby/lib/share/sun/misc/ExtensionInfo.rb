@@ -278,8 +278,8 @@ module Sun::Misc
     # @param source version to compare to
     # @param target version used to compare against
     # @return < 0 if source < version
-    # > 0 if source > version
-    # = 0 if source = version
+    #         > 0 if source > version
+    #         = 0 if source = version
     def compare_extension_version(source, target)
       source = RJava.cast_to_string(source.to_lower_case)
       target = RJava.cast_to_string(target.to_lower_case)
@@ -294,8 +294,8 @@ module Sun::Misc
     # @param source version to compare to
     # @param target version used to compare against
     # @return < 0 if source < version
-    # > 0 if source > version
-    # = 0 if source = version
+    #         > 0 if source > version
+    #         = 0 if source = version
     def strict_compare_extension_version(source, target)
       if ((source == target))
         return 0

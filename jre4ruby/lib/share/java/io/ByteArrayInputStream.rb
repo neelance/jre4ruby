@@ -159,7 +159,7 @@ module Java::Io
     # cannot block.
     # 
     # @return  the next byte of data, or <code>-1</code> if the end of the
-    # stream has been reached.
+    #          stream has been reached.
     def read
       synchronized(self) do
         return (@pos < @count) ? (@buf[((@pos += 1) - 1)] & 0xff) : -1
@@ -188,8 +188,8 @@ module Java::Io
     # @param   off   the start offset in the destination array <code>b</code>
     # @param   len   the maximum number of bytes read.
     # @return  the total number of bytes read into the buffer, or
-    # <code>-1</code> if there is no more data because the end of
-    # the stream has been reached.
+    #          <code>-1</code> if there is no more data because the end of
+    #          the stream has been reached.
     # @exception  NullPointerException If <code>b</code> is <code>null</code>.
     # @exception  IndexOutOfBoundsException If <code>off</code> is negative,
     # <code>len</code> is negative, or <code>len</code> is greater than
@@ -250,7 +250,7 @@ module Java::Io
     # which is the number of bytes remaining to be read from the input buffer.
     # 
     # @return  the number of remaining bytes that can be read (or skipped
-    # over) from this input stream without blocking.
+    #          over) from this input stream without blocking.
     def available
       synchronized(self) do
         return @count - @pos
@@ -278,7 +278,7 @@ module Java::Io
     # supplied).
     # 
     # <p> Note: The <code>readAheadLimit</code> for this class
-    # has no meaning.
+    #  has no meaning.
     # 
     # @since   JDK1.1
     def mark(read_ahead_limit)

@@ -56,9 +56,9 @@ module Java::Text::Spi
     # @return A break iterator for word breaks
     # @exception NullPointerException if <code>locale</code> is null
     # @exception IllegalArgumentException if <code>locale</code> isn't
-    # one of the locales returned from
-    # {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-    # getAvailableLocales()}.
+    #     one of the locales returned from
+    #     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
+    #     getAvailableLocales()}.
     # @see java.text.BreakIterator#getWordInstance(java.util.Locale)
     def get_word_instance(locale)
       raise NotImplementedError
@@ -72,9 +72,9 @@ module Java::Text::Spi
     # @return A break iterator for line breaks
     # @exception NullPointerException if <code>locale</code> is null
     # @exception IllegalArgumentException if <code>locale</code> isn't
-    # one of the locales returned from
-    # {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-    # getAvailableLocales()}.
+    #     one of the locales returned from
+    #     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
+    #     getAvailableLocales()}.
     # @see java.text.BreakIterator#getLineInstance(java.util.Locale)
     def get_line_instance(locale)
       raise NotImplementedError
@@ -88,9 +88,9 @@ module Java::Text::Spi
     # @return A break iterator for character breaks
     # @exception NullPointerException if <code>locale</code> is null
     # @exception IllegalArgumentException if <code>locale</code> isn't
-    # one of the locales returned from
-    # {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-    # getAvailableLocales()}.
+    #     one of the locales returned from
+    #     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
+    #     getAvailableLocales()}.
     # @see java.text.BreakIterator#getCharacterInstance(java.util.Locale)
     def get_character_instance(locale)
       raise NotImplementedError
@@ -104,9 +104,9 @@ module Java::Text::Spi
     # @return A break iterator for sentence breaks
     # @exception NullPointerException if <code>locale</code> is null
     # @exception IllegalArgumentException if <code>locale</code> isn't
-    # one of the locales returned from
-    # {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-    # getAvailableLocales()}.
+    #     one of the locales returned from
+    #     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
+    #     getAvailableLocales()}.
     # @see java.text.BreakIterator#getSentenceInstance(java.util.Locale)
     def get_sentence_instance(locale)
       raise NotImplementedError

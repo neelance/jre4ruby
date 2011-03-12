@@ -189,8 +189,10 @@ module Sun::Security::Ssl
     # It updates the state machine as each message is processed, and writes
     # responses as needed using the connection in the constructor.
     def process_message(type, message_len)
+      # 
       # In SSLv3 and TLS, messages follow strictly increasing
       # numerical order _except_ for one annoying special case.
+      # 
       if ((self.attr_state > type) && (!(self.attr_state).equal?(HandshakeMessage.attr_ht_client_key_exchange) && !(type).equal?(HandshakeMessage.attr_ht_certificate_verify)))
         raise SSLProtocolException.new("Handshake message sequence violation, state = " + RJava.cast_to_string(self.attr_state) + ", type = " + RJava.cast_to_string(type))
       end
@@ -228,8 +230,10 @@ module Sun::Security::Ssl
         else
           raise SSLProtocolException.new("Unrecognized key exchange: " + RJava.cast_to_string(self.attr_key_exchange))
         end
+        # 
         # All keys are calculated from the premaster secret
         # and the exchanged nonces in the same way.
+        # 
         calculate_keys(pre_master_secret, @client_requested_version)
       when HandshakeMessage.attr_ht_certificate_verify
         self.client_certificate_verify(CertificateVerify.new(self.attr_input))
@@ -238,10 +242,12 @@ module Sun::Security::Ssl
       else
         raise SSLProtocolException.new("Illegal server handshake msg, " + RJava.cast_to_string(type))
       end
+      # 
       # Move the state machine forward except for that annoying
       # special case.  This means that clients could send extra
       # cert verify messages; not a problem so long as all of
       # them actually check out.
+      # 
       if (self.attr_state < type && !(type).equal?(HandshakeMessage.attr_ht_certificate_verify))
         self.attr_state = type
       end
@@ -286,6 +292,7 @@ module Sun::Security::Ssl
       end
       set_version(selected_version)
       m1.attr_protocol_version = self.attr_protocol_version
+      # 
       # random ... save client and server values for later use
       # in computing the master secret (from pre-master secret)
       # and thence the other crypto keys.
@@ -295,21 +302,26 @@ module Sun::Security::Ssl
       # security since each connection in the session can hold
       # its own authenticated (and strong) keys.  One could make
       # creation of a session a rare thing...
+      # 
       self.attr_clnt_random = mesg.attr_clnt_random
       self.attr_svr_random = RandomCookie.new(self.attr_ssl_context.get_secure_random)
       m1.attr_svr_random = self.attr_svr_random
       self.attr_session = nil # forget about the current session
+      # 
       # Here we go down either of two paths:  (a) the fast one, where
       # the client's asked to rejoin an existing session, and the server
       # permits this; (b) the other one, where a new session is created.
+      # 
       if (!(mesg.attr_session_id.length).equal?(0))
         # client is trying to resume a session, let's see...
         previous = (self.attr_ssl_context.engine_get_server_session_context).get(mesg.attr_session_id.get_id)
+        # 
         # Check if we can use the fast path, resuming a session.  We
         # can do so iff we have a valid record for that session, and
         # the cipher suite for that session was on the list which the
         # client requested, and if we're not forgetting any needed
         # authentication on the part of the client.
+        # 
         if (!(previous).nil?)
           self.attr_resuming_session = previous.is_rejoinable
           if (self.attr_resuming_session)
@@ -399,9 +411,11 @@ module Sun::Security::Ssl
           end
         end
       end # else client did not try to resume
+      # 
       # If client hasn't specified a session we can resume, start a
       # new one and choose its cipher suite and compression options.
       # Unless new session creation is disabled for this connection!
+      # 
       if ((self.attr_session).nil?)
         if (!self.attr_enable_new_session)
           raise SSLException.new("Client did not resume a session")
@@ -420,8 +434,10 @@ module Sun::Security::Ssl
         System.out.println("Cipher suite:  " + RJava.cast_to_string(self.attr_session.get_suite))
       end
       m1.write(self.attr_output)
+      # 
       # If we are resuming a session, we finish writing handshake
       # messages right now and then finish.
+      # 
       if (self.attr_resuming_session)
         calculate_connection_keys(self.attr_session.get_master_secret)
         send_change_cipher_and_finish(false)
@@ -510,6 +526,7 @@ module Sun::Security::Ssl
         end
         m3.write(self.attr_output)
       end
+      # 
       # FOURTH, the CertificateRequest message.  The details of
       # the message can be affected by the key exchange algorithm
       # in use.  For example, certs with fixed Diffie-Hellman keys
@@ -518,6 +535,7 @@ module Sun::Security::Ssl
       # 
       # Needed only if server requires client to authenticate self.
       # Illegal for anonymous flavors, so we need to check that.
+      # 
       if ((self.attr_key_exchange).equal?(K_KRB5) || (self.attr_key_exchange).equal?(K_KRB5_EXPORT))
         # CertificateRequest is omitted for Kerberos ciphers
       else

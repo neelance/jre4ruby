@@ -186,8 +186,8 @@ module Sun::Net::Www
           return s
         end
         sb = StringBuilder.new(n)
-        bb = ByteBuffer.allocate(n)
-        cb = CharBuffer.allocate(n)
+        bb = ByteBuffer.allocate_(n)
+        cb = CharBuffer.allocate_(n)
         dec = ThreadLocalCoders.decoder_for("UTF-8").on_malformed_input(CodingErrorAction::REPORT).on_unmappable_character(CodingErrorAction::REPORT)
         c = s.char_at(0)
         i = 0
@@ -293,8 +293,10 @@ module Sun::Net::Www
         if (!(path).nil? && !(path.starts_with("/")))
           path = "/" + path
         end
+        # 
         # In java.net.URI class, a port number of -1 implies the default
         # port number. So get it stripped off before creating URI instance.
+        # 
         if (!(auth).nil? && auth.ends_with(":-1"))
           auth = RJava.cast_to_string(auth.substring(0, auth.length - 3))
         end
@@ -308,6 +310,7 @@ module Sun::Net::Www
       end
       
       typesig { [String, String, String, String, String] }
+      # 
       # createURI() and its auxiliary code are cloned from java.net.URI.
       # Most of the code are just copy and paste, except that quote()
       # has been modified to avoid double-escape.
@@ -316,6 +319,7 @@ module Sun::Net::Www
       # otherwise we need to change public API, namely java.net.URI's
       # multi-argument constructors. It turns out that the changes cause
       # incompatibilities so can't be done.
+      # 
       def create_uri(scheme, authority, path, query, fragment)
         s = to_s(scheme, nil, authority, nil, nil, -1, path, query, fragment)
         check_path(s, scheme, path)
@@ -425,6 +429,7 @@ module Sun::Net::Www
       typesig { [String, ::Java::Long, ::Java::Long] }
       # Quote any characters in s that are not permitted
       # by the given mask pair
+      # 
       def quote(s, low_mask, high_mask)
         n = s.length
         sb = nil
@@ -463,8 +468,10 @@ module Sun::Net::Www
       end
       
       typesig { [String, ::Java::Int] }
+      # 
       # To check if the given string has an escaped triplet
       # at the given position
+      # 
       def is_escaped(s, pos)
         if ((s).nil? || (s.length <= (pos + 2)))
           return false
@@ -514,6 +521,7 @@ module Sun::Net::Www
       
       typesig { [String, String, String] }
       # If a scheme is given then the path, if given, must be absolute
+      # 
       def check_path(s, scheme, path)
         if (!(scheme).nil?)
           if ((!(path).nil?) && ((path.length > 0) && (!(path.char_at(0)).equal?(Character.new(?/.ord)))))
@@ -587,7 +595,7 @@ module Sun::Net::Www
       
       # Character-class masks
       # digit    = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" |
-      # "8" | "9"
+      #            "8" | "9"
       const_set_lazy(:L_DIGIT) { low_mask(Character.new(?0.ord), Character.new(?9.ord)) }
       const_attr_reader  :L_DIGIT
       
@@ -595,7 +603,7 @@ module Sun::Net::Www
       const_attr_reader  :H_DIGIT
       
       # hex           =  digit | "A" | "B" | "C" | "D" | "E" | "F" |
-      # "a" | "b" | "c" | "d" | "e" | "f"
+      #                          "a" | "b" | "c" | "d" | "e" | "f"
       const_set_lazy(:L_HEX) { L_DIGIT }
       const_attr_reader  :L_HEX
       
@@ -603,8 +611,8 @@ module Sun::Net::Www
       const_attr_reader  :H_HEX
       
       # upalpha  = "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" |
-      # "J" | "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" |
-      # "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z"
+      #            "J" | "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" |
+      #            "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z"
       const_set_lazy(:L_UPALPHA) { 0 }
       const_attr_reader  :L_UPALPHA
       
@@ -612,8 +620,8 @@ module Sun::Net::Www
       const_attr_reader  :H_UPALPHA
       
       # lowalpha = "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" |
-      # "j" | "k" | "l" | "m" | "n" | "o" | "p" | "q" | "r" |
-      # "s" | "t" | "u" | "v" | "w" | "x" | "y" | "z"
+      #            "j" | "k" | "l" | "m" | "n" | "o" | "p" | "q" | "r" |
+      #            "s" | "t" | "u" | "v" | "w" | "x" | "y" | "z"
       const_set_lazy(:L_LOWALPHA) { 0 }
       const_attr_reader  :L_LOWALPHA
       
@@ -635,7 +643,7 @@ module Sun::Net::Www
       const_attr_reader  :H_ALPHANUM
       
       # mark          = "-" | "_" | "." | "!" | "~" | "*" | "'" |
-      # "(" | ")"
+      #                 "(" | ")"
       const_set_lazy(:L_MARK) { low_mask("-_.!~*'()") }
       const_attr_reader  :L_MARK
       
@@ -650,7 +658,7 @@ module Sun::Net::Www
       const_attr_reader  :H_UNRESERVED
       
       # reserved      = ";" | "/" | "?" | ":" | "@" | "&" | "=" | "+" |
-      # "$" | "," | "[" | "]"
+      #                 "$" | "," | "[" | "]"
       # Added per RFC2732: "[", "]"
       const_set_lazy(:L_RESERVED) { low_mask(";/?:@&=+$,[]") }
       const_attr_reader  :L_RESERVED
@@ -681,7 +689,7 @@ module Sun::Net::Www
       const_attr_reader  :H_URIC
       
       # pchar         = unreserved | escaped |
-      # ":" | "@" | "&" | "=" | "+" | "$" | ","
+      #                 ":" | "@" | "&" | "=" | "+" | "$" | ","
       const_set_lazy(:L_PCHAR) { L_UNRESERVED | L_ESCAPED | low_mask(":@&=+$,") }
       const_attr_reader  :L_PCHAR
       
@@ -696,7 +704,7 @@ module Sun::Net::Www
       const_attr_reader  :H_PATH
       
       # userinfo      = *( unreserved | escaped |
-      # ";" | ":" | "&" | "=" | "+" | "$" | "," )
+      #                    ";" | ":" | "&" | "=" | "+" | "$" | "," )
       const_set_lazy(:L_USERINFO) { L_UNRESERVED | L_ESCAPED | low_mask(";:&=+$,") }
       const_attr_reader  :L_USERINFO
       
@@ -704,7 +712,7 @@ module Sun::Net::Www
       const_attr_reader  :H_USERINFO
       
       # reg_name      = 1*( unreserved | escaped | "$" | "," |
-      # ";" | ":" | "@" | "&" | "=" | "+" )
+      #                     ";" | ":" | "@" | "&" | "=" | "+" )
       const_set_lazy(:L_REG_NAME) { L_UNRESERVED | L_ESCAPED | low_mask("$,;:@&=+") }
       const_attr_reader  :L_REG_NAME
       

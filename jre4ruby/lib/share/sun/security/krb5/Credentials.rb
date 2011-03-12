@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5
@@ -205,10 +203,8 @@ module Sun::Security::Krb5
     # Acquires a service ticket for the specified service
     # principal. If the service ticket is not already available, it
     # obtains a new one from the KDC.
-    # 
-    # 
     # public Credentials(Credentials tgt, PrincipalName service)
-    # throws KrbException {
+    #     throws KrbException {
     # }
     def get_client
       return @client
@@ -325,10 +321,6 @@ module Sun::Security::Krb5
       options.set(KDCOptions::RENEW, true)
       # Added here to pass KrbKdcRep.check:73
       options.set(KDCOptions::RENEWABLE, true)
-      # from
-      # till
-      # rtime
-      # eTypes
       return KrbTgsReq.new(options, self, @server, nil, nil, nil, nil, @c_addr, nil, nil, nil).send_and_get_creds
     end
     
@@ -474,7 +466,6 @@ module Sun::Security::Krb5
       # </ol>
       # @return a <code>KrbCreds</code> object if the credential is found,
       # otherwise return null.
-      # 
       # this method is intentionally changed to not check if the caller's
       # principal name matches cache file's principal name.
       # It assumes that the GSS call has
@@ -596,14 +587,6 @@ module Sun::Security::Krb5
       typesig { [ServiceName, Credentials] }
       # This method does the real job to request the service credential.
       def service_creds(service, ccreds)
-        # KerberosTime from
-        # KerberosTime till
-        # KerberosTime rtime
-        # int[] eTypes
-        # HostAddresses addresses
-        # AuthorizationData
-        # Ticket[] additionalTickets
-        # EncryptionKey subSessionKey
         return KrbTgsReq.new(KDCOptions.new, ccreds, service, nil, nil, nil, nil, nil, nil, nil, nil).send_and_get_creds
       end
     }

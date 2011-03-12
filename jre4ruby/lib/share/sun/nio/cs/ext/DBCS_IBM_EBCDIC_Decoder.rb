@@ -152,7 +152,7 @@ module Sun::Nio::Cs::Ext
           if ((b1).equal?(SO))
             # Shift out
             # For SO characters - simply validate the state and if OK
-            # update the state and go to the next byte
+            #    update the state and go to the next byte
             if (!(@current_state).equal?(SBCS))
               return CoderResult.malformed_for_length(1)
             else
@@ -161,7 +161,7 @@ module Sun::Nio::Cs::Ext
           else
             if ((b1).equal?(SI))
               # For SI characters - simply validate the state and if OK
-              # update the state and go to the next byte
+              #    update the state and go to the next byte
               if (!(@current_state).equal?(DBCS))
                 return CoderResult.malformed_for_length(1)
               else
@@ -222,7 +222,7 @@ module Sun::Nio::Cs::Ext
           if ((b1).equal?(SO))
             # Shift out
             # For SO characters - simply validate the state and if OK
-            # update the state and go to the next byte
+            #    update the state and go to the next byte
             if (!(@current_state).equal?(SBCS))
               return CoderResult.malformed_for_length(1)
             else
@@ -231,7 +231,7 @@ module Sun::Nio::Cs::Ext
           else
             if ((b1).equal?(SI))
               # For SI characters - simply validate the state and if OK
-              # update the state and go to the next byte
+              #    update the state and go to the next byte
               if (!(@current_state).equal?(DBCS))
                 return CoderResult.malformed_for_length(1)
               else

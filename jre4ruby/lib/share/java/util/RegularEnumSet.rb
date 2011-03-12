@@ -179,7 +179,6 @@ module Java::Util
     
     typesig { [Object] }
     # Modification Operations
-    # 
     # Adds the specified element to this set if it is not already present.
     # 
     # @param e element to be added to this set
@@ -213,13 +212,12 @@ module Java::Util
     
     typesig { [Collection] }
     # Bulk Operations
-    # 
     # Returns <tt>true</tt> if this set contains all of the elements
     # in the specified collection.
     # 
     # @param c collection to be checked for containment in this set
     # @return <tt>true</tt> if this set contains all of the elements
-    # in the specified collection
+    #        in the specified collection
     # @throws NullPointerException if the specified collection is null
     def contains_all(c)
       if (!(c.is_a?(RegularEnumSet)))
@@ -238,7 +236,7 @@ module Java::Util
     # @param c collection whose elements are to be added to this set
     # @return <tt>true</tt> if this set changed as a result of the call
     # @throws NullPointerException if the specified collection or any
-    # of its elements are null
+    #     of its elements are null
     def add_all(c)
       if (!(c.is_a?(RegularEnumSet)))
         return super(c)

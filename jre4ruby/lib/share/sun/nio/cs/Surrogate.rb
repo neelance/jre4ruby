@@ -46,6 +46,7 @@ module Sun::Nio::Cs
     
     class_module.module_eval {
       # UTF-16 surrogate-character ranges
+      # 
       const_set_lazy(:MIN_HIGH) { Character.new(0xD800) }
       const_attr_reader  :MIN_HIGH
       
@@ -65,6 +66,7 @@ module Sun::Nio::Cs
       const_attr_reader  :MAX
       
       # Range of UCS-4 values that need surrogates in UTF-16
+      # 
       const_set_lazy(:UCS4_MIN) { 0x10000 }
       const_attr_reader  :UCS4_MIN
       
@@ -193,12 +195,12 @@ module Sun::Nio::Cs
         # 
         # @param  c    The first character
         # @param  in   The source buffer, from which one more character
-        # will be consumed if c is a high surrogate
+        #              will be consumed if c is a high surrogate
         # 
         # @returns  Either a parsed UCS-4 character, in which case the isPair()
-        # and increment() methods will return meaningful values, or
-        # -1, in which case error() will return a descriptive result
-        # object
+        #           and increment() methods will return meaningful values, or
+        #           -1, in which case error() will return a descriptive result
+        #           object
         def parse(c, in_)
           if (Surrogate.is_high(c))
             if (!in_.has_remaining)
@@ -231,14 +233,14 @@ module Sun::Nio::Cs
         # 
         # @param  c    The first character
         # @param  ia   The input array, from which one more character
-        # will be consumed if c is a high surrogate
+        #              will be consumed if c is a high surrogate
         # @param  ip   The input index
         # @param  il   The input limit
         # 
         # @returns  Either a parsed UCS-4 character, in which case the isPair()
-        # and increment() methods will return meaningful values, or
-        # -1, in which case error() will return a descriptive result
-        # object
+        #           and increment() methods will return meaningful values, or
+        #           -1, in which case error() will return a descriptive result
+        #           object
         def parse(c, ia, ip, il)
           raise AssertError if not (((ia[ip]).equal?(c)))
           if (Surrogate.is_high(c))
@@ -301,13 +303,13 @@ module Sun::Nio::Cs
         # 
         # @param  uc   The UCS-4 character
         # @param  len  The number of input bytes from which the UCS-4 value
-        # was constructed (used when creating result objects)
+        #              was constructed (used when creating result objects)
         # @param  dst  The destination buffer, to which one or two UTF-16
-        # characters will be written
+        #              characters will be written
         # 
         # @returns  Either a positive count of the number of UTF-16 characters
-        # written to the destination buffer, or -1, in which case
-        # error() will return a descriptive result object
+        #           written to the destination buffer, or -1, in which case
+        #           error() will return a descriptive result object
         def generate(uc, len, dst)
           if (uc <= 0xffff)
             if (Surrogate.is(uc))
@@ -346,15 +348,15 @@ module Sun::Nio::Cs
         # 
         # @param  uc   The UCS-4 character
         # @param  len  The number of input bytes from which the UCS-4 value
-        # was constructed (used when creating result objects)
+        #              was constructed (used when creating result objects)
         # @param  da   The destination array, to which one or two UTF-16
-        # characters will be written
+        #              characters will be written
         # @param  dp   The destination position
         # @param  dl   The destination limit
         # 
         # @returns  Either a positive count of the number of UTF-16 characters
-        # written to the destination buffer, or -1, in which case
-        # error() will return a descriptive result object
+        #           written to the destination buffer, or -1, in which case
+        #           error() will return a descriptive result object
         def generate(uc, len, da, dp, dl)
           if (uc <= 0xffff)
             if (Surrogate.is(uc))

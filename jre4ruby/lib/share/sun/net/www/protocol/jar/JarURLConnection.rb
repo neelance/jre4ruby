@@ -226,7 +226,7 @@ module Sun::Net::Www::Protocol::Jar
           result = @jar_file_urlconnection.get_content_length
         else
           # if the URL referes to an archive entry
-          result = RJava.cast_to_int(get_jar_entry.get_size)
+          result = (get_jar_entry.get_size).to_int
         end
       rescue IOException => e
       end
@@ -279,7 +279,7 @@ module Sun::Net::Www::Protocol::Jar
     # Sets the general request property.
     # 
     # @param   key     the keyword by which the request is known
-    # (e.g., "<code>accept</code>").
+    #                  (e.g., "<code>accept</code>").
     # @param   value   the value associated with it.
     def set_request_property(key, value)
       @jar_file_urlconnection.set_request_property(key, value)
@@ -290,7 +290,7 @@ module Sun::Net::Www::Protocol::Jar
     # connection.
     # 
     # @return  the value of the named general request property for this
-    # connection.
+    #           connection.
     def get_request_property(key)
       return @jar_file_urlconnection.get_request_property(key)
     end
@@ -301,7 +301,7 @@ module Sun::Net::Www::Protocol::Jar
     # existing values associated with the same key.
     # 
     # @param   key     the keyword by which the request is known
-    # (e.g., "<code>accept</code>").
+    #                  (e.g., "<code>accept</code>").
     # @param   value   the value associated with it.
     def add_request_property(key, value)
       @jar_file_urlconnection.add_request_property(key, value)
@@ -335,7 +335,7 @@ module Sun::Net::Www::Protocol::Jar
     # this object.
     # 
     # @return  the value of the <code>allowUserInteraction</code> field for
-    # this object.
+    #          this object.
     # @see     java.net.URLConnection#allowUserInteraction
     def get_allow_user_interaction
       return @jar_file_urlconnection.get_allow_user_interaction
@@ -343,8 +343,6 @@ module Sun::Net::Www::Protocol::Jar
     
     typesig { [::Java::Boolean] }
     # cache control
-    # 
-    # 
     # Sets the value of the <code>useCaches</code> field of this
     # <code>URLConnection</code> to the specified value.
     # <p>
@@ -352,8 +350,8 @@ module Sun::Net::Www::Protocol::Jar
     # to be able to "tunnel through" and ignore the caches (e.g., the
     # "reload" button in a browser).  If the UseCaches flag on a connection
     # is true, the connection is allowed to use whatever caches it can.
-    # If false, caches are to be ignored.
-    # The default value comes from DefaultUseCaches, which defaults to
+    #  If false, caches are to be ignored.
+    #  The default value comes from DefaultUseCaches, which defaults to
     # true.
     # 
     # @see     java.net.URLConnection#useCaches
@@ -366,7 +364,7 @@ module Sun::Net::Www::Protocol::Jar
     # <code>useCaches</code> field.
     # 
     # @return  the value of this <code>URLConnection</code>'s
-    # <code>useCaches</code> field.
+    #          <code>useCaches</code> field.
     # @see     java.net.URLConnection#useCaches
     def get_use_caches
       return @jar_file_urlconnection.get_use_caches
@@ -401,7 +399,7 @@ module Sun::Net::Www::Protocol::Jar
     # URLConnections that are created.
     # 
     # @return  the default value of a <code>URLConnection</code>'s
-    # <code>useCaches</code> flag.
+    #          <code>useCaches</code> flag.
     # @see     java.net.URLConnection#useCaches
     def get_default_use_caches
       return @jar_file_urlconnection.get_default_use_caches

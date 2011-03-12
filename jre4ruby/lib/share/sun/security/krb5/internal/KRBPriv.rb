@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5::Internal
@@ -42,10 +40,10 @@ module Sun::Security::Krb5::Internal
   # 
   # <xmp>
   # KRB-PRIV        ::= [APPLICATION 21] SEQUENCE {
-  # pvno            [0] INTEGER (5),
-  # msg-type        [1] INTEGER (21),
-  # -- NOTE: there is no [2] tag
-  # enc-part        [3] EncryptedData -- EncKrbPrivPart
+  #         pvno            [0] INTEGER (5),
+  #         msg-type        [1] INTEGER (21),
+  #                           -- NOTE: there is no [2] tag
+  #         enc-part        [3] EncryptedData -- EncKrbPrivPart
   # }
   # </xmp>
   # 
@@ -107,7 +105,7 @@ module Sun::Security::Krb5::Internal
     # @exception Asn1Exception if an error occurs while decoding an ASN1 encoded data.
     # @exception IOException if an I/O error occurs while reading encoded data.
     # @exception KrbApErrException if the value read from the DER-encoded data
-    # stream does not match the pre-defined value.
+    #  stream does not match the pre-defined value.
     def init(encoding)
       der = nil
       sub_der = nil

@@ -334,8 +334,8 @@ module Sun::Nio::Ch
         def start_threads
           synchronized(self) do
             @runs_counter += 1 # next run
-            notify_all
-          end # wake up threads.
+            notify_all # wake up threads.
+          end
         end
         
         typesig { [class_self::SelectThread] }
@@ -358,7 +358,7 @@ module Sun::Nio::Ch
                 return true # will cause run() to exit.
               else
                 thread.attr_last_run = @runs_counter # update lastRun
-                return false # will cause run() to poll.
+                return false #   will cause run() to poll.
               end
             end
           end
@@ -421,8 +421,8 @@ module Sun::Nio::Ch
             if ((@threads_to_finish).equal?(0))
               # all helper threads finished poll().
               notify
-            end
-          end # notify the main thread
+            end # notify the main thread
+          end
         end
         
         typesig { [] }

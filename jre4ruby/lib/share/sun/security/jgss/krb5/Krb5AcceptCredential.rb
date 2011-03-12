@@ -74,12 +74,12 @@ module Sun::Security::Jgss::Krb5
     
     typesig { [Krb5NameElement, Array.typed(KerberosKey)] }
     def initialize(name, keys)
-      # Initialize this instance with the data from the acquired
-      # KerberosKey. This class needs to be a KerberosKey too
-      # hence we can't just store a reference.
       @name = nil
       @krb5encryption_keys = nil
       super(keys[0].get_principal, keys[0].get_encoded, keys[0].get_key_type, keys[0].get_version_number)
+      # Initialize this instance with the data from the acquired
+      # KerberosKey. This class needs to be a KerberosKey too
+      # hence we can't just store a reference.
       @name = name
       # Cache this for later use by the sun.security.krb5 package.
       @krb5encryption_keys = Array.typed(EncryptionKey).new(keys.attr_length) { nil }

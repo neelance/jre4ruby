@@ -46,17 +46,17 @@ module Sun::Util::Calendar
   # <p>The following era names are defined in this release.
   # <!-- TODO: use HTML table -->
   # <pre><tt>
-  # Calendar system         Era name         Since (in Gregorian)
-  # -----------------------------------------------------------------------
-  # Japanese calendar       Meiji            1868-01-01 midnight local time
-  # Taisho           1912-07-30 midnight local time
-  # Showa            1926-12-26 midnight local time
-  # Heisei           1989-01-08 midnight local time
-  # Julian calendar         BeforeCommonEra  -292275055-05-16T16:47:04.192Z
-  # CommonEra        0000-12-30 midnight local time
-  # Taiwanese calendar      MinGuo           1911-01-01 midnight local time
-  # Thai Buddhist calendar  BuddhistEra      -543-01-01 midnight local time
-  # -----------------------------------------------------------------------
+  #   Calendar system         Era name         Since (in Gregorian)
+  #   -----------------------------------------------------------------------
+  #   Japanese calendar       Meiji            1868-01-01 midnight local time
+  #                           Taisho           1912-07-30 midnight local time
+  #                           Showa            1926-12-26 midnight local time
+  #                           Heisei           1989-01-08 midnight local time
+  #   Julian calendar         BeforeCommonEra  -292275055-05-16T16:47:04.192Z
+  #                           CommonEra        0000-12-30 midnight local time
+  #   Taiwanese calendar      MinGuo           1911-01-01 midnight local time
+  #   Thai Buddhist calendar  BuddhistEra      -543-01-01 midnight local time
+  #   -----------------------------------------------------------------------
   # </tt></pre>
   # 
   # @author Masayoshi Okutsu
@@ -178,7 +178,7 @@ module Sun::Util::Calendar
     typesig { [] }
     def hash_code
       if ((@hash).equal?(0))
-        @hash = @name.hash_code ^ @abbr.hash_code ^ RJava.cast_to_int(@since) ^ RJava.cast_to_int((@since >> 32)) ^ (@local_time ? 1 : 0)
+        @hash = @name.hash_code ^ @abbr.hash_code ^ (@since).to_int ^ ((@since >> 32)).to_int ^ (@local_time ? 1 : 0)
       end
       return @hash
     end

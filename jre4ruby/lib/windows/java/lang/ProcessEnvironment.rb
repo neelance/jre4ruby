@@ -22,7 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
 # We use APIs that access a so-called Windows "Environment Block",
 # which looks like an array of jchars like this:
 # 
@@ -31,18 +30,18 @@ require "rjava"
 # This data structure has a number of peculiarities we must contend with:
 # (see: http://windowssdk.msdn.microsoft.com/en-us/library/ms682009.aspx)
 # - The NUL jchar separators, and a double NUL jchar terminator.
-# It appears that the Windows implementation requires double NUL
-# termination even if the environment is empty.  We should always
-# generate environments with double NUL termination, while accepting
-# empty environments consisting of a single NUL.
+#   It appears that the Windows implementation requires double NUL
+#   termination even if the environment is empty.  We should always
+#   generate environments with double NUL termination, while accepting
+#   empty environments consisting of a single NUL.
 # - on Windows9x, this is actually an array of 8-bit chars, not jchars,
-# encoded in the system default encoding.
+#   encoded in the system default encoding.
 # - The block must be sorted by Unicode value, case-insensitively,
-# as if folded to upper case.
+#   as if folded to upper case.
 # - There are magic environment variables maintained by Windows
-# that start with a `=' (!) character.  These are used for
-# Windows drive current directory (e.g. "=C:=C:\WINNT") or the
-# exit code of the last command (e.g. "=ExitCode=0000001").
+#   that start with a `=' (!) character.  These are used for
+#   Windows drive current directory (e.g. "=C:=C:\WINNT") or the
+#   exit code of the last command (e.g. "=ExitCode=0000001").
 # 
 # Since Java and non-9x Windows speak the same character set, and
 # even the same encoding, we don't have to deal with unreliable

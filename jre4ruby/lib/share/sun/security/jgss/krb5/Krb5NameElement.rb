@@ -200,7 +200,7 @@ module Sun::Security::Jgss::Krb5
     # @param name to be compared with
     # @returns true if they both refer to the same entity, else false
     # @exception GSSException with major codes of BAD_NAMETYPE,
-    # BAD_NAME, FAILURE
+    #  BAD_NAME, FAILURE
     def ==(other)
       if ((other).equal?(self))
         return true
@@ -249,16 +249,16 @@ module Sun::Security::Jgss::Krb5
     # host/service@REALM but with the following contraints that are
     # imposed by RFC 1964:
     # <pre>
-    # (1) all occurrences of the characters `@`,  `/`, and `\` within
-    # principal components or realm names shall be quoted with an
-    # immediately-preceding `\`.
+    #  (1) all occurrences of the characters `@`,  `/`, and `\` within
+    #   principal components or realm names shall be quoted with an
+    #   immediately-preceding `\`.
     # 
-    # (2) all occurrences of the null, backspace, tab, or newline
-    # characters within principal components or realm names will be
-    # represented, respectively, with `\0`, `\b`, `\t`, or `\n`.
+    #   (2) all occurrences of the null, backspace, tab, or newline
+    #   characters within principal components or realm names will be
+    #   represented, respectively, with `\0`, `\b`, `\t`, or `\n`.
     # 
-    # (3) the `\` quoting character shall not be emitted within an
-    # exported name except to accomodate cases (1) and (2).
+    #   (3) the `\` quoting character shall not be emitted within an
+    #   exported name except to accomodate cases (1) and (2).
     # </pre>
     def export
       # XXX Apply the above constraints.

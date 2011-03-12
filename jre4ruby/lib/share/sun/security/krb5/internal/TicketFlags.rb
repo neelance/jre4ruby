@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5::Internal
@@ -39,21 +37,21 @@ module Sun::Security::Krb5::Internal
   
   # Implements the ASN.1TicketFlags type.
   # 
-  # TicketFlags ::= BIT STRING
-  # {
-  # reserved(0),
-  # forwardable(1),
-  # forwarded(2),
-  # proxiable(3),
-  # proxy(4),
-  # may-postdate(5),
-  # postdated(6),
-  # invalid(7),
-  # renewable(8),
-  # initial(9),
-  # pre-authent(10),
-  # hw-authent(11)
-  # }
+  #    TicketFlags ::= BIT STRING
+  #                  {
+  #                   reserved(0),
+  #                   forwardable(1),
+  #                   forwarded(2),
+  #                   proxiable(3),
+  #                   proxy(4),
+  #                   may-postdate(5),
+  #                   postdated(6),
+  #                   invalid(7),
+  #                   renewable(8),
+  #                   initial(9),
+  #                   pre-authent(10),
+  #                   hw-authent(11)
+  #                  }
   class TicketFlags < TicketFlagsImports.const_get :KerberosFlags
     include_class_members TicketFlagsImports
     

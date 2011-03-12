@@ -57,8 +57,8 @@ module Java::Io
     # Constructs an {@code IOException} with the specified detail message.
     # 
     # @param message
-    # The detail message (which is saved for later retrieval
-    # by the {@link #getMessage()} method)
+    #        The detail message (which is saved for later retrieval
+    #        by the {@link #getMessage()} method)
     def initialize(message)
       super(message)
     end
@@ -72,13 +72,13 @@ module Java::Io
     # message.
     # 
     # @param message
-    # The detail message (which is saved for later retrieval
-    # by the {@link #getMessage()} method)
+    #        The detail message (which is saved for later retrieval
+    #        by the {@link #getMessage()} method)
     # 
     # @param cause
-    # The cause (which is saved for later retrieval by the
-    # {@link #getCause()} method).  (A null value is permitted,
-    # and indicates that the cause is nonexistent or unknown.)
+    #        The cause (which is saved for later retrieval by the
+    #        {@link #getCause()} method).  (A null value is permitted,
+    #        and indicates that the cause is nonexistent or unknown.)
     # 
     # @since 1.6
     def initialize(message, cause)
@@ -93,9 +93,9 @@ module Java::Io
     # than wrappers for other throwables.
     # 
     # @param cause
-    # The cause (which is saved for later retrieval by the
-    # {@link #getCause()} method).  (A null value is permitted,
-    # and indicates that the cause is nonexistent or unknown.)
+    #        The cause (which is saved for later retrieval by the
+    #        {@link #getCause()} method).  (A null value is permitted,
+    #        and indicates that the cause is nonexistent or unknown.)
     # 
     # @since 1.6
     def initialize(cause)

@@ -36,21 +36,21 @@ module Java::Util
   # 
   # <ul>
   # 
-  # <li> The format of a provider-configuration file violates the <a
-  # href="ServiceLoader.html#format">specification</a>; </li>
+  #   <li> The format of a provider-configuration file violates the <a
+  #   href="ServiceLoader.html#format">specification</a>; </li>
   # 
-  # <li> An {@link java.io.IOException IOException} occurs while reading a
-  # provider-configuration file; </li>
+  #   <li> An {@link java.io.IOException IOException} occurs while reading a
+  #   provider-configuration file; </li>
   # 
-  # <li> A concrete provider class named in a provider-configuration file
-  # cannot be found; </li>
+  #   <li> A concrete provider class named in a provider-configuration file
+  #   cannot be found; </li>
   # 
-  # <li> A concrete provider class is not a subclass of the service class;
-  # </li>
+  #   <li> A concrete provider class is not a subclass of the service class;
+  #   </li>
   # 
-  # <li> A concrete provider class cannot be instantiated; or
+  #   <li> A concrete provider class cannot be instantiated; or
   # 
-  # <li> Some other kind of error occurs. </li>
+  #   <li> Some other kind of error occurs. </li>
   # 
   # </ul>
   # 
@@ -79,7 +79,7 @@ module Java::Util
     # @param  msg  The message, or <tt>null</tt> if there is no message
     # 
     # @param  cause  The cause, or <tt>null</tt> if the cause is nonexistent
-    # or unknown
+    #                or unknown
     def initialize(msg, cause)
       super(msg, cause)
     end

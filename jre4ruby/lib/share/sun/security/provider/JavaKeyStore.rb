@@ -535,28 +535,27 @@ module Sun::Security::Provider
         # Count (big-endian integer),
         # followed by "count" instances of either:
         # 
-        # {
-        # tag=1 (big-endian integer),
-        # alias (UTF string)
-        # timestamp
-        # encrypted private-key info according to PKCS #8
-        # (integer length followed by encoding)
-        # cert chain (integer count, then certs; for each cert,
-        # integer length followed by encoding)
-        # }
+        #     {
+        #      tag=1 (big-endian integer),
+        #      alias (UTF string)
+        #      timestamp
+        #      encrypted private-key info according to PKCS #8
+        #          (integer length followed by encoding)
+        #      cert chain (integer count, then certs; for each cert,
+        #          integer length followed by encoding)
+        #     }
         # 
         # or:
         # 
-        # {
-        # tag=2 (big-endian integer)
-        # alias (UTF string)
-        # timestamp
-        # cert (integer length followed by encoding)
-        # }
+        #     {
+        #      tag=2 (big-endian integer)
+        #      alias (UTF string)
+        #      timestamp
+        #      cert (integer length followed by encoding)
+        #     }
         # 
         # ended by a keyed SHA1 hash (bytes only) of
-        # { password + whitener + preceding body }
-        # 
+        #     { password + whitener + preceding body }
         # password is mandatory when storing
         if ((password).nil?)
           raise IllegalArgumentException.new("password can't be null")
@@ -774,8 +773,8 @@ module Sun::Security::Provider
         # at the end. If this check fails, the store has been tampered
         # with
         if (!(password).nil?)
-          computed = 0
-          actual = 0
+          computed = nil
+          actual = nil
           computed = md.digest
           actual = Array.typed(::Java::Byte).new(computed.attr_length) { 0 }
           dis.read_fully(actual)

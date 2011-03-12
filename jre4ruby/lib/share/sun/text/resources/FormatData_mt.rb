@@ -1,8 +1,5 @@
 require "rjava"
-
-# Portions Copyright 2005-2007 Sun Microsystems, Inc.  All Rights Reserved.
-# 
-# 
+ # * Portions Copyright 2005-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # COPYRIGHT AND PERMISSION NOTICE
 # 
 # Copyright (C) 1991-2007 Unicode, Inc. All rights reserved.
@@ -36,7 +33,6 @@ require "rjava"
 # be used in advertising or otherwise to promote the sale, use or other
 # dealings in these Data Files or Software without prior written
 # authorization of the copyright holder.
-# 
 # Generated automatically from the Common Locale Data Repository. DO NOT EDIT!
 module Sun::Text::Resources
   module FormatData_mtImports #:nodoc:
@@ -52,7 +48,7 @@ module Sun::Text::Resources
     
     typesig { [] }
     def get_contents
-      return Array.typed(Array.typed(Object)).new([Array.typed(Object).new(["MonthNames", Array.typed(String).new(["Jannar", "Frar", "Marzu", "April", "Mejju", ("".to_u << 0x0120 << "unju"), "Lulju", "Awissu", "Settembru", "Ottubru", "Novembru", ("Di".to_u << 0x010b << "embru"), "", ])]), Array.typed(Object).new(["MonthAbbreviations", Array.typed(String).new(["Jan", "Fra", "Mar", "Apr", "Mej", ("".to_u << 0x0120 << "un"), "Lul", "Awi", "Set", "Ott", "Nov", ("Di".to_u << 0x010b << ""), "", ])]), Array.typed(Object).new(["DayNames", Array.typed(String).new([("Il-".to_u << 0x0126 << "add"), "It-Tnejn", "It-Tlieta", ("L-Erbg".to_u << 0x0127 << "a"), ("Il-".to_u << 0x0126 << "amis"), ("Il-".to_u << 0x0120 << "img".to_u << 0x0127 << "a"), "Is-Sibt", ])]), Array.typed(Object).new(["DayAbbreviations", Array.typed(String).new([("".to_u << 0x0126 << "ad"), "Tne", "Tli", "Erb", ("".to_u << 0x0126 << "am"), ("".to_u << 0x0120 << "im"), "Sib", ])]), Array.typed(Object).new(["AmPmMarkers", Array.typed(String).new(["QN", "WN", ])]), Array.typed(Object).new(["Eras", Array.typed(String).new(["QK", "WK", ])]), Array.typed(Object).new(["NumberPatterns", Array.typed(String).new(["#,##0.###", ("".to_u << 0x00a4 << " #,##0.00"), "#,##0%", ])]), Array.typed(Object).new(["NumberElements", Array.typed(String).new([".", ",", ";", "%", "0", "#", "-", "E", ("".to_u << 0x2030 << ""), ("".to_u << 0x221e << ""), "NaN", ])]), Array.typed(Object).new(["DateTimePatterns", Array.typed(String).new(["HH:mm:ss z", "HH:mm:ss z", "HH:mm:ss", "HH:mm", ("EEEE, d 'ta".to_u << 0x2019 << "' MMMM yyyy"), ("d 'ta".to_u << 0x2019 << "' MMMM yyyy"), "dd MMM yyyy", "dd/MM/yyyy", "{1} {0}", ])]), ])
+      return Array.typed(Array.typed(Object)).new([Array.typed(Object).new(["MonthNames", Array.typed(String).new(["Jannar", "Frar", "Marzu", "April", "Mejju", ("".to_u << 0x0120 << "unju"), "Lulju", "Awissu", "Settembru", "Ottubru", "Novembru", ("Di".to_u << 0x010b << "embru"), ""])]), Array.typed(Object).new(["MonthAbbreviations", Array.typed(String).new(["Jan", "Fra", "Mar", "Apr", "Mej", ("".to_u << 0x0120 << "un"), "Lul", "Awi", "Set", "Ott", "Nov", ("Di".to_u << 0x010b << ""), ""])]), Array.typed(Object).new(["DayNames", Array.typed(String).new([("Il-".to_u << 0x0126 << "add"), "It-Tnejn", "It-Tlieta", ("L-Erbg".to_u << 0x0127 << "a"), ("Il-".to_u << 0x0126 << "amis"), ("Il-".to_u << 0x0120 << "img".to_u << 0x0127 << "a"), "Is-Sibt"])]), Array.typed(Object).new(["DayAbbreviations", Array.typed(String).new([("".to_u << 0x0126 << "ad"), "Tne", "Tli", "Erb", ("".to_u << 0x0126 << "am"), ("".to_u << 0x0120 << "im"), "Sib"])]), Array.typed(Object).new(["AmPmMarkers", Array.typed(String).new(["QN", "WN"])]), Array.typed(Object).new(["Eras", Array.typed(String).new(["QK", "WK"])]), Array.typed(Object).new(["NumberPatterns", Array.typed(String).new(["#,##0.###", ("".to_u << 0x00a4 << " #,##0.00"), "#,##0%"])]), Array.typed(Object).new(["NumberElements", Array.typed(String).new([".", ",", ";", "%", "0", "#", "-", "E", ("".to_u << 0x2030 << ""), ("".to_u << 0x221e << ""), "NaN"])]), Array.typed(Object).new(["DateTimePatterns", Array.typed(String).new(["HH:mm:ss z", "HH:mm:ss z", "HH:mm:ss", "HH:mm", ("EEEE, d 'ta".to_u << 0x2019 << "' MMMM yyyy"), ("d 'ta".to_u << 0x2019 << "' MMMM yyyy"), "dd MMM yyyy", "dd/MM/yyyy", "{1} {0}"])])])
     end
     
     typesig { [] }

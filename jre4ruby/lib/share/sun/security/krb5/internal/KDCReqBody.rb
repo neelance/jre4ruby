@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5::Internal
@@ -42,24 +40,24 @@ module Sun::Security::Krb5::Internal
   # 
   # <xmp>
   # KDC-REQ-BODY ::= SEQUENCE {
-  # kdc-options             [0] KDCOptions,
-  # cname                   [1] PrincipalName OPTIONAL
-  # -- Used only in AS-REQ --,
-  # realm                   [2] Realm
-  # -- Server's realm
-  # -- Also client's in AS-REQ --,
-  # sname                   [3] PrincipalName OPTIONAL,
-  # from                    [4] KerberosTime OPTIONAL,
-  # till                    [5] KerberosTime,
-  # rtime                   [6] KerberosTime OPTIONAL,
-  # nonce                   [7] UInt32,
-  # etype                   [8] SEQUENCE OF Int32 -- EncryptionType
-  # -- in preference order --,
-  # addresses               [9] HostAddresses OPTIONAL,
-  # enc-authorization-data  [10] EncryptedData OPTIONAL
-  # -- AuthorizationData --,
-  # additional-tickets      [11] SEQUENCE OF Ticket OPTIONAL
-  # -- NOTE: not empty
+  #      kdc-options             [0] KDCOptions,
+  #      cname                   [1] PrincipalName OPTIONAL
+  #                                    -- Used only in AS-REQ --,
+  #      realm                   [2] Realm
+  #                                    -- Server's realm
+  #                                    -- Also client's in AS-REQ --,
+  #      sname                   [3] PrincipalName OPTIONAL,
+  #      from                    [4] KerberosTime OPTIONAL,
+  #      till                    [5] KerberosTime,
+  #      rtime                   [6] KerberosTime OPTIONAL,
+  #      nonce                   [7] UInt32,
+  #      etype                   [8] SEQUENCE OF Int32 -- EncryptionType
+  #                                    -- in preference order --,
+  #      addresses               [9] HostAddresses OPTIONAL,
+  #      enc-authorization-data  [10] EncryptedData OPTIONAL
+  #                                    -- AuthorizationData --,
+  #      additional-tickets      [11] SEQUENCE OF Ticket OPTIONAL
+  #                                       -- NOTE: not empty
   # }
   # </xmp>
   # 
@@ -152,14 +150,6 @@ module Sun::Security::Krb5::Internal
     
     typesig { [KDCOptions, PrincipalName, Realm, PrincipalName, KerberosTime, KerberosTime, KerberosTime, ::Java::Int, Array.typed(::Java::Int), HostAddresses, EncryptedData, Array.typed(Ticket)] }
     # optional
-    # optional in ASReq only
-    # optional
-    # optional
-    # optional
-    # a sequence; not optional
-    # optional
-    # optional
-    # optional
     def initialize(new_kdc_options, new_cname, new_crealm, new_sname, new_from, new_till, new_rtime, new_nonce, new_e_type, new_addresses, new_enc_authorization_data, new_additional_tickets)
       @kdc_options = nil
       @cname = nil
@@ -172,7 +162,7 @@ module Sun::Security::Krb5::Internal
       @nonce = 0
       @e_type = nil
       @enc_authorization_data = nil
-      @additional_tickets = nil
+      @additional_tickets = nil # optional in ASReq only # optional # optional # optional # a sequence; not optional # optional # optional # optional
       @kdc_options = new_kdc_options
       @cname = new_cname
       @crealm = new_crealm

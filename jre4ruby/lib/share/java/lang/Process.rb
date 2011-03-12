@@ -80,7 +80,7 @@ module Java::Lang
     # output stream to be buffered.
     # 
     # @return the output stream connected to the normal input of the
-    # subprocess
+    #         subprocess
     def get_output_stream
       raise NotImplementedError
     end
@@ -95,7 +95,7 @@ module Java::Lang
     # input stream to be buffered.
     # 
     # @return the input stream connected to the normal output of the
-    # subprocess
+    #         subprocess
     # @see ProcessBuilder#redirectErrorStream()
     def get_input_stream
       raise NotImplementedError
@@ -111,7 +111,7 @@ module Java::Lang
     # input stream to be buffered.
     # 
     # @return the input stream connected to the error output stream of
-    # the subprocess
+    #         the subprocess
     # @see ProcessBuilder#redirectErrorStream()
     def get_error_stream
       raise NotImplementedError
@@ -126,12 +126,12 @@ module Java::Lang
     # subprocess exits.
     # 
     # @return the exit value of the subprocess represented by this
-    # {@code Process} object.  By convention, the value
-    # {@code 0} indicates normal termination.
+    #         {@code Process} object.  By convention, the value
+    #         {@code 0} indicates normal termination.
     # @throws InterruptedException if the current thread is
-    # {@linkplain Thread#interrupt() interrupted} by another
-    # thread while it is waiting, then the wait is ended and
-    # an {@link InterruptedException} is thrown.
+    #         {@linkplain Thread#interrupt() interrupted} by another
+    #         thread while it is waiting, then the wait is ended and
+    #         an {@link InterruptedException} is thrown.
     def wait_for
       raise NotImplementedError
     end
@@ -140,10 +140,10 @@ module Java::Lang
     # Returns the exit value for the subprocess.
     # 
     # @return the exit value of the subprocess represented by this
-    # {@code Process} object.  By convention, the value
-    # {@code 0} indicates normal termination.
+    #         {@code Process} object.  By convention, the value
+    #         {@code 0} indicates normal termination.
     # @throws IllegalThreadStateException if the subprocess represented
-    # by this {@code Process} object has not yet terminated
+    #         by this {@code Process} object has not yet terminated
     def exit_value
       raise NotImplementedError
     end

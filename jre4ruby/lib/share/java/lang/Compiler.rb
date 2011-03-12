@@ -111,13 +111,13 @@ module Java::Lang
       # Compiles the specified class.
       # 
       # @param  clazz
-      # A class
+      #         A class
       # 
       # @return  {@code true} if the compilation succeeded; {@code false} if the
-      # compilation failed or no compiler is available
+      #          compilation failed or no compiler is available
       # 
       # @throws  NullPointerException
-      # If {@code clazz} is {@code null}
+      #          If {@code clazz} is {@code null}
       def compile_class(clazz)
         JNI.call_native_method(:Java_java_lang_Compiler_compileClass, JNI.env, self.jni_id, clazz.jni_id) != 0
       end
@@ -127,13 +127,13 @@ module Java::Lang
       # Compiles all classes whose name matches the specified string.
       # 
       # @param  string
-      # The name of the classes to compile
+      #         The name of the classes to compile
       # 
       # @return  {@code true} if the compilation succeeded; {@code false} if the
-      # compilation failed or no compiler is available
+      #          compilation failed or no compiler is available
       # 
       # @throws  NullPointerException
-      # If {@code string} is {@code null}
+      #          If {@code string} is {@code null}
       def compile_classes(string)
         JNI.call_native_method(:Java_java_lang_Compiler_compileClasses, JNI.env, self.jni_id, string.jni_id) != 0
       end
@@ -144,13 +144,13 @@ module Java::Lang
       # operation.  No specific operations are required.
       # 
       # @param  any
-      # An argument
+      #         An argument
       # 
       # @return  A compiler-specific value, or {@code null} if no compiler is
-      # available
+      #          available
       # 
       # @throws  NullPointerException
-      # If {@code any} is {@code null}
+      #          If {@code any} is {@code null}
       def command(any)
         JNI.call_native_method(:Java_java_lang_Compiler_command, JNI.env, self.jni_id, any.jni_id)
       end

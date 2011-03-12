@@ -46,7 +46,7 @@ module Java::Util::Prefs
     # its value is changed.
     # <p>
     # @param evt A PreferenceChangeEvent object describing the event source
-    # and the preference that has changed.
+    #          and the preference that has changed.
     def preference_change(evt)
       raise NotImplementedError
     end

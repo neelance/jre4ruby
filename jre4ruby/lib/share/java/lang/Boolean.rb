@@ -121,7 +121,7 @@ module Java::Lang
       # Example: {@code Boolean.parseBoolean("yes")} returns {@code false}.
       # 
       # @param      s   the {@code String} containing the boolean
-      # representation to be parsed
+      #                 representation to be parsed
       # @return     the boolean represented by the string argument
       # @since 1.5
       def parse_boolean(s)
@@ -210,7 +210,7 @@ module Java::Lang
     # 
     # @param   obj   the object to compare with.
     # @return  {@code true} if the Boolean objects represent the
-    # same value; {@code false} otherwise.
+    #          same value; {@code false} otherwise.
     def ==(obj)
       if (obj.is_a?(Boolean))
         return (@value).equal?((obj).boolean_value)
@@ -251,9 +251,9 @@ module Java::Lang
     # 
     # @param   b the {@code Boolean} instance to be compared
     # @return  zero if this object represents the same boolean value as the
-    # argument; a positive value if this object represents true
-    # and the argument represents false; and a negative value if
-    # this object represents false and the argument represents true
+    #          argument; a positive value if this object represents true
+    #          and the argument represents false; and a negative value if
+    #          this object represents false and the argument represents true
     # @throws  NullPointerException if the argument is {@code null}
     # @see     Comparable
     # @since  1.5

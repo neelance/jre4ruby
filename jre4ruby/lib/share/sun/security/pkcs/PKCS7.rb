@@ -582,7 +582,7 @@ module Sun::Security::Pkcs
     typesig { [] }
     # Returns the version number of this PKCS7 block.
     # @return the version or null if version is not specified
-    # for the content type.
+    #         for the content type.
     def get_version
       return @version
     end
@@ -590,7 +590,7 @@ module Sun::Security::Pkcs
     typesig { [] }
     # Returns the message digest algorithms specified in this PKCS7 block.
     # @return the array of Digest Algorithms or null if none are specified
-    # for the content type.
+    #         for the content type.
     def get_digest_algorithm_ids
       return @digest_algorithm_ids
     end
@@ -604,7 +604,7 @@ module Sun::Security::Pkcs
     typesig { [] }
     # Returns the X.509 certificates listed in this PKCS7 block.
     # @return a clone of the array of X.509 certificates or null if
-    # none are specified for the content type.
+    #         none are specified for the content type.
     def get_certificates
       if (!(@certificates).nil?)
         return @certificates.clone
@@ -616,7 +616,7 @@ module Sun::Security::Pkcs
     typesig { [] }
     # Returns the X.509 crls listed in this PKCS7 block.
     # @return a clone of the array of X.509 crls or null if none
-    # are specified for the content type.
+    #         are specified for the content type.
     def get_crls
       if (!(@crls).nil?)
         return @crls.clone
@@ -628,7 +628,7 @@ module Sun::Security::Pkcs
     typesig { [] }
     # Returns the signer's information specified in this PKCS7 block.
     # @return the array of Signer Infos or null if none are specified
-    # for the content type.
+    #         for the content type.
     def get_signer_infos
       return @signer_infos
     end

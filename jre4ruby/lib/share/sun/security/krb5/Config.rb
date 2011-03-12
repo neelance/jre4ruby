@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5
@@ -510,22 +508,22 @@ module Sun::Security::Krb5
     # contains one or more name/value pairs with one pair per line. A
     # typical file would be:
     # [libdefaults]
-    # default_realm = EXAMPLE.COM
-    # default_tgs_enctypes = des-cbc-md5
-    # default_tkt_enctypes = des-cbc-md5
+    #          default_realm = EXAMPLE.COM
+    #          default_tgs_enctypes = des-cbc-md5
+    #          default_tkt_enctypes = des-cbc-md5
     # [realms]
-    # EXAMPLE.COM = {
-    # kdc = kerberos.example.com
-    # kdc = kerberos-1.example.com
-    # admin_server = kerberos.example.com
-    # }
-    # SAMPLE_COM = {
-    # kdc = orange.sample.com
-    # admin_server = orange.sample.com
-    # }
+    #          EXAMPLE.COM = {
+    #                  kdc = kerberos.example.com
+    #                  kdc = kerberos-1.example.com
+    #                  admin_server = kerberos.example.com
+    #                  }
+    #          SAMPLE_COM = {
+    #                  kdc = orange.sample.com
+    #                  admin_server = orange.sample.com
+    #                  }
     # [domain_realm]
-    # blue.sample.com = TEST.SAMPLE.COM
-    # .backup.com     = EXAMPLE.COM
+    #          blue.sample.com = TEST.SAMPLE.COM
+    #          .backup.com     = EXAMPLE.COM
     def load_config_file
       begin
         file_name = get_file_name
@@ -557,17 +555,17 @@ module Sun::Security::Krb5
             if (!(line.starts_with("#") || line.trim.is_empty))
               current = line.trim
               # In practice, a subsection might look like:
-              # EXAMPLE.COM =
-              # {
-              # kdc = kerberos.example.com
-              # ...
-              # }
+              #      EXAMPLE.COM =
+              #      {
+              #              kdc = kerberos.example.com
+              #              ...
+              #      }
               # Before parsed into stanza table, it needs to be
               # converted into formal style:
-              # EXAMPLE.COM = {
-              # kdc = kerberos.example.com
-              # ...
-              # }
+              #      EXAMPLE.COM = {
+              #              kdc = kerberos.example.com
+              #              ...
+              #      }
               # 
               # So, if a line is "{", adhere to the previous line.
               if ((current == "{"))
@@ -947,9 +945,6 @@ module Sun::Security::Krb5
     typesig { [String] }
     # Get the etype and checksum value for the specified encryption and
     # checksum type.
-    # 
-    # 
-    # 
     # This method converts the string representation of encryption type and
     # checksum type to int value that can be later used by EType and
     # Checksum classes.

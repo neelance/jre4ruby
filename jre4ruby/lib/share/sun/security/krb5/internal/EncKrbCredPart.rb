@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5::Internal
@@ -43,13 +41,13 @@ module Sun::Security::Krb5::Internal
   # 
   # <xmp>
   # EncKrbCredPart  ::= [APPLICATION 29] SEQUENCE {
-  # ticket-info     [0] SEQUENCE OF KrbCredInfo,
-  # nonce           [1] UInt32 OPTIONAL,
-  # timestamp       [2] KerberosTime OPTIONAL,
-  # usec            [3] Microseconds OPTIONAL,
-  # s-address       [4] HostAddress OPTIONAL,
-  # r-address       [5] HostAddress OPTIONAL
-  # }
+  #         ticket-info     [0] SEQUENCE OF KrbCredInfo,
+  #         nonce           [1] UInt32 OPTIONAL,
+  #         timestamp       [2] KerberosTime OPTIONAL,
+  #         usec            [3] Microseconds OPTIONAL,
+  #         s-address       [4] HostAddress OPTIONAL,
+  #         r-address       [5] HostAddress OPTIONAL
+  #   }
   # </xmp>
   # 
   # <p>

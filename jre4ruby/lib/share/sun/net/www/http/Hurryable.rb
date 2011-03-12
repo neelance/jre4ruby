@@ -38,7 +38,7 @@ module Sun::Net::Www::Http
     
     typesig { [] }
     # @return a <code>boolean</code> indicating if the stream has been
-    # hurried or not.
+    #         hurried or not.
     def hurry
       raise NotImplementedError
     end

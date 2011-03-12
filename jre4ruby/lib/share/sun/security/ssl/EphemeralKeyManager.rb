@@ -57,7 +57,7 @@ module Sun::Security::Ssl
     
     typesig { [] }
     def initialize
-      @keys = Array.typed(EphemeralKeyPair).new([EphemeralKeyPair.new(nil), EphemeralKeyPair.new(nil), ])
+      @keys = Array.typed(EphemeralKeyPair).new([EphemeralKeyPair.new(nil), EphemeralKeyPair.new(nil)])
       # empty
     end
     

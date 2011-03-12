@@ -22,7 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
 # -- This file was mechanically generated: Do not edit! -- //
 module Java::Nio
   module FloatBufferImports #:nodoc:
@@ -39,20 +38,18 @@ module Java::Nio
   # 
   # <ul>
   # 
-  # <li><p> Absolute and relative {@link #get() </code><i>get</i><code>} and
-  # {@link #put(float) </code><i>put</i><code>} methods that read and write
-  # single floats; </p></li>
+  #   <li><p> Absolute and relative {@link #get() </code><i>get</i><code>} and
+  #   {@link #put(float) </code><i>put</i><code>} methods that read and write
+  #   single floats; </p></li>
   # 
-  # <li><p> Relative {@link #get(float[]) </code><i>bulk get</i><code>}
-  # methods that transfer contiguous sequences of floats from this buffer
-  # into an array; and</p></li>
+  #   <li><p> Relative {@link #get(float[]) </code><i>bulk get</i><code>}
+  #   methods that transfer contiguous sequences of floats from this buffer
+  #   into an array; and</p></li>
   # 
-  # <li><p> Relative {@link #put(float[]) </code><i>bulk put</i><code>}
-  # methods that transfer contiguous sequences of floats from a
-  # float array or some other float
-  # buffer into this buffer;&#32;and </p></li>
-  # 
-  # 
+  #   <li><p> Relative {@link #put(float[]) </code><i>bulk put</i><code>}
+  #   methods that transfer contiguous sequences of floats from a
+  #   float array or some other float
+  #   buffer into this buffer;&#32;and </p></li>
   # 
   # 
   # 
@@ -65,9 +62,11 @@ module Java::Nio
   # 
   # 
   # 
-  # <li><p> Methods for {@link #compact </code>compacting<code>}, {@link
-  # #duplicate </code>duplicating<code>}, and {@link #slice
-  # </code>slicing<code>} a float buffer.  </p></li>
+  # 
+  # 
+  #   <li><p> Methods for {@link #compact </code>compacting<code>}, {@link
+  #   #duplicate </code>duplicating<code>}, and {@link #slice
+  #   </code>slicing<code>} a float buffer.  </p></li>
   # 
   # </ul>
   # 
@@ -261,6 +260,7 @@ module Java::Nio
     # These fields are declared here rather than in Heap-X-Buffer in order to
     # reduce the number of virtual method invocations needed to access these
     # values, which is especially costly when coding small buffers.
+    # 
     attr_accessor :hb
     alias_method :attr_hb, :hb
     undef_method :hb
@@ -285,21 +285,20 @@ module Java::Nio
     # Creates a new buffer with the given mark, position, limit, capacity,
     # backing array, and array offset
     # 
-    # package-private
     def initialize(mark, pos, lim, cap, hb, offset)
       @hb = nil
       @offset = 0
       @is_read_only = false
-      super(mark, pos, lim, cap)
+      super(mark, pos, lim, cap) # package-private
       @hb = hb
       @offset = offset
     end
     
     typesig { [::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int] }
     # Creates a new buffer with the given mark, position, limit, and capacity
+    # 
     def initialize(mark, pos, lim, cap)
-      # package-private
-      initialize__float_buffer(mark, pos, lim, cap, nil, 0)
+      initialize__float_buffer(mark, pos, lim, cap, nil, 0) # package-private
     end
     
     class_module.module_eval {
@@ -312,13 +311,13 @@ module Java::Nio
       # offset<code>} will be zero.
       # 
       # @param  capacity
-      # The new buffer's capacity, in floats
+      #         The new buffer's capacity, in floats
       # 
       # @return  The new float buffer
       # 
       # @throws  IllegalArgumentException
-      # If the <tt>capacity</tt> is a negative integer
-      def allocate(capacity)
+      #          If the <tt>capacity</tt> is a negative integer
+      def allocate_(capacity)
         if (capacity < 0)
           raise IllegalArgumentException.new
         end
@@ -337,24 +336,24 @@ module Java::Nio
       # its {@link #arrayOffset </code>array offset<code>} will be zero.  </p>
       # 
       # @param  array
-      # The array that will back the new buffer
+      #         The array that will back the new buffer
       # 
       # @param  offset
-      # The offset of the subarray to be used; must be non-negative and
-      # no larger than <tt>array.length</tt>.  The new buffer's position
-      # will be set to this value.
+      #         The offset of the subarray to be used; must be non-negative and
+      #         no larger than <tt>array.length</tt>.  The new buffer's position
+      #         will be set to this value.
       # 
       # @param  length
-      # The length of the subarray to be used;
-      # must be non-negative and no larger than
-      # <tt>array.length - offset</tt>.
-      # The new buffer's limit will be set to <tt>offset + length</tt>.
+      #         The length of the subarray to be used;
+      #         must be non-negative and no larger than
+      #         <tt>array.length - offset</tt>.
+      #         The new buffer's limit will be set to <tt>offset + length</tt>.
       # 
       # @return  The new float buffer
       # 
       # @throws  IndexOutOfBoundsException
-      # If the preconditions on the <tt>offset</tt> and <tt>length</tt>
-      # parameters do not hold
+      #          If the preconditions on the <tt>offset</tt> and <tt>length</tt>
+      #          parameters do not hold
       def wrap(array, offset, length)
         begin
           return HeapFloatBuffer.new(array, offset, length)
@@ -375,7 +374,7 @@ module Java::Nio
       # be zero.  </p>
       # 
       # @param  array
-      # The array that will back this buffer
+      #         The array that will back this buffer
       # 
       # @return  The new float buffer
       def wrap(array)
@@ -444,14 +443,13 @@ module Java::Nio
     
     typesig { [] }
     # -- Singleton get/put methods --
-    # 
     # Relative <i>get</i> method.  Reads the float at this buffer's
     # current position, and then increments the position. </p>
     # 
     # @return  The float at the buffer's current position
     # 
     # @throws  BufferUnderflowException
-    # If the buffer's current position is not smaller than its limit
+    #          If the buffer's current position is not smaller than its limit
     def get
       raise NotImplementedError
     end
@@ -463,15 +461,15 @@ module Java::Nio
     # position, and then increments the position. </p>
     # 
     # @param  f
-    # The float to be written
+    #         The float to be written
     # 
     # @return  This buffer
     # 
     # @throws  BufferOverflowException
-    # If this buffer's current position is not smaller than its limit
+    #          If this buffer's current position is not smaller than its limit
     # 
     # @throws  ReadOnlyBufferException
-    # If this buffer is read-only
+    #          If this buffer is read-only
     def put(f)
       raise NotImplementedError
     end
@@ -481,13 +479,13 @@ module Java::Nio
     # index. </p>
     # 
     # @param  index
-    # The index from which the float will be read
+    #         The index from which the float will be read
     # 
     # @return  The float at the given index
     # 
     # @throws  IndexOutOfBoundsException
-    # If <tt>index</tt> is negative
-    # or not smaller than the buffer's limit
+    #          If <tt>index</tt> is negative
+    #          or not smaller than the buffer's limit
     def get(index)
       raise NotImplementedError
     end
@@ -499,26 +497,25 @@ module Java::Nio
     # index. </p>
     # 
     # @param  index
-    # The index at which the float will be written
+    #         The index at which the float will be written
     # 
     # @param  f
-    # The float value to be written
+    #         The float value to be written
     # 
     # @return  This buffer
     # 
     # @throws  IndexOutOfBoundsException
-    # If <tt>index</tt> is negative
-    # or not smaller than the buffer's limit
+    #          If <tt>index</tt> is negative
+    #          or not smaller than the buffer's limit
     # 
     # @throws  ReadOnlyBufferException
-    # If this buffer is read-only
+    #          If this buffer is read-only
     def put(index, f)
       raise NotImplementedError
     end
     
     typesig { [Array.typed(::Java::Float), ::Java::Int, ::Java::Int] }
     # -- Bulk get operations --
-    # 
     # Relative bulk <i>get</i> method.
     # 
     # <p> This method transfers floats from this buffer into the given
@@ -538,34 +535,34 @@ module Java::Nio
     # the loop
     # 
     # <pre>
-    # for (int i = off; i < off + len; i++)
-    # dst[i] = src.get(); </pre>
+    #     for (int i = off; i < off + len; i++)
+    #         dst[i] = src.get(); </pre>
     # 
     # except that it first checks that there are sufficient floats in
     # this buffer and it is potentially much more efficient. </p>
     # 
     # @param  dst
-    # The array into which floats are to be written
+    #         The array into which floats are to be written
     # 
     # @param  offset
-    # The offset within the array of the first float to be
-    # written; must be non-negative and no larger than
-    # <tt>dst.length</tt>
+    #         The offset within the array of the first float to be
+    #         written; must be non-negative and no larger than
+    #         <tt>dst.length</tt>
     # 
     # @param  length
-    # The maximum number of floats to be written to the given
-    # array; must be non-negative and no larger than
-    # <tt>dst.length - offset</tt>
+    #         The maximum number of floats to be written to the given
+    #         array; must be non-negative and no larger than
+    #         <tt>dst.length - offset</tt>
     # 
     # @return  This buffer
     # 
     # @throws  BufferUnderflowException
-    # If there are fewer than <tt>length</tt> floats
-    # remaining in this buffer
+    #          If there are fewer than <tt>length</tt> floats
+    #          remaining in this buffer
     # 
     # @throws  IndexOutOfBoundsException
-    # If the preconditions on the <tt>offset</tt> and <tt>length</tt>
-    # parameters do not hold
+    #          If the preconditions on the <tt>offset</tt> and <tt>length</tt>
+    #          parameters do not hold
     def get(dst, offset, length)
       check_bounds(offset, length, dst.attr_length)
       if (length > remaining)
@@ -588,20 +585,19 @@ module Java::Nio
     # <tt>src.get(a)</tt> behaves in exactly the same way as the invocation
     # 
     # <pre>
-    # src.get(a, 0, a.length) </pre>
+    #     src.get(a, 0, a.length) </pre>
     # 
     # @return  This buffer
     # 
     # @throws  BufferUnderflowException
-    # If there are fewer than <tt>length</tt> floats
-    # remaining in this buffer
+    #          If there are fewer than <tt>length</tt> floats
+    #          remaining in this buffer
     def get(dst)
       return get(dst, 0, dst.attr_length)
     end
     
     typesig { [FloatBuffer] }
     # -- Bulk put operations --
-    # 
     # Relative bulk <i>put</i> method&nbsp;&nbsp;<i>(optional operation)</i>.
     # 
     # <p> This method transfers the floats remaining in the given source
@@ -620,27 +616,27 @@ module Java::Nio
     # <tt>dst.put(src)</tt> has exactly the same effect as the loop
     # 
     # <pre>
-    # while (src.hasRemaining())
-    # dst.put(src.get()); </pre>
+    #     while (src.hasRemaining())
+    #         dst.put(src.get()); </pre>
     # 
     # except that it first checks that there is sufficient space in this
     # buffer and it is potentially much more efficient. </p>
     # 
     # @param  src
-    # The source buffer from which floats are to be read;
-    # must not be this buffer
+    #         The source buffer from which floats are to be read;
+    #         must not be this buffer
     # 
     # @return  This buffer
     # 
     # @throws  BufferOverflowException
-    # If there is insufficient space in this buffer
-    # for the remaining floats in the source buffer
+    #          If there is insufficient space in this buffer
+    #          for the remaining floats in the source buffer
     # 
     # @throws  IllegalArgumentException
-    # If the source buffer is this buffer
+    #          If the source buffer is this buffer
     # 
     # @throws  ReadOnlyBufferException
-    # If this buffer is read-only
+    #          If this buffer is read-only
     def put(src)
       if ((src).equal?(self))
         raise IllegalArgumentException.new
@@ -677,35 +673,35 @@ module Java::Nio
     # the loop
     # 
     # <pre>
-    # for (int i = off; i < off + len; i++)
-    # dst.put(a[i]); </pre>
+    #     for (int i = off; i < off + len; i++)
+    #         dst.put(a[i]); </pre>
     # 
     # except that it first checks that there is sufficient space in this
     # buffer and it is potentially much more efficient. </p>
     # 
     # @param  src
-    # The array from which floats are to be read
+    #         The array from which floats are to be read
     # 
     # @param  offset
-    # The offset within the array of the first float to be read;
-    # must be non-negative and no larger than <tt>array.length</tt>
+    #         The offset within the array of the first float to be read;
+    #         must be non-negative and no larger than <tt>array.length</tt>
     # 
     # @param  length
-    # The number of floats to be read from the given array;
-    # must be non-negative and no larger than
-    # <tt>array.length - offset</tt>
+    #         The number of floats to be read from the given array;
+    #         must be non-negative and no larger than
+    #         <tt>array.length - offset</tt>
     # 
     # @return  This buffer
     # 
     # @throws  BufferOverflowException
-    # If there is insufficient space in this buffer
+    #          If there is insufficient space in this buffer
     # 
     # @throws  IndexOutOfBoundsException
-    # If the preconditions on the <tt>offset</tt> and <tt>length</tt>
-    # parameters do not hold
+    #          If the preconditions on the <tt>offset</tt> and <tt>length</tt>
+    #          parameters do not hold
     # 
     # @throws  ReadOnlyBufferException
-    # If this buffer is read-only
+    #          If this buffer is read-only
     def put(src, offset, length)
       check_bounds(offset, length, src.attr_length)
       if (length > remaining)
@@ -729,22 +725,21 @@ module Java::Nio
     # invocation
     # 
     # <pre>
-    # dst.put(a, 0, a.length) </pre>
+    #     dst.put(a, 0, a.length) </pre>
     # 
     # @return  This buffer
     # 
     # @throws  BufferOverflowException
-    # If there is insufficient space in this buffer
+    #          If there is insufficient space in this buffer
     # 
     # @throws  ReadOnlyBufferException
-    # If this buffer is read-only
+    #          If this buffer is read-only
     def put(src)
       return put(src, 0, src.attr_length)
     end
     
     typesig { [] }
     # -- Other stuff --
-    # 
     # Tells whether or not this buffer is backed by an accessible float
     # array.
     # 
@@ -753,7 +748,7 @@ module Java::Nio
     # </p>
     # 
     # @return  <tt>true</tt> if, and only if, this buffer
-    # is backed by an array and is not read-only
+    #          is backed by an array and is not read-only
     def has_array
       return (!(@hb).nil?) && !@is_read_only
     end
@@ -772,10 +767,10 @@ module Java::Nio
     # @return  The array that backs this buffer
     # 
     # @throws  ReadOnlyBufferException
-    # If this buffer is backed by an array but is read-only
+    #          If this buffer is backed by an array but is read-only
     # 
     # @throws  UnsupportedOperationException
-    # If this buffer is not backed by an accessible array
+    #          If this buffer is not backed by an accessible array
     def array
       if ((@hb).nil?)
         raise UnsupportedOperationException.new
@@ -798,13 +793,13 @@ module Java::Nio
     # array.  </p>
     # 
     # @return  The offset within this buffer's array
-    # of the first element of the buffer
+    #          of the first element of the buffer
     # 
     # @throws  ReadOnlyBufferException
-    # If this buffer is backed by an array but is read-only
+    #          If this buffer is backed by an array but is read-only
     # 
     # @throws  UnsupportedOperationException
-    # If this buffer is not backed by an accessible array
+    #          If this buffer is not backed by an accessible array
     def array_offset
       if ((@hb).nil?)
         raise UnsupportedOperationException.new
@@ -852,7 +847,7 @@ module Java::Nio
     # @return  This buffer
     # 
     # @throws  ReadOnlyBufferException
-    # If this buffer is read-only
+    #          If this buffer is read-only
     def compact
       raise NotImplementedError
     end
@@ -899,7 +894,7 @@ module Java::Nio
       p = position
       i = limit - 1
       while i >= p
-        h = 31 * h + RJava.cast_to_int(get(i))
+        h = 31 * h + (get(i)).to_int
         i -= 1
       end
       return h
@@ -912,14 +907,14 @@ module Java::Nio
     # 
     # <p><ol>
     # 
-    # <li><p> They have the same element type,  </p></li>
+    #   <li><p> They have the same element type,  </p></li>
     # 
-    # <li><p> They have the same number of remaining elements, and
-    # </p></li>
+    #   <li><p> They have the same number of remaining elements, and
+    #   </p></li>
     # 
-    # <li><p> The two sequences of remaining elements, considered
-    # independently of their starting positions, are pointwise equal.
-    # </p></li>
+    #   <li><p> The two sequences of remaining elements, considered
+    #   independently of their starting positions, are pointwise equal.
+    #   </p></li>
     # 
     # </ol>
     # 
@@ -928,7 +923,7 @@ module Java::Nio
     # @param  ob  The object to which this buffer is to be compared
     # 
     # @return  <tt>true</tt> if, and only if, this buffer is equal to the
-    # given object
+    #           given object
     def ==(ob)
       if ((self).equal?(ob))
         return true
@@ -971,7 +966,7 @@ module Java::Nio
     # <p> A float buffer is not comparable to any other type of object.
     # 
     # @return  A negative integer, zero, or a positive integer as this buffer
-    # is less than, equal to, or greater than the given buffer
+    #          is less than, equal to, or greater than the given buffer
     def compare_to(that)
       n = self.position + Math.min(self.remaining, that.remaining)
       i = self.position
@@ -1003,7 +998,6 @@ module Java::Nio
     typesig { [] }
     # -- Other char stuff --
     # -- Other byte stuff: Access to binary data --
-    # 
     # Retrieves this buffer's byte order.
     # 
     # <p> The byte order of a float buffer created by allocation or by

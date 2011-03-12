@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5::Internal
@@ -50,12 +48,12 @@ module Sun::Security::Krb5::Internal
   # 
   # <xmp>
   # HostAddresses   -- NOTE: subtly different from rfc1510,
-  # -- but has a value mapping and encodes the same
-  # ::= SEQUENCE OF HostAddress
+  #                 -- but has a value mapping and encodes the same
+  #         ::= SEQUENCE OF HostAddress
   # 
   # HostAddress     ::= SEQUENCE  {
-  # addr-type       [0] Int32,
-  # address         [1] OCTET STRING
+  #         addr-type       [0] Int32,
+  #         address         [1] OCTET STRING
   # }
   # </xmp>
   # 

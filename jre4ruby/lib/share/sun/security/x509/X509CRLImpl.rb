@@ -59,9 +59,9 @@ module Sun::Security::X509
   # The X.509 v2 CRL format is described below in ASN.1:
   # <pre>
   # CertificateList  ::=  SEQUENCE  {
-  # tbsCertList          TBSCertList,
-  # signatureAlgorithm   AlgorithmIdentifier,
-  # signature            BIT STRING  }
+  #     tbsCertList          TBSCertList,
+  #     signatureAlgorithm   AlgorithmIdentifier,
+  #     signature            BIT STRING  }
   # </pre>
   # More information can be found in
   # <a href="http://www.ietf.org/rfc/rfc3280.txt">RFC 3280: Internet X.509
@@ -70,21 +70,21 @@ module Sun::Security::X509
   # The ASN.1 definition of <code>tbsCertList</code> is:
   # <pre>
   # TBSCertList  ::=  SEQUENCE  {
-  # version                 Version OPTIONAL,
-  # -- if present, must be v2
-  # signature               AlgorithmIdentifier,
-  # issuer                  Name,
-  # thisUpdate              ChoiceOfTime,
-  # nextUpdate              ChoiceOfTime OPTIONAL,
-  # revokedCertificates     SEQUENCE OF SEQUENCE  {
-  # userCertificate         CertificateSerialNumber,
-  # revocationDate          ChoiceOfTime,
-  # crlEntryExtensions      Extensions OPTIONAL
-  # -- if present, must be v2
-  # }  OPTIONAL,
-  # crlExtensions           [0]  EXPLICIT Extensions OPTIONAL
-  # -- if present, must be v2
-  # }
+  #     version                 Version OPTIONAL,
+  #                             -- if present, must be v2
+  #     signature               AlgorithmIdentifier,
+  #     issuer                  Name,
+  #     thisUpdate              ChoiceOfTime,
+  #     nextUpdate              ChoiceOfTime OPTIONAL,
+  #     revokedCertificates     SEQUENCE OF SEQUENCE  {
+  #         userCertificate         CertificateSerialNumber,
+  #         revocationDate          ChoiceOfTime,
+  #         crlEntryExtensions      Extensions OPTIONAL
+  #                                 -- if present, must be v2
+  #         }  OPTIONAL,
+  #     crlExtensions           [0]  EXPLICIT Extensions OPTIONAL
+  #                                  -- if present, must be v2
+  #     }
   # </pre>
   # 
   # @author Hemma Prafullchandra
@@ -765,8 +765,8 @@ module Sun::Security::X509
     # The ASN.1 definition for this is:
     # <pre>
     # Version  ::=  INTEGER  {  v1(0), v2(1), v3(2)  }
-    # -- v3 does not apply to CRLs but appears for consistency
-    # -- with definition of Version for certs
+    #             -- v3 does not apply to CRLs but appears for consistency
+    #             -- with definition of Version for certs
     # </pre>
     # @return the version number, i.e. 1 or 2.
     def get_version
@@ -785,11 +785,11 @@ module Sun::Security::X509
     # Name ::= CHOICE { RDNSequence }
     # RDNSequence ::= SEQUENCE OF RelativeDistinguishedName
     # RelativeDistinguishedName ::=
-    # SET OF AttributeValueAssertion
+    #     SET OF AttributeValueAssertion
     # 
     # AttributeValueAssertion ::= SEQUENCE {
-    # AttributeType,
-    # AttributeValue }
+    #                               AttributeType,
+    #                               AttributeValue }
     # AttributeType ::= OBJECT IDENTIFIER
     # AttributeValue ::= ANY
     # </pre>
@@ -910,11 +910,11 @@ module Sun::Security::X509
     # The ASN.1 definition for this is:
     # <pre>
     # AlgorithmIdentifier  ::=  SEQUENCE  {
-    # algorithm               OBJECT IDENTIFIER,
-    # parameters              ANY DEFINED BY algorithm OPTIONAL  }
-    # -- contains a value of the type
-    # -- registered for use with the
-    # -- algorithm object identifier value
+    #     algorithm               OBJECT IDENTIFIER,
+    #     parameters              ANY DEFINED BY algorithm OPTIONAL  }
+    #                             -- contains a value of the type
+    #                             -- registered for use with the
+    #                             -- algorithm object identifier value
     # </pre>
     # 
     # @return the signature algorithm name.
@@ -952,7 +952,7 @@ module Sun::Security::X509
     # supplied with the Public Key.
     # 
     # @return the DER encoded signature algorithm parameters, or
-    # null if no parameters are present.
+    #         null if no parameters are present.
     def get_sig_alg_params
       if ((@sig_alg_id).nil?)
         return nil
@@ -968,7 +968,7 @@ module Sun::Security::X509
     # return the AuthorityKeyIdentifier, if any.
     # 
     # @returns AuthorityKeyIdentifier or null
-    # (if no AuthorityKeyIdentifierExtension)
+    #          (if no AuthorityKeyIdentifierExtension)
     # @throws IOException on error
     def get_auth_key_id
       aki = get_auth_key_id_extension
@@ -1054,7 +1054,7 @@ module Sun::Security::X509
     # return the IssuingDistributionPointExtension, if any.
     # 
     # @returns IssuingDistributionPointExtension or null
-    # (if no such extension)
+    #          (if no such extension)
     # @throws IOException on error
     def get_issuing_distribution_point_extension
       obj = get_extension(PKIXExtensions::IssuingDistributionPoint_Id)
@@ -1345,7 +1345,7 @@ module Sun::Security::X509
     # @param entry the entry to check
     # @param prevCertIssuer the previous entry's certificate issuer
     # @return the X500Principal in a CertificateIssuerExtension, or
-    # prevCertIssuer if it does not exist
+    #   prevCertIssuer if it does not exist
     def get_cert_issuer(entry, prev_cert_issuer)
       ci_ext = entry.get_certificate_issuer_extension
       if (!(ci_ext).nil?)

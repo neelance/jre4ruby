@@ -44,11 +44,11 @@ module Java::Security::Spec
   # where
   # <pre>
   # OAEP-PSSDigestAlgorithms    ALGORITHM-IDENTIFIER ::= {
-  # { OID id-sha1 PARAMETERS NULL   }|
-  # { OID id-sha256 PARAMETERS NULL }|
-  # { OID id-sha384 PARAMETERS NULL }|
-  # { OID id-sha512 PARAMETERS NULL },
-  # ...  -- Allows for future expansion --
+  #   { OID id-sha1 PARAMETERS NULL   }|
+  #   { OID id-sha256 PARAMETERS NULL }|
+  #   { OID id-sha384 PARAMETERS NULL }|
+  #   { OID id-sha512 PARAMETERS NULL },
+  #   ...  -- Allows for future expansion --
   # }
   # </pre>
   # @see PSSParameterSpec

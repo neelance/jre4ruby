@@ -304,17 +304,17 @@ module Java::Security
     # <code>KeyStore.LoadStoreParmeter</code>.
     # 
     # @param param the <code>KeyStore.LoadStoreParmeter</code>
-    # that specifies how to store the keystore,
-    # which may be <code>null</code>
+    #          that specifies how to store the keystore,
+    #          which may be <code>null</code>
     # 
     # @exception IllegalArgumentException if the given
-    # <code>KeyStore.LoadStoreParmeter</code>
-    # input is not recognized
+    #          <code>KeyStore.LoadStoreParmeter</code>
+    #          input is not recognized
     # @exception IOException if there was an I/O problem with data
     # @exception NoSuchAlgorithmException if the appropriate data integrity
-    # algorithm could not be found
+    #          algorithm could not be found
     # @exception CertificateException if any of the certificates included in
-    # the keystore data could not be stored
+    #          the keystore data could not be stored
     # 
     # @since 1.5
     def engine_store(param)
@@ -358,22 +358,22 @@ module Java::Security
     # reinitialized and loaded again from the given parameter.
     # 
     # @param param the <code>KeyStore.LoadStoreParameter</code>
-    # that specifies how to load the keystore,
-    # which may be <code>null</code>
+    #          that specifies how to load the keystore,
+    #          which may be <code>null</code>
     # 
     # @exception IllegalArgumentException if the given
-    # <code>KeyStore.LoadStoreParameter</code>
-    # input is not recognized
+    #          <code>KeyStore.LoadStoreParameter</code>
+    #          input is not recognized
     # @exception IOException if there is an I/O or format problem with the
-    # keystore data. If the error is due to an incorrect
-    # <code>ProtectionParameter</code> (e.g. wrong password)
-    # the {@link Throwable#getCause cause} of the
-    # <code>IOException</code> should be an
-    # <code>UnrecoverableKeyException</code>
+    #          keystore data. If the error is due to an incorrect
+    #         <code>ProtectionParameter</code> (e.g. wrong password)
+    #         the {@link Throwable#getCause cause} of the
+    #         <code>IOException</code> should be an
+    #         <code>UnrecoverableKeyException</code>
     # @exception NoSuchAlgorithmException if the algorithm used to check
-    # the integrity of the keystore cannot be found
+    #          the integrity of the keystore cannot be found
     # @exception CertificateException if any of the certificates in the
-    # keystore could not be loaded
+    #          keystore could not be loaded
     # 
     # @since 1.5
     def engine_load(param)
@@ -416,21 +416,21 @@ module Java::Security
     # 
     # @param alias get the <code>KeyStore.Entry</code> for this alias
     # @param protParam the <code>ProtectionParameter</code>
-    # used to protect the <code>Entry</code>,
-    # which may be <code>null</code>
+    #          used to protect the <code>Entry</code>,
+    #          which may be <code>null</code>
     # 
     # @return the <code>KeyStore.Entry</code> for the specified alias,
-    # or <code>null</code> if there is no such entry
+    #          or <code>null</code> if there is no such entry
     # 
     # @exception KeyStoreException if the operation failed
     # @exception NoSuchAlgorithmException if the algorithm for recovering the
-    # entry cannot be found
+    #          entry cannot be found
     # @exception UnrecoverableEntryException if the specified
-    # <code>protParam</code> were insufficient or invalid
+    #          <code>protParam</code> were insufficient or invalid
     # @exception UnrecoverableKeyException if the entry is a
-    # <code>PrivateKeyEntry</code> or <code>SecretKeyEntry</code>
-    # and the specified <code>protParam</code> does not contain
-    # the information needed to recover the key (e.g. wrong password)
+    #          <code>PrivateKeyEntry</code> or <code>SecretKeyEntry</code>
+    #          and the specified <code>protParam</code> does not contain
+    #          the information needed to recover the key (e.g. wrong password)
     # 
     # @since 1.5
     def engine_get_entry(alias_, prot_param)
@@ -477,8 +477,8 @@ module Java::Security
     # @param alias save the <code>KeyStore.Entry</code> under this alias
     # @param entry the <code>Entry</code> to save
     # @param protParam the <code>ProtectionParameter</code>
-    # used to protect the <code>Entry</code>,
-    # which may be <code>null</code>
+    #          used to protect the <code>Entry</code>,
+    #          which may be <code>null</code>
     # 
     # @exception KeyStoreException if this operation fails
     # 
@@ -535,8 +535,8 @@ module Java::Security
     # @param entryClass the entry class
     # 
     # @return true if the keystore <code>Entry</code> for the specified
-    # <code>alias</code> is an instance or subclass of the
-    # specified <code>entryClass</code>, false otherwise
+    #          <code>alias</code> is an instance or subclass of the
+    #          specified <code>entryClass</code>, false otherwise
     # 
     # @since 1.5
     def engine_entry_instance_of(alias_, entry_class)

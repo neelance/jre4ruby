@@ -58,12 +58,12 @@ module Java::Lang
   # occurs:
   # <ul>
   # <li>The <code>exit</code> method of class <code>Runtime</code> has been
-  # called and the security manager has permitted the exit operation
-  # to take place.
+  #     called and the security manager has permitted the exit operation
+  #     to take place.
   # <li>All threads that are not daemon threads have died, either by
-  # returning from the call to the <code>run</code> method or by
-  # throwing an exception that propagates beyond the <code>run</code>
-  # method.
+  #     returning from the call to the <code>run</code> method or by
+  #     throwing an exception that propagates beyond the <code>run</code>
+  #     method.
   # </ul>
   # <p>
   # There are two ways to create a new thread of execution. One is to
@@ -73,23 +73,23 @@ module Java::Lang
   # allocated and started. For example, a thread that computes primes
   # larger than a stated value could be written as follows:
   # <p><hr><blockquote><pre>
-  # class PrimeThread extends Thread {
-  # long minPrime;
-  # PrimeThread(long minPrime) {
-  # this.minPrime = minPrime;
-  # }
+  #     class PrimeThread extends Thread {
+  #         long minPrime;
+  #         PrimeThread(long minPrime) {
+  #             this.minPrime = minPrime;
+  #         }
   # 
-  # public void run() {
-  # // compute primes larger than minPrime
-  # &nbsp;.&nbsp;.&nbsp;.
-  # }
-  # }
+  #         public void run() {
+  #             // compute primes larger than minPrime
+  #             &nbsp;.&nbsp;.&nbsp;.
+  #         }
+  #     }
   # </pre></blockquote><hr>
   # <p>
   # The following code would then create a thread and start it running:
   # <p><blockquote><pre>
-  # PrimeThread p = new PrimeThread(143);
-  # p.start();
+  #     PrimeThread p = new PrimeThread(143);
+  #     p.start();
   # </pre></blockquote>
   # <p>
   # The other way to create a thread is to declare a class that
@@ -99,23 +99,23 @@ module Java::Lang
   # <code>Thread</code>, and started. The same example in this other
   # style looks like the following:
   # <p><hr><blockquote><pre>
-  # class PrimeRun implements Runnable {
-  # long minPrime;
-  # PrimeRun(long minPrime) {
-  # this.minPrime = minPrime;
-  # }
+  #     class PrimeRun implements Runnable {
+  #         long minPrime;
+  #         PrimeRun(long minPrime) {
+  #             this.minPrime = minPrime;
+  #         }
   # 
-  # public void run() {
-  # // compute primes larger than minPrime
-  # &nbsp;.&nbsp;.&nbsp;.
-  # }
-  # }
+  #         public void run() {
+  #             // compute primes larger than minPrime
+  #             &nbsp;.&nbsp;.&nbsp;.
+  #         }
+  #     }
   # </pre></blockquote><hr>
   # <p>
   # The following code would then create a thread and start it running:
   # <p><blockquote><pre>
-  # PrimeRun p = new PrimeRun(143);
-  # new Thread(p).start();
+  #     PrimeRun p = new PrimeRun(143);
+  #     new Thread(p).start();
   # </pre></blockquote>
   # <p>
   # Every thread has a name for identification purposes. More than
@@ -397,8 +397,8 @@ module Java::Lang
       # 
       # @param      millis   the length of time to sleep in milliseconds.
       # @exception  InterruptedException if any thread has interrupted
-      # the current thread.  The <i>interrupted status</i> of the
-      # current thread is cleared when this exception is thrown.
+      #             the current thread.  The <i>interrupted status</i> of the
+      #             current thread is cleared when this exception is thrown.
       # @see        Object#notify()
       def sleep(millis)
         JNI.call_native_method(:Java_java_lang_Thread_sleep, JNI.env, self.jni_id, millis.to_int)
@@ -414,11 +414,11 @@ module Java::Lang
       # @param      millis   the length of time to sleep in milliseconds.
       # @param      nanos    0-999999 additional nanoseconds to sleep.
       # @exception  IllegalArgumentException  if the value of millis is
-      # negative or the value of nanos is not in the range
-      # 0-999999.
+      #             negative or the value of nanos is not in the range
+      #             0-999999.
       # @exception  InterruptedException if any thread has interrupted
-      # the current thread.  The <i>interrupted status</i> of the
-      # current thread is cleared when this exception is thrown.
+      #             the current thread.  The <i>interrupted status</i> of the
+      #             current thread is cleared when this exception is thrown.
       # @see        Object#notify()
       def sleep(millis, nanos)
         if (millis < 0)
@@ -441,7 +441,7 @@ module Java::Lang
     # @param target the object whose run() method gets called
     # @param name the name of the new Thread
     # @param stackSize the desired stack size for the new thread, or
-    # zero to indicate that this parameter is to be ignored.
+    #        zero to indicate that this parameter is to be ignored.
     def init(g, target, name, stack_size)
       parent = current_thread
       security = System.get_security_manager
@@ -570,7 +570,7 @@ module Java::Lang
     # @param      group    the thread group.
     # @param      target   the object whose <code>run</code> method is called.
     # @exception  SecurityException  if the current thread cannot create a
-    # thread in the specified thread group.
+    #             thread in the specified thread group.
     # @see        #Thread(ThreadGroup, Runnable, String)
     def initialize(group, target)
       @name = nil
@@ -639,7 +639,7 @@ module Java::Lang
     # @param      group   the thread group.
     # @param      name    the name of the new thread.
     # @exception  SecurityException  if the current thread cannot create a
-    # thread in the specified thread group.
+    #               thread in the specified thread group.
     # @see        #Thread(ThreadGroup, Runnable, String)
     def initialize(group, name)
       @name = nil
@@ -747,8 +747,8 @@ module Java::Lang
     # @param      target   the object whose <code>run</code> method is called.
     # @param      name     the name of the new thread.
     # @exception  SecurityException  if the current thread cannot create a
-    # thread in the specified thread group or cannot
-    # override the context class loader methods.
+    #               thread in the specified thread group or cannot
+    #               override the context class loader methods.
     # @see        Runnable#run()
     # @see        #run()
     # @see        #setDaemon(boolean)
@@ -834,9 +834,9 @@ module Java::Lang
     # @param      target   the object whose <code>run</code> method is called.
     # @param      name     the name of the new thread.
     # @param      stackSize the desired stack size for the new thread, or
-    # zero to indicate that this parameter is to be ignored.
+    #             zero to indicate that this parameter is to be ignored.
     # @exception  SecurityException  if the current thread cannot create a
-    # thread in the specified thread group.
+    #               thread in the specified thread group.
     # @since 1.4
     def initialize(group, target, name, stack_size)
       @name = nil
@@ -879,7 +879,7 @@ module Java::Lang
     # execution.
     # 
     # @exception  IllegalThreadStateException  if the thread was already
-    # started.
+    #               started.
     # @see        #run()
     # @see        #stop()
     def start
@@ -979,7 +979,7 @@ module Java::Lang
     # <code>ThreadDeath</code>.
     # 
     # @exception  SecurityException  if the current thread cannot
-    # modify this thread.
+    #               modify this thread.
     # @see        #interrupt()
     # @see        #checkAccess()
     # @see        #run()
@@ -989,23 +989,23 @@ module Java::Lang
     # @see        SecurityManager#checkAccess(Thread)
     # @see        SecurityManager#checkPermission
     # @deprecated This method is inherently unsafe.  Stopping a thread with
-    # Thread.stop causes it to unlock all of the monitors that it
-    # has locked (as a natural consequence of the unchecked
-    # <code>ThreadDeath</code> exception propagating up the stack).  If
-    # any of the objects previously protected by these monitors were in
-    # an inconsistent state, the damaged objects become visible to
-    # other threads, potentially resulting in arbitrary behavior.  Many
-    # uses of <code>stop</code> should be replaced by code that simply
-    # modifies some variable to indicate that the target thread should
-    # stop running.  The target thread should check this variable
-    # regularly, and return from its run method in an orderly fashion
-    # if the variable indicates that it is to stop running.  If the
-    # target thread waits for long periods (on a condition variable,
-    # for example), the <code>interrupt</code> method should be used to
-    # interrupt the wait.
-    # For more information, see
-    # <a href="{@docRoot}/../technotes/guides/concurrency/threadPrimitiveDeprecation.html">Why
-    # are Thread.stop, Thread.suspend and Thread.resume Deprecated?</a>.
+    #       Thread.stop causes it to unlock all of the monitors that it
+    #       has locked (as a natural consequence of the unchecked
+    #       <code>ThreadDeath</code> exception propagating up the stack).  If
+    #       any of the objects previously protected by these monitors were in
+    #       an inconsistent state, the damaged objects become visible to
+    #       other threads, potentially resulting in arbitrary behavior.  Many
+    #       uses of <code>stop</code> should be replaced by code that simply
+    #       modifies some variable to indicate that the target thread should
+    #       stop running.  The target thread should check this variable
+    #       regularly, and return from its run method in an orderly fashion
+    #       if the variable indicates that it is to stop running.  If the
+    #       target thread waits for long periods (on a condition variable,
+    #       for example), the <code>interrupt</code> method should be used to
+    #       interrupt the wait.
+    #       For more information, see
+    #       <a href="{@docRoot}/../technotes/guides/concurrency/threadPrimitiveDeprecation.html">Why
+    #       are Thread.stop, Thread.suspend and Thread.resume Deprecated?</a>.
     def stop
       # If the thread is already dead, return.
       # A zero status value corresponds to "NEW".
@@ -1045,7 +1045,7 @@ module Java::Lang
     # 
     # @param      obj   the Throwable object to be thrown.
     # @exception  SecurityException  if the current thread cannot modify
-    # this thread.
+    #               this thread.
     # @throws     NullPointerException if obj is <tt>null</tt>.
     # @see        #interrupt()
     # @see        #checkAccess()
@@ -1055,14 +1055,14 @@ module Java::Lang
     # @see        SecurityManager#checkAccess(Thread)
     # @see        SecurityManager#checkPermission
     # @deprecated This method is inherently unsafe.  See {@link #stop()}
-    # for details.  An additional danger of this
-    # method is that it may be used to generate exceptions that the
-    # target thread is unprepared to handle (including checked
-    # exceptions that the thread could not possibly throw, were it
-    # not for this method).
-    # For more information, see
-    # <a href="{@docRoot}/../technotes/guides/concurrency/threadPrimitiveDeprecation.html">Why
-    # are Thread.stop, Thread.suspend and Thread.resume Deprecated?</a>.
+    #        for details.  An additional danger of this
+    #        method is that it may be used to generate exceptions that the
+    #        target thread is unprepared to handle (including checked
+    #        exceptions that the thread could not possibly throw, were it
+    #        not for this method).
+    #        For more information, see
+    #        <a href="{@docRoot}/../technotes/guides/concurrency/threadPrimitiveDeprecation.html">Why
+    #        are Thread.stop, Thread.suspend and Thread.resume Deprecated?</a>.
     def stop(obj)
       synchronized(self) do
         stop1(obj)
@@ -1130,7 +1130,7 @@ module Java::Lang
     # <p> Interrupting a thread that is not alive need not have any effect.
     # 
     # @throws  SecurityException
-    # if the current thread cannot modify this thread
+    #          if the current thread cannot modify this thread
     # 
     # @revised 6.0
     # @spec JSR-51
@@ -1163,7 +1163,7 @@ module Java::Lang
       # returning false.
       # 
       # @return  <code>true</code> if the current thread has been interrupted;
-      # <code>false</code> otherwise.
+      #          <code>false</code> otherwise.
       # @see #isInterrupted()
       # @revised 6.0
       def interrupted
@@ -1180,7 +1180,7 @@ module Java::Lang
     # returning false.
     # 
     # @return  <code>true</code> if this thread has been interrupted;
-    # <code>false</code> otherwise.
+    #          <code>false</code> otherwise.
     # @see     #interrupted()
     # @revised 6.0
     def is_interrupted
@@ -1200,17 +1200,17 @@ module Java::Lang
     # Throws {@link NoSuchMethodError}.
     # 
     # @deprecated This method was originally designed to destroy this
-    # thread without any cleanup. Any monitors it held would have
-    # remained locked. However, the method was never implemented.
-    # If if were to be implemented, it would be deadlock-prone in
-    # much the manner of {@link #suspend}. If the target thread held
-    # a lock protecting a critical system resource when it was
-    # destroyed, no thread could ever access this resource again.
-    # If another thread ever attempted to lock this resource, deadlock
-    # would result. Such deadlocks typically manifest themselves as
-    # "frozen" processes. For more information, see
-    # <a href="{@docRoot}/../technotes/guides/concurrency/threadPrimitiveDeprecation.html">
-    # Why are Thread.stop, Thread.suspend and Thread.resume Deprecated?</a>.
+    #     thread without any cleanup. Any monitors it held would have
+    #     remained locked. However, the method was never implemented.
+    #     If if were to be implemented, it would be deadlock-prone in
+    #     much the manner of {@link #suspend}. If the target thread held
+    #     a lock protecting a critical system resource when it was
+    #     destroyed, no thread could ever access this resource again.
+    #     If another thread ever attempted to lock this resource, deadlock
+    #     would result. Such deadlocks typically manifest themselves as
+    #     "frozen" processes. For more information, see
+    #     <a href="{@docRoot}/../technotes/guides/concurrency/threadPrimitiveDeprecation.html">
+    #     Why are Thread.stop, Thread.suspend and Thread.resume Deprecated?</a>.
     # @throws NoSuchMethodError always
     def destroy
       raise NoSuchMethodError.new
@@ -1222,7 +1222,7 @@ module Java::Lang
     # been started and has not yet died.
     # 
     # @return  <code>true</code> if this thread is alive;
-    # <code>false</code> otherwise.
+    #          <code>false</code> otherwise.
     def is_alive
       JNI.call_native_method(:Java_java_lang_Thread_isAlive, JNI.env, self.jni_id) != 0
     end
@@ -1238,18 +1238,18 @@ module Java::Lang
     # progress unless and until it is resumed.
     # 
     # @exception  SecurityException  if the current thread cannot modify
-    # this thread.
+    #               this thread.
     # @see #checkAccess
     # @deprecated   This method has been deprecated, as it is
-    # inherently deadlock-prone.  If the target thread holds a lock on the
-    # monitor protecting a critical system resource when it is suspended, no
-    # thread can access this resource until the target thread is resumed. If
-    # the thread that would resume the target thread attempts to lock this
-    # monitor prior to calling <code>resume</code>, deadlock results.  Such
-    # deadlocks typically manifest themselves as "frozen" processes.
-    # For more information, see
-    # <a href="{@docRoot}/../technotes/guides/concurrency/threadPrimitiveDeprecation.html">Why
-    # are Thread.stop, Thread.suspend and Thread.resume Deprecated?</a>.
+    #   inherently deadlock-prone.  If the target thread holds a lock on the
+    #   monitor protecting a critical system resource when it is suspended, no
+    #   thread can access this resource until the target thread is resumed. If
+    #   the thread that would resume the target thread attempts to lock this
+    #   monitor prior to calling <code>resume</code>, deadlock results.  Such
+    #   deadlocks typically manifest themselves as "frozen" processes.
+    #   For more information, see
+    #   <a href="{@docRoot}/../technotes/guides/concurrency/threadPrimitiveDeprecation.html">Why
+    #   are Thread.stop, Thread.suspend and Thread.resume Deprecated?</a>.
     def suspend
       check_access
       suspend0
@@ -1266,14 +1266,14 @@ module Java::Lang
     # permitted to make progress in its execution.
     # 
     # @exception  SecurityException  if the current thread cannot modify this
-    # thread.
+    #               thread.
     # @see        #checkAccess
     # @see        #suspend()
     # @deprecated This method exists solely for use with {@link #suspend},
-    # which has been deprecated because it is deadlock-prone.
-    # For more information, see
-    # <a href="{@docRoot}/../technotes/guides/concurrency/threadPrimitiveDeprecation.html">Why
-    # are Thread.stop, Thread.suspend and Thread.resume Deprecated?</a>.
+    #     which has been deprecated because it is deadlock-prone.
+    #     For more information, see
+    #     <a href="{@docRoot}/../technotes/guides/concurrency/threadPrimitiveDeprecation.html">Why
+    #     are Thread.stop, Thread.suspend and Thread.resume Deprecated?</a>.
     def resume
       check_access
       resume0
@@ -1292,10 +1292,10 @@ module Java::Lang
     # 
     # @param newPriority priority to set this thread to
     # @exception  IllegalArgumentException  If the priority is not in the
-    # range <code>MIN_PRIORITY</code> to
-    # <code>MAX_PRIORITY</code>.
+    #               range <code>MIN_PRIORITY</code> to
+    #               <code>MAX_PRIORITY</code>.
     # @exception  SecurityException  if the current thread cannot modify
-    # this thread.
+    #               this thread.
     # @see        #getPriority
     # @see        #checkAccess()
     # @see        #getThreadGroup()
@@ -1335,7 +1335,7 @@ module Java::Lang
     # 
     # @param      name   the new name for this thread.
     # @exception  SecurityException  if the current thread cannot modify this
-    # thread.
+    #               thread.
     # @see        #getName
     # @see        #checkAccess()
     def set_name(name)
@@ -1368,7 +1368,7 @@ module Java::Lang
       # group.
       # 
       # @return  the number of active threads in the current thread's thread
-      # group.
+      #          group.
       def active_count
         return current_thread.get_thread_group.active_count
       end
@@ -1388,7 +1388,7 @@ module Java::Lang
       # @param tarray an array of Thread objects to copy to
       # @return  the number of threads put into the array
       # @exception  SecurityException  if a security manager exists and its
-      # <code>checkAccess</code> method doesn't allow the operation.
+      #             <code>checkAccess</code> method doesn't allow the operation.
       # @see     ThreadGroup#enumerate(Thread[])
       # @see     SecurityManager#checkAccess(ThreadGroup)
       def enumerate(tarray)
@@ -1403,10 +1403,10 @@ module Java::Lang
     # 
     # @return     the number of stack frames in this thread.
     # @exception  IllegalThreadStateException  if this thread is not
-    # suspended.
+    #             suspended.
     # @deprecated The definition of this call depends on {@link #suspend},
-    # which is deprecated.  Further, the results of this call
-    # were never well-defined.
+    #             which is deprecated.  Further, the results of this call
+    #             were never well-defined.
     def count_stack_frames
       JNI.call_native_method(:Java_java_lang_Thread_countStackFrames, JNI.env, self.jni_id)
     end
@@ -1417,8 +1417,8 @@ module Java::Lang
     # 
     # @param      millis   the time to wait in milliseconds.
     # @exception  InterruptedException if any thread has interrupted
-    # the current thread.  The <i>interrupted status</i> of the
-    # current thread is cleared when this exception is thrown.
+    #             the current thread.  The <i>interrupted status</i> of the
+    #             current thread is cleared when this exception is thrown.
     def join(millis)
       synchronized(self) do
         base = System.current_time_millis
@@ -1450,10 +1450,10 @@ module Java::Lang
     # @param      millis   the time to wait in milliseconds.
     # @param      nanos    0-999999 additional nanoseconds to wait.
     # @exception  IllegalArgumentException  if the value of millis is negative
-    # the value of nanos is not in the range 0-999999.
+    #               the value of nanos is not in the range 0-999999.
     # @exception  InterruptedException if any thread has interrupted
-    # the current thread.  The <i>interrupted status</i> of the
-    # current thread is cleared when this exception is thrown.
+    #             the current thread.  The <i>interrupted status</i> of the
+    #             current thread is cleared when this exception is thrown.
     def join(millis, nanos)
       synchronized(self) do
         if (millis < 0)
@@ -1473,8 +1473,8 @@ module Java::Lang
     # Waits for this thread to die.
     # 
     # @exception  InterruptedException if any thread has interrupted
-    # the current thread.  The <i>interrupted status</i> of the
-    # current thread is cleared when this exception is thrown.
+    #             the current thread.  The <i>interrupted status</i> of the
+    #             current thread is cleared when this exception is thrown.
     def join
       join(0)
     end
@@ -1496,17 +1496,17 @@ module Java::Lang
     # daemon threads.
     # <p>
     # This method must be called before the thread is started.
-    # <p>
+    #  <p>
     # This method first calls the <code>checkAccess</code> method
     # of this thread
     # with no arguments. This may result in throwing a
     # <code>SecurityException </code>(in the current thread).
     # 
     # @param      on   if <code>true</code>, marks this thread as a
-    # daemon thread.
+    #                  daemon thread.
     # @exception  IllegalThreadStateException  if this thread is active.
     # @exception  SecurityException  if the current thread cannot modify
-    # this thread.
+    #               this thread.
     # @see        #isDaemon()
     # @see        #checkAccess
     def set_daemon(on)
@@ -1521,7 +1521,7 @@ module Java::Lang
     # Tests if this thread is a daemon thread.
     # 
     # @return  <code>true</code> if this thread is a daemon thread;
-    # <code>false</code> otherwise.
+    #          <code>false</code> otherwise.
     # @see     #setDaemon(boolean)
     def is_daemon
       return @daemon
@@ -1536,7 +1536,7 @@ module Java::Lang
     # throwing a <code>SecurityException</code>.
     # 
     # @exception  SecurityException  if the current thread is not allowed to
-    # access this thread.
+    #               access this thread.
     # @see        SecurityManager#checkAccess(Thread)
     def check_access
       security = System.get_security_manager
@@ -1574,14 +1574,14 @@ module Java::Lang
     # <code>checkPermission</code>
     # method is called with a
     # <code>RuntimePermission("getClassLoader")</code> permission
-    # to see if it's ok to get the context ClassLoader..
+    #  to see if it's ok to get the context ClassLoader..
     # 
     # @return the context ClassLoader for this Thread
     # 
     # @throws SecurityException
-    # if a security manager exists and its
-    # <code>checkPermission</code> method doesn't allow
-    # getting the context ClassLoader.
+    #        if a security manager exists and its
+    #        <code>checkPermission</code> method doesn't allow
+    #        getting the context ClassLoader.
     # @see #setContextClassLoader
     # @see SecurityManager#checkPermission
     # @see RuntimePermission
@@ -1610,7 +1610,7 @@ module Java::Lang
     # <p>First, if there is a security manager, its <code>checkPermission</code>
     # method is called with a
     # <code>RuntimePermission("setContextClassLoader")</code> permission
-    # to see if it's ok to set the context ClassLoader..
+    #  to see if it's ok to set the context ClassLoader..
     # 
     # @param cl the context ClassLoader for this Thread
     # 
@@ -1638,13 +1638,13 @@ module Java::Lang
       # <p>This method is designed to allow a program to assert that
       # the current thread already holds a specified lock:
       # <pre>
-      # assert Thread.holdsLock(obj);
+      #     assert Thread.holdsLock(obj);
       # </pre>
       # 
       # @param  obj the object on which to test lock ownership
       # @throws NullPointerException if obj is <tt>null</tt>
       # @return <tt>true</tt> if the current thread holds the monitor lock on
-      # the specified object.
+      #         the specified object.
       # @since 1.4
       def holds_lock(obj)
         JNI.call_native_method(:Java_java_lang_Thread_holdsLock, JNI.env, self.jni_id, obj.jni_id) != 0
@@ -1680,9 +1680,9 @@ module Java::Lang
     # each represents one stack frame.
     # 
     # @throws SecurityException
-    # if a security manager exists and its
-    # <tt>checkPermission</tt> method doesn't allow
-    # getting the stack trace of thread.
+    #        if a security manager exists and its
+    #        <tt>checkPermission</tt> method doesn't allow
+    #        getting the stack trace of thread.
     # @see SecurityManager#checkPermission
     # @see RuntimePermission
     # @see Throwable#getStackTrace
@@ -1740,9 +1740,9 @@ module Java::Lang
       # the corresponding thread.
       # 
       # @throws SecurityException
-      # if a security manager exists and its
-      # <tt>checkPermission</tt> method doesn't allow
-      # getting the stack trace of thread.
+      #        if a security manager exists and its
+      #        <tt>checkPermission</tt> method doesn't allow
+      #        getting the stack trace of thread.
       # @see #getStackTrace
       # @see SecurityManager#checkPermission
       # @see RuntimePermission
@@ -1889,26 +1889,26 @@ module Java::Lang
       # A thread state.  A thread can be in one of the following states:
       # <ul>
       # <li>{@link #NEW}<br>
-      # A thread that has not yet started is in this state.
-      # </li>
+      #     A thread that has not yet started is in this state.
+      #     </li>
       # <li>{@link #RUNNABLE}<br>
-      # A thread executing in the Java virtual machine is in this state.
-      # </li>
+      #     A thread executing in the Java virtual machine is in this state.
+      #     </li>
       # <li>{@link #BLOCKED}<br>
-      # A thread that is blocked waiting for a monitor lock
-      # is in this state.
-      # </li>
+      #     A thread that is blocked waiting for a monitor lock
+      #     is in this state.
+      #     </li>
       # <li>{@link #WAITING}<br>
-      # A thread that is waiting indefinitely for another thread to
-      # perform a particular action is in this state.
-      # </li>
+      #     A thread that is waiting indefinitely for another thread to
+      #     perform a particular action is in this state.
+      #     </li>
       # <li>{@link #TIMED_WAITING}<br>
-      # A thread that is waiting for another thread to perform an action
-      # for up to a specified waiting time is in this state.
-      # </li>
+      #     A thread that is waiting for another thread to perform an action
+      #     for up to a specified waiting time is in this state.
+      #     </li>
       # <li>{@link #TERMINATED}<br>
-      # A thread that has exited is in this state.
-      # </li>
+      #     A thread that has exited is in this state.
+      #     </li>
       # </ul>
       # 
       # <p>
@@ -1945,9 +1945,9 @@ module Java::Lang
           # A thread is in the waiting state due to calling one of the
           # following methods:
           # <ul>
-          # <li>{@link Object#wait() Object.wait} with no timeout</li>
-          # <li>{@link #join() Thread.join} with no timeout</li>
-          # <li>{@link LockSupport#park() LockSupport.park}</li>
+          #   <li>{@link Object#wait() Object.wait} with no timeout</li>
+          #   <li>{@link #join() Thread.join} with no timeout</li>
+          #   <li>{@link LockSupport#park() LockSupport.park}</li>
           # </ul>
           # 
           # <p>A thread in the waiting state is waiting for another thread to
@@ -1965,11 +1965,11 @@ module Java::Lang
           # A thread is in the timed waiting state due to calling one of
           # the following methods with a specified positive waiting time:
           # <ul>
-          # <li>{@link #sleep Thread.sleep}</li>
-          # <li>{@link Object#wait(long) Object.wait} with timeout</li>
-          # <li>{@link #join(long) Thread.join} with timeout</li>
-          # <li>{@link LockSupport#parkNanos LockSupport.parkNanos}</li>
-          # <li>{@link LockSupport#parkUntil LockSupport.parkUntil}</li>
+          #   <li>{@link #sleep Thread.sleep}</li>
+          #   <li>{@link Object#wait(long) Object.wait} with timeout</li>
+          #   <li>{@link #join(long) Thread.join} with timeout</li>
+          #   <li>{@link LockSupport#parkNanos LockSupport.parkNanos}</li>
+          #   <li>{@link LockSupport#parkUntil LockSupport.parkUntil}</li>
           # </ul>
           const_set_lazy(:TIMED_WAITING) { State.new.set_value_name("TIMED_WAITING") }
           const_attr_reader  :TIMED_WAITING
@@ -2021,7 +2021,6 @@ module Java::Lang
     
     class_module.module_eval {
       # Added in JSR-166
-      # 
       # Interface for handlers invoked when a <tt>Thread</tt> abruptly
       # terminates due to an uncaught exception.
       # <p>When a thread is about to terminate due to an uncaught exception
@@ -2104,8 +2103,8 @@ module Java::Lang
       # If <tt>null</tt> then there is no default handler.
       # 
       # @throws SecurityException if a security manager is present and it
-      # denies <tt>{@link RuntimePermission}
-      # (&quot;setDefaultUncaughtExceptionHandler&quot;)</tt>
+      #         denies <tt>{@link RuntimePermission}
+      #         (&quot;setDefaultUncaughtExceptionHandler&quot;)</tt>
       # 
       # @see #setUncaughtExceptionHandler
       # @see #getUncaughtExceptionHandler
@@ -2151,7 +2150,7 @@ module Java::Lang
     # @param eh the object to use as this thread's uncaught exception
     # handler. If <tt>null</tt> then this thread has no explicit handler.
     # @throws  SecurityException  if the current thread is not allowed to
-    # modify this thread.
+    #          modify this thread.
     # @see #setDefaultUncaughtExceptionHandler
     # @see ThreadGroup#uncaughtException
     # @since 1.5

@@ -55,7 +55,7 @@ module Java::Util
     # Constructs an instance of this class with the specified flags.
     # 
     # @param  f
-    # The set of format flags which contain an illegal combination
+    #         The set of format flags which contain an illegal combination
     def initialize(f)
       @flags = nil
       super()

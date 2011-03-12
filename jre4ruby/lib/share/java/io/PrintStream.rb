@@ -95,7 +95,7 @@ module Java::Io
     # Creates a new print stream.  This stream will not flush automatically.
     # 
     # @param  out        The output stream to which values and objects will be
-    # printed
+    #                    printed
     # 
     # @see java.io.PrintWriter#PrintWriter(java.io.OutputStream)
     def initialize(out)
@@ -136,11 +136,11 @@ module Java::Io
     # Creates a new print stream.
     # 
     # @param  out        The output stream to which values and objects will be
-    # printed
+    #                    printed
     # @param  autoFlush  A boolean; if true, the output buffer will be flushed
-    # whenever a byte array is written, one of the
-    # <code>println</code> methods is invoked, or a newline
-    # character or byte (<code>'\n'</code>) is written
+    #                    whenever a byte array is written, one of the
+    #                    <code>println</code> methods is invoked, or a newline
+    #                    character or byte (<code>'\n'</code>) is written
     # 
     # @see java.io.PrintWriter#PrintWriter(java.io.OutputStream, boolean)
     def initialize(out, auto_flush)
@@ -152,17 +152,17 @@ module Java::Io
     # Creates a new print stream.
     # 
     # @param  out        The output stream to which values and objects will be
-    # printed
+    #                    printed
     # @param  autoFlush  A boolean; if true, the output buffer will be flushed
-    # whenever a byte array is written, one of the
-    # <code>println</code> methods is invoked, or a newline
-    # character or byte (<code>'\n'</code>) is written
+    #                    whenever a byte array is written, one of the
+    #                    <code>println</code> methods is invoked, or a newline
+    #                    character or byte (<code>'\n'</code>) is written
     # @param  encoding   The name of a supported
-    # <a href="../lang/package-summary.html#charenc">
-    # character encoding</a>
+    #                    <a href="../lang/package-summary.html#charenc">
+    #                    character encoding</a>
     # 
     # @throws  UnsupportedEncodingException
-    # If the named encoding is not supported
+    #          If the named encoding is not supported
     # 
     # @since  1.4
     def initialize(out, auto_flush, encoding)
@@ -179,21 +179,21 @@ module Java::Io
     # for this instance of the Java virtual machine.
     # 
     # @param  fileName
-    # The name of the file to use as the destination of this print
-    # stream.  If the file exists, then it will be truncated to
-    # zero size; otherwise, a new file will be created.  The output
-    # will be written to the file and is buffered.
+    #         The name of the file to use as the destination of this print
+    #         stream.  If the file exists, then it will be truncated to
+    #         zero size; otherwise, a new file will be created.  The output
+    #         will be written to the file and is buffered.
     # 
     # @throws  FileNotFoundException
-    # If the given file object does not denote an existing, writable
-    # regular file and a new regular file of that name cannot be
-    # created, or if some other error occurs while opening or
-    # creating the file
+    #          If the given file object does not denote an existing, writable
+    #          regular file and a new regular file of that name cannot be
+    #          created, or if some other error occurs while opening or
+    #          creating the file
     # 
     # @throws  SecurityException
-    # If a security manager is present and {@link
-    # SecurityManager#checkWrite checkWrite(fileName)} denies write
-    # access to the file
+    #          If a security manager is present and {@link
+    #          SecurityManager#checkWrite checkWrite(fileName)} denies write
+    #          access to the file
     # 
     # @since  1.5
     def initialize(file_name)
@@ -209,28 +209,28 @@ module Java::Io
     # charset.
     # 
     # @param  fileName
-    # The name of the file to use as the destination of this print
-    # stream.  If the file exists, then it will be truncated to
-    # zero size; otherwise, a new file will be created.  The output
-    # will be written to the file and is buffered.
+    #         The name of the file to use as the destination of this print
+    #         stream.  If the file exists, then it will be truncated to
+    #         zero size; otherwise, a new file will be created.  The output
+    #         will be written to the file and is buffered.
     # 
     # @param  csn
-    # The name of a supported {@linkplain java.nio.charset.Charset
-    # charset}
+    #         The name of a supported {@linkplain java.nio.charset.Charset
+    #         charset}
     # 
     # @throws  FileNotFoundException
-    # If the given file object does not denote an existing, writable
-    # regular file and a new regular file of that name cannot be
-    # created, or if some other error occurs while opening or
-    # creating the file
+    #          If the given file object does not denote an existing, writable
+    #          regular file and a new regular file of that name cannot be
+    #          created, or if some other error occurs while opening or
+    #          creating the file
     # 
     # @throws  SecurityException
-    # If a security manager is present and {@link
-    # SecurityManager#checkWrite checkWrite(fileName)} denies write
-    # access to the file
+    #          If a security manager is present and {@link
+    #          SecurityManager#checkWrite checkWrite(fileName)} denies write
+    #          access to the file
     # 
     # @throws  UnsupportedEncodingException
-    # If the named charset is not supported
+    #          If the named charset is not supported
     # 
     # @since  1.5
     def initialize(file_name, csn)
@@ -247,21 +247,21 @@ module Java::Io
     # instance of the Java virtual machine.
     # 
     # @param  file
-    # The file to use as the destination of this print stream.  If the
-    # file exists, then it will be truncated to zero size; otherwise,
-    # a new file will be created.  The output will be written to the
-    # file and is buffered.
+    #         The file to use as the destination of this print stream.  If the
+    #         file exists, then it will be truncated to zero size; otherwise,
+    #         a new file will be created.  The output will be written to the
+    #         file and is buffered.
     # 
     # @throws  FileNotFoundException
-    # If the given file object does not denote an existing, writable
-    # regular file and a new regular file of that name cannot be
-    # created, or if some other error occurs while opening or
-    # creating the file
+    #          If the given file object does not denote an existing, writable
+    #          regular file and a new regular file of that name cannot be
+    #          created, or if some other error occurs while opening or
+    #          creating the file
     # 
     # @throws  SecurityException
-    # If a security manager is present and {@link
-    # SecurityManager#checkWrite checkWrite(file.getPath())}
-    # denies write access to the file
+    #          If a security manager is present and {@link
+    #          SecurityManager#checkWrite checkWrite(file.getPath())}
+    #          denies write access to the file
     # 
     # @since  1.5
     def initialize(file)
@@ -277,28 +277,28 @@ module Java::Io
     # charset.
     # 
     # @param  file
-    # The file to use as the destination of this print stream.  If the
-    # file exists, then it will be truncated to zero size; otherwise,
-    # a new file will be created.  The output will be written to the
-    # file and is buffered.
+    #         The file to use as the destination of this print stream.  If the
+    #         file exists, then it will be truncated to zero size; otherwise,
+    #         a new file will be created.  The output will be written to the
+    #         file and is buffered.
     # 
     # @param  csn
-    # The name of a supported {@linkplain java.nio.charset.Charset
-    # charset}
+    #         The name of a supported {@linkplain java.nio.charset.Charset
+    #         charset}
     # 
     # @throws  FileNotFoundException
-    # If the given file object does not denote an existing, writable
-    # regular file and a new regular file of that name cannot be
-    # created, or if some other error occurs while opening or
-    # creating the file
+    #          If the given file object does not denote an existing, writable
+    #          regular file and a new regular file of that name cannot be
+    #          created, or if some other error occurs while opening or
+    #          creating the file
     # 
     # @throws  SecurityException
-    # If a security manager is presentand {@link
-    # SecurityManager#checkWrite checkWrite(file.getPath())}
-    # denies write access to the file
+    #          If a security manager is presentand {@link
+    #          SecurityManager#checkWrite checkWrite(file.getPath())}
+    #          denies write access to the file
     # 
     # @throws  UnsupportedEncodingException
-    # If the named charset is not supported
+    #          If the named charset is not supported
     # 
     # @since  1.5
     def initialize(file, csn)
@@ -338,7 +338,6 @@ module Java::Io
     
     typesig { [] }
     # To avoid recursive closing
-    # 
     # Closes the stream.  This is done by flushing the stream and then closing
     # the underlying output stream.
     # 
@@ -369,14 +368,14 @@ module Java::Io
     # <code>InterruptedIOException</code>, then the <code>PrintStream</code>
     # converts the exception back into an interrupt by doing:
     # <pre>
-    # Thread.currentThread().interrupt();
+    #     Thread.currentThread().interrupt();
     # </pre>
     # or the equivalent.
     # 
     # @return <code>true</code> if and only if this stream has encountered an
-    # <code>IOException</code> other than
-    # <code>InterruptedIOException</code>, or the
-    # <code>setError</code> method has been invoked
+    #         <code>IOException</code> other than
+    #         <code>InterruptedIOException</code>, or the
+    #         <code>setError</code> method has been invoked
     def check_error
       if (!(self.attr_out).nil?)
         flush
@@ -415,8 +414,6 @@ module Java::Io
     typesig { [::Java::Int] }
     # Exception-catching, synchronized output operations,
     # which also implement the write() methods of OutputStream
-    # 
-    # 
     # Writes the specified byte to this stream.  If the byte is a newline and
     # automatic flushing is enabled then the <code>flush</code> method will be
     # invoked.
@@ -542,7 +539,6 @@ module Java::Io
     
     typesig { [::Java::Boolean] }
     # Methods that do not terminate lines
-    # 
     # Prints a boolean value.  The string produced by <code>{@link
     # java.lang.String#valueOf(boolean)}</code> is translated into bytes
     # according to the platform's default character encoding, and these bytes
@@ -660,7 +656,6 @@ module Java::Io
     
     typesig { [] }
     # Methods that do terminate lines
-    # 
     # Terminates the current line by writing the line separator string.  The
     # line separator string is defined by the system property
     # <code>line.separator</code>, and is not necessarily a single newline
@@ -797,34 +792,34 @@ module Java::Io
     # args)</tt> behaves in exactly the same way as the invocation
     # 
     # <pre>
-    # out.format(format, args) </pre>
+    #     out.format(format, args) </pre>
     # 
     # @param  format
-    # A format string as described in <a
-    # href="../util/Formatter.html#syntax">Format string syntax</a>
+    #         A format string as described in <a
+    #         href="../util/Formatter.html#syntax">Format string syntax</a>
     # 
     # @param  args
-    # Arguments referenced by the format specifiers in the format
-    # string.  If there are more arguments than format specifiers, the
-    # extra arguments are ignored.  The number of arguments is
-    # variable and may be zero.  The maximum number of arguments is
-    # limited by the maximum dimension of a Java array as defined by
-    # the <a href="http://java.sun.com/docs/books/vmspec/">Java
-    # Virtual Machine Specification</a>.  The behaviour on a
-    # <tt>null</tt> argument depends on the <a
-    # href="../util/Formatter.html#syntax">conversion</a>.
+    #         Arguments referenced by the format specifiers in the format
+    #         string.  If there are more arguments than format specifiers, the
+    #         extra arguments are ignored.  The number of arguments is
+    #         variable and may be zero.  The maximum number of arguments is
+    #         limited by the maximum dimension of a Java array as defined by
+    #         the <a href="http://java.sun.com/docs/books/vmspec/">Java
+    #         Virtual Machine Specification</a>.  The behaviour on a
+    #         <tt>null</tt> argument depends on the <a
+    #         href="../util/Formatter.html#syntax">conversion</a>.
     # 
     # @throws  IllegalFormatException
-    # If a format string contains an illegal syntax, a format
-    # specifier that is incompatible with the given arguments,
-    # insufficient arguments given the format string, or other
-    # illegal conditions.  For specification of all possible
-    # formatting errors, see the <a
-    # href="../util/Formatter.html#detail">Details</a> section of the
-    # formatter class specification.
+    #          If a format string contains an illegal syntax, a format
+    #          specifier that is incompatible with the given arguments,
+    #          insufficient arguments given the format string, or other
+    #          illegal conditions.  For specification of all possible
+    #          formatting errors, see the <a
+    #          href="../util/Formatter.html#detail">Details</a> section of the
+    #          formatter class specification.
     # 
     # @throws  NullPointerException
-    # If the <tt>format</tt> is <tt>null</tt>
+    #          If the <tt>format</tt> is <tt>null</tt>
     # 
     # @return  This output stream
     # 
@@ -846,39 +841,39 @@ module Java::Io
     # args)</tt> behaves in exactly the same way as the invocation
     # 
     # <pre>
-    # out.format(l, format, args) </pre>
+    #     out.format(l, format, args) </pre>
     # 
     # @param  l
-    # The {@linkplain java.util.Locale locale} to apply during
-    # formatting.  If <tt>l</tt> is <tt>null</tt> then no localization
-    # is applied.
+    #         The {@linkplain java.util.Locale locale} to apply during
+    #         formatting.  If <tt>l</tt> is <tt>null</tt> then no localization
+    #         is applied.
     # 
     # @param  format
-    # A format string as described in <a
-    # href="../util/Formatter.html#syntax">Format string syntax</a>
+    #         A format string as described in <a
+    #         href="../util/Formatter.html#syntax">Format string syntax</a>
     # 
     # @param  args
-    # Arguments referenced by the format specifiers in the format
-    # string.  If there are more arguments than format specifiers, the
-    # extra arguments are ignored.  The number of arguments is
-    # variable and may be zero.  The maximum number of arguments is
-    # limited by the maximum dimension of a Java array as defined by
-    # the <a href="http://java.sun.com/docs/books/vmspec/">Java
-    # Virtual Machine Specification</a>.  The behaviour on a
-    # <tt>null</tt> argument depends on the <a
-    # href="../util/Formatter.html#syntax">conversion</a>.
+    #         Arguments referenced by the format specifiers in the format
+    #         string.  If there are more arguments than format specifiers, the
+    #         extra arguments are ignored.  The number of arguments is
+    #         variable and may be zero.  The maximum number of arguments is
+    #         limited by the maximum dimension of a Java array as defined by
+    #         the <a href="http://java.sun.com/docs/books/vmspec/">Java
+    #         Virtual Machine Specification</a>.  The behaviour on a
+    #         <tt>null</tt> argument depends on the <a
+    #         href="../util/Formatter.html#syntax">conversion</a>.
     # 
     # @throws  IllegalFormatException
-    # If a format string contains an illegal syntax, a format
-    # specifier that is incompatible with the given arguments,
-    # insufficient arguments given the format string, or other
-    # illegal conditions.  For specification of all possible
-    # formatting errors, see the <a
-    # href="../util/Formatter.html#detail">Details</a> section of the
-    # formatter class specification.
+    #          If a format string contains an illegal syntax, a format
+    #          specifier that is incompatible with the given arguments,
+    #          insufficient arguments given the format string, or other
+    #          illegal conditions.  For specification of all possible
+    #          formatting errors, see the <a
+    #          href="../util/Formatter.html#detail">Details</a> section of the
+    #          formatter class specification.
     # 
     # @throws  NullPointerException
-    # If the <tt>format</tt> is <tt>null</tt>
+    #          If the <tt>format</tt> is <tt>null</tt>
     # 
     # @return  This output stream
     # 
@@ -901,31 +896,31 @@ module Java::Io
     # previous invocations of other formatting methods on this object.
     # 
     # @param  format
-    # A format string as described in <a
-    # href="../util/Formatter.html#syntax">Format string syntax</a>
+    #         A format string as described in <a
+    #         href="../util/Formatter.html#syntax">Format string syntax</a>
     # 
     # @param  args
-    # Arguments referenced by the format specifiers in the format
-    # string.  If there are more arguments than format specifiers, the
-    # extra arguments are ignored.  The number of arguments is
-    # variable and may be zero.  The maximum number of arguments is
-    # limited by the maximum dimension of a Java array as defined by
-    # the <a href="http://java.sun.com/docs/books/vmspec/">Java
-    # Virtual Machine Specification</a>.  The behaviour on a
-    # <tt>null</tt> argument depends on the <a
-    # href="../util/Formatter.html#syntax">conversion</a>.
+    #         Arguments referenced by the format specifiers in the format
+    #         string.  If there are more arguments than format specifiers, the
+    #         extra arguments are ignored.  The number of arguments is
+    #         variable and may be zero.  The maximum number of arguments is
+    #         limited by the maximum dimension of a Java array as defined by
+    #         the <a href="http://java.sun.com/docs/books/vmspec/">Java
+    #         Virtual Machine Specification</a>.  The behaviour on a
+    #         <tt>null</tt> argument depends on the <a
+    #         href="../util/Formatter.html#syntax">conversion</a>.
     # 
     # @throws  IllegalFormatException
-    # If a format string contains an illegal syntax, a format
-    # specifier that is incompatible with the given arguments,
-    # insufficient arguments given the format string, or other
-    # illegal conditions.  For specification of all possible
-    # formatting errors, see the <a
-    # href="../util/Formatter.html#detail">Details</a> section of the
-    # formatter class specification.
+    #          If a format string contains an illegal syntax, a format
+    #          specifier that is incompatible with the given arguments,
+    #          insufficient arguments given the format string, or other
+    #          illegal conditions.  For specification of all possible
+    #          formatting errors, see the <a
+    #          href="../util/Formatter.html#detail">Details</a> section of the
+    #          formatter class specification.
     # 
     # @throws  NullPointerException
-    # If the <tt>format</tt> is <tt>null</tt>
+    #          If the <tt>format</tt> is <tt>null</tt>
     # 
     # @return  This output stream
     # 
@@ -957,36 +952,36 @@ module Java::Io
     # format string and arguments.
     # 
     # @param  l
-    # The {@linkplain java.util.Locale locale} to apply during
-    # formatting.  If <tt>l</tt> is <tt>null</tt> then no localization
-    # is applied.
+    #         The {@linkplain java.util.Locale locale} to apply during
+    #         formatting.  If <tt>l</tt> is <tt>null</tt> then no localization
+    #         is applied.
     # 
     # @param  format
-    # A format string as described in <a
-    # href="../util/Formatter.html#syntax">Format string syntax</a>
+    #         A format string as described in <a
+    #         href="../util/Formatter.html#syntax">Format string syntax</a>
     # 
     # @param  args
-    # Arguments referenced by the format specifiers in the format
-    # string.  If there are more arguments than format specifiers, the
-    # extra arguments are ignored.  The number of arguments is
-    # variable and may be zero.  The maximum number of arguments is
-    # limited by the maximum dimension of a Java array as defined by
-    # the <a href="http://java.sun.com/docs/books/vmspec/">Java
-    # Virtual Machine Specification</a>.  The behaviour on a
-    # <tt>null</tt> argument depends on the <a
-    # href="../util/Formatter.html#syntax">conversion</a>.
+    #         Arguments referenced by the format specifiers in the format
+    #         string.  If there are more arguments than format specifiers, the
+    #         extra arguments are ignored.  The number of arguments is
+    #         variable and may be zero.  The maximum number of arguments is
+    #         limited by the maximum dimension of a Java array as defined by
+    #         the <a href="http://java.sun.com/docs/books/vmspec/">Java
+    #         Virtual Machine Specification</a>.  The behaviour on a
+    #         <tt>null</tt> argument depends on the <a
+    #         href="../util/Formatter.html#syntax">conversion</a>.
     # 
     # @throws  IllegalFormatException
-    # If a format string contains an illegal syntax, a format
-    # specifier that is incompatible with the given arguments,
-    # insufficient arguments given the format string, or other
-    # illegal conditions.  For specification of all possible
-    # formatting errors, see the <a
-    # href="../util/Formatter.html#detail">Details</a> section of the
-    # formatter class specification.
+    #          If a format string contains an illegal syntax, a format
+    #          specifier that is incompatible with the given arguments,
+    #          insufficient arguments given the format string, or other
+    #          illegal conditions.  For specification of all possible
+    #          formatting errors, see the <a
+    #          href="../util/Formatter.html#detail">Details</a> section of the
+    #          formatter class specification.
     # 
     # @throws  NullPointerException
-    # If the <tt>format</tt> is <tt>null</tt>
+    #          If the <tt>format</tt> is <tt>null</tt>
     # 
     # @return  This output stream
     # 
@@ -1020,7 +1015,7 @@ module Java::Io
     # behaves in exactly the same way as the invocation
     # 
     # <pre>
-    # out.print(csq.toString()) </pre>
+    #     out.print(csq.toString()) </pre>
     # 
     # <p> Depending on the specification of <tt>toString</tt> for the
     # character sequence <tt>csq</tt>, the entire sequence may not be
@@ -1029,9 +1024,9 @@ module Java::Io
     # the buffer's position and limit.
     # 
     # @param  csq
-    # The character sequence to append.  If <tt>csq</tt> is
-    # <tt>null</tt>, then the four characters <tt>"null"</tt> are
-    # appended to this output stream.
+    #         The character sequence to append.  If <tt>csq</tt> is
+    #         <tt>null</tt>, then the four characters <tt>"null"</tt> are
+    #         appended to this output stream.
     # 
     # @return  This output stream
     # 
@@ -1054,27 +1049,27 @@ module Java::Io
     # exactly the same way as the invocation
     # 
     # <pre>
-    # out.print(csq.subSequence(start, end).toString()) </pre>
+    #     out.print(csq.subSequence(start, end).toString()) </pre>
     # 
     # @param  csq
-    # The character sequence from which a subsequence will be
-    # appended.  If <tt>csq</tt> is <tt>null</tt>, then characters
-    # will be appended as if <tt>csq</tt> contained the four
-    # characters <tt>"null"</tt>.
+    #         The character sequence from which a subsequence will be
+    #         appended.  If <tt>csq</tt> is <tt>null</tt>, then characters
+    #         will be appended as if <tt>csq</tt> contained the four
+    #         characters <tt>"null"</tt>.
     # 
     # @param  start
-    # The index of the first character in the subsequence
+    #         The index of the first character in the subsequence
     # 
     # @param  end
-    # The index of the character following the last character in the
-    # subsequence
+    #         The index of the character following the last character in the
+    #         subsequence
     # 
     # @return  This output stream
     # 
     # @throws  IndexOutOfBoundsException
-    # If <tt>start</tt> or <tt>end</tt> are negative, <tt>start</tt>
-    # is greater than <tt>end</tt>, or <tt>end</tt> is greater than
-    # <tt>csq.length()</tt>
+    #          If <tt>start</tt> or <tt>end</tt> are negative, <tt>start</tt>
+    #          is greater than <tt>end</tt>, or <tt>end</tt> is greater than
+    #          <tt>csq.length()</tt>
     # 
     # @since  1.5
     def append(csq, start, end_)
@@ -1090,10 +1085,10 @@ module Java::Io
     # behaves in exactly the same way as the invocation
     # 
     # <pre>
-    # out.print(c) </pre>
+    #     out.print(c) </pre>
     # 
     # @param  c
-    # The 16-bit character to append
+    #         The 16-bit character to append
     # 
     # @return  This output stream
     # 

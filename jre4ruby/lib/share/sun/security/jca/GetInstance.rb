@@ -152,12 +152,12 @@ module Sun::Security::Jca
       # For all the getInstance() methods below:
       # @param type the type of engine (e.g. MessageDigest)
       # @param clazz the Spi class that the implementation must subclass
-      # (e.g. MessageDigestSpi.class) or null if no superclass check
-      # is required
+      #   (e.g. MessageDigestSpi.class) or null if no superclass check
+      #   is required
       # @param algorithm the name of the algorithm (or alias), e.g. MD5
       # @param provider the provider (String or Provider object)
       # @param param the parameter to pass to the Spi constructor
-      # (for CertStores)
+      #   (for CertStores)
       # 
       # There are overloaded methods for all the permutations.
       def get_instance(type, clazz, algorithm)

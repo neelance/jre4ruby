@@ -59,9 +59,9 @@ module Sun::Security::Provider::Certpath
   # The ASN.1 syntax for this object is:
   # <pre>
   # CertificatePair      ::=     SEQUENCE {
-  # forward [0]     Certificate OPTIONAL,
-  # reverse [1]     Certificate OPTIONAL
-  # -- at least one of the pair shall be present -- }
+  #      forward [0]     Certificate OPTIONAL,
+  #      reverse [1]     Certificate OPTIONAL
+  #                      -- at least one of the pair shall be present -- }
   # </pre><p>
   # 
   # This structure uses EXPLICIT tagging. References: Annex A of
@@ -117,9 +117,9 @@ module Sun::Security::Provider::Certpath
     # the pair must be non-null.
     # 
     # @param forward The forward component of the certificate pair
-    # which represents a certificate issued to this CA by other CAs.
+    #          which represents a certificate issued to this CA by other CAs.
     # @param reverse The reverse component of the certificate pair
-    # which represents a certificate issued by this CA to other CAs.
+    #          which represents a certificate issued by this CA to other CAs.
     # @throws CertificateException If an exception occurs.
     def initialize(forward, reverse)
       @forward = nil

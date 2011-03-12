@@ -119,7 +119,7 @@ module Java::Util::Jar
     # @param name the name of the jar file to be opened for reading
     # @throws IOException if an I/O error has occurred
     # @throws SecurityException if access to the file is denied
-    # by the SecurityManager
+    #         by the SecurityManager
     def initialize(name)
       initialize__jar_file(JavaFile.new(name), true, ZipFile::OPEN_READ)
     end
@@ -132,7 +132,7 @@ module Java::Util::Jar
     # it is signed.
     # @throws IOException if an I/O error has occurred
     # @throws SecurityException if access to the file is denied
-    # by the SecurityManager
+    #         by the SecurityManager
     def initialize(name, verify)
       initialize__jar_file(JavaFile.new(name), verify, ZipFile::OPEN_READ)
     end
@@ -144,7 +144,7 @@ module Java::Util::Jar
     # @param file the jar file to be opened for reading
     # @throws IOException if an I/O error has occurred
     # @throws SecurityException if access to the file is denied
-    # by the SecurityManager
+    #         by the SecurityManager
     def initialize(file)
       initialize__jar_file(file, true, ZipFile::OPEN_READ)
     end
@@ -157,7 +157,7 @@ module Java::Util::Jar
     # it is signed.
     # @throws IOException if an I/O error has occurred
     # @throws SecurityException if access to the file is denied
-    # by the SecurityManager.
+    #         by the SecurityManager.
     def initialize(file, verify)
       initialize__jar_file(file, verify, ZipFile::OPEN_READ)
     end
@@ -173,9 +173,9 @@ module Java::Util::Jar
     # @param mode the mode in which the file is to be opened
     # @throws IOException if an I/O error has occurred
     # @throws IllegalArgumentException
-    # if the <tt>mode</tt> argument is invalid
+    #         if the <tt>mode</tt> argument is invalid
     # @throws SecurityException if access to the file is denied
-    # by the SecurityManager
+    #         by the SecurityManager
     # @since 1.3
     def initialize(file, verify, mode)
       @man_ref = nil
@@ -195,7 +195,7 @@ module Java::Util::Jar
     # @return the jar file manifest, or <code>null</code> if none
     # 
     # @throws IllegalStateException
-    # may be thrown if the jar file has been closed
+    #         may be thrown if the jar file has been closed
     def get_manifest
       return get_manifest_from_reference
     end
@@ -234,10 +234,10 @@ module Java::Util::Jar
     # 
     # @param name the jar file entry name
     # @return the <code>JarEntry</code> for the given entry name or
-    # <code>null</code> if not found.
+    #         <code>null</code> if not found.
     # 
     # @throws IllegalStateException
-    # may be thrown if the jar file has been closed
+    #         may be thrown if the jar file has been closed
     # 
     # @see java.util.jar.JarEntry
     def get_jar_entry(name)
@@ -250,10 +250,10 @@ module Java::Util::Jar
     # 
     # @param name the jar file entry name
     # @return the <code>ZipEntry</code> for the given entry name or
-    # <code>null</code> if not found
+    #         <code>null</code> if not found
     # 
     # @throws IllegalStateException
-    # may be thrown if the jar file has been closed
+    #         may be thrown if the jar file has been closed
     # 
     # @see java.util.zip.ZipEntry
     def get_entry(name)
@@ -429,7 +429,7 @@ module Java::Util::Jar
     # Reads all the bytes for a given entry. Used to process the
     # META-INF files.
     def get_bytes(ze)
-      b = Array.typed(::Java::Byte).new(RJava.cast_to_int(ze.get_size)) { 0 }
+      b = Array.typed(::Java::Byte).new((ze.get_size).to_int) { 0 }
       is = DataInputStream.new(ZipFile.instance_method(:get_input_stream).bind(self).call(ze))
       is.read_fully(b, 0, b.attr_length)
       is.close
@@ -441,13 +441,13 @@ module Java::Util::Jar
     # zip file entry.
     # @param ze the zip file entry
     # @return an input stream for reading the contents of the specified
-    # zip file entry
+    #         zip file entry
     # @throws ZipException if a zip file format error has occurred
     # @throws IOException if an I/O error has occurred
     # @throws SecurityException if any of the jar file entries
-    # are incorrectly signed.
+    #         are incorrectly signed.
     # @throws IllegalStateException
-    # may be thrown if the jar file has been closed
+    #         may be thrown if the jar file has been closed
     def get_input_stream(ze)
       synchronized(self) do
         maybe_instantiate_verifier
@@ -510,14 +510,14 @@ module Java::Util::Jar
       when_class_loaded do
         self.attr_last_occ = Array.typed(::Java::Int).new(128) { 0 }
         self.attr_opto_sft = Array.typed(::Java::Int).new(10) { 0 }
-        self.attr_last_occ[RJava.cast_to_int(Character.new(?c.ord))] = 1
-        self.attr_last_occ[RJava.cast_to_int(Character.new(?l.ord))] = 2
-        self.attr_last_occ[RJava.cast_to_int(Character.new(?s.ord))] = 5
-        self.attr_last_occ[RJava.cast_to_int(Character.new(?-.ord))] = 6
-        self.attr_last_occ[RJava.cast_to_int(Character.new(?p.ord))] = 7
-        self.attr_last_occ[RJava.cast_to_int(Character.new(?a.ord))] = 8
-        self.attr_last_occ[RJava.cast_to_int(Character.new(?t.ord))] = 9
-        self.attr_last_occ[RJava.cast_to_int(Character.new(?h.ord))] = 10
+        self.attr_last_occ[(Character.new(?c.ord)).to_int] = 1
+        self.attr_last_occ[(Character.new(?l.ord)).to_int] = 2
+        self.attr_last_occ[(Character.new(?s.ord)).to_int] = 5
+        self.attr_last_occ[(Character.new(?-.ord)).to_int] = 6
+        self.attr_last_occ[(Character.new(?p.ord)).to_int] = 7
+        self.attr_last_occ[(Character.new(?a.ord)).to_int] = 8
+        self.attr_last_occ[(Character.new(?t.ord)).to_int] = 9
+        self.attr_last_occ[(Character.new(?h.ord)).to_int] = 10
         i = 0
         while i < 9
           self.attr_opto_sft[i] = 10
@@ -564,7 +564,7 @@ module Java::Util::Jar
       if (!is_known_to_not_have_class_path_attribute)
         man_entry = get_man_entry
         if (!(man_entry).nil?)
-          b = Array.typed(::Java::Byte).new(RJava.cast_to_int(man_entry.get_size)) { 0 }
+          b = Array.typed(::Java::Byte).new((man_entry.get_size).to_int) { 0 }
           dis = DataInputStream.new(ZipFile.instance_method(:get_input_stream).bind(self).call(man_entry))
           dis.read_fully(b, 0, b.attr_length)
           dis.close

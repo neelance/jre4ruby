@@ -33,8 +33,8 @@ module Java::Lang
   # to a subclass of which it is not an instance. For example, the
   # following code generates a <code>ClassCastException</code>:
   # <p><blockquote><pre>
-  # Object x = new Integer(0);
-  # System.out.println((String)x);
+  #     Object x = new Integer(0);
+  #     System.out.println((String)x);
   # </pre></blockquote>
   # 
   # @author  unascribed

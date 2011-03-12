@@ -107,7 +107,7 @@ module Java::Lang
     # 
     # @param      capacity  the initial capacity.
     # @exception  NegativeArraySizeException  if the <code>capacity</code>
-    # argument is less than <code>0</code>.
+    #               argument is less than <code>0</code>.
     def initialize(capacity)
       super(capacity)
     end
@@ -652,13 +652,13 @@ module Java::Lang
       # Serializable fields for StringBuffer.
       # 
       # @serialField value  char[]
-      # The backing character array of this StringBuffer.
+      #              The backing character array of this StringBuffer.
       # @serialField count int
-      # The number of characters in this StringBuffer.
+      #              The number of characters in this StringBuffer.
       # @serialField shared  boolean
-      # A flag indicating whether the backing array is shared.
-      # The value is ignored upon deserialization.
-      const_set_lazy(:SerialPersistentFields) { Array.typed(Java::Io::ObjectStreamField).new([Java::Io::ObjectStreamField.new("value", Array), Java::Io::ObjectStreamField.new("count", JavaInteger::TYPE), Java::Io::ObjectStreamField.new("shared", Boolean::TYPE), ]) }
+      #              A flag indicating whether the backing array is shared.
+      #              The value is ignored upon deserialization.
+      const_set_lazy(:SerialPersistentFields) { Array.typed(Java::Io::ObjectStreamField).new([Java::Io::ObjectStreamField.new("value", Array), Java::Io::ObjectStreamField.new("count", JavaInteger::TYPE), Java::Io::ObjectStreamField.new("shared", Boolean::TYPE)]) }
       const_attr_reader  :SerialPersistentFields
     }
     

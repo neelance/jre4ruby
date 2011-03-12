@@ -62,14 +62,14 @@ module Java::Lang::Management
     # 
     # @param className the fully qualified name of the class of the lock object.
     # @param identityHashCode the {@link System#identityHashCode
-    # identity hash code} of the lock object.
+    #                         identity hash code} of the lock object.
     # @param stackDepth the depth in the stack trace where the object monitor
-    # was locked.
+    #                   was locked.
     # @param stackFrame the stack frame that locked the object monitor.
     # @throws IllegalArgumentException if
-    # <tt>stackDepth</tt> &ge; 0 but <tt>stackFrame</tt> is <tt>null</tt>,
-    # or <tt>stackDepth</tt> &lt; 0 but <tt>stackFrame</tt> is not
-    # <tt>null</tt>.
+    #    <tt>stackDepth</tt> &ge; 0 but <tt>stackFrame</tt> is <tt>null</tt>,
+    #    or <tt>stackDepth</tt> &lt; 0 but <tt>stackFrame</tt> is not
+    #       <tt>null</tt>.
     def initialize(class_name, identity_hash_code, stack_depth, stack_frame)
       @stack_depth = 0
       @stack_frame = nil
@@ -90,7 +90,7 @@ module Java::Lang::Management
     # array returned in the {@link ThreadInfo#getStackTrace} method.
     # 
     # @return the depth in the stack trace where the object monitor
-    # was locked, or a negative number if not available.
+    #         was locked, or a negative number if not available.
     def get_locked_stack_depth
       return @stack_depth
     end
@@ -99,7 +99,7 @@ module Java::Lang::Management
     # Returns the stack frame that locked the object monitor.
     # 
     # @return <tt>StackTraceElement</tt> that locked the object monitor,
-    # or <tt>null</tt> if not available.
+    #         or <tt>null</tt> if not available.
     def get_locked_stack_frame
       return @stack_frame
     end
@@ -115,20 +115,20 @@ module Java::Lang::Management
       # <blockquote>
       # <table border>
       # <tr>
-      # <th align=left>Attribute Name</th>
-      # <th align=left>Type</th>
+      #   <th align=left>Attribute Name</th>
+      #   <th align=left>Type</th>
       # </tr>
       # <tr>
-      # <td>lockedStackFrame</td>
-      # <td><tt>CompositeData as specified in the
-      # <a href="ThreadInfo.html#StackTrace">stackTrace</a>
-      # attribute defined in the {@link ThreadInfo#from
-      # ThreadInfo.from} method.
-      # </tt></td>
+      #   <td>lockedStackFrame</td>
+      #   <td><tt>CompositeData as specified in the
+      #       <a href="ThreadInfo.html#StackTrace">stackTrace</a>
+      #       attribute defined in the {@link ThreadInfo#from
+      #       ThreadInfo.from} method.
+      #       </tt></td>
       # </tr>
       # <tr>
-      # <td>lockedStackDepth</td>
-      # <td><tt>java.lang.Integer</tt></td>
+      #   <td>lockedStackDepth</td>
+      #   <td><tt>java.lang.Integer</tt></td>
       # </tr>
       # </table>
       # </blockquote>
@@ -136,12 +136,12 @@ module Java::Lang::Management
       # @param cd <tt>CompositeData</tt> representing a <tt>MonitorInfo</tt>
       # 
       # @throws IllegalArgumentException if <tt>cd</tt> does not
-      # represent a <tt>MonitorInfo</tt> with the attributes described
-      # above.
+      #   represent a <tt>MonitorInfo</tt> with the attributes described
+      #   above.
       # 
       # @return a <tt>MonitorInfo</tt> object represented
-      # by <tt>cd</tt> if <tt>cd</tt> is not <tt>null</tt>;
-      # <tt>null</tt> otherwise.
+      #         by <tt>cd</tt> if <tt>cd</tt> is not <tt>null</tt>;
+      #         <tt>null</tt> otherwise.
       def from(cd)
         if ((cd).nil?)
           return nil

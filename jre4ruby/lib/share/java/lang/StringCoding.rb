@@ -107,6 +107,7 @@ module Java::Lang
       
       typesig { [Array.typed(::Java::Byte), ::Java::Int, Charset] }
       # Trim the given byte array to the given length
+      # 
       def safe_trim(ba, len, cs)
         if ((len).equal?(ba.attr_length) && ((System.get_security_manager).nil? || (cs.get_class.get_class_loader0).nil?))
           return ba
@@ -117,6 +118,7 @@ module Java::Lang
       
       typesig { [Array.typed(::Java::Char), ::Java::Int, Charset] }
       # Trim the given char array to the given length
+      # 
       def safe_trim(ca, len, cs)
         if ((len).equal?(ca.attr_length) && ((System.get_security_manager).nil? || (cs.get_class.get_class_loader0).nil?))
           return ca
@@ -129,7 +131,7 @@ module Java::Lang
       def scale(len, expansion_factor)
         # We need to perform double, not float, arithmetic; otherwise
         # we lose low order bits when len is larger than 2**24.
-        return RJava.cast_to_int((len * (expansion_factor).to_f))
+        return ((len * (expansion_factor).to_f)).to_int
       end
       
       typesig { [String] }

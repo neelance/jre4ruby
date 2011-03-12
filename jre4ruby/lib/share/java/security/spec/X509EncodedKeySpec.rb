@@ -37,8 +37,8 @@ module Java::Security::Spec
   # 
   # <pre>
   # SubjectPublicKeyInfo ::= SEQUENCE {
-  # algorithm AlgorithmIdentifier,
-  # subjectPublicKey BIT STRING }
+  #   algorithm AlgorithmIdentifier,
+  #   subjectPublicKey BIT STRING }
   # </pre>
   # 
   # @author Jan Luehe

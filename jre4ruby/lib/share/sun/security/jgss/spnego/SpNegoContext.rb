@@ -406,7 +406,7 @@ module Sun::Security::Jgss::Spnego
     # Tests if this is the initiator side of the context.
     # 
     # @return boolean indicating if this is initiator (true)
-    # or target (false)
+    #  or target (false)
     def is_initiator
       return @initiator
     end
@@ -417,7 +417,7 @@ module Sun::Security::Jgss::Spnego
     # functions before being fully established.
     # 
     # @return boolean indicating if per-message methods can
-    # be called.
+    #  be called.
     def is_prot_ready
       return ((@state).equal?(STATE_DONE))
     end
@@ -429,7 +429,7 @@ module Sun::Security::Jgss::Spnego
     # is received from the peer.
     # 
     # @param is contains the token received from the peer. On the
-    # first call it will be ignored.
+    #        first call it will be ignored.
     # @return any token required to be sent to the peer
     # It is responsibility of the caller to send the token
     # to its peer for processing.

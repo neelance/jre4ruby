@@ -22,7 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
 # -- This file was mechanically generated: Do not edit! -- //
 module Java::Nio
   module DirectByteBufferImports #:nodoc:
@@ -54,7 +53,7 @@ module Java::Nio
     
     # Base address, used in all indexing calculations
     # NOTE: moved up to Buffer.java for speed in JNI GetDirectBufferAddress
-    # protected long address;
+    #    protected long address;
     # If this buffer is a view of another buffer then we keep a reference to
     # that buffer so that its memory isn't freed before we're done with it
     attr_accessor :viewed_buffer
@@ -136,12 +135,12 @@ module Java::Nio
     
     typesig { [::Java::Int] }
     # Primary constructor
+    # 
     def initialize(cap)
-      # package-private
       @viewed_buffer = nil
       @cleaner = nil
       super(-1, 0, cap, cap, false)
-      @viewed_buffer = nil
+      @viewed_buffer = nil # package-private
       Bits.reserve_memory(cap)
       ps = Bits.page_size
       base = 0
@@ -163,6 +162,7 @@ module Java::Nio
     
     typesig { [::Java::Long, ::Java::Int] }
     # Invoked only by JNI: NewDirectByteBuffer(void*, long)
+    # 
     def initialize(addr, cap)
       @viewed_buffer = nil
       @cleaner = nil
@@ -174,6 +174,7 @@ module Java::Nio
     
     typesig { [::Java::Int, ::Java::Long, Runnable] }
     # For memory-mapped buffers -- invoked by FileChannelImpl via reflection
+    # 
     def initialize(cap, addr, unmapper)
       @viewed_buffer = nil
       @cleaner = nil
@@ -187,12 +188,11 @@ module Java::Nio
     typesig { [DirectBuffer, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int] }
     # For duplicates and slices
     # 
-    # package-private
     def initialize(db, mark, pos, lim, cap, off)
       @viewed_buffer = nil
       @cleaner = nil
       super(mark, pos, lim, cap)
-      @viewed_buffer = nil
+      @viewed_buffer = nil # package-private
       self.attr_address = db.address + off
       @viewed_buffer = db
       @cleaner = nil

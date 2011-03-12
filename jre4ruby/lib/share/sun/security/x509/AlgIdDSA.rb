@@ -60,9 +60,9 @@ module Sun::Security::X509
   # DSAParams cAKeyParams = cAKey.getParams();
   # KeyFactory kf = KeyFactory.getInstance("DSA");
   # DSAPublicKeySpec ks = new DSAPublicKeySpec(nullParamsKey.getY(),
-  # cAKeyParams.getP(),
-  # cAKeyParams.getQ(),
-  # cAKeyParams.getG());
+  #                                            cAKeyParams.getP(),
+  #                                            cAKeyParams.getQ(),
+  #                                            cAKeyParams.getG());
   # DSAPublicKey usableKey = kf.generatePublic(ks);
   # </pre></code>
   # 
@@ -123,7 +123,6 @@ module Sun::Security::X509
     typesig { [] }
     # Default constructor.  The OID and parameters must be
     # deserialized before this algorithm ID is used.
-    # 
     # XXX deprecated for general use
     def initialize
       @p = nil

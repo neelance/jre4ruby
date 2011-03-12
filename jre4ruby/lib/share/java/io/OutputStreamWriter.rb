@@ -51,7 +51,7 @@ module Java::Io
   # 
   # <pre>
   # Writer out
-  # = new BufferedWriter(new OutputStreamWriter(System.out));
+  #   = new BufferedWriter(new OutputStreamWriter(System.out));
   # </pre>
   # 
   # <p> A <i>surrogate pair</i> is a character represented by a sequence of two
@@ -87,14 +87,14 @@ module Java::Io
     # Creates an OutputStreamWriter that uses the named charset.
     # 
     # @param  out
-    # An OutputStream
+    #         An OutputStream
     # 
     # @param  charsetName
-    # The name of a supported
-    # {@link java.nio.charset.Charset </code>charset<code>}
+    #         The name of a supported
+    #         {@link java.nio.charset.Charset </code>charset<code>}
     # 
     # @exception  UnsupportedEncodingException
-    # If the named encoding is not supported
+    #             If the named encoding is not supported
     def initialize(out, charset_name)
       @se = nil
       super(out)
@@ -122,10 +122,10 @@ module Java::Io
     # Creates an OutputStreamWriter that uses the given charset. </p>
     # 
     # @param  out
-    # An OutputStream
+    #         An OutputStream
     # 
     # @param  cs
-    # A charset
+    #         A charset
     # 
     # @since 1.4
     # @spec JSR-51
@@ -142,10 +142,10 @@ module Java::Io
     # Creates an OutputStreamWriter that uses the given charset encoder.  </p>
     # 
     # @param  out
-    # An OutputStream
+    #         An OutputStream
     # 
     # @param  enc
-    # A charset encoder
+    #         A charset encoder
     # 
     # @since 1.4
     # @spec JSR-51
@@ -171,7 +171,7 @@ module Java::Io
     # been closed. </p>
     # 
     # @return The historical name of this encoding, or possibly
-    # <code>null</code> if the stream has been closed
+    #         <code>null</code> if the stream has been closed
     # 
     # @see java.nio.charset.Charset
     # 

@@ -108,7 +108,6 @@ module Sun::Security::Internal::Spec
     
     typesig { [SecretKey, ::Java::Int, ::Java::Int, Array.typed(::Java::Byte), Array.typed(::Java::Byte), String, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int] }
     # == 0 for domestic ciphersuites
-    # 
     # Constructs a new TlsKeyMaterialParameterSpec.
     # 
     # @param masterSecret the master secret
@@ -117,24 +116,24 @@ module Sun::Security::Internal::Spec
     # @param clientRandom the client's random value
     # @param serverRandom the server's random value
     # @param cipherAlgorithm the algorithm name of the cipher keys to
-    # be generated
+    #    be generated
     # @param cipherKeyLength if 0, no cipher keys will be generated;
-    # otherwise, the length in bytes of cipher keys to be
-    # generated for domestic cipher suites; for cipher suites defined as
-    # exportable, the number of key material bytes to be generated;
+    #    otherwise, the length in bytes of cipher keys to be
+    #    generated for domestic cipher suites; for cipher suites defined as
+    #    exportable, the number of key material bytes to be generated;
     # @param expandedCipherKeyLength 0 for domestic cipher suites; for
-    # exportable cipher suites the length in bytes of the key to be
-    # generated.
+    #    exportable cipher suites the length in bytes of the key to be
+    #    generated.
     # @param ivLength the length in bytes of the initialization vector
-    # to be generated, or 0 if no initialization vector is required
+    #    to be generated, or 0 if no initialization vector is required
     # @param macKeyLength the length in bytes of the MAC key to be generated
     # 
     # @throws NullPointerException if masterSecret, clientRandom,
-    # serverRandom, or cipherAlgorithm are null
+    #   serverRandom, or cipherAlgorithm are null
     # @throws IllegalArgumentException if the algorithm of masterSecret is
-    # not TlsMasterSecret, or if majorVersion or minorVersion are
-    # negative or larger than 255; or if cipherKeyLength, expandedKeyLength,
-    # ivLength, or macKeyLength are negative
+    #   not TlsMasterSecret, or if majorVersion or minorVersion are
+    #   negative or larger than 255; or if cipherKeyLength, expandedKeyLength,
+    #   ivLength, or macKeyLength are negative
     def initialize(master_secret, major_version, minor_version, client_random, server_random, cipher_algorithm, cipher_key_length, expanded_cipher_key_length, iv_length, mac_key_length)
       @master_secret = nil
       @major_version = 0

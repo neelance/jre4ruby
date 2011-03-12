@@ -49,11 +49,11 @@ module Java::Nio::Channels::Spi
   # 
   # <blockquote><pre>
   # try {
-  # begin();
-  # // Perform blocking I/O operation here
-  # ...
+  #     begin();
+  #     // Perform blocking I/O operation here
+  #     ...
   # } finally {
-  # end();
+  #     end();
   # }</pre></blockquote>
   # 
   # <p> This class also defines methods for maintaining a selector's
@@ -119,7 +119,7 @@ module Java::Nio::Channels::Spi
     # complete the close operation.  </p>
     # 
     # @throws  IOException
-    # If an I/O error occurs
+    #          If an I/O error occurs
     def close
       open = @selector_open.get_and_set(false)
       if (!open)
@@ -142,7 +142,7 @@ module Java::Nio::Channels::Spi
     # java.nio.channels.Selector#wakeup wakeup} method. </p>
     # 
     # @throws  IOException
-    # If an I/O error occurs while closing the selector
+    #          If an I/O error occurs while closing the selector
     def impl_close_selector
       raise NotImplementedError
     end
@@ -178,16 +178,16 @@ module Java::Nio::Channels::Spi
     # the actual work of registering the channel with this selector.  </p>
     # 
     # @param  ch
-    # The channel to be registered
+    #         The channel to be registered
     # 
     # @param  ops
-    # The initial interest set, which must be valid
+    #         The initial interest set, which must be valid
     # 
     # @param  att
-    # The initial attachment for the resulting key
+    #         The initial attachment for the resulting key
     # 
     # @return  A new key representing the registration of the given channel
-    # with this selector
+    #          with this selector
     def register(ch, ops, att)
       raise NotImplementedError
     end
@@ -199,7 +199,7 @@ module Java::Nio::Channels::Spi
     # deregisters.  </p>
     # 
     # @param  key
-    # The selection key to be removed
+    #         The selection key to be removed
     def deregister(key)
       (key.channel).remove_key(key)
     end

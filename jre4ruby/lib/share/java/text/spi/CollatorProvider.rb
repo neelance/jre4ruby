@@ -55,9 +55,9 @@ module Java::Text::Spi
     # @exception NullPointerException if
     # <code>locale</code> is null
     # @exception IllegalArgumentException if <code>locale</code> isn't
-    # one of the locales returned from
-    # {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-    # getAvailableLocales()}.
+    #     one of the locales returned from
+    #     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
+    #     getAvailableLocales()}.
     # @see java.text.Collator#getInstance(java.util.Locale)
     def get_instance(locale)
       raise NotImplementedError

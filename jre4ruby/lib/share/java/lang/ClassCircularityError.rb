@@ -47,7 +47,7 @@ module Java::Lang
     # message.
     # 
     # @param  s
-    # The detail message
+    #         The detail message
     def initialize(s)
       super(s)
     end

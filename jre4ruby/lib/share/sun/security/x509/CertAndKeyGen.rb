@@ -68,7 +68,7 @@ module Sun::Security::X509
     # 
     # @param keyType type of key, e.g. "RSA", "DSA"
     # @param sigAlg name of the signature algorithm, e.g. "MD5WithRSA",
-    # "MD2WithRSA", "SHAwithDSA".
+    #          "MD2WithRSA", "SHAwithDSA".
     # @exception NoSuchAlgorithmException on unrecognized algorithms.
     def initialize(key_type, sig_alg)
       @prng = nil
@@ -86,7 +86,7 @@ module Sun::Security::X509
     # 
     # @param keyType type of key, e.g. "RSA", "DSA"
     # @param sigAlg name of the signature algorithm, e.g. "MD5WithRSA",
-    # "MD2WithRSA", "SHAwithDSA".
+    #          "MD2WithRSA", "SHAwithDSA".
     # @param providerName name of the provider
     # @exception NoSuchAlgorithmException on unrecognized algorithms.
     # @exception NoSuchProviderException on unrecognized providers.
@@ -122,7 +122,6 @@ module Sun::Security::X509
     
     typesig { [::Java::Int] }
     # want "public void generate (X509Certificate)" ... inherit DSA/D-H param
-    # 
     # Generates a random public/private key pair, with a given key
     # size.  Different algorithms provide different degrees of security
     # for the same key size, because of the "work factor" involved in
@@ -137,7 +136,7 @@ module Sun::Security::X509
     # 
     # @param keyBits the number of bits in the keys.
     # @exception InvalidKeyException if the environment does not
-    # provide X.509 public keys for this signature algorithm.
+    #  provide X.509 public keys for this signature algorithm.
     def generate(key_bits)
       pair = nil
       begin
@@ -239,7 +238,7 @@ module Sun::Security::X509
         info = X509CertInfo.new
         # Add all mandatory attributes
         info.set(X509CertInfo::VERSION, CertificateVersion.new(CertificateVersion::V3))
-        info.set(X509CertInfo::SERIAL_NUMBER, CertificateSerialNumber.new(RJava.cast_to_int((first_date.get_time / 1000))))
+        info.set(X509CertInfo::SERIAL_NUMBER, CertificateSerialNumber.new(((first_date.get_time / 1000)).to_int))
         alg_id = issuer.get_algorithm_id
         info.set(X509CertInfo::ALGORITHM_ID, CertificateAlgorithmId.new(alg_id))
         info.set(X509CertInfo::SUBJECT, CertificateSubjectName.new(myname))

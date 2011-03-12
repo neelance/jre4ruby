@@ -56,7 +56,7 @@ module Java::Lang::Reflect
     
     class_module.module_eval {
       # Bootstrapping protocol between java.lang and java.lang.reflect
-      # packages
+      #  packages
       when_class_loaded do
         factory = AccessController.do_privileged(ReflectionFactory::GetReflectionFactoryAction.new)
         factory.set_lang_reflect_access(Java::Lang::Reflect::ReflectAccess.new)
@@ -198,7 +198,7 @@ module Java::Lang::Reflect
       # Return a string describing the access modifier flags in
       # the specified modifier. For example:
       # <blockquote><pre>
-      # public final synchronized strictfp
+      #    public final synchronized strictfp
       # </pre></blockquote>
       # The modifier names are returned in an order consistent with the
       # suggested modifier orderings given in <a
@@ -275,8 +275,6 @@ module Java::Lang::Reflect
       # Access modifier flag constants from <em>The Java Virtual
       # Machine Specification, Second Edition</em>, tables 4.1, 4.4,
       # 4.5, and 4.7.
-      # 
-      # 
       # The {@code int} value representing the {@code public}
       # modifier.
       const_set_lazy(:PUBLIC) { 0x1 }

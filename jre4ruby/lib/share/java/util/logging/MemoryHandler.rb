@@ -59,18 +59,18 @@ module Java::Util::Logging
   # If no default value is defined then a RuntimeException is thrown.
   # <ul>
   # <li>   java.util.logging.MemoryHandler.level
-  # specifies the level for the <tt>Handler</tt>
-  # (defaults to <tt>Level.ALL</tt>).
+  #        specifies the level for the <tt>Handler</tt>
+  #        (defaults to <tt>Level.ALL</tt>).
   # <li>   java.util.logging.MemoryHandler.filter
-  # specifies the name of a <tt>Filter</tt> class to use
-  # (defaults to no <tt>Filter</tt>).
+  #        specifies the name of a <tt>Filter</tt> class to use
+  #        (defaults to no <tt>Filter</tt>).
   # <li>   java.util.logging.MemoryHandler.size
-  # defines the buffer size (defaults to 1000).
+  #        defines the buffer size (defaults to 1000).
   # <li>   java.util.logging.MemoryHandler.push
-  # defines the <tt>pushLevel</tt> (defaults to <tt>level.SEVERE</tt>).
+  #        defines the <tt>pushLevel</tt> (defaults to <tt>level.SEVERE</tt>).
   # <li>   java.util.logging.MemoryHandler.target
-  # specifies the name of the target <tt>Handler </tt> class.
-  # (no default).
+  #        specifies the name of the target <tt>Handler </tt> class.
+  #        (no default).
   # </ul>
   # 
   # @since 1.4
@@ -217,7 +217,7 @@ module Java::Util::Logging
     # <tt>Handler</tt>.
     # 
     # @param  record  description of the log event. A null record is
-    # silently ignored and is not published
+    #                 silently ignored and is not published
     def publish(record)
       synchronized(self) do
         if (!is_loggable(record))
@@ -270,7 +270,7 @@ module Java::Util::Logging
     # This will also close the target <tt>Handler</tt>.
     # 
     # @exception  SecurityException  if a security manager exists and if
-    # the caller does not have <tt>LoggingPermission("control")</tt>.
+    #             the caller does not have <tt>LoggingPermission("control")</tt>.
     def close
       @target.close
       set_level(Level::OFF)
@@ -283,7 +283,7 @@ module Java::Util::Logging
     # 
     # @param newLevel the new value of the <tt>pushLevel</tt>
     # @exception  SecurityException  if a security manager exists and if
-    # the caller does not have <tt>LoggingPermission("control")</tt>.
+    #             the caller does not have <tt>LoggingPermission("control")</tt>.
     def set_push_level(new_level)
       if ((new_level).nil?)
         raise NullPointerException.new

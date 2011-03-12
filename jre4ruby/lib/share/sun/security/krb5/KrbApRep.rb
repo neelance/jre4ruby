@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5
@@ -72,7 +70,6 @@ module Sun::Security::Krb5
     # Constructs a KRB-AP-REP to send to a client.
     # @throws KrbException
     # @throws IOException
-    # 
     # Used in AcceptSecContextToken
     def initialize(incoming_req, use_seq_number, use_sub_key)
       @obuf = nil
@@ -88,7 +85,6 @@ module Sun::Security::Krb5
     # Constructs a KRB-AP-REQ from the bytes received from a service.
     # @throws KrbException
     # @throws IOException
-    # 
     # Used in AcceptSecContextToken
     def initialize(message, tgt_creds, outgoing_req)
       initialize__krb_ap_rep(message, tgt_creds)

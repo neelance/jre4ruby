@@ -150,7 +150,7 @@ module Sun::Security::Util
     # of bytes in this buffer as a BigInteger.
     # @param len the number of bytes to use.
     # @param makePositive whether to always return a positive value,
-    # irrespective of actual encoding
+    #   irrespective of actual encoding
     # @return the integer as a BigInteger.
     def get_big_integer(len, make_positive)
       if (len > available)
@@ -277,12 +277,12 @@ module Sun::Security::Util
     # if UTC Time is to be read.
     def get_time(len, generalized)
       # UTC time encoded as ASCII chars:
-      # YYMMDDhhmmZ
-      # YYMMDDhhmmssZ
-      # YYMMDDhhmm+hhmm
-      # YYMMDDhhmm-hhmm
-      # YYMMDDhhmmss+hhmm
-      # YYMMDDhhmmss-hhmm
+      #       YYMMDDhhmmZ
+      #       YYMMDDhhmmssZ
+      #       YYMMDDhhmm+hhmm
+      #       YYMMDDhhmm-hhmm
+      #       YYMMDDhhmmss+hhmm
+      #       YYMMDDhhmmss-hhmm
       # UTC Time is broken in storing only two digits of year.
       # If YY < 50, we assume 20YY;
       # if YY >= 50, we assume 19YY, as per RFC 3280.

@@ -170,7 +170,7 @@ module Sun::Security::Validator
     # may modify the length of the path.
     # 
     # @return the length of the last certification path passed to
-    # CertPathValidator.validate, or -1 if it has not been invoked yet
+    #   CertPathValidator.validate, or -1 if it has not been invoked yet
     def get_cert_path_length
       return @cert_path_length
     end

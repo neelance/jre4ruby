@@ -141,7 +141,7 @@ module Sun::Security::X509
     # <p>
     # @param name String form of IPAddressName
     # @throws IOException if name can not be converted to a valid IPv4 or IPv6
-    # address
+    #     address
     def initialize(name)
       @address = nil
       @is_ipv4 = false
@@ -194,8 +194,8 @@ module Sun::Security::X509
       # Parse an IPv6 address.
       # 
       # @param name String IPv6 address with optional /<prefix length>
-      # If /<prefix length> is present, address[] array will
-      # be 32 bytes long, otherwise 16.
+      #             If /<prefix length> is present, address[] array will
+      #             be 32 bytes long, otherwise 16.
       # @throws IOException on error
       const_set_lazy(:MASKSIZE) { 16 }
       const_attr_reader  :MASKSIZE
@@ -384,15 +384,15 @@ module Sun::Security::X509
     
     typesig { [GeneralNameInterface] }
     # Return type of constraint inputName places on this name:<ul>
-    # <li>NAME_DIFF_TYPE = -1: input name is different type from name
-    # (i.e. does not constrain).
-    # <li>NAME_MATCH = 0: input name matches name.
-    # <li>NAME_NARROWS = 1: input name narrows name (is lower in the naming
-    # subtree)
-    # <li>NAME_WIDENS = 2: input name widens name (is higher in the naming
-    # subtree)
-    # <li>NAME_SAME_TYPE = 3: input name does not match or narrow name, but
-    # is same type.
+    #   <li>NAME_DIFF_TYPE = -1: input name is different type from name
+    #       (i.e. does not constrain).
+    #   <li>NAME_MATCH = 0: input name matches name.
+    #   <li>NAME_NARROWS = 1: input name narrows name (is lower in the naming
+    #       subtree)
+    #   <li>NAME_WIDENS = 2: input name widens name (is higher in the naming
+    #       subtree)
+    #   <li>NAME_SAME_TYPE = 3: input name does not match or narrow name, but
+    #       is same type.
     # </ul>.  These results are used in checking NameConstraints during
     # certification path verification.
     # <p>

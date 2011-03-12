@@ -22,11 +22,8 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
-# 
 # (C) Copyright IBM Corp. 1996-2005 - All Rights Reserved                     *
-# *
+#                                                                             *
 # The original version of this source code and documentation is copyrighted   *
 # and owned by IBM, These materials are provided under terms of a License     *
 # Agreement between IBM and Sun. This technology is protected by multiple     *
@@ -50,11 +47,11 @@ module Sun::Text::Normalizer
   # <pre>
   # UnicodeSetIterator it(set);
   # while (set.next()) {
-  # if (set.codepoint != UnicodeSetIterator::IS_STRING) {
-  # processCodepoint(set.codepoint);
-  # } else {
-  # processString(set.string);
-  # }
+  #   if (set.codepoint != UnicodeSetIterator::IS_STRING) {
+  #     processCodepoint(set.codepoint);
+  #   } else {
+  #     processString(set.string);
+  #   }
   # }
   # </pre>
   # 
@@ -62,11 +59,11 @@ module Sun::Text::Normalizer
   # <pre>
   # UnicodeSetIterator it(set);
   # while (set.nextRange()) {
-  # if (set.codepoint != UnicodeSetIterator::IS_STRING) {
-  # processCodepointRange(set.codepoint, set.codepointEnd);
-  # } else {
-  # processString(set.string);
-  # }
+  #   if (set.codepoint != UnicodeSetIterator::IS_STRING) {
+  #     processCodepointRange(set.codepoint, set.codepointEnd);
+  #   } else {
+  #     processString(set.string);
+  #   }
   # }
   # </pre>
   # @author M. Davis
@@ -257,8 +254,6 @@ module Sun::Text::Normalizer
     
     typesig { [::Java::Int] }
     # Invariant: stringIterator is null when there are no (more) strings remaining
-    # 
-    # 
     # @internal
     def load_range(range)
       @next_element = @set.get_range_start(range)

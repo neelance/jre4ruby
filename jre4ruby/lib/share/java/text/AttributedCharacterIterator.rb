@@ -51,7 +51,7 @@ module Java::Text
   # <ul>
   # <li>the attribute is undefined or null for the entire range, or
   # <li>the attribute value is defined and has the same non-null value for the
-  # entire range.
+  #     entire range.
   # </ul>
   # 
   # <p>A <em>run with respect to a set of attributes</em> is a maximum text range for

@@ -22,14 +22,11 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # NOTE: This class lives in the package sun.net.www.protocol.https.
 # There is a copy in com.sun.net.ssl.internal.www.protocol.https for JSSE
 # 1.0.2 compatibility. It is 100% identical except the package and extends
 # lines. Any changes should be made to be class in sun.net.* and then copied
 # to com.sun.net.*.
-# 
 # For both copies of the file, uncomment one line and comment the other
 module Sun::Net::Www::Protocol::Https
   module HttpsURLConnectionImplImports #:nodoc:
@@ -50,7 +47,6 @@ module Sun::Net::Www::Protocol::Https
   end
   
   # package com.sun.net.ssl.internal.www.protocol.https;
-  # 
   # A class to represent an HTTP connection to a remote object.
   # 
   # Ideally, this class should subclass and inherit the http handler
@@ -63,8 +59,6 @@ module Sun::Net::Www::Protocol::Https
   # sun.net.www.protocol.http.HttpURLConnection functionalities, it
   # needs to implement all public methods in it's super class and all
   # the way to Object.
-  # 
-  # 
   # For both copies of the file, uncomment one line and comment the
   # other. The differences between the two copies are introduced for
   # plugin, and it is marked as such.
@@ -72,7 +66,7 @@ module Sun::Net::Www::Protocol::Https
     include_class_members HttpsURLConnectionImplImports
     
     # public class HttpsURLConnectionOldImpl
-    # extends com.sun.net.ssl.HttpsURLConnection {
+    #      extends com.sun.net.ssl.HttpsURLConnection {
     # NOTE: made protected for plugin so that subclass can set it.
     attr_accessor :delegate
     alias_method :attr_delegate, :delegate
@@ -83,16 +77,16 @@ module Sun::Net::Www::Protocol::Https
     typesig { [URL, Handler] }
     # For both copies of the file, uncomment one line and comment the other
     def initialize(u, handler)
-      # HttpsURLConnectionOldImpl(URL u, Handler handler) throws IOException {
       initialize__https_urlconnection_impl(u, nil, handler)
+      #    HttpsURLConnectionOldImpl(URL u, Handler handler) throws IOException {
     end
     
     typesig { [URL, Proxy, Handler] }
     # For both copies of the file, uncomment one line and comment the other
     def initialize(u, p, handler)
-      # HttpsURLConnectionOldImpl(URL u, Proxy p, Handler handler) throws IOException {
       @delegate = nil
       super(u)
+      #    HttpsURLConnectionOldImpl(URL u, Proxy p, Handler handler) throws IOException {
       @delegate = DelegateHttpsURLConnection.new(self.attr_url, p, handler, self)
     end
     
@@ -119,7 +113,7 @@ module Sun::Net::Www::Protocol::Https
     # 
     # @param url       the URL being accessed
     # @param useCache  whether the cached connection should be used
-    # if present
+    #                  if present
     def set_new_client(url, use_cache)
       @delegate.set_new_client(url, use_cache)
     end
@@ -145,7 +139,7 @@ module Sun::Net::Www::Protocol::Https
     # @param proxyHost the proxy host to use
     # @param proxyPort the proxy port to use
     # @param useCache  whether the cached connection should be used
-    # if present
+    #                  if present
     def set_proxied_client(url, proxy_host, proxy_port, use_cache)
       @delegate.set_proxied_client(url, proxy_host, proxy_port, use_cache)
     end
@@ -312,7 +306,7 @@ module Sun::Net::Www::Protocol::Https
     # existing values associated with the same key.
     # 
     # @param   key     the keyword by which the request is known
-    # (e.g., "<code>accept</code>").
+    #                  (e.g., "<code>accept</code>").
     # @param   value  the value associated with it.
     # @see #getRequestProperties(java.lang.String)
     # @since 1.4

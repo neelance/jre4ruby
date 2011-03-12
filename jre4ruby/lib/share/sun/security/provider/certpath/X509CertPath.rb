@@ -106,7 +106,7 @@ module Sun::Security::Provider::Certpath
     # 
     # @param certs a <code>List</code> of <code>X509Certificate</code>s
     # @exception CertificateException if <code>certs</code> contains an element
-    # that is not an <code>X509Certificate</code>
+    #                      that is not an <code>X509Certificate</code>
     def initialize(certs)
       @certs = nil
       super("X.509")
@@ -142,7 +142,7 @@ module Sun::Security::Provider::Certpath
     # @param is the <code>InputStream</code> to read the data from
     # @param encoding the encoding used
     # @exception CertificateException if an exception occurs while decoding or
-    # the encoding requested is not supported
+    #   the encoding requested is not supported
     def initialize(is, encoding)
       @certs = nil
       super("X.509")
@@ -312,7 +312,7 @@ module Sun::Security::Provider::Certpath
     # @param encoding the name of the encoding to use
     # @return the encoded bytes
     # @exception CertificateEncodingException if an encoding error occurs or
-    # the encoding requested is not supported
+    #   the encoding requested is not supported
     def get_encoded(encoding)
       if ((PKIPATH_ENCODING == encoding))
         return encode_pkipath
@@ -331,7 +331,7 @@ module Sun::Security::Provider::Certpath
       # default encoding first.
       # 
       # @return an <code>Iterator</code> over the names of the supported
-      # encodings (as Strings)
+      #         encodings (as Strings)
       def get_encodings_static
         return EncodingList.iterator
       end
@@ -346,7 +346,7 @@ module Sun::Security::Provider::Certpath
     # <code>UnsupportedOperationException</code>.
     # 
     # @return an <code>Iterator</code> over the names of the supported
-    # encodings (as Strings)
+    #         encodings (as Strings)
     def get_encodings
       return get_encodings_static
     end
@@ -356,7 +356,7 @@ module Sun::Security::Provider::Certpath
     # The <code>List</code> returned must be immutable and thread-safe.
     # 
     # @return an immutable <code>List</code> of <code>X509Certificate</code>s
-    # (may be empty, but not null)
+    #         (may be empty, but not null)
     def get_certificates
       return @certs
     end

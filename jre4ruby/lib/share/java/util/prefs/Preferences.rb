@@ -45,7 +45,6 @@ module Java::Util::Prefs
   end
   
   # These imports needed only as a workaround for a JavaDoc bug
-  # 
   # A node in a hierarchical collection of preference data.  This class
   # allows applications to store and retrieve user and system
   # preference and configuration data.  This data is stored
@@ -144,44 +143,44 @@ module Java::Util::Prefs
   # <i>not</i> accessed when exporting or importing preferences; it merely
   # serves as a string to uniquely identify the DTD, which is:
   # <pre>
-  # &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+  #    &lt;?xml version="1.0" encoding="UTF-8"?&gt;
   # 
-  # &lt;!-- DTD for a Preferences tree. --&gt;
+  #    &lt;!-- DTD for a Preferences tree. --&gt;
   # 
-  # &lt;!-- The preferences element is at the root of an XML document
-  # representing a Preferences tree. --&gt;
-  # &lt;!ELEMENT preferences (root)&gt;
+  #    &lt;!-- The preferences element is at the root of an XML document
+  #         representing a Preferences tree. --&gt;
+  #    &lt;!ELEMENT preferences (root)&gt;
   # 
-  # &lt;!-- The preferences element contains an optional version attribute,
-  # which specifies version of DTD. --&gt;
-  # &lt;!ATTLIST preferences EXTERNAL_XML_VERSION CDATA "0.0" &gt
+  #    &lt;!-- The preferences element contains an optional version attribute,
+  #          which specifies version of DTD. --&gt;
+  #    &lt;!ATTLIST preferences EXTERNAL_XML_VERSION CDATA "0.0" &gt
   # 
-  # &lt;!-- The root element has a map representing the root's preferences
-  # (if any), and one node for each child of the root (if any). --&gt;
-  # &lt;!ELEMENT root (map, node*) &gt;
+  #    &lt;!-- The root element has a map representing the root's preferences
+  #         (if any), and one node for each child of the root (if any). --&gt;
+  #    &lt;!ELEMENT root (map, node*) &gt;
   # 
-  # &lt;!-- Additionally, the root contains a type attribute, which
-  # specifies whether it's the system or user root. --&gt;
-  # &lt;!ATTLIST root
-  # type (system|user) #REQUIRED &gt;
+  #    &lt;!-- Additionally, the root contains a type attribute, which
+  #         specifies whether it's the system or user root. --&gt;
+  #    &lt;!ATTLIST root
+  #              type (system|user) #REQUIRED &gt;
   # 
-  # &lt;!-- Each node has a map representing its preferences (if any),
-  # and one node for each child (if any). --&gt;
-  # &lt;!ELEMENT node (map, node*) &gt;
+  #    &lt;!-- Each node has a map representing its preferences (if any),
+  #         and one node for each child (if any). --&gt;
+  #    &lt;!ELEMENT node (map, node*) &gt;
   # 
-  # &lt;!-- Additionally, each node has a name attribute --&gt;
-  # &lt;!ATTLIST node
-  # name CDATA #REQUIRED &gt;
+  #    &lt;!-- Additionally, each node has a name attribute --&gt;
+  #    &lt;!ATTLIST node
+  #              name CDATA #REQUIRED &gt;
   # 
-  # &lt;!-- A map represents the preferences stored at a node (if any). --&gt;
-  # &lt;!ELEMENT map (entry*) &gt;
+  #    &lt;!-- A map represents the preferences stored at a node (if any). --&gt;
+  #    &lt;!ELEMENT map (entry*) &gt;
   # 
-  # &lt;!-- An entry represents a single preference, which is simply
-  # a key-value pair. --&gt;
-  # &lt;!ELEMENT entry EMPTY &gt;
-  # &lt;!ATTLIST entry
-  # key   CDATA #REQUIRED
-  # value CDATA #REQUIRED &gt;
+  #    &lt;!-- An entry represents a single preference, which is simply
+  #          a key-value pair. --&gt;
+  #    &lt;!ELEMENT entry EMPTY &gt;
+  #    &lt;!ATTLIST entry
+  #              key   CDATA #REQUIRED
+  #              value CDATA #REQUIRED &gt;
   # </pre>
   # 
   # Every <tt>Preferences</tt> implementation must have an associated {@link
@@ -351,7 +350,7 @@ module Java::Util::Prefs
       # 
       # <p>A class <tt>Foo</tt> wishing to access preferences pertaining to its
       # package can obtain a preference node as follows: <pre>
-      # static Preferences prefs = Preferences.userNodeForPackage(Foo.class);
+      #    static Preferences prefs = Preferences.userNodeForPackage(Foo.class);
       # </pre>
       # This idiom obviates the need for using a string to describe the
       # preferences node and decreases the likelihood of a run-time failure.
@@ -367,10 +366,10 @@ module Java::Util::Prefs
       # 
       # @param c the class for whose package a user preference node is desired.
       # @return the user preference node associated with the package of which
-      # <tt>c</tt> is a member.
+      #         <tt>c</tt> is a member.
       # @throws NullPointerException if <tt>c</tt> is <tt>null</tt>.
       # @throws SecurityException if a security manager is present and
-      # it denies <tt>RuntimePermission("preferences")</tt>.
+      #         it denies <tt>RuntimePermission("preferences")</tt>.
       # @see    RuntimePermission
       def user_node_for_package(c)
         return user_root.node(node_name(c))
@@ -394,7 +393,7 @@ module Java::Util::Prefs
       # 
       # <p>A class <tt>Foo</tt> wishing to access preferences pertaining to its
       # package can obtain a preference node as follows: <pre>
-      # static Preferences prefs = Preferences.systemNodeForPackage(Foo.class);
+      #  static Preferences prefs = Preferences.systemNodeForPackage(Foo.class);
       # </pre>
       # This idiom obviates the need for using a string to describe the
       # preferences node and decreases the likelihood of a run-time failure.
@@ -410,10 +409,10 @@ module Java::Util::Prefs
       # 
       # @param c the class for whose package a system preference node is desired.
       # @return the system preference node associated with the package of which
-      # <tt>c</tt> is a member.
+      #         <tt>c</tt> is a member.
       # @throws NullPointerException if <tt>c</tt> is <tt>null</tt>.
       # @throws SecurityException if a security manager is present and
-      # it denies <tt>RuntimePermission("preferences")</tt>.
+      #         it denies <tt>RuntimePermission("preferences")</tt>.
       # @see    RuntimePermission
       def system_node_for_package(c)
         return system_root.node(node_name(c))
@@ -424,7 +423,7 @@ module Java::Util::Prefs
       # of the specified object.
       # 
       # @throws IllegalArgumentException if the package has node preferences
-      # node associated with it.
+      #         node associated with it.
       def node_name(c)
         if (c.is_array)
           raise IllegalArgumentException.new("Arrays have no associated preferences node.")
@@ -457,7 +456,7 @@ module Java::Util::Prefs
       # 
       # @return the root preference node for the calling user.
       # @throws SecurityException If a security manager is present and
-      # it denies <tt>RuntimePermission("preferences")</tt>.
+      #         it denies <tt>RuntimePermission("preferences")</tt>.
       # @see    RuntimePermission
       def user_root
         security = System.get_security_manager
@@ -472,7 +471,7 @@ module Java::Util::Prefs
       # 
       # @return the root preference node for the system.
       # @throws SecurityException If a security manager is present and
-      # it denies <tt>RuntimePermission("preferences")</tt>.
+      #         it denies <tt>RuntimePermission("preferences")</tt>.
       # @see    RuntimePermission
       def system_root
         security = System.get_security_manager
@@ -497,10 +496,10 @@ module Java::Util::Prefs
     # @param value value to be associated with the specified key.
     # @throws NullPointerException if key or value is <tt>null</tt>.
     # @throws IllegalArgumentException if <tt>key.length()</tt> exceeds
-    # <tt>MAX_KEY_LENGTH</tt> or if <tt>value.length</tt> exceeds
-    # <tt>MAX_VALUE_LENGTH</tt>.
+    #       <tt>MAX_KEY_LENGTH</tt> or if <tt>value.length</tt> exceeds
+    #       <tt>MAX_VALUE_LENGTH</tt>.
     # @throws IllegalStateException if this node (or an ancestor) has been
-    # removed with the {@link #removeNode()} method.
+    #         removed with the {@link #removeNode()} method.
     def put(key, value)
       raise NotImplementedError
     end
@@ -517,14 +516,14 @@ module Java::Util::Prefs
     # 
     # @param key key whose associated value is to be returned.
     # @param def the value to be returned in the event that this
-    # preference node has no value associated with <tt>key</tt>.
+    #        preference node has no value associated with <tt>key</tt>.
     # @return the value associated with <tt>key</tt>, or <tt>def</tt>
-    # if no value is associated with <tt>key</tt>, or the backing
-    # store is inaccessible.
+    #         if no value is associated with <tt>key</tt>, or the backing
+    #         store is inaccessible.
     # @throws IllegalStateException if this node (or an ancestor) has been
-    # removed with the {@link #removeNode()} method.
+    #         removed with the {@link #removeNode()} method.
     # @throws NullPointerException if <tt>key</tt> is <tt>null</tt>.  (A
-    # <tt>null</tt> value for <tt>def</tt> <i>is</i> permitted.)
+    #         <tt>null</tt> value for <tt>def</tt> <i>is</i> permitted.)
     def get(key, def_)
       raise NotImplementedError
     end
@@ -541,7 +540,7 @@ module Java::Util::Prefs
     # @param key key whose mapping is to be removed from the preference node.
     # @throws NullPointerException if <tt>key</tt> is <tt>null</tt>.
     # @throws IllegalStateException if this node (or an ancestor) has been
-    # removed with the {@link #removeNode()} method.
+    #         removed with the {@link #removeNode()} method.
     def remove(key)
       raise NotImplementedError
     end
@@ -557,10 +556,10 @@ module Java::Util::Prefs
     # they will be returned by succeeding calls to <tt>get</tt>.
     # 
     # @throws BackingStoreException if this operation cannot be completed
-    # due to a failure in the backing store, or inability to
-    # communicate with it.
+    #         due to a failure in the backing store, or inability to
+    #         communicate with it.
     # @throws IllegalStateException if this node (or an ancestor) has been
-    # removed with the {@link #removeNode()} method.
+    #         removed with the {@link #removeNode()} method.
     # @see #removeNode()
     def clear
       raise NotImplementedError
@@ -577,9 +576,9 @@ module Java::Util::Prefs
     # @param value value whose string form is to be associated with key.
     # @throws NullPointerException if <tt>key</tt> is <tt>null</tt>.
     # @throws IllegalArgumentException if <tt>key.length()</tt> exceeds
-    # <tt>MAX_KEY_LENGTH</tt>.
+    #         <tt>MAX_KEY_LENGTH</tt>.
     # @throws IllegalStateException if this node (or an ancestor) has been
-    # removed with the {@link #removeNode()} method.
+    #         removed with the {@link #removeNode()} method.
     # @see #getInt(String,int)
     def put_int(key, value)
       raise NotImplementedError
@@ -602,15 +601,15 @@ module Java::Util::Prefs
     # 
     # @param key key whose associated value is to be returned as an int.
     # @param def the value to be returned in the event that this
-    # preference node has no value associated with <tt>key</tt>
-    # or the associated value cannot be interpreted as an int,
-    # or the backing store is inaccessible.
+    #        preference node has no value associated with <tt>key</tt>
+    #        or the associated value cannot be interpreted as an int,
+    #        or the backing store is inaccessible.
     # @return the int value represented by the string associated with
-    # <tt>key</tt> in this preference node, or <tt>def</tt> if the
-    # associated value does not exist or cannot be interpreted as
-    # an int.
+    #         <tt>key</tt> in this preference node, or <tt>def</tt> if the
+    #         associated value does not exist or cannot be interpreted as
+    #         an int.
     # @throws IllegalStateException if this node (or an ancestor) has been
-    # removed with the {@link #removeNode()} method.
+    #         removed with the {@link #removeNode()} method.
     # @throws NullPointerException if <tt>key</tt> is <tt>null</tt>.
     # @see #putInt(String,int)
     # @see #get(String,String)
@@ -629,9 +628,9 @@ module Java::Util::Prefs
     # @param value value whose string form is to be associated with key.
     # @throws NullPointerException if <tt>key</tt> is <tt>null</tt>.
     # @throws IllegalArgumentException if <tt>key.length()</tt> exceeds
-    # <tt>MAX_KEY_LENGTH</tt>.
+    #         <tt>MAX_KEY_LENGTH</tt>.
     # @throws IllegalStateException if this node (or an ancestor) has been
-    # removed with the {@link #removeNode()} method.
+    #         removed with the {@link #removeNode()} method.
     # @see #getLong(String,long)
     def put_long(key, value)
       raise NotImplementedError
@@ -654,15 +653,15 @@ module Java::Util::Prefs
     # 
     # @param key key whose associated value is to be returned as a long.
     # @param def the value to be returned in the event that this
-    # preference node has no value associated with <tt>key</tt>
-    # or the associated value cannot be interpreted as a long,
-    # or the backing store is inaccessible.
+    #        preference node has no value associated with <tt>key</tt>
+    #        or the associated value cannot be interpreted as a long,
+    #        or the backing store is inaccessible.
     # @return the long value represented by the string associated with
-    # <tt>key</tt> in this preference node, or <tt>def</tt> if the
-    # associated value does not exist or cannot be interpreted as
-    # a long.
+    #         <tt>key</tt> in this preference node, or <tt>def</tt> if the
+    #         associated value does not exist or cannot be interpreted as
+    #         a long.
     # @throws IllegalStateException if this node (or an ancestor) has been
-    # removed with the {@link #removeNode()} method.
+    #         removed with the {@link #removeNode()} method.
     # @throws NullPointerException if <tt>key</tt> is <tt>null</tt>.
     # @see #putLong(String,long)
     # @see #get(String,String)
@@ -681,9 +680,9 @@ module Java::Util::Prefs
     # @param value value whose string form is to be associated with key.
     # @throws NullPointerException if <tt>key</tt> is <tt>null</tt>.
     # @throws IllegalArgumentException if <tt>key.length()</tt> exceeds
-    # <tt>MAX_KEY_LENGTH</tt>.
+    #         <tt>MAX_KEY_LENGTH</tt>.
     # @throws IllegalStateException if this node (or an ancestor) has been
-    # removed with the {@link #removeNode()} method.
+    #         removed with the {@link #removeNode()} method.
     # @see #getBoolean(String,boolean)
     # @see #get(String,String)
     def put_boolean(key, value)
@@ -711,15 +710,15 @@ module Java::Util::Prefs
     # 
     # @param key key whose associated value is to be returned as a boolean.
     # @param def the value to be returned in the event that this
-    # preference node has no value associated with <tt>key</tt>
-    # or the associated value cannot be interpreted as a boolean,
-    # or the backing store is inaccessible.
+    #        preference node has no value associated with <tt>key</tt>
+    #        or the associated value cannot be interpreted as a boolean,
+    #        or the backing store is inaccessible.
     # @return the boolean value represented by the string associated with
-    # <tt>key</tt> in this preference node, or <tt>def</tt> if the
-    # associated value does not exist or cannot be interpreted as
-    # a boolean.
+    #         <tt>key</tt> in this preference node, or <tt>def</tt> if the
+    #         associated value does not exist or cannot be interpreted as
+    #         a boolean.
     # @throws IllegalStateException if this node (or an ancestor) has been
-    # removed with the {@link #removeNode()} method.
+    #         removed with the {@link #removeNode()} method.
     # @throws NullPointerException if <tt>key</tt> is <tt>null</tt>.
     # @see #get(String,String)
     # @see #putBoolean(String,boolean)
@@ -738,9 +737,9 @@ module Java::Util::Prefs
     # @param value value whose string form is to be associated with key.
     # @throws NullPointerException if <tt>key</tt> is <tt>null</tt>.
     # @throws IllegalArgumentException if <tt>key.length()</tt> exceeds
-    # <tt>MAX_KEY_LENGTH</tt>.
+    #         <tt>MAX_KEY_LENGTH</tt>.
     # @throws IllegalStateException if this node (or an ancestor) has been
-    # removed with the {@link #removeNode()} method.
+    #         removed with the {@link #removeNode()} method.
     # @see #getFloat(String,float)
     def put_float(key, value)
       raise NotImplementedError
@@ -762,15 +761,15 @@ module Java::Util::Prefs
     # 
     # @param key key whose associated value is to be returned as a float.
     # @param def the value to be returned in the event that this
-    # preference node has no value associated with <tt>key</tt>
-    # or the associated value cannot be interpreted as a float,
-    # or the backing store is inaccessible.
+    #        preference node has no value associated with <tt>key</tt>
+    #        or the associated value cannot be interpreted as a float,
+    #        or the backing store is inaccessible.
     # @return the float value represented by the string associated with
-    # <tt>key</tt> in this preference node, or <tt>def</tt> if the
-    # associated value does not exist or cannot be interpreted as
-    # a float.
+    #         <tt>key</tt> in this preference node, or <tt>def</tt> if the
+    #         associated value does not exist or cannot be interpreted as
+    #         a float.
     # @throws IllegalStateException if this node (or an ancestor) has been
-    # removed with the {@link #removeNode()} method.
+    #         removed with the {@link #removeNode()} method.
     # @throws NullPointerException if <tt>key</tt> is <tt>null</tt>.
     # @see #putFloat(String,float)
     # @see #get(String,String)
@@ -789,9 +788,9 @@ module Java::Util::Prefs
     # @param value value whose string form is to be associated with key.
     # @throws NullPointerException if <tt>key</tt> is <tt>null</tt>.
     # @throws IllegalArgumentException if <tt>key.length()</tt> exceeds
-    # <tt>MAX_KEY_LENGTH</tt>.
+    #         <tt>MAX_KEY_LENGTH</tt>.
     # @throws IllegalStateException if this node (or an ancestor) has been
-    # removed with the {@link #removeNode()} method.
+    #         removed with the {@link #removeNode()} method.
     # @see #getDouble(String,double)
     def put_double(key, value)
       raise NotImplementedError
@@ -813,15 +812,15 @@ module Java::Util::Prefs
     # 
     # @param key key whose associated value is to be returned as a double.
     # @param def the value to be returned in the event that this
-    # preference node has no value associated with <tt>key</tt>
-    # or the associated value cannot be interpreted as a double,
-    # or the backing store is inaccessible.
+    #        preference node has no value associated with <tt>key</tt>
+    #        or the associated value cannot be interpreted as a double,
+    #        or the backing store is inaccessible.
     # @return the double value represented by the string associated with
-    # <tt>key</tt> in this preference node, or <tt>def</tt> if the
-    # associated value does not exist or cannot be interpreted as
-    # a double.
+    #         <tt>key</tt> in this preference node, or <tt>def</tt> if the
+    #         associated value does not exist or cannot be interpreted as
+    #         a double.
     # @throws IllegalStateException if this node (or an ancestor) has been
-    # removed with the {@link #removeNode()} method.
+    #         removed with the {@link #removeNode()} method.
     # @throws NullPointerException if <tt>key</tt> is <tt>null</tt>.
     # @see #putDouble(String,double)
     # @see #get(String,String)
@@ -846,9 +845,9 @@ module Java::Util::Prefs
     # @param value value whose string form is to be associated with key.
     # @throws NullPointerException if key or value is <tt>null</tt>.
     # @throws IllegalArgumentException if key.length() exceeds MAX_KEY_LENGTH
-    # or if value.length exceeds MAX_VALUE_LENGTH*3/4.
+    #         or if value.length exceeds MAX_VALUE_LENGTH*3/4.
     # @throws IllegalStateException if this node (or an ancestor) has been
-    # removed with the {@link #removeNode()} method.
+    #         removed with the {@link #removeNode()} method.
     # @see #getByteArray(String,byte[])
     # @see #get(String,String)
     def put_byte_array(key, value)
@@ -878,17 +877,17 @@ module Java::Util::Prefs
     # 
     # @param key key whose associated value is to be returned as a byte array.
     # @param def the value to be returned in the event that this
-    # preference node has no value associated with <tt>key</tt>
-    # or the associated value cannot be interpreted as a byte array,
-    # or the backing store is inaccessible.
+    #        preference node has no value associated with <tt>key</tt>
+    #        or the associated value cannot be interpreted as a byte array,
+    #        or the backing store is inaccessible.
     # @return the byte array value represented by the string associated with
-    # <tt>key</tt> in this preference node, or <tt>def</tt> if the
-    # associated value does not exist or cannot be interpreted as
-    # a byte array.
+    #         <tt>key</tt> in this preference node, or <tt>def</tt> if the
+    #         associated value does not exist or cannot be interpreted as
+    #         a byte array.
     # @throws IllegalStateException if this node (or an ancestor) has been
-    # removed with the {@link #removeNode()} method.
+    #         removed with the {@link #removeNode()} method.
     # @throws NullPointerException if <tt>key</tt> is <tt>null</tt>.  (A
-    # <tt>null</tt> value for <tt>def</tt> <i>is</i> permitted.)
+    #         <tt>null</tt> value for <tt>def</tt> <i>is</i> permitted.)
     # @see #get(String,String)
     # @see #putByteArray(String,byte[])
     def get_byte_array(key, def_)
@@ -906,12 +905,12 @@ module Java::Util::Prefs
     # addition to any explicit preferences.
     # 
     # @return an array of the keys that have an associated value in this
-    # preference node.
+    #         preference node.
     # @throws BackingStoreException if this operation cannot be completed
-    # due to a failure in the backing store, or inability to
-    # communicate with it.
+    #         due to a failure in the backing store, or inability to
+    #         communicate with it.
     # @throws IllegalStateException if this node (or an ancestor) has been
-    # removed with the {@link #removeNode()} method.
+    #         removed with the {@link #removeNode()} method.
     def keys
       raise NotImplementedError
     end
@@ -923,10 +922,10 @@ module Java::Util::Prefs
     # 
     # @return the names of the children of this preference node.
     # @throws BackingStoreException if this operation cannot be completed
-    # due to a failure in the backing store, or inability to
-    # communicate with it.
+    #         due to a failure in the backing store, or inability to
+    #         communicate with it.
     # @throws IllegalStateException if this node (or an ancestor) has been
-    # removed with the {@link #removeNode()} method.
+    #         removed with the {@link #removeNode()} method.
     def children_names
       raise NotImplementedError
     end
@@ -937,7 +936,7 @@ module Java::Util::Prefs
     # 
     # @return the parent of this preference node.
     # @throws IllegalStateException if this node (or an ancestor) has been
-    # removed with the {@link #removeNode()} method.
+    #         removed with the {@link #removeNode()} method.
     def parent
       raise NotImplementedError
     end
@@ -957,11 +956,11 @@ module Java::Util::Prefs
     # @param pathName the path name of the preference node to return.
     # @return the specified preference node.
     # @throws IllegalArgumentException if the path name is invalid (i.e.,
-    # it contains multiple consecutive slash characters, or ends
-    # with a slash character and is more than one character long).
+    #         it contains multiple consecutive slash characters, or ends
+    #         with a slash character and is more than one character long).
     # @throws NullPointerException if path name is <tt>null</tt>.
     # @throws IllegalStateException if this node (or an ancestor) has been
-    # removed with the {@link #removeNode()} method.
+    #         removed with the {@link #removeNode()} method.
     # @see #flush()
     def node(path_name)
       raise NotImplementedError
@@ -980,18 +979,18 @@ module Java::Util::Prefs
     # used to test whether <tt>p</tt> has been removed.
     # 
     # @param pathName the path name of the node whose existence
-    # is to be checked.
+    #        is to be checked.
     # @return true if the specified node exists.
     # @throws BackingStoreException if this operation cannot be completed
-    # due to a failure in the backing store, or inability to
-    # communicate with it.
+    #         due to a failure in the backing store, or inability to
+    #         communicate with it.
     # @throws IllegalArgumentException if the path name is invalid (i.e.,
-    # it contains multiple consecutive slash characters, or ends
-    # with a slash character and is more than one character long).
+    #         it contains multiple consecutive slash characters, or ends
+    #         with a slash character and is more than one character long).
     # @throws NullPointerException if path name is <tt>null</tt>.
     # @throws IllegalStateException if this node (or an ancestor) has been
-    # removed with the {@link #removeNode()} method and
-    # <tt>pathName</tt> is not the empty string (<tt>""</tt>).
+    #         removed with the {@link #removeNode()} method and
+    #         <tt>pathName</tt> is not the empty string (<tt>""</tt>).
     def node_exists(path_name)
       raise NotImplementedError
     end
@@ -1018,12 +1017,12 @@ module Java::Util::Prefs
     # representing a non-empty collection of preferences and/or children.
     # 
     # @throws BackingStoreException if this operation cannot be completed
-    # due to a failure in the backing store, or inability to
-    # communicate with it.
+    #         due to a failure in the backing store, or inability to
+    #         communicate with it.
     # @throws IllegalStateException if this node (or an ancestor) has already
-    # been removed with the {@link #removeNode()} method.
+    #         been removed with the {@link #removeNode()} method.
     # @throws UnsupportedOperationException if this method is invoked on
-    # the root node.
+    #         the root node.
     # @see #flush()
     def remove_node
       raise NotImplementedError
@@ -1050,8 +1049,8 @@ module Java::Util::Prefs
     # preference tree, <tt>false</tt> if it's in the system preference tree.
     # 
     # @return <tt>true</tt> if this preference node is in the user
-    # preference tree, <tt>false</tt> if it's in the system
-    # preference tree.
+    #         preference tree, <tt>false</tt> if it's in the system
+    #         preference tree.
     def is_user_node
       raise NotImplementedError
     end
@@ -1084,8 +1083,8 @@ module Java::Util::Prefs
     # but not on others.
     # 
     # @throws BackingStoreException if this operation cannot be completed
-    # due to a failure in the backing store, or inability to
-    # communicate with it.
+    #         due to a failure in the backing store, or inability to
+    #         communicate with it.
     # @see    #sync()
     def flush
       raise NotImplementedError
@@ -1100,10 +1099,10 @@ module Java::Util::Prefs
     # method had been invoked on this node.
     # 
     # @throws BackingStoreException if this operation cannot be completed
-    # due to a failure in the backing store, or inability to
-    # communicate with it.
+    #         due to a failure in the backing store, or inability to
+    #         communicate with it.
     # @throws IllegalStateException if this node (or an ancestor) has been
-    # removed with the {@link #removeNode()} method.
+    #         removed with the {@link #removeNode()} method.
     # @see    #flush()
     def sync
       raise NotImplementedError
@@ -1129,7 +1128,7 @@ module Java::Util::Prefs
     # @param pcl The preference change listener to add.
     # @throws NullPointerException if <tt>pcl</tt> is null.
     # @throws IllegalStateException if this node (or an ancestor) has been
-    # removed with the {@link #removeNode()} method.
+    #         removed with the {@link #removeNode()} method.
     # @see #removePreferenceChangeListener(PreferenceChangeListener)
     # @see #addNodeChangeListener(NodeChangeListener)
     def add_preference_change_listener(pcl)
@@ -1142,9 +1141,9 @@ module Java::Util::Prefs
     # 
     # @param pcl The preference change listener to remove.
     # @throws IllegalArgumentException if <tt>pcl</tt> was not a registered
-    # preference change listener on this node.
+    #         preference change listener on this node.
     # @throws IllegalStateException if this node (or an ancestor) has been
-    # removed with the {@link #removeNode()} method.
+    #         removed with the {@link #removeNode()} method.
     # @see #addPreferenceChangeListener(PreferenceChangeListener)
     def remove_preference_change_listener(pcl)
       raise NotImplementedError
@@ -1175,7 +1174,7 @@ module Java::Util::Prefs
     # @param ncl The <tt>NodeChangeListener</tt> to add.
     # @throws NullPointerException if <tt>ncl</tt> is null.
     # @throws IllegalStateException if this node (or an ancestor) has been
-    # removed with the {@link #removeNode()} method.
+    #         removed with the {@link #removeNode()} method.
     # @see #removeNodeChangeListener(NodeChangeListener)
     # @see #addPreferenceChangeListener(PreferenceChangeListener)
     def add_node_change_listener(ncl)
@@ -1188,9 +1187,9 @@ module Java::Util::Prefs
     # 
     # @param ncl The <tt>NodeChangeListener</tt> to remove.
     # @throws IllegalArgumentException if <tt>ncl</tt> was not a registered
-    # <tt>NodeChangeListener</tt> on this node.
+    #         <tt>NodeChangeListener</tt> on this node.
     # @throws IllegalStateException if this node (or an ancestor) has been
-    # removed with the {@link #removeNode()} method.
+    #         removed with the {@link #removeNode()} method.
     # @see #addNodeChangeListener(NodeChangeListener)
     def remove_node_change_listener(ncl)
       raise NotImplementedError
@@ -1217,12 +1216,12 @@ module Java::Util::Prefs
     # 
     # @param os the output stream on which to emit the XML document.
     # @throws IOException if writing to the specified output stream
-    # results in an <tt>IOException</tt>.
+    #         results in an <tt>IOException</tt>.
     # @throws BackingStoreException if preference data cannot be read from
-    # backing store.
+    #         backing store.
     # @see    #importPreferences(InputStream)
     # @throws IllegalStateException if this node (or an ancestor) has been
-    # removed with the {@link #removeNode()} method.
+    #         removed with the {@link #removeNode()} method.
     def export_node(os)
       raise NotImplementedError
     end
@@ -1248,11 +1247,11 @@ module Java::Util::Prefs
     # 
     # @param os the output stream on which to emit the XML document.
     # @throws IOException if writing to the specified output stream
-    # results in an <tt>IOException</tt>.
+    #         results in an <tt>IOException</tt>.
     # @throws BackingStoreException if preference data cannot be read from
-    # backing store.
+    #         backing store.
     # @throws IllegalStateException if this node (or an ancestor) has been
-    # removed with the {@link #removeNode()} method.
+    #         removed with the {@link #removeNode()} method.
     # @see    #importPreferences(InputStream)
     # @see    #exportNode(OutputStream)
     def export_subtree(os)
@@ -1285,11 +1284,11 @@ module Java::Util::Prefs
       # 
       # @param is the input stream from which to read the XML document.
       # @throws IOException if reading from the specified input stream
-      # results in an <tt>IOException</tt>.
+      #         results in an <tt>IOException</tt>.
       # @throws InvalidPreferencesFormatException Data on input stream does not
-      # constitute a valid XML document with the mandated document type.
+      #         constitute a valid XML document with the mandated document type.
       # @throws SecurityException If a security manager is present and
-      # it denies <tt>RuntimePermission("preferences")</tt>.
+      #         it denies <tt>RuntimePermission("preferences")</tt>.
       # @see    RuntimePermission
       def import_preferences(is)
         XmlSupport.import_preferences(is)

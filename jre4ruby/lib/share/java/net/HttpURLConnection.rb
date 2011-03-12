@@ -54,7 +54,6 @@ module Java::Net
     include_class_members HttpURLConnectionImports
     
     # instance variables
-    # 
     # The HTTP method (GET,POST,PUT,etc.).
     attr_accessor :method
     alias_method :attr_method, :method
@@ -90,7 +89,7 @@ module Java::Net
     # 
     # @param   n   an index, where n >=0.
     # @return  the key for the <code>n</code><sup>th</sup> header field,
-    # or <code>null</code> if the key does not exist.
+    #          or <code>null</code> if the key does not exist.
     def get_header_field_key(n)
       return nil
     end
@@ -114,13 +113,13 @@ module Java::Net
     # This method must be called before the URLConnection is connected.
     # 
     # @param   contentLength The number of bytes which will be written
-    # to the OutputStream.
+    #          to the OutputStream.
     # 
     # @throws  IllegalStateException if URLConnection is already connected
-    # or if a different streaming mode is already enabled.
+    #          or if a different streaming mode is already enabled.
     # 
     # @throws  IllegalArgumentException if a content length less than
-    # zero is specified.
+    #          zero is specified.
     # 
     # @see     #setChunkedStreamingMode(int)
     # @since 1.5
@@ -161,11 +160,11 @@ module Java::Net
     # This method must be called before the URLConnection is connected.
     # 
     # @param   chunklen The number of bytes to write in each chunk.
-    # If chunklen is less than or equal to zero, a default
-    # value will be used.
+    #          If chunklen is less than or equal to zero, a default
+    #          value will be used.
     # 
     # @throws  IllegalStateException if URLConnection is already connected
-    # or if a different streaming mode is already enabled.
+    #          or if a different streaming mode is already enabled.
     # 
     # @see     #setFixedLengthStreamingMode(int)
     # @since 1.5
@@ -191,7 +190,7 @@ module Java::Net
     # 
     # @param   n   an index, where n>=0.
     # @return  the value of the <code>n</code><sup>th</sup> header field,
-    # or <code>null</code> if the value does not exist.
+    #          or <code>null</code> if the value does not exist.
     # @see     java.net.HttpURLConnection#getHeaderFieldKey(int)
     def get_header_field(n)
       return nil
@@ -292,8 +291,8 @@ module Java::Net
       # @param set a <code>boolean</code> indicating whether or not
       # to follow HTTP redirects.
       # @exception  SecurityException  if a security manager exists and its
-      # <code>checkSetFactory</code> method doesn't
-      # allow the operation.
+      #             <code>checkSetFactory</code> method doesn't
+      #             allow the operation.
       # @see        SecurityManager#checkSetFactory
       # @see #getFollowRedirects()
       def set_follow_redirects(set)
@@ -341,7 +340,7 @@ module Java::Net
     # <code>instanceFollowRedirects</code> field.
     # 
     # @return  the value of this <code>HttpURLConnection</code>'s
-    # <code>instanceFollowRedirects</code> field.
+    #          <code>instanceFollowRedirects</code> field.
     # @see     java.net.HttpURLConnection#instanceFollowRedirects
     # @see #setInstanceFollowRedirects(boolean)
     # @since 1.3
@@ -352,19 +351,19 @@ module Java::Net
     typesig { [String] }
     # Set the method for the URL request, one of:
     # <UL>
-    # <LI>GET
-    # <LI>POST
-    # <LI>HEAD
-    # <LI>OPTIONS
-    # <LI>PUT
-    # <LI>DELETE
-    # <LI>TRACE
+    #  <LI>GET
+    #  <LI>POST
+    #  <LI>HEAD
+    #  <LI>OPTIONS
+    #  <LI>PUT
+    #  <LI>DELETE
+    #  <LI>TRACE
     # </UL> are legal, subject to protocol restrictions.  The default
     # method is GET.
     # 
     # @param method the HTTP method
     # @exception ProtocolException if the method cannot be reset or if
-    # the requested method isn't valid for HTTP.
+    #              the requested method isn't valid for HTTP.
     # @see #getRequestMethod()
     def set_request_method(method)
       if (self.attr_connected)
@@ -539,11 +538,9 @@ module Java::Net
     
     class_module.module_eval {
       # The response codes for HTTP, as of version 1.1.
-      # 
       # REMIND: do we want all these??
       # Others not here that we do want??
       # 2XX: generally "OK"
-      # 
       # HTTP Status-Code 200: OK.
       const_set_lazy(:HTTP_OK) { 200 }
       const_attr_reader  :HTTP_OK
@@ -573,7 +570,6 @@ module Java::Net
       const_attr_reader  :HTTP_PARTIAL
       
       # 3XX: relocation/redirect
-      # 
       # HTTP Status-Code 300: Multiple Choices.
       const_set_lazy(:HTTP_MULT_CHOICE) { 300 }
       const_attr_reader  :HTTP_MULT_CHOICE
@@ -599,7 +595,6 @@ module Java::Net
       const_attr_reader  :HTTP_USE_PROXY
       
       # 4XX: client error
-      # 
       # HTTP Status-Code 400: Bad Request.
       const_set_lazy(:HTTP_BAD_REQUEST) { 400 }
       const_attr_reader  :HTTP_BAD_REQUEST
@@ -665,7 +660,6 @@ module Java::Net
       const_attr_reader  :HTTP_UNSUPPORTED_TYPE
       
       # 5XX: server error
-      # 
       # HTTP Status-Code 500: Internal Server Error.
       # @deprecated   it is misplaced and shouldn't have existed.
       const_set_lazy(:HTTP_SERVER_ERROR) { 500 }

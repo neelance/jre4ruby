@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # This file is available under and governed by the GNU General Public
 # License version 2 only, as published by the Free Software Foundation.
 # However, the following notice accompanied the original version of this
@@ -165,9 +163,8 @@ module Java::Util::Concurrent
     # The following (duplicated) doc comment can be removed once
     # 
     # 6270645: Javadoc comments should be inherited from most derived
-    # superinterface or superclass
+    #          superinterface or superclass
     # is fixed.
-    # 
     # Sets this Future to the result of its computation
     # unless it has been cancelled.
     def run

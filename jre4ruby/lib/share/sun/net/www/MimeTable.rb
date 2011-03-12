@@ -40,28 +40,28 @@ module Sun::Net::Www
     }
   end
   
-  # Debugging utilities
-  # 
+  #  * Debugging utilities
+  #  *
   # public void list(PrintStream out) {
-  # Enumeration keys = entries.keys();
-  # while (keys.hasMoreElements()) {
-  # String key = (String)keys.nextElement();
-  # MimeEntry entry = (MimeEntry)entries.get(key);
-  # out.println(key + ": " + entry);
-  # }
+  #     Enumeration keys = entries.keys();
+  #     while (keys.hasMoreElements()) {
+  #         String key = (String)keys.nextElement();
+  #         MimeEntry entry = (MimeEntry)entries.get(key);
+  #         out.println(key + ": " + entry);
+  #     }
   # }
   # 
   # public static void main(String[] args) {
-  # MimeTable testTable = MimeTable.getDefaultTable();
+  #     MimeTable testTable = MimeTable.getDefaultTable();
   # 
-  # Enumeration e = testTable.elements();
-  # while (e.hasMoreElements()) {
-  # MimeEntry entry = (MimeEntry)e.nextElement();
-  # System.out.println(entry);
-  # }
+  #     Enumeration e = testTable.elements();
+  #     while (e.hasMoreElements()) {
+  #         MimeEntry entry = (MimeEntry)e.nextElement();
+  #         System.out.println(entry);
+  #     }
   # 
-  # testTable.save(File.separator + "tmp" +
-  # File.separator + "mime_table.save");
+  #     testTable.save(File.separator + "tmp" +
+  #                    File.separator + "mime_table.save");
   # }
   class MimeTable 
     include_class_members MimeTableImports
@@ -103,7 +103,7 @@ module Sun::Net::Www
           typesig { [] }
           define_method :run do
             self.attr_temp_file_template = RJava.cast_to_string(System.get_property("content.types.temp.file.template", "/tmp/%s"))
-            self.attr_mailcap_locations = Array.typed(String).new([System.get_property("user.mailcap"), RJava.cast_to_string(System.get_property("user.home")) + "/.mailcap", "/etc/mailcap", "/usr/etc/mailcap", "/usr/local/etc/mailcap", RJava.cast_to_string(System.get_property("hotjava.home", "/usr/local/hotjava")) + "/lib/mailcap", ])
+            self.attr_mailcap_locations = Array.typed(String).new([System.get_property("user.mailcap"), RJava.cast_to_string(System.get_property("user.home")) + "/.mailcap", "/etc/mailcap", "/usr/etc/mailcap", "/usr/local/etc/mailcap", RJava.cast_to_string(System.get_property("hotjava.home", "/usr/local/hotjava")) + "/lib/mailcap"])
             return nil
           end
           
@@ -374,6 +374,7 @@ module Sun::Net::Www
     end
     
     typesig { [String, String] }
+    # 
     # Table format:
     # 
     # <entry> ::= <table_tag> | <type_entry>
@@ -385,12 +386,12 @@ module Sun::Net::Www
     # <type_subtype_pair> ::= <type> '/' <subtype>
     # 
     # <type_attrs_list> ::= <attr_value_pair> [ ';' <attr_value_pair> ]*
-    # | [ <attr_value_pair> ]+
+    #                       | [ <attr_value_pair> ]+
     # 
     # <attr_value_pair> ::= <attr_name> '=' <attr_value>
     # 
     # <attr_name> ::= 'description' | 'action' | 'application'
-    # | 'file_extensions' | 'icon'
+    #                 | 'file_extensions' | 'icon'
     # 
     # <attr_value> ::= <legal_char>*
     # 
@@ -398,6 +399,7 @@ module Sun::Net::Www
     # 
     # Interpretation of <attr_value> depends on the <attr_name> it is
     # associated with.
+    # 
     def parse(type, attrs)
       new_entry = MimeEntry.new(type)
       # REMIND handle embedded ';' and '|' and literal '"'

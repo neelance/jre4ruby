@@ -54,11 +54,11 @@ module Sun::Security::X509
   # The ASN.1 for RDNs is:
   # <pre>
   # RelativeDistinguishedName ::=
-  # SET OF AttributeTypeAndValue
+  #   SET OF AttributeTypeAndValue
   # 
   # AttributeTypeAndValue ::= SEQUENCE {
-  # type     AttributeType,
-  # value    AttributeValue }
+  #   type     AttributeType,
+  #   value    AttributeValue }
   # 
   # AttributeType ::= OBJECT IDENTIFIER
   # 
@@ -442,7 +442,6 @@ module Sun::Security::X509
       # Where there is a multi-valued RDN, the outputs from adjoining
       # AttributeTypeAndValues are separated by a plus ('+' ASCII 43)
       # character.
-      # 
       # normally, an RDN only contains one AVA
       if ((@assertion.attr_length).equal?(1))
         return canonical ? @assertion[0].to_rfc2253canonical_string : @assertion[0].to_rfc2253string(oid_map)

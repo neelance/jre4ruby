@@ -35,7 +35,6 @@ module Sun::Net::Httpserver
   end
   
   # flush is a pass-through
-  # 
   # a class which allows the caller to write an indefinite
   # number of bytes to an underlying stream , but without using
   # chunked encoding. Used for http/1.0 clients only

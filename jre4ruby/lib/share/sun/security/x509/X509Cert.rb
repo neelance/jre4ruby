@@ -42,12 +42,11 @@ module Sun::Security::X509
   end
   
   # DER
-  # 
   # @author David Brownell
   # 
   # @see CertAndKeyGen
   # @deprecated  Use the new X509Certificate class.
-  # This class is only restored for backwards compatibility.
+  #              This class is only restored for backwards compatibility.
   class X509Cert 
     include_class_members X509CertImports
     include Certificate
@@ -65,7 +64,6 @@ module Sun::Security::X509
     # calling the default routines which would operate on the field values.
     # 
     # MAKE SURE TO MARK ANY FIELDS THAT ARE ADDED IN THE FUTURE AS TRANSIENT.
-    # 
     # The algorithm id
     attr_accessor :algid
     alias_method :attr_algid, :algid
@@ -156,17 +154,10 @@ module Sun::Security::X509
     
     typesig { [] }
     # X509.v2 extensions
-    # 
-    # 
     # X509.v3 extensions
-    # 
-    # 
     # Other extensions ... Netscape, Verisign, SET, etc
-    # 
-    # 
     # Construct a uninitialized X509 Cert on which <a href="#decode">
     # decode</a> must later be called (or which may be deserialized).
-    # 
     # XXX deprecated, delete this
     def initialize
       @algid = nil
@@ -302,7 +293,7 @@ module Sun::Security::X509
     # 
     # @param subjectName the X.500 distinguished name being certified
     # @param subjectPublicKey the public key being certified.  This
-    # must be an "X509Key" implementing the "PublicKey" interface.
+    #  must be an "X509Key" implementing the "PublicKey" interface.
     # @param notBefore the first time the certificate is valid
     # @param notAfter the last time the certificate is valid
     # 
@@ -449,7 +440,9 @@ module Sun::Security::X509
       if ((@signed_cert).nil?)
         raise CertException.new(CertException.attr_verf_invalid_sig, "?? certificate is not signed yet ??")
       end
+      # 
       # Verify the signature ...
+      # 
       alg_name = nil
       begin
         sig_verf = nil
@@ -486,7 +479,7 @@ module Sun::Security::X509
     # @return the signed certificate, as returned by getSignedCert
     # 
     # @exception IOException if any of the data could not be encoded,
-    # or when any mandatory data was omitted
+    #  or when any mandatory data was omitted
     # @exception SignatureException on signing failures
     def encode_and_sign(serial, issuer)
       @raw_cert = nil
@@ -521,16 +514,16 @@ module Sun::Security::X509
     # for other sources of algorithm parameters.</em>
     # 
     # @param algorithm the signature algorithm to be used.  Note that a
-    # given public/private key pair may support several such algorithms.
+    #  given public/private key pair may support several such algorithms.
     # @param privateKey the private key used to create the signature,
-    # which must correspond to the public key in this certificate
+    #  which must correspond to the public key in this certificate
     # @return the Signer object
     # 
     # @exception NoSuchAlgorithmException if the signature
-    # algorithm is not supported
+    #  algorithm is not supported
     # @exception InvalidKeyException if either the key in the certificate,
-    # or the private key parameter, does not support the requested
-    # signature algorithm
+    #  or the private key parameter, does not support the requested
+    #  signature algorithm
     def get_signer(algorithm_id, private_key)
       algorithm = nil
       sig = nil
@@ -563,9 +556,9 @@ module Sun::Security::X509
     # @param algorithm the algorithm of the signature to be verified
     # @return the Signature object
     # @exception NoSuchAlgorithmException if the signature
-    # algorithm is not supported
+    #  algorithm is not supported
     # @exception InvalidKeyException if the key in the certificate
-    # does not support the requested signature algorithm
+    #  does not support the requested signature algorithm
     def get_verifier(algorithm)
       alg_name = nil
       sig = nil
@@ -694,9 +687,9 @@ module Sun::Security::X509
     typesig { [DerValue] }
     # Cert is a SIGNED ASN.1 macro, a three elment sequence:
     # 
-    # - Data to be signed (ToBeSigned) -- the "raw" cert
-    # - Signature algorithm (SigAlgId)
-    # - The signature bits
+    #  - Data to be signed (ToBeSigned) -- the "raw" cert
+    #  - Signature algorithm (SigAlgId)
+    #  - The signature bits
     # 
     # This routine unmarshals the certificate, saving the signature
     # parts away for later verification.
@@ -774,14 +767,14 @@ module Sun::Security::X509
       @pubkey = X509Key.parse(tmp)
       # XXX for v2 and later, a bunch of tagged options follow
       if (!(in_.available).equal?(0))
-        # Until we parse V2/V3 data ... ignore it.
-        # 
+        #  * Until we parse V2/V3 data ... ignore it.
+        #  *
         # // throw new CertParseError ("excess cert data");
         # System.out.println (
-        # "@end'o'cert, optional V2/V3 data unparsed:  "
-        # + in.available ()
-        # + " bytes"
-        # );
+        #         "@end'o'cert, optional V2/V3 data unparsed:  "
+        #         + in.available ()
+        #         + " bytes"
+        #         );
       end
       @parsed = true
     end

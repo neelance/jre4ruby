@@ -169,7 +169,7 @@ module Java::Net
     typesig { [] }
     # Utility routine to check if the InetAddress in a wildcard address.
     # @return a <code>boolean</code> indicating if the Inetaddress is
-    # a wildcard address.
+    #         a wildcard address.
     # @since 1.4
     def is_any_local_address
       return (self.attr_address).equal?(0)
@@ -225,8 +225,8 @@ module Java::Net
     # Utility routine to check if the multicast address has global scope.
     # 
     # @return a <code>boolean</code> indicating if the address has
-    # is a multicast address of global scope, false if it is not
-    # of global scope or it is not a multicast address
+    #         is a multicast address of global scope, false if it is not
+    #         of global scope or it is not a multicast address
     # @since 1.4
     def is_mcglobal
       # 224.0.1.0 to 238.255.255.255
@@ -238,8 +238,8 @@ module Java::Net
     # Utility routine to check if the multicast address has node scope.
     # 
     # @return a <code>boolean</code> indicating if the address has
-    # is a multicast address of node-local scope, false if it is not
-    # of node-local scope or it is not a multicast address
+    #         is a multicast address of node-local scope, false if it is not
+    #         of node-local scope or it is not a multicast address
     # @since 1.4
     def is_mcnode_local
       # unless ttl == 0
@@ -250,8 +250,8 @@ module Java::Net
     # Utility routine to check if the multicast address has link scope.
     # 
     # @return a <code>boolean</code> indicating if the address has
-    # is a multicast address of link-local scope, false if it is not
-    # of link-local scope or it is not a multicast address
+    #         is a multicast address of link-local scope, false if it is not
+    #         of link-local scope or it is not a multicast address
     # @since 1.4
     def is_mclink_local
       # 224.0.0/24 prefix and ttl == 1
@@ -262,8 +262,8 @@ module Java::Net
     # Utility routine to check if the multicast address has site scope.
     # 
     # @return a <code>boolean</code> indicating if the address has
-    # is a multicast address of site-local scope, false if it is not
-    # of site-local scope or it is not a multicast address
+    #         is a multicast address of site-local scope, false if it is not
+    #         of site-local scope or it is not a multicast address
     # @since 1.4
     def is_mcsite_local
       # 239.255/16 prefix or ttl < 32
@@ -274,9 +274,9 @@ module Java::Net
     # Utility routine to check if the multicast address has organization scope.
     # 
     # @return a <code>boolean</code> indicating if the address has
-    # is a multicast address of organization-local scope,
-    # false if it is not of organization-local scope
-    # or it is not a multicast address
+    #         is a multicast address of organization-local scope,
+    #         false if it is not of organization-local scope
+    #         or it is not a multicast address
     # @since 1.4
     def is_mcorg_local
       # 239.192 - 239.195
@@ -328,7 +328,7 @@ module Java::Net
     # 
     # @param   obj   the object to compare against.
     # @return  <code>true</code> if the objects are the same;
-    # <code>false</code> otherwise.
+    #          <code>false</code> otherwise.
     # @see     java.net.InetAddress#getAddress()
     def ==(obj)
       return (!(obj).nil?) && (obj.is_a?(Inet4Address)) && (((obj).attr_address).equal?(self.attr_address))
@@ -337,12 +337,11 @@ module Java::Net
     class_module.module_eval {
       typesig { [Array.typed(::Java::Byte)] }
       # Utilities
-      # 
       # Converts IPv4 binary address into a string suitable for presentation.
       # 
       # @param src a byte array representing an IPv4 numeric address
       # @return a String representing the IPv4 address in
-      # textual representation format
+      #         textual representation format
       # @since 1.4
       def numeric_to_text_format(src)
         return RJava.cast_to_string((src[0] & 0xff)) + "." + RJava.cast_to_string((src[1] & 0xff)) + "." + RJava.cast_to_string((src[2] & 0xff)) + "." + RJava.cast_to_string((src[3] & 0xff))

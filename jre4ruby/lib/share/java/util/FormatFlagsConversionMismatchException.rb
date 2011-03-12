@@ -62,10 +62,10 @@ module Java::Util
     # and conversion.
     # 
     # @param  f
-    # The flag
+    #         The flag
     # 
     # @param  c
-    # The conversion
+    #         The conversion
     def initialize(f, c)
       @f = nil
       @c = 0

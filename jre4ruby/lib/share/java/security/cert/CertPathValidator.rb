@@ -139,17 +139,17 @@ module Java::Security::Cert
       # the {@link Security#getProviders() Security.getProviders()} method.
       # 
       # @param algorithm the name of the requested <code>CertPathValidator</code>
-      # algorithm.  See Appendix A in the <a href=
-      # "../../../../technotes/guides/security/certpath/CertPathProgGuide.html#AppA">
-      # Java Certification Path API Programmer's Guide </a>
-      # for information about standard algorithm names.
+      #  algorithm.  See Appendix A in the <a href=
+      #  "../../../../technotes/guides/security/certpath/CertPathProgGuide.html#AppA">
+      #  Java Certification Path API Programmer's Guide </a>
+      #  for information about standard algorithm names.
       # 
       # @return a <code>CertPathValidator</code> object that implements the
-      # specified algorithm.
+      #          specified algorithm.
       # 
       # @exception NoSuchAlgorithmException if no Provider supports a
-      # CertPathValidatorSpi implementation for the
-      # specified algorithm.
+      #          CertPathValidatorSpi implementation for the
+      #          specified algorithm.
       # 
       # @see java.security.Provider
       def get_instance(algorithm)
@@ -170,25 +170,25 @@ module Java::Security::Cert
       # the {@link Security#getProviders() Security.getProviders()} method.
       # 
       # @param algorithm the name of the requested <code>CertPathValidator</code>
-      # algorithm.  See Appendix A in the <a href=
-      # "../../../../technotes/guides/security/certpath/CertPathProgGuide.html#AppA">
-      # Java Certification Path API Programmer's Guide </a>
-      # for information about standard algorithm names.
+      #  algorithm.  See Appendix A in the <a href=
+      #  "../../../../technotes/guides/security/certpath/CertPathProgGuide.html#AppA">
+      #  Java Certification Path API Programmer's Guide </a>
+      #  for information about standard algorithm names.
       # 
       # @param provider the name of the provider.
       # 
       # @return a <code>CertPathValidator</code> object that implements the
-      # specified algorithm.
+      #          specified algorithm.
       # 
       # @exception NoSuchAlgorithmException if a CertPathValidatorSpi
-      # implementation for the specified algorithm is not
-      # available from the specified provider.
+      #          implementation for the specified algorithm is not
+      #          available from the specified provider.
       # 
       # @exception NoSuchProviderException if the specified provider is not
-      # registered in the security provider list.
+      #          registered in the security provider list.
       # 
       # @exception IllegalArgumentException if the <code>provider</code> is
-      # null or empty.
+      #          null or empty.
       # 
       # @see java.security.Provider
       def get_instance(algorithm, provider)
@@ -206,23 +206,23 @@ module Java::Security::Cert
       # does not have to be registered in the provider list.
       # 
       # @param algorithm the name of the requested
-      # <code>CertPathValidator</code> algorithm.
-      # See Appendix A in the <a href=
-      # "../../../../technotes/guides/security/certpath/CertPathProgGuide.html#AppA">
-      # Java Certification Path API Programmer's Guide </a>
-      # for information about standard algorithm names.
+      #  <code>CertPathValidator</code> algorithm.
+      #  See Appendix A in the <a href=
+      #  "../../../../technotes/guides/security/certpath/CertPathProgGuide.html#AppA">
+      #  Java Certification Path API Programmer's Guide </a>
+      #  for information about standard algorithm names.
       # 
       # @param provider the provider.
       # 
       # @return a <code>CertPathValidator</code> object that implements the
-      # specified algorithm.
+      #          specified algorithm.
       # 
       # @exception NoSuchAlgorithmException if a CertPathValidatorSpi
-      # implementation for the specified algorithm is not available
-      # from the specified Provider object.
+      #          implementation for the specified algorithm is not available
+      #          from the specified Provider object.
       # 
       # @exception IllegalArgumentException if the <code>provider</code> is
-      # null.
+      #          null.
       # 
       # @see java.security.Provider
       def get_instance(algorithm, provider)

@@ -123,7 +123,6 @@ module Java::Util::Zip
     
     class_module.module_eval {
       # Writes GZIP member header.
-      # 
       # Magic number (short)
       # Magic number (short)
       # Compression method (CM)
@@ -147,7 +146,7 @@ module Java::Util::Zip
     # Writes GZIP member trailer to a byte array, starting at a given
     # offset.
     def write_trailer(buf, offset)
-      write_int(RJava.cast_to_int(@crc.get_value), buf, offset) # CRC-32 of uncompr. data
+      write_int((@crc.get_value).to_int, buf, offset) # CRC-32 of uncompr. data
       write_int(self.attr_def.get_total_in, buf, offset + 4) # Number of uncompr. bytes
     end
     

@@ -38,22 +38,22 @@ module Sun::Security::Util
   # The factory methods can be used to obtain two different implementations.
   # They have the following properties:
   # 
-  # . keys and values reside in memory
+  #  . keys and values reside in memory
   # 
-  # . keys and values must be non-null
+  #  . keys and values must be non-null
   # 
-  # . maximum size. Replacements are made in LRU order.
+  #  . maximum size. Replacements are made in LRU order.
   # 
-  # . optional lifetime, specified in seconds.
+  #  . optional lifetime, specified in seconds.
   # 
-  # . save for concurrent use by multiple threads
+  #  . save for concurrent use by multiple threads
   # 
-  # . values are held by either standard references or via SoftReferences.
-  # SoftReferences have the advantage that they are automatically cleared
-  # by the garbage collector in response to memory demand. This makes it
-  # possible to simple set the maximum size to a very large value and let
-  # the GC automatically size the cache dynamically depending on the
-  # amount of available memory.
+  #  . values are held by either standard references or via SoftReferences.
+  #    SoftReferences have the advantage that they are automatically cleared
+  #    by the garbage collector in response to memory demand. This makes it
+  #    possible to simple set the maximum size to a very large value and let
+  #    the GC automatically size the cache dynamically depending on the
+  #    amount of available memory.
   # 
   # However, note that because of the way SoftReferences are implemented in
   # HotSpot at the moment, this may not work perfectly as it clears them fairly
@@ -300,7 +300,7 @@ module Sun::Security::Util
       @max_size = max_size
       @lifetime = lifetime * 1000
       @queue = soft ? ReferenceQueue.new : nil
-      buckets = RJava.cast_to_int((max_size / LOAD_FACTOR)) + 1
+      buckets = ((max_size / LOAD_FACTOR)).to_int + 1
       @cache_map = LinkedHashMap.new(buckets, LOAD_FACTOR, true)
     end
     

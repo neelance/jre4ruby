@@ -185,8 +185,8 @@ module Sun::Security::X509
       # the PKIX profiling work becomes standard and the check
       # is not a barrier to interoperability !
       # if (!this.critical) {
-      # throw new IOException("KeyUsageExtension not marked critical,"
-      # + " invalid profile.");
+      #   throw new IOException("KeyUsageExtension not marked critical,"
+      #                         + " invalid profile.");
       # }
       ext_value = value
       if ((ext_value[0]).equal?(DerValue.attr_tag_octet_string))

@@ -36,26 +36,26 @@ module Sun::Security::X509
     }
   end
   
-  # Represents the Freshest CRL Extension.
-  # 
-  # <p>
-  # The extension identifies how delta CRL information for a
-  # complete CRL is obtained.
-  # 
-  # <p>
-  # The extension is defined in Section 5.2.6 of
-  # <a href="http://www.ietf.org/rfc/rfc3280.txt">Internet X.509 PKI Certific
+  #  * Represents the Freshest CRL Extension.
+  #  *
+  #  * <p>
+  #  * The extension identifies how delta CRL information for a
+  #  * complete CRL is obtained.
+  #  *
+  #  * <p>
+  #  * The extension is defined in Section 5.2.6 of
+  #  * <a href="http://www.ietf.org/rfc/rfc3280.txt">Internet X.509 PKI Certific
   # ate and Certificate Revocation List (CRL) Profile</a>.
-  # 
-  # <p>
-  # Its ASN.1 definition is as follows:
-  # <pre>
-  # id-ce-freshestCRL OBJECT IDENTIFIER ::=  { id-ce 46 }
-  # 
-  # FreshestCRL ::= CRLDistributionPoints
-  # </pre>
-  # 
-  # @since 1.6
+  #  *
+  #  * <p>
+  #  * Its ASN.1 definition is as follows:
+  #  * <pre>
+  #  *     id-ce-freshestCRL OBJECT IDENTIFIER ::=  { id-ce 46 }
+  #  *
+  #  *     FreshestCRL ::= CRLDistributionPoints
+  #  * </pre>
+  #  *
+  #  * @since 1.6
   class FreshestCRLExtension < FreshestCRLExtensionImports.const_get :CRLDistributionPointsExtension
     include_class_members FreshestCRLExtensionImports
     

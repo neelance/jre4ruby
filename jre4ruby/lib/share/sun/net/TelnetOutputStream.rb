@@ -55,18 +55,18 @@ module Sun::Net
   # multiple-backspace that the TELNET stream contains a character
   # following a CR that will allow a rational decision.
   # 
-  # Note that "CR LF" or "CR NUL" is required in both directions
-  # (in the default ASCII mode), to preserve the symmetry of the
-  # NVT model.  Even though it may be known in some situations
-  # (e.g., with remote echo and suppress go ahead options in
-  # effect) that characters are not being sent to an actual
-  # printer, nonetheless, for the sake of consistency, the protocol
-  # requires that a NUL be inserted following a CR not followed by
-  # a LF in the data stream.  The converse of this is that a NUL
-  # received in the data stream after a CR (in the absence of
-  # options negotiations which explicitly specify otherwise) should
-  # be stripped out prior to applying the NVT to local character
-  # set mapping.
+  #    Note that "CR LF" or "CR NUL" is required in both directions
+  #    (in the default ASCII mode), to preserve the symmetry of the
+  #    NVT model.  Even though it may be known in some situations
+  #    (e.g., with remote echo and suppress go ahead options in
+  #    effect) that characters are not being sent to an actual
+  #    printer, nonetheless, for the sake of consistency, the protocol
+  #    requires that a NUL be inserted following a CR not followed by
+  #    a LF in the data stream.  The converse of this is that a NUL
+  #    received in the data stream after a CR (in the absence of
+  #    options negotiations which explicitly specify otherwise) should
+  #    be stripped out prior to applying the NVT to local character
+  #    set mapping.
   # </pre>
   # 
   # @author      Jonathan Payne

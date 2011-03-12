@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5::Internal
@@ -41,11 +39,11 @@ module Sun::Security::Krb5::Internal
   # 
   # <xmp>
   # AP-REQ               ::= [APPLICATION 14] SEQUENCE {
-  # pvno            [0] INTEGER (5),
-  # msg-type        [1] INTEGER (14),
-  # ap-options      [2] APOptions,
-  # ticket          [3] Ticket,
-  # authenticator   [4] EncryptedData -- Authenticator
+  #      pvno            [0] INTEGER (5),
+  #      msg-type        [1] INTEGER (14),
+  #      ap-options      [2] APOptions,
+  #      ticket          [3] Ticket,
+  #      authenticator   [4] EncryptedData -- Authenticator
   # }
   # </xmp>
   # 

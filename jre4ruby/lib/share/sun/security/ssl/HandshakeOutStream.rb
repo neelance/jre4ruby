@@ -142,7 +142,6 @@ module Sun::Security::Ssl
         end
       else
         # engine != null
-        # 
         # Even if record might be empty, flush anyway in case
         # there is a finished handshake message that we need
         # to queue.

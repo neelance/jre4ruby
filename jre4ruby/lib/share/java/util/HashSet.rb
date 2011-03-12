@@ -55,7 +55,7 @@ module Java::Util
   # {@link Collections#synchronizedSet Collections.synchronizedSet}
   # method.  This is best done at creation time, to prevent accidental
   # unsynchronized access to the set:<pre>
-  # Set s = Collections.synchronizedSet(new HashSet(...));</pre>
+  #   Set s = Collections.synchronizedSet(new HashSet(...));</pre>
   # 
   # <p>The iterators returned by this class's <tt>iterator</tt> method are
   # <i>fail-fast</i>: if the set is modified at any time after the iterator is
@@ -131,7 +131,7 @@ module Java::Util
     def initialize(c)
       @map = nil
       super()
-      @map = HashMap.new(Math.max(RJava.cast_to_int((c.size / 0.75)) + 1, 16))
+      @map = HashMap.new(Math.max(((c.size / 0.75)).to_int + 1, 16))
       add_all(c)
     end
     
@@ -142,7 +142,7 @@ module Java::Util
     # @param      initialCapacity   the initial capacity of the hash map
     # @param      loadFactor        the load factor of the hash map
     # @throws     IllegalArgumentException if the initial capacity is less
-    # than zero, or if the load factor is nonpositive
+    #             than zero, or if the load factor is nonpositive
     def initialize(initial_capacity, load_factor)
       @map = nil
       super()
@@ -155,7 +155,7 @@ module Java::Util
     # 
     # @param      initialCapacity   the initial capacity of the hash table
     # @throws     IllegalArgumentException if the initial capacity is less
-    # than zero
+    #             than zero
     def initialize(initial_capacity)
       @map = nil
       super()
@@ -171,9 +171,9 @@ module Java::Util
     # @param      initialCapacity   the initial capacity of the hash map
     # @param      loadFactor        the load factor of the hash map
     # @param      dummy             ignored (distinguishes this
-    # constructor from other int, float constructor.)
+    #             constructor from other int, float constructor.)
     # @throws     IllegalArgumentException if the initial capacity is less
-    # than zero, or if the load factor is nonpositive
+    #             than zero, or if the load factor is nonpositive
     def initialize(initial_capacity, load_factor, dummy)
       @map = nil
       super()
@@ -275,10 +275,10 @@ module Java::Util
     # serialize it).
     # 
     # @serialData The capacity of the backing <tt>HashMap</tt> instance
-    # (int), and its load factor (float) are emitted, followed by
-    # the size of the set (the number of elements it contains)
-    # (int), followed by all of its elements (each an Object) in
-    # no particular order.
+    #             (int), and its load factor (float) are emitted, followed by
+    #             the size of the set (the number of elements it contains)
+    #             (int), followed by all of its elements (each an Object) in
+    #             no particular order.
     def write_object(s)
       # Write out any hidden serialization magic
       s.default_write_object

@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996 - 1998 - All Rights Reserved
 # 
@@ -49,23 +47,6 @@ module Sun::Text::Resources
     
     typesig { [] }
     def get_contents
-      # for is, accents sorted backwards plus the following:
-      # sort accents bkwd
-      # assuming that in the default collation we add:
-      # thorn, ae ligature, o-diaeresis, and o-slash
-      # ....in this order...and ditto for the uppercase of these....
-      # to be treated as characters (not accented characters) after z
-      # then we don't have to add anything here. I've just added it here
-      # just in case it gets overlooked.
-      # nt : A < a-acute
-      # nt : d < eth
-      # nt : e < e-acute
-      # nt : i < i-acute
-      # nt : o < o-acute
-      # nt : u < u-acute
-      # nt : y < y-acute
-      # nt : z < thron < a-e-ligature
-      # nt : o-umlaut ; o-stroke
       return Array.typed(Array.typed(Object)).new([Array.typed(Object).new(["Rule", "@" + ("& A < a".to_u << 0x0301 << ", A".to_u << 0x0301 << " ") + ("& D < ".to_u << 0x00f0 << ", ".to_u << 0x00d0 << "") + ("& E < e".to_u << 0x0301 << ", E".to_u << 0x0301 << " ") + ("& I < i".to_u << 0x0301 << ", I".to_u << 0x0301 << " ") + ("& O < o".to_u << 0x0301 << ", O".to_u << 0x0301 << " ") + ("& U < u".to_u << 0x0301 << ", U".to_u << 0x0301 << " ") + ("& Y < y".to_u << 0x0301 << ", Y".to_u << 0x0301 << " ") + ("& Z < ".to_u << 0x00fe << ", ".to_u << 0x00de << " < ".to_u << 0x00e6 << ", ".to_u << 0x00c6 << "") + ("< o".to_u << 0x0308 << ", O".to_u << 0x0308 << " ; ".to_u << 0x00f8 << ", ".to_u << 0x00d8 << "")])])
     end
     

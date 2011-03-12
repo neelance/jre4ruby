@@ -197,7 +197,7 @@ module Sun::Security::Pkcs11
     def generate_public(point, params)
       encoded_params = ECParameters.encode_parameters(params)
       encoded_point = ECParameters.encode_point(point, params.get_curve)
-      attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_CLASS, CKO_PUBLIC_KEY), CK_ATTRIBUTE.new(CKA_KEY_TYPE, CKK_EC), CK_ATTRIBUTE.new(CKA_EC_POINT, encoded_point), CK_ATTRIBUTE.new(CKA_EC_PARAMS, encoded_params), ])
+      attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_CLASS, CKO_PUBLIC_KEY), CK_ATTRIBUTE.new(CKA_KEY_TYPE, CKK_EC), CK_ATTRIBUTE.new(CKA_EC_POINT, encoded_point), CK_ATTRIBUTE.new(CKA_EC_PARAMS, encoded_params)])
       attributes = self.attr_token.get_attributes(O_IMPORT, CKO_PUBLIC_KEY, CKK_EC, attributes)
       session = nil
       begin
@@ -212,7 +212,7 @@ module Sun::Security::Pkcs11
     typesig { [BigInteger, ECParameterSpec] }
     def generate_private(s, params)
       encoded_params = ECParameters.encode_parameters(params)
-      attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_CLASS, CKO_PRIVATE_KEY), CK_ATTRIBUTE.new(CKA_KEY_TYPE, CKK_EC), CK_ATTRIBUTE.new(CKA_VALUE, s), CK_ATTRIBUTE.new(CKA_EC_PARAMS, encoded_params), ])
+      attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_CLASS, CKO_PRIVATE_KEY), CK_ATTRIBUTE.new(CKA_KEY_TYPE, CKK_EC), CK_ATTRIBUTE.new(CKA_VALUE, s), CK_ATTRIBUTE.new(CKA_EC_PARAMS, encoded_params)])
       attributes = self.attr_token.get_attributes(O_IMPORT, CKO_PRIVATE_KEY, CKK_EC, attributes)
       session = nil
       begin
@@ -228,7 +228,7 @@ module Sun::Security::Pkcs11
     def impl_get_public_key_spec(key, key_spec, session)
       if (ECPublicKeySpec.is_assignable_from(key_spec))
         session[0] = self.attr_token.get_obj_session
-        attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_EC_POINT), CK_ATTRIBUTE.new(CKA_EC_PARAMS), ])
+        attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_EC_POINT), CK_ATTRIBUTE.new(CKA_EC_PARAMS)])
         self.attr_token.attr_p11._c_get_attribute_value(session[0].id, key.attr_key_id, attributes)
         begin
           params = decode_parameters(attributes[1].get_byte_array)
@@ -247,7 +247,7 @@ module Sun::Security::Pkcs11
     def impl_get_private_key_spec(key, key_spec, session)
       if (ECPrivateKeySpec.is_assignable_from(key_spec))
         session[0] = self.attr_token.get_obj_session
-        attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_VALUE), CK_ATTRIBUTE.new(CKA_EC_PARAMS), ])
+        attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_VALUE), CK_ATTRIBUTE.new(CKA_EC_PARAMS)])
         self.attr_token.attr_p11._c_get_attribute_value(session[0].id, key.attr_key_id, attributes)
         begin
           params = decode_parameters(attributes[1].get_byte_array)

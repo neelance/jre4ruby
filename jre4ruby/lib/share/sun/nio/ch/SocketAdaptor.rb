@@ -48,6 +48,7 @@ module Sun::Nio::Ch
   # 
   # The methods in this class are defined in exactly the same order as in
   # java.net.Socket so as to simplify tracking future changes to that class.
+  # 
   class SocketAdaptor < SocketAdaptorImports.const_get :Socket
     include_class_members SocketAdaptorImports
     
@@ -109,6 +110,7 @@ module Sun::Nio::Ch
     
     typesig { [SocketAddress] }
     # Override this method just to protect against changes in the superclass
+    # 
     def connect(remote)
       connect(remote, 0)
     end

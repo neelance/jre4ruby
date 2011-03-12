@@ -58,13 +58,13 @@ module Java::Net
     # @param  input   The input string
     # @param  reason  A string explaining why the input could not be parsed
     # @param  index   The index at which the parse error occurred,
-    # or <tt>-1</tt> if the index is not known
+    #                 or <tt>-1</tt> if the index is not known
     # 
     # @throws  NullPointerException
-    # If either the input or reason strings are <tt>null</tt>
+    #          If either the input or reason strings are <tt>null</tt>
     # 
     # @throws  IllegalArgumentException
-    # If the error index is less than <tt>-1</tt>
+    #          If the error index is less than <tt>-1</tt>
     def initialize(input, reason, index)
       @input = nil
       @index = 0
@@ -87,7 +87,7 @@ module Java::Net
     # @param  reason  A string explaining why the input could not be parsed
     # 
     # @throws  NullPointerException
-    # If either the input or reason strings are <tt>null</tt>
+    #          If either the input or reason strings are <tt>null</tt>
     def initialize(input, reason)
       initialize__urisyntax_exception(input, reason, -1)
     end

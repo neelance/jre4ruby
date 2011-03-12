@@ -23,8 +23,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # -- This file was mechanically generated: Do not edit! -- //
 module Java::Nio::Charset
   module IllegalCharsetNameExceptionImports #:nodoc:
@@ -56,7 +54,7 @@ module Java::Nio::Charset
     # Constructs an instance of this class. </p>
     # 
     # @param  charsetName
-    # The illegal charset name
+    #         The illegal charset name
     def initialize(charset_name)
       @charset_name = nil
       super(String.value_of(charset_name))

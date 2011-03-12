@@ -37,8 +37,8 @@ module Java::Util
   # <p>
   # For example, to print all elements of a <tt>Vector&lt;E&gt;</tt> <i>v</i>:
   # <pre>
-  # for (Enumeration&lt;E&gt; e = v.elements(); e.hasMoreElements();)
-  # System.out.println(e.nextElement());</pre>
+  #   for (Enumeration&lt;E&gt; e = v.elements(); e.hasMoreElements();)
+  #       System.out.println(e.nextElement());</pre>
   # <p>
   # Methods are provided to enumerate through the elements of a
   # vector, the keys of a hashtable, and the values in a hashtable.
@@ -68,8 +68,8 @@ module Java::Util
     # Tests if this enumeration contains more elements.
     # 
     # @return  <code>true</code> if and only if this enumeration object
-    # contains at least one more element to provide;
-    # <code>false</code> otherwise.
+    #           contains at least one more element to provide;
+    #          <code>false</code> otherwise.
     def has_more_elements
       raise NotImplementedError
     end

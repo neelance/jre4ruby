@@ -22,11 +22,8 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
-# 
 # (C) Copyright IBM Corp. 1996-2005 - All Rights Reserved                     *
-# *
+#                                                                             *
 # The original version of this source code and documentation is copyrighted   *
 # and owned by IBM, These materials are provided under terms of a License     *
 # Agreement between IBM and Sun. This technology is protected by multiple     *
@@ -62,7 +59,6 @@ module Sun::Text::Normalizer
     
     class_module.module_eval {
       # public data member --------------------------------------------------
-      # 
       # Enumerated property Hangul_Syllable_Type, new in Unicode 4.
       # Returns HangulSyllableType values.
       # @stable ICU 2.6

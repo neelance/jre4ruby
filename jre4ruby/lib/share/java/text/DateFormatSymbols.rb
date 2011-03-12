@@ -22,17 +22,15 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996 - All Rights Reserved
 # 
-# The original version of this source code and documentation is copyrighted
+#   The original version of this source code and documentation is copyrighted
 # and owned by Taligent, Inc., a wholly-owned subsidiary of IBM. These
 # materials are provided under terms of a License Agreement between Taligent
 # and Sun. This technology is protected by multiple US and International
 # patents. This notice and attribution to Taligent may not be removed.
-# Taligent is a registered trademark of Taligent, Inc.
+#   Taligent is a registered trademark of Taligent, Inc.
 module Java::Text
   module DateFormatSymbolsImports #:nodoc:
     class_module.module_eval {
@@ -116,8 +114,8 @@ module Java::Text
     # 
     # @see #getInstance()
     # @exception  java.util.MissingResourceException
-    # if the resources for the default locale cannot be
-    # found or cannot be loaded.
+    #             if the resources for the default locale cannot be
+    #             found or cannot be loaded.
     def initialize
       @eras = nil
       @months = nil
@@ -143,8 +141,8 @@ module Java::Text
     # 
     # @see #getInstance(Locale)
     # @exception  java.util.MissingResourceException
-    # if the resources for the specified locale cannot be
-    # found or cannot be loaded.
+    #             if the resources for the specified locale cannot be
+    #             found or cannot be loaded.
     def initialize(locale)
       @eras = nil
       @months = nil
@@ -304,7 +302,7 @@ module Java::Text
       # instance equal to {@link java.util.Locale#US Locale.US}.
       # 
       # @return An array of locales for which localized
-      # <code>DateFormatSymbols</code> instances are available.
+      #         <code>DateFormatSymbols</code> instances are available.
       # @since 1.6
       def get_available_locales
         pool = LocaleServiceProviderPool.get_pool(DateFormatSymbolsProvider)
@@ -505,7 +503,7 @@ module Java::Text
     # 
     # @param newZoneStrings the new time zone strings.
     # @exception IllegalArgumentException if the length of any row in
-    # <code>newZoneStrings</code> is less than 5
+    #    <code>newZoneStrings</code> is less than 5
     # @exception NullPointerException if <code>newZoneStrings</code> is null
     # @see #getZoneStrings()
     def set_zone_strings(new_zone_strings)
@@ -578,7 +576,6 @@ module Java::Text
     
     class_module.module_eval {
       # =======================privates===============================
-      # 
       # Useful constant for defining time zone offsets.
       const_set_lazy(:MillisPerHour) { 60 * 60 * 1000 }
       const_attr_reader  :MillisPerHour

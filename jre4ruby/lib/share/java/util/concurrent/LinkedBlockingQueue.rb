@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # This file is available under and governed by the GNU General Public
 # License version 2 only, as published by the Free Software Foundation.
 # However, the following notice accompanied the original version of this
@@ -93,8 +91,6 @@ module Java::Util::Concurrent
       # items have been entered since the signal. And symmetrically for
       # takes signalling puts. Operations such as remove(Object) and
       # iterators acquire both locks.
-      # 
-      # 
       # Linked list node class
       const_set_lazy(:Node) { Class.new do
         include_class_members LinkedBlockingQueue
@@ -249,7 +245,7 @@ module Java::Util::Concurrent
     # 
     # @param capacity the capacity of this queue
     # @throws IllegalArgumentException if <tt>capacity</tt> is not greater
-    # than zero
+    #         than zero
     def initialize(capacity)
       @capacity = 0
       @count = nil
@@ -280,7 +276,7 @@ module Java::Util::Concurrent
     # 
     # @param c the collection of elements to initially contain
     # @throws NullPointerException if the specified collection or any
-    # of its elements are null
+    #         of its elements are null
     def initialize(c)
       initialize__linked_blocking_queue(JavaInteger::MAX_VALUE)
       c.each do |e|
@@ -291,7 +287,6 @@ module Java::Util::Concurrent
     typesig { [] }
     # this doc comment is overridden to remove the reference to collections
     # greater in size than Integer.MAX_VALUE
-    # 
     # Returns the number of elements in this queue.
     # 
     # @return the number of elements in this queue
@@ -302,7 +297,6 @@ module Java::Util::Concurrent
     typesig { [] }
     # this doc comment is a modified copy of the inherited doc comment,
     # without the reference to unlimited queues.
-    # 
     # Returns the number of additional elements that this queue can ideally
     # (in the absence of memory or resource constraints) accept without
     # blocking. This is always equal to the initial capacity of this queue
@@ -366,7 +360,7 @@ module Java::Util::Concurrent
     # necessary up to the specified wait time for space to become available.
     # 
     # @return <tt>true</tt> if successful, or <tt>false</tt> if
-    # the specified waiting time elapses before space is available.
+    #         the specified waiting time elapses before space is available.
     # @throws InterruptedException {@inheritDoc}
     # @throws NullPointerException {@inheritDoc}
     def offer(e, timeout, unit)
@@ -652,18 +646,18 @@ module Java::Util::Concurrent
     # allocated array of <tt>String</tt>:
     # 
     # <pre>
-    # String[] y = x.toArray(new String[0]);</pre>
+    #     String[] y = x.toArray(new String[0]);</pre>
     # 
     # Note that <tt>toArray(new Object[0])</tt> is identical in function to
     # <tt>toArray()</tt>.
     # 
     # @param a the array into which the elements of the queue are to
-    # be stored, if it is big enough; otherwise, a new array of the
-    # same runtime type is allocated for this purpose
+    #          be stored, if it is big enough; otherwise, a new array of the
+    #          same runtime type is allocated for this purpose
     # @return an array containing all of the elements in this queue
     # @throws ArrayStoreException if the runtime type of the specified array
-    # is not a supertype of the runtime type of every element in
-    # this queue
+    #         is not a supertype of the runtime type of every element in
+    #         this queue
     # @throws NullPointerException if the specified array is null
     def to_array(a)
       fully_lock

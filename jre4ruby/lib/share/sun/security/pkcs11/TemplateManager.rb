@@ -222,7 +222,7 @@ module Sun::Security::Pkcs11
         
         typesig { [] }
         def hash_code
-          return @operation.hash_code + RJava.cast_to_int(@key_type) + RJava.cast_to_int(@key_algorithm)
+          return @operation.hash_code + (@key_type).to_int + (@key_algorithm).to_int
         end
         
         typesig { [class_self::TemplateKey] }

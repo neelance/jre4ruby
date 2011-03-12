@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5::Internal
@@ -141,7 +139,7 @@ module Sun::Security::Krb5::Internal
         i = 0
         while i < count
           answer <<= 8
-          answer |= (RJava.cast_to_int(buf[start + i]) & 0xff)
+          answer |= ((buf[start + i]).to_int & 0xff)
           i += 1
         end
         return answer

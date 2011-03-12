@@ -22,11 +22,8 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
-# 
 # (C) Copyright IBM Corp. 1996-2005 - All Rights Reserved                     *
-# *
+#                                                                             *
 # The original version of this source code and documentation is copyrighted   *
 # and owned by IBM, These materials are provided under terms of a License     *
 # Agreement between IBM and Sun. This technology is protected by multiple     *
@@ -49,10 +46,10 @@ module Sun::Text::Normalizer
   # <ul>
   # <li> start is the starting integer of the result range
   # <li> limit is 1 after the maximum integer that follows start, such that
-  # all integers between start and (limit - 1), inclusive, have the same
-  # associated integer value.
+  #      all integers between start and (limit - 1), inclusive, have the same
+  #      associated integer value.
   # <li> value is the integer value that all integers from start to (limit - 1)
-  # share in common.
+  #      share in common.
   # </ul>
   # <p>
   # Hence value(start) = value(start + 1) = .... = value(start + n) = .... =
@@ -67,11 +64,11 @@ module Sun::Text::Normalizer
   # RangeValueIterator iterator = UCharacter.getTypeIterator();
   # RangeValueIterator.Element result = new RangeValueIterator.Element();
   # while (iterator.next(result)) {
-  # System.out.println("Codepoint \\u" +
-  # Integer.toHexString(result.start) +
-  # " to codepoint \\u" +
-  # Integer.toHexString(result.limit - 1) +
-  # " has the character type " + result.value);
+  #     System.out.println("Codepoint \\u" +
+  #                        Integer.toHexString(result.start) +
+  #                        " to codepoint \\u" +
+  #                        Integer.toHexString(result.limit - 1) +
+  #                        " has the character type " + result.value);
   # }
   # </pre>
   # @author synwee
@@ -81,7 +78,6 @@ module Sun::Text::Normalizer
     
     class_module.module_eval {
       # public inner class ---------------------------------------------
-      # 
       # Return result wrapper for com.ibm.icu.util.RangeValueIterator.
       # Stores the start and limit of the continous result range and the
       # common value all integers between [start, limit - 1] has.
@@ -91,7 +87,6 @@ module Sun::Text::Normalizer
         include_class_members RangeValueIterator
         
         # public data member ---------------------------------------------
-        # 
         # Starting integer of the continuous result range that has the same
         # value
         # @stable ICU 2.6
@@ -120,7 +115,6 @@ module Sun::Text::Normalizer
         
         typesig { [] }
         # public constructor --------------------------------------------
-        # 
         # Empty default constructor to make javadoc happy
         # @stable ICU 2.4
         def initialize
@@ -136,7 +130,6 @@ module Sun::Text::Normalizer
     
     typesig { [Element] }
     # public methods -------------------------------------------------
-    # 
     # <p>Gets the next maximal result range with a common value and returns
     # true if we are not at the end of the iteration, false otherwise.</p>
     # <p>If the return boolean is a false, the contents of elements will not

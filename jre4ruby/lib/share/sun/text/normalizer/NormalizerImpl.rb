@@ -22,11 +22,8 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
-# 
 # (C) Copyright IBM Corp. 1996-2005 - All Rights Reserved                     *
-# *
+#                                                                             *
 # The original version of this source code and documentation is copyrighted   *
 # and owned by IBM, These materials are provided under terms of a License     *
 # Agreement between IBM and Sun. This technology is protected by multiple     *
@@ -190,16 +187,16 @@ module Sun::Text::Normalizer
       const_set_lazy(:AUX_NFC_SKIPPABLE_F_SHIFT) { 12 }
       const_attr_reader  :AUX_NFC_SKIPPABLE_F_SHIFT
       
-      const_set_lazy(:AUX_MAX_FNC) { (RJava.cast_to_int(1) << AUX_COMP_EX_SHIFT) }
+      const_set_lazy(:AUX_MAX_FNC) { ((1).to_int << AUX_COMP_EX_SHIFT) }
       const_attr_reader  :AUX_MAX_FNC
       
-      const_set_lazy(:AUX_UNSAFE_MASK) { RJava.cast_to_int(((1 << AUX_UNSAFE_SHIFT) & UNSIGNED_INT_MASK)) }
+      const_set_lazy(:AUX_UNSAFE_MASK) { (((1 << AUX_UNSAFE_SHIFT) & UNSIGNED_INT_MASK)).to_int }
       const_attr_reader  :AUX_UNSAFE_MASK
       
-      const_set_lazy(:AUX_FNC_MASK) { RJava.cast_to_int(((AUX_MAX_FNC - 1) & UNSIGNED_INT_MASK)) }
+      const_set_lazy(:AUX_FNC_MASK) { (((AUX_MAX_FNC - 1) & UNSIGNED_INT_MASK)).to_int }
       const_attr_reader  :AUX_FNC_MASK
       
-      const_set_lazy(:AUX_COMP_EX_MASK) { RJava.cast_to_int(((1 << AUX_COMP_EX_SHIFT) & UNSIGNED_INT_MASK)) }
+      const_set_lazy(:AUX_COMP_EX_MASK) { (((1 << AUX_COMP_EX_SHIFT) & UNSIGNED_INT_MASK)).to_int }
       const_attr_reader  :AUX_COMP_EX_MASK
       
       const_set_lazy(:AUX_NFC_SKIP_F_MASK) { ((UNSIGNED_INT_MASK & 1) << AUX_NFC_SKIPPABLE_F_SHIFT) }
@@ -230,9 +227,8 @@ module Sun::Text::Normalizer
         # Called by com.ibm.icu.util.Trie to extract from a lead surrogate's
         # data the index array offset of the indexes for that lead surrogate.
         # @param property data value for a surrogate from the trie, including
-        # the folding offset
+        #         the folding offset
         # @return data offset or 0 if there is no data for the lead surrogate
-        # 
         # normTrie: 32-bit trie result may contain a special extraData index with the folding offset
         def get_folding_offset(value)
           return BMP_INDEX_LENGTH + ((value >> (EXTRA_SHIFT - SURROGATE_BLOCK_BITS)) & (0x3ff << SURROGATE_BLOCK_BITS))
@@ -267,9 +263,8 @@ module Sun::Text::Normalizer
         # Called by com.ibm.icu.util.Trie to extract from a lead surrogate's
         # data the index array offset of the indexes for that lead surrogate.
         # @param property data value for a surrogate from the trie, including
-        # the folding offset
+        #         the folding offset
         # @return data offset or 0 if there is no data for the lead surrogate
-        # 
         # fcdTrie: the folding offset is the lead FCD value itself
         def get_folding_offset(value)
           return value
@@ -304,12 +299,11 @@ module Sun::Text::Normalizer
         # Called by com.ibm.icu.util.Trie to extract from a lead surrogate's
         # data the index array offset of the indexes for that lead surrogate.
         # @param property data value for a surrogate from the trie, including
-        # the folding offset
+        #        the folding offset
         # @return data offset or 0 if there is no data for the lead surrogate
-        # 
         # auxTrie: the folding offset is in bits 9..0 of the 16-bit trie result
         def get_folding_offset(value)
-          return RJava.cast_to_int((value & AUX_FNC_MASK)) << SURROGATE_BLOCK_BITS
+          return ((value & AUX_FNC_MASK)).to_int << SURROGATE_BLOCK_BITS
         end
         
         typesig { [] }
@@ -455,7 +449,7 @@ module Sun::Text::Normalizer
       const_set_lazy(:BMP_INDEX_LENGTH) { 0x10000 >> Trie::INDEX_STAGE_1_SHIFT_ }
       const_attr_reader  :BMP_INDEX_LENGTH
       
-      # Number of bits of a trail surrogate that are used in index table
+      #  Number of bits of a trail surrogate that are used in index table
       # lookups.
       const_set_lazy(:SURROGATE_BLOCK_BITS) { 10 - Trie::INDEX_STAGE_1_SHIFT_ }
       const_attr_reader  :SURROGATE_BLOCK_BITS
@@ -469,7 +463,6 @@ module Sun::Text::Normalizer
     
     typesig { [] }
     # protected constructor ---------------------------------------------
-    # 
     # Constructor
     # @exception thrown when data reading fails or data corrupted
     def initialize
@@ -582,7 +575,7 @@ module Sun::Text::Normalizer
       def get_norm32from_surrogate_pair(norm32, c2)
         # the surrogate index in norm32 stores only the number of the surrogate
         # index block see gennorm/store.c/getFoldedNormValue()
-        return ((UNSIGNED_INT_MASK) & NormTrieImpl.attr_norm_trie.get_trail_value(RJava.cast_to_int(norm32), c2))
+        return ((UNSIGNED_INT_MASK) & NormTrieImpl.attr_norm_trie.get_trail_value((norm32).to_int, c2))
       end
       
       typesig { [::Java::Int] }
@@ -594,14 +587,13 @@ module Sun::Text::Normalizer
       typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int] }
       # get a norm32 from text with complete code points
       # (like from decompositions)
-      # 
-      # unsigned
       # unsigned
       def get_norm32(p, start, mask)
         # unsigned
+        # unsigned
         norm32 = get_norm32(p[start])
         if (((norm32 & mask) > 0) && is_norm32lead_surrogate(norm32))
-          # *p is a lead surrogate, get the real norm32
+          # p is a lead surrogate, get the real norm32
           norm32 = get_norm32from_surrogate_pair(norm32, p[start + 1])
         end
         return norm32
@@ -632,7 +624,7 @@ module Sun::Text::Normalizer
       
       typesig { [::Java::Long] }
       def get_extra_data_index(norm32)
-        return RJava.cast_to_int((norm32 >> EXTRA_SHIFT))
+        return ((norm32 >> EXTRA_SHIFT)).to_int
       end
       
       const_set_lazy(:DecomposeArgs) { Class.new do
@@ -673,11 +665,10 @@ module Sun::Text::Normalizer
       # get the canonical or compatibility decomposition for one character
       # 
       # @return index into the extraData array
-      # 
       # index
-      # unsigned
-      # unsigned
       def decompose(norm32, qc_mask, args)
+        # unsigned
+        # unsigned
         p = get_extra_data_index(norm32)
         args.attr_length = self.attr_extra_data[((p += 1) - 1)]
         if (!((norm32 & qc_mask & QC_NFKD)).equal?(0) && args.attr_length >= 0x100)
@@ -701,9 +692,8 @@ module Sun::Text::Normalizer
       typesig { [::Java::Long, DecomposeArgs] }
       # get the canonical decomposition for one character
       # @return index into the extraData array
-      # 
-      # unsigned
       def decompose(norm32, args)
+        # unsigned
         p = get_extra_data_index(norm32)
         args.attr_length = self.attr_extra_data[((p += 1) - 1)]
         if ((args.attr_length & DECOMP_FLAG_LENGTH_HAS_CC) > 0)
@@ -769,7 +759,6 @@ module Sun::Text::Normalizer
       # get the combining class of (c, c2)= args.source[args.next++]
       # before: args.next<args.limit  after: args.next<=args.limit
       # if only one code unit is used, then c2==0
-      # 
       # unsigned byte
       def get_next_cc(args)
         # unsigned
@@ -792,7 +781,7 @@ module Sun::Text::Normalizer
               return 0
             end
           end
-          return RJava.cast_to_int(((UNSIGNED_BYTE_MASK) & (norm32 >> CC_SHIFT)))
+          return (((UNSIGNED_BYTE_MASK) & (norm32 >> CC_SHIFT))).to_int
         end
       end
       
@@ -847,11 +836,10 @@ module Sun::Text::Normalizer
       # return 0 if the character is <minC
       # if c2!=0 then (c2, c) is a surrogate pair (reversed - c2 is first
       # surrogate but read second!)
-      # 
-      # unsigned
-      # unsigned
       # unsigned
       def get_prev_norm32(args, min_c, mask)
+        # unsigned
+        # unsigned
         # unsigned
         norm32 = 0
         args.attr_c = args.attr_src[(args.attr_current -= 1)]
@@ -892,23 +880,20 @@ module Sun::Text::Normalizer
       typesig { [PrevArgs] }
       # get the combining class of (c, c2)=*--p
       # before: start<p  after: start<=p
-      # 
       # unsigned byte
       def get_prev_cc(args)
-        return RJava.cast_to_int(((UNSIGNED_BYTE_MASK) & (get_prev_norm32(args, MIN_WITH_LEAD_CC, CC_MASK) >> CC_SHIFT)))
+        return (((UNSIGNED_BYTE_MASK) & (get_prev_norm32(args, MIN_WITH_LEAD_CC, CC_MASK) >> CC_SHIFT))).to_int
       end
       
       typesig { [::Java::Long, ::Java::Int, ::Java::Int] }
       # is this a safe boundary character for NF*D?
       # (lead cc==0)
-      # 
-      # unsigned
-      # unsigned
-      # unsigned
       def is_nfdsafe(norm32, cc_or_qcmask, decomp_qcmask)
+        # unsigned
+        # unsigned
+        # unsigned
         if (((norm32 & cc_or_qcmask)).equal?(0))
-          return true
-          # cc==0 and no decomposition: this is NF*D safe
+          return true # cc==0 and no decomposition: this is NF*D safe
         end
         # inspect its decomposition - maybe a Hangul but not a surrogate here
         if (is_norm32regular(norm32) && !((norm32 & decomp_qcmask)).equal?(0))
@@ -925,19 +910,16 @@ module Sun::Text::Normalizer
       typesig { [::Java::Long, ::Java::Int, ::Java::Int] }
       # is this (or does its decomposition begin with) a "true starter"?
       # (cc==0 and NF*C_YES)
-      # 
-      # unsigned
-      # unsigned
-      # unsigned
       def is_true_starter(norm32, cc_or_qcmask, decomp_qcmask)
+        # unsigned
+        # unsigned
+        # unsigned
         if (((norm32 & cc_or_qcmask)).equal?(0))
-          return true
-          # this is a true starter (could be Hangul or Jamo L)
+          return true # this is a true starter (could be Hangul or Jamo L)
         end
         # inspect its decomposition - not a Hangul or a surrogate here
         if (!((norm32 & decomp_qcmask)).equal?(0))
-          p = 0
-          # index into extra data array
+          p = 0 # index into extra data array
           args = DecomposeArgs.new
           # decomposes, get everything from the variable-length extra data
           p = decompose(norm32, decomp_qcmask, args)
@@ -956,7 +938,6 @@ module Sun::Text::Normalizer
       
       typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Char, ::Java::Char, ::Java::Int] }
       # reorder UTF-16 in-place ----------------------------------------------
-      # 
       # simpler, single-character version of mergeOrdered() -
       # bubble-insert one single code point into the preceding string
       # which is already canonically ordered
@@ -965,15 +946,14 @@ module Sun::Text::Normalizer
       # it must be p=current+lengthof(c, c2) i.e. p=current+(c2==0 ? 1 : 2)
       # 
       # before: src[start]..src[current] is already ordered, and
-      # src[current]..src[p]     may or may not hold (c, c2) but
-      # must be exactly the same length as (c, c2)
+      #         src[current]..src[p]     may or may not hold (c, c2) but
+      #                          must be exactly the same length as (c, c2)
       # after: src[start]..src[p] is ordered
       # 
       # @return the trailing combining class
-      # 
-      # unsigned byte
       # unsigned byte
       def insert_ordered(source, start, current, p, c, c2, cc)
+        # unsigned byte
         back = 0
         pre_back = 0
         r = 0
@@ -1032,8 +1012,8 @@ module Sun::Text::Normalizer
       # the second string may or may not be ordered in itself
       # 
       # before: [start]..[current] is already ordered, and
-      # [next]..[limit]    may be ordered in itself, but
-      # is not in relation to [start..current[
+      #         [next]..[limit]    may be ordered in itself, but
+      #                          is not in relation to [start..current[
       # after: [start..current+(limit-next)[ is ordered
       # 
       # the algorithm is a simple bubble-sort that takes the characters from
@@ -1044,11 +1024,9 @@ module Sun::Text::Normalizer
       # insertOrdered(), it just uses that for easier maintenance
       # 
       # @return the trailing combining class
-      # 
       # unsigned byte
       def merge_ordered(source, start, current, data, next_, limit, is_ordered)
-        r = 0
-        # unsigned byte
+        r = 0 # unsigned byte
         cc = 0
         trail_cc = 0
         adjacent = false
@@ -1175,8 +1153,7 @@ module Sun::Text::Normalizer
               else
                 # normalize a section around here to see if it is really
                 # normalized or not
-                prev_starter = 0
-                # unsigned
+                prev_starter = 0 # unsigned
                 decomp_qcmask = 0
                 decomp_qcmask = (qc_mask << 2) & 0xf # decomposition quick check mask
                 # find the previous starter
@@ -1222,8 +1199,7 @@ module Sun::Text::Normalizer
         length = 0
         c = 0
         c2 = 0
-        min_no_maybe = 0
-        # unsigned byte
+        min_no_maybe = 0 # unsigned byte
         cc = 0
         prev_cc = 0
         trail_cc = 0
@@ -1256,7 +1232,7 @@ module Sun::Text::Normalizer
           end
           # copy these code units all at once
           if (!(src_index).equal?(prev_src))
-            length = RJava.cast_to_int((src_index - prev_src))
+            length = ((src_index - prev_src)).to_int
             if ((dest_index + length) <= dest_limit)
               System.arraycopy(src, prev_src, dest, dest_index, length)
             end
@@ -1270,7 +1246,6 @@ module Sun::Text::Normalizer
           # c already contains *src and norm32 is set for it, increment src
           (src_index += 1)
           # check one above-minimum, relevant code unit
-          # 
           # generally, set p and length to the decomposition string
           # in simple cases, p==NULL and (c, c2) will hold the length code
           # units to append in all cases, set cc to the lead and trailCC to
@@ -1331,7 +1306,7 @@ module Sun::Text::Normalizer
             else
               if (((norm32 & qc_mask)).equal?(0))
                 # c does not decompose
-                cc = trail_cc = RJava.cast_to_int(((UNSIGNED_BYTE_MASK) & (norm32 >> CC_SHIFT)))
+                cc = trail_cc = (((UNSIGNED_BYTE_MASK) & (norm32 >> CC_SHIFT))).to_int
                 p = nil
                 p_start = -1
               else
@@ -1361,7 +1336,7 @@ module Sun::Text::Normalizer
               # fastpath: single code point
               if (!(cc).equal?(0) && cc < prev_cc)
                 # (c, c2) is out of order with respect to the preceding
-                # text
+                #  text
                 dest_index += length
                 trail_cc = insert_ordered(dest, reorder_start_index, reorder_split, dest_index, c, c2, cc)
               else
@@ -1376,7 +1351,7 @@ module Sun::Text::Normalizer
               # from decomposition
               if (!(cc).equal?(0) && cc < prev_cc)
                 # the decomposition is out of order with respect to the
-                # preceding text
+                #  preceding text
                 dest_index += length
                 trail_cc = merge_ordered(dest, reorder_start_index, reorder_split, p, p_start, p_start + length)
               else
@@ -1479,8 +1454,8 @@ module Sun::Text::Normalizer
           else
             if (is_norm32hangul_or_jamo(norm32))
               # a compatibility decomposition contained Jamos
-              args.attr_combining_index = RJava.cast_to_int(((UNSIGNED_INT_MASK) & (0xfff0 | (norm32 >> EXTRA_SHIFT))))
-              return RJava.cast_to_int((norm32 & COMBINES_ANY))
+              args.attr_combining_index = (((UNSIGNED_INT_MASK) & (0xfff0 | (norm32 >> EXTRA_SHIFT)))).to_int
+              return ((norm32 & COMBINES_ANY)).to_int
             else
               # c is a lead surrogate, get the real norm32
               if (!(args.attr_start).equal?(limit) && UTF16.is_trail_surrogate(args.attr_c2 = args.attr_source[args.attr_start]))
@@ -1493,11 +1468,10 @@ module Sun::Text::Normalizer
             end
           end
           if (nx_contains(nx, args.attr_c, args.attr_c2))
-            return 0
-            # excluded: norm32==0
+            return 0 # excluded: norm32==0
           end
           args.attr_cc = RJava.cast_to_char(((norm32 >> CC_SHIFT) & 0xff))
-          combine_flags = RJava.cast_to_int((norm32 & COMBINES_ANY))
+          combine_flags = ((norm32 & COMBINES_ANY)).to_int
           if (!(combine_flags).equal?(0))
             index = get_extra_data_index(norm32)
             args.attr_combining_index = index > 0 ? self.attr_extra_data[(index - 1)] : 0
@@ -1513,7 +1487,6 @@ module Sun::Text::Normalizer
       # get just its combineFwdIndex
       # 
       # norm32(c) is special if and only if c2!=0
-      # 
       # unsigned
       def get_combining_index_from_starter(c, c2)
         # unsigned
@@ -1541,10 +1514,9 @@ module Sun::Text::Normalizer
       # >1   combine, and the composition is a forward-combining starter
       # 
       # See unormimp.h for a description of the composition table format.
-      # 
       # unsigned
-      # unsinged
       def combine(table, table_start, combine_back_index, out_values)
+        # unsinged
         # unsigned
         key = 0
         value = 0
@@ -1565,13 +1537,13 @@ module Sun::Text::Normalizer
           # found! combine!
           value = table[table_start]
           # is the composition a starter that combines forward?
-          key = RJava.cast_to_int(((UNSIGNED_INT_MASK) & ((value & 0x2000) + 1)))
+          key = (((UNSIGNED_INT_MASK) & ((value & 0x2000) + 1))).to_int
           # get the composition result code point from the variable-length
           # result value
           if (!((value & 0x8000)).equal?(0))
             if (!((value & 0x4000)).equal?(0))
               # surrogate pair composition result
-              value = RJava.cast_to_int(((UNSIGNED_INT_MASK) & ((value & 0x3ff) | 0xd800)))
+              value = (((UNSIGNED_INT_MASK) & ((value & 0x3ff) | 0xd800))).to_int
               value2 = table[table_start + 1]
             else
               # BMP composition result U+2000..U+ffff
@@ -1637,32 +1609,24 @@ module Sun::Text::Normalizer
       # a composition may contain at most one more code unit than the original
       # starter, while the combining mark that is removed has at least one code
       # unit
-      # 
       # unsigned byte
       def recompose(args, options, nx)
         remove = 0
         q = 0
-        r = 0
-        # unsigned
-        combine_flags = 0
-        # unsigned
+        r = 0 # unsigned
+        combine_flags = 0 # unsigned
         combine_fwd_index = 0
-        combine_back_index = 0
-        # unsigned
+        combine_back_index = 0 # unsigned
         result = 0
         value = 0
-        value2 = 0
-        # unsigned byte
+        value2 = 0 # unsigned byte
         prev_cc = 0
         starter_is_supplementary = false
         starter = 0
         out_values = Array.typed(::Java::Int).new(2) { 0 }
-        starter = -1
-        # no starter
-        combine_fwd_index = 0
-        # will not be used until starter!=NULL
-        starter_is_supplementary = false
-        # will not be used until starter!=NULL
+        starter = -1 # no starter
+        combine_fwd_index = 0 # will not be used until starter!=NULL
+        starter_is_supplementary = false # will not be used until starter!=NULL
         prev_cc = 0
         nc_arg = NextCombiningArgs.new
         nc_arg.attr_source = args.attr_source
@@ -1677,11 +1641,9 @@ module Sun::Text::Normalizer
             if (!((combine_back_index & 0x8000)).equal?(0))
               # c is a Jamo V/T, see if we can compose it with the
               # previous character
-              # 
               # for the PRI #29 fix, check that there is no intervening combining mark
               if (!((options & BEFORE_PRI_29)).equal?(0) || (prev_cc).equal?(0))
-                remove = -1
-                # NULL while no Hangul composition
+                remove = -1 # NULL while no Hangul composition
                 combine_flags = 0
                 nc_arg.attr_c2 = args.attr_source[starter]
                 if ((combine_back_index).equal?(0xfff2))
@@ -1703,8 +1665,7 @@ module Sun::Text::Normalizer
                     else
                       # excluded
                       if (!is_hangul_without_jamo_t(nc_arg.attr_c))
-                        (args.attr_start -= 1)
-                        # undo the ++args.start from reading the Jamo T
+                        (args.attr_start -= 1) # undo the ++args.start from reading the Jamo T
                       end
                       # c is modified but not used any more -- c=*(p-1); -- re-read the Jamo V/T
                       remove = args.attr_start
@@ -1737,12 +1698,10 @@ module Sun::Text::Normalizer
                   args.attr_start = remove
                   args.attr_limit = q
                 end
-                nc_arg.attr_c2 = 0
-                # c2 held *starter temporarily
+                nc_arg.attr_c2 = 0 # c2 held *starter temporarily
                 if (!(combine_flags).equal?(0))
                   # not starter=NULL because the composition is a Hangul LV syllable
                   # and might combine once more (but only before the PRI #29 fix)
-                  # 
                   # done?
                   if ((args.attr_start).equal?(args.attr_limit))
                     return RJava.cast_to_char(prev_cc)
@@ -1769,8 +1728,7 @@ module Sun::Text::Normalizer
                 value2 = out_values[1]
                 # replace the starter with the composition, remove the
                 # combining mark
-                remove = (nc_arg.attr_c2).equal?(0) ? args.attr_start - 1 : args.attr_start - 2
-                # index to the combining mark
+                remove = (nc_arg.attr_c2).equal?(0) ? args.attr_start - 1 : args.attr_start - 2 # index to the combining mark
                 # replace the starter with the composition
                 args.attr_source[starter] = RJava.cast_to_char(value)
                 if (starter_is_supplementary)
@@ -1801,8 +1759,7 @@ module Sun::Text::Normalizer
                       args.attr_source[(r -= 1)] = args.attr_source[(q -= 1)]
                     end
                     args.attr_source[starter] = RJava.cast_to_char(value2)
-                    (starter -= 1)
-                    # undo the temporary increment
+                    (starter -= 1) # undo the temporary increment
                     # } else { both are on the BMP, nothing more to do
                   end
                 end
@@ -1867,9 +1824,9 @@ module Sun::Text::Normalizer
       typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Char] }
       # find the last true starter between src[start]....src[current] going
       # backwards and return its index
-      # unsigned
-      # unsigned
       def find_previous_starter(src, src_start, current, cc_or_qcmask, decomp_qcmask, min_no_maybe)
+        # unsigned
+        # unsigned
         norm32 = 0
         args = PrevArgs.new
         args.attr_src = src
@@ -1887,13 +1844,11 @@ module Sun::Text::Normalizer
       typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Char] }
       # find the first true starter in [src..limit[ and return the
       # pointer to it
-      # 
       # index
-      # unsigned
-      # unsigned
       def find_next_starter(src, start, limit, qc_mask, decomp_qcmask, min_no_maybe)
-        p = 0
         # unsigned
+        # unsigned
+        p = 0 # unsigned
         norm32 = 0
         cc_or_qcmask = 0
         c = 0
@@ -1902,18 +1857,15 @@ module Sun::Text::Normalizer
         decomp_args = DecomposeArgs.new
         loop do
           if ((start).equal?(limit))
-            break
-            # end of string
+            break # end of string
           end
           c = src[start]
           if (c < min_no_maybe)
-            break
-            # catches NUL terminater, too
+            break # catches NUL terminater, too
           end
           norm32 = get_norm32(c)
           if (((norm32 & cc_or_qcmask)).equal?(0))
-            break
-            # true starter
+            break # true starter
           end
           if (is_norm32lead_surrogate(norm32))
             # c is a lead surrogate, get the real norm32
@@ -1923,8 +1875,7 @@ module Sun::Text::Normalizer
             end
             norm32 = get_norm32from_surrogate_pair(norm32, c2)
             if (((norm32 & cc_or_qcmask)).equal?(0))
-              break
-              # true starter
+              break # true starter
             end
           else
             c2 = 0
@@ -1932,16 +1883,15 @@ module Sun::Text::Normalizer
           # (c, c2) is not a true starter but its decomposition may be
           if (!((norm32 & decomp_qcmask)).equal?(0))
             # (c, c2) decomposes, get everything from the variable-length
-            # extra data
+            #  extra data
             p = decompose(norm32, decomp_qcmask, decomp_args)
             # get the first character's norm32 to check if it is a true
             # starter
             if ((decomp_args.attr_cc).equal?(0) && ((get_norm32(self.attr_extra_data, p, qc_mask) & qc_mask)).equal?(0))
-              break
-              # true starter
+              break # true starter
             end
           end
-          start += (c2).equal?(0) ? 1 : 2
+          start += (c2).equal?(0) ? 1 : 2 # not a true starter, continue
         end
         return start
       end
@@ -2004,8 +1954,8 @@ module Sun::Text::Normalizer
       end
       
       typesig { [::Java::Char, ::Java::Char, ::Java::Long, Array.typed(::Java::Char), Array.typed(::Java::Int), ::Java::Int, ::Java::Boolean, Array.typed(::Java::Char), ::Java::Int, UnicodeSet] }
-      # unsigned
       def compose_hangul(prev, c, norm32, src, src_index, limit, compat, dest, dest_index, nx)
+        # unsigned
         start = src_index[0]
         if (is_jamo_vtnorm32jamo_v(norm32))
           # c is a Jamo V, compose with previous Jamo L and
@@ -2029,8 +1979,7 @@ module Sun::Text::Normalizer
                   # (BMP only)
                   norm32 = get_norm32(next_)
                   if (is_norm32regular(norm32) && (!((norm32 & QC_NFKD)).equal?(0)))
-                    p = 0
-                    # index into extra data array
+                    p = 0 # index into extra data array
                     dc_args = DecomposeArgs.new
                     p = decompose(norm32, QC_NFKD, dc_args)
                     if ((dc_args.attr_length).equal?(1) && (t = RJava.cast_to_char((self.attr_extra_data[p] - JAMO_T_BASE))) < JAMO_T_COUNT)
@@ -2044,8 +1993,7 @@ module Sun::Text::Normalizer
             end
             if (nx_contains(nx, c))
               if (!is_hangul_without_jamo_t(c))
-                (start -= 1)
-                # undo ++start from reading the Jamo T
+                (start -= 1) # undo ++start from reading the Jamo T
               end
               return false
             end
@@ -2071,12 +2019,11 @@ module Sun::Text::Normalizer
       
       typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int, Array.typed(::Java::Char), ::Java::Int, ::Java::Int, ::Java::Int, UnicodeSet] }
       # public static int compose(char[] src, char[] dest,boolean compat, UnicodeSet nx){
-      # return compose(src,0,src.length,dest,0,dest.length,compat, nx);
+      #     return compose(src,0,src.length,dest,0,dest.length,compat, nx);
       # }
       def compose(src, src_start, src_limit, dest, dest_start, dest_limit, options, nx)
         prev_src = 0
-        prev_starter = 0
-        # unsigned
+        prev_starter = 0 # unsigned
         norm32 = 0
         cc_or_qcmask = 0
         qc_mask = 0
@@ -2084,8 +2031,7 @@ module Sun::Text::Normalizer
         length = 0
         c = 0
         c2 = 0
-        min_no_maybe = 0
-        # unsigned byte
+        min_no_maybe = 0 # unsigned byte
         cc = 0
         prev_cc = 0
         io_index = Array.typed(::Java::Int).new(1) { 0 }
@@ -2122,8 +2068,7 @@ module Sun::Text::Normalizer
         prev_starter = src_index
         cc_or_qcmask = CC_MASK | qc_mask
         # destIndex=
-        reorder_start_index = 0
-        # ####TODO#### check this *
+        reorder_start_index = 0 # ####TODO#### check this *
         prev_cc = 0
         # avoid compiler warnings
         norm32 = 0
@@ -2138,7 +2083,7 @@ module Sun::Text::Normalizer
           end
           # copy these code units all at once
           if (!(src_index).equal?(prev_src))
-            length = RJava.cast_to_int((src_index - prev_src))
+            length = ((src_index - prev_src)).to_int
             if ((dest_index + length) <= dest_limit)
               System.arraycopy(src, prev_src, dest, dest_index, length)
             end
@@ -2160,10 +2105,10 @@ module Sun::Text::Normalizer
           (src_index += 1)
           # source buffer pointers:
           # 
-          # all done      quick check   current char  not yet
-          # "yes" but     (c, c2)       processed
-          # may combine
-          # forward
+          #  all done      quick check   current char  not yet
+          #                "yes" but     (c, c2)       processed
+          #                may combine
+          #                forward
           # [-------------[-------------[-------------[-------------[
           # |             |             |             |             |
           # start         prevStarter   prevSrc       src           limit
@@ -2171,15 +2116,13 @@ module Sun::Text::Normalizer
           # 
           # destination buffer pointers and indexes:
           # 
-          # all done      might take    not filled yet
-          # characters for
-          # reordering
+          #  all done      might take    not filled yet
+          #                characters for
+          #                reordering
           # [-------------[-------------[-------------[
           # |             |             |             |
           # dest      reorderStartIndex destIndex     destCapacity
-          # 
           # check one above-minimum, relevant code unit
-          # 
           # norm32 is for c=*(src-1), and the quick check flag is "no" or
           # "maybe", and/or cc!=0
           # check for Jamo V/T, then for surrogates and regular characters
@@ -2228,7 +2171,7 @@ module Sun::Text::Normalizer
               cc = 0
             else
               if (((norm32 & qc_mask)).equal?(0))
-                cc = RJava.cast_to_int(((UNSIGNED_BYTE_MASK) & (norm32 >> CC_SHIFT)))
+                cc = (((UNSIGNED_BYTE_MASK) & (norm32 >> CC_SHIFT))).to_int
               else
                 p = nil
                 # find appropriate boundaries around this character,
@@ -2242,9 +2185,7 @@ module Sun::Text::Normalizer
                 # note that destIndex may be adjusted backwards to account
                 # for source text that passed the quick check but needed to
                 # take part in the recomposition
-                decomp_qcmask = (qc_mask << 2) & 0xf
-                # decomposition quick check mask
-                # 
+                decomp_qcmask = (qc_mask << 2) & 0xf # decomposition quick check mask
                 # find the last true starter in [prevStarter..src[
                 # it is either the decomposition of the current character (at prevSrc),
                 # or prevStarter
@@ -2348,34 +2289,28 @@ module Sun::Text::Normalizer
         # check conditions (a)..(e), see unormimp.h
         norm32 = get_norm32(c)
         if (!((norm32 & mask)).equal?(0))
-          return false
-          # fails (a)..(e), not skippable
+          return false # fails (a)..(e), not skippable
         end
         if ((mode).equal?(NormalizerBase::NFD) || (mode).equal?(NormalizerBase::NFKD) || (mode).equal?(NormalizerBase::NONE))
-          return true
-          # NF*D, passed (a)..(c), is skippable
+          return true # NF*D, passed (a)..(c), is skippable
         end
         # check conditions (a)..(e), see unormimp.h
         # NF*C/FCC, passed (a)..(e)
         if (((norm32 & QC_NFD)).equal?(0))
-          return true
-          # no canonical decomposition, is skippable
+          return true # no canonical decomposition, is skippable
         end
         # check Hangul syllables algorithmically
         if (is_norm32hangul_or_jamo(norm32))
           # Jamo passed (a)..(e) above, must be Hangul
-          return !is_hangul_without_jamo_t(RJava.cast_to_char(c))
-          # LVT are skippable, LV are not
+          return !is_hangul_without_jamo_t(RJava.cast_to_char(c)) # LVT are skippable, LV are not
         end
         # if(mode<=UNORM_NFKC) { -- enable when implementing FCC
         # NF*C, test (f) flag
         if (!self.attr_is_format_version_2_2)
-          return false
-          # no (f) data, say not skippable to be safe
+          return false # no (f) data, say not skippable to be safe
         end
         aux = AuxTrieImpl.attr_aux_trie.get_code_point_value(c)
-        return ((aux & AUX_NFC_SKIP_F_MASK)).equal?(0)
-        # TRUE=skippable if the (f) flag is not set
+        return ((aux & AUX_NFC_SKIP_F_MASK)).equal?(0) # TRUE=skippable if the (f) flag is not set
         # } else { FCC, test fcd<=1 instead of the above }
       end
       
@@ -2410,8 +2345,7 @@ module Sun::Text::Normalizer
           set.add(c + 1)
           c += JAMO_T_COUNT
         end
-        set.add(HANGUL_BASE + HANGUL_COUNT)
-        # add Hangul+1 to continue with other properties
+        set.add(HANGUL_BASE + HANGUL_COUNT) # add Hangul+1 to continue with other properties
         return set # for chaining
       end
       
@@ -2424,7 +2358,7 @@ module Sun::Text::Normalizer
       def quick_check(c, mode_value)
         # UNORM_MODE_COUNT
         qc_mask = Array.typed(::Java::Int).new([0, 0, QC_NFD, QC_NFKD, QC_NFC, QC_NFKC])
-        norm32 = RJava.cast_to_int(get_norm32(c)) & qc_mask[mode_value]
+        norm32 = (get_norm32(c)).to_int & qc_mask[mode_value]
         if ((norm32).equal?(0))
           return 1 # YES
         else
@@ -2488,7 +2422,7 @@ module Sun::Text::Normalizer
         # if both values are in or above the surrogate range, fix them up
         if (c1 >= 0xd800 && c2 >= 0xd800 && code_point_order)
           # subtract 0x2800 from BMP code points to make them smaller than
-          # supplementary ones
+          #  supplementary ones
           if ((c1 <= 0xdbff && !((s1start + 1)).equal?(limit1) && UTF16.is_trail_surrogate(s1[(s1start + 1)])) || (UTF16.is_trail_surrogate(c1) && !(start1).equal?(s1start) && UTF16.is_lead_surrogate(s1[(s1start - 1)])))
             # part of a surrogate pair, leave >=d800
           else
@@ -2503,7 +2437,7 @@ module Sun::Text::Normalizer
           end
         end
         # now c1 and c2 are in UTF-32-compatible order
-        return RJava.cast_to_int(c1) - RJava.cast_to_int(c2)
+        return (c1).to_int - (c2).to_int
       end
       
       # Status of tailored normalization
@@ -2535,10 +2469,8 @@ module Sun::Text::Normalizer
       # - c is not decomposed
       # - c is not a composition target
       # - c does not combine forward or backward for composition
-      # except that this is not implemented for Jamo
+      #   except that this is not implemented for Jamo
       # - c is treated as having a combining class of 0
-      # 
-      # 
       # Constants for the bit fields in the options bit set parameter.
       # These need not be public.
       # A user only needs to know the currently assigned values.
@@ -2559,7 +2491,6 @@ module Sun::Text::Normalizer
       const_attr_reader  :NxCache
       
       # Constants for options flags for normalization.
-      # 
       # Options bit 0, do not decompose Hangul syllables.
       # @draft ICU 2.6
       const_set_lazy(:NX_HANGUL) { 1 }
@@ -2587,7 +2518,6 @@ module Sun::Text::Normalizer
       # They use bits 12 and up to preserve lower bits for the available options
       # space in unorm_compare() -
       # see documentation for UNORM_COMPARE_NORM_OPTIONS_SHIFT.
-      # 
       # Options bit 12, for compatibility vs. canonical decomposition.
       const_set_lazy(:OPTIONS_COMPAT) { 0x1000 }
       const_attr_reader  :OPTIONS_COMPAT
@@ -2598,7 +2528,6 @@ module Sun::Text::Normalizer
       
       typesig { [] }
       # normalization exclusion sets ---------------------------------------------
-      # 
       # Normalization exclusion UnicodeSets are used for tailored normalization;
       # see the comment near the beginning of this file.
       # 
@@ -2808,7 +2737,7 @@ module Sun::Text::Normalizer
           end
           # copy these code units all at once
           if (!(src_index).equal?(prev_src))
-            length = RJava.cast_to_int((src_index - prev_src))
+            length = ((src_index - prev_src)).to_int
             if ((dest_index + length) <= dest_limit)
               System.arraycopy(src, prev_src, dest, dest_index, length)
             end
@@ -2839,7 +2768,7 @@ module Sun::Text::Normalizer
           # get the decomposition and the lead and trail cc's
           if (((norm32 & qc_mask)).equal?(0))
             # c does not decompose
-            cc = trail_cc = RJava.cast_to_int(((UNSIGNED_BYTE_MASK) & (norm32 >> CC_SHIFT)))
+            cc = trail_cc = (((UNSIGNED_BYTE_MASK) & (norm32 >> CC_SHIFT))).to_int
             p = nil
             p_start = -1
           else
@@ -2881,7 +2810,7 @@ module Sun::Text::Normalizer
             else
               if (!(cc).equal?(0) && cc < prev_cc)
                 # (c, c2) is out of order with respect to the preceding
-                # text
+                #  text
                 dest_index += length
                 trail_cc = insert_ordered(dest, reorder_start_index, reorder_split, dest_index, c, c2, cc)
               else
@@ -2926,7 +2855,6 @@ module Sun::Text::Normalizer
       # ------------------------------------------------------
       # mapping method for IDNA/StringPrep
       # ------------------------------------------------------
-      # 
       # Normalization using NormalizerBase.UNICODE_3_2 option supports Unicode
       # 3.2 normalization with Corrigendum 4 corrections. However, normalization
       # without the corrections is necessary for IDNA/StringPrep support.
@@ -2935,9 +2863,7 @@ module Sun::Text::Normalizer
       # characters in Corrigendum 4 before normalization in order to avoid
       # incorrect normalization.
       # For the Corrigendum 4 issue, refer
-      # http://www.unicode.org/versions/corrigendum4.html
-      # 
-      # 
+      #   http://www.unicode.org/versions/corrigendum4.html
       # Option used in NormalizerBase.UNICODE_3_2_0_ORIGINAL.
       const_set_lazy(:WITHOUT_CORRIGENDUM4_CORRECTIONS) { 0x40000 }
       const_attr_reader  :WITHOUT_CORRIGENDUM4_CORRECTIONS
@@ -2951,7 +2877,6 @@ module Sun::Text::Normalizer
       
       typesig { [String] }
       # 0x2F9BF
-      # 
       # Removing Corrigendum 4 fix
       # @return normalized text
       def convert(str)

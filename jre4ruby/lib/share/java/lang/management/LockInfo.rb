@@ -75,7 +75,7 @@ module Java::Lang::Management
     # 
     # @param className the fully qualified name of the class of the lock object.
     # @param identityHashCode the {@link System#identityHashCode
-    # identity hash code} of the lock object.
+    #                         identity hash code} of the lock object.
     def initialize(class_name, identity_hash_code)
       @class_name = nil
       @identity_hash_code = 0

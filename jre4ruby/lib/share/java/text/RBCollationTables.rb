@@ -22,17 +22,15 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996-1998 - All Rights Reserved
 # 
-# The original version of this source code and documentation is copyrighted
+#   The original version of this source code and documentation is copyrighted
 # and owned by Taligent, Inc., a wholly-owned subsidiary of IBM. These
 # materials are provided under terms of a License Agreement between Taligent
 # and Sun. This technology is protected by multiple US and International
 # patents. This notice and attribution to Taligent may not be removed.
-# Taligent is a registered trademark of Taligent, Inc.
+#   Taligent is a registered trademark of Taligent, Inc.
 module Java::Text
   module RBCollationTablesImports #:nodoc:
     class_module.module_eval {
@@ -53,16 +51,16 @@ module Java::Text
     
     typesig { [String, ::Java::Int] }
     # ===========================================================================================
-    # The following diagram shows the data structure of the RBCollationTables object.
-    # Suppose we have the rule, where 'o-umlaut' is the unicode char 0x00F6.
-    # "a, A < b, B < c, C, ch, cH, Ch, CH < d, D ... < o, O; 'o-umlaut'/E, 'O-umlaut'/E ...".
-    # What the rule says is, sorts 'ch'ligatures and 'c' only with tertiary difference and
-    # sorts 'o-umlaut' as if it's always expanded with 'e'.
+    #  The following diagram shows the data structure of the RBCollationTables object.
+    #  Suppose we have the rule, where 'o-umlaut' is the unicode char 0x00F6.
+    #  "a, A < b, B < c, C, ch, cH, Ch, CH < d, D ... < o, O; 'o-umlaut'/E, 'O-umlaut'/E ...".
+    #  What the rule says is, sorts 'ch'ligatures and 'c' only with tertiary difference and
+    #  sorts 'o-umlaut' as if it's always expanded with 'e'.
     # 
     # mapping table                     contracting list           expanding list
     # (contains all unicode char
-    # entries)                   ___    ____________       _________________________
-    # ________                +>|_*_|->|'c' |v('c') |  +>|v('o')|v('umlaut')|v('e')|
+    #  entries)                   ___    ____________       _________________________
+    #  ________                +>|_*_|->|'c' |v('c') |  +>|v('o')|v('umlaut')|v('e')|
     # |_\u0001_|-> v('\u0001') | |_:_|  |------------|  | |-------------------------|
     # |_\u0002_|-> v('\u0002') | |_:_|  |'ch'|v('ch')|  | |             :           |
     # |____:___|               | |_:_|  |------------|  | |-------------------------|
@@ -118,7 +116,7 @@ module Java::Text
         # @param cTbl The collator's contracting-character table (the value for contractTable)
         # @param eTbl The collator's expanding-character table (the value for expandTable)
         # @param cFlgs The hash table of characters that participate in contracting-
-        # character sequences (the value for contractFlags)
+        #              character sequences (the value for contractFlags)
         # @param mso The value for maxSecOrder
         # @param mto The value for maxTerOrder
         def fill_in_tables(f2ary, swap, map, c_tbl, e_tbl, c_flgs, mso, mto)
@@ -159,7 +157,6 @@ module Java::Text
     # ==============================================================
     # internal (for use by CollationElementIterator)
     # ==============================================================
-    # 
     # Get the entry of hash table of the contracting string in the collation
     # table.
     # @param ch the starting character of the contracting string
@@ -192,7 +189,7 @@ module Java::Text
     # 
     # @param order a collation order returned by previous or next.
     # @return the maximum length of any expansion seuences ending
-    # with the specified order.
+    #         with the specified order.
     # 
     # @see CollationElementIterator#getMaxExpansion
     def get_max_expansion(order)
@@ -243,9 +240,8 @@ module Java::Text
     class_module.module_eval {
       typesig { [StringBuffer, ::Java::Int, ::Java::Int] }
       # Reverse a string.
-      # 
       # shemran/Note: this is used for secondary order value reverse, no
-      # need to consider supplementary pair.
+      #              need to consider supplementary pair.
       def reverse(result, from, to)
         i = from
         swap = 0

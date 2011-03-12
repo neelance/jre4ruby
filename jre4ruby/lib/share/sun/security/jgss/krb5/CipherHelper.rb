@@ -186,7 +186,6 @@ module Sun::Security::Jgss::Krb5
     typesig { [::Java::Int, Array.typed(::Java::Byte), Array.typed(::Java::Byte), Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, ::Java::Int] }
     def calculate_checksum(alg, header, trailer, data, start, len, token_id)
       case (alg)
-      # fall through to encrypt checksum
       when MessageToken::SGN_ALG_DES_MAC_MD5
         # With this sign algorithm, first an MD5 hash is computed on the
         # application data. The 16 byte hash is then DesCbc encrypted.
@@ -194,22 +193,22 @@ module Sun::Security::Jgss::Krb5
           md5 = MessageDigest.get_instance("MD5")
           # debug("\t\tdata=[");
           # debug(getHexBytes(checksumDataHeader,
-          # checksumDataHeader.length) + " ");
+          #                      checksumDataHeader.length) + " ");
           md5.update(header)
           # debug(getHexBytes(data, start, len));
           md5.update(data, start, len)
           if (!(trailer).nil?)
             # debug(" " +
-            # getHexBytes(trailer,
-            # optionalTrailer.length));
+            #       getHexBytes(trailer,
+            #                     optionalTrailer.length));
             md5.update(trailer)
           end
-          # debug("]\n");
+          #          debug("]\n");
           data = md5.digest
           start = 0
           len = data.attr_length
-          # System.out.println("\tMD5 Checksum is [" +
-          # getHexBytes(data) + "]\n");
+          #          System.out.println("\tMD5 Checksum is [" +
+          #                             getHexBytes(data) + "]\n");
           header = nil
           trailer = nil
         rescue NoSuchAlgorithmException => e
@@ -217,8 +216,10 @@ module Sun::Security::Jgss::Krb5
           ge.init_cause(e)
           raise ge
         end
+        # fall through to encrypt checksum
         return get_des_cbc_checksum(@keybytes, header, data, start, len)
       when MessageToken::SGN_ALG_DES_MAC
+        # fall through to encrypt checksum
         return get_des_cbc_checksum(@keybytes, header, data, start, len)
       when MessageToken::SGN_ALG_HMAC_SHA1_DES3_KD
         buf = nil
@@ -245,18 +246,18 @@ module Sun::Security::Jgss::Krb5
         end
         begin
           # Krb5Token.debug("\nkeybytes: " +
-          # Krb5Token.getHexBytes(keybytes));
+          #     Krb5Token.getHexBytes(keybytes));
           # Krb5Token.debug("\nheader: " + (header == null ? "NONE" :
-          # Krb5Token.getHexBytes(header)));
+          #     Krb5Token.getHexBytes(header)));
           # Krb5Token.debug("\ntrailer: " + (trailer == null ? "NONE" :
-          # Krb5Token.getHexBytes(trailer)));
+          #     Krb5Token.getHexBytes(trailer)));
           # Krb5Token.debug("\ndata: " +
-          # Krb5Token.getHexBytes(data, start, len));
+          #     Krb5Token.getHexBytes(data, start, len));
           # Krb5Token.debug("\nbuf: " + Krb5Token.getHexBytes(buf, offset,
-          # total));
+          #     total));
           answer = Des3.calculate_checksum(@keybytes, KG_USAGE_SIGN, buf, offset, total)
           # Krb5Token.debug("\nanswer: " +
-          # Krb5Token.getHexBytes(answer));
+          #              Krb5Token.getHexBytes(answer));
           return answer
         rescue GeneralSecurityException => e
           ge = GSSException.new(GSSException::FAILURE, -1, "Could not use HMAC-SHA1-DES3-KD signing algorithm - " + RJava.cast_to_string(e.get_message))
@@ -287,16 +288,15 @@ module Sun::Security::Jgss::Krb5
         end
         begin
           # Krb5Token.debug("\nkeybytes: " +
-          # Krb5Token.getHexBytes(keybytes));
+          #     Krb5Token.getHexBytes(keybytes));
           # Krb5Token.debug("\nheader: " + (header == null ? "NONE" :
-          # Krb5Token.getHexBytes(header)));
+          #     Krb5Token.getHexBytes(header)));
           # Krb5Token.debug("\ntrailer: " + (trailer == null ? "NONE" :
-          # Krb5Token.getHexBytes(trailer)));
+          #     Krb5Token.getHexBytes(trailer)));
           # Krb5Token.debug("\ndata: " +
-          # Krb5Token.getHexBytes(data, start, len));
+          #     Krb5Token.getHexBytes(data, start, len));
           # Krb5Token.debug("\nbuffer: " +
-          # Krb5Token.getHexBytes(buffer, off, tot));
-          # 
+          #     Krb5Token.getHexBytes(buffer, off, tot));
           # for MIC tokens, key derivation salt is 15
           # NOTE: Required for interoperability. The RC4-HMAC spec
           # defines key_usage of 23, however all Kerberos impl.
@@ -307,12 +307,12 @@ module Sun::Security::Jgss::Krb5
           end
           answer_ = ArcFourHmac.calculate_checksum(@keybytes, key_usage, buffer, off, tot)
           # Krb5Token.debug("\nanswer: " +
-          # Krb5Token.getHexBytes(answer));
+          #      Krb5Token.getHexBytes(answer));
           # Save first 8 octets of HMAC Sgn_Cksum
           output = Array.typed(::Java::Byte).new(get_checksum_length) { 0 }
           System.arraycopy(answer_, 0, output, 0, output.attr_length)
           # Krb5Token.debug("\nanswer (trimmed): " +
-          # Krb5Token.getHexBytes(output));
+          #              Krb5Token.getHexBytes(output));
           return output
         rescue GeneralSecurityException => e
           ge = GSSException.new(GSSException::FAILURE, -1, "Could not use HMAC_MD5_ARCFOUR signing algorithm - " + RJava.cast_to_string(e.get_message))
@@ -345,16 +345,15 @@ module Sun::Security::Jgss::Krb5
         end
         begin
           # Krb5Token.debug("\nkeybytes: " +
-          # Krb5Token.getHexBytes(keybytes));
+          #     Krb5Token.getHexBytes(keybytes));
           # Krb5Token.debug("\nheader: " + (header == null ? "NONE" :
-          # Krb5Token.getHexBytes(header)));
+          #     Krb5Token.getHexBytes(header)));
           # Krb5Token.debug("\ntrailer: " + (trailer == null ? "NONE" :
-          # Krb5Token.getHexBytes(trailer)));
+          #     Krb5Token.getHexBytes(trailer)));
           # Krb5Token.debug("\ndata: " +
-          # Krb5Token.getHexBytes(data, start, len));
+          #     Krb5Token.getHexBytes(data, start, len));
           # Krb5Token.debug("\nbuffer: " +
-          # Krb5Token.getHexBytes(buffer, off, tot));
-          # 
+          #     Krb5Token.getHexBytes(buffer, off, tot));
           # for MIC tokens, key derivation salt is 15
           # NOTE: Required for interoperability. The RC4-HMAC spec
           # defines key_usage of 23, however all Kerberos impl.
@@ -365,12 +364,12 @@ module Sun::Security::Jgss::Krb5
           end
           answer = ArcFourHmac.calculate_checksum(@keybytes, key_usage, buffer, off, tot)
           # Krb5Token.debug("\nanswer: " +
-          # Krb5Token.getHexBytes(answer));
+          #      Krb5Token.getHexBytes(answer));
           # Save first 8 octets of HMAC Sgn_Cksum
           output = Array.typed(::Java::Byte).new(get_checksum_length) { 0 }
           System.arraycopy(answer, 0, output, 0, output.attr_length)
           # Krb5Token.debug("\nanswer (trimmed): " +
-          # Krb5Token.getHexBytes(output));
+          #              Krb5Token.getHexBytes(output));
           return output
         rescue GeneralSecurityException => e
           ge = GSSException.new(GSSException::FAILURE, -1, "Could not use HMAC_MD5_ARCFOUR signing algorithm - " + RJava.cast_to_string(e.get_message))
@@ -397,13 +396,13 @@ module Sun::Security::Jgss::Krb5
         System.arraycopy(header, 0, buf, len, header.attr_length)
       end
       # Krb5Token.debug("\nAES calculate checksum on: " +
-      # Krb5Token.getHexBytes(buf));
+      #              Krb5Token.getHexBytes(buf));
       case (@etype)
       when EncryptedData::ETYPE_AES128_CTS_HMAC_SHA1_96
         begin
           answer = Aes128.calculate_checksum(@keybytes, key_usage, buf, 0, total)
           # Krb5Token.debug("\nAES128 checksum: " +
-          # Krb5Token.getHexBytes(answer));
+          #                      Krb5Token.getHexBytes(answer));
           return answer
         rescue GeneralSecurityException => e
           ge = GSSException.new(GSSException::FAILURE, -1, "Could not use AES128 signing algorithm - " + RJava.cast_to_string(e.get_message))
@@ -413,7 +412,7 @@ module Sun::Security::Jgss::Krb5
         begin
           answer_ = Aes256.calculate_checksum(@keybytes, key_usage, buf, 0, total)
           # Krb5Token.debug("\nAES256 checksum: " +
-          # Krb5Token.getHexBytes(answer));
+          #              Krb5Token.getHexBytes(answer));
           return answer_
         rescue GeneralSecurityException => e
           ge = GSSException.new(GSSException::FAILURE, -1, "Could not use AES256 signing algorithm - " + RJava.cast_to_string(e.get_message))
@@ -425,7 +424,7 @@ module Sun::Security::Jgss::Krb5
         begin
           answer = Aes256.calculate_checksum(@keybytes, key_usage, buf, 0, total)
           # Krb5Token.debug("\nAES256 checksum: " +
-          # Krb5Token.getHexBytes(answer));
+          #              Krb5Token.getHexBytes(answer));
           return answer
         rescue GeneralSecurityException => e
           ge = GSSException.new(GSSException::FAILURE, -1, "Could not use AES256 signing algorithm - " + RJava.cast_to_string(e.get_message))
@@ -660,7 +659,7 @@ module Sun::Security::Jgss::Krb5
     typesig { [WrapToken, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, Array.typed(::Java::Byte), ::Java::Int] }
     def decrypt_data(token, ciphertext, c_start, c_len, plaintext, p_start)
       # Krb5Token.debug("decryptData : ciphertext =  " +
-      # Krb5Token.getHexBytes(ciphertext));
+      #         Krb5Token.getHexBytes(ciphertext));
       case (@seal_alg)
       when MessageToken::SEAL_ALG_DES
         des_cbc_decrypt(token, get_des_encryption_key(@keybytes), ciphertext, c_start, c_len, plaintext, p_start)
@@ -677,7 +676,7 @@ module Sun::Security::Jgss::Krb5
     # decrypt data in the new GSS tokens
     def decrypt_data(token, ciphertext, c_start, c_len, plaintext, p_start, key_usage)
       # Krb5Token.debug("decryptData : ciphertext =  " +
-      # Krb5Token.getHexBytes(ciphertext));
+      #         Krb5Token.getHexBytes(ciphertext));
       case (@etype)
       when EncryptedData::ETYPE_AES128_CTS_HMAC_SHA1_96
         aes128_decrypt(token, ciphertext, c_start, c_len, plaintext, p_start, key_usage)
@@ -772,7 +771,7 @@ module Sun::Security::Jgss::Krb5
     # 
     # Wrap Tokens (with confidentiality)
     # { Encrypt(16-byte confounder | plaintext | 16-byte token_header) |
-    # 12-byte HMAC }
+    #           12-byte HMAC }
     # where HMAC is on {16-byte confounder | plaintext | 16-byte token_header}
     # HMAC is not encrypted; it is appended at the end.
     def encrypt_data(token, confounder, token_header, plaintext, start, len, key_usage, os)
@@ -786,7 +785,7 @@ module Sun::Security::Jgss::Krb5
         raise GSSException.new(GSSException::FAILURE, -1, "Unsupported etype: " + RJava.cast_to_string(@etype))
       end
       # Krb5Token.debug("EncryptedData = " +
-      # Krb5Token.getHexBytes(ctext) + "\n");
+      #              Krb5Token.getHexBytes(ctext) + "\n");
       # Write to stream
       os.write(ctext)
     end
@@ -827,7 +826,7 @@ module Sun::Security::Jgss::Krb5
     # 
     # Wrap Tokens (with confidentiality)
     # { Encrypt(16-byte confounder | plaintext | 16-byte token_header) |
-    # 12-byte HMAC }
+    #           12-byte HMAC }
     # where HMAC is on {16-byte confounder | plaintext | 16-byte token_header}
     # HMAC is not encrypted; it is appended at the end.
     def encrypt_data(token, confounder, token_header, plaintext, p_start, p_len, ciphertext, c_start, key_usage)
@@ -846,7 +845,6 @@ module Sun::Security::Jgss::Krb5
     
     typesig { [Array.typed(::Java::Byte), Array.typed(::Java::Byte), Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
     # --------------------- DES methods
-    # 
     # Computes the DesCbc checksum based on the algorithm published in FIPS
     # Publication 113. This involves applying padding to the data passed
     # in, then performing DesCbc encryption on the data with a zero initial
@@ -946,7 +944,7 @@ module Sun::Security::Jgss::Krb5
         temp = des.update(cipher_text, offset, WrapToken::CONFOUNDER_SIZE, token.attr_confounder)
         # temp should be CONFOUNDER_SIZE
         # debug("\n\ttemp is " + temp + " and CONFOUNDER_SIZE is "
-        # + CONFOUNDER_SIZE);
+        #  + CONFOUNDER_SIZE);
         offset += WrapToken::CONFOUNDER_SIZE
         len -= WrapToken::CONFOUNDER_SIZE
         # len is a multiple of 8 due to padding.
@@ -961,7 +959,7 @@ module Sun::Security::Jgss::Krb5
           temp = des.update(cipher_text, offset, block_size, data_out_buf, data_offset)
           # temp should be blockSize
           # debug("\n\ttemp is " + temp + " and blockSize is "
-          # + blockSize);
+          #    + blockSize);
           offset += block_size
           data_offset += block_size
           i += 1
@@ -1013,9 +1011,8 @@ module Sun::Security::Jgss::Krb5
       len -= temp
       # temp should be CONFOUNDER_SIZE
       # debug("Got " + temp + " bytes; CONFOUNDER_SIZE is "
-      # + CONFOUNDER_SIZE + "\n");
+      #     + CONFOUNDER_SIZE + "\n");
       # debug("Confounder is " + getHexBytes(confounder) + "\n");
-      # 
       # len is a multiple of 8 due to padding.
       # Decrypt all blocks directly into the output buffer except for
       # the very last block. Remove the trailing padding bytes from the
@@ -1029,9 +1026,9 @@ module Sun::Security::Jgss::Krb5
         temp = cis.read(data_out_buf, data_offset, block_size)
         # temp should be blockSize
         # debug("Got " + temp + " bytes and blockSize is "
-        # + blockSize + "\n");
+        #    + blockSize + "\n");
         # debug("Bytes are: "
-        # + getHexBytes(dataOutBuf, dataOffset, temp) + "\n");
+        #    + getHexBytes(dataOutBuf, dataOffset, temp) + "\n");
         data_offset += block_size
         i += 1
       end
@@ -1040,7 +1037,6 @@ module Sun::Security::Jgss::Krb5
       # debug("Will call read on finalBlock" + "\n");
       temp = cis.read(final_block)
       # temp should be blockSize
-      # 
       # debug("Got " + temp + " bytes and blockSize is "
       # + blockSize + "\n");
       # debug("Bytes are: "
@@ -1100,12 +1096,10 @@ module Sun::Security::Jgss::Krb5
         raise ge
       end
       # Krb5Token.debug("\ndes3KdDecrypt in: " +
-      # Krb5Token.getHexBytes(ciphertext, cStart, cLen));
+      #     Krb5Token.getHexBytes(ciphertext, cStart, cLen));
       # Krb5Token.debug("\ndes3KdDecrypt plain: " +
-      # Krb5Token.getHexBytes(ptext));
-      # 
+      #     Krb5Token.getHexBytes(ptext));
       # Strip out confounder and padding
-      # 
       # There is always at least one padding byte. The padding bytes
       # are all the value of the number of padding bytes.
       pad_size = ptext[ptext.attr_length - 1]
@@ -1131,7 +1125,7 @@ module Sun::Security::Jgss::Krb5
       begin
         answer = Des3.encrypt_raw(@keybytes, KG_USAGE_SEAL, ZERO_IV, all, 0, all.attr_length)
         # Krb5Token.debug("\ndes3KdEncrypt encrypted:" +
-        # Krb5Token.getHexBytes(answer));
+        #  Krb5Token.getHexBytes(answer));
         return answer
       rescue JavaException => e
         # GeneralSecurityException, KrbCryptoException
@@ -1156,12 +1150,10 @@ module Sun::Security::Jgss::Krb5
         raise ge
       end
       # Krb5Token.debug("\narcFourDecrypt in: " +
-      # Krb5Token.getHexBytes(ciphertext, cStart, cLen));
+      #     Krb5Token.getHexBytes(ciphertext, cStart, cLen));
       # Krb5Token.debug("\narcFourDecrypt plain: " +
-      # Krb5Token.getHexBytes(ptext));
-      # 
+      #     Krb5Token.getHexBytes(ptext));
       # Strip out confounder and padding
-      # 
       # There is always at least one padding byte. The padding bytes
       # are all the value of the number of padding bytes.
       pad_size = ptext[ptext.attr_length - 1]
@@ -1172,7 +1164,7 @@ module Sun::Security::Jgss::Krb5
       len = ptext.attr_length - WrapToken::CONFOUNDER_SIZE - pad_size
       System.arraycopy(ptext, WrapToken::CONFOUNDER_SIZE, plaintext, p_start, len)
       # Krb5Token.debug("\narcFourDecrypt plaintext: " +
-      # Krb5Token.getHexBytes(plaintext));
+      #    Krb5Token.getHexBytes(plaintext));
       # Needed to calculate checksum
       System.arraycopy(ptext, 0, token.attr_confounder, 0, WrapToken::CONFOUNDER_SIZE)
     end
@@ -1194,7 +1186,7 @@ module Sun::Security::Jgss::Krb5
       begin
         answer = ArcFourHmac.encrypt_raw(@keybytes, KG_USAGE_SEAL, seq_num, all, 0, all.attr_length)
         # Krb5Token.debug("\narcFourEncrypt encrypted:" +
-        # Krb5Token.getHexBytes(answer));
+        #  Krb5Token.getHexBytes(answer));
         return answer
       rescue JavaException => e
         # GeneralSecurityException, KrbCryptoException
@@ -1210,7 +1202,7 @@ module Sun::Security::Jgss::Krb5
       # encrypt { AES-plaintext-data | filler | header }
       # AES-plaintext-data { confounder | plaintext }
       # WrapToken = { tokenHeader |
-      # Encrypt (confounder | plaintext | tokenHeader ) | HMAC }
+      #      Encrypt (confounder | plaintext | tokenHeader ) | HMAC }
       all = Array.typed(::Java::Byte).new(confounder.attr_length + len + token_header.attr_length) { 0 }
       System.arraycopy(confounder, 0, all, 0, confounder.attr_length)
       System.arraycopy(plaintext, start, all, confounder.attr_length, len)
@@ -1219,7 +1211,7 @@ module Sun::Security::Jgss::Krb5
       begin
         answer = Aes128.encrypt_raw(@keybytes, key_usage, ZERO_IV_AES, all, 0, all.attr_length)
         # Krb5Token.debug("\naes128Encrypt encrypted:" +
-        # Krb5Token.getHexBytes(answer));
+        #                  Krb5Token.getHexBytes(answer));
         return answer
       rescue JavaException => e
         # GeneralSecurityException, KrbCryptoException
@@ -1240,17 +1232,16 @@ module Sun::Security::Jgss::Krb5
         raise ge
       end
       # Krb5Token.debug("\naes128Decrypt in: " +
-      # Krb5Token.getHexBytes(ciphertext, cStart, cLen));
+      #     Krb5Token.getHexBytes(ciphertext, cStart, cLen));
       # Krb5Token.debug("\naes128Decrypt plain: " +
-      # Krb5Token.getHexBytes(ptext));
+      #     Krb5Token.getHexBytes(ptext));
       # Krb5Token.debug("\naes128Decrypt ptext: " +
-      # Krb5Token.getHexBytes(ptext));
-      # 
+      #     Krb5Token.getHexBytes(ptext));
       # Strip out confounder and token header
       len = ptext.attr_length - WrapToken_v2::CONFOUNDER_SIZE - WrapToken_v2::TOKEN_HEADER_SIZE
       System.arraycopy(ptext, WrapToken_v2::CONFOUNDER_SIZE, plaintext, p_start, len)
       # Krb5Token.debug("\naes128Decrypt plaintext: " +
-      # Krb5Token.getHexBytes(plaintext, pStart, len));
+      #     Krb5Token.getHexBytes(plaintext, pStart, len));
     end
     
     typesig { [Array.typed(::Java::Byte), Array.typed(::Java::Byte), Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, ::Java::Int] }
@@ -1258,7 +1249,7 @@ module Sun::Security::Jgss::Krb5
       # encrypt { AES-plaintext-data | filler | header }
       # AES-plaintext-data { confounder | plaintext }
       # WrapToken = { tokenHeader |
-      # Encrypt (confounder | plaintext | tokenHeader ) | HMAC }
+      #       Encrypt (confounder | plaintext | tokenHeader ) | HMAC }
       all = Array.typed(::Java::Byte).new(confounder.attr_length + len + token_header.attr_length) { 0 }
       System.arraycopy(confounder, 0, all, 0, confounder.attr_length)
       System.arraycopy(plaintext, start, all, confounder.attr_length, len)
@@ -1267,7 +1258,7 @@ module Sun::Security::Jgss::Krb5
       begin
         answer = Aes256.encrypt_raw(@keybytes, key_usage, ZERO_IV_AES, all, 0, all.attr_length)
         # Krb5Token.debug("\naes256Encrypt encrypted:" +
-        # Krb5Token.getHexBytes(answer));
+        #  Krb5Token.getHexBytes(answer));
         return answer
       rescue JavaException => e
         # GeneralSecurityException, KrbCryptoException
@@ -1288,17 +1279,16 @@ module Sun::Security::Jgss::Krb5
         raise ge
       end
       # Krb5Token.debug("\naes256Decrypt in: " +
-      # Krb5Token.getHexBytes(ciphertext, cStart, cLen));
+      #     Krb5Token.getHexBytes(ciphertext, cStart, cLen));
       # Krb5Token.debug("\naes256Decrypt plain: " +
-      # Krb5Token.getHexBytes(ptext));
+      #     Krb5Token.getHexBytes(ptext));
       # Krb5Token.debug("\naes256Decrypt ptext: " +
-      # Krb5Token.getHexBytes(ptext));
-      # 
+      #     Krb5Token.getHexBytes(ptext));
       # Strip out confounder and token header
       len = ptext.attr_length - WrapToken_v2::CONFOUNDER_SIZE - WrapToken_v2::TOKEN_HEADER_SIZE
       System.arraycopy(ptext, WrapToken_v2::CONFOUNDER_SIZE, plaintext, p_start, len)
       # Krb5Token.debug("\naes128Decrypt plaintext: " +
-      # Krb5Token.getHexBytes(plaintext, pStart, len));
+      #     Krb5Token.getHexBytes(plaintext, pStart, len));
     end
     
     class_module.module_eval {
@@ -1392,8 +1382,8 @@ module Sun::Security::Jgss::Krb5
           if ((@remaining).equal?(0))
             return 0
           else
-            @temp = RJava.cast_to_int(Math.min(@remaining, n))
-            @temp = RJava.cast_to_int(@is.skip(@temp))
+            @temp = (Math.min(@remaining, n)).to_int
+            @temp = (@is.skip(@temp)).to_int
             @remaining -= @temp
             return @temp
           end

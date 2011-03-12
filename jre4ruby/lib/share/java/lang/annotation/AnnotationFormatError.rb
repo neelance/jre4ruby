@@ -55,7 +55,7 @@ module Java::Lang::Annotation
     # 
     # @param  message the detail message
     # @param  cause the cause (A <tt>null</tt> value is permitted, and
-    # indicates that the cause is nonexistent or unknown.)
+    #     indicates that the cause is nonexistent or unknown.)
     def initialize(message, cause)
       super(message, cause)
     end
@@ -67,7 +67,7 @@ module Java::Lang::Annotation
     # typically contains the class and detail message of <tt>cause</tt>).
     # 
     # @param  cause the cause (A <tt>null</tt> value is permitted, and
-    # indicates that the cause is nonexistent or unknown.)
+    #     indicates that the cause is nonexistent or unknown.)
     def initialize(cause)
       super(cause)
     end

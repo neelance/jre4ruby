@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # This file is available under and governed by the GNU General Public
 # License version 2 only, as published by the Free Software Foundation.
 # However, the following notice accompanied the original version of this
@@ -130,7 +128,6 @@ module Java::Util
     
     typesig { [::Java::Int] }
     # ******  Array allocation and resizing utilities ******
-    # 
     # Allocate empty array to hold the given number of elements.
     # 
     # @param numElements  the number of elements to hold
@@ -239,7 +236,6 @@ module Java::Util
     # The main insertion and extraction methods are addFirst,
     # addLast, pollFirst, pollLast. The other methods are defined in
     # terms of these.
-    # 
     # Inserts the specified element at the front of this deque.
     # 
     # @param e the element to add
@@ -425,7 +421,6 @@ module Java::Util
     
     typesig { [Object] }
     # *** Queue methods ***
-    # 
     # Inserts the specified element at the end of this deque.
     # 
     # <p>This method is equivalent to {@link #addLast}.
@@ -472,7 +467,7 @@ module Java::Util
     # <p>This method is equivalent to {@link #pollFirst}.
     # 
     # @return the head of the queue represented by this deque, or
-    # <tt>null</tt> if this deque is empty
+    #         <tt>null</tt> if this deque is empty
     def poll
       return poll_first
     end
@@ -497,14 +492,13 @@ module Java::Util
     # <p>This method is equivalent to {@link #peekFirst}.
     # 
     # @return the head of the queue represented by this deque, or
-    # <tt>null</tt> if this deque is empty
+    #         <tt>null</tt> if this deque is empty
     def peek
       return peek_first
     end
     
     typesig { [Object] }
     # *** Stack methods ***
-    # 
     # Pushes an element onto the stack represented by this deque.  In other
     # words, inserts the element at the front of this deque.
     # 
@@ -523,7 +517,7 @@ module Java::Util
     # <p>This method is equivalent to {@link #removeFirst()}.
     # 
     # @return the element at the front of this deque (which is the top
-    # of the stack represented by this deque)
+    #         of the stack represented by this deque)
     # @throws NoSuchElementException {@inheritDoc}
     def pop
       return remove_first
@@ -588,7 +582,6 @@ module Java::Util
     
     typesig { [] }
     # *** Collection Methods ***
-    # 
     # Returns the number of elements in this deque.
     # 
     # @return the number of elements in this deque
@@ -859,18 +852,18 @@ module Java::Util
     # allocated array of <tt>String</tt>:
     # 
     # <pre>
-    # String[] y = x.toArray(new String[0]);</pre>
+    #     String[] y = x.toArray(new String[0]);</pre>
     # 
     # Note that <tt>toArray(new Object[0])</tt> is identical in function to
     # <tt>toArray()</tt>.
     # 
     # @param a the array into which the elements of the deque are to
-    # be stored, if it is big enough; otherwise, a new array of the
-    # same runtime type is allocated for this purpose
+    #          be stored, if it is big enough; otherwise, a new array of the
+    #          same runtime type is allocated for this purpose
     # @return an array containing all of the elements in this deque
     # @throws ArrayStoreException if the runtime type of the specified array
-    # is not a supertype of the runtime type of every element in
-    # this deque
+    #         is not a supertype of the runtime type of every element in
+    #         this deque
     # @throws NullPointerException if the specified array is null
     def to_array(a)
       size_ = size
@@ -886,7 +879,6 @@ module Java::Util
     
     typesig { [] }
     # *** Object methods ***
-    # 
     # Returns a copy of this deque.
     # 
     # @return a copy of this deque

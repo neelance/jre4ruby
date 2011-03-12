@@ -60,8 +60,8 @@ module Java::Nio::Channels
     # 
     # <blockquote><pre>
     # dsts[offset].remaining()
-    # + dsts[offset+1].remaining()
-    # + ... + dsts[offset+length-1].remaining()</pre></blockquote>
+    #     + dsts[offset+1].remaining()
+    #     + ... + dsts[offset+length-1].remaining()</pre></blockquote>
     # 
     # at the moment that this method is invoked.
     # 
@@ -82,43 +82,43 @@ module Java::Nio::Channels
     # complete. </p>
     # 
     # @param  dsts
-    # The buffers into which bytes are to be transferred
+    #         The buffers into which bytes are to be transferred
     # 
     # @param  offset
-    # The offset within the buffer array of the first buffer into
-    # which bytes are to be transferred; must be non-negative and no
-    # larger than <tt>dsts.length</tt>
+    #         The offset within the buffer array of the first buffer into
+    #         which bytes are to be transferred; must be non-negative and no
+    #         larger than <tt>dsts.length</tt>
     # 
     # @param  length
-    # The maximum number of buffers to be accessed; must be
-    # non-negative and no larger than
-    # <tt>dsts.length</tt>&nbsp;-&nbsp;<tt>offset</tt>
+    #         The maximum number of buffers to be accessed; must be
+    #         non-negative and no larger than
+    #         <tt>dsts.length</tt>&nbsp;-&nbsp;<tt>offset</tt>
     # 
     # @return The number of bytes read, possibly zero,
-    # or <tt>-1</tt> if the channel has reached end-of-stream
+    #         or <tt>-1</tt> if the channel has reached end-of-stream
     # 
     # @throws  IndexOutOfBoundsException
-    # If the preconditions on the <tt>offset</tt> and <tt>length</tt>
-    # parameters do not hold
+    #          If the preconditions on the <tt>offset</tt> and <tt>length</tt>
+    #          parameters do not hold
     # 
     # @throws  NonReadableChannelException
-    # If this channel was not opened for reading
+    #          If this channel was not opened for reading
     # 
     # @throws  ClosedChannelException
-    # If this channel is closed
+    #          If this channel is closed
     # 
     # @throws  AsynchronousCloseException
-    # If another thread closes this channel
-    # while the read operation is in progress
+    #          If another thread closes this channel
+    #          while the read operation is in progress
     # 
     # @throws  ClosedByInterruptException
-    # If another thread interrupts the current thread
-    # while the read operation is in progress, thereby
-    # closing the channel and setting the current thread's
-    # interrupt status
+    #          If another thread interrupts the current thread
+    #          while the read operation is in progress, thereby
+    #          closing the channel and setting the current thread's
+    #          interrupt status
     # 
     # @throws  IOException
-    # If some other I/O error occurs
+    #          If some other I/O error occurs
     def read(dsts, offset, length)
       raise NotImplementedError
     end
@@ -133,29 +133,29 @@ module Java::Nio::Channels
     # c.read(dsts, 0, dsts.length);</pre></blockquote>
     # 
     # @param  dsts
-    # The buffers into which bytes are to be transferred
+    #         The buffers into which bytes are to be transferred
     # 
     # @return The number of bytes read, possibly zero,
-    # or <tt>-1</tt> if the channel has reached end-of-stream
+    #         or <tt>-1</tt> if the channel has reached end-of-stream
     # 
     # @throws  NonReadableChannelException
-    # If this channel was not opened for reading
+    #          If this channel was not opened for reading
     # 
     # @throws  ClosedChannelException
-    # If this channel is closed
+    #          If this channel is closed
     # 
     # @throws  AsynchronousCloseException
-    # If another thread closes this channel
-    # while the read operation is in progress
+    #          If another thread closes this channel
+    #          while the read operation is in progress
     # 
     # @throws  ClosedByInterruptException
-    # If another thread interrupts the current thread
-    # while the read operation is in progress, thereby
-    # closing the channel and setting the current thread's
-    # interrupt status
+    #          If another thread interrupts the current thread
+    #          while the read operation is in progress, thereby
+    #          closing the channel and setting the current thread's
+    #          interrupt status
     # 
     # @throws  IOException
-    # If some other I/O error occurs
+    #          If some other I/O error occurs
     def read(dsts)
       raise NotImplementedError
     end

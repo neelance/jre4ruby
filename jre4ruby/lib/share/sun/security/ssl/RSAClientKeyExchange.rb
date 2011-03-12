@@ -92,7 +92,6 @@ module Sun::Security::Ssl
     
     typesig { [ProtocolVersion, ProtocolVersion, SecureRandom, PublicKey] }
     # same size as public modulus
-    # 
     # Client randomly creates a pre-master secret and encrypts it
     # using the server's RSA public key; only the server can decrypt
     # it, using its RSA private key.  Result is the same size as the

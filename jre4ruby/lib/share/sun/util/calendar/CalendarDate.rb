@@ -554,7 +554,7 @@ module Sun::Util::Calendar
         era = e.hash_code
       end
       zone = !(@zoneinfo).nil? ? @zoneinfo.hash_code : 0
-      return RJava.cast_to_int(hash) * RJava.cast_to_int((hash >> 32)) ^ era ^ normalized ^ zone
+      return (hash).to_int * ((hash >> 32)).to_int ^ era ^ normalized ^ zone
     end
     
     typesig { [] }
@@ -575,7 +575,7 @@ module Sun::Util::Calendar
     # Converts calendar date values to a <code>String</code> in the
     # following format.
     # <pre>
-    # yyyy-MM-dd'T'HH:mm:ss.SSSz
+    #     yyyy-MM-dd'T'HH:mm:ss.SSSz
     # </pre>
     # 
     # @see java.text.SimpleDateFormat

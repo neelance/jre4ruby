@@ -66,10 +66,10 @@ module Java::Security::Cert
     # detail message and cause.
     # 
     # @param message the detail message (which is saved for later retrieval
-    # by the {@link #getMessage()} method).
+    #        by the {@link #getMessage()} method).
     # @param cause the cause (which is saved for later retrieval by the
-    # {@link #getCause()} method).  (A <tt>null</tt> value is permitted,
-    # and indicates that the cause is nonexistent or unknown.)
+    #        {@link #getCause()} method).  (A <tt>null</tt> value is permitted,
+    #        and indicates that the cause is nonexistent or unknown.)
     # @since 1.5
     def initialize(message, cause)
       super(message, cause)
@@ -83,8 +83,8 @@ module Java::Security::Cert
     # <tt>cause</tt>).
     # 
     # @param cause the cause (which is saved for later retrieval by the
-    # {@link #getCause()} method).  (A <tt>null</tt> value is permitted,
-    # and indicates that the cause is nonexistent or unknown.)
+    #        {@link #getCause()} method).  (A <tt>null</tt> value is permitted,
+    #        and indicates that the cause is nonexistent or unknown.)
     # @since 1.5
     def initialize(cause)
       super(cause)

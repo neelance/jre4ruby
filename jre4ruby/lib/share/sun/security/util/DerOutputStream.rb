@@ -79,7 +79,7 @@ module Sun::Security::Util
     # { tag, length, data } used by all DER values.
     # 
     # @param tag the DER value tag for the data, such as
-    # <em>DerValue.tag_Sequence</em>
+    #          <em>DerValue.tag_Sequence</em>
     # @param buf buffered data, which must be DER-encoded
     def write(tag, buf)
       write(tag)
@@ -93,7 +93,7 @@ module Sun::Security::Util
     # efficiently encapsulating values in sequences.
     # 
     # @param tag the DER value tag for the data, such as
-    # <em>DerValue.tag_Sequence</em>
+    #          <em>DerValue.tag_Sequence</em>
     # @param out buffered data
     def write(tag, out)
       write(tag)
@@ -109,7 +109,7 @@ module Sun::Security::Util
     # @param tag the DER value of the context-specific tag that replaces
     # original tag of the value in the output, such as in
     # <pre>
-    # <em> <field> [N] IMPLICIT <type></em>
+    #          <em> <field> [N] IMPLICIT <type></em>
     # </pre>
     # For example, <em>FooLength [1] IMPLICIT INTEGER</em>, with value=4;
     # would be encoded as "81 01 04"  whereas in explicit
@@ -131,11 +131,9 @@ module Sun::Security::Util
     typesig { [::Java::Boolean] }
     # PRIMITIVES -- these are "universal" ASN.1 simple types.
     # 
-    # BOOLEAN, INTEGER, BIT STRING, OCTET STRING, NULL
-    # OBJECT IDENTIFIER, SEQUENCE(OF), SET(OF)
-    # PrintableString, T61String, IA5String, UTCTime
-    # 
-    # 
+    #  BOOLEAN, INTEGER, BIT STRING, OCTET STRING, NULL
+    #  OBJECT IDENTIFIER, SEQUENCE(OF), SET(OF)
+    #  PrintableString, T61String, IA5String, UTCTime
     # Marshals a DER boolean on the output stream.
     def put_boolean(val)
       write(DerValue.attr_tag_boolean)
@@ -532,7 +530,7 @@ module Sun::Security::Util
     # Put the tag of the attribute in the stream.
     # 
     # @params class the tag class type, one of UNIVERSAL, CONTEXT,
-    # APPLICATION or PRIVATE
+    #                            APPLICATION or PRIVATE
     # @params form if true, the value is constructed, otherwise it is
     # primitive.
     # @params val the tag value

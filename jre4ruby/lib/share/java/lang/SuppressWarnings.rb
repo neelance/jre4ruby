@@ -23,6 +23,14 @@ require "rjava"
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
 module Java::Lang
+  module SuppressWarningsImports #:nodoc:
+    class_module.module_eval {
+      include ::Java::Lang
+      include ::Java::Lang::Annotation
+      include_const ::Java::Lang::Annotation, :ElementType
+    }
+  end
+  
   # The set of warnings that are to be suppressed by the compiler in the
   # annotated element.  Duplicate names are permitted.  The second and
   # successive occurrences of a name are ignored.  The presence of
@@ -34,14 +42,6 @@ module Java::Lang
   # <p>Compiler vendors should document the warning names they support in
   # conjunction with this annotation type. They are encouraged to cooperate
   # to ensure that the same names work across multiple compilers.
-  module SuppressWarningsImports #:nodoc:
-    class_module.module_eval {
-      include ::Java::Lang
-      include ::Java::Lang::Annotation
-      include_const ::Java::Lang::Annotation, :ElementType
-    }
-  end
-  
   # Indicates that the named compiler warnings should be suppressed in the
   # annotated element (and in all program elements contained in the annotated
   # element).  Note that the set of warnings suppressed in a given element is

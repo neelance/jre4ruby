@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # This file is available under and governed by the GNU General Public
 # License version 2 only, as published by the Free Software Foundation.
 # However, the following notice accompanied the original version of this
@@ -78,36 +76,36 @@ module Java::Util::Concurrent
   # 
   # <pre>
   # class Driver { // ...
-  # void main() throws InterruptedException {
-  # CountDownLatch startSignal = new CountDownLatch(1);
-  # CountDownLatch doneSignal = new CountDownLatch(N);
+  #   void main() throws InterruptedException {
+  #     CountDownLatch startSignal = new CountDownLatch(1);
+  #     CountDownLatch doneSignal = new CountDownLatch(N);
   # 
-  # for (int i = 0; i < N; ++i) // create and start threads
-  # new Thread(new Worker(startSignal, doneSignal)).start();
+  #     for (int i = 0; i < N; ++i) // create and start threads
+  #       new Thread(new Worker(startSignal, doneSignal)).start();
   # 
-  # doSomethingElse();            // don't let run yet
-  # startSignal.countDown();      // let all threads proceed
-  # doSomethingElse();
-  # doneSignal.await();           // wait for all to finish
-  # }
+  #     doSomethingElse();            // don't let run yet
+  #     startSignal.countDown();      // let all threads proceed
+  #     doSomethingElse();
+  #     doneSignal.await();           // wait for all to finish
+  #   }
   # }
   # 
   # class Worker implements Runnable {
-  # private final CountDownLatch startSignal;
-  # private final CountDownLatch doneSignal;
-  # Worker(CountDownLatch startSignal, CountDownLatch doneSignal) {
-  # this.startSignal = startSignal;
-  # this.doneSignal = doneSignal;
-  # }
-  # public void run() {
-  # try {
-  # startSignal.await();
-  # doWork();
-  # doneSignal.countDown();
-  # } catch (InterruptedException ex) {} // return;
-  # }
+  #   private final CountDownLatch startSignal;
+  #   private final CountDownLatch doneSignal;
+  #   Worker(CountDownLatch startSignal, CountDownLatch doneSignal) {
+  #      this.startSignal = startSignal;
+  #      this.doneSignal = doneSignal;
+  #   }
+  #   public void run() {
+  #      try {
+  #        startSignal.await();
+  #        doWork();
+  #        doneSignal.countDown();
+  #      } catch (InterruptedException ex) {} // return;
+  #   }
   # 
-  # void doWork() { ... }
+  #   void doWork() { ... }
   # }
   # 
   # </pre>
@@ -121,32 +119,32 @@ module Java::Util::Concurrent
   # 
   # <pre>
   # class Driver2 { // ...
-  # void main() throws InterruptedException {
-  # CountDownLatch doneSignal = new CountDownLatch(N);
-  # Executor e = ...
+  #   void main() throws InterruptedException {
+  #     CountDownLatch doneSignal = new CountDownLatch(N);
+  #     Executor e = ...
   # 
-  # for (int i = 0; i < N; ++i) // create and start threads
-  # e.execute(new WorkerRunnable(doneSignal, i));
+  #     for (int i = 0; i < N; ++i) // create and start threads
+  #       e.execute(new WorkerRunnable(doneSignal, i));
   # 
-  # doneSignal.await();           // wait for all to finish
-  # }
+  #     doneSignal.await();           // wait for all to finish
+  #   }
   # }
   # 
   # class WorkerRunnable implements Runnable {
-  # private final CountDownLatch doneSignal;
-  # private final int i;
-  # WorkerRunnable(CountDownLatch doneSignal, int i) {
-  # this.doneSignal = doneSignal;
-  # this.i = i;
-  # }
-  # public void run() {
-  # try {
-  # doWork(i);
-  # doneSignal.countDown();
-  # } catch (InterruptedException ex) {} // return;
-  # }
+  #   private final CountDownLatch doneSignal;
+  #   private final int i;
+  #   WorkerRunnable(CountDownLatch doneSignal, int i) {
+  #      this.doneSignal = doneSignal;
+  #      this.i = i;
+  #   }
+  #   public void run() {
+  #      try {
+  #        doWork(i);
+  #        doneSignal.countDown();
+  #      } catch (InterruptedException ex) {} // return;
+  #   }
   # 
-  # void doWork() { ... }
+  #   void doWork() { ... }
   # }
   # 
   # </pre>
@@ -219,7 +217,7 @@ module Java::Util::Concurrent
     # Constructs a {@code CountDownLatch} initialized with the given count.
     # 
     # @param count the number of times {@link #countDown} must be invoked
-    # before threads can pass through {@link #await}
+    #        before threads can pass through {@link #await}
     # @throws IllegalArgumentException if {@code count} is negative
     def initialize(count)
       @sync = nil
@@ -254,7 +252,7 @@ module Java::Util::Concurrent
     # interrupted status is cleared.
     # 
     # @throws InterruptedException if the current thread is interrupted
-    # while waiting
+    #         while waiting
     def await
       @sync.acquire_shared_interruptibly(1)
     end
@@ -296,9 +294,9 @@ module Java::Util::Concurrent
     # @param timeout the maximum time to wait
     # @param unit the time unit of the {@code timeout} argument
     # @return {@code true} if the count reached zero and {@code false}
-    # if the waiting time elapsed before the count reached zero
+    #         if the waiting time elapsed before the count reached zero
     # @throws InterruptedException if the current thread is interrupted
-    # while waiting
+    #         while waiting
     def await(timeout, unit)
       return @sync.try_acquire_shared_nanos(1, unit.to_nanos(timeout))
     end

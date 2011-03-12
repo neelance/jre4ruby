@@ -686,7 +686,9 @@ module Sun::Security::Pkcs11
     end
     
     typesig { [] }
+    # 
     # Parsing helper methods
+    # 
     def next_token
       token = @st.next_token
       debug(@st)
@@ -852,7 +854,9 @@ module Sun::Security::Pkcs11
     end
     
     typesig { [String] }
+    # 
     # individual entry parsing methods
+    # 
     def parse_library(keyword)
       check_dup(keyword)
       parse_equals
@@ -1023,27 +1027,27 @@ module Sun::Security::Pkcs11
     typesig { [] }
     def set_compatibility_attributes
       # all secret keys
-      @template_manager.add_template(O_ANY, CKO_SECRET_KEY, PCKK_ANY, Array.typed(CK_ATTRIBUTE).new([TOKEN_FALSE, SENSITIVE_FALSE, EXTRACTABLE_TRUE, ENCRYPT_TRUE, DECRYPT_TRUE, WRAP_TRUE, UNWRAP_TRUE, ]))
+      @template_manager.add_template(O_ANY, CKO_SECRET_KEY, PCKK_ANY, Array.typed(CK_ATTRIBUTE).new([TOKEN_FALSE, SENSITIVE_FALSE, EXTRACTABLE_TRUE, ENCRYPT_TRUE, DECRYPT_TRUE, WRAP_TRUE, UNWRAP_TRUE]))
       # generic secret keys are special
       # They are used as MAC keys plus for the SSL/TLS (pre)master secrets
-      @template_manager.add_template(O_ANY, CKO_SECRET_KEY, CKK_GENERIC_SECRET, Array.typed(CK_ATTRIBUTE).new([SIGN_TRUE, VERIFY_TRUE, ENCRYPT_NULL, DECRYPT_NULL, WRAP_NULL, UNWRAP_NULL, DERIVE_TRUE, ]))
+      @template_manager.add_template(O_ANY, CKO_SECRET_KEY, CKK_GENERIC_SECRET, Array.typed(CK_ATTRIBUTE).new([SIGN_TRUE, VERIFY_TRUE, ENCRYPT_NULL, DECRYPT_NULL, WRAP_NULL, UNWRAP_NULL, DERIVE_TRUE]))
       # all private and public keys
-      @template_manager.add_template(O_ANY, CKO_PRIVATE_KEY, PCKK_ANY, Array.typed(CK_ATTRIBUTE).new([TOKEN_FALSE, SENSITIVE_FALSE, EXTRACTABLE_TRUE, ]))
-      @template_manager.add_template(O_ANY, CKO_PUBLIC_KEY, PCKK_ANY, Array.typed(CK_ATTRIBUTE).new([TOKEN_FALSE, ]))
+      @template_manager.add_template(O_ANY, CKO_PRIVATE_KEY, PCKK_ANY, Array.typed(CK_ATTRIBUTE).new([TOKEN_FALSE, SENSITIVE_FALSE, EXTRACTABLE_TRUE]))
+      @template_manager.add_template(O_ANY, CKO_PUBLIC_KEY, PCKK_ANY, Array.typed(CK_ATTRIBUTE).new([TOKEN_FALSE]))
       # additional attributes for RSA private keys
-      @template_manager.add_template(O_ANY, CKO_PRIVATE_KEY, CKK_RSA, Array.typed(CK_ATTRIBUTE).new([DECRYPT_TRUE, SIGN_TRUE, SIGN_RECOVER_TRUE, UNWRAP_TRUE, ]))
+      @template_manager.add_template(O_ANY, CKO_PRIVATE_KEY, CKK_RSA, Array.typed(CK_ATTRIBUTE).new([DECRYPT_TRUE, SIGN_TRUE, SIGN_RECOVER_TRUE, UNWRAP_TRUE]))
       # additional attributes for RSA public keys
-      @template_manager.add_template(O_ANY, CKO_PUBLIC_KEY, CKK_RSA, Array.typed(CK_ATTRIBUTE).new([ENCRYPT_TRUE, VERIFY_TRUE, VERIFY_RECOVER_TRUE, WRAP_TRUE, ]))
+      @template_manager.add_template(O_ANY, CKO_PUBLIC_KEY, CKK_RSA, Array.typed(CK_ATTRIBUTE).new([ENCRYPT_TRUE, VERIFY_TRUE, VERIFY_RECOVER_TRUE, WRAP_TRUE]))
       # additional attributes for DSA private keys
-      @template_manager.add_template(O_ANY, CKO_PRIVATE_KEY, CKK_DSA, Array.typed(CK_ATTRIBUTE).new([SIGN_TRUE, ]))
+      @template_manager.add_template(O_ANY, CKO_PRIVATE_KEY, CKK_DSA, Array.typed(CK_ATTRIBUTE).new([SIGN_TRUE]))
       # additional attributes for DSA public keys
-      @template_manager.add_template(O_ANY, CKO_PUBLIC_KEY, CKK_DSA, Array.typed(CK_ATTRIBUTE).new([VERIFY_TRUE, ]))
+      @template_manager.add_template(O_ANY, CKO_PUBLIC_KEY, CKK_DSA, Array.typed(CK_ATTRIBUTE).new([VERIFY_TRUE]))
       # additional attributes for DH private keys
-      @template_manager.add_template(O_ANY, CKO_PRIVATE_KEY, CKK_DH, Array.typed(CK_ATTRIBUTE).new([DERIVE_TRUE, ]))
+      @template_manager.add_template(O_ANY, CKO_PRIVATE_KEY, CKK_DH, Array.typed(CK_ATTRIBUTE).new([DERIVE_TRUE]))
       # additional attributes for EC private keys
-      @template_manager.add_template(O_ANY, CKO_PRIVATE_KEY, CKK_EC, Array.typed(CK_ATTRIBUTE).new([SIGN_TRUE, DERIVE_TRUE, ]))
+      @template_manager.add_template(O_ANY, CKO_PRIVATE_KEY, CKK_EC, Array.typed(CK_ATTRIBUTE).new([SIGN_TRUE, DERIVE_TRUE]))
       # additional attributes for EC public keys
-      @template_manager.add_template(O_ANY, CKO_PUBLIC_KEY, CKK_EC, Array.typed(CK_ATTRIBUTE).new([VERIFY_TRUE, ]))
+      @template_manager.add_template(O_ANY, CKO_PUBLIC_KEY, CKK_EC, Array.typed(CK_ATTRIBUTE).new([VERIFY_TRUE]))
     end
     
     class_module.module_eval {

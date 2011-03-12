@@ -51,37 +51,37 @@ module Java::Net
   # <p>
   # <center><table border=2 summary="Describes the process of creating a connection to a URL: openConnection() and connect() over time.">
   # <tr><th><code>openConnection()</code></th>
-  # <th><code>connect()</code></th></tr>
+  #     <th><code>connect()</code></th></tr>
   # <tr><td>Manipulate parameters that affect the connection to the remote
-  # resource.</td>
-  # <td>Interact with the resource; query header fields and
-  # contents.</td></tr>
+  #         resource.</td>
+  #     <td>Interact with the resource; query header fields and
+  #         contents.</td></tr>
   # </table>
   # ----------------------------&gt;
   # <br>time</center>
   # 
   # <ol>
   # <li>The connection object is created by invoking the
-  # <code>openConnection</code> method on a URL.
+  #     <code>openConnection</code> method on a URL.
   # <li>The setup parameters and general request properties are manipulated.
   # <li>The actual connection to the remote object is made, using the
-  # <code>connect</code> method.
+  #    <code>connect</code> method.
   # <li>The remote object becomes available. The header fields and the contents
-  # of the remote object can be accessed.
+  #     of the remote object can be accessed.
   # </ol>
   # <p>
   # The setup parameters are modified using the following methods:
   # <ul>
-  # <li><code>setAllowUserInteraction</code>
-  # <li><code>setDoInput</code>
-  # <li><code>setDoOutput</code>
-  # <li><code>setIfModifiedSince</code>
-  # <li><code>setUseCaches</code>
+  #   <li><code>setAllowUserInteraction</code>
+  #   <li><code>setDoInput</code>
+  #   <li><code>setDoOutput</code>
+  #   <li><code>setIfModifiedSince</code>
+  #   <li><code>setUseCaches</code>
   # </ul>
   # <p>
   # and the general request properties are modified using the method:
   # <ul>
-  # <li><code>setRequestProperty</code>
+  #   <li><code>setRequestProperty</code>
   # </ul>
   # <p>
   # Default values for the <code>AllowUserInteraction</code> and
@@ -97,20 +97,20 @@ module Java::Net
   # The following methods are used to access the header fields and
   # the contents after the connection is made to the remote object:
   # <ul>
-  # <li><code>getContent</code>
-  # <li><code>getHeaderField</code>
-  # <li><code>getInputStream</code>
-  # <li><code>getOutputStream</code>
+  #   <li><code>getContent</code>
+  #   <li><code>getHeaderField</code>
+  #   <li><code>getInputStream</code>
+  #   <li><code>getOutputStream</code>
   # </ul>
   # <p>
   # Certain header fields are accessed frequently. The methods:
   # <ul>
-  # <li><code>getContentEncoding</code>
-  # <li><code>getContentLength</code>
-  # <li><code>getContentType</code>
-  # <li><code>getDate</code>
-  # <li><code>getExpiration</code>
-  # <li><code>getLastModifed</code>
+  #   <li><code>getContentEncoding</code>
+  #   <li><code>getContentLength</code>
+  #   <li><code>getContentType</code>
+  #   <li><code>getDate</code>
+  #   <li><code>getExpiration</code>
+  #   <li><code>getLastModifed</code>
   # </ul>
   # <p>
   # provide convenient access to these fields. The
@@ -419,7 +419,7 @@ module Java::Net
       # 
       # @param map the FileNameMap to be set
       # @exception  SecurityException  if a security manager exists and its
-      # <code>checkSetFactory</code> method doesn't allow the operation.
+      #             <code>checkSetFactory</code> method doesn't allow the operation.
       # @see        SecurityManager#checkSetFactory
       # @see #getFileNameMap()
       # @since 1.2
@@ -449,9 +449,9 @@ module Java::Net
     # connection, if necessary.
     # 
     # @throws SocketTimeoutException if the timeout expires before
-    # the connection can be established
+    #               the connection can be established
     # @exception  IOException  if an I/O error occurs while opening the
-    # connection.
+    #               connection.
     # @see java.net.URLConnection#connected
     # @see #getConnectTimeout()
     # @see #setConnectTimeout(int)
@@ -472,7 +472,7 @@ module Java::Net
     # call getConnectTimeout().
     # 
     # @param timeout an <code>int</code> that specifies the connect
-    # timeout value in milliseconds
+    #               timeout value in milliseconds
     # @throws IllegalArgumentException if the timeout parameter is negative
     # 
     # @see #getConnectTimeout()
@@ -492,7 +492,7 @@ module Java::Net
     # (i.e., timeout of infinity).
     # 
     # @return an <code>int</code> that indicates the connect timeout
-    # value in milliseconds
+    #         value in milliseconds
     # @see #setConnectTimeout(int)
     # @see #connect()
     # @since 1.5
@@ -501,24 +501,24 @@ module Java::Net
     end
     
     typesig { [::Java::Int] }
-    # Sets the read timeout to a specified timeout, in
-    # milliseconds. A non-zero value specifies the timeout when
-    # reading from Input stream when a connection is established to a
-    # resource. If the timeout expires before there is data available
-    # for read, a java.net.SocketTimeoutException is raised. A
-    # timeout of zero is interpreted as an infinite timeout.
+    #  Sets the read timeout to a specified timeout, in
+    #  milliseconds. A non-zero value specifies the timeout when
+    #  reading from Input stream when a connection is established to a
+    #  resource. If the timeout expires before there is data available
+    #  for read, a java.net.SocketTimeoutException is raised. A
+    #  timeout of zero is interpreted as an infinite timeout.
     # 
     # <p> Some non-standard implementation of this method ignores the
-    # specified timeout. To see the read timeout set, please call
-    # getReadTimeout().
+    #  specified timeout. To see the read timeout set, please call
+    #  getReadTimeout().
     # 
-    # @param timeout an <code>int</code> that specifies the timeout
-    # value to be used in milliseconds
-    # @throws IllegalArgumentException if the timeout parameter is negative
+    #  @param timeout an <code>int</code> that specifies the timeout
+    #  value to be used in milliseconds
+    #  @throws IllegalArgumentException if the timeout parameter is negative
     # 
-    # @see #getReadTimeout()
-    # @see InputStream#read()
-    # @since 1.5
+    #  @see #getReadTimeout()
+    #  @see InputStream#read()
+    #  @since 1.5
     def set_read_timeout(timeout)
       if (timeout < 0)
         raise IllegalArgumentException.new("timeout can not be negative")
@@ -531,7 +531,7 @@ module Java::Net
     # option is disabled (i.e., timeout of infinity).
     # 
     # @return an <code>int</code> that indicates the read timeout
-    # value in milliseconds
+    #         value in milliseconds
     # 
     # @see #setReadTimeout(int)
     # @see InputStream#read()
@@ -564,7 +564,7 @@ module Java::Net
     # field.
     # 
     # @return  the value of this <code>URLConnection</code>'s <code>URL</code>
-    # field.
+    #          field.
     # @see     java.net.URLConnection#url
     def get_url
       return @url
@@ -574,8 +574,8 @@ module Java::Net
     # Returns the value of the <code>content-length</code> header field.
     # 
     # @return  the content length of the resource that this connection's URL
-    # references, or <code>-1</code> if the content length is
-    # not known.
+    #          references, or <code>-1</code> if the content length is
+    #          not known.
     def get_content_length
       return get_header_field_int("content-length", -1)
     end
@@ -584,7 +584,7 @@ module Java::Net
     # Returns the value of the <code>content-type</code> header field.
     # 
     # @return  the content type of the resource that the URL references,
-    # or <code>null</code> if not known.
+    #          or <code>null</code> if not known.
     # @see     java.net.URLConnection#getHeaderField(java.lang.String)
     def get_content_type
       return get_header_field("content-type")
@@ -594,7 +594,7 @@ module Java::Net
     # Returns the value of the <code>content-encoding</code> header field.
     # 
     # @return  the content encoding of the resource that the URL references,
-    # or <code>null</code> if not known.
+    #          or <code>null</code> if not known.
     # @see     java.net.URLConnection#getHeaderField(java.lang.String)
     def get_content_encoding
       return get_header_field("content-encoding")
@@ -604,8 +604,8 @@ module Java::Net
     # Returns the value of the <code>expires</code> header field.
     # 
     # @return  the expiration date of the resource that this URL references,
-    # or 0 if not known. The value is the number of milliseconds since
-    # January 1, 1970 GMT.
+    #          or 0 if not known. The value is the number of milliseconds since
+    #          January 1, 1970 GMT.
     # @see     java.net.URLConnection#getHeaderField(java.lang.String)
     def get_expiration
       return get_header_field_date("expires", 0)
@@ -615,8 +615,8 @@ module Java::Net
     # Returns the value of the <code>date</code> header field.
     # 
     # @return  the sending date of the resource that the URL references,
-    # or <code>0</code> if not known. The value returned is the
-    # number of milliseconds since January 1, 1970 GMT.
+    #          or <code>0</code> if not known. The value returned is the
+    #          number of milliseconds since January 1, 1970 GMT.
     # @see     java.net.URLConnection#getHeaderField(java.lang.String)
     def get_date
       return get_header_field_date("date", 0)
@@ -627,7 +627,7 @@ module Java::Net
     # The result is the number of milliseconds since January 1, 1970 GMT.
     # 
     # @return  the date the resource referenced by this
-    # <code>URLConnection</code> was last modified, or 0 if not known.
+    #          <code>URLConnection</code> was last modified, or 0 if not known.
     # @see     java.net.URLConnection#getHeaderField(java.lang.String)
     def get_last_modified
       return get_header_field_date("last-modified", 0)
@@ -642,7 +642,7 @@ module Java::Net
     # 
     # @param   name   the name of a header field.
     # @return  the value of the named header field, or <code>null</code>
-    # if there is no such field in the header.
+    #          if there is no such field in the header.
     def get_header_field(name)
       return nil
     end
@@ -671,8 +671,8 @@ module Java::Net
     # @param   name      the name of the header field.
     # @param   Default   the default value.
     # @return  the value of the named field, parsed as an integer. The
-    # <code>Default</code> value is returned if the field is
-    # missing or malformed.
+    #          <code>Default</code> value is returned if the field is
+    #          missing or malformed.
     def get_header_field_int(name, default)
       value = get_header_field(name)
       begin
@@ -695,8 +695,8 @@ module Java::Net
     # @param   name     the name of the header field.
     # @param   Default   a default value.
     # @return  the value of the field, parsed as a date. The value of the
-    # <code>Default</code> argument is returned if the field is
-    # missing or malformed.
+    #          <code>Default</code> argument is returned if the field is
+    #          missing or malformed.
     def get_header_field_date(name, default)
       value = get_header_field(name)
       begin
@@ -712,8 +712,8 @@ module Java::Net
     # 
     # @param   n   an index, where n>=0
     # @return  the key for the <code>n</code><sup>th</sup> header field,
-    # or <code>null</code> if there are fewer than <code>n+1</code>
-    # fields.
+    #          or <code>null</code> if there are fewer than <code>n+1</code>
+    #          fields.
     def get_header_field_key(n)
       return nil
     end
@@ -729,7 +729,7 @@ module Java::Net
     # 
     # @param   n   an index, where n>=0
     # @return  the value of the <code>n</code><sup>th</sup> header field
-    # or <code>null</code> if there are fewer than <code>n+1</code> fields
+    #          or <code>null</code> if there are fewer than <code>n+1</code> fields
     # @see     java.net.URLConnection#getHeaderFieldKey(int)
     def get_header_field(n)
       return nil
@@ -744,36 +744,36 @@ module Java::Net
     # type, a content handler for that content type is created:
     # <ol>
     # <li>If the application has set up a content handler factory instance
-    # using the <code>setContentHandlerFactory</code> method, the
-    # <code>createContentHandler</code> method of that instance is called
-    # with the content type as an argument; the result is a content
-    # handler for that content type.
+    #     using the <code>setContentHandlerFactory</code> method, the
+    #     <code>createContentHandler</code> method of that instance is called
+    #     with the content type as an argument; the result is a content
+    #     handler for that content type.
     # <li>If no content handler factory has yet been set up, or if the
-    # factory's <code>createContentHandler</code> method returns
-    # <code>null</code>, then the application loads the class named:
-    # <blockquote><pre>
-    # sun.net.www.content.&lt;<i>contentType</i>&gt;
-    # </pre></blockquote>
-    # where &lt;<i>contentType</i>&gt; is formed by taking the
-    # content-type string, replacing all slash characters with a
-    # <code>period</code> ('.'), and all other non-alphanumeric characters
-    # with the underscore character '<code>_</code>'. The alphanumeric
-    # characters are specifically the 26 uppercase ASCII letters
-    # '<code>A</code>' through '<code>Z</code>', the 26 lowercase ASCII
-    # letters '<code>a</code>' through '<code>z</code>', and the 10 ASCII
-    # digits '<code>0</code>' through '<code>9</code>'. If the specified
-    # class does not exist, or is not a subclass of
-    # <code>ContentHandler</code>, then an
-    # <code>UnknownServiceException</code> is thrown.
+    #     factory's <code>createContentHandler</code> method returns
+    #     <code>null</code>, then the application loads the class named:
+    #     <blockquote><pre>
+    #         sun.net.www.content.&lt;<i>contentType</i>&gt;
+    #     </pre></blockquote>
+    #     where &lt;<i>contentType</i>&gt; is formed by taking the
+    #     content-type string, replacing all slash characters with a
+    #     <code>period</code> ('.'), and all other non-alphanumeric characters
+    #     with the underscore character '<code>_</code>'. The alphanumeric
+    #     characters are specifically the 26 uppercase ASCII letters
+    #     '<code>A</code>' through '<code>Z</code>', the 26 lowercase ASCII
+    #     letters '<code>a</code>' through '<code>z</code>', and the 10 ASCII
+    #     digits '<code>0</code>' through '<code>9</code>'. If the specified
+    #     class does not exist, or is not a subclass of
+    #     <code>ContentHandler</code>, then an
+    #     <code>UnknownServiceException</code> is thrown.
     # </ol>
     # 
     # @return     the object fetched. The <code>instanceof</code> operator
-    # should be used to determine the specific kind of object
-    # returned.
+    #               should be used to determine the specific kind of object
+    #               returned.
     # @exception  IOException              if an I/O error occurs while
-    # getting the content.
+    #               getting the content.
     # @exception  UnknownServiceException  if the protocol does not support
-    # the content type.
+    #               the content type.
     # @see        java.net.ContentHandlerFactory#createContentHandler(java.lang.String)
     # @see        java.net.URLConnection#getContentType()
     # @see        java.net.URLConnection#setContentHandlerFactory(java.net.ContentHandlerFactory)
@@ -791,14 +791,14 @@ module Java::Net
     # @param classes the <code>Class</code> array
     # indicating the requested types
     # @return     the object fetched that is the first match of the type
-    # specified in the classes array. null if none of
-    # the requested types are supported.
-    # The <code>instanceof</code> operator should be used to
-    # determine the specific kind of object returned.
+    #               specified in the classes array. null if none of
+    #               the requested types are supported.
+    #               The <code>instanceof</code> operator should be used to
+    #               determine the specific kind of object returned.
     # @exception  IOException              if an I/O error occurs while
-    # getting the content.
+    #               getting the content.
     # @exception  UnknownServiceException  if the protocol does not support
-    # the content type.
+    #               the content type.
     # @see        java.net.URLConnection#getContent()
     # @see        java.net.ContentHandlerFactory#createContentHandler(java.lang.String)
     # @see        java.net.URLConnection#getContent(java.lang.Class[])
@@ -863,9 +863,9 @@ module Java::Net
     # 
     # @return     an input stream that reads from this open connection.
     # @exception  IOException              if an I/O error occurs while
-    # creating the input stream.
+    #               creating the input stream.
     # @exception  UnknownServiceException  if the protocol does not support
-    # input.
+    #               input.
     # @see #setReadTimeout(int)
     # @see #getReadTimeout()
     def get_input_stream
@@ -877,9 +877,9 @@ module Java::Net
     # 
     # @return     an output stream that writes to this connection.
     # @exception  IOException              if an I/O error occurs while
-    # creating the output stream.
+    #               creating the output stream.
     # @exception  UnknownServiceException  if the protocol does not support
-    # output.
+    #               output.
     def get_output_stream
       raise UnknownServiceException.new("protocol doesn't support output")
     end
@@ -916,7 +916,7 @@ module Java::Net
     # <code>doInput</code> flag.
     # 
     # @return  the value of this <code>URLConnection</code>'s
-    # <code>doInput</code> flag.
+    #          <code>doInput</code> flag.
     # @see     #setDoInput(boolean)
     def get_do_input
       return @do_input
@@ -945,7 +945,7 @@ module Java::Net
     # <code>doOutput</code> flag.
     # 
     # @return  the value of this <code>URLConnection</code>'s
-    # <code>doOutput</code> flag.
+    #          <code>doOutput</code> flag.
     # @see     #setDoOutput(boolean)
     def get_do_output
       return @do_output
@@ -970,7 +970,7 @@ module Java::Net
     # this object.
     # 
     # @return  the value of the <code>allowUserInteraction</code> field for
-    # this object.
+    #          this object.
     # @see     #setAllowUserInteraction(boolean)
     def get_allow_user_interaction
       return @allow_user_interaction
@@ -997,7 +997,7 @@ module Java::Net
       # URLConnections that are created.
       # 
       # @return  the default value of the <code>allowUserInteraction</code>
-      # field.
+      #          field.
       # @see     #setDefaultAllowUserInteraction(boolean)
       def get_default_allow_user_interaction
         return self.attr_default_allow_user_interaction
@@ -1012,8 +1012,8 @@ module Java::Net
     # to be able to "tunnel through" and ignore the caches (e.g., the
     # "reload" button in a browser).  If the UseCaches flag on a connection
     # is true, the connection is allowed to use whatever caches it can.
-    # If false, caches are to be ignored.
-    # The default value comes from DefaultUseCaches, which defaults to
+    #  If false, caches are to be ignored.
+    #  The default value comes from DefaultUseCaches, which defaults to
     # true.
     # 
     # @param usecaches a <code>boolean</code> indicating whether
@@ -1032,7 +1032,7 @@ module Java::Net
     # <code>useCaches</code> field.
     # 
     # @return  the value of this <code>URLConnection</code>'s
-    # <code>useCaches</code> field.
+    #          <code>useCaches</code> field.
     # @see #setUseCaches(boolean)
     def get_use_caches
       return @use_caches
@@ -1070,7 +1070,7 @@ module Java::Net
     # URLConnections that are created.
     # 
     # @return  the default value of a <code>URLConnection</code>'s
-    # <code>useCaches</code> flag.
+    #          <code>useCaches</code> flag.
     # @see     #setDefaultUseCaches(boolean)
     def get_default_use_caches
       return self.attr_default_use_caches
@@ -1096,7 +1096,7 @@ module Java::Net
     # properties to be appended into a single property.
     # 
     # @param   key     the keyword by which the request is known
-    # (e.g., "<code>accept</code>").
+    #                  (e.g., "<code>accept</code>").
     # @param   value   the value associated with it.
     # @throws IllegalStateException if already connected
     # @throws NullPointerException if key is <CODE>null</CODE>
@@ -1120,7 +1120,7 @@ module Java::Net
     # existing values associated with the same key.
     # 
     # @param   key     the keyword by which the request is known
-    # (e.g., "<code>accept</code>").
+    #                  (e.g., "<code>accept</code>").
     # @param   value  the value associated with it.
     # @throws IllegalStateException if already connected
     # @throws NullPointerException if key is null
@@ -1145,7 +1145,7 @@ module Java::Net
     # 
     # @param key the keyword by which the request is known (e.g., "accept").
     # @return  the value of the named general request property for this
-    # connection. If key is null, then null is returned.
+    #           connection. If key is null, then null is returned.
     # @throws IllegalStateException if already connected
     # @see #setRequestProperty(java.lang.String, java.lang.String)
     def get_request_property(key)
@@ -1186,7 +1186,7 @@ module Java::Net
       # these properties.
       # 
       # @param   key     the keyword by which the request is known
-      # (e.g., "<code>accept</code>").
+      #                  (e.g., "<code>accept</code>").
       # @param   value   the value associated with the key.
       # 
       # @see java.net.URLConnection#setRequestProperty(java.lang.String,java.lang.String)
@@ -1245,7 +1245,7 @@ module Java::Net
       # @param      fac   the desired factory.
       # @exception  Error  if the factory has already been defined.
       # @exception  SecurityException  if a security manager exists and its
-      # <code>checkSetFactory</code> method doesn't allow the operation.
+      #             <code>checkSetFactory</code> method doesn't allow the operation.
       # @see        java.net.ContentHandlerFactory
       # @see        java.net.URLConnection#getContent()
       # @see        SecurityManager#checkSetFactory
@@ -1341,9 +1341,9 @@ module Java::Net
     # addition by defining the java.content.handler.pkgs property.
     # The class name must be of the form:
     # <pre>
-    # {package-prefix}.{major}.{minor}
+    #     {package-prefix}.{major}.{minor}
     # e.g.
-    # YoyoDyne.experimental.text.plain
+    #     YoyoDyne.experimental.text.plain
     # </pre>
     def lookup_content_handler_class_for(content_type)
       content_handler_class_name = type_to_package_name(content_type)
@@ -1420,7 +1420,7 @@ module Java::Net
       # 
       # @param   fname   a filename.
       # @return  a guess as to what the content type of the object is,
-      # based upon its file name.
+      #          based upon its file name.
       # @see     java.net.URLConnection#getContentType()
       def guess_content_type_from_name(fname)
         return get_file_name_map.get_content_type_for(fname)
@@ -1440,9 +1440,9 @@ module Java::Net
       # 
       # @param      is   an input stream that supports marks.
       # @return     a guess at the content type, or <code>null</code> if none
-      # can be determined.
+      #             can be determined.
       # @exception  IOException  if an I/O error occurs while reading the
-      # input stream.
+      #               input stream.
       # @see        java.io.InputStream#mark(int)
       # @see        java.io.InputStream#markSupported()
       # @see        java.net.URLConnection#getContentType()
@@ -1555,19 +1555,18 @@ module Java::Net
         # FpxClsidOffset = rootEntryOffset + clsidOffset
         # 
         # where: clsidOffset = 0x50.
-        # rootEntryOffset = headerSize + sectorSize*sectDirStart
-        # + 128*rootEntryDirectory
+        #        rootEntryOffset = headerSize + sectorSize*sectDirStart
+        #                          + 128*rootEntryDirectory
         # 
-        # where:  headerSize = 0x200 (always)
-        # sectorSize = 2 raised to power of uSectorShift,
-        # which is found in the header at
-        # offset 0x1E.
-        # sectDirStart = found in the header at offset 0x30.
-        # rootEntryDirectory = in general, should search for
-        # directory labelled as root.
-        # We will assume value of 0 (i.e.,
-        # rootEntry is in first directory)
-        # 
+        #        where:  headerSize = 0x200 (always)
+        #                sectorSize = 2 raised to power of uSectorShift,
+        #                             which is found in the header at
+        #                             offset 0x1E.
+        #                sectDirStart = found in the header at offset 0x30.
+        #                rootEntryDirectory = in general, should search for
+        #                                     directory labelled as root.
+        #                                     We will assume value of 0 (i.e.,
+        #                                     rootEntry is in first directory)
         # Mark the stream so we can reset it. 0x100 is enough for the first
         # few reads, but the mark will have to be reset and set again once
         # the offset to the root directory entry is computed. That offset
@@ -1635,14 +1634,14 @@ module Java::Net
         # This skip can be fairly long, at least 0x4c650 in at least
         # one case. Have to assume that the skip will fit in an int.
         # Leave room to read whole root dir
-        is.mark(RJava.cast_to_int(to_skip) + 0x30)
+        is.mark((to_skip).to_int + 0x30)
         if ((skip_forward(is, to_skip)) < to_skip)
           is.reset
           return false
         end
         # should be at beginning of ClassID, which is as follows
         # (in Intel byte order):
-        # 00 67 61 56 54 C1 CE 11 85 53 00 AA 00 A1 F9 5B
+        #    00 67 61 56 54 C1 CE 11 85 53 00 AA 00 A1 F9 5B
         # 
         # This is stored from Windows as long,short,short,char[8]
         # so for byte order changes, the order only changes for
@@ -1658,7 +1657,7 @@ module Java::Net
         if ((byte_order).equal?(0xfe) && (c[0]).equal?(0x0) && (c[2]).equal?(0x61) && (c[3]).equal?(0x56) && (c[4]).equal?(0x54) && (c[5]).equal?(0xc1) && (c[6]).equal?(0xce) && (c[7]).equal?(0x11) && (c[8]).equal?(0x85) && (c[9]).equal?(0x53) && (c[10]).equal?(0x0) && (c[11]).equal?(0xaa) && (c[12]).equal?(0x0) && (c[13]).equal?(0xa1) && (c[14]).equal?(0xf9) && (c[15]).equal?(0x5b))
           is.reset
           return true
-        # non-intel byte order
+          # non-intel byte order
         else
           if ((c[3]).equal?(0x0) && (c[1]).equal?(0x61) && (c[0]).equal?(0x56) && (c[5]).equal?(0x54) && (c[4]).equal?(0xc1) && (c[7]).equal?(0xce) && (c[6]).equal?(0x11) && (c[8]).equal?(0x85) && (c[9]).equal?(0x53) && (c[10]).equal?(0x0) && (c[11]).equal?(0xaa) && (c[12]).equal?(0x0) && (c[13]).equal?(0xa1) && (c[14]).equal?(0xf9) && (c[15]).equal?(0x5b))
             is.reset

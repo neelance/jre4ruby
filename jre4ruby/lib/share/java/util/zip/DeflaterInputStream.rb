@@ -256,7 +256,7 @@ module Java::Util::Zip
       if (@rbuf.attr_length < 512)
         @rbuf = Array.typed(::Java::Byte).new(512) { 0 }
       end
-      total = RJava.cast_to_int(Math.min(n, JavaInteger::MAX_VALUE))
+      total = (Math.min(n, JavaInteger::MAX_VALUE)).to_int
       cnt = 0
       while (total > 0)
         # Read a small block of uncompressed bytes

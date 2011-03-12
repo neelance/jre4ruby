@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5::Internal::Ccache
@@ -273,9 +271,9 @@ module Sun::Security::Krb5::Internal::Ccache
         @renew_till = nil
       end
       # if (kdcRep.msgType == Krb5.KRB_AS_REP) {
-      # isEncInSKey = false;
-      # secondTicket = null;
-      # }
+      #    isEncInSKey = false;
+      #    secondTicket = null;
+      #  }
       @flags = kdc_rep.attr_enc_kdcrep_part.attr_flags
       if (!(kdc_rep.attr_enc_kdcrep_part.attr_caddr).nil?)
         @caddr = kdc_rep.attr_enc_kdcrep_part.attr_caddr.clone

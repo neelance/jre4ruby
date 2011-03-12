@@ -40,18 +40,18 @@ module Sun::Security::Rsa
   # between the following:
   # 
   # For public keys:
-  # . PublicKey with an X.509 encoding
-  # . RSAPublicKey
-  # . RSAPublicKeySpec
-  # . X509EncodedKeySpec
+  #  . PublicKey with an X.509 encoding
+  #  . RSAPublicKey
+  #  . RSAPublicKeySpec
+  #  . X509EncodedKeySpec
   # 
   # For private keys:
-  # . PrivateKey with a PKCS#8 encoding
-  # . RSAPrivateKey
-  # . RSAPrivateCrtKey
-  # . RSAPrivateKeySpec
-  # . RSAPrivateCrtKeySpec
-  # . PKCS8EncodedKeySpec
+  #  . PrivateKey with a PKCS#8 encoding
+  #  . RSAPrivateKey
+  #  . RSAPrivateCrtKey
+  #  . RSAPrivateKeySpec
+  #  . RSAPrivateCrtKeySpec
+  #  . PKCS8EncodedKeySpec
   # (of course, CRT variants only for CRT keys)
   # 
   # Note: as always, RSA keys should be at least 512 bits long
@@ -142,9 +142,9 @@ module Sun::Security::Rsa
       # @param modulusLen the bit length of the RSA modulus.
       # @param exponent the RSA exponent
       # @param minModulusLen if > 0, check to see if modulusLen is at
-      # least this long, otherwise unused.
+      #        least this long, otherwise unused.
       # @param maxModulusLen caller will allow this max number of bits.
-      # Allow the smaller of the system-defined maximum and this param.
+      #        Allow the smaller of the system-defined maximum and this param.
       # 
       # @throws InvalidKeyException if any of the values are unacceptable.
       def check_key_lengths(modulus_len, exponent, min_modulus_len, max_modulus_len)

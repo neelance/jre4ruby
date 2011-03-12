@@ -22,7 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
 # -- This file was mechanically generated: Do not edit! -- //
 module Java::Nio
   module HeapDoubleBufferImports #:nodoc:
@@ -39,21 +38,17 @@ module Java::Nio
     typesig { [::Java::Int, ::Java::Int] }
     # For speed these fields are actually declared in X-Buffer;
     # these declarations are here as documentation
-    # 
-    # 
     # protected final double[] hb;
     # protected final int offset;
     def initialize(cap, lim)
-      # package-private
-      super(-1, 0, lim, cap, Array.typed(::Java::Double).new(cap) { 0.0 }, 0)
+      super(-1, 0, lim, cap, Array.typed(::Java::Double).new(cap) { 0.0 }, 0) # package-private
       # hb = new double[cap];
       # offset = 0;
     end
     
     typesig { [Array.typed(::Java::Double), ::Java::Int, ::Java::Int] }
     def initialize(buf, off, len)
-      # package-private
-      super(-1, off, off + len, buf.attr_length, buf, 0)
+      super(-1, off, off + len, buf.attr_length, buf, 0) # package-private
       # hb = buf;
       # offset = 0;
     end

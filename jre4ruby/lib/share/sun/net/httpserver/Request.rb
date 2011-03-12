@@ -387,7 +387,7 @@ module Sun::Net::Httpserver
           @server = server
           @sc = SelectorCache.get_selector_cache
           @selector = @sc.get_selector
-          @chanbuf = ByteBuffer.allocate(8 * 1024)
+          @chanbuf = ByteBuffer.allocate_(8 * 1024)
           @key = chan.register(@selector, SelectionKey::OP_READ)
           @available = 0
           @one = Array.typed(::Java::Byte).new(1) { 0 }
@@ -523,7 +523,7 @@ module Sun::Net::Httpserver
               return
             end
             @readlimit = readlimit
-            @mark_buf = ByteBuffer.allocate(readlimit)
+            @mark_buf = ByteBuffer.allocate_(readlimit)
             @marked = true
             @reset = false
           end
@@ -634,7 +634,7 @@ module Sun::Net::Httpserver
           @key = channel.register(@selector, SelectionKey::OP_WRITE)
           @closed = false
           @one = Array.typed(::Java::Byte).new(1) { 0 }
-          @buf = ByteBuffer.allocate(4096)
+          @buf = ByteBuffer.allocate_(4096)
         end
         
         typesig { [::Java::Int] }
@@ -662,7 +662,7 @@ module Sun::Net::Httpserver
             cap = @buf.capacity
             if (cap < len)
               diff = len - cap
-              @buf = ByteBuffer.allocate(2 * (cap + diff))
+              @buf = ByteBuffer.allocate_(2 * (cap + diff))
             end
             @buf.clear
             @buf.put(b, off, len)

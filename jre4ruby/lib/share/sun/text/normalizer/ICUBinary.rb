@@ -22,11 +22,8 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
-# 
 # (C) Copyright IBM Corp. 1996-2005 - All Rights Reserved                     *
-# *
+#                                                                             *
 # The original version of this source code and documentation is copyrighted   *
 # and owned by IBM, These materials are provided under terms of a License     *
 # Agreement between IBM and Sun. This technology is protected by multiple     *
@@ -49,7 +46,6 @@ module Sun::Text::Normalizer
     
     class_module.module_eval {
       # public inner interface ------------------------------------------------
-      # 
       # Special interface for data authentication
       const_set_lazy(:Authenticate) { Module.new do
         include_class_members ICUBinary
@@ -66,52 +62,51 @@ module Sun::Text::Normalizer
       
       typesig { [InputStream, Array.typed(::Java::Byte), Authenticate] }
       # public methods --------------------------------------------------------
-      # 
       # <p>ICU data header reader method.
       # Takes a ICU generated big-endian input stream, parse the ICU standard
       # file header and authenticates them.</p>
       # <p>Header format:
       # <ul>
-      # <li> Header size (char)
-      # <li> Magic number 1 (byte)
-      # <li> Magic number 2 (byte)
-      # <li> Rest of the header size (char)
-      # <li> Reserved word (char)
-      # <li> Big endian indicator (byte)
-      # <li> Character set family indicator (byte)
-      # <li> Size of a char (byte) for c++ and c use
-      # <li> Reserved byte (byte)
-      # <li> Data format identifier (4 bytes), each ICU data has its own
-      # identifier to distinguish them. [0] major [1] minor
-      # [2] milli [3] micro
-      # <li> Data version (4 bytes), the change version of the ICU data
-      # [0] major [1] minor [2] milli [3] micro
-      # <li> Unicode version (4 bytes) this ICU is based on.
+      #     <li> Header size (char)
+      #     <li> Magic number 1 (byte)
+      #     <li> Magic number 2 (byte)
+      #     <li> Rest of the header size (char)
+      #     <li> Reserved word (char)
+      #     <li> Big endian indicator (byte)
+      #     <li> Character set family indicator (byte)
+      #     <li> Size of a char (byte) for c++ and c use
+      #     <li> Reserved byte (byte)
+      #     <li> Data format identifier (4 bytes), each ICU data has its own
+      #          identifier to distinguish them. [0] major [1] minor
+      #                                          [2] milli [3] micro
+      #     <li> Data version (4 bytes), the change version of the ICU data
+      #                             [0] major [1] minor [2] milli [3] micro
+      #     <li> Unicode version (4 bytes) this ICU is based on.
       # </ul>
       # </p>
       # <p>
       # Example of use:<br>
       # <pre>
       # try {
-      # FileInputStream input = new FileInputStream(filename);
-      # If (Utility.readICUDataHeader(input, dataformat, dataversion,
-      # unicode) {
-      # System.out.println("Verified file header, this is a ICU data file");
-      # }
+      #    FileInputStream input = new FileInputStream(filename);
+      #    If (Utility.readICUDataHeader(input, dataformat, dataversion,
+      #                                  unicode) {
+      #        System.out.println("Verified file header, this is a ICU data file");
+      #    }
       # } catch (IOException e) {
-      # System.out.println("This is not a ICU data file");
+      #    System.out.println("This is not a ICU data file");
       # }
       # </pre>
       # </p>
       # @param inputStream input stream that contains the ICU data header
       # @param dataFormatIDExpected Data format expected. An array of 4 bytes
-      # information about the data format.
-      # E.g. data format ID 1.2.3.4. will became an array of
-      # {1, 2, 3, 4}
+      #                     information about the data format.
+      #                     E.g. data format ID 1.2.3.4. will became an array of
+      #                     {1, 2, 3, 4}
       # @param authenticate user defined extra data authentication. This value
-      # can be null, if no extra authentication is needed.
+      #                     can be null, if no extra authentication is needed.
       # @exception IOException thrown if there is a read error or
-      # when header authentication fails.
+      #            when header authentication fails.
       # @draft 2.1
       def read_header(input_stream, data_format_idexpected, authenticate)
         input = DataInputStream.new(input_stream)
@@ -157,7 +152,6 @@ module Sun::Text::Normalizer
       end
       
       # private variables -------------------------------------------------
-      # 
       # Magic numbers to authenticate the data file
       const_set_lazy(:MAGIC1) { 0xda }
       const_attr_reader  :MAGIC1

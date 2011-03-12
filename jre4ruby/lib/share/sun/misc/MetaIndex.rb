@@ -39,14 +39,14 @@ module Sun::Misc
     }
   end
   
-  # MetaIndex is intended to decrease startup time (in particular cold
-  # start, when files are not yet in the disk cache) by providing a
-  # quick reject mechanism for probes into jar files. The on-disk
-  # representation of the meta-index is a flat text file with per-jar
-  # entries indicating (generally speaking) prefixes of package names
-  # contained in the jar. As an example, here is an edited excerpt of
-  # the meta-index generated for jre/lib in the current build:
-  # 
+  #  * MetaIndex is intended to decrease startup time (in particular cold
+  #  * start, when files are not yet in the disk cache) by providing a
+  #  * quick reject mechanism for probes into jar files. The on-disk
+  #  * representation of the meta-index is a flat text file with per-jar
+  #  * entries indicating (generally speaking) prefixes of package names
+  #  * contained in the jar. As an example, here is an edited excerpt of
+  #  * the meta-index generated for jre/lib in the current build:
+  #  *
   # <PRE>
   # % VERSION 1
   # # charsets.jar
@@ -79,55 +79,55 @@ module Sun::Misc
   # sun/
   # ...
   # </PRE>
-  # <p> A few notes about the design of the meta-index:
-  # 
-  # <UL>
-  # 
-  # <LI> It contains entries for multiple jar files. This is
-  # intentional, to reduce the number of disk accesses that need to be
-  # performed during startup.
-  # 
-  # <LI> It is only intended to act as a fast reject mechanism to
-  # prevent application and other classes from forcing all jar files on
-  # the boot and extension class paths to be opened. It is not intended
-  # as a precise index of the contents of the jar.
-  # 
-  # <LI> It should be as small as possible to reduce the amount of time
-  # required to parse it during startup. For example, adding on the
-  # secondary package element to java/ and javax/ packages
-  # ("javax/swing/", for example) causes the meta-index to grow
-  # significantly. This is why substrings of the packages have been
-  # chosen as the principal contents.
-  # 
-  # <LI> It is versioned, and optional, to prevent strong dependencies
-  # between the JVM and JDK. It is also potentially applicable to more
-  # than just the boot and extension class paths.
-  # 
-  # <LI> Precisely speaking, it plays different role in JVM and J2SE
-  # side.  On the JVM side, meta-index file is used to speed up locating the
-  # class files only while on the J2SE side, meta-index file is used to speed
-  # up the resources file & class file.
-  # To help the JVM and J2SE code to better utilize the information in meta-index
-  # file, we mark the jar file differently. Here is the current rule we use.
-  # For jar file containing only class file, we put '!' before the jar file name;
-  # for jar file containing only resources file, we put '@' before the jar file name;
-  # for jar file containing both resources and class file, we put '#' before the
-  # jar name.
-  # Notice the fact that every jar file contains at least the manifest file, so when
-  # we say "jar file containing only class file", we don't include that file.
-  # 
-  # </UL>
-  # 
-  # <p> To avoid changing the behavior of the current application
-  # loader and other loaders, the current MetaIndex implementation in
-  # the JDK requires that the directory containing the meta-index be
-  # registered with the MetaIndex class before construction of the
-  # associated URLClassPath. This prevents the need for automatic
-  # searching for the meta-index in the URLClassPath code and potential
-  # changes in behavior for non-core ClassLoaders.
-  # 
-  # This class depends on make/tools/MetaIndex/BuildMetaIndex.java and
-  # is used principally by sun.misc.URLClassPath.
+  #  * <p> A few notes about the design of the meta-index:
+  #  *
+  #  * <UL>
+  #  *
+  #  * <LI> It contains entries for multiple jar files. This is
+  #  * intentional, to reduce the number of disk accesses that need to be
+  #  * performed during startup.
+  #  *
+  #  * <LI> It is only intended to act as a fast reject mechanism to
+  #  * prevent application and other classes from forcing all jar files on
+  #  * the boot and extension class paths to be opened. It is not intended
+  #  * as a precise index of the contents of the jar.
+  #  *
+  #  * <LI> It should be as small as possible to reduce the amount of time
+  #  * required to parse it during startup. For example, adding on the
+  #  * secondary package element to java/ and javax/ packages
+  #  * ("javax/swing/", for example) causes the meta-index to grow
+  #  * significantly. This is why substrings of the packages have been
+  #  * chosen as the principal contents.
+  #  *
+  #  * <LI> It is versioned, and optional, to prevent strong dependencies
+  #  * between the JVM and JDK. It is also potentially applicable to more
+  #  * than just the boot and extension class paths.
+  #  *
+  #  * <LI> Precisely speaking, it plays different role in JVM and J2SE
+  #  * side.  On the JVM side, meta-index file is used to speed up locating the
+  #  * class files only while on the J2SE side, meta-index file is used to speed
+  #  * up the resources file & class file.
+  #  * To help the JVM and J2SE code to better utilize the information in meta-index
+  #  * file, we mark the jar file differently. Here is the current rule we use.
+  #  * For jar file containing only class file, we put '!' before the jar file name;
+  #  * for jar file containing only resources file, we put '@' before the jar file name;
+  #  * for jar file containing both resources and class file, we put '#' before the
+  #  * jar name.
+  #  * Notice the fact that every jar file contains at least the manifest file, so when
+  #  * we say "jar file containing only class file", we don't include that file.
+  #  *
+  #  * </UL>
+  #  *
+  #  * <p> To avoid changing the behavior of the current application
+  #  * loader and other loaders, the current MetaIndex implementation in
+  #  * the JDK requires that the directory containing the meta-index be
+  #  * registered with the MetaIndex class before construction of the
+  #  * associated URLClassPath. This prevents the need for automatic
+  #  * searching for the meta-index in the URLClassPath code and potential
+  #  * changes in behavior for non-core ClassLoaders.
+  #  *
+  #  * This class depends on make/tools/MetaIndex/BuildMetaIndex.java and
+  #  * is used principally by sun.misc.URLClassPath.
   class MetaIndex 
     include_class_members MetaIndexImports
     
@@ -243,6 +243,7 @@ module Sun::Misc
     typesig { [String] }
     # ----------------------------------------------------------------------
     # Public APIs
+    # 
     def may_contain(entry)
       # Ask non-class file from class only jar returns false
       # This check is important to avoid some class only jar

@@ -38,6 +38,7 @@ module Sun::Nio::Ch
   # 
   # The option get/set methods in the socket, server-socket, and datagram-socket
   # adaptors delegate to an instance of this class.
+  # 
   class OptionAdaptor 
     include_class_members OptionAdaptorImports
     

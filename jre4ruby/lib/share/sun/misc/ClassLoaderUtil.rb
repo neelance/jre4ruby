@@ -36,7 +36,7 @@ module Sun::Misc
   
   # Provides utility functions related to URLClassLoaders or subclasses of it.
   # 
-  # W  A  R  N  I  N  G
+  #                  W  A  R  N  I  N  G
   # 
   # This class uses undocumented, unpublished, private data structures inside
   # java.net.URLClassLoader and sun.misc.URLClassPath.  Use with extreme caution.
@@ -61,7 +61,7 @@ module Sun::Misc
       # <p>
       # @param classLoader the instance of URLClassLoader (or a subclass)
       # @param jarsClosed a List of Strings that will contain the names of jars
-      # successfully closed; can be null if the caller does not need the information returned
+      #  successfully closed; can be null if the caller does not need the information returned
       # @return a List of IOExceptions reporting jars that failed to close; null
       # indicates that an error other than an IOException occurred attempting to
       # release the loader; empty indicates a successful release; non-empty
@@ -107,8 +107,6 @@ module Sun::Misc
           # The URLClassPath does not use the path variable to open new jar
           # files - it uses the urls Stack for that - so leaving the path variable
           # will not by itself allow the class loader to continue handling requests.
-          # 
-          # 
           # For each loader, close the jar file associated with that loader.
           # 
           # The URLClassPath's use of loaders is sync-ed on the entire URLClassPath

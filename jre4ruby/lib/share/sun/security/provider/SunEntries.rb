@@ -37,32 +37,32 @@ module Sun::Security::Provider
   # Algorithms supported, and their names:
   # 
   # - SHA is the message digest scheme described in FIPS 180-1.
-  # Aliases for SHA are SHA-1 and SHA1.
+  #   Aliases for SHA are SHA-1 and SHA1.
   # 
   # - SHA1withDSA is the signature scheme described in FIPS 186.
-  # (SHA used in DSA is SHA-1: FIPS 186 with Change No 1.)
-  # Aliases for SHA1withDSA are DSA, DSS, SHA/DSA, SHA-1/DSA, SHA1/DSA,
-  # SHAwithDSA, DSAWithSHA1, and the object
-  # identifier strings "OID.1.3.14.3.2.13", "OID.1.3.14.3.2.27" and
-  # "OID.1.2.840.10040.4.3".
+  #   (SHA used in DSA is SHA-1: FIPS 186 with Change No 1.)
+  #   Aliases for SHA1withDSA are DSA, DSS, SHA/DSA, SHA-1/DSA, SHA1/DSA,
+  #   SHAwithDSA, DSAWithSHA1, and the object
+  #   identifier strings "OID.1.3.14.3.2.13", "OID.1.3.14.3.2.27" and
+  #   "OID.1.2.840.10040.4.3".
   # 
   # - DSA is the key generation scheme as described in FIPS 186.
-  # Aliases for DSA include the OID strings "OID.1.3.14.3.2.12"
-  # and "OID.1.2.840.10040.4.1".
+  #   Aliases for DSA include the OID strings "OID.1.3.14.3.2.12"
+  #   and "OID.1.2.840.10040.4.1".
   # 
   # - MD5 is the message digest scheme described in RFC 1321.
-  # There are no aliases for MD5.
+  #   There are no aliases for MD5.
   # 
   # - X.509 is the certificate factory type for X.509 certificates
-  # and CRLs. Aliases for X.509 are X509.
+  #   and CRLs. Aliases for X.509 are X509.
   # 
   # - PKIX is the certification path validation algorithm described
-  # in RFC 3280. The ValidationAlgorithm attribute notes the
-  # specification that this provider implements.
+  #   in RFC 3280. The ValidationAlgorithm attribute notes the
+  #   specification that this provider implements.
   # 
   # - LDAP is the CertStore type for LDAP repositories. The
-  # LDAPSchema attribute notes the specification defining the
-  # schema that this provider uses to find certificates and CRLs.
+  #   LDAPSchema attribute notes the specification defining the
+  #   schema that this provider uses to find certificates and CRLs.
   # 
   # - JavaPolicy is the default file-based Policy type.
   # 
@@ -82,7 +82,6 @@ module Sun::Security::Provider
         # 
         # Register these first to speed up "new SecureRandom()",
         # which iterates through the list of algorithms
-        # 
         # register the native PRNG, if available
         # if user selected /dev/urandom, we put it before SHA1PRNG,
         # otherwise after it

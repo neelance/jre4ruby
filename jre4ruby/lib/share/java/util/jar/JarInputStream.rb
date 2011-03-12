@@ -132,7 +132,7 @@ module Java::Util::Jar
     # <code>null</code> if none.
     # 
     # @return the <code>Manifest</code> for this JAR file, or
-    # <code>null</code> if none.
+    #         <code>null</code> if none.
     def get_manifest
       return @man
     end
@@ -145,7 +145,7 @@ module Java::Util::Jar
     # @exception ZipException if a ZIP file error has occurred
     # @exception IOException if an I/O error has occurred
     # @exception SecurityException if any of the jar file entries
-    # are incorrectly signed.
+    #         are incorrectly signed.
     def get_next_entry
       e = nil
       if ((@first).nil?)
@@ -177,7 +177,7 @@ module Java::Util::Jar
     # @exception ZipException if a ZIP file error has occurred
     # @exception IOException if an I/O error has occurred
     # @exception SecurityException if any of the jar file entries
-    # are incorrectly signed.
+    #         are incorrectly signed.
     def get_next_jar_entry
       return get_next_entry
     end
@@ -194,7 +194,7 @@ module Java::Util::Jar
     # @param off the start offset in the destination array <code>b</code>
     # @param len the maximum number of bytes to read
     # @return the actual number of bytes read, or -1 if the end of the
-    # entry is reached
+    #         entry is reached
     # @exception  NullPointerException If <code>b</code> is <code>null</code>.
     # @exception  IndexOutOfBoundsException If <code>off</code> is negative,
     # <code>len</code> is negative, or <code>len</code> is greater than
@@ -202,7 +202,7 @@ module Java::Util::Jar
     # @exception ZipException if a ZIP file error has occurred
     # @exception IOException if an I/O error has occurred
     # @exception SecurityException if any of the jar file entries
-    # are incorrectly signed.
+    #         are incorrectly signed.
     def read(b, off, len)
       n = 0
       if ((@first).nil?)

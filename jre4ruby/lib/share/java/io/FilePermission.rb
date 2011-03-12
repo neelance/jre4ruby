@@ -64,14 +64,14 @@ module Java::Io
   # "read", "write", "execute", and "delete". Their meaning is defined as follows:
   # <P>
   # <DL>
-  # <DT> read <DD> read permission
-  # <DT> write <DD> write permission
-  # <DT> execute
-  # <DD> execute permission. Allows <code>Runtime.exec</code> to
-  # be called. Corresponds to <code>SecurityManager.checkExec</code>.
-  # <DT> delete
-  # <DD> delete permission. Allows <code>File.delete</code> to
-  # be called. Corresponds to <code>SecurityManager.checkDelete</code>.
+  #    <DT> read <DD> read permission
+  #    <DT> write <DD> write permission
+  #    <DT> execute
+  #    <DD> execute permission. Allows <code>Runtime.exec</code> to
+  #         be called. Corresponds to <code>SecurityManager.checkExec</code>.
+  #    <DT> delete
+  #    <DD> delete permission. Allows <code>File.delete</code> to
+  #         be called. Corresponds to <code>SecurityManager.checkDelete</code>.
   # </DL>
   # <P>
   # The actions string is converted to lowercase before processing.
@@ -180,15 +180,15 @@ module Java::Io
       
       # public String toString()
       # {
-      # StringBuffer sb = new StringBuffer();
-      # sb.append("***\n");
-      # sb.append("cpath = "+cpath+"\n");
-      # sb.append("mask = "+mask+"\n");
-      # sb.append("actions = "+getActions()+"\n");
-      # sb.append("directory = "+directory+"\n");
-      # sb.append("recursive = "+recursive+"\n");
-      # sb.append("***\n");
-      # return sb.toString();
+      #     StringBuffer sb = new StringBuffer();
+      #     sb.append("***\n");
+      #     sb.append("cpath = "+cpath+"\n");
+      #     sb.append("mask = "+mask+"\n");
+      #     sb.append("actions = "+getActions()+"\n");
+      #     sb.append("directory = "+directory+"\n");
+      #     sb.append("recursive = "+recursive+"\n");
+      #     sb.append("***\n");
+      #     return sb.toString();
       # }
       const_set_lazy(:SerialVersionUID) { 7930732926638008763 }
       const_attr_reader  :SerialVersionUID
@@ -286,8 +286,8 @@ module Java::Io
     # @param actions the action string.
     # 
     # @throws IllegalArgumentException
-    # If actions is <code>null</code>, empty or contains an action
-    # other than the specified possible actions.
+    #          If actions is <code>null</code>, empty or contains an action
+    #          other than the specified possible actions.
     def initialize(path, actions)
       @mask = 0
       @directory = false
@@ -307,7 +307,6 @@ module Java::Io
     # 
     # @param path the pathname of the file/directory.
     # @param mask the action mask to use.
-    # 
     # package private for use by the FilePermissionCollection add method
     def initialize(path, mask)
       @mask = 0
@@ -328,16 +327,16 @@ module Java::Io
     # <li> <i>p</i>'s actions are a proper subset of this
     # object's actions, and <p>
     # <li> <i>p</i>'s pathname is implied by this object's
-    # pathname. For example, "/tmp/*" implies "/tmp/foo", since
-    # "/tmp/*" encompasses all files in the "/tmp" directory,
-    # including the one named "foo".
+    #      pathname. For example, "/tmp/*" implies "/tmp/foo", since
+    #      "/tmp/*" encompasses all files in the "/tmp" directory,
+    #      including the one named "foo".
     # </ul>
     # 
     # @param p the permission to check against.
     # 
     # @return <code>true</code> if the specified permission is not
-    # <code>null</code> and is implied by this object,
-    # <code>false</code> otherwise.
+    #                  <code>null</code> and is implied by this object,
+    #                  <code>false</code> otherwise.
     def implies(p)
       if (!(p.is_a?(FilePermission)))
         return false
@@ -405,8 +404,8 @@ module Java::Io
     # <P>
     # @param obj the object we are testing for equality with this object.
     # @return <code>true</code> if obj is a FilePermission, and has the same
-    # pathname and actions as this FilePermission object,
-    # <code>false</code> otherwise.
+    #          pathname and actions as this FilePermission object,
+    #          <code>false</code> otherwise.
     def ==(obj)
       if ((obj).equal?(self))
         return true
@@ -494,10 +493,11 @@ module Java::Io
           seencomma = false
           while (i >= matchlen && !seencomma)
             case (a[i - matchlen])
-            # FALLTHROUGH
             when Character.new(?,.ord)
               seencomma = true
+              # FALLTHROUGH
             when Character.new(?\s.ord), Character.new(?\r.ord), Character.new(?\n.ord), Character.new(?\f.ord), Character.new(?\t.ord)
+              # FALLTHROUGH
             else
               raise IllegalArgumentException.new("invalid permission: " + actions)
             end
@@ -593,7 +593,7 @@ module Java::Io
     # <p>and you are calling the <code>implies</code> method with the FilePermission:
     # 
     # <pre>
-    # "/tmp/scratch/foo", "read,write",
+    #   "/tmp/scratch/foo", "read,write",
     # </pre>
     # 
     # then the <code>implies</code> function must
@@ -687,10 +687,10 @@ module Java::Io
     # @param permission the Permission object to add.
     # 
     # @exception IllegalArgumentException - if the permission is not a
-    # FilePermission
+    #                                       FilePermission
     # 
     # @exception SecurityException - if this FilePermissionCollection object
-    # has been marked readonly
+    #                                has been marked readonly
     def add(permission)
       if (!(permission.is_a?(FilePermission)))
         raise IllegalArgumentException.new("invalid permission: " + RJava.cast_to_string(permission))
@@ -755,18 +755,15 @@ module Java::Io
       
       # Need to maintain serialization interoperability with earlier releases,
       # which had the serializable field:
-      # private Vector permissions;
-      # 
+      #    private Vector permissions;
       # @serialField permissions java.util.Vector
-      # A list of FilePermission objects.
-      const_set_lazy(:SerialPersistentFields) { Array.typed(ObjectStreamField).new([ObjectStreamField.new("permissions", Vector), ]) }
+      #     A list of FilePermission objects.
+      const_set_lazy(:SerialPersistentFields) { Array.typed(ObjectStreamField).new([ObjectStreamField.new("permissions", Vector)]) }
       const_attr_reader  :SerialPersistentFields
     }
     
     typesig { [ObjectOutputStream] }
     # @serialData "permissions" field (a Vector containing the FilePermissions).
-    # 
-    # 
     # Writes the contents of the perms field out as a Vector for
     # serialization compatibility with earlier releases.
     def write_object(out)

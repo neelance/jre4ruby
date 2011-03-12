@@ -91,8 +91,8 @@ module Java::Nio::Channels::Spi
     # Initializes a new instance of this class.  </p>
     # 
     # @throws  SecurityException
-    # If a security manager has been installed and it denies
-    # {@link RuntimePermission}<tt>("selectorProvider")</tt>
+    #          If a security manager has been installed and it denies
+    #          {@link RuntimePermission}<tt>("selectorProvider")</tt>
     def initialize
       sm = System.get_security_manager
       if (!(sm).nil?)
@@ -152,24 +152,24 @@ module Java::Nio::Channels::Spi
       # 
       # <ol>
       # 
-      # <li><p> If the system property
-      # <tt>java.nio.channels.spi.SelectorProvider</tt> is defined then it is
-      # taken to be the fully-qualified name of a concrete provider class.
-      # The class is loaded and instantiated; if this process fails then an
-      # unspecified error is thrown.  </p></li>
+      #   <li><p> If the system property
+      #   <tt>java.nio.channels.spi.SelectorProvider</tt> is defined then it is
+      #   taken to be the fully-qualified name of a concrete provider class.
+      #   The class is loaded and instantiated; if this process fails then an
+      #   unspecified error is thrown.  </p></li>
       # 
-      # <li><p> If a provider class has been installed in a jar file that is
-      # visible to the system class loader, and that jar file contains a
-      # provider-configuration file named
-      # <tt>java.nio.channels.spi.SelectorProvider</tt> in the resource
-      # directory <tt>META-INF/services</tt>, then the first class name
-      # specified in that file is taken.  The class is loaded and
-      # instantiated; if this process fails then an unspecified error is
-      # thrown.  </p></li>
+      #   <li><p> If a provider class has been installed in a jar file that is
+      #   visible to the system class loader, and that jar file contains a
+      #   provider-configuration file named
+      #   <tt>java.nio.channels.spi.SelectorProvider</tt> in the resource
+      #   directory <tt>META-INF/services</tt>, then the first class name
+      #   specified in that file is taken.  The class is loaded and
+      #   instantiated; if this process fails then an unspecified error is
+      #   thrown.  </p></li>
       # 
-      # <li><p> Finally, if no provider has been specified by any of the above
-      # means then the system-default provider class is instantiated and the
-      # result is returned.  </p></li>
+      #   <li><p> Finally, if no provider has been specified by any of the above
+      #   means then the system-default provider class is instantiated and the
+      #   result is returned.  </p></li>
       # 
       # </ol>
       # 
@@ -271,23 +271,23 @@ module Java::Nio::Channels::Spi
     # 
     # <ul>
     # 
-    # <li><p> If the inherited channel represents a stream-oriented connected
-    # socket then a {@link java.nio.channels.SocketChannel SocketChannel} is
-    # returned. The socket channel is, at least initially, in blocking
-    # mode, bound to a socket address, and connected to a peer.
-    # </p></li>
+    #  <li><p> If the inherited channel represents a stream-oriented connected
+    #  socket then a {@link java.nio.channels.SocketChannel SocketChannel} is
+    #  returned. The socket channel is, at least initially, in blocking
+    #  mode, bound to a socket address, and connected to a peer.
+    #  </p></li>
     # 
-    # <li><p> If the inherited channel represents a stream-oriented listening
-    # socket then a {@link java.nio.channels.ServerSocketChannel
-    # ServerSocketChannel} is returned. The server-socket channel is, at
-    # least initially, in blocking mode, and bound to a socket address.
-    # </p></li>
+    #  <li><p> If the inherited channel represents a stream-oriented listening
+    #  socket then a {@link java.nio.channels.ServerSocketChannel
+    #  ServerSocketChannel} is returned. The server-socket channel is, at
+    #  least initially, in blocking mode, and bound to a socket address.
+    #  </p></li>
     # 
-    # <li><p> If the inherited channel is a datagram-oriented socket
-    # then a {@link java.nio.channels.DatagramChannel DatagramChannel} is
-    # returned. The datagram channel is, at least initially, in blocking
-    # mode, and bound to a socket address.
-    # </p></li>
+    #  <li><p> If the inherited channel is a datagram-oriented socket
+    #  then a {@link java.nio.channels.DatagramChannel DatagramChannel} is
+    #  returned. The datagram channel is, at least initially, in blocking
+    #  mode, and bound to a socket address.
+    #  </p></li>
     # 
     # </ul>
     # 
@@ -301,11 +301,11 @@ module Java::Nio::Channels::Spi
     # @return  The inherited channel, if any, otherwise <tt>null</tt>.
     # 
     # @throws  IOException
-    # If an I/O error occurs
+    #          If an I/O error occurs
     # 
     # @throws  SecurityException
-    # If a security manager has been installed and it denies
-    # {@link RuntimePermission}<tt>("inheritedChannel")</tt>
+    #          If a security manager has been installed and it denies
+    #          {@link RuntimePermission}<tt>("inheritedChannel")</tt>
     # 
     # @since 1.5
     def inherited_channel

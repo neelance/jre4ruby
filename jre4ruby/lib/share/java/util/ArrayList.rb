@@ -68,7 +68,7 @@ module Java::Util
   # {@link Collections#synchronizedList Collections.synchronizedList}
   # method.  This is best done at creation time, to prevent accidental
   # unsynchronized access to the list:<pre>
-  # List list = Collections.synchronizedList(new ArrayList(...));</pre>
+  #   List list = Collections.synchronizedList(new ArrayList(...));</pre>
   # 
   # <p><a name="fail-fast"/>
   # The iterators returned by this class's {@link #iterator() iterator} and
@@ -137,7 +137,7 @@ module Java::Util
     # 
     # @param   initialCapacity   the initial capacity of the list
     # @exception IllegalArgumentException if the specified initial capacity
-    # is negative
+    #            is negative
     def initialize(initial_capacity)
       @element_data = nil
       @size = 0
@@ -316,7 +316,7 @@ module Java::Util
     # APIs.
     # 
     # @return an array containing all of the elements in this list in
-    # proper sequence
+    #         proper sequence
     def to_array
       return Arrays.copy_of(@element_data, @size)
     end
@@ -337,12 +337,12 @@ module Java::Util
     # any null elements.)
     # 
     # @param a the array into which the elements of the list are to
-    # be stored, if it is big enough; otherwise, a new array of the
-    # same runtime type is allocated for this purpose.
+    #          be stored, if it is big enough; otherwise, a new array of the
+    #          same runtime type is allocated for this purpose.
     # @return an array containing the elements of the list
     # @throws ArrayStoreException if the runtime type of the specified array
-    # is not a supertype of the runtime type of every element in
-    # this list
+    #         is not a supertype of the runtime type of every element in
+    #         this list
     # @throws NullPointerException if the specified array is null
     def to_array(a)
       if (a.attr_length < @size)
@@ -526,7 +526,7 @@ module Java::Util
     # specified collection's iterator.
     # 
     # @param index index at which to insert the first element from the
-    # specified collection
+    #              specified collection
     # @param c collection containing elements to be added to this list
     # @return <tt>true</tt> if this list changed as a result of the call
     # @throws IndexOutOfBoundsException {@inheritDoc}
@@ -553,11 +553,11 @@ module Java::Util
     # (If {@code toIndex==fromIndex}, this operation has no effect.)
     # 
     # @throws IndexOutOfBoundsException if {@code fromIndex} or
-    # {@code toIndex} is out of range
-    # ({@code fromIndex < 0 ||
-    # fromIndex >= size() ||
-    # toIndex > size() ||
-    # toIndex < fromIndex})
+    #         {@code toIndex} is out of range
+    #         ({@code fromIndex < 0 ||
+    #          fromIndex >= size() ||
+    #          toIndex > size() ||
+    #          toIndex < fromIndex})
     def remove_range(from_index, to_index)
       self.attr_mod_count += 1
       num_moved = @size - to_index
@@ -603,10 +603,10 @@ module Java::Util
     # @param c collection containing elements to be removed from this list
     # @return {@code true} if this list changed as a result of the call
     # @throws ClassCastException if the class of an element of this list
-    # is incompatible with the specified collection (optional)
+    #         is incompatible with the specified collection (optional)
     # @throws NullPointerException if this list contains a null element and the
-    # specified collection does not permit null elements (optional),
-    # or if the specified collection is null
+    #         specified collection does not permit null elements (optional),
+    #         or if the specified collection is null
     # @see Collection#contains(Object)
     def remove_all(c)
       return batch_remove(c, false)
@@ -620,10 +620,10 @@ module Java::Util
     # @param c collection containing elements to be retained in this list
     # @return {@code true} if this list changed as a result of the call
     # @throws ClassCastException if the class of an element of this list
-    # is incompatible with the specified collection (optional)
+    #         is incompatible with the specified collection (optional)
     # @throws NullPointerException if this list contains a null element and the
-    # specified collection does not permit null elements (optional),
-    # or if the specified collection is null
+    #         specified collection does not permit null elements (optional),
+    #         or if the specified collection is null
     # @see Collection#contains(Object)
     def retain_all(c)
       return batch_remove(c, true)
@@ -668,8 +668,8 @@ module Java::Util
     # is, serialize it).
     # 
     # @serialData The length of the array backing the <tt>ArrayList</tt>
-    # instance is emitted (int), followed by all of its elements
-    # (each an <tt>Object</tt>) in the proper order.
+    #             instance is emitted (int), followed by all of its elements
+    #             (each an <tt>Object</tt>) in the proper order.
     def write_object(s)
       # Write out element count, and any hidden stuff
       expected_mod_count = self.attr_mod_count
@@ -914,7 +914,7 @@ module Java::Util
     # instead of a whole list.  For example, the following idiom
     # removes a range of elements from a list:
     # <pre>
-    # list.subList(from, to).clear();
+    #      list.subList(from, to).clear();
     # </pre>
     # Similar idioms may be constructed for {@link #indexOf(Object)} and
     # {@link #lastIndexOf(Object)}, and all of the algorithms in the
@@ -1104,12 +1104,12 @@ module Java::Util
               if (i >= @local_class_parent.attr_size)
                 raise self.class::NoSuchElementException.new
               end
-              element_data = @local_class_parent.local_class_parent.attr_element_data
-              if (self.attr_offset + i >= element_data.attr_length)
+              element_data_ = @local_class_parent.local_class_parent.attr_element_data
+              if (self.attr_offset + i >= element_data_.attr_length)
                 raise self.class::ConcurrentModificationException.new
               end
               @cursor = i + 1
-              return element_data[self.attr_offset + (@last_ret = i)]
+              return element_data_[self.attr_offset + (@last_ret = i)]
             end
             
             typesig { [] }
@@ -1124,12 +1124,12 @@ module Java::Util
               if (i < 0)
                 raise self.class::NoSuchElementException.new
               end
-              element_data = @local_class_parent.local_class_parent.attr_element_data
-              if (self.attr_offset + i >= element_data.attr_length)
+              element_data_ = @local_class_parent.local_class_parent.attr_element_data
+              if (self.attr_offset + i >= element_data_.attr_length)
                 raise self.class::ConcurrentModificationException.new
               end
               @cursor = i
-              return element_data[self.attr_offset + (@last_ret = i)]
+              return element_data_[self.attr_offset + (@last_ret = i)]
             end
             
             typesig { [] }

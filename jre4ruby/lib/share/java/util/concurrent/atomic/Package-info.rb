@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # This file is available under and governed by the GNU General Public
 # License version 2 only, as published by the Free Software Foundation.
 # However, the following notice accompanied the original version of this
@@ -31,8 +29,6 @@ require "rjava"
 # Written by Doug Lea with assistance from members of JCP JSR-166
 # Expert Group and released to the public domain, as explained at
 # http://creativecommons.org/licenses/publicdomain
-# 
-# 
 # A small toolkit of classes that support lock-free thread-safe
 # programming on single variables.  In essence, the classes in this
 # package extend the notion of {@code volatile} values, fields, and
@@ -40,7 +36,7 @@ require "rjava"
 # operation of the form:
 # 
 # <pre>
-# boolean compareAndSet(expectedValue, updateValue);
+#   boolean compareAndSet(expectedValue, updateValue);
 # </pre>
 # 
 # <p>This method (which varies in argument types across different
@@ -70,11 +66,11 @@ require "rjava"
 # 
 # <pre>
 # class Sequencer {
-# private final AtomicLong sequenceNumber
-# = new AtomicLong(0);
-# public long next() {
-# return sequenceNumber.getAndIncrement();
-# }
+#   private final AtomicLong sequenceNumber
+#     = new AtomicLong(0);
+#   public long next() {
+#     return sequenceNumber.getAndIncrement();
+#   }
 # }
 # </pre>
 # 
@@ -85,30 +81,30 @@ require "rjava"
 # 
 # <ul>
 # 
-# <li> {@code get} has the memory effects of reading a
+#   <li> {@code get} has the memory effects of reading a
 # {@code volatile} variable.
 # 
-# <li> {@code set} has the memory effects of writing (assigning) a
+#   <li> {@code set} has the memory effects of writing (assigning) a
 # {@code volatile} variable.
 # 
-# <li> {@code lazySet} has the memory effects of writing (assigning)
-# a {@code volatile} variable except that it permits reorderings with
-# subsequent (but not previous) memory actions that do not themselves
-# impose reordering constraints with ordinary non-{@code volatile}
-# writes.  Among other usage contexts, {@code lazySet} may apply when
-# nulling out, for the sake of garbage collection, a reference that is
-# never accessed again.
+#   <li> {@code lazySet} has the memory effects of writing (assigning)
+#   a {@code volatile} variable except that it permits reorderings with
+#   subsequent (but not previous) memory actions that do not themselves
+#   impose reordering constraints with ordinary non-{@code volatile}
+#   writes.  Among other usage contexts, {@code lazySet} may apply when
+#   nulling out, for the sake of garbage collection, a reference that is
+#   never accessed again.
 # 
-# <li>{@code weakCompareAndSet} atomically reads and conditionally
-# writes a variable but does <em>not</em>
-# create any happens-before orderings, so provides no guarantees
-# with respect to previous or subsequent reads and writes of any
-# variables other than the target of the {@code weakCompareAndSet}.
+#   <li>{@code weakCompareAndSet} atomically reads and conditionally
+#   writes a variable but does <em>not</em>
+#   create any happens-before orderings, so provides no guarantees
+#   with respect to previous or subsequent reads and writes of any
+#   variables other than the target of the {@code weakCompareAndSet}.
 # 
-# <li> {@code compareAndSet}
-# and all other read-and-update operations such as {@code getAndIncrement}
-# have the memory effects of both reading and
-# writing {@code volatile} variables.
+#   <li> {@code compareAndSet}
+#   and all other read-and-update operations such as {@code getAndIncrement}
+#   have the memory effects of both reading and
+#   writing {@code volatile} variables.
 # </ul>
 # 
 # <p>In addition to classes representing single values, this package
@@ -196,11 +192,4 @@ require "rjava"
 # 
 # @since 1.5
 module Java::Util::Concurrent::Atomic
-  module Package-infoImports #:nodoc:
-    class_module.module_eval {
-      include ::Java::Lang
-      include ::Java::Util::Concurrent::Atomic
-    }
-  end
-  
 end

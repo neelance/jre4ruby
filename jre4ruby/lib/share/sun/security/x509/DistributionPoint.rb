@@ -41,44 +41,44 @@ module Sun::Security::X509
   # The ASN.1 definition for this is:
   # <pre>
   # DistributionPoint ::= SEQUENCE {
-  # distributionPoint       [0]     DistributionPointName OPTIONAL,
-  # reasons                 [1]     ReasonFlags OPTIONAL,
-  # cRLIssuer               [2]     GeneralNames OPTIONAL }
+  #      distributionPoint       [0]     DistributionPointName OPTIONAL,
+  #      reasons                 [1]     ReasonFlags OPTIONAL,
+  #      cRLIssuer               [2]     GeneralNames OPTIONAL }
   # 
   # DistributionPointName ::= CHOICE {
-  # fullName                [0]     GeneralNames,
-  # nameRelativeToCRLIssuer [1]     RelativeDistinguishedName }
+  #      fullName                [0]     GeneralNames,
+  #      nameRelativeToCRLIssuer [1]     RelativeDistinguishedName }
   # 
   # ReasonFlags ::= BIT STRING {
-  # unused                  (0),
-  # keyCompromise           (1),
-  # cACompromise            (2),
-  # affiliationChanged      (3),
-  # superseded              (4),
-  # cessationOfOperation    (5),
-  # certificateHold         (6),
-  # privilegeWithdrawn      (7),
-  # aACompromise            (8) }
+  #      unused                  (0),
+  #      keyCompromise           (1),
+  #      cACompromise            (2),
+  #      affiliationChanged      (3),
+  #      superseded              (4),
+  #      cessationOfOperation    (5),
+  #      certificateHold         (6),
+  #      privilegeWithdrawn      (7),
+  #      aACompromise            (8) }
   # 
   # GeneralNames ::= SEQUENCE SIZE (1..MAX) OF GeneralName
   # 
   # GeneralName ::= CHOICE {
-  # otherName                   [0] INSTANCE OF OTHER-NAME,
-  # rfc822Name                  [1] IA5String,
-  # dNSName                     [2] IA5String,
-  # x400Address                 [3] ORAddress,
-  # directoryName               [4] Name,
-  # ediPartyName                [5] EDIPartyName,
-  # uniformResourceIdentifier   [6] IA5String,
-  # iPAddress                   [7] OCTET STRING,
-  # registeredID                [8] OBJECT IDENTIFIER }
+  #         otherName                   [0] INSTANCE OF OTHER-NAME,
+  #         rfc822Name                  [1] IA5String,
+  #         dNSName                     [2] IA5String,
+  #         x400Address                 [3] ORAddress,
+  #         directoryName               [4] Name,
+  #         ediPartyName                [5] EDIPartyName,
+  #         uniformResourceIdentifier   [6] IA5String,
+  #         iPAddress                   [7] OCTET STRING,
+  #         registeredID                [8] OBJECT IDENTIFIER }
   # 
   # RelativeDistinguishedName ::=
-  # SET OF AttributeTypeAndValue
+  #   SET OF AttributeTypeAndValue
   # 
   # AttributeTypeAndValue ::= SEQUENCE {
-  # type     AttributeType,
-  # value    AttributeValue }
+  #   type     AttributeType,
+  #   value    AttributeValue }
   # 
   # AttributeType ::= OBJECT IDENTIFIER
   # 
@@ -124,7 +124,7 @@ module Sun::Security::X509
       const_set_lazy(:AA_COMPROMISE) { 8 }
       const_attr_reader  :AA_COMPROMISE
       
-      const_set_lazy(:REASON_STRINGS) { Array.typed(String).new([nil, "key compromise", "CA compromise", "affiliation changed", "superseded", "cessation of operation", "certificate hold", "privilege withdrawn", "AA compromise", ]) }
+      const_set_lazy(:REASON_STRINGS) { Array.typed(String).new([nil, "key compromise", "CA compromise", "affiliation changed", "superseded", "cessation of operation", "certificate hold", "privilege withdrawn", "AA compromise"]) }
       const_attr_reader  :REASON_STRINGS
       
       # context specific tag values
@@ -183,9 +183,9 @@ module Sun::Security::X509
     # 
     # @param fullName the GeneralNames of the distribution point; may be null
     # @param reasons the CRL reasons included in the CRL at this distribution
-    # point; may be null
+    #        point; may be null
     # @param issuer the name(s) of the CRL issuer for the CRL at this
-    # distribution point; may be null
+    #        distribution point; may be null
     def initialize(full_name, reason_flags, crl_issuer)
       @full_name = nil
       @relative_name = nil
@@ -205,11 +205,11 @@ module Sun::Security::X509
     # DistributionPointName
     # 
     # @param relativeName the RelativeDistinguishedName of the distribution
-    # point; may not be null
+    #        point; may not be null
     # @param reasons the CRL reasons included in the CRL at this distribution
-    # point; may be null
+    #        point; may be null
     # @param issuer the name(s) of the CRL issuer for the CRL at this
-    # distribution point; may not be null or empty.
+    #        distribution point; may not be null or empty.
     def initialize(relative_name, reason_flags, crl_issuer)
       @full_name = nil
       @relative_name = nil

@@ -94,7 +94,7 @@ module Java::Io
     # synchronize on the given object.
     # 
     # @param  lock
-    # Object to synchronize on
+    #         Object to synchronize on
     def initialize(lock)
       @write_buffer = nil
       @write_buffer_size = 1024
@@ -114,10 +114,10 @@ module Java::Io
     # should override this method.
     # 
     # @param  c
-    # int specifying a character to be written
+    #         int specifying a character to be written
     # 
     # @throws  IOException
-    # If an I/O error occurs
+    #          If an I/O error occurs
     def write(c)
       synchronized((@lock)) do
         if ((@write_buffer).nil?)
@@ -132,10 +132,10 @@ module Java::Io
     # Writes an array of characters.
     # 
     # @param  cbuf
-    # Array of characters to be written
+    #         Array of characters to be written
     # 
     # @throws  IOException
-    # If an I/O error occurs
+    #          If an I/O error occurs
     def write(cbuf)
       write(cbuf, 0, cbuf.attr_length)
     end
@@ -144,16 +144,16 @@ module Java::Io
     # Writes a portion of an array of characters.
     # 
     # @param  cbuf
-    # Array of characters
+    #         Array of characters
     # 
     # @param  off
-    # Offset from which to start writing characters
+    #         Offset from which to start writing characters
     # 
     # @param  len
-    # Number of characters to write
+    #         Number of characters to write
     # 
     # @throws  IOException
-    # If an I/O error occurs
+    #          If an I/O error occurs
     def write(cbuf, off, len)
       raise NotImplementedError
     end
@@ -162,10 +162,10 @@ module Java::Io
     # Writes a string.
     # 
     # @param  str
-    # String to be written
+    #         String to be written
     # 
     # @throws  IOException
-    # If an I/O error occurs
+    #          If an I/O error occurs
     def write(str)
       write(str, 0, str.length)
     end
@@ -174,24 +174,24 @@ module Java::Io
     # Writes a portion of a string.
     # 
     # @param  str
-    # A String
+    #         A String
     # 
     # @param  off
-    # Offset from which to start writing characters
+    #         Offset from which to start writing characters
     # 
     # @param  len
-    # Number of characters to write
+    #         Number of characters to write
     # 
     # @throws  IndexOutOfBoundsException
-    # If <tt>off</tt> is negative, or <tt>len</tt> is negative,
-    # or <tt>off+len</tt> is negative or greater than the length
-    # of the given string
+    #          If <tt>off</tt> is negative, or <tt>len</tt> is negative,
+    #          or <tt>off+len</tt> is negative or greater than the length
+    #          of the given string
     # 
     # @throws  IOException
-    # If an I/O error occurs
+    #          If an I/O error occurs
     def write(str, off, len)
       synchronized((@lock)) do
-        cbuf = 0
+        cbuf = nil
         if (len <= @write_buffer_size)
           if ((@write_buffer).nil?)
             @write_buffer = CharArray.new(@write_buffer_size)
@@ -213,7 +213,7 @@ module Java::Io
     # behaves in exactly the same way as the invocation
     # 
     # <pre>
-    # out.write(csq.toString()) </pre>
+    #     out.write(csq.toString()) </pre>
     # 
     # <p> Depending on the specification of <tt>toString</tt> for the
     # character sequence <tt>csq</tt>, the entire sequence may not be
@@ -222,14 +222,14 @@ module Java::Io
     # the buffer's position and limit.
     # 
     # @param  csq
-    # The character sequence to append.  If <tt>csq</tt> is
-    # <tt>null</tt>, then the four characters <tt>"null"</tt> are
-    # appended to this writer.
+    #         The character sequence to append.  If <tt>csq</tt> is
+    #         <tt>null</tt>, then the four characters <tt>"null"</tt> are
+    #         appended to this writer.
     # 
     # @return  This writer
     # 
     # @throws  IOException
-    # If an I/O error occurs
+    #          If an I/O error occurs
     # 
     # @since  1.5
     def append(csq)
@@ -250,30 +250,30 @@ module Java::Io
     # same way as the invocation
     # 
     # <pre>
-    # out.write(csq.subSequence(start, end).toString()) </pre>
+    #     out.write(csq.subSequence(start, end).toString()) </pre>
     # 
     # @param  csq
-    # The character sequence from which a subsequence will be
-    # appended.  If <tt>csq</tt> is <tt>null</tt>, then characters
-    # will be appended as if <tt>csq</tt> contained the four
-    # characters <tt>"null"</tt>.
+    #         The character sequence from which a subsequence will be
+    #         appended.  If <tt>csq</tt> is <tt>null</tt>, then characters
+    #         will be appended as if <tt>csq</tt> contained the four
+    #         characters <tt>"null"</tt>.
     # 
     # @param  start
-    # The index of the first character in the subsequence
+    #         The index of the first character in the subsequence
     # 
     # @param  end
-    # The index of the character following the last character in the
-    # subsequence
+    #         The index of the character following the last character in the
+    #         subsequence
     # 
     # @return  This writer
     # 
     # @throws  IndexOutOfBoundsException
-    # If <tt>start</tt> or <tt>end</tt> are negative, <tt>start</tt>
-    # is greater than <tt>end</tt>, or <tt>end</tt> is greater than
-    # <tt>csq.length()</tt>
+    #          If <tt>start</tt> or <tt>end</tt> are negative, <tt>start</tt>
+    #          is greater than <tt>end</tt>, or <tt>end</tt> is greater than
+    #          <tt>csq.length()</tt>
     # 
     # @throws  IOException
-    # If an I/O error occurs
+    #          If an I/O error occurs
     # 
     # @since  1.5
     def append(csq, start, end_)
@@ -289,15 +289,15 @@ module Java::Io
     # behaves in exactly the same way as the invocation
     # 
     # <pre>
-    # out.write(c) </pre>
+    #     out.write(c) </pre>
     # 
     # @param  c
-    # The 16-bit character to append
+    #         The 16-bit character to append
     # 
     # @return  This writer
     # 
     # @throws  IOException
-    # If an I/O error occurs
+    #          If an I/O error occurs
     # 
     # @since 1.5
     def append(c)
@@ -319,7 +319,7 @@ module Java::Io
     # they are actually written to a physical device such as a disk drive.
     # 
     # @throws  IOException
-    # If an I/O error occurs
+    #          If an I/O error occurs
     def flush
       raise NotImplementedError
     end
@@ -330,7 +330,7 @@ module Java::Io
     # thrown. Closing a previously closed stream has no effect.
     # 
     # @throws  IOException
-    # If an I/O error occurs
+    #          If an I/O error occurs
     def close
       raise NotImplementedError
     end

@@ -144,7 +144,7 @@ module Java::Util
     # 
     # @param initialCapacity the initial capacity for this priority queue
     # @throws IllegalArgumentException if {@code initialCapacity} is less
-    # than 1
+    #         than 1
     def initialize(initial_capacity)
       initialize__priority_queue(initial_capacity, nil)
     end
@@ -155,10 +155,10 @@ module Java::Util
     # 
     # @param  initialCapacity the initial capacity for this priority queue
     # @param  comparator the comparator that will be used to order this
-    # priority queue.  If {@code null}, the {@linkplain Comparable
-    # natural ordering} of the elements will be used.
+    #         priority queue.  If {@code null}, the {@linkplain Comparable
+    #         natural ordering} of the elements will be used.
     # @throws IllegalArgumentException if {@code initialCapacity} is
-    # less than 1
+    #         less than 1
     def initialize(initial_capacity, comparator)
       @queue = nil
       @size = 0
@@ -185,12 +185,12 @@ module Java::Util
     # {@linkplain Comparable natural ordering} of its elements.
     # 
     # @param  c the collection whose elements are to be placed
-    # into this priority queue
+    #         into this priority queue
     # @throws ClassCastException if elements of the specified collection
-    # cannot be compared to one another according to the priority
-    # queue's ordering
+    #         cannot be compared to one another according to the priority
+    #         queue's ordering
     # @throws NullPointerException if the specified collection or any
-    # of its elements are null
+    #         of its elements are null
     def initialize(c)
       @queue = nil
       @size = 0
@@ -219,12 +219,12 @@ module Java::Util
     # queue.
     # 
     # @param  c the priority queue whose elements are to be placed
-    # into this priority queue
+    #         into this priority queue
     # @throws ClassCastException if elements of {@code c} cannot be
-    # compared to one another according to {@code c}'s
-    # ordering
+    #         compared to one another according to {@code c}'s
+    #         ordering
     # @throws NullPointerException if the specified priority queue or any
-    # of its elements are null
+    #         of its elements are null
     def initialize(c)
       @queue = nil
       @size = 0
@@ -243,12 +243,12 @@ module Java::Util
     # according to the same ordering as the given sorted set.
     # 
     # @param  c the sorted set whose elements are to be placed
-    # into this priority queue
+    #         into this priority queue
     # @throws ClassCastException if elements of the specified sorted
-    # set cannot be compared to one another according to the
-    # sorted set's ordering
+    #         set cannot be compared to one another according to the
+    #         sorted set's ordering
     # @throws NullPointerException if the specified sorted set or any
-    # of its elements are null
+    #         of its elements are null
     def initialize(c)
       @queue = nil
       @size = 0
@@ -302,8 +302,8 @@ module Java::Util
     # 
     # @return {@code true} (as specified by {@link Collection#add})
     # @throws ClassCastException if the specified element cannot be
-    # compared with elements currently in this priority queue
-    # according to the priority queue's ordering
+    #         compared with elements currently in this priority queue
+    #         according to the priority queue's ordering
     # @throws NullPointerException if the specified element is null
     def add(e)
       return offer(e)
@@ -314,8 +314,8 @@ module Java::Util
     # 
     # @return {@code true} (as specified by {@link Queue#offer})
     # @throws ClassCastException if the specified element cannot be
-    # compared with elements currently in this priority queue
-    # according to the priority queue's ordering
+    #         compared with elements currently in this priority queue
+    #         according to the priority queue's ordering
     # @throws NullPointerException if the specified element is null
     def offer(e)
       if ((e).nil?)
@@ -445,18 +445,18 @@ module Java::Util
     # allocated array of <tt>String</tt>:
     # 
     # <pre>
-    # String[] y = x.toArray(new String[0]);</pre>
+    #     String[] y = x.toArray(new String[0]);</pre>
     # 
     # Note that <tt>toArray(new Object[0])</tt> is identical in function to
     # <tt>toArray()</tt>.
     # 
     # @param a the array into which the elements of the queue are to
-    # be stored, if it is big enough; otherwise, a new array of the
-    # same runtime type is allocated for this purpose.
+    #          be stored, if it is big enough; otherwise, a new array of the
+    #          same runtime type is allocated for this purpose.
     # @return an array containing all of the elements in this queue
     # @throws ArrayStoreException if the runtime type of the specified array
-    # is not a supertype of the runtime type of every element in
-    # this queue
+    #         is not a supertype of the runtime type of every element in
+    #         this queue
     # @throws NullPointerException if the specified array is null
     def to_array(a)
       if (a.attr_length < @size)
@@ -783,8 +783,8 @@ module Java::Util
     # the {@linkplain Comparable natural ordering} of its elements.
     # 
     # @return the comparator used to order this queue, or
-    # {@code null} if this queue is sorted according to the
-    # natural ordering of its elements
+    #         {@code null} if this queue is sorted according to the
+    #         natural ordering of its elements
     def comparator
       return @comparator
     end
@@ -794,8 +794,8 @@ module Java::Util
     # is, serializes it).
     # 
     # @serialData The length of the array backing the instance is
-    # emitted (int), followed by all of its elements
-    # (each an {@code Object}) in the proper order.
+    #             emitted (int), followed by all of its elements
+    #             (each an {@code Object}) in the proper order.
     # @param s the stream
     def write_object(s)
       # Write out element count, and any hidden stuff

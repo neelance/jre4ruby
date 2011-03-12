@@ -36,39 +36,39 @@ module Java::Lang
     
     typesig { [::Java::Int] }
     # The character properties are currently encoded into 32 bits in the following manner:
-    # 1 bit   mirrored property
-    # 4 bits  directionality property
-    # 9 bits  signed offset used for converting case
-    # 1 bit   if 1, adding the signed offset converts the character to lowercase
-    # 1 bit   if 1, subtracting the signed offset converts the character to uppercase
-    # 1 bit   if 1, this character has a titlecase equivalent (possibly itself)
-    # 3 bits  0  may not be part of an identifier
-    # 1  ignorable control; may continue a Unicode identifier or Java identifier
-    # 2  may continue a Java identifier but not a Unicode identifier (unused)
-    # 3  may continue a Unicode identifier or Java identifier
-    # 4  is a Java whitespace character
-    # 5  may start or continue a Java identifier;
-    # may continue but not start a Unicode identifier (underscores)
-    # 6  may start or continue a Java identifier but not a Unicode identifier ($)
-    # 7  may start or continue a Unicode identifier or Java identifier
-    # Thus:
-    # 5, 6, 7 may start a Java identifier
-    # 1, 2, 3, 5, 6, 7 may continue a Java identifier
-    # 7 may start a Unicode identifier
-    # 1, 3, 5, 7 may continue a Unicode identifier
-    # 1 is ignorable within an identifier
-    # 4 is Java whitespace
-    # 2 bits  0  this character has no numeric property
-    # 1  adding the digit offset to the character code and then
-    # masking with 0x1F will produce the desired numeric value
-    # 2  this character has a "strange" numeric value
-    # 3  a Java supradecimal digit: adding the digit offset to the
-    # character code, then masking with 0x1F, then adding 10
-    # will produce the desired numeric value
-    # 5 bits  digit offset
-    # 5 bits  character type
+    #  1 bit   mirrored property
+    #  4 bits  directionality property
+    #  9 bits  signed offset used for converting case
+    #  1 bit   if 1, adding the signed offset converts the character to lowercase
+    #  1 bit   if 1, subtracting the signed offset converts the character to uppercase
+    #  1 bit   if 1, this character has a titlecase equivalent (possibly itself)
+    #  3 bits  0  may not be part of an identifier
+    #          1  ignorable control; may continue a Unicode identifier or Java identifier
+    #          2  may continue a Java identifier but not a Unicode identifier (unused)
+    #          3  may continue a Unicode identifier or Java identifier
+    #          4  is a Java whitespace character
+    #          5  may start or continue a Java identifier;
+    #             may continue but not start a Unicode identifier (underscores)
+    #          6  may start or continue a Java identifier but not a Unicode identifier ($)
+    #          7  may start or continue a Unicode identifier or Java identifier
+    #          Thus:
+    #             5, 6, 7 may start a Java identifier
+    #             1, 2, 3, 5, 6, 7 may continue a Java identifier
+    #             7 may start a Unicode identifier
+    #             1, 3, 5, 7 may continue a Unicode identifier
+    #             1 is ignorable within an identifier
+    #             4 is Java whitespace
+    #  2 bits  0  this character has no numeric property
+    #          1  adding the digit offset to the character code and then
+    #             masking with 0x1F will produce the desired numeric value
+    #          2  this character has a "strange" numeric value
+    #          3  a Java supradecimal digit: adding the digit offset to the
+    #             character code, then masking with 0x1F, then adding 10
+    #             will produce the desired numeric value
+    #  5 bits  digit offset
+    #  5 bits  character type
     # 
-    # The encoding of character properties is subject to change at any time.
+    #  The encoding of character properties is subject to change at any time.
     def get_properties(ch)
       offset = RJava.cast_to_char(ch)
       props = A[Y[(X[offset >> 5] << 4) | ((offset >> 1) & 0xf)] | (offset & 0x1)]
@@ -188,8 +188,8 @@ module Java::Lang
       val = get_properties(ch)
       retval = -1
       case (val & 0xc00)
-      # cannot occur
       when (0x0)
+        # cannot occur
         # not numeric
         retval = -1
       when (0x400)
@@ -198,115 +198,116 @@ module Java::Lang
       when (0x800)
         # "strange" numeric
         case (ch)
-        # AEGEAN NUMBER FORTY
-        # AEGEAN NUMBER FIFTY
-        # AEGEAN NUMBER SIXTY
-        # AEGEAN NUMBER SEVENTY
-        # AEGEAN NUMBER EIGHTY
-        # AEGEAN NUMBER NINETY
-        # AEGEAN NUMBER ONE HUNDRED
-        # AEGEAN NUMBER TWO HUNDRED
-        # AEGEAN NUMBER THREE HUNDRED
-        # AEGEAN NUMBER FOUR HUNDRED
-        # AEGEAN NUMBER FIVE HUNDRED
-        # AEGEAN NUMBER SIX HUNDRED
-        # AEGEAN NUMBER SEVEN HUNDRED
-        # AEGEAN NUMBER EIGHT HUNDRED
-        # AEGEAN NUMBER NINE HUNDRED
-        # AEGEAN NUMBER ONE THOUSAND
-        # AEGEAN NUMBER TWO THOUSAND
-        # AEGEAN NUMBER THREE THOUSAND
-        # AEGEAN NUMBER FOUR THOUSAND
-        # AEGEAN NUMBER FIVE THOUSAND
-        # AEGEAN NUMBER SIX THOUSAND
-        # AEGEAN NUMBER SEVEN THOUSAND
-        # AEGEAN NUMBER EIGHT THOUSAND
-        # AEGEAN NUMBER NINE THOUSAND
-        # AEGEAN NUMBER TEN THOUSAND
-        # AEGEAN NUMBER TWENTY THOUSAND
-        # AEGEAN NUMBER THIRTY THOUSAND
-        # AEGEAN NUMBER FORTY THOUSAND
-        # AEGEAN NUMBER FIFTY THOUSAND
-        # AEGEAN NUMBER SIXTY THOUSAND
-        # AEGEAN NUMBER SEVENTY THOUSAND
-        # AEGEAN NUMBER EIGHTY THOUSAND
-        # AEGEAN NUMBER NINETY THOUSAND
-        # OLD ITALIC NUMERAL FIFTY
         when 0x10113
           retval = 40
         when 0x10114
+          # AEGEAN NUMBER FORTY
           retval = 50
         when 0x10115
+          # AEGEAN NUMBER FIFTY
           retval = 60
         when 0x10116
+          # AEGEAN NUMBER SIXTY
           retval = 70
         when 0x10117
+          # AEGEAN NUMBER SEVENTY
           retval = 80
         when 0x10118
+          # AEGEAN NUMBER EIGHTY
           retval = 90
         when 0x10119
+          # AEGEAN NUMBER NINETY
           retval = 100
         when 0x1011a
+          # AEGEAN NUMBER ONE HUNDRED
           retval = 200
         when 0x1011b
+          # AEGEAN NUMBER TWO HUNDRED
           retval = 300
         when 0x1011c
+          # AEGEAN NUMBER THREE HUNDRED
           retval = 400
         when 0x1011d
+          # AEGEAN NUMBER FOUR HUNDRED
           retval = 500
         when 0x1011e
+          # AEGEAN NUMBER FIVE HUNDRED
           retval = 600
         when 0x1011f
+          # AEGEAN NUMBER SIX HUNDRED
           retval = 700
         when 0x10120
+          # AEGEAN NUMBER SEVEN HUNDRED
           retval = 800
         when 0x10121
+          # AEGEAN NUMBER EIGHT HUNDRED
           retval = 900
         when 0x10122
+          # AEGEAN NUMBER NINE HUNDRED
           retval = 1000
         when 0x10123
+          # AEGEAN NUMBER ONE THOUSAND
           retval = 2000
         when 0x10124
+          # AEGEAN NUMBER TWO THOUSAND
           retval = 3000
         when 0x10125
+          # AEGEAN NUMBER THREE THOUSAND
           retval = 4000
         when 0x10126
+          # AEGEAN NUMBER FOUR THOUSAND
           retval = 5000
         when 0x10127
+          # AEGEAN NUMBER FIVE THOUSAND
           retval = 6000
         when 0x10128
+          # AEGEAN NUMBER SIX THOUSAND
           retval = 7000
         when 0x10129
+          # AEGEAN NUMBER SEVEN THOUSAND
           retval = 8000
         when 0x1012a
+          # AEGEAN NUMBER EIGHT THOUSAND
           retval = 9000
         when 0x1012b
+          # AEGEAN NUMBER NINE THOUSAND
           retval = 10000
         when 0x1012c
+          # AEGEAN NUMBER TEN THOUSAND
           retval = 20000
         when 0x1012d
+          # AEGEAN NUMBER TWENTY THOUSAND
           retval = 30000
         when 0x1012e
+          # AEGEAN NUMBER THIRTY THOUSAND
           retval = 40000
         when 0x1012f
+          # AEGEAN NUMBER FORTY THOUSAND
           retval = 50000
         when 0x10130
+          # AEGEAN NUMBER FIFTY THOUSAND
           retval = 60000
         when 0x10131
+          # AEGEAN NUMBER SIXTY THOUSAND
           retval = 70000
         when 0x10132
+          # AEGEAN NUMBER SEVENTY THOUSAND
           retval = 80000
         when 0x10133
+          # AEGEAN NUMBER EIGHTY THOUSAND
           retval = 90000
         when 0x10323
+          # AEGEAN NUMBER NINETY THOUSAND
           retval = 50
         else
+          # OLD ITALIC NUMERAL FIFTY
           retval = -2
         end
       when (0xc00)
         # Java supradecimal
         retval = (ch + ((val & 0x3e0) >> 5) & 0x1f) + 10
       else
+        # cannot occur
         # not numeric
         retval = -1
       end

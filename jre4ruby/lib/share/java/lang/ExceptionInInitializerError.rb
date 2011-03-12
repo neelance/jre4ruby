@@ -112,9 +112,9 @@ module Java::Lang
     # obtaining this information.
     # 
     # @return the saved throwable object of this
-    # <code>ExceptionInInitializerError</code>, or <code>null</code>
-    # if this <code>ExceptionInInitializerError</code> has no saved
-    # throwable object.
+    #         <code>ExceptionInInitializerError</code>, or <code>null</code>
+    #         if this <code>ExceptionInInitializerError</code> has no saved
+    #         throwable object.
     def get_exception
       return @exception
     end
@@ -124,7 +124,7 @@ module Java::Lang
     # during a static initialization that caused this error to be created).
     # 
     # @return  the cause of this error or <code>null</code> if the
-    # cause is nonexistent or unknown.
+    #          cause is nonexistent or unknown.
     # @since   1.4
     def get_cause
       return @exception

@@ -242,6 +242,7 @@ module Sun::Security::Smartcardio
       const_set_lazy(:WINDOWS_ERROR_INVALID_PARAMETER) { 87 }
       const_attr_reader  :WINDOWS_ERROR_INVALID_PARAMETER
       
+      # 
       const_set_lazy(:SCARD_SCOPE_USER) { 0x0 }
       const_attr_reader  :SCARD_SCOPE_USER
       

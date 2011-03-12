@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # This file is available under and governed by the GNU General Public
 # License version 2 only, as published by the Free Software Foundation.
 # However, the following notice accompanied the original version of this
@@ -227,7 +225,7 @@ module Java::Util::Concurrent
     # added in traversal order of the collection's iterator.
     # @param c the collection of elements to initially contain
     # @throws NullPointerException if the specified collection or any
-    # of its elements are null
+    #         of its elements are null
     def initialize(c)
       @head = nil
       @tail = nil
@@ -242,7 +240,6 @@ module Java::Util::Concurrent
     
     typesig { [Object] }
     # Have to override just to update the javadoc
-    # 
     # Inserts the specified element at the tail of this queue.
     # 
     # @return <tt>true</tt> (as specified by {@link Collection#add})
@@ -489,18 +486,18 @@ module Java::Util::Concurrent
     # allocated array of <tt>String</tt>:
     # 
     # <pre>
-    # String[] y = x.toArray(new String[0]);</pre>
+    #     String[] y = x.toArray(new String[0]);</pre>
     # 
     # Note that <tt>toArray(new Object[0])</tt> is identical in function to
     # <tt>toArray()</tt>.
     # 
     # @param a the array into which the elements of the queue are to
-    # be stored, if it is big enough; otherwise, a new array of the
-    # same runtime type is allocated for this purpose
+    #          be stored, if it is big enough; otherwise, a new array of the
+    #          same runtime type is allocated for this purpose
     # @return an array containing all of the elements in this queue
     # @throws ArrayStoreException if the runtime type of the specified array
-    # is not a supertype of the runtime type of every element in
-    # this queue
+    #         is not a supertype of the runtime type of every element in
+    #         this queue
     # @throws NullPointerException if the specified array is null
     def to_array(a)
       # try to use sent-in array

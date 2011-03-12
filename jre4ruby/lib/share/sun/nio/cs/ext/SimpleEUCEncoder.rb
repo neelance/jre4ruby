@@ -143,7 +143,7 @@ module Sun::Nio::Cs::Ext
         return (true)
       end
       # only return true if input char was unicode null - all others are
-      # undefined
+      #     undefined
       return ((ch).equal?(Character.new(0x0000)))
     end
     

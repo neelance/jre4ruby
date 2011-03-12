@@ -58,12 +58,12 @@ module Java::Security
   # 
   # <pre>
   # SubjectPublicKeyInfo ::= SEQUENCE {
-  # algorithm AlgorithmIdentifier,
-  # subjectPublicKey BIT STRING }
+  #   algorithm AlgorithmIdentifier,
+  #   subjectPublicKey BIT STRING }
   # 
   # AlgorithmIdentifier ::= SEQUENCE {
-  # algorithm OBJECT IDENTIFIER,
-  # parameters ANY DEFINED BY algorithm OPTIONAL }
+  #   algorithm OBJECT IDENTIFIER,
+  #   parameters ANY DEFINED BY algorithm OPTIONAL }
   # </pre>
   # 
   # For more information, see
@@ -108,7 +108,6 @@ module Java::Security
     
     class_module.module_eval {
       # Declare serialVersionUID to be compatible with JDK1.1
-      # 
       # The class fingerprint that is set to indicate
       # serialization compatibility with a previous
       # version of the class.

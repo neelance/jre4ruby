@@ -183,8 +183,8 @@ module Java::Security
     # <ul>
     # <li> <i>p</i>'s class is the same as this object's class, and<p>
     # <li> <i>p</i>'s name equals or (in the case of wildcards)
-    # is implied by this object's
-    # name. For example, "a.b.*" implies "a.b.c".
+    #      is implied by this object's
+    #      name. For example, "a.b.*" implies "a.b.c".
     # </ul>
     # 
     # @param p the permission to check against.
@@ -221,7 +221,7 @@ module Java::Security
     # <P>
     # @param obj the object we are testing for equality with this object.
     # @return true if <i>obj</i> is a BasicPermission, and has the same name
-    # as this BasicPermission object, false otherwise.
+    #  as this BasicPermission object, false otherwise.
     def ==(obj)
       if ((obj).equal?(self))
         return true
@@ -369,13 +369,13 @@ module Java::Security
     # @param permission the Permission object to add.
     # 
     # @exception IllegalArgumentException - if the permission is not a
-    # BasicPermission, or if
-    # the permission is not of the
-    # same Class as the other
-    # permissions in this collection.
+    #                                       BasicPermission, or if
+    #                                       the permission is not of the
+    #                                       same Class as the other
+    #                                       permissions in this collection.
     # 
     # @exception SecurityException - if this BasicPermissionCollection object
-    # has been marked readonly
+    #                                has been marked readonly
     def add(permission)
       if (!(permission.is_a?(BasicPermission)))
         raise IllegalArgumentException.new("invalid permission: " + RJava.cast_to_string(permission))
@@ -479,26 +479,23 @@ module Java::Security
       # @serial the Hashtable is indexed by the BasicPermission name
       # 
       # private Hashtable permissions;
-      # 
       # @serialField permissions java.util.Hashtable
-      # The BasicPermissions in this BasicPermissionCollection.
-      # All BasicPermissions in the collection must belong to the same class.
-      # The Hashtable is indexed by the BasicPermission name; the value
-      # of the Hashtable entry is the permission.
+      #    The BasicPermissions in this BasicPermissionCollection.
+      #    All BasicPermissions in the collection must belong to the same class.
+      #    The Hashtable is indexed by the BasicPermission name; the value
+      #    of the Hashtable entry is the permission.
       # @serialField all_allowed boolean
-      # This is set to <code>true</code> if this BasicPermissionCollection
-      # contains a BasicPermission with '*' as its permission name.
+      #   This is set to <code>true</code> if this BasicPermissionCollection
+      #   contains a BasicPermission with '*' as its permission name.
       # @serialField permClass java.lang.Class
-      # The class to which all BasicPermissions in this
-      # BasicPermissionCollection belongs.
-      const_set_lazy(:SerialPersistentFields) { Array.typed(ObjectStreamField).new([ObjectStreamField.new("permissions", Hashtable), ObjectStreamField.new("all_allowed", Boolean::TYPE), ObjectStreamField.new("permClass", Class), ]) }
+      #   The class to which all BasicPermissions in this
+      #   BasicPermissionCollection belongs.
+      const_set_lazy(:SerialPersistentFields) { Array.typed(ObjectStreamField).new([ObjectStreamField.new("permissions", Hashtable), ObjectStreamField.new("all_allowed", Boolean::TYPE), ObjectStreamField.new("permClass", Class)]) }
       const_attr_reader  :SerialPersistentFields
     }
     
     typesig { [ObjectOutputStream] }
     # @serialData Default fields.
-    # 
-    # 
     # Writes the contents of the perms field out as a Hashtable for
     # serialization compatibility with earlier releases. all_allowed
     # and permClass unchanged.

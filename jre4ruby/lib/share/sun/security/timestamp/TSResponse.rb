@@ -47,59 +47,59 @@ module Sun::Security::Timestamp
   # The TimeStampResp ASN.1 type has the following definition:
   # <pre>
   # 
-  # TimeStampResp ::= SEQUENCE {
-  # status            PKIStatusInfo,
-  # timeStampToken    TimeStampToken OPTIONAL ]
+  #     TimeStampResp ::= SEQUENCE {
+  #         status            PKIStatusInfo,
+  #         timeStampToken    TimeStampToken OPTIONAL ]
   # 
-  # PKIStatusInfo ::= SEQUENCE {
-  # status        PKIStatus,
-  # statusString  PKIFreeText OPTIONAL,
-  # failInfo      PKIFailureInfo OPTIONAL }
+  #     PKIStatusInfo ::= SEQUENCE {
+  #         status        PKIStatus,
+  #         statusString  PKIFreeText OPTIONAL,
+  #         failInfo      PKIFailureInfo OPTIONAL }
   # 
-  # PKIStatus ::= INTEGER {
-  # granted                (0),
-  # -- when the PKIStatus contains the value zero a TimeStampToken, as
-  # -- requested, is present.
-  # grantedWithMods        (1),
-  # -- when the PKIStatus contains the value one a TimeStampToken,
-  # -- with modifications, is present.
-  # rejection              (2),
-  # waiting                (3),
-  # revocationWarning      (4),
-  # -- this message contains a warning that a revocation is
-  # -- imminent
-  # revocationNotification (5)
-  # -- notification that a revocation has occurred }
+  #     PKIStatus ::= INTEGER {
+  #         granted                (0),
+  #           -- when the PKIStatus contains the value zero a TimeStampToken, as
+  #           -- requested, is present.
+  #         grantedWithMods        (1),
+  #           -- when the PKIStatus contains the value one a TimeStampToken,
+  #           -- with modifications, is present.
+  #         rejection              (2),
+  #         waiting                (3),
+  #         revocationWarning      (4),
+  #           -- this message contains a warning that a revocation is
+  #           -- imminent
+  #         revocationNotification (5)
+  #           -- notification that a revocation has occurred }
   # 
-  # PKIFreeText ::= SEQUENCE SIZE (1..MAX) OF UTF8String
-  # -- text encoded as UTF-8 String (note:  each UTF8String SHOULD
-  # -- include an RFC 1766 language tag to indicate the language
-  # -- of the contained text)
+  #     PKIFreeText ::= SEQUENCE SIZE (1..MAX) OF UTF8String
+  #           -- text encoded as UTF-8 String (note:  each UTF8String SHOULD
+  #           -- include an RFC 1766 language tag to indicate the language
+  #           -- of the contained text)
   # 
-  # PKIFailureInfo ::= BIT STRING {
-  # badAlg              (0),
-  # -- unrecognized or unsupported Algorithm Identifier
-  # badRequest          (2),
-  # -- transaction not permitted or supported
-  # badDataFormat       (5),
-  # -- the data submitted has the wrong format
-  # timeNotAvailable    (14),
-  # -- the TSA's time source is not available
-  # unacceptedPolicy    (15),
-  # -- the requested TSA policy is not supported by the TSA
-  # unacceptedExtension (16),
-  # -- the requested extension is not supported by the TSA
-  # addInfoNotAvailable (17)
-  # -- the additional information requested could not be understood
-  # -- or is not available
-  # systemFailure       (25)
-  # -- the request cannot be handled due to system failure }
+  #     PKIFailureInfo ::= BIT STRING {
+  #         badAlg              (0),
+  #           -- unrecognized or unsupported Algorithm Identifier
+  #         badRequest          (2),
+  #           -- transaction not permitted or supported
+  #         badDataFormat       (5),
+  #           -- the data submitted has the wrong format
+  #         timeNotAvailable    (14),
+  #           -- the TSA's time source is not available
+  #         unacceptedPolicy    (15),
+  #           -- the requested TSA policy is not supported by the TSA
+  #         unacceptedExtension (16),
+  #           -- the requested extension is not supported by the TSA
+  #         addInfoNotAvailable (17)
+  #           -- the additional information requested could not be understood
+  #           -- or is not available
+  #         systemFailure       (25)
+  #           -- the request cannot be handled due to system failure }
   # 
-  # TimeStampToken ::= ContentInfo
-  # -- contentType is id-signedData
-  # -- content is SignedData
-  # -- eContentType within SignedData is id-ct-TSTInfo
-  # -- eContent within SignedData is TSTInfo
+  #     TimeStampToken ::= ContentInfo
+  #         -- contentType is id-signedData
+  #         -- content is SignedData
+  #         -- eContentType within SignedData is id-ct-TSTInfo
+  #         -- eContent within SignedData is TSTInfo
   # 
   # </pre>
   # 
@@ -111,7 +111,6 @@ module Sun::Security::Timestamp
     
     class_module.module_eval {
       # Status codes (from RFC 3161)
-      # 
       # The requested timestamp was granted.
       const_set_lazy(:GRANTED) { 0 }
       const_attr_reader  :GRANTED
@@ -137,7 +136,6 @@ module Sun::Security::Timestamp
       const_attr_reader  :REVOCATION_NOTIFICATION
       
       # Failure codes (from RFC 3161)
-      # 
       # Unrecognized or unsupported algorithm identifier.
       const_set_lazy(:BAD_ALG) { 0 }
       const_attr_reader  :BAD_ALG
@@ -210,7 +208,7 @@ module Sun::Security::Timestamp
     # 
     # @param status A buffer containing the ASN.1 BER encoded response.
     # @throws IOException The exception is thrown if a problem is encountered
-    # parsing the timestamp response.
+    #         parsing the timestamp response.
     def initialize(ts_reply)
       @status = 0
       @status_string = nil
@@ -310,7 +308,7 @@ module Sun::Security::Timestamp
     # 
     # @param status A buffer containing the ASN.1 BER encoded response.
     # @throws IOException The exception is thrown if a problem is encountered
-    # parsing the timestamp response.
+    #         parsing the timestamp response.
     def parse(ts_reply)
       # Decode TimeStampResp
       der_value = DerValue.new(ts_reply)

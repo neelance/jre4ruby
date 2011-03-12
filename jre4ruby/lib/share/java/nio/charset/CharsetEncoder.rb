@@ -22,7 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
 # -- This file was mechanically generated: Do not edit! -- //
 module Java::Nio::Charset
   module CharsetEncoderImports #:nodoc:
@@ -40,7 +39,6 @@ module Java::Nio::Charset
   end
   
   # javadoc
-  # 
   # An engine that can transform a sequence of sixteen-bit Unicode characters into a sequence of
   # bytes in a specific charset.
   # 
@@ -54,19 +52,19 @@ module Java::Nio::Charset
   # 
   # <ol>
   # 
-  # <li><p> Reset the encoder via the {@link #reset reset} method, unless it
-  # has not been used before; </p></li>
+  #   <li><p> Reset the encoder via the {@link #reset reset} method, unless it
+  #   has not been used before; </p></li>
   # 
-  # <li><p> Invoke the {@link #encode encode} method zero or more times, as
-  # long as additional input may be available, passing <tt>false</tt> for the
-  # <tt>endOfInput</tt> argument and filling the input buffer and flushing the
-  # output buffer between invocations; </p></li>
+  #   <li><p> Invoke the {@link #encode encode} method zero or more times, as
+  #   long as additional input may be available, passing <tt>false</tt> for the
+  #   <tt>endOfInput</tt> argument and filling the input buffer and flushing the
+  #   output buffer between invocations; </p></li>
   # 
-  # <li><p> Invoke the {@link #encode encode} method one final time, passing
-  # <tt>true</tt> for the <tt>endOfInput</tt> argument; and then </p></li>
+  #   <li><p> Invoke the {@link #encode encode} method one final time, passing
+  #   <tt>true</tt> for the <tt>endOfInput</tt> argument; and then </p></li>
   # 
-  # <li><p> Invoke the {@link #flush flush} method so that the encoder can
-  # flush any internal state to the output buffer. </p></li>
+  #   <li><p> Invoke the {@link #flush flush} method so that the encoder can
+  #   flush any internal state to the output buffer. </p></li>
   # 
   # </ol>
   # 
@@ -176,6 +174,7 @@ module Java::Nio::Charset
     
     class_module.module_eval {
       # Internal states
+      # 
       const_set_lazy(:ST_RESET) { 0 }
       const_attr_reader  :ST_RESET
       
@@ -213,20 +212,20 @@ module Java::Nio::Charset
     # bytes-per-char and replacement values. </p>
     # 
     # @param  averageBytesPerChar
-    # A positive float value indicating the expected number of
-    # bytes that will be produced for each input character
+    #         A positive float value indicating the expected number of
+    #         bytes that will be produced for each input character
     # 
     # @param  maxBytesPerChar
-    # A positive float value indicating the maximum number of
-    # bytes that will be produced for each input character
+    #         A positive float value indicating the maximum number of
+    #         bytes that will be produced for each input character
     # 
     # @param  replacement
-    # The initial replacement; must not be <tt>null</tt>, must have
-    # non-zero length, must not be longer than maxBytesPerChar,
-    # and must be {@link #isLegalReplacement </code>legal<code>}
+    #         The initial replacement; must not be <tt>null</tt>, must have
+    #         non-zero length, must not be longer than maxBytesPerChar,
+    #         and must be {@link #isLegalReplacement </code>legal<code>}
     # 
     # @throws  IllegalArgumentException
-    # If the preconditions on the parameters do not hold
+    #          If the preconditions on the parameters do not hold
     def initialize(cs, average_bytes_per_char, max_bytes_per_char, replacement)
       @charset = nil
       @average_bytes_per_char = 0.0
@@ -260,15 +259,15 @@ module Java::Nio::Charset
     # byte array <tt>{</tt>&nbsp;<tt>(byte)'?'</tt>&nbsp;<tt>}</tt>. </p>
     # 
     # @param  averageBytesPerChar
-    # A positive float value indicating the expected number of
-    # bytes that will be produced for each input character
+    #         A positive float value indicating the expected number of
+    #         bytes that will be produced for each input character
     # 
     # @param  maxBytesPerChar
-    # A positive float value indicating the maximum number of
-    # bytes that will be produced for each input character
+    #         A positive float value indicating the maximum number of
+    #         bytes that will be produced for each input character
     # 
     # @throws  IllegalArgumentException
-    # If the preconditions on the parameters do not hold
+    #          If the preconditions on the parameters do not hold
     def initialize(cs, average_bytes_per_char, max_bytes_per_char)
       initialize__charset_encoder(cs, average_bytes_per_char, max_bytes_per_char, Array.typed(::Java::Byte).new([Character.new(??.ord)]))
     end
@@ -285,7 +284,7 @@ module Java::Nio::Charset
     # Returns this encoder's replacement value. </p>
     # 
     # @return  This encoder's current replacement,
-    # which is never <tt>null</tt> and is never empty
+    #          which is never <tt>null</tt> and is never empty
     def replacement
       return @replacement
     end
@@ -304,16 +303,16 @@ module Java::Nio::Charset
     # 
     # 
     # 
-    # The new replacement; must not be <tt>null</tt>, must have
-    # non-zero length, must not be longer than the value returned by
-    # the {@link #maxBytesPerChar() maxBytesPerChar} method, and
-    # must be {@link #isLegalReplacement </code>legal<code>}
+    #         The new replacement; must not be <tt>null</tt>, must have
+    #         non-zero length, must not be longer than the value returned by
+    #         the {@link #maxBytesPerChar() maxBytesPerChar} method, and
+    #         must be {@link #isLegalReplacement </code>legal<code>}
     # 
     # 
     # @return  This encoder
     # 
     # @throws  IllegalArgumentException
-    # If the preconditions on the parameter do not hold
+    #          If the preconditions on the parameter do not hold
     def replace_with(new_replacement)
       if ((new_replacement).nil?)
         raise IllegalArgumentException.new("Null replacement")
@@ -364,7 +363,7 @@ module Java::Nio::Charset
     # @param  repl  The byte array to be tested
     # 
     # @return  <tt>true</tt> if, and only if, the given byte array
-    # is a legal replacement value for this encoder
+    #          is a legal replacement value for this encoder
     def is_legal_replacement(repl)
       wr = @cached_decoder
       dec = nil
@@ -377,7 +376,7 @@ module Java::Nio::Charset
         dec.reset
       end
       bb = ByteBuffer.wrap(repl)
-      cb = CharBuffer.allocate(RJava.cast_to_int((bb.remaining * dec.max_chars_per_byte)))
+      cb = CharBuffer.allocate_(((bb.remaining * dec.max_chars_per_byte)).to_int)
       cr = dec.decode(bb, cb, true)
       return !cr.is_error
     end
@@ -401,7 +400,7 @@ module Java::Nio::Charset
     # @return  This encoder
     # 
     # @throws IllegalArgumentException
-    # If the precondition on the parameter does not hold
+    #         If the precondition on the parameter does not hold
     def on_malformed_input(new_action)
       if ((new_action).nil?)
         raise IllegalArgumentException.new("Null action")
@@ -425,7 +424,7 @@ module Java::Nio::Charset
     # </p>
     # 
     # @return The current unmappable-character action, which is never
-    # <tt>null</tt>
+    #         <tt>null</tt>
     def unmappable_character_action
       return @unmappable_character_action
     end
@@ -441,7 +440,7 @@ module Java::Nio::Charset
     # @return  This encoder
     # 
     # @throws IllegalArgumentException
-    # If the precondition on the parameter does not hold
+    #         If the precondition on the parameter does not hold
     def on_unmappable_character(new_action)
       if ((new_action).nil?)
         raise IllegalArgumentException.new("Null action")
@@ -466,7 +465,7 @@ module Java::Nio::Charset
     # of the output buffer required for a given input sequence. </p>
     # 
     # @return  The average number of bytes produced
-    # per character of input
+    #          per character of input
     def average_bytes_per_char
       return @average_bytes_per_char
     end
@@ -477,7 +476,7 @@ module Java::Nio::Charset
     # of the output buffer required for a given input sequence. </p>
     # 
     # @return  The maximum number of bytes that will be produced per
-    # character of input
+    #          character of input
     def max_bytes_per_char
       return @max_bytes_per_char
     end
@@ -499,39 +498,39 @@ module Java::Nio::Charset
     # 
     # <ul>
     # 
-    # <li><p> {@link CoderResult#UNDERFLOW} indicates that as much of the
-    # input buffer as possible has been encoded.  If there is no further
-    # input then the invoker can proceed to the next step of the
-    # <a href="#steps">encoding operation</a>.  Otherwise this method
-    # should be invoked again with further input.  </p></li>
+    #   <li><p> {@link CoderResult#UNDERFLOW} indicates that as much of the
+    #   input buffer as possible has been encoded.  If there is no further
+    #   input then the invoker can proceed to the next step of the
+    #   <a href="#steps">encoding operation</a>.  Otherwise this method
+    #   should be invoked again with further input.  </p></li>
     # 
-    # <li><p> {@link CoderResult#OVERFLOW} indicates that there is
-    # insufficient space in the output buffer to encode any more characters.
-    # This method should be invoked again with an output buffer that has
-    # more {@linkplain Buffer#remaining remaining} bytes. This is
-    # typically done by draining any encoded bytes from the output
-    # buffer.  </p></li>
+    #   <li><p> {@link CoderResult#OVERFLOW} indicates that there is
+    #   insufficient space in the output buffer to encode any more characters.
+    #   This method should be invoked again with an output buffer that has
+    #   more {@linkplain Buffer#remaining remaining} bytes. This is
+    #   typically done by draining any encoded bytes from the output
+    #   buffer.  </p></li>
     # 
-    # <li><p> A {@link CoderResult#malformedForLength
-    # </code>malformed-input<code>} result indicates that a malformed-input
-    # error has been detected.  The malformed characters begin at the input
-    # buffer's (possibly incremented) position; the number of malformed
-    # characters may be determined by invoking the result object's {@link
-    # CoderResult#length() length} method.  This case applies only if the
-    # {@link #onMalformedInput </code>malformed action<code>} of this encoder
-    # is {@link CodingErrorAction#REPORT}; otherwise the malformed input
-    # will be ignored or replaced, as requested.  </p></li>
+    #   <li><p> A {@link CoderResult#malformedForLength
+    #   </code>malformed-input<code>} result indicates that a malformed-input
+    #   error has been detected.  The malformed characters begin at the input
+    #   buffer's (possibly incremented) position; the number of malformed
+    #   characters may be determined by invoking the result object's {@link
+    #   CoderResult#length() length} method.  This case applies only if the
+    #   {@link #onMalformedInput </code>malformed action<code>} of this encoder
+    #   is {@link CodingErrorAction#REPORT}; otherwise the malformed input
+    #   will be ignored or replaced, as requested.  </p></li>
     # 
-    # <li><p> An {@link CoderResult#unmappableForLength
-    # </code>unmappable-character<code>} result indicates that an
-    # unmappable-character error has been detected.  The characters that
-    # encode the unmappable character begin at the input buffer's (possibly
-    # incremented) position; the number of such characters may be determined
-    # by invoking the result object's {@link CoderResult#length() length}
-    # method.  This case applies only if the {@link #onUnmappableCharacter
-    # </code>unmappable action<code>} of this encoder is {@link
-    # CodingErrorAction#REPORT}; otherwise the unmappable character will be
-    # ignored or replaced, as requested.  </p></li>
+    #   <li><p> An {@link CoderResult#unmappableForLength
+    #   </code>unmappable-character<code>} result indicates that an
+    #   unmappable-character error has been detected.  The characters that
+    #   encode the unmappable character begin at the input buffer's (possibly
+    #   incremented) position; the number of such characters may be determined
+    #   by invoking the result object's {@link CoderResult#length() length}
+    #   method.  This case applies only if the {@link #onUnmappableCharacter
+    #   </code>unmappable action<code>} of this encoder is {@link
+    #   CodingErrorAction#REPORT}; otherwise the unmappable character will be
+    #   ignored or replaced, as requested.  </p></li>
     # 
     # </ul>
     # 
@@ -557,28 +556,28 @@ module Java::Nio::Charset
     # 
     # 
     # @param  in
-    # The input character buffer
+    #         The input character buffer
     # 
     # @param  out
-    # The output byte buffer
+    #         The output byte buffer
     # 
     # @param  endOfInput
-    # <tt>true</tt> if, and only if, the invoker can provide no
-    # additional input characters beyond those in the given buffer
+    #         <tt>true</tt> if, and only if, the invoker can provide no
+    #         additional input characters beyond those in the given buffer
     # 
     # @return  A coder-result object describing the reason for termination
     # 
     # @throws  IllegalStateException
-    # If an encoding operation is already in progress and the previous
-    # step was an invocation neither of the {@link #reset reset}
-    # method, nor of this method with a value of <tt>false</tt> for
-    # the <tt>endOfInput</tt> parameter, nor of this method with a
-    # value of <tt>true</tt> for the <tt>endOfInput</tt> parameter
-    # but a return value indicating an incomplete encoding operation
+    #          If an encoding operation is already in progress and the previous
+    #          step was an invocation neither of the {@link #reset reset}
+    #          method, nor of this method with a value of <tt>false</tt> for
+    #          the <tt>endOfInput</tt> parameter, nor of this method with a
+    #          value of <tt>true</tt> for the <tt>endOfInput</tt> parameter
+    #          but a return value indicating an incomplete encoding operation
     # 
     # @throws  CoderMalfunctionError
-    # If an invocation of the encodeLoop method threw
-    # an unexpected exception
+    #          If an invocation of the encodeLoop method threw
+    #          an unexpected exception
     def encode(in_, out, end_of_input)
       new_state = end_of_input ? ST_END : ST_CODING
       if ((!(@state).equal?(ST_RESET)) && (!(@state).equal?(ST_CODING)) && !(end_of_input && ((@state).equal?(ST_END))))
@@ -659,18 +658,18 @@ module Java::Nio::Charset
     # perform the actual flushing operation.  </p>
     # 
     # @param  out
-    # The output byte buffer
+    #         The output byte buffer
     # 
     # @return  A coder-result object, either {@link CoderResult#UNDERFLOW} or
-    # {@link CoderResult#OVERFLOW}
+    #          {@link CoderResult#OVERFLOW}
     # 
     # @throws  IllegalStateException
-    # If the previous step of the current encoding operation was an
-    # invocation neither of the {@link #flush flush} method nor of
-    # the three-argument {@link
-    # #encode(CharBuffer,ByteBuffer,boolean) encode} method
-    # with a value of <tt>true</tt> for the <tt>endOfInput</tt>
-    # parameter
+    #          If the previous step of the current encoding operation was an
+    #          invocation neither of the {@link #flush flush} method nor of
+    #          the three-argument {@link
+    #          #encode(CharBuffer,ByteBuffer,boolean) encode} method
+    #          with a value of <tt>true</tt> for the <tt>endOfInput</tt>
+    #          parameter
     def flush(out)
       if ((@state).equal?(ST_END))
         cr = impl_flush(out)
@@ -694,10 +693,10 @@ module Java::Nio::Charset
     # once the entire input sequence has been read. </p>
     # 
     # @param  out
-    # The output byte buffer
+    #         The output byte buffer
     # 
     # @return  A coder-result object, either {@link CoderResult#UNDERFLOW} or
-    # {@link CoderResult#OVERFLOW}
+    #          {@link CoderResult#OVERFLOW}
     def impl_flush(out)
       return CoderResult::UNDERFLOW
     end
@@ -752,10 +751,10 @@ module Java::Nio::Charset
     # input.  </p>
     # 
     # @param  in
-    # The input character buffer
+    #         The input character buffer
     # 
     # @param  out
-    # The output byte buffer
+    #         The output byte buffer
     # 
     # @return  A coder-result object describing the reason for termination
     def encode_loop(in_, out)
@@ -773,28 +772,28 @@ module Java::Nio::Charset
     # operation is already in progress.  </p>
     # 
     # @param  in
-    # The input character buffer
+    #         The input character buffer
     # 
     # @return A newly-allocated byte buffer containing the result of the
-    # encoding operation.  The buffer's position will be zero and its
-    # limit will follow the last byte written.
+    #         encoding operation.  The buffer's position will be zero and its
+    #         limit will follow the last byte written.
     # 
     # @throws  IllegalStateException
-    # If an encoding operation is already in progress
+    #          If an encoding operation is already in progress
     # 
     # @throws  MalformedInputException
-    # If the character sequence starting at the input buffer's current
-    # position is not a legal sixteen-bit Unicode sequence and the current malformed-input action
-    # is {@link CodingErrorAction#REPORT}
+    #          If the character sequence starting at the input buffer's current
+    #          position is not a legal sixteen-bit Unicode sequence and the current malformed-input action
+    #          is {@link CodingErrorAction#REPORT}
     # 
     # @throws  UnmappableCharacterException
-    # If the character sequence starting at the input buffer's current
-    # position cannot be mapped to an equivalent byte sequence and
-    # the current unmappable-character action is {@link
-    # CodingErrorAction#REPORT}
+    #          If the character sequence starting at the input buffer's current
+    #          position cannot be mapped to an equivalent byte sequence and
+    #          the current unmappable-character action is {@link
+    #          CodingErrorAction#REPORT}
     def encode(in_)
-      n = RJava.cast_to_int((in_.remaining * average_bytes_per_char))
-      out = ByteBuffer.allocate(n)
+      n = ((in_.remaining * average_bytes_per_char)).to_int
+      out = ByteBuffer.allocate_(n)
       if (((n).equal?(0)) && ((in_.remaining).equal?(0)))
         return out
       end
@@ -809,7 +808,7 @@ module Java::Nio::Charset
         end
         if (cr.is_overflow)
           n = 2 * n + 1 # Ensure progress; n might be 0!
-          o = ByteBuffer.allocate(n)
+          o = ByteBuffer.allocate_(n)
           out.flip
           o.put(out)
           out = o
@@ -864,12 +863,12 @@ module Java::Nio::Charset
     # should generally be overridden to improve performance.  </p>
     # 
     # @return  <tt>true</tt> if, and only if, this encoder can encode
-    # the given character
+    #          the given character
     # 
     # @throws  IllegalStateException
-    # If an encoding operation is already in progress
+    #          If an encoding operation is already in progress
     def can_encode(c)
-      cb = CharBuffer.allocate(1)
+      cb = CharBuffer.allocate_(1)
       cb.put(c)
       cb.flip
       return can_encode(cb)
@@ -891,11 +890,11 @@ module Java::Nio::Charset
     # should generally be overridden to improve performance.  </p>
     # 
     # @return  <tt>true</tt> if, and only if, this encoder can encode
-    # the given character without throwing any exceptions and without
-    # performing any replacements
+    #          the given character without throwing any exceptions and without
+    #          performing any replacements
     # 
     # @throws  IllegalStateException
-    # If an encoding operation is already in progress
+    #          If an encoding operation is already in progress
     def can_encode(cs)
       cb = nil
       if (cs.is_a?(CharBuffer))

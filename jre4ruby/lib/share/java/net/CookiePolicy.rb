@@ -112,7 +112,7 @@ module Java::Net
     # @param uri       the URI to consult accept policy with
     # @param cookie    the HttpCookie object in question
     # @return          <tt>true</tt> if this cookie should be accepted;
-    # otherwise, <tt>false</tt>
+    #                  otherwise, <tt>false</tt>
     def should_accept(uri, cookie)
       raise NotImplementedError
     end

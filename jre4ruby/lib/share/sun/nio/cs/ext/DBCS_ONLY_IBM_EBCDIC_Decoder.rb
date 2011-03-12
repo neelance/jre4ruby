@@ -95,7 +95,6 @@ module Sun::Nio::Cs::Ext
       typesig { [::Java::Int, ::Java::Int] }
       # Check validity of dbcs ebcdic byte pair values
       def is_valid_double_byte(b1, b2)
-        # DBCS-HOST SPACE
         return ((b1).equal?(0x40) && (b2).equal?(0x40)) || (0x41 <= b1 && b1 <= 0xfe && 0x41 <= b2 && b2 <= 0xfe)
       end
     }

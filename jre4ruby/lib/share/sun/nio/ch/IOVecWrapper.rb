@@ -34,8 +34,8 @@ module Sun::Nio::Ch
   # Manipulates a native array of iovec structs on Solaris:
   # 
   # typedef struct iovec {
-  # caddr_t  iov_base;
-  # int      iov_len;
+  #    caddr_t  iov_base;
+  #    int      iov_len;
   # } iovec_t;
   # 
   # @author Mike McCloskey
@@ -120,7 +120,7 @@ module Sun::Nio::Ch
     def put_base(i, base)
       offset = self.attr_size_iovec * i + self.attr_base_offset
       if ((self.attr_address_size).equal?(4))
-        @vec_array.put_int(offset, RJava.cast_to_int(base))
+        @vec_array.put_int(offset, (base).to_int)
       else
         @vec_array.put_long(offset, base)
       end
@@ -130,7 +130,7 @@ module Sun::Nio::Ch
     def put_len(i, len)
       offset = self.attr_size_iovec * i + self.attr_len_offset
       if ((self.attr_address_size).equal?(4))
-        @vec_array.put_int(offset, RJava.cast_to_int(len))
+        @vec_array.put_int(offset, (len).to_int)
       else
         @vec_array.put_long(offset, len)
       end

@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5
@@ -58,8 +56,8 @@ module Sun::Security::Krb5
     
     class_module.module_eval {
       # ----------------------------------------------+-------------+-----------
-      # Checksum type            |sumtype      |checksum
-      # |value        | size
+      #                      Checksum type            |sumtype      |checksum
+      #                                               |value        | size
       # ----------------------------------------------+-------------+-----------
       const_set_lazy(:CKSUMTYPE_NULL) { 0 }
       const_attr_reader  :CKSUMTYPE_NULL
@@ -191,8 +189,6 @@ module Sun::Security::Krb5
     # Constructs a new Checksum using the raw data and type.
     # @data the byte array of checksum.
     # @new_cksumType the type of checksum.
-    # 
-    # 
     # used in InitialToken
     def initialize(data, new_cksum_type)
       @cksum_type = 0
@@ -223,7 +219,6 @@ module Sun::Security::Krb5
     # over the data using specified checksum type.
     # @new_cksumType the type of checksum.
     # @data the data that needs to be performed a checksum calculation on.
-    # 
     # KrbSafe, KrbTgsReq
     def initialize(new_cksum_type, data, key, usage)
       @cksum_type = 0
@@ -248,7 +243,7 @@ module Sun::Security::Krb5
     
     typesig { [Checksum] }
     # public Checksum(byte[] data) throws KdcErrException, KrbCryptoException {
-    # this(Checksum.CKSUMTYPE_DEFAULT, data);
+    #     this(Checksum.CKSUMTYPE_DEFAULT, data);
     # }
     def is_equal(cksum)
       if (!(@cksum_type).equal?(cksum.attr_cksum_type))
@@ -292,8 +287,8 @@ module Sun::Security::Krb5
     # Encodes a Checksum object.
     # <xmp>
     # Checksum    ::= SEQUENCE {
-    # cksumtype   [0] Int32,
-    # checksum    [1] OCTET STRING
+    #         cksumtype   [0] Int32,
+    #         checksum    [1] OCTET STRING
     # }
     # </xmp>
     # 

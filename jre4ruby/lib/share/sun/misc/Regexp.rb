@@ -100,9 +100,9 @@ module Sun::Misc
     # <dt>*.gif       <dd>Matches any string that ends in ".gif".
     # <dt>/tmp/*      <dd>Matches any string that starts with "/tmp/".
     # <dt>/tmp/*.gif  <dd>Matches any string that starts with "/tmp/" and ends
-    # with ".gif".
+    #                 with ".gif".
     # <dt>/tmp/*new*.gif <dd>Matches any string that starts with "/tmp/"
-    # and ends with ".gif" and has "new" somewhere in between.
+    #                 and ends with ".gif" and has "new" somewhere in between.
     # </dl>
     def initialize(s)
       @ignore_case = false

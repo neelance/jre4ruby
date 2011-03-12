@@ -68,13 +68,12 @@ module Sun::Security::Util
       typesig { [URL, String, String, String, String, Debug] }
       # this is intended for use by policytool and the policy parser to
       # instantiate a KeyStore from the information in the GUI/policy file
-      # 
-      # URL of policy file
-      # input: keyStore URL
-      # input: keyStore type
-      # input: keyStore provider
-      # input: keyStore password
       def get_key_store(policy_url, key_store_name, key_store_type, key_store_provider, store_pass_url, debug)
+        # URL of policy file
+        # input: keyStore URL
+        # input: keyStore type
+        # input: keyStore provider
+        # input: keyStore password
         if ((key_store_name).nil?)
           raise IllegalArgumentException.new("null KeyStore name")
         end

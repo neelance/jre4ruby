@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # This file is available under and governed by the GNU General Public
 # License version 2 only, as published by the Free Software Foundation.
 # However, the following notice accompanied the original version of this
@@ -105,11 +103,11 @@ module Java::Util
     # 
     # @param key the key
     # @return an entry with the greatest key less than {@code key},
-    # or {@code null} if there is no such key
+    #         or {@code null} if there is no such key
     # @throws ClassCastException if the specified key cannot be compared
-    # with the keys currently in the map
+    #         with the keys currently in the map
     # @throws NullPointerException if the specified key is null
-    # and this map does not permit null keys
+    #         and this map does not permit null keys
     def lower_entry(key)
       raise NotImplementedError
     end
@@ -120,11 +118,11 @@ module Java::Util
     # 
     # @param key the key
     # @return the greatest key less than {@code key},
-    # or {@code null} if there is no such key
+    #         or {@code null} if there is no such key
     # @throws ClassCastException if the specified key cannot be compared
-    # with the keys currently in the map
+    #         with the keys currently in the map
     # @throws NullPointerException if the specified key is null
-    # and this map does not permit null keys
+    #         and this map does not permit null keys
     def lower_key(key)
       raise NotImplementedError
     end
@@ -136,11 +134,11 @@ module Java::Util
     # 
     # @param key the key
     # @return an entry with the greatest key less than or equal to
-    # {@code key}, or {@code null} if there is no such key
+    #         {@code key}, or {@code null} if there is no such key
     # @throws ClassCastException if the specified key cannot be compared
-    # with the keys currently in the map
+    #         with the keys currently in the map
     # @throws NullPointerException if the specified key is null
-    # and this map does not permit null keys
+    #         and this map does not permit null keys
     def floor_entry(key)
       raise NotImplementedError
     end
@@ -151,11 +149,11 @@ module Java::Util
     # 
     # @param key the key
     # @return the greatest key less than or equal to {@code key},
-    # or {@code null} if there is no such key
+    #         or {@code null} if there is no such key
     # @throws ClassCastException if the specified key cannot be compared
-    # with the keys currently in the map
+    #         with the keys currently in the map
     # @throws NullPointerException if the specified key is null
-    # and this map does not permit null keys
+    #         and this map does not permit null keys
     def floor_key(key)
       raise NotImplementedError
     end
@@ -167,11 +165,11 @@ module Java::Util
     # 
     # @param key the key
     # @return an entry with the least key greater than or equal to
-    # {@code key}, or {@code null} if there is no such key
+    #         {@code key}, or {@code null} if there is no such key
     # @throws ClassCastException if the specified key cannot be compared
-    # with the keys currently in the map
+    #         with the keys currently in the map
     # @throws NullPointerException if the specified key is null
-    # and this map does not permit null keys
+    #         and this map does not permit null keys
     def ceiling_entry(key)
       raise NotImplementedError
     end
@@ -182,11 +180,11 @@ module Java::Util
     # 
     # @param key the key
     # @return the least key greater than or equal to {@code key},
-    # or {@code null} if there is no such key
+    #         or {@code null} if there is no such key
     # @throws ClassCastException if the specified key cannot be compared
-    # with the keys currently in the map
+    #         with the keys currently in the map
     # @throws NullPointerException if the specified key is null
-    # and this map does not permit null keys
+    #         and this map does not permit null keys
     def ceiling_key(key)
       raise NotImplementedError
     end
@@ -198,11 +196,11 @@ module Java::Util
     # 
     # @param key the key
     # @return an entry with the least key greater than {@code key},
-    # or {@code null} if there is no such key
+    #         or {@code null} if there is no such key
     # @throws ClassCastException if the specified key cannot be compared
-    # with the keys currently in the map
+    #         with the keys currently in the map
     # @throws NullPointerException if the specified key is null
-    # and this map does not permit null keys
+    #         and this map does not permit null keys
     def higher_entry(key)
       raise NotImplementedError
     end
@@ -213,11 +211,11 @@ module Java::Util
     # 
     # @param key the key
     # @return the least key greater than {@code key},
-    # or {@code null} if there is no such key
+    #         or {@code null} if there is no such key
     # @throws ClassCastException if the specified key cannot be compared
-    # with the keys currently in the map
+    #         with the keys currently in the map
     # @throws NullPointerException if the specified key is null
-    # and this map does not permit null keys
+    #         and this map does not permit null keys
     def higher_key(key)
       raise NotImplementedError
     end
@@ -227,7 +225,7 @@ module Java::Util
     # key in this map, or {@code null} if the map is empty.
     # 
     # @return an entry with the least key,
-    # or {@code null} if this map is empty
+    #         or {@code null} if this map is empty
     def first_entry
       raise NotImplementedError
     end
@@ -237,7 +235,7 @@ module Java::Util
     # key in this map, or {@code null} if the map is empty.
     # 
     # @return an entry with the greatest key,
-    # or {@code null} if this map is empty
+    #         or {@code null} if this map is empty
     def last_entry
       raise NotImplementedError
     end
@@ -247,7 +245,7 @@ module Java::Util
     # the least key in this map, or {@code null} if the map is empty.
     # 
     # @return the removed first entry of this map,
-    # or {@code null} if this map is empty
+    #         or {@code null} if this map is empty
     def poll_first_entry
       raise NotImplementedError
     end
@@ -257,7 +255,7 @@ module Java::Util
     # the greatest key in this map, or {@code null} if the map is empty.
     # 
     # @return the removed last entry of this map,
-    # or {@code null} if this map is empty
+    #         or {@code null} if this map is empty
     def poll_last_entry
       raise NotImplementedError
     end
@@ -329,24 +327,24 @@ module Java::Util
     # 
     # @param fromKey low endpoint of the keys in the returned map
     # @param fromInclusive {@code true} if the low endpoint
-    # is to be included in the returned view
+    #        is to be included in the returned view
     # @param toKey high endpoint of the keys in the returned map
     # @param toInclusive {@code true} if the high endpoint
-    # is to be included in the returned view
+    #        is to be included in the returned view
     # @return a view of the portion of this map whose keys range from
-    # {@code fromKey} to {@code toKey}
+    #         {@code fromKey} to {@code toKey}
     # @throws ClassCastException if {@code fromKey} and {@code toKey}
-    # cannot be compared to one another using this map's comparator
-    # (or, if the map has no comparator, using natural ordering).
-    # Implementations may, but are not required to, throw this
-    # exception if {@code fromKey} or {@code toKey}
-    # cannot be compared to keys currently in the map.
+    #         cannot be compared to one another using this map's comparator
+    #         (or, if the map has no comparator, using natural ordering).
+    #         Implementations may, but are not required to, throw this
+    #         exception if {@code fromKey} or {@code toKey}
+    #         cannot be compared to keys currently in the map.
     # @throws NullPointerException if {@code fromKey} or {@code toKey}
-    # is null and this map does not permit null keys
+    #         is null and this map does not permit null keys
     # @throws IllegalArgumentException if {@code fromKey} is greater than
-    # {@code toKey}; or if this map itself has a restricted
-    # range, and {@code fromKey} or {@code toKey} lies
-    # outside the bounds of the range
+    #         {@code toKey}; or if this map itself has a restricted
+    #         range, and {@code fromKey} or {@code toKey} lies
+    #         outside the bounds of the range
     def sub_map(from_key, from_inclusive, to_key, to_inclusive)
       raise NotImplementedError
     end
@@ -363,20 +361,20 @@ module Java::Util
     # 
     # @param toKey high endpoint of the keys in the returned map
     # @param inclusive {@code true} if the high endpoint
-    # is to be included in the returned view
+    #        is to be included in the returned view
     # @return a view of the portion of this map whose keys are less than
-    # (or equal to, if {@code inclusive} is true) {@code toKey}
+    #         (or equal to, if {@code inclusive} is true) {@code toKey}
     # @throws ClassCastException if {@code toKey} is not compatible
-    # with this map's comparator (or, if the map has no comparator,
-    # if {@code toKey} does not implement {@link Comparable}).
-    # Implementations may, but are not required to, throw this
-    # exception if {@code toKey} cannot be compared to keys
-    # currently in the map.
+    #         with this map's comparator (or, if the map has no comparator,
+    #         if {@code toKey} does not implement {@link Comparable}).
+    #         Implementations may, but are not required to, throw this
+    #         exception if {@code toKey} cannot be compared to keys
+    #         currently in the map.
     # @throws NullPointerException if {@code toKey} is null
-    # and this map does not permit null keys
+    #         and this map does not permit null keys
     # @throws IllegalArgumentException if this map itself has a
-    # restricted range, and {@code toKey} lies outside the
-    # bounds of the range
+    #         restricted range, and {@code toKey} lies outside the
+    #         bounds of the range
     def head_map(to_key, inclusive)
       raise NotImplementedError
     end
@@ -393,20 +391,20 @@ module Java::Util
     # 
     # @param fromKey low endpoint of the keys in the returned map
     # @param inclusive {@code true} if the low endpoint
-    # is to be included in the returned view
+    #        is to be included in the returned view
     # @return a view of the portion of this map whose keys are greater than
-    # (or equal to, if {@code inclusive} is true) {@code fromKey}
+    #         (or equal to, if {@code inclusive} is true) {@code fromKey}
     # @throws ClassCastException if {@code fromKey} is not compatible
-    # with this map's comparator (or, if the map has no comparator,
-    # if {@code fromKey} does not implement {@link Comparable}).
-    # Implementations may, but are not required to, throw this
-    # exception if {@code fromKey} cannot be compared to keys
-    # currently in the map.
+    #         with this map's comparator (or, if the map has no comparator,
+    #         if {@code fromKey} does not implement {@link Comparable}).
+    #         Implementations may, but are not required to, throw this
+    #         exception if {@code fromKey} cannot be compared to keys
+    #         currently in the map.
     # @throws NullPointerException if {@code fromKey} is null
-    # and this map does not permit null keys
+    #         and this map does not permit null keys
     # @throws IllegalArgumentException if this map itself has a
-    # restricted range, and {@code fromKey} lies outside the
-    # bounds of the range
+    #         restricted range, and {@code fromKey} lies outside the
+    #         bounds of the range
     def tail_map(from_key, inclusive)
       raise NotImplementedError
     end

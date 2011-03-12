@@ -58,7 +58,6 @@ module Java::Math
     
     typesig { [] }
     # Constructors
-    # 
     # The default constructor. An empty MutableBigInteger is created with
     # a one word capacity.
     def initialize
@@ -87,7 +86,6 @@ module Java::Math
     
     typesig { [SignedMutableBigInteger] }
     # Arithmetic Operations
-    # 
     # Signed addition built upon unsigned add and subtract.
     def signed_add(addend)
       if ((@sign).equal?(addend.attr_sign))

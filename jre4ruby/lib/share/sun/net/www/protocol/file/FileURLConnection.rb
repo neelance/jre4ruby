@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # Open an file input stream given a URL.
 # @author      James Gosling
 # @author      Steven B. Byrne
@@ -189,8 +187,8 @@ module Sun::Net::Www::Protocol::JavaFile
             # Check if URL should be metered
             metered_input = ProgressMonitor.get_default.should_meter_input(self.attr_url, "GET")
             if (metered_input)
-              pi = ProgressSource.new(self.attr_url, "GET", RJava.cast_to_int(@file.length))
-              @is = MeteredStream.new(@is, pi, RJava.cast_to_int(@file.length))
+              pi = ProgressSource.new(self.attr_url, "GET", (@file.length).to_int)
+              @is = MeteredStream.new(@is, pi, (@file.length).to_int)
             end
           end
         rescue IOException => e
@@ -254,7 +252,7 @@ module Sun::Net::Www::Protocol::JavaFile
     typesig { [] }
     def get_content_length
       initialize_headers
-      return RJava.cast_to_int(@length)
+      return (@length).to_int
     end
     
     typesig { [::Java::Int] }

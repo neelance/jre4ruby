@@ -150,7 +150,7 @@ module Java::Security::Cert
     # protect against subsequent modifications.
     # 
     # @param issuers a <code>Collection</code> of X500Principals
-    # (or <code>null</code>)
+    #   (or <code>null</code>)
     # @see #getIssuers
     # @since 1.5
     def set_issuers(issuers)
@@ -199,27 +199,27 @@ module Java::Security::Cert
     # this structure is as follows.
     # <pre><code>
     # Name ::= CHOICE {
-    # RDNSequence }
+    #   RDNSequence }
     # 
     # RDNSequence ::= SEQUENCE OF RelativeDistinguishedName
     # 
     # RelativeDistinguishedName ::=
-    # SET SIZE (1 .. MAX) OF AttributeTypeAndValue
+    #   SET SIZE (1 .. MAX) OF AttributeTypeAndValue
     # 
     # AttributeTypeAndValue ::= SEQUENCE {
-    # type     AttributeType,
-    # value    AttributeValue }
+    #   type     AttributeType,
+    #   value    AttributeValue }
     # 
     # AttributeType ::= OBJECT IDENTIFIER
     # 
     # AttributeValue ::= ANY DEFINED BY AttributeType
     # ....
     # DirectoryString ::= CHOICE {
-    # teletexString           TeletexString (SIZE (1..MAX)),
-    # printableString         PrintableString (SIZE (1..MAX)),
-    # universalString         UniversalString (SIZE (1..MAX)),
-    # utf8String              UTF8String (SIZE (1.. MAX)),
-    # bmpString               BMPString (SIZE (1..MAX)) }
+    #       teletexString           TeletexString (SIZE (1..MAX)),
+    #       printableString         PrintableString (SIZE (1..MAX)),
+    #       universalString         UniversalString (SIZE (1..MAX)),
+    #       utf8String              UTF8String (SIZE (1.. MAX)),
+    #       bmpString               BMPString (SIZE (1..MAX)) }
     # </code></pre>
     # <p>
     # Note that a deep copy is performed on the <code>Collection</code> to
@@ -333,9 +333,9 @@ module Java::Security::Cert
       # setIssuerNames. Throw an IOException if the argument is malformed.
       # 
       # @param names a <code>Collection</code> of names. Each entry is a
-      # String or a byte array (the name, in string or ASN.1
-      # DER encoded form, respectively). <code>null</code> is
-      # not an acceptable value.
+      #              String or a byte array (the name, in string or ASN.1
+      #              DER encoded form, respectively). <code>null</code> is
+      #              not an acceptable value.
       # @return a deep copy of the specified <code>Collection</code>
       # @throws IOException if a parsing error occurs
       def clone_and_check_issuer_names(names)
@@ -364,9 +364,9 @@ module Java::Security::Cert
       # cloned has already been checked, so there should never be any exceptions.
       # 
       # @param names a <code>Collection</code> of names. Each entry is a
-      # String or a byte array (the name, in string or ASN.1
-      # DER encoded form, respectively). <code>null</code> is
-      # not an acceptable value.
+      #              String or a byte array (the name, in string or ASN.1
+      #              DER encoded form, respectively). <code>null</code> is
+      #              not an acceptable value.
       # @return a deep copy of the specified <code>Collection</code>
       # @throws RuntimeException if a parsing error occurs
       def clone_issuer_names(names)
@@ -383,9 +383,9 @@ module Java::Security::Cert
       # Throw an IOException if the argument is malformed.
       # 
       # @param names a <code>Collection</code> of names. Each entry is a
-      # String or a byte array (the name, in string or ASN.1
-      # DER encoded form, respectively). <Code>Null</Code> is
-      # not an acceptable value.
+      #              String or a byte array (the name, in string or ASN.1
+      #              DER encoded form, respectively). <Code>Null</Code> is
+      #              not an acceptable value.
       # @return a HashSet of issuerX500Principals
       # @throws IOException if a parsing error occurs
       def parse_issuer_names(names)
@@ -441,7 +441,7 @@ module Java::Security::Cert
     # against subsequent modifications.
     # 
     # @param dateAndTime the <code>Date</code> to match against
-    # (or <code>null</code>)
+    #                    (or <code>null</code>)
     # @see #getDateAndTime
     def set_date_and_time(date_and_time)
       if ((date_and_time).nil?)
@@ -459,7 +459,7 @@ module Java::Security::Cert
     # such optional information is provided.
     # 
     # @param cert the <code>X509Certificate</code> being checked
-    # (or <code>null</code>)
+    #             (or <code>null</code>)
     # @see #getCertificateChecking
     def set_certificate_checking(cert)
       @cert_checking = cert
@@ -475,7 +475,7 @@ module Java::Security::Cert
     # unmodifiable <code>Collection</code> of <code>X500Principal</code>s.
     # 
     # @return an unmodifiable <code>Collection</code> of names
-    # (or <code>null</code>)
+    #   (or <code>null</code>)
     # @see #setIssuers
     # @since 1.5
     def get_issuers
@@ -572,7 +572,7 @@ module Java::Security::Cert
     # Returns a printable representation of the <code>X509CRLSelector</code>.
     # 
     # @return a <code>String</code> describing the contents of the
-    # <code>X509CRLSelector</code>.
+    #         <code>X509CRLSelector</code>.
     def to_s
       sb = StringBuffer.new
       sb.append("X509CRLSelector: [\n")
@@ -604,7 +604,7 @@ module Java::Security::Cert
     # 
     # @param crl the <code>CRL</code> to be checked
     # @return <code>true</code> if the <code>CRL</code> should be selected,
-    # <code>false</code> otherwise
+    #         <code>false</code> otherwise
     def match(crl)
       if (!(crl.is_a?(X509CRL)))
         return false

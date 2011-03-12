@@ -42,14 +42,14 @@ module Sun::Security::Pkcs11
   # 
   # <p>Example code:
   # <pre>
-  # Secmod secmod = Secmod.getInstance();
-  # if (secmod.isInitialized() == false) {
-  # secmod.initialize("/home/myself/.mozilla", "/usr/sfw/lib/mozilla");
-  # }
+  #   Secmod secmod = Secmod.getInstance();
+  #   if (secmod.isInitialized() == false) {
+  #       secmod.initialize("/home/myself/.mozilla", "/usr/sfw/lib/mozilla");
+  #   }
   # 
-  # Provider p = secmod.getModule(ModuleType.KEYSTORE).getProvider();
-  # KeyStore ks = KeyStore.getInstance("PKCS11", p);
-  # ks.load(null, password);
+  #   Provider p = secmod.getModule(ModuleType.KEYSTORE).getProvider();
+  #   KeyStore ks = KeyStore.getInstance("PKCS11", p);
+  #   ks.load(null, password);
   # </pre>
   # 
   # @since   1.6
@@ -151,7 +151,7 @@ module Sun::Security::Pkcs11
     # NSS directly.
     # 
     # @throws IOException if an incompatible version of NSS
-    # has been loaded
+    #   has been loaded
     def is_initialized
       synchronized(self) do
         # NSS does not allow us to check if it is initialized already
@@ -180,14 +180,14 @@ module Sun::Security::Pkcs11
     # Initialize this Secmod.
     # 
     # @param configDir the directory containing the NSS configuration
-    # files such as secmod.db
+    #   files such as secmod.db
     # @param nssLibDir the directory containing the NSS libraries
-    # (libnss3.so or nss3.dll) or null if the library is on
-    # the system default shared library path
+    #   (libnss3.so or nss3.dll) or null if the library is on
+    #   the system default shared library path
     # 
     # @throws IOException if NSS has already been initialized,
-    # the specified directories are invalid, or initialization
-    # fails for any other reason
+    #   the specified directories are invalid, or initialization
+    #   fails for any other reason
     def initialize_(config_dir, nss_lib_dir)
       initialize_(DbMode::READ_WRITE, config_dir, nss_lib_dir)
     end
@@ -259,7 +259,7 @@ module Sun::Security::Pkcs11
     # Return an immutable list of all available modules.
     # 
     # @throws IllegalStateException if this Secmod is misconfigured
-    # or not initialized
+    #   or not initialized
     def get_modules
       synchronized(self) do
         begin
@@ -397,7 +397,7 @@ module Sun::Security::Pkcs11
     # module exists, this method returns null.
     # 
     # @throws IllegalStateException if this Secmod is misconfigured
-    # or not initialized
+    #   or not initialized
     def get_module(type)
       get_modules.each do |module|
         if ((module_.get_type).equal?(type))
@@ -543,7 +543,7 @@ module Sun::Security::Pkcs11
         # Set the configuration for this module.
         # 
         # @throws IllegalStateException if the associated provider
-        # instance has already been created.
+        #   instance has already been created.
         def set_configuration(config)
           synchronized(self) do
             if (!(@provider).nil?)
@@ -886,7 +886,7 @@ module Sun::Security::Pkcs11
             # XXX use KeyStore TrustType settings to determine which
             # attributes to set
             # XXX per PKCS#11 spec, the serial number should be in ASN.1
-            attrs = Array.typed(self.class::CK_ATTRIBUTE).new([self.class::CK_ATTRIBUTE.new(CKA_TOKEN, true), self.class::CK_ATTRIBUTE.new(CKA_CLASS, CKO_NETSCAPE_TRUST), self.class::CK_ATTRIBUTE.new(CKA_NETSCAPE_TRUST_SERVER_AUTH, trust_value), self.class::CK_ATTRIBUTE.new(CKA_NETSCAPE_TRUST_CODE_SIGNING, trust_value), self.class::CK_ATTRIBUTE.new(CKA_NETSCAPE_TRUST_EMAIL_PROTECTION, trust_value), self.class::CK_ATTRIBUTE.new(CKA_NETSCAPE_TRUST_CLIENT_AUTH, trust_value), self.class::CK_ATTRIBUTE.new(CKA_NETSCAPE_CERT_SHA1_HASH, bytes.attr_b), self.class::CK_ATTRIBUTE.new(CKA_NETSCAPE_CERT_MD5_HASH, get_digest(cert, "MD5")), self.class::CK_ATTRIBUTE.new(CKA_ISSUER, cert.get_issuer_x500principal.get_encoded), self.class::CK_ATTRIBUTE.new(CKA_SERIAL_NUMBER, cert.get_serial_number.to_byte_array), ])
+            attrs = Array.typed(self.class::CK_ATTRIBUTE).new([self.class::CK_ATTRIBUTE.new(CKA_TOKEN, true), self.class::CK_ATTRIBUTE.new(CKA_CLASS, CKO_NETSCAPE_TRUST), self.class::CK_ATTRIBUTE.new(CKA_NETSCAPE_TRUST_SERVER_AUTH, trust_value), self.class::CK_ATTRIBUTE.new(CKA_NETSCAPE_TRUST_CODE_SIGNING, trust_value), self.class::CK_ATTRIBUTE.new(CKA_NETSCAPE_TRUST_EMAIL_PROTECTION, trust_value), self.class::CK_ATTRIBUTE.new(CKA_NETSCAPE_TRUST_CLIENT_AUTH, trust_value), self.class::CK_ATTRIBUTE.new(CKA_NETSCAPE_CERT_SHA1_HASH, bytes.attr_b), self.class::CK_ATTRIBUTE.new(CKA_NETSCAPE_CERT_MD5_HASH, get_digest(cert, "MD5")), self.class::CK_ATTRIBUTE.new(CKA_ISSUER, cert.get_issuer_x500principal.get_encoded), self.class::CK_ATTRIBUTE.new(CKA_SERIAL_NUMBER, cert.get_serial_number.to_byte_array)])
             @handle = token.attr_p11._c_create_object(session.id, attrs)
             @sha_hash = bytes.attr_b
             @client_auth = trust_value
@@ -909,13 +909,13 @@ module Sun::Security::Pkcs11
           @email_protection = 0
           @sha_hash = nil
           @handle = handle
-          attrs = Array.typed(self.class::CK_ATTRIBUTE).new([self.class::CK_ATTRIBUTE.new(CKA_NETSCAPE_TRUST_SERVER_AUTH), self.class::CK_ATTRIBUTE.new(CKA_NETSCAPE_TRUST_CODE_SIGNING), self.class::CK_ATTRIBUTE.new(CKA_NETSCAPE_TRUST_EMAIL_PROTECTION), self.class::CK_ATTRIBUTE.new(CKA_NETSCAPE_CERT_SHA1_HASH), ])
+          attrs = Array.typed(self.class::CK_ATTRIBUTE).new([self.class::CK_ATTRIBUTE.new(CKA_NETSCAPE_TRUST_SERVER_AUTH), self.class::CK_ATTRIBUTE.new(CKA_NETSCAPE_TRUST_CODE_SIGNING), self.class::CK_ATTRIBUTE.new(CKA_NETSCAPE_TRUST_EMAIL_PROTECTION), self.class::CK_ATTRIBUTE.new(CKA_NETSCAPE_CERT_SHA1_HASH)])
           token.attr_p11._c_get_attribute_value(session.id, handle, attrs)
           @server_auth = attrs[0].get_long
           @code_signing = attrs[1].get_long
           @email_protection = attrs[2].get_long
           @sha_hash = attrs[3].get_byte_array
-          attrs = Array.typed(self.class::CK_ATTRIBUTE).new([self.class::CK_ATTRIBUTE.new(CKA_NETSCAPE_TRUST_CLIENT_AUTH), ])
+          attrs = Array.typed(self.class::CK_ATTRIBUTE).new([self.class::CK_ATTRIBUTE.new(CKA_NETSCAPE_TRUST_CLIENT_AUTH)])
           c = 0
           begin
             token.attr_p11._c_get_attribute_value(session.id, handle, attrs)
@@ -1004,7 +1004,7 @@ module Sun::Security::Pkcs11
         begin
           session = token.get_op_session
           max_num = 8192
-          attrs = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_CLASS, CKO_NETSCAPE_TRUST), ])
+          attrs = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_CLASS, CKO_NETSCAPE_TRUST)])
           token.attr_p11._c_find_objects_init(session.id, attrs)
           handles = token.attr_p11._c_find_objects(session.id, max_num)
           token.attr_p11._c_find_objects_final(session.id)

@@ -158,6 +158,7 @@ module Sun::Net::Dns
       raise AssertError if not (JavaThread.holds_lock(self.attr_lock))
       # if address have changed then DNS probably changed aswell;
       # otherwise check if cached settings have expired.
+      # 
       if (self.attr_changed)
         self.attr_changed = false
       else
@@ -170,6 +171,7 @@ module Sun::Net::Dns
       end
       # load DNS configuration, update timestamp, create
       # new HashMaps from the loaded configuration
+      # 
       load_dnsconfig0
       self.attr_last_refresh = System.current_time_millis
       self.attr_searchlist = string_to_list(self.attr_os_searchlist)

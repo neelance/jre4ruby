@@ -23,7 +23,6 @@ require "rjava"
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
 module Sun::Nio::Ch
-  # package-private
   module AllocatedNativeObjectImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
@@ -37,18 +36,19 @@ module Sun::Nio::Ch
     include_class_members AllocatedNativeObjectImports
     
     typesig { [::Java::Int, ::Java::Boolean] }
+    # package-private
     # Allocates a memory area of at least <tt>size</tt> bytes outside of the
     # Java heap and creates a native object for that area.
     # 
     # @param  size
-    # Number of bytes to allocate
+    #         Number of bytes to allocate
     # 
     # @param  pageAligned
-    # If <tt>true</tt> then the area will be aligned on a hardware
-    # page boundary
+    #         If <tt>true</tt> then the area will be aligned on a hardware
+    #         page boundary
     # 
     # @throws OutOfMemoryError
-    # If the request cannot be satisfied
+    #         If the request cannot be satisfied
     def initialize(size, page_aligned)
       super(size, page_aligned)
     end

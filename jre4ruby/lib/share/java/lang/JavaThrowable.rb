@@ -85,23 +85,23 @@ module Java::Lang
   # that take a cause and delegate (perhaps indirectly) to one of the
   # <tt>Throwable</tt> constructors that takes a cause.  For example:
   # <pre>
-  # try {
-  # lowLevelOp();
-  # } catch (LowLevelException le) {
-  # throw new HighLevelException(le);  // Chaining-aware constructor
-  # }
+  #     try {
+  #         lowLevelOp();
+  #     } catch (LowLevelException le) {
+  #         throw new HighLevelException(le);  // Chaining-aware constructor
+  #     }
   # </pre>
   # Because the <tt>initCause</tt> method is public, it allows a cause to be
   # associated with any throwable, even a "legacy throwable" whose
   # implementation predates the addition of the exception chaining mechanism to
   # <tt>Throwable</tt>. For example:
   # <pre>
-  # try {
-  # lowLevelOp();
-  # } catch (LowLevelException le) {
-  # throw (HighLevelException)
-  # new HighLevelException().initCause(le);  // Legacy constructor
-  # }
+  #     try {
+  #         lowLevelOp();
+  #     } catch (LowLevelException le) {
+  #         throw (HighLevelException)
+  #               new HighLevelException().initCause(le);  // Legacy constructor
+  #     }
   # </pre>
   # 
   # <p>Prior to release 1.4, there were many throwables that had their own
@@ -144,7 +144,7 @@ module Java::Lang
   # 
   # @author  unascribed
   # @author  Josh Bloch (Added exception chaining and programmatic access to
-  # stack trace in 1.4.)
+  #          stack trace in 1.4.)
   # @since JDK1.0
   class JavaThrowable < Exception
     include_class_members ThrowableImports
@@ -203,8 +203,6 @@ module Java::Lang
     typesig { [] }
     # This field is lazily initialized on first use or serialization and
     # nulled out when fillInStackTrace is called.
-    # 
-    # 
     # Constructs a new throwable with <code>null</code> as its detail message.
     # The cause is not initialized, and may subsequently be initialized by a
     # call to {@link #initCause}.
@@ -230,7 +228,7 @@ module Java::Lang
     # the stack trace data in the newly created throwable.
     # 
     # @param   message   the detail message. The detail message is saved for
-    # later retrieval by the {@link #getMessage()} method.
+    #          later retrieval by the {@link #getMessage()} method.
     def initialize(message)
       @backtrace = nil
       @detail_message = nil
@@ -252,11 +250,11 @@ module Java::Lang
     # the stack trace data in the newly created throwable.
     # 
     # @param  message the detail message (which is saved for later retrieval
-    # by the {@link #getMessage()} method).
+    #         by the {@link #getMessage()} method).
     # @param  cause the cause (which is saved for later retrieval by the
-    # {@link #getCause()} method).  (A <tt>null</tt> value is
-    # permitted, and indicates that the cause is nonexistent or
-    # unknown.)
+    #         {@link #getCause()} method).  (A <tt>null</tt> value is
+    #         permitted, and indicates that the cause is nonexistent or
+    #         unknown.)
     # @since  1.4
     def initialize(message, cause)
       @backtrace = nil
@@ -282,9 +280,9 @@ module Java::Lang
     # the stack trace data in the newly created throwable.
     # 
     # @param  cause the cause (which is saved for later retrieval by the
-    # {@link #getCause()} method).  (A <tt>null</tt> value is
-    # permitted, and indicates that the cause is nonexistent or
-    # unknown.)
+    #         {@link #getCause()} method).  (A <tt>null</tt> value is
+    #         permitted, and indicates that the cause is nonexistent or
+    #         unknown.)
     # @since  1.4
     def initialize(cause)
       @backtrace = nil
@@ -302,7 +300,7 @@ module Java::Lang
     # Returns the detail message string of this throwable.
     # 
     # @return  the detail message string of this <tt>Throwable</tt> instance
-    # (which may be <tt>null</tt>).
+    #          (which may be <tt>null</tt>).
     def get_message
       return @detail_message
     end
@@ -337,7 +335,7 @@ module Java::Lang
     # cause of a throwable.
     # 
     # @return  the cause of this throwable or <code>null</code> if the
-    # cause is nonexistent or unknown.
+    #          cause is nonexistent or unknown.
     # @since 1.4
     def get_cause
       return ((@cause).equal?(self) ? nil : @cause)
@@ -355,16 +353,16 @@ module Java::Lang
     # even once.
     # 
     # @param  cause the cause (which is saved for later retrieval by the
-    # {@link #getCause()} method).  (A <tt>null</tt> value is
-    # permitted, and indicates that the cause is nonexistent or
-    # unknown.)
+    #         {@link #getCause()} method).  (A <tt>null</tt> value is
+    #         permitted, and indicates that the cause is nonexistent or
+    #         unknown.)
     # @return  a reference to this <code>Throwable</code> instance.
     # @throws IllegalArgumentException if <code>cause</code> is this
-    # throwable.  (A throwable cannot be its own cause.)
+    #         throwable.  (A throwable cannot be its own cause.)
     # @throws IllegalStateException if this throwable was
-    # created with {@link #Throwable(Throwable)} or
-    # {@link #Throwable(String,Throwable)}, or this method has already
-    # been called on this throwable.
+    #         created with {@link #Throwable(Throwable)} or
+    #         {@link #Throwable(String,Throwable)}, or this method has already
+    #         been called on this throwable.
     # @since  1.4
     def init_cause(cause)
       synchronized(self) do
@@ -386,7 +384,7 @@ module Java::Lang
     # <li> the {@linkplain Class#getName() name} of the class of this object
     # <li> ": " (a colon and a space)
     # <li> the result of invoking this object's {@link #getLocalizedMessage}
-    # method
+    #      method
     # </ul>
     # If <tt>getLocalizedMessage</tt> returns <tt>null</tt>, then just
     # the class name is returned.
@@ -410,22 +408,22 @@ module Java::Lang
     # example may be regarded as typical:
     # <blockquote><pre>
     # java.lang.NullPointerException
-    # at MyClass.mash(MyClass.java:9)
-    # at MyClass.crunch(MyClass.java:6)
-    # at MyClass.main(MyClass.java:3)
+    #         at MyClass.mash(MyClass.java:9)
+    #         at MyClass.crunch(MyClass.java:6)
+    #         at MyClass.main(MyClass.java:3)
     # </pre></blockquote>
     # This example was produced by running the program:
     # <pre>
     # class MyClass {
-    # public static void main(String[] args) {
-    # crunch(null);
-    # }
-    # static void crunch(int[] a) {
-    # mash(a);
-    # }
-    # static void mash(int[] b) {
-    # System.out.println(b[0]);
-    # }
+    #     public static void main(String[] args) {
+    #         crunch(null);
+    #     }
+    #     static void crunch(int[] a) {
+    #         mash(a);
+    #     }
+    #     static void mash(int[] b) {
+    #         System.out.println(b[0]);
+    #     }
     # }
     # </pre>
     # The backtrace for a throwable with an initialized, non-null cause
@@ -434,18 +432,18 @@ module Java::Lang
     # example may be regarded as typical:
     # <pre>
     # HighLevelException: MidLevelException: LowLevelException
-    # at Junk.a(Junk.java:13)
-    # at Junk.main(Junk.java:4)
+    #         at Junk.a(Junk.java:13)
+    #         at Junk.main(Junk.java:4)
     # Caused by: MidLevelException: LowLevelException
-    # at Junk.c(Junk.java:23)
-    # at Junk.b(Junk.java:17)
-    # at Junk.a(Junk.java:11)
-    # ... 1 more
+    #         at Junk.c(Junk.java:23)
+    #         at Junk.b(Junk.java:17)
+    #         at Junk.a(Junk.java:11)
+    #         ... 1 more
     # Caused by: LowLevelException
-    # at Junk.e(Junk.java:30)
-    # at Junk.d(Junk.java:27)
-    # at Junk.c(Junk.java:21)
-    # ... 3 more
+    #         at Junk.e(Junk.java:30)
+    #         at Junk.d(Junk.java:27)
+    #         at Junk.c(Junk.java:21)
+    #         ... 3 more
     # </pre>
     # Note the presence of lines containing the characters <tt>"..."</tt>.
     # These lines indicate that the remainder of the stack trace for this
@@ -457,44 +455,44 @@ module Java::Lang
     # example was produced by running the program:
     # <pre>
     # public class Junk {
-    # public static void main(String args[]) {
-    # try {
-    # a();
-    # } catch(HighLevelException e) {
-    # e.printStackTrace();
-    # }
-    # }
-    # static void a() throws HighLevelException {
-    # try {
-    # b();
-    # } catch(MidLevelException e) {
-    # throw new HighLevelException(e);
-    # }
-    # }
-    # static void b() throws MidLevelException {
-    # c();
-    # }
-    # static void c() throws MidLevelException {
-    # try {
-    # d();
-    # } catch(LowLevelException e) {
-    # throw new MidLevelException(e);
-    # }
-    # }
-    # static void d() throws LowLevelException {
-    # e();
-    # }
-    # static void e() throws LowLevelException {
-    # throw new LowLevelException();
-    # }
+    #     public static void main(String args[]) {
+    #         try {
+    #             a();
+    #         } catch(HighLevelException e) {
+    #             e.printStackTrace();
+    #         }
+    #     }
+    #     static void a() throws HighLevelException {
+    #         try {
+    #             b();
+    #         } catch(MidLevelException e) {
+    #             throw new HighLevelException(e);
+    #         }
+    #     }
+    #     static void b() throws MidLevelException {
+    #         c();
+    #     }
+    #     static void c() throws MidLevelException {
+    #         try {
+    #             d();
+    #         } catch(LowLevelException e) {
+    #             throw new MidLevelException(e);
+    #         }
+    #     }
+    #     static void d() throws LowLevelException {
+    #        e();
+    #     }
+    #     static void e() throws LowLevelException {
+    #         throw new LowLevelException();
+    #     }
     # }
     # 
     # class HighLevelException extends Exception {
-    # HighLevelException(Throwable cause) { super(cause); }
+    #     HighLevelException(Throwable cause) { super(cause); }
     # }
     # 
     # class MidLevelException extends Exception {
-    # MidLevelException(Throwable cause)  { super(cause); }
+    #     MidLevelException(Throwable cause)  { super(cause); }
     # }
     # 
     # class LowLevelException extends Exception {
@@ -636,7 +634,7 @@ module Java::Lang
     # <tt>printStackTrace</tt>.
     # 
     # @return an array of stack trace elements representing the stack trace
-    # pertaining to this throwable.
+    #         pertaining to this throwable.
     # @since  1.4
     def get_stack_trace
       return get_our_stack_trace.clone
@@ -677,8 +675,8 @@ module Java::Lang
     # trace.
     # 
     # @throws NullPointerException if <code>stackTrace</code> is
-    # <code>null</code>, or if any of the elements of
-    # <code>stackTrace</code> are <code>null</code>
+    #         <code>null</code>, or if any of the elements of
+    #         <code>stackTrace</code> are <code>null</code>
     # 
     # @since  1.4
     def set_stack_trace(stack_trace)
@@ -707,7 +705,7 @@ module Java::Lang
     # 
     # @param index index of the element to return.
     # @throws IndexOutOfBoundsException if <tt>index &lt; 0 ||
-    # index &gt;= getStackTraceDepth() </tt>
+    #         index &gt;= getStackTraceDepth() </tt>
     def get_stack_trace_element(index)
       JNI.call_native_method(:Java_java_lang_Throwable_getStackTraceElement, JNI.env, self.jni_id, index.to_int)
     end

@@ -54,9 +54,9 @@ module Java::Net
   # addition by defining the java.content.handler.pkgs property.
   # The class name must be of the form:
   # <pre>
-  # {package-prefix}.{major}.{minor}
+  #     {package-prefix}.{major}.{minor}
   # e.g.
-  # YoyoDyne.experimental.text.plain
+  #     YoyoDyne.experimental.text.plain
   # </pre>
   # If the loading of the content handler class would be performed by
   # a classloader that is outside of the delegation chain of the caller,
@@ -96,8 +96,8 @@ module Java::Net
     # @param      urlc   a URL connection.
     # @param      classes      an array of types requested
     # @return     the object read by the <code>ContentHandler</code> that is
-    # the first match of the suggested types.
-    # null if none of the requested  are supported.
+    #                 the first match of the suggested types.
+    #                 null if none of the requested  are supported.
     # @exception  IOException  if an I/O error occurs while reading the object.
     # @since 1.3
     def get_content(urlc, classes)

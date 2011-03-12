@@ -33,7 +33,6 @@ module Sun::Security::Ssl
   end
   
   # inherit no-op flush()
-  # 
   # Output stream for application data. This is the kind of stream
   # that's handed out via SSLSocket.getOutputStream(). It's all the application
   # ever sees.
@@ -82,6 +81,7 @@ module Sun::Security::Ssl
       synchronized(self) do
         # check if the Socket is invalid (error or closed)
         @c.check_write
+        # 
         # Always flush at the end of each application level record.
         # This lets application synchronize read and write streams
         # however they like; if we buffered here, they couldn't.

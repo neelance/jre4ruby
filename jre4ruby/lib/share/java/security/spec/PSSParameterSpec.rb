@@ -40,33 +40,33 @@ module Java::Security::Spec
   # <p>Its ASN.1 definition in PKCS#1 standard is described below:
   # <pre>
   # RSASSA-PSS-params ::= SEQUENCE {
-  # hashAlgorithm      [0] OAEP-PSSDigestAlgorithms  DEFAULT sha1,
-  # maskGenAlgorithm   [1] PKCS1MGFAlgorithms  DEFAULT mgf1SHA1,
-  # saltLength         [2] INTEGER  DEFAULT 20,
-  # trailerField       [3] INTEGER  DEFAULT 1
+  #   hashAlgorithm      [0] OAEP-PSSDigestAlgorithms  DEFAULT sha1,
+  #   maskGenAlgorithm   [1] PKCS1MGFAlgorithms  DEFAULT mgf1SHA1,
+  #   saltLength         [2] INTEGER  DEFAULT 20,
+  #   trailerField       [3] INTEGER  DEFAULT 1
   # }
   # </pre>
   # where
   # <pre>
   # OAEP-PSSDigestAlgorithms    ALGORITHM-IDENTIFIER ::= {
-  # { OID id-sha1 PARAMETERS NULL   }|
-  # { OID id-sha256 PARAMETERS NULL }|
-  # { OID id-sha384 PARAMETERS NULL }|
-  # { OID id-sha512 PARAMETERS NULL },
-  # ...  -- Allows for future expansion --
+  #   { OID id-sha1 PARAMETERS NULL   }|
+  #   { OID id-sha256 PARAMETERS NULL }|
+  #   { OID id-sha384 PARAMETERS NULL }|
+  #   { OID id-sha512 PARAMETERS NULL },
+  #   ...  -- Allows for future expansion --
   # }
   # 
   # PKCS1MGFAlgorithms    ALGORITHM-IDENTIFIER ::= {
-  # { OID id-mgf1 PARAMETERS OAEP-PSSDigestAlgorithms },
-  # ...  -- Allows for future expansion --
+  #   { OID id-mgf1 PARAMETERS OAEP-PSSDigestAlgorithms },
+  #   ...  -- Allows for future expansion --
   # }
   # </pre>
   # <p>Note: the PSSParameterSpec.DEFAULT uses the following:
-  # message digest  -- "SHA-1"
-  # mask generation function (mgf) -- "MGF1"
-  # parameters for mgf -- MGF1ParameterSpec.SHA1
-  # SaltLength   -- 20
-  # TrailerField -- 1
+  #     message digest  -- "SHA-1"
+  #     mask generation function (mgf) -- "MGF1"
+  #     parameters for mgf -- MGF1ParameterSpec.SHA1
+  #     SaltLength   -- 20
+  #     TrailerField -- 1
   # 
   # @see MGF1ParameterSpec
   # @see AlgorithmParameterSpec

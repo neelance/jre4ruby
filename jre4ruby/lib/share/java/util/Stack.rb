@@ -44,7 +44,7 @@ module Java::Util
   # provided by the {@link Deque} interface and its implementations, which
   # should be used in preference to this class.  For example:
   # <pre>   {@code
-  # Deque<Integer> stack = new ArrayDeque<Integer>();}</pre>
+  #   Deque<Integer> stack = new ArrayDeque<Integer>();}</pre>
   # 
   # @author  Jonathan Payne
   # @since   JDK1.0
@@ -76,7 +76,7 @@ module Java::Util
     # object as the value of this function.
     # 
     # @return     The object at the top of this stack (the last item
-    # of the <tt>Vector</tt> object).
+    #             of the <tt>Vector</tt> object).
     # @exception  EmptyStackException  if this stack is empty.
     def pop
       synchronized(self) do
@@ -93,7 +93,7 @@ module Java::Util
     # from the stack.
     # 
     # @return     the object at the top of this stack (the last item
-    # of the <tt>Vector</tt> object).
+    #             of the <tt>Vector</tt> object).
     # @exception  EmptyStackException  if this stack is empty.
     def peek
       synchronized(self) do
@@ -109,7 +109,7 @@ module Java::Util
     # Tests if this stack is empty.
     # 
     # @return  <code>true</code> if and only if this stack contains
-    # no items; <code>false</code> otherwise.
+    #          no items; <code>false</code> otherwise.
     def empty
       return (size).equal?(0)
     end
@@ -125,8 +125,8 @@ module Java::Util
     # 
     # @param   o   the desired object.
     # @return  the 1-based position from the top of the stack where
-    # the object is located; the return value <code>-1</code>
-    # indicates that the object is not on the stack.
+    #          the object is located; the return value <code>-1</code>
+    #          indicates that the object is not on the stack.
     def search(o)
       synchronized(self) do
         i = last_index_of(o)

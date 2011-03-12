@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # Basic .au and .snd audio handler.
 # @author  Jeff Nisewanger
 module Sun::Net::Www::Content::Audio

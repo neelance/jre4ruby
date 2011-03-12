@@ -150,7 +150,7 @@ module Sun::Security::Pkcs11
     
     typesig { [BigInteger, BigInteger, BigInteger] }
     def generate_public(y, p, g)
-      attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_CLASS, CKO_PUBLIC_KEY), CK_ATTRIBUTE.new(CKA_KEY_TYPE, CKK_DH), CK_ATTRIBUTE.new(CKA_VALUE, y), CK_ATTRIBUTE.new(CKA_PRIME, p), CK_ATTRIBUTE.new(CKA_BASE, g), ])
+      attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_CLASS, CKO_PUBLIC_KEY), CK_ATTRIBUTE.new(CKA_KEY_TYPE, CKK_DH), CK_ATTRIBUTE.new(CKA_VALUE, y), CK_ATTRIBUTE.new(CKA_PRIME, p), CK_ATTRIBUTE.new(CKA_BASE, g)])
       attributes = self.attr_token.get_attributes(O_IMPORT, CKO_PUBLIC_KEY, CKK_DH, attributes)
       session = nil
       begin
@@ -164,7 +164,7 @@ module Sun::Security::Pkcs11
     
     typesig { [BigInteger, BigInteger, BigInteger] }
     def generate_private(x, p, g)
-      attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_CLASS, CKO_PRIVATE_KEY), CK_ATTRIBUTE.new(CKA_KEY_TYPE, CKK_DH), CK_ATTRIBUTE.new(CKA_VALUE, x), CK_ATTRIBUTE.new(CKA_PRIME, p), CK_ATTRIBUTE.new(CKA_BASE, g), ])
+      attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_CLASS, CKO_PRIVATE_KEY), CK_ATTRIBUTE.new(CKA_KEY_TYPE, CKK_DH), CK_ATTRIBUTE.new(CKA_VALUE, x), CK_ATTRIBUTE.new(CKA_PRIME, p), CK_ATTRIBUTE.new(CKA_BASE, g)])
       attributes = self.attr_token.get_attributes(O_IMPORT, CKO_PRIVATE_KEY, CKK_DH, attributes)
       session = nil
       begin
@@ -180,7 +180,7 @@ module Sun::Security::Pkcs11
     def impl_get_public_key_spec(key, key_spec, session)
       if (DHPublicKeySpec.is_assignable_from(key_spec))
         session[0] = self.attr_token.get_obj_session
-        attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_VALUE), CK_ATTRIBUTE.new(CKA_PRIME), CK_ATTRIBUTE.new(CKA_BASE), ])
+        attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_VALUE), CK_ATTRIBUTE.new(CKA_PRIME), CK_ATTRIBUTE.new(CKA_BASE)])
         self.attr_token.attr_p11._c_get_attribute_value(session[0].id, key.attr_key_id, attributes)
         spec = DHPublicKeySpec.new(attributes[0].get_big_integer, attributes[1].get_big_integer, attributes[2].get_big_integer)
         return spec
@@ -194,7 +194,7 @@ module Sun::Security::Pkcs11
     def impl_get_private_key_spec(key, key_spec, session)
       if (DHPrivateKeySpec.is_assignable_from(key_spec))
         session[0] = self.attr_token.get_obj_session
-        attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_VALUE), CK_ATTRIBUTE.new(CKA_PRIME), CK_ATTRIBUTE.new(CKA_BASE), ])
+        attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_VALUE), CK_ATTRIBUTE.new(CKA_PRIME), CK_ATTRIBUTE.new(CKA_BASE)])
         self.attr_token.attr_p11._c_get_attribute_value(session[0].id, key.attr_key_id, attributes)
         spec = DHPrivateKeySpec.new(attributes[0].get_big_integer, attributes[1].get_big_integer, attributes[2].get_big_integer)
         return spec

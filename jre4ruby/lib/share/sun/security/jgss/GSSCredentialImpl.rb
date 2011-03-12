@@ -449,7 +449,6 @@ module Sun::Security::Jgss
       end
       # NOTE: The specification does not define the criteria to compare
       # credentials.
-      # 
       # XXX
       # The RFC says: "Tests if this GSSCredential refers to the same
       # entity as the supplied object.  The two credentials must be
@@ -475,7 +474,6 @@ module Sun::Security::Jgss
       end
       # NOTE: The specification does not define the criteria to compare
       # credentials.
-      # 
       # XXX
       # Decide on a criteria for equals first then do this.
       return 1
@@ -486,8 +484,8 @@ module Sun::Security::Jgss
     # 
     # @param mechOid - the oid for mechanism to retrieve
     # @param throwExcep - boolean indicating if the function is
-    # to throw exception or return null when element is not
-    # found.
+    #    to throw exception or return null when element is not
+    #    found.
     # @return mechanism credential object
     # @exception GSSException of invalid mechanism
     def get_element(mech_oid, initiate)

@@ -100,7 +100,7 @@ module Java::Util::Logging
     # <ul>
     # <li>If there are no parameters, no formatter is used.
     # <li>Otherwise, if the string contains "{0" then
-    # java.text.MessageFormat  is used to format the string.
+    #     java.text.MessageFormat  is used to format the string.
     # <li>Otherwise no formatting is performed.
     # </ul>
     # <p>

@@ -31,7 +31,7 @@ module Sun::Reflect::Generics::Tree
     }
   end
   
-  # Common supertype for all nodes that represent type expressions in
+  #  Common supertype for all nodes that represent type expressions in
   # the generic signature AST.
   module TypeTree
     include_class_members TypeTreeImports

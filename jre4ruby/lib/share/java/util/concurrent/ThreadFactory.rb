@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # This file is available under and governed by the GNU General Public
 # License version 2 only, as published by the Free Software Foundation.
 # However, the following notice accompanied the original version of this
@@ -47,9 +45,9 @@ module Java::Util::Concurrent
   # The simplest implementation of this interface is just:
   # <pre>
   # class SimpleThreadFactory implements ThreadFactory {
-  # public Thread newThread(Runnable r) {
-  # return new Thread(r);
-  # }
+  #   public Thread newThread(Runnable r) {
+  #     return new Thread(r);
+  #   }
   # }
   # </pre>
   # 
@@ -67,7 +65,7 @@ module Java::Util::Concurrent
     # 
     # @param r a runnable to be executed by new thread instance
     # @return constructed thread, or {@code null} if the request to
-    # create a thread is rejected
+    #         create a thread is rejected
     def new_thread(r)
       raise NotImplementedError
     end

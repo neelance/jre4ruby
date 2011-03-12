@@ -155,8 +155,8 @@ module Java::Net
     # @throws IllegalArgumentException if the port parameter is outside the range
     # of valid port values, or if the hostname parameter is <TT>null</TT>.
     # @throws SecurityException if a security manager is present and
-    # permission to resolve the host name is
-    # denied.
+    #                           permission to resolve the host name is
+    #                           denied.
     # @see     #isUnresolved()
     def initialize(hostname, port)
       @hostname = nil
@@ -194,11 +194,11 @@ module Java::Net
       # @param   host    the Host name
       # @param   port    The port number
       # @throws IllegalArgumentException if the port parameter is outside
-      # the range of valid port values, or if the hostname
-      # parameter is <TT>null</TT>.
+      #                  the range of valid port values, or if the hostname
+      #                  parameter is <TT>null</TT>.
       # @see     #isUnresolved()
       # @return  a <code>InetSocketAddress</code> representing the unresolved
-      # socket address
+      #          socket address
       # @since 1.5
       def create_unresolved(host, port)
         if (port < 0 || port > 0xffff)
@@ -282,7 +282,7 @@ module Java::Net
     # Checks whether the address has been resolved or not.
     # 
     # @return <code>true</code> if the hostname couldn't be resolved into
-    # an <code>InetAddress</code>.
+    #          an <code>InetAddress</code>.
     def is_unresolved
       return (@addr).nil?
     end
@@ -316,7 +316,7 @@ module Java::Net
     # 
     # @param   obj   the object to compare against.
     # @return  <code>true</code> if the objects are the same;
-    # <code>false</code> otherwise.
+    #          <code>false</code> otherwise.
     # @see java.net.InetAddress#equals(java.lang.Object)
     def ==(obj)
       if ((obj).nil? || !(obj.is_a?(InetSocketAddress)))

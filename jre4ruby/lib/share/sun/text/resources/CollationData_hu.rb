@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996 - 1998 - All Rights Reserved
 # 
@@ -49,25 +47,6 @@ module Sun::Text::Resources
     
     typesig { [] }
     def get_contents
-      # for hu, default sorting except for the following:
-      # add cs "ligature" between c and d.
-      # add d<stroke> between d and e.
-      # add gy "ligature" between g and h.
-      # add ly "ligature" between l and l<stroke>.
-      # add l<stroke> between l and m.
-      # add sz "ligature" between s and t.
-      # add zs "ligature" between z and z<abovedot>
-      # add z<abovedot> after z.
-      # cs ligatures
-      # tal : african d < d-stroke
-      # gy ligatures
-      # l < ly
-      # O < o-umlaut
-      # o-double-accute
-      # s < sz ligature
-      # u < u-umlaut
-      # u-double-accute
-      # stop-stroke < zs ligature
       return Array.typed(Array.typed(Object)).new([Array.typed(Object).new(["Rule", "& C < cs , cS , Cs , CS " + ("& D < ".to_u << 0x0111 << ", ".to_u << 0x0110 << " ") + "& G < gy, Gy, gY, GY " + "& L < ly, Ly, lY, LY " + ("& O < o".to_u << 0x0308 << " , O".to_u << 0x0308 << " ") + ("< o".to_u << 0x030b << " , O".to_u << 0x030b << " ") + "& S < sz , sZ , Sz , SZ " + ("& U < u".to_u << 0x0308 << " , U".to_u << 0x0308 << " ") + ("< u".to_u << 0x030b << " , U".to_u << 0x030b << " ") + "& Z < zs , zS , Zs , ZS "])])
     end
     

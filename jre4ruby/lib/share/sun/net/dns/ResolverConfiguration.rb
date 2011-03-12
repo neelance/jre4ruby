@@ -124,7 +124,7 @@ module Sun::Net::Dns
         # timeout for the exponential backoff algorithm.
         # 
         # @return the basic retransmit timeout value or -1
-        # if unknown
+        #         if unknown
         def retrans
           return -1
         end

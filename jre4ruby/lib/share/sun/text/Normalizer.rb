@@ -55,12 +55,12 @@ module Sun::Text
       # from.
       # @param src        The sequence of char values to normalize.
       # @param form       The normalization form; one of
-      # {@link java.text.Normalizer.Form#NFC},
-      # {@link java.text.Normalizer.Form#NFD},
-      # {@link java.text.Normalizer.Form#NFKC},
-      # {@link java.text.Normalizer.Form#NFKD}
+      #                   {@link java.text.Normalizer.Form#NFC},
+      #                   {@link java.text.Normalizer.Form#NFD},
+      #                   {@link java.text.Normalizer.Form#NFKC},
+      #                   {@link java.text.Normalizer.Form#NFKD}
       # @param option     The normalization option;
-      # {@link sun.text.Normalizer#UNICODE_3_2}
+      #                   {@link sun.text.Normalizer#UNICODE_3_2}
       # @return The normalized String
       # @throws NullPointerException If <code>src</code> or <code>form</code>
       # is null.
@@ -72,12 +72,12 @@ module Sun::Text
       # Determines if the given sequence of char values is normalized.
       # @param src        The sequence of char values to be checked.
       # @param form       The normalization form; one of
-      # {@link java.text.Normalizer.Form#NFC},
-      # {@link java.text.Normalizer.Form#NFD},
-      # {@link java.text.Normalizer.Form#NFKC},
-      # {@link java.text.Normalizer.Form#NFKD}
+      #                   {@link java.text.Normalizer.Form#NFC},
+      #                   {@link java.text.Normalizer.Form#NFD},
+      #                   {@link java.text.Normalizer.Form#NFKC},
+      #                   {@link java.text.Normalizer.Form#NFKD}
       # @param option     The normalization option;
-      # {@link sun.text.Normalizer#UNICODE_3_2}
+      #                   {@link sun.text.Normalizer#UNICODE_3_2}
       # @return true if the sequence of char values is normalized;
       # false otherwise.
       # @throws NullPointerException If <code>src</code> or <code>form</code>

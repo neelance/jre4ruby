@@ -73,12 +73,12 @@ module Sun::Misc
     typesig { [String, Object] }
     # Add a regular expression to the pool of regular expressions.
     # @param   re  The regular expression to add to the pool.
-    # For now, only handles strings that either begin or end with
-    # a '*'.
+    #      For now, only handles strings that either begin or end with
+    #      a '*'.
     # @param   ret The object to be returned when this regular expression is
-    # matched.  If ret is an instance of the RegexpTarget class, ret.found
-    # is called with the string fragment that matched the '*' as its
-    # parameter.
+    #      matched.  If ret is an instance of the RegexpTarget class, ret.found
+    #      is called with the string fragment that matched the '*' as its
+    #      parameter.
     # @exception REException error
     def add(re, ret)
       add(re, ret, false)
@@ -89,12 +89,12 @@ module Sun::Misc
     # target.
     # 
     # @param   re  The regular expression to be replaced in the pool.
-    # For now, only handles strings that either begin or end with
-    # a '*'.
+    #      For now, only handles strings that either begin or end with
+    #      a '*'.
     # @param   ret The object to be returned when this regular expression is
-    # matched.  If ret is an instance of the RegexpTarget class, ret.found
-    # is called with the string fragment that matched the '*' as its
-    # parameter.
+    #      matched.  If ret is an instance of the RegexpTarget class, ret.found
+    #      is called with the string fragment that matched the '*' as its
+    #      parameter.
     def replace(re, ret)
       begin
         add(re, ret, true)
@@ -106,7 +106,7 @@ module Sun::Misc
     typesig { [String] }
     # Delete the regular expression and its target.
     # @param re The regular expression to be deleted from the pool.
-    # must begin or end with a '*'
+    #           must begin or end with a '*'
     # @return target - the old target.
     def delete(re)
       o = nil
@@ -165,12 +165,12 @@ module Sun::Misc
     # The next best match is returned the next time matchNext is
     # called.
     # @param s    The string to match against the regular expressions
-    # in the pool.
+    #             in the pool.
     # @return     null on failure, otherwise the object associated with
-    # the regular expression when it was added to the pool.
-    # If the object is an instance of RegexpTarget, then
-    # the return value is the result from calling
-    # return.found(string_that_matched_wildcard).
+    #             the regular expression when it was added to the pool.
+    #             If the object is an instance of RegexpTarget, then
+    #             the return value is the result from calling
+    #             return.found(string_that_matched_wildcard).
     def match(s)
       return match_after(s, BIG)
     end

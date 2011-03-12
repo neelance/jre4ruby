@@ -22,17 +22,15 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996, 1997 - All Rights Reserved
 # 
-# The original version of this source code and documentation is copyrighted
+#   The original version of this source code and documentation is copyrighted
 # and owned by Taligent, Inc., a wholly-owned subsidiary of IBM. These
 # materials are provided under terms of a License Agreement between Taligent
 # and Sun. This technology is protected by multiple US and International
 # patents. This notice and attribution to Taligent may not be removed.
-# Taligent is a registered trademark of Taligent, Inc.
+#   Taligent is a registered trademark of Taligent, Inc.
 module Java::Text
   module MergeCollationImports #:nodoc:
     class_module.module_eval {
@@ -240,12 +238,14 @@ module Java::Text
     alias_method :attr_excess=, :excess=
     undef_method :excess=
     
+    # 
     # When building a MergeCollation, we need to do lots of searches to see
     # whether a given entry is already in the table.  Since we're using an
     # array, this would make the algorithm O(N*N).  To speed things up, we
     # use this bit array to remember whether the array contains any entries
     # starting with each Unicode character.  If not, we can avoid the search.
     # Using BitSet would make this easier, but it's significantly slower.
+    # 
     attr_accessor :status_array
     alias_method :attr_status_array, :status_array
     undef_method :status_array

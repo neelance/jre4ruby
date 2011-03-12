@@ -173,8 +173,8 @@ module Java::Util::Logging
         # The message is not in the catalog.  Drop through.
       end
       parameters = record.get_parameters
-      # Check to see if the parameter was not a messagetext format
-      # or was not null or empty
+      #  Check to see if the parameter was not a messagetext format
+      #  or was not null or empty
       if (!(parameters).nil? && !(parameters.attr_length).equal?(0) && (record.get_message.index_of("{")).equal?(-1))
         i = 0
         while i < parameters.attr_length

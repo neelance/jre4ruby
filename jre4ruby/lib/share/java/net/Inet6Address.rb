@@ -47,71 +47,71 @@ module Java::Net
   # takes one of the following forms:
   # 
   # <ol>
-  # <li><p> <A NAME="lform">The preferred form</a> is x:x:x:x:x:x:x:x,
-  # where the 'x's are
-  # the hexadecimal values of the eight 16-bit pieces of the
-  # address. This is the full form.  For example,
+  #   <li><p> <A NAME="lform">The preferred form</a> is x:x:x:x:x:x:x:x,
+  #   where the 'x's are
+  #   the hexadecimal values of the eight 16-bit pieces of the
+  #   address. This is the full form.  For example,
   # 
-  # <blockquote><table cellpadding=0 cellspacing=0 summary="layout">
-  # <tr><td><tt>1080:0:0:0:8:800:200C:417A</tt><td></tr>
-  # </table></blockquote>
+  #   <blockquote><table cellpadding=0 cellspacing=0 summary="layout">
+  #   <tr><td><tt>1080:0:0:0:8:800:200C:417A</tt><td></tr>
+  #   </table></blockquote>
   # 
-  # <p> Note that it is not necessary to write the leading zeros in
-  # an individual field. However, there must be at least one numeral
-  # in every field, except as described below.</li>
+  #   <p> Note that it is not necessary to write the leading zeros in
+  #   an individual field. However, there must be at least one numeral
+  #   in every field, except as described below.</li>
   # 
-  # <li><p> Due to some methods of allocating certain styles of IPv6
-  # addresses, it will be common for addresses to contain long
-  # strings of zero bits. In order to make writing addresses
-  # containing zero bits easier, a special syntax is available to
-  # compress the zeros. The use of "::" indicates multiple groups
-  # of 16-bits of zeros. The "::" can only appear once in an address.
-  # The "::" can also be used to compress the leading and/or trailing
-  # zeros in an address. For example,
+  #   <li><p> Due to some methods of allocating certain styles of IPv6
+  #   addresses, it will be common for addresses to contain long
+  #   strings of zero bits. In order to make writing addresses
+  #   containing zero bits easier, a special syntax is available to
+  #   compress the zeros. The use of "::" indicates multiple groups
+  #   of 16-bits of zeros. The "::" can only appear once in an address.
+  #   The "::" can also be used to compress the leading and/or trailing
+  #   zeros in an address. For example,
   # 
-  # <blockquote><table cellpadding=0 cellspacing=0 summary="layout">
-  # <tr><td><tt>1080::8:800:200C:417A</tt><td></tr>
-  # </table></blockquote>
+  #   <blockquote><table cellpadding=0 cellspacing=0 summary="layout">
+  #   <tr><td><tt>1080::8:800:200C:417A</tt><td></tr>
+  #   </table></blockquote>
   # 
-  # <li><p> An alternative form that is sometimes more convenient
-  # when dealing with a mixed environment of IPv4 and IPv6 nodes is
-  # x:x:x:x:x:x:d.d.d.d, where the 'x's are the hexadecimal values
-  # of the six high-order 16-bit pieces of the address, and the 'd's
-  # are the decimal values of the four low-order 8-bit pieces of the
-  # standard IPv4 representation address, for example,
+  #   <li><p> An alternative form that is sometimes more convenient
+  #   when dealing with a mixed environment of IPv4 and IPv6 nodes is
+  #   x:x:x:x:x:x:d.d.d.d, where the 'x's are the hexadecimal values
+  #   of the six high-order 16-bit pieces of the address, and the 'd's
+  #   are the decimal values of the four low-order 8-bit pieces of the
+  #   standard IPv4 representation address, for example,
   # 
-  # <blockquote><table cellpadding=0 cellspacing=0 summary="layout">
-  # <tr><td><tt>::FFFF:129.144.52.38</tt><td></tr>
-  # <tr><td><tt>::129.144.52.38</tt><td></tr>
-  # </table></blockquote>
+  #   <blockquote><table cellpadding=0 cellspacing=0 summary="layout">
+  #   <tr><td><tt>::FFFF:129.144.52.38</tt><td></tr>
+  #   <tr><td><tt>::129.144.52.38</tt><td></tr>
+  #   </table></blockquote>
   # 
-  # <p> where "::FFFF:d.d.d.d" and "::d.d.d.d" are, respectively, the
-  # general forms of an IPv4-mapped IPv6 address and an
-  # IPv4-compatible IPv6 address. Note that the IPv4 portion must be
-  # in the "d.d.d.d" form. The following forms are invalid:
+  #   <p> where "::FFFF:d.d.d.d" and "::d.d.d.d" are, respectively, the
+  #   general forms of an IPv4-mapped IPv6 address and an
+  #   IPv4-compatible IPv6 address. Note that the IPv4 portion must be
+  #   in the "d.d.d.d" form. The following forms are invalid:
   # 
-  # <blockquote><table cellpadding=0 cellspacing=0 summary="layout">
-  # <tr><td><tt>::FFFF:d.d.d</tt><td></tr>
-  # <tr><td><tt>::FFFF:d.d</tt><td></tr>
-  # <tr><td><tt>::d.d.d</tt><td></tr>
-  # <tr><td><tt>::d.d</tt><td></tr>
-  # </table></blockquote>
+  #   <blockquote><table cellpadding=0 cellspacing=0 summary="layout">
+  #   <tr><td><tt>::FFFF:d.d.d</tt><td></tr>
+  #   <tr><td><tt>::FFFF:d.d</tt><td></tr>
+  #   <tr><td><tt>::d.d.d</tt><td></tr>
+  #   <tr><td><tt>::d.d</tt><td></tr>
+  #   </table></blockquote>
   # 
-  # <p> The following form:
+  #   <p> The following form:
   # 
-  # <blockquote><table cellpadding=0 cellspacing=0 summary="layout">
-  # <tr><td><tt>::FFFF:d</tt><td></tr>
-  # </table></blockquote>
+  #   <blockquote><table cellpadding=0 cellspacing=0 summary="layout">
+  #   <tr><td><tt>::FFFF:d</tt><td></tr>
+  #   </table></blockquote>
   # 
-  # <p> is valid, however it is an unconventional representation of
-  # the IPv4-compatible IPv6 address,
+  #   <p> is valid, however it is an unconventional representation of
+  #   the IPv4-compatible IPv6 address,
   # 
-  # <blockquote><table cellpadding=0 cellspacing=0 summary="layout">
-  # <tr><td><tt>::255.255.0.d</tt><td></tr>
-  # </table></blockquote>
+  #   <blockquote><table cellpadding=0 cellspacing=0 summary="layout">
+  #   <tr><td><tt>::255.255.0.d</tt><td></tr>
+  #   </table></blockquote>
   # 
-  # <p> while "::d" corresponds to the general IPv6 address
-  # "0:0:0:0:0:0:0:d".</li>
+  #   <p> while "::d" corresponds to the general IPv6 address
+  #   "0:0:0:0:0:0:0:d".</li>
   # </ol>
   # 
   # <p> For methods that return a textual representation as output
@@ -123,17 +123,17 @@ module Java::Net
   # 
   # <blockquote>
   # <table cellspacing=2 summary="Description of IPv4-mapped address"> <tr><th valign=top><i>IPv4-mapped address</i></th>
-  # <td>Of the form::ffff:w.x.y.z, this IPv6 address is used to
-  # represent an IPv4 address. It allows the native program to
-  # use the same address data structure and also the same
-  # socket when communicating with both IPv4 and IPv6 nodes.
+  #         <td>Of the form::ffff:w.x.y.z, this IPv6 address is used to
+  #         represent an IPv4 address. It allows the native program to
+  #         use the same address data structure and also the same
+  #         socket when communicating with both IPv4 and IPv6 nodes.
   # 
-  # <p>In InetAddress and Inet6Address, it is used for internal
-  # representation; it has no functional role. Java will never
-  # return an IPv4-mapped address.  These classes can take an
-  # IPv4-mapped address as input, both in byte array and text
-  # representation. However, it will be converted into an IPv4
-  # address.</td></tr>
+  #         <p>In InetAddress and Inet6Address, it is used for internal
+  #         representation; it has no functional role. Java will never
+  #         return an IPv4-mapped address.  These classes can take an
+  #         IPv4-mapped address as input, both in byte array and text
+  #         representation. However, it will be converted into an IPv4
+  #         address.</td></tr>
   # </table></blockquote>
   # <p>
   # <h4> <A NAME="scoped">Textual representation of IPv6 scoped addresses</a> </h4>
@@ -299,8 +299,7 @@ module Java::Net
       begin
         initif(host_name, addr, nil)
       rescue UnknownHostException => e
-      end
-      # cant happen if ifname is null
+      end # cant happen if ifname is null
     end
     
     typesig { [String, Array.typed(::Java::Byte), NetworkInterface] }
@@ -354,7 +353,7 @@ module Java::Net
       # @param nif an interface this address must be associated with.
       # @return  an Inet6Address object created from the raw IP address.
       # @exception  UnknownHostException  if IP address is of illegal length, or if the interface
-      # does not have a numeric scope_id assigned for the given address type.
+      #          does not have a numeric scope_id assigned for the given address type.
       # 
       # @since 1.5
       def get_by_address(host, addr, nif)
@@ -548,7 +547,7 @@ module Java::Net
     typesig { [] }
     # Utility routine to check if the InetAddress in a wildcard address.
     # @return a <code>boolean</code> indicating if the Inetaddress is
-    # a wildcard address.
+    #         a wildcard address.
     # @since 1.4
     def is_any_local_address
       test = 0x0
@@ -600,8 +599,8 @@ module Java::Net
     # Utility routine to check if the multicast address has global scope.
     # 
     # @return a <code>boolean</code> indicating if the address has
-    # is a multicast address of global scope, false if it is not
-    # of global scope or it is not a multicast address
+    #         is a multicast address of global scope, false if it is not
+    #         of global scope or it is not a multicast address
     # @since 1.4
     def is_mcglobal
       return (((@ipaddress[0] & 0xff)).equal?(0xff) && ((@ipaddress[1] & 0xf)).equal?(0xe))
@@ -611,8 +610,8 @@ module Java::Net
     # Utility routine to check if the multicast address has node scope.
     # 
     # @return a <code>boolean</code> indicating if the address has
-    # is a multicast address of node-local scope, false if it is not
-    # of node-local scope or it is not a multicast address
+    #         is a multicast address of node-local scope, false if it is not
+    #         of node-local scope or it is not a multicast address
     # @since 1.4
     def is_mcnode_local
       return (((@ipaddress[0] & 0xff)).equal?(0xff) && ((@ipaddress[1] & 0xf)).equal?(0x1))
@@ -622,8 +621,8 @@ module Java::Net
     # Utility routine to check if the multicast address has link scope.
     # 
     # @return a <code>boolean</code> indicating if the address has
-    # is a multicast address of link-local scope, false if it is not
-    # of link-local scope or it is not a multicast address
+    #         is a multicast address of link-local scope, false if it is not
+    #         of link-local scope or it is not a multicast address
     # @since 1.4
     def is_mclink_local
       return (((@ipaddress[0] & 0xff)).equal?(0xff) && ((@ipaddress[1] & 0xf)).equal?(0x2))
@@ -633,8 +632,8 @@ module Java::Net
     # Utility routine to check if the multicast address has site scope.
     # 
     # @return a <code>boolean</code> indicating if the address has
-    # is a multicast address of site-local scope, false if it is not
-    # of site-local scope or it is not a multicast address
+    #         is a multicast address of site-local scope, false if it is not
+    #         of site-local scope or it is not a multicast address
     # @since 1.4
     def is_mcsite_local
       return (((@ipaddress[0] & 0xff)).equal?(0xff) && ((@ipaddress[1] & 0xf)).equal?(0x5))
@@ -644,9 +643,9 @@ module Java::Net
     # Utility routine to check if the multicast address has organization scope.
     # 
     # @return a <code>boolean</code> indicating if the address has
-    # is a multicast address of organization-local scope,
-    # false if it is not of organization-local scope
-    # or it is not a multicast address
+    #         is a multicast address of organization-local scope,
+    #         false if it is not of organization-local scope
+    #         or it is not a multicast address
     # @since 1.4
     def is_mcorg_local
       return (((@ipaddress[0] & 0xff)).equal?(0xff) && ((@ipaddress[1] & 0xf)).equal?(0x8))
@@ -739,7 +738,7 @@ module Java::Net
     # 
     # @param   obj   the object to compare against.
     # @return  <code>true</code> if the objects are the same;
-    # <code>false</code> otherwise.
+    #          <code>false</code> otherwise.
     # @see     java.net.InetAddress#getAddress()
     def ==(obj)
       if ((obj).nil? || !(obj.is_a?(Inet6Address)))
@@ -780,7 +779,7 @@ module Java::Net
       # 
       # @param src a byte array representing the IPv6 numeric address
       # @return a String representing an IPv6 address in
-      # textual representation format
+      #         textual representation format
       # @since 1.4
       def numeric_to_text_format(src)
         sb = StringBuffer.new(39)

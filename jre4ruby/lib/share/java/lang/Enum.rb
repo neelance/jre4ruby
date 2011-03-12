@@ -102,10 +102,10 @@ module Java::Lang
     # enum type declarations.
     # 
     # @param name - The name of this enum constant, which is the identifier
-    # used to declare it.
+    #               used to declare it.
     # @param ordinal - The ordinal of this enumeration constant (its position
-    # in the enum declaration, where the initial constant is assigned
-    # an ordinal of zero).
+    #         in the enum declaration, where the initial constant is assigned
+    #         an ordinal of zero).
     def initialize(name, ordinal)
       @name = nil
       @ordinal = 0
@@ -130,7 +130,7 @@ module Java::Lang
     # 
     # @param other the object to be compared for equality with this object.
     # @return  true if the specified object is equal to this
-    # enum constant.
+    #          enum constant.
     def ==(other)
       return (self).equal?(other)
     end
@@ -163,8 +163,7 @@ module Java::Lang
     # method is the order in which the constants are declared.
     def compare_to(o)
       other = o
-      self_ = self
-      # optimization
+      self_ = self # optimization
       if (!(self_.get_class).equal?(other.get_class) && !(self_.get_declaring_class).equal?(other.get_declaring_class))
         raise ClassCastException.new
       end
@@ -175,13 +174,13 @@ module Java::Lang
     # Returns the Class object corresponding to this enum constant's
     # enum type.  Two enum constants e1 and  e2 are of the
     # same enum type if and only if
-    # e1.getDeclaringClass() == e2.getDeclaringClass().
+    #   e1.getDeclaringClass() == e2.getDeclaringClass().
     # (The value returned by this method may differ from the one returned
     # by the {@link Object#getClass} method for enum constants with
     # constant-specific class bodies.)
     # 
     # @return the Class object corresponding to this enum constant's
-    # enum type
+    #     enum type
     def get_declaring_class
       clazz = get_class
       zuper = clazz.get_superclass
@@ -196,15 +195,15 @@ module Java::Lang
       # characters are not permitted.)
       # 
       # @param enumType the {@code Class} object of the enum type from which
-      # to return a constant
+      #      to return a constant
       # @param name the name of the constant to return
       # @return the enum constant of the specified enum type with the
-      # specified name
+      #      specified name
       # @throws IllegalArgumentException if the specified enum type has
-      # no constant with the specified name, or the specified
-      # class object does not represent an enum type
+      #         no constant with the specified name, or the specified
+      #         class object does not represent an enum type
       # @throws NullPointerException if {@code enumType} or {@code name}
-      # is null
+      #         is null
       # @since 1.5
       def value_of(enum_type, name)
         result = enum_type.enum_constant_directory.get(name)

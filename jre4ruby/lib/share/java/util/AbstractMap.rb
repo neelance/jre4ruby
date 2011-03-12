@@ -81,7 +81,6 @@ module Java::Util
     
     typesig { [] }
     # Query Operations
-    # 
     # {@inheritDoc}
     # 
     # <p>This implementation returns <tt>entrySet().size()</tt>.
@@ -194,7 +193,6 @@ module Java::Util
     
     typesig { [Object, Object] }
     # Modification Operations
-    # 
     # {@inheritDoc}
     # 
     # <p>This implementation always throws an
@@ -256,7 +254,6 @@ module Java::Util
     
     typesig { [Map] }
     # Bulk Operations
-    # 
     # {@inheritDoc}
     # 
     # <p>This implementation iterates over the specified map's
@@ -292,7 +289,6 @@ module Java::Util
     end
     
     # Views
-    # 
     # Each of these fields are initialized to contain an instance of the
     # appropriate view the first time this view is requested.  The views are
     # stateless, so there's no reason to create more than one of each.
@@ -503,7 +499,6 @@ module Java::Util
     
     typesig { [Object] }
     # Comparison and hashing
-    # 
     # Compares the specified object with this map for equality.  Returns
     # <tt>true</tt> if the given object is also a map and the two maps
     # represent the same mappings.  More formally, two maps <tt>m1</tt> and
@@ -641,7 +636,6 @@ module Java::Util
       # of a field in a subclass, they can't share representations,
       # and the amount of duplicated code is too small to warrant
       # exposing a common abstract class.
-      # 
       # An Entry maintaining a key and a value.  The value may be
       # changed using the <tt>setValue</tt> method.  This class
       # facilitates the process of building custom map
@@ -731,19 +725,19 @@ module Java::Util
         # the two entries represent the same mapping.  More formally, two
         # entries {@code e1} and {@code e2} represent the same mapping
         # if<pre>
-        # (e1.getKey()==null ?
-        # e2.getKey()==null :
-        # e1.getKey().equals(e2.getKey()))
-        # &amp;&amp;
-        # (e1.getValue()==null ?
-        # e2.getValue()==null :
-        # e1.getValue().equals(e2.getValue()))</pre>
+        #   (e1.getKey()==null ?
+        #    e2.getKey()==null :
+        #    e1.getKey().equals(e2.getKey()))
+        #   &amp;&amp;
+        #   (e1.getValue()==null ?
+        #    e2.getValue()==null :
+        #    e1.getValue().equals(e2.getValue()))</pre>
         # This ensures that the {@code equals} method works properly across
         # different implementations of the {@code Map.Entry} interface.
         # 
         # @param o object to be compared for equality with this map entry
         # @return {@code true} if the specified object is equal to this map
-        # entry
+        #         entry
         # @see    #hashCode
         def ==(o)
           if (!(o.is_a?(self.class::Map::Entry)))
@@ -756,8 +750,8 @@ module Java::Util
         typesig { [] }
         # Returns the hash code value for this map entry.  The hash code
         # of a map entry {@code e} is defined to be: <pre>
-        # (e.getKey()==null   ? 0 : e.getKey().hashCode()) ^
-        # (e.getValue()==null ? 0 : e.getValue().hashCode())</pre>
+        #   (e.getKey()==null   ? 0 : e.getKey().hashCode()) ^
+        #   (e.getValue()==null ? 0 : e.getValue().hashCode())</pre>
         # This ensures that {@code e1.equals(e2)} implies that
         # {@code e1.hashCode()==e2.hashCode()} for any two Entries
         # {@code e1} and {@code e2}, as required by the general
@@ -872,19 +866,19 @@ module Java::Util
         # the two entries represent the same mapping.  More formally, two
         # entries {@code e1} and {@code e2} represent the same mapping
         # if<pre>
-        # (e1.getKey()==null ?
-        # e2.getKey()==null :
-        # e1.getKey().equals(e2.getKey()))
-        # &amp;&amp;
-        # (e1.getValue()==null ?
-        # e2.getValue()==null :
-        # e1.getValue().equals(e2.getValue()))</pre>
+        #   (e1.getKey()==null ?
+        #    e2.getKey()==null :
+        #    e1.getKey().equals(e2.getKey()))
+        #   &amp;&amp;
+        #   (e1.getValue()==null ?
+        #    e2.getValue()==null :
+        #    e1.getValue().equals(e2.getValue()))</pre>
         # This ensures that the {@code equals} method works properly across
         # different implementations of the {@code Map.Entry} interface.
         # 
         # @param o object to be compared for equality with this map entry
         # @return {@code true} if the specified object is equal to this map
-        # entry
+        #         entry
         # @see    #hashCode
         def ==(o)
           if (!(o.is_a?(self.class::Map::Entry)))
@@ -897,8 +891,8 @@ module Java::Util
         typesig { [] }
         # Returns the hash code value for this map entry.  The hash code
         # of a map entry {@code e} is defined to be: <pre>
-        # (e.getKey()==null   ? 0 : e.getKey().hashCode()) ^
-        # (e.getValue()==null ? 0 : e.getValue().hashCode())</pre>
+        #   (e.getKey()==null   ? 0 : e.getKey().hashCode()) ^
+        #   (e.getValue()==null ? 0 : e.getValue().hashCode())</pre>
         # This ensures that {@code e1.equals(e2)} implies that
         # {@code e1.hashCode()==e2.hashCode()} for any two Entries
         # {@code e1} and {@code e2}, as required by the general

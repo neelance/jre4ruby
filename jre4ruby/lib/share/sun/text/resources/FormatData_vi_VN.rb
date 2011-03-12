@@ -22,17 +22,14 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
-# 
 # (C) Copyright IBM Corp. 1996-2003 - All Rights Reserved                     *
-# *
+#                                                                             *
 # The original version of this source code and documentation is copyrighted   *
 # and owned by IBM, These materials are provided under terms of a License     *
 # Agreement between IBM and Sun. This technology is protected by multiple     *
 # US and International patents. This notice and attribution to IBM may not    *
 # to removed.                                                                 *
-# 
+# *****************************************************************************
 # 
 # This locale data is based on the ICU's Vietnamese locale data (rev. 1.38)
 # found at:
@@ -53,10 +50,7 @@ module Sun::Text::Resources
     typesig { [] }
     # Overrides ListResourceBundle
     def get_contents
-      # decimal pattern
-      # currency pattern
-      # percent pattern
-      return Array.typed(Array.typed(Object)).new([Array.typed(Object).new(["NumberPatterns", Array.typed(String).new(["#,##0.###;-#,##0.###", ("#,##0.00 ".to_u << 0x00A4 << ";-#,##0.00 ".to_u << 0x00A4 << ""), "#,##0%"])]), ])
+      return Array.typed(Array.typed(Object)).new([Array.typed(Object).new(["NumberPatterns", Array.typed(String).new(["#,##0.###;-#,##0.###", ("#,##0.00 ".to_u << 0x00A4 << ";-#,##0.00 ".to_u << 0x00A4 << ""), "#,##0%"])])])
     end
     
     typesig { [] }

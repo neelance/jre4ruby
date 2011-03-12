@@ -274,11 +274,11 @@ module Java::Lang
       def shutdown
         synchronized((self.attr_lock)) do
           case (self.attr_state)
-          # Stall and then return
           when RUNNING
             # Initiate shutdown
             self.attr_state = HOOKS
           when HOOKS, FINALIZERS
+            # Stall and then return
           end
         end
         synchronized((Shutdown)) do

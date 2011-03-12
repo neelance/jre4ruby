@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # This file is available under and governed by the GNU General Public
 # License version 2 only, as published by the Free Software Foundation.
 # However, the following notice accompanied the original version of this
@@ -78,32 +76,32 @@ module Java::Util::Concurrent
   # 
   # <pre>
   # class NetworkService implements Runnable {
-  # private final ServerSocket serverSocket;
-  # private final ExecutorService pool;
+  #   private final ServerSocket serverSocket;
+  #   private final ExecutorService pool;
   # 
-  # public NetworkService(int port, int poolSize)
-  # throws IOException {
-  # serverSocket = new ServerSocket(port);
-  # pool = Executors.newFixedThreadPool(poolSize);
-  # }
+  #   public NetworkService(int port, int poolSize)
+  #       throws IOException {
+  #     serverSocket = new ServerSocket(port);
+  #     pool = Executors.newFixedThreadPool(poolSize);
+  #   }
   # 
-  # public void run() { // run the service
-  # try {
-  # for (;;) {
-  # pool.execute(new Handler(serverSocket.accept()));
-  # }
-  # } catch (IOException ex) {
-  # pool.shutdown();
-  # }
-  # }
+  #   public void run() { // run the service
+  #     try {
+  #       for (;;) {
+  #         pool.execute(new Handler(serverSocket.accept()));
+  #       }
+  #     } catch (IOException ex) {
+  #       pool.shutdown();
+  #     }
+  #   }
   # }
   # 
   # class Handler implements Runnable {
-  # private final Socket socket;
-  # Handler(Socket socket) { this.socket = socket; }
-  # public void run() {
-  # // read and service request on socket
-  # }
+  #   private final Socket socket;
+  #   Handler(Socket socket) { this.socket = socket; }
+  #   public void run() {
+  #     // read and service request on socket
+  #   }
   # }
   # </pre>
   # 
@@ -113,21 +111,21 @@ module Java::Util::Concurrent
   # 
   # <pre>
   # void shutdownAndAwaitTermination(ExecutorService pool) {
-  # pool.shutdown(); // Disable new tasks from being submitted
-  # try {
-  # // Wait a while for existing tasks to terminate
-  # if (!pool.awaitTermination(60, TimeUnit.SECONDS)) {
-  # pool.shutdownNow(); // Cancel currently executing tasks
-  # // Wait a while for tasks to respond to being cancelled
-  # if (!pool.awaitTermination(60, TimeUnit.SECONDS))
-  # System.err.println("Pool did not terminate");
-  # }
-  # } catch (InterruptedException ie) {
-  # // (Re-)Cancel if current thread also interrupted
-  # pool.shutdownNow();
-  # // Preserve interrupt status
-  # Thread.currentThread().interrupt();
-  # }
+  #   pool.shutdown(); // Disable new tasks from being submitted
+  #   try {
+  #     // Wait a while for existing tasks to terminate
+  #     if (!pool.awaitTermination(60, TimeUnit.SECONDS)) {
+  #       pool.shutdownNow(); // Cancel currently executing tasks
+  #       // Wait a while for tasks to respond to being cancelled
+  #       if (!pool.awaitTermination(60, TimeUnit.SECONDS))
+  #           System.err.println("Pool did not terminate");
+  #     }
+  #   } catch (InterruptedException ie) {
+  #     // (Re-)Cancel if current thread also interrupted
+  #     pool.shutdownNow();
+  #     // Preserve interrupt status
+  #     Thread.currentThread().interrupt();
+  #   }
   # }
   # </pre>
   # 
@@ -150,12 +148,12 @@ module Java::Util::Concurrent
     # Invocation has no additional effect if already shut down.
     # 
     # @throws SecurityException if a security manager exists and
-    # shutting down this ExecutorService may manipulate
-    # threads that the caller is not permitted to modify
-    # because it does not hold {@link
-    # java.lang.RuntimePermission}<tt>("modifyThread")</tt>,
-    # or the security manager's <tt>checkAccess</tt> method
-    # denies access.
+    #         shutting down this ExecutorService may manipulate
+    #         threads that the caller is not permitted to modify
+    #         because it does not hold {@link
+    #         java.lang.RuntimePermission}<tt>("modifyThread")</tt>,
+    #         or the security manager's <tt>checkAccess</tt> method
+    #         denies access.
     def shutdown
       raise NotImplementedError
     end
@@ -172,12 +170,12 @@ module Java::Util::Concurrent
     # 
     # @return list of tasks that never commenced execution
     # @throws SecurityException if a security manager exists and
-    # shutting down this ExecutorService may manipulate
-    # threads that the caller is not permitted to modify
-    # because it does not hold {@link
-    # java.lang.RuntimePermission}<tt>("modifyThread")</tt>,
-    # or the security manager's <tt>checkAccess</tt> method
-    # denies access.
+    #         shutting down this ExecutorService may manipulate
+    #         threads that the caller is not permitted to modify
+    #         because it does not hold {@link
+    #         java.lang.RuntimePermission}<tt>("modifyThread")</tt>,
+    #         or the security manager's <tt>checkAccess</tt> method
+    #         denies access.
     def shutdown_now
       raise NotImplementedError
     end
@@ -208,7 +206,7 @@ module Java::Util::Concurrent
     # @param timeout the maximum time to wait
     # @param unit the time unit of the timeout argument
     # @return <tt>true</tt> if this executor terminated and
-    # <tt>false</tt> if the timeout elapsed before termination
+    #         <tt>false</tt> if the timeout elapsed before termination
     # @throws InterruptedException if interrupted while waiting
     def await_termination(timeout, unit)
       raise NotImplementedError
@@ -233,7 +231,7 @@ module Java::Util::Concurrent
     # @param task the task to submit
     # @return a Future representing pending completion of the task
     # @throws RejectedExecutionException if the task cannot be
-    # scheduled for execution
+    #         scheduled for execution
     # @throws NullPointerException if the task is null
     def submit(task)
       raise NotImplementedError
@@ -248,7 +246,7 @@ module Java::Util::Concurrent
     # @param result the result to return
     # @return a Future representing pending completion of the task
     # @throws RejectedExecutionException if the task cannot be
-    # scheduled for execution
+    #         scheduled for execution
     # @throws NullPointerException if the task is null
     def submit(task, result)
       raise NotImplementedError
@@ -262,7 +260,7 @@ module Java::Util::Concurrent
     # @param task the task to submit
     # @return a Future representing pending completion of the task
     # @throws RejectedExecutionException if the task cannot be
-    # scheduled for execution
+    #         scheduled for execution
     # @throws NullPointerException if the task is null
     def submit(task)
       raise NotImplementedError
@@ -280,13 +278,13 @@ module Java::Util::Concurrent
     # 
     # @param tasks the collection of tasks
     # @return A list of Futures representing the tasks, in the same
-    # sequential order as produced by the iterator for the
-    # given task list, each of which has completed.
+    #         sequential order as produced by the iterator for the
+    #         given task list, each of which has completed.
     # @throws InterruptedException if interrupted while waiting, in
-    # which case unfinished tasks are cancelled.
+    #         which case unfinished tasks are cancelled.
     # @throws NullPointerException if tasks or any of its elements are <tt>null</tt>
     # @throws RejectedExecutionException if any task cannot be
-    # scheduled for execution
+    #         scheduled for execution
     def invoke_all(tasks)
       raise NotImplementedError
     end
@@ -307,16 +305,16 @@ module Java::Util::Concurrent
     # @param timeout the maximum time to wait
     # @param unit the time unit of the timeout argument
     # @return a list of Futures representing the tasks, in the same
-    # sequential order as produced by the iterator for the
-    # given task list. If the operation did not time out,
-    # each task will have completed. If it did time out, some
-    # of these tasks will not have completed.
+    #         sequential order as produced by the iterator for the
+    #         given task list. If the operation did not time out,
+    #         each task will have completed. If it did time out, some
+    #         of these tasks will not have completed.
     # @throws InterruptedException if interrupted while waiting, in
-    # which case unfinished tasks are cancelled
+    #         which case unfinished tasks are cancelled
     # @throws NullPointerException if tasks, any of its elements, or
-    # unit are <tt>null</tt>
+    #         unit are <tt>null</tt>
     # @throws RejectedExecutionException if any task cannot be scheduled
-    # for execution
+    #         for execution
     def invoke_all(tasks, timeout, unit)
       raise NotImplementedError
     end
@@ -333,11 +331,11 @@ module Java::Util::Concurrent
     # @return the result returned by one of the tasks
     # @throws InterruptedException if interrupted while waiting
     # @throws NullPointerException if tasks or any of its elements
-    # are <tt>null</tt>
+    #         are <tt>null</tt>
     # @throws IllegalArgumentException if tasks is empty
     # @throws ExecutionException if no task successfully completes
     # @throws RejectedExecutionException if tasks cannot be scheduled
-    # for execution
+    #         for execution
     def invoke_any(tasks)
       raise NotImplementedError
     end
@@ -357,12 +355,12 @@ module Java::Util::Concurrent
     # @return the result returned by one of the tasks.
     # @throws InterruptedException if interrupted while waiting
     # @throws NullPointerException if tasks, any of its elements, or
-    # unit are <tt>null</tt>
+    #         unit are <tt>null</tt>
     # @throws TimeoutException if the given timeout elapses before
-    # any task successfully completes
+    #         any task successfully completes
     # @throws ExecutionException if no task successfully completes
     # @throws RejectedExecutionException if tasks cannot be scheduled
-    # for execution
+    #         for execution
     def invoke_any(tasks, timeout, unit)
       raise NotImplementedError
     end

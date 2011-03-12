@@ -123,8 +123,8 @@ module Java::Io
     # 
     # @param      b   the <code>byte</code> to be written.
     # @exception IOException if the pipe is <a href=#BROKEN> broken</a>,
-    # {@link #connect(java.io.PipedInputStream) unconnected},
-    # closed, or if an I/O error occurs.
+    #          {@link #connect(java.io.PipedInputStream) unconnected},
+    #          closed, or if an I/O error occurs.
     def write(b)
       if ((@sink).nil?)
         raise IOException.new("Pipe not connected")
@@ -142,8 +142,8 @@ module Java::Io
     # @param      off   the start offset in the data.
     # @param      len   the number of bytes to write.
     # @exception IOException if the pipe is <a href=#BROKEN> broken</a>,
-    # {@link #connect(java.io.PipedInputStream) unconnected},
-    # closed, or if an I/O error occurs.
+    #          {@link #connect(java.io.PipedInputStream) unconnected},
+    #          closed, or if an I/O error occurs.
     def write(b, off, len)
       if ((@sink).nil?)
         raise IOException.new("Pipe not connected")

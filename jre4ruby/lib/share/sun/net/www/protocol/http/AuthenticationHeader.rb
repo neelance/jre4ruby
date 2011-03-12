@@ -41,7 +41,7 @@ module Sun::Net::Www::Protocol::Http
   # Some examples:
   # 
   # WWW-Authenticate: Basic realm="foo" Digest realm="bar" NTLM
-  # Note the realm parameter must be associated with the particular scheme.
+  #  Note the realm parameter must be associated with the particular scheme.
   # 
   # or
   # 
@@ -58,15 +58,15 @@ module Sun::Net::Www::Protocol::Http
   # the authentication header. This is the reason why the raw header field is used for ntlm.
   # 
   # At present, the class chooses schemes in following order :
-  # 1. Negotiate (if supported)
-  # 2. Kerberos (if supported)
-  # 3. Digest
-  # 4. NTLM (if supported)
-  # 5. Basic
+  #      1. Negotiate (if supported)
+  #      2. Kerberos (if supported)
+  #      3. Digest
+  #      4. NTLM (if supported)
+  #      5. Basic
   # 
   # This choice can be modified by setting a system property:
   # 
-  # -Dhttp.auth.preference="scheme"
+  #      -Dhttp.auth.preference="scheme"
   # 
   # which in this case, specifies that "scheme" should be used as the auth scheme when offered
   # disregarding the default prioritisation. If scheme is not offered then the default priority
@@ -151,7 +151,6 @@ module Sun::Net::Www::Protocol::Http
     
     typesig { [String, MessageHeader] }
     # Name of the header to look for
-    # 
     # parse a set of authentication headers and choose the preferred scheme
     # that we support
     def initialize(hdrname, response)

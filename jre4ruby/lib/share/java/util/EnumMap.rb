@@ -63,8 +63,8 @@ module Java::Util
   # unsynchronized access:
   # 
   # <pre>
-  # Map&lt;EnumKey, V&gt; m
-  # = Collections.synchronizedMap(new EnumMap&lt;EnumKey, V&gt;(...));
+  #     Map&lt;EnumKey, V&gt; m
+  #         = Collections.synchronizedMap(new EnumMap&lt;EnumKey, V&gt;(...));
   # </pre>
   # 
   # <p>Implementation note: All basic operations execute in constant time.
@@ -195,7 +195,7 @@ module Java::Util
     # 
     # @param m the map from which to initialize this enum map
     # @throws IllegalArgumentException if <tt>m</tt> is not an
-    # <tt>EnumMap</tt> instance and contains no mappings
+    #     <tt>EnumMap</tt> instance and contains no mappings
     # @throws NullPointerException if <tt>m</tt> is null
     def initialize(m)
       @key_type = nil
@@ -225,7 +225,6 @@ module Java::Util
     
     typesig { [] }
     # Query Operations
-    # 
     # Returns the number of key-value mappings in this map.
     # 
     # @return the number of key-value mappings in this map
@@ -255,7 +254,7 @@ module Java::Util
     # 
     # @param key the key whose presence in this map is to be tested
     # @return <tt>true</tt> if this map contains a mapping for the specified
-    # key
+    #            key
     def contains_key(key)
       return is_valid_key(key) && !(@vals[(key).ordinal]).nil?
     end
@@ -285,7 +284,6 @@ module Java::Util
     
     typesig { [Object, Object] }
     # Modification Operations
-    # 
     # Associates the specified value with the specified key in this map.
     # If the map previously contained a mapping for this key, the old
     # value is replaced.
@@ -294,9 +292,9 @@ module Java::Util
     # @param value the value to be associated with the specified key
     # 
     # @return the previous value associated with specified key, or
-    # <tt>null</tt> if there was no mapping for key.  (A <tt>null</tt>
-    # return can also indicate that the map previously associated
-    # <tt>null</tt> with the specified key.)
+    #     <tt>null</tt> if there was no mapping for key.  (A <tt>null</tt>
+    #     return can also indicate that the map previously associated
+    #     <tt>null</tt> with the specified key.)
     # @throws NullPointerException if the specified key is null
     def put(key, value)
       type_check(key)
@@ -314,9 +312,9 @@ module Java::Util
     # 
     # @param key the key whose mapping is to be removed from the map
     # @return the previous value associated with specified key, or
-    # <tt>null</tt> if there was no entry for key.  (A <tt>null</tt>
-    # return can also indicate that the map previously associated
-    # <tt>null</tt> with the specified key.)
+    #     <tt>null</tt> if there was no entry for key.  (A <tt>null</tt>
+    #     return can also indicate that the map previously associated
+    #     <tt>null</tt> with the specified key.)
     def remove(key)
       if (!is_valid_key(key))
         return nil
@@ -358,14 +356,13 @@ module Java::Util
     
     typesig { [Map] }
     # Bulk Operations
-    # 
     # Copies all of the mappings from the specified map to this map.
     # These mappings will replace any mappings that this map had for
     # any of the keys currently in the specified map.
     # 
     # @param m the mappings to be stored in this map
     # @throws NullPointerException the specified map is null, or if
-    # one or more keys in the specified map are null
+    #     one or more keys in the specified map are null
     def put_all(m)
       if (m.is_a?(EnumMap))
         em = m
@@ -399,7 +396,6 @@ module Java::Util
     end
     
     # Views
-    # 
     # This field is initialized to contain an instance of the entry set
     # view the first time this view is requested.  The view is stateless,
     # so there's no reason to create more than one.
@@ -815,7 +811,6 @@ module Java::Util
     
     typesig { [Object] }
     # Comparison and hashing
-    # 
     # Compares the specified object with this map for equality.  Returns
     # <tt>true</tt> if the given object is also a map and the two maps
     # represent the same mappings, as specified in the {@link
@@ -886,9 +881,9 @@ module Java::Util
     # serialize it).
     # 
     # @serialData The <i>size</i> of the enum map (the number of key-value
-    # mappings) is emitted (int), followed by the key (Object)
-    # and value (Object) for each key-value mapping represented
-    # by the enum map.
+    #             mappings) is emitted (int), followed by the key (Object)
+    #             and value (Object) for each key-value mapping represented
+    #             by the enum map.
     def write_object(s)
       # Write out the key type and any hidden stuff
       s.default_write_object

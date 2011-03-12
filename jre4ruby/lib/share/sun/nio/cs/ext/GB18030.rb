@@ -366,7 +366,7 @@ module Sun::Nio::Cs::Ext
                       else
                         if (offset >= 0x93a9 && offset <= 0x99fb)
                           da[((dp += 1) - 1)] = get_char(offset)
-                        # Supplemental UCS planes handled via surrogates
+                          # Supplemental UCS planes handled via surrogates
                         else
                           if (offset >= 0x2e248 && offset < 0x12e248)
                             if (offset >= 0x12e248)
@@ -477,7 +477,7 @@ module Sun::Nio::Cs::Ext
                       else
                         if (offset >= 0x93a9 && offset <= 0x99f9)
                           dst.put(get_char(offset))
-                        # Supplemental UCS planes handled via surrogates
+                          # Supplemental UCS planes handled via surrogates
                         else
                           if (offset >= 0x2e248 && offset < 0x12e248)
                             if (offset >= 0x12e248)

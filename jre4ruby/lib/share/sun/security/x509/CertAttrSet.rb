@@ -54,7 +54,7 @@ module Sun::Security::X509
     # Returns a short string describing this certificate attribute.
     # 
     # @return value of this certificate attribute in
-    # printable form.
+    #         printable form.
     def to_s
       raise NotImplementedError
     end

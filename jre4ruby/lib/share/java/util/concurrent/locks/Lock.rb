@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # This file is available under and governed by the GNU General Public
 # License version 2 only, as published by the Free Software Foundation.
 # However, the following notice accompanied the original version of this
@@ -81,12 +79,12 @@ module Java::Util::Concurrent::Locks
   # should be used:
   # 
   # <pre><tt>     Lock l = ...;
-  # l.lock();
-  # try {
-  # // access the resource protected by this lock
-  # } finally {
-  # l.unlock();
-  # }
+  #     l.lock();
+  #     try {
+  #         // access the resource protected by this lock
+  #     } finally {
+  #         l.unlock();
+  #     }
   # </tt></pre>
   # 
   # When locking and unlocking occur in different scopes, care must be
@@ -229,8 +227,8 @@ module Java::Util::Concurrent::Locks
     # be documented by that {@code Lock} implementation.
     # 
     # @throws InterruptedException if the current thread is
-    # interrupted while acquiring the lock (and interruption
-    # of lock acquisition is supported).
+    #         interrupted while acquiring the lock (and interruption
+    #         of lock acquisition is supported).
     def lock_interruptibly
       raise NotImplementedError
     end
@@ -245,22 +243,22 @@ module Java::Util::Concurrent::Locks
     # 
     # <p>A typical usage idiom for this method would be:
     # <pre>
-    # Lock lock = ...;
-    # if (lock.tryLock()) {
-    # try {
-    # // manipulate protected state
-    # } finally {
-    # lock.unlock();
-    # }
-    # } else {
-    # // perform alternative actions
-    # }
+    #      Lock lock = ...;
+    #      if (lock.tryLock()) {
+    #          try {
+    #              // manipulate protected state
+    #          } finally {
+    #              lock.unlock();
+    #          }
+    #      } else {
+    #          // perform alternative actions
+    #      }
     # </pre>
     # This usage ensures that the lock is unlocked if it was acquired, and
     # doesn't try to unlock if the lock was not acquired.
     # 
     # @return {@code true} if the lock was acquired and
-    # {@code false} otherwise
+    #         {@code false} otherwise
     def try_lock
       raise NotImplementedError
     end
@@ -317,11 +315,11 @@ module Java::Util::Concurrent::Locks
     # @param time the maximum time to wait for the lock
     # @param unit the time unit of the {@code time} argument
     # @return {@code true} if the lock was acquired and {@code false}
-    # if the waiting time elapsed before the lock was acquired
+    #         if the waiting time elapsed before the lock was acquired
     # 
     # @throws InterruptedException if the current thread is interrupted
-    # while acquiring the lock (and interruption of lock
-    # acquisition is supported)
+    #         while acquiring the lock (and interruption of lock
+    #         acquisition is supported)
     def try_lock(time, unit)
       raise NotImplementedError
     end
@@ -358,7 +356,7 @@ module Java::Util::Concurrent::Locks
     # 
     # @return A new {@link Condition} instance for this {@code Lock} instance
     # @throws UnsupportedOperationException if this {@code Lock}
-    # implementation does not support conditions
+    #         implementation does not support conditions
     def new_condition
       raise NotImplementedError
     end

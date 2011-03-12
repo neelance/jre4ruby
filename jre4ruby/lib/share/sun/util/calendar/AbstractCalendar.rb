@@ -172,7 +172,7 @@ module Sun::Util::Calendar
       date.set_zone_offset(zone_offset)
       date.set_daylight_saving(saving)
       days += millis / DAY_IN_MILLIS
-      ms += RJava.cast_to_int((millis % DAY_IN_MILLIS))
+      ms += ((millis % DAY_IN_MILLIS)).to_int
       if (ms >= DAY_IN_MILLIS)
         # at most ms is (DAY_IN_MILLIS - 1) * 2.
         ms -= DAY_IN_MILLIS
@@ -210,10 +210,10 @@ module Sun::Util::Calendar
         offsets = Array.typed(::Java::Int).new(2) { 0 }
         if (date.is_standard_time)
           # 1) 2:30am during starting-DST transition is
-          # intrepreted as 2:30am ST
+          #    intrepreted as 2:30am ST
           # 2) 5:00pm during DST is still interpreted as 5:00pm ST
           # 3) 1:30am during ending-DST transition is interpreted
-          # as 1:30am ST (after transition)
+          #    as 1:30am ST (after transition)
           if (zi.is_a?(ZoneInfo))
             (zi).get_offsets_by_standard(ms, offsets)
             zone_offset = offsets[0]
@@ -222,10 +222,10 @@ module Sun::Util::Calendar
           end
         else
           # 1) 2:30am during starting-DST transition is
-          # intrepreted as 3:30am DT
+          #    intrepreted as 3:30am DT
           # 2) 5:00pm during DST is intrepreted as 5:00pm DT
           # 3) 1:30am during ending-DST transition is interpreted
-          # as 1:30am DT/0:30am ST (before transition)
+          #    as 1:30am DT/0:30am ST (before transition)
           if (zi.is_a?(ZoneInfo))
             zone_offset = (zi).get_offsets_by_wall(ms, offsets)
           else
@@ -345,7 +345,6 @@ module Sun::Util::Calendar
       # @param fixedDate the fixed date
       # @param dayOfWeek the day of week
       # @return the calculated date
-      # 
       # public for java.util.GregorianCalendar
       def get_day_of_week_date_on_or_before(fixed_date, day_of_week)
         fd = fixed_date - (day_of_week - 1)
@@ -422,13 +421,13 @@ module Sun::Util::Calendar
       if (!(days).equal?(0))
         date.set_time_of_day(fraction)
       end
-      date.set_millis(RJava.cast_to_int((fraction % 1000)))
+      date.set_millis(((fraction % 1000)).to_int)
       fraction /= 1000
-      date.set_seconds(RJava.cast_to_int((fraction % 60)))
+      date.set_seconds(((fraction % 60)).to_int)
       fraction /= 60
-      date.set_minutes(RJava.cast_to_int((fraction % 60)))
-      date.set_hours(RJava.cast_to_int((fraction / 60)))
-      return RJava.cast_to_int(days)
+      date.set_minutes(((fraction % 60)).to_int)
+      date.set_hours(((fraction / 60)).to_int)
+      return (days).to_int
     end
     
     private

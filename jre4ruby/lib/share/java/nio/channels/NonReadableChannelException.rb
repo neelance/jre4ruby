@@ -23,8 +23,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # -- This file was mechanically generated: Do not edit! -- //
 module Java::Nio::Channels
   module NonReadableChannelExceptionImports #:nodoc:

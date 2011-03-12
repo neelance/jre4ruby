@@ -77,28 +77,28 @@ module Java::Nio::Channels
     # complete. </p>
     # 
     # @param  src
-    # The buffer from which bytes are to be retrieved
+    #         The buffer from which bytes are to be retrieved
     # 
     # @return The number of bytes written, possibly zero
     # 
     # @throws  NonWritableChannelException
-    # If this channel was not opened for writing
+    #          If this channel was not opened for writing
     # 
     # @throws  ClosedChannelException
-    # If this channel is closed
+    #          If this channel is closed
     # 
     # @throws  AsynchronousCloseException
-    # If another thread closes this channel
-    # while the write operation is in progress
+    #          If another thread closes this channel
+    #          while the write operation is in progress
     # 
     # @throws  ClosedByInterruptException
-    # If another thread interrupts the current thread
-    # while the write operation is in progress, thereby
-    # closing the channel and setting the current thread's
-    # interrupt status
+    #          If another thread interrupts the current thread
+    #          while the write operation is in progress, thereby
+    #          closing the channel and setting the current thread's
+    #          interrupt status
     # 
     # @throws  IOException
-    # If some other I/O error occurs
+    #          If some other I/O error occurs
     def write(src)
       raise NotImplementedError
     end

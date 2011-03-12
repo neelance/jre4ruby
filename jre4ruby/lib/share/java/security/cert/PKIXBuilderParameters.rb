@@ -159,9 +159,9 @@ module Java::Security::Cert
     # certification path of smaller length.
     # 
     # @param maxPathLength the maximum number of non-self-issued intermediate
-    # certificates that may exist in a certification path
+    #  certificates that may exist in a certification path
     # @throws InvalidParameterException if <code>maxPathLength</code> is set
-    # to a value less than -1
+    #  to a value less than -1
     # 
     # @see #getMaxPathLength
     def set_max_path_length(max_path_length)
@@ -177,7 +177,7 @@ module Java::Security::Cert
     # the {@link #setMaxPathLength} method for more details.
     # 
     # @return the maximum number of non-self-issued intermediate certificates
-    # that may exist in a certification path, or -1 if there is no limit
+    #  that may exist in a certification path, or -1 if there is no limit
     # 
     # @see #setMaxPathLength
     def get_max_path_length

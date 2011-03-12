@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996 - 1999 - All Rights Reserved
 # 
@@ -50,20 +48,7 @@ module Sun::Text::Resources
     typesig { [] }
     # Overrides ListResourceBundle
     def get_contents
-      # era strings
-      # decimal pattern
-      # currency pattern
-      # percent pattern
-      # full time pattern
-      # long time pattern
-      # medium time pattern
-      # short time pattern
-      # full date pattern
-      # long date pattern
-      # medium date pattern
-      # short date pattern
-      # date-time pattern
-      return Array.typed(Array.typed(Object)).new([Array.typed(Object).new(["Eras", Array.typed(String).new([("".to_u << 0x897f << "".to_u << 0x5143 << "".to_u << 0x524d << ""), ("".to_u << 0x897f << "".to_u << 0x5143 << "")])]), Array.typed(Object).new(["NumberPatterns", Array.typed(String).new(["#,##0.###;-#,##0.###", ("".to_u << 0x00A4 << "#,##0.00;-".to_u << 0x00A4 << "#,##0.00"), "#,##0%"])]), Array.typed(Object).new(["DateTimePatterns", Array.typed(String).new([("ahh'".to_u << 0x6642 << "'mm'".to_u << 0x5206 << "'ss'".to_u << 0x79d2 << "' z"), ("ahh'".to_u << 0x6642 << "'mm'".to_u << 0x5206 << "'ss'".to_u << 0x79d2 << "'"), "a hh:mm:ss", "a h:mm", ("yyyy'".to_u << 0x5e74 << "'M'".to_u << 0x6708 << "'d'".to_u << 0x65e5 << "' EEEE"), ("yyyy'".to_u << 0x5e74 << "'M'".to_u << 0x6708 << "'d'".to_u << 0x65e5 << "'"), "yyyy/M/d", "yyyy/M/d", "{1} {0}"])]), Array.typed(Object).new(["DateTimePatternChars", "GyMdkHmsSEDFwWahKzZ"]), ])
+      return Array.typed(Array.typed(Object)).new([Array.typed(Object).new(["Eras", Array.typed(String).new([("".to_u << 0x897f << "".to_u << 0x5143 << "".to_u << 0x524d << ""), ("".to_u << 0x897f << "".to_u << 0x5143 << "")])]), Array.typed(Object).new(["NumberPatterns", Array.typed(String).new(["#,##0.###;-#,##0.###", ("".to_u << 0x00A4 << "#,##0.00;-".to_u << 0x00A4 << "#,##0.00"), "#,##0%"])]), Array.typed(Object).new(["DateTimePatterns", Array.typed(String).new([("ahh'".to_u << 0x6642 << "'mm'".to_u << 0x5206 << "'ss'".to_u << 0x79d2 << "' z"), ("ahh'".to_u << 0x6642 << "'mm'".to_u << 0x5206 << "'ss'".to_u << 0x79d2 << "'"), "a hh:mm:ss", "a h:mm", ("yyyy'".to_u << 0x5e74 << "'M'".to_u << 0x6708 << "'d'".to_u << 0x65e5 << "' EEEE"), ("yyyy'".to_u << 0x5e74 << "'M'".to_u << 0x6708 << "'d'".to_u << 0x65e5 << "'"), "yyyy/M/d", "yyyy/M/d", "{1} {0}"])]), Array.typed(Object).new(["DateTimePatternChars", "GyMdkHmsSEDFwWahKzZ"])])
     end
     
     typesig { [] }

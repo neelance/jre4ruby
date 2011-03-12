@@ -47,8 +47,8 @@ module Sun::Security::Provider
     
     typesig { [] }
     def initialize
-      # We are the SUN provider
       super("SUN", 1.6, INFO)
+      # We are the SUN provider
       # if there is no security manager installed, put directly into
       # the provider. Otherwise, create a temporary map and use a
       # doPrivileged() call at the end to transfer the contents

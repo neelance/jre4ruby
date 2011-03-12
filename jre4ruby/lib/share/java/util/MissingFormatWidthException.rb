@@ -56,7 +56,7 @@ module Java::Util
     # specifier.
     # 
     # @param  s
-    # The format specifier which does not have a width
+    #         The format specifier which does not have a width
     def initialize(s)
       @s = nil
       super()

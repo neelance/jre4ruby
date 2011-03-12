@@ -115,6 +115,7 @@ module Sun::Reflect
     class_module.module_eval {
       # ---------------------------------------------------------------------------
       # Internals only below this point
+      # 
       when_class_loaded do
         Reflection.register_fields_to_filter(ConstantPool, Array.typed(String).new(["constantPoolOop"]))
       end

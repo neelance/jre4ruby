@@ -86,7 +86,7 @@ module Java::Security::Cert
     # <code>Collection</code> must have fail-fast iterators.
     # 
     # @param collection a <code>Collection</code> of
-    # <code>Certificate</code>s and <code>CRL</code>s
+    #        <code>Certificate</code>s and <code>CRL</code>s
     # @exception NullPointerException if <code>collection</code> is
     # <code>null</code>
     def initialize(collection)

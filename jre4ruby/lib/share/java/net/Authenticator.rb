@@ -56,7 +56,6 @@ module Java::Net
   # 
   # @author  Bill Foote
   # @since   1.2
-  # 
   # There are no abstract methods, but to be useful the user must
   # subclass.
   class Authenticator 
@@ -197,12 +196,12 @@ module Java::Net
       # This may result in a java.lang.SecurityException.
       # 
       # @param   a       The authenticator to be set. If a is <code>null</code> then
-      # any previously set authenticator is removed.
+      #                  any previously set authenticator is removed.
       # 
       # @throws SecurityException
-      # if a security manager exists and its
-      # <code>checkPermission</code> method doesn't allow
-      # setting the default authenticator.
+      #        if a security manager exists and its
+      #        <code>checkPermission</code> method doesn't allow
+      #        setting the default authenticator.
       # 
       # @see SecurityManager#checkPermission
       # @see java.net.NetPermission
@@ -227,19 +226,19 @@ module Java::Net
       # This may result in a java.lang.SecurityException.
       # 
       # @param addr The InetAddress of the site requesting authorization,
-      # or null if not known.
+      #             or null if not known.
       # @param port the port for the requested connection
       # @param protocol The protocol that's requesting the connection
-      # ({@link java.net.Authenticator#getRequestingProtocol()})
+      #          ({@link java.net.Authenticator#getRequestingProtocol()})
       # @param prompt A prompt string for the user
       # @param scheme The authentication scheme
       # 
       # @return The username/password, or null if one can't be gotten.
       # 
       # @throws SecurityException
-      # if a security manager exists and its
-      # <code>checkPermission</code> method doesn't allow
-      # the password authentication request.
+      #        if a security manager exists and its
+      #        <code>checkPermission</code> method doesn't allow
+      #        the password authentication request.
       # 
       # @see SecurityManager#checkPermission
       # @see java.net.NetPermission
@@ -278,19 +277,19 @@ module Java::Net
       # 
       # @param host The hostname of the site requesting authentication.
       # @param addr The InetAddress of the site requesting authentication,
-      # or null if not known.
+      #             or null if not known.
       # @param port the port for the requested connection.
       # @param protocol The protocol that's requesting the connection
-      # ({@link java.net.Authenticator#getRequestingProtocol()})
+      #          ({@link java.net.Authenticator#getRequestingProtocol()})
       # @param prompt A prompt string for the user which identifies the authentication realm.
       # @param scheme The authentication scheme
       # 
       # @return The username/password, or null if one can't be gotten.
       # 
       # @throws SecurityException
-      # if a security manager exists and its
-      # <code>checkPermission</code> method doesn't allow
-      # the password authentication request.
+      #        if a security manager exists and its
+      #        <code>checkPermission</code> method doesn't allow
+      #        the password authentication request.
       # 
       # @see SecurityManager#checkPermission
       # @see java.net.NetPermission
@@ -329,22 +328,22 @@ module Java::Net
       # 
       # @param host The hostname of the site requesting authentication.
       # @param addr The InetAddress of the site requesting authorization,
-      # or null if not known.
+      #             or null if not known.
       # @param port the port for the requested connection
       # @param protocol The protocol that's requesting the connection
-      # ({@link java.net.Authenticator#getRequestingProtocol()})
+      #          ({@link java.net.Authenticator#getRequestingProtocol()})
       # @param prompt A prompt string for the user
       # @param scheme The authentication scheme
       # @param url The requesting URL that caused the authentication
       # @param reqType The type (server or proxy) of the entity requesting
-      # authentication.
+      #              authentication.
       # 
       # @return The username/password, or null if one can't be gotten.
       # 
       # @throws SecurityException
-      # if a security manager exists and its
-      # <code>checkPermission</code> method doesn't allow
-      # the password authentication request.
+      #        if a security manager exists and its
+      #        <code>checkPermission</code> method doesn't allow
+      #        the password authentication request.
       # 
       # @see SecurityManager#checkPermission
       # @see java.net.NetPermission
@@ -382,7 +381,7 @@ module Java::Net
     # if not available.
     # 
     # @return the hostname of the connection requiring authentication, or null
-    # if it's not available.
+    #          if it's not available.
     # @since 1.4
     def get_requesting_host
       return @requesting_host
@@ -394,7 +393,7 @@ module Java::Net
     # if not available.
     # 
     # @return the InetAddress of the site requesting authorization, or null
-    # if it's not available.
+    #          if it's not available.
     def get_requesting_site
       return @requesting_site
     end
@@ -413,7 +412,7 @@ module Java::Net
     # example, "SOCKS" for a password-protected SOCKS5 firewall.
     # 
     # @return the protcol, optionally followed by "/version", where
-    # version is a version number.
+    #          version is a version number.
     # 
     # @see java.net.URL#getProtocol()
     def get_requesting_protocol
@@ -424,7 +423,7 @@ module Java::Net
     # Gets the prompt string given by the requestor.
     # 
     # @return the prompt string given by the requestor (realm for
-    # http requests)
+    #          http requests)
     def get_requesting_prompt
       return @requesting_prompt
     end
@@ -442,7 +441,7 @@ module Java::Net
     # Called when password authorization is needed.  Subclasses should
     # override the default implementation, which returns null.
     # @return The PasswordAuthentication collected from the
-    # user, or null if none is provided.
+    #          user, or null if none is provided.
     def get_password_authentication
       return nil
     end

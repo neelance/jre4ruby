@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # This file is available under and governed by the GNU General Public
 # License version 2 only, as published by the Free Software Foundation.
 # However, the following notice accompanied the original version of this
@@ -57,15 +55,15 @@ module Java::Util::Concurrent
   # <pre>
   # public class CustomThreadPoolExecutor extends ThreadPoolExecutor {
   # 
-  # static class CustomTask&lt;V&gt; implements RunnableFuture&lt;V&gt; {...}
+  #   static class CustomTask&lt;V&gt; implements RunnableFuture&lt;V&gt; {...}
   # 
-  # protected &lt;V&gt; RunnableFuture&lt;V&gt; newTaskFor(Callable&lt;V&gt; c) {
-  # return new CustomTask&lt;V&gt;(c);
-  # }
-  # protected &lt;V&gt; RunnableFuture&lt;V&gt; newTaskFor(Runnable r, V v) {
-  # return new CustomTask&lt;V&gt;(r, v);
-  # }
-  # // ... add constructors, etc.
+  #   protected &lt;V&gt; RunnableFuture&lt;V&gt; newTaskFor(Callable&lt;V&gt; c) {
+  #       return new CustomTask&lt;V&gt;(c);
+  #   }
+  #   protected &lt;V&gt; RunnableFuture&lt;V&gt; newTaskFor(Runnable r, V v) {
+  #       return new CustomTask&lt;V&gt;(r, v);
+  #   }
+  #   // ... add constructors, etc.
   # }
   # </pre>
   # @since 1.5

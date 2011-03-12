@@ -114,9 +114,9 @@ module Sun::Reflect::Generics::Visitor
       # nk might not exist (but not both). It may be that k equals 1.
       # The idea is that nk is the simple class type name that has
       # any type parameters associated with it.
-      # We process this path in two phases.
-      # First, we scan until we reach nk (if it exists).
-      # If nk does not exist, this identifies a raw class n1 ... nk-1
+      #  We process this path in two phases.
+      #  First, we scan until we reach nk (if it exists).
+      #  If nk does not exist, this identifies a raw class n1 ... nk-1
       # which we can return.
       # if nk does exist, we begin the 2nd phase.
       # Here nk defines a parameterized type. Every further step nj (j > k)

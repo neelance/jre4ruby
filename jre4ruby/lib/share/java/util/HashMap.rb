@@ -87,7 +87,7 @@ module Java::Util
   # {@link Collections#synchronizedMap Collections.synchronizedMap}
   # method.  This is best done at creation time, to prevent accidental
   # unsynchronized access to the map:<pre>
-  # Map m = Collections.synchronizedMap(new HashMap(...));</pre>
+  #   Map m = Collections.synchronizedMap(new HashMap(...));</pre>
   # 
   # <p>The iterators returned by all of this class's "collection view methods"
   # are <i>fail-fast</i>: if the map is structurally modified at any time after
@@ -196,7 +196,7 @@ module Java::Util
     # @param  initialCapacity the initial capacity
     # @param  loadFactor      the load factor
     # @throws IllegalArgumentException if the initial capacity is negative
-    # or the load factor is nonpositive
+    #         or the load factor is nonpositive
     def initialize(initial_capacity, load_factor)
       @table = nil
       @size = 0
@@ -221,7 +221,7 @@ module Java::Util
         capacity <<= 1
       end
       @load_factor = load_factor
-      @threshold = RJava.cast_to_int((capacity * load_factor))
+      @threshold = ((capacity * load_factor)).to_int
       @table = Array.typed(Entry).new(capacity) { nil }
       init
     end
@@ -249,7 +249,7 @@ module Java::Util
       super()
       @entry_set = nil
       @load_factor = DEFAULT_LOAD_FACTOR
-      @threshold = RJava.cast_to_int((DEFAULT_INITIAL_CAPACITY * DEFAULT_LOAD_FACTOR))
+      @threshold = ((DEFAULT_INITIAL_CAPACITY * DEFAULT_LOAD_FACTOR)).to_int
       @table = Array.typed(Entry).new(DEFAULT_INITIAL_CAPACITY) { nil }
       init
     end
@@ -263,13 +263,12 @@ module Java::Util
     # @param   m the map whose mappings are to be placed in this map
     # @throws  NullPointerException if the specified map is null
     def initialize(m)
-      initialize__hash_map(Math.max(RJava.cast_to_int((m.size / DEFAULT_LOAD_FACTOR)) + 1, DEFAULT_INITIAL_CAPACITY), DEFAULT_LOAD_FACTOR)
+      initialize__hash_map(Math.max(((m.size / DEFAULT_LOAD_FACTOR)).to_int + 1, DEFAULT_INITIAL_CAPACITY), DEFAULT_LOAD_FACTOR)
       put_all_for_create(m)
     end
     
     typesig { [] }
     # internal utilities
-    # 
     # Initialization hook for subclasses. This method is called
     # in all constructors and pseudo-constructors (clone, readObject)
     # after HashMap has been initialized but before any entries have
@@ -401,9 +400,9 @@ module Java::Util
     # @param key key with which the specified value is to be associated
     # @param value value to be associated with the specified key
     # @return the previous value associated with <tt>key</tt>, or
-    # <tt>null</tt> if there was no mapping for <tt>key</tt>.
-    # (A <tt>null</tt> return can also indicate that the map
-    # previously associated <tt>null</tt> with <tt>key</tt>.)
+    #         <tt>null</tt> if there was no mapping for <tt>key</tt>.
+    #         (A <tt>null</tt> return can also indicate that the map
+    #         previously associated <tt>null</tt> with <tt>key</tt>.)
     def put(key, value)
       if ((key).nil?)
         return put_for_null_key(value)
@@ -486,9 +485,9 @@ module Java::Util
     # This has the effect of preventing future calls.
     # 
     # @param newCapacity the new capacity, MUST be a power of two;
-    # must be greater than current capacity unless current
-    # capacity is MAXIMUM_CAPACITY (in which case value
-    # is irrelevant).
+    #        must be greater than current capacity unless current
+    #        capacity is MAXIMUM_CAPACITY (in which case value
+    #        is irrelevant).
     def resize(new_capacity)
       old_table = @table
       old_capacity = old_table.attr_length
@@ -499,7 +498,7 @@ module Java::Util
       new_table = Array.typed(Entry).new(new_capacity) { nil }
       transfer(new_table)
       @table = new_table
-      @threshold = RJava.cast_to_int((new_capacity * @load_factor))
+      @threshold = ((new_capacity * @load_factor)).to_int
     end
     
     typesig { [Array.typed(Entry)] }
@@ -544,7 +543,7 @@ module Java::Util
       # By using the conservative calculation, we subject ourself
       # to at most one extra resize.
       if (num_keys_to_be_added > @threshold)
-        target_capacity = RJava.cast_to_int((num_keys_to_be_added / @load_factor + 1))
+        target_capacity = ((num_keys_to_be_added / @load_factor + 1)).to_int
         if (target_capacity > MAXIMUM_CAPACITY)
           target_capacity = MAXIMUM_CAPACITY
         end
@@ -568,9 +567,9 @@ module Java::Util
     # 
     # @param  key key whose mapping is to be removed from the map
     # @return the previous value associated with <tt>key</tt>, or
-    # <tt>null</tt> if there was no mapping for <tt>key</tt>.
-    # (A <tt>null</tt> return can also indicate that the map
-    # previously associated <tt>null</tt> with <tt>key</tt>.)
+    #         <tt>null</tt> if there was no mapping for <tt>key</tt>.
+    #         (A <tt>null</tt> return can also indicate that the map
+    #         previously associated <tt>null</tt> with <tt>key</tt>.)
     def remove(key)
       e = remove_entry_for_key(key)
       return ((e).nil? ? nil : e.attr_value)
@@ -656,7 +655,7 @@ module Java::Util
     # 
     # @param value value whose presence in this map is to be tested
     # @return <tt>true</tt> if this map maps one or more keys to the
-    # specified value
+    #         specified value
     def contains_value(value)
       if ((value).nil?)
         return contains_null_value
@@ -1199,11 +1198,11 @@ module Java::Util
     # serialize it).
     # 
     # @serialData The <i>capacity</i> of the HashMap (the length of the
-    # bucket array) is emitted (int), followed by the
-    # <i>size</i> (an int, the number of key-value
-    # mappings), followed by the key (Object) and value (Object)
-    # for each key-value mapping.  The key-value mappings are
-    # emitted in no particular order.
+    #             bucket array) is emitted (int), followed by the
+    #             <i>size</i> (an int, the number of key-value
+    #             mappings), followed by the key (Object) and value (Object)
+    #             for each key-value mapping.  The key-value mappings are
+    #             emitted in no particular order.
     def write_object(s)
       i = (@size > 0) ? entry_set0.iterator : nil
       # Write out the threshold, loadfactor, and any hidden stuff

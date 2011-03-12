@@ -22,10 +22,8 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
 # -- This file was mechanically generated: Do not edit! -- //
 module Java::Nio
-  # package-private
   module ByteBufferAsDoubleBufferRBImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
@@ -37,9 +35,9 @@ module Java::Nio
     include_class_members ByteBufferAsDoubleBufferRBImports
     
     typesig { [ByteBuffer] }
+    # package-private
     def initialize(bb)
-      # package-private
-      super(bb)
+      super(bb) # package-private
     end
     
     typesig { [ByteBuffer, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int] }

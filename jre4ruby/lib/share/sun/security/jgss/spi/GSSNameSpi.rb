@@ -53,7 +53,7 @@ module Sun::Security::Jgss::Spi
     # @param name to be compared with
     # @returns true if they both refer to the same entity, else false
     # @exception GSSException with major codes of BAD_NAMETYPE,
-    # BAD_NAME, FAILURE
+    #    BAD_NAME, FAILURE
     def ==(name)
       raise NotImplementedError
     end
@@ -86,7 +86,7 @@ module Sun::Security::Jgss::Spi
     # 
     # @return the flat name representation for this object
     # @exception GSSException with major codes NAME_NOT_MN, BAD_NAME,
-    # BAD_NAME, FAILURE.
+    #    BAD_NAME, FAILURE.
     def export
       raise NotImplementedError
     end

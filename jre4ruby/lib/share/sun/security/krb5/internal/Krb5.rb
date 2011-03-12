@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5::Internal
@@ -279,7 +277,7 @@ module Sun::Security::Krb5::Internal
       
       # OSI authentication mechanism OID
       # public static final int[] OSI_AUTH_MECH_TYPE = { /*iso*/ 1, /*org*/ 3,
-      # /*dod*/ 5, /*internet*/ 1, /*security*/ 5, /*kerberosv5*/ 2 };
+      #                                               /*dod*/ 5, /*internet*/ 1, /*security*/ 5, /*kerberosv5*/ 2 };
       # Protocol constants and associated values
       # Key Types
       const_set_lazy(:KEYTYPE_NULL) { 0 }
@@ -298,7 +296,7 @@ module Sun::Security::Krb5::Internal
       const_attr_reader  :KEYTYPE_ARCFOUR_HMAC
       
       # ----------------------------------------+-----------------
-      # padata type       |padata-type value
+      #                      padata type       |padata-type value
       # ----------------------------------------+-----------------
       const_set_lazy(:PA_TGS_REQ) { 1 }
       const_attr_reader  :PA_TGS_REQ
@@ -329,7 +327,7 @@ module Sun::Security::Krb5::Internal
       # ----------------------------------------------+-----------------
       # alternate authentication type                 |method-type value
       # ----------------------------------------------+-----------------
-      # reserved values          0-63
+      #                      reserved values          0-63
       const_set_lazy(:ATT_CHALLENGE_RESPONSE) { 64 }
       const_attr_reader  :ATT_CHALLENGE_RESPONSE
       
@@ -339,9 +337,9 @@ module Sun::Security::Krb5::Internal
       const_set_lazy(:DOMAIN_X500_COMPRESS) { 1 }
       const_attr_reader  :DOMAIN_X500_COMPRESS
       
-      # reserved values        all others
+      #                      reserved values        all others
       # ----------------------------+-------+-----------------------------------------
-      # Label |Value  |Meaning
+      #                      Label |Value  |Meaning
       # ----------------------------+-------+-----------------------------------------
       const_set_lazy(:PVNO) { 5 }
       const_attr_reader  :PVNO
@@ -633,7 +631,7 @@ module Sun::Security::Krb5::Internal
       const_set_lazy(:KRB_AP_ERR_GEN_CRED) { 63 }
       const_attr_reader  :KRB_AP_ERR_GEN_CRED
       
-      # public static final int KRB_AP_ERR_CKSUM_NOKEY          =101;    //Lack of the key to generate the checksum
+      #  public static final int KRB_AP_ERR_CKSUM_NOKEY          =101;    //Lack of the key to generate the checksum
       # error codes specific to this implementation
       const_set_lazy(:KRB_AP_ERR_REQ_OPTIONS) { 101 }
       const_attr_reader  :KRB_AP_ERR_REQ_OPTIONS

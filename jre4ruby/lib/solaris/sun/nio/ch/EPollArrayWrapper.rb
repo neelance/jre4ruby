@@ -36,15 +36,15 @@ module Sun::Nio::Ch
   # Manipulates a native array of epoll_event structs on Linux:
   # 
   # typedef union epoll_data {
-  # void *ptr;
-  # int fd;
-  # __uint32_t u32;
-  # __uint64_t u64;
-  # } epoll_data_t;
+  #     void *ptr;
+  #     int fd;
+  #     __uint32_t u32;
+  #     __uint64_t u64;
+  #  } epoll_data_t;
   # 
   # struct epoll_event {
-  # __uint32_t events;
-  # epoll_data_t data;
+  #     __uint32_t events;
+  #     epoll_data_t data;
   # };
   # 
   # The system call to wait for I/O events is epoll_wait(2). It populates an

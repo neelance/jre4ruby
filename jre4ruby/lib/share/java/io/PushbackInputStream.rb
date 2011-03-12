@@ -133,10 +133,10 @@ module Java::Io
     # input stream and returns whatever value that method returns.
     # 
     # @return     the next byte of data, or <code>-1</code> if the end of the
-    # stream has been reached.
+    #             stream has been reached.
     # @exception  IOException  if this input stream has been closed by
-    # invoking its {@link #close()} method,
-    # or an I/O error occurs.
+    #             invoking its {@link #close()} method,
+    #             or an I/O error occurs.
     # @see        java.io.InputStream#read()
     def read
       ensure_open
@@ -158,15 +158,15 @@ module Java::Io
     # @param      off   the start offset in the destination array <code>b</code>
     # @param      len   the maximum number of bytes read.
     # @return     the total number of bytes read into the buffer, or
-    # <code>-1</code> if there is no more data because the end of
-    # the stream has been reached.
+    #             <code>-1</code> if there is no more data because the end of
+    #             the stream has been reached.
     # @exception  NullPointerException If <code>b</code> is <code>null</code>.
     # @exception  IndexOutOfBoundsException If <code>off</code> is negative,
     # <code>len</code> is negative, or <code>len</code> is greater than
     # <code>b.length - off</code>
     # @exception  IOException  if this input stream has been closed by
-    # invoking its {@link #close()} method,
-    # or an I/O error occurs.
+    #             invoking its {@link #close()} method,
+    #             or an I/O error occurs.
     # @see        java.io.InputStream#read(byte[], int, int)
     def read(b, off, len)
       ensure_open
@@ -207,10 +207,10 @@ module Java::Io
     # <code>(byte)b</code>.
     # 
     # @param      b   the <code>int</code> value whose low-order
-    # byte is to be pushed back.
+    #                  byte is to be pushed back.
     # @exception IOException If there is not enough room in the pushback
-    # buffer for the byte, or this input stream has been closed by
-    # invoking its {@link #close()} method.
+    #            buffer for the byte, or this input stream has been closed by
+    #            invoking its {@link #close()} method.
     def unread(b)
       ensure_open
       if ((@pos).equal?(0))
@@ -229,9 +229,9 @@ module Java::Io
     # @param off the start offset of the data.
     # @param len the number of bytes to push back.
     # @exception IOException If there is not enough room in the pushback
-    # buffer for the specified number of bytes,
-    # or this input stream has been closed by
-    # invoking its {@link #close()} method.
+    #            buffer for the specified number of bytes,
+    #            or this input stream has been closed by
+    #            invoking its {@link #close()} method.
     # @since     JDK1.1
     def unread(b, off, len)
       ensure_open
@@ -250,9 +250,9 @@ module Java::Io
     # 
     # @param b the byte array to push back
     # @exception IOException If there is not enough room in the pushback
-    # buffer for the specified number of bytes,
-    # or this input stream has been closed by
-    # invoking its {@link #close()} method.
+    #            buffer for the specified number of bytes,
+    #            or this input stream has been closed by
+    #            invoking its {@link #close()} method.
     # @since     JDK1.1
     def unread(b)
       unread(b, 0, b.attr_length)
@@ -270,10 +270,10 @@ module Java::Io
     # java.io.FilterInputStream#available available}.
     # 
     # @return     the number of bytes that can be read (or skipped over) from
-    # the input stream without blocking.
+    #             the input stream without blocking.
     # @exception  IOException  if this input stream has been closed by
-    # invoking its {@link #close()} method,
-    # or an I/O error occurs.
+    #             invoking its {@link #close()} method,
+    #             or an I/O error occurs.
     # @see        java.io.FilterInputStream#in
     # @see        java.io.InputStream#available()
     def available
@@ -296,9 +296,9 @@ module Java::Io
     # @param      n  {@inheritDoc}
     # @return     {@inheritDoc}
     # @exception  IOException  if the stream does not support seek,
-    # or the stream has been closed by
-    # invoking its {@link #close()} method,
-    # or an I/O error occurs.
+    #            or the stream has been closed by
+    #            invoking its {@link #close()} method,
+    #            or an I/O error occurs.
     # @see        java.io.FilterInputStream#in
     # @see        java.io.InputStream#skip(long n)
     # @since      1.2
@@ -326,7 +326,7 @@ module Java::Io
     # <code>reset</code> methods, which it does not.
     # 
     # @return   <code>false</code>, since this class does not support the
-    # <code>mark</code> and <code>reset</code> methods.
+    #           <code>mark</code> and <code>reset</code> methods.
     # @see     java.io.InputStream#mark(int)
     # @see     java.io.InputStream#reset()
     def mark_supported
@@ -340,7 +340,7 @@ module Java::Io
     # does nothing.
     # 
     # @param   readlimit   the maximum limit of bytes that can be read before
-    # the mark position becomes invalid.
+    #                      the mark position becomes invalid.
     # @see     java.io.InputStream#reset()
     def mark(readlimit)
       synchronized(self) do

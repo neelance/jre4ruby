@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5
@@ -48,21 +46,21 @@ module Sun::Security::Krb5
   # key is defined in RFC 4120 as:
   # 
   # EncryptionKey   ::= SEQUENCE {
-  # keytype         [0] Int32 -- actually encryption type --,
-  # keyvalue        [1] OCTET STRING
+  #         keytype         [0] Int32 -- actually encryption type --,
+  #         keyvalue        [1] OCTET STRING
   # }
   # 
   # keytype
-  # This field specifies the encryption type of the encryption key
-  # that follows in the keyvalue field.  Although its name is
-  # "keytype", it actually specifies an encryption type.  Previously,
-  # multiple cryptosystems that performed encryption differently but
-  # were capable of using keys with the same characteristics were
-  # permitted to share an assigned number to designate the type of
-  # key; this usage is now deprecated.
+  #     This field specifies the encryption type of the encryption key
+  #     that follows in the keyvalue field.  Although its name is
+  #     "keytype", it actually specifies an encryption type.  Previously,
+  #     multiple cryptosystems that performed encryption differently but
+  #     were capable of using keys with the same characteristics were
+  #     permitted to share an assigned number to designate the type of
+  #     key; this usage is now deprecated.
   # 
   # keyvalue
-  # This field contains the key itself, encoded as an octet string.
+  #     This field contains the key itself, encoded as an octet string.
   class EncryptionKey 
     include_class_members EncryptionKeyImports
     include Cloneable
@@ -133,27 +131,23 @@ module Sun::Security::Krb5
       # will be accepted to indicate that the default path should be
       # searched.
       # @returns the secret key or null if none was found.
-      # 
-      # 
       # // Replaced by acquireSecretKeys
       # public static EncryptionKey acquireSecretKey(PrincipalName princ,
-      # String keytab)
-      # throws KrbException, IOException {
+      #                                              String keytab)
+      #     throws KrbException, IOException {
       # 
-      # if (princ == null) {
-      # throw new IllegalArgumentException(
-      # "Cannot have null pricipal name to look in keytab.");
+      #     if (princ == null) {
+      #         throw new IllegalArgumentException(
+      #             "Cannot have null pricipal name to look in keytab.");
+      #     }
+      # 
+      #     KeyTab ktab = KeyTab.getInstance(keytab);
+      # 
+      #     if (ktab == null)
+      #         return null;
+      # 
+      #     return ktab.readServiceKey(princ);
       # }
-      # 
-      # KeyTab ktab = KeyTab.getInstance(keytab);
-      # 
-      # if (ktab == null)
-      # return null;
-      # 
-      # return ktab.readServiceKey(princ);
-      # }
-      # 
-      # 
       # Obtains all versions of the secret key of the principal from a
       # keytab.
       # 
@@ -179,15 +173,12 @@ module Sun::Security::Krb5
       # Generate a list of keys using the given principal and password.
       # Construct a key for each configured etype.
       # Caller is responsible for clearing password.
-      # 
-      # 
       # Usually, when keyType is decoded from ASN.1 it will contain a
       # value indicating what the algorithm to be used is. However, when
       # converting from a password to a key for the AS-EXCHANGE, this
       # keyType will not be available. Use builtin list of default etypes
       # as the default in that case. If default_tkt_enctypes was set in
       # the libdefaults of krb5.conf, then use that sequence.
-      # 
       # Used in Krb5LoginModule
       def acquire_secret_keys(password, salt)
         return (acquire_secret_keys(password, salt, false, 0, nil))
@@ -248,8 +239,6 @@ module Sun::Security::Krb5
     # Constructs an EncryptionKey by using the specified key type and key
     # value.  It is used to recover the key when retrieving data from
     # credential cache file.
-    # 
-    # 
     # Used in JSSE (KerberosWrapper), Credentials,
     # javax.security.auth.kerberos.KeyImpl
     def initialize(key_type, key_value)
@@ -326,7 +315,6 @@ module Sun::Security::Krb5
     
     typesig { [EncryptionKey] }
     # Generates a sub-sessionkey from a given session key.
-    # 
     # Used in KrbApRep, KrbApReq
     def initialize(key)
       @key_type = 0
@@ -384,9 +372,6 @@ module Sun::Security::Krb5
     # encoded data.
     # @exception IOException if an I/O error occurs while reading encoded
     # data.
-    # 
-    # 
-    # 
     # Used in javax.security.auth.kerberos.KeyImpl
     def initialize(encoding)
       @key_type = 0
@@ -418,8 +403,8 @@ module Sun::Security::Krb5
     # 
     # <xmp>
     # EncryptionKey ::=   SEQUENCE {
-    # keytype[0]    INTEGER,
-    # keyvalue[1]   OCTET STRING }
+    #                             keytype[0]    INTEGER,
+    #                             keyvalue[1]   OCTET STRING }
     # </xmp>
     # 
     # <p>

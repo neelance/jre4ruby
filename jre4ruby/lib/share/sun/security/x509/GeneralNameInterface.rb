@@ -92,7 +92,6 @@ module Sun::Security::X509
     
     typesig { [] }
     # input name does not match, narrow, or widen, but is same type
-    # 
     # Return the type of the general name, as
     # defined above.
     def get_type
@@ -104,25 +103,25 @@ module Sun::Security::X509
     # 
     # @param out the DerOutputStream to encode the GeneralName to.
     # @exception IOException thrown if the GeneralName could not be
-    # encoded.
+    #            encoded.
     def encode(out)
       raise NotImplementedError
     end
     
     typesig { [GeneralNameInterface] }
     # Return type of constraint inputName places on this name:<ul>
-    # <li>NAME_DIFF_TYPE = -1: input name is different type from name (i.e. does not constrain).
-    # <li>NAME_MATCH = 0: input name matches name.
-    # <li>NAME_NARROWS = 1: input name narrows name (is lower in the naming subtree)
-    # <li>NAME_WIDENS = 2: input name widens name (is higher in the naming subtree)
-    # <li>NAME_SAME_TYPE = 3: input name does not match or narrow name, but is same type.
+    #   <li>NAME_DIFF_TYPE = -1: input name is different type from name (i.e. does not constrain).
+    #   <li>NAME_MATCH = 0: input name matches name.
+    #   <li>NAME_NARROWS = 1: input name narrows name (is lower in the naming subtree)
+    #   <li>NAME_WIDENS = 2: input name widens name (is higher in the naming subtree)
+    #   <li>NAME_SAME_TYPE = 3: input name does not match or narrow name, but is same type.
     # </ul>.  These results are used in checking NameConstraints during
     # certification path verification.
     # 
     # @param inputName to be checked for being constrained
     # @returns constraint type above
     # @throws UnsupportedOperationException if name is same type, but comparison operations are
-    # not supported for this name type.
+    #          not supported for this name type.
     def constrains(input_name)
       raise NotImplementedError
     end

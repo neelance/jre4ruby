@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996 - 1998 - All Rights Reserved
 # 
@@ -49,12 +47,6 @@ module Sun::Text::Resources
     
     typesig { [] }
     def get_contents
-      # sort accents bkwd
-      # s < s-caron
-      # z sorts between s and t
-      # v is equiv. to w b4 o-tilde
-      # w-circumflex
-      # y < z-stroke
       return Array.typed(Array.typed(Object)).new([Array.typed(Object).new(["Rule", "@" + ("& S < s".to_u << 0x030c << ", S".to_u << 0x030c << " ") + ("< z , Z < z".to_u << 0x030c << " , Z".to_u << 0x030c << " ") + ("& V ; w , W < o".to_u << 0x0303 << " , O".to_u << 0x0303 << "") + ("< a".to_u << 0x0308 << " , A".to_u << 0x0308 << " < o".to_u << 0x0308 << " , O".to_u << 0x0308 << " ") + ("; w".to_u << 0x0302 << " , W".to_u << 0x0302 << "") + ("< u".to_u << 0x0308 << " , U".to_u << 0x0308 << "") + ("& Y < ".to_u << 0x01b6 << " , ".to_u << 0x01b5 << " ")])])
     end
     

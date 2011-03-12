@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # This file is available under and governed by the GNU General Public
 # License version 2 only, as published by the Free Software Foundation.
 # However, the following notice accompanied the original version of this
@@ -76,41 +74,41 @@ module Java::Util::Concurrent::Locks
   # {@link Condition} instances.
   # <pre>
   # class BoundedBuffer {
-  # <b>final Lock lock = new ReentrantLock();</b>
-  # final Condition notFull  = <b>lock.newCondition(); </b>
-  # final Condition notEmpty = <b>lock.newCondition(); </b>
+  #   <b>final Lock lock = new ReentrantLock();</b>
+  #   final Condition notFull  = <b>lock.newCondition(); </b>
+  #   final Condition notEmpty = <b>lock.newCondition(); </b>
   # 
-  # final Object[] items = new Object[100];
-  # int putptr, takeptr, count;
+  #   final Object[] items = new Object[100];
+  #   int putptr, takeptr, count;
   # 
-  # public void put(Object x) throws InterruptedException {
-  # <b>lock.lock();
-  # try {</b>
-  # while (count == items.length)
-  # <b>notFull.await();</b>
-  # items[putptr] = x;
-  # if (++putptr == items.length) putptr = 0;
-  # ++count;
-  # <b>notEmpty.signal();</b>
-  # <b>} finally {
-  # lock.unlock();
-  # }</b>
-  # }
+  #   public void put(Object x) throws InterruptedException {
+  #     <b>lock.lock();
+  #     try {</b>
+  #       while (count == items.length)
+  #         <b>notFull.await();</b>
+  #       items[putptr] = x;
+  #       if (++putptr == items.length) putptr = 0;
+  #       ++count;
+  #       <b>notEmpty.signal();</b>
+  #     <b>} finally {
+  #       lock.unlock();
+  #     }</b>
+  #   }
   # 
-  # public Object take() throws InterruptedException {
-  # <b>lock.lock();
-  # try {</b>
-  # while (count == 0)
-  # <b>notEmpty.await();</b>
-  # Object x = items[takeptr];
-  # if (++takeptr == items.length) takeptr = 0;
-  # --count;
-  # <b>notFull.signal();</b>
-  # return x;
-  # <b>} finally {
-  # lock.unlock();
-  # }</b>
-  # }
+  #   public Object take() throws InterruptedException {
+  #     <b>lock.lock();
+  #     try {</b>
+  #       while (count == 0)
+  #         <b>notEmpty.await();</b>
+  #       Object x = items[takeptr];
+  #       if (++takeptr == items.length) takeptr = 0;
+  #       --count;
+  #       <b>notFull.signal();</b>
+  #       return x;
+  #     <b>} finally {
+  #       lock.unlock();
+  #     }</b>
+  #   }
   # }
   # </pre>
   # 
@@ -229,7 +227,7 @@ module Java::Util::Concurrent::Locks
     # there is one.
     # 
     # @throws InterruptedException if the current thread is interrupted
-    # (and interruption of thread suspension is supported)
+    #         (and interruption of thread suspension is supported)
     def await
       raise NotImplementedError
     end
@@ -315,14 +313,14 @@ module Java::Util::Concurrent::Locks
     # 
     # <pre>
     # synchronized boolean aMethod(long timeout, TimeUnit unit) {
-    # long nanosTimeout = unit.toNanos(timeout);
-    # while (!conditionBeingWaitedFor) {
-    # if (nanosTimeout &gt; 0)
-    # nanosTimeout = theCondition.awaitNanos(nanosTimeout);
-    # else
-    # return false;
-    # }
-    # // ...
+    #   long nanosTimeout = unit.toNanos(timeout);
+    #   while (!conditionBeingWaitedFor) {
+    #     if (nanosTimeout &gt; 0)
+    #         nanosTimeout = theCondition.awaitNanos(nanosTimeout);
+    #      else
+    #        return false;
+    #   }
+    #   // ...
     # }
     # </pre>
     # 
@@ -349,13 +347,13 @@ module Java::Util::Concurrent::Locks
     # 
     # @param nanosTimeout the maximum time to wait, in nanoseconds
     # @return an estimate of the {@code nanosTimeout} value minus
-    # the time spent waiting upon return from this method.
-    # A positive value may be used as the argument to a
-    # subsequent call to this method to finish waiting out
-    # the desired time.  A value less than or equal to zero
-    # indicates that no time remains.
+    #         the time spent waiting upon return from this method.
+    #         A positive value may be used as the argument to a
+    #         subsequent call to this method to finish waiting out
+    #         the desired time.  A value less than or equal to zero
+    #         indicates that no time remains.
     # @throws InterruptedException if the current thread is interrupted
-    # (and interruption of thread suspension is supported)
+    #         (and interruption of thread suspension is supported)
     def await_nanos(nanos_timeout)
       raise NotImplementedError
     end
@@ -365,14 +363,14 @@ module Java::Util::Concurrent::Locks
     # or the specified waiting time elapses. This method is behaviorally
     # equivalent to:<br>
     # <pre>
-    # awaitNanos(unit.toNanos(time)) &gt; 0
+    #   awaitNanos(unit.toNanos(time)) &gt; 0
     # </pre>
     # @param time the maximum time to wait
     # @param unit the time unit of the {@code time} argument
     # @return {@code false} if the waiting time detectably elapsed
-    # before return from the method, else {@code true}
+    #         before return from the method, else {@code true}
     # @throws InterruptedException if the current thread is interrupted
-    # (and interruption of thread suspension is supported)
+    #         (and interruption of thread suspension is supported)
     def await(time, unit)
       raise NotImplementedError
     end
@@ -417,14 +415,14 @@ module Java::Util::Concurrent::Locks
     # which can be used as follows:
     # <pre>
     # synchronized boolean aMethod(Date deadline) {
-    # boolean stillWaiting = true;
-    # while (!conditionBeingWaitedFor) {
-    # if (stillWaiting)
-    # stillWaiting = theCondition.awaitUntil(deadline);
-    # else
-    # return false;
-    # }
-    # // ...
+    #   boolean stillWaiting = true;
+    #   while (!conditionBeingWaitedFor) {
+    #     if (stillWaiting)
+    #         stillWaiting = theCondition.awaitUntil(deadline);
+    #      else
+    #        return false;
+    #   }
+    #   // ...
     # }
     # </pre>
     # 
@@ -445,9 +443,9 @@ module Java::Util::Concurrent::Locks
     # 
     # @param deadline the absolute time to wait until
     # @return {@code false} if the deadline has elapsed upon return, else
-    # {@code true}
+    #         {@code true}
     # @throws InterruptedException if the current thread is interrupted
-    # (and interruption of thread suspension is supported)
+    #         (and interruption of thread suspension is supported)
     def await_until(deadline)
       raise NotImplementedError
     end

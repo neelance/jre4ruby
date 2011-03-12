@@ -54,7 +54,7 @@ module Sun::Misc
     }
   end
   
-  # This class is used by the system to launch the main application.
+  #  * This class is used by the system to launch the main application.
   # Launcher
   class Launcher 
     include_class_members LauncherImports
@@ -307,6 +307,7 @@ module Sun::Misc
             # AppClassLoader.getContext(). This proved overly restrictive
             # when loading  classes. Specifically it prevent
             # accessClassInPackage.sun.* grants from being honored.
+            # 
             Class.new(class_self::PrivilegedAction.class == Class ? class_self::PrivilegedAction : Object) do
               local_class_in AppClassLoader
               include_class_members AppClassLoader
@@ -443,7 +444,7 @@ module Sun::Misc
         end
         # DEBUG
         # for (int i = 0; i < urls.length; i++) {
-        # System.out.println("urls[" + i + "] = " + '"' + urls[i] + '"');
+        #  System.out.println("urls[" + i + "] = " + '"' + urls[i] + '"');
         # }
         return urls
       end
@@ -490,7 +491,7 @@ module Sun::Misc
         end
         # DEBUG
         # for (int i = 0; i < path.length; i++) {
-        # System.out.println("path[" + i + "] = " + '"' + path[i] + '"');
+        #  System.out.println("path[" + i + "] = " + '"' + path[i] + '"');
         # }
         return path
       end

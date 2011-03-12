@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # FTP stream opener.
 module Sun::Net::Www::Protocol::Ftp
   module FtpURLConnectionImports #:nodoc:
@@ -204,8 +202,8 @@ module Sun::Net::Www::Protocol::Ftp
     class_module.module_eval {
       # For FTP URLs we need to have a special InputStream because we
       # need to close 2 sockets after we're done with it :
-      # - The Data socket (for the file).
-      # - The command socket (FtpClient).
+      #  - The Data socket (for the file).
+      #   - The command socket (FtpClient).
       # Since that's the only class that needs to see that, it is an inner class.
       const_set_lazy(:FtpInputStream) { Class.new(FilterInputStream) do
         local_class_in FtpURLConnection
@@ -241,8 +239,8 @@ module Sun::Net::Www::Protocol::Ftp
       
       # For FTP URLs we need to have a special OutputStream because we
       # need to close 2 sockets after we're done with it :
-      # - The Data socket (for the file).
-      # - The command socket (FtpClient).
+      #  - The Data socket (for the file).
+      #   - The command socket (FtpClient).
       # Since that's the only class that needs to see that, it is an inner class.
       const_set_lazy(:FtpOutputStream) { Class.new(FilterOutputStream) do
         local_class_in FtpURLConnection
@@ -357,7 +355,6 @@ module Sun::Net::Www::Protocol::Ftp
         p = nil
         if ((@inst_proxy).nil?)
           sel = Java::Security::AccessController.do_privileged(# no per connection proxy specified
-          # 
           # Do we have to use a proxie?
           Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
             local_class_in FtpURLConnection
@@ -621,7 +618,7 @@ module Sun::Net::Www::Protocol::Ftp
     # @return  the <code>OutputStream</code> to the connection.
     # 
     # @throws  IOException if already opened for input or the URL
-    # points to a directory
+    #          points to a directory
     # @throws  FtpProtocolException if errors occur during the transfert.
     def get_output_stream
       if (!self.attr_connected)
@@ -676,7 +673,7 @@ module Sun::Net::Www::Protocol::Ftp
     # exists, overwrite its value with the new value.
     # 
     # @param   key     the keyword by which the request is known
-    # (e.g., "<code>accept</code>").
+    #                  (e.g., "<code>accept</code>").
     # @param   value   the value associated with it.
     # @throws IllegalStateException if already connected
     # @see #getRequestProperty(java.lang.String)
@@ -705,7 +702,7 @@ module Sun::Net::Www::Protocol::Ftp
     # 
     # @param key the keyword by which the request is known (e.g., "accept").
     # @return  the value of the named general request property for this
-    # connection.
+    #           connection.
     # @throws IllegalStateException if already connected
     # @see #setRequestProperty(java.lang.String, java.lang.String)
     def get_request_property(key)

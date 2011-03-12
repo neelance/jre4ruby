@@ -40,7 +40,6 @@ module Sun::Security::Jgss::Krb5
   end
   
   # end of class MessageTokenHeader
-  # 
   # This class is a base class for new GSS token definitions, as defined
   # in draft-ietf-krb-wg-gssapi-cfx-07.txt, that pertain to per-message
   # GSS-API calls. Conceptually GSS-API has two types of per-message tokens:
@@ -51,41 +50,41 @@ module Sun::Security::Jgss::Krb5
   # This structure can be represented as:
   # <p>
   # <pre>
-  # Wrap Tokens
+  #  Wrap Tokens
   # 
-  # Octet no   Name        Description
-  # ---------------------------------------------------------------
-  # 0..1     TOK_ID     Identification field.  Tokens emitted by
-  # GSS_Wrap() contain the the hex value 05 04
-  # expressed in big endian order in this field.
-  # 2        Flags      Attributes field, as described in section
-  # 4.2.2.
-  # 3        Filler     Contains the hex value FF.
-  # 4..5     EC         Contains the "extra count" field, in big
-  # endian order as described in section 4.2.3.
-  # 6..7     RRC        Contains the "right rotation count" in big
-  # endian order, as described in section 4.2.5.
-  # 8..15    SND_SEQ    Sequence number field in clear text,
-  # expressed in big endian order.
-  # 16..last Data       Encrypted data for Wrap tokens with
-  # confidentiality, or plaintext data followed
-  # by the checksum for Wrap tokens without
-  # confidentiality, as described in section
-  # 4.2.4.
+  #     Octet no   Name        Description
+  #    ---------------------------------------------------------------
+  #      0..1     TOK_ID     Identification field.  Tokens emitted by
+  #                          GSS_Wrap() contain the the hex value 05 04
+  #                          expressed in big endian order in this field.
+  #      2        Flags      Attributes field, as described in section
+  #                          4.2.2.
+  #      3        Filler     Contains the hex value FF.
+  #      4..5     EC         Contains the "extra count" field, in big
+  #                          endian order as described in section 4.2.3.
+  #      6..7     RRC        Contains the "right rotation count" in big
+  #                          endian order, as described in section 4.2.5.
+  #      8..15    SND_SEQ    Sequence number field in clear text,
+  #                          expressed in big endian order.
+  #      16..last Data       Encrypted data for Wrap tokens with
+  #                          confidentiality, or plaintext data followed
+  #                          by the checksum for Wrap tokens without
+  #                          confidentiality, as described in section
+  #                          4.2.4.
   # MIC Tokens
   # 
-  # Octet no   Name        Description
-  # -----------------------------------------------------------------
-  # 0..1     TOK_ID     Identification field.  Tokens emitted by
-  # GSS_GetMIC() contain the hex value 04 04
-  # expressed in big endian order in this field.
-  # 2        Flags      Attributes field, as described in section
-  # 4.2.2.
-  # 3..7     Filler     Contains five octets of hex value FF.
-  # 8..15    SND_SEQ    Sequence number field in clear text,
-  # expressed in big endian order.
-  # 16..last SGN_CKSUM  Checksum of the "to-be-signed" data and
-  # octet 0..15, as described in section 4.2.4.
+  #     Octet no   Name        Description
+  #     -----------------------------------------------------------------
+  #      0..1     TOK_ID     Identification field.  Tokens emitted by
+  #                          GSS_GetMIC() contain the hex value 04 04
+  #                          expressed in big endian order in this field.
+  #      2        Flags      Attributes field, as described in section
+  #                          4.2.2.
+  #      3..7     Filler     Contains five octets of hex value FF.
+  #      8..15    SND_SEQ    Sequence number field in clear text,
+  #                          expressed in big endian order.
+  #      16..last SGN_CKSUM  Checksum of the "to-be-signed" data and
+  #                          octet 0..15, as described in section 4.2.4.
   # 
   # </pre>
   # <p>
@@ -334,7 +333,7 @@ module Sun::Security::Jgss::Krb5
     # @throws GSSException if an error occurs in the checksum calculation or
     # sequence number calculation.
     def gen_sign_and_seq_number(prop, data, offset, len)
-      # debug("Inside MessageToken.genSignAndSeqNumber:\n");
+      #    debug("Inside MessageToken.genSignAndSeqNumber:\n");
       qop = prop.get_qop
       if (!(qop).equal?(0))
         qop = 0
@@ -360,7 +359,7 @@ module Sun::Security::Jgss::Krb5
       if (((@token_id).equal?(MIC_ID_v2)) || (!prop.get_privacy && ((@token_id).equal?(WRAP_ID_v2))))
         @checksum = get_checksum(data, offset, len)
         # debug("\n\tCalc checksum=" +
-        # getHexBytes(checksum, checksum.length));
+        #  getHexBytes(checksum, checksum.length));
       end
       # In Wrap tokens without confidentiality, the EC field SHALL be used
       # to encode the number of octets in the trailing checksum
@@ -401,7 +400,7 @@ module Sun::Security::Jgss::Krb5
     def rotate_left(in_bytes, token_offset, out_bytes, bufsize)
       offset = 0
       # debug("\nRotate left: (before rotation) in_bytes = [ " +
-      # getHexBytes(in_bytes, tokenOffset, bufsize) + "]");
+      #              getHexBytes(in_bytes, tokenOffset, bufsize) + "]");
       if (@rrc > 0)
         if ((bufsize).equal?(0))
           return false
@@ -422,7 +421,7 @@ module Sun::Security::Jgss::Krb5
         # copy the bytes specified by rrc count
         System.arraycopy(in_bytes, offset, out_bytes, bufsize - TOKEN_HEADER_SIZE - @rrc, @rrc)
         # debug("\nRotate left: (after rotation) out_bytes = [ " +
-        # getHexBytes(out_bytes, 0, bufsize) + "]");
+        #           getHexBytes(out_bytes, 0, bufsize) + "]");
         return true
       end
       return false
@@ -443,8 +442,7 @@ module Sun::Security::Jgss::Krb5
     # 
     # @throws GSSException if an error occurs in the checksum calculation.
     def get_checksum(data, offset, len)
-      # debug("Will do getChecksum:\n");
-      # 
+      #      debug("Will do getChecksum:\n");
       # For checksum calculation the token header bytes i.e., the first 16
       # bytes following the GSSHeader, are logically prepended to the
       # application data to bind the data to this particular token.
@@ -513,7 +511,7 @@ module Sun::Security::Jgss::Krb5
       @conf_state = context.get_conf_state
       @initiator = context.is_initiator
       @cipher_helper = context.get_cipher_helper(nil)
-      # debug("In MessageToken.Cons");
+      #    debug("In MessageToken.Cons");
       # draft-ietf-krb-wg-gssapi-cfx-07
       @token_id = token_id
     end
@@ -560,41 +558,40 @@ module Sun::Security::Jgss::Krb5
     
     class_module.module_eval {
       # ******************************************* //
-      # I N N E R    C L A S S E S    F O L L O W
+      #  I N N E R    C L A S S E S    F O L L O W
       # ******************************************* //
-      # 
       # This inner class represents the initial portion of the message token.
       # It constitutes the first 16 bytes of the message token:
       # <pre>
-      # Wrap Tokens
+      #  Wrap Tokens
       # 
-      # Octet no   Name        Description
-      # ---------------------------------------------------------------
-      # 0..1     TOK_ID     Identification field.  Tokens emitted by
-      # GSS_Wrap() contain the the hex value 05 04
-      # expressed in big endian order in this field.
-      # 2        Flags      Attributes field, as described in section
-      # 4.2.2.
-      # 3        Filler     Contains the hex value FF.
-      # 4..5     EC         Contains the "extra count" field, in big
-      # endian order as described in section 4.2.3.
-      # 6..7     RRC        Contains the "right rotation count" in big
-      # endian order, as described in section 4.2.5.
-      # 8..15    SND_SEQ    Sequence number field in clear text,
-      # expressed in big endian order.
+      #     Octet no   Name        Description
+      #    ---------------------------------------------------------------
+      #      0..1     TOK_ID     Identification field.  Tokens emitted by
+      #                          GSS_Wrap() contain the the hex value 05 04
+      #                          expressed in big endian order in this field.
+      #      2        Flags      Attributes field, as described in section
+      #                          4.2.2.
+      #      3        Filler     Contains the hex value FF.
+      #      4..5     EC         Contains the "extra count" field, in big
+      #                          endian order as described in section 4.2.3.
+      #      6..7     RRC        Contains the "right rotation count" in big
+      #                          endian order, as described in section 4.2.5.
+      #      8..15    SND_SEQ    Sequence number field in clear text,
+      #                          expressed in big endian order.
       # 
       # MIC Tokens
       # 
-      # Octet no   Name        Description
-      # -----------------------------------------------------------------
-      # 0..1     TOK_ID     Identification field.  Tokens emitted by
-      # GSS_GetMIC() contain the hex value 04 04
-      # expressed in big endian order in this field.
-      # 2        Flags      Attributes field, as described in section
-      # 4.2.2.
-      # 3..7     Filler     Contains five octets of hex value FF.
-      # 8..15    SND_SEQ    Sequence number field in clear text,
-      # expressed in big endian order.
+      #     Octet no   Name        Description
+      #     -----------------------------------------------------------------
+      #      0..1     TOK_ID     Identification field.  Tokens emitted by
+      #                          GSS_GetMIC() contain the hex value 04 04
+      #                          expressed in big endian order in this field.
+      #      2        Flags      Attributes field, as described in section
+      #                          4.2.2.
+      #      3..7     Filler     Contains five octets of hex value FF.
+      #      8..15    SND_SEQ    Sequence number field in clear text,
+      #                          expressed in big endian order.
       # </pre>
       const_set_lazy(:MessageTokenHeader) { Class.new do
         local_class_in MessageToken_v2
@@ -665,7 +662,6 @@ module Sun::Security::Jgss::Krb5
           read_fully(is, @bytes, 0, TOKEN_HEADER_SIZE)
           @token_id = read_int(@bytes, TOKEN_ID_POS)
           # Validate new GSS TokenHeader
-          # 
           # valid acceptor_flag is set
           acceptor_flag = (self.attr_initiator ? FLAG_SENDER_IS_ACCEPTOR : 0)
           flag = @bytes[TOKEN_FLAG_POS] & FLAG_SENDER_IS_ACCEPTOR

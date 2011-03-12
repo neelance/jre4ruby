@@ -74,14 +74,14 @@ module Java::Io
   # ObjectInputStream:
   # <br>
   # <pre>
-  # FileOutputStream fos = new FileOutputStream("t.tmp");
-  # ObjectOutputStream oos = new ObjectOutputStream(fos);
+  #      FileOutputStream fos = new FileOutputStream("t.tmp");
+  #      ObjectOutputStream oos = new ObjectOutputStream(fos);
   # 
-  # oos.writeInt(12345);
-  # oos.writeObject("Today");
-  # oos.writeObject(new Date());
+  #      oos.writeInt(12345);
+  #      oos.writeObject("Today");
+  #      oos.writeObject(new Date());
   # 
-  # oos.close();
+  #      oos.close();
   # </pre>
   # 
   # <p>Classes that require special handling during the serialization and
@@ -90,11 +90,11 @@ module Java::Io
   # <br>
   # <pre>
   # private void readObject(java.io.ObjectInputStream stream)
-  # throws IOException, ClassNotFoundException;
+  #     throws IOException, ClassNotFoundException;
   # private void writeObject(java.io.ObjectOutputStream stream)
-  # throws IOException
+  #     throws IOException
   # private void readObjectNoData()
-  # throws ObjectStreamException;
+  #     throws ObjectStreamException;
   # </pre>
   # 
   # <p>The writeObject method is responsible for writing the state of the object
@@ -297,7 +297,7 @@ module Java::Io
     # @param   out output stream to write to
     # @throws  IOException if an I/O error occurs while writing stream header
     # @throws  SecurityException if untrusted subclass illegally overrides
-    # security-sensitive methods
+    #          security-sensitive methods
     # @throws  NullPointerException if <code>out</code> is <code>null</code>
     # @since   1.4
     # @see     ObjectOutputStream#ObjectOutputStream()
@@ -343,8 +343,8 @@ module Java::Io
     # permission to ensure it's ok to enable subclassing.
     # 
     # @throws  SecurityException if a security manager exists and its
-    # <code>checkPermission</code> method denies enabling
-    # subclassing.
+    #          <code>checkPermission</code> method denies enabling
+    #          subclassing.
     # @see SecurityManager#checkPermission
     # @see java.io.SerializablePermission
     def initialize
@@ -386,7 +386,7 @@ module Java::Io
     # 
     # @param   version use ProtocolVersion from java.io.ObjectStreamConstants.
     # @throws  IllegalStateException if called after any objects
-    # have been serialized.
+    #          have been serialized.
     # @throws  IllegalArgumentException if invalid version is passed in.
     # @throws  IOException if I/O errors occur
     # @see java.io.ObjectStreamConstants#PROTOCOL_VERSION_1
@@ -420,11 +420,11 @@ module Java::Io
     # the caller to ignore or recover the stream state.
     # 
     # @throws  InvalidClassException Something is wrong with a class used by
-    # serialization.
+    #          serialization.
     # @throws  NotSerializableException Some object to be serialized does not
-    # implement the java.io.Serializable interface.
+    #          implement the java.io.Serializable interface.
     # @throws  IOException Any exception thrown by the underlying
-    # OutputStream.
+    #          OutputStream.
     def write_object(obj)
       if (@enable_override)
         write_object_override(obj)
@@ -449,7 +449,7 @@ module Java::Io
     # 
     # @param   obj object to be written to the underlying stream
     # @throws  IOException if there are I/O errors while writing to the
-    # underlying stream
+    #          underlying stream
     # @see #ObjectOutputStream()
     # @see #writeObject(Object)
     # @since 1.2
@@ -462,16 +462,16 @@ module Java::Io
     # as a new, unique object in the stream (as opposed to a back-reference
     # pointing to a previously serialized instance).  Specifically:
     # <ul>
-    # <li>An object written via writeUnshared is always serialized in the
-    # same manner as a newly appearing object (an object that has not
-    # been written to the stream yet), regardless of whether or not the
-    # object has been written previously.
+    #   <li>An object written via writeUnshared is always serialized in the
+    #       same manner as a newly appearing object (an object that has not
+    #       been written to the stream yet), regardless of whether or not the
+    #       object has been written previously.
     # 
-    # <li>If writeObject is used to write an object that has been previously
-    # written with writeUnshared, the previous writeUnshared operation
-    # is treated as if it were a write of a separate object.  In other
-    # words, ObjectOutputStream will never generate back-references to
-    # object data written by calls to writeUnshared.
+    #   <li>If writeObject is used to write an object that has been previously
+    #       written with writeUnshared, the previous writeUnshared operation
+    #       is treated as if it were a write of a separate object.  In other
+    #       words, ObjectOutputStream will never generate back-references to
+    #       object data written by calls to writeUnshared.
     # </ul>
     # While writing an object via writeUnshared does not in itself guarantee a
     # unique reference to the object when it is deserialized, it allows a
@@ -489,9 +489,9 @@ module Java::Io
     # 
     # @param   obj object to write to stream
     # @throws  NotSerializableException if an object in the graph to be
-    # serialized does not implement the Serializable interface
+    #          serialized does not implement the Serializable interface
     # @throws  InvalidClassException if a problem exists with the class of an
-    # object to be serialized
+    #          object to be serialized
     # @throws  IOException if an I/O error occurs during serialization
     # @since 1.4
     def write_unshared(obj)
@@ -512,7 +512,7 @@ module Java::Io
     # called otherwise.
     # 
     # @throws  IOException if I/O errors occur while writing to the underlying
-    # <code>OutputStream</code>
+    #          <code>OutputStream</code>
     def default_write_object
       if ((@cur_obj).nil? || (@cur_desc).nil?)
         raise NotActiveException.new("not in call to writeObject")
@@ -528,7 +528,7 @@ module Java::Io
     # method is called.
     # 
     # @return  an instance of the class Putfield that holds the serializable
-    # fields
+    #          fields
     # @throws  IOException if I/O errors occur
     # @since 1.2
     def put_fields
@@ -545,9 +545,9 @@ module Java::Io
     # Write the buffered fields to the stream.
     # 
     # @throws  IOException if I/O errors occur while writing to the underlying
-    # stream
+    #          stream
     # @throws  NotActiveException Called when a classes writeObject method was
-    # not called to write the state of the object.
+    #          not called to write the state of the object.
     # @since 1.2
     def write_fields
       if ((@cur_put).nil?)
@@ -591,7 +591,7 @@ module Java::Io
     # 
     # @param   cl the class to annotate custom data for
     # @throws  IOException Any exception thrown by the underlying
-    # OutputStream.
+    #          OutputStream.
     def annotate_class(cl)
     end
     
@@ -612,7 +612,7 @@ module Java::Io
     # 
     # @param   cl the proxy class to annotate custom data for
     # @throws  IOException any exception thrown by the underlying
-    # <code>OutputStream</code>
+    #          <code>OutputStream</code>
     # @see ObjectInputStream#resolveProxyClass(String[])
     # @since   1.3
     def annotate_proxy_class(cl)
@@ -654,7 +654,7 @@ module Java::Io
     # @param   obj the object to be replaced
     # @return  the alternate object that replaced the specified one
     # @throws  IOException Any exception thrown by the underlying
-    # OutputStream.
+    #          OutputStream.
     def replace_object(obj)
       return obj
     end
@@ -674,8 +674,8 @@ module Java::Io
     # @param   enable boolean parameter to enable replacement of objects
     # @return  the previous setting before this method was invoked
     # @throws  SecurityException if a security manager exists and its
-    # <code>checkPermission</code> method denies enabling the stream
-    # to do replacement of objects in the stream.
+    #          <code>checkPermission</code> method denies enabling the stream
+    #          to do replacement of objects in the stream.
     # @see SecurityManager#checkPermission
     # @see java.io.SerializablePermission
     def enable_replace_object(enable)
@@ -698,7 +698,7 @@ module Java::Io
     # version to the stream.
     # 
     # @throws  IOException if I/O errors occur while writing to the underlying
-    # stream
+    #          stream
     def write_stream_header
       @bout.write_short(STREAM_MAGIC)
       @bout.write_short(STREAM_VERSION)
@@ -784,7 +784,7 @@ module Java::Io
     # does not propagate the flush to the underlying stream.
     # 
     # @throws  IOException if I/O errors occur while writing to the underlying
-    # stream
+    #          stream
     def drain
       @bout.drain
     end
@@ -805,7 +805,7 @@ module Java::Io
     # 
     # @param   val the boolean to be written
     # @throws  IOException if I/O errors occur while writing to the underlying
-    # stream
+    #          stream
     def write_boolean(val)
       @bout.write_boolean(val)
     end
@@ -815,7 +815,7 @@ module Java::Io
     # 
     # @param   val the byte value to be written
     # @throws  IOException if I/O errors occur while writing to the underlying
-    # stream
+    #          stream
     def write_byte(val)
       @bout.write_byte(val)
     end
@@ -825,7 +825,7 @@ module Java::Io
     # 
     # @param   val the short value to be written
     # @throws  IOException if I/O errors occur while writing to the underlying
-    # stream
+    #          stream
     def write_short(val)
       @bout.write_short(val)
     end
@@ -835,7 +835,7 @@ module Java::Io
     # 
     # @param   val the char value to be written
     # @throws  IOException if I/O errors occur while writing to the underlying
-    # stream
+    #          stream
     def write_char(val)
       @bout.write_char(val)
     end
@@ -845,7 +845,7 @@ module Java::Io
     # 
     # @param   val the integer value to be written
     # @throws  IOException if I/O errors occur while writing to the underlying
-    # stream
+    #          stream
     def write_int(val)
       @bout.write_int(val)
     end
@@ -855,7 +855,7 @@ module Java::Io
     # 
     # @param   val the long value to be written
     # @throws  IOException if I/O errors occur while writing to the underlying
-    # stream
+    #          stream
     def write_long(val)
       @bout.write_long(val)
     end
@@ -865,7 +865,7 @@ module Java::Io
     # 
     # @param   val the float value to be written
     # @throws  IOException if I/O errors occur while writing to the underlying
-    # stream
+    #          stream
     def write_float(val)
       @bout.write_float(val)
     end
@@ -875,7 +875,7 @@ module Java::Io
     # 
     # @param   val the double value to be written
     # @throws  IOException if I/O errors occur while writing to the underlying
-    # stream
+    #          stream
     def write_double(val)
       @bout.write_double(val)
     end
@@ -885,7 +885,7 @@ module Java::Io
     # 
     # @param   str the String of bytes to be written
     # @throws  IOException if I/O errors occur while writing to the underlying
-    # stream
+    #          stream
     def write_bytes(str)
       @bout.write_bytes(str)
     end
@@ -895,7 +895,7 @@ module Java::Io
     # 
     # @param   str the String of chars to be written
     # @throws  IOException if I/O errors occur while writing to the underlying
-    # stream
+    #          stream
     def write_chars(str)
       @bout.write_chars(str)
     end
@@ -911,7 +911,7 @@ module Java::Io
     # 
     # @param   str the String to be written
     # @throws  IOException if I/O errors occur while writing to the underlying
-    # stream
+    #          stream
     def write_utf(str)
       @bout.write_utf(str)
     end
@@ -1033,7 +1033,7 @@ module Java::Io
         # 
         # @param  name the name of the serializable field
         # @param  val the value to assign to the field
-        # (which may be <code>null</code>)
+        #         (which may be <code>null</code>)
         # @throws IllegalArgumentException if <code>name</code> does not
         # match the name of a serializable field for the class whose fields
         # are being written, or if the type of the named field is not a
@@ -1049,16 +1049,16 @@ module Java::Io
         # 
         # @param  out the stream to write the data and fields to
         # @throws IOException if I/O errors occur while writing to the
-        # underlying stream
+        #         underlying stream
         # @throws IllegalArgumentException if the specified stream is not
-        # the same stream that produced this <code>PutField</code>
-        # object
+        #         the same stream that produced this <code>PutField</code>
+        #         object
         # @deprecated This method does not write the values contained by this
-        # <code>PutField</code> object in a proper format, and may
-        # result in corruption of the serialization stream.  The
-        # correct way to write <code>PutField</code> data is by
-        # calling the {@link java.io.ObjectOutputStream#writeFields()}
-        # method.
+        #         <code>PutField</code> object in a proper format, and may
+        #         result in corruption of the serialization stream.  The
+        #         correct way to write <code>PutField</code> data is by
+        #         calling the {@link java.io.ObjectOutputStream#writeFields()}
+        #         method.
         def write(out)
           raise NotImplementedError
         end
@@ -1616,7 +1616,6 @@ module Java::Io
       JNI.load_native_method :Java_java_io_ObjectOutputStream_floatsToBytes, [:pointer, :long, :long, :int32, :long, :int32, :int32], :void
       typesig { [Array.typed(::Java::Float), ::Java::Int, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
       # Converts specified span of float values into byte values.
-      # 
       # REMIND: remove once hotspot inlines Float.floatToIntBits
       def floats_to_bytes(src, srcpos, dst, dstpos, nfloats)
         JNI.call_native_method(:Java_java_io_ObjectOutputStream_floatsToBytes, JNI.env, self.jni_id, src.jni_id, srcpos.to_int, dst.jni_id, dstpos.to_int, nfloats.to_int)
@@ -1625,7 +1624,6 @@ module Java::Io
       JNI.load_native_method :Java_java_io_ObjectOutputStream_doublesToBytes, [:pointer, :long, :long, :int32, :long, :int32, :int32], :void
       typesig { [Array.typed(::Java::Double), ::Java::Int, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
       # Converts specified span of double values into byte values.
-      # 
       # REMIND: remove once hotspot inlines Double.doubleToLongBits
       def doubles_to_bytes(src, srcpos, dst, dstpos, ndoubles)
         JNI.call_native_method(:Java_java_io_ObjectOutputStream_doublesToBytes, JNI.env, self.jni_id, src.jni_id, srcpos.to_int, dst.jni_id, dstpos.to_int, ndoubles.to_int)
@@ -1905,7 +1903,6 @@ module Java::Io
         
         typesig { [::Java::Int] }
         # ----------------- generic output stream methods -----------------
-        # 
         # The following methods are equivalent to their counterparts in
         # OutputStream, except that they partition written data into data
         # blocks when in block data mode.
@@ -2002,7 +1999,6 @@ module Java::Io
         
         typesig { [::Java::Boolean] }
         # ----------------- primitive data output methods -----------------
-        # 
         # The following methods are equivalent to their counterparts in
         # DataOutputStream, except that they partition written data into data
         # blocks when in block data mode.
@@ -2124,7 +2120,6 @@ module Java::Io
         
         typesig { [Array.typed(::Java::Boolean), ::Java::Int, ::Java::Int] }
         # -------------- primitive data array output methods --------------
-        # 
         # The following methods write out spans of primitive data values.
         # Though equivalent to calling the corresponding primitive write
         # methods repeatedly, these methods are optimized for writing groups
@@ -2285,7 +2280,7 @@ module Java::Io
           if (utflen > 0xffff)
             raise self.class::UTFDataFormatException.new
           end
-          write_short(RJava.cast_to_int(utflen))
+          write_short((utflen).to_int)
           if ((utflen).equal?(s.length))
             write_bytes(s)
           else
@@ -2426,7 +2421,7 @@ module Java::Io
           @spine = Array.typed(::Java::Int).new(initial_capacity) { 0 }
           @next = Array.typed(::Java::Int).new(initial_capacity) { 0 }
           @objs = Array.typed(Object).new(initial_capacity) { nil }
-          @threshold = RJava.cast_to_int((initial_capacity * load_factor))
+          @threshold = ((initial_capacity * load_factor)).to_int
           clear
         end
         
@@ -2491,7 +2486,7 @@ module Java::Io
         # buckets in a conventional hash table.
         def grow_spine
           @spine = Array.typed(::Java::Int).new((@spine.attr_length << 1) + 1) { 0 }
-          @threshold = RJava.cast_to_int((@spine.attr_length * @load_factor))
+          @threshold = ((@spine.attr_length * @load_factor)).to_int
           Arrays.fill(@spine, -1)
           i = 0
           while i < @size

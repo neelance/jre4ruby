@@ -273,7 +273,7 @@ module Java::Security
     # @param p the type of unresolved permission to resolve
     # 
     # @return PermissionCollection containing the unresolved permissions,
-    # or null if there were no unresolved permissions of type p.
+    #  or null if there were no unresolved permissions of type p.
     def get_unresolved_permissions(p)
       # Called from within synchronized method so permsMap doesn't need lock
       uc = @perms_map.get(UnresolvedPermission)
@@ -336,18 +336,15 @@ module Java::Security
       # Need to maintain serialization interoperability with earlier releases,
       # which had the serializable field:
       # private Hashtable perms;
-      # 
       # @serialField perms java.util.Hashtable
-      # A table of the Permission classes and PermissionCollections.
+      #     A table of the Permission classes and PermissionCollections.
       # @serialField allPermission java.security.PermissionCollection
-      const_set_lazy(:SerialPersistentFields) { Array.typed(ObjectStreamField).new([ObjectStreamField.new("perms", Hashtable), ObjectStreamField.new("allPermission", PermissionCollection), ]) }
+      const_set_lazy(:SerialPersistentFields) { Array.typed(ObjectStreamField).new([ObjectStreamField.new("perms", Hashtable), ObjectStreamField.new("allPermission", PermissionCollection)]) }
       const_attr_reader  :SerialPersistentFields
     }
     
     typesig { [ObjectOutputStream] }
     # @serialData Default fields.
-    # 
-    # 
     # Writes the contents of the permsMap field out as a Hashtable for
     # serialization compatibility with earlier releases. allPermission
     # unchanged.
@@ -545,17 +542,14 @@ module Java::Security
       # Need to maintain serialization interoperability with earlier releases,
       # which had the serializable field:
       # private Hashtable perms;
-      # 
       # @serialField perms java.util.Hashtable
-      # A table of the Permissions (both key and value are same).
-      const_set_lazy(:SerialPersistentFields) { Array.typed(ObjectStreamField).new([ObjectStreamField.new("perms", Hashtable), ]) }
+      #     A table of the Permissions (both key and value are same).
+      const_set_lazy(:SerialPersistentFields) { Array.typed(ObjectStreamField).new([ObjectStreamField.new("perms", Hashtable)]) }
       const_attr_reader  :SerialPersistentFields
     }
     
     typesig { [ObjectOutputStream] }
     # @serialData Default fields.
-    # 
-    # 
     # Writes the contents of the permsMap field out as a Hashtable for
     # serialization compatibility with earlier releases.
     def write_object(out)

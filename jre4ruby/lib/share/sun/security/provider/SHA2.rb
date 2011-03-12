@@ -109,11 +109,11 @@ module Sun::Security::Provider
     typesig { [Array.typed(::Java::Byte), ::Java::Int] }
     def impl_digest(out, ofs)
       bits_processed = self.attr_bytes_processed << 3
-      index = RJava.cast_to_int(self.attr_bytes_processed) & 0x3f
+      index = (self.attr_bytes_processed).to_int & 0x3f
       pad_len = (index < 56) ? (56 - index) : (120 - index)
       engine_update(self.attr_padding, 0, pad_len)
-      i2b_big4(RJava.cast_to_int((bits_processed >> 32)), self.attr_buffer, 56)
-      i2b_big4(RJava.cast_to_int(bits_processed), self.attr_buffer, 60)
+      i2b_big4(((bits_processed >> 32)).to_int, self.attr_buffer, 56)
+      i2b_big4((bits_processed).to_int, self.attr_buffer, 60)
       impl_compress(self.attr_buffer, 0)
       i2b_big(@state, 0, out, ofs, 32)
     end

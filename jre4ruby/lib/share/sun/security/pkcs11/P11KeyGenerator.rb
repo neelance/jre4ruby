@@ -133,11 +133,11 @@ module Sun::Security::Pkcs11
           # NSS, for one, uses bytes. Multiple by 8 if the number seems
           # unreasonably small.
           if (info.attr_ul_min_key_size < 8)
-            @min_key_size = RJava.cast_to_int(info.attr_ul_min_key_size) << 3
-            @max_key_size = RJava.cast_to_int(info.attr_ul_max_key_size) << 3
+            @min_key_size = (info.attr_ul_min_key_size).to_int << 3
+            @max_key_size = (info.attr_ul_max_key_size).to_int << 3
           else
-            @min_key_size = RJava.cast_to_int(info.attr_ul_min_key_size)
-            @max_key_size = RJava.cast_to_int(info.attr_ul_max_key_size)
+            @min_key_size = (info.attr_ul_min_key_size).to_int
+            @max_key_size = (info.attr_ul_max_key_size).to_int
           end
           # Explicitly disallow keys shorter than 40-bits for security
           if (@min_key_size < 40)
@@ -146,8 +146,8 @@ module Sun::Security::Pkcs11
         else
           if ((@mechanism).equal?(CKM_BLOWFISH_KEY_GEN))
             info = token.get_mechanism_info(mechanism)
-            @max_key_size = RJava.cast_to_int(info.attr_ul_max_key_size) << 3
-            @min_key_size = RJava.cast_to_int(info.attr_ul_min_key_size) << 3
+            @max_key_size = (info.attr_ul_max_key_size).to_int << 3
+            @min_key_size = (info.attr_ul_min_key_size).to_int << 3
             # Explicitly disallow keys shorter than 40-bits for security
             if (@min_key_size < 40)
               @min_key_size = 40
@@ -163,28 +163,28 @@ module Sun::Security::Pkcs11
     def set_default_key_size
       # whether to check default key size against the min and max value
       validate_key_size = false
-      case (RJava.cast_to_int(@mechanism))
-      when RJava.cast_to_int(CKM_DES_KEY_GEN)
+      case ((@mechanism).to_int)
+      when (CKM_DES_KEY_GEN).to_int
         @key_size = 64
         @significant_key_size = 56
         @key_type = CKK_DES
-      when RJava.cast_to_int(CKM_DES2_KEY_GEN)
+      when (CKM_DES2_KEY_GEN).to_int
         @key_size = 128
         @significant_key_size = 112
         @key_type = CKK_DES2
-      when RJava.cast_to_int(CKM_DES3_KEY_GEN)
+      when (CKM_DES3_KEY_GEN).to_int
         @key_size = 192
         @significant_key_size = 168
         @key_type = CKK_DES3
-      when RJava.cast_to_int(CKM_AES_KEY_GEN)
+      when (CKM_AES_KEY_GEN).to_int
         @key_type = CKK_AES
         @key_size = 128
         @significant_key_size = 128
-      when RJava.cast_to_int(CKM_RC4_KEY_GEN)
+      when (CKM_RC4_KEY_GEN).to_int
         @key_type = CKK_RC4
         @key_size = 128
         validate_key_size = true
-      when RJava.cast_to_int(CKM_BLOWFISH_KEY_GEN)
+      when (CKM_BLOWFISH_KEY_GEN).to_int
         @key_type = CKK_BLOWFISH
         @key_size = 128
         validate_key_size = true
@@ -213,12 +213,12 @@ module Sun::Security::Pkcs11
     # see JCE spec
     def engine_init(key_size, random)
       @token.ensure_valid
-      case (RJava.cast_to_int(@mechanism))
-      when RJava.cast_to_int(CKM_DES_KEY_GEN)
+      case ((@mechanism).to_int)
+      when (CKM_DES_KEY_GEN).to_int
         if ((!(key_size).equal?(@key_size)) && (!(key_size).equal?(@significant_key_size)))
           raise InvalidParameterException.new("DES key length must be 56 bits")
         end
-      when RJava.cast_to_int(CKM_DES2_KEY_GEN), RJava.cast_to_int(CKM_DES3_KEY_GEN)
+      when (CKM_DES2_KEY_GEN).to_int, (CKM_DES3_KEY_GEN).to_int
         new_mechanism = 0
         if (((key_size).equal?(112)) || ((key_size).equal?(128)))
           new_mechanism = CKM_DES2_KEY_GEN
@@ -237,13 +237,13 @@ module Sun::Security::Pkcs11
             raise InvalidParameterException.new("Only " + RJava.cast_to_string(@significant_key_size) + "-bit DESede key length is supported")
           end
         end
-      when RJava.cast_to_int(CKM_AES_KEY_GEN)
+      when (CKM_AES_KEY_GEN).to_int
         if ((!(key_size).equal?(128)) && (!(key_size).equal?(192)) && (!(key_size).equal?(256)))
           raise InvalidParameterException.new("AES key length must be 128, 192, or 256 bits")
         end
         @key_size = key_size
         @significant_key_size = key_size
-      when RJava.cast_to_int(CKM_RC4_KEY_GEN), RJava.cast_to_int(CKM_BLOWFISH_KEY_GEN)
+      when (CKM_RC4_KEY_GEN).to_int, (CKM_BLOWFISH_KEY_GEN).to_int
         if ((key_size < @min_key_size) || (key_size > @max_key_size))
           raise InvalidParameterException.new(@algorithm + " key length must be between " + RJava.cast_to_string(@min_key_size) + " and " + RJava.cast_to_string(@max_key_size) + " bits")
         end
@@ -261,12 +261,12 @@ module Sun::Security::Pkcs11
       begin
         session = @token.get_obj_session
         attributes = nil
-        case (RJava.cast_to_int(@key_type))
-        when RJava.cast_to_int(CKK_DES), RJava.cast_to_int(CKK_DES2), RJava.cast_to_int(CKK_DES3)
+        case ((@key_type).to_int)
+        when (CKK_DES).to_int, (CKK_DES2).to_int, (CKK_DES3).to_int
           # fixed length, do not specify CKA_VALUE_LEN
-          attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_CLASS, CKO_SECRET_KEY), ])
+          attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_CLASS, CKO_SECRET_KEY)])
         else
-          attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_CLASS, CKO_SECRET_KEY), CK_ATTRIBUTE.new(CKA_VALUE_LEN, @key_size >> 3), ])
+          attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_CLASS, CKO_SECRET_KEY), CK_ATTRIBUTE.new(CKA_VALUE_LEN, @key_size >> 3)])
         end
         attributes = @token.get_attributes(O_GENERATE, CKO_SECRET_KEY, @key_type, attributes)
         key_id = @token.attr_p11._c_generate_key(session.id, CK_MECHANISM.new(@mechanism), attributes)

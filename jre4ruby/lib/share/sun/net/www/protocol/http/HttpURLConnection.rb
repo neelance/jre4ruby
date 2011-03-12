@@ -132,13 +132,12 @@ module Sun::Net::Www::Protocol::Http
       # buffering behaviour.
       # 
       # sun.net.http.errorstream.timeout = <int>
-      # the timeout (in millisec) waiting the error stream
-      # to be buffered; default is 300 ms
+      #     the timeout (in millisec) waiting the error stream
+      #     to be buffered; default is 300 ms
       # 
       # sun.net.http.errorstream.bufferSize = <int>
-      # the size (in bytes) to use for the buffering the error stream;
-      # default is 4k
-      # 
+      #     the size (in bytes) to use for the buffering the error stream;
+      #     default is 4k
       # Should we enable buffering of error streams?
       
       def enable_esbuffer
@@ -522,7 +521,6 @@ module Sun::Net::Www::Protocol::Http
       # print all message headers in the MessageHeader
       # onto the wire - all the ones we've set and any
       # others that have been set
-      # 
       # send any pre-emptive authentication
       if (@http.attr_using_proxy)
         set_preemptive_proxy_authentication(@requests)
@@ -556,7 +554,6 @@ module Sun::Net::Www::Protocol::Http
         # However, we may be talking to a 1.0 server so we should set
         # keep-alive just in case, except if we have encountered an error
         # or if keep alive is disabled via a system property
-        # 
         # Try keep-alive only on first attempt
         if (!@failed_once && @http.get_http_keep_alive_set)
           if (@http.attr_using_proxy)
@@ -653,7 +650,7 @@ module Sun::Net::Www::Protocol::Http
     # 
     # @param url       the URL being accessed
     # @param useCache  whether the cached connection should be used
-    # if present
+    #        if present
     def set_new_client(url, use_cache)
       @http = HttpClient._new(url, nil, -1, use_cache, @connect_timeout)
       @http.set_read_timeout(@read_timeout)
@@ -680,7 +677,7 @@ module Sun::Net::Www::Protocol::Http
     # @param proxyHost the proxy host to use
     # @param proxyPort the proxy port to use
     # @param useCache  whether the cached connection should be used
-    # if present
+    #        if present
     def set_proxied_client(url, proxy_host, proxy_port, use_cache)
       proxied_connect(url, proxy_host, proxy_port, use_cache)
     end
@@ -693,9 +690,9 @@ module Sun::Net::Www::Protocol::Http
     
     typesig { [URL, Handler] }
     def initialize(u, handler)
+      initialize__http_urlconnection(u, nil, handler)
       # we set proxy == null to distinguish this case with the case
       # when per connection proxy is set
-      initialize__http_urlconnection(u, nil, handler)
     end
     
     typesig { [URL, String, ::Java::Int] }
@@ -858,7 +855,9 @@ module Sun::Net::Www::Protocol::Http
       end
       
       typesig { [URL, URL] }
+      # 
       # Same as java.net.URL.hostsEqual
+      # 
       def hosts_equal(u1, u2)
         h1 = u1.get_host
         h2 = u2.get_host
@@ -960,12 +959,11 @@ module Sun::Net::Www::Protocol::Http
         # Try to open connections using the following scheme,
         # return on the first one that's successful:
         # 1) if (instProxy != null)
-        # connect to instProxy; raise exception if failed
+        #        connect to instProxy; raise exception if failed
         # 2) else use system default ProxySelector
         # 3) is 2) fails, make direct connection
         if ((@inst_proxy).nil?)
           sel = Java::Security::AccessController.do_privileged(# no instance Proxy is set
-          # 
           # Do we have to use a proxy?
           Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
             local_class_in HttpURLConnection
@@ -1861,8 +1859,7 @@ module Sun::Net::Www::Protocol::Http
           if ((scheme_id).equal?(NegotiateAuthentication::KERBEROS_AUTH))
             url1 = nil
             begin
-              url1 = URL.new(self.attr_url, "/")
-              # truncate the path
+              url1 = URL.new(self.attr_url, "/") # truncate the path
             rescue JavaException => e
               url1 = self.attr_url
             end
@@ -1871,8 +1868,7 @@ module Sun::Net::Www::Protocol::Http
           if ((scheme_id).equal?(NegotiateAuthentication::NEGOTIATE_AUTH))
             url1 = nil
             begin
-              url1 = URL.new(self.attr_url, "/")
-              # truncate the path
+              url1 = URL.new(self.attr_url, "/") # truncate the path
             rescue JavaException => e
               url1 = self.attr_url
             end
@@ -1894,8 +1890,7 @@ module Sun::Net::Www::Protocol::Http
           if ((scheme_id).equal?(NTLMAuthentication::NTLM_AUTH))
             url1 = nil
             begin
-              url1 = URL.new(self.attr_url, "/")
-              # truncate the path
+              url1 = URL.new(self.attr_url, "/") # truncate the path
             rescue JavaException => e
               url1 = self.attr_url
             end
@@ -2030,10 +2025,10 @@ module Sun::Net::Www::Protocol::Http
           # Unfortunately, since most browsers have this incorrect
           # behavior, the web works this way now.  Typical usage
           # seems to be:
-          # POST a login code or passwd to a web page.
-          # after validation, the server redirects to another
-          # (welcome) page
-          # The second request is (erroneously) expected to be GET
+          #   POST a login code or passwd to a web page.
+          #   after validation, the server redirects to another
+          #     (welcome) page
+          #   The second request is (erroneously) expected to be GET
           # 
           # We will do the incorrect thing (POST-->GET) by default.
           # We will provide the capability to do the "right" thing
@@ -2198,7 +2193,7 @@ module Sun::Net::Www::Protocol::Http
           @http.set_do_not_retry(true)
           @http.close_server
         end
-        # poster = null;
+        #      poster = null;
         @http = nil
         self.attr_connected = false
       end
@@ -2299,7 +2294,7 @@ module Sun::Net::Www::Protocol::Http
     # existing values associated with the same key.
     # 
     # @param   key     the keyword by which the request is known
-    # (e.g., "<code>accept</code>").
+    #                  (e.g., "<code>accept</code>").
     # @param   value  the value associated with it.
     # @see #getRequestProperties(java.lang.String)
     # @since 1.4
@@ -2315,8 +2310,10 @@ module Sun::Net::Www::Protocol::Http
     end
     
     typesig { [String, String] }
+    # 
     # Set a property for authentication.  This can safely disregard
     # the connected test.
+    # 
     def set_authentication_property(key, value)
       check_message_header(key, value)
       @requests.set(key, value)
@@ -2371,7 +2368,7 @@ module Sun::Net::Www::Protocol::Http
     # (i.e., timeout of infinity).
     # 
     # @return an <code>int</code> that indicates the connect timeout
-    # value in milliseconds
+    #         value in milliseconds
     # @see java.net.URLConnection#setConnectTimeout(int)
     # @see java.net.URLConnection#connect()
     # @since 1.5
@@ -2410,7 +2407,7 @@ module Sun::Net::Www::Protocol::Http
     # option is disabled (i.e., timeout of infinity).
     # 
     # @return an <code>int</code> that indicates the read timeout
-    # value in milliseconds
+    #         value in milliseconds
     # 
     # @see java.net.URLConnection#setReadTimeout(int)
     # @see java.io.InputStream#read()
@@ -2544,7 +2541,7 @@ module Sun::Net::Www::Protocol::Http
         # This method simply performs <code>in.mark(readlimit)</code>.
         # 
         # @param   readlimit   the maximum limit of bytes that can be read before
-        # the mark position becomes invalid.
+        #                      the mark position becomes invalid.
         # @see     java.io.FilterInputStream#in
         # @see     java.io.FilterInputStream#reset()
         def mark(readlimit)
@@ -2574,7 +2571,7 @@ module Sun::Net::Www::Protocol::Http
         # code to reset the stream and try another parser.
         # 
         # @exception  IOException  if the stream has not been marked or if the
-        # mark has been invalidated.
+        #               mark has been invalidated.
         # @see        java.io.FilterInputStream#in
         # @see        java.io.FilterInputStream#mark(int)
         def reset
@@ -2684,7 +2681,7 @@ module Sun::Net::Www::Protocol::Http
             return 0
           end
           while (remaining > 0)
-            nr = read(local_skip_buffer, 0, RJava.cast_to_int(Math.min(self.class::SKIP_BUFFER_SIZE, remaining)))
+            nr = read(local_skip_buffer, 0, (Math.min(self.class::SKIP_BUFFER_SIZE, remaining)).to_int)
             if (nr < 0)
               break
             end
@@ -2734,8 +2731,8 @@ module Sun::Net::Www::Protocol::Http
         typesig { [class_self::OutputStream, ::Java::Int] }
         # expectedLength == -1 if the stream is chunked
         # expectedLength > 0 if the stream is fixed content-length
-        # In the 2nd case, we make sure the expected number of
-        # of bytes are actually written
+        #    In the 2nd case, we make sure the expected number of
+        #    of bytes are actually written
         def initialize(os, expected_length)
           @expected = 0
           @written = 0
@@ -2810,12 +2807,10 @@ module Sun::Net::Www::Protocol::Http
               self.attr_out.close
               raise @error_excp
             end
-            FilterOutputStream.instance_method(:flush).bind(self).call
-            # can't close the socket
+            FilterOutputStream.instance_method(:flush).bind(self).call # can't close the socket
           else
             # chunked
-            super
-            # force final chunk to be written
+            super # force final chunk to be written
             # trailing \r\n
             o = self.attr_http.get_output_stream
             o.write(Character.new(?\r.ord))
@@ -2989,7 +2984,7 @@ module Sun::Net::Www::Protocol::Http
     alias_method :initialize__http_urlconnection, :initialize
   end
   
-  # An input stream that just returns EOF.  This is for
+  #  An input stream that just returns EOF.  This is for
   # HTTP URLConnections that are KeepAlive && use the
   # HEAD method - i.e., stream not dead, but nothing to be read.
   class EmptyInputStream < HttpURLConnectionImports.const_get :InputStream

@@ -157,10 +157,10 @@ module Java::Security::Cert
     # Issuer and/or subject names are especially useful criteria.
     # 
     # @param selector A <code>CertSelector</code> used to select which
-    # <code>Certificate</code>s should be returned. Specify <code>null</code>
-    # to return all <code>Certificate</code>s (if supported).
+    #  <code>Certificate</code>s should be returned. Specify <code>null</code>
+    #  to return all <code>Certificate</code>s (if supported).
     # @return A <code>Collection</code> of <code>Certificate</code>s that
-    # match the specified selector (never <code>null</code>)
+    #         match the specified selector (never <code>null</code>)
     # @throws CertStoreException if an exception occurs
     def get_certificates(selector)
       return @store_spi.engine_get_certificates(selector)
@@ -185,10 +185,10 @@ module Java::Security::Cert
     # Issuer names and/or the certificate to be checked are especially useful.
     # 
     # @param selector A <code>CRLSelector</code> used to select which
-    # <code>CRL</code>s should be returned. Specify <code>null</code>
-    # to return all <code>CRL</code>s (if supported).
+    #  <code>CRL</code>s should be returned. Specify <code>null</code>
+    #  to return all <code>CRL</code>s (if supported).
     # @return A <code>Collection</code> of <code>CRL</code>s that
-    # match the specified selector (never <code>null</code>)
+    #         match the specified selector (never <code>null</code>)
     # @throws CertStoreException if an exception occurs
     def get_crls(selector)
       return @store_spi.engine_get_crls(selector)
@@ -216,22 +216,22 @@ module Java::Security::Cert
       # cloned.
       # 
       # @param type the name of the requested <code>CertStore</code> type.
-      # See Appendix A in the <a href=
-      # "../../../../technotes/guides/security/certpath/CertPathProgGuide.html#AppA">
-      # Java Certification Path API Programmer's Guide </a>
-      # for information about standard types.
+      #  See Appendix A in the <a href=
+      #  "../../../../technotes/guides/security/certpath/CertPathProgGuide.html#AppA">
+      #  Java Certification Path API Programmer's Guide </a>
+      #  for information about standard types.
       # 
       # @param params the initialization parameters (may be <code>null</code>).
       # 
       # @return a <code>CertStore</code> object that implements the specified
-      # <code>CertStore</code> type.
+      #          <code>CertStore</code> type.
       # 
       # @throws NoSuchAlgorithmException if no Provider supports a
-      # CertStoreSpi implementation for the specified type.
+      #          CertStoreSpi implementation for the specified type.
       # 
       # @throws InvalidAlgorithmParameterException if the specified
-      # initialization parameters are inappropriate for this
-      # <code>CertStore</code>.
+      #          initialization parameters are inappropriate for this
+      #          <code>CertStore</code>.
       # 
       # @see java.security.Provider
       def get_instance(type, params)
@@ -271,31 +271,31 @@ module Java::Security::Cert
       # cloned.
       # 
       # @param type the requested <code>CertStore</code> type.
-      # See Appendix A in the <a href=
-      # "../../../../technotes/guides/security/certpath/CertPathProgGuide.html#AppA">
-      # Java Certification Path API Programmer's Guide </a>
-      # for information about standard types.
+      #  See Appendix A in the <a href=
+      #  "../../../../technotes/guides/security/certpath/CertPathProgGuide.html#AppA">
+      #  Java Certification Path API Programmer's Guide </a>
+      #  for information about standard types.
       # 
       # @param params the initialization parameters (may be <code>null</code>).
       # 
       # @param provider the name of the provider.
       # 
       # @return a <code>CertStore</code> object that implements the
-      # specified type.
+      #          specified type.
       # 
       # @throws NoSuchAlgorithmException if a CertStoreSpi
-      # implementation for the specified type is not
-      # available from the specified provider.
+      #          implementation for the specified type is not
+      #          available from the specified provider.
       # 
       # @throws InvalidAlgorithmParameterException if the specified
-      # initialization parameters are inappropriate for this
-      # <code>CertStore</code>.
+      #          initialization parameters are inappropriate for this
+      #          <code>CertStore</code>.
       # 
       # @throws NoSuchProviderException if the specified provider is not
-      # registered in the security provider list.
+      #          registered in the security provider list.
       # 
       # @exception IllegalArgumentException if the <code>provider</code> is
-      # null or empty.
+      #          null or empty.
       # 
       # @see java.security.Provider
       def get_instance(type, params, provider)
@@ -323,28 +323,28 @@ module Java::Security::Cert
       # cloned.
       # 
       # @param type the requested <code>CertStore</code> type.
-      # See Appendix A in the <a href=
-      # "../../../../technotes/guides/security/certpath/CertPathProgGuide.html#AppA">
-      # Java Certification Path API Programmer's Guide </a>
-      # for information about standard types.
+      #  See Appendix A in the <a href=
+      #  "../../../../technotes/guides/security/certpath/CertPathProgGuide.html#AppA">
+      #  Java Certification Path API Programmer's Guide </a>
+      #  for information about standard types.
       # 
       # @param params the initialization parameters (may be <code>null</code>).
       # 
       # @param provider the provider.
       # 
       # @return a <code>CertStore</code> object that implements the
-      # specified type.
+      #          specified type.
       # 
       # @exception NoSuchAlgorithmException if a CertStoreSpi
-      # implementation for the specified type is not available
-      # from the specified Provider object.
+      #          implementation for the specified type is not available
+      #          from the specified Provider object.
       # 
       # @throws InvalidAlgorithmParameterException if the specified
-      # initialization parameters are inappropriate for this
-      # <code>CertStore</code>
+      #          initialization parameters are inappropriate for this
+      #          <code>CertStore</code>
       # 
       # @exception IllegalArgumentException if the <code>provider</code> is
-      # null.
+      #          null.
       # 
       # @see java.security.Provider
       def get_instance(type, params, provider)

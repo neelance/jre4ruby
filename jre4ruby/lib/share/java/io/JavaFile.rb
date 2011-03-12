@@ -50,8 +50,8 @@ module Java::Io
   # 
   # <ol>
   # <li> An optional system-dependent <em>prefix</em> string,
-  # such as a disk-drive specifier, <code>"/"</code>&nbsp;for the UNIX root
-  # directory, or <code>"\\\\"</code>&nbsp;for a Microsoft Windows UNC pathname, and
+  #      such as a disk-drive specifier, <code>"/"</code>&nbsp;for the UNIX root
+  #      directory, or <code>"\\\\"</code>&nbsp;for a Microsoft Windows UNC pathname, and
   # <li> A sequence of zero or more string <em>names</em>.
   # </ol>
   # 
@@ -215,7 +215,6 @@ module Java::Io
     
     typesig { [String, ::Java::Int] }
     # -- Constructors --
-    # 
     # Internal constructor for already-normalized pathname strings.
     def initialize(pathname, prefix_length)
       @path = nil
@@ -244,7 +243,7 @@ module Java::Io
     # 
     # @param   pathname  A pathname string
     # @throws  NullPointerException
-    # If the <code>pathname</code> argument is <code>null</code>
+    #          If the <code>pathname</code> argument is <code>null</code>
     def initialize(pathname)
       @path = nil
       @prefix_length = 0
@@ -262,7 +261,6 @@ module Java::Io
     # directory defined by the FileSystem.getDefaultParent method.  On Unix
     # this default is "/", while on Microsoft Windows it is "\\".  This is required for
     # compatibility with the original behavior of this class.
-    # 
     # Creates a new <code>File</code> instance from a parent pathname string
     # and a child pathname string.
     # 
@@ -285,7 +283,7 @@ module Java::Io
     # @param   parent  The parent pathname string
     # @param   child   The child pathname string
     # @throws  NullPointerException
-    # If <code>child</code> is <code>null</code>
+    #          If <code>child</code> is <code>null</code>
     def initialize(parent, child)
       @path = nil
       @prefix_length = 0
@@ -327,7 +325,7 @@ module Java::Io
     # @param   parent  The parent abstract pathname
     # @param   child   The child pathname string
     # @throws  NullPointerException
-    # If <code>child</code> is <code>null</code>
+    #          If <code>child</code> is <code>null</code>
     def initialize(parent, child)
       @path = nil
       @prefix_length = 0
@@ -368,15 +366,15 @@ module Java::Io
     # virtual machine on a different operating system.
     # 
     # @param  uri
-    # An absolute, hierarchical URI with a scheme equal to
-    # <tt>"file"</tt>, a non-empty path component, and undefined
-    # authority, query, and fragment components
+    #         An absolute, hierarchical URI with a scheme equal to
+    #         <tt>"file"</tt>, a non-empty path component, and undefined
+    #         authority, query, and fragment components
     # 
     # @throws  NullPointerException
-    # If <tt>uri</tt> is <tt>null</tt>
+    #          If <tt>uri</tt> is <tt>null</tt>
     # 
     # @throws  IllegalArgumentException
-    # If the preconditions on the parameter do not hold
+    #          If the preconditions on the parameter do not hold
     # 
     # @see #toURI()
     # @see java.net.URI
@@ -419,15 +417,14 @@ module Java::Io
     
     typesig { [] }
     # -- Path-component accessors --
-    # 
     # Returns the name of the file or directory denoted by this abstract
     # pathname.  This is just the last name in the pathname's name
     # sequence.  If the pathname's name sequence is empty, then the empty
     # string is returned.
     # 
     # @return  The name of the file or directory denoted by this abstract
-    # pathname, or the empty string if this pathname's name sequence
-    # is empty
+    #          pathname, or the empty string if this pathname's name sequence
+    #          is empty
     def get_name
       index = @path.last_index_of(SeparatorChar)
       if (index < @prefix_length)
@@ -446,8 +443,8 @@ module Java::Io
     # the pathname does not name a parent directory.
     # 
     # @return  The pathname string of the parent directory named by this
-    # abstract pathname, or <code>null</code> if this pathname
-    # does not name a parent
+    #          abstract pathname, or <code>null</code> if this pathname
+    #          does not name a parent
     def get_parent
       index = @path.last_index_of(SeparatorChar)
       if (index < @prefix_length)
@@ -470,8 +467,8 @@ module Java::Io
     # the pathname does not name a parent directory.
     # 
     # @return  The abstract pathname of the parent directory named by this
-    # abstract pathname, or <code>null</code> if this pathname
-    # does not name a parent
+    #          abstract pathname, or <code>null</code> if this pathname
+    #          does not name a parent
     # 
     # @since 1.2
     def get_parent_file
@@ -494,7 +491,6 @@ module Java::Io
     
     typesig { [] }
     # -- Path operations --
-    # 
     # Tests whether this abstract pathname is absolute.  The definition of
     # absolute pathname is system dependent.  On UNIX systems, a pathname is
     # absolute if its prefix is <code>"/"</code>.  On Microsoft Windows systems, a
@@ -502,7 +498,7 @@ module Java::Io
     # <code>"\\"</code>, or if its prefix is <code>"\\\\"</code>.
     # 
     # @return  <code>true</code> if this abstract pathname is absolute,
-    # <code>false</code> otherwise
+    #          <code>false</code> otherwise
     def is_absolute
       return self.attr_fs.is_absolute(self)
     end
@@ -523,10 +519,10 @@ module Java::Io
     # directory.
     # 
     # @return  The absolute pathname string denoting the same file or
-    # directory as this abstract pathname
+    #          directory as this abstract pathname
     # 
     # @throws  SecurityException
-    # If a required system property value cannot be accessed.
+    #          If a required system property value cannot be accessed.
     # 
     # @see     java.io.File#isAbsolute()
     def get_absolute_path
@@ -538,10 +534,10 @@ module Java::Io
     # <code>new&nbsp;File(this.{@link #getAbsolutePath})</code>.
     # 
     # @return  The absolute abstract pathname denoting the same file or
-    # directory as this abstract pathname
+    #          directory as this abstract pathname
     # 
     # @throws  SecurityException
-    # If a required system property value cannot be accessed.
+    #          If a required system property value cannot be accessed.
     # 
     # @since 1.2
     def get_absolute_file
@@ -571,18 +567,18 @@ module Java::Io
     # pathname after the file or directory is deleted.
     # 
     # @return  The canonical pathname string denoting the same file or
-    # directory as this abstract pathname
+    #          directory as this abstract pathname
     # 
     # @throws  IOException
-    # If an I/O error occurs, which is possible because the
-    # construction of the canonical pathname may require
-    # filesystem queries
+    #          If an I/O error occurs, which is possible because the
+    #          construction of the canonical pathname may require
+    #          filesystem queries
     # 
     # @throws  SecurityException
-    # If a required system property value cannot be accessed, or
-    # if a security manager exists and its <code>{@link
-    # java.lang.SecurityManager#checkRead}</code> method denies
-    # read access to the file
+    #          If a required system property value cannot be accessed, or
+    #          if a security manager exists and its <code>{@link
+    #          java.lang.SecurityManager#checkRead}</code> method denies
+    #          read access to the file
     # 
     # @since   JDK1.1
     def get_canonical_path
@@ -594,18 +590,18 @@ module Java::Io
     # <code>new&nbsp;File(this.{@link #getCanonicalPath})</code>.
     # 
     # @return  The canonical pathname string denoting the same file or
-    # directory as this abstract pathname
+    #          directory as this abstract pathname
     # 
     # @throws  IOException
-    # If an I/O error occurs, which is possible because the
-    # construction of the canonical pathname may require
-    # filesystem queries
+    #          If an I/O error occurs, which is possible because the
+    #          construction of the canonical pathname may require
+    #          filesystem queries
     # 
     # @throws  SecurityException
-    # If a required system property value cannot be accessed, or
-    # if a security manager exists and its <code>{@link
-    # java.lang.SecurityManager#checkRead}</code> method denies
-    # read access to the file
+    #          If a required system property value cannot be accessed, or
+    #          if a security manager exists and its <code>{@link
+    #          java.lang.SecurityManager#checkRead}</code> method denies
+    #          read access to the file
     # 
     # @since 1.2
     def get_canonical_file
@@ -639,7 +635,7 @@ module Java::Io
     # @return  A URL object representing the equivalent file URL
     # 
     # @throws  MalformedURLException
-    # If the path cannot be parsed as a URL
+    #          If the path cannot be parsed as a URL
     # 
     # @see     #toURI()
     # @see     java.net.URI
@@ -678,8 +674,8 @@ module Java::Io
     # different operating system.
     # 
     # @return  An absolute, hierarchical URI with a scheme equal to
-    # <tt>"file"</tt>, a path representing this abstract pathname,
-    # and undefined authority, query, and fragment components
+    #          <tt>"file"</tt>, a path representing this abstract pathname,
+    #          and undefined authority, query, and fragment components
     # @throws SecurityException If a required system property value cannot
     # be accessed.
     # 
@@ -702,18 +698,17 @@ module Java::Io
     
     typesig { [] }
     # -- Attribute accessors --
-    # 
     # Tests whether the application can read the file denoted by this
     # abstract pathname.
     # 
     # @return  <code>true</code> if and only if the file specified by this
-    # abstract pathname exists <em>and</em> can be read by the
-    # application; <code>false</code> otherwise
+    #          abstract pathname exists <em>and</em> can be read by the
+    #          application; <code>false</code> otherwise
     # 
     # @throws  SecurityException
-    # If a security manager exists and its <code>{@link
-    # java.lang.SecurityManager#checkRead(java.lang.String)}</code>
-    # method denies read access to the file
+    #          If a security manager exists and its <code>{@link
+    #          java.lang.SecurityManager#checkRead(java.lang.String)}</code>
+    #          method denies read access to the file
     def can_read
       security = System.get_security_manager
       if (!(security).nil?)
@@ -727,14 +722,14 @@ module Java::Io
     # abstract pathname.
     # 
     # @return  <code>true</code> if and only if the file system actually
-    # contains a file denoted by this abstract pathname <em>and</em>
-    # the application is allowed to write to the file;
-    # <code>false</code> otherwise.
+    #          contains a file denoted by this abstract pathname <em>and</em>
+    #          the application is allowed to write to the file;
+    #          <code>false</code> otherwise.
     # 
     # @throws  SecurityException
-    # If a security manager exists and its <code>{@link
-    # java.lang.SecurityManager#checkWrite(java.lang.String)}</code>
-    # method denies write access to the file
+    #          If a security manager exists and its <code>{@link
+    #          java.lang.SecurityManager#checkWrite(java.lang.String)}</code>
+    #          method denies write access to the file
     def can_write
       security = System.get_security_manager
       if (!(security).nil?)
@@ -748,12 +743,12 @@ module Java::Io
     # exists.
     # 
     # @return  <code>true</code> if and only if the file or directory denoted
-    # by this abstract pathname exists; <code>false</code> otherwise
+    #          by this abstract pathname exists; <code>false</code> otherwise
     # 
     # @throws  SecurityException
-    # If a security manager exists and its <code>{@link
-    # java.lang.SecurityManager#checkRead(java.lang.String)}</code>
-    # method denies read access to the file or directory
+    #          If a security manager exists and its <code>{@link
+    #          java.lang.SecurityManager#checkRead(java.lang.String)}</code>
+    #          method denies read access to the file or directory
     def exists
       security = System.get_security_manager
       if (!(security).nil?)
@@ -767,13 +762,13 @@ module Java::Io
     # directory.
     # 
     # @return <code>true</code> if and only if the file denoted by this
-    # abstract pathname exists <em>and</em> is a directory;
-    # <code>false</code> otherwise
+    #          abstract pathname exists <em>and</em> is a directory;
+    #          <code>false</code> otherwise
     # 
     # @throws  SecurityException
-    # If a security manager exists and its <code>{@link
-    # java.lang.SecurityManager#checkRead(java.lang.String)}</code>
-    # method denies read access to the file
+    #          If a security manager exists and its <code>{@link
+    #          java.lang.SecurityManager#checkRead(java.lang.String)}</code>
+    #          method denies read access to the file
     def is_directory
       security = System.get_security_manager
       if (!(security).nil?)
@@ -789,13 +784,13 @@ module Java::Io
     # file created by a Java application is guaranteed to be a normal file.
     # 
     # @return  <code>true</code> if and only if the file denoted by this
-    # abstract pathname exists <em>and</em> is a normal file;
-    # <code>false</code> otherwise
+    #          abstract pathname exists <em>and</em> is a normal file;
+    #          <code>false</code> otherwise
     # 
     # @throws  SecurityException
-    # If a security manager exists and its <code>{@link
-    # java.lang.SecurityManager#checkRead(java.lang.String)}</code>
-    # method denies read access to the file
+    #          If a security manager exists and its <code>{@link
+    #          java.lang.SecurityManager#checkRead(java.lang.String)}</code>
+    #          method denies read access to the file
     def is_file
       security = System.get_security_manager
       if (!(security).nil?)
@@ -812,13 +807,13 @@ module Java::Io
     # considered to be hidden if it has been marked as such in the filesystem.
     # 
     # @return  <code>true</code> if and only if the file denoted by this
-    # abstract pathname is hidden according to the conventions of the
-    # underlying platform
+    #          abstract pathname is hidden according to the conventions of the
+    #          underlying platform
     # 
     # @throws  SecurityException
-    # If a security manager exists and its <code>{@link
-    # java.lang.SecurityManager#checkRead(java.lang.String)}</code>
-    # method denies read access to the file
+    #          If a security manager exists and its <code>{@link
+    #          java.lang.SecurityManager#checkRead(java.lang.String)}</code>
+    #          method denies read access to the file
     # 
     # @since 1.2
     def is_hidden
@@ -834,14 +829,14 @@ module Java::Io
     # last modified.
     # 
     # @return  A <code>long</code> value representing the time the file was
-    # last modified, measured in milliseconds since the epoch
-    # (00:00:00 GMT, January 1, 1970), or <code>0L</code> if the
-    # file does not exist or if an I/O error occurs
+    #          last modified, measured in milliseconds since the epoch
+    #          (00:00:00 GMT, January 1, 1970), or <code>0L</code> if the
+    #          file does not exist or if an I/O error occurs
     # 
     # @throws  SecurityException
-    # If a security manager exists and its <code>{@link
-    # java.lang.SecurityManager#checkRead(java.lang.String)}</code>
-    # method denies read access to the file
+    #          If a security manager exists and its <code>{@link
+    #          java.lang.SecurityManager#checkRead(java.lang.String)}</code>
+    #          method denies read access to the file
     def last_modified
       security = System.get_security_manager
       if (!(security).nil?)
@@ -855,14 +850,14 @@ module Java::Io
     # The return value is unspecified if this pathname denotes a directory.
     # 
     # @return  The length, in bytes, of the file denoted by this abstract
-    # pathname, or <code>0L</code> if the file does not exist.  Some
-    # operating systems may return <code>0L</code> for pathnames
-    # denoting system-dependent entities such as devices or pipes.
+    #          pathname, or <code>0L</code> if the file does not exist.  Some
+    #          operating systems may return <code>0L</code> for pathnames
+    #          denoting system-dependent entities such as devices or pipes.
     # 
     # @throws  SecurityException
-    # If a security manager exists and its <code>{@link
-    # java.lang.SecurityManager#checkRead(java.lang.String)}</code>
-    # method denies read access to the file
+    #          If a security manager exists and its <code>{@link
+    #          java.lang.SecurityManager#checkRead(java.lang.String)}</code>
+    #          method denies read access to the file
     def length
       security = System.get_security_manager
       if (!(security).nil?)
@@ -873,7 +868,6 @@ module Java::Io
     
     typesig { [] }
     # -- File operations --
-    # 
     # Atomically creates a new, empty file named by this abstract pathname if
     # and only if a file with this name does not yet exist.  The check for the
     # existence of the file and the creation of the file if it does not exist
@@ -886,16 +880,16 @@ module Java::Io
     # facility should be used instead.
     # 
     # @return  <code>true</code> if the named file does not exist and was
-    # successfully created; <code>false</code> if the named file
-    # already exists
+    #          successfully created; <code>false</code> if the named file
+    #          already exists
     # 
     # @throws  IOException
-    # If an I/O error occurred
+    #          If an I/O error occurred
     # 
     # @throws  SecurityException
-    # If a security manager exists and its <code>{@link
-    # java.lang.SecurityManager#checkWrite(java.lang.String)}</code>
-    # method denies write access to the file
+    #          If a security manager exists and its <code>{@link
+    #          java.lang.SecurityManager#checkWrite(java.lang.String)}</code>
+    #          method denies write access to the file
     # 
     # @since 1.2
     def create_new_file
@@ -912,12 +906,12 @@ module Java::Io
     # order to be deleted.
     # 
     # @return  <code>true</code> if and only if the file or directory is
-    # successfully deleted; <code>false</code> otherwise
+    #          successfully deleted; <code>false</code> otherwise
     # 
     # @throws  SecurityException
-    # If a security manager exists and its <code>{@link
-    # java.lang.SecurityManager#checkDelete}</code> method denies
-    # delete access to the file
+    #          If a security manager exists and its <code>{@link
+    #          java.lang.SecurityManager#checkDelete}</code> method denies
+    #          delete access to the file
     def delete
       security = System.get_security_manager
       if (!(security).nil?)
@@ -945,9 +939,9 @@ module Java::Io
     # facility should be used instead.
     # 
     # @throws  SecurityException
-    # If a security manager exists and its <code>{@link
-    # java.lang.SecurityManager#checkDelete}</code> method denies
-    # delete access to the file
+    #          If a security manager exists and its <code>{@link
+    #          java.lang.SecurityManager#checkDelete}</code> method denies
+    #          delete access to the file
     # 
     # @see #delete
     # 
@@ -976,15 +970,15 @@ module Java::Io
     # guaranteed to appear in alphabetical order.
     # 
     # @return  An array of strings naming the files and directories in the
-    # directory denoted by this abstract pathname.  The array will be
-    # empty if the directory is empty.  Returns {@code null} if
-    # this abstract pathname does not denote a directory, or if an
-    # I/O error occurs.
+    #          directory denoted by this abstract pathname.  The array will be
+    #          empty if the directory is empty.  Returns {@code null} if
+    #          this abstract pathname does not denote a directory, or if an
+    #          I/O error occurs.
     # 
     # @throws  SecurityException
-    # If a security manager exists and its {@link
-    # SecurityManager#checkRead(String)} method denies read access to
-    # the directory
+    #          If a security manager exists and its {@link
+    #          SecurityManager#checkRead(String)} method denies read access to
+    #          the directory
     def list
       security = System.get_security_manager
       if (!(security).nil?)
@@ -1006,19 +1000,19 @@ module Java::Io
     # file or directory in the directory that it denotes.
     # 
     # @param  filter
-    # A filename filter
+    #         A filename filter
     # 
     # @return  An array of strings naming the files and directories in the
-    # directory denoted by this abstract pathname that were accepted
-    # by the given {@code filter}.  The array will be empty if the
-    # directory is empty or if no names were accepted by the filter.
-    # Returns {@code null} if this abstract pathname does not denote
-    # a directory, or if an I/O error occurs.
+    #          directory denoted by this abstract pathname that were accepted
+    #          by the given {@code filter}.  The array will be empty if the
+    #          directory is empty or if no names were accepted by the filter.
+    #          Returns {@code null} if this abstract pathname does not denote
+    #          a directory, or if an I/O error occurs.
     # 
     # @throws  SecurityException
-    # If a security manager exists and its {@link
-    # SecurityManager#checkRead(String)} method denies read access to
-    # the directory
+    #          If a security manager exists and its {@link
+    #          SecurityManager#checkRead(String)} method denies read access to
+    #          the directory
     def list(filter)
       names = list
       if (((names).nil?) || ((filter).nil?))
@@ -1055,15 +1049,15 @@ module Java::Io
     # guaranteed to appear in alphabetical order.
     # 
     # @return  An array of abstract pathnames denoting the files and
-    # directories in the directory denoted by this abstract pathname.
-    # The array will be empty if the directory is empty.  Returns
-    # {@code null} if this abstract pathname does not denote a
-    # directory, or if an I/O error occurs.
+    #          directories in the directory denoted by this abstract pathname.
+    #          The array will be empty if the directory is empty.  Returns
+    #          {@code null} if this abstract pathname does not denote a
+    #          directory, or if an I/O error occurs.
     # 
     # @throws  SecurityException
-    # If a security manager exists and its {@link
-    # SecurityManager#checkRead(String)} method denies read access to
-    # the directory
+    #          If a security manager exists and its {@link
+    #          SecurityManager#checkRead(String)} method denies read access to
+    #          the directory
     # 
     # @since  1.2
     def list_files
@@ -1095,18 +1089,18 @@ module Java::Io
     # the directory that it denotes.
     # 
     # @param  filter
-    # A filename filter
+    #         A filename filter
     # 
     # @return  An array of abstract pathnames denoting the files and
-    # directories in the directory denoted by this abstract pathname.
-    # The array will be empty if the directory is empty.  Returns
-    # {@code null} if this abstract pathname does not denote a
-    # directory, or if an I/O error occurs.
+    #          directories in the directory denoted by this abstract pathname.
+    #          The array will be empty if the directory is empty.  Returns
+    #          {@code null} if this abstract pathname does not denote a
+    #          directory, or if an I/O error occurs.
     # 
     # @throws  SecurityException
-    # If a security manager exists and its {@link
-    # SecurityManager#checkRead(String)} method denies read access to
-    # the directory
+    #          If a security manager exists and its {@link
+    #          SecurityManager#checkRead(String)} method denies read access to
+    #          the directory
     # 
     # @since  1.2
     def list_files(filter)
@@ -1135,18 +1129,18 @@ module Java::Io
     # filter is invoked on the pathname.
     # 
     # @param  filter
-    # A file filter
+    #         A file filter
     # 
     # @return  An array of abstract pathnames denoting the files and
-    # directories in the directory denoted by this abstract pathname.
-    # The array will be empty if the directory is empty.  Returns
-    # {@code null} if this abstract pathname does not denote a
-    # directory, or if an I/O error occurs.
+    #          directories in the directory denoted by this abstract pathname.
+    #          The array will be empty if the directory is empty.  Returns
+    #          {@code null} if this abstract pathname does not denote a
+    #          directory, or if an I/O error occurs.
     # 
     # @throws  SecurityException
-    # If a security manager exists and its {@link
-    # SecurityManager#checkRead(String)} method denies read access to
-    # the directory
+    #          If a security manager exists and its {@link
+    #          SecurityManager#checkRead(String)} method denies read access to
+    #          the directory
     # 
     # @since  1.2
     def list_files(filter)
@@ -1168,12 +1162,12 @@ module Java::Io
     # Creates the directory named by this abstract pathname.
     # 
     # @return  <code>true</code> if and only if the directory was
-    # created; <code>false</code> otherwise
+    #          created; <code>false</code> otherwise
     # 
     # @throws  SecurityException
-    # If a security manager exists and its <code>{@link
-    # java.lang.SecurityManager#checkWrite(java.lang.String)}</code>
-    # method does not permit the named directory to be created
+    #          If a security manager exists and its <code>{@link
+    #          java.lang.SecurityManager#checkWrite(java.lang.String)}</code>
+    #          method does not permit the named directory to be created
     def mkdir
       security = System.get_security_manager
       if (!(security).nil?)
@@ -1189,18 +1183,18 @@ module Java::Io
     # parent directories.
     # 
     # @return  <code>true</code> if and only if the directory was created,
-    # along with all necessary parent directories; <code>false</code>
-    # otherwise
+    #          along with all necessary parent directories; <code>false</code>
+    #          otherwise
     # 
     # @throws  SecurityException
-    # If a security manager exists and its <code>{@link
-    # java.lang.SecurityManager#checkRead(java.lang.String)}</code>
-    # method does not permit verification of the existence of the
-    # named directory and all necessary parent directories; or if
-    # the <code>{@link
-    # java.lang.SecurityManager#checkWrite(java.lang.String)}</code>
-    # method does not permit the named directory and all necessary
-    # parent directories to be created
+    #          If a security manager exists and its <code>{@link
+    #          java.lang.SecurityManager#checkRead(java.lang.String)}</code>
+    #          method does not permit verification of the existence of the
+    #          named directory and all necessary parent directories; or if
+    #          the <code>{@link
+    #          java.lang.SecurityManager#checkWrite(java.lang.String)}</code>
+    #          method does not permit the named directory and all necessary
+    #          parent directories to be created
     def mkdirs
       if (exists)
         return false
@@ -1231,15 +1225,15 @@ module Java::Io
     # @param  dest  The new abstract pathname for the named file
     # 
     # @return  <code>true</code> if and only if the renaming succeeded;
-    # <code>false</code> otherwise
+    #          <code>false</code> otherwise
     # 
     # @throws  SecurityException
-    # If a security manager exists and its <code>{@link
-    # java.lang.SecurityManager#checkWrite(java.lang.String)}</code>
-    # method denies write access to either the old or new pathnames
+    #          If a security manager exists and its <code>{@link
+    #          java.lang.SecurityManager#checkWrite(java.lang.String)}</code>
+    #          method denies write access to either the old or new pathnames
     # 
     # @throws  NullPointerException
-    # If parameter <code>dest</code> is <code>null</code>
+    #          If parameter <code>dest</code> is <code>null</code>
     def rename_to(dest)
       security = System.get_security_manager
       if (!(security).nil?)
@@ -1261,17 +1255,17 @@ module Java::Io
     # truncated) <code>time</code> argument that was passed to this method.
     # 
     # @param  time  The new last-modified time, measured in milliseconds since
-    # the epoch (00:00:00 GMT, January 1, 1970)
+    #               the epoch (00:00:00 GMT, January 1, 1970)
     # 
     # @return <code>true</code> if and only if the operation succeeded;
-    # <code>false</code> otherwise
+    #          <code>false</code> otherwise
     # 
     # @throws  IllegalArgumentException  If the argument is negative
     # 
     # @throws  SecurityException
-    # If a security manager exists and its <code>{@link
-    # java.lang.SecurityManager#checkWrite(java.lang.String)}</code>
-    # method denies write access to the named file
+    #          If a security manager exists and its <code>{@link
+    #          java.lang.SecurityManager#checkWrite(java.lang.String)}</code>
+    #          method denies write access to the named file
     # 
     # @since 1.2
     def set_last_modified(time)
@@ -1293,12 +1287,12 @@ module Java::Io
     # directory may be deleted depends upon the underlying system.
     # 
     # @return <code>true</code> if and only if the operation succeeded;
-    # <code>false</code> otherwise
+    #          <code>false</code> otherwise
     # 
     # @throws  SecurityException
-    # If a security manager exists and its <code>{@link
-    # java.lang.SecurityManager#checkWrite(java.lang.String)}</code>
-    # method denies write access to the named file
+    #          If a security manager exists and its <code>{@link
+    #          java.lang.SecurityManager#checkWrite(java.lang.String)}</code>
+    #          method denies write access to the named file
     # 
     # @since 1.2
     def set_read_only
@@ -1314,24 +1308,24 @@ module Java::Io
     # pathname.
     # 
     # @param   writable
-    # If <code>true</code>, sets the access permission to allow write
-    # operations; if <code>false</code> to disallow write operations
+    #          If <code>true</code>, sets the access permission to allow write
+    #          operations; if <code>false</code> to disallow write operations
     # 
     # @param   ownerOnly
-    # If <code>true</code>, the write permission applies only to the
-    # owner's write permission; otherwise, it applies to everybody.  If
-    # the underlying file system can not distinguish the owner's write
-    # permission from that of others, then the permission will apply to
-    # everybody, regardless of this value.
+    #          If <code>true</code>, the write permission applies only to the
+    #          owner's write permission; otherwise, it applies to everybody.  If
+    #          the underlying file system can not distinguish the owner's write
+    #          permission from that of others, then the permission will apply to
+    #          everybody, regardless of this value.
     # 
     # @return  <code>true</code> if and only if the operation succeeded. The
-    # operation will fail if the user does not have permission to change
-    # the access permissions of this abstract pathname.
+    #          operation will fail if the user does not have permission to change
+    #          the access permissions of this abstract pathname.
     # 
     # @throws  SecurityException
-    # If a security manager exists and its <code>{@link
-    # java.lang.SecurityManager#checkWrite(java.lang.String)}</code>
-    # method denies write access to the named file
+    #          If a security manager exists and its <code>{@link
+    #          java.lang.SecurityManager#checkWrite(java.lang.String)}</code>
+    #          method denies write access to the named file
     # 
     # @since 1.6
     def set_writable(writable, owner_only)
@@ -1350,20 +1344,20 @@ module Java::Io
     # behaves in exactly the same way as the invocation
     # 
     # <pre>
-    # file.setWritable(arg, true) </pre>
+    #     file.setWritable(arg, true) </pre>
     # 
     # @param   writable
-    # If <code>true</code>, sets the access permission to allow write
-    # operations; if <code>false</code> to disallow write operations
+    #          If <code>true</code>, sets the access permission to allow write
+    #          operations; if <code>false</code> to disallow write operations
     # 
     # @return  <code>true</code> if and only if the operation succeeded.  The
-    # operation will fail if the user does not have permission to
-    # change the access permissions of this abstract pathname.
+    #          operation will fail if the user does not have permission to
+    #          change the access permissions of this abstract pathname.
     # 
     # @throws  SecurityException
-    # If a security manager exists and its <code>{@link
-    # java.lang.SecurityManager#checkWrite(java.lang.String)}</code>
-    # method denies write access to the file
+    #          If a security manager exists and its <code>{@link
+    #          java.lang.SecurityManager#checkWrite(java.lang.String)}</code>
+    #          method denies write access to the file
     # 
     # @since 1.6
     def set_writable(writable)
@@ -1375,27 +1369,27 @@ module Java::Io
     # pathname.
     # 
     # @param   readable
-    # If <code>true</code>, sets the access permission to allow read
-    # operations; if <code>false</code> to disallow read operations
+    #          If <code>true</code>, sets the access permission to allow read
+    #          operations; if <code>false</code> to disallow read operations
     # 
     # @param   ownerOnly
-    # If <code>true</code>, the read permission applies only to the
-    # owner's read permission; otherwise, it applies to everybody.  If
-    # the underlying file system can not distinguish the owner's read
-    # permission from that of others, then the permission will apply to
-    # everybody, regardless of this value.
+    #          If <code>true</code>, the read permission applies only to the
+    #          owner's read permission; otherwise, it applies to everybody.  If
+    #          the underlying file system can not distinguish the owner's read
+    #          permission from that of others, then the permission will apply to
+    #          everybody, regardless of this value.
     # 
     # @return  <code>true</code> if and only if the operation succeeded.  The
-    # operation will fail if the user does not have permission to
-    # change the access permissions of this abstract pathname.  If
-    # <code>readable</code> is <code>false</code> and the underlying
-    # file system does not implement a read permission, then the
-    # operation will fail.
+    #          operation will fail if the user does not have permission to
+    #          change the access permissions of this abstract pathname.  If
+    #          <code>readable</code> is <code>false</code> and the underlying
+    #          file system does not implement a read permission, then the
+    #          operation will fail.
     # 
     # @throws  SecurityException
-    # If a security manager exists and its <code>{@link
-    # java.lang.SecurityManager#checkWrite(java.lang.String)}</code>
-    # method denies write access to the file
+    #          If a security manager exists and its <code>{@link
+    #          java.lang.SecurityManager#checkWrite(java.lang.String)}</code>
+    #          method denies write access to the file
     # 
     # @since 1.6
     def set_readable(readable, owner_only)
@@ -1414,23 +1408,23 @@ module Java::Io
     # behaves in exactly the same way as the invocation
     # 
     # <pre>
-    # file.setReadable(arg, true) </pre>
+    #     file.setReadable(arg, true) </pre>
     # 
     # @param  readable
-    # If <code>true</code>, sets the access permission to allow read
-    # operations; if <code>false</code> to disallow read operations
+    #          If <code>true</code>, sets the access permission to allow read
+    #          operations; if <code>false</code> to disallow read operations
     # 
     # @return  <code>true</code> if and only if the operation succeeded.  The
-    # operation will fail if the user does not have permission to
-    # change the access permissions of this abstract pathname.  If
-    # <code>readable</code> is <code>false</code> and the underlying
-    # file system does not implement a read permission, then the
-    # operation will fail.
+    #          operation will fail if the user does not have permission to
+    #          change the access permissions of this abstract pathname.  If
+    #          <code>readable</code> is <code>false</code> and the underlying
+    #          file system does not implement a read permission, then the
+    #          operation will fail.
     # 
     # @throws  SecurityException
-    # If a security manager exists and its <code>{@link
-    # java.lang.SecurityManager#checkWrite(java.lang.String)}</code>
-    # method denies write access to the file
+    #          If a security manager exists and its <code>{@link
+    #          java.lang.SecurityManager#checkWrite(java.lang.String)}</code>
+    #          method denies write access to the file
     # 
     # @since 1.6
     def set_readable(readable)
@@ -1442,27 +1436,27 @@ module Java::Io
     # pathname.
     # 
     # @param   executable
-    # If <code>true</code>, sets the access permission to allow execute
-    # operations; if <code>false</code> to disallow execute operations
+    #          If <code>true</code>, sets the access permission to allow execute
+    #          operations; if <code>false</code> to disallow execute operations
     # 
     # @param   ownerOnly
-    # If <code>true</code>, the execute permission applies only to the
-    # owner's execute permission; otherwise, it applies to everybody.
-    # If the underlying file system can not distinguish the owner's
-    # execute permission from that of others, then the permission will
-    # apply to everybody, regardless of this value.
+    #          If <code>true</code>, the execute permission applies only to the
+    #          owner's execute permission; otherwise, it applies to everybody.
+    #          If the underlying file system can not distinguish the owner's
+    #          execute permission from that of others, then the permission will
+    #          apply to everybody, regardless of this value.
     # 
     # @return  <code>true</code> if and only if the operation succeeded.  The
-    # operation will fail if the user does not have permission to
-    # change the access permissions of this abstract pathname.  If
-    # <code>executable</code> is <code>false</code> and the underlying
-    # file system does not implement an execute permission, then the
-    # operation will fail.
+    #          operation will fail if the user does not have permission to
+    #          change the access permissions of this abstract pathname.  If
+    #          <code>executable</code> is <code>false</code> and the underlying
+    #          file system does not implement an execute permission, then the
+    #          operation will fail.
     # 
     # @throws  SecurityException
-    # If a security manager exists and its <code>{@link
-    # java.lang.SecurityManager#checkWrite(java.lang.String)}</code>
-    # method denies write access to the file
+    #          If a security manager exists and its <code>{@link
+    #          java.lang.SecurityManager#checkWrite(java.lang.String)}</code>
+    #          method denies write access to the file
     # 
     # @since 1.6
     def set_executable(executable, owner_only)
@@ -1481,23 +1475,23 @@ module Java::Io
     # behaves in exactly the same way as the invocation
     # 
     # <pre>
-    # file.setExecutable(arg, true) </pre>
+    #     file.setExecutable(arg, true) </pre>
     # 
     # @param   executable
-    # If <code>true</code>, sets the access permission to allow execute
-    # operations; if <code>false</code> to disallow execute operations
+    #          If <code>true</code>, sets the access permission to allow execute
+    #          operations; if <code>false</code> to disallow execute operations
     # 
     # @return   <code>true</code> if and only if the operation succeeded.  The
-    # operation will fail if the user does not have permission to
-    # change the access permissions of this abstract pathname.  If
-    # <code>executable</code> is <code>false</code> and the underlying
-    # file system does not implement an excute permission, then the
-    # operation will fail.
+    #           operation will fail if the user does not have permission to
+    #           change the access permissions of this abstract pathname.  If
+    #           <code>executable</code> is <code>false</code> and the underlying
+    #           file system does not implement an excute permission, then the
+    #           operation will fail.
     # 
     # @throws  SecurityException
-    # If a security manager exists and its <code>{@link
-    # java.lang.SecurityManager#checkWrite(java.lang.String)}</code>
-    # method denies write access to the file
+    #          If a security manager exists and its <code>{@link
+    #          java.lang.SecurityManager#checkWrite(java.lang.String)}</code>
+    #          method denies write access to the file
     # 
     # @since 1.6
     def set_executable(executable)
@@ -1509,12 +1503,12 @@ module Java::Io
     # abstract pathname.
     # 
     # @return  <code>true</code> if and only if the abstract pathname exists
-    # <em>and</em> the application is allowed to execute the file
+    #          <em>and</em> the application is allowed to execute the file
     # 
     # @throws  SecurityException
-    # If a security manager exists and its <code>{@link
-    # java.lang.SecurityManager#checkExec(java.lang.String)}</code>
-    # method denies execute access to the file
+    #          If a security manager exists and its <code>{@link
+    #          java.lang.SecurityManager#checkExec(java.lang.String)}</code>
+    #          method denies execute access to the file
     # 
     # @since 1.6
     def can_execute
@@ -1528,7 +1522,6 @@ module Java::Io
     class_module.module_eval {
       typesig { [] }
       # -- Filesystem interface --
-      # 
       # List the available filesystem roots.
       # 
       # <p> A particular Java platform may support zero or more
@@ -1563,9 +1556,9 @@ module Java::Io
       # result.
       # 
       # @return  An array of {@code File} objects denoting the available
-      # filesystem roots, or {@code null} if the set of roots could not
-      # be determined.  The array will be empty if there are no
-      # filesystem roots.
+      #          filesystem roots, or {@code null} if the set of roots could not
+      #          be determined.  The array will be empty if there are no
+      #          filesystem roots.
       # 
       # @since  1.2
       def list_roots
@@ -1575,18 +1568,17 @@ module Java::Io
     
     typesig { [] }
     # -- Disk usage --
-    # 
     # Returns the size of the partition <a href="#partName">named</a> by this
     # abstract pathname.
     # 
     # @return  The size, in bytes, of the partition or <tt>0L</tt> if this
-    # abstract pathname does not name a partition
+    #          abstract pathname does not name a partition
     # 
     # @throws  SecurityException
-    # If a security manager has been installed and it denies
-    # {@link RuntimePermission}<tt>("getFileSystemAttributes")</tt>
-    # or its {@link SecurityManager#checkRead(String)} method denies
-    # read access to the file named by this abstract pathname
+    #          If a security manager has been installed and it denies
+    #          {@link RuntimePermission}<tt>("getFileSystemAttributes")</tt>
+    #          or its {@link SecurityManager#checkRead(String)} method denies
+    #          read access to the file named by this abstract pathname
     # 
     # @since  1.6
     def get_total_space
@@ -1612,15 +1604,15 @@ module Java::Io
     # will succeed.
     # 
     # @return  The number of unallocated bytes on the partition <tt>0L</tt>
-    # if the abstract pathname does not name a partition.  This
-    # value will be less than or equal to the total file system size
-    # returned by {@link #getTotalSpace}.
+    #          if the abstract pathname does not name a partition.  This
+    #          value will be less than or equal to the total file system size
+    #          returned by {@link #getTotalSpace}.
     # 
     # @throws  SecurityException
-    # If a security manager has been installed and it denies
-    # {@link RuntimePermission}<tt>("getFileSystemAttributes")</tt>
-    # or its {@link SecurityManager#checkRead(String)} method denies
-    # read access to the file named by this abstract pathname
+    #          If a security manager has been installed and it denies
+    #          {@link RuntimePermission}<tt>("getFileSystemAttributes")</tt>
+    #          or its {@link SecurityManager#checkRead(String)} method denies
+    #          read access to the file named by this abstract pathname
     # 
     # @since  1.6
     def get_free_space
@@ -1649,15 +1641,15 @@ module Java::Io
     # to this file system will succeed.
     # 
     # @return  The number of available bytes on the partition or <tt>0L</tt>
-    # if the abstract pathname does not name a partition.  On
-    # systems where this information is not available, this method
-    # will be equivalent to a call to {@link #getFreeSpace}.
+    #          if the abstract pathname does not name a partition.  On
+    #          systems where this information is not available, this method
+    #          will be equivalent to a call to {@link #getFreeSpace}.
     # 
     # @throws  SecurityException
-    # If a security manager has been installed and it denies
-    # {@link RuntimePermission}<tt>("getFileSystemAttributes")</tt>
-    # or its {@link SecurityManager#checkRead(String)} method denies
-    # read access to the file named by this abstract pathname
+    #          If a security manager has been installed and it denies
+    #          {@link RuntimePermission}<tt>("getFileSystemAttributes")</tt>
+    #          or its {@link SecurityManager#checkRead(String)} method denies
+    #          read access to the file named by this abstract pathname
     # 
     # @since  1.6
     def get_usable_space
@@ -1729,10 +1721,10 @@ module Java::Io
       # 
       # <ol>
       # <li> The file denoted by the returned abstract pathname did not exist
-      # before this method was invoked, and
+      #      before this method was invoked, and
       # <li> Neither this method nor any of its variants will return the same
-      # abstract pathname again in the current invocation of the virtual
-      # machine.
+      #      abstract pathname again in the current invocation of the virtual
+      #      machine.
       # </ol>
       # 
       # This method provides only part of a temporary-file facility.  To arrange
@@ -1766,28 +1758,28 @@ module Java::Io
       # to have any effect upon the temporary directory used by this method.
       # 
       # @param  prefix     The prefix string to be used in generating the file's
-      # name; must be at least three characters long
+      #                    name; must be at least three characters long
       # 
       # @param  suffix     The suffix string to be used in generating the file's
-      # name; may be <code>null</code>, in which case the
-      # suffix <code>".tmp"</code> will be used
+      #                    name; may be <code>null</code>, in which case the
+      #                    suffix <code>".tmp"</code> will be used
       # 
       # @param  directory  The directory in which the file is to be created, or
-      # <code>null</code> if the default temporary-file
-      # directory is to be used
+      #                    <code>null</code> if the default temporary-file
+      #                    directory is to be used
       # 
       # @return  An abstract pathname denoting a newly-created empty file
       # 
       # @throws  IllegalArgumentException
-      # If the <code>prefix</code> argument contains fewer than three
-      # characters
+      #          If the <code>prefix</code> argument contains fewer than three
+      #          characters
       # 
       # @throws  IOException  If a file could not be created
       # 
       # @throws  SecurityException
-      # If a security manager exists and its <code>{@link
-      # java.lang.SecurityManager#checkWrite(java.lang.String)}</code>
-      # method does not allow a file to be created
+      #          If a security manager exists and its <code>{@link
+      #          java.lang.SecurityManager#checkWrite(java.lang.String)}</code>
+      #          method does not allow a file to be created
       # 
       # @since 1.2
       def create_temp_file(prefix, suffix, directory)
@@ -1818,24 +1810,24 @@ module Java::Io
       # createTempFile(prefix,&nbsp;suffix,&nbsp;null)}</code>.
       # 
       # @param  prefix     The prefix string to be used in generating the file's
-      # name; must be at least three characters long
+      #                    name; must be at least three characters long
       # 
       # @param  suffix     The suffix string to be used in generating the file's
-      # name; may be <code>null</code>, in which case the
-      # suffix <code>".tmp"</code> will be used
+      #                    name; may be <code>null</code>, in which case the
+      #                    suffix <code>".tmp"</code> will be used
       # 
       # @return  An abstract pathname denoting a newly-created empty file
       # 
       # @throws  IllegalArgumentException
-      # If the <code>prefix</code> argument contains fewer than three
-      # characters
+      #          If the <code>prefix</code> argument contains fewer than three
+      #          characters
       # 
       # @throws  IOException  If a file could not be created
       # 
       # @throws  SecurityException
-      # If a security manager exists and its <code>{@link
-      # java.lang.SecurityManager#checkWrite(java.lang.String)}</code>
-      # method does not allow a file to be created
+      #          If a security manager exists and its <code>{@link
+      #          java.lang.SecurityManager#checkWrite(java.lang.String)}</code>
+      #          method does not allow a file to be created
       # 
       # @since 1.2
       def create_temp_file(prefix, suffix)
@@ -1845,20 +1837,19 @@ module Java::Io
     
     typesig { [JavaFile] }
     # -- Basic infrastructure --
-    # 
     # Compares two abstract pathnames lexicographically.  The ordering
     # defined by this method depends upon the underlying system.  On UNIX
     # systems, alphabetic case is significant in comparing pathnames; on Microsoft Windows
     # systems it is not.
     # 
     # @param   pathname  The abstract pathname to be compared to this abstract
-    # pathname
+    #                    pathname
     # 
     # @return  Zero if the argument is equal to this abstract pathname, a
-    # value less than zero if this abstract pathname is
-    # lexicographically less than the argument, or a value greater
-    # than zero if this abstract pathname is lexicographically
-    # greater than the argument
+    #          value less than zero if this abstract pathname is
+    #          lexicographically less than the argument, or a value greater
+    #          than zero if this abstract pathname is lexicographically
+    #          greater than the argument
     # 
     # @since   1.2
     def compare_to(pathname)
@@ -1877,7 +1868,7 @@ module Java::Io
     # @param   obj   The object to be compared with this abstract pathname
     # 
     # @return  <code>true</code> if and only if the objects are the same;
-    # <code>false</code> otherwise
+    #          <code>false</code> otherwise
     def ==(obj)
       if ((!(obj).nil?) && (obj.is_a?(JavaFile)))
         return (compare_to(obj)).equal?(0)
@@ -1920,8 +1911,8 @@ module Java::Io
     def write_object(s)
       synchronized(self) do
         s.default_write_object
-        s.write_char(self.attr_separator_char)
-      end # Add the separator character
+        s.write_char(self.attr_separator_char) # Add the separator character
+      end
     end
     
     typesig { [Java::Io::ObjectInputStream] }

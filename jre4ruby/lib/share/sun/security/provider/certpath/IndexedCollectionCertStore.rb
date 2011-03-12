@@ -130,7 +130,7 @@ module Sun::Security::Provider::Certpath
     # 
     # @param params the algorithm parameters
     # @exception InvalidAlgorithmParameterException if params is not an
-    # instance of <code>CollectionCertStoreParameters</code>
+    #   instance of <code>CollectionCertStoreParameters</code>
     def initialize(params)
       @cert_subjects = nil
       @crl_issuers = nil
@@ -244,10 +244,10 @@ module Sun::Security::Provider::Certpath
     # match the selector, an empty <code>Collection</code> will be returned.
     # 
     # @param selector a <code>CertSelector</code> used to select which
-    # <code>Certificate</code>s should be returned. Specify <code>null</code>
-    # to return all <code>Certificate</code>s.
+    #  <code>Certificate</code>s should be returned. Specify <code>null</code>
+    #  to return all <code>Certificate</code>s.
     # @return a <code>Collection</code> of <code>Certificate</code>s that
-    # match the specified selector
+    #         match the specified selector
     # @throws CertStoreException if an exception occurs
     def engine_get_certificates(selector)
       # no selector means match all
@@ -336,10 +336,10 @@ module Sun::Security::Provider::Certpath
     # match the selector, an empty <code>Collection</code> will be returned.
     # 
     # @param selector a <code>CRLSelector</code> used to select which
-    # <code>CRL</code>s should be returned. Specify <code>null</code>
-    # to return all <code>CRL</code>s.
+    #  <code>CRL</code>s should be returned. Specify <code>null</code>
+    #  to return all <code>CRL</code>s.
     # @return a <code>Collection</code> of <code>CRL</code>s that
-    # match the specified selector
+    #         match the specified selector
     # @throws CertStoreException if an exception occurs
     def engine_get_crls(selector)
       if ((selector).nil?)

@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # This file is available under and governed by the GNU General Public
 # License version 2 only, as published by the Free Software Foundation.
 # However, the following notice accompanied the original version of this
@@ -272,44 +270,44 @@ module Java::Util::Concurrent
   # override one or more of the protected hook methods. For example,
   # here is a subclass that adds a simple pause/resume feature:
   # 
-  # <pre> {@code
+  #  <pre> {@code
   # class PausableThreadPoolExecutor extends ThreadPoolExecutor {
-  # private boolean isPaused;
-  # private ReentrantLock pauseLock = new ReentrantLock();
-  # private Condition unpaused = pauseLock.newCondition();
+  #   private boolean isPaused;
+  #   private ReentrantLock pauseLock = new ReentrantLock();
+  #   private Condition unpaused = pauseLock.newCondition();
   # 
-  # public PausableThreadPoolExecutor(...) { super(...); }
+  #   public PausableThreadPoolExecutor(...) { super(...); }
   # 
-  # protected void beforeExecute(Thread t, Runnable r) {
-  # super.beforeExecute(t, r);
-  # pauseLock.lock();
-  # try {
-  # while (isPaused) unpaused.await();
-  # } catch (InterruptedException ie) {
-  # t.interrupt();
-  # } finally {
-  # pauseLock.unlock();
-  # }
-  # }
+  #   protected void beforeExecute(Thread t, Runnable r) {
+  #     super.beforeExecute(t, r);
+  #     pauseLock.lock();
+  #     try {
+  #       while (isPaused) unpaused.await();
+  #     } catch (InterruptedException ie) {
+  #       t.interrupt();
+  #     } finally {
+  #       pauseLock.unlock();
+  #     }
+  #   }
   # 
-  # public void pause() {
-  # pauseLock.lock();
-  # try {
-  # isPaused = true;
-  # } finally {
-  # pauseLock.unlock();
-  # }
-  # }
+  #   public void pause() {
+  #     pauseLock.lock();
+  #     try {
+  #       isPaused = true;
+  #     } finally {
+  #       pauseLock.unlock();
+  #     }
+  #   }
   # 
-  # public void resume() {
-  # pauseLock.lock();
-  # try {
-  # isPaused = false;
-  # unpaused.signalAll();
-  # } finally {
-  # pauseLock.unlock();
-  # }
-  # }
+  #   public void resume() {
+  #     pauseLock.lock();
+  #     try {
+  #       isPaused = false;
+  #       unpaused.signalAll();
+  #     } finally {
+  #       pauseLock.unlock();
+  #     }
+  #   }
   # }}</pre>
   # 
   # @since 1.5
@@ -319,8 +317,8 @@ module Java::Util::Concurrent
     
     # The main pool control state, ctl, is an atomic integer packing
     # two conceptual fields
-    # workerCount, indicating the effective number of threads
-    # runState,    indicating whether running, shutting down etc
+    #   workerCount, indicating the effective number of threads
+    #   runState,    indicating whether running, shutting down etc
     # 
     # In order to pack them into one int, we limit workerCount to
     # (2^29)-1 (about 500 million) threads rather than (2^31)-1 (2
@@ -339,29 +337,29 @@ module Java::Util::Concurrent
     # 
     # The runState provides the main lifecyle control, taking on values:
     # 
-    # RUNNING:  Accept new tasks and process queued tasks
-    # SHUTDOWN: Don't accept new tasks, but process queued tasks
-    # STOP:     Don't accept new tasks, don't process queued tasks,
-    # and interrupt in-progress tasks
-    # TIDYING:  All tasks have terminated, workerCount is zero,
-    # the thread transitioning to state TIDYING
-    # will run the terminated() hook method
-    # TERMINATED: terminated() has completed
+    #   RUNNING:  Accept new tasks and process queued tasks
+    #   SHUTDOWN: Don't accept new tasks, but process queued tasks
+    #   STOP:     Don't accept new tasks, don't process queued tasks,
+    #             and interrupt in-progress tasks
+    #   TIDYING:  All tasks have terminated, workerCount is zero,
+    #             the thread transitioning to state TIDYING
+    #             will run the terminated() hook method
+    #   TERMINATED: terminated() has completed
     # 
     # The numerical order among these values matters, to allow
     # ordered comparisons. The runState monotonically increases over
     # time, but need not hit each state. The transitions are:
     # 
     # RUNNING -> SHUTDOWN
-    # On invocation of shutdown(), perhaps implicitly in finalize()
+    #    On invocation of shutdown(), perhaps implicitly in finalize()
     # (RUNNING or SHUTDOWN) -> STOP
-    # On invocation of shutdownNow()
+    #    On invocation of shutdownNow()
     # SHUTDOWN -> TIDYING
-    # When both queue and pool are empty
+    #    When both queue and pool are empty
     # STOP -> TIDYING
-    # When pool is empty
+    #    When pool is empty
     # TIDYING -> TERMINATED
-    # When the terminated() hook method has completed
+    #    When the terminated() hook method has completed
     # 
     # Threads waiting in awaitTermination() will return when the
     # state reaches TERMINATED.
@@ -523,8 +521,6 @@ module Java::Util::Concurrent
     # ongoing actions are based on freshest values, but without need
     # for locking, since no internal invariants depend on them
     # changing synchronously with respect to other actions.
-    # 
-    # 
     # Factory for new threads. All threads are created using this
     # factory (via method addWorker).  All callers must be prepared
     # for addWorker to fail, which may reflect a system or user's
@@ -725,13 +721,11 @@ module Java::Util::Concurrent
     
     typesig { [::Java::Int] }
     # Methods for setting control state
-    # 
-    # 
     # Transitions runState to given target, or leaves it alone if
     # already at least the given target.
     # 
     # @param targetState the desired state, either SHUTDOWN or STOP
-    # (but not TIDYING or TERMINATED -- use tryTerminate for that)
+    #        (but not TIDYING or TERMINATED -- use tryTerminate for that)
     def advance_run_state(target_state)
       loop do
         c = @ctl.get
@@ -781,8 +775,6 @@ module Java::Util::Concurrent
     
     typesig { [] }
     # Methods for controlling interrupts to worker threads.
-    # 
-    # 
     # If there is a security manager, makes sure caller has
     # permission to shut down threads in general (see shutdownPerm).
     # If this passes, additionally makes sure the caller is allowed
@@ -890,8 +882,6 @@ module Java::Util::Concurrent
     typesig { [Runnable] }
     # Misc utilities, most of which are also exported to
     # ScheduledThreadPoolExecutor
-    # 
-    # 
     # Invokes the rejected execution handler for the given command.
     # Package-protected for use by ScheduledThreadPoolExecutor.
     def reject(command)
@@ -936,8 +926,6 @@ module Java::Util::Concurrent
     
     typesig { [Runnable, ::Java::Boolean] }
     # Methods for creating, running and cleaning up after workers
-    # 
-    # 
     # Checks if a new worker can be added with respect to current
     # pool state and the given bound (either core or maximum). If so,
     # the worker count is adjusted accordingly, and, if possible, a
@@ -1068,16 +1056,16 @@ module Java::Util::Concurrent
     # current configuration settings, or returns null if this worker
     # must exit because of any of:
     # 1. There are more than maximumPoolSize workers (due to
-    # a call to setMaximumPoolSize).
+    #    a call to setMaximumPoolSize).
     # 2. The pool is stopped.
     # 3. The pool is shutdown and the queue is empty.
     # 4. This worker timed out waiting for a task, and timed-out
-    # workers are subject to termination (that is,
-    # {@code allowCoreThreadTimeOut || workerCount > corePoolSize})
-    # both before and after the timed wait.
+    #    workers are subject to termination (that is,
+    #    {@code allowCoreThreadTimeOut || workerCount > corePoolSize})
+    #    both before and after the timed wait.
     # 
     # @return task, or null if the worker must exit, in which case
-    # workerCount is decremented
+    #         workerCount is decremented
     def get_task
       timed_out = false # Did the last poll() time out?
       loop do
@@ -1198,28 +1186,27 @@ module Java::Util::Concurrent
     
     typesig { [::Java::Int, ::Java::Int, ::Java::Long, TimeUnit, BlockingQueue] }
     # Public constructors and methods
-    # 
     # Creates a new {@code ThreadPoolExecutor} with the given initial
     # parameters and default thread factory and rejected execution handler.
     # It may be more convenient to use one of the {@link Executors} factory
     # methods instead of this general purpose constructor.
     # 
     # @param corePoolSize the number of threads to keep in the pool, even
-    # if they are idle, unless {@code allowCoreThreadTimeOut} is set
+    #        if they are idle, unless {@code allowCoreThreadTimeOut} is set
     # @param maximumPoolSize the maximum number of threads to allow in the
-    # pool
+    #        pool
     # @param keepAliveTime when the number of threads is greater than
-    # the core, this is the maximum time that excess idle threads
-    # will wait for new tasks before terminating.
+    #        the core, this is the maximum time that excess idle threads
+    #        will wait for new tasks before terminating.
     # @param unit the time unit for the {@code keepAliveTime} argument
     # @param workQueue the queue to use for holding tasks before they are
-    # executed.  This queue will hold only the {@code Runnable}
-    # tasks submitted by the {@code execute} method.
+    #        executed.  This queue will hold only the {@code Runnable}
+    #        tasks submitted by the {@code execute} method.
     # @throws IllegalArgumentException if one of the following holds:<br>
-    # {@code corePoolSize < 0}<br>
-    # {@code keepAliveTime < 0}<br>
-    # {@code maximumPoolSize <= 0}<br>
-    # {@code maximumPoolSize < corePoolSize}
+    #         {@code corePoolSize < 0}<br>
+    #         {@code keepAliveTime < 0}<br>
+    #         {@code maximumPoolSize <= 0}<br>
+    #         {@code maximumPoolSize < corePoolSize}
     # @throws NullPointerException if {@code workQueue} is null
     def initialize(core_pool_size, maximum_pool_size, keep_alive_time, unit, work_queue)
       initialize__thread_pool_executor(core_pool_size, maximum_pool_size, keep_alive_time, unit, work_queue, Executors.default_thread_factory, DefaultHandler)
@@ -1230,25 +1217,25 @@ module Java::Util::Concurrent
     # parameters and default rejected execution handler.
     # 
     # @param corePoolSize the number of threads to keep in the pool, even
-    # if they are idle, unless {@code allowCoreThreadTimeOut} is set
+    #        if they are idle, unless {@code allowCoreThreadTimeOut} is set
     # @param maximumPoolSize the maximum number of threads to allow in the
-    # pool
+    #        pool
     # @param keepAliveTime when the number of threads is greater than
-    # the core, this is the maximum time that excess idle threads
-    # will wait for new tasks before terminating.
+    #        the core, this is the maximum time that excess idle threads
+    #        will wait for new tasks before terminating.
     # @param unit the time unit for the {@code keepAliveTime} argument
     # @param workQueue the queue to use for holding tasks before they are
-    # executed.  This queue will hold only the {@code Runnable}
-    # tasks submitted by the {@code execute} method.
+    #        executed.  This queue will hold only the {@code Runnable}
+    #        tasks submitted by the {@code execute} method.
     # @param threadFactory the factory to use when the executor
-    # creates a new thread
+    #        creates a new thread
     # @throws IllegalArgumentException if one of the following holds:<br>
-    # {@code corePoolSize < 0}<br>
-    # {@code keepAliveTime < 0}<br>
-    # {@code maximumPoolSize <= 0}<br>
-    # {@code maximumPoolSize < corePoolSize}
+    #         {@code corePoolSize < 0}<br>
+    #         {@code keepAliveTime < 0}<br>
+    #         {@code maximumPoolSize <= 0}<br>
+    #         {@code maximumPoolSize < corePoolSize}
     # @throws NullPointerException if {@code workQueue}
-    # or {@code threadFactory} is null
+    #         or {@code threadFactory} is null
     def initialize(core_pool_size, maximum_pool_size, keep_alive_time, unit, work_queue, thread_factory)
       initialize__thread_pool_executor(core_pool_size, maximum_pool_size, keep_alive_time, unit, work_queue, thread_factory, DefaultHandler)
     end
@@ -1258,25 +1245,25 @@ module Java::Util::Concurrent
     # parameters and default thread factory.
     # 
     # @param corePoolSize the number of threads to keep in the pool, even
-    # if they are idle, unless {@code allowCoreThreadTimeOut} is set
+    #        if they are idle, unless {@code allowCoreThreadTimeOut} is set
     # @param maximumPoolSize the maximum number of threads to allow in the
-    # pool
+    #        pool
     # @param keepAliveTime when the number of threads is greater than
-    # the core, this is the maximum time that excess idle threads
-    # will wait for new tasks before terminating.
+    #        the core, this is the maximum time that excess idle threads
+    #        will wait for new tasks before terminating.
     # @param unit the time unit for the {@code keepAliveTime} argument
     # @param workQueue the queue to use for holding tasks before they are
-    # executed.  This queue will hold only the {@code Runnable}
-    # tasks submitted by the {@code execute} method.
+    #        executed.  This queue will hold only the {@code Runnable}
+    #        tasks submitted by the {@code execute} method.
     # @param handler the handler to use when execution is blocked
-    # because the thread bounds and queue capacities are reached
+    #        because the thread bounds and queue capacities are reached
     # @throws IllegalArgumentException if one of the following holds:<br>
-    # {@code corePoolSize < 0}<br>
-    # {@code keepAliveTime < 0}<br>
-    # {@code maximumPoolSize <= 0}<br>
-    # {@code maximumPoolSize < corePoolSize}
+    #         {@code corePoolSize < 0}<br>
+    #         {@code keepAliveTime < 0}<br>
+    #         {@code maximumPoolSize <= 0}<br>
+    #         {@code maximumPoolSize < corePoolSize}
     # @throws NullPointerException if {@code workQueue}
-    # or {@code handler} is null
+    #         or {@code handler} is null
     def initialize(core_pool_size, maximum_pool_size, keep_alive_time, unit, work_queue, handler)
       initialize__thread_pool_executor(core_pool_size, maximum_pool_size, keep_alive_time, unit, work_queue, Executors.default_thread_factory, handler)
     end
@@ -1286,27 +1273,27 @@ module Java::Util::Concurrent
     # parameters.
     # 
     # @param corePoolSize the number of threads to keep in the pool, even
-    # if they are idle, unless {@code allowCoreThreadTimeOut} is set
+    #        if they are idle, unless {@code allowCoreThreadTimeOut} is set
     # @param maximumPoolSize the maximum number of threads to allow in the
-    # pool
+    #        pool
     # @param keepAliveTime when the number of threads is greater than
-    # the core, this is the maximum time that excess idle threads
-    # will wait for new tasks before terminating.
+    #        the core, this is the maximum time that excess idle threads
+    #        will wait for new tasks before terminating.
     # @param unit the time unit for the {@code keepAliveTime} argument
     # @param workQueue the queue to use for holding tasks before they are
-    # executed.  This queue will hold only the {@code Runnable}
-    # tasks submitted by the {@code execute} method.
+    #        executed.  This queue will hold only the {@code Runnable}
+    #        tasks submitted by the {@code execute} method.
     # @param threadFactory the factory to use when the executor
-    # creates a new thread
+    #        creates a new thread
     # @param handler the handler to use when execution is blocked
-    # because the thread bounds and queue capacities are reached
+    #        because the thread bounds and queue capacities are reached
     # @throws IllegalArgumentException if one of the following holds:<br>
-    # {@code corePoolSize < 0}<br>
-    # {@code keepAliveTime < 0}<br>
-    # {@code maximumPoolSize <= 0}<br>
-    # {@code maximumPoolSize < corePoolSize}
+    #         {@code corePoolSize < 0}<br>
+    #         {@code keepAliveTime < 0}<br>
+    #         {@code maximumPoolSize <= 0}<br>
+    #         {@code maximumPoolSize < corePoolSize}
     # @throws NullPointerException if {@code workQueue}
-    # or {@code threadFactory} or {@code handler} is null
+    #         or {@code threadFactory} or {@code handler} is null
     def initialize(core_pool_size, maximum_pool_size, keep_alive_time, unit, work_queue, thread_factory, handler)
       @ctl = nil
       @work_queue = nil
@@ -1350,8 +1337,8 @@ module Java::Util::Concurrent
     # 
     # @param command the task to execute
     # @throws RejectedExecutionException at discretion of
-    # {@code RejectedExecutionHandler}, if the task
-    # cannot be accepted for execution
+    #         {@code RejectedExecutionHandler}, if the task
+    #         cannot be accepted for execution
     # @throws NullPointerException if {@code command} is null
     def execute(command)
       if ((command).nil?)
@@ -1619,7 +1606,7 @@ module Java::Util::Concurrent
     # terminated due to lack of incoming tasks.
     # 
     # @return {@code true} if core threads are allowed to time out,
-    # else {@code false}
+    #         else {@code false}
     # 
     # @since 1.6
     def allows_core_thread_time_out
@@ -1639,7 +1626,7 @@ module Java::Util::Concurrent
     # 
     # @param value {@code true} if should time out, else {@code false}
     # @throws IllegalArgumentException if value is {@code true}
-    # and the current keep-alive time is not greater than zero
+    #         and the current keep-alive time is not greater than zero
     # 
     # @since 1.6
     def allow_core_thread_time_out(value)
@@ -1662,8 +1649,8 @@ module Java::Util::Concurrent
     # 
     # @param maximumPoolSize the new maximum
     # @throws IllegalArgumentException if the new maximum is
-    # less than or equal to zero, or
-    # less than the {@linkplain #getCorePoolSize core pool size}
+    #         less than or equal to zero, or
+    #         less than the {@linkplain #getCorePoolSize core pool size}
     # @see #getMaximumPoolSize
     def set_maximum_pool_size(maximum_pool_size)
       if (maximum_pool_size <= 0 || maximum_pool_size < @core_pool_size)
@@ -1692,10 +1679,10 @@ module Java::Util::Concurrent
     # terminated.  This overrides any value set in the constructor.
     # 
     # @param time the time to wait.  A time value of zero will cause
-    # excess threads to terminate immediately after executing tasks.
+    #        excess threads to terminate immediately after executing tasks.
     # @param unit the time unit of the {@code time} argument
     # @throws IllegalArgumentException if {@code time} less than zero or
-    # if {@code time} is zero and {@code allowsCoreThreadTimeOut}
+    #         if {@code time} is zero and {@code allowsCoreThreadTimeOut}
     # @see #getKeepAliveTime
     def set_keep_alive_time(time, unit)
       if (time < 0)
@@ -1726,7 +1713,6 @@ module Java::Util::Concurrent
     
     typesig { [] }
     # User-level queue utilities
-    # 
     # Returns the task queue used by this executor. Access to the
     # task queue is intended primarily for debugging and monitoring.
     # This queue may be in active use.  Retrieving the task queue
@@ -1792,7 +1778,6 @@ module Java::Util::Concurrent
     
     typesig { [] }
     # Statistics
-    # 
     # Returns the current number of threads in the pool.
     # 
     # @return the number of threads
@@ -1892,7 +1877,6 @@ module Java::Util::Concurrent
     
     typesig { [JavaThread, Runnable] }
     # Extension hooks
-    # 
     # Method invoked prior to executing the given Runnable in the
     # given thread.  This method is invoked by thread {@code t} that
     # will execute task {@code r}, and may be used to re-initialize
@@ -1929,25 +1913,25 @@ module Java::Util::Concurrent
     # as in this sample subclass that prints either the direct cause
     # or the underlying exception if a task has been aborted:
     # 
-    # <pre> {@code
+    #  <pre> {@code
     # class ExtendedExecutor extends ThreadPoolExecutor {
-    # // ...
-    # protected void afterExecute(Runnable r, Throwable t) {
-    # super.afterExecute(r, t);
-    # if (t == null && r instanceof Future<?>) {
-    # try {
-    # Object result = ((Future<?>) r).get();
-    # } catch (CancellationException ce) {
-    # t = ce;
-    # } catch (ExecutionException ee) {
-    # t = ee.getCause();
-    # } catch (InterruptedException ie) {
-    # Thread.currentThread().interrupt(); // ignore/reset
-    # }
-    # }
-    # if (t != null)
-    # System.out.println(t);
-    # }
+    #   // ...
+    #   protected void afterExecute(Runnable r, Throwable t) {
+    #     super.afterExecute(r, t);
+    #     if (t == null && r instanceof Future<?>) {
+    #       try {
+    #         Object result = ((Future<?>) r).get();
+    #       } catch (CancellationException ce) {
+    #           t = ce;
+    #       } catch (ExecutionException ee) {
+    #           t = ee.getCause();
+    #       } catch (InterruptedException ie) {
+    #           Thread.currentThread().interrupt(); // ignore/reset
+    #       }
+    #     }
+    #     if (t != null)
+    #       System.out.println(t);
+    #   }
     # }}</pre>
     # 
     # @param r the runnable that has completed
@@ -1966,7 +1950,6 @@ module Java::Util::Concurrent
     
     class_module.module_eval {
       # Predefined RejectedExecutionHandlers
-      # 
       # A handler for rejected tasks that runs the rejected task
       # directly in the calling thread of the {@code execute} method,
       # unless the executor has been shut down, in which case the task

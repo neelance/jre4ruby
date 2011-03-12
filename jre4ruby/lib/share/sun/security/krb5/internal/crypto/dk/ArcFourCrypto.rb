@@ -282,7 +282,7 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
         System.out.println("\nARCFOUR: encryptRaw with usage = " + RJava.cast_to_string(usage))
       end
       # Derive encryption key for data
-      # Key derivation salt = 0
+      #   Key derivation salt = 0
       klocal = Array.typed(::Java::Byte).new(base_key.attr_length) { 0 }
       i = 0
       while i <= 15
@@ -369,7 +369,7 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
         System.out.println("\nARCFOUR: decryptRaw with usage = " + RJava.cast_to_string(usage))
       end
       # Derive encryption key for data
-      # Key derivation salt = 0
+      #   Key derivation salt = 0
       klocal = Array.typed(::Java::Byte).new(base_key.attr_length) { 0 }
       i = 0
       while i <= 15

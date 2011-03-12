@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # This file is available under and governed by the GNU General Public
 # License version 2 only, as published by the Free Software Foundation.
 # However, the following notice accompanied the original version of this
@@ -130,14 +128,14 @@ module Java::Util::Concurrent
       # in extending them for use in synchronous queues, as well as
       # dealing with cancellation. The main differences include:
       # 
-      # 1. The original algorithms used bit-marked pointers, but
-      # the ones here use mode bits in nodes, leading to a number
-      # of further adaptations.
-      # 2. SynchronousQueues must block threads waiting to become
-      # fulfilled.
-      # 3. Support for cancellation via timeout and interrupts,
-      # including cleaning out cancelled nodes/threads
-      # from lists to avoid garbage retention and memory depletion.
+      #  1. The original algorithms used bit-marked pointers, but
+      #     the ones here use mode bits in nodes, leading to a number
+      #     of further adaptations.
+      #  2. SynchronousQueues must block threads waiting to become
+      #     fulfilled.
+      #  3. Support for cancellation via timeout and interrupts,
+      #     including cleaning out cancelled nodes/threads
+      #     from lists to avoid garbage retention and memory depletion.
       # 
       # Blocking is mainly accomplished using LockSupport park/unpark,
       # except that nodes that appear to be the next ones to become
@@ -166,8 +164,6 @@ module Java::Util::Concurrent
       # old head pointers), but references in Queue nodes must be
       # aggressively forgotten to avoid reachability of everything any
       # node has ever referred to since arrival.
-      # 
-      # 
       # Shared internal API for dual stacks and queues.
       const_set_lazy(:Transferer) { Class.new do
         include_class_members SynchronousQueue
@@ -176,14 +172,14 @@ module Java::Util::Concurrent
         # Performs a put or take.
         # 
         # @param e if non-null, the item to be handed to a consumer;
-        # if null, requests that transfer return an item
-        # offered by producer.
+        #          if null, requests that transfer return an item
+        #          offered by producer.
         # @param timed if this operation should timeout
         # @param nanos the timeout, in nanoseconds
         # @return if non-null, the item provided or received; if null,
-        # the operation failed due to timeout or interrupt --
-        # the caller can distinguish which of these occurred
-        # by checking Thread.interrupted.
+        #         the operation failed due to timeout or interrupt --
+        #         the caller can distinguish which of these occurred
+        #         by checking Thread.interrupted.
         def transfer(e, timed, nanos)
           raise NotImplementedError
         end
@@ -229,7 +225,6 @@ module Java::Util::Concurrent
           # bit-marked pointers: Fulfilling operations push on marker
           # nodes (with FULFILLING bit set in mode) to reserve a spot
           # to match a waiting node.
-          # 
           # Modes for SNodes, ORed together in node fields
           # Node represents an unfulfilled consumer
           const_set_lazy(:REQUEST) { 0 }
@@ -391,21 +386,21 @@ module Java::Util::Concurrent
           # Basic algorithm is to loop trying one of three actions:
           # 
           # 1. If apparently empty or already containing nodes of same
-          # mode, try to push node on stack and wait for a match,
-          # returning it, or null if cancelled.
+          #    mode, try to push node on stack and wait for a match,
+          #    returning it, or null if cancelled.
           # 
           # 2. If apparently containing node of complementary mode,
-          # try to push a fulfilling node on to stack, match
-          # with corresponding waiting node, pop both from
-          # stack, and return matched item. The matching or
-          # unlinking might not actually be necessary because of
-          # other threads performing action 3:
+          #    try to push a fulfilling node on to stack, match
+          #    with corresponding waiting node, pop both from
+          #    stack, and return matched item. The matching or
+          #    unlinking might not actually be necessary because of
+          #    other threads performing action 3:
           # 
           # 3. If top of stack already holds another fulfilling node,
-          # help it out by doing its match and/or pop
-          # operations, and then continue. The code for helping
-          # is essentially the same as for fulfilling, except
-          # that it doesn't return the item.
+          #    help it out by doing its match and/or pop
+          #    operations, and then continue. The code for helping
+          #    is essentially the same as for fulfilling, except
+          #    that it doesn't return the item.
           s = nil # constructed/reused as needed
           mode = ((e).nil?) ? self.class::REQUEST : self.class::DATA
           loop do
@@ -415,8 +410,7 @@ module Java::Util::Concurrent
               if (timed && nanos <= 0)
                 # can't wait
                 if (!(h).nil? && h.is_cancelled)
-                  cas_head(h, h.attr_next)
-                   # pop cancelled node
+                  cas_head(h, h.attr_next) # pop cancelled node
                 else
                   return nil
                 end
@@ -439,8 +433,7 @@ module Java::Util::Concurrent
                 # try to fulfill
                 if (h.is_cancelled)
                   # already cancelled
-                  cas_head(h, h.attr_next)
-                   # pop and retry
+                  cas_head(h, h.attr_next) # pop and retry
                 else
                   if (cas_head(h, s = snode(s, e, h, self.class::FULFILLING | mode)))
                     loop do
@@ -468,14 +461,12 @@ module Java::Util::Concurrent
                 m = h.attr_next # m is h's match
                 if ((m).nil?)
                   # waiter is gone
-                  cas_head(h, nil)
-                   # pop fulfilling node
+                  cas_head(h, nil) # pop fulfilling node
                 else
                   mn = m.attr_next
                   if (m.try_match(h))
                     # help match
-                    cas_head(h, mn)
-                     # pop both h and m
+                    cas_head(h, mn) # pop both h and m
                   else
                     # lost match
                     h.cas_next(m, mn)
@@ -539,8 +530,7 @@ module Java::Util::Concurrent
               spins = should_spin(s) ? (spins - 1) : 0
             else
               if ((s.attr_waiter).nil?)
-                s.attr_waiter = w
-                 # establish waiter so can park next iter
+                s.attr_waiter = w # establish waiter so can park next iter
               else
                 if (!timed)
                   LockSupport.park(self)
@@ -616,7 +606,6 @@ module Java::Util::Concurrent
           # that for stacks because fulfillers do not need explicit
           # nodes, and matching is done by CAS'ing QNode.item field
           # from non-null to null (for put) or vice versa (for take).
-          # 
           # Node class for TransferQueue.
           const_set_lazy(:QNode) { Class.new do
             include_class_members TransferQueue
@@ -781,13 +770,13 @@ module Java::Util::Concurrent
           # two actions:
           # 
           # 1. If queue apparently empty or holding same-mode nodes,
-          # try to add node to queue of waiters, wait to be
-          # fulfilled (or cancelled) and return matching item.
+          #    try to add node to queue of waiters, wait to be
+          #    fulfilled (or cancelled) and return matching item.
           # 
           # 2. If queue apparently contains waiting items, and this
-          # call is of complementary mode, try to fulfill by CAS'ing
-          # item field of waiting node and dequeuing it, and then
-          # returning matching item.
+          #    call is of complementary mode, try to fulfill by CAS'ing
+          #    item field of waiting node and dequeuing it, and then
+          #    returning matching item.
           # 
           # In each case, along the way, check for and try to help
           # advance head and tail on behalf of other stalled/slow
@@ -855,9 +844,7 @@ module Java::Util::Concurrent
               if (!(t).equal?(@tail) || (m).nil? || !(h).equal?(@head))
                 next
               end # inconsistent read
-              x = m.attr_item
-              # m already fulfilled
-              # m cancelled
+              x = m.attr_item # m already fulfilled # m cancelled
               if ((is_data).equal?((!(x).nil?)) || (x).equal?(m) || !m.cas_item(x, e))
                 # lost CAS
                 advance_head(h, m) # dequeue and retry
@@ -959,13 +946,7 @@ module Java::Util::Concurrent
             if (!(dp).nil?)
               # Try unlinking previous cancelled node
               d = dp.attr_next
-              dn = nil
-              # d is gone or
-              # d is off list or
-              # d not cancelled or
-              # d not tail and
-              # has successor
-              # that is on list
+              dn = nil # d is gone or # d is off list or # d not cancelled or # d not tail and #   has successor #   that is on list
               if ((d).nil? || (d).equal?(dp) || !d.is_cancelled || (!(d).equal?(t) && !((dn = d.attr_next)).nil? && !(dn).equal?(d) && dp.cas_next(d, dn)))
                 # d unspliced
                 cas_clean_me(dp, nil)
@@ -1007,7 +988,7 @@ module Java::Util::Concurrent
     # Creates a <tt>SynchronousQueue</tt> with the specified fairness policy.
     # 
     # @param fair if true, waiting threads contend in FIFO order for
-    # access; otherwise the order is unspecified.
+    #        access; otherwise the order is unspecified.
     def initialize(fair)
       @transferer = nil
       @qlock = nil
@@ -1038,7 +1019,7 @@ module Java::Util::Concurrent
     # up to the specified wait time for another thread to receive it.
     # 
     # @return <tt>true</tt> if successful, or <tt>false</tt> if the
-    # specified waiting time elapses before a consumer appears.
+    #         specified waiting time elapses before a consumer appears.
     # @throws InterruptedException {@inheritDoc}
     # @throws NullPointerException {@inheritDoc}
     def offer(o, timeout, unit)
@@ -1060,7 +1041,7 @@ module Java::Util::Concurrent
     # 
     # @param e the element to add
     # @return <tt>true</tt> if the element was added to this queue, else
-    # <tt>false</tt>
+    #         <tt>false</tt>
     # @throws NullPointerException if the specified element is null
     def offer(e)
       if ((e).nil?)
@@ -1090,7 +1071,7 @@ module Java::Util::Concurrent
     # to insert it.
     # 
     # @return the head of this queue, or <tt>null</tt> if the
-    # specified waiting time elapses before an element is present.
+    #         specified waiting time elapses before an element is present.
     # @throws InterruptedException {@inheritDoc}
     def poll(timeout, unit)
       e = @transferer.transfer(nil, true, unit.to_nanos(timeout))
@@ -1105,7 +1086,7 @@ module Java::Util::Concurrent
     # is currently making an element available.
     # 
     # @return the head of this queue, or <tt>null</tt> if no
-    # element is available.
+    #         element is available.
     def poll
       return @transferer.transfer(nil, true, 0)
     end

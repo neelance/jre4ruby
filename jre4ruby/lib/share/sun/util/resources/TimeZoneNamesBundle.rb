@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996 - 1998 - All Rights Reserved
 # 
@@ -49,9 +47,9 @@ module Sun::Util::Resources
   # functionality for time zone names. The additional functionality:
   # <ul>
   # <li>Preserves the order of entries in the <code>getContents</code>
-  # array for the enumeration returned by <code>getKeys</code>.
+  #     array for the enumeration returned by <code>getKeys</code>.
   # <li>Inserts the time zone ID (the key of the bundle entries) into
-  # the string arrays returned by <code>handleGetObject</code>.
+  #     the string arrays returned by <code>handleGetObject</code>.
   # <ul>
   # All <code>TimeZoneNames</code> resource bundles must extend this
   # class and implement the <code>getContents</code> method.
@@ -100,13 +98,13 @@ module Sun::Util::Resources
     # <ul>
     # <li>The key, which must be a string.
     # <li>The value, which must be an array of
-    # four strings:
-    # <ul>
-    # <li>The long name of the time zone in standard time.
-    # <li>The short name of the time zone in standard time.
-    # <li>The long name of the time zone in daylight savings time.
-    # <li>The short name of the time zone in daylight savings time.
-    # </ul>
+    #     four strings:
+    #     <ul>
+    #     <li>The long name of the time zone in standard time.
+    #     <li>The short name of the time zone in standard time.
+    #     <li>The long name of the time zone in daylight savings time.
+    #     <li>The short name of the time zone in daylight savings time.
+    #     </ul>
     # </ul>
     def get_contents
       raise NotImplementedError

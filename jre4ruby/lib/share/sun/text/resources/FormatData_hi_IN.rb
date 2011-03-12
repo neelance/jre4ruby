@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # Copyright (c) 1998 International Business Machines.
 # All Rights Reserved.
 module Sun::Text::Resources
@@ -42,71 +40,7 @@ module Sun::Text::Resources
     typesig { [] }
     # Overrides ListResourceBundle
     def get_contents
-      # january
-      # february
-      # march
-      # april
-      # may
-      # june
-      # july
-      # august
-      # september
-      # october
-      # november
-      # december
-      # month 13 if applicable
-      # These are same as the long ones.
-      # abb january
-      # abb february
-      # abb march
-      # abb april
-      # abb may
-      # abb june
-      # abb july
-      # abb august
-      # abb september
-      # abb october
-      # abb november
-      # abb december
-      # abb month 13 if applicable
-      # Sunday
-      # Monday
-      # Tuesday
-      # Wednesday
-      # Thursday
-      # Friday
-      # Saturday
-      # abb Sunday
-      # abb Monday
-      # abb Tuesday
-      # abb Wednesday
-      # abb Thursday
-      # abb Friday
-      # abb Saturday
-      # am marker
-      # pm marker
-      # era strings
-      # decimal separator
-      # group (thousands) separator
-      # list separator
-      # percent sign
-      # native 0 digit
-      # pattern digit
-      # minus sign
-      # exponential
-      # per mille
-      # infinity
-      # NaN
-      # full time pattern
-      # long time pattern
-      # medium time pattern
-      # short time pattern
-      # full date pattern
-      # long date pattern
-      # medium date pattern
-      # short date pattern
-      # date-time pattern
-      return Array.typed(Array.typed(Object)).new([Array.typed(Object).new(["MonthNames", Array.typed(String).new([("".to_u << 0x091c << "".to_u << 0x0928 << "".to_u << 0x0935 << "".to_u << 0x0930 << "".to_u << 0x0940 << ""), ("".to_u << 0x092b << "".to_u << 0x093c << "".to_u << 0x0930 << "".to_u << 0x0935 << "".to_u << 0x0930 << "".to_u << 0x0940 << ""), ("".to_u << 0x092e << "".to_u << 0x093e << "".to_u << 0x0930 << "".to_u << 0x094d << "".to_u << 0x091a << ""), ("".to_u << 0x0905 << "".to_u << 0x092a << "".to_u << 0x094d << "".to_u << 0x0930 << "".to_u << 0x0948 << "".to_u << 0x0932 << ""), ("".to_u << 0x092e << "".to_u << 0x0908 << ""), ("".to_u << 0x091c << "".to_u << 0x0942 << "".to_u << 0x0928 << ""), ("".to_u << 0x091c << "".to_u << 0x0941 << "".to_u << 0x0932 << "".to_u << 0x093e << "".to_u << 0x0908 << ""), ("".to_u << 0x0905 << "".to_u << 0x0917 << "".to_u << 0x0938 << "".to_u << 0x094d << "".to_u << 0x0924 << ""), ("".to_u << 0x0938 << "".to_u << 0x093f << "".to_u << 0x0924 << "".to_u << 0x0902 << "".to_u << 0x092c << "".to_u << 0x0930 << ""), ("".to_u << 0x0905 << "".to_u << 0x0915 << "".to_u << 0x094d << "".to_u << 0x200d << "".to_u << 0x0924 << "".to_u << 0x0942 << "".to_u << 0x092c << "".to_u << 0x0930 << ""), ("".to_u << 0x0928 << "".to_u << 0x0935 << "".to_u << 0x0902 << "".to_u << 0x092c << "".to_u << 0x0930 << ""), ("".to_u << 0x0926 << "".to_u << 0x093f << "".to_u << 0x0938 << "".to_u << 0x0902 << "".to_u << 0x092c << "".to_u << 0x0930 << ""), ""])]), Array.typed(Object).new(["MonthAbbreviations", Array.typed(String).new([("".to_u << 0x091c << "".to_u << 0x0928 << "".to_u << 0x0935 << "".to_u << 0x0930 << "".to_u << 0x0940 << ""), ("".to_u << 0x092b << "".to_u << 0x093c << "".to_u << 0x0930 << "".to_u << 0x0935 << "".to_u << 0x0930 << "".to_u << 0x0940 << ""), ("".to_u << 0x092e << "".to_u << 0x093e << "".to_u << 0x0930 << "".to_u << 0x094d << "".to_u << 0x091a << ""), ("".to_u << 0x0905 << "".to_u << 0x092a << "".to_u << 0x094d << "".to_u << 0x0930 << "".to_u << 0x0948 << "".to_u << 0x0932 << ""), ("".to_u << 0x092e << "".to_u << 0x0908 << ""), ("".to_u << 0x091c << "".to_u << 0x0942 << "".to_u << 0x0928 << ""), ("".to_u << 0x091c << "".to_u << 0x0941 << "".to_u << 0x0932 << "".to_u << 0x093e << "".to_u << 0x0908 << ""), ("".to_u << 0x0905 << "".to_u << 0x0917 << "".to_u << 0x0938 << "".to_u << 0x094d << "".to_u << 0x0924 << ""), ("".to_u << 0x0938 << "".to_u << 0x093f << "".to_u << 0x0924 << "".to_u << 0x0902 << "".to_u << 0x092c << "".to_u << 0x0930 << ""), ("".to_u << 0x0905 << "".to_u << 0x0915 << "".to_u << 0x094d << "".to_u << 0x200d << "".to_u << 0x0924 << "".to_u << 0x0942 << "".to_u << 0x092c << "".to_u << 0x0930 << ""), ("".to_u << 0x0928 << "".to_u << 0x0935 << "".to_u << 0x0902 << "".to_u << 0x092c << "".to_u << 0x0930 << ""), ("".to_u << 0x0926 << "".to_u << 0x093f << "".to_u << 0x0938 << "".to_u << 0x0902 << "".to_u << 0x092c << "".to_u << 0x0930 << ""), ""])]), Array.typed(Object).new(["DayNames", Array.typed(String).new([("".to_u << 0x0930 << "".to_u << 0x0935 << "".to_u << 0x093f << "".to_u << 0x0935 << "".to_u << 0x093e << "".to_u << 0x0930 << ""), ("".to_u << 0x0938 << "".to_u << 0x094b << "".to_u << 0x092e << "".to_u << 0x0935 << "".to_u << 0x093e << "".to_u << 0x0930 << ""), ("".to_u << 0x092e << "".to_u << 0x0902 << "".to_u << 0x0917 << "".to_u << 0x0932 << "".to_u << 0x0935 << "".to_u << 0x093e << "".to_u << 0x0930 << ""), ("".to_u << 0x092c << "".to_u << 0x0941 << "".to_u << 0x0927 << "".to_u << 0x0935 << "".to_u << 0x093e << "".to_u << 0x0930 << ""), ("".to_u << 0x0917 << "".to_u << 0x0941 << "".to_u << 0x0930 << "".to_u << 0x0941 << "".to_u << 0x0935 << "".to_u << 0x093e << "".to_u << 0x0930 << ""), ("".to_u << 0x0936 << "".to_u << 0x0941 << "".to_u << 0x0915 << "".to_u << 0x094d << "".to_u << 0x0930 << "".to_u << 0x0935 << "".to_u << 0x093e << "".to_u << 0x0930 << ""), ("".to_u << 0x0936 << "".to_u << 0x0928 << "".to_u << 0x093f << "".to_u << 0x0935 << "".to_u << 0x093e << "".to_u << 0x0930 << "")])]), Array.typed(Object).new(["DayAbbreviations", Array.typed(String).new([("".to_u << 0x0930 << "".to_u << 0x0935 << "".to_u << 0x093f << ""), ("".to_u << 0x0938 << "".to_u << 0x094b << "".to_u << 0x092e << ""), ("".to_u << 0x092e << "".to_u << 0x0902 << "".to_u << 0x0917 << "".to_u << 0x0932 << ""), ("".to_u << 0x092c << "".to_u << 0x0941 << "".to_u << 0x0927 << ""), ("".to_u << 0x0917 << "".to_u << 0x0941 << "".to_u << 0x0930 << "".to_u << 0x0941 << ""), ("".to_u << 0x0936 << "".to_u << 0x0941 << "".to_u << 0x0915 << "".to_u << 0x094d << "".to_u << 0x0930 << ""), ("".to_u << 0x0936 << "".to_u << 0x0928 << "".to_u << 0x093f << "")])]), Array.typed(Object).new(["AmPmMarkers", Array.typed(String).new([("".to_u << 0x092a << "".to_u << 0x0942 << "".to_u << 0x0930 << "".to_u << 0x094d << "".to_u << 0x0935 << "".to_u << 0x093e << "".to_u << 0x0939 << "".to_u << 0x094d << "".to_u << 0x0928 << ""), ("".to_u << 0x0905 << "".to_u << 0x092a << "".to_u << 0x0930 << "".to_u << 0x093e << "".to_u << 0x0939 << "".to_u << 0x094d << "".to_u << 0x0928 << "")])]), Array.typed(Object).new(["Eras", Array.typed(String).new([("".to_u << 0x0908 << "".to_u << 0x0938 << "".to_u << 0x093e << "".to_u << 0x092a << "".to_u << 0x0942 << "".to_u << 0x0930 << "".to_u << 0x094d << "".to_u << 0x0935 << ""), ("".to_u << 0x0938 << "".to_u << 0x0928 << "")])]), Array.typed(Object).new(["NumberElements", Array.typed(String).new([".", ",", ";", "%", ("".to_u << 0x0966 << ""), "#", "-", "E", ("".to_u << 0x2030 << ""), ("".to_u << 0x221e << ""), ("".to_u << 0xfffd << "")])]), Array.typed(Object).new(["DateTimePatterns", Array.typed(String).new(["h:mm:ss a z", "h:mm:ss a z", "h:mm:ss a", "h:mm a", "EEEE, d MMMM, yyyy", "d MMMM, yyyy", "d MMM, yyyy", "d/M/yy", "{1} {0}"])]), Array.typed(Object).new(["DateTimePatternChars", "GyMdkHmsSEDFwWahKzZ"]), ])
+      return Array.typed(Array.typed(Object)).new([Array.typed(Object).new(["MonthNames", Array.typed(String).new([("".to_u << 0x091c << "".to_u << 0x0928 << "".to_u << 0x0935 << "".to_u << 0x0930 << "".to_u << 0x0940 << ""), ("".to_u << 0x092b << "".to_u << 0x093c << "".to_u << 0x0930 << "".to_u << 0x0935 << "".to_u << 0x0930 << "".to_u << 0x0940 << ""), ("".to_u << 0x092e << "".to_u << 0x093e << "".to_u << 0x0930 << "".to_u << 0x094d << "".to_u << 0x091a << ""), ("".to_u << 0x0905 << "".to_u << 0x092a << "".to_u << 0x094d << "".to_u << 0x0930 << "".to_u << 0x0948 << "".to_u << 0x0932 << ""), ("".to_u << 0x092e << "".to_u << 0x0908 << ""), ("".to_u << 0x091c << "".to_u << 0x0942 << "".to_u << 0x0928 << ""), ("".to_u << 0x091c << "".to_u << 0x0941 << "".to_u << 0x0932 << "".to_u << 0x093e << "".to_u << 0x0908 << ""), ("".to_u << 0x0905 << "".to_u << 0x0917 << "".to_u << 0x0938 << "".to_u << 0x094d << "".to_u << 0x0924 << ""), ("".to_u << 0x0938 << "".to_u << 0x093f << "".to_u << 0x0924 << "".to_u << 0x0902 << "".to_u << 0x092c << "".to_u << 0x0930 << ""), ("".to_u << 0x0905 << "".to_u << 0x0915 << "".to_u << 0x094d << "".to_u << 0x200d << "".to_u << 0x0924 << "".to_u << 0x0942 << "".to_u << 0x092c << "".to_u << 0x0930 << ""), ("".to_u << 0x0928 << "".to_u << 0x0935 << "".to_u << 0x0902 << "".to_u << 0x092c << "".to_u << 0x0930 << ""), ("".to_u << 0x0926 << "".to_u << 0x093f << "".to_u << 0x0938 << "".to_u << 0x0902 << "".to_u << 0x092c << "".to_u << 0x0930 << ""), ""])]), Array.typed(Object).new(["MonthAbbreviations", Array.typed(String).new([("".to_u << 0x091c << "".to_u << 0x0928 << "".to_u << 0x0935 << "".to_u << 0x0930 << "".to_u << 0x0940 << ""), ("".to_u << 0x092b << "".to_u << 0x093c << "".to_u << 0x0930 << "".to_u << 0x0935 << "".to_u << 0x0930 << "".to_u << 0x0940 << ""), ("".to_u << 0x092e << "".to_u << 0x093e << "".to_u << 0x0930 << "".to_u << 0x094d << "".to_u << 0x091a << ""), ("".to_u << 0x0905 << "".to_u << 0x092a << "".to_u << 0x094d << "".to_u << 0x0930 << "".to_u << 0x0948 << "".to_u << 0x0932 << ""), ("".to_u << 0x092e << "".to_u << 0x0908 << ""), ("".to_u << 0x091c << "".to_u << 0x0942 << "".to_u << 0x0928 << ""), ("".to_u << 0x091c << "".to_u << 0x0941 << "".to_u << 0x0932 << "".to_u << 0x093e << "".to_u << 0x0908 << ""), ("".to_u << 0x0905 << "".to_u << 0x0917 << "".to_u << 0x0938 << "".to_u << 0x094d << "".to_u << 0x0924 << ""), ("".to_u << 0x0938 << "".to_u << 0x093f << "".to_u << 0x0924 << "".to_u << 0x0902 << "".to_u << 0x092c << "".to_u << 0x0930 << ""), ("".to_u << 0x0905 << "".to_u << 0x0915 << "".to_u << 0x094d << "".to_u << 0x200d << "".to_u << 0x0924 << "".to_u << 0x0942 << "".to_u << 0x092c << "".to_u << 0x0930 << ""), ("".to_u << 0x0928 << "".to_u << 0x0935 << "".to_u << 0x0902 << "".to_u << 0x092c << "".to_u << 0x0930 << ""), ("".to_u << 0x0926 << "".to_u << 0x093f << "".to_u << 0x0938 << "".to_u << 0x0902 << "".to_u << 0x092c << "".to_u << 0x0930 << ""), ""])]), Array.typed(Object).new(["DayNames", Array.typed(String).new([("".to_u << 0x0930 << "".to_u << 0x0935 << "".to_u << 0x093f << "".to_u << 0x0935 << "".to_u << 0x093e << "".to_u << 0x0930 << ""), ("".to_u << 0x0938 << "".to_u << 0x094b << "".to_u << 0x092e << "".to_u << 0x0935 << "".to_u << 0x093e << "".to_u << 0x0930 << ""), ("".to_u << 0x092e << "".to_u << 0x0902 << "".to_u << 0x0917 << "".to_u << 0x0932 << "".to_u << 0x0935 << "".to_u << 0x093e << "".to_u << 0x0930 << ""), ("".to_u << 0x092c << "".to_u << 0x0941 << "".to_u << 0x0927 << "".to_u << 0x0935 << "".to_u << 0x093e << "".to_u << 0x0930 << ""), ("".to_u << 0x0917 << "".to_u << 0x0941 << "".to_u << 0x0930 << "".to_u << 0x0941 << "".to_u << 0x0935 << "".to_u << 0x093e << "".to_u << 0x0930 << ""), ("".to_u << 0x0936 << "".to_u << 0x0941 << "".to_u << 0x0915 << "".to_u << 0x094d << "".to_u << 0x0930 << "".to_u << 0x0935 << "".to_u << 0x093e << "".to_u << 0x0930 << ""), ("".to_u << 0x0936 << "".to_u << 0x0928 << "".to_u << 0x093f << "".to_u << 0x0935 << "".to_u << 0x093e << "".to_u << 0x0930 << "")])]), Array.typed(Object).new(["DayAbbreviations", Array.typed(String).new([("".to_u << 0x0930 << "".to_u << 0x0935 << "".to_u << 0x093f << ""), ("".to_u << 0x0938 << "".to_u << 0x094b << "".to_u << 0x092e << ""), ("".to_u << 0x092e << "".to_u << 0x0902 << "".to_u << 0x0917 << "".to_u << 0x0932 << ""), ("".to_u << 0x092c << "".to_u << 0x0941 << "".to_u << 0x0927 << ""), ("".to_u << 0x0917 << "".to_u << 0x0941 << "".to_u << 0x0930 << "".to_u << 0x0941 << ""), ("".to_u << 0x0936 << "".to_u << 0x0941 << "".to_u << 0x0915 << "".to_u << 0x094d << "".to_u << 0x0930 << ""), ("".to_u << 0x0936 << "".to_u << 0x0928 << "".to_u << 0x093f << "")])]), Array.typed(Object).new(["AmPmMarkers", Array.typed(String).new([("".to_u << 0x092a << "".to_u << 0x0942 << "".to_u << 0x0930 << "".to_u << 0x094d << "".to_u << 0x0935 << "".to_u << 0x093e << "".to_u << 0x0939 << "".to_u << 0x094d << "".to_u << 0x0928 << ""), ("".to_u << 0x0905 << "".to_u << 0x092a << "".to_u << 0x0930 << "".to_u << 0x093e << "".to_u << 0x0939 << "".to_u << 0x094d << "".to_u << 0x0928 << "")])]), Array.typed(Object).new(["Eras", Array.typed(String).new([("".to_u << 0x0908 << "".to_u << 0x0938 << "".to_u << 0x093e << "".to_u << 0x092a << "".to_u << 0x0942 << "".to_u << 0x0930 << "".to_u << 0x094d << "".to_u << 0x0935 << ""), ("".to_u << 0x0938 << "".to_u << 0x0928 << "")])]), Array.typed(Object).new(["NumberElements", Array.typed(String).new([".", ",", ";", "%", ("".to_u << 0x0966 << ""), "#", "-", "E", ("".to_u << 0x2030 << ""), ("".to_u << 0x221e << ""), ("".to_u << 0xfffd << "")])]), Array.typed(Object).new(["DateTimePatterns", Array.typed(String).new(["h:mm:ss a z", "h:mm:ss a z", "h:mm:ss a", "h:mm a", "EEEE, d MMMM, yyyy", "d MMMM, yyyy", "d MMM, yyyy", "d/M/yy", "{1} {0}"])]), Array.typed(Object).new(["DateTimePatternChars", "GyMdkHmsSEDFwWahKzZ"])])
     end
     
     typesig { [] }

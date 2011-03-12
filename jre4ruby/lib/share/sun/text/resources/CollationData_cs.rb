@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996 - 1998 - All Rights Reserved
 # 
@@ -49,17 +47,6 @@ module Sun::Text::Resources
     
     typesig { [] }
     def get_contents
-      # for cs, default sorting except for the following:
-      # add d<stroke> between d and e.
-      # add ch "ligature" between h and i
-      # add l<stroke> between l and m.
-      # add z<abovedot> after z.
-      # & inv-breve ; umlaut = vt-line-above
-      # c < c-caron
-      # h < ch ligatures
-      # r < r-caron
-      # s < s-caron
-      # z < z-caron
       return Array.typed(Array.typed(Object)).new([Array.typed(Object).new(["Rule", ("& ".to_u << 0x0361 << " ; ".to_u << 0x0308 << " = ".to_u << 0x030d << "") + ("& C < c".to_u << 0x030c << " , C".to_u << 0x030c << "") + "& H < ch , cH , Ch , CH " + ("& R < r".to_u << 0x030c << " , R".to_u << 0x030c << "") + ("& S < s".to_u << 0x030c << " , S".to_u << 0x030c << "") + ("& Z < z".to_u << 0x030c << " , Z".to_u << 0x030c << "")])])
     end
     

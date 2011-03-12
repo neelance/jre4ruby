@@ -52,7 +52,7 @@ module Java::Util
     # cause.
     # 
     # @param  cause the cause (which is saved for later retrieval by the
-    # {@link Throwable#getCause()} method).
+    #         {@link Throwable#getCause()} method).
     def initialize(cause)
       super((cause).nil? ? nil : cause.to_s)
       self.init_cause(cause)
@@ -63,7 +63,7 @@ module Java::Util
     # detail message.
     # 
     # @param   message   the detail message. The detail message is saved for
-    # later retrieval by the {@link Throwable#getMessage()} method.
+    #          later retrieval by the {@link Throwable#getMessage()} method.
     def initialize(message)
       super(message)
     end

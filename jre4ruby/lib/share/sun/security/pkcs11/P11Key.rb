@@ -374,13 +374,13 @@ module Sun::Security::Pkcs11
       
       typesig { [Session, ::Java::Long, String, ::Java::Int, Array.typed(CK_ATTRIBUTE)] }
       def secret_key(session, key_id, algorithm, key_length, attributes)
-        attributes = get_attributes(session, key_id, attributes, Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_TOKEN), CK_ATTRIBUTE.new(CKA_SENSITIVE), CK_ATTRIBUTE.new(CKA_EXTRACTABLE), ]))
+        attributes = get_attributes(session, key_id, attributes, Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_TOKEN), CK_ATTRIBUTE.new(CKA_SENSITIVE), CK_ATTRIBUTE.new(CKA_EXTRACTABLE)]))
         return P11SecretKey.new(session, key_id, algorithm, key_length, attributes)
       end
       
       typesig { [Session, ::Java::Long, String, ::Java::Int, Array.typed(CK_ATTRIBUTE), ::Java::Int, ::Java::Int] }
       def master_secret_key(session, key_id, algorithm, key_length, attributes, major, minor)
-        attributes = get_attributes(session, key_id, attributes, Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_TOKEN), CK_ATTRIBUTE.new(CKA_SENSITIVE), CK_ATTRIBUTE.new(CKA_EXTRACTABLE), ]))
+        attributes = get_attributes(session, key_id, attributes, Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_TOKEN), CK_ATTRIBUTE.new(CKA_SENSITIVE), CK_ATTRIBUTE.new(CKA_EXTRACTABLE)]))
         return P11TlsMasterSecretKey.new(session, key_id, algorithm, key_length, attributes, major, minor)
       end
       
@@ -408,7 +408,7 @@ module Sun::Security::Pkcs11
       
       typesig { [Session, ::Java::Long, String, ::Java::Int, Array.typed(CK_ATTRIBUTE)] }
       def private_key(session, key_id, algorithm, key_length, attributes)
-        attributes = get_attributes(session, key_id, attributes, Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_TOKEN), CK_ATTRIBUTE.new(CKA_SENSITIVE), CK_ATTRIBUTE.new(CKA_EXTRACTABLE), ]))
+        attributes = get_attributes(session, key_id, attributes, Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_TOKEN), CK_ATTRIBUTE.new(CKA_SENSITIVE), CK_ATTRIBUTE.new(CKA_EXTRACTABLE)]))
         if (attributes[1].get_boolean || ((attributes[2].get_boolean).equal?(false)))
           return P11PrivateKey.new(session, key_id, algorithm, key_length, attributes)
         else
@@ -417,7 +417,7 @@ module Sun::Security::Pkcs11
             # we need to determine whether this is a CRT key
             # see if we can obtain the public exponent
             # this should also be readable for sensitive/extractable keys
-            attrs2 = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_PUBLIC_EXPONENT), ])
+            attrs2 = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_PUBLIC_EXPONENT)])
             crt_key = false
             begin
               session.attr_token.attr_p11._c_get_attribute_value(session.id, key_id, attrs2)
@@ -520,7 +520,7 @@ module Sun::Security::Pkcs11
                 temp_session = nil
                 begin
                   temp_session = self.attr_token.get_op_session
-                  attributes = Array.typed(self.class::CK_ATTRIBUTE).new([self.class::CK_ATTRIBUTE.new(CKA_VALUE), ])
+                  attributes = Array.typed(self.class::CK_ATTRIBUTE).new([self.class::CK_ATTRIBUTE.new(CKA_VALUE)])
                   self.attr_token.attr_p11._c_get_attribute_value(temp_session.id, self.attr_key_id, attributes)
                   b = attributes[0].get_byte_array
                 rescue self.class::PKCS11Exception => e
@@ -662,7 +662,7 @@ module Sun::Security::Pkcs11
             if (!(@n).nil?)
               return
             end
-            attributes = Array.typed(self.class::CK_ATTRIBUTE).new([self.class::CK_ATTRIBUTE.new(CKA_MODULUS), self.class::CK_ATTRIBUTE.new(CKA_PUBLIC_EXPONENT), self.class::CK_ATTRIBUTE.new(CKA_PRIVATE_EXPONENT), self.class::CK_ATTRIBUTE.new(CKA_PRIME_1), self.class::CK_ATTRIBUTE.new(CKA_PRIME_2), self.class::CK_ATTRIBUTE.new(CKA_EXPONENT_1), self.class::CK_ATTRIBUTE.new(CKA_EXPONENT_2), self.class::CK_ATTRIBUTE.new(CKA_COEFFICIENT), ])
+            attributes = Array.typed(self.class::CK_ATTRIBUTE).new([self.class::CK_ATTRIBUTE.new(CKA_MODULUS), self.class::CK_ATTRIBUTE.new(CKA_PUBLIC_EXPONENT), self.class::CK_ATTRIBUTE.new(CKA_PRIVATE_EXPONENT), self.class::CK_ATTRIBUTE.new(CKA_PRIME_1), self.class::CK_ATTRIBUTE.new(CKA_PRIME_2), self.class::CK_ATTRIBUTE.new(CKA_EXPONENT_1), self.class::CK_ATTRIBUTE.new(CKA_EXPONENT_2), self.class::CK_ATTRIBUTE.new(CKA_COEFFICIENT)])
             fetch_attributes(attributes)
             @n = attributes[0].get_big_integer
             @e = attributes[1].get_big_integer
@@ -816,7 +816,7 @@ module Sun::Security::Pkcs11
             if (!(@n).nil?)
               return
             end
-            attributes = Array.typed(self.class::CK_ATTRIBUTE).new([self.class::CK_ATTRIBUTE.new(CKA_MODULUS), self.class::CK_ATTRIBUTE.new(CKA_PRIVATE_EXPONENT), ])
+            attributes = Array.typed(self.class::CK_ATTRIBUTE).new([self.class::CK_ATTRIBUTE.new(CKA_MODULUS), self.class::CK_ATTRIBUTE.new(CKA_PRIVATE_EXPONENT)])
             fetch_attributes(attributes)
             @n = attributes[0].get_big_integer
             @d = attributes[1].get_big_integer
@@ -915,7 +915,7 @@ module Sun::Security::Pkcs11
             if (!(@n).nil?)
               return
             end
-            attributes = Array.typed(self.class::CK_ATTRIBUTE).new([self.class::CK_ATTRIBUTE.new(CKA_MODULUS), self.class::CK_ATTRIBUTE.new(CKA_PUBLIC_EXPONENT), ])
+            attributes = Array.typed(self.class::CK_ATTRIBUTE).new([self.class::CK_ATTRIBUTE.new(CKA_MODULUS), self.class::CK_ATTRIBUTE.new(CKA_PUBLIC_EXPONENT)])
             fetch_attributes(attributes)
             @n = attributes[0].get_big_integer
             @e = attributes[1].get_big_integer
@@ -1005,7 +1005,7 @@ module Sun::Security::Pkcs11
             if (!(@y).nil?)
               return
             end
-            attributes = Array.typed(self.class::CK_ATTRIBUTE).new([self.class::CK_ATTRIBUTE.new(CKA_VALUE), self.class::CK_ATTRIBUTE.new(CKA_PRIME), self.class::CK_ATTRIBUTE.new(CKA_SUBPRIME), self.class::CK_ATTRIBUTE.new(CKA_BASE), ])
+            attributes = Array.typed(self.class::CK_ATTRIBUTE).new([self.class::CK_ATTRIBUTE.new(CKA_VALUE), self.class::CK_ATTRIBUTE.new(CKA_PRIME), self.class::CK_ATTRIBUTE.new(CKA_SUBPRIME), self.class::CK_ATTRIBUTE.new(CKA_BASE)])
             fetch_attributes(attributes)
             @y = attributes[0].get_big_integer
             @params = self.class::DSAParameterSpec.new(attributes[1].get_big_integer, attributes[2].get_big_integer, attributes[3].get_big_integer)
@@ -1096,7 +1096,7 @@ module Sun::Security::Pkcs11
             if (!(@x).nil?)
               return
             end
-            attributes = Array.typed(self.class::CK_ATTRIBUTE).new([self.class::CK_ATTRIBUTE.new(CKA_VALUE), self.class::CK_ATTRIBUTE.new(CKA_PRIME), self.class::CK_ATTRIBUTE.new(CKA_SUBPRIME), self.class::CK_ATTRIBUTE.new(CKA_BASE), ])
+            attributes = Array.typed(self.class::CK_ATTRIBUTE).new([self.class::CK_ATTRIBUTE.new(CKA_VALUE), self.class::CK_ATTRIBUTE.new(CKA_PRIME), self.class::CK_ATTRIBUTE.new(CKA_SUBPRIME), self.class::CK_ATTRIBUTE.new(CKA_BASE)])
             fetch_attributes(attributes)
             @x = attributes[0].get_big_integer
             @params = self.class::DSAParameterSpec.new(attributes[1].get_big_integer, attributes[2].get_big_integer, attributes[3].get_big_integer)
@@ -1187,7 +1187,7 @@ module Sun::Security::Pkcs11
             if (!(@x).nil?)
               return
             end
-            attributes = Array.typed(self.class::CK_ATTRIBUTE).new([self.class::CK_ATTRIBUTE.new(CKA_VALUE), self.class::CK_ATTRIBUTE.new(CKA_PRIME), self.class::CK_ATTRIBUTE.new(CKA_BASE), ])
+            attributes = Array.typed(self.class::CK_ATTRIBUTE).new([self.class::CK_ATTRIBUTE.new(CKA_VALUE), self.class::CK_ATTRIBUTE.new(CKA_PRIME), self.class::CK_ATTRIBUTE.new(CKA_BASE)])
             fetch_attributes(attributes)
             @x = attributes[0].get_big_integer
             @params = self.class::DHParameterSpec.new(attributes[1].get_big_integer, attributes[2].get_big_integer)
@@ -1280,7 +1280,7 @@ module Sun::Security::Pkcs11
             if (!(@y).nil?)
               return
             end
-            attributes = Array.typed(self.class::CK_ATTRIBUTE).new([self.class::CK_ATTRIBUTE.new(CKA_VALUE), self.class::CK_ATTRIBUTE.new(CKA_PRIME), self.class::CK_ATTRIBUTE.new(CKA_BASE), ])
+            attributes = Array.typed(self.class::CK_ATTRIBUTE).new([self.class::CK_ATTRIBUTE.new(CKA_VALUE), self.class::CK_ATTRIBUTE.new(CKA_PRIME), self.class::CK_ATTRIBUTE.new(CKA_BASE)])
             fetch_attributes(attributes)
             @y = attributes[0].get_big_integer
             @params = self.class::DHParameterSpec.new(attributes[1].get_big_integer, attributes[2].get_big_integer)
@@ -1373,7 +1373,7 @@ module Sun::Security::Pkcs11
             if (!(@s).nil?)
               return
             end
-            attributes = Array.typed(self.class::CK_ATTRIBUTE).new([self.class::CK_ATTRIBUTE.new(CKA_VALUE), self.class::CK_ATTRIBUTE.new(CKA_EC_PARAMS, @params), ])
+            attributes = Array.typed(self.class::CK_ATTRIBUTE).new([self.class::CK_ATTRIBUTE.new(CKA_VALUE), self.class::CK_ATTRIBUTE.new(CKA_EC_PARAMS, @params)])
             fetch_attributes(attributes)
             @s = attributes[0].get_big_integer
             begin
@@ -1468,7 +1468,7 @@ module Sun::Security::Pkcs11
             if (!(@w).nil?)
               return
             end
-            attributes = Array.typed(self.class::CK_ATTRIBUTE).new([self.class::CK_ATTRIBUTE.new(CKA_EC_POINT), self.class::CK_ATTRIBUTE.new(CKA_EC_PARAMS), ])
+            attributes = Array.typed(self.class::CK_ATTRIBUTE).new([self.class::CK_ATTRIBUTE.new(CKA_EC_POINT), self.class::CK_ATTRIBUTE.new(CKA_EC_PARAMS)])
             fetch_attributes(attributes)
             begin
               @params = P11ECKeyFactory.decode_parameters(attributes[1].get_byte_array)

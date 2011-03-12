@@ -168,8 +168,8 @@ module Sun::Security::Jgss::Krb5
           if (!(local_bindings).nil?)
             local_bindings_bytes = compute_channel_binding(context.get_channel_binding)
             System.arraycopy(local_bindings_bytes, 0, @checksum_bytes, pos, local_bindings_bytes.attr_length)
-            # System.out.println("ChannelBinding hash: "
-            # + getHexBytes(localBindingsBytes));
+            #              System.out.println("ChannelBinding hash: "
+            #         + getHexBytes(localBindingsBytes));
           end
           pos += CHECKSUM_BINDINGS_SIZE
           if (context.get_cred_deleg_state)
@@ -228,7 +228,6 @@ module Sun::Security::Jgss::Krb5
         
         typesig { [class_self::Krb5Context, class_self::Checksum, class_self::EncryptionKey] }
         # Called on the acceptor side when reading an InitSecContextToken.
-        # 
         # XXX Passing in Checksum is not required. byte[] can
         # be passed in if this checksum type denotes a
         # raw_checksum. In that case, make Checksum class krb5
@@ -252,8 +251,8 @@ module Sun::Security::Jgss::Krb5
             error_message = nil
             if (token_contains_bindings && !(local_bindings).nil?)
               local_bindings_bytes = compute_channel_binding(local_bindings)
-              # System.out.println("ChannelBinding hash: "
-              # + getHexBytes(localBindingsBytes));
+              #              System.out.println("ChannelBinding hash: "
+              #         + getHexBytes(localBindingsBytes));
               bad_bindings = (!Java::Util::Arrays.==(local_bindings_bytes, remote_binding_bytes))
               error_message = "Bytes mismatch!"
             else

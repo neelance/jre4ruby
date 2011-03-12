@@ -140,7 +140,6 @@ module Sun::Text
     # --------------------------------------------------------------
     # private
     # --------------------------------------------------------------
-    # 
     # Expanded takes the array back to a 0x10ffff element array
     def expand
       i = 0

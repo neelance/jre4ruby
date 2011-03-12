@@ -66,24 +66,24 @@ module Java::Io
   # <code>'&#92;u007F'</code> are represented by a single byte:
   # 
   # <blockquote>
-  # <table border="1" cellspacing="0" cellpadding="8" width="50%"
-  # summary="Bit values and bytes">
-  # <tr>
-  # <td></td>
-  # <th id="bit">Bit Values</th>
-  # </tr>
-  # <tr>
-  # <th id="byte1">Byte 1</th>
-  # <td>
-  # <table border="1" cellspacing="0" width="100%">
-  # <tr>
-  # <td width="12%"><center>0</center>
-  # <td colspan="7"><center>bits 6-0</center>
-  # </tr>
-  # </table>
-  # </td>
-  # </tr>
-  # </table>
+  #   <table border="1" cellspacing="0" cellpadding="8" width="50%"
+  #          summary="Bit values and bytes">
+  #     <tr>
+  #       <td></td>
+  #       <th id="bit">Bit Values</th>
+  #     </tr>
+  #     <tr>
+  #       <th id="byte1">Byte 1</th>
+  #       <td>
+  #         <table border="1" cellspacing="0" width="100%">
+  #           <tr>
+  #             <td width="12%"><center>0</center>
+  #             <td colspan="7"><center>bits 6-0</center>
+  #           </tr>
+  #         </table>
+  #       </td>
+  #     </tr>
+  #   </table>
   # </blockquote>
   # 
   # <p>
@@ -92,102 +92,102 @@ module Java::Io
   # represented by a pair of bytes:
   # 
   # <blockquote>
-  # <table border="1" cellspacing="0" cellpadding="8" width="50%"
-  # summary="Bit values and bytes">
-  # <tr>
-  # <td></td>
-  # <th id="bit">Bit Values</th>
-  # </tr>
-  # <tr>
-  # <th id="byte1">Byte 1</th>
-  # <td>
-  # <table border="1" cellspacing="0" width="100%">
-  # <tr>
-  # <td width="12%"><center>1</center>
-  # <td width="13%"><center>1</center>
-  # <td width="12%"><center>0</center>
-  # <td colspan="5"><center>bits 10-6</center>
-  # </tr>
-  # </table>
-  # </td>
-  # </tr>
-  # <tr>
-  # <th id="byte2">Byte 2</th>
-  # <td>
-  # <table border="1" cellspacing="0" width="100%">
-  # <tr>
-  # <td width="12%"><center>1</center>
-  # <td width="13%"><center>0</center>
-  # <td colspan="6"><center>bits 5-0</center>
-  # </tr>
-  # </table>
-  # </td>
-  # </tr>
-  # </table>
-  # </blockquote>
+  #   <table border="1" cellspacing="0" cellpadding="8" width="50%"
+  #          summary="Bit values and bytes">
+  #     <tr>
+  #       <td></td>
+  #       <th id="bit">Bit Values</th>
+  #     </tr>
+  #     <tr>
+  #       <th id="byte1">Byte 1</th>
+  #       <td>
+  #         <table border="1" cellspacing="0" width="100%">
+  #           <tr>
+  #             <td width="12%"><center>1</center>
+  #             <td width="13%"><center>1</center>
+  #             <td width="12%"><center>0</center>
+  #             <td colspan="5"><center>bits 10-6</center>
+  #           </tr>
+  #         </table>
+  #       </td>
+  #     </tr>
+  #     <tr>
+  #       <th id="byte2">Byte 2</th>
+  #       <td>
+  #         <table border="1" cellspacing="0" width="100%">
+  #           <tr>
+  #             <td width="12%"><center>1</center>
+  #             <td width="13%"><center>0</center>
+  #             <td colspan="6"><center>bits 5-0</center>
+  #           </tr>
+  #         </table>
+  #       </td>
+  #     </tr>
+  #   </table>
+  #  </blockquote>
   # 
   # <br>
   # <code>char</code> values in the range <code>'&#92;u0800'</code> to
   # <code>'&#92;uFFFF'</code> are represented by three bytes:
   # 
   # <blockquote>
-  # <table border="1" cellspacing="0" cellpadding="8" width="50%"
-  # summary="Bit values and bytes">
-  # <tr>
-  # <td></td>
-  # <th id="bit">Bit Values</th>
-  # </tr>
-  # <tr>
-  # <th id="byte1">Byte 1</th>
-  # <td>
-  # <table border="1" cellspacing="0" width="100%">
-  # <tr>
-  # <td width="12%"><center>1</center>
-  # <td width="13%"><center>1</center>
-  # <td width="12%"><center>1</center>
-  # <td width="13%"><center>0</center>
-  # <td colspan="4"><center>bits 15-12</center>
-  # </tr>
-  # </table>
-  # </td>
-  # </tr>
-  # <tr>
-  # <th id="byte2">Byte 2</th>
-  # <td>
-  # <table border="1" cellspacing="0" width="100%">
-  # <tr>
-  # <td width="12%"><center>1</center>
-  # <td width="13%"><center>0</center>
-  # <td colspan="6"><center>bits 11-6</center>
-  # </tr>
-  # </table>
-  # </td>
-  # </tr>
-  # <tr>
-  # <th id="byte3">Byte 3</th>
-  # <td>
-  # <table border="1" cellspacing="0" width="100%">
-  # <tr>
-  # <td width="12%"><center>1</center>
-  # <td width="13%"><center>0</center>
-  # <td colspan="6"><center>bits 5-0</center>
-  # </tr>
-  # </table>
-  # </td>
-  # </tr>
-  # </table>
-  # </blockquote>
+  #   <table border="1" cellspacing="0" cellpadding="8" width="50%"
+  #          summary="Bit values and bytes">
+  #     <tr>
+  #       <td></td>
+  #       <th id="bit">Bit Values</th>
+  #     </tr>
+  #     <tr>
+  #       <th id="byte1">Byte 1</th>
+  #       <td>
+  #         <table border="1" cellspacing="0" width="100%">
+  #           <tr>
+  #             <td width="12%"><center>1</center>
+  #             <td width="13%"><center>1</center>
+  #             <td width="12%"><center>1</center>
+  #             <td width="13%"><center>0</center>
+  #             <td colspan="4"><center>bits 15-12</center>
+  #           </tr>
+  #         </table>
+  #       </td>
+  #     </tr>
+  #     <tr>
+  #       <th id="byte2">Byte 2</th>
+  #       <td>
+  #         <table border="1" cellspacing="0" width="100%">
+  #           <tr>
+  #             <td width="12%"><center>1</center>
+  #             <td width="13%"><center>0</center>
+  #             <td colspan="6"><center>bits 11-6</center>
+  #           </tr>
+  #         </table>
+  #       </td>
+  #     </tr>
+  #     <tr>
+  #       <th id="byte3">Byte 3</th>
+  #       <td>
+  #         <table border="1" cellspacing="0" width="100%">
+  #           <tr>
+  #             <td width="12%"><center>1</center>
+  #             <td width="13%"><center>0</center>
+  #             <td colspan="6"><center>bits 5-0</center>
+  #           </tr>
+  #         </table>
+  #       </td>
+  #     </tr>
+  #   </table>
+  #  </blockquote>
   # 
   # <p>
   # The differences between this format and the
   # standard UTF-8 format are the following:
   # <ul>
   # <li>The null byte <code>'&#92;u0000'</code> is encoded in 2-byte format
-  # rather than 1-byte, so that the encoded strings never have
-  # embedded nulls.
+  #     rather than 1-byte, so that the encoded strings never have
+  #     embedded nulls.
   # <li>Only the 1-byte, 2-byte, and 3-byte formats are used.
   # <li><a href="../lang/Character.html#unicode">Supplementary characters</a>
-  # are represented in the form of surrogate pairs.
+  #     are represented in the form of surrogate pairs.
   # </ul>
   # @author  Frank Yellin
   # @see     java.io.DataInputStream
@@ -233,7 +233,7 @@ module Java::Io
     # 
     # @param     b   the buffer into which the data is read.
     # @exception  EOFException  if this stream reaches the end before reading
-    # all the bytes.
+    #               all the bytes.
     # @exception  IOException   if an I/O error occurs.
     def read_fully(b)
       raise NotImplementedError
@@ -279,7 +279,7 @@ module Java::Io
     # @param off  an int specifying the offset into the data.
     # @param len  an int specifying the number of bytes to read.
     # @exception  EOFException  if this stream reaches the end before reading
-    # all the bytes.
+    #               all the bytes.
     # @exception  IOException   if an I/O error occurs.
     def read_fully(b, off, len)
       raise NotImplementedError
@@ -319,7 +319,7 @@ module Java::Io
     # 
     # @return     the <code>boolean</code> value read.
     # @exception  EOFException  if this stream reaches the end before reading
-    # all the bytes.
+    #               all the bytes.
     # @exception  IOException   if an I/O error occurs.
     def read_boolean
       raise NotImplementedError
@@ -336,7 +336,7 @@ module Java::Io
     # 
     # @return     the 8-bit value read.
     # @exception  EOFException  if this stream reaches the end before reading
-    # all the bytes.
+    #               all the bytes.
     # @exception  IOException   if an I/O error occurs.
     def read_byte
       raise NotImplementedError
@@ -357,7 +357,7 @@ module Java::Io
     # 
     # @return     the unsigned 8-bit value read.
     # @exception  EOFException  if this stream reaches the end before reading
-    # all the bytes.
+    #               all the bytes.
     # @exception  IOException   if an I/O error occurs.
     def read_unsigned_byte
       raise NotImplementedError
@@ -379,7 +379,7 @@ module Java::Io
     # 
     # @return     the 16-bit value read.
     # @exception  EOFException  if this stream reaches the end before reading
-    # all the bytes.
+    #               all the bytes.
     # @exception  IOException   if an I/O error occurs.
     def read_short
       raise NotImplementedError
@@ -403,7 +403,7 @@ module Java::Io
     # 
     # @return     the unsigned 16-bit value read.
     # @exception  EOFException  if this stream reaches the end before reading
-    # all the bytes.
+    #               all the bytes.
     # @exception  IOException   if an I/O error occurs.
     def read_unsigned_short
       raise NotImplementedError
@@ -424,7 +424,7 @@ module Java::Io
     # 
     # @return     the <code>char</code> value read.
     # @exception  EOFException  if this stream reaches the end before reading
-    # all the bytes.
+    #               all the bytes.
     # @exception  IOException   if an I/O error occurs.
     def read_char
       raise NotImplementedError
@@ -445,7 +445,7 @@ module Java::Io
     # 
     # @return     the <code>int</code> value read.
     # @exception  EOFException  if this stream reaches the end before reading
-    # all the bytes.
+    #               all the bytes.
     # @exception  IOException   if an I/O error occurs.
     def read_int
       raise NotImplementedError
@@ -458,13 +458,13 @@ module Java::Io
     # The value returned is:
     # <p><pre> <code>
     # (((long)(a &amp; 0xff) &lt;&lt; 56) |
-    # ((long)(b &amp; 0xff) &lt;&lt; 48) |
-    # ((long)(c &amp; 0xff) &lt;&lt; 40) |
-    # ((long)(d &amp; 0xff) &lt;&lt; 32) |
-    # ((long)(e &amp; 0xff) &lt;&lt; 24) |
-    # ((long)(f &amp; 0xff) &lt;&lt; 16) |
-    # ((long)(g &amp; 0xff) &lt;&lt;  8) |
-    # ((long)(h &amp; 0xff)))
+    #  ((long)(b &amp; 0xff) &lt;&lt; 48) |
+    #  ((long)(c &amp; 0xff) &lt;&lt; 40) |
+    #  ((long)(d &amp; 0xff) &lt;&lt; 32) |
+    #  ((long)(e &amp; 0xff) &lt;&lt; 24) |
+    #  ((long)(f &amp; 0xff) &lt;&lt; 16) |
+    #  ((long)(g &amp; 0xff) &lt;&lt;  8) |
+    #  ((long)(h &amp; 0xff)))
     # </code></pre>
     # <p>
     # This method is suitable
@@ -473,7 +473,7 @@ module Java::Io
     # 
     # @return     the <code>long</code> value read.
     # @exception  EOFException  if this stream reaches the end before reading
-    # all the bytes.
+    #               all the bytes.
     # @exception  IOException   if an I/O error occurs.
     def read_long
       raise NotImplementedError
@@ -494,7 +494,7 @@ module Java::Io
     # 
     # @return     the <code>float</code> value read.
     # @exception  EOFException  if this stream reaches the end before reading
-    # all the bytes.
+    #               all the bytes.
     # @exception  IOException   if an I/O error occurs.
     def read_float
       raise NotImplementedError
@@ -515,7 +515,7 @@ module Java::Io
     # 
     # @return     the <code>double</code> value read.
     # @exception  EOFException  if this stream reaches the end before reading
-    # all the bytes.
+    #               all the bytes.
     # @exception  IOException   if an I/O error occurs.
     def read_double
       raise NotImplementedError
@@ -556,8 +556,8 @@ module Java::Io
     # that is, <code>(char)256</code>.
     # 
     # @return the next line of text from the input stream,
-    # or <CODE>null</CODE> if the end of file is
-    # encountered before a byte can be read.
+    #         or <CODE>null</CODE> if the end of file is
+    #         encountered before a byte can be read.
     # @exception  IOException  if an I/O error occurs.
     def read_line
       raise NotImplementedError
@@ -643,10 +643,10 @@ module Java::Io
     # for reading by this method.
     # @return     a Unicode string.
     # @exception  EOFException            if this stream reaches the end
-    # before reading all the bytes.
+    #               before reading all the bytes.
     # @exception  IOException             if an I/O error occurs.
     # @exception  UTFDataFormatException  if the bytes do not represent a
-    # valid modified UTF-8 encoding of a string.
+    #               valid modified UTF-8 encoding of a string.
     def read_utf
       raise NotImplementedError
     end

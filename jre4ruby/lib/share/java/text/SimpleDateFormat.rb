@@ -22,17 +22,15 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996-1998 - All Rights Reserved
 # 
-# The original version of this source code and documentation is copyrighted
+#   The original version of this source code and documentation is copyrighted
 # and owned by Taligent, Inc., a wholly-owned subsidiary of IBM. These
 # materials are provided under terms of a License Agreement between Taligent
 # and Sun. This technology is protected by multiple US and International
 # patents. This notice and attribution to Taligent may not be removed.
-# Taligent is a registered trademark of Taligent, Inc.
+#   Taligent is a registered trademark of Taligent, Inc.
 module Java::Text
   module SimpleDateFormatImports #:nodoc:
     class_module.module_eval {
@@ -93,190 +91,190 @@ module Java::Text
   # <code>'z'</code> are reserved):
   # <blockquote>
   # <table border=0 cellspacing=3 cellpadding=0 summary="Chart shows pattern letters, date/time component, presentation, and examples.">
-  # <tr bgcolor="#ccccff">
-  # <th align=left>Letter
-  # <th align=left>Date or Time Component
-  # <th align=left>Presentation
-  # <th align=left>Examples
-  # <tr>
-  # <td><code>G</code>
-  # <td>Era designator
-  # <td><a href="#text">Text</a>
-  # <td><code>AD</code>
-  # <tr bgcolor="#eeeeff">
-  # <td><code>y</code>
-  # <td>Year
-  # <td><a href="#year">Year</a>
-  # <td><code>1996</code>; <code>96</code>
-  # <tr>
-  # <td><code>M</code>
-  # <td>Month in year
-  # <td><a href="#month">Month</a>
-  # <td><code>July</code>; <code>Jul</code>; <code>07</code>
-  # <tr bgcolor="#eeeeff">
-  # <td><code>w</code>
-  # <td>Week in year
-  # <td><a href="#number">Number</a>
-  # <td><code>27</code>
-  # <tr>
-  # <td><code>W</code>
-  # <td>Week in month
-  # <td><a href="#number">Number</a>
-  # <td><code>2</code>
-  # <tr bgcolor="#eeeeff">
-  # <td><code>D</code>
-  # <td>Day in year
-  # <td><a href="#number">Number</a>
-  # <td><code>189</code>
-  # <tr>
-  # <td><code>d</code>
-  # <td>Day in month
-  # <td><a href="#number">Number</a>
-  # <td><code>10</code>
-  # <tr bgcolor="#eeeeff">
-  # <td><code>F</code>
-  # <td>Day of week in month
-  # <td><a href="#number">Number</a>
-  # <td><code>2</code>
-  # <tr>
-  # <td><code>E</code>
-  # <td>Day in week
-  # <td><a href="#text">Text</a>
-  # <td><code>Tuesday</code>; <code>Tue</code>
-  # <tr bgcolor="#eeeeff">
-  # <td><code>a</code>
-  # <td>Am/pm marker
-  # <td><a href="#text">Text</a>
-  # <td><code>PM</code>
-  # <tr>
-  # <td><code>H</code>
-  # <td>Hour in day (0-23)
-  # <td><a href="#number">Number</a>
-  # <td><code>0</code>
-  # <tr bgcolor="#eeeeff">
-  # <td><code>k</code>
-  # <td>Hour in day (1-24)
-  # <td><a href="#number">Number</a>
-  # <td><code>24</code>
-  # <tr>
-  # <td><code>K</code>
-  # <td>Hour in am/pm (0-11)
-  # <td><a href="#number">Number</a>
-  # <td><code>0</code>
-  # <tr bgcolor="#eeeeff">
-  # <td><code>h</code>
-  # <td>Hour in am/pm (1-12)
-  # <td><a href="#number">Number</a>
-  # <td><code>12</code>
-  # <tr>
-  # <td><code>m</code>
-  # <td>Minute in hour
-  # <td><a href="#number">Number</a>
-  # <td><code>30</code>
-  # <tr bgcolor="#eeeeff">
-  # <td><code>s</code>
-  # <td>Second in minute
-  # <td><a href="#number">Number</a>
-  # <td><code>55</code>
-  # <tr>
-  # <td><code>S</code>
-  # <td>Millisecond
-  # <td><a href="#number">Number</a>
-  # <td><code>978</code>
-  # <tr bgcolor="#eeeeff">
-  # <td><code>z</code>
-  # <td>Time zone
-  # <td><a href="#timezone">General time zone</a>
-  # <td><code>Pacific Standard Time</code>; <code>PST</code>; <code>GMT-08:00</code>
-  # <tr>
-  # <td><code>Z</code>
-  # <td>Time zone
-  # <td><a href="#rfc822timezone">RFC 822 time zone</a>
-  # <td><code>-0800</code>
+  #     <tr bgcolor="#ccccff">
+  #         <th align=left>Letter
+  #         <th align=left>Date or Time Component
+  #         <th align=left>Presentation
+  #         <th align=left>Examples
+  #     <tr>
+  #         <td><code>G</code>
+  #         <td>Era designator
+  #         <td><a href="#text">Text</a>
+  #         <td><code>AD</code>
+  #     <tr bgcolor="#eeeeff">
+  #         <td><code>y</code>
+  #         <td>Year
+  #         <td><a href="#year">Year</a>
+  #         <td><code>1996</code>; <code>96</code>
+  #     <tr>
+  #         <td><code>M</code>
+  #         <td>Month in year
+  #         <td><a href="#month">Month</a>
+  #         <td><code>July</code>; <code>Jul</code>; <code>07</code>
+  #     <tr bgcolor="#eeeeff">
+  #         <td><code>w</code>
+  #         <td>Week in year
+  #         <td><a href="#number">Number</a>
+  #         <td><code>27</code>
+  #     <tr>
+  #         <td><code>W</code>
+  #         <td>Week in month
+  #         <td><a href="#number">Number</a>
+  #         <td><code>2</code>
+  #     <tr bgcolor="#eeeeff">
+  #         <td><code>D</code>
+  #         <td>Day in year
+  #         <td><a href="#number">Number</a>
+  #         <td><code>189</code>
+  #     <tr>
+  #         <td><code>d</code>
+  #         <td>Day in month
+  #         <td><a href="#number">Number</a>
+  #         <td><code>10</code>
+  #     <tr bgcolor="#eeeeff">
+  #         <td><code>F</code>
+  #         <td>Day of week in month
+  #         <td><a href="#number">Number</a>
+  #         <td><code>2</code>
+  #     <tr>
+  #         <td><code>E</code>
+  #         <td>Day in week
+  #         <td><a href="#text">Text</a>
+  #         <td><code>Tuesday</code>; <code>Tue</code>
+  #     <tr bgcolor="#eeeeff">
+  #         <td><code>a</code>
+  #         <td>Am/pm marker
+  #         <td><a href="#text">Text</a>
+  #         <td><code>PM</code>
+  #     <tr>
+  #         <td><code>H</code>
+  #         <td>Hour in day (0-23)
+  #         <td><a href="#number">Number</a>
+  #         <td><code>0</code>
+  #     <tr bgcolor="#eeeeff">
+  #         <td><code>k</code>
+  #         <td>Hour in day (1-24)
+  #         <td><a href="#number">Number</a>
+  #         <td><code>24</code>
+  #     <tr>
+  #         <td><code>K</code>
+  #         <td>Hour in am/pm (0-11)
+  #         <td><a href="#number">Number</a>
+  #         <td><code>0</code>
+  #     <tr bgcolor="#eeeeff">
+  #         <td><code>h</code>
+  #         <td>Hour in am/pm (1-12)
+  #         <td><a href="#number">Number</a>
+  #         <td><code>12</code>
+  #     <tr>
+  #         <td><code>m</code>
+  #         <td>Minute in hour
+  #         <td><a href="#number">Number</a>
+  #         <td><code>30</code>
+  #     <tr bgcolor="#eeeeff">
+  #         <td><code>s</code>
+  #         <td>Second in minute
+  #         <td><a href="#number">Number</a>
+  #         <td><code>55</code>
+  #     <tr>
+  #         <td><code>S</code>
+  #         <td>Millisecond
+  #         <td><a href="#number">Number</a>
+  #         <td><code>978</code>
+  #     <tr bgcolor="#eeeeff">
+  #         <td><code>z</code>
+  #         <td>Time zone
+  #         <td><a href="#timezone">General time zone</a>
+  #         <td><code>Pacific Standard Time</code>; <code>PST</code>; <code>GMT-08:00</code>
+  #     <tr>
+  #         <td><code>Z</code>
+  #         <td>Time zone
+  #         <td><a href="#rfc822timezone">RFC 822 time zone</a>
+  #         <td><code>-0800</code>
   # </table>
   # </blockquote>
   # Pattern letters are usually repeated, as their number determines the
   # exact presentation:
   # <ul>
   # <li><strong><a name="text">Text:</a></strong>
-  # For formatting, if the number of pattern letters is 4 or more,
-  # the full form is used; otherwise a short or abbreviated form
-  # is used if available.
-  # For parsing, both forms are accepted, independent of the number
-  # of pattern letters.
+  #     For formatting, if the number of pattern letters is 4 or more,
+  #     the full form is used; otherwise a short or abbreviated form
+  #     is used if available.
+  #     For parsing, both forms are accepted, independent of the number
+  #     of pattern letters.
   # <li><strong><a name="number">Number:</a></strong>
-  # For formatting, the number of pattern letters is the minimum
-  # number of digits, and shorter numbers are zero-padded to this amount.
-  # For parsing, the number of pattern letters is ignored unless
-  # it's needed to separate two adjacent fields.
+  #     For formatting, the number of pattern letters is the minimum
+  #     number of digits, and shorter numbers are zero-padded to this amount.
+  #     For parsing, the number of pattern letters is ignored unless
+  #     it's needed to separate two adjacent fields.
   # <li><strong><a name="year">Year:</a></strong>
-  # If the formatter's {@link #getCalendar() Calendar} is the Gregorian
-  # calendar, the following rules are applied.<br>
-  # <ul>
-  # <li>For formatting, if the number of pattern letters is 2, the year
-  # is truncated to 2 digits; otherwise it is interpreted as a
-  # <a href="#number">number</a>.
-  # <li>For parsing, if the number of pattern letters is more than 2,
-  # the year is interpreted literally, regardless of the number of
-  # digits. So using the pattern "MM/dd/yyyy", "01/11/12" parses to
-  # Jan 11, 12 A.D.
-  # <li>For parsing with the abbreviated year pattern ("y" or "yy"),
-  # <code>SimpleDateFormat</code> must interpret the abbreviated year
-  # relative to some century.  It does this by adjusting dates to be
-  # within 80 years before and 20 years after the time the <code>SimpleDateFormat</code>
-  # instance is created. For example, using a pattern of "MM/dd/yy" and a
-  # <code>SimpleDateFormat</code> instance created on Jan 1, 1997,  the string
-  # "01/11/12" would be interpreted as Jan 11, 2012 while the string "05/04/64"
-  # would be interpreted as May 4, 1964.
-  # During parsing, only strings consisting of exactly two digits, as defined by
-  # {@link Character#isDigit(char)}, will be parsed into the default century.
-  # Any other numeric string, such as a one digit string, a three or more digit
-  # string, or a two digit string that isn't all digits (for example, "-1"), is
-  # interpreted literally.  So "01/02/3" or "01/02/003" are parsed, using the
-  # same pattern, as Jan 2, 3 AD.  Likewise, "01/02/-3" is parsed as Jan 2, 4 BC.
-  # </ul>
-  # Otherwise, calendar system specific forms are applied.
-  # For both formatting and parsing, if the number of pattern
-  # letters is 4 or more, a calendar specific {@linkplain
-  # Calendar#LONG long form} is used. Otherwise, a calendar
-  # specific {@linkplain Calendar#SHORT short or abbreviated form}
-  # is used.
+  #     If the formatter's {@link #getCalendar() Calendar} is the Gregorian
+  #     calendar, the following rules are applied.<br>
+  #     <ul>
+  #     <li>For formatting, if the number of pattern letters is 2, the year
+  #         is truncated to 2 digits; otherwise it is interpreted as a
+  #         <a href="#number">number</a>.
+  #     <li>For parsing, if the number of pattern letters is more than 2,
+  #         the year is interpreted literally, regardless of the number of
+  #         digits. So using the pattern "MM/dd/yyyy", "01/11/12" parses to
+  #         Jan 11, 12 A.D.
+  #     <li>For parsing with the abbreviated year pattern ("y" or "yy"),
+  #         <code>SimpleDateFormat</code> must interpret the abbreviated year
+  #         relative to some century.  It does this by adjusting dates to be
+  #         within 80 years before and 20 years after the time the <code>SimpleDateFormat</code>
+  #         instance is created. For example, using a pattern of "MM/dd/yy" and a
+  #         <code>SimpleDateFormat</code> instance created on Jan 1, 1997,  the string
+  #         "01/11/12" would be interpreted as Jan 11, 2012 while the string "05/04/64"
+  #         would be interpreted as May 4, 1964.
+  #         During parsing, only strings consisting of exactly two digits, as defined by
+  #         {@link Character#isDigit(char)}, will be parsed into the default century.
+  #         Any other numeric string, such as a one digit string, a three or more digit
+  #         string, or a two digit string that isn't all digits (for example, "-1"), is
+  #         interpreted literally.  So "01/02/3" or "01/02/003" are parsed, using the
+  #         same pattern, as Jan 2, 3 AD.  Likewise, "01/02/-3" is parsed as Jan 2, 4 BC.
+  #     </ul>
+  #     Otherwise, calendar system specific forms are applied.
+  #     For both formatting and parsing, if the number of pattern
+  #     letters is 4 or more, a calendar specific {@linkplain
+  #     Calendar#LONG long form} is used. Otherwise, a calendar
+  #     specific {@linkplain Calendar#SHORT short or abbreviated form}
+  #     is used.
   # <li><strong><a name="month">Month:</a></strong>
-  # If the number of pattern letters is 3 or more, the month is
-  # interpreted as <a href="#text">text</a>; otherwise,
-  # it is interpreted as a <a href="#number">number</a>.
+  #     If the number of pattern letters is 3 or more, the month is
+  #     interpreted as <a href="#text">text</a>; otherwise,
+  #     it is interpreted as a <a href="#number">number</a>.
   # <li><strong><a name="timezone">General time zone:</a></strong>
-  # Time zones are interpreted as <a href="#text">text</a> if they have
-  # names. For time zones representing a GMT offset value, the
-  # following syntax is used:
-  # <pre>
-  # <a name="GMTOffsetTimeZone"><i>GMTOffsetTimeZone:</i></a>
-  # <code>GMT</code> <i>Sign</i> <i>Hours</i> <code>:</code> <i>Minutes</i>
-  # <i>Sign:</i> one of
-  # <code>+ -</code>
-  # <i>Hours:</i>
-  # <i>Digit</i>
-  # <i>Digit</i> <i>Digit</i>
-  # <i>Minutes:</i>
-  # <i>Digit</i> <i>Digit</i>
-  # <i>Digit:</i> one of
-  # <code>0 1 2 3 4 5 6 7 8 9</code></pre>
-  # <i>Hours</i> must be between 0 and 23, and <i>Minutes</i> must be between
-  # 00 and 59. The format is locale independent and digits must be taken
-  # from the Basic Latin block of the Unicode standard.
-  # <p>For parsing, <a href="#rfc822timezone">RFC 822 time zones</a> are also
-  # accepted.
+  #     Time zones are interpreted as <a href="#text">text</a> if they have
+  #     names. For time zones representing a GMT offset value, the
+  #     following syntax is used:
+  #     <pre>
+  #     <a name="GMTOffsetTimeZone"><i>GMTOffsetTimeZone:</i></a>
+  #             <code>GMT</code> <i>Sign</i> <i>Hours</i> <code>:</code> <i>Minutes</i>
+  #     <i>Sign:</i> one of
+  #             <code>+ -</code>
+  #     <i>Hours:</i>
+  #             <i>Digit</i>
+  #             <i>Digit</i> <i>Digit</i>
+  #     <i>Minutes:</i>
+  #             <i>Digit</i> <i>Digit</i>
+  #     <i>Digit:</i> one of
+  #             <code>0 1 2 3 4 5 6 7 8 9</code></pre>
+  #     <i>Hours</i> must be between 0 and 23, and <i>Minutes</i> must be between
+  #     00 and 59. The format is locale independent and digits must be taken
+  #     from the Basic Latin block of the Unicode standard.
+  #     <p>For parsing, <a href="#rfc822timezone">RFC 822 time zones</a> are also
+  #     accepted.
   # <li><strong><a name="rfc822timezone">RFC 822 time zone:</a></strong>
-  # For formatting, the RFC 822 4-digit time zone format is used:
-  # <pre>
-  # <i>RFC822TimeZone:</i>
-  # <i>Sign</i> <i>TwoDigitHours</i> <i>Minutes</i>
-  # <i>TwoDigitHours:</i>
-  # <i>Digit Digit</i></pre>
-  # <i>TwoDigitHours</i> must be between 00 and 23. Other definitions
-  # are as for <a href="#timezone">general time zones</a>.
-  # <p>For parsing, <a href="#timezone">general time zones</a> are also
-  # accepted.
+  #     For formatting, the RFC 822 4-digit time zone format is used:
+  #     <pre>
+  #     <i>RFC822TimeZone:</i>
+  #             <i>Sign</i> <i>TwoDigitHours</i> <i>Minutes</i>
+  #     <i>TwoDigitHours:</i>
+  #             <i>Digit Digit</i></pre>
+  #     <i>TwoDigitHours</i> must be between 00 and 23. Other definitions
+  #     are as for <a href="#timezone">general time zones</a>.
+  #     <p>For parsing, <a href="#timezone">general time zones</a> are also
+  #     accepted.
   # </ul>
   # <code>SimpleDateFormat</code> also supports <em>localized date and time
   # pattern</em> strings. In these strings, the pattern letters described above
@@ -292,36 +290,36 @@ module Java::Text
   # in the U.S. Pacific Time time zone.
   # <blockquote>
   # <table border=0 cellspacing=3 cellpadding=0 summary="Examples of date and time patterns interpreted in the U.S. locale">
-  # <tr bgcolor="#ccccff">
-  # <th align=left>Date and Time Pattern
-  # <th align=left>Result
-  # <tr>
-  # <td><code>"yyyy.MM.dd G 'at' HH:mm:ss z"</code>
-  # <td><code>2001.07.04 AD at 12:08:56 PDT</code>
-  # <tr bgcolor="#eeeeff">
-  # <td><code>"EEE, MMM d, ''yy"</code>
-  # <td><code>Wed, Jul 4, '01</code>
-  # <tr>
-  # <td><code>"h:mm a"</code>
-  # <td><code>12:08 PM</code>
-  # <tr bgcolor="#eeeeff">
-  # <td><code>"hh 'o''clock' a, zzzz"</code>
-  # <td><code>12 o'clock PM, Pacific Daylight Time</code>
-  # <tr>
-  # <td><code>"K:mm a, z"</code>
-  # <td><code>0:08 PM, PDT</code>
-  # <tr bgcolor="#eeeeff">
-  # <td><code>"yyyyy.MMMMM.dd GGG hh:mm aaa"</code>
-  # <td><code>02001.July.04 AD 12:08 PM</code>
-  # <tr>
-  # <td><code>"EEE, d MMM yyyy HH:mm:ss Z"</code>
-  # <td><code>Wed, 4 Jul 2001 12:08:56 -0700</code>
-  # <tr bgcolor="#eeeeff">
-  # <td><code>"yyMMddHHmmssZ"</code>
-  # <td><code>010704120856-0700</code>
-  # <tr>
-  # <td><code>"yyyy-MM-dd'T'HH:mm:ss.SSSZ"</code>
-  # <td><code>2001-07-04T12:08:56.235-0700</code>
+  #     <tr bgcolor="#ccccff">
+  #         <th align=left>Date and Time Pattern
+  #         <th align=left>Result
+  #     <tr>
+  #         <td><code>"yyyy.MM.dd G 'at' HH:mm:ss z"</code>
+  #         <td><code>2001.07.04 AD at 12:08:56 PDT</code>
+  #     <tr bgcolor="#eeeeff">
+  #         <td><code>"EEE, MMM d, ''yy"</code>
+  #         <td><code>Wed, Jul 4, '01</code>
+  #     <tr>
+  #         <td><code>"h:mm a"</code>
+  #         <td><code>12:08 PM</code>
+  #     <tr bgcolor="#eeeeff">
+  #         <td><code>"hh 'o''clock' a, zzzz"</code>
+  #         <td><code>12 o'clock PM, Pacific Daylight Time</code>
+  #     <tr>
+  #         <td><code>"K:mm a, z"</code>
+  #         <td><code>0:08 PM, PDT</code>
+  #     <tr bgcolor="#eeeeff">
+  #         <td><code>"yyyyy.MMMMM.dd GGG hh:mm aaa"</code>
+  #         <td><code>02001.July.04 AD 12:08 PM</code>
+  #     <tr>
+  #         <td><code>"EEE, d MMM yyyy HH:mm:ss Z"</code>
+  #         <td><code>Wed, 4 Jul 2001 12:08:56 -0700</code>
+  #     <tr bgcolor="#eeeeff">
+  #         <td><code>"yyMMddHHmmssZ"</code>
+  #         <td><code>010704120856-0700</code>
+  #     <tr>
+  #         <td><code>"yyyy-MM-dd'T'HH:mm:ss.SSSZ"</code>
+  #         <td><code>2001-07-04T12:08:56.235-0700</code>
   # </table>
   # </blockquote>
   # 
@@ -682,24 +680,24 @@ module Java::Text
     # the compiled pattern is:
     # <blockquote>
     # CompiledPattern:
-    # EntryList
+    #     EntryList
     # EntryList:
-    # Entry
-    # EntryList Entry
+    #     Entry
+    #     EntryList Entry
     # Entry:
-    # TagField
-    # TagField data
+    #     TagField
+    #     TagField data
     # TagField:
-    # Tag Length
-    # TaggedData
+    #     Tag Length
+    #     TaggedData
     # Tag:
-    # pattern_char_index
-    # TAG_QUOTE_CHARS
+    #     pattern_char_index
+    #     TAG_QUOTE_CHARS
     # Length:
-    # short_length
-    # long_length
+    #     short_length
+    #     long_length
     # TaggedData:
-    # TAG_QUOTE_ASCII_CHAR ascii_char
+    #     TAG_QUOTE_ASCII_CHAR ascii_char
     # 
     # </blockquote>
     # 
@@ -713,15 +711,15 @@ module Java::Text
     # If Length is short_length, Tag and short_length are packed in a
     # single char, as illustrated below.
     # <blockquote>
-    # char[0] = (Tag << 8) | short_length;
+    #     char[0] = (Tag << 8) | short_length;
     # </blockquote>
     # 
     # If Length is long_length, Tag and 255 are packed in the first
     # char and a 32-bit integer, as illustrated below.
     # <blockquote>
-    # char[0] = (Tag << 8) | 255;
-    # char[1] = (char) (long_length >>> 16);
-    # char[2] = (char) (long_length & 0xffff);
+    #     char[0] = (Tag << 8) | 255;
+    #     char[1] = (char) (long_length >>> 16);
+    #     char[2] = (char) (long_length & 0xffff);
     # </blockquote>
     # <p>
     # If Tag is a pattern_char_index, its Length is the number of
@@ -976,7 +974,7 @@ module Java::Text
     # 
     # @exception NullPointerException if obj is null.
     # @exception IllegalArgumentException if the Format cannot format the
-    # given object, or if the Format's pattern string is invalid.
+    #            given object, or if the Format's pattern string is invalid.
     # @param obj The object to format
     # @return AttributedCharacterIterator describing the formatted value.
     # @since 1.4
@@ -1005,11 +1003,11 @@ module Java::Text
       const_attr_reader  :PATTERN_INDEX_TO_CALENDAR_FIELD
       
       # Map index into pattern character string to DateFormat field number
-      const_set_lazy(:PATTERN_INDEX_TO_DATE_FORMAT_FIELD) { Array.typed(::Java::Int).new([DateFormat::ERA_FIELD, DateFormat::YEAR_FIELD, DateFormat::MONTH_FIELD, DateFormat::DATE_FIELD, DateFormat::HOUR_OF_DAY1_FIELD, DateFormat::HOUR_OF_DAY0_FIELD, DateFormat::MINUTE_FIELD, DateFormat::SECOND_FIELD, DateFormat::MILLISECOND_FIELD, DateFormat::DAY_OF_WEEK_FIELD, DateFormat::DAY_OF_YEAR_FIELD, DateFormat::DAY_OF_WEEK_IN_MONTH_FIELD, DateFormat::WEEK_OF_YEAR_FIELD, DateFormat::WEEK_OF_MONTH_FIELD, DateFormat::AM_PM_FIELD, DateFormat::HOUR1_FIELD, DateFormat::HOUR0_FIELD, DateFormat::TIMEZONE_FIELD, DateFormat::TIMEZONE_FIELD, ]) }
+      const_set_lazy(:PATTERN_INDEX_TO_DATE_FORMAT_FIELD) { Array.typed(::Java::Int).new([DateFormat::ERA_FIELD, DateFormat::YEAR_FIELD, DateFormat::MONTH_FIELD, DateFormat::DATE_FIELD, DateFormat::HOUR_OF_DAY1_FIELD, DateFormat::HOUR_OF_DAY0_FIELD, DateFormat::MINUTE_FIELD, DateFormat::SECOND_FIELD, DateFormat::MILLISECOND_FIELD, DateFormat::DAY_OF_WEEK_FIELD, DateFormat::DAY_OF_YEAR_FIELD, DateFormat::DAY_OF_WEEK_IN_MONTH_FIELD, DateFormat::WEEK_OF_YEAR_FIELD, DateFormat::WEEK_OF_MONTH_FIELD, DateFormat::AM_PM_FIELD, DateFormat::HOUR1_FIELD, DateFormat::HOUR0_FIELD, DateFormat::TIMEZONE_FIELD, DateFormat::TIMEZONE_FIELD]) }
       const_attr_reader  :PATTERN_INDEX_TO_DATE_FORMAT_FIELD
       
       # Maps from DecimalFormatSymbols index to Field constant
-      const_set_lazy(:PATTERN_INDEX_TO_DATE_FORMAT_FIELD_ID) { Array.typed(Field).new([Field::ERA, Field::YEAR, Field::MONTH, Field::DAY_OF_MONTH, Field::HOUR_OF_DAY1, Field::HOUR_OF_DAY0, Field::MINUTE, Field::SECOND, Field::MILLISECOND, Field::DAY_OF_WEEK, Field::DAY_OF_YEAR, Field::DAY_OF_WEEK_IN_MONTH, Field::WEEK_OF_YEAR, Field::WEEK_OF_MONTH, Field::AM_PM, Field::HOUR1, Field::HOUR0, Field::TIME_ZONE, Field::TIME_ZONE, ]) }
+      const_set_lazy(:PATTERN_INDEX_TO_DATE_FORMAT_FIELD_ID) { Array.typed(Field).new([Field::ERA, Field::YEAR, Field::MONTH, Field::DAY_OF_MONTH, Field::HOUR_OF_DAY1, Field::HOUR_OF_DAY0, Field::MINUTE, Field::SECOND, Field::MILLISECOND, Field::DAY_OF_WEEK, Field::DAY_OF_YEAR, Field::DAY_OF_WEEK_IN_MONTH, Field::WEEK_OF_YEAR, Field::WEEK_OF_MONTH, Field::AM_PM, Field::HOUR1, Field::HOUR0, Field::TIME_ZONE, Field::TIME_ZONE]) }
       const_attr_reader  :PATTERN_INDEX_TO_DATE_FORMAT_FIELD_ID
     }
     
@@ -1161,8 +1159,7 @@ module Java::Text
         if ((current).nil?)
           zero_padding_number(value, count, max_int_count, buffer)
         end
-      end
-      # switch (patternCharIndex)
+      end # switch (patternCharIndex)
       if (!(current).nil?)
         buffer.append(current)
       end
@@ -1235,9 +1232,9 @@ module Java::Text
     # 
     # @param text  A <code>String</code>, part of which should be parsed.
     # @param pos   A <code>ParsePosition</code> object with index and error
-    # index information as described above.
+    #              index information as described above.
     # @return A <code>Date</code> parsed from the string. In case of
-    # error, returns null.
+    #         error, returns null.
     # @exception NullPointerException if <code>text</code> or <code>pos</code> is null.
     def parse(text, pos)
       start = pos.attr_index
@@ -1302,13 +1299,11 @@ module Java::Text
       # on that day.  It is therefore parsed out to fields as 3:30 am.  Then we
       # add 100 years, and get April 3 2004 at 3:30 am.  Note that April 3 2004 is
       # a Saturday, so it can have a 2:30 am -- and it should. [LIU]
-      # 
       # Date parsedDate = calendar.getTime();
       # if( ambiguousYear[0] && !parsedDate.after(defaultCenturyStart) ) {
-      # calendar.add(Calendar.YEAR, 100);
-      # parsedDate = calendar.getTime();
+      #     calendar.add(Calendar.YEAR, 100);
+      #     parsedDate = calendar.getTime();
       # }
-      # 
       # Because of the above condition, save off the fields in case we need to readjust.
       # The procedure we use here is not particularly efficient, but there is no other
       # way to do this given the API restrictions present in Calendar.  We minimize
@@ -1334,9 +1329,9 @@ module Java::Text
         else
           parsed_date = self.attr_calendar.get_time
         end
-      # An IllegalArgumentException will be thrown by Calendar.getTime()
-      # if any fields are out of range, e.g., MONTH == 17.
       rescue IllegalArgumentException => e
+        # An IllegalArgumentException will be thrown by Calendar.getTime()
+        # if any fields are out of range, e.g., MONTH == 17.
         pos.attr_error_index = start
         pos.attr_index = old_start
         return nil
@@ -1392,7 +1387,7 @@ module Java::Text
           length_ = name.length
           if ((best_match).nil? || length_ > best_match.length)
             if (text.region_matches(true, start, name, 0, length_))
-              best_match = name
+              best_match = RJava.cast_to_string(name)
             end
           end
         end
@@ -1526,14 +1521,11 @@ module Java::Text
           break
         end
         (pos.attr_index += 1)
-      end
+      end # HOUR_OF_DAY1_FIELD # HOUR1_FIELD # MONTH_FIELD
       # We handle a few special cases here where we need to parse
       # a number value.  We handle further, more generic cases below.  We need
       # to handle some of them here because some fields require extra processing on
       # the parsed value.
-      # HOUR_OF_DAY1_FIELD
-      # HOUR1_FIELD
-      # MONTH_FIELD
       if ((pattern_char_index).equal?(4) || (pattern_char_index).equal?(15) || ((pattern_char_index).equal?(2) && count <= 2) || (pattern_char_index).equal?(1))
         # It would be good to unify this with the obeyCount logic below,
         # but that's going to be difficult.
@@ -1558,7 +1550,6 @@ module Java::Text
       use_date_format_symbols_ = use_date_format_symbols
       index = 0
       case (pattern_char_index)
-      # 'z' - ZONE_OFFSET
       when 0
         # 'G' - ERA
         if (use_date_format_symbols_)
@@ -1697,6 +1688,7 @@ module Java::Text
         self.attr_calendar.set(Calendar::HOUR, value)
         return pos.attr_index
       when 17, 18
+        # 'z' - ZONE_OFFSET
         # 'Z' - ZONE_OFFSET
         # First try to parse generic forms such as GMT-07:00. Do this first
         # in case localized TimeZoneNames contains the string "GMT"
@@ -1706,8 +1698,8 @@ module Java::Text
         offset = 0
         # For time zones that have no known names, look for strings
         # of the form:
-        # GMT[+-]hours:minutes or
-        # GMT.
+        #    GMT[+-]hours:minutes or
+        #    GMT.
         if ((text.length - start) >= GMT.length && text.region_matches(true, start, GMT, 0, GMT.length))
           num = 0
           self.attr_calendar.set(Calendar::DST_OFFSET, 0)
@@ -1995,7 +1987,7 @@ module Java::Text
     # Applies the given localized pattern string to this date format.
     # 
     # @param pattern a String to be mapped to the new date and time format
-    # pattern for this format
+    #        pattern for this format
     # @exception NullPointerException if the given pattern is null
     # @exception IllegalArgumentException if the given pattern is invalid
     def apply_localized_pattern(pattern)

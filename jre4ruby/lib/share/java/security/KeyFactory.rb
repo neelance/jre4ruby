@@ -180,8 +180,8 @@ module Java::Security
       # @return the new KeyFactory object.
       # 
       # @exception NoSuchAlgorithmException if no Provider supports a
-      # KeyFactorySpi implementation for the
-      # specified algorithm.
+      #          KeyFactorySpi implementation for the
+      #          specified algorithm.
       # 
       # @see Provider
       def get_instance(algorithm)
@@ -211,14 +211,14 @@ module Java::Security
       # @return the new KeyFactory object.
       # 
       # @exception NoSuchAlgorithmException if a KeyFactorySpi
-      # implementation for the specified algorithm is not
-      # available from the specified provider.
+      #          implementation for the specified algorithm is not
+      #          available from the specified provider.
       # 
       # @exception NoSuchProviderException if the specified provider is not
-      # registered in the security provider list.
+      #          registered in the security provider list.
       # 
       # @exception IllegalArgumentException if the provider name is null
-      # or empty.
+      #          or empty.
       # 
       # @see Provider
       def get_instance(algorithm, provider)
@@ -246,8 +246,8 @@ module Java::Security
       # @return the new KeyFactory object.
       # 
       # @exception NoSuchAlgorithmException if a KeyFactorySpi
-      # implementation for the specified algorithm is not available
-      # from the specified Provider object.
+      #          implementation for the specified algorithm is not available
+      #          from the specified Provider object.
       # 
       # @exception IllegalArgumentException if the specified provider is null.
       # 

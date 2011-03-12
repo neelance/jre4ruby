@@ -121,11 +121,11 @@ module Java::Io
     # 
     # @param      name   the system-dependent filename
     # @exception  FileNotFoundException  if the file exists but is a directory
-    # rather than a regular file, does not exist but cannot
-    # be created, or cannot be opened for any other reason
+    #                   rather than a regular file, does not exist but cannot
+    #                   be created, or cannot be opened for any other reason
     # @exception  SecurityException  if a security manager exists and its
-    # <code>checkWrite</code> method denies write access
-    # to the file.
+    #               <code>checkWrite</code> method denies write access
+    #               to the file.
     # @see        java.lang.SecurityManager#checkWrite(java.lang.String)
     def initialize(name)
       initialize__file_output_stream(!(name).nil? ? JavaFile.new(name) : nil, false)
@@ -147,13 +147,13 @@ module Java::Io
     # 
     # @param     name        the system-dependent file name
     # @param     append      if <code>true</code>, then bytes will be written
-    # to the end of the file rather than the beginning
+    #                   to the end of the file rather than the beginning
     # @exception  FileNotFoundException  if the file exists but is a directory
-    # rather than a regular file, does not exist but cannot
-    # be created, or cannot be opened for any other reason.
+    #                   rather than a regular file, does not exist but cannot
+    #                   be created, or cannot be opened for any other reason.
     # @exception  SecurityException  if a security manager exists and its
-    # <code>checkWrite</code> method denies write access
-    # to the file.
+    #               <code>checkWrite</code> method denies write access
+    #               to the file.
     # @see        java.lang.SecurityManager#checkWrite(java.lang.String)
     # @since     JDK1.1
     def initialize(name, append)
@@ -176,11 +176,11 @@ module Java::Io
     # 
     # @param      file               the file to be opened for writing.
     # @exception  FileNotFoundException  if the file exists but is a directory
-    # rather than a regular file, does not exist but cannot
-    # be created, or cannot be opened for any other reason
+    #                   rather than a regular file, does not exist but cannot
+    #                   be created, or cannot be opened for any other reason
     # @exception  SecurityException  if a security manager exists and its
-    # <code>checkWrite</code> method denies write access
-    # to the file.
+    #               <code>checkWrite</code> method denies write access
+    #               to the file.
     # @see        java.io.File#getPath()
     # @see        java.lang.SecurityException
     # @see        java.lang.SecurityManager#checkWrite(java.lang.String)
@@ -205,13 +205,13 @@ module Java::Io
     # 
     # @param      file               the file to be opened for writing.
     # @param     append      if <code>true</code>, then bytes will be written
-    # to the end of the file rather than the beginning
+    #                   to the end of the file rather than the beginning
     # @exception  FileNotFoundException  if the file exists but is a directory
-    # rather than a regular file, does not exist but cannot
-    # be created, or cannot be opened for any other reason
+    #                   rather than a regular file, does not exist but cannot
+    #                   be created, or cannot be opened for any other reason
     # @exception  SecurityException  if a security manager exists and its
-    # <code>checkWrite</code> method denies write access
-    # to the file.
+    #               <code>checkWrite</code> method denies write access
+    #               to the file.
     # @see        java.io.File#getPath()
     # @see        java.lang.SecurityException
     # @see        java.lang.SecurityManager#checkWrite(java.lang.String)
@@ -256,8 +256,8 @@ module Java::Io
     # 
     # @param      fdObj   the file descriptor to be opened for writing
     # @exception  SecurityException  if a security manager exists and its
-    # <code>checkWrite</code> method denies
-    # write access to the file descriptor
+    #               <code>checkWrite</code> method denies
+    #               write access to the file descriptor
     # @see        java.lang.SecurityManager#checkWrite(java.io.FileDescriptor)
     def initialize(fd_obj)
       @fd = nil
@@ -383,8 +383,8 @@ module Java::Io
     # Returns the file descriptor associated with this stream.
     # 
     # @return  the <code>FileDescriptor</code> object that represents
-    # the connection to the file in the file system being used
-    # by this <code>FileOutputStream</code> object.
+    #          the connection to the file in the file system being used
+    #          by this <code>FileOutputStream</code> object.
     # 
     # @exception  IOException  if an I/O error occurs.
     # @see        java.io.FileDescriptor

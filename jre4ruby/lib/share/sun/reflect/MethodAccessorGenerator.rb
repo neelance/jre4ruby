@@ -194,25 +194,25 @@ module Sun::Reflect
       # ( * = Boxing information: optional)
       # (+  = Shared entries provided by AccessorGenerator)
       # (^  = Only present if generating SerializationConstructorAccessor)
-      # [UTF-8] [This class's name]
-      # [CONSTANT_Class_info] for above
-      # [UTF-8] "sun/reflect/{MethodAccessorImpl,ConstructorAccessorImpl,SerializationConstructorAccessorImpl}"
-      # [CONSTANT_Class_info] for above
-      # [UTF-8] [Target class's name]
-      # [CONSTANT_Class_info] for above
+      #     [UTF-8] [This class's name]
+      #     [CONSTANT_Class_info] for above
+      #     [UTF-8] "sun/reflect/{MethodAccessorImpl,ConstructorAccessorImpl,SerializationConstructorAccessorImpl}"
+      #     [CONSTANT_Class_info] for above
+      #     [UTF-8] [Target class's name]
+      #     [CONSTANT_Class_info] for above
       # ^   [UTF-8] [Serialization: Class's name in which to invoke constructor]
       # ^   [CONSTANT_Class_info] for above
-      # [UTF-8] target method or constructor name
-      # [UTF-8] target method or constructor signature
-      # [CONSTANT_NameAndType_info] for above
-      # [CONSTANT_Methodref_info or CONSTANT_InterfaceMethodref_info] for target method
-      # [UTF-8] "invoke" or "newInstance"
-      # [UTF-8] invoke or newInstance descriptor
-      # [UTF-8] descriptor for type of non-primitive parameter 1
-      # [CONSTANT_Class_info] for type of non-primitive parameter 1
-      # ...
-      # [UTF-8] descriptor for type of non-primitive parameter n
-      # [CONSTANT_Class_info] for type of non-primitive parameter n
+      #     [UTF-8] target method or constructor name
+      #     [UTF-8] target method or constructor signature
+      #     [CONSTANT_NameAndType_info] for above
+      #     [CONSTANT_Methodref_info or CONSTANT_InterfaceMethodref_info] for target method
+      #     [UTF-8] "invoke" or "newInstance"
+      #     [UTF-8] invoke or newInstance descriptor
+      #     [UTF-8] descriptor for type of non-primitive parameter 1
+      #     [CONSTANT_Class_info] for type of non-primitive parameter 1
+      #     ...
+      #     [UTF-8] descriptor for type of non-primitive parameter n
+      #     [CONSTANT_Class_info] for type of non-primitive parameter n
       # +   [UTF-8] "java/lang/Exception"
       # +   [CONSTANT_Class_info] for above
       # +   [UTF-8] "java/lang/ClassCastException"
@@ -243,78 +243,78 @@ module Sun::Reflect
       # +   [CONSTANT_Methodref_info] for Object's toString method
       # +   [UTF-8] "Code"
       # +   [UTF-8] "Exceptions"
-      # *  [UTF-8] "java/lang/Boolean"
-      # *  [CONSTANT_Class_info] for above
-      # *  [UTF-8] "(Z)V"
-      # *  [CONSTANT_NameAndType_info] for above
-      # *  [CONSTANT_Methodref_info] for above
-      # *  [UTF-8] "booleanValue"
-      # *  [UTF-8] "()Z"
-      # *  [CONSTANT_NameAndType_info] for above
-      # *  [CONSTANT_Methodref_info] for above
-      # *  [UTF-8] "java/lang/Byte"
-      # *  [CONSTANT_Class_info] for above
-      # *  [UTF-8] "(B)V"
-      # *  [CONSTANT_NameAndType_info] for above
-      # *  [CONSTANT_Methodref_info] for above
-      # *  [UTF-8] "byteValue"
-      # *  [UTF-8] "()B"
-      # *  [CONSTANT_NameAndType_info] for above
-      # *  [CONSTANT_Methodref_info] for above
-      # *  [UTF-8] "java/lang/Character"
-      # *  [CONSTANT_Class_info] for above
-      # *  [UTF-8] "(C)V"
-      # *  [CONSTANT_NameAndType_info] for above
-      # *  [CONSTANT_Methodref_info] for above
-      # *  [UTF-8] "charValue"
-      # *  [UTF-8] "()C"
-      # *  [CONSTANT_NameAndType_info] for above
-      # *  [CONSTANT_Methodref_info] for above
-      # *  [UTF-8] "java/lang/Double"
-      # *  [CONSTANT_Class_info] for above
-      # *  [UTF-8] "(D)V"
-      # *  [CONSTANT_NameAndType_info] for above
-      # *  [CONSTANT_Methodref_info] for above
-      # *  [UTF-8] "doubleValue"
-      # *  [UTF-8] "()D"
-      # *  [CONSTANT_NameAndType_info] for above
-      # *  [CONSTANT_Methodref_info] for above
-      # *  [UTF-8] "java/lang/Float"
-      # *  [CONSTANT_Class_info] for above
-      # *  [UTF-8] "(F)V"
-      # *  [CONSTANT_NameAndType_info] for above
-      # *  [CONSTANT_Methodref_info] for above
-      # *  [UTF-8] "floatValue"
-      # *  [UTF-8] "()F"
-      # *  [CONSTANT_NameAndType_info] for above
-      # *  [CONSTANT_Methodref_info] for above
-      # *  [UTF-8] "java/lang/Integer"
-      # *  [CONSTANT_Class_info] for above
-      # *  [UTF-8] "(I)V"
-      # *  [CONSTANT_NameAndType_info] for above
-      # *  [CONSTANT_Methodref_info] for above
-      # *  [UTF-8] "intValue"
-      # *  [UTF-8] "()I"
-      # *  [CONSTANT_NameAndType_info] for above
-      # *  [CONSTANT_Methodref_info] for above
-      # *  [UTF-8] "java/lang/Long"
-      # *  [CONSTANT_Class_info] for above
-      # *  [UTF-8] "(J)V"
-      # *  [CONSTANT_NameAndType_info] for above
-      # *  [CONSTANT_Methodref_info] for above
-      # *  [UTF-8] "longValue"
-      # *  [UTF-8] "()J"
-      # *  [CONSTANT_NameAndType_info] for above
-      # *  [CONSTANT_Methodref_info] for above
-      # *  [UTF-8] "java/lang/Short"
-      # *  [CONSTANT_Class_info] for above
-      # *  [UTF-8] "(S)V"
-      # *  [CONSTANT_NameAndType_info] for above
-      # *  [CONSTANT_Methodref_info] for above
-      # *  [UTF-8] "shortValue"
-      # *  [UTF-8] "()S"
-      # *  [CONSTANT_NameAndType_info] for above
-      # *  [CONSTANT_Methodref_info] for above
+      #  *  [UTF-8] "java/lang/Boolean"
+      #  *  [CONSTANT_Class_info] for above
+      #  *  [UTF-8] "(Z)V"
+      #  *  [CONSTANT_NameAndType_info] for above
+      #  *  [CONSTANT_Methodref_info] for above
+      #  *  [UTF-8] "booleanValue"
+      #  *  [UTF-8] "()Z"
+      #  *  [CONSTANT_NameAndType_info] for above
+      #  *  [CONSTANT_Methodref_info] for above
+      #  *  [UTF-8] "java/lang/Byte"
+      #  *  [CONSTANT_Class_info] for above
+      #  *  [UTF-8] "(B)V"
+      #  *  [CONSTANT_NameAndType_info] for above
+      #  *  [CONSTANT_Methodref_info] for above
+      #  *  [UTF-8] "byteValue"
+      #  *  [UTF-8] "()B"
+      #  *  [CONSTANT_NameAndType_info] for above
+      #  *  [CONSTANT_Methodref_info] for above
+      #  *  [UTF-8] "java/lang/Character"
+      #  *  [CONSTANT_Class_info] for above
+      #  *  [UTF-8] "(C)V"
+      #  *  [CONSTANT_NameAndType_info] for above
+      #  *  [CONSTANT_Methodref_info] for above
+      #  *  [UTF-8] "charValue"
+      #  *  [UTF-8] "()C"
+      #  *  [CONSTANT_NameAndType_info] for above
+      #  *  [CONSTANT_Methodref_info] for above
+      #  *  [UTF-8] "java/lang/Double"
+      #  *  [CONSTANT_Class_info] for above
+      #  *  [UTF-8] "(D)V"
+      #  *  [CONSTANT_NameAndType_info] for above
+      #  *  [CONSTANT_Methodref_info] for above
+      #  *  [UTF-8] "doubleValue"
+      #  *  [UTF-8] "()D"
+      #  *  [CONSTANT_NameAndType_info] for above
+      #  *  [CONSTANT_Methodref_info] for above
+      #  *  [UTF-8] "java/lang/Float"
+      #  *  [CONSTANT_Class_info] for above
+      #  *  [UTF-8] "(F)V"
+      #  *  [CONSTANT_NameAndType_info] for above
+      #  *  [CONSTANT_Methodref_info] for above
+      #  *  [UTF-8] "floatValue"
+      #  *  [UTF-8] "()F"
+      #  *  [CONSTANT_NameAndType_info] for above
+      #  *  [CONSTANT_Methodref_info] for above
+      #  *  [UTF-8] "java/lang/Integer"
+      #  *  [CONSTANT_Class_info] for above
+      #  *  [UTF-8] "(I)V"
+      #  *  [CONSTANT_NameAndType_info] for above
+      #  *  [CONSTANT_Methodref_info] for above
+      #  *  [UTF-8] "intValue"
+      #  *  [UTF-8] "()I"
+      #  *  [CONSTANT_NameAndType_info] for above
+      #  *  [CONSTANT_Methodref_info] for above
+      #  *  [UTF-8] "java/lang/Long"
+      #  *  [CONSTANT_Class_info] for above
+      #  *  [UTF-8] "(J)V"
+      #  *  [CONSTANT_NameAndType_info] for above
+      #  *  [CONSTANT_Methodref_info] for above
+      #  *  [UTF-8] "longValue"
+      #  *  [UTF-8] "()J"
+      #  *  [CONSTANT_NameAndType_info] for above
+      #  *  [CONSTANT_Methodref_info] for above
+      #  *  [UTF-8] "java/lang/Short"
+      #  *  [CONSTANT_Class_info] for above
+      #  *  [UTF-8] "(S)V"
+      #  *  [CONSTANT_NameAndType_info] for above
+      #  *  [CONSTANT_Methodref_info] for above
+      #  *  [UTF-8] "shortValue"
+      #  *  [UTF-8] "()S"
+      #  *  [CONSTANT_NameAndType_info] for above
+      #  *  [CONSTANT_Methodref_info] for above
       num_cpentries = NUM_BASE_CPOOL_ENTRIES + NUM_COMMON_CPOOL_ENTRIES
       uses_primitives = uses_primitive_types
       if (uses_primitives)
@@ -514,8 +514,8 @@ module Sun::Reflect
       # JCK (isn't clearly specified in the spec): we allow null in the
       # case where the argument list is zero length.
       # if no-arg:
-      # aload_2 | aload_1 (Method | Constructor)
-      # ifnull <success label>
+      #   aload_2 | aload_1 (Method | Constructor)
+      #   ifnull <success label>
       # aload_2 | aload_1
       # arraylength
       # sipush <num parameter types>
@@ -582,21 +582,21 @@ module Sun::Reflect
             cb.opc_astore_3
           end
           # repeat for all possible widening conversions:
-          # aload_3 | aload_2
-          # instanceof <primitive boxing type>
-          # ifeq <next unboxing label>
-          # aload_3 | aload_2
-          # checkcast <primitive boxing type> // Note: this is "redundant",
-          # // but necessary for the verifier
-          # invokevirtual <unboxing method>
-          # <widening conversion bytecode, if necessary>
-          # goto <next parameter label>
+          #   aload_3 | aload_2
+          #   instanceof <primitive boxing type>
+          #   ifeq <next unboxing label>
+          #   aload_3 | aload_2
+          #   checkcast <primitive boxing type> // Note: this is "redundant",
+          #                                     // but necessary for the verifier
+          #   invokevirtual <unboxing method>
+          #   <widening conversion bytecode, if necessary>
+          #   goto <next parameter label>
           # <next unboxing label:> ...
           # last unboxing label:
-          # new <IllegalArgumentException>
-          # dup
-          # invokespecial <IllegalArgumentException ctor>
-          # athrow
+          #   new <IllegalArgumentException>
+          #   dup
+          #   invokespecial <IllegalArgumentException ctor>
+          #   athrow
           l = nil # unboxing label
           next_param_label = Label.new
           j = 0

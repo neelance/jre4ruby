@@ -115,7 +115,7 @@ module Sun::Security::Ssl
     # 
     # @param port the port on which to listen
     # @param backlog how many connections may be pending before
-    # the system should start rejecting new requests
+    #          the system should start rejecting new requests
     # @param context authentication context for this server
     def initialize(port, backlog, context)
       @ssl_context = nil
@@ -145,9 +145,9 @@ module Sun::Security::Ssl
     # 
     # @param port the port on which to listen
     # @param backlog how many connections may be pending before
-    # the system should start rejecting new requests
+    #          the system should start rejecting new requests
     # @param address the address of the network interface through
-    # which connections will be accepted
+    #          which connections will be accepted
     # @param context authentication context for this server
     def initialize(port, backlog, address, context)
       @ssl_context = nil
@@ -227,7 +227,7 @@ module Sun::Security::Ssl
     # by accepted connections.
     # 
     # @param suites Names of all the cipher suites to enable; null
-    # means to accept system defaults.
+    #  means to accept system defaults.
     def set_enabled_cipher_suites(suites)
       synchronized(self) do
         @enabled_cipher_suites = CipherSuiteList.new(suites)
@@ -247,7 +247,7 @@ module Sun::Security::Ssl
     # 
     # @param protocols protocols to enable.
     # @exception IllegalArgumentException when one of the protocols
-    # named by the parameter is not supported.
+    #  named by the parameter is not supported.
     def set_enabled_protocols(protocols)
       synchronized(self) do
         @enabled_protocols = ProtocolList.new(protocols)
@@ -330,9 +330,11 @@ module Sun::Security::Ssl
     # once for each ServerSocket to verify that the initial set of
     # enabled suites are capable of supporting a successful handshake.
     def check_enabled_suites
+      # 
       # We want to report an error if no cipher suites were actually
       # enabled, since this is an error users are known to make.  Then
       # they get vastly confused by having clients report an error!
+      # 
       synchronized((self)) do
         if (@checked_enabled)
           return
@@ -354,9 +356,11 @@ module Sun::Security::Ssl
         ensure
           tmp.close_socket
         end
+        # 
         # diagnostic text here is currently appropriate
         # since it's only certificate unavailability that can
         # cause such problems ... but that might change someday.
+        # 
         raise SSLException.new("No available certificate or key corresponds" + " to the SSL cipher suites which are enabled.")
       end
     end

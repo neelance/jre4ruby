@@ -146,22 +146,22 @@ module Java::Nio::Channels
     # Initializes a new instance of this class.  </p>
     # 
     # @param  channel
-    # The file channel upon whose file this lock is held
+    #         The file channel upon whose file this lock is held
     # 
     # @param  position
-    # The position within the file at which the locked region starts;
-    # must be non-negative
+    #         The position within the file at which the locked region starts;
+    #         must be non-negative
     # 
     # @param  size
-    # The size of the locked region; must be non-negative, and the sum
-    # <tt>position</tt>&nbsp;+&nbsp;<tt>size</tt> must be non-negative
+    #         The size of the locked region; must be non-negative, and the sum
+    #         <tt>position</tt>&nbsp;+&nbsp;<tt>size</tt> must be non-negative
     # 
     # @param  shared
-    # <tt>true</tt> if this lock is shared,
-    # <tt>false</tt> if it is exclusive
+    #         <tt>true</tt> if this lock is shared,
+    #         <tt>false</tt> if it is exclusive
     # 
     # @throws IllegalArgumentException
-    # If the preconditions on the parameters do not hold
+    #         If the preconditions on the parameters do not hold
     def initialize(channel, position, size, shared)
       @channel = nil
       @position = 0
@@ -219,7 +219,7 @@ module Java::Nio::Channels
     # Tells whether this lock is shared.  </p>
     # 
     # @return <tt>true</tt> if lock is shared,
-    # <tt>false</tt> if it is exclusive
+    #         <tt>false</tt> if it is exclusive
     def is_shared
       return @shared
     end
@@ -228,7 +228,7 @@ module Java::Nio::Channels
     # Tells whether or not this lock overlaps the given lock range.  </p>
     # 
     # @return  <tt>true</tt> if, and only if, this lock and the given lock
-    # range overlap by at least one byte
+    #          range overlap by at least one byte
     def overlaps(position, size)
       if (position + size <= @position)
         return false
@@ -258,11 +258,11 @@ module Java::Nio::Channels
     # then invoking this method has no effect.  </p>
     # 
     # @throws  ClosedChannelException
-    # If the channel that was used to acquire this lock
-    # is no longer open
+    #          If the channel that was used to acquire this lock
+    #          is no longer open
     # 
     # @throws  IOException
-    # If an I/O error occurs
+    #          If an I/O error occurs
     def release
       raise NotImplementedError
     end

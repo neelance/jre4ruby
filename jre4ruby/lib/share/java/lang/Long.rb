@@ -94,7 +94,7 @@ module Java::Lang
       # character.  The following ASCII characters are used as digits:
       # 
       # <blockquote>
-      # {@code 0123456789abcdefghijklmnopqrstuvwxyz}
+      #   {@code 0123456789abcdefghijklmnopqrstuvwxyz}
       # </blockquote>
       # 
       # These are <code>'&#92;u0030'</code> through
@@ -108,7 +108,7 @@ module Java::Lang
       # be called on the result:
       # 
       # <blockquote>
-      # {@code Long.toString(n, 16).toUpperCase()}
+      #  {@code Long.toString(n, 16).toUpperCase()}
       # </blockquote>
       # 
       # @param   i       a {@code long} to be converted to a string.
@@ -130,10 +130,10 @@ module Java::Lang
           i = -i
         end
         while (i <= -radix)
-          buf[((char_pos -= 1) + 1)] = JavaInteger.attr_digits[RJava.cast_to_int((-(i % radix)))]
+          buf[((char_pos -= 1) + 1)] = JavaInteger.attr_digits[((-(i % radix))).to_int]
           i = i / radix
         end
-        buf[char_pos] = JavaInteger.attr_digits[RJava.cast_to_int((-i))]
+        buf[char_pos] = JavaInteger.attr_digits[((-i)).to_int]
         if (negative)
           buf[(char_pos -= 1)] = Character.new(?-.ord)
         end
@@ -156,7 +156,7 @@ module Java::Lang
       # hexadecimal digits:
       # 
       # <blockquote>
-      # {@code 0123456789abcdef}
+      #  {@code 0123456789abcdef}
       # </blockquote>
       # 
       # These are the characters <code>'&#92;u0030'</code> through
@@ -166,13 +166,13 @@ module Java::Lang
       # on the result:
       # 
       # <blockquote>
-      # {@code Long.toHexString(n).toUpperCase()}
+      #  {@code Long.toHexString(n).toUpperCase()}
       # </blockquote>
       # 
       # @param   i   a {@code long} to be converted to a string.
       # @return  the string representation of the unsigned {@code long}
-      # value represented by the argument in hexadecimal
-      # (base&nbsp;16).
+      #          value represented by the argument in hexadecimal
+      #          (base&nbsp;16).
       # @since   JDK 1.0.2
       def to_hex_string(i)
         return to_unsigned_string(i, 4)
@@ -196,7 +196,7 @@ module Java::Lang
       # digits:
       # 
       # <blockquote>
-      # {@code 01234567}
+      #  {@code 01234567}
       # </blockquote>
       # 
       # These are the characters <code>'&#92;u0030'</code> through
@@ -204,7 +204,7 @@ module Java::Lang
       # 
       # @param   i   a {@code long} to be converted to a string.
       # @return  the string representation of the unsigned {@code long}
-      # value represented by the argument in octal (base&nbsp;8).
+      #          value represented by the argument in octal (base&nbsp;8).
       # @since   JDK 1.0.2
       def to_octal_string(i)
         return to_unsigned_string(i, 3)
@@ -228,7 +228,7 @@ module Java::Lang
       # 
       # @param   i   a {@code long} to be converted to a string.
       # @return  the string representation of the unsigned {@code long}
-      # value represented by the argument in binary (base&nbsp;2).
+      #          value represented by the argument in binary (base&nbsp;2).
       # @since   JDK 1.0.2
       def to_binary_string(i)
         return to_unsigned_string(i, 1)
@@ -242,7 +242,7 @@ module Java::Lang
         radix = 1 << shift
         mask = radix - 1
         begin
-          buf[(char_pos -= 1)] = JavaInteger.attr_digits[RJava.cast_to_int((i & mask))]
+          buf[(char_pos -= 1)] = JavaInteger.attr_digits[((i & mask)).to_int]
           i >>= shift
         end while (!(i).equal?(0))
         return String.new(buf, char_pos, (64 - char_pos))
@@ -288,14 +288,14 @@ module Java::Lang
         while (i > JavaInteger::MAX_VALUE)
           q = i / 100
           # really: r = i - (q * 100);
-          r = RJava.cast_to_int((i - ((q << 6) + (q << 5) + (q << 2))))
+          r = ((i - ((q << 6) + (q << 5) + (q << 2)))).to_int
           i = q
           buf[(char_pos -= 1)] = JavaInteger::DigitOnes[r]
           buf[(char_pos -= 1)] = JavaInteger::DigitTens[r]
         end
         # Get 2 digits/iteration using ints
         q2 = 0
-        i2 = RJava.cast_to_int(i)
+        i2 = (i).to_int
         while (i2 >= 65536)
           q2 = i2 / 100
           # really: r = i2 - (q * 100);
@@ -370,7 +370,7 @@ module Java::Lang
       # string is longer than length 1.
       # 
       # <li>The value represented by the string is not a value of type
-      # {@code long}.
+      #      {@code long}.
       # </ul>
       # 
       # <p>Examples:
@@ -386,12 +386,12 @@ module Java::Lang
       # </pre></blockquote>
       # 
       # @param      s       the {@code String} containing the
-      # {@code long} representation to be parsed.
+      #                     {@code long} representation to be parsed.
       # @param      radix   the radix to be used while parsing {@code s}.
       # @return     the {@code long} represented by the string argument in
-      # the specified radix.
+      #             the specified radix.
       # @throws     NumberFormatException  if the string does not contain a
-      # parsable {@code long}.
+      #             parsable {@code long}.
       def parse_long(s, radix)
         if ((s).nil?)
           raise NumberFormatException.new("null")
@@ -463,11 +463,11 @@ module Java::Lang
       # Java programming language source code.
       # 
       # @param      s   a {@code String} containing the {@code long}
-      # representation to be parsed
+      #             representation to be parsed
       # @return     the {@code long} represented by the argument in
-      # decimal.
+      #             decimal.
       # @throws     NumberFormatException  if the string does not contain a
-      # parsable {@code long}.
+      #             parsable {@code long}.
       def parse_long(s)
         return parse_long(s, 10)
       end
@@ -487,16 +487,16 @@ module Java::Lang
       # to the value of:
       # 
       # <blockquote>
-      # {@code new Long(Long.parseLong(s, radix))}
+      #  {@code new Long(Long.parseLong(s, radix))}
       # </blockquote>
       # 
       # @param      s       the string to be parsed
       # @param      radix   the radix to be used in interpreting {@code s}
       # @return     a {@code Long} object holding the value
-      # represented by the string argument in the specified
-      # radix.
+      #             represented by the string argument in the specified
+      #             radix.
       # @throws     NumberFormatException  If the {@code String} does not
-      # contain a parsable {@code long}.
+      #             contain a parsable {@code long}.
       def value_of(s, radix)
         return Long.new(parse_long(s, radix))
       end
@@ -514,14 +514,14 @@ module Java::Lang
       # equal to the value of:
       # 
       # <blockquote>
-      # {@code new Long(Long.parseLong(s))}
+      #  {@code new Long(Long.parseLong(s))}
       # </blockquote>
       # 
       # @param      s   the string to be parsed.
       # @return     a {@code Long} object holding the value
-      # represented by the string argument.
+      #             represented by the string argument.
       # @throws     NumberFormatException  If the string cannot be parsed
-      # as a {@code long}.
+      #             as a {@code long}.
       def value_of(s)
         return Long.new(parse_long(s, 10))
       end
@@ -566,7 +566,7 @@ module Java::Lang
         offset = 128
         if (l >= -128 && l <= 127)
           # will cache
-          return LongCache.attr_cache[RJava.cast_to_int(l) + offset]
+          return LongCache.attr_cache[(l).to_int + offset]
         end
         return Long.new(l)
       end
@@ -607,9 +607,9 @@ module Java::Lang
       # 
       # @param     nm the {@code String} to decode.
       # @return    a {@code Long} object holding the {@code long}
-      # value represented by {@code nm}
+      #            value represented by {@code nm}
       # @throws    NumberFormatException  if the {@code String} does not
-      # contain a parsable {@code long}.
+      #            contain a parsable {@code long}.
       # @see java.lang.Long#parseLong(String, int)
       # @since 1.2
       def decode(nm)
@@ -672,7 +672,7 @@ module Java::Lang
     # represents the specified {@code long} argument.
     # 
     # @param   value   the value to be represented by the
-    # {@code Long} object.
+    #          {@code Long} object.
     def initialize(value)
       @value = 0
       super()
@@ -687,9 +687,9 @@ module Java::Lang
     # {@code parseLong} method for radix 10.
     # 
     # @param      s   the {@code String} to be converted to a
-    # {@code Long}.
+    #             {@code Long}.
     # @throws     NumberFormatException  if the {@code String} does not
-    # contain a parsable {@code long}.
+    #             contain a parsable {@code long}.
     # @see        java.lang.Long#parseLong(java.lang.String, int)
     def initialize(s)
       @value = 0
@@ -715,7 +715,7 @@ module Java::Lang
     # Returns the value of this {@code Long} as an
     # {@code int}.
     def int_value
-      return RJava.cast_to_int(@value)
+      return (@value).to_int
     end
     
     typesig { [] }
@@ -747,7 +747,7 @@ module Java::Lang
     # {@link java.lang.Long#toString(long)} method.
     # 
     # @return  a string representation of the value of this object in
-    # base&nbsp;10.
+    #          base&nbsp;10.
     def to_s
       return String.value_of(@value)
     end
@@ -759,12 +759,12 @@ module Java::Lang
     # object. That is, the hashcode is the value of the expression:
     # 
     # <blockquote>
-    # {@code (int)(this.longValue()^(this.longValue()>>>32))}
+    #  {@code (int)(this.longValue()^(this.longValue()>>>32))}
     # </blockquote>
     # 
     # @return  a hash code value for this object.
     def hash_code
-      return RJava.cast_to_int((@value ^ (@value >> 32)))
+      return ((@value ^ (@value >> 32))).to_int
     end
     
     typesig { [Object] }
@@ -775,7 +775,7 @@ module Java::Lang
     # 
     # @param   obj   the object to compare with.
     # @return  {@code true} if the objects are the same;
-    # {@code false} otherwise.
+    #          {@code false} otherwise.
     def ==(obj)
       if (obj.is_a?(Long))
         return (@value).equal?((obj).long_value)
@@ -806,7 +806,7 @@ module Java::Lang
       # the value of:
       # 
       # <blockquote>
-      # {@code getLong(nm, null)}
+      #  {@code getLong(nm, null)}
       # </blockquote>
       # 
       # @param   nm   property name.
@@ -839,7 +839,7 @@ module Java::Lang
       # to the value of:
       # 
       # <blockquote>
-      # {@code getLong(nm, new Long(val))}
+      #  {@code getLong(nm, new Long(val))}
       # </blockquote>
       # 
       # but in practice it may be implemented in a manner such as:
@@ -926,12 +926,12 @@ module Java::Lang
     # 
     # @param   anotherLong   the {@code Long} to be compared.
     # @return  the value {@code 0} if this {@code Long} is
-    # equal to the argument {@code Long}; a value less than
-    # {@code 0} if this {@code Long} is numerically less
-    # than the argument {@code Long}; and a value greater
-    # than {@code 0} if this {@code Long} is numerically
-    # greater than the argument {@code Long} (signed
-    # comparison).
+    #          equal to the argument {@code Long}; a value less than
+    #          {@code 0} if this {@code Long} is numerically less
+    #          than the argument {@code Long}; and a value greater
+    #          than {@code 0} if this {@code Long} is numerically
+    #           greater than the argument {@code Long} (signed
+    #           comparison).
     # @since   1.2
     def compare_to(another_long)
       this_val = @value
@@ -941,7 +941,6 @@ module Java::Lang
     
     class_module.module_eval {
       # Bit Twiddling
-      # 
       # The number of bits used to represent a {@code long} value in two's
       # complement binary form.
       # 
@@ -957,8 +956,8 @@ module Java::Lang
       # is equal to zero.
       # 
       # @return a {@code long} value with a single one-bit, in the position
-      # of the highest-order one-bit in the specified value, or zero if
-      # the specified value is itself equal to zero.
+      #     of the highest-order one-bit in the specified value, or zero if
+      #     the specified value is itself equal to zero.
       # @since 1.5
       def highest_one_bit(i)
         # HD, Figure 3-1
@@ -979,8 +978,8 @@ module Java::Lang
       # is equal to zero.
       # 
       # @return a {@code long} value with a single one-bit, in the position
-      # of the lowest-order one-bit in the specified value, or zero if
-      # the specified value is itself equal to zero.
+      #     of the lowest-order one-bit in the specified value, or zero if
+      #     the specified value is itself equal to zero.
       # @since 1.5
       def lowest_one_bit(i)
         # HD, Section 2-1
@@ -1002,9 +1001,9 @@ module Java::Lang
       # </ul>
       # 
       # @return the number of zero bits preceding the highest-order
-      # ("leftmost") one-bit in the two's complement binary representation
-      # of the specified {@code long} value, or 64 if the value
-      # is equal to zero.
+      #     ("leftmost") one-bit in the two's complement binary representation
+      #     of the specified {@code long} value, or 64 if the value
+      #     is equal to zero.
       # @since 1.5
       def number_of_leading_zeros(i)
         # HD, Figure 5-6
@@ -1012,10 +1011,10 @@ module Java::Lang
           return 64
         end
         n = 1
-        x = RJava.cast_to_int((i >> 32))
+        x = ((i >> 32)).to_int
         if ((x).equal?(0))
           n += 32
-          x = RJava.cast_to_int(i)
+          x = (i).to_int
         end
         if ((x >> 16).equal?(0))
           n += 16
@@ -1045,9 +1044,9 @@ module Java::Lang
       # equal to zero.
       # 
       # @return the number of zero bits following the lowest-order ("rightmost")
-      # one-bit in the two's complement binary representation of the
-      # specified {@code long} value, or 64 if the value is equal
-      # to zero.
+      #     one-bit in the two's complement binary representation of the
+      #     specified {@code long} value, or 64 if the value is equal
+      #     to zero.
       # @since 1.5
       def number_of_trailing_zeros(i)
         # HD, Figure 5-14
@@ -1057,12 +1056,12 @@ module Java::Lang
           return 64
         end
         n = 63
-        y = RJava.cast_to_int(i)
+        y = (i).to_int
         if (!(y).equal?(0))
           n = n - 32
           x = y
         else
-          x = RJava.cast_to_int((i >> 32))
+          x = ((i >> 32)).to_int
         end
         y = x << 16
         if (!(y).equal?(0))
@@ -1093,7 +1092,7 @@ module Java::Lang
       # sometimes referred to as the <i>population count</i>.
       # 
       # @return the number of one-bits in the two's complement binary
-      # representation of the specified {@code long} value.
+      #     representation of the specified {@code long} value.
       # @since 1.5
       def bit_count(i)
         # HD, Figure 5-14
@@ -1103,7 +1102,7 @@ module Java::Lang
         i = i + (i >> 8)
         i = i + (i >> 16)
         i = i + (i >> 32)
-        return RJava.cast_to_int(i) & 0x7f
+        return (i).to_int & 0x7f
       end
       
       typesig { [::Java::Long, ::Java::Int] }
@@ -1120,8 +1119,8 @@ module Java::Lang
       # distance) == rotateLeft(val, distance & 0x3F)}.
       # 
       # @return the value obtained by rotating the two's complement binary
-      # representation of the specified {@code long} value left by the
-      # specified number of bits.
+      #     representation of the specified {@code long} value left by the
+      #     specified number of bits.
       # @since 1.5
       def rotate_left(i, distance)
         return (i << distance) | (i >> -distance)
@@ -1141,8 +1140,8 @@ module Java::Lang
       # distance) == rotateRight(val, distance & 0x3F)}.
       # 
       # @return the value obtained by rotating the two's complement binary
-      # representation of the specified {@code long} value right by the
-      # specified number of bits.
+      #     representation of the specified {@code long} value right by the
+      #     specified number of bits.
       # @since 1.5
       def rotate_right(i, distance)
         return (i >> distance) | (i << -distance)
@@ -1154,7 +1153,7 @@ module Java::Lang
       # value.
       # 
       # @return the value obtained by reversing order of the bits in the
-      # specified {@code long} value.
+      #     specified {@code long} value.
       # @since 1.5
       def reverse(i)
         # HD, Figure 7-1
@@ -1175,7 +1174,7 @@ module Java::Lang
       # @since 1.5
       def signum(i)
         # HD, Section 2-7
-        return RJava.cast_to_int(((i >> 63) | (-i >> 63)))
+        return (((i >> 63) | (-i >> 63))).to_int
       end
       
       typesig { [::Java::Long] }
@@ -1183,7 +1182,7 @@ module Java::Lang
       # two's complement representation of the specified {@code long} value.
       # 
       # @return the value obtained by reversing the bytes in the specified
-      # {@code long} value.
+      #     {@code long} value.
       # @since 1.5
       def reverse_bytes(i)
         i = (i & 0xff00ff00ff00ff) << 8 | (i >> 8) & 0xff00ff00ff00ff

@@ -42,15 +42,15 @@ module Sun::Security::X509
   # <p>The ASN.1 syntax for this is:
   # <pre>
   # ReasonFlags ::= BIT STRING {
-  # unused                  (0),
-  # keyCompromise           (1),
-  # cACompromise            (2),
-  # affiliationChanged      (3),
-  # superseded              (4),
-  # cessationOfOperation    (5),
-  # certificateHold         (6),
-  # privilegeWithdrawn      (7),
-  # aACompromise            (8) }
+  #    unused                  (0),
+  #    keyCompromise           (1),
+  #    cACompromise            (2),
+  #    affiliationChanged      (3),
+  #    superseded              (4),
+  #    cessationOfOperation    (5),
+  #    certificateHold         (6),
+  #    privilegeWithdrawn      (7),
+  #    aACompromise            (8) }
   # </pre>
   # 
   # @author Hemma Prafullchandra
@@ -86,7 +86,7 @@ module Sun::Security::X509
       const_set_lazy(:AA_COMPROMISE) { "aa_compromise" }
       const_attr_reader  :AA_COMPROMISE
       
-      const_set_lazy(:NAMES) { Array.typed(String).new([UNUSED, KEY_COMPROMISE, CA_COMPROMISE, AFFILIATION_CHANGED, SUPERSEDED, CESSATION_OF_OPERATION, CERTIFICATE_HOLD, PRIVILEGE_WITHDRAWN, AA_COMPROMISE, ]) }
+      const_set_lazy(:NAMES) { Array.typed(String).new([UNUSED, KEY_COMPROMISE, CA_COMPROMISE, AFFILIATION_CHANGED, SUPERSEDED, CESSATION_OF_OPERATION, CERTIFICATE_HOLD, PRIVILEGE_WITHDRAWN, AA_COMPROMISE]) }
       const_attr_reader  :NAMES
       
       typesig { [String] }

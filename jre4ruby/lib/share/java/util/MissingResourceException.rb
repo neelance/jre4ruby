@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996 - 1998 - All Rights Reserved
 # 
@@ -72,16 +70,16 @@ module Java::Util
     # use by <code>ResourceBundle.getBundle</code>.
     # 
     # @param message
-    # the detail message
+    #        the detail message
     # @param className
-    # the name of the resource class
+    #        the name of the resource class
     # @param key
-    # the key for the missing resource.
+    #        the key for the missing resource.
     # @param cause
-    # the cause (which is saved for later retrieval by the
-    # {@link Throwable.getCause()} method). (A null value is
-    # permitted, and indicates that the cause is nonexistent
-    # or unknown.)
+    #        the cause (which is saved for later retrieval by the
+    #        {@link Throwable.getCause()} method). (A null value is
+    #        permitted, and indicates that the cause is nonexistent
+    #        or unknown.)
     def initialize(message, class_name, key, cause)
       @class_name = nil
       @key = nil

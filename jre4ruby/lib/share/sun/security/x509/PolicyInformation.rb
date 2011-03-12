@@ -48,15 +48,15 @@ module Sun::Security::X509
   # <pre>
   # 
   # PolicyInformation ::= SEQUENCE {
-  # policyIdentifier   CertPolicyId,
-  # policyQualifiers   SEQUENCE SIZE (1..MAX) OF
-  # PolicyQualifierInfo OPTIONAL }
+  #      policyIdentifier   CertPolicyId,
+  #      policyQualifiers   SEQUENCE SIZE (1..MAX) OF
+  #                              PolicyQualifierInfo OPTIONAL }
   # 
   # CertPolicyId ::= OBJECT IDENTIFIER
   # 
   # PolicyQualifierInfo ::= SEQUENCE {
-  # policyQualifierId  PolicyQualifierId,
-  # qualifier          ANY DEFINED BY policyQualifierId }
+  #      policyQualifierId  PolicyQualifierId,
+  #      qualifier          ANY DEFINED BY policyQualifierId }
   # </pre>
   # 
   # @author Sean Mullan
@@ -95,9 +95,9 @@ module Sun::Security::X509
     # Create an instance of PolicyInformation
     # 
     # @param policyIdentifier the policyIdentifier as a
-    # CertificatePolicyId
+    #          CertificatePolicyId
     # @param policyQualifiers a Set of PolicyQualifierInfo objects.
-    # Must not be NULL. Specify an empty Set for no qualifiers.
+    #          Must not be NULL. Specify an empty Set for no qualifiers.
     # @exception IOException on decoding errors.
     def initialize(policy_identifier, policy_qualifiers)
       @policy_identifier = nil
@@ -169,7 +169,7 @@ module Sun::Security::X509
     # Return the policyIdentifier value
     # 
     # @return The CertificatePolicyId object containing
-    # the policyIdentifier (not a copy).
+    #     the policyIdentifier (not a copy).
     def get_policy_identifier
       return @policy_identifier
     end
@@ -178,9 +178,9 @@ module Sun::Security::X509
     # Return the policyQualifiers value
     # 
     # @return a Set of PolicyQualifierInfo objects associated
-    # with this certificate policy (not a copy).
-    # Returns an empty Set if there are no qualifiers.
-    # Never returns null.
+    #    with this certificate policy (not a copy).
+    #    Returns an empty Set if there are no qualifiers.
+    #    Never returns null.
     def get_policy_qualifiers
       return @policy_qualifiers
     end

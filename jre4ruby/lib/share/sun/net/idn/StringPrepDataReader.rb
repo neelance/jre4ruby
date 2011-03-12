@@ -21,23 +21,21 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
-# 
-# 
-# Copyright (C) 2003, International Business Machines Corporation and   *
-# others. All Rights Reserved.                                               *
-# 
-# 
-# Created on May 2, 2003
-# 
-# To change the template for this generated file go to
-# Window>Preferences>Java>Code Generation>Code and Comments
-# 
+# /*
+#  ******************************************************************************
+#  * Copyright (C) 2003, International Business Machines Corporation and   *
+#  * others. All Rights Reserved.                                               *
+#  ******************************************************************************
+#  *
+#  * Created on May 2, 2003
+#  *
+#  * To change the template for this generated file go to
+#  * Window>Preferences>Java>Code Generation>Code and Comments
 # CHANGELOG
-# 2005-05-19 Edward Wang
-# - copy this file from icu4jsrc_3_2/src/com/ibm/icu/impl/StringPrepDataReader.java
-# - move from package com.ibm.icu.impl to package sun.net.idn
+#      2005-05-19 Edward Wang
+#          - copy this file from icu4jsrc_3_2/src/com/ibm/icu/impl/StringPrepDataReader.java
+#          - move from package com.ibm.icu.impl to package sun.net.idn
+# 
 module Sun::Net::Idn
   module StringPrepDataReaderImports #:nodoc:
     class_module.module_eval {
@@ -110,7 +108,6 @@ module Sun::Net::Idn
     end
     
     # private data members -------------------------------------------------
-    # 
     # ICU data file input stream
     attr_accessor :data_input_stream
     alias_method :attr_data_input_stream, :data_input_stream
@@ -128,7 +125,6 @@ module Sun::Net::Idn
       # File format version that this class understands.
       # No guarantees are made if a older version is used
       # see store.c of gennorm for more information and values
-      # 
       # /* dataFormat="SPRP" 0x53, 0x50, 0x52, 0x50  */
       const_set_lazy(:DATA_FORMAT_ID) { Array.typed(::Java::Byte).new([0x53, 0x50, 0x52, 0x50]) }
       const_attr_reader  :DATA_FORMAT_ID

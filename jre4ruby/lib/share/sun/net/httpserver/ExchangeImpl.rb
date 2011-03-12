@@ -343,7 +343,7 @@ module Sun::Net::Httpserver
       # cannot work with this restriction
       # 
       # if (!sentHeaders) {
-      # throw new IllegalStateException ("headers not sent");
+      #    throw new IllegalStateException ("headers not sent");
       # }
       if ((@uos).nil?)
         @uos_orig = PlaceholderOutputStream.new(nil)
@@ -437,7 +437,6 @@ module Sun::Net::Httpserver
     
     typesig { [String, ::Java::Int] }
     # used by bytes()
-    # 
     # convert string to byte[], using rspbuf
     # Make sure that at least "extra" bytes are free at end
     # of rspbuf. Reallocate rspbuf if not big enough.

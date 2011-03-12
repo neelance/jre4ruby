@@ -46,7 +46,7 @@ module Java::Lang
     # 
     # @param cb the buffer to read characters into
     # @return @return The number of <tt>char</tt> values added to the buffer,
-    # or -1 if this source of characters is at its end
+    #                 or -1 if this source of characters is at its end
     # @throws IOException if an I/O error occurs
     # @throws NullPointerException if cb is null
     # @throws ReadOnlyBufferException if cb is a read only buffer

@@ -100,24 +100,26 @@ module Sun::Net::Www
       const_set_lazy(:LAUNCH_APPLICATION) { 3 }
       const_attr_reader  :LAUNCH_APPLICATION
       
-      const_set_lazy(:ActionKeywords) { Array.typed(String).new(["unknown", "browser", "save", "application", ]) }
+      const_set_lazy(:ActionKeywords) { Array.typed(String).new(["unknown", "browser", "save", "application"]) }
       const_attr_reader  :ActionKeywords
     }
     
     typesig { [String] }
     # Construct an empty entry of the given type and subtype.
     def initialize(type)
+      initialize__mime_entry(type, UNKNOWN, nil, nil, nil)
       # Default action is UNKNOWN so clients can decide what the default
       # should be, typically save to file or ask user.
-      initialize__mime_entry(type, UNKNOWN, nil, nil, nil)
     end
     
     typesig { [String, String, String] }
+    # 
     # The next two constructors are used only by the deprecated
     # PlatformMimeTable classes or, in last case, is called by the public
     # constructor.  They are kept here anticipating putting support for
     # mailcap formatted config files back in (so BOTH the properties format
     # and the mailcap formats are supported).
+    # 
     def initialize(type, image_file_name, extension_string)
       @type_name = nil
       @temp_file_name_template = nil
@@ -319,7 +321,7 @@ module Sun::Net::Www
     # <li>A thread -- the caller can choose when to launch this thread.
     # <li>A string -- the string is loaded into the browser directly.
     # <li>An input stream -- the caller can read from this byte stream and
-    # will typically store the results in a file.
+    #     will typically store the results in a file.
     # <li>A document (?) --
     # </ol>
     def launch(urlc, is, mt)

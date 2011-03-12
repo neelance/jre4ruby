@@ -49,6 +49,7 @@ module Sun::Misc
     
     class_module.module_eval {
       # Singleton of ClassFileTransformer
+      # 
       
       def transformer_list
         defined?(@@transformer_list) ? @@transformer_list : @@transformer_list= ArrayList.new
@@ -90,6 +91,7 @@ module Sun::Misc
         # transformers is not intended to be changed frequently,
         # so it is okay to not put synchronized block here
         # to speed up performance.
+        # 
         return self.attr_transformers
       end
     }

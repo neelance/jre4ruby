@@ -140,27 +140,27 @@ module Sun::Security::Tools
     # 
     # @param parameters The non-null input parameters.
     # @param omitContent true if the content should be omitted from the
-    # signed data message. Otherwise the content is included.
+    #        signed data message. Otherwise the content is included.
     # @param applyTimestamp true if the signature should be timestamped.
-    # Otherwise timestamping is not performed.
+    #        Otherwise timestamping is not performed.
     # @return A PKCS #7 signed data message including a signature timestamp.
     # @throws NoSuchAlgorithmException The exception is thrown if the signature
-    # algorithm is unrecognised.
+    #         algorithm is unrecognised.
     # @throws CertificateException The exception is thrown if an error occurs
-    # while processing the signer's certificate or the TSA's
-    # certificate.
+    #         while processing the signer's certificate or the TSA's
+    #         certificate.
     # @throws IOException The exception is thrown if an error occurs while
-    # generating the signature timestamp or while generating the signed
-    # data message.
+    #         generating the signature timestamp or while generating the signed
+    #         data message.
     # @throws NullPointerException The exception is thrown if parameters is
-    # null.
+    #         null.
     def generate_signed_data(parameters, omit_content, apply_timestamp)
       if ((parameters).nil?)
         raise NullPointerException.new
       end
       # Parse the signature algorithm to extract the digest and key
       # algorithms. The expected format is:
-      # "<digest>with<encryption>"
+      #     "<digest>with<encryption>"
       # or  "<digest>with<encryption>and<mgf>"
       signature_algorithm = parameters.get_signature_algorithm
       digest_algorithm = nil
@@ -284,9 +284,9 @@ module Sun::Security::Tools
     # 
     # @param  toBeTimestamped The data to be timestamped.
     # @throws IOException The exception is throw if an error occurs while
-    # communicating with the TSA.
+    #                     communicating with the TSA.
     # @throws CertificateException The exception is throw if the TSA's
-    # certificate is not permitted for timestamping.
+    #                     certificate is not permitted for timestamping.
     def generate_timestamp_token(to_be_timestamped)
       # Generate hash value for the data to be timestamped
       # SHA-1 is always used.

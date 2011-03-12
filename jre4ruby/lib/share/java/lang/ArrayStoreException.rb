@@ -33,8 +33,8 @@ module Java::Lang
   # wrong type of object into an array of objects. For example, the
   # following code generates an <code>ArrayStoreException</code>:
   # <p><blockquote><pre>
-  # Object x[] = new String[3];
-  # x[0] = new Integer(0);
+  #     Object x[] = new String[3];
+  #     x[0] = new Integer(0);
   # </pre></blockquote>
   # 
   # @author  unascribed

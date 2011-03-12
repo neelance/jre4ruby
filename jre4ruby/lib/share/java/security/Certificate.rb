@@ -60,9 +60,9 @@ module Java::Security
   # 
   # @author Benjamin Renaud
   # @deprecated A new certificate handling package is created in the Java platform.
-  # This Certificate interface is entirely deprecated and
-  # is here to allow for a smooth transition to the new
-  # package.
+  #             This Certificate interface is entirely deprecated and
+  #             is here to allow for a smooth transition to the new
+  #             package.
   # @see java.security.cert.Certificate
   module Certificate
     include_class_members CertificateImports

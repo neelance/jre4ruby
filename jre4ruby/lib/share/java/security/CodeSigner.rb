@@ -75,12 +75,12 @@ module Java::Security
     # Constructs a CodeSigner object.
     # 
     # @param signerCertPath The signer's certificate path.
-    # It must not be <code>null</code>.
+    #                       It must not be <code>null</code>.
     # @param timestamp A signature timestamp.
-    # If <code>null</code> then no timestamp was generated
-    # for the signature.
+    #                  If <code>null</code> then no timestamp was generated
+    #                  for the signature.
     # @throws NullPointerException if <code>signerCertPath</code> is
-    # <code>null</code>.
+    #                              <code>null</code>.
     def initialize(signer_cert_path, timestamp)
       @signer_cert_path = nil
       @timestamp = nil
@@ -159,7 +159,7 @@ module Java::Security
     # Returns a string describing this code signer.
     # 
     # @return A string comprising the signer's certificate and a timestamp,
-    # if present.
+    #         if present.
     def to_s
       sb = StringBuffer.new
       sb.append("(")

@@ -124,8 +124,6 @@ module Sun::Misc
       # JVM functions, and we are not sure we want do that. Leaving
       # here so it can be easily resurrected -- just remove the //
       # comments.
-      # 
-      # 
       # Resume Java profiling.  All profiling data is added to any
       # earlier profiling, unless <code>resetJavaProfiler</code> is
       # called in between.  If profiling was not started from the
@@ -138,21 +136,14 @@ module Sun::Misc
       # 
       # @see     resetJavaProfiler
       # @see     writeJavaProfilerReport
-      # 
       # public native static void resumeJavaProfiler();
-      # 
       # Suspend Java profiling.
-      # 
       # public native static void suspendJavaProfiler();
-      # 
       # Initialize Java profiling.  Any accumulated profiling
       # information is discarded.
-      # 
       # public native static void resetJavaProfiler();
-      # 
       # Write the current profiling contents to the file "java.prof".
       # If the file already exists, it will be overwritten.
-      # 
       # public native static void writeJavaProfilerReport();
       
       def booted
@@ -170,6 +161,7 @@ module Sun::Misc
       # Subsystems that are invoked during initialization can check this
       # property in order to avoid doing things that should wait until the
       # application class loader has been set up.
+      # 
       def booted
         self.attr_booted = true
       end
@@ -186,6 +178,7 @@ module Sun::Misc
       # The initial value of this field is arbitrary; during JRE initialization
       # it will be reset to the value specified on the command line, if any,
       # otherwise to Runtime.getRuntime.maxDirectMemory().
+      # 
       
       def direct_memory
         defined?(@@direct_memory) ? @@direct_memory : @@direct_memory= 64 * 1024 * 1024
@@ -205,6 +198,7 @@ module Sun::Misc
       # 
       # If this method is invoked after the VM is booted, it returns the
       # maximum amount of allocatable direct buffer memory.
+      # 
       def max_direct_memory
         if (self.attr_booted)
           return self.attr_direct_memory
@@ -234,6 +228,7 @@ module Sun::Misc
       # default will be "false".  The presence of this system property to
       # control array syntax allows applications the ability to preview this new
       # behaviour.
+      # 
       
       def default_allow_array_syntax
         defined?(@@default_allow_array_syntax) ? @@default_allow_array_syntax : @@default_allow_array_syntax= false
@@ -267,6 +262,7 @@ module Sun::Misc
       # 
       # If this method is invoked after the VM is booted, it returns the
       # allowArraySyntax boolean set during initialization.
+      # 
       def allow_array_syntax
         if (!self.attr_booted)
           s = System.get_property("sun.lang.ClassLoader.allowArraySyntax")
@@ -278,6 +274,7 @@ module Sun::Misc
       typesig { [] }
       # Initialize any miscellenous operating system settings that need to be
       # set for the class libraries.
+      # 
       def initialize_osenvironment
         if (!self.attr_booted)
           OSEnvironment.initialize_
@@ -420,8 +417,9 @@ module Sun::Misc
       # the threadStatus values mapping to the Thread.State enum constant.
       # Fill in vmThreadStateNames with String arrays, each of which contains
       # the name of each threadStatus value of the format:
-      # <Thread.State.name()>[.<Substate name>]
+      #    <Thread.State.name()>[.<Substate name>]
       # e.g. WAITING.OBJECT_WAIT
+      # 
       def get_thread_state_values(vm_thread_state_values, vm_thread_state_names)
         JNI.call_native_method(:Java_sun_misc_VM_getThreadStateValues, JNI.env, self.jni_id, vm_thread_state_values.jni_id, vm_thread_state_names.jni_id)
       end

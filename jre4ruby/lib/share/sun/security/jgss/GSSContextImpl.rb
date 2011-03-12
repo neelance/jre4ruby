@@ -82,7 +82,7 @@ module Sun::Security::Jgss
   # When the context is no longer needed, the application should call
   # dispose to release any system resources the context may be using.
   # <DL><DT><B>RFC 2078</b>
-  # <DD>This class corresponds to the context level calls together with
+  #    <DD>This class corresponds to the context level calls together with
   # the per message calls of RFC 2078. The gss_init_sec_context and
   # gss_accept_sec_context calls have been made simpler by only taking
   # required parameters.  The context can have its properties set before
@@ -426,7 +426,7 @@ module Sun::Security::Jgss
           @obj_id = gss_header.get_oid
           @mech_oid = Oid.new(@obj_id.to_s)
           # System.out.println("Entered GSSContextImpl.acceptSecContext"
-          # + " with mechanism = " + mechOid);
+          #                      + " with mechanism = " + mechOid);
           if (!(@my_cred).nil?)
             cred_element = @my_cred.get_element(@mech_oid, false)
           end

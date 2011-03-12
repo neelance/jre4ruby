@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5::Internal
@@ -40,10 +38,10 @@ module Sun::Security::Krb5::Internal
   # Implements the ASN.1 TransitedEncoding type.
   # 
   # <xmp>
-  # TransitedEncoding      ::= SEQUENCE {
-  # tr-type         [0] Int32 -- must be registered --,
-  # contents        [1] OCTET STRING
-  # }
+  #  TransitedEncoding      ::= SEQUENCE {
+  #         tr-type         [0] Int32 -- must be registered --,
+  #         contents        [1] OCTET STRING
+  #  }
   # </xmp>
   # 
   # <p>

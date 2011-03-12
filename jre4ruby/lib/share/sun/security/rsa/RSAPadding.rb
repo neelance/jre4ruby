@@ -42,7 +42,7 @@ module Sun::Security::Rsa
   # RSA padding and unpadding.
   # 
   # Format of PKCS#1 v1.5 padding is:
-  # 0x00 | BT | PS...PS | 0x00 | data...data
+  #   0x00 | BT | PS...PS | 0x00 | data...data
   # where BT is the blocktype (1 or 2). The length of the entire string
   # must be the same as the size of the modulus (i.e. 128 byte for a 1024 bit
   # key). Per spec, the padding string must be at least 8 bytes long. That
@@ -50,11 +50,11 @@ module Sun::Security::Rsa
   # 
   # OAEP padding is a bit more complicated and has a number of options.
   # We support:
-  # . arbitrary hash functions ('Hash' in the specification), MessageDigest
-  # implementation must be available
-  # . MGF1 as the mask generation function
-  # . the empty string as the default value for label L and whatever
-  # specified in javax.crypto.spec.OAEPParameterSpec
+  #   . arbitrary hash functions ('Hash' in the specification), MessageDigest
+  #     implementation must be available
+  #   . MGF1 as the mask generation function
+  #   . the empty string as the default value for label L and whatever
+  #     specified in javax.crypto.spec.OAEPParameterSpec
   # 
   # Note: RSA keys should be at least 512 bits long
   # 

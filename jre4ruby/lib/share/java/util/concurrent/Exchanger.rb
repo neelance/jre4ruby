@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # This file is available under and governed by the GNU General Public
 # License version 2 only, as published by the Free Software Foundation.
 # However, the following notice accompanied the original version of this
@@ -57,40 +55,40 @@ module Java::Util::Concurrent
   # filled one to the thread emptying the buffer.
   # <pre>{@code
   # class FillAndEmpty {
-  # Exchanger<DataBuffer> exchanger = new Exchanger<DataBuffer>();
-  # DataBuffer initialEmptyBuffer = ... a made-up type
-  # DataBuffer initialFullBuffer = ...
+  #   Exchanger<DataBuffer> exchanger = new Exchanger<DataBuffer>();
+  #   DataBuffer initialEmptyBuffer = ... a made-up type
+  #   DataBuffer initialFullBuffer = ...
   # 
-  # class FillingLoop implements Runnable {
-  # public void run() {
-  # DataBuffer currentBuffer = initialEmptyBuffer;
-  # try {
-  # while (currentBuffer != null) {
-  # addToBuffer(currentBuffer);
-  # if (currentBuffer.isFull())
-  # currentBuffer = exchanger.exchange(currentBuffer);
-  # }
-  # } catch (InterruptedException ex) { ... handle ... }
-  # }
-  # }
+  #   class FillingLoop implements Runnable {
+  #     public void run() {
+  #       DataBuffer currentBuffer = initialEmptyBuffer;
+  #       try {
+  #         while (currentBuffer != null) {
+  #           addToBuffer(currentBuffer);
+  #           if (currentBuffer.isFull())
+  #             currentBuffer = exchanger.exchange(currentBuffer);
+  #         }
+  #       } catch (InterruptedException ex) { ... handle ... }
+  #     }
+  #   }
   # 
-  # class EmptyingLoop implements Runnable {
-  # public void run() {
-  # DataBuffer currentBuffer = initialFullBuffer;
-  # try {
-  # while (currentBuffer != null) {
-  # takeFromBuffer(currentBuffer);
-  # if (currentBuffer.isEmpty())
-  # currentBuffer = exchanger.exchange(currentBuffer);
-  # }
-  # } catch (InterruptedException ex) { ... handle ...}
-  # }
-  # }
+  #   class EmptyingLoop implements Runnable {
+  #     public void run() {
+  #       DataBuffer currentBuffer = initialFullBuffer;
+  #       try {
+  #         while (currentBuffer != null) {
+  #           takeFromBuffer(currentBuffer);
+  #           if (currentBuffer.isEmpty())
+  #             currentBuffer = exchanger.exchange(currentBuffer);
+  #         }
+  #       } catch (InterruptedException ex) { ... handle ...}
+  #     }
+  #   }
   # 
-  # void start() {
-  # new Thread(new FillingLoop()).start();
-  # new Thread(new EmptyingLoop()).start();
-  # }
+  #   void start() {
+  #     new Thread(new FillingLoop()).start();
+  #     new Thread(new EmptyingLoop()).start();
+  #   }
   # }
   # }</pre>
   # 
@@ -211,7 +209,6 @@ module Java::Util::Concurrent
       # "A Scalable Elimination-based Exchange Channel" by William
       # Scherer, Doug Lea, and Michael Scott in Proceedings of SCOOL05
       # workshop.  Available at: http://hdl.handle.net/1802/2104
-      # 
       # The number of CPUs, for sizing and spin control
       const_set_lazy(:NCPU) { Runtime.get_runtime.available_processors }
       const_attr_reader  :NCPU
@@ -468,8 +465,7 @@ module Java::Util::Concurrent
         slot = @arena[index]
         if ((slot).nil?)
           # Lazily initialize slots
-          create_slot(index)
-           # Continue loop to reread
+          create_slot(index) # Continue loop to reread
         else
           # Try to fulfill
           if (!((y = slot.get)).nil? && slot.compare_and_set(y, nil))
@@ -500,8 +496,7 @@ module Java::Util::Concurrent
                 # Allow 2 fails on 1st slot
                 m = @max.get
                 if (fails > 3 && m < FULL && @max.compare_and_set(m, m + 1))
-                  index = m + 1
-                   # Grow on 3rd failed slot
+                  index = m + 1 # Grow on 3rd failed slot
                 else
                   if ((index -= 1) < 0)
                     index = m
@@ -537,10 +532,8 @@ module Java::Util::Concurrent
     # @return a per-thread-random index, 0 <= index < max
     def hash_index
       id = JavaThread.current_thread.get_id
-      hash = ((RJava.cast_to_int((id ^ (id >> 32)))) ^ -0x7ee3623b) * 0x1000193
-      m = @max.get
-      # Compute ceil(log2(m+1))
-      # The constants hold
+      hash = ((((id ^ (id >> 32))).to_int) ^ -0x7ee3623b) * 0x1000193
+      m = @max.get # Compute ceil(log2(m+1)) # The constants hold
       nbits = (((-0x400 >> m) & 4) | ((0x1f8 >> m) & 2) | ((-0xff0e >> m) & 1)) # a lookup table
       index = 0
       while ((index = hash & ((1 << nbits) - 1)) > m)
@@ -591,7 +584,6 @@ module Java::Util::Concurrent
       typesig { [Node, Slot] }
       # Three forms of waiting. Each just different enough not to merge
       # code with others.
-      # 
       # Spin-waits for hole for a non-0 slot.  Fails if spin elapses
       # before hole filled.  Does not check interrupt, relying on check
       # in public exchange method to abort if interrupted on entry.
@@ -778,7 +770,7 @@ module Java::Util::Concurrent
     # @param x the object to exchange
     # @return the object provided by the other thread
     # @throws InterruptedException if the current thread was
-    # interrupted while waiting
+    #         interrupted while waiting
     def exchange(x)
       if (!JavaThread.interrupted)
         v = do_exchange((x).nil? ? NULL_ITEM : x, false, 0)
@@ -831,9 +823,9 @@ module Java::Util::Concurrent
     # @param unit the time unit of the <tt>timeout</tt> argument
     # @return the object provided by the other thread
     # @throws InterruptedException if the current thread was
-    # interrupted while waiting
+    #         interrupted while waiting
     # @throws TimeoutException if the specified waiting time elapses
-    # before another thread enters the exchange
+    #         before another thread enters the exchange
     def exchange(x, timeout, unit)
       if (!JavaThread.interrupted)
         v = do_exchange((x).nil? ? NULL_ITEM : x, true, unit.to_nanos(timeout))

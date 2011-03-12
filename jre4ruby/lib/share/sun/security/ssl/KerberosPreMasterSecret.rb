@@ -104,9 +104,9 @@ module Sun::Security::Ssl
     # @param currentVersion version of protocol being used
     # @param clientVersion version requested by client
     # @param generator random number generator used to generate
-    # bogus premaster secret if premaster secret verification fails
+    #        bogus premaster secret if premaster secret verification fails
     # @param input input stream from which to read the encrypted
-    # premaster secret
+    #        premaster secret
     # @param sessionKey Kerberos session key to be used for decryption
     def initialize(current_version, client_version, generator, input, session_key)
       @protocol_version = nil

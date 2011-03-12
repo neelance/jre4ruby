@@ -36,9 +36,9 @@ module Sun::Nio::Ch
   # Manipulates a native array of pollfd structs on Solaris:
   # 
   # typedef struct pollfd {
-  # int fd;
-  # short events;
-  # short revents;
+  #    int fd;
+  #    short events;
+  #    short revents;
   # } pollfd_t;
   # 
   # @author Mike McCloskey

@@ -71,7 +71,7 @@ module Sun::Nio::Ch
     
     typesig { [] }
     def hash_code
-      return RJava.cast_to_int((@st_dev ^ (@st_dev >> 32))) + RJava.cast_to_int((@st_ino ^ (@st_ino >> 32)))
+      return ((@st_dev ^ (@st_dev >> 32))).to_int + ((@st_ino ^ (@st_ino >> 32))).to_int
     end
     
     typesig { [Object] }

@@ -44,10 +44,10 @@ module Sun::Security::Action
   # 
   # <pre>
   # Integer tmp = java.security.AccessController.doPrivileged
-  # (new sun.security.action.GetIntegerAction("prop"));
+  #     (new sun.security.action.GetIntegerAction("prop"));
   # int i;
   # if (tmp != null) {
-  # i = tmp.intValue();
+  #     i = tmp.intValue();
   # }
   # </pre>
   # 
@@ -58,7 +58,7 @@ module Sun::Security::Action
   # 
   # <pre>
   # int i = ((Integer)java.security.AccessController.doPrivileged(
-  # new GetIntegerAction("prop", 3))).intValue();
+  #                         new GetIntegerAction("prop", 3))).intValue();
   # </pre>
   # 
   # @author Roland Schemers

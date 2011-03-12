@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5
@@ -115,40 +113,35 @@ module Sun::Security::Krb5
     typesig { [Credentials, ::Java::Boolean, ::Java::Boolean, ::Java::Boolean, Checksum] }
     # Contructs a AP-REQ message to send to the peer.
     # @param tgsCred the <code>Credentials</code> to be used to construct the
-    # AP Request  protocol message.
+    #          AP Request  protocol message.
     # @param mutualRequired Whether mutual authentication is required
     # @param useSubkey Whether the subkey is to be used to protect this
-    # specific application session. If this is not set then the
-    # session key from the ticket will be used.
+    #        specific application session. If this is not set then the
+    #        session key from the ticket will be used.
     # @throws KrbException for any Kerberos protocol specific error
     # @throws IOException for any IO related errors
-    # (e.g. socket operations)
-    # 
-    # 
-    # // Not Used
+    #          (e.g. socket operations)
+    #  // Not Used
     # public KrbApReq(Credentials tgsCred,
-    # boolean mutualRequired,
-    # boolean useSubKey,
-    # boolean useSeqNumber) throws Asn1Exception,
-    # KrbCryptoException, KrbException, IOException {
+    #                 boolean mutualRequired,
+    #                 boolean useSubKey,
+    #                 boolean useSeqNumber) throws Asn1Exception,
+    #                 KrbCryptoException, KrbException, IOException {
     # 
-    # this(tgsCred, mutualRequired, useSubKey, useSeqNumber, null);
+    #     this(tgsCred, mutualRequired, useSubKey, useSeqNumber, null);
     # }
-    # 
-    # 
     # Contructs a AP-REQ message to send to the peer.
     # @param tgsCred the <code>Credentials</code> to be used to construct the
-    # AP Request  protocol message.
+    #          AP Request  protocol message.
     # @param mutualRequired Whether mutual authentication is required
     # @param useSubkey Whether the subkey is to be used to protect this
-    # specific application session. If this is not set then the
-    # session key from the ticket will be used.
+    #        specific application session. If this is not set then the
+    #        session key from the ticket will be used.
     # @param checksum checksum of the the application data that accompanies
-    # the KRB_AP_REQ.
+    #        the KRB_AP_REQ.
     # @throws KrbException for any Kerberos protocol specific error
     # @throws IOException for any IO related errors
-    # (e.g. socket operations)
-    # 
+    #          (e.g. socket operations)
     # Used in InitSecContextToken
     def initialize(tgs_cred, mutual_required, use_sub_key, use_seq_number, cksum)
       @obuf = nil
@@ -163,8 +156,7 @@ module Sun::Security::Krb5
         System.out.println(">>> KrbApReq: APOptions are " + RJava.cast_to_string(ap_options))
       end
       sub_key = (use_sub_key ? EncryptionKey.new(tgs_cred.get_session_key) : nil)
-      seq_num = LocalSeqNumber.new
-      # AuthorizationData authzData
+      seq_num = LocalSeqNumber.new # AuthorizationData authzData
       init(ap_options, tgs_cred, cksum, sub_key, seq_num, nil, KeyUsage::KU_AP_REQ_AUTHENTICATOR)
     end
     
@@ -173,11 +165,10 @@ module Sun::Security::Krb5
     # peer.
     # @param message The message received from the peer
     # @param keys <code>EncrtyptionKey</code>s to decrypt the message;
-    # key selected will depend on etype used to encrypte data
+    #       key selected will depend on etype used to encrypte data
     # @throws KrbException for any Kerberos protocol specific error
     # @throws IOException for any IO related errors
-    # (e.g. socket operations)
-    # 
+    #          (e.g. socket operations)
     # Used in InitSecContextToken (for AP_REQ and not TGS REQ)
     def initialize(message, keys, initiator)
       @obuf = nil
@@ -198,32 +189,29 @@ module Sun::Security::Krb5
     # Contructs a AP-REQ message from the bytes received from the
     # peer.
     # @param value The <code>DerValue</code> that contains the
-    # DER enoded AP-REQ protocol message
+    #              DER enoded AP-REQ protocol message
     # @param keys <code>EncrtyptionKey</code>s to decrypt the message;
     # 
     # @throws KrbException for any Kerberos protocol specific error
     # @throws IOException for any IO related errors
-    # (e.g. socket operations)
-    # 
-    # 
+    #          (e.g. socket operations)
     # public KrbApReq(DerValue value, EncryptionKey[] key, InetAddress initiator)
-    # throws KrbException, IOException {
-    # obuf = value.toByteArray();
-    # if (apReqMessg == null)
-    # decode(value);
-    # authenticate(keys, initiator);
+    #     throws KrbException, IOException {
+    #     obuf = value.toByteArray();
+    #     if (apReqMessg == null)
+    #         decode(value);
+    #     authenticate(keys, initiator);
     # }
     # 
     # KrbApReq(APOptions options,
-    # Credentials tgs_creds,
-    # Checksum cksum,
-    # EncryptionKey subKey,
-    # SeqNumber seqNumber,
-    # AuthorizationData authorizationData)
-    # throws KrbException, IOException {
-    # init(options, tgs_creds, cksum, subKey, seqNumber, authorizationData);
+    #          Credentials tgs_creds,
+    #          Checksum cksum,
+    #          EncryptionKey subKey,
+    #          SeqNumber seqNumber,
+    #          AuthorizationData authorizationData)
+    #     throws KrbException, IOException {
+    #     init(options, tgs_creds, cksum, subKey, seqNumber, authorizationData);
     # }
-    # 
     # used by KrbTgsReq *
     def initialize(ap_options, ticket, key, crealm, cname, cksum, ctime, sub_key, seq_number, authorization_data)
       @obuf = nil
@@ -332,9 +320,9 @@ module Sun::Security::Krb5
       end
       # XXX check for repeated authenticator
       # if found
-      # throw new KrbApErrException(Krb5.KRB_AP_ERR_REPEAT);
+      #    throw new KrbApErrException(Krb5.KRB_AP_ERR_REPEAT);
       # else
-      # save authenticator to check for later
+      #    save authenticator to check for later
       now = KerberosTime.new(KerberosTime::NOW)
       if ((!(enc_ticket_part.attr_starttime).nil? && enc_ticket_part.attr_starttime.greater_than_wrtclock_skew(now)) || enc_ticket_part.attr_flags.get(Krb5::TKT_OPTS_INVALID))
         raise KrbApErrException.new(Krb5::KRB_AP_ERR_TKT_NYV)

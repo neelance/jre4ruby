@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # This file is available under and governed by the GNU General Public
 # License version 2 only, as published by the Free Software Foundation.
 # However, the following notice accompanied the original version of this
@@ -78,19 +76,19 @@ module Java::Util::Concurrent
   # <pre>
   # import static java.util.concurrent.TimeUnit.*;
   # class BeeperControl {
-  # private final ScheduledExecutorService scheduler =
-  # Executors.newScheduledThreadPool(1);
+  #    private final ScheduledExecutorService scheduler =
+  #       Executors.newScheduledThreadPool(1);
   # 
-  # public void beepForAnHour() {
-  # final Runnable beeper = new Runnable() {
-  # public void run() { System.out.println("beep"); }
-  # };
-  # final ScheduledFuture&lt;?&gt; beeperHandle =
-  # scheduler.scheduleAtFixedRate(beeper, 10, 10, SECONDS);
-  # scheduler.schedule(new Runnable() {
-  # public void run() { beeperHandle.cancel(true); }
-  # }, 60 * 60, SECONDS);
-  # }
+  #    public void beepForAnHour() {
+  #        final Runnable beeper = new Runnable() {
+  #                public void run() { System.out.println("beep"); }
+  #            };
+  #        final ScheduledFuture&lt;?&gt; beeperHandle =
+  #            scheduler.scheduleAtFixedRate(beeper, 10, 10, SECONDS);
+  #        scheduler.schedule(new Runnable() {
+  #                public void run() { beeperHandle.cancel(true); }
+  #            }, 60 * 60, SECONDS);
+  #    }
   # }
   # </pre>
   # 
@@ -108,10 +106,10 @@ module Java::Util::Concurrent
     # @param delay the time from now to delay execution
     # @param unit the time unit of the delay parameter
     # @return a ScheduledFuture representing pending completion of
-    # the task and whose <tt>get()</tt> method will return
-    # <tt>null</tt> upon completion
+    #         the task and whose <tt>get()</tt> method will return
+    #         <tt>null</tt> upon completion
     # @throws RejectedExecutionException if the task cannot be
-    # scheduled for execution
+    #         scheduled for execution
     # @throws NullPointerException if command is null
     def schedule(command, delay, unit)
       raise NotImplementedError
@@ -126,7 +124,7 @@ module Java::Util::Concurrent
     # @param unit the time unit of the delay parameter
     # @return a ScheduledFuture that can be used to extract result or cancel
     # @throws RejectedExecutionException if the task cannot be
-    # scheduled for execution
+    #         scheduled for execution
     # @throws NullPointerException if callable is null
     def schedule(callable, delay, unit)
       raise NotImplementedError
@@ -150,10 +148,10 @@ module Java::Util::Concurrent
     # @param period the period between successive executions
     # @param unit the time unit of the initialDelay and period parameters
     # @return a ScheduledFuture representing pending completion of
-    # the task, and whose <tt>get()</tt> method will throw an
-    # exception upon cancellation
+    #         the task, and whose <tt>get()</tt> method will throw an
+    #         exception upon cancellation
     # @throws RejectedExecutionException if the task cannot be
-    # scheduled for execution
+    #         scheduled for execution
     # @throws NullPointerException if command is null
     # @throws IllegalArgumentException if period less than or equal to zero
     def schedule_at_fixed_rate(command, initial_delay, period, unit)
@@ -175,10 +173,10 @@ module Java::Util::Concurrent
     # execution and the commencement of the next
     # @param unit the time unit of the initialDelay and delay parameters
     # @return a ScheduledFuture representing pending completion of
-    # the task, and whose <tt>get()</tt> method will throw an
-    # exception upon cancellation
+    #         the task, and whose <tt>get()</tt> method will throw an
+    #         exception upon cancellation
     # @throws RejectedExecutionException if the task cannot be
-    # scheduled for execution
+    #         scheduled for execution
     # @throws NullPointerException if command is null
     # @throws IllegalArgumentException if delay less than or equal to zero
     def schedule_with_fixed_delay(command, initial_delay, delay, unit)

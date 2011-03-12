@@ -64,9 +64,9 @@ module Sun::Security::Jgss::Krb5
       # Ticket Granting Service using the TGT obtained from the Subject.
       # 
       # Caller must have permission to:
-      # - access and update Subject's private credentials
-      # - create LoginContext
-      # - read the auth.login.defaultCallbackHandler security property
+      #    - access and update Subject's private credentials
+      #    - create LoginContext
+      #    - read the auth.login.defaultCallbackHandler security property
       # 
       # NOTE: This method is used by JSSE Kerberos Cipher Suites
       def get_ticket_from_subject_and_tgs(caller, client_principal, server_principal, tgs_principal, acc)
@@ -140,9 +140,9 @@ module Sun::Security::Jgss::Krb5
       # via the specified caller.
       # 
       # Caller must have permission to:
-      # - access the Subject
-      # - create LoginContext
-      # - read the auth.login.defaultCallbackHandler security property
+      #    - access the Subject
+      #    - create LoginContext
+      #    - read the auth.login.defaultCallbackHandler security property
       # 
       # NOTE: This method is used by JSSE Kerberos Cipher Suites
       def get_subject(caller, acc)

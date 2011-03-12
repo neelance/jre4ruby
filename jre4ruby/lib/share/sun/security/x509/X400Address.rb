@@ -38,11 +38,11 @@ module Sun::Security::X509
   # The ASN.1 syntax for this is:
   # <pre>
   # ORAddress ::= SEQUENCE {
-  # built-in-standard-attributes BuiltInStandardAttributes,
-  # built-in-domain-defined-attributes
-  # BuiltInDomainDefinedAttributes OPTIONAL,
-  # -- see also teletex-domain-defined-attributes
-  # extension-attributes ExtensionAttributes OPTIONAL }
+  #    built-in-standard-attributes BuiltInStandardAttributes,
+  #    built-in-domain-defined-attributes
+  #                         BuiltInDomainDefinedAttributes OPTIONAL,
+  #    -- see also teletex-domain-defined-attributes
+  #    extension-attributes ExtensionAttributes OPTIONAL }
   # --      The OR-address is semantically absent from the OR-name if the
   # --      built-in-standard-attribute sequence is empty and the
   # --      built-in-domain-defined-attributes and extension-attributes are
@@ -51,29 +51,29 @@ module Sun::Security::X509
   # --      Built-in Standard Attributes
   # 
   # BuiltInStandardAttributes ::= SEQUENCE {
-  # country-name CountryName OPTIONAL,
-  # administration-domain-name AdministrationDomainName OPTIONAL,
-  # network-address      [0] NetworkAddress OPTIONAL,
-  # -- see also extended-network-address
-  # terminal-identifier  [1] TerminalIdentifier OPTIONAL,
-  # private-domain-name  [2] PrivateDomainName OPTIONAL,
-  # organization-name    [3] OrganizationName OPTIONAL,
-  # -- see also teletex-organization-name
-  # numeric-user-identifier      [4] NumericUserIdentifier OPTIONAL,
-  # personal-name        [5] PersonalName OPTIONAL,
-  # -- see also teletex-personal-name
-  # organizational-unit-names    [6] OrganizationalUnitNames OPTIONAL
-  # -- see also teletex-organizational-unit-names -- }
+  #    country-name CountryName OPTIONAL,
+  #    administration-domain-name AdministrationDomainName OPTIONAL,
+  #    network-address      [0] NetworkAddress OPTIONAL,
+  #    -- see also extended-network-address
+  #    terminal-identifier  [1] TerminalIdentifier OPTIONAL,
+  #    private-domain-name  [2] PrivateDomainName OPTIONAL,
+  #    organization-name    [3] OrganizationName OPTIONAL,
+  #    -- see also teletex-organization-name
+  #    numeric-user-identifier      [4] NumericUserIdentifier OPTIONAL,
+  #    personal-name        [5] PersonalName OPTIONAL,
+  #    -- see also teletex-personal-name
+  #    organizational-unit-names    [6] OrganizationalUnitNames OPTIONAL
+  #    -- see also teletex-organizational-unit-names -- }
   # 
   # CountryName ::= [APPLICATION 1] CHOICE {
-  # x121-dcc-code NumericString
-  # (SIZE (ub-country-name-numeric-length)),
-  # iso-3166-alpha2-code PrintableString
-  # (SIZE (ub-country-name-alpha-length)) }
+  #    x121-dcc-code NumericString
+  #                 (SIZE (ub-country-name-numeric-length)),
+  #    iso-3166-alpha2-code PrintableString
+  #                 (SIZE (ub-country-name-alpha-length)) }
   # 
   # AdministrationDomainName ::= [APPLICATION 2] CHOICE {
-  # numeric NumericString (SIZE (0..ub-domain-name-length)),
-  # printable PrintableString (SIZE (0..ub-domain-name-length)) }
+  #    numeric NumericString (SIZE (0..ub-domain-name-length)),
+  #    printable PrintableString (SIZE (0..ub-domain-name-length)) }
   # 
   # NetworkAddress ::= X121Address  -- see also extended-network-address
   # 
@@ -82,53 +82,53 @@ module Sun::Security::X509
   # TerminalIdentifier ::= PrintableString (SIZE (1..ub-terminal-id-length))
   # 
   # PrivateDomainName ::= CHOICE {
-  # numeric NumericString (SIZE (1..ub-domain-name-length)),
-  # printable PrintableString (SIZE (1..ub-domain-name-length)) }
+  #    numeric NumericString (SIZE (1..ub-domain-name-length)),
+  #    printable PrintableString (SIZE (1..ub-domain-name-length)) }
   # 
   # OrganizationName ::= PrintableString
-  # (SIZE (1..ub-organization-name-length))
+  #                             (SIZE (1..ub-organization-name-length))
   # -- see also teletex-organization-name
   # 
   # NumericUserIdentifier ::= NumericString
-  # (SIZE (1..ub-numeric-user-id-length))
+  #                             (SIZE (1..ub-numeric-user-id-length))
   # 
   # PersonalName ::= SET {
-  # surname [0] PrintableString (SIZE (1..ub-surname-length)),
-  # given-name [1] PrintableString
-  # (SIZE (1..ub-given-name-length)) OPTIONAL,
-  # initials [2] PrintableString (SIZE (1..ub-initials-length)) OPTIONAL,
-  # generation-qualifier [3] PrintableString
-  # (SIZE (1..ub-generation-qualifier-length)) OPTIONAL }
+  #    surname [0] PrintableString (SIZE (1..ub-surname-length)),
+  #    given-name [1] PrintableString
+  #                         (SIZE (1..ub-given-name-length)) OPTIONAL,
+  #    initials [2] PrintableString (SIZE (1..ub-initials-length)) OPTIONAL,
+  #    generation-qualifier [3] PrintableString
+  #                 (SIZE (1..ub-generation-qualifier-length)) OPTIONAL }
   # -- see also teletex-personal-name
   # 
   # OrganizationalUnitNames ::= SEQUENCE SIZE (1..ub-organizational-units)
-  # OF OrganizationalUnitName
+  #                                         OF OrganizationalUnitName
   # -- see also teletex-organizational-unit-names
   # 
   # OrganizationalUnitName ::= PrintableString (SIZE
-  # (1..ub-organizational-unit-name-length))
+  #                         (1..ub-organizational-unit-name-length))
   # 
   # --      Built-in Domain-defined Attributes
   # 
   # BuiltInDomainDefinedAttributes ::= SEQUENCE SIZE
-  # (1..ub-domain-defined-attributes) OF
-  # BuiltInDomainDefinedAttribute
+  #                                 (1..ub-domain-defined-attributes) OF
+  #                                 BuiltInDomainDefinedAttribute
   # 
   # BuiltInDomainDefinedAttribute ::= SEQUENCE {
-  # type PrintableString (SIZE
-  # (1..ub-domain-defined-attribute-type-length)),
-  # value PrintableString (SIZE
-  # (1..ub-domain-defined-attribute-value-length))}
+  #    type PrintableString (SIZE
+  #                         (1..ub-domain-defined-attribute-type-length)),
+  #    value PrintableString (SIZE
+  #                         (1..ub-domain-defined-attribute-value-length))}
   # 
   # --      Extension Attributes
   # 
   # ExtensionAttributes ::= SET SIZE (1..ub-extension-attributes) OF
-  # ExtensionAttribute
+  #                         ExtensionAttribute
   # 
   # ExtensionAttribute ::=  SEQUENCE {
-  # extension-attribute-type [0] INTEGER (0..ub-extension-attributes),
-  # extension-attribute-value [1]
-  # ANY DEFINED BY extension-attribute-type }
+  #    extension-attribute-type [0] INTEGER (0..ub-extension-attributes),
+  #    extension-attribute-value [1]
+  #                         ANY DEFINED BY extension-attribute-type }
   # 
   # -- Extension types and attribute values
   # --
@@ -144,25 +144,25 @@ module Sun::Security::X509
   # teletex-organization-name INTEGER ::= 3
   # 
   # TeletexOrganizationName ::=
-  # TeletexString (SIZE (1..ub-organization-name-length))
+  #                 TeletexString (SIZE (1..ub-organization-name-length))
   # 
   # teletex-personal-name INTEGER ::= 4
   # 
   # TeletexPersonalName ::= SET {
-  # surname [0] TeletexString (SIZE (1..ub-surname-length)),
-  # given-name [1] TeletexString
-  # (SIZE (1..ub-given-name-length)) OPTIONAL,
-  # initials [2] TeletexString (SIZE (1..ub-initials-length)) OPTIONAL,
-  # generation-qualifier [3] TeletexString (SIZE
-  # (1..ub-generation-qualifier-length)) OPTIONAL }
+  #    surname [0] TeletexString (SIZE (1..ub-surname-length)),
+  #    given-name [1] TeletexString
+  #                 (SIZE (1..ub-given-name-length)) OPTIONAL,
+  #    initials [2] TeletexString (SIZE (1..ub-initials-length)) OPTIONAL,
+  #    generation-qualifier [3] TeletexString (SIZE
+  #                 (1..ub-generation-qualifier-length)) OPTIONAL }
   # 
   # teletex-organizational-unit-names INTEGER ::= 5
   # 
   # TeletexOrganizationalUnitNames ::= SEQUENCE SIZE
-  # (1..ub-organizational-units) OF TeletexOrganizationalUnitName
+  #         (1..ub-organizational-units) OF TeletexOrganizationalUnitName
   # 
   # TeletexOrganizationalUnitName ::= TeletexString
-  # (SIZE (1..ub-organizational-unit-name-length))
+  #                         (SIZE (1..ub-organizational-unit-name-length))
   # 
   # pds-name INTEGER ::= 7
   # 
@@ -171,15 +171,15 @@ module Sun::Security::X509
   # physical-delivery-country-name INTEGER ::= 8
   # 
   # PhysicalDeliveryCountryName ::= CHOICE {
-  # x121-dcc-code NumericString (SIZE (ub-country-name-numeric-length)),
-  # iso-3166-alpha2-code PrintableString
-  # (SIZE (ub-country-name-alpha-length)) }
+  #    x121-dcc-code NumericString (SIZE (ub-country-name-numeric-length)),
+  #    iso-3166-alpha2-code PrintableString
+  #                         (SIZE (ub-country-name-alpha-length)) }
   # 
   # postal-code INTEGER ::= 9
   # 
   # PostalCode ::= CHOICE {
-  # numeric-code NumericString (SIZE (1..ub-postal-code-length)),
-  # printable-code PrintableString (SIZE (1..ub-postal-code-length)) }
+  #    numeric-code NumericString (SIZE (1..ub-postal-code-length)),
+  #    printable-code PrintableString (SIZE (1..ub-postal-code-length)) }
   # 
   # physical-delivery-office-name INTEGER ::= 10
   # 
@@ -208,10 +208,10 @@ module Sun::Security::X509
   # unformatted-postal-address INTEGER ::= 16
   # 
   # UnformattedPostalAddress ::= SET {
-  # printable-address SEQUENCE SIZE (1..ub-pds-physical-address-lines) OF
-  # PrintableString (SIZE (1..ub-pds-parameter-length)) OPTIONAL,
-  # teletex-string TeletexString
-  # (SIZE (1..ub-unformatted-address-length)) OPTIONAL }
+  #    printable-address SEQUENCE SIZE (1..ub-pds-physical-address-lines) OF
+  #            PrintableString (SIZE (1..ub-pds-parameter-length)) OPTIONAL,
+  #    teletex-string TeletexString
+  #          (SIZE (1..ub-unformatted-address-length)) OPTIONAL }
   # 
   # street-address INTEGER ::= 17
   # 
@@ -234,48 +234,48 @@ module Sun::Security::X509
   # LocalPostalAttributes ::= PDSParameter
   # 
   # PDSParameter ::= SET {
-  # printable-string PrintableString
-  # (SIZE(1..ub-pds-parameter-length)) OPTIONAL,
-  # teletex-string TeletexString
-  # (SIZE(1..ub-pds-parameter-length)) OPTIONAL }
+  #    printable-string PrintableString
+  #                 (SIZE(1..ub-pds-parameter-length)) OPTIONAL,
+  #    teletex-string TeletexString
+  #                 (SIZE(1..ub-pds-parameter-length)) OPTIONAL }
   # 
   # extended-network-address INTEGER ::= 22
   # 
   # ExtendedNetworkAddress ::= CHOICE {
-  # e163-4-address SEQUENCE {
-  # number [0] NumericString (SIZE (1..ub-e163-4-number-length)),
-  # sub-address [1] NumericString
-  # (SIZE (1..ub-e163-4-sub-address-length)) OPTIONAL },
-  # psap-address [0] PresentationAddress }
+  #    e163-4-address SEQUENCE {
+  #         number [0] NumericString (SIZE (1..ub-e163-4-number-length)),
+  #         sub-address [1] NumericString
+  #                 (SIZE (1..ub-e163-4-sub-address-length)) OPTIONAL },
+  #    psap-address [0] PresentationAddress }
   # 
   # PresentationAddress ::= SEQUENCE {
-  # pSelector       [0] EXPLICIT OCTET STRING OPTIONAL,
-  # sSelector       [1] EXPLICIT OCTET STRING OPTIONAL,
-  # tSelector       [2] EXPLICIT OCTET STRING OPTIONAL,
-  # nAddresses      [3] EXPLICIT SET SIZE (1..MAX) OF OCTET STRING }
+  #         pSelector       [0] EXPLICIT OCTET STRING OPTIONAL,
+  #         sSelector       [1] EXPLICIT OCTET STRING OPTIONAL,
+  #         tSelector       [2] EXPLICIT OCTET STRING OPTIONAL,
+  #         nAddresses      [3] EXPLICIT SET SIZE (1..MAX) OF OCTET STRING }
   # 
   # terminal-type  INTEGER ::= 23
   # 
   # TerminalType ::= INTEGER {
-  # telex (3),
-  # teletex (4),
-  # g3-facsimile (5),
-  # g4-facsimile (6),
-  # ia5-terminal (7),
-  # videotex (8) } (0..ub-integer-options)
+  #    telex (3),
+  #    teletex (4),
+  #    g3-facsimile (5),
+  #    g4-facsimile (6),
+  #    ia5-terminal (7),
+  #    videotex (8) } (0..ub-integer-options)
   # 
   # --      Extension Domain-defined Attributes
   # 
   # teletex-domain-defined-attributes INTEGER ::= 6
   # 
   # TeletexDomainDefinedAttributes ::= SEQUENCE SIZE
-  # (1..ub-domain-defined-attributes) OF TeletexDomainDefinedAttribute
+  #    (1..ub-domain-defined-attributes) OF TeletexDomainDefinedAttribute
   # 
   # TeletexDomainDefinedAttribute ::= SEQUENCE {
-  # type TeletexString
-  # (SIZE (1..ub-domain-defined-attribute-type-length)),
-  # value TeletexString
-  # (SIZE (1..ub-domain-defined-attribute-value-length)) }
+  #         type TeletexString
+  #                (SIZE (1..ub-domain-defined-attribute-type-length)),
+  #         value TeletexString
+  #                (SIZE (1..ub-domain-defined-attribute-value-length)) }
   # 
   # --  specifications of Upper Bounds shall be regarded as mandatory
   # --  from Annex B of ITU-T X.411 Reference Definition of MTS Parameter
@@ -388,18 +388,18 @@ module Sun::Security::X509
     
     typesig { [GeneralNameInterface] }
     # Return type of constraint inputName places on this name:<ul>
-    # <li>NAME_DIFF_TYPE = -1: input name is different type from name (i.e. does not constrain).
-    # <li>NAME_MATCH = 0: input name matches name.
-    # <li>NAME_NARROWS = 1: input name narrows name (is lower in the naming subtree)
-    # <li>NAME_WIDENS = 2: input name widens name (is higher in the naming subtree)
-    # <li>NAME_SAME_TYPE = 3: input name does not match or narrow name, but is same type.
+    #   <li>NAME_DIFF_TYPE = -1: input name is different type from name (i.e. does not constrain).
+    #   <li>NAME_MATCH = 0: input name matches name.
+    #   <li>NAME_NARROWS = 1: input name narrows name (is lower in the naming subtree)
+    #   <li>NAME_WIDENS = 2: input name widens name (is higher in the naming subtree)
+    #   <li>NAME_SAME_TYPE = 3: input name does not match or narrow name, but is same type.
     # </ul>.  These results are used in checking NameConstraints during
     # certification path verification.
     # 
     # @param inputName to be checked for being constrained
     # @returns constraint type above
     # @throws UnsupportedOperationException if name is same type, but comparison operations are
-    # not supported for this name type.
+    #          not supported for this name type.
     def constrains(input_name)
       constraint_type = 0
       if ((input_name).nil?)

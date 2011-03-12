@@ -63,8 +63,8 @@ module Java::Io
     # 
     # @param      b   the <code>byte</code>.
     # @exception  IOException  if an I/O error occurs. In particular,
-    # an <code>IOException</code> may be thrown if the
-    # output stream has been closed.
+    #             an <code>IOException</code> may be thrown if the
+    #             output stream has been closed.
     def write(b)
       raise NotImplementedError
     end
@@ -107,8 +107,8 @@ module Java::Io
     # @param      off   the start offset in the data.
     # @param      len   the number of bytes to write.
     # @exception  IOException  if an I/O error occurs. In particular,
-    # an <code>IOException</code> is thrown if the output
-    # stream is closed.
+    #             an <code>IOException</code> is thrown if the output
+    #             stream is closed.
     def write(b, off, len)
       if ((b).nil?)
         raise NullPointerException.new

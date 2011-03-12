@@ -146,7 +146,7 @@ module Sun::Security::X509
       # note that bit 4 is reserved
       
       def m_map_data
-        defined?(@@m_map_data) ? @@m_map_data : @@m_map_data= Array.typed(MapEntry).new([MapEntry.new(SSL_CLIENT, 0), MapEntry.new(SSL_SERVER, 1), MapEntry.new(S_MIME, 2), MapEntry.new(OBJECT_SIGNING, 3), MapEntry.new(SSL_CA, 5), MapEntry.new(S_MIME_CA, 6), MapEntry.new(OBJECT_SIGNING_CA, 7), ])
+        defined?(@@m_map_data) ? @@m_map_data : @@m_map_data= Array.typed(MapEntry).new([MapEntry.new(SSL_CLIENT, 0), MapEntry.new(SSL_SERVER, 1), MapEntry.new(S_MIME, 2), MapEntry.new(OBJECT_SIGNING, 3), MapEntry.new(SSL_CA, 5), MapEntry.new(S_MIME_CA, 6), MapEntry.new(OBJECT_SIGNING_CA, 7)])
       end
       alias_method :attr_m_map_data, :m_map_data
       

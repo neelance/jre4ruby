@@ -41,18 +41,18 @@ module Java::Lang::Management
   # The notification emitted will contain the memory notification
   # information about the detected condition:
   # <ul>
-  # <li>The name of the memory pool.</li>
-  # <li>The memory usage of the memory pool when the notification
-  # was constructed.</li>
-  # <li>The number of times that the memory usage has crossed
-  # a threshold when the notification was constructed.
-  # For usage threshold notifications, this count will be the
-  # {@link MemoryPoolMXBean#getUsageThresholdCount usage threshold
-  # count}.  For collection threshold notifications,
-  # this count will be the
-  # {@link MemoryPoolMXBean#getCollectionUsageThresholdCount
-  # collection usage threshold count}.
-  # </li>
+  #   <li>The name of the memory pool.</li>
+  #   <li>The memory usage of the memory pool when the notification
+  #       was constructed.</li>
+  #   <li>The number of times that the memory usage has crossed
+  #       a threshold when the notification was constructed.
+  #       For usage threshold notifications, this count will be the
+  #       {@link MemoryPoolMXBean#getUsageThresholdCount usage threshold
+  #       count}.  For collection threshold notifications,
+  #       this count will be the
+  #       {@link MemoryPoolMXBean#getCollectionUsageThresholdCount
+  #       collection usage threshold count}.
+  #       </li>
   # </ul>
   # 
   # <p>
@@ -66,42 +66,42 @@ module Java::Lang::Management
   # object. For example:
   # 
   # <blockquote><pre>
-  # Notification notif;
+  #      Notification notif;
   # 
-  # // receive the notification emitted by MemoryMXBean and set to notif
-  # ...
+  #      // receive the notification emitted by MemoryMXBean and set to notif
+  #      ...
   # 
-  # String notifType = notif.getType();
-  # if (notifType.equals(MemoryNotificationInfo.MEMORY_THRESHOLD_EXCEEDED) ||
-  # notifType.equals(MemoryNotificationInfo.MEMORY_COLLECTION_THRESHOLD_EXCEEDED)) {
-  # // retrieve the memory notification information
-  # CompositeData cd = (CompositeData) notif.getUserData();
-  # MemoryNotificationInfo info = MemoryNotificationInfo.from(cd);
-  # ....
-  # }
+  #      String notifType = notif.getType();
+  #      if (notifType.equals(MemoryNotificationInfo.MEMORY_THRESHOLD_EXCEEDED) ||
+  #          notifType.equals(MemoryNotificationInfo.MEMORY_COLLECTION_THRESHOLD_EXCEEDED)) {
+  #          // retrieve the memory notification information
+  #          CompositeData cd = (CompositeData) notif.getUserData();
+  #          MemoryNotificationInfo info = MemoryNotificationInfo.from(cd);
+  #          ....
+  #      }
   # </pre></blockquote>
   # 
   # <p>
   # The types of notifications emitted by <tt>MemoryMXBean</tt> are:
   # <ul>
-  # <li>A {@link #MEMORY_THRESHOLD_EXCEEDED
-  # usage threshold exceeded notification}.
-  # <br>This notification will be emitted when
-  # the memory usage of a memory pool is increased and has reached
-  # or exceeded its
-  # <a href="MemoryPoolMXBean.html#UsageThreshold"> usage threshold</a> value.
-  # Subsequent crossing of the usage threshold value does not cause
-  # further notification until the memory usage has returned
-  # to become less than the usage threshold value.
-  # <p></li>
-  # <li>A {@link #MEMORY_COLLECTION_THRESHOLD_EXCEEDED
-  # collection usage threshold exceeded notification}.
-  # <br>This notification will be emitted when
-  # the memory usage of a memory pool is greater than or equal to its
-  # <a href="MemoryPoolMXBean.html#CollectionThreshold">
-  # collection usage threshold</a> after the Java virtual machine
-  # has expended effort in recycling unused objects in that
-  # memory pool.</li>
+  #   <li>A {@link #MEMORY_THRESHOLD_EXCEEDED
+  #       usage threshold exceeded notification}.
+  #       <br>This notification will be emitted when
+  #       the memory usage of a memory pool is increased and has reached
+  #       or exceeded its
+  #       <a href="MemoryPoolMXBean.html#UsageThreshold"> usage threshold</a> value.
+  #       Subsequent crossing of the usage threshold value does not cause
+  #       further notification until the memory usage has returned
+  #       to become less than the usage threshold value.
+  #       <p></li>
+  #   <li>A {@link #MEMORY_COLLECTION_THRESHOLD_EXCEEDED
+  #       collection usage threshold exceeded notification}.
+  #       <br>This notification will be emitted when
+  #       the memory usage of a memory pool is greater than or equal to its
+  #       <a href="MemoryPoolMXBean.html#CollectionThreshold">
+  #       collection usage threshold</a> after the Java virtual machine
+  #       has expended effort in recycling unused objects in that
+  #       memory pool.</li>
   # </ul>
   # 
   # @author  Mandy Chung
@@ -230,33 +230,33 @@ module Java::Lang::Management
       # <blockquote>
       # <table border>
       # <tr>
-      # <th align=left>Attribute Name</th>
-      # <th align=left>Type</th>
+      #   <th align=left>Attribute Name</th>
+      #   <th align=left>Type</th>
       # </tr>
       # <tr>
-      # <td>poolName</td>
-      # <td><tt>java.lang.String</tt></td>
+      #   <td>poolName</td>
+      #   <td><tt>java.lang.String</tt></td>
       # </tr>
       # <tr>
-      # <td>usage</td>
-      # <td><tt>javax.management.openmbean.CompositeData</tt></td>
+      #   <td>usage</td>
+      #   <td><tt>javax.management.openmbean.CompositeData</tt></td>
       # </tr>
       # <tr>
-      # <td>count</td>
-      # <td><tt>java.lang.Long</tt></td>
+      #   <td>count</td>
+      #   <td><tt>java.lang.Long</tt></td>
       # </tr>
       # </table>
       # </blockquote>
       # 
       # @param cd <tt>CompositeData</tt> representing a
-      # <tt>MemoryNotificationInfo</tt>
+      #           <tt>MemoryNotificationInfo</tt>
       # 
       # @throws IllegalArgumentException if <tt>cd</tt> does not
-      # represent a <tt>MemoryNotificationInfo</tt> object.
+      #   represent a <tt>MemoryNotificationInfo</tt> object.
       # 
       # @return a <tt>MemoryNotificationInfo</tt> object represented
-      # by <tt>cd</tt> if <tt>cd</tt> is not <tt>null</tt>;
-      # <tt>null</tt> otherwise.
+      #         by <tt>cd</tt> if <tt>cd</tt> is not <tt>null</tt>;
+      #         <tt>null</tt> otherwise.
       def from(cd)
         if ((cd).nil?)
           return nil

@@ -23,7 +23,6 @@ require "rjava"
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
 module Sun::Nio::Ch
-  # package-private
   module ServerSocketAdaptorImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
@@ -39,9 +38,11 @@ module Sun::Nio::Ch
   # The methods in this class are defined in exactly the same order as in
   # java.net.ServerSocket so as to simplify tracking future changes to that
   # class.
+  # 
   class ServerSocketAdaptor < ServerSocketAdaptorImports.const_get :ServerSocket
     include_class_members ServerSocketAdaptorImports
     
+    # package-private
     # The channel being adapted
     attr_accessor :ssc
     alias_method :attr_ssc, :ssc
@@ -236,7 +237,6 @@ module Sun::Nio::Ch
       if (!is_bound)
         return "ServerSocket[unbound]"
       end
-      # ",port=" + getPort() +
       return "ServerSocket[addr=" + RJava.cast_to_string(get_inet_address) + ",localport=" + RJava.cast_to_string(get_local_port) + "]"
     end
     

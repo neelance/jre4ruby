@@ -46,18 +46,18 @@ module Java::Lang::Reflect
   # 
   # <p>To create a proxy for some interface {@code Foo}:
   # <pre>
-  # InvocationHandler handler = new MyInvocationHandler(...);
-  # Class proxyClass = Proxy.getProxyClass(
-  # Foo.class.getClassLoader(), new Class[] { Foo.class });
-  # Foo f = (Foo) proxyClass.
-  # getConstructor(new Class[] { InvocationHandler.class }).
-  # newInstance(new Object[] { handler });
+  #     InvocationHandler handler = new MyInvocationHandler(...);
+  #     Class proxyClass = Proxy.getProxyClass(
+  #         Foo.class.getClassLoader(), new Class[] { Foo.class });
+  #     Foo f = (Foo) proxyClass.
+  #         getConstructor(new Class[] { InvocationHandler.class }).
+  #         newInstance(new Object[] { handler });
   # </pre>
   # or more simply:
   # <pre>
-  # Foo f = (Foo) Proxy.newProxyInstance(Foo.class.getClassLoader(),
-  # new Class[] { Foo.class },
-  # handler);
+  #     Foo f = (Foo) Proxy.newProxyInstance(Foo.class.getClassLoader(),
+  #                                          new Class[] { Foo.class },
+  #                                          handler);
   # </pre>
   # 
   # <p>A <i>dynamic proxy class</i> (simply referred to as a <i>proxy
@@ -142,12 +142,12 @@ module Java::Lang::Reflect
   # interfaces implemented by its proxy class {@code Foo}, the
   # following expression will return true:
   # <pre>
-  # {@code proxy instanceof Foo}
+  #     {@code proxy instanceof Foo}
   # </pre>
   # and the following cast operation will succeed (rather than throwing
   # a {@code ClassCastException}):
   # <pre>
-  # {@code (Foo) proxy}
+  #     {@code (Foo) proxy}
   # </pre>
   # 
   # <li>Each proxy instance has an associated invocation handler, the one
@@ -348,7 +348,7 @@ module Java::Lang::Reflect
       # {@code cl} and every interface {@code i}, the following
       # expression must be true:
       # <pre>
-      # Class.forName(i.getName(), false, cl) == i
+      #     Class.forName(i.getName(), false, cl) == i
       # </pre>
       # 
       # <li>All non-public interfaces must be in the same package;
@@ -387,14 +387,14 @@ module Java::Lang::Reflect
       # 
       # @param   loader the class loader to define the proxy class
       # @param   interfaces the list of interfaces for the proxy class
-      # to implement
+      #          to implement
       # @return  a proxy class that is defined in the specified class loader
-      # and that implements the specified interfaces
+      #          and that implements the specified interfaces
       # @throws  IllegalArgumentException if any of the restrictions on the
-      # parameters that may be passed to {@code getProxyClass}
-      # are violated
+      #          parameters that may be passed to {@code getProxyClass}
+      #          are violated
       # @throws  NullPointerException if the {@code interfaces} array
-      # argument or any of its elements are {@code null}
+      #          argument or any of its elements are {@code null}
       def get_proxy_class(loader, *interfaces)
         if (interfaces.attr_length > 65535)
           raise IllegalArgumentException.new("interface limit exceeded")
@@ -452,12 +452,12 @@ module Java::Lang::Reflect
         # Look up the list of interfaces in the proxy class cache using
         # the key.  This lookup will result in one of three possible
         # kinds of values:
-        # null, if there is currently no proxy class for the list of
-        # interfaces in the class loader,
-        # the pendingGenerationMarker object, if a proxy class for the
-        # list of interfaces is currently being generated,
-        # or a weak reference to a Class object, if a proxy class for
-        # the list of interfaces has already been generated.
+        #     null, if there is currently no proxy class for the list of
+        #         interfaces in the class loader,
+        #     the pendingGenerationMarker object, if a proxy class for the
+        #         list of interfaces is currently being generated,
+        #     or a weak reference to a Class object, if a proxy class for
+        #         the list of interfaces has already been generated.
         synchronized((cache)) do
           # Note that we need not worry about reaping the cache for
           # entries with cleared weak references because if a proxy class
@@ -527,8 +527,6 @@ module Java::Lang::Reflect
           proxy_name = proxy_pkg + ProxyClassNamePrefix + RJava.cast_to_string(num)
           # Verify that the class loader hasn't already
           # defined a class with the chosen name.
-          # 
-          # 
           # Generate the specified proxy class.
           proxy_class_file = ProxyGenerator.generate_proxy_class(proxy_name, interfaces)
           begin
@@ -571,9 +569,9 @@ module Java::Lang::Reflect
       # that dispatches method invocations to the specified invocation
       # handler.  This method is equivalent to:
       # <pre>
-      # Proxy.getProxyClass(loader, interfaces).
-      # getConstructor(new Class[] { InvocationHandler.class }).
-      # newInstance(new Object[] { handler });
+      #     Proxy.getProxyClass(loader, interfaces).
+      #         getConstructor(new Class[] { InvocationHandler.class }).
+      #         newInstance(new Object[] { handler });
       # </pre>
       # 
       # <p>{@code Proxy.newProxyInstance} throws
@@ -582,18 +580,18 @@ module Java::Lang::Reflect
       # 
       # @param   loader the class loader to define the proxy class
       # @param   interfaces the list of interfaces for the proxy class
-      # to implement
+      #          to implement
       # @param   h the invocation handler to dispatch method invocations to
       # @return  a proxy instance with the specified invocation handler of a
-      # proxy class that is defined by the specified class loader
-      # and that implements the specified interfaces
+      #          proxy class that is defined by the specified class loader
+      #          and that implements the specified interfaces
       # @throws  IllegalArgumentException if any of the restrictions on the
-      # parameters that may be passed to {@code getProxyClass}
-      # are violated
+      #          parameters that may be passed to {@code getProxyClass}
+      #          are violated
       # @throws  NullPointerException if the {@code interfaces} array
-      # argument or any of its elements are {@code null}, or
-      # if the invocation handler, {@code h}, is
-      # {@code null}
+      #          argument or any of its elements are {@code null}, or
+      #          if the invocation handler, {@code h}, is
+      #          {@code null}
       def new_proxy_instance(loader, interfaces, h)
         if ((h).nil?)
           raise NullPointerException.new
@@ -626,7 +624,7 @@ module Java::Lang::Reflect
       # 
       # @param   cl the class to test
       # @return  {@code true} if the class is a proxy class and
-      # {@code false} otherwise
+      #          {@code false} otherwise
       # @throws  NullPointerException if {@code cl} is {@code null}
       def is_proxy_class(cl)
         if ((cl).nil?)
@@ -641,7 +639,7 @@ module Java::Lang::Reflect
       # @param   proxy the proxy instance to return the invocation handler for
       # @return  the invocation handler for the proxy instance
       # @throws  IllegalArgumentException if the argument is not a
-      # proxy instance
+      #          proxy instance
       def get_invocation_handler(proxy)
         # Verify that the object is actually a proxy instance.
         if (!is_proxy_class(proxy.get_class))

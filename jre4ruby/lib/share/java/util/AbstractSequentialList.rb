@@ -179,7 +179,6 @@ module Java::Util
     
     typesig { [::Java::Int, Collection] }
     # Bulk Operations
-    # 
     # Inserts all of the elements in the specified collection into this
     # list at the specified position (optional operation).  Shifts the
     # element currently at that position (if any) and any subsequent
@@ -224,7 +223,6 @@ module Java::Util
     
     typesig { [] }
     # Iterators
-    # 
     # Returns an iterator over the elements in this list (in proper
     # sequence).<p>
     # 
@@ -240,9 +238,9 @@ module Java::Util
     # sequence).
     # 
     # @param  index index of first element to be returned from the list
-    # iterator (by a call to the <code>next</code> method)
+    #         iterator (by a call to the <code>next</code> method)
     # @return a list iterator over the elements in this list (in proper
-    # sequence)
+    #         sequence)
     # @throws IndexOutOfBoundsException {@inheritDoc}
     def list_iterator(index)
       raise NotImplementedError

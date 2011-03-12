@@ -186,13 +186,13 @@ module Sun::Security::Ssl
     # Returns true if the client certificate can be trusted.
     # 
     # @param chain certificates which establish an identity for the client.
-    # Chains of arbitrary length are supported, and certificates
-    # marked internally as trusted will short-circuit signature checks.
+    #      Chains of arbitrary length are supported, and certificates
+    #      marked internally as trusted will short-circuit signature checks.
     # @throws IllegalArgumentException if null or zero-length chain
-    # is passed in for the chain parameter or if null or zero-length
-    # string is passed in for the authType parameter.
+    #         is passed in for the chain parameter or if null or zero-length
+    #         string is passed in for the authType parameter.
     # @throws CertificateException if the certificate chain is not trusted
-    # by this TrustManager.
+    #      by this TrustManager.
     def check_client_trusted(chain, auth_type)
       if ((chain).nil? || (chain.attr_length).equal?(0))
         raise IllegalArgumentException.new("null or zero-length certificate chain")
@@ -223,13 +223,13 @@ module Sun::Security::Ssl
     # Returns true if the server certifcate can be trusted.
     # 
     # @param chain certificates which establish an identity for the server.
-    # Chains of arbitrary length are supported, and certificates
-    # marked internally as trusted will short-circuit signature checks.
+    #      Chains of arbitrary length are supported, and certificates
+    #      marked internally as trusted will short-circuit signature checks.
     # @throws IllegalArgumentException if null or zero-length chain
-    # is passed in for the chain parameter or if null or zero-length
-    # string is passed in for the authType parameter.
+    #         is passed in for the chain parameter or if null or zero-length
+    #         string is passed in for the authType parameter.
     # @throws CertificateException if the certificate chain is not trusted
-    # by this TrustManager.
+    #      by this TrustManager.
     def check_server_trusted(chain, auth_type)
       if ((chain).nil? || (chain.attr_length).equal?(0))
         raise IllegalArgumentException.new("null or zero-length certificate chain")

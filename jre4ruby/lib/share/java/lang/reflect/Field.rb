@@ -293,16 +293,16 @@ module Java::Lang::Reflect
     # parameterized type, it is created. Otherwise, it is resolved.
     # 
     # @return a {@code Type} object that represents the declared type for
-    # the field represented by this {@code Field} object
+    #     the field represented by this {@code Field} object
     # @throws GenericSignatureFormatError if the generic field
-    # signature does not conform to the format specified in the Java
-    # Virtual Machine Specification, 3rd edition
+    #     signature does not conform to the format specified in the Java
+    #     Virtual Machine Specification, 3rd edition
     # @throws TypeNotPresentException if the generic type
-    # signature of the underlying field refers to a non-existent
-    # type declaration
+    #     signature of the underlying field refers to a non-existent
+    #     type declaration
     # @throws MalformedParameterizedTypeException if the generic
-    # signature of the underlying field refers to a parameterized type
-    # that cannot be instantiated for any reason
+    #     signature of the underlying field refers to a parameterized type
+    #     that cannot be instantiated for any reason
     # @since 1.5
     def get_generic_type
       if (!(get_generic_signature).nil?)
@@ -341,8 +341,8 @@ module Java::Lang::Reflect
     # followed by a period, followed by the name of the field.
     # For example:
     # <pre>
-    # public static final int java.lang.Thread.MIN_PRIORITY
-    # private int java.io.FileDescriptor.fd
+    #    public static final int java.lang.Thread.MIN_PRIORITY
+    #    private int java.io.FileDescriptor.fd
     # </pre>
     # 
     # <p>The modifiers are placed in canonical order as specified by
@@ -416,14 +416,14 @@ module Java::Lang::Reflect
     # object before being returned
     # 
     # @exception IllegalAccessException    if the underlying field
-    # is inaccessible.
+    #              is inaccessible.
     # @exception IllegalArgumentException  if the specified object is not an
-    # instance of the class or interface declaring the underlying
-    # field (or a subclass or implementor thereof).
+    #              instance of the class or interface declaring the underlying
+    #              field (or a subclass or implementor thereof).
     # @exception NullPointerException      if the specified object is null
-    # and the field is an instance field.
+    #              and the field is an instance field.
     # @exception ExceptionInInitializerError if the initialization provoked
-    # by this method fails.
+    #              by this method fails.
     def get(obj)
       return get_field_accessor(obj).get(obj)
     end
@@ -436,17 +436,17 @@ module Java::Lang::Reflect
     # @return the value of the {@code boolean} field
     # 
     # @exception IllegalAccessException    if the underlying field
-    # is inaccessible.
+    #              is inaccessible.
     # @exception IllegalArgumentException  if the specified object is not
-    # an instance of the class or interface declaring the
-    # underlying field (or a subclass or implementor
-    # thereof), or if the field value cannot be
-    # converted to the type {@code boolean} by a
-    # widening conversion.
+    #              an instance of the class or interface declaring the
+    #              underlying field (or a subclass or implementor
+    #              thereof), or if the field value cannot be
+    #              converted to the type {@code boolean} by a
+    #              widening conversion.
     # @exception NullPointerException      if the specified object is null
-    # and the field is an instance field.
+    #              and the field is an instance field.
     # @exception ExceptionInInitializerError if the initialization provoked
-    # by this method fails.
+    #              by this method fails.
     # @see       Field#get
     def get_boolean(obj)
       return get_field_accessor(obj).get_boolean(obj)
@@ -460,17 +460,17 @@ module Java::Lang::Reflect
     # @return the value of the {@code byte} field
     # 
     # @exception IllegalAccessException    if the underlying field
-    # is inaccessible.
+    #              is inaccessible.
     # @exception IllegalArgumentException  if the specified object is not
-    # an instance of the class or interface declaring the
-    # underlying field (or a subclass or implementor
-    # thereof), or if the field value cannot be
-    # converted to the type {@code byte} by a
-    # widening conversion.
+    #              an instance of the class or interface declaring the
+    #              underlying field (or a subclass or implementor
+    #              thereof), or if the field value cannot be
+    #              converted to the type {@code byte} by a
+    #              widening conversion.
     # @exception NullPointerException      if the specified object is null
-    # and the field is an instance field.
+    #              and the field is an instance field.
     # @exception ExceptionInInitializerError if the initialization provoked
-    # by this method fails.
+    #              by this method fails.
     # @see       Field#get
     def get_byte(obj)
       return get_field_accessor(obj).get_byte(obj)
@@ -486,17 +486,17 @@ module Java::Lang::Reflect
     # @return the value of the field converted to type {@code char}
     # 
     # @exception IllegalAccessException    if the underlying field
-    # is inaccessible.
+    #              is inaccessible.
     # @exception IllegalArgumentException  if the specified object is not
-    # an instance of the class or interface declaring the
-    # underlying field (or a subclass or implementor
-    # thereof), or if the field value cannot be
-    # converted to the type {@code char} by a
-    # widening conversion.
+    #              an instance of the class or interface declaring the
+    #              underlying field (or a subclass or implementor
+    #              thereof), or if the field value cannot be
+    #              converted to the type {@code char} by a
+    #              widening conversion.
     # @exception NullPointerException      if the specified object is null
-    # and the field is an instance field.
+    #              and the field is an instance field.
     # @exception ExceptionInInitializerError if the initialization provoked
-    # by this method fails.
+    #              by this method fails.
     # @see Field#get
     def get_char(obj)
       return get_field_accessor(obj).get_char(obj)
@@ -512,17 +512,17 @@ module Java::Lang::Reflect
     # @return the value of the field converted to type {@code short}
     # 
     # @exception IllegalAccessException    if the underlying field
-    # is inaccessible.
+    #              is inaccessible.
     # @exception IllegalArgumentException  if the specified object is not
-    # an instance of the class or interface declaring the
-    # underlying field (or a subclass or implementor
-    # thereof), or if the field value cannot be
-    # converted to the type {@code short} by a
-    # widening conversion.
+    #              an instance of the class or interface declaring the
+    #              underlying field (or a subclass or implementor
+    #              thereof), or if the field value cannot be
+    #              converted to the type {@code short} by a
+    #              widening conversion.
     # @exception NullPointerException      if the specified object is null
-    # and the field is an instance field.
+    #              and the field is an instance field.
     # @exception ExceptionInInitializerError if the initialization provoked
-    # by this method fails.
+    #              by this method fails.
     # @see       Field#get
     def get_short(obj)
       return get_field_accessor(obj).get_short(obj)
@@ -538,17 +538,17 @@ module Java::Lang::Reflect
     # @return the value of the field converted to type {@code int}
     # 
     # @exception IllegalAccessException    if the underlying field
-    # is inaccessible.
+    #              is inaccessible.
     # @exception IllegalArgumentException  if the specified object is not
-    # an instance of the class or interface declaring the
-    # underlying field (or a subclass or implementor
-    # thereof), or if the field value cannot be
-    # converted to the type {@code int} by a
-    # widening conversion.
+    #              an instance of the class or interface declaring the
+    #              underlying field (or a subclass or implementor
+    #              thereof), or if the field value cannot be
+    #              converted to the type {@code int} by a
+    #              widening conversion.
     # @exception NullPointerException      if the specified object is null
-    # and the field is an instance field.
+    #              and the field is an instance field.
     # @exception ExceptionInInitializerError if the initialization provoked
-    # by this method fails.
+    #              by this method fails.
     # @see       Field#get
     def get_int(obj)
       return get_field_accessor(obj).get_int(obj)
@@ -564,17 +564,17 @@ module Java::Lang::Reflect
     # @return the value of the field converted to type {@code long}
     # 
     # @exception IllegalAccessException    if the underlying field
-    # is inaccessible.
+    #              is inaccessible.
     # @exception IllegalArgumentException  if the specified object is not
-    # an instance of the class or interface declaring the
-    # underlying field (or a subclass or implementor
-    # thereof), or if the field value cannot be
-    # converted to the type {@code long} by a
-    # widening conversion.
+    #              an instance of the class or interface declaring the
+    #              underlying field (or a subclass or implementor
+    #              thereof), or if the field value cannot be
+    #              converted to the type {@code long} by a
+    #              widening conversion.
     # @exception NullPointerException      if the specified object is null
-    # and the field is an instance field.
+    #              and the field is an instance field.
     # @exception ExceptionInInitializerError if the initialization provoked
-    # by this method fails.
+    #              by this method fails.
     # @see       Field#get
     def get_long(obj)
       return get_field_accessor(obj).get_long(obj)
@@ -590,17 +590,17 @@ module Java::Lang::Reflect
     # @return the value of the field converted to type {@code float}
     # 
     # @exception IllegalAccessException    if the underlying field
-    # is inaccessible.
+    #              is inaccessible.
     # @exception IllegalArgumentException  if the specified object is not
-    # an instance of the class or interface declaring the
-    # underlying field (or a subclass or implementor
-    # thereof), or if the field value cannot be
-    # converted to the type {@code float} by a
-    # widening conversion.
+    #              an instance of the class or interface declaring the
+    #              underlying field (or a subclass or implementor
+    #              thereof), or if the field value cannot be
+    #              converted to the type {@code float} by a
+    #              widening conversion.
     # @exception NullPointerException      if the specified object is null
-    # and the field is an instance field.
+    #              and the field is an instance field.
     # @exception ExceptionInInitializerError if the initialization provoked
-    # by this method fails.
+    #              by this method fails.
     # @see Field#get
     def get_float(obj)
       return get_field_accessor(obj).get_float(obj)
@@ -616,17 +616,17 @@ module Java::Lang::Reflect
     # @return the value of the field converted to type {@code double}
     # 
     # @exception IllegalAccessException    if the underlying field
-    # is inaccessible.
+    #              is inaccessible.
     # @exception IllegalArgumentException  if the specified object is not
-    # an instance of the class or interface declaring the
-    # underlying field (or a subclass or implementor
-    # thereof), or if the field value cannot be
-    # converted to the type {@code double} by a
-    # widening conversion.
+    #              an instance of the class or interface declaring the
+    #              underlying field (or a subclass or implementor
+    #              thereof), or if the field value cannot be
+    #              converted to the type {@code double} by a
+    #              widening conversion.
     # @exception NullPointerException      if the specified object is null
-    # and the field is an instance field.
+    #              and the field is an instance field.
     # @exception ExceptionInInitializerError if the initialization provoked
-    # by this method fails.
+    #              by this method fails.
     # @see       Field#get
     def get_double(obj)
       return get_field_accessor(obj).get_double(obj)
@@ -687,15 +687,15 @@ module Java::Lang::Reflect
     # being modified
     # 
     # @exception IllegalAccessException    if the underlying field
-    # is inaccessible.
+    #              is inaccessible.
     # @exception IllegalArgumentException  if the specified object is not an
-    # instance of the class or interface declaring the underlying
-    # field (or a subclass or implementor thereof),
-    # or if an unwrapping conversion fails.
+    #              instance of the class or interface declaring the underlying
+    #              field (or a subclass or implementor thereof),
+    #              or if an unwrapping conversion fails.
     # @exception NullPointerException      if the specified object is null
-    # and the field is an instance field.
+    #              and the field is an instance field.
     # @exception ExceptionInInitializerError if the initialization provoked
-    # by this method fails.
+    #              by this method fails.
     def set(obj, value)
       get_field_accessor(obj).set(obj, value)
     end
@@ -712,15 +712,15 @@ module Java::Lang::Reflect
     # being modified
     # 
     # @exception IllegalAccessException    if the underlying field
-    # is inaccessible.
+    #              is inaccessible.
     # @exception IllegalArgumentException  if the specified object is not an
-    # instance of the class or interface declaring the underlying
-    # field (or a subclass or implementor thereof),
-    # or if an unwrapping conversion fails.
+    #              instance of the class or interface declaring the underlying
+    #              field (or a subclass or implementor thereof),
+    #              or if an unwrapping conversion fails.
     # @exception NullPointerException      if the specified object is null
-    # and the field is an instance field.
+    #              and the field is an instance field.
     # @exception ExceptionInInitializerError if the initialization provoked
-    # by this method fails.
+    #              by this method fails.
     # @see       Field#set
     def set_boolean(obj, z)
       get_field_accessor(obj).set_boolean(obj, z)
@@ -738,15 +738,15 @@ module Java::Lang::Reflect
     # being modified
     # 
     # @exception IllegalAccessException    if the underlying field
-    # is inaccessible.
+    #              is inaccessible.
     # @exception IllegalArgumentException  if the specified object is not an
-    # instance of the class or interface declaring the underlying
-    # field (or a subclass or implementor thereof),
-    # or if an unwrapping conversion fails.
+    #              instance of the class or interface declaring the underlying
+    #              field (or a subclass or implementor thereof),
+    #              or if an unwrapping conversion fails.
     # @exception NullPointerException      if the specified object is null
-    # and the field is an instance field.
+    #              and the field is an instance field.
     # @exception ExceptionInInitializerError if the initialization provoked
-    # by this method fails.
+    #              by this method fails.
     # @see       Field#set
     def set_byte(obj, b)
       get_field_accessor(obj).set_byte(obj, b)
@@ -764,15 +764,15 @@ module Java::Lang::Reflect
     # being modified
     # 
     # @exception IllegalAccessException    if the underlying field
-    # is inaccessible.
+    #              is inaccessible.
     # @exception IllegalArgumentException  if the specified object is not an
-    # instance of the class or interface declaring the underlying
-    # field (or a subclass or implementor thereof),
-    # or if an unwrapping conversion fails.
+    #              instance of the class or interface declaring the underlying
+    #              field (or a subclass or implementor thereof),
+    #              or if an unwrapping conversion fails.
     # @exception NullPointerException      if the specified object is null
-    # and the field is an instance field.
+    #              and the field is an instance field.
     # @exception ExceptionInInitializerError if the initialization provoked
-    # by this method fails.
+    #              by this method fails.
     # @see       Field#set
     def set_char(obj, c)
       get_field_accessor(obj).set_char(obj, c)
@@ -790,15 +790,15 @@ module Java::Lang::Reflect
     # being modified
     # 
     # @exception IllegalAccessException    if the underlying field
-    # is inaccessible.
+    #              is inaccessible.
     # @exception IllegalArgumentException  if the specified object is not an
-    # instance of the class or interface declaring the underlying
-    # field (or a subclass or implementor thereof),
-    # or if an unwrapping conversion fails.
+    #              instance of the class or interface declaring the underlying
+    #              field (or a subclass or implementor thereof),
+    #              or if an unwrapping conversion fails.
     # @exception NullPointerException      if the specified object is null
-    # and the field is an instance field.
+    #              and the field is an instance field.
     # @exception ExceptionInInitializerError if the initialization provoked
-    # by this method fails.
+    #              by this method fails.
     # @see       Field#set
     def set_short(obj, s)
       get_field_accessor(obj).set_short(obj, s)
@@ -816,15 +816,15 @@ module Java::Lang::Reflect
     # being modified
     # 
     # @exception IllegalAccessException    if the underlying field
-    # is inaccessible.
+    #              is inaccessible.
     # @exception IllegalArgumentException  if the specified object is not an
-    # instance of the class or interface declaring the underlying
-    # field (or a subclass or implementor thereof),
-    # or if an unwrapping conversion fails.
+    #              instance of the class or interface declaring the underlying
+    #              field (or a subclass or implementor thereof),
+    #              or if an unwrapping conversion fails.
     # @exception NullPointerException      if the specified object is null
-    # and the field is an instance field.
+    #              and the field is an instance field.
     # @exception ExceptionInInitializerError if the initialization provoked
-    # by this method fails.
+    #              by this method fails.
     # @see       Field#set
     def set_int(obj, i)
       get_field_accessor(obj).set_int(obj, i)
@@ -842,15 +842,15 @@ module Java::Lang::Reflect
     # being modified
     # 
     # @exception IllegalAccessException    if the underlying field
-    # is inaccessible.
+    #              is inaccessible.
     # @exception IllegalArgumentException  if the specified object is not an
-    # instance of the class or interface declaring the underlying
-    # field (or a subclass or implementor thereof),
-    # or if an unwrapping conversion fails.
+    #              instance of the class or interface declaring the underlying
+    #              field (or a subclass or implementor thereof),
+    #              or if an unwrapping conversion fails.
     # @exception NullPointerException      if the specified object is null
-    # and the field is an instance field.
+    #              and the field is an instance field.
     # @exception ExceptionInInitializerError if the initialization provoked
-    # by this method fails.
+    #              by this method fails.
     # @see       Field#set
     def set_long(obj, l)
       get_field_accessor(obj).set_long(obj, l)
@@ -868,15 +868,15 @@ module Java::Lang::Reflect
     # being modified
     # 
     # @exception IllegalAccessException    if the underlying field
-    # is inaccessible.
+    #              is inaccessible.
     # @exception IllegalArgumentException  if the specified object is not an
-    # instance of the class or interface declaring the underlying
-    # field (or a subclass or implementor thereof),
-    # or if an unwrapping conversion fails.
+    #              instance of the class or interface declaring the underlying
+    #              field (or a subclass or implementor thereof),
+    #              or if an unwrapping conversion fails.
     # @exception NullPointerException      if the specified object is null
-    # and the field is an instance field.
+    #              and the field is an instance field.
     # @exception ExceptionInInitializerError if the initialization provoked
-    # by this method fails.
+    #              by this method fails.
     # @see       Field#set
     def set_float(obj, f)
       get_field_accessor(obj).set_float(obj, f)
@@ -894,15 +894,15 @@ module Java::Lang::Reflect
     # being modified
     # 
     # @exception IllegalAccessException    if the underlying field
-    # is inaccessible.
+    #              is inaccessible.
     # @exception IllegalArgumentException  if the specified object is not an
-    # instance of the class or interface declaring the underlying
-    # field (or a subclass or implementor thereof),
-    # or if an unwrapping conversion fails.
+    #              instance of the class or interface declaring the underlying
+    #              field (or a subclass or implementor thereof),
+    #              or if an unwrapping conversion fails.
     # @exception NullPointerException      if the specified object is null
-    # and the field is an instance field.
+    #              and the field is an instance field.
     # @exception ExceptionInInitializerError if the initialization provoked
-    # by this method fails.
+    #              by this method fails.
     # @see       Field#set
     def set_double(obj, d)
       get_field_accessor(obj).set_double(obj, d)

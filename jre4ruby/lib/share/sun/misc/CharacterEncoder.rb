@@ -46,9 +46,9 @@ module Sun::Misc
   # that, in general, the encoded text has the form:
   # 
   # <pre>
-  # [Buffer Prefix]
-  # [Line Prefix][encoded data atoms][Line Suffix]
-  # [Buffer Suffix]
+  #      [Buffer Prefix]
+  #      [Line Prefix][encoded data atoms][Line Suffix]
+  #      [Buffer Suffix]
   # </pre>
   # 
   # In the CharacterEncoder and CharacterDecoder classes, one complete

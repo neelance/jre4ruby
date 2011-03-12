@@ -41,9 +41,9 @@ module Sun::Security::Ssl
   # Checks for a particular version number should generally take this form:
   # 
   # if (protocolVersion.v >= ProtocolVersion.TLS10) {
-  # // TLS 1.0 code goes here
+  #   // TLS 1.0 code goes here
   # } else {
-  # // SSL 3.0 code here
+  #   // SSL 3.0 code here
   # }
   # 
   # @author  Andreas Sterbenz

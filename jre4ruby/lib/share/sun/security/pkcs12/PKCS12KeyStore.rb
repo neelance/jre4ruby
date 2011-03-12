@@ -69,8 +69,8 @@ module Sun::Security::Pkcs12
   # The contents are protected using Password integrity mode.
   # 
   # Currently we support following PBE algorithms:
-  # - pbeWithSHAAnd3KeyTripleDESCBC to encrypt private keys
-  # - pbeWithSHAAnd40BitRC2CBC to encrypt certificates
+  #  - pbeWithSHAAnd3KeyTripleDESCBC to encrypt private keys
+  #  - pbeWithSHAAnd40BitRC2CBC to encrypt certificates
   # 
   # Supported encryption of various implementations :
   # 
@@ -682,7 +682,7 @@ module Sun::Security::Pkcs12
     # as defined in PKCS#5.
     # 
     # NOTE: Currently pbeWithSHAAnd3-KeyTripleDES-CBC algorithmID is
-    # used to derive the key and IV.
+    #       used to derive the key and IV.
     # 
     # @return encrypted private key encoded as EncryptedPrivateKeyInfo
     def encrypt_private_key(data, password)
@@ -969,11 +969,11 @@ module Sun::Security::Pkcs12
     # --------------------------------------------------------------
     # LocalKeyId
     # (In EE cert only,
-    # NULL in CA certs)      true          true     true      true
+    #  NULL in CA certs)      true          true     true      true
     # 
     # friendlyName            unique        same/    same/     unique
-    # unique   unique/
-    # null
+    #                                       unique   unique/
+    #                                                null
     # 
     # Note: OpenSSL adds friendlyName for end-entity cert only, and
     # removes the localKeyID and friendlyName for CA certs.
@@ -1144,7 +1144,7 @@ module Sun::Security::Pkcs12
     # as defined in PKCS #5.
     # 
     # NOTE: Currently pbeWithSHAAnd40BiteRC2-CBC algorithmID is used
-    # to derive the key and IV.
+    #       to derive the key and IV.
     # 
     # @return encrypted contents encoded as EncryptedContentInfo
     def encrypt_content(data, password)

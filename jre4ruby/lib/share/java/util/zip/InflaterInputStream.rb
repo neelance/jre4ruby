@@ -165,7 +165,7 @@ module Java::Util::Zip
     # @param off the start offset in the destination array <code>b</code>
     # @param len the maximum number of bytes read
     # @return the actual number of bytes read, or -1 if the end of the
-    # compressed input is reached or a preset dictionary is needed
+    #         compressed input is reached or a preset dictionary is needed
     # @exception  NullPointerException If <code>b</code> is <code>null</code>.
     # @exception  IndexOutOfBoundsException If <code>off</code> is negative,
     # <code>len</code> is negative, or <code>len</code> is greater than
@@ -237,7 +237,7 @@ module Java::Util::Zip
         raise IllegalArgumentException.new("negative skip length")
       end
       ensure_open
-      max = RJava.cast_to_int(Math.min(n, JavaInteger::MAX_VALUE))
+      max = (Math.min(n, JavaInteger::MAX_VALUE)).to_int
       total = 0
       while (total < max)
         len = max - total
@@ -287,7 +287,7 @@ module Java::Util::Zip
     # <code>false</code>.
     # 
     # @return  a <code>boolean</code> indicating if this stream type supports
-    # the <code>mark</code> and <code>reset</code> methods.
+    #          the <code>mark</code> and <code>reset</code> methods.
     # @see     java.io.InputStream#mark(int)
     # @see     java.io.InputStream#reset()
     def mark_supported
@@ -301,7 +301,7 @@ module Java::Util::Zip
     # does nothing.
     # 
     # @param   readlimit   the maximum limit of bytes that can be read before
-    # the mark position becomes invalid.
+    #                      the mark position becomes invalid.
     # @see     java.io.InputStream#reset()
     def mark(readlimit)
       synchronized(self) do

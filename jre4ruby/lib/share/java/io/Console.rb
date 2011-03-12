@@ -82,9 +82,9 @@ module Java::Io
   # Console cons;
   # char[] passwd;
   # if ((cons = System.console()) != null &&
-  # (passwd = cons.readPassword("[%s]", "Password:")) != null) {
-  # ...
-  # java.util.Arrays.fill(passwd, ' ');
+  #     (passwd = cons.readPassword("[%s]", "Password:")) != null) {
+  #     ...
+  #     java.util.Arrays.fill(passwd, ' ');
   # }
   # </pre></blockquote>
   # 
@@ -113,8 +113,8 @@ module Java::Io
     # <blockquote><pre>
     # Console con = System.console();
     # if (con != null) {
-    # Scanner sc = new Scanner(con.reader());
-    # ...
+    #     Scanner sc = new Scanner(con.reader());
+    #     ...
     # }
     # </pre></blockquote>
     # <p>
@@ -140,28 +140,28 @@ module Java::Io
     # the specified format string and arguments.
     # 
     # @param  fmt
-    # A format string as described in <a
-    # href="../util/Formatter.html#syntax">Format string syntax</a>
+    #         A format string as described in <a
+    #         href="../util/Formatter.html#syntax">Format string syntax</a>
     # 
     # @param  args
-    # Arguments referenced by the format specifiers in the format
-    # string.  If there are more arguments than format specifiers, the
-    # extra arguments are ignored.  The number of arguments is
-    # variable and may be zero.  The maximum number of arguments is
-    # limited by the maximum dimension of a Java array as defined by
-    # the <a href="http://java.sun.com/docs/books/vmspec/">Java
-    # Virtual Machine Specification</a>.  The behaviour on a
-    # <tt>null</tt> argument depends on the <a
-    # href="../util/Formatter.html#syntax">conversion</a>.
+    #         Arguments referenced by the format specifiers in the format
+    #         string.  If there are more arguments than format specifiers, the
+    #         extra arguments are ignored.  The number of arguments is
+    #         variable and may be zero.  The maximum number of arguments is
+    #         limited by the maximum dimension of a Java array as defined by
+    #         the <a href="http://java.sun.com/docs/books/vmspec/">Java
+    #         Virtual Machine Specification</a>.  The behaviour on a
+    #         <tt>null</tt> argument depends on the <a
+    #         href="../util/Formatter.html#syntax">conversion</a>.
     # 
     # @throws  IllegalFormatException
-    # If a format string contains an illegal syntax, a format
-    # specifier that is incompatible with the given arguments,
-    # insufficient arguments given the format string, or other
-    # illegal conditions.  For specification of all possible
-    # formatting errors, see the <a
-    # href="../util/Formatter.html#detail">Details</a> section
-    # of the formatter class specification.
+    #          If a format string contains an illegal syntax, a format
+    #          specifier that is incompatible with the given arguments,
+    #          insufficient arguments given the format string, or other
+    #          illegal conditions.  For specification of all possible
+    #          formatting errors, see the <a
+    #          href="../util/Formatter.html#detail">Details</a> section
+    #          of the formatter class specification.
     # 
     # @return  This console
     def format(fmt, *args)
@@ -183,28 +183,28 @@ module Java::Io
     # <pre>con.format(format, args)</pre>.
     # 
     # @param  format
-    # A format string as described in <a
-    # href="../util/Formatter.html#syntax">Format string syntax</a>.
+    #         A format string as described in <a
+    #         href="../util/Formatter.html#syntax">Format string syntax</a>.
     # 
     # @param  args
-    # Arguments referenced by the format specifiers in the format
-    # string.  If there are more arguments than format specifiers, the
-    # extra arguments are ignored.  The number of arguments is
-    # variable and may be zero.  The maximum number of arguments is
-    # limited by the maximum dimension of a Java array as defined by
-    # the <a href="http://java.sun.com/docs/books/vmspec/">Java
-    # Virtual Machine Specification</a>.  The behaviour on a
-    # <tt>null</tt> argument depends on the <a
-    # href="../util/Formatter.html#syntax">conversion</a>.
+    #         Arguments referenced by the format specifiers in the format
+    #         string.  If there are more arguments than format specifiers, the
+    #         extra arguments are ignored.  The number of arguments is
+    #         variable and may be zero.  The maximum number of arguments is
+    #         limited by the maximum dimension of a Java array as defined by
+    #         the <a href="http://java.sun.com/docs/books/vmspec/">Java
+    #         Virtual Machine Specification</a>.  The behaviour on a
+    #         <tt>null</tt> argument depends on the <a
+    #         href="../util/Formatter.html#syntax">conversion</a>.
     # 
     # @throws  IllegalFormatException
-    # If a format string contains an illegal syntax, a format
-    # specifier that is incompatible with the given arguments,
-    # insufficient arguments given the format string, or other
-    # illegal conditions.  For specification of all possible
-    # formatting errors, see the <a
-    # href="../util/Formatter.html#detail">Details</a> section of the
-    # formatter class specification.
+    #          If a format string contains an illegal syntax, a format
+    #          specifier that is incompatible with the given arguments,
+    #          insufficient arguments given the format string, or other
+    #          illegal conditions.  For specification of all possible
+    #          formatting errors, see the <a
+    #          href="../util/Formatter.html#detail">Details</a> section of the
+    #          formatter class specification.
     # 
     # @return  This console
     def printf(format_, *args)
@@ -221,32 +221,32 @@ module Java::Io
     # console.
     # 
     # @param  fmt
-    # A format string as described in <a
-    # href="../util/Formatter.html#syntax">Format string syntax</a>.
+    #         A format string as described in <a
+    #         href="../util/Formatter.html#syntax">Format string syntax</a>.
     # 
     # @param  args
-    # Arguments referenced by the format specifiers in the format
-    # string.  If there are more arguments than format specifiers, the
-    # extra arguments are ignored.  The maximum number of arguments is
-    # limited by the maximum dimension of a Java array as defined by
-    # the <a href="http://java.sun.com/docs/books/vmspec/">Java
-    # Virtual Machine Specification</a>.
+    #         Arguments referenced by the format specifiers in the format
+    #         string.  If there are more arguments than format specifiers, the
+    #         extra arguments are ignored.  The maximum number of arguments is
+    #         limited by the maximum dimension of a Java array as defined by
+    #         the <a href="http://java.sun.com/docs/books/vmspec/">Java
+    #         Virtual Machine Specification</a>.
     # 
     # @throws  IllegalFormatException
-    # If a format string contains an illegal syntax, a format
-    # specifier that is incompatible with the given arguments,
-    # insufficient arguments given the format string, or other
-    # illegal conditions.  For specification of all possible
-    # formatting errors, see the <a
-    # href="../util/Formatter.html#detail">Details</a> section
-    # of the formatter class specification.
+    #          If a format string contains an illegal syntax, a format
+    #          specifier that is incompatible with the given arguments,
+    #          insufficient arguments given the format string, or other
+    #          illegal conditions.  For specification of all possible
+    #          formatting errors, see the <a
+    #          href="../util/Formatter.html#detail">Details</a> section
+    #          of the formatter class specification.
     # 
     # @throws IOError
-    # If an I/O error occurs.
+    #         If an I/O error occurs.
     # 
     # @return  A string containing the line read from the console, not
-    # including any line-termination characters, or <tt>null</tt>
-    # if an end of stream has been reached.
+    #          including any line-termination characters, or <tt>null</tt>
+    #          if an end of stream has been reached.
     def read_line(fmt, *args)
       line = nil
       synchronized((@write_lock)) do
@@ -276,11 +276,11 @@ module Java::Io
     # Reads a single line of text from the console.
     # 
     # @throws IOError
-    # If an I/O error occurs.
+    #         If an I/O error occurs.
     # 
     # @return  A string containing the line read from the console, not
-    # including any line-termination characters, or <tt>null</tt>
-    # if an end of stream has been reached.
+    #          including any line-termination characters, or <tt>null</tt>
+    #          if an end of stream has been reached.
     def read_line
       return read_line("")
     end
@@ -290,33 +290,33 @@ module Java::Io
     # the console with echoing disabled.
     # 
     # @param  fmt
-    # A format string as described in <a
-    # href="../util/Formatter.html#syntax">Format string syntax</a>
-    # for the prompt text.
+    #         A format string as described in <a
+    #         href="../util/Formatter.html#syntax">Format string syntax</a>
+    #         for the prompt text.
     # 
     # @param  args
-    # Arguments referenced by the format specifiers in the format
-    # string.  If there are more arguments than format specifiers, the
-    # extra arguments are ignored.  The maximum number of arguments is
-    # limited by the maximum dimension of a Java array as defined by
-    # the <a href="http://java.sun.com/docs/books/vmspec/">Java
-    # Virtual Machine Specification</a>.
+    #         Arguments referenced by the format specifiers in the format
+    #         string.  If there are more arguments than format specifiers, the
+    #         extra arguments are ignored.  The maximum number of arguments is
+    #         limited by the maximum dimension of a Java array as defined by
+    #         the <a href="http://java.sun.com/docs/books/vmspec/">Java
+    #         Virtual Machine Specification</a>.
     # 
     # @throws  IllegalFormatException
-    # If a format string contains an illegal syntax, a format
-    # specifier that is incompatible with the given arguments,
-    # insufficient arguments given the format string, or other
-    # illegal conditions.  For specification of all possible
-    # formatting errors, see the <a
-    # href="../util/Formatter.html#detail">Details</a>
-    # section of the formatter class specification.
+    #          If a format string contains an illegal syntax, a format
+    #          specifier that is incompatible with the given arguments,
+    #          insufficient arguments given the format string, or other
+    #          illegal conditions.  For specification of all possible
+    #          formatting errors, see the <a
+    #          href="../util/Formatter.html#detail">Details</a>
+    #          section of the formatter class specification.
     # 
     # @throws IOError
-    # If an I/O error occurs.
+    #         If an I/O error occurs.
     # 
     # @return  A character array containing the password or passphrase read
-    # from the console, not including any line-termination characters,
-    # or <tt>null</tt> if an end of stream has been reached.
+    #          from the console, not including any line-termination characters,
+    #          or <tt>null</tt> if an end of stream has been reached.
     def read_password(fmt, *args)
       passwd = nil
       synchronized((@write_lock)) do
@@ -350,11 +350,11 @@ module Java::Io
     # Reads a password or passphrase from the console with echoing disabled
     # 
     # @throws IOError
-    # If an I/O error occurs.
+    #         If an I/O error occurs.
     # 
     # @return  A character array containing the password or passphrase read
-    # from the console, not including any line-termination characters,
-    # or <tt>null</tt> if an end of stream has been reached.
+    #          from the console, not including any line-termination characters,
+    #          or <tt>null</tt> if an end of stream has been reached.
     def read_password
       return read_password("")
     end
@@ -446,8 +446,7 @@ module Java::Io
         return nil
       end # EOL
       if ((@rcb[len - 1]).equal?(Character.new(?\r.ord)))
-        len -= 1
-         # remove CR at end;
+        len -= 1 # remove CR at end;
       else
         if ((@rcb[len - 1]).equal?(Character.new(?\n.ord)))
           len -= 1 # remove LF at end;

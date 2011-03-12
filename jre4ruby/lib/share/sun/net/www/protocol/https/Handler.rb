@@ -22,9 +22,8 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
 # -
-# HTTP stream opener
+#       HTTP stream opener
 module Sun::Net::Www::Protocol::Https
   module HandlerImports #:nodoc:
     class_module.module_eval {

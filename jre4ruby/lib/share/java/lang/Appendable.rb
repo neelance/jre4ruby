@@ -61,14 +61,14 @@ module Java::Lang
     # the subsequence to append is defined by the buffer's position and limit.
     # 
     # @param  csq
-    # The character sequence to append.  If <tt>csq</tt> is
-    # <tt>null</tt>, then the four characters <tt>"null"</tt> are
-    # appended to this Appendable.
+    #         The character sequence to append.  If <tt>csq</tt> is
+    #         <tt>null</tt>, then the four characters <tt>"null"</tt> are
+    #         appended to this Appendable.
     # 
     # @return  A reference to this <tt>Appendable</tt>
     # 
     # @throws  IOException
-    # If an I/O error occurs
+    #          If an I/O error occurs
     def append(csq)
       raise NotImplementedError
     end
@@ -82,30 +82,30 @@ module Java::Lang
     # exactly the same way as the invocation
     # 
     # <pre>
-    # out.append(csq.subSequence(start, end)) </pre>
+    #     out.append(csq.subSequence(start, end)) </pre>
     # 
     # @param  csq
-    # The character sequence from which a subsequence will be
-    # appended.  If <tt>csq</tt> is <tt>null</tt>, then characters
-    # will be appended as if <tt>csq</tt> contained the four
-    # characters <tt>"null"</tt>.
+    #         The character sequence from which a subsequence will be
+    #         appended.  If <tt>csq</tt> is <tt>null</tt>, then characters
+    #         will be appended as if <tt>csq</tt> contained the four
+    #         characters <tt>"null"</tt>.
     # 
     # @param  start
-    # The index of the first character in the subsequence
+    #         The index of the first character in the subsequence
     # 
     # @param  end
-    # The index of the character following the last character in the
-    # subsequence
+    #         The index of the character following the last character in the
+    #         subsequence
     # 
     # @return  A reference to this <tt>Appendable</tt>
     # 
     # @throws  IndexOutOfBoundsException
-    # If <tt>start</tt> or <tt>end</tt> are negative, <tt>start</tt>
-    # is greater than <tt>end</tt>, or <tt>end</tt> is greater than
-    # <tt>csq.length()</tt>
+    #          If <tt>start</tt> or <tt>end</tt> are negative, <tt>start</tt>
+    #          is greater than <tt>end</tt>, or <tt>end</tt> is greater than
+    #          <tt>csq.length()</tt>
     # 
     # @throws  IOException
-    # If an I/O error occurs
+    #          If an I/O error occurs
     def append(csq, start, end_)
       raise NotImplementedError
     end
@@ -114,12 +114,12 @@ module Java::Lang
     # Appends the specified character to this <tt>Appendable</tt>.
     # 
     # @param  c
-    # The character to append
+    #         The character to append
     # 
     # @return  A reference to this <tt>Appendable</tt>
     # 
     # @throws  IOException
-    # If an I/O error occurs
+    #          If an I/O error occurs
     def append(c)
       raise NotImplementedError
     end

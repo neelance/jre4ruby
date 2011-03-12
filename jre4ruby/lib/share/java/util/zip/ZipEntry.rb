@@ -96,7 +96,6 @@ module Java::Util::Zip
     
     class_module.module_eval {
       # optional comment string for entry
-      # 
       # Compression method for uncompressed entries.
       const_set_lazy(:STORED) { 0 }
       const_attr_reader  :STORED
@@ -123,7 +122,7 @@ module Java::Util::Zip
     # @param name the entry name
     # @exception NullPointerException if the entry name is null
     # @exception IllegalArgumentException if the entry name is longer than
-    # 0xFFFF bytes
+    #            0xFFFF bytes
     def initialize(name)
       @name = nil
       @time = -1
@@ -212,7 +211,7 @@ module Java::Util::Zip
     typesig { [::Java::Long] }
     # Sets the modification time of the entry.
     # @param time the entry modification time in number of milliseconds
-    # since the epoch
+    #             since the epoch
     # @see #getTime()
     def set_time(time)
       @time = java_to_dos_time(time)
@@ -230,7 +229,7 @@ module Java::Util::Zip
     # Sets the uncompressed size of the entry data.
     # @param size the uncompressed size in bytes
     # @exception IllegalArgumentException if the specified size is less
-    # than 0 or greater than 0xFFFFFFFF bytes
+    #            than 0 or greater than 0xFFFFFFFF bytes
     # @see #getSize()
     def set_size(size)
       if (size < 0 || size > 0xffffffff)
@@ -269,7 +268,7 @@ module Java::Util::Zip
     # Sets the CRC-32 checksum of the uncompressed entry data.
     # @param crc the CRC-32 value
     # @exception IllegalArgumentException if the specified CRC-32 value is
-    # less than 0 or greater than 0xFFFFFFFF
+    #            less than 0 or greater than 0xFFFFFFFF
     # @see #getCrc()
     def set_crc(crc)
       if (crc < 0 || crc > 0xffffffff)
@@ -292,7 +291,7 @@ module Java::Util::Zip
     # Sets the compression method for the entry.
     # @param method the compression method, either STORED or DEFLATED
     # @exception IllegalArgumentException if the specified compression
-    # method is invalid
+    #            method is invalid
     # @see #getMethod()
     def set_method(method)
       if (!(method).equal?(STORED) && !(method).equal?(DEFLATED))
@@ -313,7 +312,7 @@ module Java::Util::Zip
     # Sets the optional extra field data for the entry.
     # @param extra the extra field data bytes
     # @exception IllegalArgumentException if the length of the specified
-    # extra field data is greater than 0xFFFF bytes
+    #            extra field data is greater than 0xFFFF bytes
     # @see #getExtra()
     def set_extra(extra)
       if (!(extra).nil? && extra.attr_length > 0xffff)
@@ -334,7 +333,7 @@ module Java::Util::Zip
     # Sets the optional comment string for the entry.
     # @param comment the comment string
     # @exception IllegalArgumentException if the length of the specified
-    # comment string is greater than 0xFFFF bytes
+    #            comment string is greater than 0xFFFF bytes
     # @see #getComment()
     def set_comment(comment)
       if (!(comment).nil? && comment.length > 0xffff / 3 && ZipOutputStream.get_utf8length(comment) > 0xffff)
@@ -369,7 +368,7 @@ module Java::Util::Zip
       typesig { [::Java::Long] }
       # Converts DOS time to Java time (number of milliseconds since epoch).
       def dos_to_java_time(dtime)
-        d = JavaDate.new(RJava.cast_to_int((((dtime >> 25) & 0x7f) + 80)), RJava.cast_to_int((((dtime >> 21) & 0xf) - 1)), RJava.cast_to_int(((dtime >> 16) & 0x1f)), RJava.cast_to_int(((dtime >> 11) & 0x1f)), RJava.cast_to_int(((dtime >> 5) & 0x3f)), RJava.cast_to_int(((dtime << 1) & 0x3e)))
+        d = JavaDate.new(((((dtime >> 25) & 0x7f) + 80)).to_int, ((((dtime >> 21) & 0xf) - 1)).to_int, (((dtime >> 16) & 0x1f)).to_int, (((dtime >> 11) & 0x1f)).to_int, (((dtime >> 5) & 0x3f)).to_int, (((dtime << 1) & 0x3e)).to_int)
         return d.get_time
       end
       

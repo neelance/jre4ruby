@@ -42,15 +42,15 @@ module Sun::Security::Ssl
   
   # The new X509 key manager implementation. The main differences to the
   # old SunX509 key manager are:
-  # . it is based around the KeyStore.Builder API. This allows it to use
-  # other forms of KeyStore protection or password input (e.g. a
-  # CallbackHandler) or to have keys within one KeyStore protected by
-  # different keys.
-  # . it can use multiple KeyStores at the same time.
-  # . it is explicitly designed to accomodate KeyStores that change over
-  # the lifetime of the process.
-  # . it makes an effort to choose the key that matches best, i.e. one that
-  # is not expired and has the appropriate certificate extensions.
+  #  . it is based around the KeyStore.Builder API. This allows it to use
+  #    other forms of KeyStore protection or password input (e.g. a
+  #    CallbackHandler) or to have keys within one KeyStore protected by
+  #    different keys.
+  #  . it can use multiple KeyStores at the same time.
+  #  . it is explicitly designed to accomodate KeyStores that change over
+  #    the lifetime of the process.
+  #  . it makes an effort to choose the key that matches best, i.e. one that
+  #    is not expired and has the appropriate certificate extensions.
   # 
   # Note that this code is not explicitly performance optimzied yet.
   # 
@@ -140,7 +140,9 @@ module Sun::Security::Ssl
     }
     
     typesig { [String] }
+    # 
     # public methods
+    # 
     def get_certificate_chain(alias_)
       entry = get_entry(alias_)
       return (entry).nil? ? nil : entry.get_certificate_chain
@@ -183,6 +185,7 @@ module Sun::Security::Ssl
     end
     
     typesig { [EntryStatus] }
+    # 
     # implementation private methods
     # 
     # we construct the alias we return to JSSE as seen in the code below
@@ -309,15 +312,15 @@ module Sun::Security::Ssl
     typesig { [JavaList, Array.typed(Principal), CheckType] }
     # Return the best alias that fits the given parameters.
     # The algorithm we use is:
-    # . scan through all the aliases in all builders in order
-    # . as soon as we find a perfect match, return
-    # (i.e. a match with a cert that has appropriate key usage
-    # and is not expired).
-    # . if we do not find a perfect match, keep looping and remember
-    # the imperfect matches
-    # . at the end, sort the imperfect matches. we prefer expired certs
-    # with appropriate key usage to certs with the wrong key usage.
-    # return the first one of them.
+    #   . scan through all the aliases in all builders in order
+    #   . as soon as we find a perfect match, return
+    #     (i.e. a match with a cert that has appropriate key usage
+    #      and is not expired).
+    #   . if we do not find a perfect match, keep looping and remember
+    #     the imperfect matches
+    #   . at the end, sort the imperfect matches. we prefer expired certs
+    #     with appropriate key usage to certs with the wrong key usage.
+    #     return the first one of them.
     def choose_alias(key_type_list, issuers, check_type)
       if ((key_type_list).nil? || (key_type_list.size).equal?(0))
         return nil
@@ -698,10 +701,10 @@ module Sun::Security::Ssl
     # Return a List of all candidate matches in the specified builder
     # that fit the parameters.
     # We exclude entries in the KeyStore if they are not:
-    # . private key entries
-    # . the certificates are not X509 certificates
-    # . the algorithm of the key in the EE cert doesn't match one of keyTypes
-    # . none of the certs is issued by a Principal in issuerSet
+    #  . private key entries
+    #  . the certificates are not X509 certificates
+    #  . the algorithm of the key in the EE cert doesn't match one of keyTypes
+    #  . none of the certs is issued by a Principal in issuerSet
     # Using those entries would not be possible or they would almost
     # certainly be rejected by the peer.
     # 
@@ -712,13 +715,13 @@ module Sun::Security::Ssl
     # messages if the cert expires from one day to the next.
     # 
     # The return values are:
-    # . null, if there are no matching entries at all
-    # . if 'findAll' is 'false' and there is a perfect match, a List
-    # with a single element (early return)
-    # . if 'findAll' is 'false' and there is NO perfect match, a List
-    # with all the imperfect matches (expired, wrong extensions)
-    # . if 'findAll' is 'true', a List with all perfect and imperfect
-    # matches
+    #   . null, if there are no matching entries at all
+    #   . if 'findAll' is 'false' and there is a perfect match, a List
+    #     with a single element (early return)
+    #   . if 'findAll' is 'false' and there is NO perfect match, a List
+    #     with all the imperfect matches (expired, wrong extensions)
+    #   . if 'findAll' is 'true', a List with all perfect and imperfect
+    #     matches
     def get_aliases(builder_index, key_types, issuer_set, find_all, check_type)
       builder = @builders.get(builder_index)
       ks = builder.get_key_store

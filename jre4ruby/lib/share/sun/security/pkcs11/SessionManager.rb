@@ -145,7 +145,7 @@ module Sun::Security::Pkcs11
           n = DEFAULT_MAX_SESSIONS
         end
       end
-      @max_sessions = RJava.cast_to_int(Math.min(n, JavaInteger::MAX_VALUE))
+      @max_sessions = (Math.min(n, JavaInteger::MAX_VALUE)).to_int
       @token = token
       @obj_sessions = Pool.new(self)
       @op_sessions = Pool.new(self)

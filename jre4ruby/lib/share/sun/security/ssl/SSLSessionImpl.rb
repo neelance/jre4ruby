@@ -441,11 +441,13 @@ module Sun::Security::Ssl
     # such as Kerberos, will throw an SSLPeerUnverifiedException.
     # 
     # @return array of peer X.509 certs, with the peer's own cert
-    # first in the chain, and with the "root" CA last.
+    #  first in the chain, and with the "root" CA last.
     def get_peer_certificates
+      # 
       # clone to preserve integrity of session ... caller can't
       # change record of peer identity even by accident, much
       # less do it intentionally.
+      # 
       if (((@cipher_suite.attr_key_exchange).equal?(K_KRB5)) || ((@cipher_suite.attr_key_exchange).equal?(K_KRB5_EXPORT)))
         raise SSLPeerUnverifiedException.new("no certificates expected" + " for Kerberos cipher suites")
       end
@@ -465,8 +467,9 @@ module Sun::Security::Ssl
     # cipher suites.
     # 
     # @return array of peer X.509 certs, with the peer's own cert
-    # first in the chain, and with the "root" CA last.
+    #  first in the chain, and with the "root" CA last.
     def get_local_certificates
+      # 
       # clone to preserve integrity of session ... caller can't
       # change record of peer identity even by accident, much
       # less do it intentionally.
@@ -481,11 +484,13 @@ module Sun::Security::Ssl
     # such as Kerberos, will throw an SSLPeerUnverifiedException.
     # 
     # @return array of peer X.509 certs, with the peer's own cert
-    # first in the chain, and with the "root" CA last.
+    #  first in the chain, and with the "root" CA last.
     def get_peer_certificate_chain
+      # 
       # clone to preserve integrity of session ... caller can't
       # change record of peer identity even by accident, much
       # less do it intentionally.
+      # 
       if (((@cipher_suite.attr_key_exchange).equal?(K_KRB5)) || ((@cipher_suite.attr_key_exchange).equal?(K_KRB5_EXPORT)))
         raise SSLPeerUnverifiedException.new("no certificates expected" + " for Kerberos cipher suites")
       end
@@ -517,7 +522,7 @@ module Sun::Security::Ssl
     # such as Kerberos, will throw an SSLPeerUnverifiedException.
     # 
     # @return array of peer X.509 certs, with the peer's own cert
-    # first in the chain, and with the "root" CA last.
+    #  first in the chain, and with the "root" CA last.
     def get_certificate_chain
       # clone to preserve integrity of session ... caller can't
       # change record of peer identity even by accident, much
@@ -541,7 +546,7 @@ module Sun::Security::Ssl
     # KerberosPrincipal for Kerberos cipher suites.
     # 
     # @throws SSLPeerUnverifiedException if the peer's identity has not
-    # been verified
+    #          been verified
     def get_peer_principal
       if (((@cipher_suite.attr_key_exchange).equal?(K_KRB5)) || ((@cipher_suite.attr_key_exchange).equal?(K_KRB5_EXPORT)))
         if ((@peer_principal).nil?)
@@ -625,9 +630,11 @@ module Sun::Security::Ssl
     # no connections will be able to rejoin this session.
     def invalidate
       synchronized(self) do
+        # 
         # Can't invalidate the NULL session -- this would be
         # attempted when we get a handshaking error on a brand
         # new connection, with no "real" session yet.
+        # 
         if ((self).equal?(NullSession))
           return
         end

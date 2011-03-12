@@ -123,11 +123,10 @@ module Java::Nio::Channels
     
     typesig { [] }
     # Internal state:
-    # keySet, may be empty but is never null, typ. a tiny array
-    # boolean isRegistered, protected by key set
-    # regLock, lock object to prevent duplicate registrations
-    # boolean isBlocking, protected by regLock
-    # 
+    #   keySet, may be empty but is never null, typ. a tiny array
+    #   boolean isRegistered, protected by key set
+    #   regLock, lock object to prevent duplicate registrations
+    #   boolean isBlocking, protected by regLock
     # Tells whether or not this channel is currently registered with any
     # selectors.  A newly-created channel is not registered.
     # 
@@ -142,21 +141,21 @@ module Java::Nio::Channels
     end
     
     typesig { [Selector] }
-    # sync(keySet) { return isRegistered; }
     # 
+    # sync(keySet) { return isRegistered; }
     # Retrieves the key representing the channel's registration with the given
     # selector.  </p>
     # 
     # @return  The key returned when this channel was last registered with the
-    # given selector, or <tt>null</tt> if this channel is not
-    # currently registered with that selector
+    #          given selector, or <tt>null</tt> if this channel is not
+    #          currently registered with that selector
     def key_for(sel)
       raise NotImplementedError
     end
     
     typesig { [Selector, ::Java::Int, Object] }
-    # sync(keySet) { return findKey(sel); }
     # 
+    # sync(keySet) { return findKey(sel); }
     # Registers this channel with the given selector, returning a selection
     # key.
     # 
@@ -186,50 +185,50 @@ module Java::Nio::Channels
     # therefore be invalid. </p>
     # 
     # @param  sel
-    # The selector with which this channel is to be registered
+    #         The selector with which this channel is to be registered
     # 
     # @param  ops
-    # The interest set for the resulting key
+    #         The interest set for the resulting key
     # 
     # @param  att
-    # The attachment for the resulting key; may be <tt>null</tt>
+    #         The attachment for the resulting key; may be <tt>null</tt>
     # 
     # @throws  ClosedChannelException
-    # If this channel is closed
+    #          If this channel is closed
     # 
     # @throws  IllegalBlockingModeException
-    # If this channel is in blocking mode
+    #          If this channel is in blocking mode
     # 
     # @throws  IllegalSelectorException
-    # If this channel was not created by the same provider
-    # as the given selector
+    #          If this channel was not created by the same provider
+    #          as the given selector
     # 
     # @throws  CancelledKeyException
-    # If this channel is currently registered with the given selector
-    # but the corresponding key has already been cancelled
+    #          If this channel is currently registered with the given selector
+    #          but the corresponding key has already been cancelled
     # 
     # @throws  IllegalArgumentException
-    # If a bit in the <tt>ops</tt> set does not correspond to an
-    # operation that is supported by this channel, that is, if
-    # <tt>set & ~validOps() != 0</tt>
+    #          If a bit in the <tt>ops</tt> set does not correspond to an
+    #          operation that is supported by this channel, that is, if
+    #          <tt>set & ~validOps() != 0</tt>
     # 
     # @return  A key representing the registration of this channel with
-    # the given selector
+    #          the given selector
     def register(sel, ops, att)
       raise NotImplementedError
     end
     
     typesig { [Selector, ::Java::Int] }
-    # sync(regLock) {
-    # sync(keySet) { look for selector }
-    # if (channel found) { set interest ops -- may block in selector;
-    # return key; }
-    # create new key -- may block somewhere in selector;
-    # sync(keySet) { add key; }
-    # attach(attachment);
-    # return key;
-    # }
     # 
+    # sync(regLock) {
+    #   sync(keySet) { look for selector }
+    #   if (channel found) { set interest ops -- may block in selector;
+    #                        return key; }
+    #   create new key -- may block somewhere in selector;
+    #   sync(keySet) { add key; }
+    #   attach(attachment);
+    #   return key;
+    # }
     # Registers this channel with the given selector, returning a selection
     # key.
     # 
@@ -244,32 +243,32 @@ module Java::Nio::Channels
     # register}(sel, ops, null)</tt></blockquote>
     # 
     # @param  sel
-    # The selector with which this channel is to be registered
+    #         The selector with which this channel is to be registered
     # 
     # @param  ops
-    # The interest set for the resulting key
+    #         The interest set for the resulting key
     # 
     # @throws  ClosedChannelException
-    # If this channel is closed
+    #          If this channel is closed
     # 
     # @throws  IllegalBlockingModeException
-    # If this channel is in blocking mode
+    #          If this channel is in blocking mode
     # 
     # @throws  IllegalSelectorException
-    # If this channel was not created by the same provider
-    # as the given selector
+    #          If this channel was not created by the same provider
+    #          as the given selector
     # 
     # @throws  CancelledKeyException
-    # If this channel is currently registered with the given selector
-    # but the corresponding key has already been cancelled
+    #          If this channel is currently registered with the given selector
+    #          but the corresponding key has already been cancelled
     # 
     # @throws  IllegalArgumentException
-    # If a bit in <tt>ops</tt> does not correspond to an operation
-    # that is supported by this channel, that is, if <tt>set &
-    # ~validOps() != 0</tt>
+    #          If a bit in <tt>ops</tt> does not correspond to an operation
+    #          that is supported by this channel, that is, if <tt>set &
+    #          ~validOps() != 0</tt>
     # 
     # @return  A key representing the registration of this channel with
-    # the given selector
+    #          the given selector
     def register(sel, ops)
       return register(sel, ops, nil)
     end
@@ -291,30 +290,30 @@ module Java::Nio::Channels
     # then it will first block until the other operation is complete. </p>
     # 
     # @param  block  If <tt>true</tt> then this channel will be placed in
-    # blocking mode; if <tt>false</tt> then it will be placed
-    # non-blocking mode
+    #                blocking mode; if <tt>false</tt> then it will be placed
+    #                non-blocking mode
     # 
     # @return  This selectable channel
     # 
     # @throws  ClosedChannelException
-    # If this channel is closed
+    #          If this channel is closed
     # 
     # @throws  IllegalBlockingModeException
-    # If <tt>block</tt> is <tt>true</tt> and this channel is
-    # registered with one or more selectors
+    #          If <tt>block</tt> is <tt>true</tt> and this channel is
+    #          registered with one or more selectors
     # 
     # @throws IOException
-    # If an I/O error occurs
+    #         If an I/O error occurs
     def configure_blocking(block)
       raise NotImplementedError
     end
     
     typesig { [] }
-    # sync(regLock) {
-    # sync(keySet) { throw IBME if block && isRegistered; }
-    # change mode;
-    # }
     # 
+    # sync(regLock) {
+    #   sync(keySet) { throw IBME if block && isRegistered; }
+    #   change mode;
+    # }
     # Tells whether or not every I/O operation on this channel will block
     # until it completes.  A newly-created channel is always in blocking mode.
     # 

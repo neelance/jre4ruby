@@ -51,64 +51,64 @@ module Sun::Security::Provider::Certpath
   # in RFC 2560 and the ASN.1 encoding is as follows:
   # <pre>
   # 
-  # OCSPResponse ::= SEQUENCE {
-  # responseStatus         OCSPResponseStatus,
-  # responseBytes          [0] EXPLICIT ResponseBytes OPTIONAL }
+  #  OCSPResponse ::= SEQUENCE {
+  #      responseStatus         OCSPResponseStatus,
+  #      responseBytes          [0] EXPLICIT ResponseBytes OPTIONAL }
   # 
-  # OCSPResponseStatus ::= ENUMERATED {
-  # successful            (0),  --Response has valid confirmations
-  # malformedRequest      (1),  --Illegal confirmation request
-  # internalError         (2),  --Internal error in issuer
-  # tryLater              (3),  --Try again later
-  # --(4) is not used
-  # sigRequired           (5),  --Must sign the request
-  # unauthorized          (6)   --Request unauthorized
-  # }
+  #   OCSPResponseStatus ::= ENUMERATED {
+  #       successful            (0),  --Response has valid confirmations
+  #       malformedRequest      (1),  --Illegal confirmation request
+  #       internalError         (2),  --Internal error in issuer
+  #       tryLater              (3),  --Try again later
+  #                                   --(4) is not used
+  #       sigRequired           (5),  --Must sign the request
+  #       unauthorized          (6)   --Request unauthorized
+  #   }
   # 
-  # ResponseBytes ::=       SEQUENCE {
-  # responseType   OBJECT IDENTIFIER,
-  # response       OCTET STRING }
+  #   ResponseBytes ::=       SEQUENCE {
+  #       responseType   OBJECT IDENTIFIER,
+  #       response       OCTET STRING }
   # 
-  # BasicOCSPResponse       ::= SEQUENCE {
-  # tbsResponseData      ResponseData,
-  # signatureAlgorithm   AlgorithmIdentifier,
-  # signature            BIT STRING,
-  # certs                [0] EXPLICIT SEQUENCE OF Certificate OPTIONAL }
+  #   BasicOCSPResponse       ::= SEQUENCE {
+  #      tbsResponseData      ResponseData,
+  #      signatureAlgorithm   AlgorithmIdentifier,
+  #      signature            BIT STRING,
+  #      certs                [0] EXPLICIT SEQUENCE OF Certificate OPTIONAL }
   # 
-  # The value for signature SHALL be computed on the hash of the DER
-  # encoding ResponseData.
+  #   The value for signature SHALL be computed on the hash of the DER
+  #   encoding ResponseData.
   # 
-  # ResponseData ::= SEQUENCE {
-  # version              [0] EXPLICIT Version DEFAULT v1,
-  # responderID              ResponderID,
-  # producedAt               GeneralizedTime,
-  # responses                SEQUENCE OF SingleResponse,
-  # responseExtensions   [1] EXPLICIT Extensions OPTIONAL }
+  #   ResponseData ::= SEQUENCE {
+  #      version              [0] EXPLICIT Version DEFAULT v1,
+  #      responderID              ResponderID,
+  #      producedAt               GeneralizedTime,
+  #      responses                SEQUENCE OF SingleResponse,
+  #      responseExtensions   [1] EXPLICIT Extensions OPTIONAL }
   # 
-  # ResponderID ::= CHOICE {
-  # byName               [1] Name,
-  # byKey                [2] KeyHash }
+  #   ResponderID ::= CHOICE {
+  #      byName               [1] Name,
+  #      byKey                [2] KeyHash }
   # 
-  # KeyHash ::= OCTET STRING -- SHA-1 hash of responder's public key
-  # (excluding the tag and length fields)
+  #   KeyHash ::= OCTET STRING -- SHA-1 hash of responder's public key
+  #   (excluding the tag and length fields)
   # 
-  # SingleResponse ::= SEQUENCE {
-  # certID                       CertID,
-  # certStatus                   CertStatus,
-  # thisUpdate                   GeneralizedTime,
-  # nextUpdate         [0]       EXPLICIT GeneralizedTime OPTIONAL,
-  # singleExtensions   [1]       EXPLICIT Extensions OPTIONAL }
+  #   SingleResponse ::= SEQUENCE {
+  #      certID                       CertID,
+  #      certStatus                   CertStatus,
+  #      thisUpdate                   GeneralizedTime,
+  #      nextUpdate         [0]       EXPLICIT GeneralizedTime OPTIONAL,
+  #      singleExtensions   [1]       EXPLICIT Extensions OPTIONAL }
   # 
-  # CertStatus ::= CHOICE {
-  # good        [0]     IMPLICIT NULL,
-  # revoked     [1]     IMPLICIT RevokedInfo,
-  # unknown     [2]     IMPLICIT UnknownInfo }
+  #   CertStatus ::= CHOICE {
+  #       good        [0]     IMPLICIT NULL,
+  #       revoked     [1]     IMPLICIT RevokedInfo,
+  #       unknown     [2]     IMPLICIT UnknownInfo }
   # 
-  # RevokedInfo ::= SEQUENCE {
-  # revocationTime              GeneralizedTime,
-  # revocationReason    [0]     EXPLICIT CRLReason OPTIONAL }
+  #   RevokedInfo ::= SEQUENCE {
+  #       revocationTime              GeneralizedTime,
+  #       revocationReason    [0]     EXPLICIT CRLReason OPTIONAL }
   # 
-  # UnknownInfo ::= NULL -- this can be replaced with an enumeration
+  #   UnknownInfo ::= NULL -- this can be replaced with an enumeration
   # 
   # </pre>
   # 
@@ -170,7 +170,6 @@ module Sun::Security::Provider::Certpath
     
     typesig { [Array.typed(::Java::Byte), PKIXParameters, X509Certificate] }
     # Create an OCSP response from its ASN.1 DER encoding.
-    # 
     # used by OCSPChecker
     def initialize(bytes, params, responder_cert)
       @single_response = nil
@@ -393,7 +392,6 @@ module Sun::Security::Provider::Certpath
     
     typesig { [SerialNumber] }
     # Return the revocation status code for a given certificate.
-    # 
     # used by OCSPChecker
     def get_cert_status(sn)
       # ignore serial number for now; if we support multiple
@@ -433,7 +431,6 @@ module Sun::Security::Provider::Certpath
       
       typesig { [::Java::Int] }
       # Map a certificate's revocation status code to a string.
-      # 
       # used by OCSPChecker
       def cert_status_to_text(cert_status)
         case (cert_status)

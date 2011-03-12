@@ -255,11 +255,11 @@ module Java::Lang::Reflect
     # variables.
     # 
     # @return an array of {@code TypeVariable} objects that represent
-    # the type variables declared by this generic declaration
+    #     the type variables declared by this generic declaration
     # @throws GenericSignatureFormatError if the generic
-    # signature of this generic declaration does not conform to
-    # the format specified in the Java Virtual Machine Specification,
-    # 3rd edition
+    #     signature of this generic declaration does not conform to
+    #     the format specified in the Java Virtual Machine Specification,
+    #     3rd edition
     # @since 1.5
     def get_type_parameters
       if (!(get_signature).nil?)
@@ -295,16 +295,16 @@ module Java::Lang::Reflect
     # type, it is created. Otherwise, it is resolved.
     # 
     # @return an array of {@code Type}s that represent the formal
-    # parameter types of the underlying method, in declaration order
+    #     parameter types of the underlying method, in declaration order
     # @throws GenericSignatureFormatError
-    # if the generic method signature does not conform to the format
-    # specified in the Java Virtual Machine Specification, 3rd edition
+    #     if the generic method signature does not conform to the format
+    #     specified in the Java Virtual Machine Specification, 3rd edition
     # @throws TypeNotPresentException if any of the parameter
-    # types of the underlying method refers to a non-existent type
-    # declaration
+    #     types of the underlying method refers to a non-existent type
+    #     declaration
     # @throws MalformedParameterizedTypeException if any of
-    # the underlying method's parameter types refer to a parameterized
-    # type that cannot be instantiated for any reason
+    #     the underlying method's parameter types refer to a parameterized
+    #     type that cannot be instantiated for any reason
     # @since 1.5
     def get_generic_parameter_types
       if (!(get_signature).nil?)
@@ -340,15 +340,15 @@ module Java::Lang::Reflect
     # type, it is created. Otherwise, it is resolved.
     # 
     # @return an array of Types that represent the exception types
-    # thrown by the underlying method
+    #     thrown by the underlying method
     # @throws GenericSignatureFormatError
-    # if the generic method signature does not conform to the format
-    # specified in the Java Virtual Machine Specification, 3rd edition
+    #     if the generic method signature does not conform to the format
+    #     specified in the Java Virtual Machine Specification, 3rd edition
     # @throws TypeNotPresentException if the underlying method's
-    # {@code throws} clause refers to a non-existent type declaration
+    #     {@code throws} clause refers to a non-existent type declaration
     # @throws MalformedParameterizedTypeException if
-    # the underlying method's {@code throws} clause refers to a
-    # parameterized type that cannot be instantiated for any reason
+    #     the underlying method's {@code throws} clause refers to a
+    #     parameterized type that cannot be instantiated for any reason
     # @since 1.5
     def get_generic_exception_types
       result = nil
@@ -401,7 +401,7 @@ module Java::Lang::Reflect
     # followed by a parenthesized, comma-separated list of the
     # constructor's formal parameter types.  For example:
     # <pre>
-    # public java.util.Hashtable(int,float)
+    #    public java.util.Hashtable(int,float)
     # </pre>
     # 
     # <p>The only possible modifiers for constructors are the access
@@ -557,21 +557,21 @@ module Java::Lang::Reflect
     # this object represents
     # 
     # @exception IllegalAccessException    if this {@code Constructor} object
-    # enforces Java language access control and the underlying
-    # constructor is inaccessible.
+    #              enforces Java language access control and the underlying
+    #              constructor is inaccessible.
     # @exception IllegalArgumentException  if the number of actual
-    # and formal parameters differ; if an unwrapping
-    # conversion for primitive arguments fails; or if,
-    # after possible unwrapping, a parameter value
-    # cannot be converted to the corresponding formal
-    # parameter type by a method invocation conversion; if
-    # this constructor pertains to an enum type.
+    #              and formal parameters differ; if an unwrapping
+    #              conversion for primitive arguments fails; or if,
+    #              after possible unwrapping, a parameter value
+    #              cannot be converted to the corresponding formal
+    #              parameter type by a method invocation conversion; if
+    #              this constructor pertains to an enum type.
     # @exception InstantiationException    if the class that declares the
-    # underlying constructor represents an abstract class.
+    #              underlying constructor represents an abstract class.
     # @exception InvocationTargetException if the underlying constructor
-    # throws an exception.
+    #              throws an exception.
     # @exception ExceptionInInitializerError if the initialization provoked
-    # by this method fails.
+    #              by this method fails.
     def new_instance(*initargs)
       if (!self.attr_override)
         if (!Reflection.quick_check_member_access(@clazz, @modifiers))
@@ -728,8 +728,8 @@ module Java::Lang::Reflect
     # other callers.
     # 
     # @return an array of arrays that represent the annotations on the formal
-    # parameters, in declaration order, of the method represented by this
-    # Constructor object
+    #    parameters, in declaration order, of the method represented by this
+    #    Constructor object
     # @since 1.5
     def get_parameter_annotations
       num_parameters = @parameter_types.attr_length
@@ -740,7 +740,7 @@ module Java::Lang::Reflect
       if (!(result.attr_length).equal?(num_parameters))
         declaring_class = get_declaring_class
         if (declaring_class.is_enum || declaring_class.is_anonymous_class || declaring_class.is_local_class)
-        # Can't do reliable parameter counting
+          # Can't do reliable parameter counting
         else
           # top-level
           # Check for the enclosing instance parameter for

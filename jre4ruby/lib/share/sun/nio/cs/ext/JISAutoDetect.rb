@@ -205,8 +205,8 @@ module Sun::Nio::Cs::Ext
             end
             # We need to perform double, not float, arithmetic; otherwise
             # we lose low order bits when src is larger than 2**24.
-            cbufsiz = RJava.cast_to_int((src.limit * (max_chars_per_byte).to_f))
-            sandbox = CharBuffer.allocate(cbufsiz)
+            cbufsiz = ((src.limit * (max_chars_per_byte).to_f)).to_int
+            sandbox = CharBuffer.allocate_(cbufsiz)
             # First try ISO-2022-JP, since there is no ambiguity
             cs2022 = Charset.for_name("ISO-2022-JP")
             dd2022 = cs2022.new_decoder
@@ -228,7 +228,7 @@ module Sun::Nio::Cs::Ext
             end
             dd_sjis = cs_sjis.new_decoder
             src_sjis = src.as_read_only_buffer
-            sandbox_sjis = CharBuffer.allocate(cbufsiz)
+            sandbox_sjis = CharBuffer.allocate_(cbufsiz)
             res_sjis = dd_sjis.decode_loop(src_sjis, sandbox_sjis)
             # If SJIS decoding fails, must be EUC
             if (res_sjis.is_error)

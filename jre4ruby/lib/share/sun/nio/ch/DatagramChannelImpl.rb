@@ -901,14 +901,14 @@ module Sun::Nio::Ch
     
     JNI.load_native_method :Java_sun_nio_ch_DatagramChannelImpl_receive0, [:pointer, :long, :long, :int64, :int32, :int8], :int32
     typesig { [FileDescriptor, ::Java::Long, ::Java::Int, ::Java::Boolean] }
-    def receive0(fd, address, len, connected)
-      JNI.call_native_method(:Java_sun_nio_ch_DatagramChannelImpl_receive0, JNI.env, self.jni_id, fd.jni_id, address.to_int, len.to_int, connected ? 1 : 0)
+    def receive0(fd, address_, len, connected)
+      JNI.call_native_method(:Java_sun_nio_ch_DatagramChannelImpl_receive0, JNI.env, self.jni_id, fd.jni_id, address_.to_int, len.to_int, connected ? 1 : 0)
     end
     
     JNI.load_native_method :Java_sun_nio_ch_DatagramChannelImpl_send0, [:pointer, :long, :long, :int64, :int32, :long], :int32
     typesig { [FileDescriptor, ::Java::Long, ::Java::Int, SocketAddress] }
-    def send0(fd, address, len, sa)
-      JNI.call_native_method(:Java_sun_nio_ch_DatagramChannelImpl_send0, JNI.env, self.jni_id, fd.jni_id, address.to_int, len.to_int, sa.jni_id)
+    def send0(fd, address_, len, sa)
+      JNI.call_native_method(:Java_sun_nio_ch_DatagramChannelImpl_send0, JNI.env, self.jni_id, fd.jni_id, address_.to_int, len.to_int, sa.jni_id)
     end
     
     class_module.module_eval {

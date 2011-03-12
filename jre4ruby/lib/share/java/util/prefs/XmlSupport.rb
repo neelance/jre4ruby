@@ -70,11 +70,11 @@ module Java::Util::Prefs
       # an XML document conforming to the definition in the Preferences spec.
       # 
       # @throws IOException if writing to the specified output stream
-      # results in an <tt>IOException</tt>.
+      #         results in an <tt>IOException</tt>.
       # @throws BackingStoreException if preference data cannot be read from
-      # backing store.
+      #         backing store.
       # @throws IllegalStateException if this node (or an ancestor) has been
-      # removed with the {@link #removeNode()} method.
+      #         removed with the {@link #removeNode()} method.
       def export(os, p, sub_tree)
         if ((p).is_removed)
           raise IllegalStateException.new("Node has been removed")
@@ -114,8 +114,8 @@ module Java::Util::Prefs
       # Preferences node and recurse.
       # 
       # @throws BackingStoreException if it is not possible to read
-      # the preferences or children out of the specified
-      # preferences node.
+      #         the preferences or children out of the specified
+      #         preferences node.
       def put_preferences_in_xml(elt, doc, prefs, sub_tree)
         kids_copy = nil
         kid_names = nil
@@ -170,9 +170,9 @@ module Java::Util::Prefs
       # spec.
       # 
       # @throws IOException if reading from the specified output stream
-      # results in an <tt>IOException</tt>.
+      #         results in an <tt>IOException</tt>.
       # @throws InvalidPreferencesFormatException Data on input stream does not
-      # constitute a valid XML document with the mandated document type.
+      #         constitute a valid XML document with the mandated document type.
       def import_preferences(is)
         begin
           doc = load_prefs_doc(is)
@@ -301,7 +301,7 @@ module Java::Util::Prefs
       # as the internal (undocumented) format for FileSystemPrefs.
       # 
       # @throws IOException if writing to the specified output stream
-      # results in an <tt>IOException</tt>.
+      #         results in an <tt>IOException</tt>.
       def export_map(os, map)
         doc = create_prefs_doc("map")
         xml_map = doc.get_document_element
@@ -325,9 +325,9 @@ module Java::Util::Prefs
       # the key-value pairs int the XML-document when this method returns.)
       # 
       # @throws IOException if reading from the specified output stream
-      # results in an <tt>IOException</tt>.
+      #         results in an <tt>IOException</tt>.
       # @throws InvalidPreferencesFormatException Data on input stream does not
-      # constitute a valid XML document with the mandated document type.
+      #         constitute a valid XML document with the mandated document type.
       def import_map(is, m)
         begin
           doc = load_prefs_doc(is)

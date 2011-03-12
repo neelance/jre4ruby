@@ -47,7 +47,7 @@ module Java::Util::Prefs
     # cause.
     # 
     # @param  cause the cause (which is saved for later retrieval by the
-    # {@link Throwable#getCause()} method).
+    #         {@link Throwable#getCause()} method).
     def initialize(cause)
       super(cause)
     end
@@ -57,7 +57,7 @@ module Java::Util::Prefs
     # detail message.
     # 
     # @param   message   the detail message. The detail message is saved for
-    # later retrieval by the {@link Throwable#getMessage()} method.
+    #          later retrieval by the {@link Throwable#getMessage()} method.
     def initialize(message)
       super(message)
     end
@@ -67,9 +67,9 @@ module Java::Util::Prefs
     # detail message and cause.
     # 
     # @param  message   the detail message. The detail message is saved for
-    # later retrieval by the {@link Throwable#getMessage()} method.
+    #         later retrieval by the {@link Throwable#getMessage()} method.
     # @param  cause the cause (which is saved for later retrieval by the
-    # {@link Throwable#getCause()} method).
+    #         {@link Throwable#getCause()} method).
     def initialize(message, cause)
       super(message, cause)
     end

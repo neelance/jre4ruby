@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5::Internal
@@ -42,17 +40,17 @@ module Sun::Security::Krb5::Internal
   # 
   # <xmp>
   # EncTicketPart   ::= [APPLICATION 3] SEQUENCE {
-  # flags                   [0] TicketFlags,
-  # key                     [1] EncryptionKey,
-  # crealm                  [2] Realm,
-  # cname                   [3] PrincipalName,
-  # transited               [4] TransitedEncoding,
-  # authtime                [5] KerberosTime,
-  # starttime               [6] KerberosTime OPTIONAL,
-  # endtime                 [7] KerberosTime,
-  # renew-till              [8] KerberosTime OPTIONAL,
-  # caddr                   [9] HostAddresses OPTIONAL,
-  # authorization-data      [10] AuthorizationData OPTIONAL
+  #         flags                   [0] TicketFlags,
+  #         key                     [1] EncryptionKey,
+  #         crealm                  [2] Realm,
+  #         cname                   [3] PrincipalName,
+  #         transited               [4] TransitedEncoding,
+  #         authtime                [5] KerberosTime,
+  #         starttime               [6] KerberosTime OPTIONAL,
+  #         endtime                 [7] KerberosTime,
+  #         renew-till              [8] KerberosTime OPTIONAL,
+  #         caddr                   [9] HostAddresses OPTIONAL,
+  #         authorization-data      [10] AuthorizationData OPTIONAL
   # }
   # </xmp>
   # 

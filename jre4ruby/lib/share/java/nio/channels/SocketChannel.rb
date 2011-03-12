@@ -119,7 +119,7 @@ module Java::Nio::Channels
       # @return  A new socket channel
       # 
       # @throws  IOException
-      # If an I/O error occurs
+      #          If an I/O error occurs
       def open
         return SelectorProvider.provider.open_socket_channel
       end
@@ -133,30 +133,30 @@ module Java::Nio::Channels
       # returning that channel.  </p>
       # 
       # @param  remote
-      # The remote address to which the new channel is to be connected
+      #         The remote address to which the new channel is to be connected
       # 
       # @throws  AsynchronousCloseException
-      # If another thread closes this channel
-      # while the connect operation is in progress
+      #          If another thread closes this channel
+      #          while the connect operation is in progress
       # 
       # @throws  ClosedByInterruptException
-      # If another thread interrupts the current thread
-      # while the connect operation is in progress, thereby
-      # closing the channel and setting the current thread's
-      # interrupt status
+      #          If another thread interrupts the current thread
+      #          while the connect operation is in progress, thereby
+      #          closing the channel and setting the current thread's
+      #          interrupt status
       # 
       # @throws  UnresolvedAddressException
-      # If the given remote address is not fully resolved
+      #          If the given remote address is not fully resolved
       # 
       # @throws  UnsupportedAddressTypeException
-      # If the type of the given remote address is not supported
+      #          If the type of the given remote address is not supported
       # 
       # @throws  SecurityException
-      # If a security manager has been installed
-      # and it does not permit access to the given remote endpoint
+      #          If a security manager has been installed
+      #          and it does not permit access to the given remote endpoint
       # 
       # @throws  IOException
-      # If some other I/O error occurs
+      #          If some other I/O error occurs
       def open(remote)
         sc = open
         begin
@@ -190,7 +190,6 @@ module Java::Nio::Channels
     
     typesig { [] }
     # -- Socket-specific operations --
-    # 
     # Retrieves a socket associated with this channel.
     # 
     # <p> The returned object will not declare any public methods that are not
@@ -205,7 +204,7 @@ module Java::Nio::Channels
     # Tells whether or not this channel's network socket is connected.  </p>
     # 
     # @return  <tt>true</tt> if, and only if, this channel's network socket
-    # is connected
+    #          is connected
     def is_connected
       raise NotImplementedError
     end
@@ -215,8 +214,8 @@ module Java::Nio::Channels
     # channel.  </p>
     # 
     # @return  <tt>true</tt> if, and only if, a connection operation has been
-    # initiated on this channel but not yet completed by invoking the
-    # {@link #finishConnect finishConnect} method
+    #          initiated on this channel but not yet completed by invoking the
+    #          {@link #finishConnect finishConnect} method
     def is_connection_pending
       raise NotImplementedError
     end
@@ -249,44 +248,44 @@ module Java::Nio::Channels
     # then the channel will be closed.  </p>
     # 
     # @param  remote
-    # The remote address to which this channel is to be connected
+    #         The remote address to which this channel is to be connected
     # 
     # @return  <tt>true</tt> if a connection was established,
-    # <tt>false</tt> if this channel is in non-blocking mode
-    # and the connection operation is in progress
+    #          <tt>false</tt> if this channel is in non-blocking mode
+    #          and the connection operation is in progress
     # 
     # @throws  AlreadyConnectedException
-    # If this channel is already connected
+    #          If this channel is already connected
     # 
     # @throws  ConnectionPendingException
-    # If a non-blocking connection operation is already in progress
-    # on this channel
+    #          If a non-blocking connection operation is already in progress
+    #          on this channel
     # 
     # @throws  ClosedChannelException
-    # If this channel is closed
+    #          If this channel is closed
     # 
     # @throws  AsynchronousCloseException
-    # If another thread closes this channel
-    # while the connect operation is in progress
+    #          If another thread closes this channel
+    #          while the connect operation is in progress
     # 
     # @throws  ClosedByInterruptException
-    # If another thread interrupts the current thread
-    # while the connect operation is in progress, thereby
-    # closing the channel and setting the current thread's
-    # interrupt status
+    #          If another thread interrupts the current thread
+    #          while the connect operation is in progress, thereby
+    #          closing the channel and setting the current thread's
+    #          interrupt status
     # 
     # @throws  UnresolvedAddressException
-    # If the given remote address is not fully resolved
+    #          If the given remote address is not fully resolved
     # 
     # @throws  UnsupportedAddressTypeException
-    # If the type of the given remote address is not supported
+    #          If the type of the given remote address is not supported
     # 
     # @throws  SecurityException
-    # If a security manager has been installed
-    # and it does not permit access to the given remote endpoint
+    #          If a security manager has been installed
+    #          and it does not permit access to the given remote endpoint
     # 
     # @throws  IOException
-    # If some other I/O error occurs
+    #          If some other I/O error occurs
     def connect(remote)
       raise NotImplementedError
     end
@@ -318,71 +317,70 @@ module Java::Nio::Channels
     # will be closed.  </p>
     # 
     # @return  <tt>true</tt> if, and only if, this channel's socket is now
-    # connected
+    #          connected
     # 
     # @throws  NoConnectionPendingException
-    # If this channel is not connected and a connection operation
-    # has not been initiated
+    #          If this channel is not connected and a connection operation
+    #          has not been initiated
     # 
     # @throws  ClosedChannelException
-    # If this channel is closed
+    #          If this channel is closed
     # 
     # @throws  AsynchronousCloseException
-    # If another thread closes this channel
-    # while the connect operation is in progress
+    #          If another thread closes this channel
+    #          while the connect operation is in progress
     # 
     # @throws  ClosedByInterruptException
-    # If another thread interrupts the current thread
-    # while the connect operation is in progress, thereby
-    # closing the channel and setting the current thread's
-    # interrupt status
+    #          If another thread interrupts the current thread
+    #          while the connect operation is in progress, thereby
+    #          closing the channel and setting the current thread's
+    #          interrupt status
     # 
     # @throws  IOException
-    # If some other I/O error occurs
+    #          If some other I/O error occurs
     def finish_connect
       raise NotImplementedError
     end
     
     typesig { [ByteBuffer] }
     # -- ByteChannel operations --
-    # 
     # @throws  NotYetConnectedException
-    # If this channel is not yet connected
+    #          If this channel is not yet connected
     def read(dst)
       raise NotImplementedError
     end
     
     typesig { [Array.typed(ByteBuffer), ::Java::Int, ::Java::Int] }
     # @throws  NotYetConnectedException
-    # If this channel is not yet connected
+    #          If this channel is not yet connected
     def read(dsts, offset, length)
       raise NotImplementedError
     end
     
     typesig { [Array.typed(ByteBuffer)] }
     # @throws  NotYetConnectedException
-    # If this channel is not yet connected
+    #          If this channel is not yet connected
     def read(dsts)
       return read(dsts, 0, dsts.attr_length)
     end
     
     typesig { [ByteBuffer] }
     # @throws  NotYetConnectedException
-    # If this channel is not yet connected
+    #          If this channel is not yet connected
     def write(src)
       raise NotImplementedError
     end
     
     typesig { [Array.typed(ByteBuffer), ::Java::Int, ::Java::Int] }
     # @throws  NotYetConnectedException
-    # If this channel is not yet connected
+    #          If this channel is not yet connected
     def write(srcs, offset, length)
       raise NotImplementedError
     end
     
     typesig { [Array.typed(ByteBuffer)] }
     # @throws  NotYetConnectedException
-    # If this channel is not yet connected
+    #          If this channel is not yet connected
     def write(srcs)
       return write(srcs, 0, srcs.attr_length)
     end

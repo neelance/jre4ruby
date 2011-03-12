@@ -87,17 +87,17 @@ module Sun::Misc
   # This example creates a Cache of numbers. It uses the names of
   # the numbers as keys:
   # <pre>
-  # Cache numbers = new Cache();
-  # numbers.put("one", new Integer(1));
-  # numbers.put("two", new Integer(1));
-  # numbers.put("three", new Integer(1));
+  #      Cache numbers = new Cache();
+  #      numbers.put("one", new Integer(1));
+  #      numbers.put("two", new Integer(1));
+  #      numbers.put("three", new Integer(1));
   # </pre>
   # To retrieve a number use:
   # <pre>
-  # Integer n = (Integer)numbers.get("two");
-  # if (n != null) {
-  # System.out.println("two = " + n);
-  # }
+  #      Integer n = (Integer)numbers.get("two");
+  #      if (n != null) {
+  #          System.out.println("two = " + n);
+  #      }
   # </pre>
   # 
   # @see java.lang.Object#hashCode
@@ -141,7 +141,7 @@ module Sun::Misc
       end
       @load_factor = load_factor
       @table = Array.typed(CacheEntry).new(initial_capacity) { nil }
-      @threshold = RJava.cast_to_int((initial_capacity * load_factor))
+      @threshold = ((initial_capacity * load_factor)).to_int
     end
     
     typesig { [::Java::Int, ::Java::Float] }
@@ -149,8 +149,8 @@ module Sun::Misc
     # capacity and the specified load factor.
     # @param initialCapacity the initial number of buckets
     # @param loadFactor a number between 0.0 and 1.0, it defines
-    # the threshold for rehashing the Cache into
-    # a bigger one.
+    #          the threshold for rehashing the Cache into
+    #          a bigger one.
     # @exception IllegalArgumentException If the initial capacity
     # is less than or equal to zero.
     # @exception IllegalArgumentException If the load factor is
@@ -232,7 +232,7 @@ module Sun::Misc
     # Gets the object associated with the specified key in the Cache.
     # @param key the key in the hash table
     # @returns the element for the key or null if the key
-    # is not defined in the hash table.
+    #          is not defined in the hash table.
     # @see Cache#put
     def get(key)
       synchronized(self) do
@@ -259,7 +259,7 @@ module Sun::Misc
       old_table = @table
       new_capacity = old_capacity * 2 + 1
       new_table = Array.typed(CacheEntry).new(new_capacity) { nil }
-      @threshold = RJava.cast_to_int((new_capacity * @load_factor))
+      @threshold = ((new_capacity * @load_factor)).to_int
       @table = new_table
       # System.out.println("rehash old=" + oldCapacity + ", new=" +
       # newCapacity + ", thresh=" + threshold + ", count=" + count);
@@ -275,7 +275,7 @@ module Sun::Misc
             new_table[index] = e
           else
             @count -= 1
-          end
+          end # remove entries that have disappeared
         end
       end
     end
@@ -311,7 +311,7 @@ module Sun::Misc
             if ((e.check).nil?)
               ne = e
             end
-          end
+          end # reuse old flushed value
           e = e.attr_next
         end
         if (@count >= @threshold)

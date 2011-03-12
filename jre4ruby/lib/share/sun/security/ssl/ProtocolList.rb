@@ -152,7 +152,7 @@ module Sun::Security::Ssl
         if (SunJSSE.is_fips)
           const_set :SUPPORTED, ProtocolList.new(Array.typed(String).new([ProtocolVersion::TLS10.attr_name]))
         else
-          const_set :SUPPORTED, ProtocolList.new(Array.typed(String).new([ProtocolVersion::SSL20Hello.attr_name, ProtocolVersion::SSL30.attr_name, ProtocolVersion::TLS10.attr_name, ]))
+          const_set :SUPPORTED, ProtocolList.new(Array.typed(String).new([ProtocolVersion::SSL20Hello.attr_name, ProtocolVersion::SSL30.attr_name, ProtocolVersion::TLS10.attr_name]))
         end
       end
     }

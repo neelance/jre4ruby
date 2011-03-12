@@ -136,9 +136,9 @@ module Java::Util
     # 
     # @param   initialCapacity     the initial capacity of the vector
     # @param   capacityIncrement   the amount by which the capacity is
-    # increased when the vector overflows
+    #                              increased when the vector overflows
     # @throws IllegalArgumentException if the specified initial capacity
-    # is negative
+    #         is negative
     def initialize(initial_capacity, capacity_increment)
       @element_data = nil
       @element_count = 0
@@ -157,7 +157,7 @@ module Java::Util
     # 
     # @param   initialCapacity   the initial capacity of the vector
     # @throws IllegalArgumentException if the specified initial capacity
-    # is negative
+    #         is negative
     def initialize(initial_capacity)
       initialize__vector(initial_capacity, 0)
     end
@@ -176,7 +176,7 @@ module Java::Util
     # iterator.
     # 
     # @param c the collection whose elements are to be placed into this
-    # vector
+    #       vector
     # @throws NullPointerException if the specified collection is null
     # @since   1.2
     def initialize(c)
@@ -200,9 +200,9 @@ module Java::Util
     # @param  anArray the array into which the components get copied
     # @throws NullPointerException if the given array is null
     # @throws IndexOutOfBoundsException if the specified array is not
-    # large enough to hold all the components of this vector
+    #         large enough to hold all the components of this vector
     # @throws ArrayStoreException if a component of this vector is not of
-    # a runtime type that can be stored in the specified array
+    #         a runtime type that can be stored in the specified array
     # @see #toArray(Object[])
     def copy_into(an_array)
       synchronized(self) do
@@ -297,8 +297,8 @@ module Java::Util
     # Returns the current capacity of this vector.
     # 
     # @return  the current capacity (the length of its internal
-    # data array, kept in the field {@code elementData}
-    # of this vector)
+    #          data array, kept in the field {@code elementData}
+    #          of this vector)
     def capacity
       synchronized(self) do
         return @element_data.attr_length
@@ -319,8 +319,8 @@ module Java::Util
     # Tests if this vector has no components.
     # 
     # @return  {@code true} if and only if this vector has
-    # no components, that is, its size is zero;
-    # {@code false} otherwise.
+    #          no components, that is, its size is zero;
+    #          {@code false} otherwise.
     def is_empty
       synchronized(self) do
         return (@element_count).equal?(0)
@@ -395,7 +395,7 @@ module Java::Util
     # 
     # @param o element to search for
     # @return the index of the first occurrence of the specified element in
-    # this vector, or -1 if this vector does not contain the element
+    #         this vector, or -1 if this vector does not contain the element
     def index_of(o)
       return index_of(o, 0)
     end
@@ -411,8 +411,8 @@ module Java::Util
     # @param o element to search for
     # @param index index to start searching from
     # @return the index of the first occurrence of the element in
-    # this vector at position {@code index} or later in the vector;
-    # {@code -1} if the element is not found.
+    #         this vector at position {@code index} or later in the vector;
+    #         {@code -1} if the element is not found.
     # @throws IndexOutOfBoundsException if the specified index is negative
     # @see     Object#equals(Object)
     def index_of(o, index)
@@ -447,7 +447,7 @@ module Java::Util
     # 
     # @param o element to search for
     # @return the index of the last occurrence of the specified element in
-    # this vector, or -1 if this vector does not contain the element
+    #         this vector, or -1 if this vector does not contain the element
     def last_index_of(o)
       synchronized(self) do
         return last_index_of(o, @element_count - 1)
@@ -465,10 +465,10 @@ module Java::Util
     # @param o element to search for
     # @param index index to start searching backwards from
     # @return the index of the last occurrence of the element at position
-    # less than or equal to {@code index} in this vector;
-    # -1 if the element is not found.
+    #         less than or equal to {@code index} in this vector;
+    #         -1 if the element is not found.
     # @throws IndexOutOfBoundsException if the specified index is greater
-    # than or equal to the current size of this vector
+    #         than or equal to the current size of this vector
     def last_index_of(o, index)
       synchronized(self) do
         if (index >= @element_count)
@@ -504,7 +504,7 @@ module Java::Util
     # @param      index   an index into this vector
     # @return     the component at the specified index
     # @throws ArrayIndexOutOfBoundsException if the index is out of range
-    # ({@code index < 0 || index >= size()})
+    #         ({@code index < 0 || index >= size()})
     def element_at(index)
       synchronized(self) do
         if (index >= @element_count)
@@ -533,7 +533,7 @@ module Java::Util
     # Returns the last component of the vector.
     # 
     # @return  the last component of the vector, i.e., the component at index
-    # <code>size()&nbsp;-&nbsp;1</code>.
+    #          <code>size()&nbsp;-&nbsp;1</code>.
     # @throws NoSuchElementException if this vector is empty
     def last_element
       synchronized(self) do
@@ -562,7 +562,7 @@ module Java::Util
     # @param      obj     what the component is to be set to
     # @param      index   the specified index
     # @throws ArrayIndexOutOfBoundsException if the index is out of range
-    # ({@code index < 0 || index >= size()})
+    #         ({@code index < 0 || index >= size()})
     def set_element_at(obj, index)
       synchronized(self) do
         if (index >= @element_count)
@@ -589,7 +589,7 @@ module Java::Util
     # 
     # @param      index   the index of the object to remove
     # @throws ArrayIndexOutOfBoundsException if the index is out of range
-    # ({@code index < 0 || index >= size()})
+    #         ({@code index < 0 || index >= size()})
     def remove_element_at(index)
       synchronized(self) do
         self.attr_mod_count += 1
@@ -605,9 +605,8 @@ module Java::Util
           System.arraycopy(@element_data, index + 1, @element_data, index, j)
         end
         @element_count -= 1
-        @element_data[@element_count] = nil
+        @element_data[@element_count] = nil # to let gc do its work
       end
-      # to let gc do its work
     end
     
     typesig { [Object, ::Java::Int] }
@@ -631,7 +630,7 @@ module Java::Util
     # @param      obj     the component to insert
     # @param      index   where to insert the new component
     # @throws ArrayIndexOutOfBoundsException if the index is out of range
-    # ({@code index < 0 || index > size()})
+    #         ({@code index < 0 || index > size()})
     def insert_element_at(obj, index)
       synchronized(self) do
         self.attr_mod_count += 1
@@ -676,7 +675,7 @@ module Java::Util
     # 
     # @param   obj   the component to be removed
     # @return  {@code true} if the argument was a component of this
-    # vector; {@code false} otherwise.
+    #          vector; {@code false} otherwise.
     def remove_element(obj)
       synchronized(self) do
         self.attr_mod_count += 1
@@ -753,8 +752,8 @@ module Java::Util
     # does not contain any null elements.)
     # 
     # @param a the array into which the elements of the Vector are to
-    # be stored, if it is big enough; otherwise, a new array of the
-    # same runtime type is allocated for this purpose.
+    #          be stored, if it is big enough; otherwise, a new array of the
+    #          same runtime type is allocated for this purpose.
     # @return an array containing the elements of the Vector
     # @throws ArrayStoreException if the runtime type of a is not a supertype
     # of the runtime type of every element in this Vector
@@ -785,7 +784,7 @@ module Java::Util
     # @param index index of the element to return
     # @return object at the specified index
     # @throws ArrayIndexOutOfBoundsException if the index is out of range
-    # ({@code index < 0 || index >= size()})
+    #            ({@code index < 0 || index >= size()})
     # @since 1.2
     def get(index)
       synchronized(self) do
@@ -804,7 +803,7 @@ module Java::Util
     # @param element element to be stored at the specified position
     # @return the element previously at the specified position
     # @throws ArrayIndexOutOfBoundsException if the index is out of range
-    # ({@code index < 0 || index >= size()})
+    #         ({@code index < 0 || index >= size()})
     # @since 1.2
     def set(index, element)
       synchronized(self) do
@@ -854,7 +853,7 @@ module Java::Util
     # @param index index at which the specified element is to be inserted
     # @param element element to be inserted
     # @throws ArrayIndexOutOfBoundsException if the index is out of range
-    # ({@code index < 0 || index > size()})
+    #         ({@code index < 0 || index > size()})
     # @since 1.2
     def add(index, element)
       insert_element_at(element, index)
@@ -866,7 +865,7 @@ module Java::Util
     # indices).  Returns the element that was removed from the Vector.
     # 
     # @throws ArrayIndexOutOfBoundsException if the index is out of range
-    # ({@code index < 0 || index >= size()})
+    #         ({@code index < 0 || index >= size()})
     # @param index the index of the element to be removed
     # @return element that was removed
     # @since 1.2
@@ -897,14 +896,13 @@ module Java::Util
     
     typesig { [Collection] }
     # Bulk Operations
-    # 
     # Returns true if this Vector contains all of the elements in the
     # specified Collection.
     # 
     # @param   c a collection whose elements will be tested for containment
-    # in this Vector
+    #          in this Vector
     # @return true if this Vector contains all of the elements in the
-    # specified collection
+    #         specified collection
     # @throws NullPointerException if the specified collection is null
     def contains_all(c)
       synchronized(self) do
@@ -943,11 +941,11 @@ module Java::Util
     # @param c a collection of elements to be removed from the Vector
     # @return true if this Vector changed as a result of the call
     # @throws ClassCastException if the types of one or more elements
-    # in this vector are incompatible with the specified
-    # collection (optional)
+    #         in this vector are incompatible with the specified
+    #         collection (optional)
     # @throws NullPointerException if this vector contains one or more null
-    # elements and the specified collection does not support null
-    # elements (optional), or if the specified collection is null
+    #         elements and the specified collection does not support null
+    #         elements (optional), or if the specified collection is null
     # @since 1.2
     def remove_all(c)
       synchronized(self) do
@@ -961,14 +959,14 @@ module Java::Util
     # of its elements that are not contained in the specified Collection.
     # 
     # @param c a collection of elements to be retained in this Vector
-    # (all other elements are removed)
+    #          (all other elements are removed)
     # @return true if this Vector changed as a result of the call
     # @throws ClassCastException if the types of one or more elements
-    # in this vector are incompatible with the specified
-    # collection (optional)
+    #         in this vector are incompatible with the specified
+    #         collection (optional)
     # @throws NullPointerException if this vector contains one or more null
-    # elements and the specified collection does not support null
-    # elements (optional), or if the specified collection is null
+    #         elements and the specified collection does not support null
+    #         elements (optional), or if the specified collection is null
     # @since 1.2
     def retain_all(c)
       synchronized(self) do
@@ -985,11 +983,11 @@ module Java::Util
     # iterator.
     # 
     # @param index index at which to insert the first element from the
-    # specified collection
+    #              specified collection
     # @param c elements to be inserted into this Vector
     # @return {@code true} if this Vector changed as a result of the call
     # @throws ArrayIndexOutOfBoundsException if the index is out of range
-    # ({@code index < 0 || index > size()})
+    #         ({@code index < 0 || index > size()})
     # @throws NullPointerException if the specified collection is null
     # @since 1.2
     def add_all(index, c)
@@ -1059,7 +1057,7 @@ module Java::Util
     # instead of a whole List.  For example, the following idiom
     # removes a range of elements from a List:
     # <pre>
-    # list.subList(from, to).clear();
+    #      list.subList(from, to).clear();
     # </pre>
     # Similar idioms may be constructed for indexOf and lastIndexOf,
     # and all of the algorithms in the Collections class can be applied to
@@ -1075,9 +1073,9 @@ module Java::Util
     # @param toIndex high endpoint (exclusive) of the subList
     # @return a view of the specified range within this List
     # @throws IndexOutOfBoundsException if an endpoint index value is out of range
-    # {@code (fromIndex < 0 || toIndex > size)}
+    #         {@code (fromIndex < 0 || toIndex > size)}
     # @throws IllegalArgumentException if the endpoint indices are out of order
-    # {@code (fromIndex > toIndex)}
+    #         {@code (fromIndex > toIndex)}
     def sub_list(from_index, to_index)
       synchronized(self) do
         return Collections.synchronized_list(super(from_index, to_index), self)

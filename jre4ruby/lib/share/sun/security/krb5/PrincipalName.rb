@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5
@@ -50,7 +48,6 @@ module Sun::Security::Krb5
     
     class_module.module_eval {
       # name types
-      # 
       # Name type not known
       const_set_lazy(:KRB_NT_UNKNOWN) { 0 }
       const_attr_reader  :KRB_NT_UNKNOWN
@@ -226,8 +223,8 @@ module Sun::Security::Krb5
     # Returns the ASN.1 encoding of the
     # <xmp>
     # PrincipalName    ::= SEQUENCE {
-    # name-type       [0] Int32,
-    # name-string     [1] SEQUENCE OF KerberosString
+    #          name-type       [0] Int32,
+    #          name-string     [1] SEQUENCE OF KerberosString
     # }
     # 
     # KerberosString   ::= GeneralString (IA5String)
@@ -600,13 +597,12 @@ module Sun::Security::Krb5
     # 
     # @param pname the other <code>PrincipalName</code> object.
     # @return true if two have identical values, otherwise, return false.
-    # 
     # It is used in <code>sun.security.krb5.internal.ccache</code> package.
     def match(pname)
       matched = true
       # name type is just a hint, no two names can be the same ignoring name type.
       # if (this.nameType != pname.nameType) {
-      # matched = false;
+      #      matched = false;
       # }
       if ((!(@name_realm).nil?) && (!(pname.attr_name_realm).nil?))
         if (!(@name_realm.to_s.equals_ignore_case(pname.attr_name_realm.to_s)))

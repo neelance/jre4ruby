@@ -68,10 +68,10 @@ module Java::Lang
     # </p>
     # 
     # @return The {@code Class} object that represents the runtime
-    # class of this object.
+    #         class of this object.
     # @see    <a href="http://java.sun.com/docs/books/jls/">The Java
-    # Language Specification, Third Edition (15.8.2 Class
-    # Literals)</a>
+    #         Language Specification, Third Edition (15.8.2 Class
+    #         Literals)</a>
     def get_class
       JNI.call_native_method(:Java_java_lang_Object_getClass, JNI.env, self.jni_id)
     end
@@ -85,20 +85,20 @@ module Java::Lang
     # The general contract of <code>hashCode</code> is:
     # <ul>
     # <li>Whenever it is invoked on the same object more than once during
-    # an execution of a Java application, the <tt>hashCode</tt> method
-    # must consistently return the same integer, provided no information
-    # used in <tt>equals</tt> comparisons on the object is modified.
-    # This integer need not remain consistent from one execution of an
-    # application to another execution of the same application.
+    #     an execution of a Java application, the <tt>hashCode</tt> method
+    #     must consistently return the same integer, provided no information
+    #     used in <tt>equals</tt> comparisons on the object is modified.
+    #     This integer need not remain consistent from one execution of an
+    #     application to another execution of the same application.
     # <li>If two objects are equal according to the <tt>equals(Object)</tt>
-    # method, then calling the <code>hashCode</code> method on each of
-    # the two objects must produce the same integer result.
+    #     method, then calling the <code>hashCode</code> method on each of
+    #     the two objects must produce the same integer result.
     # <li>It is <em>not</em> required that if two objects are unequal
-    # according to the {@link java.lang.Object#equals(java.lang.Object)}
-    # method, then calling the <tt>hashCode</tt> method on each of the
-    # two objects must produce distinct integer results.  However, the
-    # programmer should be aware that producing distinct integer results
-    # for unequal objects may improve the performance of hashtables.
+    #     according to the {@link java.lang.Object#equals(java.lang.Object)}
+    #     method, then calling the <tt>hashCode</tt> method on each of the
+    #     two objects must produce distinct integer results.  However, the
+    #     programmer should be aware that producing distinct integer results
+    #     for unequal objects may improve the performance of hashtables.
     # </ul>
     # <p>
     # As much as is reasonably practical, the hashCode method defined by
@@ -122,25 +122,25 @@ module Java::Lang
     # on non-null object references:
     # <ul>
     # <li>It is <i>reflexive</i>: for any non-null reference value
-    # <code>x</code>, <code>x.equals(x)</code> should return
-    # <code>true</code>.
+    #     <code>x</code>, <code>x.equals(x)</code> should return
+    #     <code>true</code>.
     # <li>It is <i>symmetric</i>: for any non-null reference values
-    # <code>x</code> and <code>y</code>, <code>x.equals(y)</code>
-    # should return <code>true</code> if and only if
-    # <code>y.equals(x)</code> returns <code>true</code>.
+    #     <code>x</code> and <code>y</code>, <code>x.equals(y)</code>
+    #     should return <code>true</code> if and only if
+    #     <code>y.equals(x)</code> returns <code>true</code>.
     # <li>It is <i>transitive</i>: for any non-null reference values
-    # <code>x</code>, <code>y</code>, and <code>z</code>, if
-    # <code>x.equals(y)</code> returns <code>true</code> and
-    # <code>y.equals(z)</code> returns <code>true</code>, then
-    # <code>x.equals(z)</code> should return <code>true</code>.
+    #     <code>x</code>, <code>y</code>, and <code>z</code>, if
+    #     <code>x.equals(y)</code> returns <code>true</code> and
+    #     <code>y.equals(z)</code> returns <code>true</code>, then
+    #     <code>x.equals(z)</code> should return <code>true</code>.
     # <li>It is <i>consistent</i>: for any non-null reference values
-    # <code>x</code> and <code>y</code>, multiple invocations of
-    # <tt>x.equals(y)</tt> consistently return <code>true</code>
-    # or consistently return <code>false</code>, provided no
-    # information used in <code>equals</code> comparisons on the
-    # objects is modified.
+    #     <code>x</code> and <code>y</code>, multiple invocations of
+    #     <tt>x.equals(y)</tt> consistently return <code>true</code>
+    #     or consistently return <code>false</code>, provided no
+    #     information used in <code>equals</code> comparisons on the
+    #     objects is modified.
     # <li>For any non-null reference value <code>x</code>,
-    # <code>x.equals(null)</code> should return <code>false</code>.
+    #     <code>x.equals(null)</code> should return <code>false</code>.
     # </ul>
     # <p>
     # The <tt>equals</tt> method for class <code>Object</code> implements
@@ -157,7 +157,7 @@ module Java::Lang
     # 
     # @param   obj   the reference object with which to compare.
     # @return  <code>true</code> if this object is the same as the obj
-    # argument; <code>false</code> otherwise.
+    #          argument; <code>false</code> otherwise.
     # @see     #hashCode()
     # @see     java.util.Hashtable
     def ==(obj)
@@ -217,10 +217,10 @@ module Java::Lang
     # 
     # @return     a clone of this instance.
     # @exception  CloneNotSupportedException  if the object's class does not
-    # support the <code>Cloneable</code> interface. Subclasses
-    # that override the <code>clone</code> method can also
-    # throw this exception to indicate that an instance cannot
-    # be cloned.
+    #               support the <code>Cloneable</code> interface. Subclasses
+    #               that override the <code>clone</code> method can also
+    #               throw this exception to indicate that an instance cannot
+    #               be cloned.
     # @see java.lang.Cloneable
     def clone
       JNI.call_native_method(:Java_java_lang_Object_clone, JNI.env, self.jni_id)
@@ -271,15 +271,15 @@ module Java::Lang
     # <ul>
     # <li>By executing a synchronized instance method of that object.
     # <li>By executing the body of a <code>synchronized</code> statement
-    # that synchronizes on the object.
+    #     that synchronizes on the object.
     # <li>For objects of type <code>Class,</code> by executing a
-    # synchronized static method of that class.
+    #     synchronized static method of that class.
     # </ul>
     # <p>
     # Only one thread at a time can own an object's monitor.
     # 
     # @exception  IllegalMonitorStateException  if the current thread is not
-    # the owner of this object's monitor.
+    #               the owner of this object's monitor.
     # @see        java.lang.Object#notifyAll()
     # @see        java.lang.Object#wait()
     def notify
@@ -305,7 +305,7 @@ module Java::Lang
     # a monitor.
     # 
     # @exception  IllegalMonitorStateException  if the current thread is not
-    # the owner of this object's monitor.
+    #               the owner of this object's monitor.
     # @see        java.lang.Object#notify()
     # @see        java.lang.Object#wait()
     def notify_all
@@ -357,11 +357,11 @@ module Java::Lang
     # continuing to wait if the condition is not satisfied.  In other words,
     # waits should always occur in loops, like this one:
     # <pre>
-    # synchronized (obj) {
-    # while (&lt;condition does not hold&gt;)
-    # obj.wait(timeout);
-    # ... // Perform action appropriate to condition
-    # }
+    #     synchronized (obj) {
+    #         while (&lt;condition does not hold&gt;)
+    #             obj.wait(timeout);
+    #         ... // Perform action appropriate to condition
+    #     }
     # </pre>
     # (For more information on this topic, see Section 3.2.3 in Doug Lea's
     # "Concurrent Programming in Java (Second Edition)" (Addison-Wesley,
@@ -387,14 +387,14 @@ module Java::Lang
     # 
     # @param      timeout   the maximum time to wait in milliseconds.
     # @exception  IllegalArgumentException      if the value of timeout is
-    # negative.
+    #               negative.
     # @exception  IllegalMonitorStateException  if the current thread is not
-    # the owner of the object's monitor.
+    #               the owner of the object's monitor.
     # @exception  InterruptedException if any thread interrupted the
-    # current thread before or while the current thread
-    # was waiting for a notification.  The <i>interrupted
-    # status</i> of the current thread is cleared when
-    # this exception is thrown.
+    #             current thread before or while the current thread
+    #             was waiting for a notification.  The <i>interrupted
+    #             status</i> of the current thread is cleared when
+    #             this exception is thrown.
     # @see        java.lang.Object#notify()
     # @see        java.lang.Object#notifyAll()
     def wait(timeout)
@@ -425,11 +425,11 @@ module Java::Lang
     # following two conditions has occurred:
     # <ul>
     # <li>Another thread notifies threads waiting on this object's monitor
-    # to wake up either through a call to the <code>notify</code> method
-    # or the <code>notifyAll</code> method.
+    #     to wake up either through a call to the <code>notify</code> method
+    #     or the <code>notifyAll</code> method.
     # <li>The timeout period, specified by <code>timeout</code>
-    # milliseconds plus <code>nanos</code> nanoseconds arguments, has
-    # elapsed.
+    #     milliseconds plus <code>nanos</code> nanoseconds arguments, has
+    #     elapsed.
     # </ul>
     # <p>
     # The thread then waits until it can re-obtain ownership of the
@@ -438,11 +438,11 @@ module Java::Lang
     # As in the one argument version, interrupts and spurious wakeups are
     # possible, and this method should always be used in a loop:
     # <pre>
-    # synchronized (obj) {
-    # while (&lt;condition does not hold&gt;)
-    # obj.wait(timeout, nanos);
-    # ... // Perform action appropriate to condition
-    # }
+    #     synchronized (obj) {
+    #         while (&lt;condition does not hold&gt;)
+    #             obj.wait(timeout, nanos);
+    #         ... // Perform action appropriate to condition
+    #     }
     # </pre>
     # This method should only be called by a thread that is the owner
     # of this object's monitor. See the <code>notify</code> method for a
@@ -451,17 +451,17 @@ module Java::Lang
     # 
     # @param      timeout   the maximum time to wait in milliseconds.
     # @param      nanos      additional time, in nanoseconds range
-    # 0-999999.
+    #                       0-999999.
     # @exception  IllegalArgumentException      if the value of timeout is
-    # negative or the value of nanos is
-    # not in the range 0-999999.
+    #                      negative or the value of nanos is
+    #                      not in the range 0-999999.
     # @exception  IllegalMonitorStateException  if the current thread is not
-    # the owner of this object's monitor.
+    #               the owner of this object's monitor.
     # @exception  InterruptedException if any thread interrupted the
-    # current thread before or while the current thread
-    # was waiting for a notification.  The <i>interrupted
-    # status</i> of the current thread is cleared when
-    # this exception is thrown.
+    #             current thread before or while the current thread
+    #             was waiting for a notification.  The <i>interrupted
+    #             status</i> of the current thread is cleared when
+    #             this exception is thrown.
     def wait(timeout, nanos)
       if (timeout < 0)
         raise IllegalArgumentException.new("timeout value is negative")
@@ -492,11 +492,11 @@ module Java::Lang
     # As in the one argument version, interrupts and spurious wakeups are
     # possible, and this method should always be used in a loop:
     # <pre>
-    # synchronized (obj) {
-    # while (&lt;condition does not hold&gt;)
-    # obj.wait();
-    # ... // Perform action appropriate to condition
-    # }
+    #     synchronized (obj) {
+    #         while (&lt;condition does not hold&gt;)
+    #             obj.wait();
+    #         ... // Perform action appropriate to condition
+    #     }
     # </pre>
     # This method should only be called by a thread that is the owner
     # of this object's monitor. See the <code>notify</code> method for a
@@ -504,12 +504,12 @@ module Java::Lang
     # a monitor.
     # 
     # @exception  IllegalMonitorStateException  if the current thread is not
-    # the owner of the object's monitor.
+    #               the owner of the object's monitor.
     # @exception  InterruptedException if any thread interrupted the
-    # current thread before or while the current thread
-    # was waiting for a notification.  The <i>interrupted
-    # status</i> of the current thread is cleared when
-    # this exception is thrown.
+    #             current thread before or while the current thread
+    #             was waiting for a notification.  The <i>interrupted
+    #             status</i> of the current thread is cleared when
+    #             this exception is thrown.
     # @see        java.lang.Object#notify()
     # @see        java.lang.Object#notifyAll()
     def wait

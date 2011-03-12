@@ -22,17 +22,15 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996 - All Rights Reserved
 # 
-# The original version of this source code and documentation is copyrighted
+#   The original version of this source code and documentation is copyrighted
 # and owned by Taligent, Inc., a wholly-owned subsidiary of IBM. These
 # materials are provided under terms of a License Agreement between Taligent
 # and Sun. This technology is protected by multiple US and International
 # patents. This notice and attribution to Taligent may not be removed.
-# Taligent is a registered trademark of Taligent, Inc.
+#   Taligent is a registered trademark of Taligent, Inc.
 module Java::Text
   module CollationKeyImports #:nodoc:
     class_module.module_eval {
@@ -83,7 +81,7 @@ module Java::Text
   # <br>
   # // Inside body of sort routine, compare keys this way
   # if( keys[i].compareTo( keys[j] ) > 0 )
-  # // swap keys[i] and keys[j]
+  #    // swap keys[i] and keys[j]
   # <br>
   # //...
   # <br>

@@ -121,10 +121,10 @@ module Sun::Reflect
       end
       
       typesig { [Class, Class, Object, ::Java::Int] }
-      # Declaring class of field
-      # or method
-      # May be NULL in case of statics
       def verify_member_access(current_class, member_class, target, modifiers)
+        # Declaring class of field
+        # or method
+        # May be NULL in case of statics
         # Verify that currentClass can access a field, method, or
         # constructor of memberClass, where that member's access bits are
         # "modifiers".

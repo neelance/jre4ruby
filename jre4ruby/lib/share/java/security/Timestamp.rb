@@ -144,7 +144,7 @@ module Java::Security
     # Returns a string describing this timestamp.
     # 
     # @return A string comprising the date and time of the timestamp and
-    # its signer's certificate.
+    #         its signer's certificate.
     def to_s
       sb = StringBuffer.new
       sb.append("(")

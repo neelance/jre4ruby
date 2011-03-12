@@ -33,8 +33,8 @@ module Sun::Nio::Ch
   # Manipulates a native array of structs corresponding to (fd, events) pairs.
   # 
   # typedef struct pollfd {
-  # SOCKET fd;            // 4 bytes
-  # short events;         // 2 bytes
+  #    SOCKET fd;            // 4 bytes
+  #    short events;         // 2 bytes
   # } pollfd_t;
   # 
   # @author Konstantin Kladko

@@ -47,9 +47,9 @@ module Sun::Misc
   # text that has the form:
   # 
   # <pre>
-  # [Buffer Prefix]
-  # [Line Prefix][encoded data atoms][Line Suffix]
-  # [Buffer Suffix]
+  #      [Buffer Prefix]
+  #      [Line Prefix][encoded data atoms][Line Suffix]
+  #      [Buffer Suffix]
   # </pre>
   # 
   # Of course in the simplest encoding schemes, the buffer has no
@@ -74,7 +74,7 @@ module Sun::Misc
   # In general, the character decoders return error in the form of a
   # CEFormatException. The syntax of the detail string is
   # <pre>
-  # DecoderClassName: Error message.
+  #      DecoderClassName: Error message.
   # </pre>
   # 
   # Several useful decoders have already been written and are

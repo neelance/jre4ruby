@@ -217,8 +217,10 @@ module Sun::Security::Ssl
       else
         raise SSLProtocolException.new("Illegal client handshake msg, " + RJava.cast_to_string(type))
       end
+      # 
       # Move state machine forward if the message handling
       # code didn't already do so
+      # 
       if (self.attr_state < type)
         self.attr_state = type
       end
@@ -233,8 +235,10 @@ module Sun::Security::Ssl
       if (!(self.attr_debug).nil? && Debug.is_on("handshake"))
         mesg.print(System.out)
       end
+      # 
       # Could be (e.g. at connection setup) that we already
       # sent the "client hello" but the server's not seen it.
+      # 
       if (self.attr_state < HandshakeMessage.attr_ht_client_hello)
         kickstart
       end
@@ -263,9 +267,11 @@ module Sun::Security::Ssl
       # Set protocolVersion and propagate to SSLSocket and the
       # Handshake streams
       set_version(mesg_version)
+      # 
       # Save server nonce, we always use it to compute connection
       # keys and it's also used to create the master secret if we're
       # creating a new session (i.e. in the full handshake).
+      # 
       self.attr_svr_random = mesg.attr_svr_random
       if ((is_enabled(mesg.attr_cipher_suite)).equal?(false))
         fatal_se(Alerts.attr_alert_illegal_parameter, "Server selected disabled ciphersuite " + RJava.cast_to_string(self.attr_cipher_suite))
@@ -427,8 +433,6 @@ module Sun::Security::Ssl
         while i < @cert_request.attr_types.attr_length
           type_name = nil
           case (@cert_request.attr_types[i])
-          # Fixed DH/ECDH client authentication not supported
-          # Any other values (currently not used in TLS)
           when CertificateRequest.attr_cct_rsa_sign
             type_name = "RSA"
           when CertificateRequest.attr_cct_dss_sign
@@ -437,8 +441,12 @@ module Sun::Security::Ssl
             # ignore if we do not have EC crypto available
             type_name = RJava.cast_to_string(JsseJce.is_ec_available ? "EC" : nil)
           when CertificateRequest.attr_cct_rsa_fixed_dh, CertificateRequest.attr_cct_dss_fixed_dh, CertificateRequest.attr_cct_rsa_fixed_ecdh, CertificateRequest.attr_cct_ecdsa_fixed_ecdh, CertificateRequest.attr_cct_rsa_ephemeral_dh, CertificateRequest.attr_cct_dss_ephemeral_dh
+            # Fixed DH/ECDH client authentication not supported
+            # Any other values (currently not used in TLS)
             type_name = RJava.cast_to_string(nil)
           else
+            # Fixed DH/ECDH client authentication not supported
+            # Any other values (currently not used in TLS)
             type_name = RJava.cast_to_string(nil)
           end
           if ((!(type_name).nil?) && (!keytypes_tmp.contains(type_name)))
@@ -478,16 +486,20 @@ module Sun::Security::Ssl
           end
         end
         if ((m1).nil?)
+          # 
           # No appropriate cert was found ... report this to the
           # server.  For SSLv3, send the no_certificate alert;
           # TLS uses an empty cert chain instead.
+          # 
           if (self.attr_protocol_version.attr_v >= ProtocolVersion::TLS10.attr_v)
             m1 = CertificateMsg.new(Array.typed(X509Certificate).new(0) { nil })
           else
             warning_se(Alerts.attr_alert_no_certificate)
           end
         end
+        # 
         # At last ... send any client certificate chain.
+        # 
         if (!(m1).nil?)
           if (!(self.attr_debug).nil? && Debug.is_on("handshake"))
             m1.print(System.out)
@@ -520,7 +532,6 @@ module Sun::Security::Ssl
         # passing a null "dhPublic" value.
         # 
         # Otherwise we send ephemeral DH keys, unsigned.
-        # 
         # if (useDH_RSA || useDH_DSS)
         m2 = DHClientKeyExchange.new
       when K_DHE_RSA, K_DHE_DSS, K_DH_ANON
@@ -683,8 +694,10 @@ module Sun::Security::Ssl
       mesg = ClientHello.new(self.attr_ssl_context.get_secure_random, self.attr_protocol_version)
       @max_protocol_version = self.attr_protocol_version
       self.attr_clnt_random = mesg.attr_clnt_random
+      # 
       # Try to resume an existing session.  This might be mandatory,
       # given certain API options.
+      # 
       self.attr_session = (self.attr_ssl_context.engine_get_client_session_context).get(get_host_se, get_port_se)
       if (!(self.attr_debug).nil? && Debug.is_on("session"))
         if (!(self.attr_session).nil?)
@@ -725,7 +738,9 @@ module Sun::Security::Ssl
           # record layer) have the correct version
           set_version(session_version)
         end
+        # 
         # don't say much beyond the obvious if we _must_ resume.
+        # 
         if (!self.attr_enable_new_session)
           if ((self.attr_session).nil?)
             raise SSLException.new("Can't reuse existing SSL client session")
@@ -741,8 +756,10 @@ module Sun::Security::Ssl
           raise SSLException.new("No existing session to resume.")
         end
       end
+      # 
       # All we have left to do is fill out the cipher suites.
       # (If this changes, change the 'return' above!)
+      # 
       mesg.set_cipher_suites(self.attr_enabled_cipher_suites)
       return mesg
     end

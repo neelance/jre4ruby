@@ -167,9 +167,9 @@ module Java::Util::Jar
       # 1. The manifest should be the first entry in the META-INF directory.
       # 2. The .SF/.DSA files follow the manifest, before any normal entries
       # 3. Any of the following will throw a SecurityException:
-      # a. digest mismatch between a manifest section and
-      # the SF section.
-      # b. digest mismatch between the actual jar entry and the manifest
+      #    a. digest mismatch between a manifest section and
+      #       the SF section.
+      #    b. digest mismatch between the actual jar entry and the manifest
       if (@parsing_meta)
         uname = name.to_upper_case(Locale::ENGLISH)
         if ((uname.starts_with("META-INF/") || uname.starts_with("/META-INF/")))
@@ -456,7 +456,7 @@ module Java::Util::Jar
         typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
         def read(b, off, len)
           if ((@num_left > 0) && (@num_left < len))
-            len = RJava.cast_to_int(@num_left)
+            len = (@num_left).to_int
           end
           if (@num_left > 0)
             n = @is.read(b, off, len)

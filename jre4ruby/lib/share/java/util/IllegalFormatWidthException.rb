@@ -52,7 +52,7 @@ module Java::Util
     # Constructs an instance of this class with the specified width.
     # 
     # @param  w
-    # The width
+    #         The width
     def initialize(w)
       @w = 0
       super()

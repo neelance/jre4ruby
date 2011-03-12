@@ -103,7 +103,6 @@ module Java::Text
     
     typesig { [Array.typed(AttributedCharacterIterator)] }
     # parallel vector of attribute values for each run
-    # 
     # Constructs an AttributedString instance with the given
     # AttributedCharacterIterators.
     # 
@@ -180,7 +179,7 @@ module Java::Text
     # @param text The text for this attributed string.
     # @param attributes The attributes that apply to the entire string.
     # @exception NullPointerException if <code>text</code> or
-    # <code>attributes</code> is null.
+    #            <code>attributes</code> is null.
     # @exception IllegalArgumentException if the text has length 0
     # and the attributes parameter is not an empty Map (attributes
     # cannot be applied to a 0-length range).
@@ -208,9 +207,9 @@ module Java::Text
         new_run_attribute_values = Vector.new(attribute_count)
         @run_attributes[0] = new_run_attributes
         @run_attribute_values[0] = new_run_attribute_values
-        iterator = attributes.entry_set.iterator
-        while (iterator.has_next)
-          entry = iterator.next_
+        iterator_ = attributes.entry_set.iterator
+        while (iterator_.has_next)
+          entry = iterator_.next_
           new_run_attributes.add_element(entry.get_key)
           new_run_attribute_values.add_element(entry.get_value)
         end
@@ -223,10 +222,10 @@ module Java::Text
     # @param text The text for this attributed string.
     # @exception NullPointerException if <code>text</code> is null.
     def initialize(text)
+      initialize__attributed_string(text, text.get_begin_index, text.get_end_index, nil)
       # If performance is critical, this constructor should be
       # implemented here rather than invoking the constructor for a
       # subrange. We can avoid some range checking in the loops.
-      initialize__attributed_string(text, text.get_begin_index, text.get_end_index, nil)
     end
     
     typesig { [AttributedCharacterIterator, ::Java::Int, ::Java::Int] }
@@ -267,7 +266,7 @@ module Java::Text
     # from the text. If null is specified, all available attributes will
     # be used.
     # @exception NullPointerException if <code>text</code> or
-    # <code>attributes</code> is null.
+    #            <code>attributes</code> is null.
     # @exception IllegalArgumentException if the subrange given by
     # beginIndex and endIndex is out of the text range.
     # @see java.text.Annotation
@@ -474,7 +473,7 @@ module Java::Text
     # the run. If this results in splitting a run, two things can happen:
     # <ul>
     # <li>If copyAttrs is true, the attributes from the existing run
-    # will be placed in both of the newly created runs.
+    #     will be placed in both of the newly created runs.
     # <li>If copyAttrs is false, the attributes from the existing run
     # will NOT be copied to the run to the right (>= offset) of the break,
     # but will exist on the run to the left (< offset).
@@ -1160,9 +1159,9 @@ module Java::Text
         def entry_set
           set = self.class::HashSet.new
           synchronized((@local_class_parent)) do
-            size = self.attr_run_attributes[@run_index].size
+            size_ = self.attr_run_attributes[@run_index].size
             i = 0
-            while i < size
+            while i < size_
               key = self.attr_run_attributes[@run_index].get(i)
               value = self.attr_run_attribute_values[@run_index].get(i)
               if (value.is_a?(self.class::Annotation))

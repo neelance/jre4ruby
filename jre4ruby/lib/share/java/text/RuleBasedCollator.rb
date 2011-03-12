@@ -22,17 +22,15 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996-1998 - All Rights Reserved
 # 
-# The original version of this source code and documentation is copyrighted
+#   The original version of this source code and documentation is copyrighted
 # and owned by Taligent, Inc., a wholly-owned subsidiary of IBM. These
 # materials are provided under terms of a License Agreement between Taligent
 # and Sun. This technology is protected by multiple US and International
 # patents. This notice and attribution to Taligent may not be removed.
-# Taligent is a registered trademark of Taligent, Inc.
+#   Taligent is a registered trademark of Taligent, Inc.
 module Java::Text
   module RuleBasedCollatorImports #:nodoc:
     class_module.module_eval {
@@ -55,54 +53,54 @@ module Java::Text
   # for efficiency (other subclasses may be used for more complex languages) :
   # <ol>
   # <li>If a special collation rule controlled by a &lt;modifier&gt; is
-  # specified it applies to the whole collator object.
+  #    specified it applies to the whole collator object.
   # <li>All non-mentioned characters are at the end of the
-  # collation order.
+  #     collation order.
   # </ol>
   # 
   # <p>
   # The collation table is composed of a list of collation rules, where each
   # rule is of one of three forms:
   # <pre>
-  # &lt;modifier&gt;
-  # &lt;relation&gt; &lt;text-argument&gt;
-  # &lt;reset&gt; &lt;text-argument&gt;
+  #    &lt;modifier&gt;
+  #    &lt;relation&gt; &lt;text-argument&gt;
+  #    &lt;reset&gt; &lt;text-argument&gt;
   # </pre>
   # The definitions of the rule elements is as follows:
   # <UL Type=disc>
-  # <LI><strong>Text-Argument</strong>: A text-argument is any sequence of
-  # characters, excluding special characters (that is, common
-  # whitespace characters [0009-000D, 0020] and rule syntax characters
-  # [0021-002F, 003A-0040, 005B-0060, 007B-007E]). If those
-  # characters are desired, you can put them in single quotes
-  # (e.g. ampersand => '&'). Note that unquoted white space characters
-  # are ignored; e.g. <code>b c</code> is treated as <code>bc</code>.
-  # <LI><strong>Modifier</strong>: There are currently two modifiers that
-  # turn on special collation rules.
-  # <UL Type=square>
-  # <LI>'@' : Turns on backwards sorting of accents (secondary
-  # differences), as in French.
-  # <LI>'!' : Turns on Thai/Lao vowel-consonant swapping.  If this
-  # rule is in force when a Thai vowel of the range
-  # &#92;U0E40-&#92;U0E44 precedes a Thai consonant of the range
-  # &#92;U0E01-&#92;U0E2E OR a Lao vowel of the range &#92;U0EC0-&#92;U0EC4
-  # precedes a Lao consonant of the range &#92;U0E81-&#92;U0EAE then
-  # the vowel is placed after the consonant for collation
-  # purposes.
-  # </UL>
-  # <p>'@' : Indicates that accents are sorted backwards, as in French.
-  # <LI><strong>Relation</strong>: The relations are the following:
-  # <UL Type=square>
-  # <LI>'&lt;' : Greater, as a letter difference (primary)
-  # <LI>';' : Greater, as an accent difference (secondary)
-  # <LI>',' : Greater, as a case difference (tertiary)
-  # <LI>'=' : Equal
-  # </UL>
-  # <LI><strong>Reset</strong>: There is a single reset
-  # which is used primarily for contractions and expansions, but which
-  # can also be used to add a modification at the end of a set of rules.
-  # <p>'&' : Indicates that the next rule follows the position to where
-  # the reset text-argument would be sorted.
+  #    <LI><strong>Text-Argument</strong>: A text-argument is any sequence of
+  #        characters, excluding special characters (that is, common
+  #        whitespace characters [0009-000D, 0020] and rule syntax characters
+  #        [0021-002F, 003A-0040, 005B-0060, 007B-007E]). If those
+  #        characters are desired, you can put them in single quotes
+  #        (e.g. ampersand => '&'). Note that unquoted white space characters
+  #        are ignored; e.g. <code>b c</code> is treated as <code>bc</code>.
+  #    <LI><strong>Modifier</strong>: There are currently two modifiers that
+  #        turn on special collation rules.
+  #        <UL Type=square>
+  #            <LI>'@' : Turns on backwards sorting of accents (secondary
+  #                      differences), as in French.
+  #            <LI>'!' : Turns on Thai/Lao vowel-consonant swapping.  If this
+  #                      rule is in force when a Thai vowel of the range
+  #                      &#92;U0E40-&#92;U0E44 precedes a Thai consonant of the range
+  #                      &#92;U0E01-&#92;U0E2E OR a Lao vowel of the range &#92;U0EC0-&#92;U0EC4
+  #                      precedes a Lao consonant of the range &#92;U0E81-&#92;U0EAE then
+  #                      the vowel is placed after the consonant for collation
+  #                      purposes.
+  #        </UL>
+  #        <p>'@' : Indicates that accents are sorted backwards, as in French.
+  #    <LI><strong>Relation</strong>: The relations are the following:
+  #        <UL Type=square>
+  #            <LI>'&lt;' : Greater, as a letter difference (primary)
+  #            <LI>';' : Greater, as an accent difference (secondary)
+  #            <LI>',' : Greater, as a case difference (tertiary)
+  #            <LI>'=' : Equal
+  #        </UL>
+  #    <LI><strong>Reset</strong>: There is a single reset
+  #        which is used primarily for contractions and expansions, but which
+  #        can also be used to add a modification at the end of a set of rules.
+  #        <p>'&' : Indicates that the next rule follows the position to where
+  #            the reset text-argument would be sorted.
   # </UL>
   # 
   # <p>
@@ -168,13 +166,13 @@ module Java::Text
   # <p>
   # The following are errors:
   # <UL Type=disc>
-  # <LI>A text-argument contains unquoted punctuation symbols
-  # (e.g. "a &lt; b-c &lt; d").
-  # <LI>A relation or reset character not followed by a text-argument
-  # (e.g. "a &lt; ,b").
-  # <LI>A reset where the text-argument (or an initial substring of the
-  # text-argument) is not already in the sequence.
-  # (e.g. "a &lt; b &amp; e &lt; f")
+  #     <LI>A text-argument contains unquoted punctuation symbols
+  #        (e.g. "a &lt; b-c &lt; d").
+  #     <LI>A relation or reset character not followed by a text-argument
+  #        (e.g. "a &lt; ,b").
+  #     <LI>A reset where the text-argument (or an initial substring of the
+  #         text-argument) is not already in the sequence.
+  #         (e.g. "a &lt; b &amp; e &lt; f")
   # </UL>
   # If you produce one of these errors, a <code>RuleBasedCollator</code> throws
   # a <code>ParseException</code>.
@@ -182,10 +180,10 @@ module Java::Text
   # <p><strong>Examples</strong>
   # <p>Simple:     "&lt; a &lt; b &lt; c &lt; d"
   # <p>Norwegian:  "&lt; a,A&lt; b,B&lt; c,C&lt; d,D&lt; e,E&lt; f,F&lt; g,G&lt; h,H&lt; i,I&lt; j,J
-  # &lt; k,K&lt; l,L&lt; m,M&lt; n,N&lt; o,O&lt; p,P&lt; q,Q&lt; r,R&lt; s,S&lt; t,T
-  # &lt; u,U&lt; v,V&lt; w,W&lt; x,X&lt; y,Y&lt; z,Z
-  # &lt; &#92;u00E5=a&#92;u030A,&#92;u00C5=A&#92;u030A
-  # ;aa,AA&lt; &#92;u00E6,&#92;u00C6&lt; &#92;u00F8,&#92;u00D8"
+  #                 &lt; k,K&lt; l,L&lt; m,M&lt; n,N&lt; o,O&lt; p,P&lt; q,Q&lt; r,R&lt; s,S&lt; t,T
+  #                 &lt; u,U&lt; v,V&lt; w,W&lt; x,X&lt; y,Y&lt; z,Z
+  #                 &lt; &#92;u00E5=a&#92;u030A,&#92;u00C5=A&#92;u030A
+  #                 ;aa,AA&lt; &#92;u00E6,&#92;u00C6&lt; &#92;u00F8,&#92;u00D8"
   # 
   # <p>
   # To create a <code>RuleBasedCollator</code> object with specialized
@@ -201,10 +199,10 @@ module Java::Text
   # <blockquote>
   # <pre>
   # String Norwegian = "&lt; a,A&lt; b,B&lt; c,C&lt; d,D&lt; e,E&lt; f,F&lt; g,G&lt; h,H&lt; i,I&lt; j,J" +
-  # "&lt; k,K&lt; l,L&lt; m,M&lt; n,N&lt; o,O&lt; p,P&lt; q,Q&lt; r,R&lt; s,S&lt; t,T" +
-  # "&lt; u,U&lt; v,V&lt; w,W&lt; x,X&lt; y,Y&lt; z,Z" +
-  # "&lt; &#92;u00E5=a&#92;u030A,&#92;u00C5=A&#92;u030A" +
-  # ";aa,AA&lt; &#92;u00E6,&#92;u00C6&lt; &#92;u00F8,&#92;u00D8";
+  #                 "&lt; k,K&lt; l,L&lt; m,M&lt; n,N&lt; o,O&lt; p,P&lt; q,Q&lt; r,R&lt; s,S&lt; t,T" +
+  #                 "&lt; u,U&lt; v,V&lt; w,W&lt; x,X&lt; y,Y&lt; z,Z" +
+  #                 "&lt; &#92;u00E5=a&#92;u030A,&#92;u00C5=A&#92;u030A" +
+  #                 ";aa,AA&lt; &#92;u00E6,&#92;u00C6&lt; &#92;u00F8,&#92;u00D8";
   # RuleBasedCollator myNorwegian = new RuleBasedCollator(Norwegian);
   # </pre>
   # </blockquote>
@@ -221,12 +219,12 @@ module Java::Text
   # <pre>
   # // old rule
   # String oldRules = "=&#92;u0301;&#92;u0300;&#92;u0302;&#92;u0308"    // main accents
-  # + ";&#92;u0327;&#92;u0303;&#92;u0304;&#92;u0305"    // main accents
-  # + ";&#92;u0306;&#92;u0307;&#92;u0309;&#92;u030A"    // main accents
-  # + ";&#92;u030B;&#92;u030C;&#92;u030D;&#92;u030E"    // main accents
-  # + ";&#92;u030F;&#92;u0310;&#92;u0311;&#92;u0312"    // main accents
-  # + "&lt; a , A ; ae, AE ; &#92;u00e6 , &#92;u00c6"
-  # + "&lt; b , B &lt; c, C &lt; e, E & C &lt; d, D";
+  #                 + ";&#92;u0327;&#92;u0303;&#92;u0304;&#92;u0305"    // main accents
+  #                 + ";&#92;u0306;&#92;u0307;&#92;u0309;&#92;u030A"    // main accents
+  #                 + ";&#92;u030B;&#92;u030C;&#92;u030D;&#92;u030E"    // main accents
+  #                 + ";&#92;u030F;&#92;u0310;&#92;u0311;&#92;u0312"    // main accents
+  #                 + "&lt; a , A ; ae, AE ; &#92;u00e6 , &#92;u00c6"
+  #                 + "&lt; b , B &lt; c, C &lt; e, E & C &lt; d, D";
   # // change the order of accent characters
   # String addOn = "& &#92;u0300 ; &#92;u0308 ; &#92;u0302";
   # RuleBasedCollator myCollator = new RuleBasedCollator(oldRules + addOn);
@@ -261,7 +259,6 @@ module Java::Text
     # uses to map from characters to collation elements.  A single RBCollationTables
     # object is shared among all RuleBasedCollators for the same locale, and
     # thus by all the CollationElementIterators they create.
-    # 
     # RuleBasedCollator constructor.  This takes the table rules and builds
     # a collation table out of them.  Please see RuleBasedCollator class
     # description for more details on the collation rule syntax.
@@ -485,7 +482,7 @@ module Java::Text
                 # (strength is SECONDARY)
                 check_sec_ter = false
                 # (even in french, only the first secondary difference within
-                # a base character matters)
+                #  a base character matters)
               else
                 if (check_tertiary)
                   # a tertiary difference may still matter
@@ -504,7 +501,7 @@ module Java::Text
         end # while()
         if (!(s_order).equal?(CollationElementIterator::NULLORDER))
           # (tOrder must be CollationElementIterator::NULLORDER,
-          # since this point is only reached when sOrder or tOrder is NULLORDER.)
+          #  since this point is only reached when sOrder or tOrder is NULLORDER.)
           # The source string has more elements, but the target string hasn't.
           begin
             if (!(CollationElementIterator.primary_order(s_order)).equal?(0))
@@ -528,8 +525,7 @@ module Java::Text
               if (!(CollationElementIterator.primary_order(t_order)).equal?(0))
                 # We found an additional non-ignorable base character in the target string.
                 # This is a primary difference, so the source is less
-                return Collator::LESS
-                 # (strength is PRIMARY)
+                return Collator::LESS # (strength is PRIMARY)
               else
                 if (!(CollationElementIterator.secondary_order(t_order)).equal?(0))
                   # Additional secondary elements in the target mean the source string is less
@@ -570,6 +566,7 @@ module Java::Text
     # It can be overriden in a subclass.
     def get_collation_key(source)
       synchronized(self) do
+        # 
         # The basic algorithm here is to find all of the collation elements for each
         # character in the source string, convert them to a char representation,
         # and put them into the collation key.  But it's trickier than that.
@@ -598,6 +595,7 @@ module Java::Text
         # this instead:
         # 
         # Collation Key:      1125<null>1000<null>1010
+        # 
         if ((source).nil?)
           return nil
         end
@@ -628,12 +626,16 @@ module Java::Text
           if (!CollationElementIterator.is_ignorable(order))
             @prim_result.append(RJava.cast_to_char((CollationElementIterator.primary_order(order) + COLLATIONKEYOFFSET)))
             if (compare_sec)
+              # 
               # accumulate all of the ignorable/secondary characters attached
               # to a given base character
+              # 
               if (@tables.is_french_sec && pre_sec_ignore < @sec_result.length)
+                # 
                 # We're doing reversed secondary ordering and we've hit a base
                 # (non-ignorable) character.  Reverse any secondary orderings
                 # that applied to the last base character.  (see block comment above.)
+                # 
                 RBCollationTables.reverse(@sec_result, pre_sec_ignore, @sec_result.length)
               end
               # Remember where we are in the secondary orderings - this is how far

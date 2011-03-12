@@ -45,21 +45,21 @@ module Sun::Security::Pkcs11
   # following algorithms:
   # 
   # . DSA
-  # . NONEwithDSA (RawDSA)
-  # . SHA1withDSA
+  #   . NONEwithDSA (RawDSA)
+  #   . SHA1withDSA
   # . RSA:
-  # . MD2withRSA
-  # . MD5withRSA
-  # . SHA1withRSA
-  # . SHA256withRSA
-  # . SHA384withRSA
-  # . SHA512withRSA
+  #   . MD2withRSA
+  #   . MD5withRSA
+  #   . SHA1withRSA
+  #   . SHA256withRSA
+  #   . SHA384withRSA
+  #   . SHA512withRSA
   # . ECDSA
-  # . NONEwithECDSA
-  # . SHA1withECDSA
-  # . SHA256withECDSA
-  # . SHA384withECDSA
-  # . SHA512withECDSA
+  #   . NONEwithECDSA
+  #   . SHA1withECDSA
+  #   . SHA256withECDSA
+  #   . SHA384withECDSA
+  #   . SHA512withECDSA
   # 
   # Note that the underlying PKCS#11 token may support complete signature
   # algorithm (e.g. CKM_DSA_SHA1, CKM_MD5_RSA_PKCS), or it may just
@@ -210,26 +210,26 @@ module Sun::Security::Pkcs11
       @token = token
       @algorithm = algorithm
       @mechanism = mechanism
-      case (RJava.cast_to_int(mechanism))
-      when RJava.cast_to_int(CKM_MD2_RSA_PKCS), RJava.cast_to_int(CKM_MD5_RSA_PKCS), RJava.cast_to_int(CKM_SHA1_RSA_PKCS), RJava.cast_to_int(CKM_SHA256_RSA_PKCS), RJava.cast_to_int(CKM_SHA384_RSA_PKCS), RJava.cast_to_int(CKM_SHA512_RSA_PKCS)
+      case ((mechanism).to_int)
+      when (CKM_MD2_RSA_PKCS).to_int, (CKM_MD5_RSA_PKCS).to_int, (CKM_SHA1_RSA_PKCS).to_int, (CKM_SHA256_RSA_PKCS).to_int, (CKM_SHA384_RSA_PKCS).to_int, (CKM_SHA512_RSA_PKCS).to_int
         @key_algorithm = "RSA"
         @type = T_UPDATE
         @digest_oid = nil
         @buffer = Array.typed(::Java::Byte).new(1) { 0 }
         @md = nil
-      when RJava.cast_to_int(CKM_DSA_SHA1)
+      when (CKM_DSA_SHA1).to_int
         @key_algorithm = "DSA"
         @type = T_UPDATE
         @digest_oid = nil
         @buffer = Array.typed(::Java::Byte).new(1) { 0 }
         @md = nil
-      when RJava.cast_to_int(CKM_ECDSA_SHA1)
+      when (CKM_ECDSA_SHA1).to_int
         @key_algorithm = "EC"
         @type = T_UPDATE
         @digest_oid = nil
         @buffer = Array.typed(::Java::Byte).new(1) { 0 }
         @md = nil
-      when RJava.cast_to_int(CKM_DSA)
+      when (CKM_DSA).to_int
         @key_algorithm = "DSA"
         @digest_oid = nil
         if ((algorithm == "DSA"))
@@ -245,7 +245,7 @@ module Sun::Security::Pkcs11
             raise ProviderException.new(algorithm)
           end
         end
-      when RJava.cast_to_int(CKM_ECDSA)
+      when (CKM_ECDSA).to_int
         @key_algorithm = "EC"
         @digest_oid = nil
         if ((algorithm == "NONEwithECDSA"))
@@ -275,7 +275,7 @@ module Sun::Security::Pkcs11
           @md = MessageDigest.get_instance(digest_alg)
           @buffer = nil
         end
-      when RJava.cast_to_int(CKM_RSA_PKCS), RJava.cast_to_int(CKM_RSA_X_509)
+      when (CKM_RSA_PKCS).to_int, (CKM_RSA_X_509).to_int
         @key_algorithm = "RSA"
         @type = T_DIGEST
         @buffer = nil
@@ -671,9 +671,9 @@ module Sun::Security::Pkcs11
     
     class_module.module_eval {
       typesig { [Array.typed(::Java::Byte)] }
-      # private static byte[] decodeSignature(byte[] signature) throws IOException {
-      # return RSASignature.decodeSignature(digestOID, signature);
-      # }
+      #    private static byte[] decodeSignature(byte[] signature) throws IOException {
+      #      return RSASignature.decodeSignature(digestOID, signature);
+      #    }
       # For DSA and ECDSA signatures, PKCS#11 represents them as a simple
       # byte array that contains the concatenation of r and s.
       # For DSA, r and s are always exactly 20 bytes long.

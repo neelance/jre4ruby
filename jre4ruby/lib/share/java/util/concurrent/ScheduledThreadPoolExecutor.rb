@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # This file is available under and governed by the GNU General Public
 # License version 2 only, as published by the Free Software Foundation.
 # However, the following notice accompanied the original version of this
@@ -81,21 +79,21 @@ module Java::Util::Concurrent
   # {@link FutureTask}. However, this may be modified or replaced using
   # subclasses of the form:
   # 
-  # <pre> {@code
+  #  <pre> {@code
   # public class CustomScheduledExecutor extends ScheduledThreadPoolExecutor {
   # 
-  # static class CustomTask<V> implements RunnableScheduledFuture<V> { ... }
+  #   static class CustomTask<V> implements RunnableScheduledFuture<V> { ... }
   # 
-  # protected <V> RunnableScheduledFuture<V> decorateTask(
-  # Runnable r, RunnableScheduledFuture<V> task) {
-  # return new CustomTask<V>(r, task);
-  # }
+  #   protected <V> RunnableScheduledFuture<V> decorateTask(
+  #                Runnable r, RunnableScheduledFuture<V> task) {
+  #       return new CustomTask<V>(r, task);
+  #   }
   # 
-  # protected <V> RunnableScheduledFuture<V> decorateTask(
-  # Callable<V> c, RunnableScheduledFuture<V> task) {
-  # return new CustomTask<V>(c, task);
-  # }
-  # // ... add constructors, etc.
+  #   protected <V> RunnableScheduledFuture<V> decorateTask(
+  #                Callable<V> c, RunnableScheduledFuture<V> task) {
+  #       return new CustomTask<V>(c, task);
+  #   }
+  #   // ... add constructors, etc.
   # }}</pre>
   # 
   # @since 1.5
@@ -109,39 +107,37 @@ module Java::Util::Concurrent
     # This class specializes ThreadPoolExecutor implementation by
     # 
     # 1. Using a custom task type, ScheduledFutureTask for
-    # tasks, even those that don't require scheduling (i.e.,
-    # those submitted using ExecutorService execute, not
-    # ScheduledExecutorService methods) which are treated as
-    # delayed tasks with a delay of zero.
+    #    tasks, even those that don't require scheduling (i.e.,
+    #    those submitted using ExecutorService execute, not
+    #    ScheduledExecutorService methods) which are treated as
+    #    delayed tasks with a delay of zero.
     # 
     # 2. Using a custom queue (DelayedWorkQueue) based on an
-    # unbounded DelayQueue. The lack of capacity constraint and
-    # the fact that corePoolSize and maximumPoolSize are
-    # effectively identical simplifies some execution mechanics
-    # (see delayedExecute) compared to ThreadPoolExecutor
-    # version.
+    #    unbounded DelayQueue. The lack of capacity constraint and
+    #    the fact that corePoolSize and maximumPoolSize are
+    #    effectively identical simplifies some execution mechanics
+    #    (see delayedExecute) compared to ThreadPoolExecutor
+    #    version.
     # 
-    # The DelayedWorkQueue class is defined below for the sake of
-    # ensuring that all elements are instances of
-    # RunnableScheduledFuture.  Since DelayQueue otherwise
-    # requires type be Delayed, but not necessarily Runnable, and
-    # the workQueue requires the opposite, we need to explicitly
-    # define a class that requires both to ensure that users don't
-    # add objects that aren't RunnableScheduledFutures via
-    # getQueue().add() etc.
+    #    The DelayedWorkQueue class is defined below for the sake of
+    #    ensuring that all elements are instances of
+    #    RunnableScheduledFuture.  Since DelayQueue otherwise
+    #    requires type be Delayed, but not necessarily Runnable, and
+    #    the workQueue requires the opposite, we need to explicitly
+    #    define a class that requires both to ensure that users don't
+    #    add objects that aren't RunnableScheduledFutures via
+    #    getQueue().add() etc.
     # 
     # 3. Supporting optional run-after-shutdown parameters, which
-    # leads to overrides of shutdown methods to remove and cancel
-    # tasks that should NOT be run after shutdown, as well as
-    # different recheck logic when task (re)submission overlaps
-    # with a shutdown.
+    #    leads to overrides of shutdown methods to remove and cancel
+    #    tasks that should NOT be run after shutdown, as well as
+    #    different recheck logic when task (re)submission overlaps
+    #    with a shutdown.
     # 
     # 4. Task decoration methods to allow interception and
-    # instrumentation, which are needed because subclasses cannot
-    # otherwise override submit methods to get this effect. These
-    # don't have any impact on pool control logic though.
-    # 
-    # 
+    #    instrumentation, which are needed because subclasses cannot
+    #    otherwise override submit methods to get this effect. These
+    #    don't have any impact on pool control logic though.
     # False if should cancel/suppress periodic tasks on shutdown.
     attr_accessor :continue_existing_periodic_tasks_after_shutdown
     alias_method :attr_continue_existing_periodic_tasks_after_shutdown, :continue_existing_periodic_tasks_after_shutdown
@@ -432,7 +428,7 @@ module Java::Util::Concurrent
     # given core pool size.
     # 
     # @param corePoolSize the number of threads to keep in the pool, even
-    # if they are idle, unless {@code allowCoreThreadTimeOut} is set
+    #        if they are idle, unless {@code allowCoreThreadTimeOut} is set
     # @throws IllegalArgumentException if {@code corePoolSize < 0}
     def initialize(core_pool_size)
       @continue_existing_periodic_tasks_after_shutdown = false
@@ -446,9 +442,9 @@ module Java::Util::Concurrent
     # given initial parameters.
     # 
     # @param corePoolSize the number of threads to keep in the pool, even
-    # if they are idle, unless {@code allowCoreThreadTimeOut} is set
+    #        if they are idle, unless {@code allowCoreThreadTimeOut} is set
     # @param threadFactory the factory to use when the executor
-    # creates a new thread
+    #        creates a new thread
     # @throws IllegalArgumentException if {@code corePoolSize < 0}
     # @throws NullPointerException if {@code threadFactory} is null
     def initialize(core_pool_size, thread_factory)
@@ -463,9 +459,9 @@ module Java::Util::Concurrent
     # initial parameters.
     # 
     # @param corePoolSize the number of threads to keep in the pool, even
-    # if they are idle, unless {@code allowCoreThreadTimeOut} is set
+    #        if they are idle, unless {@code allowCoreThreadTimeOut} is set
     # @param handler the handler to use when execution is blocked
-    # because the thread bounds and queue capacities are reached
+    #        because the thread bounds and queue capacities are reached
     # @throws IllegalArgumentException if {@code corePoolSize < 0}
     # @throws NullPointerException if {@code handler} is null
     def initialize(core_pool_size, handler)
@@ -480,14 +476,14 @@ module Java::Util::Concurrent
     # initial parameters.
     # 
     # @param corePoolSize the number of threads to keep in the pool, even
-    # if they are idle, unless {@code allowCoreThreadTimeOut} is set
+    #        if they are idle, unless {@code allowCoreThreadTimeOut} is set
     # @param threadFactory the factory to use when the executor
-    # creates a new thread
+    #        creates a new thread
     # @param handler the handler to use when execution is blocked
-    # because the thread bounds and queue capacities are reached
+    #        because the thread bounds and queue capacities are reached
     # @throws IllegalArgumentException if {@code corePoolSize < 0}
     # @throws NullPointerException if {@code threadFactory} or
-    # {@code handler} is null
+    #         {@code handler} is null
     def initialize(core_pool_size, thread_factory, handler)
       @continue_existing_periodic_tasks_after_shutdown = false
       @execute_existing_delayed_tasks_after_shutdown = false
@@ -576,9 +572,9 @@ module Java::Util::Concurrent
     # thrown by such a task can be obtained via {@link Future#get}.
     # 
     # @throws RejectedExecutionException at discretion of
-    # {@code RejectedExecutionHandler}, if the task
-    # cannot be accepted for execution because the
-    # executor has been shut down
+    #         {@code RejectedExecutionHandler}, if the task
+    #         cannot be accepted for execution because the
+    #         executor has been shut down
     # @throws NullPointerException {@inheritDoc}
     def execute(command)
       schedule(command, 0, TimeUnit::NANOSECONDS)
@@ -686,10 +682,10 @@ module Java::Util::Concurrent
     # fails to respond to interrupts may never terminate.
     # 
     # @return list of tasks that never commenced execution.
-    # Each element of this list is a {@link ScheduledFuture},
-    # including those tasks submitted using {@code execute},
-    # which are for scheduling purposes used as the basis of a
-    # zero-delay {@code ScheduledFuture}.
+    #         Each element of this list is a {@link ScheduledFuture},
+    #         including those tasks submitted using {@code execute},
+    #         which are for scheduling purposes used as the basis of a
+    #         zero-delay {@code ScheduledFuture}.
     # @throws SecurityException {@inheritDoc}
     def shutdown_now
       return super

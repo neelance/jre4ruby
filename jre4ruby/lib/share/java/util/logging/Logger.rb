@@ -114,26 +114,26 @@ module Java::Util::Logging
   # The logging methods are grouped in five main categories:
   # <ul>
   # <li><p>
-  # There are a set of "log" methods that take a log level, a message
-  # string, and optionally some parameters to the message string.
+  #     There are a set of "log" methods that take a log level, a message
+  #     string, and optionally some parameters to the message string.
   # <li><p>
-  # There are a set of "logp" methods (for "log precise") that are
-  # like the "log" methods, but also take an explicit source class name
-  # and method name.
+  #     There are a set of "logp" methods (for "log precise") that are
+  #     like the "log" methods, but also take an explicit source class name
+  #     and method name.
   # <li><p>
-  # There are a set of "logrb" method (for "log with resource bundle")
-  # that are like the "logp" method, but also take an explicit resource
-  # bundle name for use in localizing the log message.
+  #     There are a set of "logrb" method (for "log with resource bundle")
+  #     that are like the "logp" method, but also take an explicit resource
+  #     bundle name for use in localizing the log message.
   # <li><p>
-  # There are convenience methods for tracing method entries (the
-  # "entering" methods), method returns (the "exiting" methods) and
-  # throwing exceptions (the "throwing" methods).
+  #     There are convenience methods for tracing method entries (the
+  #     "entering" methods), method returns (the "exiting" methods) and
+  #     throwing exceptions (the "throwing" methods).
   # <li><p>
-  # Finally, there are a set of convenience methods for use in the
-  # very simplest cases, when a developer simply wants to log a
-  # simple string at a given log level.  These methods are named
-  # after the standard Level names ("severe", "warning", "info", etc.)
-  # and take a single argument, a message string.
+  #     Finally, there are a set of convenience methods for use in the
+  #     very simplest cases, when a developer simply wants to log a
+  #     simple string at a given log level.  These methods are named
+  #     after the standard Level names ("severe", "warning", "info", etc.)
+  #     and take a single argument, a message string.
   # </ul>
   # <p>
   # For the methods that do not take an explicit source name and
@@ -278,7 +278,6 @@ module Java::Util::Logging
     
     class_module.module_eval {
       # current effective level value
-      # 
       # GLOBAL_LOGGER_NAME is a name for the global logger.
       # This name is provided as a convenience to developers who are making
       # casual use of the Logging package.  Developers who are making serious
@@ -316,15 +315,15 @@ module Java::Util::Logging
     # and with useParentHandlers true.
     # 
     # @param   name    A name for the logger.  This should
-    # be a dot-separated name and should normally
-    # be based on the package name or class name
-    # of the subsystem, such as java.net
-    # or javax.swing.  It may be null for anonymous Loggers.
+    #                          be a dot-separated name and should normally
+    #                          be based on the package name or class name
+    #                          of the subsystem, such as java.net
+    #                          or javax.swing.  It may be null for anonymous Loggers.
     # @param   resourceBundleName  name of ResourceBundle to be used for localizing
-    # messages for this logger.  May be null if none
-    # of the messages require localization.
+    #                          messages for this logger.  May be null if none
+    #                          of the messages require localization.
     # @throws MissingResourceException if the ResourceBundleName is non-null and
-    # no corresponding resource can be found.
+    #             no corresponding resource can be found.
     def initialize(name, resource_bundle_name)
       @manager = nil
       @name = nil
@@ -403,10 +402,10 @@ module Java::Util::Logging
       # be registered in the LogManager global namespace.
       # 
       # @param   name            A name for the logger.  This should
-      # be a dot-separated name and should normally
-      # be based on the package name or class name
-      # of the subsystem, such as java.net
-      # or javax.swing
+      #                          be a dot-separated name and should normally
+      #                          be based on the package name or class name
+      #                          of the subsystem, such as java.net
+      #                          or javax.swing
       # @return a suitable Logger
       # @throws NullPointerException if the name is null.
       def get_logger(name)
@@ -433,17 +432,17 @@ module Java::Util::Logging
       # is thrown.
       # <p>
       # @param   name    A name for the logger.  This should
-      # be a dot-separated name and should normally
-      # be based on the package name or class name
-      # of the subsystem, such as java.net
-      # or javax.swing
+      #                          be a dot-separated name and should normally
+      #                          be based on the package name or class name
+      #                          of the subsystem, such as java.net
+      #                          or javax.swing
       # @param   resourceBundleName  name of ResourceBundle to be used for localizing
-      # messages for this logger. May be <CODE>null</CODE> if none of
-      # the messages require localization.
+      #                          messages for this logger. May be <CODE>null</CODE> if none of
+      #                          the messages require localization.
       # @return a suitable Logger
       # @throws MissingResourceException if the named ResourceBundle cannot be found.
       # @throws IllegalArgumentException if the Logger already exists and uses
-      # a different resource bundle name.
+      #             a different resource bundle name.
       # @throws NullPointerException if the name is null.
       def get_logger(name, resource_bundle_name)
         synchronized(self) do
@@ -509,8 +508,8 @@ module Java::Util::Logging
       # from the root logger.
       # <p>
       # @param   resourceBundleName  name of ResourceBundle to be used for localizing
-      # messages for this logger.
-      # May be null if none of the messages require localization.
+      #                          messages for this logger.
+      #          May be null if none of the messages require localization.
       # @return a newly created private Logger
       # @throws MissingResourceException if the named ResourceBundle cannot be found.
       def get_anonymous_logger(resource_bundle_name)
@@ -555,7 +554,7 @@ module Java::Util::Logging
     # 
     # @param   newFilter  a filter object (may be null)
     # @exception  SecurityException  if a security manager exists and if
-    # the caller does not have LoggingPermission("control").
+    #             the caller does not have LoggingPermission("control").
     def set_filter(new_filter)
       synchronized(self) do
         check_access
@@ -627,7 +626,6 @@ module Java::Util::Logging
     # ================================================================
     # Start of convenience methods WITHOUT className and methodName
     # ================================================================
-    # 
     # Log a message, with no arguments.
     # <p>
     # If the logger is currently enabled for the given message
@@ -711,7 +709,6 @@ module Java::Util::Logging
     # ================================================================
     # Start of convenience methods WITH className and methodName
     # ================================================================
-    # 
     # Log a message, specifying source class and method,
     # with no arguments.
     # <p>
@@ -843,7 +840,7 @@ module Java::Util::Logging
     # @param   sourceClass    name of class that issued the logging request
     # @param   sourceMethod   name of method that issued the logging request
     # @param   bundleName     name of resource bundle to localize msg,
-    # can be null
+    #                         can be null
     # @param   msg     The string message (or a key in the message catalog)
     def logrb(level, source_class, source_method, bundle_name, msg)
       if (level.int_value < @level_value || (@level_value).equal?(OffValue))
@@ -871,7 +868,7 @@ module Java::Util::Logging
     # @param   sourceClass    name of class that issued the logging request
     # @param   sourceMethod   name of method that issued the logging request
     # @param   bundleName     name of resource bundle to localize msg,
-    # can be null
+    #                         can be null
     # @param   msg      The string message (or a key in the message catalog)
     # @param   param1    Parameter to the log message.
     def logrb(level, source_class, source_method, bundle_name, msg, param1)
@@ -902,7 +899,7 @@ module Java::Util::Logging
     # @param   sourceClass    name of class that issued the logging request
     # @param   sourceMethod   name of method that issued the logging request
     # @param   bundleName     name of resource bundle to localize msg,
-    # can be null.
+    #                         can be null.
     # @param   msg     The string message (or a key in the message catalog)
     # @param   params  Array of parameters to the message
     def logrb(level, source_class, source_method, bundle_name, msg, params)
@@ -937,7 +934,7 @@ module Java::Util::Logging
     # @param   sourceClass    name of class that issued the logging request
     # @param   sourceMethod   name of method that issued the logging request
     # @param   bundleName     name of resource bundle to localize msg,
-    # can be null
+    #                         can be null
     # @param   msg     The string message (or a key in the message catalog)
     # @param   thrown  Throwable associated with log message.
     def logrb(level, source_class, source_method, bundle_name, msg, thrown)
@@ -955,7 +952,6 @@ module Java::Util::Logging
     # ======================================================================
     # Start of convenience methods for logging method entries and returns.
     # ======================================================================
-    # 
     # Log a method entry.
     # <p>
     # This is a convenience method that can be used to log entry
@@ -1089,7 +1085,6 @@ module Java::Util::Logging
     # =======================================================================
     # Start of simple convenience methods using level names as method names
     # =======================================================================
-    # 
     # Log a SEVERE message.
     # <p>
     # If the logger is currently enabled for the SEVERE message
@@ -1198,7 +1193,6 @@ module Java::Util::Logging
     # ================================================================
     # End of convenience methods
     # ================================================================
-    # 
     # Set the log level specifying which message levels will be
     # logged by this logger.  Message levels lower than this
     # value will be discarded.  The level value Level.OFF
@@ -1210,7 +1204,7 @@ module Java::Util::Logging
     # 
     # @param newLevel   the new value for the log level (may be null)
     # @exception  SecurityException  if a security manager exists and if
-    # the caller does not have LoggingPermission("control").
+    #             the caller does not have LoggingPermission("control").
     def set_level(new_level)
       check_access
       synchronized((self.attr_tree_lock)) do
@@ -1259,7 +1253,7 @@ module Java::Util::Logging
     # 
     # @param   handler a logging Handler
     # @exception  SecurityException  if a security manager exists and if
-    # the caller does not have LoggingPermission("control").
+    #             the caller does not have LoggingPermission("control").
     def add_handler(handler)
       synchronized(self) do
         # Check for null handler
@@ -1279,7 +1273,7 @@ module Java::Util::Logging
     # 
     # @param   handler a logging Handler
     # @exception  SecurityException  if a security manager exists and if
-    # the caller does not have LoggingPermission("control").
+    #             the caller does not have LoggingPermission("control").
     def remove_handler(handler)
       synchronized(self) do
         check_access
@@ -1313,9 +1307,9 @@ module Java::Util::Logging
     # to its parent, recursively up the namespace.
     # 
     # @param useParentHandlers   true if output is to be sent to the
-    # logger's parent.
+    #          logger's parent.
     # @exception  SecurityException  if a security manager exists and if
-    # the caller does not have LoggingPermission("control").
+    #             the caller does not have LoggingPermission("control").
     def set_use_parent_handlers(use_parent_handlers)
       synchronized(self) do
         check_access
@@ -1451,7 +1445,7 @@ module Java::Util::Logging
     # <p>
     # @param  parent   the new parent logger
     # @exception  SecurityException  if a security manager exists and if
-    # the caller does not have LoggingPermission("control").
+    #             the caller does not have LoggingPermission("control").
     def set_parent(parent)
       if ((parent).nil?)
         raise NullPointerException.new
@@ -1465,7 +1459,7 @@ module Java::Util::Logging
     # Logger onto a parent logger.
     def do_set_parent(new_parent)
       # System.err.println("doSetParent \"" + getName() + "\" \""
-      # + newParent.getName() + "\"");
+      #                              + newParent.getName() + "\"");
       synchronized((self.attr_tree_lock)) do
         # Remove ourself from any previous parent.
         if (!(@parent).nil?)

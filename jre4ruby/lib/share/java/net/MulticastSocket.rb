@@ -34,7 +34,6 @@ module Java::Net
   end
   
   # method
-  # 
   # The multicast datagram socket class is useful for sending
   # and receiving IP multicast packets.  A MulticastSocket is
   # a (UDP) DatagramSocket, with additional capabilities for
@@ -57,7 +56,7 @@ module Java::Net
   # MulticastSocket s = new MulticastSocket(6789);
   # s.joinGroup(group);
   # DatagramPacket hi = new DatagramPacket(msg.getBytes(), msg.length(),
-  # group, 6789);
+  #                             group, 6789);
   # s.send(hi);
   # // get their responses!
   # byte[] buf = new byte[1000];
@@ -102,7 +101,7 @@ module Java::Net
     # @exception IOException if an I/O exception occurs
     # while creating the MulticastSocket
     # @exception  SecurityException  if a security manager exists and its
-    # <code>checkListen</code> method doesn't allow the operation.
+    #             <code>checkListen</code> method doesn't allow the operation.
     # @see SecurityManager#checkListen
     # @see java.net.DatagramSocket#setReuseAddress(boolean)
     def initialize
@@ -126,7 +125,7 @@ module Java::Net
     # @exception IOException if an I/O exception occurs
     # while creating the MulticastSocket
     # @exception  SecurityException  if a security manager exists and its
-    # <code>checkListen</code> method doesn't allow the operation.
+    #             <code>checkListen</code> method doesn't allow the operation.
     # @see SecurityManager#checkListen
     # @see java.net.DatagramSocket#setReuseAddress(boolean)
     def initialize(port)
@@ -148,11 +147,11 @@ module Java::Net
     # called to enable the SO_REUSEADDR socket option.
     # 
     # @param bindaddr Socket address to bind to, or <code>null</code> for
-    # an unbound socket.
+    #                 an unbound socket.
     # @exception IOException if an I/O exception occurs
     # while creating the MulticastSocket
     # @exception  SecurityException  if a security manager exists and its
-    # <code>checkListen</code> method doesn't allow the operation.
+    #             <code>checkListen</code> method doesn't allow the operation.
     # @see SecurityManager#checkListen
     # @see java.net.DatagramSocket#setReuseAddress(boolean)
     # 
@@ -225,11 +224,11 @@ module Java::Net
     # 255} or an {@code IllegalArgumentException} will be thrown.
     # 
     # @param  ttl
-    # the time-to-live
+    #         the time-to-live
     # 
     # @throws  IOException
-    # if an I/O exception occurs while setting the
-    # default time-to-live value
+    #          if an I/O exception occurs while setting the
+    #          default time-to-live value
     # 
     # @see #getTimeToLive()
     def set_time_to_live(ttl)
@@ -344,16 +343,16 @@ module Java::Net
     # 
     # @param mcastaddr is the multicast address to join
     # @param netIf specifies the local interface to receive multicast
-    # datagram packets, or <i>null</i> to defer to the interface set by
-    # {@link MulticastSocket#setInterface(InetAddress)} or
-    # {@link MulticastSocket#setNetworkInterface(NetworkInterface)}
+    #        datagram packets, or <i>null</i> to defer to the interface set by
+    #       {@link MulticastSocket#setInterface(InetAddress)} or
+    #       {@link MulticastSocket#setNetworkInterface(NetworkInterface)}
     # 
     # @exception IOException if there is an error joining
     # or when the address is not a multicast address.
     # @exception  SecurityException  if a security manager exists and its
     # <code>checkMulticast</code> method doesn't allow the join.
     # @throws  IllegalArgumentException if mcastaddr is null or is a
-    # SocketAddress subclass not supported by this socket
+    #          SocketAddress subclass not supported by this socket
     # 
     # @see SecurityManager#checkMulticast(InetAddress)
     # @since 1.4
@@ -387,15 +386,15 @@ module Java::Net
     # 
     # @param mcastaddr is the multicast address to leave
     # @param netIf specifies the local interface or <i>null</i> to defer
-    # to the interface set by
-    # {@link MulticastSocket#setInterface(InetAddress)} or
-    # {@link MulticastSocket#setNetworkInterface(NetworkInterface)}
+    #             to the interface set by
+    #             {@link MulticastSocket#setInterface(InetAddress)} or
+    #             {@link MulticastSocket#setNetworkInterface(NetworkInterface)}
     # @exception IOException if there is an error leaving
     # or when the address is not a multicast address.
     # @exception  SecurityException  if a security manager exists and its
     # <code>checkMulticast</code> method doesn't allow the operation.
     # @throws  IllegalArgumentException if mcastaddr is null or is a
-    # SocketAddress subclass not supported by this socket
+    #          SocketAddress subclass not supported by this socket
     # 
     # @see SecurityManager#checkMulticast(InetAddress)
     # @since 1.4
@@ -442,8 +441,8 @@ module Java::Net
     # multicast packets.
     # 
     # @return An <code>InetAddress</code> representing
-    # the address of the network interface used for
-    # multicast packets.
+    #  the address of the network interface used for
+    #  multicast packets.
     # 
     # @exception SocketException if there is an error in
     # the underlying protocol, such as a TCP error.
@@ -580,16 +579,16 @@ module Java::Net
     # @exception IOException is raised if an error occurs i.e
     # error while setting ttl.
     # @exception  SecurityException  if a security manager exists and its
-    # <code>checkMulticast</code> or <code>checkConnect</code>
-    # method doesn't allow the send.
+    #             <code>checkMulticast</code> or <code>checkConnect</code>
+    #             method doesn't allow the send.
     # 
     # @deprecated Use the following code or its equivalent instead:
-    # ......
-    # int ttl = mcastSocket.getTimeToLive();
-    # mcastSocket.setTimeToLive(newttl);
-    # mcastSocket.send(p);
-    # mcastSocket.setTimeToLive(ttl);
-    # ......
+    #  ......
+    #  int ttl = mcastSocket.getTimeToLive();
+    #  mcastSocket.setTimeToLive(newttl);
+    #  mcastSocket.send(p);
+    #  mcastSocket.setTimeToLive(ttl);
+    #  ......
     # 
     # @see DatagramSocket#send
     # @see DatagramSocket#receive

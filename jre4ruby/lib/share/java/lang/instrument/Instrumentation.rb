@@ -34,8 +34,6 @@ module Java::Lang::Instrument
   end
   
   # Copyright 2003 Wily Technology, Inc.
-  # 
-  # 
   # This class provides services needed to instrument Java
   # programming language code.
   # Instrumentation is the addition of byte-codes to methods for the
@@ -50,14 +48,14 @@ module Java::Lang::Instrument
   # <code>Instrumentation</code> interface:
   # 
   # <ol>
-  # <li><p> When a JVM is launched in a way that indicates an agent
-  # class. In that case an <code>Instrumentation</code> instance
-  # is passed to the <code>premain</code> method of the agent class.
-  # </p></li>
-  # <li><p> When a JVM provides a mechanism to start agents sometime
-  # after the JVM is launched. In that case an <code>Instrumentation</code>
-  # instance is passed to the <code>agentmain</code> method of the
-  # agent code. </p> </li>
+  #   <li><p> When a JVM is launched in a way that indicates an agent
+  #     class. In that case an <code>Instrumentation</code> instance
+  #     is passed to the <code>premain</code> method of the agent class.
+  #     </p></li>
+  #   <li><p> When a JVM provides a mechanism to start agents sometime
+  #     after the JVM is launched. In that case an <code>Instrumentation</code>
+  #     instance is passed to the <code>agentmain</code> method of the
+  #     agent code. </p> </li>
   # </ol>
   # <p>
   # These mechanisms are described in the
@@ -122,7 +120,7 @@ module Java::Lang::Instrument
     # 
     # @param transformer          the transformer to unregister
     # @return  true if the transformer was found and removed, false if the
-    # transformer was not found
+    #           transformer was not found
     # @throws java.lang.NullPointerException if passed a <code>null</code> transformer
     def remove_transformer(transformer)
       raise NotImplementedError
@@ -141,7 +139,7 @@ module Java::Lang::Instrument
     # During a single instantiation of a single JVM, multiple calls to this
     # method will always return the same answer.
     # @return  true if the current JVM configuration supports retransformation of
-    # classes, false if not.
+    #          classes, false if not.
     # @see #retransformClasses
     # @since 1.6
     def is_retransform_classes_supported
@@ -161,28 +159,28 @@ module Java::Lang::Instrument
     # This function reruns the transformation process
     # (whether or not a transformation has previously occurred).
     # This retransformation follows these steps:
-    # <ul>
-    # <li>starting from the initial class file bytes
-    # </li>
-    # <li>for each transformer that was added with <code>canRetransform</code>
-    # false, the bytes returned by
-    # {@link java.lang.instrument.ClassFileTransformer#transform transform}
-    # during the last class load or redefine are
-    # reused as the output of the transformation; note that this is
-    # equivalent to reapplying the previous transformation, unaltered;
-    # except that
-    # {@link java.lang.instrument.ClassFileTransformer#transform transform}
-    # is not called
-    # </li>
-    # <li>for each transformer that was added with <code>canRetransform</code>
-    # true, the
-    # {@link java.lang.instrument.ClassFileTransformer#transform transform}
-    # method is called in these transformers
-    # </li>
-    # <li>the transformed class file bytes are installed as the new
-    # definition of the class
-    # </li>
-    # </ul>
+    #  <ul>
+    #    <li>starting from the initial class file bytes
+    #    </li>
+    #    <li>for each transformer that was added with <code>canRetransform</code>
+    #      false, the bytes returned by
+    #      {@link java.lang.instrument.ClassFileTransformer#transform transform}
+    #      during the last class load or redefine are
+    #      reused as the output of the transformation; note that this is
+    #      equivalent to reapplying the previous transformation, unaltered;
+    #      except that
+    #      {@link java.lang.instrument.ClassFileTransformer#transform transform}
+    #      is not called
+    #    </li>
+    #    <li>for each transformer that was added with <code>canRetransform</code>
+    #      true, the
+    #      {@link java.lang.instrument.ClassFileTransformer#transform transform}
+    #      method is called in these transformers
+    #    </li>
+    #    <li>the transformed class file bytes are installed as the new
+    #      definition of the class
+    #    </li>
+    #  </ul>
     # <P>
     # 
     # The order of transformation is described in the
@@ -195,14 +193,14 @@ module Java::Lang::Instrument
     # {@link java.lang.ClassLoader#defineClass ClassLoader.defineClass} or
     # {@link #redefineClasses redefineClasses}
     # (before any transformations
-    # were applied), however they might not exactly match them.
-    # The constant pool might not have the same layout or contents.
-    # The constant pool may have more or fewer entries.
-    # Constant pool entries may be in a different order; however,
-    # constant pool indices in the bytecodes of methods will correspond.
-    # Some attributes may not be present.
-    # Where order is not meaningful, for example the order of methods,
-    # order might not be preserved.
+    #  were applied), however they might not exactly match them.
+    #  The constant pool might not have the same layout or contents.
+    #  The constant pool may have more or fewer entries.
+    #  Constant pool entries may be in a different order; however,
+    #  constant pool indices in the bytecodes of methods will correspond.
+    #  Some attributes may not be present.
+    #  Where order is not meaningful, for example the order of methods,
+    #  order might not be preserved.
     # 
     # <P>
     # This method operates on
@@ -238,7 +236,7 @@ module Java::Lang::Instrument
     # {@linkplain Instrumentation class specification}.
     # 
     # @param classes array of classes to retransform;
-    # a zero-length array is allowed, in this case, this method does nothing
+    #                a zero-length array is allowed, in this case, this method does nothing
     # @throws java.lang.instrument.UnmodifiableClassException if a specified class cannot be modified
     # ({@link #isModifiableClass} would return <code>false</code>)
     # @throws java.lang.UnsupportedOperationException if the current configuration of the JVM does not allow
@@ -250,7 +248,7 @@ module Java::Lang::Instrument
     # @throws java.lang.ClassCircularityError if the new classes contain a circularity
     # @throws java.lang.LinkageError if a linkage error occurs
     # @throws java.lang.NullPointerException if the supplied classes  array or any of its components
-    # is <code>null</code>.
+    #                                        is <code>null</code>.
     # 
     # @see #isRetransformClassesSupported
     # @see #addTransformer
@@ -330,7 +328,7 @@ module Java::Lang::Instrument
     # {@linkplain Instrumentation class specification}.
     # 
     # @param definitions array of classes to redefine with corresponding definitions;
-    # a zero-length array is allowed, in this case, this method does nothing
+    #                    a zero-length array is allowed, in this case, this method does nothing
     # @throws java.lang.instrument.UnmodifiableClassException if a specified class cannot be modified
     # ({@link #isModifiableClass} would return <code>false</code>)
     # @throws java.lang.UnsupportedOperationException if the current configuration of the JVM does not allow
@@ -400,7 +398,7 @@ module Java::Lang::Instrument
     # 
     # @param loader          the loader whose initiated class list will be returned
     # @return an array containing all the classes for which loader is an initiating loader,
-    # zero-length if there are none
+    #          zero-length if there are none
     def get_initiated_classes(loader)
       raise NotImplementedError
     end
@@ -454,11 +452,11 @@ module Java::Lang::Instrument
     # resolve that reference will fail with the same error as the initial attempt.
     # 
     # @param   jarfile
-    # The JAR file to be searched when the bootstrap class loader
-    # unsuccessfully searches for a class.
+    #          The JAR file to be searched when the bootstrap class loader
+    #          unsuccessfully searches for a class.
     # 
     # @throws  NullPointerException
-    # If <code>jarfile</code> is <code>null</code>.
+    #          If <code>jarfile</code> is <code>null</code>.
     # 
     # @see     #appendToSystemClassLoaderSearch
     # @see     java.lang.ClassLoader
@@ -510,15 +508,15 @@ module Java::Lang::Instrument
     # {@link java.lang.System#getProperties system property}.
     # 
     # @param   jarfile
-    # The JAR file to be searched when the system class loader
-    # unsuccessfully searches for a class.
+    #          The JAR file to be searched when the system class loader
+    #          unsuccessfully searches for a class.
     # 
     # @throws  UnsupportedOperationException
-    # If the system class loader does not support appending a
-    # a JAR file to be searched.
+    #          If the system class loader does not support appending a
+    #          a JAR file to be searched.
     # 
     # @throws  NullPointerException
-    # If <code>jarfile</code> is <code>null</code>.
+    #          If <code>jarfile</code> is <code>null</code>.
     # 
     # @see     #appendToBootstrapClassLoaderSearch
     # @see     java.lang.ClassLoader#getSystemClassLoader
@@ -563,18 +561,18 @@ module Java::Lang::Instrument
     # a non-native method which can be instrumented.
     # For example, if we had:
     # <pre>
-    # native boolean foo(int x);</pre>
+    #   native boolean foo(int x);</pre>
     # <p/>
     # We could transform the class file (with the
     # ClassFileTransformer during the initial definition
     # of the class) so that this becomes:
     # <pre>
-    # boolean foo(int x) {
-    # <i>... record entry to foo ...</i>
-    # return wrapped_foo(x);
-    # }
+    #   boolean foo(int x) {
+    #     <i>... record entry to foo ...</i>
+    #     return wrapped_foo(x);
+    #   }
     # 
-    # native boolean wrapped_foo(int x);</pre>
+    #   native boolean wrapped_foo(int x);</pre>
     # <p/>
     # Where <code>foo</code> becomes a wrapper for the actual native
     # method with the appended prefix "wrapped_".  Note that
@@ -590,7 +588,7 @@ module Java::Lang::Instrument
     # resolved to the native implementation of <code>foo</code>,
     # which might be:
     # <pre>
-    # Java_somePackage_someClass_foo(JNIEnv* env, jint x)</pre>
+    #   Java_somePackage_someClass_foo(JNIEnv* env, jint x)</pre>
     # <p/>
     # This function allows the prefix to be specified and the
     # proper resolution to occur.
@@ -602,23 +600,23 @@ module Java::Lang::Instrument
     # <code>RegisterNatives</code>, the JVM will attempt this
     # association:
     # <pre>
-    # method(foo) -> nativeImplementation(foo)</pre>
+    #   method(foo) -> nativeImplementation(foo)</pre>
     # <p/>
     # When this fails, the resolution will be retried with
     # the specified prefix prepended to the method name,
     # yielding the correct resolution:
     # <pre>
-    # method(wrapped_foo) -> nativeImplementation(foo)</pre>
+    #   method(wrapped_foo) -> nativeImplementation(foo)</pre>
     # <p/>
     # For automatic resolution, the JVM will attempt:
     # <pre>
-    # method(wrapped_foo) -> nativeImplementation(wrapped_foo)</pre>
+    #   method(wrapped_foo) -> nativeImplementation(wrapped_foo)</pre>
     # <p/>
     # When this fails, the resolution will be retried with
     # the specified prefix deleted from the implementation name,
     # yielding the correct resolution:
     # <pre>
-    # method(wrapped_foo) -> nativeImplementation(foo)</pre>
+    #   method(wrapped_foo) -> nativeImplementation(foo)</pre>
     # <p/>
     # Note that since the prefix is only used when standard
     # resolution fails, native methods can be wrapped selectively.
@@ -644,15 +642,15 @@ module Java::Lang::Instrument
     # <code>$trans1_foo</code> exists.
     # 
     # @param   transformer
-    # The ClassFileTransformer which wraps using this prefix.
+    #          The ClassFileTransformer which wraps using this prefix.
     # @param   prefix
-    # The prefix which has been applied to wrapped native methods.
+    #          The prefix which has been applied to wrapped native methods.
     # @throws java.lang.NullPointerException if passed a <code>null</code> transformer.
     # @throws java.lang.UnsupportedOperationException if the current configuration of
-    # the JVM does not allow setting a native method prefix
-    # ({@link #isNativeMethodPrefixSupported} is false).
+    #           the JVM does not allow setting a native method prefix
+    #           ({@link #isNativeMethodPrefixSupported} is false).
     # @throws java.lang.IllegalArgumentException if the transformer is not registered
-    # (see {@link #addTransformer(ClassFileTransformer,boolean) addTransformer}).
+    #           (see {@link #addTransformer(ClassFileTransformer,boolean) addTransformer}).
     # 
     # @since 1.6
     def set_native_method_prefix(transformer, prefix)

@@ -36,9 +36,9 @@ module Sun::Security::Krb5::Internal
   # Implements the ASN.1 ETYPE-INFO-ENTRY type.
   # 
   # ETYPE-INFO-ENTRY     ::= SEQUENCE {
-  # etype        [0] Int32,
-  # salt         [1] OCTET STRING OPTIONAL
-  # }
+  #         etype        [0] Int32,
+  #         salt         [1] OCTET STRING OPTIONAL
+  #   }
   # 
   # @author Seema Malkani
   class ETypeInfo 
@@ -95,7 +95,7 @@ module Sun::Security::Krb5::Internal
     # Constructs a ETypeInfo object.
     # @param encoding a DER-encoded data.
     # @exception Asn1Exception if an error occurs while decoding an
-    # ASN1 encoded data.
+    #            ASN1 encoded data.
     # @exception IOException if an I/O error occurs while reading encoded data.
     def initialize(encoding)
       @etype = 0

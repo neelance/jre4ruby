@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996 - 1998 - All Rights Reserved
 # 
@@ -65,18 +63,18 @@ module Java::Text
   # Traverse the text from start to finish
   # <pre>
   # public void traverseForward(CharacterIterator iter) {
-  # for(char c = iter.first(); c != CharacterIterator.DONE; c = iter.next()) {
-  # processChar(c);
-  # }
+  #     for(char c = iter.first(); c != CharacterIterator.DONE; c = iter.next()) {
+  #         processChar(c);
+  #     }
   # }
   # </pre>
   # 
   # Traverse the text backwards, from end to start
   # <pre>
   # public void traverseBackward(CharacterIterator iter) {
-  # for(char c = iter.last(); c != CharacterIterator.DONE; c = iter.previous()) {
-  # processChar(c);
-  # }
+  #     for(char c = iter.last(); c != CharacterIterator.DONE; c = iter.previous()) {
+  #         processChar(c);
+  #     }
   # }
   # </pre>
   # 
@@ -85,17 +83,17 @@ module Java::Text
   # additional stopping criteria.
   # <pre>
   # public void traverseOut(CharacterIterator iter, int pos) {
-  # for (char c = iter.setIndex(pos);
-  # c != CharacterIterator.DONE && notBoundary(c);
-  # c = iter.next()) {
-  # }
-  # int end = iter.getIndex();
-  # for (char c = iter.setIndex(pos);
-  # c != CharacterIterator.DONE && notBoundary(c);
-  # c = iter.previous()) {
-  # }
-  # int start = iter.getIndex();
-  # processSection(start, end);
+  #     for (char c = iter.setIndex(pos);
+  #              c != CharacterIterator.DONE && notBoundary(c);
+  #              c = iter.next()) {
+  #     }
+  #     int end = iter.getIndex();
+  #     for (char c = iter.setIndex(pos);
+  #             c != CharacterIterator.DONE && notBoundary(c);
+  #             c = iter.previous()) {
+  #     }
+  #     int start = iter.getIndex();
+  #     processSection(start, end);
   # }
   # </pre>
   # 

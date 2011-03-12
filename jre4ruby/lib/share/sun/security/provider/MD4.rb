@@ -185,11 +185,11 @@ module Sun::Security::Provider
     # digest is stored.
     def impl_digest(out, ofs)
       bits_processed = self.attr_bytes_processed << 3
-      index = RJava.cast_to_int(self.attr_bytes_processed) & 0x3f
+      index = (self.attr_bytes_processed).to_int & 0x3f
       pad_len = (index < 56) ? (56 - index) : (120 - index)
       engine_update(self.attr_padding, 0, pad_len)
-      i2b_little4(RJava.cast_to_int(bits_processed), self.attr_buffer, 56)
-      i2b_little4(RJava.cast_to_int((bits_processed >> 32)), self.attr_buffer, 60)
+      i2b_little4((bits_processed).to_int, self.attr_buffer, 56)
+      i2b_little4(((bits_processed >> 32)).to_int, self.attr_buffer, 60)
       impl_compress(self.attr_buffer, 0)
       i2b_little(@state, 0, out, ofs, 16)
     end
@@ -225,104 +225,56 @@ module Sun::Security::Provider
       c = @state[2]
       d = @state[3]
       # Round 1
-      a = _ff(a, b, c, d, @x[0], S11)
-      # 1
-      d = _ff(d, a, b, c, @x[1], S12)
-      # 2
-      c = _ff(c, d, a, b, @x[2], S13)
-      # 3
-      b = _ff(b, c, d, a, @x[3], S14)
-      # 4
-      a = _ff(a, b, c, d, @x[4], S11)
-      # 5
-      d = _ff(d, a, b, c, @x[5], S12)
-      # 6
-      c = _ff(c, d, a, b, @x[6], S13)
-      # 7
-      b = _ff(b, c, d, a, @x[7], S14)
-      # 8
-      a = _ff(a, b, c, d, @x[8], S11)
-      # 9
-      d = _ff(d, a, b, c, @x[9], S12)
-      # 10
-      c = _ff(c, d, a, b, @x[10], S13)
-      # 11
-      b = _ff(b, c, d, a, @x[11], S14)
-      # 12
-      a = _ff(a, b, c, d, @x[12], S11)
-      # 13
-      d = _ff(d, a, b, c, @x[13], S12)
-      # 14
-      c = _ff(c, d, a, b, @x[14], S13)
-      # 15
-      b = _ff(b, c, d, a, @x[15], S14)
-      # 16
+      a = _ff(a, b, c, d, @x[0], S11) # 1
+      d = _ff(d, a, b, c, @x[1], S12) # 2
+      c = _ff(c, d, a, b, @x[2], S13) # 3
+      b = _ff(b, c, d, a, @x[3], S14) # 4
+      a = _ff(a, b, c, d, @x[4], S11) # 5
+      d = _ff(d, a, b, c, @x[5], S12) # 6
+      c = _ff(c, d, a, b, @x[6], S13) # 7
+      b = _ff(b, c, d, a, @x[7], S14) # 8
+      a = _ff(a, b, c, d, @x[8], S11) # 9
+      d = _ff(d, a, b, c, @x[9], S12) # 10
+      c = _ff(c, d, a, b, @x[10], S13) # 11
+      b = _ff(b, c, d, a, @x[11], S14) # 12
+      a = _ff(a, b, c, d, @x[12], S11) # 13
+      d = _ff(d, a, b, c, @x[13], S12) # 14
+      c = _ff(c, d, a, b, @x[14], S13) # 15
+      b = _ff(b, c, d, a, @x[15], S14) # 16
       # Round 2
-      a = _gg(a, b, c, d, @x[0], S21)
-      # 17
-      d = _gg(d, a, b, c, @x[4], S22)
-      # 18
-      c = _gg(c, d, a, b, @x[8], S23)
-      # 19
-      b = _gg(b, c, d, a, @x[12], S24)
-      # 20
-      a = _gg(a, b, c, d, @x[1], S21)
-      # 21
-      d = _gg(d, a, b, c, @x[5], S22)
-      # 22
-      c = _gg(c, d, a, b, @x[9], S23)
-      # 23
-      b = _gg(b, c, d, a, @x[13], S24)
-      # 24
-      a = _gg(a, b, c, d, @x[2], S21)
-      # 25
-      d = _gg(d, a, b, c, @x[6], S22)
-      # 26
-      c = _gg(c, d, a, b, @x[10], S23)
-      # 27
-      b = _gg(b, c, d, a, @x[14], S24)
-      # 28
-      a = _gg(a, b, c, d, @x[3], S21)
-      # 29
-      d = _gg(d, a, b, c, @x[7], S22)
-      # 30
-      c = _gg(c, d, a, b, @x[11], S23)
-      # 31
-      b = _gg(b, c, d, a, @x[15], S24)
-      # 32
+      a = _gg(a, b, c, d, @x[0], S21) # 17
+      d = _gg(d, a, b, c, @x[4], S22) # 18
+      c = _gg(c, d, a, b, @x[8], S23) # 19
+      b = _gg(b, c, d, a, @x[12], S24) # 20
+      a = _gg(a, b, c, d, @x[1], S21) # 21
+      d = _gg(d, a, b, c, @x[5], S22) # 22
+      c = _gg(c, d, a, b, @x[9], S23) # 23
+      b = _gg(b, c, d, a, @x[13], S24) # 24
+      a = _gg(a, b, c, d, @x[2], S21) # 25
+      d = _gg(d, a, b, c, @x[6], S22) # 26
+      c = _gg(c, d, a, b, @x[10], S23) # 27
+      b = _gg(b, c, d, a, @x[14], S24) # 28
+      a = _gg(a, b, c, d, @x[3], S21) # 29
+      d = _gg(d, a, b, c, @x[7], S22) # 30
+      c = _gg(c, d, a, b, @x[11], S23) # 31
+      b = _gg(b, c, d, a, @x[15], S24) # 32
       # Round 3
-      a = _hh(a, b, c, d, @x[0], S31)
-      # 33
-      d = _hh(d, a, b, c, @x[8], S32)
-      # 34
-      c = _hh(c, d, a, b, @x[4], S33)
-      # 35
-      b = _hh(b, c, d, a, @x[12], S34)
-      # 36
-      a = _hh(a, b, c, d, @x[2], S31)
-      # 37
-      d = _hh(d, a, b, c, @x[10], S32)
-      # 38
-      c = _hh(c, d, a, b, @x[6], S33)
-      # 39
-      b = _hh(b, c, d, a, @x[14], S34)
-      # 40
-      a = _hh(a, b, c, d, @x[1], S31)
-      # 41
-      d = _hh(d, a, b, c, @x[9], S32)
-      # 42
-      c = _hh(c, d, a, b, @x[5], S33)
-      # 43
-      b = _hh(b, c, d, a, @x[13], S34)
-      # 44
-      a = _hh(a, b, c, d, @x[3], S31)
-      # 45
-      d = _hh(d, a, b, c, @x[11], S32)
-      # 46
-      c = _hh(c, d, a, b, @x[7], S33)
-      # 47
-      b = _hh(b, c, d, a, @x[15], S34)
-      # 48
+      a = _hh(a, b, c, d, @x[0], S31) # 33
+      d = _hh(d, a, b, c, @x[8], S32) # 34
+      c = _hh(c, d, a, b, @x[4], S33) # 35
+      b = _hh(b, c, d, a, @x[12], S34) # 36
+      a = _hh(a, b, c, d, @x[2], S31) # 37
+      d = _hh(d, a, b, c, @x[10], S32) # 38
+      c = _hh(c, d, a, b, @x[6], S33) # 39
+      b = _hh(b, c, d, a, @x[14], S34) # 40
+      a = _hh(a, b, c, d, @x[1], S31) # 41
+      d = _hh(d, a, b, c, @x[9], S32) # 42
+      c = _hh(c, d, a, b, @x[5], S33) # 43
+      b = _hh(b, c, d, a, @x[13], S34) # 44
+      a = _hh(a, b, c, d, @x[3], S31) # 45
+      d = _hh(d, a, b, c, @x[11], S32) # 46
+      c = _hh(c, d, a, b, @x[7], S33) # 47
+      b = _hh(b, c, d, a, @x[15], S34) # 48
       @state[0] += a
       @state[1] += b
       @state[2] += c

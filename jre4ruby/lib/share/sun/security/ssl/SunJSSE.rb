@@ -40,9 +40,9 @@ module Sun::Security::Ssl
   # 
   # SunJSSE now supports an experimental FIPS compliant mode when used with an
   # appropriate FIPS certified crypto provider. In FIPS mode, we:
-  # . allow only TLS 1.0
-  # . allow only FIPS approved ciphersuites
-  # . perform all crypto in the FIPS crypto provider
+  #  . allow only TLS 1.0
+  #  . allow only FIPS approved ciphersuites
+  #  . perform all crypto in the FIPS crypto provider
   # 
   # It is currently not possible to use both FIPS compliant SunJSSE and
   # standard JSSE at the same time because of the various static data structures

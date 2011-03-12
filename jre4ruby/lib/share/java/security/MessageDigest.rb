@@ -38,56 +38,56 @@ module Java::Security
     }
   end
   
-  # This MessageDigest class provides applications the functionality of a
-  # message digest algorithm, such as MD5 or SHA.
-  # Message digests are secure one-way hash functions that take arbitrary-sized
-  # data and output a fixed-length hash value.
+  #  This MessageDigest class provides applications the functionality of a
+  #  message digest algorithm, such as MD5 or SHA.
+  #  Message digests are secure one-way hash functions that take arbitrary-sized
+  #  data and output a fixed-length hash value.
   # 
-  # <p>A MessageDigest object starts out initialized. The data is
-  # processed through it using the {@link #update(byte) update}
-  # methods. At any point {@link #reset() reset} can be called
-  # to reset the digest. Once all the data to be updated has been
-  # updated, one of the {@link #digest() digest} methods should
-  # be called to complete the hash computation.
+  #  <p>A MessageDigest object starts out initialized. The data is
+  #  processed through it using the {@link #update(byte) update}
+  #  methods. At any point {@link #reset() reset} can be called
+  #  to reset the digest. Once all the data to be updated has been
+  #  updated, one of the {@link #digest() digest} methods should
+  #  be called to complete the hash computation.
   # 
-  # <p>The <code>digest</code> method can be called once for a given number
-  # of updates. After <code>digest</code> has been called, the MessageDigest
-  # object is reset to its initialized state.
+  #  <p>The <code>digest</code> method can be called once for a given number
+  #  of updates. After <code>digest</code> has been called, the MessageDigest
+  #  object is reset to its initialized state.
   # 
-  # <p>Implementations are free to implement the Cloneable interface.
-  # Client applications can test cloneability by attempting cloning
-  # and catching the CloneNotSupportedException: <p>
+  #  <p>Implementations are free to implement the Cloneable interface.
+  #  Client applications can test cloneability by attempting cloning
+  #  and catching the CloneNotSupportedException: <p>
   # 
   # <pre>
   # MessageDigest md = MessageDigest.getInstance("SHA");
   # 
   # try {
-  # md.update(toChapter1);
-  # MessageDigest tc1 = md.clone();
-  # byte[] toChapter1Digest = tc1.digest();
-  # md.update(toChapter2);
-  # ...etc.
+  #     md.update(toChapter1);
+  #     MessageDigest tc1 = md.clone();
+  #     byte[] toChapter1Digest = tc1.digest();
+  #     md.update(toChapter2);
+  #     ...etc.
   # } catch (CloneNotSupportedException cnse) {
-  # throw new DigestException("couldn't make digest of partial content");
+  #     throw new DigestException("couldn't make digest of partial content");
   # }
   # </pre>
   # 
-  # <p>Note that if a given implementation is not cloneable, it is
-  # still possible to compute intermediate digests by instantiating
-  # several instances, if the number of digests is known in advance.
+  #  <p>Note that if a given implementation is not cloneable, it is
+  #  still possible to compute intermediate digests by instantiating
+  #  several instances, if the number of digests is known in advance.
   # 
-  # <p>Note that this class is abstract and extends from
-  # <code>MessageDigestSpi</code> for historical reasons.
-  # Application developers should only take notice of the methods defined in
-  # this <code>MessageDigest</code> class; all the methods in
-  # the superclass are intended for cryptographic service providers who wish to
-  # supply their own implementations of message digest algorithms.
+  #  <p>Note that this class is abstract and extends from
+  #  <code>MessageDigestSpi</code> for historical reasons.
+  #  Application developers should only take notice of the methods defined in
+  #  this <code>MessageDigest</code> class; all the methods in
+  #  the superclass are intended for cryptographic service providers who wish to
+  #  supply their own implementations of message digest algorithms.
   # 
-  # @author Benjamin Renaud
+  #  @author Benjamin Renaud
   # 
   # 
-  # @see DigestInputStream
-  # @see DigestOutputStream
+  #  @see DigestInputStream
+  #  @see DigestOutputStream
   class MessageDigest < MessageDigestImports.const_get :MessageDigestSpi
     include_class_members MessageDigestImports
     
@@ -159,8 +159,8 @@ module Java::Security
       # @return a Message Digest object that implements the specified algorithm.
       # 
       # @exception NoSuchAlgorithmException if no Provider supports a
-      # MessageDigestSpi implementation for the
-      # specified algorithm.
+      #          MessageDigestSpi implementation for the
+      #          specified algorithm.
       # 
       # @see Provider
       def get_instance(algorithm)
@@ -203,14 +203,14 @@ module Java::Security
       # @return a MessageDigest object that implements the specified algorithm.
       # 
       # @exception NoSuchAlgorithmException if a MessageDigestSpi
-      # implementation for the specified algorithm is not
-      # available from the specified provider.
+      #          implementation for the specified algorithm is not
+      #          available from the specified provider.
       # 
       # @exception NoSuchProviderException if the specified provider is not
-      # registered in the security provider list.
+      #          registered in the security provider list.
       # 
       # @exception IllegalArgumentException if the provider name is null
-      # or empty.
+      #          or empty.
       # 
       # @see Provider
       def get_instance(algorithm, provider)
@@ -249,8 +249,8 @@ module Java::Security
       # @return a MessageDigest object that implements the specified algorithm.
       # 
       # @exception NoSuchAlgorithmException if a MessageDigestSpi
-      # implementation for the specified algorithm is not available
-      # from the specified Provider object.
+      #          implementation for the specified algorithm is not available
+      #          from the specified Provider object.
       # 
       # @exception IllegalArgumentException if the specified provider is null.
       # 

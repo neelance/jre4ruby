@@ -147,23 +147,17 @@ module Sun::Net::Www::Http
     # when it wants to change the settings.  The new design has us not
     # cache these, so this is unnecessary, but eliminating the data members
     # would break HJB 1.1 under JDK 1.2.
-    # 
     # These data members are not used, and their values are meaningless.
     # REMIND:  Take them out for JDK 2.0!
-    # 
     # @deprecated
-    # 
-    # public static String proxyHost = null;
-    # 
+    #    public static String proxyHost = null;
     # @deprecated
-    # 
-    # public static int proxyPort = 80;
+    #    public static int proxyPort = 80;
     # instance-specific proxy fields override the static fields if set.
     # Used by FTP.  These are set to the true proxy host/port if
     # usingProxy is true.
-    # 
-    # private String instProxy = null;
-    # private int instProxyPort = -1;
+    #    private String instProxy = null;
+    #    private int instProxyPort = -1;
     # All proxying (generic as well as instance-specific) may be
     # disabled through use of this flag
     attr_accessor :proxy_disabled
@@ -312,7 +306,7 @@ module Sun::Net::Www::Http
     
     typesig { [] }
     # @return true iff http keep alive is set (i.e. enabled).  Defaults
-    # to true if the system property http.keepAlive isn't set.
+    #          to true if the system property http.keepAlive isn't set.
     def get_http_keep_alive_set
       return self.attr_keep_alive_prop
     end
@@ -994,7 +988,7 @@ module Sun::Net::Www::Http
         # (alive if :-
         # 1. content-length is specified, or
         # 2. "Not-Modified" or "No-Content" responses - RFC 2616 states that
-        # 204 or 304 response must not include a message body.
+        #    204 or 304 response must not include a message body.
         begin
           cl = JavaInteger.parse_int(responses.find_value("content-length"))
         rescue JavaException => e
@@ -1111,7 +1105,7 @@ module Sun::Net::Www::Http
     
     typesig { [] }
     # @return the proxy host being used for this client, or null
-    # if we're not going through a proxy
+    #          if we're not going through a proxy
     def get_proxy_host_used
       if (!@using_proxy)
         return nil
@@ -1122,7 +1116,7 @@ module Sun::Net::Www::Http
     
     typesig { [] }
     # @return the proxy port being used for this client.  Meaningless
-    # if getProxyHostUsed() gives null.
+    #          if getProxyHostUsed() gives null.
     def get_proxy_port_used
       if (@using_proxy)
         return (self.attr_proxy.address).get_port

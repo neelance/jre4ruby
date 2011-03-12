@@ -52,17 +52,17 @@ module Java::Nio::Channels
   # 
   # <ul>
   # 
-  # <li><p> The <i>interest set</i> determines which operation categories will
-  # be tested for readiness the next time one of the selector's selection
-  # methods is invoked.  The interest set is initialized with the value given
-  # when the key is created; it may later be changed via the {@link
-  # #interestOps(int)} method. </p></li>
+  #   <li><p> The <i>interest set</i> determines which operation categories will
+  #   be tested for readiness the next time one of the selector's selection
+  #   methods is invoked.  The interest set is initialized with the value given
+  #   when the key is created; it may later be changed via the {@link
+  #   #interestOps(int)} method. </p></li>
   # 
-  # <li><p> The <i>ready set</i> identifies the operation categories for which
-  # the key's channel has been detected to be ready by the key's selector.
-  # The ready set is initialized to zero when the key is created; it may later
-  # be updated by the selector during a selection operation, but it cannot be
-  # updated directly. </p></li>
+  #   <li><p> The <i>ready set</i> identifies the operation categories for which
+  #   the key's channel has been detected to be ready by the key's selector.
+  #   The ready set is initialized to zero when the key is created; it may later
+  #   be updated by the selector during a selection operation, but it cannot be
+  #   updated directly. </p></li>
   # 
   # </ul>
   # 
@@ -118,7 +118,6 @@ module Java::Nio::Channels
     
     typesig { [] }
     # -- Channel and selector operations --
-    # 
     # Returns the channel for which this key was created.  This method will
     # continue to return the channel even after the key is cancelled.  </p>
     # 
@@ -166,7 +165,6 @@ module Java::Nio::Channels
     
     typesig { [] }
     # -- Operation-set accessors --
-    # 
     # Retrieves this key's interest set.
     # 
     # <p> It is guaranteed that the returned set will only contain operation
@@ -178,7 +176,7 @@ module Java::Nio::Channels
     # @return  This key's interest set
     # 
     # @throws  CancelledKeyException
-    # If this key has been cancelled
+    #          If this key has been cancelled
     def interest_ops
       raise NotImplementedError
     end
@@ -194,12 +192,12 @@ module Java::Nio::Channels
     # @return  This selection key
     # 
     # @throws  IllegalArgumentException
-    # If a bit in the set does not correspond to an operation that
-    # is supported by this key's channel, that is, if
-    # <tt>set & ~(channel().validOps()) != 0</tt>
+    #          If a bit in the set does not correspond to an operation that
+    #          is supported by this key's channel, that is, if
+    #          <tt>set & ~(channel().validOps()) != 0</tt>
     # 
     # @throws  CancelledKeyException
-    # If this key has been cancelled
+    #          If this key has been cancelled
     def interest_ops(ops)
       raise NotImplementedError
     end
@@ -213,14 +211,13 @@ module Java::Nio::Channels
     # @return  This key's ready-operation set
     # 
     # @throws  CancelledKeyException
-    # If this key has been cancelled
+    #          If this key has been cancelled
     def ready_ops
       raise NotImplementedError
     end
     
     class_module.module_eval {
       # -- Operation bits and bit-testing convenience methods --
-      # 
       # Operation-set bit for read operations.
       # 
       # <p> Suppose that a selection key's interest set contains
@@ -283,11 +280,11 @@ module Java::Nio::Channels
     # method always returns <tt>false</tt>.  </p>
     # 
     # @return  <tt>true</tt> if, and only if,
-    # <tt>readyOps()</tt>&nbsp;<tt>&</tt>&nbsp;<tt>OP_READ</tt> is
-    # nonzero
+    #          <tt>readyOps()</tt>&nbsp;<tt>&</tt>&nbsp;<tt>OP_READ</tt> is
+    #          nonzero
     # 
     # @throws  CancelledKeyException
-    # If this key has been cancelled
+    #          If this key has been cancelled
     def is_readable
       return !((ready_ops & OP_READ)).equal?(0)
     end
@@ -305,11 +302,11 @@ module Java::Nio::Channels
     # method always returns <tt>false</tt>.  </p>
     # 
     # @return  <tt>true</tt> if, and only if,
-    # <tt>readyOps()</tt>&nbsp;<tt>&</tt>&nbsp;<tt>OP_WRITE</tt>
-    # is nonzero
+    #          <tt>readyOps()</tt>&nbsp;<tt>&</tt>&nbsp;<tt>OP_WRITE</tt>
+    #          is nonzero
     # 
     # @throws  CancelledKeyException
-    # If this key has been cancelled
+    #          If this key has been cancelled
     def is_writable
       return !((ready_ops & OP_WRITE)).equal?(0)
     end
@@ -328,11 +325,11 @@ module Java::Nio::Channels
     # then this method always returns <tt>false</tt>.  </p>
     # 
     # @return  <tt>true</tt> if, and only if,
-    # <tt>readyOps()</tt>&nbsp;<tt>&</tt>&nbsp;<tt>OP_CONNECT</tt>
-    # is nonzero
+    #          <tt>readyOps()</tt>&nbsp;<tt>&</tt>&nbsp;<tt>OP_CONNECT</tt>
+    #          is nonzero
     # 
     # @throws  CancelledKeyException
-    # If this key has been cancelled
+    #          If this key has been cancelled
     def is_connectable
       return !((ready_ops & OP_CONNECT)).equal?(0)
     end
@@ -351,11 +348,11 @@ module Java::Nio::Channels
     # this method always returns <tt>false</tt>.  </p>
     # 
     # @return  <tt>true</tt> if, and only if,
-    # <tt>readyOps()</tt>&nbsp;<tt>&</tt>&nbsp;<tt>OP_ACCEPT</tt>
-    # is nonzero
+    #          <tt>readyOps()</tt>&nbsp;<tt>&</tt>&nbsp;<tt>OP_ACCEPT</tt>
+    #          is nonzero
     # 
     # @throws  CancelledKeyException
-    # If this key has been cancelled
+    #          If this key has been cancelled
     def is_acceptable
       return !((ready_ops & OP_ACCEPT)).equal?(0)
     end
@@ -381,10 +378,10 @@ module Java::Nio::Channels
     # attachment may be discarded by attaching <tt>null</tt>.  </p>
     # 
     # @param  ob
-    # The object to be attached; may be <tt>null</tt>
+    #         The object to be attached; may be <tt>null</tt>
     # 
     # @return  The previously-attached object, if any,
-    # otherwise <tt>null</tt>
+    #          otherwise <tt>null</tt>
     def attach(ob)
       return AttachmentUpdater.get_and_set(self, ob)
     end
@@ -393,7 +390,7 @@ module Java::Nio::Channels
     # Retrieves the current attachment.  </p>
     # 
     # @return  The object currently attached to this key,
-    # or <tt>null</tt> if there is no attachment
+    #          or <tt>null</tt> if there is no attachment
     def attachment
       return @attachment
     end

@@ -41,42 +41,42 @@ module Sun::Security::Pkcs
   # Its attribute value is defined by the following ASN.1 definition.
   # <pre>
   # 
-  # id-aa-signingCertificate OBJECT IDENTIFIER ::= { iso(1)
-  # member-body(2) us(840) rsadsi(113549) pkcs(1) pkcs9(9)
-  # smime(16) id-aa(2) 12 }
+  #   id-aa-signingCertificate OBJECT IDENTIFIER ::= { iso(1)
+  #     member-body(2) us(840) rsadsi(113549) pkcs(1) pkcs9(9)
+  #     smime(16) id-aa(2) 12 }
   # 
-  # SigningCertificate ::=  SEQUENCE {
-  # certs       SEQUENCE OF ESSCertID,
-  # policies    SEQUENCE OF PolicyInformation OPTIONAL
-  # }
+  #   SigningCertificate ::=  SEQUENCE {
+  #       certs       SEQUENCE OF ESSCertID,
+  #       policies    SEQUENCE OF PolicyInformation OPTIONAL
+  #   }
   # 
-  # ESSCertID ::=  SEQUENCE {
-  # certHash        Hash,
-  # issuerSerial    IssuerSerial OPTIONAL
-  # }
+  #   ESSCertID ::=  SEQUENCE {
+  #       certHash        Hash,
+  #       issuerSerial    IssuerSerial OPTIONAL
+  #   }
   # 
-  # Hash ::= OCTET STRING -- SHA1 hash of entire certificate
+  #   Hash ::= OCTET STRING -- SHA1 hash of entire certificate
   # 
-  # IssuerSerial ::= SEQUENCE {
-  # issuer         GeneralNames,
-  # serialNumber   CertificateSerialNumber
-  # }
+  #   IssuerSerial ::= SEQUENCE {
+  #       issuer         GeneralNames,
+  #       serialNumber   CertificateSerialNumber
+  #   }
   # 
-  # PolicyInformation ::= SEQUENCE {
-  # policyIdentifier   CertPolicyId,
-  # policyQualifiers   SEQUENCE SIZE (1..MAX) OF
-  # PolicyQualifierInfo OPTIONAL }
+  #   PolicyInformation ::= SEQUENCE {
+  #       policyIdentifier   CertPolicyId,
+  #       policyQualifiers   SEQUENCE SIZE (1..MAX) OF
+  #               PolicyQualifierInfo OPTIONAL }
   # 
-  # CertPolicyId ::= OBJECT IDENTIFIER
+  #   CertPolicyId ::= OBJECT IDENTIFIER
   # 
-  # PolicyQualifierInfo ::= SEQUENCE {
-  # policyQualifierId  PolicyQualifierId,
-  # qualifier        ANY DEFINED BY policyQualifierId }
+  #   PolicyQualifierInfo ::= SEQUENCE {
+  #       policyQualifierId  PolicyQualifierId,
+  #       qualifier        ANY DEFINED BY policyQualifierId }
   # 
-  # -- Implementations that recognize additional policy qualifiers MUST
-  # -- augment the following definition for PolicyQualifierId
+  #   -- Implementations that recognize additional policy qualifiers MUST
+  #   -- augment the following definition for PolicyQualifierId
   # 
-  # PolicyQualifierId ::= OBJECT IDENTIFIER ( id-qt-cps | id-qt-unotice )
+  #   PolicyQualifierId ::= OBJECT IDENTIFIER ( id-qt-cps | id-qt-unotice )
   # 
   # </pre>
   # 

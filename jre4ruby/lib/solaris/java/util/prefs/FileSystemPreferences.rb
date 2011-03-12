@@ -1083,8 +1083,7 @@ module Java::Util::Prefs
         user_node = is_user_node
         shared = false
         if (user_node)
-          shared = false
-          # use exclusive lock for user prefs
+          shared = false # use exclusive lock for user prefs
         else
           # if can write to system root, use exclusive lock.
           # otherwise use shared lock.
@@ -1283,7 +1282,7 @@ module Java::Util::Prefs
       end
       
       typesig { [String] }
-      # Returns the node name corresponding to the specified directory name.
+      #   * Returns the node name corresponding to the specified directory name.
       # (Inverts the transformation of dirName(String).
       def node_name(dir_name_)
         if (!(dir_name_.char_at(0)).equal?(Character.new(?_.ord)))
@@ -1328,7 +1327,7 @@ module Java::Util::Prefs
             return true
           end
         rescue IOException => e
-          # // If at first, you don't succeed...
+          #                // If at first, you don't succeed...
         end
         begin
           JavaThread.sleep(sleep_time)

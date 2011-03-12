@@ -44,14 +44,14 @@ module Sun::Reflect
     end
     
     typesig { [Class, String, Array.typed(Class), Class, Array.typed(Class), ::Java::Int, ::Java::Int, String, Array.typed(::Java::Byte), Array.typed(::Java::Byte), Array.typed(::Java::Byte)] }
-    # Creates a new java.lang.reflect.Method. Access checks as per
+    # * Creates a new java.lang.reflect.Method. Access checks as per
     # java.lang.reflect.AccessibleObject are not overridden.
     def new_method(declaring_class, name, parameter_types, return_type, checked_exceptions, modifiers, slot, signature, annotations, parameter_annotations, annotation_default)
       raise NotImplementedError
     end
     
     typesig { [Class, Array.typed(Class), Array.typed(Class), ::Java::Int, ::Java::Int, String, Array.typed(::Java::Byte), Array.typed(::Java::Byte)] }
-    # Creates a new java.lang.reflect.Constructor. Access checks as
+    # * Creates a new java.lang.reflect.Constructor. Access checks as
     # per java.lang.reflect.AccessibleObject are not overridden.
     def new_constructor(declaring_class, parameter_types, checked_exceptions, modifiers, slot, signature, annotations, parameter_annotations)
       raise NotImplementedError
@@ -108,6 +108,7 @@ module Sun::Reflect
     end
     
     typesig { [Method] }
+    # 
     # Copying routines, needed to quickly fabricate new Field,
     # Method, and Constructor objects from templates
     # 

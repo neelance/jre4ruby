@@ -56,6 +56,7 @@ module Sun::Nio::Ch
     typesig { [] }
     # Adds the current native thread to this set, returning its index so that
     # it can efficiently be removed later.
+    # 
     def add
       th = NativeThread.current
       if ((th).equal?(-1))
@@ -87,6 +88,7 @@ module Sun::Nio::Ch
     
     typesig { [::Java::Int] }
     # Removes the thread at the given index.
+    # 
     def remove(i)
       if (i < 0)
         return
@@ -99,6 +101,7 @@ module Sun::Nio::Ch
     
     typesig { [] }
     # Signals all threads in this set.
+    # 
     def signal
       synchronized((self)) do
         u = @used

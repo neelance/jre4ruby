@@ -44,17 +44,17 @@ module Java::Lang::Management
   # <p>The <tt>ObjectName</tt> for uniquely identifying the MXBean for
   # the runtime system within an MBeanServer is:
   # <blockquote>
-  # {@link ManagementFactory#RUNTIME_MXBEAN_NAME
-  # <tt>java.lang:type=Runtime</tt>}
+  #    {@link ManagementFactory#RUNTIME_MXBEAN_NAME
+  #           <tt>java.lang:type=Runtime</tt>}
   # </blockquote>
   # 
   # <p> This interface defines several convenient methods for accessing
   # system properties about the Java virtual machine.
   # 
   # @see <a href="../../../javax/management/package-summary.html">
-  # JMX Specification.</a>
+  #      JMX Specification.</a>
   # @see <a href="package-summary.html#examples">
-  # Ways to Access MXBeans</a>
+  #      Ways to Access MXBeans</a>
   # 
   # @author  Mandy Chung
   # @since   1.5
@@ -82,9 +82,9 @@ module Java::Lang::Management
     # @return the Java virtual machine implementation name.
     # 
     # @throws  java.lang.SecurityException
-    # if a security manager exists and its
-    # <code>checkPropertiesAccess</code> method doesn't allow access
-    # to this system property.
+    #     if a security manager exists and its
+    #     <code>checkPropertiesAccess</code> method doesn't allow access
+    #     to this system property.
     # @see java.lang.SecurityManager#checkPropertyAccess(java.lang.String)
     # @see java.lang.System#getProperty
     def get_vm_name
@@ -99,9 +99,9 @@ module Java::Lang::Management
     # @return the Java virtual machine implementation vendor.
     # 
     # @throws  java.lang.SecurityException
-    # if a security manager exists and its
-    # <code>checkPropertiesAccess</code> method doesn't allow access
-    # to this system property.
+    #     if a security manager exists and its
+    #     <code>checkPropertiesAccess</code> method doesn't allow access
+    #     to this system property.
     # @see java.lang.SecurityManager#checkPropertyAccess(java.lang.String)
     # @see java.lang.System#getProperty
     def get_vm_vendor
@@ -116,9 +116,9 @@ module Java::Lang::Management
     # @return the Java virtual machine implementation version.
     # 
     # @throws  java.lang.SecurityException
-    # if a security manager exists and its
-    # <code>checkPropertiesAccess</code> method doesn't allow access
-    # to this system property.
+    #     if a security manager exists and its
+    #     <code>checkPropertiesAccess</code> method doesn't allow access
+    #     to this system property.
     # @see java.lang.SecurityManager#checkPropertyAccess(java.lang.String)
     # @see java.lang.System#getProperty
     def get_vm_version
@@ -133,9 +133,9 @@ module Java::Lang::Management
     # @return the Java virtual machine specification name.
     # 
     # @throws  java.lang.SecurityException
-    # if a security manager exists and its
-    # <code>checkPropertiesAccess</code> method doesn't allow access
-    # to this system property.
+    #     if a security manager exists and its
+    #     <code>checkPropertiesAccess</code> method doesn't allow access
+    #     to this system property.
     # @see java.lang.SecurityManager#checkPropertyAccess(java.lang.String)
     # @see java.lang.System#getProperty
     def get_spec_name
@@ -150,9 +150,9 @@ module Java::Lang::Management
     # @return the Java virtual machine specification vendor.
     # 
     # @throws  java.lang.SecurityException
-    # if a security manager exists and its
-    # <code>checkPropertiesAccess</code> method doesn't allow access
-    # to this system property.
+    #     if a security manager exists and its
+    #     <code>checkPropertiesAccess</code> method doesn't allow access
+    #     to this system property.
     # @see java.lang.SecurityManager#checkPropertyAccess(java.lang.String)
     # @see java.lang.System#getProperty
     def get_spec_vendor
@@ -167,9 +167,9 @@ module Java::Lang::Management
     # @return the Java virtual machine specification version.
     # 
     # @throws  java.lang.SecurityException
-    # if a security manager exists and its
-    # <code>checkPropertiesAccess</code> method doesn't allow access
-    # to this system property.
+    #     if a security manager exists and its
+    #     <code>checkPropertiesAccess</code> method doesn't allow access
+    #     to this system property.
     # @see java.lang.SecurityManager#checkPropertyAccess(java.lang.String)
     # @see java.lang.System#getProperty
     def get_spec_version
@@ -199,9 +199,9 @@ module Java::Lang::Management
     # @return the Java class path.
     # 
     # @throws  java.lang.SecurityException
-    # if a security manager exists and its
-    # <code>checkPropertiesAccess</code> method doesn't allow access
-    # to this system property.
+    #     if a security manager exists and its
+    #     <code>checkPropertiesAccess</code> method doesn't allow access
+    #     to this system property.
     # @see java.lang.SecurityManager#checkPropertyAccess(java.lang.String)
     # @see java.lang.System#getProperty
     def get_class_path
@@ -220,9 +220,9 @@ module Java::Lang::Management
     # @return the Java library path.
     # 
     # @throws  java.lang.SecurityException
-    # if a security manager exists and its
-    # <code>checkPropertiesAccess</code> method doesn't allow access
-    # to this system property.
+    #     if a security manager exists and its
+    #     <code>checkPropertiesAccess</code> method doesn't allow access
+    #     to this system property.
     # @see java.lang.SecurityManager#checkPropertyAccess(java.lang.String)
     # @see java.lang.System#getProperty
     def get_library_path
@@ -257,11 +257,11 @@ module Java::Lang::Management
     # @return the boot class path.
     # 
     # @throws java.lang.UnsupportedOperationException
-    # if the Java virtual machine does not support this operation.
+    #     if the Java virtual machine does not support this operation.
     # 
     # @throws  java.lang.SecurityException
-    # if a security manager exists and the caller does not have
-    # ManagementPermission("monitor").
+    #     if a security manager exists and the caller does not have
+    #     ManagementPermission("monitor").
     def get_boot_class_path
       raise NotImplementedError
     end
@@ -290,8 +290,8 @@ module Java::Lang::Management
     # is an argument passed to the Java virtual machine.
     # 
     # @throws  java.lang.SecurityException
-    # if a security manager exists and the caller does not have
-    # ManagementPermission("monitor").
+    #     if a security manager exists and the caller does not have
+    #     ManagementPermission("monitor").
     def get_input_arguments
       raise NotImplementedError
     end
@@ -328,26 +328,26 @@ module Java::Lang::Management
     # <blockquote>
     # <table border>
     # <tr>
-    # <th>Item Name</th>
-    # <th>Item Type</th>
-    # </tr>
+    #   <th>Item Name</th>
+    #   <th>Item Type</th>
+    #   </tr>
     # <tr>
-    # <td><tt>key</tt></td>
-    # <td><tt>String</tt></td>
-    # </tr>
+    #   <td><tt>key</tt></td>
+    #   <td><tt>String</tt></td>
+    #   </tr>
     # <tr>
-    # <td><tt>value</tt></td>
-    # <td><tt>String</tt></td>
-    # </tr>
+    #   <td><tt>value</tt></td>
+    #   <td><tt>String</tt></td>
+    #   </tr>
     # </table>
     # </blockquote>
     # 
     # @return a map of names and values of all system properties.
     # 
     # @throws  java.lang.SecurityException
-    # if a security manager exists and its
-    # <code>checkPropertiesAccess</code> method doesn't allow access
-    # to the system properties.
+    #     if a security manager exists and its
+    #     <code>checkPropertiesAccess</code> method doesn't allow access
+    #     to the system properties.
     def get_system_properties
       raise NotImplementedError
     end

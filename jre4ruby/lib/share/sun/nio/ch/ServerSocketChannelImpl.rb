@@ -442,6 +442,7 @@ module Sun::Nio::Ch
     # the new socket and setting isaa[0] to the socket's remote address.
     # Returns 1 on success, or IOStatus.UNAVAILABLE (if non-blocking and no
     # connections are pending) or IOStatus.INTERRUPTED.
+    # 
     def accept0(ssfd, newfd, isaa)
       JNI.call_native_method(:Java_sun_nio_ch_ServerSocketChannelImpl_accept0, JNI.env, self.jni_id, ssfd.jni_id, newfd.jni_id, isaa.jni_id)
     end

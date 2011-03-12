@@ -60,8 +60,8 @@ module Java::Nio::Channels
     # 
     # <blockquote><pre>
     # srcs[offset].remaining()
-    # + srcs[offset+1].remaining()
-    # + ... + srcs[offset+length-1].remaining()</pre></blockquote>
+    #     + srcs[offset+1].remaining()
+    #     + ... + srcs[offset+length-1].remaining()</pre></blockquote>
     # 
     # at the moment that this method is invoked.
     # 
@@ -87,42 +87,42 @@ module Java::Nio::Channels
     # complete. </p>
     # 
     # @param  srcs
-    # The buffers from which bytes are to be retrieved
+    #         The buffers from which bytes are to be retrieved
     # 
     # @param  offset
-    # The offset within the buffer array of the first buffer from
-    # which bytes are to be retrieved; must be non-negative and no
-    # larger than <tt>srcs.length</tt>
+    #         The offset within the buffer array of the first buffer from
+    #         which bytes are to be retrieved; must be non-negative and no
+    #         larger than <tt>srcs.length</tt>
     # 
     # @param  length
-    # The maximum number of buffers to be accessed; must be
-    # non-negative and no larger than
-    # <tt>srcs.length</tt>&nbsp;-&nbsp;<tt>offset</tt>
+    #         The maximum number of buffers to be accessed; must be
+    #         non-negative and no larger than
+    #         <tt>srcs.length</tt>&nbsp;-&nbsp;<tt>offset</tt>
     # 
     # @return  The number of bytes written, possibly zero
     # 
     # @throws  IndexOutOfBoundsException
-    # If the preconditions on the <tt>offset</tt> and <tt>length</tt>
-    # parameters do not hold
+    #          If the preconditions on the <tt>offset</tt> and <tt>length</tt>
+    #          parameters do not hold
     # 
     # @throws  NonWritableChannelException
-    # If this channel was not opened for writing
+    #          If this channel was not opened for writing
     # 
     # @throws  ClosedChannelException
-    # If this channel is closed
+    #          If this channel is closed
     # 
     # @throws  AsynchronousCloseException
-    # If another thread closes this channel
-    # while the write operation is in progress
+    #          If another thread closes this channel
+    #          while the write operation is in progress
     # 
     # @throws  ClosedByInterruptException
-    # If another thread interrupts the current thread
-    # while the write operation is in progress, thereby
-    # closing the channel and setting the current thread's
-    # interrupt status
+    #          If another thread interrupts the current thread
+    #          while the write operation is in progress, thereby
+    #          closing the channel and setting the current thread's
+    #          interrupt status
     # 
     # @throws  IOException
-    # If some other I/O error occurs
+    #          If some other I/O error occurs
     def write(srcs, offset, length)
       raise NotImplementedError
     end
@@ -137,28 +137,28 @@ module Java::Nio::Channels
     # c.write(srcs, 0, srcs.length);</pre></blockquote>
     # 
     # @param  srcs
-    # The buffers from which bytes are to be retrieved
+    #         The buffers from which bytes are to be retrieved
     # 
     # @return  The number of bytes written, possibly zero
     # 
     # @throws  NonWritableChannelException
-    # If this channel was not opened for writing
+    #          If this channel was not opened for writing
     # 
     # @throws  ClosedChannelException
-    # If this channel is closed
+    #          If this channel is closed
     # 
     # @throws  AsynchronousCloseException
-    # If another thread closes this channel
-    # while the write operation is in progress
+    #          If another thread closes this channel
+    #          while the write operation is in progress
     # 
     # @throws  ClosedByInterruptException
-    # If another thread interrupts the current thread
-    # while the write operation is in progress, thereby
-    # closing the channel and setting the current thread's
-    # interrupt status
+    #          If another thread interrupts the current thread
+    #          while the write operation is in progress, thereby
+    #          closing the channel and setting the current thread's
+    #          interrupt status
     # 
     # @throws  IOException
-    # If some other I/O error occurs
+    #          If some other I/O error occurs
     def write(srcs)
       raise NotImplementedError
     end

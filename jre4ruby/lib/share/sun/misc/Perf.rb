@@ -80,7 +80,6 @@ module Sun::Misc
     
     class_module.module_eval {
       # prevent instantiation
-      # 
       # The GetPerfAction class is a convenience class for acquiring access
       # to the singleton Perf instance using the
       # <code>AccessController.doPrivileged()</code> method.
@@ -91,9 +90,9 @@ module Sun::Misc
       # 
       # <blockquote><pre>
       # class MyTrustedClass {
-      # private static final Perf perf =
-      # AccessController.doPrivileged(new Perf.GetPerfAction<Perf>());
-      # ...
+      #   private static final Perf perf =
+      #       AccessController.doPrivileged(new Perf.GetPerfAction<Perf>());
+      #   ...
       # }
       # </pre></blockquote>
       # <p>
@@ -154,8 +153,8 @@ module Sun::Misc
       # 
       # @return       A reference to the singleton Perf instance.
       # @throws AccessControlException  if a security manager exists and
-      # its <code>checkPermission</code> method doesn't allow
-      # access to the <em>"sun.misc.Perf.getPerf"</em> target.
+      #               its <code>checkPermission</code> method doesn't allow
+      #               access to the <em>"sun.misc.Perf.getPerf"</em> target.
       # @see  java.lang.RuntimePermission
       # @see  #attach
       def get_perf
@@ -210,14 +209,14 @@ module Sun::Misc
     # </bl>
     # 
     # @param   lvmid            an integer that uniquely identifies the
-    # target local Java virtual machine.
+    #                           target local Java virtual machine.
     # @param   mode             a string indicating the attach mode.
     # @return  ByteBuffer       a direct allocated byte buffer
     # @throws  IllegalArgumentException  The lvmid or mode was invalid.
     # @throws  IOException      An I/O error occurred while trying to acquire
-    # the instrumentation buffer.
+    #                           the instrumentation buffer.
     # @throws  OutOfMemoryError The instrumentation buffer could not be mapped
-    # into the virtual machine's address space.
+    #                           into the virtual machine's address space.
     # @see     java.nio.ByteBuffer
     def attach(lvmid, mode)
       if (((mode <=> "r")).equal?(0))
@@ -240,17 +239,17 @@ module Sun::Misc
     # owned by the specified user.
     # 
     # @param   user             A <code>String</code> object containing the
-    # name of the user that owns the target Java
-    # virtual machine.
+    #                           name of the user that owns the target Java
+    #                           virtual machine.
     # @param   lvmid            an integer that uniquely identifies the
-    # target local Java virtual machine.
+    #                           target local Java virtual machine.
     # @param   mode             a string indicating the attach mode.
     # @return  ByteBuffer       a direct allocated byte buffer
     # @throws  IllegalArgumentException  The lvmid or mode was invalid.
     # @throws  IOException      An I/O error occurred while trying to acquire
-    # the instrumentation buffer.
+    #                           the instrumentation buffer.
     # @throws  OutOfMemoryError The instrumentation buffer could not be mapped
-    # into the virtual machine's address space.
+    #                           into the virtual machine's address space.
     # @see     java.nio.ByteBuffer
     def attach(user, lvmid, mode)
       if (((mode <=> "r")).equal?(0))
@@ -273,17 +272,17 @@ module Sun::Misc
     # guaranteed, secure release of the native resources.
     # 
     # @param   user             A <code>String</code> object containing the
-    # name of the user that owns the target Java
-    # virtual machine.
+    #                           name of the user that owns the target Java
+    #                           virtual machine.
     # @param   lvmid            an integer that uniquely identifies the
-    # target local Java virtual machine.
+    #                           target local Java virtual machine.
     # @param   mode             a string indicating the attach mode.
     # @return  ByteBuffer       a direct allocated byte buffer
     # @throws  IllegalArgumentException  The lvmid or mode was invalid.
     # @throws  IOException      An I/O error occurred while trying to acquire
-    # the instrumentation buffer.
+    #                           the instrumentation buffer.
     # @throws  OutOfMemoryError The instrumentation buffer could not be mapped
-    # into the virtual machine's address space.
+    #                           into the virtual machine's address space.
     def attach_impl(user, lvmid, mode)
       b = attach(user, lvmid, mode)
       if ((lvmid).equal?(0))
@@ -339,17 +338,17 @@ module Sun::Misc
     # objects returned by this method. This may change in a future release.
     # 
     # @param   user             A <code>String</code> object containing the
-    # name of the user that owns the target Java
-    # virtual machine.
+    #                           name of the user that owns the target Java
+    #                           virtual machine.
     # @param   lvmid            an integer that uniquely identifies the
-    # target local Java virtual machine.
+    #                           target local Java virtual machine.
     # @param   mode             a string indicating the attach mode.
     # @return  ByteBuffer       a direct allocated byte buffer
     # @throws  IllegalArgumentException  The lvmid or mode was invalid.
     # @throws  IOException      An I/O error occurred while trying to acquire
-    # the instrumentation buffer.
+    #                           the instrumentation buffer.
     # @throws  OutOfMemoryError The instrumentation buffer could not be mapped
-    # into the virtual machine's address space.
+    #                           into the virtual machine's address space.
     def attach(user, lvmid, mode)
       JNI.call_native_method(:Java_sun_misc_Perf_attach, JNI.env, self.jni_id, user.jni_id, lvmid.to_int, mode.to_int)
     end
@@ -372,7 +371,7 @@ module Sun::Misc
     # request is silently ignored.
     # 
     # @param ByteBuffer  A direct allocated byte buffer created by the
-    # <code>attach</code> method.
+    #                    <code>attach</code> method.
     # @see   java.nio.ByteBuffer
     # @see   #attach
     def detach(bb)
@@ -393,8 +392,8 @@ module Sun::Misc
     # @param   name        the name of this entry.
     # @param   value       the initial value for this entry.
     # @return  ByteBuffer  a direct allocated ByteBuffer object that
-    # allows write access to a native memory location
-    # containing a <code>long</code> value.
+    #                      allows write access to a native memory location
+    #                      containing a <code>long</code> value.
     # 
     # see sun.misc.perf.Variability
     # see sun.misc.perf.Units
@@ -424,10 +423,10 @@ module Sun::Misc
     # @param   name        the name of this entry.
     # @param   value       the initial value for this entry.
     # @param   maxLength   the maximum string length for this string
-    # instrument.
+    #                      instrument.
     # @return  ByteBuffer  a direct allocated ByteBuffer that allows
-    # write access to a native memory location
-    # containing a <code>long</code> value.
+    #                      write access to a native memory location
+    #                      containing a <code>long</code> value.
     # 
     # see sun.misc.perf.Variability
     # see sun.misc.perf.Units
@@ -462,8 +461,8 @@ module Sun::Misc
     # @param   name        the name of this entry.
     # @param   value       the initial value for this entry.
     # @return  ByteBuffer  a direct allocated ByteBuffer that allows
-    # write access to a native memory location
-    # containing a <code>long</code> value.
+    #                      write access to a native memory location
+    #                      containing a <code>long</code> value.
     # 
     # see sun.misc.perf.Variability
     # see sun.misc.perf.Units
@@ -498,8 +497,8 @@ module Sun::Misc
     # @param   value       the initial value for this entry.
     # @param   maxLength   the maximum length of this byte array.
     # @return  ByteBuffer  a direct allocated byte buffer that allows
-    # write access to a native memory location
-    # containing a <code>long</code> value.
+    #                      write access to a native memory location
+    #                      containing a <code>long</code> value.
     # 
     # see sun.misc.perf.Variability
     # see sun.misc.perf.Units
@@ -532,7 +531,7 @@ module Sun::Misc
     # value return by the {@link #highResFrequency} method.
     # 
     # @return  the number of ticks of machine dependent resolution since
-    # the start of the Java virtual machine.
+    #          the start of the Java virtual machine.
     # 
     # @see #highResFrequency
     # @see java.lang.System#currentTimeMillis()

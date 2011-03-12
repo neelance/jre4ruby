@@ -85,7 +85,7 @@ module Java::Nio::Channels
       # @return  A new socket channel
       # 
       # @throws  IOException
-      # If an I/O error occurs
+      #          If an I/O error occurs
       def open
         return SelectorProvider.provider.open_server_socket_channel
       end
@@ -106,7 +106,6 @@ module Java::Nio::Channels
     
     typesig { [] }
     # -- ServerSocket-specific operations --
-    # 
     # Retrieves a server socket associated with this channel.
     # 
     # <p> The returned object will not declare any public methods that are not
@@ -137,32 +136,32 @@ module Java::Nio::Channels
     # java.lang.SecurityManager#checkAccept checkAccept} method.  </p>
     # 
     # @return  The socket channel for the new connection,
-    # or <tt>null</tt> if this channel is in non-blocking mode
-    # and no connection is available to be accepted
+    #          or <tt>null</tt> if this channel is in non-blocking mode
+    #          and no connection is available to be accepted
     # 
     # @throws  ClosedChannelException
-    # If this channel is closed
+    #          If this channel is closed
     # 
     # @throws  AsynchronousCloseException
-    # If another thread closes this channel
-    # while the accept operation is in progress
+    #          If another thread closes this channel
+    #          while the accept operation is in progress
     # 
     # @throws  ClosedByInterruptException
-    # If another thread interrupts the current thread
-    # while the accept operation is in progress, thereby
-    # closing the channel and setting the current thread's
-    # interrupt status
+    #          If another thread interrupts the current thread
+    #          while the accept operation is in progress, thereby
+    #          closing the channel and setting the current thread's
+    #          interrupt status
     # 
     # @throws  NotYetBoundException
-    # If this channel's socket has not yet been bound
+    #          If this channel's socket has not yet been bound
     # 
     # @throws  SecurityException
-    # If a security manager has been installed
-    # and it does not permit access to the remote endpoint
-    # of the new connection
+    #          If a security manager has been installed
+    #          and it does not permit access to the remote endpoint
+    #          of the new connection
     # 
     # @throws  IOException
-    # If some other I/O error occurs
+    #          If some other I/O error occurs
     def accept
       raise NotImplementedError
     end

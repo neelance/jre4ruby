@@ -75,9 +75,9 @@ module Java::Net
       # Gets the system-wide cookie handler.
       # 
       # @return the system-wide cookie handler; A null return means
-      # there is no system-wide cookie handler currently set.
+      #        there is no system-wide cookie handler currently set.
       # @throws SecurityException
-      # If a security manager has been installed and it denies
+      #       If a security manager has been installed and it denies
       # {@link NetPermission}<tt>("getCookieHandler")</tt>
       # @see #setDefault(CookieHandler)
       def get_default
@@ -96,9 +96,9 @@ module Java::Net
       # Note: non-standard http protocol handlers may ignore this setting.
       # 
       # @param cHandler The HTTP cookie handler, or
-      # <code>null</code> to unset.
+      #       <code>null</code> to unset.
       # @throws SecurityException
-      # If a security manager has been installed and it denies
+      #       If a security manager has been installed and it denies
       # {@link NetPermission}<tt>("setCookieHandler")</tt>
       # @see #getDefault()
       def set_default(c_handler)
@@ -122,11 +122,11 @@ module Java::Net
     # 
     # @param uri a <code>URI</code> to send cookies to in a request
     # @param requestHeaders - a Map from request header
-    # field names to lists of field values representing
-    # the current request headers
+    #            field names to lists of field values representing
+    #            the current request headers
     # @return an immutable map from state management headers, with
-    # field names "Cookie" or "Cookie2" to a list of
-    # cookies containing state information
+    #            field names "Cookie" or "Cookie2" to a list of
+    #            cookies containing state information
     # 
     # @throws IOException if an I/O error occurs
     # @throws IllegalArgumentException if either argument is null
@@ -142,8 +142,8 @@ module Java::Net
     # 
     # @param uri a <code>URI</code> where the cookies come from
     # @param responseHeaders an immutable map from field names to
-    # lists of field values representing the response
-    # header fields returned
+    #            lists of field values representing the response
+    #            header fields returned
     # @throws  IOException if an I/O error occurs
     # @throws  IllegalArgumentException if either argument is null
     # @see #get(URI, Map)

@@ -33,9 +33,9 @@ module Sun::Reflect::Generics::Parser
     }
   end
   
-  # Parser for type signatures, as defined in the Java Virtual
+  #  * Parser for type signatures, as defined in the Java Virtual
   # // Machine Specification (JVMS) chapter 4.
-  # Converts the signatures into an abstract syntax tree (AST) representation.
+  #  * Converts the signatures into an abstract syntax tree (AST) representation.
   # // See the package sun.reflect.generics.tree for details of the AST.
   class SignatureParser 
     include_class_members SignatureParserImports
@@ -526,9 +526,9 @@ module Sun::Reflect::Generics::Parser
           stop = true
         end
       end
-      # while( matches(current(),
-      # 'B', 'C', 'D', 'F', 'I', 'J', 'S', 'Z', 'L', 'T', '[')
-      # ) {
+      #     while( matches(current(),
+      #            'B', 'C', 'D', 'F', 'I', 'J', 'S', 'Z', 'L', 'T', '[')
+      #    ) {
       # ts.add(parseTypeSignature());
       # }
       ta = Array.typed(TypeSignature).new(ts.size) { nil }

@@ -56,7 +56,7 @@ module Java::Lang
     # 
     # @param typeName the fully qualified name of the unavailable type
     # @param cause the exception that was thrown when the system attempted to
-    # load the named type, or <tt>null</tt> if unavailable or inapplicable
+    #    load the named type, or <tt>null</tt> if unavailable or inapplicable
     def initialize(type_name, cause)
       @type_name = nil
       super("Type " + type_name + " not present", cause)

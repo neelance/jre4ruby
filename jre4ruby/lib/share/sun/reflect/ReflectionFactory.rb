@@ -96,6 +96,7 @@ module Sun::Reflect
       end
       alias_method :attr_lang_reflect_access=, :lang_reflect_access=
       
+      # 
       # "Inflation" mechanism. Loading bytecodes to implement
       # Method.invoke() and Constructor.newInstance() currently costs
       # 3-4x more than an invocation via native code for the first
@@ -177,8 +178,8 @@ module Sun::Reflect
       # unverified bytecodes.  It must never be passed to untrusted code.
       # 
       # @exception SecurityException if a security manager exists and its
-      # <code>checkPermission</code> method doesn't allow
-      # access to the RuntimePermission "reflectionFactoryAccess".
+      #             <code>checkPermission</code> method doesn't allow
+      #             access to the RuntimePermission "reflectionFactoryAccess".
       def get_reflection_factory
         security = System.get_security_manager
         if (!(security).nil?)
@@ -330,6 +331,8 @@ module Sun::Reflect
     # --------------------------------------------------------------------------
     # 
     # Routines used by serialization
+    # 
+    # 
     def new_constructor_for_serialization(class_to_instantiate, constructor_to_call)
       # Fast path
       if ((constructor_to_call.get_declaring_class).equal?(class_to_instantiate))
@@ -346,6 +349,7 @@ module Sun::Reflect
       # --------------------------------------------------------------------------
       # 
       # Internals only below this point
+      # 
       def inflation_threshold
         return self.attr_inflation_threshold
       end

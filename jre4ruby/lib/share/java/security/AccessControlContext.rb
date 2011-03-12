@@ -58,7 +58,7 @@ module Java::Security
   # the following:
   # 
   # <pre>
-  # AccessControlContext acc = AccessController.getContext()
+  #   AccessControlContext acc = AccessController.getContext()
   # </pre>
   # 
   # <p>
@@ -68,7 +68,7 @@ module Java::Security
   # following:
   # 
   # <pre>
-  # acc.checkPermission(permission)
+  #   acc.checkPermission(permission)
   # </pre>
   # 
   # @see AccessController
@@ -187,17 +187,17 @@ module Java::Security
     # <p>
     # 
     # @param acc the <code>AccessControlContext</code> associated
-    # with the provided <code>DomainCombiner</code>.
+    #          with the provided <code>DomainCombiner</code>.
     # 
     # @param combiner the <code>DomainCombiner</code> to be associated
-    # with the provided <code>AccessControlContext</code>.
+    #          with the provided <code>AccessControlContext</code>.
     # 
     # @exception NullPointerException if the provided
-    # <code>context</code> is <code>null</code>.
+    #          <code>context</code> is <code>null</code>.
     # 
     # @exception SecurityException if a security manager is installed and the
-    # caller does not have the "createAccessControlContext"
-    # {@link SecurityPermission}
+    #          caller does not have the "createAccessControlContext"
+    #          {@link SecurityPermission}
     # @since 1.3
     def initialize(acc, combiner)
       @context = nil
@@ -270,12 +270,12 @@ module Java::Security
     # <p>
     # 
     # @return the <code>DomainCombiner</code> associated with this
-    # <code>AccessControlContext</code>, or <code>null</code>
-    # if there is none.
+    #          <code>AccessControlContext</code>, or <code>null</code>
+    #          if there is none.
     # 
     # @exception SecurityException if a security manager is installed and
-    # the caller does not have the "getDomainCombiner"
-    # {@link SecurityPermission}
+    #          the caller does not have the "getDomainCombiner"
+    #          {@link SecurityPermission}
     # @since 1.3
     def get_domain_combiner
       sm = System.get_security_manager
@@ -342,8 +342,6 @@ module Java::Security
       # iterate through the ProtectionDomains in the context.
       # Stop at the first one that doesn't allow the
       # requested permission (throwing an exception).
-      # 
-      # 
       # if ctxt is null, all we had on the stack were system domains,
       # or the first domain was a Privileged system domain. This
       # is to make the common case for system code very fast
@@ -479,7 +477,7 @@ module Java::Security
         System.arraycopy(pd, 0, tmp, 0, n)
         pd = tmp
       end
-      # return new AccessControlContext(pd, false);
+      #      return new AccessControlContext(pd, false);
       # Reuse existing ACC
       @context = pd
       @combiner = nil
@@ -547,6 +545,7 @@ module Java::Security
     typesig { [AccessControlContext] }
     def contains_all_pds(that)
       match = false
+      # 
       # ProtectionDomains within an ACC currently cannot be null
       # and this is enforced by the constructor and the various
       # optimize methods. However, historically this logic made attempts

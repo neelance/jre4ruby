@@ -22,17 +22,15 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996-1998 -  All Rights Reserved
 # (C) Copyright IBM Corp. 1996-1998 - All Rights Reserved
 # 
-# The original version of this source code and documentation is copyrighted
+#   The original version of this source code and documentation is copyrighted
 # and owned by Taligent, Inc., a wholly-owned subsidiary of IBM. These
 # materials are provided under terms of a License Agreement between Taligent
 # and Sun. This technology is protected by multiple US and International
 # patents. This notice and attribution to Taligent may not be removed.
-# Taligent is a registered trademark of Taligent, Inc.
+#   Taligent is a registered trademark of Taligent, Inc.
 module Java::Text
   module CollatorImports #:nodoc:
     class_module.module_eval {
@@ -76,9 +74,9 @@ module Java::Text
   # // Compare two strings in the default locale
   # Collator myCollator = Collator.getInstance();
   # if( myCollator.compare("abc", "ABC") < 0 )
-  # System.out.println("abc is less than ABC");
+  #     System.out.println("abc is less than ABC");
   # else
-  # System.out.println("abc is greater than or equal to ABC");
+  #     System.out.println("abc is greater than or equal to ABC");
   # </pre>
   # </blockquote>
   # 
@@ -99,7 +97,7 @@ module Java::Text
   # Collator usCollator = Collator.getInstance(Locale.US);
   # usCollator.setStrength(Collator.PRIMARY);
   # if( usCollator.compare("abc", "ABC") == 0 ) {
-  # System.out.println("Strings are equivalent");
+  #     System.out.println("Strings are equivalent");
   # }
   # </pre>
   # </blockquote>
@@ -299,11 +297,11 @@ module Java::Text
     # to, or greater than the second.
     # <p>
     # This implementation merely returns
-    # <code> compare((String)o1, (String)o2) </code>.
+    #  <code> compare((String)o1, (String)o2) </code>.
     # 
     # @return a negative integer, zero, or a positive integer as the
-    # first argument is less than, equal to, or greater than the
-    # second.
+    #         first argument is less than, equal to, or greater than the
+    #         second.
     # @exception ClassCastException the arguments cannot be cast to Strings.
     # @see java.util.Comparator
     # @since   1.2
@@ -429,7 +427,7 @@ module Java::Text
       # {@link java.util.Locale#US Locale.US}.
       # 
       # @return An array of locales for which localized
-      # <code>Collator</code> instances are available.
+      #         <code>Collator</code> instances are available.
       def get_available_locales
         synchronized(self) do
           pool = LocaleServiceProviderPool.get_pool(CollatorProvider)
@@ -509,8 +507,8 @@ module Java::Text
       end
       alias_method :attr_cache=, :cache=
       
-      # FIXME: These three constants should be removed.
       # 
+      # FIXME: These three constants should be removed.
       # 
       # LESS is returned if source string is compared to be less than target
       # string in the compare() method.

@@ -184,6 +184,7 @@ module Sun::Nio::Ch
     typesig { [SelectorProvider] }
     # -- End of fields protected by stateLock
     # Constructor for normal connecting sockets
+    # 
     def initialize(sp)
       @fd = nil
       @fd_val = 0
@@ -221,6 +222,7 @@ module Sun::Nio::Ch
     
     typesig { [SelectorProvider, FileDescriptor, InetSocketAddress] }
     # Constructor for sockets obtained from server sockets
+    # 
     def initialize(sp, fd, remote)
       @fd = nil
       @fd_val = 0
@@ -332,6 +334,7 @@ module Sun::Nio::Ch
         begin
           # Set up the interruption machinery; see
           # AbstractInterruptibleChannel for details
+          # 
           begin_
           synchronized((@state_lock)) do
             if (!is_open)
@@ -341,10 +344,12 @@ module Sun::Nio::Ch
               # either case the value returned here is irrelevant since
               # the invocation of end() in the finally block will throw
               # an appropriate exception.
+              # 
               return 0
             end
             # Save this thread so that it can be signalled on those
             # platforms that require it
+            # 
             @reader_thread = NativeThread.current
           end
           # Between the previous test of isOpen() and the return of the
@@ -355,24 +360,24 @@ module Sun::Nio::Ch
           # implCloseSelectableChannel method is ultimately invoked in
           # some other thread, so there are three possibilities:
           # 
-          # - implCloseSelectableChannel() invokes nd.preClose()
-          # before this thread invokes read(), in which case the
-          # read returns immediately with either EOF or an error,
-          # the latter of which will cause an IOException to be
-          # thrown.
+          #   - implCloseSelectableChannel() invokes nd.preClose()
+          #     before this thread invokes read(), in which case the
+          #     read returns immediately with either EOF or an error,
+          #     the latter of which will cause an IOException to be
+          #     thrown.
           # 
-          # - implCloseSelectableChannel() invokes nd.preClose() after
-          # this thread is blocked in read().  On some operating
-          # systems (e.g., Solaris and Windows) this causes the read
-          # to return immediately with either EOF or an error
-          # indication.
+          #   - implCloseSelectableChannel() invokes nd.preClose() after
+          #     this thread is blocked in read().  On some operating
+          #     systems (e.g., Solaris and Windows) this causes the read
+          #     to return immediately with either EOF or an error
+          #     indication.
           # 
-          # - implCloseSelectableChannel() invokes nd.preClose() after
-          # this thread is blocked in read() but the operating
-          # system (e.g., Linux) doesn't support preemptive close,
-          # so implCloseSelectableChannel() proceeds to signal this
-          # thread, thereby causing the read to return immediately
-          # with IOStatus.INTERRUPTED.
+          #   - implCloseSelectableChannel() invokes nd.preClose() after
+          #     this thread is blocked in read() but the operating
+          #     system (e.g., Linux) doesn't support preemptive close,
+          #     so implCloseSelectableChannel() proceeds to signal this
+          #     thread, thereby causing the read to return immediately
+          #     with IOStatus.INTERRUPTED.
           # 
           # In all three cases the invocation of end() in the finally
           # clause will notice that the channel has been closed and
@@ -423,8 +428,10 @@ module Sun::Nio::Ch
           # rare event that a channel is closed or a thread is
           # interrupted at the exact moment that a non-blocking I/O
           # request is made.
+          # 
           end_(n > 0 || ((n).equal?(IOStatus::UNAVAILABLE)))
           # Extra case for socket channels: Asynchronous shutdown
+          # 
           synchronized((@state_lock)) do
             if ((n <= 0) && (!@is_input_open))
               return IOStatus::EOF
@@ -886,6 +893,7 @@ module Sun::Nio::Ch
     # using AbstractInterruptibleChannel.closeLock, and also ensures that this
     # method is only ever invoked once.  Before we get to this method, isOpen
     # (which is volatile) will have been set to false.
+    # 
     def impl_close_selectable_channel
       synchronized((@state_lock)) do
         @is_input_open = false
@@ -894,10 +902,12 @@ module Sun::Nio::Ch
         # that's already closed.  This prevents other operations on this
         # channel from using the old fd, which might be recycled in the
         # meantime and allocated to an entirely different channel.
+        # 
         self.attr_nd.pre_close(@fd)
         # Signal native threads, if needed.  If a target thread is not
         # currently blocked in an I/O operation then no harm is done since
         # the signal handler doesn't actually do anything.
+        # 
         if (!(@reader_thread).equal?(0))
           NativeThread.signal(@reader_thread)
         end
@@ -913,6 +923,7 @@ module Sun::Nio::Ch
         # closing this channel caused its keys to be cancelled, so the
         # last selector to deregister a key for this channel will invoke
         # kill() to close the fd.
+        # 
         if (!is_registered)
           kill
         end

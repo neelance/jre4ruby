@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5
@@ -81,7 +79,7 @@ module Sun::Security::Krb5
       end
       # XXX check replay cache
       # if (rcache.repeated(packetTimestamp, packetUsec, packetSAddress))
-      # throw new KrbApErrException(Krb5.KRB_AP_ERR_REPEAT);
+      #      throw new KrbApErrException(Krb5.KRB_AP_ERR_REPEAT);
       # XXX consider moving up to api level
       if ((seq_number).nil? && (seq_number_required).equal?(true))
         raise KrbApErrException.new(Krb5::API_INVALID_ARG)

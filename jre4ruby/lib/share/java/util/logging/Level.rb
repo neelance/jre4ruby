@@ -215,8 +215,8 @@ module Java::Util::Logging
     # @param name  the name of the Level, for example "SEVERE".
     # @param value an integer value for the level.
     # @param resourceBundleName name of a resource bundle to use in
-    # localizing the given name. If the resourceBundleName is null
-    # or an empty string, it is ignored.
+    #    localizing the given name. If the resourceBundleName is null
+    #    or an empty string, it is ignored.
     # @throws NullPointerException if the name is null
     def initialize(name, value, resource_bundle_name)
       @name = nil

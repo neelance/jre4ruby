@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5::Internal
@@ -42,12 +40,12 @@ module Sun::Security::Krb5::Internal
   # 
   # <xmp>
   # KRB-SAFE-BODY   ::= SEQUENCE {
-  # user-data       [0] OCTET STRING,
-  # timestamp       [1] KerberosTime OPTIONAL,
-  # usec            [2] Microseconds OPTIONAL,
-  # seq-number      [3] UInt32 OPTIONAL,
-  # s-address       [4] HostAddress,
-  # r-address       [5] HostAddress OPTIONAL
+  #         user-data       [0] OCTET STRING,
+  #         timestamp       [1] KerberosTime OPTIONAL,
+  #         usec            [2] Microseconds OPTIONAL,
+  #         seq-number      [3] UInt32 OPTIONAL,
+  #         s-address       [4] HostAddress,
+  #         r-address       [5] HostAddress OPTIONAL
   # }
   # </xmp>
   # 

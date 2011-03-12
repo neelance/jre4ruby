@@ -63,11 +63,13 @@ module Sun::Misc
       # Dummy reference queue, needed because the PhantomReference constructor
       # insists that we pass a queue.  Nothing will ever be placed on this queue
       # since the reference handler invokes cleaners explicitly.
+      # 
       const_set_lazy(:DummyQueue) { ReferenceQueue.new }
       const_attr_reader  :DummyQueue
       
       # Doubly-linked list of live cleaners, which prevents the cleaners
       # themselves from being GC'd before their referents
+      # 
       
       def first
         defined?(@@first) ? @@first : @@first= nil
@@ -156,9 +158,9 @@ module Sun::Misc
       # Creates a new cleaner.
       # 
       # @param  thunk
-      # The cleanup code to be run when the cleaner is invoked.  The
-      # cleanup code is run directly from the reference-handler thread,
-      # so it should be as simple and straightforward as possible.
+      #         The cleanup code to be run when the cleaner is invoked.  The
+      #         cleanup code is run directly from the reference-handler thread,
+      #         so it should be as simple and straightforward as possible.
       # 
       # @return  The new cleaner
       def create(ob, thunk)

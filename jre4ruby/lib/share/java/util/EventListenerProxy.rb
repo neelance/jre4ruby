@@ -41,12 +41,12 @@ module Java::Util
   # argument method signature for adding a PropertyChangeListener for a
   # property:
   # 
-  # public void addPropertyChangeListener(String propertyName,
-  # PropertyChangeListener listener);
+  #     public void addPropertyChangeListener(String propertyName,
+  #                                  PropertyChangeListener listener);
   # 
   # If the Bean also implemented the zero argument get listener method:
   # 
-  # public PropertyChangeListener[] getPropertyChangeListeners();
+  #     public PropertyChangeListener[] getPropertyChangeListeners();
   # 
   # then the array may contain inner PropertyChangeListeners which are also
   # PropertyChangeListenerProxy objects.

@@ -558,7 +558,7 @@ module Java::Util::Prefs
     # Opens Windows registry key at a given absolute path using a given
     # security mask.
     # @param windowsAbsolutePath Windows absolute path of the
-    # key as a byte-encoded string.
+    #        key as a byte-encoded string.
     # @param mask1 Preferred Windows security mask.
     # @param mask2 Alternate Windows security mask.
     # @return Windows registry key's handle.
@@ -590,7 +590,7 @@ module Java::Util::Prefs
     # Opens Windows registry key at a given relative path
     # with respect to a given Windows registry key.
     # @param windowsAbsolutePath Windows relative path of the
-    # key as a byte-encoded string.
+    #        key as a byte-encoded string.
     # @param nativeHandle handle to the base Windows key.
     # @param mask1 Preferred Windows security mask.
     # @param mask2 Alternate Windows security mask.

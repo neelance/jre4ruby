@@ -47,12 +47,12 @@ module Java::Lang::Reflect
     # creation process for type variables.
     # 
     # @return  a {@code Type} object representing the component type
-    # of this array
+    #     of this array
     # @throws TypeNotPresentException if the underlying array type's
-    # component type refers to a non-existent type declaration
+    #     component type refers to a non-existent type declaration
     # @throws MalformedParameterizedTypeException if  the
-    # underlying array type's component type refers to a
-    # parameterized type that cannot be instantiated for any reason
+    #     underlying array type's component type refers to a
+    #     parameterized type that cannot be instantiated for any reason
     def get_generic_component_type
       raise NotImplementedError
     end

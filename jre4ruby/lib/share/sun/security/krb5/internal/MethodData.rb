@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5::Internal
@@ -40,10 +38,10 @@ module Sun::Security::Krb5::Internal
   # Implements the ASN.1 EncKrbPrivPart type.
   # 
   # <xmp>
-  # METHOD-DATA ::=    SEQUENCE {
-  # method-type[0]   INTEGER,
-  # method-data[1]   OCTET STRING OPTIONAL
-  # }
+  #     METHOD-DATA ::=    SEQUENCE {
+  #                        method-type[0]   INTEGER,
+  #                        method-data[1]   OCTET STRING OPTIONAL
+  #  }
   # </xmp>
   class MethodData 
     include_class_members MethodDataImports

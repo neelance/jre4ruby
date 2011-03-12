@@ -240,9 +240,9 @@ module Java::Util
     # @param task  task to be scheduled.
     # @param delay delay in milliseconds before task is to be executed.
     # @throws IllegalArgumentException if <tt>delay</tt> is negative, or
-    # <tt>delay + System.currentTimeMillis()</tt> is negative.
+    #         <tt>delay + System.currentTimeMillis()</tt> is negative.
     # @throws IllegalStateException if task was already scheduled or
-    # cancelled, or timer was cancelled.
+    #         cancelled, or timer was cancelled.
     def schedule(task, delay)
       if (delay < 0)
         raise IllegalArgumentException.new("Negative delay.")
@@ -258,7 +258,7 @@ module Java::Util
     # @param time time at which task is to be executed.
     # @throws IllegalArgumentException if <tt>time.getTime()</tt> is negative.
     # @throws IllegalStateException if task was already scheduled or
-    # cancelled, timer was cancelled, or timer thread terminated.
+    #         cancelled, timer was cancelled, or timer thread terminated.
     def schedule(task, time)
       sched(task, time.get_time, 0)
     end
@@ -289,9 +289,9 @@ module Java::Util
     # @param delay  delay in milliseconds before task is to be executed.
     # @param period time in milliseconds between successive task executions.
     # @throws IllegalArgumentException if <tt>delay</tt> is negative, or
-    # <tt>delay + System.currentTimeMillis()</tt> is negative.
+    #         <tt>delay + System.currentTimeMillis()</tt> is negative.
     # @throws IllegalStateException if task was already scheduled or
-    # cancelled, timer was cancelled, or timer thread terminated.
+    #         cancelled, timer was cancelled, or timer thread terminated.
     def schedule(task, delay, period)
       if (delay < 0)
         raise IllegalArgumentException.new("Negative delay.")
@@ -329,7 +329,7 @@ module Java::Util
     # @param period time in milliseconds between successive task executions.
     # @throws IllegalArgumentException if <tt>time.getTime()</tt> is negative.
     # @throws IllegalStateException if task was already scheduled or
-    # cancelled, timer was cancelled, or timer thread terminated.
+    #         cancelled, timer was cancelled, or timer thread terminated.
     def schedule(task, first_time, period)
       if (period <= 0)
         raise IllegalArgumentException.new("Non-positive period.")
@@ -364,9 +364,9 @@ module Java::Util
     # @param delay  delay in milliseconds before task is to be executed.
     # @param period time in milliseconds between successive task executions.
     # @throws IllegalArgumentException if <tt>delay</tt> is negative, or
-    # <tt>delay + System.currentTimeMillis()</tt> is negative.
+    #         <tt>delay + System.currentTimeMillis()</tt> is negative.
     # @throws IllegalStateException if task was already scheduled or
-    # cancelled, timer was cancelled, or timer thread terminated.
+    #         cancelled, timer was cancelled, or timer thread terminated.
     def schedule_at_fixed_rate(task, delay, period)
       if (delay < 0)
         raise IllegalArgumentException.new("Negative delay.")
@@ -405,7 +405,7 @@ module Java::Util
     # @param period time in milliseconds between successive task executions.
     # @throws IllegalArgumentException if <tt>time.getTime()</tt> is negative.
     # @throws IllegalStateException if task was already scheduled or
-    # cancelled, timer was cancelled, or timer thread terminated.
+    #         cancelled, timer was cancelled, or timer thread terminated.
     def schedule_at_fixed_rate(task, first_time, period)
       if (period <= 0)
         raise IllegalArgumentException.new("Non-positive period.")
@@ -423,7 +423,7 @@ module Java::Util
     # 
     # @throws IllegalArgumentException if <tt>time()</tt> is negative.
     # @throws IllegalStateException if task was already scheduled or
-    # cancelled, timer was cancelled, or timer thread terminated.
+    #         cancelled, timer was cancelled, or timer thread terminated.
     def sched(task, time, period)
       if (time < 0)
         raise IllegalArgumentException.new("Illegal execution time.")

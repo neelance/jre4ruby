@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5::Internal::Ktab
@@ -35,7 +33,6 @@ module Sun::Security::Krb5::Internal::Ktab
   end
   
   # krb v5, keytab version 2 (standard)
-  # 
   # This class represents a Key Table entry. Each entry contains the service principal of
   # the key, time stamp, key version and secret key itself.
   # 

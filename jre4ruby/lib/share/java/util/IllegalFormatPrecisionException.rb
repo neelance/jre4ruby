@@ -53,7 +53,7 @@ module Java::Util
     # Constructs an instance of this class with the specified precision.
     # 
     # @param  p
-    # The precision
+    #         The precision
     def initialize(p)
       @p = 0
       super()

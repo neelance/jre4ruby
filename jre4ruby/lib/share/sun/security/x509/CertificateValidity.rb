@@ -136,9 +136,9 @@ module Sun::Security::X509
     # The default constructor for this class for the specified interval.
     # 
     # @param notBefore the date and time before which the certificate
-    # is not valid.
+    #                   is not valid.
     # @param notAfter the date and time after which the certificate is
-    # not valid.
+    #                  not valid.
     def initialize(not_before, not_after)
       @not_before = nil
       @not_after = nil

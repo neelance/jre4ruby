@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # This file is available under and governed by the GNU General Public
 # License version 2 only, as published by the Free Software Foundation.
 # However, the following notice accompanied the original version of this
@@ -43,19 +41,19 @@ module Java::Util::Concurrent
   # A {@link java.util.Set} that uses an internal {@link CopyOnWriteArrayList}
   # for all of its operations.  Thus, it shares the same basic properties:
   # <ul>
-  # <li>It is best suited for applications in which set sizes generally
-  # stay small, read-only operations
-  # vastly outnumber mutative operations, and you need
-  # to prevent interference among threads during traversal.
-  # <li>It is thread-safe.
-  # <li>Mutative operations (<tt>add</tt>, <tt>set</tt>, <tt>remove</tt>, etc.)
-  # are expensive since they usually entail copying the entire underlying
-  # array.
-  # <li>Iterators do not support the mutative <tt>remove</tt> operation.
-  # <li>Traversal via iterators is fast and cannot encounter
-  # interference from other threads. Iterators rely on
-  # unchanging snapshots of the array at the time the iterators were
-  # constructed.
+  #  <li>It is best suited for applications in which set sizes generally
+  #       stay small, read-only operations
+  #       vastly outnumber mutative operations, and you need
+  #       to prevent interference among threads during traversal.
+  #  <li>It is thread-safe.
+  #  <li>Mutative operations (<tt>add</tt>, <tt>set</tt>, <tt>remove</tt>, etc.)
+  #      are expensive since they usually entail copying the entire underlying
+  #      array.
+  #  <li>Iterators do not support the mutative <tt>remove</tt> operation.
+  #  <li>Traversal via iterators is fast and cannot encounter
+  #      interference from other threads. Iterators rely on
+  #      unchanging snapshots of the array at the time the iterators were
+  #      constructed.
   # </ul>
   # 
   # <p> <b>Sample Usage.</b> The following code sketch uses a
@@ -66,18 +64,18 @@ module Java::Util::Concurrent
   # class Handler { void handle(); ... }
   # 
   # class X {
-  # private final CopyOnWriteArraySet&lt;Handler&gt; handlers
-  # = new CopyOnWriteArraySet&lt;Handler&gt;();
-  # public void addHandler(Handler h) { handlers.add(h); }
+  #    private final CopyOnWriteArraySet&lt;Handler&gt; handlers
+  #       = new CopyOnWriteArraySet&lt;Handler&gt;();
+  #    public void addHandler(Handler h) { handlers.add(h); }
   # 
-  # private long internalState;
-  # private synchronized void changeState() { internalState = ...; }
+  #    private long internalState;
+  #    private synchronized void changeState() { internalState = ...; }
   # 
-  # public void update() {
-  # changeState();
-  # for (Handler handler : handlers)
-  # handler.handle();
-  # }
+  #    public void update() {
+  #       changeState();
+  #       for (Handler handler : handlers)
+  #          handler.handle();
+  #    }
   # }
   # </pre>
   # 
@@ -202,18 +200,18 @@ module Java::Util::Concurrent
     # array of <tt>String</tt>:
     # 
     # <pre>
-    # String[] y = x.toArray(new String[0]);</pre>
+    #     String[] y = x.toArray(new String[0]);</pre>
     # 
     # Note that <tt>toArray(new Object[0])</tt> is identical in function to
     # <tt>toArray()</tt>.
     # 
     # @param a the array into which the elements of this set are to be
-    # stored, if it is big enough; otherwise, a new array of the same
-    # runtime type is allocated for this purpose.
+    #        stored, if it is big enough; otherwise, a new array of the same
+    #        runtime type is allocated for this purpose.
     # @return an array containing all the elements in this set
     # @throws ArrayStoreException if the runtime type of the specified array
-    # is not a supertype of the runtime type of every element in this
-    # set
+    #         is not a supertype of the runtime type of every element in this
+    #         set
     # @throws NullPointerException if the specified array is null
     def to_array(a)
       return @al.to_array(a)
@@ -251,7 +249,7 @@ module Java::Util::Concurrent
     # 
     # @param e element to be added to this set
     # @return <tt>true</tt> if this set did not already contain the specified
-    # element
+    #         element
     def add(e)
       return @al.add_if_absent(e)
     end
@@ -263,7 +261,7 @@ module Java::Util::Concurrent
     # 
     # @param  c collection to be checked for containment in this set
     # @return <tt>true</tt> if this set contains all of the elements of the
-    # specified collection
+    #         specified collection
     # @throws NullPointerException if the specified collection is null
     # @see #contains(Object)
     def contains_all(c)
@@ -295,10 +293,10 @@ module Java::Util::Concurrent
     # @param  c collection containing elements to be removed from this set
     # @return <tt>true</tt> if this set changed as a result of the call
     # @throws ClassCastException if the class of an element of this set
-    # is incompatible with the specified collection (optional)
+    #         is incompatible with the specified collection (optional)
     # @throws NullPointerException if this set contains a null element and the
-    # specified collection does not permit null elements (optional),
-    # or if the specified collection is null
+    #         specified collection does not permit null elements (optional),
+    #         or if the specified collection is null
     # @see #remove(Object)
     def remove_all(c)
       return @al.remove_all(c)
@@ -315,10 +313,10 @@ module Java::Util::Concurrent
     # @param  c collection containing elements to be retained in this set
     # @return <tt>true</tt> if this set changed as a result of the call
     # @throws ClassCastException if the class of an element of this set
-    # is incompatible with the specified collection (optional)
+    #         is incompatible with the specified collection (optional)
     # @throws NullPointerException if this set contains a null element and the
-    # specified collection does not permit null elements (optional),
-    # or if the specified collection is null
+    #         specified collection does not permit null elements (optional),
+    #         or if the specified collection is null
     # @see #remove(Object)
     def retain_all(c)
       return @al.retain_all(c)
@@ -364,7 +362,7 @@ module Java::Util::Concurrent
       it = set.iterator
       # Uses O(n^2) algorithm that is only appropriate
       # for small sets, which CopyOnWriteArraySets should be.
-      # Use a single snapshot of underlying array
+      #  Use a single snapshot of underlying array
       elements = @al.get_array
       len = elements.attr_length
       # Mark matched elements to avoid re-checking

@@ -66,7 +66,7 @@ module Sun::Net::Www::Protocol::Http
     typesig { [String, String] }
     # Initialize the object, which includes:<ul>
     # <li>Find out what GSS mechanism to use from <code>http.negotiate.mechanism.oid</code>,
-    # defaults SPNEGO
+    #     defaults SPNEGO
     # <li>Creating the GSSName for the target host, "HTTP/"+hostname
     # <li>Creating GSSContext
     # <li>A first call to initSecContext</ul>

@@ -148,21 +148,19 @@ module Sun::Security::Provider
     # digest is stored.
     def impl_digest(out, ofs)
       bits_processed = self.attr_bytes_processed << 3
-      index = RJava.cast_to_int(self.attr_bytes_processed) & 0x3f
+      index = (self.attr_bytes_processed).to_int & 0x3f
       pad_len = (index < 56) ? (56 - index) : (120 - index)
       engine_update(self.attr_padding, 0, pad_len)
-      i2b_little4(RJava.cast_to_int(bits_processed), self.attr_buffer, 56)
-      i2b_little4(RJava.cast_to_int((bits_processed >> 32)), self.attr_buffer, 60)
+      i2b_little4((bits_processed).to_int, self.attr_buffer, 56)
+      i2b_little4(((bits_processed >> 32)).to_int, self.attr_buffer, 60)
       impl_compress(self.attr_buffer, 0)
       i2b_little(@state, 0, out, ofs, 16)
     end
     
     class_module.module_eval {
       typesig { [::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int] }
-      # **********************************************************
       # The MD5 Functions. The results of this
       # implementation were checked against the RSADSI version.
-      # **********************************************************
       def _ff(a, b, c, d, x, s, ac)
         a += ((b & c) | ((~b) & d)) + x + ac
         return ((a << s) | (a >> (32 - s))) + b
@@ -198,137 +196,73 @@ module Sun::Security::Provider
       c = @state[2]
       d = @state[3]
       # Round 1
-      a = _ff(a, b, c, d, @x[0], S11, -0x28955b88)
-      # 1
-      d = _ff(d, a, b, c, @x[1], S12, -0x173848aa)
-      # 2
-      c = _ff(c, d, a, b, @x[2], S13, 0x242070db)
-      # 3
-      b = _ff(b, c, d, a, @x[3], S14, -0x3e423112)
-      # 4
-      a = _ff(a, b, c, d, @x[4], S11, -0xa83f051)
-      # 5
-      d = _ff(d, a, b, c, @x[5], S12, 0x4787c62a)
-      # 6
-      c = _ff(c, d, a, b, @x[6], S13, -0x57cfb9ed)
-      # 7
-      b = _ff(b, c, d, a, @x[7], S14, -0x2b96aff)
-      # 8
-      a = _ff(a, b, c, d, @x[8], S11, 0x698098d8)
-      # 9
-      d = _ff(d, a, b, c, @x[9], S12, -0x74bb0851)
-      # 10
-      c = _ff(c, d, a, b, @x[10], S13, -0xa44f)
-      # 11
-      b = _ff(b, c, d, a, @x[11], S14, -0x76a32842)
-      # 12
-      a = _ff(a, b, c, d, @x[12], S11, 0x6b901122)
-      # 13
-      d = _ff(d, a, b, c, @x[13], S12, -0x2678e6d)
-      # 14
-      c = _ff(c, d, a, b, @x[14], S13, -0x5986bc72)
-      # 15
-      b = _ff(b, c, d, a, @x[15], S14, 0x49b40821)
-      # 16
+      a = _ff(a, b, c, d, @x[0], S11, -0x28955b88) # 1
+      d = _ff(d, a, b, c, @x[1], S12, -0x173848aa) # 2
+      c = _ff(c, d, a, b, @x[2], S13, 0x242070db) # 3
+      b = _ff(b, c, d, a, @x[3], S14, -0x3e423112) # 4
+      a = _ff(a, b, c, d, @x[4], S11, -0xa83f051) # 5
+      d = _ff(d, a, b, c, @x[5], S12, 0x4787c62a) # 6
+      c = _ff(c, d, a, b, @x[6], S13, -0x57cfb9ed) # 7
+      b = _ff(b, c, d, a, @x[7], S14, -0x2b96aff) # 8
+      a = _ff(a, b, c, d, @x[8], S11, 0x698098d8) # 9
+      d = _ff(d, a, b, c, @x[9], S12, -0x74bb0851) # 10
+      c = _ff(c, d, a, b, @x[10], S13, -0xa44f) # 11
+      b = _ff(b, c, d, a, @x[11], S14, -0x76a32842) # 12
+      a = _ff(a, b, c, d, @x[12], S11, 0x6b901122) # 13
+      d = _ff(d, a, b, c, @x[13], S12, -0x2678e6d) # 14
+      c = _ff(c, d, a, b, @x[14], S13, -0x5986bc72) # 15
+      b = _ff(b, c, d, a, @x[15], S14, 0x49b40821) # 16
       # Round 2
-      a = _gg(a, b, c, d, @x[1], S21, -0x9e1da9e)
-      # 17
-      d = _gg(d, a, b, c, @x[6], S22, -0x3fbf4cc0)
-      # 18
-      c = _gg(c, d, a, b, @x[11], S23, 0x265e5a51)
-      # 19
-      b = _gg(b, c, d, a, @x[0], S24, -0x16493856)
-      # 20
-      a = _gg(a, b, c, d, @x[5], S21, -0x29d0efa3)
-      # 21
-      d = _gg(d, a, b, c, @x[10], S22, 0x2441453)
-      # 22
-      c = _gg(c, d, a, b, @x[15], S23, -0x275e197f)
-      # 23
-      b = _gg(b, c, d, a, @x[4], S24, -0x182c0438)
-      # 24
-      a = _gg(a, b, c, d, @x[9], S21, 0x21e1cde6)
-      # 25
-      d = _gg(d, a, b, c, @x[14], S22, -0x3cc8f82a)
-      # 26
-      c = _gg(c, d, a, b, @x[3], S23, -0xb2af279)
-      # 27
-      b = _gg(b, c, d, a, @x[8], S24, 0x455a14ed)
-      # 28
-      a = _gg(a, b, c, d, @x[13], S21, -0x561c16fb)
-      # 29
-      d = _gg(d, a, b, c, @x[2], S22, -0x3105c08)
-      # 30
-      c = _gg(c, d, a, b, @x[7], S23, 0x676f02d9)
-      # 31
-      b = _gg(b, c, d, a, @x[12], S24, -0x72d5b376)
-      # 32
+      a = _gg(a, b, c, d, @x[1], S21, -0x9e1da9e) # 17
+      d = _gg(d, a, b, c, @x[6], S22, -0x3fbf4cc0) # 18
+      c = _gg(c, d, a, b, @x[11], S23, 0x265e5a51) # 19
+      b = _gg(b, c, d, a, @x[0], S24, -0x16493856) # 20
+      a = _gg(a, b, c, d, @x[5], S21, -0x29d0efa3) # 21
+      d = _gg(d, a, b, c, @x[10], S22, 0x2441453) # 22
+      c = _gg(c, d, a, b, @x[15], S23, -0x275e197f) # 23
+      b = _gg(b, c, d, a, @x[4], S24, -0x182c0438) # 24
+      a = _gg(a, b, c, d, @x[9], S21, 0x21e1cde6) # 25
+      d = _gg(d, a, b, c, @x[14], S22, -0x3cc8f82a) # 26
+      c = _gg(c, d, a, b, @x[3], S23, -0xb2af279) # 27
+      b = _gg(b, c, d, a, @x[8], S24, 0x455a14ed) # 28
+      a = _gg(a, b, c, d, @x[13], S21, -0x561c16fb) # 29
+      d = _gg(d, a, b, c, @x[2], S22, -0x3105c08) # 30
+      c = _gg(c, d, a, b, @x[7], S23, 0x676f02d9) # 31
+      b = _gg(b, c, d, a, @x[12], S24, -0x72d5b376) # 32
       # Round 3
-      a = _hh(a, b, c, d, @x[5], S31, -0x5c6be)
-      # 33
-      d = _hh(d, a, b, c, @x[8], S32, -0x788e097f)
-      # 34
-      c = _hh(c, d, a, b, @x[11], S33, 0x6d9d6122)
-      # 35
-      b = _hh(b, c, d, a, @x[14], S34, -0x21ac7f4)
-      # 36
-      a = _hh(a, b, c, d, @x[1], S31, -0x5b4115bc)
-      # 37
-      d = _hh(d, a, b, c, @x[4], S32, 0x4bdecfa9)
-      # 38
-      c = _hh(c, d, a, b, @x[7], S33, -0x944b4a0)
-      # 39
-      b = _hh(b, c, d, a, @x[10], S34, -0x41404390)
-      # 40
-      a = _hh(a, b, c, d, @x[13], S31, 0x289b7ec6)
-      # 41
-      d = _hh(d, a, b, c, @x[0], S32, -0x155ed806)
-      # 42
-      c = _hh(c, d, a, b, @x[3], S33, -0x2b10cf7b)
-      # 43
-      b = _hh(b, c, d, a, @x[6], S34, 0x4881d05)
-      # 44
-      a = _hh(a, b, c, d, @x[9], S31, -0x262b2fc7)
-      # 45
-      d = _hh(d, a, b, c, @x[12], S32, -0x1924661b)
-      # 46
-      c = _hh(c, d, a, b, @x[15], S33, 0x1fa27cf8)
-      # 47
-      b = _hh(b, c, d, a, @x[2], S34, -0x3b53a99b)
-      # 48
+      a = _hh(a, b, c, d, @x[5], S31, -0x5c6be) # 33
+      d = _hh(d, a, b, c, @x[8], S32, -0x788e097f) # 34
+      c = _hh(c, d, a, b, @x[11], S33, 0x6d9d6122) # 35
+      b = _hh(b, c, d, a, @x[14], S34, -0x21ac7f4) # 36
+      a = _hh(a, b, c, d, @x[1], S31, -0x5b4115bc) # 37
+      d = _hh(d, a, b, c, @x[4], S32, 0x4bdecfa9) # 38
+      c = _hh(c, d, a, b, @x[7], S33, -0x944b4a0) # 39
+      b = _hh(b, c, d, a, @x[10], S34, -0x41404390) # 40
+      a = _hh(a, b, c, d, @x[13], S31, 0x289b7ec6) # 41
+      d = _hh(d, a, b, c, @x[0], S32, -0x155ed806) # 42
+      c = _hh(c, d, a, b, @x[3], S33, -0x2b10cf7b) # 43
+      b = _hh(b, c, d, a, @x[6], S34, 0x4881d05) # 44
+      a = _hh(a, b, c, d, @x[9], S31, -0x262b2fc7) # 45
+      d = _hh(d, a, b, c, @x[12], S32, -0x1924661b) # 46
+      c = _hh(c, d, a, b, @x[15], S33, 0x1fa27cf8) # 47
+      b = _hh(b, c, d, a, @x[2], S34, -0x3b53a99b) # 48
       # Round 4
-      a = _ii(a, b, c, d, @x[0], S41, -0xbd6ddbc)
-      # 49
-      d = _ii(d, a, b, c, @x[7], S42, 0x432aff97)
-      # 50
-      c = _ii(c, d, a, b, @x[14], S43, -0x546bdc59)
-      # 51
-      b = _ii(b, c, d, a, @x[5], S44, -0x36c5fc7)
-      # 52
-      a = _ii(a, b, c, d, @x[12], S41, 0x655b59c3)
-      # 53
-      d = _ii(d, a, b, c, @x[3], S42, -0x70f3336e)
-      # 54
-      c = _ii(c, d, a, b, @x[10], S43, -0x100b83)
-      # 55
-      b = _ii(b, c, d, a, @x[1], S44, -0x7a7ba22f)
-      # 56
-      a = _ii(a, b, c, d, @x[8], S41, 0x6fa87e4f)
-      # 57
-      d = _ii(d, a, b, c, @x[15], S42, -0x1d31920)
-      # 58
-      c = _ii(c, d, a, b, @x[6], S43, -0x5cfebcec)
-      # 59
-      b = _ii(b, c, d, a, @x[13], S44, 0x4e0811a1)
-      # 60
-      a = _ii(a, b, c, d, @x[4], S41, -0x8ac817e)
-      # 61
-      d = _ii(d, a, b, c, @x[11], S42, -0x42c50dcb)
-      # 62
-      c = _ii(c, d, a, b, @x[2], S43, 0x2ad7d2bb)
-      # 63
-      b = _ii(b, c, d, a, @x[9], S44, -0x14792c6f)
-      # 64
+      a = _ii(a, b, c, d, @x[0], S41, -0xbd6ddbc) # 49
+      d = _ii(d, a, b, c, @x[7], S42, 0x432aff97) # 50
+      c = _ii(c, d, a, b, @x[14], S43, -0x546bdc59) # 51
+      b = _ii(b, c, d, a, @x[5], S44, -0x36c5fc7) # 52
+      a = _ii(a, b, c, d, @x[12], S41, 0x655b59c3) # 53
+      d = _ii(d, a, b, c, @x[3], S42, -0x70f3336e) # 54
+      c = _ii(c, d, a, b, @x[10], S43, -0x100b83) # 55
+      b = _ii(b, c, d, a, @x[1], S44, -0x7a7ba22f) # 56
+      a = _ii(a, b, c, d, @x[8], S41, 0x6fa87e4f) # 57
+      d = _ii(d, a, b, c, @x[15], S42, -0x1d31920) # 58
+      c = _ii(c, d, a, b, @x[6], S43, -0x5cfebcec) # 59
+      b = _ii(b, c, d, a, @x[13], S44, 0x4e0811a1) # 60
+      a = _ii(a, b, c, d, @x[4], S41, -0x8ac817e) # 61
+      d = _ii(d, a, b, c, @x[11], S42, -0x42c50dcb) # 62
+      c = _ii(c, d, a, b, @x[2], S43, 0x2ad7d2bb) # 63
+      b = _ii(b, c, d, a, @x[9], S44, -0x14792c6f) # 64
       @state[0] += a
       @state[1] += b
       @state[2] += c

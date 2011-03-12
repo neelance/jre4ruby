@@ -45,8 +45,8 @@ module Sun::Security::Pkcs
   # ASN.1 definition of Attribute:
   # <pre>
   # Attribute :: SEQUENCE {
-  # type    AttributeType,
-  # values  SET OF AttributeValue
+  #    type    AttributeType,
+  #    values  SET OF AttributeValue
   # }
   # AttributeType  ::= OBJECT IDENTIFIER
   # AttributeValue ::= ANY defined by type

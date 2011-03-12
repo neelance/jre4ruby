@@ -39,10 +39,10 @@ module Sun::Security::Provider
   # commonly used algorithms are). The individual digest subclasses only need to
   # implement the following methods:
   # 
-  # . abstract void implCompress(byte[] b, int ofs);
-  # . abstract void implDigest(byte[] out, int ofs);
-  # . abstract void implReset();
-  # . public abstract Object clone();
+  #  . abstract void implCompress(byte[] b, int ofs);
+  #  . abstract void implDigest(byte[] out, int ofs);
+  #  . abstract void implReset();
+  #  . public abstract Object clone();
   # 
   # See the inline documentation for details.
   # 
@@ -102,7 +102,7 @@ module Sun::Security::Provider
     # this value.
     # also used as a flag to indicate reset status
     # -1: need to call engineReset() before next call to update()
-    # 0: is already reset
+    #  0: is already reset
     attr_accessor :bytes_processed
     alias_method :attr_bytes_processed, :bytes_processed
     undef_method :bytes_processed

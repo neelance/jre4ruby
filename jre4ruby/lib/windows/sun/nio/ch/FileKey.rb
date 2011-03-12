@@ -76,7 +76,7 @@ module Sun::Nio::Ch
     
     typesig { [] }
     def hash_code
-      return RJava.cast_to_int((@dw_volume_serial_number ^ (@dw_volume_serial_number >> 32))) + RJava.cast_to_int((@n_file_index_high ^ (@n_file_index_high >> 32))) + RJava.cast_to_int((@n_file_index_low ^ (@n_file_index_high >> 32)))
+      return ((@dw_volume_serial_number ^ (@dw_volume_serial_number >> 32))).to_int + ((@n_file_index_high ^ (@n_file_index_high >> 32))).to_int + ((@n_file_index_low ^ (@n_file_index_high >> 32))).to_int
     end
     
     typesig { [Object] }

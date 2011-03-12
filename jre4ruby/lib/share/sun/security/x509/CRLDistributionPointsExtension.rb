@@ -68,7 +68,7 @@ module Sun::Security::X509
   # id-ce-cRLDistributionPoints OBJECT IDENTIFIER ::=  { id-ce 31 }
   # 
   # cRLDistributionPoints ::= {
-  # CRLDistPointsSyntax }
+  #      CRLDistPointsSyntax }
   # 
   # CRLDistPointsSyntax ::= SEQUENCE SIZE (1..MAX) OF DistributionPoint
   # </pre>

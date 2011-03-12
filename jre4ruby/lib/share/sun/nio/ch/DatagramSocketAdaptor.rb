@@ -39,6 +39,7 @@ module Sun::Nio::Ch
   # The methods in this class are defined in exactly the same order as in
   # java.net.DatagramSocket so as to simplify tracking future changes to that
   # class.
+  # 
   class DatagramSocketAdaptor < DatagramSocketAdaptorImports.const_get :DatagramSocket
     include_class_members DatagramSocketAdaptorImports
     
@@ -73,10 +74,6 @@ module Sun::Nio::Ch
     typesig { [DatagramChannelImpl] }
     # ## super will create a useless impl
     def initialize(dc)
-      # Invoke the DatagramSocketAdaptor(SocketAddress) constructor,
-      # passing a dummy DatagramSocketImpl object to aovid any native
-      # resource allocation in super class and invoking our bind method
-      # before the dc field is initialized.
       @dc = nil
       @opts = nil
       @timeout = 0
@@ -85,6 +82,10 @@ module Sun::Nio::Ch
       @opts = nil
       @timeout = 0
       @traffic_class = 0
+      # Invoke the DatagramSocketAdaptor(SocketAddress) constructor,
+      # passing a dummy DatagramSocketImpl object to aovid any native
+      # resource allocation in super class and invoking our bind method
+      # before the dc field is initialized.
       @dc = dc
     end
     
@@ -211,6 +212,7 @@ module Sun::Nio::Ch
     
     typesig { [ByteBuffer] }
     # Must hold dc.blockingLock()
+    # 
     def receive(bb)
       if ((@timeout).equal?(0))
         @dc.receive(bb)

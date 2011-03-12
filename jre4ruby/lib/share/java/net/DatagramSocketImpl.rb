@@ -117,8 +117,8 @@ module Java::Net
     # @return the port number which the packet came from.
     # @exception IOException if an I/O exception occurs
     # @exception  PortUnreachableException may be thrown if the socket is connected
-    # to a currently unreachable destination. Note, there is no guarantee that the
-    # exception will be thrown.
+    #       to a currently unreachable destination. Note, there is no guarantee that the
+    #       exception will be thrown.
     def peek(i)
       raise NotImplementedError
     end
@@ -132,8 +132,8 @@ module Java::Net
     # @return the port number which the packet came from.
     # @exception IOException if an I/O exception occurs
     # @exception  PortUnreachableException may be thrown if the socket is connected
-    # to a currently unreachable destination. Note, there is no guarantee that the
-    # exception will be thrown.
+    #       to a currently unreachable destination. Note, there is no guarantee that the
+    #       exception will be thrown.
     # @since 1.4
     def peek_data(p)
       raise NotImplementedError
@@ -145,8 +145,8 @@ module Java::Net
     # @exception IOException if an I/O exception occurs
     # while receiving the datagram packet.
     # @exception  PortUnreachableException may be thrown if the socket is connected
-    # to a currently unreachable destination. Note, there is no guarantee that the
-    # exception will be thrown.
+    #       to a currently unreachable destination. Note, there is no guarantee that the
+    #       exception will be thrown.
     def receive(p)
       raise NotImplementedError
     end
@@ -217,7 +217,7 @@ module Java::Net
     # Join the multicast group.
     # @param mcastaddr address to join.
     # @param netIf specifies the local interface to receive multicast
-    # datagram packets
+    #        datagram packets
     # @throws IOException if an I/O exception occurs while joining
     # the multicast group
     # @since 1.4

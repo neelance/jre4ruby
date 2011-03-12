@@ -482,7 +482,7 @@ module Sun::Security::Pkcs11
         begin
           s = @token.get_obj_session
           key_type = CKK_GENERIC_SECRET
-          attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_CLASS, CKO_SECRET_KEY), CK_ATTRIBUTE.new(CKA_KEY_TYPE, key_type), ])
+          attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_CLASS, CKO_SECRET_KEY), CK_ATTRIBUTE.new(CKA_KEY_TYPE, key_type)])
           attributes = @token.get_attributes(O_IMPORT, CKO_SECRET_KEY, key_type, attributes)
           key_id = @token.attr_p11._c_unwrap_key(s.id, CK_MECHANISM.new(@mechanism), @p11key.attr_key_id, wrapped_key, attributes)
           return P11Key.secret_key(@session, key_id, algorithm, 48 << 3, attributes)

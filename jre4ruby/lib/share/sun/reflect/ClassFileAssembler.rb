@@ -198,6 +198,7 @@ module Sun::Reflect
     # Opcodes. Keeps track of maximum stack and locals. Make a new
     # assembler for each piece of assembled code, then append the
     # result to the previous assembler's class file.
+    # 
     attr_accessor :stack
     alias_method :attr_stack, :stack
     undef_method :stack

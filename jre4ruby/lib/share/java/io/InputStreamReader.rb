@@ -50,7 +50,7 @@ module Java::Io
   # 
   # <pre>
   # BufferedReader in
-  # = new BufferedReader(new InputStreamReader(System.in));
+  #   = new BufferedReader(new InputStreamReader(System.in));
   # </pre>
   # 
   # @see BufferedReader
@@ -87,14 +87,14 @@ module Java::Io
     # Creates an InputStreamReader that uses the named charset.
     # 
     # @param  in
-    # An InputStream
+    #         An InputStream
     # 
     # @param  charsetName
-    # The name of a supported
-    # {@link java.nio.charset.Charset </code>charset<code>}
+    #         The name of a supported
+    #         {@link java.nio.charset.Charset </code>charset<code>}
     # 
     # @exception  UnsupportedEncodingException
-    # If the named charset is not supported
+    #             If the named charset is not supported
     def initialize(in_, charset_name)
       @sd = nil
       super(in_)
@@ -151,7 +151,7 @@ module Java::Io
     # stream has been closed.
     # </p>
     # @return The historical name of this encoding, or
-    # <code>null</code> if the stream has been closed
+    #         <code>null</code> if the stream has been closed
     # 
     # @see java.nio.charset.Charset
     # 
@@ -165,7 +165,7 @@ module Java::Io
     # Reads a single character.
     # 
     # @return The character read, or -1 if the end of the stream has been
-    # reached
+    #         reached
     # 
     # @exception  IOException  If an I/O error occurs
     def read
@@ -180,7 +180,7 @@ module Java::Io
     # @param      length   Maximum number of characters to read
     # 
     # @return     The number of characters read, or -1 if the end of the
-    # stream has been reached
+    #             stream has been reached
     # 
     # @exception  IOException  If an I/O error occurs
     def read(cbuf, offset, length)

@@ -44,17 +44,17 @@ module Java::Util::Logging
   # (or have invalid values) then the specified default values are used.
   # <ul>
   # <li>   java.util.logging.StreamHandler.level
-  # specifies the default level for the <tt>Handler</tt>
-  # (defaults to <tt>Level.INFO</tt>).
+  #        specifies the default level for the <tt>Handler</tt>
+  #        (defaults to <tt>Level.INFO</tt>).
   # <li>   java.util.logging.StreamHandler.filter
-  # specifies the name of a <tt>Filter</tt> class to use
-  # (defaults to no <tt>Filter</tt>).
+  #        specifies the name of a <tt>Filter</tt> class to use
+  #         (defaults to no <tt>Filter</tt>).
   # <li>   java.util.logging.StreamHandler.formatter
-  # specifies the name of a <tt>Formatter</tt> class to use
-  # (defaults to <tt>java.util.logging.SimpleFormatter</tt>).
+  #        specifies the name of a <tt>Formatter</tt> class to use
+  #        (defaults to <tt>java.util.logging.SimpleFormatter</tt>).
   # <li>   java.util.logging.StreamHandler.encoding
-  # the name of the character set encoding to use (defaults to
-  # the default platform encoding).
+  #        the name of the character set encoding to use (defaults to
+  #        the default platform encoding).
   # </ul>
   # 
   # @since 1.4
@@ -150,7 +150,7 @@ module Java::Util::Logging
     # 
     # @param out   New output stream.  May not be null.
     # @exception  SecurityException  if a security manager exists and if
-    # the caller does not have <tt>LoggingPermission("control")</tt>.
+    #             the caller does not have <tt>LoggingPermission("control")</tt>.
     def set_output_stream(out)
       synchronized(self) do
         if ((out).nil?)
@@ -181,11 +181,11 @@ module Java::Util::Logging
     # to the <tt>Handler</tt>.
     # 
     # @param encoding  The name of a supported character encoding.
-    # May be null, to indicate the default platform encoding.
+    #        May be null, to indicate the default platform encoding.
     # @exception  SecurityException  if a security manager exists and if
-    # the caller does not have <tt>LoggingPermission("control")</tt>.
+    #             the caller does not have <tt>LoggingPermission("control")</tt>.
     # @exception  UnsupportedEncodingException if the named encoding is
-    # not supported.
+    #          not supported.
     def set_encoding(encoding)
       super(encoding)
       if ((@output).nil?)
@@ -215,7 +215,7 @@ module Java::Util::Logging
     # written to the stream before the <tt>LogRecord</tt> is written.
     # 
     # @param  record  description of the log event. A null record is
-    # silently ignored and is not published
+    #                 silently ignored and is not published
     def publish(record)
       synchronized(self) do
         if (!is_loggable(record))
@@ -309,7 +309,7 @@ module Java::Util::Logging
     # "tail" string.
     # 
     # @exception  SecurityException  if a security manager exists and if
-    # the caller does not have LoggingPermission("control").
+    #             the caller does not have LoggingPermission("control").
     def close
       synchronized(self) do
         flush_and_close

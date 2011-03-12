@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # Portions Copyright IBM Corporation, 1997, 2001. All Rights Reserved.
 module Java::Math
   module MathContextImports #:nodoc:
@@ -76,7 +74,6 @@ module Java::Math
       const_attr_reader  :SerialVersionUID
       
       # ----- Public Properties -----
-      # 
       # A {@code MathContext} object whose settings have the values
       # required for unlimited precision arithmetic.
       # The values of the settings are:
@@ -109,7 +106,6 @@ module Java::Math
     }
     
     # ----- Shared Properties -----
-    # 
     # The number of digits to be used for an operation.  A value of 0
     # indicates that unlimited precision (as many digits as are
     # required) will be used.  Note that leading zeros (in the
@@ -160,14 +156,13 @@ module Java::Math
     
     typesig { [::Java::Int] }
     # ----- Constructors -----
-    # 
     # Constructs a new {@code MathContext} with the specified
     # precision and the {@link RoundingMode#HALF_UP HALF_UP} rounding
     # mode.
     # 
     # @param setPrecision The non-negative {@code int} precision setting.
     # @throws IllegalArgumentException if the {@code setPrecision} parameter is less
-    # than zero.
+    #         than zero.
     def initialize(set_precision)
       initialize__math_context(set_precision, DEFAULT_ROUNDINGMODE)
       return
@@ -180,7 +175,7 @@ module Java::Math
     # @param setPrecision The non-negative {@code int} precision setting.
     # @param setRoundingMode The rounding mode to use.
     # @throws IllegalArgumentException if the {@code setPrecision} parameter is less
-    # than zero.
+    #         than zero.
     # @throws NullPointerException if the rounding mode argument is {@code null}
     def initialize(set_precision, set_rounding_mode)
       @precision = 0
@@ -259,7 +254,7 @@ module Java::Math
     # This value is always non-negative.
     # 
     # @return an {@code int} which is the value of the {@code precision}
-    # setting
+    #         setting
     def get_precision
       return @precision
     end
@@ -277,7 +272,7 @@ module Java::Math
     # {@link  RoundingMode#UP}.
     # 
     # @return a {@code RoundingMode} object which is the value of the
-    # {@code roundingMode} setting
+    #         {@code roundingMode} setting
     def get_rounding_mode
       return @rounding_mode
     end
@@ -287,10 +282,10 @@ module Java::Math
     # {@code Object} for equality.
     # 
     # @param  x {@code Object} to which this {@code MathContext} is to
-    # be compared.
+    #         be compared.
     # @return {@code true} if and only if the specified {@code Object} is
-    # a {@code MathContext} object which has exactly the same
-    # settings as this object
+    #         a {@code MathContext} object which has exactly the same
+    #         settings as this object
     def ==(x)
       mc = nil
       if (!(x.is_a?(MathContext)))
@@ -345,7 +340,6 @@ module Java::Math
     
     typesig { [Java::Io::ObjectInputStream] }
     # Private methods
-    # 
     # Reconstitute the {@code MathContext} instance from a stream (that is,
     # deserialize it).
     # 

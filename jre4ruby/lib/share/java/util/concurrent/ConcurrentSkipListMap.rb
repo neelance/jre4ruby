@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # This file is available under and governed by the GNU General Public
 # License version 2 only, as published by the Free Software Foundation.
 # However, the following notice accompanied the original version of this
@@ -114,12 +112,12 @@ module Java::Util::Concurrent
       # +-+    right        +-+                      +-+
       # |2|---------------->| |--------------------->| |->null
       # +-+                 +-+                      +-+
-      # | down              |                        |
-      # v                   v                        v
+      #  | down              |                        |
+      #  v                   v                        v
       # +-+            +-+  +-+       +-+            +-+       +-+
       # |1|----------->| |->| |------>| |----------->| |------>| |->null
       # +-+            +-+  +-+       +-+            +-+       +-+
-      # v              |    |         |              |         |
+      #  v              |    |         |              |         |
       # Nodes  next     v    v         v              v         v
       # +-+  +-+  +-+  +-+  +-+  +-+  +-+  +-+  +-+  +-+  +-+  +-+
       # | |->|A|->|B|->|C|->|D|->|E|->|F|->|G|->|H|->|I|->|J|->|K|->null
@@ -182,30 +180,30 @@ module Java::Util::Concurrent
       # Here's the sequence of events for a deletion of node n with
       # predecessor b and successor f, initially:
       # 
-      # +------+       +------+      +------+
-      # ...  |   b  |------>|   n  |----->|   f  | ...
-      # +------+       +------+      +------+
+      #        +------+       +------+      +------+
+      #   ...  |   b  |------>|   n  |----->|   f  | ...
+      #        +------+       +------+      +------+
       # 
       # 1. CAS n's value field from non-null to null.
-      # From this point on, no public operations encountering
-      # the node consider this mapping to exist. However, other
-      # ongoing insertions and deletions might still modify
-      # n's next pointer.
+      #    From this point on, no public operations encountering
+      #    the node consider this mapping to exist. However, other
+      #    ongoing insertions and deletions might still modify
+      #    n's next pointer.
       # 
       # 2. CAS n's next pointer to point to a new marker node.
-      # From this point on, no other nodes can be appended to n.
-      # which avoids deletion errors in CAS-based linked lists.
+      #    From this point on, no other nodes can be appended to n.
+      #    which avoids deletion errors in CAS-based linked lists.
       # 
-      # +------+       +------+      +------+       +------+
-      # ...  |   b  |------>|   n  |----->|marker|------>|   f  | ...
-      # +------+       +------+      +------+       +------+
+      #        +------+       +------+      +------+       +------+
+      #   ...  |   b  |------>|   n  |----->|marker|------>|   f  | ...
+      #        +------+       +------+      +------+       +------+
       # 
       # 3. CAS b's next pointer over both n and its marker.
-      # From this point on, no new traversals will encounter n,
-      # and it can eventually be GCed.
-      # +------+                                    +------+
-      # ...  |   b  |----------------------------------->|   f  | ...
-      # +------+                                    +------+
+      #    From this point on, no new traversals will encounter n,
+      #    and it can eventually be GCed.
+      #        +------+                                    +------+
+      #   ...  |   b  |----------------------------------->|   f  | ...
+      #        +------+                                    +------+
       # 
       # A failure at step 1 leads to simple retry due to a lost race
       # with another operation. Steps 2-3 can fail because some other
@@ -317,7 +315,7 @@ module Java::Util::Concurrent
       # Notation guide for local variables
       # Node:         b, n, f    for  predecessor, node, successor
       # Index:        q, r, d    for index node, right, down.
-      # t          for another index node
+      #               t          for another index node
       # Head:         h
       # Levels:       j
       # Keys:         k, key
@@ -415,7 +413,6 @@ module Java::Util::Concurrent
     
     class_module.module_eval {
       # ---------------- Nodes --------------
-      # 
       # Nodes hold keys and values, and are singly linked in sorted
       # order, possibly with some intervening marker nodes. The list is
       # headed by a dummy node accessible as head.node. The value field
@@ -567,7 +564,6 @@ module Java::Util::Concurrent
       end }
       
       # ---------------- Indexing --------------
-      # 
       # Index nodes represent the levels of the skip list.  Note that
       # even though both Nodes and Indexes have forward-pointing
       # fields, they have different types and are handled in different
@@ -652,7 +648,6 @@ module Java::Util::Concurrent
       end }
       
       # ---------------- Head nodes --------------
-      # 
       # Nodes heading each level keep track of their level.
       const_set_lazy(:HeadIndex) { Class.new(Index) do
         include_class_members ConcurrentSkipListMap
@@ -675,7 +670,6 @@ module Java::Util::Concurrent
       end }
       
       # ---------------- Comparison utilities --------------
-      # 
       # Represents a key with a comparator as a Comparable.
       # 
       # Because most sorted collections seem to use natural ordering on
@@ -773,7 +767,6 @@ module Java::Util::Concurrent
     
     typesig { [JavaComparable] }
     # ---------------- Traversal --------------
-    # 
     # Returns a base-level node with key strictly less than given key,
     # or the base-level header if there is no such node.  Also
     # unlinks indexes to deleted nodes found along the way.  Callers
@@ -825,29 +818,29 @@ module Java::Util::Concurrent
     # 
     # Restarts occur, at traversal step centered on node n, if:
     # 
-    # (1) After reading n's next field, n is no longer assumed
-    # predecessor b's current successor, which means that
-    # we don't have a consistent 3-node snapshot and so cannot
-    # unlink any subsequent deleted nodes encountered.
+    #   (1) After reading n's next field, n is no longer assumed
+    #       predecessor b's current successor, which means that
+    #       we don't have a consistent 3-node snapshot and so cannot
+    #       unlink any subsequent deleted nodes encountered.
     # 
-    # (2) n's value field is null, indicating n is deleted, in
-    # which case we help out an ongoing structural deletion
-    # before retrying.  Even though there are cases where such
-    # unlinking doesn't require restart, they aren't sorted out
-    # here because doing so would not usually outweigh cost of
-    # restarting.
+    #   (2) n's value field is null, indicating n is deleted, in
+    #       which case we help out an ongoing structural deletion
+    #       before retrying.  Even though there are cases where such
+    #       unlinking doesn't require restart, they aren't sorted out
+    #       here because doing so would not usually outweigh cost of
+    #       restarting.
     # 
-    # (3) n is a marker or n's predecessor's value field is null,
-    # indicating (among other possibilities) that
-    # findPredecessor returned a deleted node. We can't unlink
-    # the node because we don't know its predecessor, so rely
-    # on another call to findPredecessor to notice and return
-    # some earlier predecessor, which it will do. This check is
-    # only strictly needed at beginning of loop, (and the
-    # b.value check isn't strictly needed at all) but is done
-    # each iteration to help avoid contention with other
-    # threads by callers that will fail to be able to change
-    # links, and so will retry anyway.
+    #   (3) n is a marker or n's predecessor's value field is null,
+    #       indicating (among other possibilities) that
+    #       findPredecessor returned a deleted node. We can't unlink
+    #       the node because we don't know its predecessor, so rely
+    #       on another call to findPredecessor to notice and return
+    #       some earlier predecessor, which it will do. This check is
+    #       only strictly needed at beginning of loop, (and the
+    #       b.value check isn't strictly needed at all) but is done
+    #       each iteration to help avoid contention with other
+    #       threads by callers that will fail to be able to change
+    #       links, and so will retry anyway.
     # 
     # The traversal loops in doPut, doRemove, and findNear all
     # include the same three kinds of checks. And specialized
@@ -979,7 +972,6 @@ module Java::Util::Concurrent
     
     typesig { [Object, Object, ::Java::Boolean] }
     # ---------------- Insertion --------------
-    # 
     # Main insertion method.  Adds element if not present, or
     # replaces value if present and onlyIfAbsent is false.
     # @param kkey the key
@@ -1077,7 +1069,6 @@ module Java::Util::Concurrent
         add_index(idx, h, level)
       else
         # Add a new level
-        # 
         # To reduce interference by other threads checking for
         # empty levels in tryReduceLevel, new levels are added
         # with initialized right pointers. Which in turn requires
@@ -1184,7 +1175,6 @@ module Java::Util::Concurrent
     
     typesig { [Object, Object] }
     # ---------------- Deletion --------------
-    # 
     # Main deletion method. Locates node, nulls value, appends a
     # deletion marker, unlinks predecessor, removes associated index
     # nodes, and possibly reduces head index level.
@@ -1242,8 +1232,7 @@ module Java::Util::Concurrent
             break
           end
           if (!n.append_marker(f) || !b.cas_next(n, f))
-            find_node(key)
-             # Retry via findNode
+            find_node(key) # Retry via findNode
           else
             find_predecessor(key) # Clean index
             if ((@head.attr_right).nil?)
@@ -1277,8 +1266,7 @@ module Java::Util::Concurrent
     def try_reduce_level
       h = @head
       d = nil
-      e = nil
-      # try to set
+      e = nil # try to set
       if (h.attr_level > 3 && !((d = h.attr_down)).nil? && !((e = d.attr_down)).nil? && (e.attr_right).nil? && (d.attr_right).nil? && (h.attr_right).nil? && cas_head(h, d) && !(h.attr_right).nil?)
         # recheck
         cas_head(d, h)
@@ -1287,7 +1275,6 @@ module Java::Util::Concurrent
     
     typesig { [] }
     # ---------------- Finding and removing first element --------------
-    # 
     # Specialized variant of findNode to get first valid node.
     # @return first node or null if empty
     def find_first
@@ -1356,7 +1343,6 @@ module Java::Util::Concurrent
     
     typesig { [] }
     # ---------------- Finding and removing last element --------------
-    # 
     # Specialized version of find to get last valid node.
     # @return last node or null if empty
     def find_last
@@ -1482,8 +1468,7 @@ module Java::Util::Concurrent
           key = n.attr_key
           ck = comparable(key)
           if (!n.append_marker(f) || !b.cas_next(n, f))
-            find_node(ck)
-             # Retry via findNode
+            find_node(ck) # Retry via findNode
           else
             find_predecessor(ck) # Clean index
             if ((@head.attr_right).nil?)
@@ -1510,7 +1495,6 @@ module Java::Util::Concurrent
     
     typesig { [Object, ::Java::Int] }
     # Actually checked as !LT
-    # 
     # Utility for ceiling, floor, lower, higher methods.
     # @param kkey the key
     # @param rel the relation -- OR'ed combination of EQ, LT, GT
@@ -1572,7 +1556,6 @@ module Java::Util::Concurrent
     
     typesig { [] }
     # ---------------- Constructors --------------
-    # 
     # Constructs a new, empty map, sorted according to the
     # {@linkplain Comparable natural ordering} of the keys.
     def initialize
@@ -1593,8 +1576,8 @@ module Java::Util::Concurrent
     # comparator.
     # 
     # @param comparator the comparator that will be used to order this map.
-    # If <tt>null</tt>, the {@linkplain Comparable natural
-    # ordering} of the keys will be used.
+    #        If <tt>null</tt>, the {@linkplain Comparable natural
+    #        ordering} of the keys will be used.
     def initialize(comparator)
       @head = nil
       @comparator = nil
@@ -1615,9 +1598,9 @@ module Java::Util::Concurrent
     # 
     # @param  m the map whose mappings are to be placed in this map
     # @throws ClassCastException if the keys in <tt>m</tt> are not
-    # {@link Comparable}, or are not mutually comparable
+    #         {@link Comparable}, or are not mutually comparable
     # @throws NullPointerException if the specified map or any of its keys
-    # or values are null
+    #         or values are null
     def initialize(m)
       @head = nil
       @comparator = nil
@@ -1637,9 +1620,9 @@ module Java::Util::Concurrent
     # same ordering as the specified sorted map.
     # 
     # @param m the sorted map whose mappings are to be placed in this
-    # map, and whose comparator is to be used to sort this map
+    #        map, and whose comparator is to be used to sort this map
     # @throws NullPointerException if the specified sorted map or any of
-    # its keys or values are null
+    #         its keys or values are null
     def initialize(m)
       @head = nil
       @comparator = nil
@@ -1735,7 +1718,6 @@ module Java::Util::Concurrent
     
     typesig { [Java::Io::ObjectOutputStream] }
     # ---------------- Serialization --------------
-    # 
     # Save the state of this map to a stream.
     # 
     # @serialData The key (Object) and value (Object) for each
@@ -1827,14 +1809,13 @@ module Java::Util::Concurrent
     
     typesig { [Object] }
     # ------ Map API methods ------
-    # 
     # Returns <tt>true</tt> if this map contains a mapping for the specified
     # key.
     # 
     # @param key key whose presence in this map is to be tested
     # @return <tt>true</tt> if this map contains a mapping for the specified key
     # @throws ClassCastException if the specified key cannot be compared
-    # with the keys currently in the map
+    #         with the keys currently in the map
     # @throws NullPointerException if the specified key is null
     def contains_key(key)
       return !(do_get(key)).nil?
@@ -1851,7 +1832,7 @@ module Java::Util::Concurrent
     # (There can be at most one such mapping.)
     # 
     # @throws ClassCastException if the specified key cannot be compared
-    # with the keys currently in the map
+    #         with the keys currently in the map
     # @throws NullPointerException if the specified key is null
     def get(key)
       return do_get(key)
@@ -1865,9 +1846,9 @@ module Java::Util::Concurrent
     # @param key key with which the specified value is to be associated
     # @param value value to be associated with the specified key
     # @return the previous value associated with the specified key, or
-    # <tt>null</tt> if there was no mapping for the key
+    #         <tt>null</tt> if there was no mapping for the key
     # @throws ClassCastException if the specified key cannot be compared
-    # with the keys currently in the map
+    #         with the keys currently in the map
     # @throws NullPointerException if the specified key or value is null
     def put(key, value)
       if ((value).nil?)
@@ -1881,9 +1862,9 @@ module Java::Util::Concurrent
     # 
     # @param  key key for which mapping should be removed
     # @return the previous value associated with the specified key, or
-    # <tt>null</tt> if there was no mapping for the key
+    #         <tt>null</tt> if there was no mapping for the key
     # @throws ClassCastException if the specified key cannot be compared
-    # with the keys currently in the map
+    #         with the keys currently in the map
     # @throws NullPointerException if the specified key is null
     def remove(key)
       return do_remove(key, nil)
@@ -1896,7 +1877,7 @@ module Java::Util::Concurrent
     # 
     # @param value value whose presence in this map is to be tested
     # @return <tt>true</tt> if a mapping to <tt>value</tt> exists;
-    # <tt>false</tt> otherwise
+    #         <tt>false</tt> otherwise
     # @throws NullPointerException if the specified value is null
     def contains_value(value)
       if ((value).nil?)
@@ -1937,7 +1918,7 @@ module Java::Util::Concurrent
         end
         n = n.attr_next
       end
-      return (count >= JavaInteger::MAX_VALUE) ? JavaInteger::MAX_VALUE : RJava.cast_to_int(count)
+      return (count >= JavaInteger::MAX_VALUE) ? JavaInteger::MAX_VALUE : (count).to_int
     end
     
     typesig { [] }
@@ -1955,15 +1936,12 @@ module Java::Util::Concurrent
     
     typesig { [] }
     # ---------------- View methods --------------
-    # 
     # Note: Lazy initialization works for views because view classes
     # are stateless/immutable so it doesn't matter wrt correctness if
     # more than one is created (which will only rarely happen).  Even
     # so, the following idiom conservatively ensures that the method
     # returns the one it created if it does so, not one created by
     # another racing thread.
-    # 
-    # 
     # Returns a {@link NavigableSet} view of the keys contained in this map.
     # The set's iterator returns the keys in ascending order.
     # The set is backed by the map, so changes to the map are
@@ -2038,7 +2016,7 @@ module Java::Util::Concurrent
     # <tt>setValue</tt> operation.
     # 
     # @return a set view of the mappings contained in this map,
-    # sorted in ascending key order
+    #         sorted in ascending key order
     def entry_set
       es = @entry_set
       return (!(es).nil?) ? es : (@entry_set = EntrySet.new(self))
@@ -2057,7 +2035,6 @@ module Java::Util::Concurrent
     
     typesig { [Object] }
     # ---------------- AbstractMap Overrides --------------
-    # 
     # Compares the specified object with this map for equality.
     # Returns <tt>true</tt> if the given object is also a map and the
     # two maps represent the same mappings.  More formally, two maps
@@ -2099,13 +2076,12 @@ module Java::Util::Concurrent
     
     typesig { [Object, Object] }
     # ------ ConcurrentMap API methods ------
-    # 
     # {@inheritDoc}
     # 
     # @return the previous value associated with the specified key,
-    # or <tt>null</tt> if there was no mapping for the key
+    #         or <tt>null</tt> if there was no mapping for the key
     # @throws ClassCastException if the specified key cannot be compared
-    # with the keys currently in the map
+    #         with the keys currently in the map
     # @throws NullPointerException if the specified key or value is null
     def put_if_absent(key, value)
       if ((value).nil?)
@@ -2118,7 +2094,7 @@ module Java::Util::Concurrent
     # {@inheritDoc}
     # 
     # @throws ClassCastException if the specified key cannot be compared
-    # with the keys currently in the map
+    #         with the keys currently in the map
     # @throws NullPointerException if the specified key is null
     def remove(key, value)
       if ((key).nil?)
@@ -2134,7 +2110,7 @@ module Java::Util::Concurrent
     # {@inheritDoc}
     # 
     # @throws ClassCastException if the specified key cannot be compared
-    # with the keys currently in the map
+    #         with the keys currently in the map
     # @throws NullPointerException if any of the arguments are null
     def replace(key, old_value, new_value)
       if ((old_value).nil? || (new_value).nil?)
@@ -2162,9 +2138,9 @@ module Java::Util::Concurrent
     # {@inheritDoc}
     # 
     # @return the previous value associated with the specified key,
-    # or <tt>null</tt> if there was no mapping for the key
+    #         or <tt>null</tt> if there was no mapping for the key
     # @throws ClassCastException if the specified key cannot be compared
-    # with the keys currently in the map
+    #         with the keys currently in the map
     # @throws NullPointerException if the specified key or value is null
     def replace(key, value)
       if ((value).nil?)
@@ -2268,7 +2244,6 @@ module Java::Util::Concurrent
     
     typesig { [Object] }
     # ---------------- Relational operations --------------
-    # 
     # Returns a key-value mapping associated with the greatest key
     # strictly less than the given key, or <tt>null</tt> if there is
     # no such key. The returned entry does <em>not</em> support the
@@ -2408,7 +2383,6 @@ module Java::Util::Concurrent
     
     class_module.module_eval {
       # ---------------- Iterators --------------
-      # 
       # Base of iterator classes:
       const_set_lazy(:Iter) { Class.new do
         local_class_in ConcurrentSkipListMap
@@ -2577,7 +2551,6 @@ module Java::Util::Concurrent
     class_module.module_eval {
       typesig { [Collection] }
       # ---------------- View Classes --------------
-      # 
       # View classes are static, delegating to a ConcurrentNavigableMap
       # to allow use by SubMaps, which outweighs the ugliness of
       # needing type-tests for Iterator methods.
@@ -3313,7 +3286,7 @@ module Java::Util::Concurrent
             end
             n = n.attr_next
           end
-          return count >= JavaInteger::MAX_VALUE ? JavaInteger::MAX_VALUE : RJava.cast_to_int(count)
+          return count >= JavaInteger::MAX_VALUE ? JavaInteger::MAX_VALUE : (count).to_int
         end
         
         typesig { [] }

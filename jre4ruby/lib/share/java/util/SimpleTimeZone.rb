@@ -22,17 +22,15 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996 - All Rights Reserved
 # 
-# The original version of this source code and documentation is copyrighted
+#   The original version of this source code and documentation is copyrighted
 # and owned by Taligent, Inc., a wholly-owned subsidiary of IBM. These
 # materials are provided under terms of a License Agreement between Taligent
 # and Sun. This technology is protected by multiple US and International
 # patents. This notice and attribution to Taligent may not be removed.
-# Taligent is a registered trademark of Taligent, Inc.
+#   Taligent is a registered trademark of Taligent, Inc.
 module Java::Util
   module SimpleTimeZoneImports #:nodoc:
     class_module.module_eval {
@@ -110,33 +108,33 @@ module Java::Util
   # <p>
   # The following are examples of parameters for constructing time zone objects.
   # <pre><code>
-  # // Base GMT offset: -8:00
-  # // DST starts:      at 2:00am in standard time
-  # //                  on the first Sunday in April
-  # // DST ends:        at 2:00am in daylight time
-  # //                  on the last Sunday in October
-  # // Save:            1 hour
-  # SimpleTimeZone(-28800000,
-  # "America/Los_Angeles",
-  # Calendar.APRIL, 1, -Calendar.SUNDAY,
-  # 7200000,
-  # Calendar.OCTOBER, -1, Calendar.SUNDAY,
-  # 7200000,
-  # 3600000)
+  #      // Base GMT offset: -8:00
+  #      // DST starts:      at 2:00am in standard time
+  #      //                  on the first Sunday in April
+  #      // DST ends:        at 2:00am in daylight time
+  #      //                  on the last Sunday in October
+  #      // Save:            1 hour
+  #      SimpleTimeZone(-28800000,
+  #                     "America/Los_Angeles",
+  #                     Calendar.APRIL, 1, -Calendar.SUNDAY,
+  #                     7200000,
+  #                     Calendar.OCTOBER, -1, Calendar.SUNDAY,
+  #                     7200000,
+  #                     3600000)
   # 
-  # // Base GMT offset: +1:00
-  # // DST starts:      at 1:00am in UTC time
-  # //                  on the last Sunday in March
-  # // DST ends:        at 1:00am in UTC time
-  # //                  on the last Sunday in October
-  # // Save:            1 hour
-  # SimpleTimeZone(3600000,
-  # "Europe/Paris",
-  # Calendar.MARCH, -1, Calendar.SUNDAY,
-  # 3600000, SimpleTimeZone.UTC_TIME,
-  # Calendar.OCTOBER, -1, Calendar.SUNDAY,
-  # 3600000, SimpleTimeZone.UTC_TIME,
-  # 3600000)
+  #      // Base GMT offset: +1:00
+  #      // DST starts:      at 1:00am in UTC time
+  #      //                  on the last Sunday in March
+  #      // DST ends:        at 1:00am in UTC time
+  #      //                  on the last Sunday in October
+  #      // Save:            1 hour
+  #      SimpleTimeZone(3600000,
+  #                     "Europe/Paris",
+  #                     Calendar.MARCH, -1, Calendar.SUNDAY,
+  #                     3600000, SimpleTimeZone.UTC_TIME,
+  #                     Calendar.OCTOBER, -1, Calendar.SUNDAY,
+  #                     3600000, SimpleTimeZone.UTC_TIME,
+  #                     3600000)
   # </code></pre>
   # These parameter rules are also applicable to the set rule methods, such as
   # <code>setStartRule</code>.
@@ -195,43 +193,43 @@ module Java::Util
     # assumed to be 3600000 milliseconds (i.e., one hour). This constructor is
     # equivalent to:
     # <pre><code>
-    # SimpleTimeZone(rawOffset,
-    # ID,
-    # startMonth,
-    # startDay,
-    # startDayOfWeek,
-    # startTime,
-    # SimpleTimeZone.{@link #WALL_TIME},
-    # endMonth,
-    # endDay,
-    # endDayOfWeek,
-    # endTime,
-    # SimpleTimeZone.{@link #WALL_TIME},
-    # 3600000)
+    #     SimpleTimeZone(rawOffset,
+    #                    ID,
+    #                    startMonth,
+    #                    startDay,
+    #                    startDayOfWeek,
+    #                    startTime,
+    #                    SimpleTimeZone.{@link #WALL_TIME},
+    #                    endMonth,
+    #                    endDay,
+    #                    endDayOfWeek,
+    #                    endTime,
+    #                    SimpleTimeZone.{@link #WALL_TIME},
+    #                    3600000)
     # </code></pre>
     # 
     # @param rawOffset       The given base time zone offset from GMT.
     # @param ID              The time zone ID which is given to this object.
     # @param startMonth      The daylight saving time starting month. Month is
-    # a {@link Calendar#MONTH MONTH} field value (0-based. e.g., 0
-    # for January).
+    #                        a {@link Calendar#MONTH MONTH} field value (0-based. e.g., 0
+    #                        for January).
     # @param startDay        The day of the month on which the daylight saving time starts.
-    # See the class description for the special cases of this parameter.
+    #                        See the class description for the special cases of this parameter.
     # @param startDayOfWeek  The daylight saving time starting day-of-week.
-    # See the class description for the special cases of this parameter.
+    #                        See the class description for the special cases of this parameter.
     # @param startTime       The daylight saving time starting time in local wall clock
-    # time (in milliseconds within the day), which is local
-    # standard time in this case.
+    #                        time (in milliseconds within the day), which is local
+    #                        standard time in this case.
     # @param endMonth        The daylight saving time ending month. Month is
-    # a {@link Calendar#MONTH MONTH} field
-    # value (0-based. e.g., 9 for October).
+    #                        a {@link Calendar#MONTH MONTH} field
+    #                        value (0-based. e.g., 9 for October).
     # @param endDay          The day of the month on which the daylight saving time ends.
-    # See the class description for the special cases of this parameter.
+    #                        See the class description for the special cases of this parameter.
     # @param endDayOfWeek    The daylight saving time ending day-of-week.
-    # See the class description for the special cases of this parameter.
+    #                        See the class description for the special cases of this parameter.
     # @param endTime         The daylight saving ending time in local wall clock time,
-    # (in milliseconds within the day) which is local daylight
-    # time in this case.
+    #                        (in milliseconds within the day) which is local daylight
+    #                        time in this case.
     # @exception IllegalArgumentException if the month, day, dayOfWeek, or time
     # parameters are out of range for the start or end rule
     def initialize(raw_offset, id, start_month, start_day, start_day_of_week, start_time, end_month, end_day, end_day_of_week, end_time)
@@ -245,43 +243,43 @@ module Java::Util
     # Both <code>startTime</code> and <code>endTime</code> are assumed to be
     # represented in the wall clock time. This constructor is equivalent to:
     # <pre><code>
-    # SimpleTimeZone(rawOffset,
-    # ID,
-    # startMonth,
-    # startDay,
-    # startDayOfWeek,
-    # startTime,
-    # SimpleTimeZone.{@link #WALL_TIME},
-    # endMonth,
-    # endDay,
-    # endDayOfWeek,
-    # endTime,
-    # SimpleTimeZone.{@link #WALL_TIME},
-    # dstSavings)
+    #     SimpleTimeZone(rawOffset,
+    #                    ID,
+    #                    startMonth,
+    #                    startDay,
+    #                    startDayOfWeek,
+    #                    startTime,
+    #                    SimpleTimeZone.{@link #WALL_TIME},
+    #                    endMonth,
+    #                    endDay,
+    #                    endDayOfWeek,
+    #                    endTime,
+    #                    SimpleTimeZone.{@link #WALL_TIME},
+    #                    dstSavings)
     # </code></pre>
     # 
     # @param rawOffset       The given base time zone offset from GMT.
     # @param ID              The time zone ID which is given to this object.
     # @param startMonth      The daylight saving time starting month. Month is
-    # a {@link Calendar#MONTH MONTH} field
-    # value (0-based. e.g., 0 for January).
+    #                        a {@link Calendar#MONTH MONTH} field
+    #                        value (0-based. e.g., 0 for January).
     # @param startDay        The day of the month on which the daylight saving time starts.
-    # See the class description for the special cases of this parameter.
+    #                        See the class description for the special cases of this parameter.
     # @param startDayOfWeek  The daylight saving time starting day-of-week.
-    # See the class description for the special cases of this parameter.
+    #                        See the class description for the special cases of this parameter.
     # @param startTime       The daylight saving time starting time in local wall clock
-    # time, which is local standard time in this case.
+    #                        time, which is local standard time in this case.
     # @param endMonth        The daylight saving time ending month. Month is
-    # a {@link Calendar#MONTH MONTH} field
-    # value (0-based. e.g., 9 for October).
+    #                        a {@link Calendar#MONTH MONTH} field
+    #                        value (0-based. e.g., 9 for October).
     # @param endDay          The day of the month on which the daylight saving time ends.
-    # See the class description for the special cases of this parameter.
+    #                        See the class description for the special cases of this parameter.
     # @param endDayOfWeek    The daylight saving time ending day-of-week.
-    # See the class description for the special cases of this parameter.
+    #                        See the class description for the special cases of this parameter.
     # @param endTime         The daylight saving ending time in local wall clock time,
-    # which is local daylight time in this case.
+    #                        which is local daylight time in this case.
     # @param dstSavings      The amount of time in milliseconds saved during
-    # daylight saving time.
+    #                        daylight saving time.
     # @exception IllegalArgumentException if the month, day, dayOfWeek, or time
     # parameters are out of range for the start or end rule
     # @since 1.2
@@ -302,27 +300,27 @@ module Java::Util
     # @param rawOffset       The given base time zone offset from GMT.
     # @param ID              The time zone ID which is given to this object.
     # @param startMonth      The daylight saving time starting month. Month is
-    # a {@link Calendar#MONTH MONTH} field
-    # value (0-based. e.g., 0 for January).
+    #                        a {@link Calendar#MONTH MONTH} field
+    #                        value (0-based. e.g., 0 for January).
     # @param startDay        The day of the month on which the daylight saving time starts.
-    # See the class description for the special cases of this parameter.
+    #                        See the class description for the special cases of this parameter.
     # @param startDayOfWeek  The daylight saving time starting day-of-week.
-    # See the class description for the special cases of this parameter.
+    #                        See the class description for the special cases of this parameter.
     # @param startTime       The daylight saving time starting time in the time mode
-    # specified by <code>startTimeMode</code>.
+    #                        specified by <code>startTimeMode</code>.
     # @param startTimeMode   The mode of the start time specified by startTime.
     # @param endMonth        The daylight saving time ending month. Month is
-    # a {@link Calendar#MONTH MONTH} field
-    # value (0-based. e.g., 9 for October).
+    #                        a {@link Calendar#MONTH MONTH} field
+    #                        value (0-based. e.g., 9 for October).
     # @param endDay          The day of the month on which the daylight saving time ends.
-    # See the class description for the special cases of this parameter.
+    #                        See the class description for the special cases of this parameter.
     # @param endDayOfWeek    The daylight saving time ending day-of-week.
-    # See the class description for the special cases of this parameter.
+    #                        See the class description for the special cases of this parameter.
     # @param endTime         The daylight saving ending time in time time mode
-    # specified by <code>endTimeMode</code>.
+    #                        specified by <code>endTimeMode</code>.
     # @param endTimeMode     The mode of the end time specified by endTime
     # @param dstSavings      The amount of time in milliseconds saved during
-    # daylight saving time.
+    #                        daylight saving time.
     # 
     # @exception IllegalArgumentException if the month, day, dayOfWeek, time more, or
     # time parameters are out of range for the start or end rule, or if a time mode
@@ -395,14 +393,14 @@ module Java::Util
     # <pre><code>setStartRule(Calendar.APRIL, 1, Calendar.SUNDAY, 2*60*60*1000);</code></pre>
     # 
     # @param startMonth      The daylight saving time starting month. Month is
-    # a {@link Calendar#MONTH MONTH} field
-    # value (0-based. e.g., 0 for January).
+    #                        a {@link Calendar#MONTH MONTH} field
+    #                        value (0-based. e.g., 0 for January).
     # @param startDay        The day of the month on which the daylight saving time starts.
-    # See the class description for the special cases of this parameter.
+    #                        See the class description for the special cases of this parameter.
     # @param startDayOfWeek  The daylight saving time starting day-of-week.
-    # See the class description for the special cases of this parameter.
+    #                        See the class description for the special cases of this parameter.
     # @param startTime       The daylight saving time starting time in local wall clock
-    # time, which is local standard time in this case.
+    #                        time, which is local standard time in this case.
     # @exception IllegalArgumentException if the <code>startMonth</code>, <code>startDay</code>,
     # <code>startDayOfWeek</code>, or <code>startTime</code> parameters are out of range
     def set_start_rule(start_month, start_day, start_day_of_week, start_time)
@@ -421,12 +419,12 @@ module Java::Util
     # <pre><code>setStartRule(startMonth, startDay, 0, startTime)</code></pre>
     # 
     # @param startMonth      The daylight saving time starting month. Month is
-    # a {@link Calendar#MONTH MONTH} field
-    # value (0-based. e.g., 0 for January).
+    #                        a {@link Calendar#MONTH MONTH} field
+    #                        value (0-based. e.g., 0 for January).
     # @param startDay        The day of the month on which the daylight saving time starts.
     # @param startTime       The daylight saving time starting time in local wall clock
-    # time, which is local standard time in this case.
-    # See the class description for the special cases of this parameter.
+    #                        time, which is local standard time in this case.
+    #                        See the class description for the special cases of this parameter.
     # @exception IllegalArgumentException if the <code>startMonth</code>,
     # <code>startDayOfMonth</code>, or <code>startTime</code> parameters are out of range
     # @since 1.2
@@ -439,16 +437,16 @@ module Java::Util
     # a month, e.g., the first Monday on or after the 8th.
     # 
     # @param startMonth      The daylight saving time starting month. Month is
-    # a {@link Calendar#MONTH MONTH} field
-    # value (0-based. e.g., 0 for January).
+    #                        a {@link Calendar#MONTH MONTH} field
+    #                        value (0-based. e.g., 0 for January).
     # @param startDay        The day of the month on which the daylight saving time starts.
     # @param startDayOfWeek  The daylight saving time starting day-of-week.
     # @param startTime       The daylight saving time starting time in local wall clock
-    # time, which is local standard time in this case.
+    #                        time, which is local standard time in this case.
     # @param after           If true, this rule selects the first <code>dayOfWeek</code> on or
-    # <em>after</em> <code>dayOfMonth</code>.  If false, this rule
-    # selects the last <code>dayOfWeek</code> on or <em>before</em>
-    # <code>dayOfMonth</code>.
+    #                        <em>after</em> <code>dayOfMonth</code>.  If false, this rule
+    #                        selects the last <code>dayOfWeek</code> on or <em>before</em>
+    #                        <code>dayOfMonth</code>.
     # @exception IllegalArgumentException if the <code>startMonth</code>, <code>startDay</code>,
     # <code>startDayOfWeek</code>, or <code>startTime</code> parameters are out of range
     # @since 1.2
@@ -468,15 +466,15 @@ module Java::Util
     # <code>setEndRule(Calendar.OCTOBER, -1, Calendar.SUNDAY, 2*60*60*1000);</code>
     # 
     # @param endMonth        The daylight saving time ending month. Month is
-    # a {@link Calendar#MONTH MONTH} field
-    # value (0-based. e.g., 9 for October).
+    #                        a {@link Calendar#MONTH MONTH} field
+    #                        value (0-based. e.g., 9 for October).
     # @param endDay          The day of the month on which the daylight saving time ends.
-    # See the class description for the special cases of this parameter.
+    #                        See the class description for the special cases of this parameter.
     # @param endDayOfWeek    The daylight saving time ending day-of-week.
-    # See the class description for the special cases of this parameter.
+    #                        See the class description for the special cases of this parameter.
     # @param endTime         The daylight saving ending time in local wall clock time,
-    # (in milliseconds within the day) which is local daylight
-    # time in this case.
+    #                        (in milliseconds within the day) which is local daylight
+    #                        time in this case.
     # @exception IllegalArgumentException if the <code>endMonth</code>, <code>endDay</code>,
     # <code>endDayOfWeek</code>, or <code>endTime</code> parameters are out of range
     def set_end_rule(end_month, end_day, end_day_of_week, end_time)
@@ -495,12 +493,12 @@ module Java::Util
     # <pre><code>setEndRule(endMonth, endDay, 0, endTime)</code></pre>
     # 
     # @param endMonth        The daylight saving time ending month. Month is
-    # a {@link Calendar#MONTH MONTH} field
-    # value (0-based. e.g., 9 for October).
+    #                        a {@link Calendar#MONTH MONTH} field
+    #                        value (0-based. e.g., 9 for October).
     # @param endDay          The day of the month on which the daylight saving time ends.
     # @param endTime         The daylight saving ending time in local wall clock time,
-    # (in milliseconds within the day) which is local daylight
-    # time in this case.
+    #                        (in milliseconds within the day) which is local daylight
+    #                        time in this case.
     # @exception IllegalArgumentException the <code>endMonth</code>, <code>endDay</code>,
     # or <code>endTime</code> parameters are out of range
     # @since 1.2
@@ -513,17 +511,17 @@ module Java::Util
     # a month, e.g., the first Monday on or after the 8th.
     # 
     # @param endMonth        The daylight saving time ending month. Month is
-    # a {@link Calendar#MONTH MONTH} field
-    # value (0-based. e.g., 9 for October).
+    #                        a {@link Calendar#MONTH MONTH} field
+    #                        value (0-based. e.g., 9 for October).
     # @param endDay          The day of the month on which the daylight saving time ends.
     # @param endDayOfWeek    The daylight saving time ending day-of-week.
     # @param endTime         The daylight saving ending time in local wall clock time,
-    # (in milliseconds within the day) which is local daylight
-    # time in this case.
+    #                        (in milliseconds within the day) which is local daylight
+    #                        time in this case.
     # @param after           If true, this rule selects the first <code>endDayOfWeek</code> on
-    # or <em>after</em> <code>endDay</code>.  If false, this rule
-    # selects the last <code>endDayOfWeek</code> on or before
-    # <code>endDay</code> of the month.
+    #                        or <em>after</em> <code>endDay</code>.  If false, this rule
+    #                        selects the last <code>endDayOfWeek</code> on or before
+    #                        <code>endDay</code> of the month.
     # @exception IllegalArgumentException the <code>endMonth</code>, <code>endDay</code>,
     # <code>endDayOfWeek</code>, or <code>endTime</code> parameters are out of range
     # @since 1.2
@@ -597,14 +595,14 @@ module Java::Util
     # @param era       The era of the given date.
     # @param year      The year in the given date.
     # @param month     The month in the given date. Month is 0-based. e.g.,
-    # 0 for January.
+    #                  0 for January.
     # @param day       The day-in-month of the given date.
     # @param dayOfWeek The day-of-week of the given date.
     # @param millis    The milliseconds in day in <em>standard</em> local time.
     # @return          The milliseconds to add to UTC to get local time.
     # @exception       IllegalArgumentException the <code>era</code>,
-    # <code>month</code>, <code>day</code>, <code>dayOfWeek</code>,
-    # or <code>millis</code> parameters are out of range
+    #                  <code>month</code>, <code>day</code>, <code>dayOfWeek</code>,
+    #                  or <code>millis</code> parameters are out of range
     def get_offset(era, year, month, day, day_of_week, millis)
       if (!(era).equal?(GregorianCalendar::AD) && !(era).equal?(GregorianCalendar::BC))
         raise IllegalArgumentException.new("Illegal era " + RJava.cast_to_string(era))
@@ -626,7 +624,7 @@ module Java::Util
           # y %= 28 also produces an equivalent year, but positive
           # year numbers would be convenient to use the UNIX cal
           # command.
-          y = RJava.cast_to_int(CalendarUtils.mod(y, 28))
+          y = (CalendarUtils.mod(y, 28)).to_int
         end
       end
       # convert year to its 1-based month value
@@ -847,7 +845,7 @@ module Java::Util
     # 
     # @param obj  The <code>SimpleTimeZone</code> object to be compared with.
     # @return     True if the given <code>obj</code> is the same as this
-    # <code>SimpleTimeZone</code> object; false otherwise.
+    #             <code>SimpleTimeZone</code> object; false otherwise.
     def ==(obj)
       if ((self).equal?(obj))
         return true
@@ -873,7 +871,6 @@ module Java::Util
         return false
       end
       that = other
-      # Only check rules if using DST
       return (@raw_offset).equal?(that.attr_raw_offset) && (@use_daylight).equal?(that.attr_use_daylight) && (!@use_daylight || ((@dst_savings).equal?(that.attr_dst_savings) && (@start_mode).equal?(that.attr_start_mode) && (@start_month).equal?(that.attr_start_month) && (@start_day).equal?(that.attr_start_day) && (@start_day_of_week).equal?(that.attr_start_day_of_week) && (@start_time).equal?(that.attr_start_time) && (@start_time_mode).equal?(that.attr_start_time_mode) && (@end_mode).equal?(that.attr_end_mode) && (@end_month).equal?(that.attr_end_month) && (@end_day).equal?(that.attr_end_day) && (@end_day_of_week).equal?(that.attr_end_day_of_week) && (@end_time).equal?(that.attr_end_time) && (@end_time_mode).equal?(that.attr_end_time_mode) && (@start_year).equal?(that.attr_start_year)))
     end
     
@@ -885,7 +882,6 @@ module Java::Util
     end
     
     # =======================privates===============================
-    # 
     # The month in which daylight saving time starts.  This value must be
     # between <code>Calendar.JANUARY</code> and
     # <code>Calendar.DECEMBER</code> inclusive.  This value must not equal
@@ -1214,7 +1210,6 @@ module Java::Util
       const_attr_reader  :DOW_LE_DOM_MODE
       
       # Day of week before day of month, "Sun<=21"
-      # 
       # Constant for a mode of start or end time specified as wall clock
       # time.  Wall clock time is standard time for the onset rule, and
       # daylight time for the end rule.
@@ -1223,7 +1218,6 @@ module Java::Util
       const_attr_reader  :WALL_TIME
       
       # Zero for backward compatibility
-      # 
       # Constant for a mode of start or end time specified as standard time.
       # @since 1.4
       const_set_lazy(:STANDARD_TIME) { 1 }
@@ -1288,11 +1282,11 @@ module Java::Util
     # Rule representation
     # 
     # We represent the following flavors of rules:
-    # 5        the fifth of the month
-    # lastSun  the last Sunday in the month
-    # lastMon  the last Monday in the month
-    # Sun>=8   first Sunday on or after the eighth
-    # Sun<=25  last Sunday on or before the 25th
+    #       5        the fifth of the month
+    #       lastSun  the last Sunday in the month
+    #       lastMon  the last Monday in the month
+    #       Sun>=8   first Sunday on or after the eighth
+    #       Sun<=25  last Sunday on or before the 25th
     # This is further complicated by the fact that we need to remain
     # backward compatible with the 1.1 FCS.  Finally, we need to minimize
     # API changes.  In order to satisfy these requirements, we support
@@ -1303,12 +1297,12 @@ module Java::Util
     # streaming in is complete.  Rules are represented directly, using an
     # unencoded format.  We will discuss the start rule only below; the end
     # rule is analogous.
-    # startMode      Takes on enumerated values DAY_OF_MONTH,
-    # DOW_IN_MONTH, DOW_AFTER_DOM, or DOW_BEFORE_DOM.
-    # startDay       The day of the month, or for DOW_IN_MONTH mode, a
-    # value indicating which DOW, such as +1 for first,
-    # +2 for second, -1 for last, etc.
-    # startDayOfWeek The day of the week.  Ignored for DAY_OF_MONTH.
+    #   startMode      Takes on enumerated values DAY_OF_MONTH,
+    #                  DOW_IN_MONTH, DOW_AFTER_DOM, or DOW_BEFORE_DOM.
+    #   startDay       The day of the month, or for DOW_IN_MONTH mode, a
+    #                  value indicating which DOW, such as +1 for first,
+    #                  +2 for second, -1 for last, etc.
+    #   startDayOfWeek The day of the week.  Ignored for DAY_OF_MONTH.
     # 
     # ENCODED REPRESENTATION
     # This is the format accepted by the constructor and by setStartRule()
@@ -1316,12 +1310,12 @@ module Java::Util
     # and zero values to encode the different rules.  This representation
     # allows us to specify all the different rule flavors without altering
     # the API.
-    # MODE              startMonth    startDay    startDayOfWeek
-    # DOW_IN_MONTH_MODE >=0           !=0         >0
-    # DOM_MODE          >=0           >0          ==0
-    # DOW_GE_DOM_MODE   >=0           >0          <0
-    # DOW_LE_DOM_MODE   >=0           <0          <0
-    # (no DST)          don't care    ==0         don't care
+    #   MODE              startMonth    startDay    startDayOfWeek
+    #   DOW_IN_MONTH_MODE >=0           !=0         >0
+    #   DOM_MODE          >=0           >0          ==0
+    #   DOW_GE_DOM_MODE   >=0           >0          <0
+    #   DOW_LE_DOM_MODE   >=0           <0          <0
+    #   (no DST)          don't care    ==0         don't care
     # 
     # STREAMED REPRESENTATION
     # We must retain binary compatibility with the 1.1 FCS.  The 1.1 code only
@@ -1336,7 +1330,6 @@ module Java::Util
     # include additional data, they should do so by storing them after the
     # packed representation below.
     # ----------------------------------------------------------------------
-    # 
     # Given a set of encoded rules in startDay and startDayOfMonth, decode
     # them and set the startMode appropriately.  Do the same for endDay and
     # endDayOfMonth.  Upon entry, the day of week variables may be zero or
@@ -1356,8 +1349,8 @@ module Java::Util
     # by negating or zeroing certain values.  Representation formats are:
     # <p>
     # <pre>
-    # DOW_IN_MONTH  DOM    DOW>=DOM  DOW<=DOM  no DST
-    # ------------  -----  --------  --------  ----------
+    #            DOW_IN_MONTH  DOM    DOW>=DOM  DOW<=DOM  no DST
+    #            ------------  -----  --------  --------  ----------
     # month       0..11        same    same      same     don't care
     # day        -5..5         1..31   1..31    -1..-31   0
     # dayOfWeek   1..7         0      -1..-7    -1..-7    don't care

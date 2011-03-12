@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5::Internal::Tools
@@ -62,59 +60,59 @@ module Sun::Security::Krb5::Internal::Tools
       const_attr_reader  :DEBUG
       
       typesig { [Array.typed(String)] }
-      # The main method is used to accept user command line input for ticket
-      # request.
-      # <p>
-      # Usage: kinit [-A] [-f] [-p] [-c cachename] [[-k [-t keytab_file_name]]
-      # [principal] [password]
-      # <ul>
-      # <li>    -A        do not include addresses
-      # <li>    -f        forwardable
-      # <li>    -p        proxiable
-      # <li>    -c        cache name (i.e., FILE://c:\temp\mykrb5cc)
-      # <li>    -k        use keytab
-      # <li>    -t        keytab file name
-      # <li>    principal the principal name (i.e., duke@java.sun.com)
-      # <li>    password  the principal's Kerberos password
-      # </ul>
-      # <p>
-      # Use java sun.security.krb5.tools.Kinit -help to bring up help menu.
-      # <p>
-      # We currently support only file-based credentials cache to
-      # store the tickets obtained from the KDC.
-      # By default, for all Unix platforms a cache file named
-      # /tmp/krb5cc_&lt;uid&gt will be generated. The &lt;uid&gt is the
-      # numeric user identifier.
-      # For all other platforms, a cache file named
-      # &lt;USER_HOME&gt/krb5cc_&lt;USER_NAME&gt would be generated.
-      # <p>
-      # &lt;USER_HOME&gt is obtained from <code>java.lang.System</code>
-      # property <i>user.home</i>.
-      # &lt;USER_NAME&gt is obtained from <code>java.lang.System</code>
-      # property <i>user.name</i>.
-      # If &lt;USER_HOME&gt is null the cache file would be stored in
-      # the current directory that the program is running from.
-      # &lt;USER_NAME&gt is operating system's login username.
-      # It could be different from user's principal name.
+      #  The main method is used to accept user command line input for ticket
+      #  request.
+      #  <p>
+      #  Usage: kinit [-A] [-f] [-p] [-c cachename] [[-k [-t keytab_file_name]]
+      #  [principal] [password]
+      #  <ul>
+      #  <li>    -A        do not include addresses
+      #  <li>    -f        forwardable
+      #  <li>    -p        proxiable
+      #  <li>    -c        cache name (i.e., FILE://c:\temp\mykrb5cc)
+      #  <li>    -k        use keytab
+      #  <li>    -t        keytab file name
+      #  <li>    principal the principal name (i.e., duke@java.sun.com)
+      #  <li>    password  the principal's Kerberos password
+      #  </ul>
+      #  <p>
+      #  Use java sun.security.krb5.tools.Kinit -help to bring up help menu.
+      #  <p>
+      #  We currently support only file-based credentials cache to
+      #  store the tickets obtained from the KDC.
+      #  By default, for all Unix platforms a cache file named
+      #  /tmp/krb5cc_&lt;uid&gt will be generated. The &lt;uid&gt is the
+      #  numeric user identifier.
+      #  For all other platforms, a cache file named
+      #  &lt;USER_HOME&gt/krb5cc_&lt;USER_NAME&gt would be generated.
+      #  <p>
+      #  &lt;USER_HOME&gt is obtained from <code>java.lang.System</code>
+      #  property <i>user.home</i>.
+      #  &lt;USER_NAME&gt is obtained from <code>java.lang.System</code>
+      #  property <i>user.name</i>.
+      #  If &lt;USER_HOME&gt is null the cache file would be stored in
+      #  the current directory that the program is running from.
+      #  &lt;USER_NAME&gt is operating system's login username.
+      #  It could be different from user's principal name.
       # </p>
       # <p>
-      # For instance, on Windows NT, it could be
-      # c:\winnt\profiles\duke\krb5cc_duke, in
-      # which duke is the &lt;USER_NAME&gt, and c:\winnt\profile\duke is the
-      # &lt;USER_HOME&gt.
+      #  For instance, on Windows NT, it could be
+      #  c:\winnt\profiles\duke\krb5cc_duke, in
+      #  which duke is the &lt;USER_NAME&gt, and c:\winnt\profile\duke is the
+      #  &lt;USER_HOME&gt.
       # <p>
-      # A single user could have multiple principal names,
-      # but the primary principal of the credentials cache could only be one,
-      # which means one cache file could only store tickets for one
-      # specific user principal. If the user switches
-      # the principal name at the next Kinit, the cache file generated for the
-      # new ticket would overwrite the old cache file by default.
-      # To avoid overwriting, you need to specify
-      # a different cache file name when you request a
-      # new ticket.
+      #  A single user could have multiple principal names,
+      #  but the primary principal of the credentials cache could only be one,
+      #  which means one cache file could only store tickets for one
+      #  specific user principal. If the user switches
+      #  the principal name at the next Kinit, the cache file generated for the
+      #  new ticket would overwrite the old cache file by default.
+      #  To avoid overwriting, you need to specify
+      #  a different cache file name when you request a
+      #  new ticket.
       # </p>
       # <p>
-      # You can specify the location of the cache file by using the -c option
+      #  You can specify the location of the cache file by using the -c option
       def main(args)
         begin
           self_ = Kinit.new(args)
@@ -319,5 +317,6 @@ module Sun::Security::Krb5::Internal::Tools
     alias_method :initialize__kinit, :initialize
   end
   
-  Kinit.main($*) if $0 == __FILE__
 end
+
+Sun::Security::Krb5::Internal::Tools::Kinit.main($*) if $0 == __FILE__

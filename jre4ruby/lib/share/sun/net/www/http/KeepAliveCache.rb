@@ -370,7 +370,6 @@ module Sun::Net::Www::Http
     
     typesig { [URL, Object] }
     # additional key, such as socketfactory
-    # 
     # Constructor
     # 
     # @param url the URL containing the protocol, host and port information

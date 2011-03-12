@@ -44,32 +44,32 @@ module Java::Nio::Charset
   # 
   # <ul>
   # 
-  # <li><p> <i>Underflow</i> is reported when there is no more input to be
-  # processed, or there is insufficient input and additional input is
-  # required.  This condition is represented by the unique result object
-  # {@link #UNDERFLOW}, whose {@link #isUnderflow() isUnderflow} method
-  # returns <tt>true</tt>.  </p></li>
+  #   <li><p> <i>Underflow</i> is reported when there is no more input to be
+  #   processed, or there is insufficient input and additional input is
+  #   required.  This condition is represented by the unique result object
+  #   {@link #UNDERFLOW}, whose {@link #isUnderflow() isUnderflow} method
+  #   returns <tt>true</tt>.  </p></li>
   # 
-  # <li><p> <i>Overflow</i> is reported when there is insufficient room
-  # remaining in the output buffer.  This condition is represented by the
-  # unique result object {@link #OVERFLOW}, whose {@link #isOverflow()
-  # isOverflow} method returns <tt>true</tt>.  </p></li>
+  #   <li><p> <i>Overflow</i> is reported when there is insufficient room
+  #   remaining in the output buffer.  This condition is represented by the
+  #   unique result object {@link #OVERFLOW}, whose {@link #isOverflow()
+  #   isOverflow} method returns <tt>true</tt>.  </p></li>
   # 
-  # <li><p> A <i>malformed-input error</i> is reported when a sequence of
-  # input units is not well-formed.  Such errors are described by instances of
-  # this class whose {@link #isMalformed() isMalformed} method returns
-  # <tt>true</tt> and whose {@link #length() length} method returns the length
-  # of the malformed sequence.  There is one unique instance of this class for
-  # all malformed-input errors of a given length.  </p></li>
+  #   <li><p> A <i>malformed-input error</i> is reported when a sequence of
+  #   input units is not well-formed.  Such errors are described by instances of
+  #   this class whose {@link #isMalformed() isMalformed} method returns
+  #   <tt>true</tt> and whose {@link #length() length} method returns the length
+  #   of the malformed sequence.  There is one unique instance of this class for
+  #   all malformed-input errors of a given length.  </p></li>
   # 
-  # <li><p> An <i>unmappable-character error</i> is reported when a sequence
-  # of input units denotes a character that cannot be represented in the
-  # output charset.  Such errors are described by instances of this class
-  # whose {@link #isUnmappable() isUnmappable} method returns <tt>true</tt> and
-  # whose {@link #length() length} method returns the length of the input
-  # sequence denoting the unmappable character.  There is one unique instance
-  # of this class for all unmappable-character errors of a given length.
-  # </p></li>
+  #   <li><p> An <i>unmappable-character error</i> is reported when a sequence
+  #   of input units denotes a character that cannot be represented in the
+  #   output charset.  Such errors are described by instances of this class
+  #   whose {@link #isUnmappable() isUnmappable} method returns <tt>true</tt> and
+  #   whose {@link #length() length} method returns the length of the input
+  #   sequence denoting the unmappable character.  There is one unique instance
+  #   of this class for all unmappable-character errors of a given length.
+  #   </p></li>
   # 
   # </ul>
   # 
@@ -154,7 +154,7 @@ module Java::Nio::Charset
     # Tells whether or not this object describes an error condition.  </p>
     # 
     # @return  <tt>true</tt> if, and only if, this object denotes either a
-    # malformed-input error or an unmappable-character error
+    #          malformed-input error or an unmappable-character error
     def is_error
       return (@type >= CR_ERROR_MIN)
     end
@@ -164,7 +164,7 @@ module Java::Nio::Charset
     # </p>
     # 
     # @return  <tt>true</tt> if, and only if, this object denotes a
-    # malformed-input error
+    #          malformed-input error
     def is_malformed
       return ((@type).equal?(CR_MALFORMED))
     end
@@ -174,7 +174,7 @@ module Java::Nio::Charset
     # error.  </p>
     # 
     # @return  <tt>true</tt> if, and only if, this object denotes an
-    # unmappable-character error
+    #          unmappable-character error
     def is_unmappable
       return ((@type).equal?(CR_UNMAPPABLE))
     end
@@ -186,8 +186,8 @@ module Java::Nio::Charset
     # @return  The length of the erroneous input, a positive integer
     # 
     # @throws  UnsupportedOperationException
-    # If this object does not describe an error condition, that is,
-    # if the {@link #isError() isError} does not return <tt>true</tt>
+    #          If this object does not describe an error condition, that is,
+    #          if the {@link #isError() isError} does not return <tt>true</tt>
     def length
       if (!is_error)
         raise UnsupportedOperationException.new
@@ -334,18 +334,18 @@ module Java::Nio::Charset
     # </p>
     # 
     # @throws  BufferUnderflowException
-    # If this object is {@link #UNDERFLOW}
+    #          If this object is {@link #UNDERFLOW}
     # 
     # @throws  BufferOverflowException
-    # If this object is {@link #OVERFLOW}
+    #          If this object is {@link #OVERFLOW}
     # 
     # @throws  MalformedInputException
-    # If this object represents a malformed-input error; the
-    # exception's length value will be that of this object
+    #          If this object represents a malformed-input error; the
+    #          exception's length value will be that of this object
     # 
     # @throws  UnmappableCharacterException
-    # If this object represents an unmappable-character error; the
-    # exceptions length value will be that of this object
+    #          If this object represents an unmappable-character error; the
+    #          exceptions length value will be that of this object
     def throw_exception
       case (@type)
       when CR_UNDERFLOW

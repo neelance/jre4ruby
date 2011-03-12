@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # This file is available under and governed by the GNU General Public
 # License version 2 only, as published by the Free Software Foundation.
 # However, the following notice accompanied the original version of this
@@ -43,255 +41,255 @@ module Java::Util::Concurrent::Locks
     }
   end
   
-  # Provides a framework for implementing blocking locks and related
-  # synchronizers (semaphores, events, etc) that rely on
-  # first-in-first-out (FIFO) wait queues.  This class is designed to
-  # be a useful basis for most kinds of synchronizers that rely on a
-  # single atomic <tt>int</tt> value to represent state. Subclasses
-  # must define the protected methods that change this state, and which
-  # define what that state means in terms of this object being acquired
-  # or released.  Given these, the other methods in this class carry
-  # out all queuing and blocking mechanics. Subclasses can maintain
-  # other state fields, but only the atomically updated <tt>int</tt>
-  # value manipulated using methods {@link #getState}, {@link
-  # #setState} and {@link #compareAndSetState} is tracked with respect
-  # to synchronization.
+  #  Provides a framework for implementing blocking locks and related
+  #  synchronizers (semaphores, events, etc) that rely on
+  #  first-in-first-out (FIFO) wait queues.  This class is designed to
+  #  be a useful basis for most kinds of synchronizers that rely on a
+  #  single atomic <tt>int</tt> value to represent state. Subclasses
+  #  must define the protected methods that change this state, and which
+  #  define what that state means in terms of this object being acquired
+  #  or released.  Given these, the other methods in this class carry
+  #  out all queuing and blocking mechanics. Subclasses can maintain
+  #  other state fields, but only the atomically updated <tt>int</tt>
+  #  value manipulated using methods {@link #getState}, {@link
+  #  #setState} and {@link #compareAndSetState} is tracked with respect
+  #  to synchronization.
   # 
-  # <p>Subclasses should be defined as non-public internal helper
-  # classes that are used to implement the synchronization properties
-  # of their enclosing class.  Class
-  # <tt>AbstractQueuedSynchronizer</tt> does not implement any
-  # synchronization interface.  Instead it defines methods such as
-  # {@link #acquireInterruptibly} that can be invoked as
-  # appropriate by concrete locks and related synchronizers to
-  # implement their public methods.
+  #  <p>Subclasses should be defined as non-public internal helper
+  #  classes that are used to implement the synchronization properties
+  #  of their enclosing class.  Class
+  #  <tt>AbstractQueuedSynchronizer</tt> does not implement any
+  #  synchronization interface.  Instead it defines methods such as
+  #  {@link #acquireInterruptibly} that can be invoked as
+  #  appropriate by concrete locks and related synchronizers to
+  #  implement their public methods.
   # 
-  # <p>This class supports either or both a default <em>exclusive</em>
-  # mode and a <em>shared</em> mode. When acquired in exclusive mode,
-  # attempted acquires by other threads cannot succeed. Shared mode
-  # acquires by multiple threads may (but need not) succeed. This class
-  # does not &quot;understand&quot; these differences except in the
-  # mechanical sense that when a shared mode acquire succeeds, the next
-  # waiting thread (if one exists) must also determine whether it can
-  # acquire as well. Threads waiting in the different modes share the
-  # same FIFO queue. Usually, implementation subclasses support only
-  # one of these modes, but both can come into play for example in a
-  # {@link ReadWriteLock}. Subclasses that support only exclusive or
-  # only shared modes need not define the methods supporting the unused mode.
+  #  <p>This class supports either or both a default <em>exclusive</em>
+  #  mode and a <em>shared</em> mode. When acquired in exclusive mode,
+  #  attempted acquires by other threads cannot succeed. Shared mode
+  #  acquires by multiple threads may (but need not) succeed. This class
+  #  does not &quot;understand&quot; these differences except in the
+  #  mechanical sense that when a shared mode acquire succeeds, the next
+  #  waiting thread (if one exists) must also determine whether it can
+  #  acquire as well. Threads waiting in the different modes share the
+  #  same FIFO queue. Usually, implementation subclasses support only
+  #  one of these modes, but both can come into play for example in a
+  #  {@link ReadWriteLock}. Subclasses that support only exclusive or
+  #  only shared modes need not define the methods supporting the unused mode.
   # 
-  # <p>This class defines a nested {@link ConditionObject} class that
-  # can be used as a {@link Condition} implementation by subclasses
-  # supporting exclusive mode for which method {@link
-  # #isHeldExclusively} reports whether synchronization is exclusively
-  # held with respect to the current thread, method {@link #release}
-  # invoked with the current {@link #getState} value fully releases
-  # this object, and {@link #acquire}, given this saved state value,
-  # eventually restores this object to its previous acquired state.  No
-  # <tt>AbstractQueuedSynchronizer</tt> method otherwise creates such a
-  # condition, so if this constraint cannot be met, do not use it.  The
-  # behavior of {@link ConditionObject} depends of course on the
-  # semantics of its synchronizer implementation.
+  #  <p>This class defines a nested {@link ConditionObject} class that
+  #  can be used as a {@link Condition} implementation by subclasses
+  #  supporting exclusive mode for which method {@link
+  #  #isHeldExclusively} reports whether synchronization is exclusively
+  #  held with respect to the current thread, method {@link #release}
+  #  invoked with the current {@link #getState} value fully releases
+  #  this object, and {@link #acquire}, given this saved state value,
+  #  eventually restores this object to its previous acquired state.  No
+  #  <tt>AbstractQueuedSynchronizer</tt> method otherwise creates such a
+  #  condition, so if this constraint cannot be met, do not use it.  The
+  #  behavior of {@link ConditionObject} depends of course on the
+  #  semantics of its synchronizer implementation.
   # 
-  # <p>This class provides inspection, instrumentation, and monitoring
-  # methods for the internal queue, as well as similar methods for
-  # condition objects. These can be exported as desired into classes
-  # using an <tt>AbstractQueuedSynchronizer</tt> for their
-  # synchronization mechanics.
+  #  <p>This class provides inspection, instrumentation, and monitoring
+  #  methods for the internal queue, as well as similar methods for
+  #  condition objects. These can be exported as desired into classes
+  #  using an <tt>AbstractQueuedSynchronizer</tt> for their
+  #  synchronization mechanics.
   # 
-  # <p>Serialization of this class stores only the underlying atomic
-  # integer maintaining state, so deserialized objects have empty
-  # thread queues. Typical subclasses requiring serializability will
-  # define a <tt>readObject</tt> method that restores this to a known
-  # initial state upon deserialization.
+  #  <p>Serialization of this class stores only the underlying atomic
+  #  integer maintaining state, so deserialized objects have empty
+  #  thread queues. Typical subclasses requiring serializability will
+  #  define a <tt>readObject</tt> method that restores this to a known
+  #  initial state upon deserialization.
   # 
-  # <h3>Usage</h3>
+  #  <h3>Usage</h3>
   # 
-  # <p>To use this class as the basis of a synchronizer, redefine the
-  # following methods, as applicable, by inspecting and/or modifying
-  # the synchronization state using {@link #getState}, {@link
-  # #setState} and/or {@link #compareAndSetState}:
+  #  <p>To use this class as the basis of a synchronizer, redefine the
+  #  following methods, as applicable, by inspecting and/or modifying
+  #  the synchronization state using {@link #getState}, {@link
+  #  #setState} and/or {@link #compareAndSetState}:
   # 
-  # <ul>
-  # <li> {@link #tryAcquire}
-  # <li> {@link #tryRelease}
-  # <li> {@link #tryAcquireShared}
-  # <li> {@link #tryReleaseShared}
-  # <li> {@link #isHeldExclusively}
+  #  <ul>
+  #  <li> {@link #tryAcquire}
+  #  <li> {@link #tryRelease}
+  #  <li> {@link #tryAcquireShared}
+  #  <li> {@link #tryReleaseShared}
+  #  <li> {@link #isHeldExclusively}
   # </ul>
   # 
-  # Each of these methods by default throws {@link
-  # UnsupportedOperationException}.  Implementations of these methods
-  # must be internally thread-safe, and should in general be short and
-  # not block. Defining these methods is the <em>only</em> supported
-  # means of using this class. All other methods are declared
-  # <tt>final</tt> because they cannot be independently varied.
+  #  Each of these methods by default throws {@link
+  #  UnsupportedOperationException}.  Implementations of these methods
+  #  must be internally thread-safe, and should in general be short and
+  #  not block. Defining these methods is the <em>only</em> supported
+  #  means of using this class. All other methods are declared
+  #  <tt>final</tt> because they cannot be independently varied.
   # 
-  # <p>You may also find the inherited methods from {@link
-  # AbstractOwnableSynchronizer} useful to keep track of the thread
-  # owning an exclusive synchronizer.  You are encouraged to use them
-  # -- this enables monitoring and diagnostic tools to assist users in
-  # determining which threads hold locks.
+  #  <p>You may also find the inherited methods from {@link
+  #  AbstractOwnableSynchronizer} useful to keep track of the thread
+  #  owning an exclusive synchronizer.  You are encouraged to use them
+  #  -- this enables monitoring and diagnostic tools to assist users in
+  #  determining which threads hold locks.
   # 
-  # <p>Even though this class is based on an internal FIFO queue, it
-  # does not automatically enforce FIFO acquisition policies.  The core
-  # of exclusive synchronization takes the form:
+  #  <p>Even though this class is based on an internal FIFO queue, it
+  #  does not automatically enforce FIFO acquisition policies.  The core
+  #  of exclusive synchronization takes the form:
   # 
-  # <pre>
-  # Acquire:
-  # while (!tryAcquire(arg)) {
-  # <em>enqueue thread if it is not already queued</em>;
-  # <em>possibly block current thread</em>;
-  # }
+  #  <pre>
+  #  Acquire:
+  #      while (!tryAcquire(arg)) {
+  #         <em>enqueue thread if it is not already queued</em>;
+  #         <em>possibly block current thread</em>;
+  #      }
   # 
-  # Release:
-  # if (tryRelease(arg))
-  # <em>unblock the first queued thread</em>;
-  # </pre>
+  #  Release:
+  #      if (tryRelease(arg))
+  #         <em>unblock the first queued thread</em>;
+  #  </pre>
   # 
-  # (Shared mode is similar but may involve cascading signals.)
+  #  (Shared mode is similar but may involve cascading signals.)
   # 
-  # <p><a name="barging">Because checks in acquire are invoked before enqueuing, a newly
-  # acquiring thread may <em>barge</em> ahead of others that are
-  # blocked and queued. However, you can, if desired, define
-  # <tt>tryAcquire</tt> and/or <tt>tryAcquireShared</tt> to disable
-  # barging by internally invoking one or more of the inspection
-  # methods. In particular, a strict FIFO lock can define
-  # <tt>tryAcquire</tt> to immediately return <tt>false</tt> if {@link
-  # #getFirstQueuedThread} does not return the current thread.  A
-  # normally preferable non-strict fair version can immediately return
-  # <tt>false</tt> only if {@link #hasQueuedThreads} returns
-  # <tt>true</tt> and <tt>getFirstQueuedThread</tt> is not the current
-  # thread; or equivalently, that <tt>getFirstQueuedThread</tt> is both
-  # non-null and not the current thread.  Further variations are
-  # possible.
+  #  <p><a name="barging">Because checks in acquire are invoked before enqueuing, a newly
+  #  acquiring thread may <em>barge</em> ahead of others that are
+  #  blocked and queued. However, you can, if desired, define
+  #  <tt>tryAcquire</tt> and/or <tt>tryAcquireShared</tt> to disable
+  #  barging by internally invoking one or more of the inspection
+  #  methods. In particular, a strict FIFO lock can define
+  #  <tt>tryAcquire</tt> to immediately return <tt>false</tt> if {@link
+  #  #getFirstQueuedThread} does not return the current thread.  A
+  #  normally preferable non-strict fair version can immediately return
+  #  <tt>false</tt> only if {@link #hasQueuedThreads} returns
+  #  <tt>true</tt> and <tt>getFirstQueuedThread</tt> is not the current
+  #  thread; or equivalently, that <tt>getFirstQueuedThread</tt> is both
+  #  non-null and not the current thread.  Further variations are
+  #  possible.
   # 
-  # <p>Throughput and scalability are generally highest for the
-  # default barging (also known as <em>greedy</em>,
-  # <em>renouncement</em>, and <em>convoy-avoidance</em>) strategy.
-  # While this is not guaranteed to be fair or starvation-free, earlier
-  # queued threads are allowed to recontend before later queued
-  # threads, and each recontention has an unbiased chance to succeed
-  # against incoming threads.  Also, while acquires do not
-  # &quot;spin&quot; in the usual sense, they may perform multiple
-  # invocations of <tt>tryAcquire</tt> interspersed with other
-  # computations before blocking.  This gives most of the benefits of
-  # spins when exclusive synchronization is only briefly held, without
-  # most of the liabilities when it isn't. If so desired, you can
-  # augment this by preceding calls to acquire methods with
-  # "fast-path" checks, possibly prechecking {@link #hasContended}
-  # and/or {@link #hasQueuedThreads} to only do so if the synchronizer
-  # is likely not to be contended.
+  #  <p>Throughput and scalability are generally highest for the
+  #  default barging (also known as <em>greedy</em>,
+  #  <em>renouncement</em>, and <em>convoy-avoidance</em>) strategy.
+  #  While this is not guaranteed to be fair or starvation-free, earlier
+  #  queued threads are allowed to recontend before later queued
+  #  threads, and each recontention has an unbiased chance to succeed
+  #  against incoming threads.  Also, while acquires do not
+  #  &quot;spin&quot; in the usual sense, they may perform multiple
+  #  invocations of <tt>tryAcquire</tt> interspersed with other
+  #  computations before blocking.  This gives most of the benefits of
+  #  spins when exclusive synchronization is only briefly held, without
+  #  most of the liabilities when it isn't. If so desired, you can
+  #  augment this by preceding calls to acquire methods with
+  #  "fast-path" checks, possibly prechecking {@link #hasContended}
+  #  and/or {@link #hasQueuedThreads} to only do so if the synchronizer
+  #  is likely not to be contended.
   # 
-  # <p>This class provides an efficient and scalable basis for
-  # synchronization in part by specializing its range of use to
-  # synchronizers that can rely on <tt>int</tt> state, acquire, and
-  # release parameters, and an internal FIFO wait queue. When this does
-  # not suffice, you can build synchronizers from a lower level using
-  # {@link java.util.concurrent.atomic atomic} classes, your own custom
-  # {@link java.util.Queue} classes, and {@link LockSupport} blocking
-  # support.
+  #  <p>This class provides an efficient and scalable basis for
+  #  synchronization in part by specializing its range of use to
+  #  synchronizers that can rely on <tt>int</tt> state, acquire, and
+  #  release parameters, and an internal FIFO wait queue. When this does
+  #  not suffice, you can build synchronizers from a lower level using
+  #  {@link java.util.concurrent.atomic atomic} classes, your own custom
+  #  {@link java.util.Queue} classes, and {@link LockSupport} blocking
+  #  support.
   # 
-  # <h3>Usage Examples</h3>
+  #  <h3>Usage Examples</h3>
   # 
-  # <p>Here is a non-reentrant mutual exclusion lock class that uses
-  # the value zero to represent the unlocked state, and one to
-  # represent the locked state. While a non-reentrant lock
-  # does not strictly require recording of the current owner
-  # thread, this class does so anyway to make usage easier to monitor.
-  # It also supports conditions and exposes
-  # one of the instrumentation methods:
+  #  <p>Here is a non-reentrant mutual exclusion lock class that uses
+  #  the value zero to represent the unlocked state, and one to
+  #  represent the locked state. While a non-reentrant lock
+  #  does not strictly require recording of the current owner
+  #  thread, this class does so anyway to make usage easier to monitor.
+  #  It also supports conditions and exposes
+  #  one of the instrumentation methods:
   # 
-  # <pre>
-  # class Mutex implements Lock, java.io.Serializable {
+  #  <pre>
+  #  class Mutex implements Lock, java.io.Serializable {
   # 
-  # // Our internal helper class
-  # private static class Sync extends AbstractQueuedSynchronizer {
-  # // Report whether in locked state
-  # protected boolean isHeldExclusively() {
-  # return getState() == 1;
-  # }
+  #    // Our internal helper class
+  #    private static class Sync extends AbstractQueuedSynchronizer {
+  #      // Report whether in locked state
+  #      protected boolean isHeldExclusively() {
+  #        return getState() == 1;
+  #      }
   # 
-  # // Acquire the lock if state is zero
-  # public boolean tryAcquire(int acquires) {
-  # assert acquires == 1; // Otherwise unused
-  # if (compareAndSetState(0, 1)) {
-  # setExclusiveOwnerThread(Thread.currentThread());
-  # return true;
-  # }
-  # return false;
-  # }
+  #      // Acquire the lock if state is zero
+  #      public boolean tryAcquire(int acquires) {
+  #        assert acquires == 1; // Otherwise unused
+  #        if (compareAndSetState(0, 1)) {
+  #          setExclusiveOwnerThread(Thread.currentThread());
+  #          return true;
+  #        }
+  #        return false;
+  #      }
   # 
-  # // Release the lock by setting state to zero
-  # protected boolean tryRelease(int releases) {
-  # assert releases == 1; // Otherwise unused
-  # if (getState() == 0) throw new IllegalMonitorStateException();
-  # setExclusiveOwnerThread(null);
-  # setState(0);
-  # return true;
-  # }
+  #      // Release the lock by setting state to zero
+  #      protected boolean tryRelease(int releases) {
+  #        assert releases == 1; // Otherwise unused
+  #        if (getState() == 0) throw new IllegalMonitorStateException();
+  #        setExclusiveOwnerThread(null);
+  #        setState(0);
+  #        return true;
+  #      }
   # 
-  # // Provide a Condition
-  # Condition newCondition() { return new ConditionObject(); }
+  #      // Provide a Condition
+  #      Condition newCondition() { return new ConditionObject(); }
   # 
-  # // Deserialize properly
-  # private void readObject(ObjectInputStream s)
-  # throws IOException, ClassNotFoundException {
-  # s.defaultReadObject();
-  # setState(0); // reset to unlocked state
-  # }
-  # }
+  #      // Deserialize properly
+  #      private void readObject(ObjectInputStream s)
+  #          throws IOException, ClassNotFoundException {
+  #        s.defaultReadObject();
+  #        setState(0); // reset to unlocked state
+  #      }
+  #    }
   # 
-  # // The sync object does all the hard work. We just forward to it.
-  # private final Sync sync = new Sync();
+  #    // The sync object does all the hard work. We just forward to it.
+  #    private final Sync sync = new Sync();
   # 
-  # public void lock()                { sync.acquire(1); }
-  # public boolean tryLock()          { return sync.tryAcquire(1); }
-  # public void unlock()              { sync.release(1); }
-  # public Condition newCondition()   { return sync.newCondition(); }
-  # public boolean isLocked()         { return sync.isHeldExclusively(); }
-  # public boolean hasQueuedThreads() { return sync.hasQueuedThreads(); }
-  # public void lockInterruptibly() throws InterruptedException {
-  # sync.acquireInterruptibly(1);
-  # }
-  # public boolean tryLock(long timeout, TimeUnit unit)
-  # throws InterruptedException {
-  # return sync.tryAcquireNanos(1, unit.toNanos(timeout));
-  # }
-  # }
-  # </pre>
+  #    public void lock()                { sync.acquire(1); }
+  #    public boolean tryLock()          { return sync.tryAcquire(1); }
+  #    public void unlock()              { sync.release(1); }
+  #    public Condition newCondition()   { return sync.newCondition(); }
+  #    public boolean isLocked()         { return sync.isHeldExclusively(); }
+  #    public boolean hasQueuedThreads() { return sync.hasQueuedThreads(); }
+  #    public void lockInterruptibly() throws InterruptedException {
+  #      sync.acquireInterruptibly(1);
+  #    }
+  #    public boolean tryLock(long timeout, TimeUnit unit)
+  #        throws InterruptedException {
+  #      return sync.tryAcquireNanos(1, unit.toNanos(timeout));
+  #    }
+  #  }
+  #  </pre>
   # 
-  # <p>Here is a latch class that is like a {@link CountDownLatch}
-  # except that it only requires a single <tt>signal</tt> to
-  # fire. Because a latch is non-exclusive, it uses the <tt>shared</tt>
-  # acquire and release methods.
+  #  <p>Here is a latch class that is like a {@link CountDownLatch}
+  #  except that it only requires a single <tt>signal</tt> to
+  #  fire. Because a latch is non-exclusive, it uses the <tt>shared</tt>
+  #  acquire and release methods.
   # 
-  # <pre>
-  # class BooleanLatch {
+  #  <pre>
+  #  class BooleanLatch {
   # 
-  # private static class Sync extends AbstractQueuedSynchronizer {
-  # boolean isSignalled() { return getState() != 0; }
+  #    private static class Sync extends AbstractQueuedSynchronizer {
+  #      boolean isSignalled() { return getState() != 0; }
   # 
-  # protected int tryAcquireShared(int ignore) {
-  # return isSignalled()? 1 : -1;
-  # }
+  #      protected int tryAcquireShared(int ignore) {
+  #        return isSignalled()? 1 : -1;
+  #      }
   # 
-  # protected boolean tryReleaseShared(int ignore) {
-  # setState(1);
-  # return true;
-  # }
-  # }
+  #      protected boolean tryReleaseShared(int ignore) {
+  #        setState(1);
+  #        return true;
+  #      }
+  #    }
   # 
-  # private final Sync sync = new Sync();
-  # public boolean isSignalled() { return sync.isSignalled(); }
-  # public void signal()         { sync.releaseShared(1); }
-  # public void await() throws InterruptedException {
-  # sync.acquireSharedInterruptibly(1);
-  # }
-  # }
-  # </pre>
+  #    private final Sync sync = new Sync();
+  #    public boolean isSignalled() { return sync.isSignalled(); }
+  #    public void signal()         { sync.releaseShared(1); }
+  #    public void await() throws InterruptedException {
+  #      sync.acquireSharedInterruptibly(1);
+  #    }
+  #  }
+  #  </pre>
   # 
-  # @since 1.5
-  # @author Doug Lea
+  #  @since 1.5
+  #  @author Doug Lea
   class AbstractQueuedSynchronizer < AbstractQueuedSynchronizerImports.const_get :AbstractOwnableSynchronizer
     include_class_members AbstractQueuedSynchronizerImports
     overload_protected {
@@ -334,9 +332,9 @@ module Java::Util::Concurrent::Locks
       # <p>To enqueue into a CLH lock, you atomically splice it in as new
       # tail. To dequeue, you just set the head field.
       # <pre>
-      # +------+  prev +-----+       +-----+
+      #      +------+  prev +-----+       +-----+
       # head |      | <---- |     | <---- |     |  tail
-      # +------+       +-----+       +-----+
+      #      +------+       +-----+       +-----+
       # </pre>
       # 
       # <p>Insertion into a CLH queue requires only a single atomic
@@ -422,28 +420,28 @@ module Java::Util::Concurrent::Locks
         }
         
         # Status field, taking on only the values:
-        # SIGNAL:     The successor of this node is (or will soon be)
-        # blocked (via park), so the current node must
-        # unpark its successor when it releases or
-        # cancels. To avoid races, acquire methods must
-        # first indicate they need a signal,
-        # then retry the atomic acquire, and then,
-        # on failure, block.
-        # CANCELLED:  This node is cancelled due to timeout or interrupt.
-        # Nodes never leave this state. In particular,
-        # a thread with cancelled node never again blocks.
-        # CONDITION:  This node is currently on a condition queue.
-        # It will not be used as a sync queue node
-        # until transferred, at which time the status
-        # will be set to 0. (Use of this value here has
-        # nothing to do with the other uses of the
-        # field, but simplifies mechanics.)
-        # PROPAGATE:  A releaseShared should be propagated to other
-        # nodes. This is set (for head node only) in
-        # doReleaseShared to ensure propagation
-        # continues, even if other operations have
-        # since intervened.
-        # 0:          None of the above
+        #   SIGNAL:     The successor of this node is (or will soon be)
+        #               blocked (via park), so the current node must
+        #               unpark its successor when it releases or
+        #               cancels. To avoid races, acquire methods must
+        #               first indicate they need a signal,
+        #               then retry the atomic acquire, and then,
+        #               on failure, block.
+        #   CANCELLED:  This node is cancelled due to timeout or interrupt.
+        #               Nodes never leave this state. In particular,
+        #               a thread with cancelled node never again blocks.
+        #   CONDITION:  This node is currently on a condition queue.
+        #               It will not be used as a sync queue node
+        #               until transferred, at which time the status
+        #               will be set to 0. (Use of this value here has
+        #               nothing to do with the other uses of the
+        #               field, but simplifies mechanics.)
+        #   PROPAGATE:  A releaseShared should be propagated to other
+        #               nodes. This is set (for head node only) in
+        #               doReleaseShared to ensure propagation
+        #               continues, even if other operations have
+        #               since intervened.
+        #   0:          None of the above
         # 
         # The values are arranged numerically to simplify use.
         # Non-negative values mean that a node doesn't need to
@@ -620,7 +618,7 @@ module Java::Util::Concurrent::Locks
     # @param expect the expected value
     # @param update the new value
     # @return true if successful. False return indicates that the actual
-    # value was not equal to the expected value.
+    #         value was not equal to the expected value.
     def compare_and_set_state(expect, update)
       # See below for intrinsics setup to support this
       return UnsafeInstance.compare_and_swap_int(self, StateOffset, expect, update)
@@ -628,7 +626,6 @@ module Java::Util::Concurrent::Locks
     
     class_module.module_eval {
       # Queuing utilities
-      # 
       # The number of nanoseconds for which it is faster to spin
       # rather than to use timed park. A rough estimate suffices
       # to improve responsiveness with very short timeouts.
@@ -769,13 +766,13 @@ module Java::Util::Concurrent::Locks
       h = @head # Record old head for check below
       set_head(node)
       # Try to signal next queued node if:
-      # Propagation was indicated by caller,
-      # or was recorded (as h.waitStatus) by a previous operation
-      # (note: this uses sign-check of waitStatus because
-      # PROPAGATE status may transition to SIGNAL.)
+      #   Propagation was indicated by caller,
+      #     or was recorded (as h.waitStatus) by a previous operation
+      #     (note: this uses sign-check of waitStatus because
+      #      PROPAGATE status may transition to SIGNAL.)
       # and
-      # The next node is waiting in shared mode,
-      # or we don't know, because it appears null
+      #   The next node is waiting in shared mode,
+      #     or we don't know, because it appears null
       # 
       # The conservatism in both of these checks may cause
       # unnecessary wake-ups, but only when there are multiple
@@ -791,7 +788,6 @@ module Java::Util::Concurrent::Locks
     
     typesig { [Node] }
     # Utilities for various versions of acquire
-    # 
     # Cancels an ongoing attempt to acquire.
     # 
     # @param node the node
@@ -888,8 +884,6 @@ module Java::Util::Concurrent::Locks
     # interactions of exception mechanics (including ensuring that we
     # cancel if tryAcquire throws exception) and other control, at
     # least not without hurting performance too much.
-    # 
-    # 
     # Acquires in exclusive uninterruptible mode for thread already in
     # queue. Used by condition wait methods as well as acquire.
     # 
@@ -1090,7 +1084,6 @@ module Java::Util::Concurrent::Locks
     
     typesig { [::Java::Int] }
     # Main exported methods
-    # 
     # Attempts to acquire in exclusive mode. This method should query
     # if the state of the object permits it to be acquired in the
     # exclusive mode, and if so to acquire it.
@@ -1105,15 +1098,15 @@ module Java::Util::Concurrent::Locks
     # implementation throws {@link UnsupportedOperationException}.
     # 
     # @param arg the acquire argument. This value is always the one
-    # passed to an acquire method, or is the value saved on entry
-    # to a condition wait.  The value is otherwise uninterpreted
-    # and can represent anything you like.
+    #        passed to an acquire method, or is the value saved on entry
+    #        to a condition wait.  The value is otherwise uninterpreted
+    #        and can represent anything you like.
     # @return {@code true} if successful. Upon success, this object has
-    # been acquired.
+    #         been acquired.
     # @throws IllegalMonitorStateException if acquiring would place this
-    # synchronizer in an illegal state. This exception must be
-    # thrown in a consistent fashion for synchronization to work
-    # correctly.
+    #         synchronizer in an illegal state. This exception must be
+    #         thrown in a consistent fashion for synchronization to work
+    #         correctly.
     # @throws UnsupportedOperationException if exclusive mode is not supported
     def try_acquire(arg)
       raise UnsupportedOperationException.new
@@ -1129,16 +1122,16 @@ module Java::Util::Concurrent::Locks
     # {@link UnsupportedOperationException}.
     # 
     # @param arg the release argument. This value is always the one
-    # passed to a release method, or the current state value upon
-    # entry to a condition wait.  The value is otherwise
-    # uninterpreted and can represent anything you like.
+    #        passed to a release method, or the current state value upon
+    #        entry to a condition wait.  The value is otherwise
+    #        uninterpreted and can represent anything you like.
     # @return {@code true} if this object is now in a fully released
-    # state, so that any waiting threads may attempt to acquire;
-    # and {@code false} otherwise.
+    #         state, so that any waiting threads may attempt to acquire;
+    #         and {@code false} otherwise.
     # @throws IllegalMonitorStateException if releasing would place this
-    # synchronizer in an illegal state. This exception must be
-    # thrown in a consistent fashion for synchronization to work
-    # correctly.
+    #         synchronizer in an illegal state. This exception must be
+    #         thrown in a consistent fashion for synchronization to work
+    #         correctly.
     # @throws UnsupportedOperationException if exclusive mode is not supported
     def try_release(arg)
       raise UnsupportedOperationException.new
@@ -1158,22 +1151,22 @@ module Java::Util::Concurrent::Locks
     # UnsupportedOperationException}.
     # 
     # @param arg the acquire argument. This value is always the one
-    # passed to an acquire method, or is the value saved on entry
-    # to a condition wait.  The value is otherwise uninterpreted
-    # and can represent anything you like.
+    #        passed to an acquire method, or is the value saved on entry
+    #        to a condition wait.  The value is otherwise uninterpreted
+    #        and can represent anything you like.
     # @return a negative value on failure; zero if acquisition in shared
-    # mode succeeded but no subsequent shared-mode acquire can
-    # succeed; and a positive value if acquisition in shared
-    # mode succeeded and subsequent shared-mode acquires might
-    # also succeed, in which case a subsequent waiting thread
-    # must check availability. (Support for three different
-    # return values enables this method to be used in contexts
-    # where acquires only sometimes act exclusively.)  Upon
-    # success, this object has been acquired.
+    #         mode succeeded but no subsequent shared-mode acquire can
+    #         succeed; and a positive value if acquisition in shared
+    #         mode succeeded and subsequent shared-mode acquires might
+    #         also succeed, in which case a subsequent waiting thread
+    #         must check availability. (Support for three different
+    #         return values enables this method to be used in contexts
+    #         where acquires only sometimes act exclusively.)  Upon
+    #         success, this object has been acquired.
     # @throws IllegalMonitorStateException if acquiring would place this
-    # synchronizer in an illegal state. This exception must be
-    # thrown in a consistent fashion for synchronization to work
-    # correctly.
+    #         synchronizer in an illegal state. This exception must be
+    #         thrown in a consistent fashion for synchronization to work
+    #         correctly.
     # @throws UnsupportedOperationException if shared mode is not supported
     def try_acquire_shared(arg)
       raise UnsupportedOperationException.new
@@ -1188,16 +1181,16 @@ module Java::Util::Concurrent::Locks
     # {@link UnsupportedOperationException}.
     # 
     # @param arg the release argument. This value is always the one
-    # passed to a release method, or the current state value upon
-    # entry to a condition wait.  The value is otherwise
-    # uninterpreted and can represent anything you like.
+    #        passed to a release method, or the current state value upon
+    #        entry to a condition wait.  The value is otherwise
+    #        uninterpreted and can represent anything you like.
     # @return {@code true} if this release of shared mode may permit a
-    # waiting acquire (shared or exclusive) to succeed; and
-    # {@code false} otherwise
+    #         waiting acquire (shared or exclusive) to succeed; and
+    #         {@code false} otherwise
     # @throws IllegalMonitorStateException if releasing would place this
-    # synchronizer in an illegal state. This exception must be
-    # thrown in a consistent fashion for synchronization to work
-    # correctly.
+    #         synchronizer in an illegal state. This exception must be
+    #         thrown in a consistent fashion for synchronization to work
+    #         correctly.
     # @throws UnsupportedOperationException if shared mode is not supported
     def try_release_shared(arg)
       raise UnsupportedOperationException.new
@@ -1215,7 +1208,7 @@ module Java::Util::Concurrent::Locks
     # not be defined if conditions are not used.
     # 
     # @return {@code true} if synchronization is held exclusively;
-    # {@code false} otherwise
+    #         {@code false} otherwise
     # @throws UnsupportedOperationException if conditions are not supported
     def is_held_exclusively
       raise UnsupportedOperationException.new
@@ -1230,8 +1223,8 @@ module Java::Util::Concurrent::Locks
     # to implement method {@link Lock#lock}.
     # 
     # @param arg the acquire argument.  This value is conveyed to
-    # {@link #tryAcquire} but is otherwise uninterpreted and
-    # can represent anything you like.
+    #        {@link #tryAcquire} but is otherwise uninterpreted and
+    #        can represent anything you like.
     def acquire(arg)
       if (!try_acquire(arg) && acquire_queued(add_waiter(Node::EXCLUSIVE), arg))
         self_interrupt
@@ -1248,8 +1241,8 @@ module Java::Util::Concurrent::Locks
     # used to implement method {@link Lock#lockInterruptibly}.
     # 
     # @param arg the acquire argument.  This value is conveyed to
-    # {@link #tryAcquire} but is otherwise uninterpreted and
-    # can represent anything you like.
+    #        {@link #tryAcquire} but is otherwise uninterpreted and
+    #        can represent anything you like.
     # @throws InterruptedException if the current thread is interrupted
     def acquire_interruptibly(arg)
       if (JavaThread.interrupted)
@@ -1271,8 +1264,8 @@ module Java::Util::Concurrent::Locks
     # method {@link Lock#tryLock(long, TimeUnit)}.
     # 
     # @param arg the acquire argument.  This value is conveyed to
-    # {@link #tryAcquire} but is otherwise uninterpreted and
-    # can represent anything you like.
+    #        {@link #tryAcquire} but is otherwise uninterpreted and
+    #        can represent anything you like.
     # @param nanosTimeout the maximum number of nanoseconds to wait
     # @return {@code true} if acquired; {@code false} if timed out
     # @throws InterruptedException if the current thread is interrupted
@@ -1289,8 +1282,8 @@ module Java::Util::Concurrent::Locks
     # This method can be used to implement method {@link Lock#unlock}.
     # 
     # @param arg the release argument.  This value is conveyed to
-    # {@link #tryRelease} but is otherwise uninterpreted and
-    # can represent anything you like.
+    #        {@link #tryRelease} but is otherwise uninterpreted and
+    #        can represent anything you like.
     # @return the value returned from {@link #tryRelease}
     def release(arg)
       if (try_release(arg))
@@ -1311,8 +1304,8 @@ module Java::Util::Concurrent::Locks
     # #tryAcquireShared} until success.
     # 
     # @param arg the acquire argument.  This value is conveyed to
-    # {@link #tryAcquireShared} but is otherwise uninterpreted
-    # and can represent anything you like.
+    #        {@link #tryAcquireShared} but is otherwise uninterpreted
+    #        and can represent anything you like.
     def acquire_shared(arg)
       if (try_acquire_shared(arg) < 0)
         do_acquire_shared(arg)
@@ -1350,8 +1343,8 @@ module Java::Util::Concurrent::Locks
     # is interrupted or the timeout elapses.
     # 
     # @param arg the acquire argument.  This value is conveyed to
-    # {@link #tryAcquireShared} but is otherwise uninterpreted
-    # and can represent anything you like.
+    #        {@link #tryAcquireShared} but is otherwise uninterpreted
+    #        and can represent anything you like.
     # @param nanosTimeout the maximum number of nanoseconds to wait
     # @return {@code true} if acquired; {@code false} if timed out
     # @throws InterruptedException if the current thread is interrupted
@@ -1367,8 +1360,8 @@ module Java::Util::Concurrent::Locks
     # threads if {@link #tryReleaseShared} returns true.
     # 
     # @param arg the release argument.  This value is conveyed to
-    # {@link #tryReleaseShared} but is otherwise uninterpreted
-    # and can represent anything you like.
+    #        {@link #tryReleaseShared} but is otherwise uninterpreted
+    #        and can represent anything you like.
     # @return the value returned from {@link #tryReleaseShared}
     def release_shared(arg)
       if (try_release_shared(arg))
@@ -1380,7 +1373,6 @@ module Java::Util::Concurrent::Locks
     
     typesig { [] }
     # Queue inspection methods
-    # 
     # Queries whether any threads are waiting to acquire. Note that
     # because cancellations due to interrupts and timeouts may occur
     # at any time, a {@code true} return does not guarantee that any
@@ -1415,7 +1407,7 @@ module Java::Util::Concurrent::Locks
     # concurrently modifying the queue.
     # 
     # @return the first (longest-waiting) thread in the queue, or
-    # {@code null} if no threads are currently queued
+    #         {@code null} if no threads are currently queued
     def get_first_queued_thread
       # handle only fast path, else relay
       return ((@head).equal?(@tail)) ? nil : full_get_first_queued_thread
@@ -1496,7 +1488,7 @@ module Java::Util::Concurrent::Locks
     # 
     # <p>An invocation of this method is equivalent to (but may be
     # more efficient than):
-    # <pre> {@code
+    #  <pre> {@code
     # getFirstQueuedThread() != Thread.currentThread() &&
     # hasQueuedThreads()}</pre>
     # 
@@ -1516,21 +1508,21 @@ module Java::Util::Concurrent::Locks
     # tryAcquire} method for a fair, reentrant, exclusive mode
     # synchronizer might look like this:
     # 
-    # <pre> {@code
+    #  <pre> {@code
     # protected boolean tryAcquire(int arg) {
-    # if (isHeldExclusively()) {
-    # // A reentrant acquire; increment hold count
-    # return true;
-    # } else if (hasQueuedPredecessors()) {
-    # return false;
-    # } else {
-    # // try to acquire normally
-    # }
+    #   if (isHeldExclusively()) {
+    #     // A reentrant acquire; increment hold count
+    #     return true;
+    #   } else if (hasQueuedPredecessors()) {
+    #     return false;
+    #   } else {
+    #     // try to acquire normally
+    #   }
     # }}</pre>
     # 
     # @return {@code true} if there is a queued thread preceding the
-    # current thread, and {@code false} if the current thread
-    # is at the head of the queue or the queue is empty
+    #         current thread, and {@code false} if the current thread
+    #         is at the head of the queue or the queue is empty
     # @since 1.7
     def has_queued_predecessors
       # The correctness of this depends on head being initialized
@@ -1544,7 +1536,6 @@ module Java::Util::Concurrent::Locks
     
     typesig { [] }
     # Instrumentation and monitoring methods
-    # 
     # Returns an estimate of the number of threads waiting to
     # acquire.  The value is only an estimate because the number of
     # threads may change dynamically while this method traverses
@@ -1648,7 +1639,6 @@ module Java::Util::Concurrent::Locks
     
     typesig { [Node] }
     # Internal support methods for Conditions
-    # 
     # Returns true if a node, always one that was initially placed on
     # a condition queue, is now waiting to reacquire on sync queue.
     # @param node the node
@@ -1756,7 +1746,6 @@ module Java::Util::Concurrent::Locks
     
     typesig { [ConditionObject] }
     # Instrumentation methods for conditions
-    # 
     # Queries whether the given ConditionObject
     # uses this synchronizer as its lock.
     # 
@@ -1781,9 +1770,9 @@ module Java::Util::Concurrent::Locks
     # @param condition the condition
     # @return <tt>true</tt> if there are any waiting threads
     # @throws IllegalMonitorStateException if exclusive synchronization
-    # is not held
+    #         is not held
     # @throws IllegalArgumentException if the given condition is
-    # not associated with this synchronizer
+    #         not associated with this synchronizer
     # @throws NullPointerException if the condition is null
     def has_waiters(condition)
       if (!owns(condition))
@@ -1803,9 +1792,9 @@ module Java::Util::Concurrent::Locks
     # @param condition the condition
     # @return the estimated number of waiting threads
     # @throws IllegalMonitorStateException if exclusive synchronization
-    # is not held
+    #         is not held
     # @throws IllegalArgumentException if the given condition is
-    # not associated with this synchronizer
+    #         not associated with this synchronizer
     # @throws NullPointerException if the condition is null
     def get_wait_queue_length(condition)
       if (!owns(condition))
@@ -1825,9 +1814,9 @@ module Java::Util::Concurrent::Locks
     # @param condition the condition
     # @return the collection of threads
     # @throws IllegalMonitorStateException if exclusive synchronization
-    # is not held
+    #         is not held
     # @throws IllegalArgumentException if the given condition is
-    # not associated with this synchronizer
+    #         not associated with this synchronizer
     # @throws NullPointerException if the condition is null
     def get_waiting_threads(condition)
       if (!owns(condition))
@@ -1884,7 +1873,6 @@ module Java::Util::Concurrent::Locks
         
         typesig { [] }
         # Internal methods
-        # 
         # Adds a new waiter to wait queue.
         # @return its new wait node
         def add_condition_waiter
@@ -1968,13 +1956,12 @@ module Java::Util::Concurrent::Locks
         
         typesig { [] }
         # public methods
-        # 
         # Moves the longest-waiting thread, if one exists, from the
         # wait queue for this condition to the wait queue for the
         # owning lock.
         # 
         # @throws IllegalMonitorStateException if {@link #isHeldExclusively}
-        # returns {@code false}
+        #         returns {@code false}
         def signal
           if (!is_held_exclusively)
             raise self.class::IllegalMonitorStateException.new
@@ -1990,7 +1977,7 @@ module Java::Util::Concurrent::Locks
         # the wait queue for the owning lock.
         # 
         # @throws IllegalMonitorStateException if {@link #isHeldExclusively}
-        # returns {@code false}
+        #         returns {@code false}
         def signal_all
           if (!is_held_exclusively)
             raise self.class::IllegalMonitorStateException.new
@@ -2006,11 +1993,11 @@ module Java::Util::Concurrent::Locks
         # <ol>
         # <li> Save lock state returned by {@link #getState}.
         # <li> Invoke {@link #release} with
-        # saved state as argument, throwing
-        # IllegalMonitorStateException if it fails.
+        #      saved state as argument, throwing
+        #      IllegalMonitorStateException if it fails.
         # <li> Block until signalled.
         # <li> Reacquire by invoking specialized version of
-        # {@link #acquire} with saved state as argument.
+        #      {@link #acquire} with saved state as argument.
         # </ol>
         def await_uninterruptibly
           node = add_condition_waiter
@@ -2032,7 +2019,6 @@ module Java::Util::Concurrent::Locks
           # InterruptedException, if interrupted while blocked on
           # condition, versus reinterrupt current thread, if
           # interrupted while blocked waiting to re-acquire.
-          # 
           # Mode meaning to reinterrupt on exit from wait
           const_set_lazy(:REINTERRUPT) { 1 }
           const_attr_reader  :REINTERRUPT
@@ -2069,11 +2055,11 @@ module Java::Util::Concurrent::Locks
         # <li> If current thread is interrupted, throw InterruptedException.
         # <li> Save lock state returned by {@link #getState}.
         # <li> Invoke {@link #release} with
-        # saved state as argument, throwing
-        # IllegalMonitorStateException if it fails.
+        #      saved state as argument, throwing
+        #      IllegalMonitorStateException if it fails.
         # <li> Block until signalled or interrupted.
         # <li> Reacquire by invoking specialized version of
-        # {@link #acquire} with saved state as argument.
+        #      {@link #acquire} with saved state as argument.
         # <li> If interrupted while blocked in step 4, throw InterruptedException.
         # </ol>
         def await
@@ -2107,11 +2093,11 @@ module Java::Util::Concurrent::Locks
         # <li> If current thread is interrupted, throw InterruptedException.
         # <li> Save lock state returned by {@link #getState}.
         # <li> Invoke {@link #release} with
-        # saved state as argument, throwing
-        # IllegalMonitorStateException if it fails.
+        #      saved state as argument, throwing
+        #      IllegalMonitorStateException if it fails.
         # <li> Block until signalled, interrupted, or timed out.
         # <li> Reacquire by invoking specialized version of
-        # {@link #acquire} with saved state as argument.
+        #      {@link #acquire} with saved state as argument.
         # <li> If interrupted while blocked in step 4, throw InterruptedException.
         # </ol>
         def await_nanos(nanos_timeout)
@@ -2153,11 +2139,11 @@ module Java::Util::Concurrent::Locks
         # <li> If current thread is interrupted, throw InterruptedException.
         # <li> Save lock state returned by {@link #getState}.
         # <li> Invoke {@link #release} with
-        # saved state as argument, throwing
-        # IllegalMonitorStateException if it fails.
+        #      saved state as argument, throwing
+        #      IllegalMonitorStateException if it fails.
         # <li> Block until signalled, interrupted, or timed out.
         # <li> Reacquire by invoking specialized version of
-        # {@link #acquire} with saved state as argument.
+        #      {@link #acquire} with saved state as argument.
         # <li> If interrupted while blocked in step 4, throw InterruptedException.
         # <li> If timed out while blocked in step 4, return false, else true.
         # </ol>
@@ -2201,11 +2187,11 @@ module Java::Util::Concurrent::Locks
         # <li> If current thread is interrupted, throw InterruptedException.
         # <li> Save lock state returned by {@link #getState}.
         # <li> Invoke {@link #release} with
-        # saved state as argument, throwing
-        # IllegalMonitorStateException if it fails.
+        #      saved state as argument, throwing
+        #      IllegalMonitorStateException if it fails.
         # <li> Block until signalled, interrupted, or timed out.
         # <li> Reacquire by invoking specialized version of
-        # {@link #acquire} with saved state as argument.
+        #      {@link #acquire} with saved state as argument.
         # <li> If interrupted while blocked in step 4, throw InterruptedException.
         # <li> If timed out while blocked in step 4, return false, else true.
         # </ol>
@@ -2250,8 +2236,7 @@ module Java::Util::Concurrent::Locks
         end
         
         typesig { [class_self::AbstractQueuedSynchronizer] }
-        # support for instrumentation
-        # 
+        #  support for instrumentation
         # Returns true if this condition was created by the given
         # synchronization object.
         # 
@@ -2266,7 +2251,7 @@ module Java::Util::Concurrent::Locks
         # 
         # @return {@code true} if there are any waiting threads
         # @throws IllegalMonitorStateException if {@link #isHeldExclusively}
-        # returns {@code false}
+        #         returns {@code false}
         def has_waiters
           if (!is_held_exclusively)
             raise self.class::IllegalMonitorStateException.new
@@ -2288,7 +2273,7 @@ module Java::Util::Concurrent::Locks
         # 
         # @return the estimated number of waiting threads
         # @throws IllegalMonitorStateException if {@link #isHeldExclusively}
-        # returns {@code false}
+        #         returns {@code false}
         def get_wait_queue_length
           if (!is_held_exclusively)
             raise self.class::IllegalMonitorStateException.new
@@ -2311,7 +2296,7 @@ module Java::Util::Concurrent::Locks
         # 
         # @return the collection of threads
         # @throws IllegalMonitorStateException if {@link #isHeldExclusively}
-        # returns {@code false}
+        #         returns {@code false}
         def get_waiting_threads
           if (!is_held_exclusively)
             raise self.class::IllegalMonitorStateException.new

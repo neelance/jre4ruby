@@ -66,7 +66,7 @@ module Sun::Reflect::Generics::ReflectiveObjects
     # of this array.
     # 
     # @return  a <tt>Type</tt> object representing the component type
-    # of this array
+    #     of this array
     # @since 1.5
     def get_generic_component_type
       return @generic_component_type # return cached component type

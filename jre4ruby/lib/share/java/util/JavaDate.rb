@@ -86,12 +86,12 @@ module Java::Util
   # further information is the U.S. Naval Observatory, particularly
   # the Directorate of Time at:
   # <blockquote><pre>
-  # <a href=http://tycho.usno.navy.mil>http://tycho.usno.navy.mil</a>
+  #     <a href=http://tycho.usno.navy.mil>http://tycho.usno.navy.mil</a>
   # </pre></blockquote>
   # <p>
   # and their definitions of "Systems of Time" at:
   # <blockquote><pre>
-  # <a href=http://tycho.usno.navy.mil/systime.html>http://tycho.usno.navy.mil/systime.html</a>
+  #     <a href=http://tycho.usno.navy.mil/systime.html>http://tycho.usno.navy.mil/systime.html</a>
   # </pre></blockquote>
   # <p>
   # In all methods of class <code>Date</code> that accept or return
@@ -99,22 +99,22 @@ module Java::Util
   # following representations are used:
   # <ul>
   # <li>A year <i>y</i> is represented by the integer
-  # <i>y</i>&nbsp;<code>-&nbsp;1900</code>.
+  #     <i>y</i>&nbsp;<code>-&nbsp;1900</code>.
   # <li>A month is represented by an integer from 0 to 11; 0 is January,
-  # 1 is February, and so forth; thus 11 is December.
+  #     1 is February, and so forth; thus 11 is December.
   # <li>A date (day of month) is represented by an integer from 1 to 31
-  # in the usual manner.
+  #     in the usual manner.
   # <li>An hour is represented by an integer from 0 to 23. Thus, the hour
-  # from midnight to 1 a.m. is hour 0, and the hour from noon to 1
-  # p.m. is hour 12.
+  #     from midnight to 1 a.m. is hour 0, and the hour from noon to 1
+  #     p.m. is hour 12.
   # <li>A minute is represented by an integer from 0 to 59 in the usual manner.
   # <li>A second is represented by an integer from 0 to 61; the values 60 and
-  # 61 occur only for leap seconds and even then only in Java
-  # implementations that actually track leap seconds correctly. Because
-  # of the manner in which leap seconds are currently introduced, it is
-  # extremely unlikely that two leap seconds will occur in the same
-  # minute, but this specification follows the date and time conventions
-  # for ISO C.
+  #     61 occur only for leap seconds and even then only in Java
+  #     implementations that actually track leap seconds correctly. Because
+  #     of the manner in which leap seconds are currently introduced, it is
+  #     extremely unlikely that two leap seconds will occur in the same
+  #     minute, but this specification follows the date and time conventions
+  #     for ISO C.
   # </ul>
   # <p>
   # In all cases, arguments given to methods for these purposes need
@@ -334,7 +334,7 @@ module Java::Util
       # @param   min     the minutes between 0-59.
       # @param   sec     the seconds between 0-59.
       # @return  the number of milliseconds since January 1, 1970, 00:00:00 GMT for
-      # the date and time specified by the arguments.
+      #          the date and time specified by the arguments.
       # @see     java.util.Calendar
       # @deprecated As of JDK version 1.1,
       # replaced by <code>Calendar.set(year + 1900, month, date,
@@ -393,76 +393,76 @@ module Java::Util
       # A consecutive sequence of decimal digits is treated as a decimal
       # number:<ul>
       # <li>If a number is preceded by <tt>+</tt> or <tt>-</tt> and a year
-      # has already been recognized, then the number is a time-zone
-      # offset. If the number is less than 24, it is an offset measured
-      # in hours. Otherwise, it is regarded as an offset in minutes,
-      # expressed in 24-hour time format without punctuation. A
-      # preceding <tt>-</tt> means a westward offset. Time zone offsets
-      # are always relative to UTC (Greenwich). Thus, for example,
-      # <tt>-5</tt> occurring in the string would mean "five hours west
-      # of Greenwich" and <tt>+0430</tt> would mean "four hours and
-      # thirty minutes east of Greenwich." It is permitted for the
-      # string to specify <tt>GMT</tt>, <tt>UT</tt>, or <tt>UTC</tt>
-      # redundantly-for example, <tt>GMT-5</tt> or <tt>utc+0430</tt>.
+      #     has already been recognized, then the number is a time-zone
+      #     offset. If the number is less than 24, it is an offset measured
+      #     in hours. Otherwise, it is regarded as an offset in minutes,
+      #     expressed in 24-hour time format without punctuation. A
+      #     preceding <tt>-</tt> means a westward offset. Time zone offsets
+      #     are always relative to UTC (Greenwich). Thus, for example,
+      #     <tt>-5</tt> occurring in the string would mean "five hours west
+      #     of Greenwich" and <tt>+0430</tt> would mean "four hours and
+      #     thirty minutes east of Greenwich." It is permitted for the
+      #     string to specify <tt>GMT</tt>, <tt>UT</tt>, or <tt>UTC</tt>
+      #     redundantly-for example, <tt>GMT-5</tt> or <tt>utc+0430</tt>.
       # <li>The number is regarded as a year number if one of the
-      # following conditions is true:
+      #     following conditions is true:
       # <ul>
-      # <li>The number is equal to or greater than 70 and followed by a
-      # space, comma, slash, or end of string
-      # <li>The number is less than 70, and both a month and a day of
-      # the month have already been recognized</li>
+      #     <li>The number is equal to or greater than 70 and followed by a
+      #         space, comma, slash, or end of string
+      #     <li>The number is less than 70, and both a month and a day of
+      #         the month have already been recognized</li>
       # </ul>
-      # If the recognized year number is less than 100, it is
-      # interpreted as an abbreviated year relative to a century of
-      # which dates are within 80 years before and 19 years after
-      # the time when the Date class is initialized.
-      # After adjusting the year number, 1900 is subtracted from
-      # it. For example, if the current year is 1999 then years in
-      # the range 19 to 99 are assumed to mean 1919 to 1999, while
-      # years from 0 to 18 are assumed to mean 2000 to 2018.  Note
-      # that this is slightly different from the interpretation of
-      # years less than 100 that is used in {@link java.text.SimpleDateFormat}.
+      #     If the recognized year number is less than 100, it is
+      #     interpreted as an abbreviated year relative to a century of
+      #     which dates are within 80 years before and 19 years after
+      #     the time when the Date class is initialized.
+      #     After adjusting the year number, 1900 is subtracted from
+      #     it. For example, if the current year is 1999 then years in
+      #     the range 19 to 99 are assumed to mean 1919 to 1999, while
+      #     years from 0 to 18 are assumed to mean 2000 to 2018.  Note
+      #     that this is slightly different from the interpretation of
+      #     years less than 100 that is used in {@link java.text.SimpleDateFormat}.
       # <li>If the number is followed by a colon, it is regarded as an hour,
-      # unless an hour has already been recognized, in which case it is
-      # regarded as a minute.
+      #     unless an hour has already been recognized, in which case it is
+      #     regarded as a minute.
       # <li>If the number is followed by a slash, it is regarded as a month
-      # (it is decreased by 1 to produce a number in the range <tt>0</tt>
-      # to <tt>11</tt>), unless a month has already been recognized, in
-      # which case it is regarded as a day of the month.
+      #     (it is decreased by 1 to produce a number in the range <tt>0</tt>
+      #     to <tt>11</tt>), unless a month has already been recognized, in
+      #     which case it is regarded as a day of the month.
       # <li>If the number is followed by whitespace, a comma, a hyphen, or
-      # end of string, then if an hour has been recognized but not a
-      # minute, it is regarded as a minute; otherwise, if a minute has
-      # been recognized but not a second, it is regarded as a second;
-      # otherwise, it is regarded as a day of the month. </ul><p>
+      #     end of string, then if an hour has been recognized but not a
+      #     minute, it is regarded as a minute; otherwise, if a minute has
+      #     been recognized but not a second, it is regarded as a second;
+      #     otherwise, it is regarded as a day of the month. </ul><p>
       # A consecutive sequence of letters is regarded as a word and treated
       # as follows:<ul>
       # <li>A word that matches <tt>AM</tt>, ignoring case, is ignored (but
-      # the parse fails if an hour has not been recognized or is less
-      # than <tt>1</tt> or greater than <tt>12</tt>).
+      #     the parse fails if an hour has not been recognized or is less
+      #     than <tt>1</tt> or greater than <tt>12</tt>).
       # <li>A word that matches <tt>PM</tt>, ignoring case, adds <tt>12</tt>
-      # to the hour (but the parse fails if an hour has not been
-      # recognized or is less than <tt>1</tt> or greater than <tt>12</tt>).
+      #     to the hour (but the parse fails if an hour has not been
+      #     recognized or is less than <tt>1</tt> or greater than <tt>12</tt>).
       # <li>Any word that matches any prefix of <tt>SUNDAY, MONDAY, TUESDAY,
-      # WEDNESDAY, THURSDAY, FRIDAY</tt>, or <tt>SATURDAY</tt>, ignoring
-      # case, is ignored. For example, <tt>sat, Friday, TUE</tt>, and
-      # <tt>Thurs</tt> are ignored.
+      #     WEDNESDAY, THURSDAY, FRIDAY</tt>, or <tt>SATURDAY</tt>, ignoring
+      #     case, is ignored. For example, <tt>sat, Friday, TUE</tt>, and
+      #     <tt>Thurs</tt> are ignored.
       # <li>Otherwise, any word that matches any prefix of <tt>JANUARY,
-      # FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER,
-      # OCTOBER, NOVEMBER</tt>, or <tt>DECEMBER</tt>, ignoring case, and
-      # considering them in the order given here, is recognized as
-      # specifying a month and is converted to a number (<tt>0</tt> to
-      # <tt>11</tt>). For example, <tt>aug, Sept, april</tt>, and
-      # <tt>NOV</tt> are recognized as months. So is <tt>Ma</tt>, which
-      # is recognized as <tt>MARCH</tt>, not <tt>MAY</tt>.
+      #     FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER,
+      #     OCTOBER, NOVEMBER</tt>, or <tt>DECEMBER</tt>, ignoring case, and
+      #     considering them in the order given here, is recognized as
+      #     specifying a month and is converted to a number (<tt>0</tt> to
+      #     <tt>11</tt>). For example, <tt>aug, Sept, april</tt>, and
+      #     <tt>NOV</tt> are recognized as months. So is <tt>Ma</tt>, which
+      #     is recognized as <tt>MARCH</tt>, not <tt>MAY</tt>.
       # <li>Any word that matches <tt>GMT, UT</tt>, or <tt>UTC</tt>, ignoring
-      # case, is treated as referring to UTC.
+      #     case, is treated as referring to UTC.
       # <li>Any word that matches <tt>EST, CST, MST</tt>, or <tt>PST</tt>,
-      # ignoring case, is recognized as referring to the time zone in
-      # North America that is five, six, seven, or eight hours west of
-      # Greenwich, respectively. Any word that matches <tt>EDT, CDT,
-      # MDT</tt>, or <tt>PDT</tt>, ignoring case, is recognized as
-      # referring to the same time zone, respectively, during daylight
-      # saving time.</ul><p>
+      #     ignoring case, is recognized as referring to the time zone in
+      #     North America that is five, six, seven, or eight hours west of
+      #     Greenwich, respectively. Any word that matches <tt>EDT, CDT,
+      #     MDT</tt>, or <tt>PDT</tt>, ignoring case, is recognized as
+      #     referring to the same time zone, respectively, during daylight
+      #     saving time.</ul><p>
       # Once the entire string s has been scanned, it is converted to a time
       # result in one of two ways. If a time zone or time-zone offset has been
       # recognized, then the year, month, day of month, hour, minute, and
@@ -472,7 +472,7 @@ module Java::Util
       # 
       # @param   s   a string to be parsed as a date.
       # @return  the number of milliseconds since January 1, 1970, 00:00:00 GMT
-      # represented by the string argument.
+      #          represented by the string argument.
       # @see     java.text.DateFormat
       # @deprecated As of JDK version 1.1,
       # replaced by <code>DateFormat.parse(String s)</code>.
@@ -528,8 +528,7 @@ module Java::Util
               if ((prevc).equal?(Character.new(?+.ord)) || (prevc).equal?(Character.new(?-.ord)) && !(year).equal?(JavaInteger::MIN_VALUE))
                 # timezone offset
                 if (n < 24)
-                  n = n * 60
-                   # EG. "GMT-3"
+                  n = n * 60 # EG. "GMT-3"
                 else
                   n = n % 100 + n / 100 * 60
                 end # eg "GMT-0430"
@@ -587,7 +586,7 @@ module Java::Util
                           else
                             if (mday < 0)
                               mday = n
-                            # Handle two-digit years < 70 (70-99 handled above).
+                              # Handle two-digit years < 70 (70-99 handled above).
                             else
                               if ((year).equal?(JavaInteger::MIN_VALUE) && mon >= 0 && mday >= 0)
                                 year = n
@@ -940,7 +939,7 @@ module Java::Util
     # represented by this <tt>Date</tt> object.
     # 
     # @return  the number of milliseconds since January 1, 1970, 00:00:00 GMT
-    # represented by this date.
+    #          represented by this date.
     def get_time
       return get_time_impl
     end
@@ -968,9 +967,9 @@ module Java::Util
     # 
     # @param   when   a date.
     # @return  <code>true</code> if and only if the instant of time
-    # represented by this <tt>Date</tt> object is strictly
-    # earlier than the instant represented by <tt>when</tt>;
-    # <code>false</code> otherwise.
+    #            represented by this <tt>Date</tt> object is strictly
+    #            earlier than the instant represented by <tt>when</tt>;
+    #          <code>false</code> otherwise.
     # @exception NullPointerException if <code>when</code> is null.
     def before(when_)
       return get_millis_of(self) < get_millis_of(when_)
@@ -981,9 +980,9 @@ module Java::Util
     # 
     # @param   when   a date.
     # @return  <code>true</code> if and only if the instant represented
-    # by this <tt>Date</tt> object is strictly later than the
-    # instant represented by <tt>when</tt>;
-    # <code>false</code> otherwise.
+    #          by this <tt>Date</tt> object is strictly later than the
+    #          instant represented by <tt>when</tt>;
+    #          <code>false</code> otherwise.
     # @exception NullPointerException if <code>when</code> is null.
     def after(when_)
       return get_millis_of(self) > get_millis_of(when_)
@@ -1001,7 +1000,7 @@ module Java::Util
     # 
     # @param   obj   the object to compare with.
     # @return  <code>true</code> if the objects are the same;
-    # <code>false</code> otherwise.
+    #          <code>false</code> otherwise.
     # @see     java.util.Date#getTime()
     def ==(obj)
       return obj.is_a?(JavaDate) && (get_time).equal?((obj).get_time)
@@ -1025,9 +1024,9 @@ module Java::Util
     # 
     # @param   anotherDate   the <code>Date</code> to be compared.
     # @return  the value <code>0</code> if the argument Date is equal to
-    # this Date; a value less than <code>0</code> if this Date
-    # is before the Date argument; and a value greater than
-    # <code>0</code> if this Date is after the Date argument.
+    #          this Date; a value less than <code>0</code> if this Date
+    #          is before the Date argument; and a value greater than
+    #      <code>0</code> if this Date is after the Date argument.
     # @since   1.2
     # @exception NullPointerException if <code>anotherDate</code> is null.
     def compare_to(another_date)
@@ -1047,7 +1046,7 @@ module Java::Util
     # @return  a hash code value for this object.
     def hash_code
       ht = self.get_time
-      return RJava.cast_to_int(ht) ^ RJava.cast_to_int((ht >> 32))
+      return (ht).to_int ^ ((ht >> 32)).to_int
     end
     
     typesig { [] }
@@ -1057,22 +1056,22 @@ module Java::Util
     # dow mon dd hh:mm:ss zzz yyyy</pre></blockquote>
     # where:<ul>
     # <li><tt>dow</tt> is the day of the week (<tt>Sun, Mon, Tue, Wed,
-    # Thu, Fri, Sat</tt>).
+    #     Thu, Fri, Sat</tt>).
     # <li><tt>mon</tt> is the month (<tt>Jan, Feb, Mar, Apr, May, Jun,
-    # Jul, Aug, Sep, Oct, Nov, Dec</tt>).
+    #     Jul, Aug, Sep, Oct, Nov, Dec</tt>).
     # <li><tt>dd</tt> is the day of the month (<tt>01</tt> through
-    # <tt>31</tt>), as two decimal digits.
+    #     <tt>31</tt>), as two decimal digits.
     # <li><tt>hh</tt> is the hour of the day (<tt>00</tt> through
-    # <tt>23</tt>), as two decimal digits.
+    #     <tt>23</tt>), as two decimal digits.
     # <li><tt>mm</tt> is the minute within the hour (<tt>00</tt> through
-    # <tt>59</tt>), as two decimal digits.
+    #     <tt>59</tt>), as two decimal digits.
     # <li><tt>ss</tt> is the second within the minute (<tt>00</tt> through
-    # <tt>61</tt>, as two decimal digits.
+    #     <tt>61</tt>, as two decimal digits.
     # <li><tt>zzz</tt> is the time zone (and may reflect daylight saving
-    # time). Standard time zone abbreviations include those
-    # recognized by the method <tt>parse</tt>. If time zone
-    # information is not available, then <tt>zzz</tt> is empty -
-    # that is, it consists of no characters at all.
+    #     time). Standard time zone abbreviations include those
+    #     recognized by the method <tt>parse</tt>. If time zone
+    #     information is not available, then <tt>zzz</tt> is empty -
+    #     that is, it consists of no characters at all.
     # <li><tt>yyyy</tt> is the year, as four decimal digits.
     # </ul>
     # 
@@ -1124,7 +1123,7 @@ module Java::Util
     # function of ISO&nbsp;C.
     # 
     # @return  a string representation of this date, using the locale
-    # conventions.
+    #          conventions.
     # @see     java.text.DateFormat
     # @see     java.util.Date#toString()
     # @see     java.util.Date#toGMTString()
@@ -1142,23 +1141,23 @@ module Java::Util
     # d mon yyyy hh:mm:ss GMT</pre></blockquote>
     # where:<ul>
     # <li><i>d</i> is the day of the month (<tt>1</tt> through <tt>31</tt>),
-    # as one or two decimal digits.
+    #     as one or two decimal digits.
     # <li><i>mon</i> is the month (<tt>Jan, Feb, Mar, Apr, May, Jun, Jul,
-    # Aug, Sep, Oct, Nov, Dec</tt>).
+    #     Aug, Sep, Oct, Nov, Dec</tt>).
     # <li><i>yyyy</i> is the year, as four decimal digits.
     # <li><i>hh</i> is the hour of the day (<tt>00</tt> through <tt>23</tt>),
-    # as two decimal digits.
+    #     as two decimal digits.
     # <li><i>mm</i> is the minute within the hour (<tt>00</tt> through
-    # <tt>59</tt>), as two decimal digits.
+    #     <tt>59</tt>), as two decimal digits.
     # <li><i>ss</i> is the second within the minute (<tt>00</tt> through
-    # <tt>61</tt>), as two decimal digits.
+    #     <tt>61</tt>), as two decimal digits.
     # <li><i>GMT</i> is exactly the ASCII letters "<tt>GMT</tt>" to indicate
-    # Greenwich Mean Time.
+    #     Greenwich Mean Time.
     # </ul><p>
     # The result does not depend on the local time zone.
     # 
     # @return  a string representation of this date, using the Internet GMT
-    # conventions.
+    #          conventions.
     # @see     java.text.DateFormat
     # @see     java.util.Date#toString()
     # @see     java.util.Date#toLocaleString()
@@ -1198,11 +1197,11 @@ module Java::Util
     # This method produces the same result as if it computed:
     # <blockquote><pre>
     # (this.getTime() - UTC(this.getYear(),
-    # this.getMonth(),
-    # this.getDate(),
-    # this.getHours(),
-    # this.getMinutes(),
-    # this.getSeconds())) / (60 * 1000)
+    #                       this.getMonth(),
+    #                       this.getDate(),
+    #                       this.getHours(),
+    #                       this.getMinutes(),
+    #                       this.getSeconds())) / (60 * 1000)
     # </pre></blockquote>
     # 
     # @return  the time-zone offset, in minutes, for the current time zone.
@@ -1361,8 +1360,8 @@ module Java::Util
     # Save the state of this object to a stream (i.e., serialize it).
     # 
     # @serialData The value returned by <code>getTime()</code>
-    # is emitted (long).  This represents the offset from
-    # January 1, 1970, 00:00:00 GMT in milliseconds.
+    #             is emitted (long).  This represents the offset from
+    #             January 1, 1970, 00:00:00 GMT in milliseconds.
     def write_object(s)
       s.write_long(get_time_impl)
     end

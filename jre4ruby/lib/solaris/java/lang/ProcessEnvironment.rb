@@ -22,11 +22,10 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
 # We use APIs that access the standard Unix environ array, which
 # is defined by UNIX98 to look like:
 # 
-# char **environ;
+#    char **environ;
 # 
 # These are unsorted, case-sensitive, null-terminated arrays of bytes
 # of the form FOO=BAR\000 which are usually encoded in the user's
@@ -361,9 +360,9 @@ module Java::Lang
         typesig { [Array.typed(::Java::Int)] }
         # It is technically feasible to provide a byte-oriented view
         # as follows:
-        # public Map<byte[],byte[]> asByteArrayMap() {
-        # return new ByteArrayEnvironment(m);
-        # }
+        #      public Map<byte[],byte[]> asByteArrayMap() {
+        #          return new ByteArrayEnvironment(m);
+        #      }
         # Convert to Unix style environ as a monolithic byte array
         # inspired by the Windows Environment Block, except we work
         # exclusively with bytes instead of chars, and we need only

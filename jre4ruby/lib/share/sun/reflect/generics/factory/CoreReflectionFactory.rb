@@ -133,7 +133,6 @@ module Sun::Reflect::Generics::Factory
     typesig { [String] }
     def make_named_type(name)
       begin
-        # don't initialize
         return Class.for_name(name, false, get_decls_loader)
       rescue ClassNotFoundException => c
         raise TypeNotPresentException.new(name, c)

@@ -213,15 +213,14 @@ module Sun::Net::Www::Protocol::Http
     # returning false means we have to go back to the user to ask for a new
     # username password.
     def is_authorization_stale(header)
-      return false
-      # should not be called for ntlm
+      return false # should not be called for ntlm
     end
     
     typesig { [HttpURLConnection, HeaderParser, String] }
     # Set header(s) on the given connection.
     # @param conn The connection to apply the header(s) to
     # @param p A source of header values for this connection, not used because
-    # HeaderParser converts the fields to lower case, use raw instead
+    #          HeaderParser converts the fields to lower case, use raw instead
     # @param raw The raw header field.
     # @return true if all goes well, false if no headers were set.
     def set_headers(conn, p, raw)

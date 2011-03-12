@@ -22,11 +22,8 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
-# 
 # (C) Copyright IBM Corp. 1996-2005 - All Rights Reserved                     *
-# *
+#                                                                             *
 # The original version of this source code and documentation is copyrighted   *
 # and owned by IBM, These materials are provided under terms of a License     *
 # Agreement between IBM and Sun. This technology is protected by multiple     *
@@ -76,21 +73,21 @@ module Sun::Text::Normalizer
   # a subclass of TrieIterator, override the extract method and iterate, e.g
   # </p>
   # <p>utrie_enum(&normTrie, _enumPropertyStartsValue, _enumPropertyStartsRange,
-  # set);<br>
+  #               set);<br>
   # In Java :<br>
   # <pre>
   # class TrieIteratorImpl extends TrieIterator{
-  # public TrieIteratorImpl(Trie data){
-  # super(data);
-  # }
-  # public int extract(int value){
-  # // port the implementation of _enumPropertyStartsValue here
-  # }
+  #     public TrieIteratorImpl(Trie data){
+  #         super(data);
+  #     }
+  #     public int extract(int value){
+  #         // port the implementation of _enumPropertyStartsValue here
+  #     }
   # }
   # ....
   # TrieIterator fcdIter  = new TrieIteratorImpl(fcdTrieImpl.fcdTrie);
   # while(fcdIter.next(result)) {
-  # // port the implementation of _enumPropertyStartsRange
+  #     // port the implementation of _enumPropertyStartsRange
   # }
   # </pre>
   # </p>
@@ -100,7 +97,7 @@ module Sun::Text::Normalizer
   # // utrie_enum(&fcdTrie, NULL, _enumPropertyStartsRange, set);
   # TrieIterator fcdIter  = new TrieIterator(fcdTrieImpl.fcdTrie);
   # while(fcdIter.next(result)){
-  # set.add(result.start);
+  #     set.add(result.start);
   # }
   # </pre>
   # </p>
@@ -114,7 +111,6 @@ module Sun::Text::Normalizer
     
     typesig { [Trie] }
     # public constructor ---------------------------------------------
-    # 
     # TrieEnumeration constructor
     # @param trie to be used
     # @exception IllegalArgumentException throw when argument is null.
@@ -143,7 +139,6 @@ module Sun::Text::Normalizer
     
     typesig { [Element] }
     # public methods -------------------------------------------------
-    # 
     # <p>Returns true if we are not at the end of the iteration, false
     # otherwise.</p>
     # <p>The next set of codepoints with the same value type will be
@@ -183,7 +178,6 @@ module Sun::Text::Normalizer
     
     typesig { [::Java::Int] }
     # protected methods ----------------------------------------------
-    # 
     # Called by next() to extracts a 32 bit value from a trie value
     # used for comparison.
     # This method is to be overwritten if special manipulation is to be done
@@ -198,7 +192,6 @@ module Sun::Text::Normalizer
     
     typesig { [Element, ::Java::Int, ::Java::Int, ::Java::Int] }
     # private methods ------------------------------------------------
-    # 
     # Set the result values
     # @param element return result object
     # @param start codepoint of range
@@ -219,7 +212,7 @@ module Sun::Text::Normalizer
     # supplementary planes, a false will be returned.
     # @param element return result object
     # @return true if the next range is found, false if we have to proceed to
-    # the supplementary range.
+    #         the supplementary range.
     def calculate_next_bmpelement(element)
       current_block = @m_next_block_
       current_value = @m_next_value_
@@ -361,7 +354,7 @@ module Sun::Text::Normalizer
     # value has been calculated.
     # @param currentValue the value which other codepoints are tested against
     # @return true if the whole block has the same value as currentValue or if
-    # the whole block has been calculated, false otherwise.
+    #              the whole block has been calculated, false otherwise.
     def check_block_detail(current_value)
       while (@m_next_block_index_ < DATA_BLOCK_LENGTH_)
         @m_next_value_ = extract(@m_trie_.get_value(@m_next_block_ + @m_next_block_index_))
@@ -384,7 +377,7 @@ module Sun::Text::Normalizer
     # @param currentBlock the initial block containing all currentValue
     # @param currentValue the value which other codepoints are tested against
     # @return true if the whole block has the same value as currentValue or if
-    # the whole block has been calculated, false otherwise.
+    #              the whole block has been calculated, false otherwise.
     def check_block(current_block, current_value)
       @m_next_block_ = @m_trie_.attr_m_index_[@m_next_index_] << Trie::INDEX_STAGE_2_SHIFT_
       if ((@m_next_block_).equal?(current_block) && (@m_next_codepoint_ - @m_current_codepoint_) >= DATA_BLOCK_LENGTH_)
@@ -419,7 +412,7 @@ module Sun::Text::Normalizer
     # @param currentBlock the initial block containing all currentValue
     # @param currentValue the value which other codepoints are tested against
     # @return true if the whole block has the same value as currentValue or if
-    # the whole block has been calculated, false otherwise.
+    #              the whole block has been calculated, false otherwise.
     def check_trail_block(current_block, current_value)
       # enumerate code points for this lead surrogate
       while (@m_next_trail_index_offset_ < TRAIL_SURROGATE_INDEX_BLOCK_LENGTH_)
@@ -461,7 +454,6 @@ module Sun::Text::Normalizer
     
     class_module.module_eval {
       # private data members --------------------------------------------
-      # 
       # Size of the stage 1 BMP indexes
       const_set_lazy(:BMP_INDEX_LENGTH_) { 0x10000 >> Trie::INDEX_STAGE_1_SHIFT_ }
       const_attr_reader  :BMP_INDEX_LENGTH_

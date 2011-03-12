@@ -22,11 +22,8 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
-# 
 # (C) Copyright IBM Corp. 1996-2005 - All Rights Reserved                     *
-# *
+#                                                                             *
 # The original version of this source code and documentation is copyrighted   *
 # and owned by IBM, These materials are provided under terms of a License     *
 # Agreement between IBM and Sun. This technology is protected by multiple     *
@@ -63,7 +60,6 @@ module Sun::Text::Normalizer
     include Trie::DataManipulate
     
     # public data members -----------------------------------------------
-    # 
     # Trie data
     attr_accessor :m_trie_
     alias_method :attr_m_trie_, :m_trie_
@@ -167,7 +163,6 @@ module Sun::Text::Normalizer
     
     typesig { [CharTrie::FriendAgent] }
     # public methods ----------------------------------------------------
-    # 
     # Java friends implementation
     def set_index_data(friendagent)
       @m_trie_index_ = friendagent.get_private_index
@@ -179,7 +174,7 @@ module Sun::Text::Normalizer
     # Called by com.ibm.icu.util.Trie to extract from a lead surrogate's
     # data the index array offset of the indexes for that lead surrogate.
     # @param value data value for a surrogate from the trie, including the
-    # folding offset
+    #        folding offset
     # @return data offset or 0 if there is no data for the lead surrogate
     def get_folding_offset(value)
       if (!((value & SUPPLEMENTARY_FOLD_INDICATOR_MASK_)).equal?(0))
@@ -289,7 +284,7 @@ module Sun::Text::Normalizer
     # Gets the unicode additional properties.
     # C version getUnicodeProperties.
     # @param codepoint codepoint whose additional properties is to be
-    # retrieved
+    #                  retrieved
     # @return unicode properties
     def get_additional(codepoint)
       return @m_additional_vectors_[@m_additional_trie_.get_code_point_value(codepoint)]
@@ -353,7 +348,6 @@ module Sun::Text::Normalizer
     }
     
     # protected variables -----------------------------------------------
-    # 
     # Case table
     attr_accessor :m_case_
     alias_method :attr_m_case_, :m_case_
@@ -408,7 +402,6 @@ module Sun::Text::Normalizer
     
     class_module.module_eval {
       # private variables -------------------------------------------------
-      # 
       # UnicodeData.txt property object
       
       def instance_
@@ -495,7 +488,6 @@ module Sun::Text::Normalizer
     
     typesig { [] }
     # private constructors --------------------------------------------------
-    # 
     # Constructor
     # @exception thrown when data reading fails or data corrupted
     def initialize
@@ -523,7 +515,6 @@ module Sun::Text::Normalizer
     
     typesig { [::Java::Int, ::Java::Int, ::Java::Int] }
     # Is followed by {case-ignorable}* cased  ?
-    # 
     # Getting the correct address for data in the exception value
     # @param evalue exception value
     # @param indicator type of data to retrieve
@@ -627,16 +618,14 @@ module Sun::Text::Normalizer
       end
       # add code points with hardcoded properties, plus the ones following them
       # add for IS_THAT_CONTROL_SPACE()
-      set.add(TAB)
-      # range TAB..CR
+      set.add(TAB) # range TAB..CR
       set.add(CR + 1)
       set.add(0x1c)
       set.add(0x1f + 1)
       set.add(NL)
       set.add(NL + 1)
       # add for u_isIDIgnorable() what was not added above
-      set.add(DEL)
-      # range DEL..NBSP-1, NBSP added below
+      set.add(DEL) # range DEL..NBSP-1, NBSP added below
       set.add(HAIRSP)
       set.add(RLM + 1)
       set.add(INHSWAP)
@@ -677,8 +666,7 @@ module Sun::Text::Normalizer
       set.add(U_A)
       set.add(U_Z + 1)
       # add for UCHAR_DEFAULT_IGNORABLE_CODE_POINT what was not added above
-      set.add(WJ)
-      # range WJ..NOMDIG
+      set.add(WJ) # range WJ..NOMDIG
       set.add(0xfff0)
       set.add(0xfffb + 1)
       set.add(0xe0000)
@@ -687,8 +675,7 @@ module Sun::Text::Normalizer
       set.add(CGJ)
       set.add(CGJ + 1)
       # add for UCHAR_JOINING_TYPE
-      set.add(ZWNJ)
-      # range ZWNJ..ZWJ
+      set.add(ZWNJ) # range ZWNJ..ZWJ
       set.add(ZWJ + 1)
       # add Jamo type boundaries for UCHAR_HANGUL_SYLLABLE_TYPE
       set.add(0x1100)
@@ -728,8 +715,6 @@ module Sun::Text::Normalizer
       # Omit code points for u_charCellWidth() because
       # - it is deprecated and not a real Unicode property
       # - they are probably already set from the trie enumeration
-      # 
-      # 
       # Omit code points with hardcoded specialcasing properties
       # because we do not build property UnicodeSets for them right now.
       return set # for chaining
@@ -737,9 +722,8 @@ module Sun::Text::Normalizer
     
     typesig { [] }
     # ----------------------------------------------------------------
-    # Inclusions list
+    #  Inclusions list
     # ----------------------------------------------------------------
-    # 
     # Return a set of characters for property enumeration.
     # The set implicitly contains 0x110000 as well, which is one more than the highest
     # Unicode code point.
@@ -775,34 +759,34 @@ module Sun::Text::Normalizer
     # There are two obstacles:
     # 
     # 1. Some properties are computed from multiple data structures,
-    # making it necessary to get repetitive ranges by intersecting
-    # ranges from multiple tries.
+    #    making it necessary to get repetitive ranges by intersecting
+    #    ranges from multiple tries.
     # 
     # 2. It is not economical to write code for getting repetitive ranges
-    # that are precise for each of some 50 properties.
+    #    that are precise for each of some 50 properties.
     # 
     # Compromise ideas:
     # 
     # - Get ranges per trie, not per individual property.
-    # Each range contains the same values for a whole group of properties.
-    # This would generate currently five range sets, two for uprops.icu tries
-    # and three for unorm.icu tries.
+    #   Each range contains the same values for a whole group of properties.
+    #   This would generate currently five range sets, two for uprops.icu tries
+    #   and three for unorm.icu tries.
     # 
     # - Combine sets of ranges for multiple tries to get sufficient sets
-    # for properties, e.g., the uprops.icu main and auxiliary tries
-    # for all non-normalization properties.
+    #   for properties, e.g., the uprops.icu main and auxiliary tries
+    #   for all non-normalization properties.
     # 
     # Ideas for representing ranges and combining them:
     # 
     # - A UnicodeSet could hold just the start code points of ranges.
-    # Multiple sets are easily combined by or-ing them together.
+    #   Multiple sets are easily combined by or-ing them together.
     # 
     # - Alternatively, a UnicodeSet could hold each even-numbered range.
-    # All ranges could be enumerated by using each start code point
-    # (for the even-numbered ranges) as well as each limit (end+1) code point
-    # (for the odd-numbered ranges).
-    # It should be possible to combine two such sets by xor-ing them,
-    # but no more than two.
+    #   All ranges could be enumerated by using each start code point
+    #   (for the even-numbered ranges) as well as each limit (end+1) code point
+    #   (for the odd-numbered ranges).
+    #   It should be possible to combine two such sets by xor-ing them,
+    #   but no more than two.
     # 
     # The second way to represent ranges may(?!) yield smaller UnicodeSet arrays,
     # but the first one is certainly simpler and applicable for combining more than

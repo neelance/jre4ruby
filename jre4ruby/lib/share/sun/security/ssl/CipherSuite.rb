@@ -43,21 +43,21 @@ module Sun::Security::Ssl
   # The CipherSuite class and the inner classes defined in this file roughly
   # follow the type safe enum pattern described in Effective Java. This means:
   # 
-  # . instances are immutable, classes are final
+  #  . instances are immutable, classes are final
   # 
-  # . there is a unique instance of every value, i.e. there are never two
-  # instances representing the same CipherSuite, etc. This means equality
-  # tests can be performed using == instead of equals() (although that works
-  # as well). [A minor exception are *unsupported* CipherSuites read from a
-  # handshake message, but this is usually irrelevant]
+  #  . there is a unique instance of every value, i.e. there are never two
+  #    instances representing the same CipherSuite, etc. This means equality
+  #    tests can be performed using == instead of equals() (although that works
+  #    as well). [A minor exception are *unsupported* CipherSuites read from a
+  #    handshake message, but this is usually irrelevant]
   # 
-  # . instances are obtained using the static valueOf() factory methods.
+  #  . instances are obtained using the static valueOf() factory methods.
   # 
-  # . properties are defined as final variables and made available as
-  # package private variables without method accessors
+  #  . properties are defined as final variables and made available as
+  #    package private variables without method accessors
   # 
-  # . if the member variable allowed is false, the given algorithm is either
-  # unavailable or disabled at compile time
+  #  . if the member variable allowed is false, the given algorithm is either
+  #    unavailable or disabled at compile time
   class CipherSuite 
     include_class_members CipherSuiteImports
     include JavaComparable

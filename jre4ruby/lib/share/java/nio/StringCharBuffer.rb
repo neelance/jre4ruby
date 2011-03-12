@@ -23,7 +23,6 @@ require "rjava"
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
 module Java::Nio
-  # package-private
   module StringCharBufferImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
@@ -35,6 +34,7 @@ module Java::Nio
   class StringCharBuffer < StringCharBufferImports.const_get :CharBuffer
     include_class_members StringCharBufferImports
     
+    # package-private
     attr_accessor :str
     alias_method :attr_str, :str
     undef_method :str
@@ -43,9 +43,8 @@ module Java::Nio
     
     typesig { [CharSequence, ::Java::Int, ::Java::Int] }
     def initialize(s, start, end_)
-      # package-private
       @str = nil
-      super(-1, start, end_, s.length)
+      super(-1, start, end_, s.length) # package-private
       n = s.length
       if ((start < 0) || (start > n) || (end_ < start) || (end_ > n))
         raise IndexOutOfBoundsException.new

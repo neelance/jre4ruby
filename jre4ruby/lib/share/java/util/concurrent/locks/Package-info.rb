@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # This file is available under and governed by the GNU General Public
 # License version 2 only, as published by the Free Software Foundation.
 # However, the following notice accompanied the original version of this
@@ -31,8 +29,6 @@ require "rjava"
 # Written by Doug Lea with assistance from members of JCP JSR-166
 # Expert Group and released to the public domain, as explained at
 # http://creativecommons.org/licenses/publicdomain
-# 
-# 
 # Interfaces and classes providing a framework for locking and waiting
 # for conditions that is distinct from built-in synchronization and
 # monitors.  The framework permits much greater flexibility in the use of
@@ -75,11 +71,4 @@ require "rjava"
 # 
 # @since 1.5
 module Java::Util::Concurrent::Locks
-  module Package-infoImports #:nodoc:
-    class_module.module_eval {
-      include ::Java::Lang
-      include ::Java::Util::Concurrent::Locks
-    }
-  end
-  
 end

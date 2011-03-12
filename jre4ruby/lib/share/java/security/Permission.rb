@@ -99,8 +99,8 @@ module Java::Security
     # @param object the object being guarded (currently ignored).
     # 
     # @throws SecurityException
-    # if a security manager exists and its
-    # <code>checkPermission</code> method doesn't allow access.
+    #        if a security manager exists and its
+    #        <code>checkPermission</code> method doesn't allow access.
     # 
     # @see Guard
     # @see GuardedObject
@@ -151,15 +151,15 @@ module Java::Security
     # the following: <p>
     # <ul>
     # <li>Whenever it is invoked on the same Permission object more than
-    # once during an execution of a Java application, the
-    # <code>hashCode</code> method
-    # must consistently return the same integer. This integer need not
-    # remain consistent from one execution of an application to another
-    # execution of the same application. <p>
+    #     once during an execution of a Java application, the
+    #     <code>hashCode</code> method
+    #     must consistently return the same integer. This integer need not
+    #     remain consistent from one execution of an application to another
+    #     execution of the same application. <p>
     # <li>If two Permission objects are equal according to the
-    # <code>equals</code>
-    # method, then calling the <code>hashCode</code> method on each of the
-    # two Permission objects must produce the same integer result.
+    #     <code>equals</code>
+    #     method, then calling the <code>hashCode</code> method on each of the
+    #     two Permission objects must produce the same integer result.
     # </ul>
     # 
     # @return a hash code value for this object.
@@ -186,8 +186,8 @@ module Java::Security
     # the following:
     # 
     # <pre>
-    # perm1 = new FilePermission(p1,"read,write");
-    # perm2 = new FilePermission(p2,"write,read");
+    #   perm1 = new FilePermission(p1,"read,write");
+    #   perm2 = new FilePermission(p2,"write,read");
     # </pre>
     # 
     # both return

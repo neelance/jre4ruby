@@ -56,16 +56,16 @@ module Java::Util::Spi
     # (say, the provider does not have a Japanese name for Croatian),
     # this method returns null.
     # @param languageCode the ISO 639 language code string in the form of two
-    # lower-case letters between 'a' (U+0061) and 'z' (U+007A)
+    #     lower-case letters between 'a' (U+0061) and 'z' (U+007A)
     # @param locale the desired locale
     # @return the name of the given language code for the specified locale, or null if it's not
-    # available.
+    #     available.
     # @exception NullPointerException if <code>languageCode</code> or <code>locale</code> is null
     # @exception IllegalArgumentException if <code>languageCode</code> is not in the form of
-    # two lower-case letters, or <code>locale</code> isn't
-    # one of the locales returned from
-    # {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-    # getAvailableLocales()}.
+    #     two lower-case letters, or <code>locale</code> isn't
+    #     one of the locales returned from
+    #     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
+    #     getAvailableLocales()}.
     # @see java.util.Locale#getDisplayLanguage(java.util.Locale)
     def get_display_language(language_code, locale)
       raise NotImplementedError
@@ -81,16 +81,16 @@ module Java::Util::Spi
     # (say, the provider does not have a Japanese name for Croatia),
     # this method returns null.
     # @param countryCode the ISO 3166 country code string in the form of two
-    # upper-case letters between 'A' (U+0041) and 'Z' (U+005A)
+    #     upper-case letters between 'A' (U+0041) and 'Z' (U+005A)
     # @param locale the desired locale
     # @return the name of the given country code for the specified locale, or null if it's not
-    # available.
+    #     available.
     # @exception NullPointerException if <code>countryCode</code> or <code>locale</code> is null
     # @exception IllegalArgumentException if <code>countryCode</code> is not in the form of
-    # two upper-case letters, or <code>locale</code> isn't
-    # one of the locales returned from
-    # {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-    # getAvailableLocales()}.
+    #     two upper-case letters, or <code>locale</code> isn't
+    #     one of the locales returned from
+    #     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
+    #     getAvailableLocales()}.
     # @see java.util.Locale#getDisplayCountry(java.util.Locale)
     def get_display_country(country_code, locale)
       raise NotImplementedError
@@ -104,12 +104,12 @@ module Java::Util::Spi
     # @param variant the variant string
     # @param locale the desired locale
     # @return the name of the given variant string for the specified locale, or null if it's not
-    # available.
+    #     available.
     # @exception NullPointerException if <code>variant</code> or <code>locale</code> is null
     # @exception IllegalArgumentException if <code>locale</code> isn't
-    # one of the locales returned from
-    # {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-    # getAvailableLocales()}.
+    #     one of the locales returned from
+    #     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
+    #     getAvailableLocales()}.
     # @see java.util.Locale#getDisplayVariant(java.util.Locale)
     def get_display_variant(variant, locale)
       raise NotImplementedError

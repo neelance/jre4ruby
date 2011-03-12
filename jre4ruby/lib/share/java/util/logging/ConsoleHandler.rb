@@ -41,17 +41,17 @@ module Java::Util::Logging
   # (or have invalid values) then the specified default values are used.
   # <ul>
   # <li>   java.util.logging.ConsoleHandler.level
-  # specifies the default level for the <tt>Handler</tt>
-  # (defaults to <tt>Level.INFO</tt>).
+  #        specifies the default level for the <tt>Handler</tt>
+  #        (defaults to <tt>Level.INFO</tt>).
   # <li>   java.util.logging.ConsoleHandler.filter
-  # specifies the name of a <tt>Filter</tt> class to use
-  # (defaults to no <tt>Filter</tt>).
+  #        specifies the name of a <tt>Filter</tt> class to use
+  #        (defaults to no <tt>Filter</tt>).
   # <li>   java.util.logging.ConsoleHandler.formatter
-  # specifies the name of a <tt>Formatter</tt> class to use
-  # (defaults to <tt>java.util.logging.SimpleFormatter</tt>).
+  #        specifies the name of a <tt>Formatter</tt> class to use
+  #        (defaults to <tt>java.util.logging.SimpleFormatter</tt>).
   # <li>   java.util.logging.ConsoleHandler.encoding
-  # the name of the character set encoding to use (defaults to
-  # the default platform encoding).
+  #        the name of the character set encoding to use (defaults to
+  #        the default platform encoding).
   # </ul>
   # <p>
   # @since 1.4
@@ -100,7 +100,7 @@ module Java::Util::Logging
     # which initialized the <tt>LogRecord</tt> and forwarded it here.
     # <p>
     # @param  record  description of the log event. A null record is
-    # silently ignored and is not published
+    #                 silently ignored and is not published
     def publish(record)
       super(record)
       flush

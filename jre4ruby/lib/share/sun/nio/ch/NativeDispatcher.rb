@@ -75,6 +75,7 @@ module Sun::Nio::Ch
     # Prepare the given fd for closing by duping it to a known internal fd
     # that's already closed.  This is necessary on some operating systems
     # (Solaris and Linux) to prevent fd recycling.
+    # 
     def pre_close(fd)
       # Do nothing by default; this is only needed on Unix
     end

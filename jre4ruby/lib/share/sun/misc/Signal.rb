@@ -63,9 +63,9 @@ module Sun::Misc
   # This is an example of how Java code handles <code>SIGINT</code>:
   # <blockquote><pre>
   # SignalHandler handler = new SignalHandler () {
-  # public void handle(Signal sig) {
-  # ... // handle SIGINT
-  # }
+  #     public void handle(Signal sig) {
+  #       ... // handle SIGINT
+  #     }
   # };
   # Signal.handle(new Signal("INT"), handler);
   # </blockquote></pre>
@@ -275,10 +275,10 @@ module Sun::Misc
       typesig { [::Java::Int, ::Java::Long] }
       # Registers a native signal handler, and returns the old handler.
       # Handler values:
-      # 0     default handler
-      # 1     ignore the signal
-      # 2     call back to Signal.dispatch
-      # other arbitrary native signal handlers
+      #   0     default handler
+      #   1     ignore the signal
+      #   2     call back to Signal.dispatch
+      #   other arbitrary native signal handlers
       def handle0(sig, native_h)
         JNI.call_native_method(:Java_sun_misc_Signal_handle0, JNI.env, self.jni_id, sig.to_int, native_h.to_int)
       end

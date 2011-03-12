@@ -22,17 +22,15 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996 - 1998 - All Rights Reserved
 # 
-# The original version of this source code and documentation is copyrighted
+#   The original version of this source code and documentation is copyrighted
 # and owned by Taligent, Inc., a wholly-owned subsidiary of IBM. These
 # materials are provided under terms of a License Agreement between Taligent
 # and Sun. This technology is protected by multiple US and International
 # patents. This notice and attribution to Taligent may not be removed.
-# Taligent is a registered trademark of Taligent, Inc.
+#   Taligent is a registered trademark of Taligent, Inc.
 module Java::Text
   module NumberFormatImports #:nodoc:
     class_module.module_eval {
@@ -75,7 +73,7 @@ module Java::Text
   # class methods:
   # <blockquote>
   # <pre>
-  # myString = NumberFormat.getInstance().format(myNumber);
+  #  myString = NumberFormat.getInstance().format(myNumber);
   # </pre>
   # </blockquote>
   # If you are formatting multiple numbers, it is
@@ -86,7 +84,7 @@ module Java::Text
   # <pre>
   # NumberFormat nf = NumberFormat.getInstance();
   # for (int i = 0; i < myNumber.length; ++i) {
-  # output.println(nf.format(myNumber[i]) + "; ");
+  #     output.println(nf.format(myNumber[i]) + "; ");
   # }
   # </pre>
   # </blockquote>
@@ -151,20 +149,20 @@ module Java::Text
   # For example, you can align numbers in two ways:
   # <ol>
   # <li> If you are using a monospaced font with spacing for alignment,
-  # you can pass the <code>FieldPosition</code> in your format call, with
-  # <code>field</code> = <code>INTEGER_FIELD</code>. On output,
-  # <code>getEndIndex</code> will be set to the offset between the
-  # last character of the integer and the decimal. Add
-  # (desiredSpaceCount - getEndIndex) spaces at the front of the string.
+  #      you can pass the <code>FieldPosition</code> in your format call, with
+  #      <code>field</code> = <code>INTEGER_FIELD</code>. On output,
+  #      <code>getEndIndex</code> will be set to the offset between the
+  #      last character of the integer and the decimal. Add
+  #      (desiredSpaceCount - getEndIndex) spaces at the front of the string.
   # 
   # <li> If you are using proportional fonts,
-  # instead of padding with spaces, measure the width
-  # of the string in pixels from the start to <code>getEndIndex</code>.
-  # Then move the pen by
-  # (desiredPixelWidth - widthToAlignmentPoint) before drawing the text.
-  # It also works where there is no decimal, but possibly additional
-  # characters at the end, e.g., with parentheses in negative
-  # numbers: "(12)" for -12.
+  #      instead of padding with spaces, measure the width
+  #      of the string in pixels from the start to <code>getEndIndex</code>.
+  #      Then move the pen by
+  #      (desiredPixelWidth - widthToAlignmentPoint) before drawing the text.
+  #      It also works where there is no decimal, but possibly additional
+  #      characters at the end, e.g., with parentheses in negative
+  #      numbers: "(12)" for -12.
   # </ol>
   # 
   # <h4><a name="synchronization">Synchronization</a></h4>
@@ -243,16 +241,16 @@ module Java::Text
     # <code>BigInteger</code> and <code>BigDecimal</code> values.
     # @param number     the number to format
     # @param toAppendTo the <code>StringBuffer</code> to which the formatted
-    # text is to be appended
+    #                   text is to be appended
     # @param pos        On input: an alignment field, if desired.
-    # On output: the offsets of the alignment field.
+    #                   On output: the offsets of the alignment field.
     # @return           the value passed in as <code>toAppendTo</code>
     # @exception        IllegalArgumentException if <code>number</code> is
-    # null or not an instance of <code>Number</code>.
+    #                   null or not an instance of <code>Number</code>.
     # @exception        NullPointerException if <code>toAppendTo</code> or
-    # <code>pos</code> is null
+    #                   <code>pos</code> is null
     # @exception        ArithmeticException if rounding is needed with rounding
-    # mode being set to RoundingMode.UNNECESSARY
+    #                   mode being set to RoundingMode.UNNECESSARY
     # @see              java.text.FieldPosition
     def format(number, to_append_to, pos)
       if (number.is_a?(Long) || number.is_a?(JavaInteger) || number.is_a?(Short) || number.is_a?(Byte) || number.is_a?(AtomicInteger) || number.is_a?(AtomicLong) || (number.is_a?(BigInteger) && (number).bit_length < 64))
@@ -285,9 +283,9 @@ module Java::Text
     # 
     # @param source A <code>String</code>, part of which should be parsed.
     # @param pos A <code>ParsePosition</code> object with index and error
-    # index information as described above.
+    #            index information as described above.
     # @return A <code>Number</code> parsed from the string. In case of
-    # error, returns null.
+    #         error, returns null.
     # @exception NullPointerException if <code>pos</code> is null.
     def parse_object(source, pos)
       return parse(source, pos)
@@ -296,7 +294,7 @@ module Java::Text
     typesig { [::Java::Double] }
     # Specialization of format.
     # @exception        ArithmeticException if rounding is needed with rounding
-    # mode being set to RoundingMode.UNNECESSARY
+    #                   mode being set to RoundingMode.UNNECESSARY
     # @see java.text.Format#format
     def format(number)
       return format(number, StringBuffer.new, DontCareFieldPosition::INSTANCE).to_s
@@ -305,7 +303,7 @@ module Java::Text
     typesig { [::Java::Long] }
     # Specialization of format.
     # @exception        ArithmeticException if rounding is needed with rounding
-    # mode being set to RoundingMode.UNNECESSARY
+    #                   mode being set to RoundingMode.UNNECESSARY
     # @see java.text.Format#format
     def format(number)
       return format(number, StringBuffer.new, DontCareFieldPosition::INSTANCE).to_s
@@ -314,7 +312,7 @@ module Java::Text
     typesig { [::Java::Double, StringBuffer, FieldPosition] }
     # Specialization of format.
     # @exception        ArithmeticException if rounding is needed with rounding
-    # mode being set to RoundingMode.UNNECESSARY
+    #                   mode being set to RoundingMode.UNNECESSARY
     # @see java.text.Format#format
     def format(number, to_append_to, pos)
       raise NotImplementedError
@@ -323,7 +321,7 @@ module Java::Text
     typesig { [::Java::Long, StringBuffer, FieldPosition] }
     # Specialization of format.
     # @exception        ArithmeticException if rounding is needed with rounding
-    # mode being set to RoundingMode.UNNECESSARY
+    #                   mode being set to RoundingMode.UNNECESSARY
     # @see java.text.Format#format
     def format(number, to_append_to, pos)
       raise NotImplementedError
@@ -353,7 +351,7 @@ module Java::Text
     # @param source A <code>String</code> whose beginning should be parsed.
     # @return A <code>Number</code> parsed from the string.
     # @exception ParseException if the beginning of the specified string
-    # cannot be parsed.
+    #            cannot be parsed.
     def parse(source)
       parse_position = ParsePosition.new(0)
       result = parse(source, parse_position)
@@ -384,7 +382,6 @@ module Java::Text
     class_module.module_eval {
       typesig { [] }
       # ============== Locale Stuff =====================
-      # 
       # Returns a general-purpose number format for the current default locale.
       # This is the same as calling
       # {@link #getNumberInstance() getNumberInstance()}.
@@ -468,7 +465,6 @@ module Java::Text
       
       typesig { [] }
       # Returns a scientific format for the current default locale.
-      # 
       # public
       def get_scientific_instance
         return get_instance(Locale.get_default, SCIENTIFICSTYLE)
@@ -476,7 +472,6 @@ module Java::Text
       
       typesig { [Locale] }
       # Returns a scientific format for the specified locale.
-      # 
       # public
       def get_scientific_instance(in_locale)
         return get_instance(in_locale, SCIENTIFICSTYLE)
@@ -493,7 +488,7 @@ module Java::Text
       # {@link java.util.Locale#US Locale.US}.
       # 
       # @return An array of locales for which localized
-      # <code>NumberFormat</code> instances are available.
+      #         <code>NumberFormat</code> instances are available.
       def get_available_locales
         pool = LocaleServiceProviderPool.get_pool(NumberFormatProvider)
         return pool.get_available_locales
@@ -690,7 +685,7 @@ module Java::Text
     # this method.
     # 
     # @exception UnsupportedOperationException The default implementation
-    # always throws this exception
+    #     always throws this exception
     # @return The <code>RoundingMode</code> used for this NumberFormat.
     # @see #setRoundingMode(RoundingMode)
     # @since 1.6
@@ -706,7 +701,7 @@ module Java::Text
     # this method.
     # 
     # @exception UnsupportedOperationException The default implementation
-    # always throws this exception
+    #     always throws this exception
     # @exception NullPointerException if <code>roundingMode</code> is null
     # @param roundingMode The <code>RoundingMode</code> to be used
     # @see #getRoundingMode()
@@ -897,7 +892,6 @@ module Java::Text
     undef_method :max_fraction_digits=
     
     # invariant, >= minFractionDigits
-    # 
     # The minimum number of digits allowed in the fractional portion of a
     # number.  <code>minimumFractionDigits</code> must be less than or equal to
     # <code>maximumFractionDigits</code>.
@@ -929,7 +923,6 @@ module Java::Text
     undef_method :parse_integer_only=
     
     # new fields for 1.2.  byte is too small for integer digits.
-    # 
     # The maximum number of digits allowed in the integer portion of a
     # number.  <code>maximumIntegerDigits</code> must be greater than or equal to
     # <code>minimumIntegerDigits</code>.
@@ -970,7 +963,6 @@ module Java::Text
     undef_method :maximum_fraction_digits=
     
     # invariant, >= minFractionDigits
-    # 
     # The minimum number of digits allowed in the fractional portion of a
     # number.  <code>minimumFractionDigits</code> must be less than or equal to
     # <code>maximumFractionDigits</code>.
@@ -993,14 +985,14 @@ module Java::Text
     # Possible values are:
     # <ul>
     # <li><b>0</b> (or uninitialized): the JDK 1.1 version of the stream format.
-    # In this version, the <code>int</code> fields such as
-    # <code>maximumIntegerDigits</code> were not present, and the <code>byte</code>
-    # fields such as <code>maxIntegerDigits</code> are used instead.
+    #     In this version, the <code>int</code> fields such as
+    #     <code>maximumIntegerDigits</code> were not present, and the <code>byte</code>
+    #     fields such as <code>maxIntegerDigits</code> are used instead.
     # 
     # <li><b>1</b>: the 1.2 version of the stream format.  The values of the
-    # <code>byte</code> fields such as <code>maxIntegerDigits</code> are ignored,
-    # and the <code>int</code> fields such as <code>maximumIntegerDigits</code>
-    # are used instead.
+    #     <code>byte</code> fields such as <code>maxIntegerDigits</code> are ignored,
+    #     and the <code>int</code> fields such as <code>maximumIntegerDigits</code>
+    #     are used instead.
     # </ul>
     # When streaming out a <code>NumberFormat</code>, the most recent format
     # (corresponding to the highest allowable <code>serialVersionOnStream</code>)
@@ -1020,8 +1012,8 @@ module Java::Text
       const_set_lazy(:SerialVersionUID) { -2308460125733713944 }
       const_attr_reader  :SerialVersionUID
       
-      # class for AttributedCharacterIterator attributes
       # 
+      # class for AttributedCharacterIterator attributes
       # 
       # Defines constants that are used as attribute keys in the
       # <code>AttributedCharacterIterator</code> returned

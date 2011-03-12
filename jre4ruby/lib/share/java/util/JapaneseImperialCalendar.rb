@@ -48,11 +48,11 @@ module Java::Util
   # <pre><tt>
   # ERA value   Era name    Since (in Gregorian)
   # ------------------------------------------------------
-  # 0       N/A         N/A
-  # 1       Meiji       1868-01-01 midnight local time
-  # 2       Taisho      1912-07-30 midnight local time
-  # 3       Showa       1926-12-25 midnight local time
-  # 4       Heisei      1989-01-08 midnight local time
+  #     0       N/A         N/A
+  #     1       Meiji       1868-01-01 midnight local time
+  #     2       Taisho      1912-07-30 midnight local time
+  #     3       Showa       1926-12-25 midnight local time
+  #     4       Heisei      1989-01-08 midnight local time
   # ------------------------------------------------------
   # </tt></pre>
   # 
@@ -78,8 +78,6 @@ module Java::Util
       # sun.util.calendar.LocalGregorianCalendar to perform most of the
       # calendar calculations. LocalGregorianCalendar is configurable
       # and reads <JRE_HOME>/lib/calendars.properties at the start-up.
-      # 
-      # 
       # The ERA constant designating the era before Meiji.
       const_set_lazy(:BEFORE_MEIJI) { 0 }
       const_attr_reader  :BEFORE_MEIJI
@@ -139,7 +137,7 @@ module Java::Util
       const_attr_reader  :BEFORE_MEIJI_ERA
       
       # <pre>
-      # Greatest       Least
+      #                                 Greatest       Least
       # Field name             Minimum   Minimum     Maximum     Maximum
       # ----------             -------   -------     -------     -------
       # ERA                          0         0           1           1
@@ -161,7 +159,6 @@ module Java::Util
       # DST_OFFSET                0:00      0:00        0:20        2:00
       # </pre>
       # *: depends on eras
-      # 
       # ERA
       # YEAR
       # MONTH
@@ -254,10 +251,10 @@ module Java::Util
           transition_date = Eras[i].get_since_date
           date.set_date(transition_date.get_year, BaseCalendar::JANUARY, 1)
           fdd = Gcal.get_fixed_date(date)
-          day_of_year = Math.min(RJava.cast_to_int((fdd - fd)), day_of_year)
+          day_of_year = Math.min(((fdd - fd)).to_int, day_of_year)
           date.set_date(transition_date.get_year, BaseCalendar::DECEMBER, 31)
           fdd = Gcal.get_fixed_date(date) + 1
-          day_of_year = Math.min(RJava.cast_to_int((fd - fdd)), day_of_year)
+          day_of_year = Math.min(((fd - fdd)).to_int, day_of_year)
           lgd = get_calendar_date(fd - 1)
           y = lgd.get_year
           # Unless the first year starts from January 1, the actual
@@ -410,13 +407,9 @@ module Java::Util
             delta = amount
             time_of_day = 0
             case (field)
-            # Handle the time fields here. Convert the given
-            # amount to milliseconds and call setTimeInMillis.
-            # Handle week, day and AM_PM fields which involves
-            # time zone offset change adjustment. Convert the
-            # given amount to the number of days.
-            # synonym of DATE
             when HOUR, HOUR_OF_DAY
+              # Handle the time fields here. Convert the given
+              # amount to milliseconds and call setTimeInMillis.
               delta *= 60 * 60 * 1000 # hours to milliseconds
             when MINUTE
               delta *= 60 * 1000 # minutes to milliseconds
@@ -424,8 +417,12 @@ module Java::Util
               delta *= 1000 # seconds to milliseconds
             when MILLISECOND
             when WEEK_OF_YEAR, WEEK_OF_MONTH, DAY_OF_WEEK_IN_MONTH
+              # Handle week, day and AM_PM fields which involves
+              # time zone offset change adjustment. Convert the
+              # given amount to the number of days.
               delta *= 7
             when DAY_OF_MONTH, DAY_OF_YEAR, DAY_OF_WEEK
+              # synonym of DATE
             when AM_PM
               # Convert the amount to the number of days (delta)
               # and +12 or -12 hours (timeOfDay).
@@ -761,7 +758,7 @@ module Java::Util
           month_day1st = Jcal.get_day_of_week_date_on_or_before(month1 + 6, get_first_day_of_week)
           # if the week has enough days to form a week, the
           # week starts from the previous month.
-          if (RJava.cast_to_int((month_day1st - month1)) >= get_minimal_days_in_first_week)
+          if (((month_day1st - month1)).to_int >= get_minimal_days_in_first_week)
             month_day1st -= 7
           end
           max = get_actual_maximum(field)
@@ -778,7 +775,7 @@ module Java::Util
               nfd = month1 + month_length_ - 1
             end
           end
-          set(DAY_OF_MONTH, RJava.cast_to_int((nfd - month1)) + 1)
+          set(DAY_OF_MONTH, ((nfd - month1)).to_int + 1)
           return
         when DAY_OF_MONTH
           if (!is_transition_year(@jdate.get_normalized_year))
@@ -792,7 +789,7 @@ module Java::Util
           # It may not be a regular month. Convert the date and range to
           # the relative values, perform the roll, and
           # convert the result back to the rolled date.
-          value = get_rolled_value(RJava.cast_to_int((@cached_fixed_date - month1)), amount, 0, actual_month_length - 1)
+          value = get_rolled_value(((@cached_fixed_date - month1)).to_int, amount, 0, actual_month_length - 1)
           d = get_calendar_date(month1 + value)
           raise AssertError if not ((get_era_index(d)).equal?(internal_get_era) && (d.get_year).equal?(internal_get(YEAR)) && (d.get_month - 1).equal?(internal_get(MONTH)))
           set(DAY_OF_MONTH, d.get_day_of_month)
@@ -865,7 +862,7 @@ module Java::Util
           month_length_ = actual_month_length
           last_days = month_length_ % 7
           max = month_length_ / 7
-          x = RJava.cast_to_int((fd - month1)) % 7
+          x = ((fd - month1)).to_int % 7
           if (x < last_days)
             max += 1
           end
@@ -1245,17 +1242,17 @@ module Java::Util
             d = Gcal.new_calendar_date(TimeZone::NO_TIMEZONE)
             d.set_date(date.get_normalized_year, BaseCalendar::JANUARY, 1)
             if (fd < transition)
-              value = RJava.cast_to_int((transition - Gcal.get_fixed_date(d)))
+              value = ((transition - Gcal.get_fixed_date(d))).to_int
             else
               d.add_year(+1)
-              value = RJava.cast_to_int((Gcal.get_fixed_date(d) - transition))
+              value = ((Gcal.get_fixed_date(d) - transition)).to_int
             end
           else
             d = Jcal.get_calendar_date(Long::MAX_VALUE, get_zone)
             if ((date.get_era).equal?(d.get_era) && (date.get_year).equal?(d.get_year))
               fd = Jcal.get_fixed_date(d)
               jan1 = get_fixed_date_jan1(d, fd)
-              value = RJava.cast_to_int((fd - jan1)) + 1
+              value = ((fd - jan1)).to_int + 1
             else
               if ((date.get_year).equal?(get_minimum(YEAR)))
                 d1 = Jcal.get_calendar_date(Long::MIN_VALUE, get_zone)
@@ -1264,7 +1261,7 @@ module Java::Util
                 d1.set_month(BaseCalendar::JANUARY).set_day_of_month(1)
                 Jcal.normalize(d1)
                 fd2 = Jcal.get_fixed_date(d1)
-                value = RJava.cast_to_int((fd2 - fd1))
+                value = ((fd2 - fd1)).to_int
               else
                 value = Jcal.get_year_length(date)
               end
@@ -1289,7 +1286,7 @@ module Java::Util
                 jan1 = Jcal.get_fixed_date(d)
                 next_jan1 = Jcal.get_fixed_date(jd)
                 next_jan1st = Jcal.get_day_of_week_date_on_or_before(next_jan1 + 6, get_first_day_of_week)
-                ndays = RJava.cast_to_int((next_jan1st - next_jan1))
+                ndays = ((next_jan1st - next_jan1)).to_int
                 if (ndays >= get_minimal_days_in_first_week)
                   next_jan1st -= 7
                 end
@@ -1506,9 +1503,9 @@ module Java::Util
       # the wider range of time+zoneOffset than the previous
       # implementation.
       fixed_date = zone_offset / ONE_DAY
-      time_of_day = zone_offset % RJava.cast_to_int(ONE_DAY)
+      time_of_day = zone_offset % (ONE_DAY).to_int
       fixed_date += self.attr_time / ONE_DAY
-      time_of_day += RJava.cast_to_int((self.attr_time % ONE_DAY))
+      time_of_day += ((self.attr_time % ONE_DAY)).to_int
       if (time_of_day >= ONE_DAY)
         time_of_day -= ONE_DAY
         (fixed_date += 1)
@@ -1574,14 +1571,14 @@ module Java::Util
         fixed_date_jan1 = 0
         if (transition_year)
           fixed_date_jan1 = get_fixed_date_jan1(@jdate, fixed_date)
-          day_of_year = RJava.cast_to_int((fixed_date - fixed_date_jan1)) + 1
+          day_of_year = ((fixed_date - fixed_date_jan1)).to_int + 1
         else
           if ((normalized_year).equal?(MIN_VALUES[YEAR]))
             dx = Jcal.get_calendar_date(Long::MIN_VALUE, get_zone)
             fixed_date_jan1 = Jcal.get_fixed_date(dx)
-            day_of_year = RJava.cast_to_int((fixed_date - fixed_date_jan1)) + 1
+            day_of_year = ((fixed_date - fixed_date_jan1)).to_int + 1
           else
-            day_of_year = RJava.cast_to_int(Jcal.get_day_of_year(@jdate))
+            day_of_year = (Jcal.get_day_of_year(@jdate)).to_int
             fixed_date_jan1 = fixed_date - day_of_year + 1
           end
         end
@@ -1648,7 +1645,7 @@ module Java::Util
                 next_jan1 += 1
               end
               next_jan1st = Jcal.get_day_of_week_date_on_or_before(next_jan1 + 6, get_first_day_of_week)
-              ndays = RJava.cast_to_int((next_jan1st - next_jan1))
+              ndays = ((next_jan1st - next_jan1)).to_int
               if (ndays >= get_minimal_days_in_first_week && fixed_date >= (next_jan1st - 7))
                 # The first days forms a week in which the date is included.
                 week_of_year = 1
@@ -1670,7 +1667,7 @@ module Java::Util
               next_jan1 = Jcal.get_fixed_date(d)
             end
             next_jan1st = Jcal.get_day_of_week_date_on_or_before(next_jan1 + 6, get_first_day_of_week)
-            ndays = RJava.cast_to_int((next_jan1st - next_jan1))
+            ndays = ((next_jan1st - next_jan1)).to_int
             if (ndays >= get_minimal_days_in_first_week && fixed_date >= (next_jan1st - 7))
               # The first days forms a week in which the date is included.
               week_of_year = 1
@@ -1696,12 +1693,12 @@ module Java::Util
       # We can always use `jcal' since Julian and Gregorian are the
       # same thing for this calculation.
       fixed_day1st = Jcal.get_day_of_week_date_on_or_before(fixed_day1 + 6, get_first_day_of_week)
-      ndays = RJava.cast_to_int((fixed_day1st - fixed_day1))
+      ndays = ((fixed_day1st - fixed_day1)).to_int
       raise AssertError if not (ndays <= 7)
       if (ndays >= get_minimal_days_in_first_week)
         fixed_day1st -= 7
       end
-      normalized_day_of_period = RJava.cast_to_int((fixed_date - fixed_day1st))
+      normalized_day_of_period = ((fixed_date - fixed_day1st)).to_int
       if (normalized_day_of_period >= 0)
         return normalized_day_of_period / 7 + 1
       end
@@ -1787,13 +1784,13 @@ module Java::Util
       # ambiguities here.  We'll assume a 2:00 am (wall time) switchover time
       # for discussion purposes here.
       # 1. The transition into DST.  Here, a designated time of 2:00 am - 2:59 am
-      # can be in standard or in DST depending.  However, 2:00 am is an invalid
-      # representation (the representation jumps from 1:59:59 am Std to 3:00:00 am DST).
-      # We assume standard time.
+      #    can be in standard or in DST depending.  However, 2:00 am is an invalid
+      #    representation (the representation jumps from 1:59:59 am Std to 3:00:00 am DST).
+      #    We assume standard time.
       # 2. The transition out of DST.  Here, a designated time of 1:00 am - 1:59 am
-      # can be in standard or DST.  Both are valid representations (the rep
-      # jumps from 1:59:59 DST to 1:00:00 Std).
-      # Again, we assume standard time.
+      #    can be in standard or DST.  Both are valid representations (the rep
+      #    jumps from 1:59:59 DST to 1:00:00 Std).
+      #    Again, we assume standard time.
       # We use the TimeZone object, unless the user has explicitly set the ZONE_OFFSET
       # or DST_OFFSET fields; then we use those fields.
       zone = get_zone

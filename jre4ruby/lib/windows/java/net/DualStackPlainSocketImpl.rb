@@ -71,8 +71,7 @@ module Java::Net
     def socket_create(stream)
       if ((self.attr_fd).nil?)
         raise SocketException.new("Socket closed")
-      end
-      # v6 Only
+      end # v6 Only
       newfd = socket0(stream, false)
       self.attr_fd_access.set(self.attr_fd, newfd)
     end
@@ -164,8 +163,8 @@ module Java::Net
     end
     
     typesig { [::Java::Boolean] }
-    # unused
     def socket_close0(use_deferred_close)
+      # unused
       if ((self.attr_fd).nil?)
         raise SocketException.new("Socket closed")
       end

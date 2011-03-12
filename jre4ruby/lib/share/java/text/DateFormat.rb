@@ -22,17 +22,15 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996 - All Rights Reserved
 # 
-# The original version of this source code and documentation is copyrighted
+#   The original version of this source code and documentation is copyrighted
 # and owned by Taligent, Inc., a wholly-owned subsidiary of IBM. These
 # materials are provided under terms of a License Agreement between Taligent
 # and Sun. This technology is protected by multiple US and International
 # patents. This notice and attribution to Taligent may not be removed.
-# Taligent is a registered trademark of Taligent, Inc.
+#   Taligent is a registered trademark of Taligent, Inc.
 module Java::Text
   module DateFormatImports #:nodoc:
     class_module.module_eval {
@@ -74,26 +72,26 @@ module Java::Text
   # <p>To format a date for the current Locale, use one of the
   # static factory methods:
   # <pre>
-  # myString = DateFormat.getDateInstance().format(myDate);
+  #  myString = DateFormat.getDateInstance().format(myDate);
   # </pre>
   # <p>If you are formatting multiple dates, it is
   # more efficient to get the format and use it multiple times so that
   # the system doesn't have to fetch the information about the local
   # language and country conventions multiple times.
   # <pre>
-  # DateFormat df = DateFormat.getDateInstance();
-  # for (int i = 0; i < myDate.length; ++i) {
-  # output.println(df.format(myDate[i]) + "; ");
-  # }
+  #  DateFormat df = DateFormat.getDateInstance();
+  #  for (int i = 0; i < myDate.length; ++i) {
+  #    output.println(df.format(myDate[i]) + "; ");
+  #  }
   # </pre>
   # <p>To format a date for a different Locale, specify it in the
   # call to getDateInstance().
   # <pre>
-  # DateFormat df = DateFormat.getDateInstance(DateFormat.LONG, Locale.FRANCE);
+  #  DateFormat df = DateFormat.getDateInstance(DateFormat.LONG, Locale.FRANCE);
   # </pre>
   # <p>You can use a DateFormat to parse also.
   # <pre>
-  # myDate = df.parse(myString);
+  #  myDate = df.parse(myString);
   # </pre>
   # <p>Use getDateInstance to get the normal date format for that country.
   # There are other static factory methods available.
@@ -347,7 +345,7 @@ module Java::Text
     # @param source A <code>String</code> whose beginning should be parsed.
     # @return A <code>Date</code> parsed from the string.
     # @exception ParseException if the beginning of the specified string
-    # cannot be parsed.
+    #            cannot be parsed.
     def parse(source)
       pos = ParsePosition.new(0)
       result = parse(source, pos)
@@ -372,8 +370,8 @@ module Java::Text
     # @param source  The date/time string to be parsed
     # 
     # @param pos   On input, the position at which to start parsing; on
-    # output, the position at which parsing terminated, or the
-    # start position if the parse failed.
+    #              output, the position at which parsing terminated, or the
+    #              start position if the parse failed.
     # 
     # @return      A Date, or null if the input could not be parsed
     def parse(source, pos)
@@ -399,9 +397,9 @@ module Java::Text
     # 
     # @param source A <code>String</code>, part of which should be parsed.
     # @param pos A <code>ParsePosition</code> object with index and error
-    # index information as described above.
+    #            index information as described above.
     # @return A <code>Date</code> parsed from the string. In case of
-    # error, returns null.
+    #         error, returns null.
     # @exception NullPointerException if <code>pos</code> is null.
     def parse_object(source, pos)
       return parse(source, pos)
@@ -535,7 +533,7 @@ module Java::Text
       # {@link java.util.Locale#US Locale.US}.
       # 
       # @return An array of locales for which localized
-      # <code>DateFormat</code> instances are available.
+      #         <code>DateFormat</code> instances are available.
       def get_available_locales
         pool = LocaleServiceProviderPool.get_pool(DateFormatProvider)
         return pool.get_available_locales
@@ -620,7 +618,6 @@ module Java::Text
         return false
       end
       other = obj
-      # calendar.equivalentTo(other.calendar) // THIS API DOESN'T EXIST YET!
       return ((@calendar.get_first_day_of_week).equal?(other.attr_calendar.get_first_day_of_week) && (@calendar.get_minimal_days_in_first_week).equal?(other.attr_calendar.get_minimal_days_in_first_week) && (@calendar.is_lenient).equal?(other.attr_calendar.is_lenient) && (@calendar.get_time_zone == other.attr_calendar.get_time_zone) && (@number_format == other.attr_number_format))
     end
     
@@ -728,7 +725,7 @@ module Java::Text
           # constant and a <code>Field</code>, null is returned.
           # 
           # @throws IllegalArgumentException if <code>calendarField</code> is
-          # not the value of a <code>Calendar</code> field constant.
+          #         not the value of a <code>Calendar</code> field constant.
           # @param calendarField Calendar field constant
           # @return Field instance representing calendarField.
           # @see java.util.Calendar
@@ -745,10 +742,10 @@ module Java::Text
         # 
         # @param name the name of the <code>Field</code>
         # @param calendarField the <code>Calendar</code> constant this
-        # <code>Field</code> corresponds to; any value, even one
-        # outside the range of legal <code>Calendar</code> values may
-        # be used, but <code>-1</code> should be used for values
-        # that don't correspond to legal <code>Calendar</code> values
+        #        <code>Field</code> corresponds to; any value, even one
+        #        outside the range of legal <code>Calendar</code> values may
+        #        be used, but <code>-1</code> should be used for values
+        #        that don't correspond to legal <code>Calendar</code> values
         def initialize(name, calendar_field)
           @calendar_field = 0
           super(name)
@@ -779,7 +776,7 @@ module Java::Text
         # Resolves instances being deserialized to the predefined constants.
         # 
         # @throws InvalidObjectException if the constant could not be
-        # resolved.
+        #         resolved.
         # @return resolved DateFormat.Field constant
         def read_resolve
           if (!(self.get_class).equal?(DateFormat::Field))
@@ -794,8 +791,8 @@ module Java::Text
         end
         
         class_module.module_eval {
-          # The constants
           # 
+          # The constants
           # 
           # Constant identifying the era field.
           const_set_lazy(:ERA) { class_self::Field.new("era", Calendar::ERA) }

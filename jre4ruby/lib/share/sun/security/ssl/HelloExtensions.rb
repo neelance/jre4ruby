@@ -43,18 +43,18 @@ module Sun::Security::Ssl
   # Currently, only the two ECC extensions are fully supported.
   # 
   # The classes contained in this file are:
-  # . HelloExtensions: a List of extensions as used in the client hello
-  # and server hello messages.
-  # . ExtensionType: an enum style class for the extension type
-  # . HelloExtension: abstract base class for all extensions. All subclasses
-  # must be immutable.
+  #  . HelloExtensions: a List of extensions as used in the client hello
+  #      and server hello messages.
+  #  . ExtensionType: an enum style class for the extension type
+  #  . HelloExtension: abstract base class for all extensions. All subclasses
+  #      must be immutable.
   # 
-  # . UnknownExtension: used to represent all parsed extensions that we do not
-  # explicitly support.
-  # . ServerNameExtension: partially implemented server_name extension.
-  # . SupportedEllipticCurvesExtension: the ECC supported curves extension.
-  # . SupportedEllipticPointFormatsExtension: the ECC supported point formats
-  # (compressed/uncompressed) extension.
+  #  . UnknownExtension: used to represent all parsed extensions that we do not
+  #      explicitly support.
+  #  . ServerNameExtension: partially implemented server_name extension.
+  #  . SupportedEllipticCurvesExtension: the ECC supported curves extension.
+  #  . SupportedEllipticPointFormatsExtension: the ECC supported point formats
+  #      (compressed/uncompressed) extension.
   # 
   # @since   1.6
   # @author  Andreas Sterbenz
@@ -460,10 +460,10 @@ module Sun::Security::Ssl
           # NIST curves first
           # prefer NIST P-256, rest in order of increasing key length
           # non-NIST curves
-          ids = Array.typed(::Java::Int).new([23, 1, 3, 19, 21, 6, 7, 9, 10, 24, 11, 12, 25, 13, 14, 15, 16, 17, 2, 18, 4, 5, 20, 8, 22, ])
+          ids = Array.typed(::Java::Int).new([23, 1, 3, 19, 21, 6, 7, 9, 10, 24, 11, 12, 25, 13, 14, 15, 16, 17, 2, 18, 4, 5, 20, 8, 22])
         else
           # same as above, but allow only NIST curves in FIPS mode
-          ids = Array.typed(::Java::Int).new([23, 1, 3, 19, 21, 6, 7, 9, 10, 24, 11, 12, 25, 13, 14, ])
+          ids = Array.typed(::Java::Int).new([23, 1, 3, 19, 21, 6, 7, 9, 10, 24, 11, 12, 25, 13, 14])
         end
         const_set :DEFAULT, SupportedEllipticCurvesExtension.new(ids)
       end
@@ -609,16 +609,16 @@ module Sun::Security::Ssl
       const_attr_reader  :ARBITRARY_CHAR2
       
       # See sun.security.ec.NamedCurve for the OIDs
-      # (0) unused
-      # (1) sect163k1, NIST K-163
-      # (2) sect163r1
-      # (3) sect163r2, NIST B-163
-      # (4) sect193r1
-      # (5) sect193r2
-      # (6) sect233k1, NIST K-233
-      # (7) sect233r1, NIST B-233
-      # (8) sect239k1
-      # (9) sect283k1, NIST K-283
+      #  (0) unused
+      #  (1) sect163k1, NIST K-163
+      #  (2) sect163r1
+      #  (3) sect163r2, NIST B-163
+      #  (4) sect193r1
+      #  (5) sect193r2
+      #  (6) sect233k1, NIST K-233
+      #  (7) sect233r1, NIST B-233
+      #  (8) sect239k1
+      #  (9) sect283k1, NIST K-283
       # (10) sect283r1, NIST B-283
       # (11) sect409k1, NIST K-409
       # (12) sect409r1, NIST B-409
@@ -635,7 +635,7 @@ module Sun::Security::Ssl
       # (23) secp256r1, NIST P-256
       # (24) secp384r1, NIST P-384
       # (25) secp521r1, NIST P-521
-      const_set_lazy(:NAMED_CURVE_OID_TABLE) { Array.typed(String).new([nil, "1.3.132.0.1", "1.3.132.0.2", "1.3.132.0.15", "1.3.132.0.24", "1.3.132.0.25", "1.3.132.0.26", "1.3.132.0.27", "1.3.132.0.3", "1.3.132.0.16", "1.3.132.0.17", "1.3.132.0.36", "1.3.132.0.37", "1.3.132.0.38", "1.3.132.0.39", "1.3.132.0.9", "1.3.132.0.8", "1.3.132.0.30", "1.3.132.0.31", "1.2.840.10045.3.1.1", "1.3.132.0.32", "1.3.132.0.33", "1.3.132.0.10", "1.2.840.10045.3.1.7", "1.3.132.0.34", "1.3.132.0.35", ]) }
+      const_set_lazy(:NAMED_CURVE_OID_TABLE) { Array.typed(String).new([nil, "1.3.132.0.1", "1.3.132.0.2", "1.3.132.0.15", "1.3.132.0.24", "1.3.132.0.25", "1.3.132.0.26", "1.3.132.0.27", "1.3.132.0.3", "1.3.132.0.16", "1.3.132.0.17", "1.3.132.0.36", "1.3.132.0.37", "1.3.132.0.38", "1.3.132.0.39", "1.3.132.0.9", "1.3.132.0.8", "1.3.132.0.30", "1.3.132.0.31", "1.2.840.10045.3.1.1", "1.3.132.0.32", "1.3.132.0.33", "1.3.132.0.10", "1.2.840.10045.3.1.7", "1.3.132.0.34", "1.3.132.0.35"]) }
       const_attr_reader  :NAMED_CURVE_OID_TABLE
       
       when_class_loaded do

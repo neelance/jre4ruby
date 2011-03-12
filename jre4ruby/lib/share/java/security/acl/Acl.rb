@@ -138,7 +138,7 @@ module Java::Security::Acl
     # present in this ACL.
     # 
     # @exception NotOwnerException if the caller principal
-    # is not an owner of this ACL.
+    #  is not an owner of this ACL.
     def add_entry(caller, entry)
       raise NotImplementedError
     end

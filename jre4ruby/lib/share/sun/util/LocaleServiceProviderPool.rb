@@ -273,7 +273,7 @@ module Sun::Util
     # 
     # @param locale the locale to test.
     # @return true, if the locale is supported by the JRE. false
-    # otherwise.
+    #     otherwise.
     def is_jresupported(locale)
       locales = get_jrelocales
       return locales.contains(locale)
@@ -284,7 +284,7 @@ module Sun::Util
     # locale.
     # 
     # @param getter an object on which getObject() method
-    # is called to obtain the provider's instance.
+    #     is called to obtain the provider's instance.
     # @param locale the given locale that is used as the starting one
     # @param params provider specific parameters
     # @return provider's instance, or null.
@@ -302,10 +302,10 @@ module Sun::Util
     # locale.
     # 
     # @param getter an object on which getObject() method
-    # is called to obtain the provider's instance.
+    #     is called to obtain the provider's instance.
     # @param locale the given locale that is used as the starting one
     # @param bundle JRE resource bundle that contains
-    # the localized names, or null for localized objects.
+    #     the localized names, or null for localized objects.
     # @param key the key string if bundle is supplied, otherwise null.
     # @param params provider specific parameters
     # @return provider's instance, or null.
@@ -323,12 +323,12 @@ module Sun::Util
     # locale.
     # 
     # @param getter an object on which getObject() method
-    # is called to obtain the provider's instance.
+    #     is called to obtain the provider's instance.
     # @param locale the given locale that is used as the starting one
     # @param bundleKey JRE specific bundle key. e.g., "USD" is for currency
-    # symbol and "usd" is for currency display name in the JRE bundle.
+    #     symbol and "usd" is for currency display name in the JRE bundle.
     # @param bundle JRE resource bundle that contains
-    # the localized names, or null for localized objects.
+    #     the localized names, or null for localized objects.
     # @param key the key string if bundle is supplied, otherwise null.
     # @param params provider specific parameters
     # @return provider's instance, or null.
@@ -404,7 +404,7 @@ module Sun::Util
     # 
     # @param locale the given locale
     # @return the provider, or null if there is
-    # no provider available.
+    #     no provider available.
     def find_provider(locale)
       if (!has_providers)
         return nil
@@ -435,10 +435,10 @@ module Sun::Util
     # 
     # @param start the given locale that is used as the starting one
     # @param end the given locale that is used as the end one (exclusive),
-    # or null if it reaching any of the JRE supported locale should
-    # terminate the look up.
+    #     or null if it reaching any of the JRE supported locale should
+    #     terminate the look up.
     # @return the most specific locale within the range, or null
-    # if no provider locale found in that range.
+    #     if no provider locale found in that range.
     def find_provider_locale(start, end_)
       prov_loc = get_provider_locales
       current = start
@@ -525,7 +525,7 @@ module Sun::Util
         # @param lsp the provider
         # @param locale the locale
         # @param key key string to localize, or null if the provider is not
-        # a name provider
+        #     a name provider
         # @param params provider specific params
         # @return localized object from the provider
         def get_object(lsp, locale, key, *params)

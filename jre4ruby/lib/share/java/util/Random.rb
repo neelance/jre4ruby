@@ -113,7 +113,7 @@ module Java::Util
     # number generator which is maintained by method {@link #next}.
     # 
     # <p>The invocation {@code new Random(seed)} is equivalent to:
-    # <pre> {@code
+    #  <pre> {@code
     # Random rnd = new Random();
     # rnd.setSeed(seed);}</pre>
     # 
@@ -135,7 +135,7 @@ module Java::Util
     # created with the argument {@code seed} as a seed. The method
     # {@code setSeed} is implemented by class {@code Random} by
     # atomically updating the seed to
-    # <pre>{@code (seed ^ 0x5DEECE66DL) & ((1L << 48) - 1)}</pre>
+    #  <pre>{@code (seed ^ 0x5DEECE66DL) & ((1L << 48) - 1)}</pre>
     # and clearing the {@code haveNextNextGaussian} flag used by {@link
     # #nextGaussian}.
     # 
@@ -164,9 +164,9 @@ module Java::Util
     # chosen bit values, each of which is (approximately) equally
     # likely to be {@code 0} or {@code 1}. The method {@code next} is
     # implemented by class {@code Random} by atomically updating the seed to
-    # <pre>{@code (seed * 0x5DEECE66DL + 0xBL) & ((1L << 48) - 1)}</pre>
+    #  <pre>{@code (seed * 0x5DEECE66DL + 0xBL) & ((1L << 48) - 1)}</pre>
     # and returning
-    # <pre>{@code (int)(seed >>> (48 - bits))}.</pre>
+    #  <pre>{@code (int)(seed >>> (48 - bits))}.</pre>
     # 
     # This is a linear congruential pseudorandom number generator, as
     # defined by D. H. Lehmer and described by Donald E. Knuth in
@@ -175,7 +175,7 @@ module Java::Util
     # 
     # @param  bits random bits
     # @return the next pseudorandom value from this random number
-    # generator's sequence
+    #         generator's sequence
     # @since  1.1
     def next_(bits)
       oldseed = 0
@@ -185,7 +185,7 @@ module Java::Util
         oldseed = seed.get
         nextseed = (oldseed * Multiplier + Addend) & Mask
       end while (!seed.compare_and_set(oldseed, nextseed))
-      return RJava.cast_to_int((nextseed >> (48 - bits)))
+      return ((nextseed >> (48 - bits))).to_int
     end
     
     typesig { [Array.typed(::Java::Byte)] }
@@ -195,12 +195,12 @@ module Java::Util
     # 
     # <p>The method {@code nextBytes} is implemented by class {@code Random}
     # as if by:
-    # <pre> {@code
+    #  <pre> {@code
     # public void nextBytes(byte[] bytes) {
-    # for (int i = 0; i < bytes.length; )
-    # for (int rnd = nextInt(), n = Math.min(bytes.length - i, 4);
-    # n-- > 0; rnd >>= 8)
-    # bytes[i++] = (byte)rnd;
+    #   for (int i = 0; i < bytes.length; )
+    #     for (int rnd = nextInt(), n = Math.min(bytes.length - i, 4);
+    #          n-- > 0; rnd >>= 8)
+    #       bytes[i++] = (byte)rnd;
     # }}</pre>
     # 
     # @param  bytes the byte array to fill with random bytes
@@ -229,13 +229,13 @@ module Java::Util
     # 
     # <p>The method {@code nextInt} is implemented by class {@code Random}
     # as if by:
-    # <pre> {@code
+    #  <pre> {@code
     # public int nextInt() {
-    # return next(32);
+    #   return next(32);
     # }}</pre>
     # 
     # @return the next pseudorandom, uniformly distributed {@code int}
-    # value from this random number generator's sequence
+    #         value from this random number generator's sequence
     def next_int
       return next_(32)
     end
@@ -249,20 +249,20 @@ module Java::Util
     # {@code int} values are produced with (approximately) equal
     # probability.  The method {@code nextInt(int n)} is implemented by
     # class {@code Random} as if by:
-    # <pre> {@code
+    #  <pre> {@code
     # public int nextInt(int n) {
-    # if (n <= 0)
-    # throw new IllegalArgumentException("n must be positive");
+    #   if (n <= 0)
+    #     throw new IllegalArgumentException("n must be positive");
     # 
-    # if ((n & -n) == n)  // i.e., n is a power of 2
-    # return (int)((n * (long)next(31)) >> 31);
+    #   if ((n & -n) == n)  // i.e., n is a power of 2
+    #     return (int)((n * (long)next(31)) >> 31);
     # 
-    # int bits, val;
-    # do {
-    # bits = next(31);
-    # val = bits % n;
-    # } while (bits - val + (n-1) < 0);
-    # return val;
+    #   int bits, val;
+    #   do {
+    #       bits = next(31);
+    #       val = bits % n;
+    #   } while (bits - val + (n-1) < 0);
+    #   return val;
     # }}</pre>
     # 
     # <p>The hedge "approximately" is used in the foregoing description only
@@ -288,10 +288,10 @@ module Java::Util
     # successive calls to this method if n is a small power of two.
     # 
     # @param n the bound on the random number to be returned.  Must be
-    # positive.
+    #        positive.
     # @return the next pseudorandom, uniformly distributed {@code int}
-    # value between {@code 0} (inclusive) and {@code n} (exclusive)
-    # from this random number generator's sequence
+    #         value between {@code 0} (inclusive) and {@code n} (exclusive)
+    #         from this random number generator's sequence
     # @exception IllegalArgumentException if n is not positive
     # @since 1.2
     def next_int(n)
@@ -300,7 +300,7 @@ module Java::Util
       end
       if (((n & -n)).equal?(n))
         # i.e., n is a power of 2
-        return RJava.cast_to_int(((n * next_(31)) >> 31))
+        return (((n * next_(31)) >> 31)).to_int
       end
       bits = 0
       val = 0
@@ -319,16 +319,16 @@ module Java::Util
     # 
     # <p>The method {@code nextLong} is implemented by class {@code Random}
     # as if by:
-    # <pre> {@code
+    #  <pre> {@code
     # public long nextLong() {
-    # return ((long)next(32) << 32) + next(32);
+    #   return ((long)next(32) << 32) + next(32);
     # }}</pre>
     # 
     # Because class {@code Random} uses a seed with only 48 bits,
     # this algorithm will not return all possible {@code long} values.
     # 
     # @return the next pseudorandom, uniformly distributed {@code long}
-    # value from this random number generator's sequence
+    #         value from this random number generator's sequence
     def next_long
       # it's okay that the bottom word remains signed.
       return ((next_(32)) << 32) + next_(32)
@@ -344,14 +344,14 @@ module Java::Util
     # 
     # <p>The method {@code nextBoolean} is implemented by class {@code Random}
     # as if by:
-    # <pre> {@code
+    #  <pre> {@code
     # public boolean nextBoolean() {
-    # return next(1) != 0;
+    #   return next(1) != 0;
     # }}</pre>
     # 
     # @return the next pseudorandom, uniformly distributed
-    # {@code boolean} value from this random number generator's
-    # sequence
+    #         {@code boolean} value from this random number generator's
+    #         sequence
     # @since 1.2
     def next_boolean
       return !(next_(1)).equal?(0)
@@ -374,9 +374,9 @@ module Java::Util
     # 
     # <p>The method {@code nextFloat} is implemented by class {@code Random}
     # as if by:
-    # <pre> {@code
+    #  <pre> {@code
     # public float nextFloat() {
-    # return next(24) / ((float)(1 << 24));
+    #   return next(24) / ((float)(1 << 24));
     # }}</pre>
     # 
     # <p>The hedge "approximately" is used in the foregoing description only
@@ -385,16 +385,16 @@ module Java::Util
     # chosen bits, then the algorithm shown would choose {@code float}
     # values from the stated range with perfect uniformity.<p>
     # [In early versions of Java, the result was incorrectly calculated as:
-    # <pre> {@code
-    # return next(30) / ((float)(1 << 30));}</pre>
+    #  <pre> {@code
+    #   return next(30) / ((float)(1 << 30));}</pre>
     # This might seem to be equivalent, if not better, but in fact it
     # introduced a slight nonuniformity because of the bias in the rounding
     # of floating-point numbers: it was slightly more likely that the
     # low-order bit of the significand would be 0 than that it would be 1.]
     # 
     # @return the next pseudorandom, uniformly distributed {@code float}
-    # value between {@code 0.0} and {@code 1.0} from this
-    # random number generator's sequence
+    #         value between {@code 0.0} and {@code 1.0} from this
+    #         random number generator's sequence
     def next_float
       return next_(24) / (((1 << 24)).to_f)
     end
@@ -411,10 +411,10 @@ module Java::Util
     # 
     # <p>The method {@code nextDouble} is implemented by class {@code Random}
     # as if by:
-    # <pre> {@code
+    #  <pre> {@code
     # public double nextDouble() {
-    # return (((long)next(26) << 27) + next(27))
-    # / (double)(1L << 53);
+    #   return (((long)next(26) << 27) + next(27))
+    #     / (double)(1L << 53);
     # }}</pre>
     # 
     # <p>The hedge "approximately" is used in the foregoing description only
@@ -423,9 +423,9 @@ module Java::Util
     # randomly chosen bits, then the algorithm shown would choose
     # {@code double} values from the stated range with perfect uniformity.
     # <p>[In early versions of Java, the result was incorrectly calculated as:
-    # <pre> {@code
-    # return (((long)next(27) << 27) + next(27))
-    # / (double)(1L << 54);}</pre>
+    #  <pre> {@code
+    #   return (((long)next(27) << 27) + next(27))
+    #     / (double)(1L << 54);}</pre>
     # This might seem to be equivalent, if not better, but in fact it
     # introduced a large nonuniformity because of the bias in the rounding
     # of floating-point numbers: it was three times as likely that the
@@ -434,8 +434,8 @@ module Java::Util
     # strive for perfection.]
     # 
     # @return the next pseudorandom, uniformly distributed {@code double}
-    # value between {@code 0.0} and {@code 1.0} from this
-    # random number generator's sequence
+    #         value between {@code 0.0} and {@code 1.0} from this
+    #         random number generator's sequence
     # @see Math#random
     def next_double
       return (((next_(26)) << 27) + next_(27)) / ((1 << 53)).to_f
@@ -465,26 +465,26 @@ module Java::Util
     # 
     # <p>The method {@code nextGaussian} is implemented by class
     # {@code Random} as if by a threadsafe version of the following:
-    # <pre> {@code
+    #  <pre> {@code
     # private double nextNextGaussian;
     # private boolean haveNextNextGaussian = false;
     # 
     # public double nextGaussian() {
-    # if (haveNextNextGaussian) {
-    # haveNextNextGaussian = false;
-    # return nextNextGaussian;
-    # } else {
-    # double v1, v2, s;
-    # do {
-    # v1 = 2 * nextDouble() - 1;   // between -1.0 and 1.0
-    # v2 = 2 * nextDouble() - 1;   // between -1.0 and 1.0
-    # s = v1 * v1 + v2 * v2;
-    # } while (s >= 1 || s == 0);
-    # double multiplier = StrictMath.sqrt(-2 * StrictMath.log(s)/s);
-    # nextNextGaussian = v2 * multiplier;
-    # haveNextNextGaussian = true;
-    # return v1 * multiplier;
-    # }
+    #   if (haveNextNextGaussian) {
+    #     haveNextNextGaussian = false;
+    #     return nextNextGaussian;
+    #   } else {
+    #     double v1, v2, s;
+    #     do {
+    #       v1 = 2 * nextDouble() - 1;   // between -1.0 and 1.0
+    #       v2 = 2 * nextDouble() - 1;   // between -1.0 and 1.0
+    #       s = v1 * v1 + v2 * v2;
+    #     } while (s >= 1 || s == 0);
+    #     double multiplier = StrictMath.sqrt(-2 * StrictMath.log(s)/s);
+    #     nextNextGaussian = v2 * multiplier;
+    #     haveNextNextGaussian = true;
+    #     return v1 * multiplier;
+    #   }
     # }}</pre>
     # This uses the <i>polar method</i> of G. E. P. Box, M. E. Muller, and
     # G. Marsaglia, as described by Donald E. Knuth in <i>The Art of
@@ -494,9 +494,9 @@ module Java::Util
     # and one call to {@code StrictMath.sqrt}.
     # 
     # @return the next pseudorandom, Gaussian ("normally") distributed
-    # {@code double} value with mean {@code 0.0} and
-    # standard deviation {@code 1.0} from this random number
-    # generator's sequence
+    #         {@code double} value with mean {@code 0.0} and
+    #         standard deviation {@code 1.0} from this random number
+    #         generator's sequence
     def next_gaussian
       synchronized(self) do
         # See Knuth, ACP, Section 3.4.1 Algorithm C.
@@ -524,11 +524,11 @@ module Java::Util
       # Serializable fields for Random.
       # 
       # @serialField    seed long
-      # seed for random computations
+      #              seed for random computations
       # @serialField    nextNextGaussian double
-      # next Gaussian to be returned
+      #              next Gaussian to be returned
       # @serialField      haveNextNextGaussian boolean
-      # nextNextGaussian is valid
+      #              nextNextGaussian is valid
       const_set_lazy(:SerialPersistentFields) { Array.typed(ObjectStreamField).new([ObjectStreamField.new("seed", Long::TYPE), ObjectStreamField.new("nextNextGaussian", Double::TYPE), ObjectStreamField.new("haveNextNextGaussian", Boolean::TYPE)]) }
       const_attr_reader  :SerialPersistentFields
     }

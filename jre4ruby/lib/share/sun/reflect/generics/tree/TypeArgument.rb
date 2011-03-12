@@ -30,7 +30,7 @@ module Sun::Reflect::Generics::Tree
     }
   end
   
-  # Common supertype for all possible type arguments in the
+  #  Common supertype for all possible type arguments in the
   # generic signature AST. Corresponds to the production TypeArgument
   # in the JVMS.
   module TypeArgument

@@ -194,7 +194,6 @@ module Java::Security
     # 
     # @see #getPublicKey
     # @see SecurityManager#checkSecurityAccess
-    # 
     # Should we throw an exception if this is already set?
     def set_public_key(key)
       check("setIdentityPublicKey")

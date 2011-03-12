@@ -170,7 +170,7 @@ module Sun::Security::Pkcs11
         session = @token.get_obj_session
         attributes = nil
         if (!(key_bits).equal?(0))
-          attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_CLASS, CKO_SECRET_KEY), CK_ATTRIBUTE.new(CKA_KEY_TYPE, key_type), CK_ATTRIBUTE.new(CKA_VALUE_LEN, expanded_key_bits >> 3), ])
+          attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_CLASS, CKO_SECRET_KEY), CK_ATTRIBUTE.new(CKA_KEY_TYPE, key_type), CK_ATTRIBUTE.new(CKA_VALUE_LEN, expanded_key_bits >> 3)])
         else
           # ciphersuites with NULL ciphers
           attributes = Array.typed(CK_ATTRIBUTE).new(0) { nil }

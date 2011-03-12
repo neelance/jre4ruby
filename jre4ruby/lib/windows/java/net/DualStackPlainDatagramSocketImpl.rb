@@ -64,8 +64,7 @@ module Java::Net
     def datagram_socket_create
       if ((self.attr_fd).nil?)
         raise SocketException.new("Socket closed")
-      end
-      # v6Only
+      end # v6Only
       newfd = socket_create(false)
       self.attr_fd_access.set(self.attr_fd, newfd)
     end
@@ -111,7 +110,6 @@ module Java::Net
         if ((p.get_data).nil?)
           raise NullPointerException.new("packet buffer")
         end
-        # peek
         return socket_receive_or_peek_data(nativefd, p, self.attr_timeout, self.attr_connected, true)
       end
     end
@@ -125,8 +123,7 @@ module Java::Net
         end
         if ((p.get_data).nil?)
           raise NullPointerException.new("packet buffer")
-        end
-        # receive
+        end # receive
         socket_receive_or_peek_data(nativefd, p, self.attr_timeout, self.attr_connected, false)
       end
     end
@@ -153,8 +150,8 @@ module Java::Net
     end
     
     typesig { [::Java::Int] }
-    # unused
     def disconnect0(family)
+      # unused
       if ((self.attr_fd).nil? || !self.attr_fd.valid)
         return
       end # disconnect doesn't throw any exceptions

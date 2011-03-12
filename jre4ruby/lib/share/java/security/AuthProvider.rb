@@ -71,20 +71,20 @@ module Java::Security
     # for obtaining authentication information.
     # 
     # @param subject the <code>Subject</code> which may contain
-    # principals/credentials used for authentication,
-    # or may be populated with additional principals/credentials
-    # after successful authentication has completed.
-    # This parameter may be <code>null</code>.
+    #          principals/credentials used for authentication,
+    #          or may be populated with additional principals/credentials
+    #          after successful authentication has completed.
+    #          This parameter may be <code>null</code>.
     # @param handler the <code>CallbackHandler</code> used by
-    # this provider to obtain authentication information
-    # from the caller, which may be <code>null</code>
+    #          this provider to obtain authentication information
+    #          from the caller, which may be <code>null</code>
     # 
     # @exception LoginException if the login operation fails
     # @exception SecurityException if the caller does not pass a
-    # security check for
-    # <code>SecurityPermission("authProvider.<i>name</i>")</code>,
-    # where <i>name</i> is the value returned by
-    # this provider's <code>getName</code> method
+    #  security check for
+    #  <code>SecurityPermission("authProvider.<i>name</i>")</code>,
+    #  where <i>name</i> is the value returned by
+    #  this provider's <code>getName</code> method
     def login(subject, handler)
       raise NotImplementedError
     end
@@ -94,10 +94,10 @@ module Java::Security
     # 
     # @exception LoginException if the logout operation fails
     # @exception SecurityException if the caller does not pass a
-    # security check for
-    # <code>SecurityPermission("authProvider.<i>name</i>")</code>,
-    # where <i>name</i> is the value returned by
-    # this provider's <code>getName</code> method
+    #  security check for
+    #  <code>SecurityPermission("authProvider.<i>name</i>")</code>,
+    #  where <i>name</i> is the value returned by
+    #  this provider's <code>getName</code> method
     def logout
       raise NotImplementedError
     end
@@ -117,13 +117,13 @@ module Java::Security
     # for obtaining authentication information.
     # 
     # @param handler a <code>CallbackHandler</code> for obtaining
-    # authentication information, which may be <code>null</code>
+    #          authentication information, which may be <code>null</code>
     # 
     # @exception SecurityException if the caller does not pass a
-    # security check for
-    # <code>SecurityPermission("authProvider.<i>name</i>")</code>,
-    # where <i>name</i> is the value returned by
-    # this provider's <code>getName</code> method
+    #  security check for
+    #  <code>SecurityPermission("authProvider.<i>name</i>")</code>,
+    #  where <i>name</i> is the value returned by
+    #  this provider's <code>getName</code> method
     def set_callback_handler(handler)
       raise NotImplementedError
     end

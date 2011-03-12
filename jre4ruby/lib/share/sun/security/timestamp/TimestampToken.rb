@@ -43,28 +43,28 @@ module Sun::Security::Timestamp
   # The timestampTokenInfo ASN.1 type has the following definition:
   # <pre>
   # 
-  # TSTInfo ::= SEQUENCE {
-  # version                INTEGER  { v1(1) },
-  # policy                 TSAPolicyId,
-  # messageImprint         MessageImprint,
-  # -- MUST have the same value as the similar field in
-  # -- TimeStampReq
-  # serialNumber           INTEGER,
-  # -- Time-Stamping users MUST be ready to accommodate integers
-  # -- up to 160 bits.
-  # genTime                GeneralizedTime,
-  # accuracy               Accuracy                 OPTIONAL,
-  # ordering               BOOLEAN             DEFAULT FALSE,
-  # nonce                  INTEGER                  OPTIONAL,
-  # -- MUST be present if the similar field was present
-  # -- in TimeStampReq.  In that case it MUST have the same value.
-  # tsa                    [0] GeneralName          OPTIONAL,
-  # extensions             [1] IMPLICIT Extensions  OPTIONAL }
+  #     TSTInfo ::= SEQUENCE {
+  #         version                INTEGER  { v1(1) },
+  #         policy                 TSAPolicyId,
+  #         messageImprint         MessageImprint,
+  #           -- MUST have the same value as the similar field in
+  #           -- TimeStampReq
+  #         serialNumber           INTEGER,
+  #          -- Time-Stamping users MUST be ready to accommodate integers
+  #          -- up to 160 bits.
+  #         genTime                GeneralizedTime,
+  #         accuracy               Accuracy                 OPTIONAL,
+  #         ordering               BOOLEAN             DEFAULT FALSE,
+  #         nonce                  INTEGER                  OPTIONAL,
+  #           -- MUST be present if the similar field was present
+  #           -- in TimeStampReq.  In that case it MUST have the same value.
+  #         tsa                    [0] GeneralName          OPTIONAL,
+  #         extensions             [1] IMPLICIT Extensions  OPTIONAL }
   # 
-  # Accuracy ::= SEQUENCE {
-  # seconds        INTEGER           OPTIONAL,
-  # millis     [0] INTEGER  (1..999) OPTIONAL,
-  # micros     [1] INTEGER  (1..999) OPTIONAL  }
+  #     Accuracy ::= SEQUENCE {
+  #         seconds        INTEGER           OPTIONAL,
+  #         millis     [0] INTEGER  (1..999) OPTIONAL,
+  #         micros     [1] INTEGER  (1..999) OPTIONAL  }
   # 
   # </pre>
   # 
@@ -120,7 +120,7 @@ module Sun::Security::Timestamp
     # Constructs an object to store a timestamp token.
     # 
     # @param status A buffer containing the ASN.1 BER encoding of the
-    # TSTInfo element defined in RFC 3161.
+    #               TSTInfo element defined in RFC 3161.
     def initialize(timestamp_token_info)
       @version = 0
       @policy = nil
@@ -163,9 +163,9 @@ module Sun::Security::Timestamp
     # Parses the timestamp token info.
     # 
     # @param timestampTokenInfo A buffer containing an ASN.1 BER encoded
-    # TSTInfo.
+    #                           TSTInfo.
     # @throws IOException The exception is thrown if a problem is encountered
-    # while parsing.
+    #         while parsing.
     def parse(timestamp_token_info)
       tst_info = DerValue.new(timestamp_token_info)
       if (!(tst_info.attr_tag).equal?(DerValue.attr_tag_sequence))

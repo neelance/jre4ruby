@@ -22,7 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
 # -- This file was mechanically generated: Do not edit! -- //
 module Sun::Util
   module CoreResourceBundleControlImports #:nodoc:
@@ -100,7 +99,7 @@ module Sun::Util
       # 
       # @param bundleName bundle name to check
       # @return the instance of resource bundle control if the bundle is JDK's,
-      # otherwise returns null.
+      #    otherwise returns null.
       def get_rbcontrol_instance(bundle_name)
         if (bundle_name.starts_with("com.sun.") || bundle_name.starts_with("java.") || bundle_name.starts_with("javax.") || bundle_name.starts_with("sun."))
           return self.attr_resource_bundle_control_instance

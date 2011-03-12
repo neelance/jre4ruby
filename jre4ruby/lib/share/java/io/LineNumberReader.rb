@@ -85,7 +85,7 @@ module Java::Io
     # size.
     # 
     # @param  in
-    # A Reader object to provide the underlying stream
+    #         A Reader object to provide the underlying stream
     def initialize(in_)
       @line_number = 0
       @marked_line_number = 0
@@ -102,10 +102,10 @@ module Java::Io
     # the given size.
     # 
     # @param  in
-    # A Reader object to provide the underlying stream
+    #         A Reader object to provide the underlying stream
     # 
     # @param  sz
-    # An int specifying the size of the buffer
+    #         An int specifying the size of the buffer
     def initialize(in_, sz)
       @line_number = 0
       @marked_line_number = 0
@@ -121,7 +121,7 @@ module Java::Io
     # Set the current line number.
     # 
     # @param  lineNumber
-    # An int specifying the line number
+    #         An int specifying the line number
     # 
     # @see #getLineNumber
     def set_line_number(line_number)
@@ -144,10 +144,10 @@ module Java::Io
     # terminator is read the current line number is incremented.
     # 
     # @return  The character read, or -1 if the end of the stream has been
-    # reached
+    #          reached
     # 
     # @throws  IOException
-    # If an I/O error occurs
+    #          If an I/O error occurs
     def read
       synchronized((self.attr_lock)) do
         c = super
@@ -159,8 +159,7 @@ module Java::Io
         end
         case (c)
         when Character.new(?\r.ord)
-          @skip_lf = true
-          # Fall through
+          @skip_lf = true # Fall through
           @line_number += 1
           return Character.new(?\n.ord)
         when Character.new(?\n.ord)
@@ -178,19 +177,19 @@ module Java::Io
     # incremented.
     # 
     # @param  cbuf
-    # Destination buffer
+    #         Destination buffer
     # 
     # @param  off
-    # Offset at which to start storing characters
+    #         Offset at which to start storing characters
     # 
     # @param  len
-    # Maximum number of characters to read
+    #         Maximum number of characters to read
     # 
     # @return  The number of bytes read, or -1 if the end of the stream has
-    # already been reached
+    #          already been reached
     # 
     # @throws  IOException
-    # If an I/O error occurs
+    #          If an I/O error occurs
     def read(cbuf, off, len)
       synchronized((self.attr_lock)) do
         n = super(cbuf, off, len)
@@ -206,8 +205,7 @@ module Java::Io
           end
           case (c)
           when Character.new(?\r.ord)
-            @skip_lf = true
-            # Fall through
+            @skip_lf = true # Fall through
             @line_number += 1
           when Character.new(?\n.ord)
             # Fall through
@@ -224,11 +222,11 @@ module Java::Io
     # read the current line number is incremented.
     # 
     # @return  A String containing the contents of the line, not including
-    # any <a href="#lt">line termination characters</a>, or
-    # <tt>null</tt> if the end of the stream has been reached
+    #          any <a href="#lt">line termination characters</a>, or
+    #          <tt>null</tt> if the end of the stream has been reached
     # 
     # @throws  IOException
-    # If an I/O error occurs
+    #          If an I/O error occurs
     def read_line
       synchronized((self.attr_lock)) do
         l = super(@skip_lf)
@@ -257,27 +255,27 @@ module Java::Io
     # Skip characters.
     # 
     # @param  n
-    # The number of characters to skip
+    #         The number of characters to skip
     # 
     # @return  The number of characters actually skipped
     # 
     # @throws  IOException
-    # If an I/O error occurs
+    #          If an I/O error occurs
     # 
     # @throws  IllegalArgumentException
-    # If <tt>n</tt> is negative
+    #          If <tt>n</tt> is negative
     def skip(n)
       if (n < 0)
         raise IllegalArgumentException.new("skip() value is negative")
       end
-      nn = RJava.cast_to_int(Math.min(n, MaxSkipBufferSize))
+      nn = (Math.min(n, MaxSkipBufferSize)).to_int
       synchronized((self.attr_lock)) do
         if (((@skip_buffer).nil?) || (@skip_buffer.attr_length < nn))
           @skip_buffer = CharArray.new(nn)
         end
         r = n
         while (r > 0)
-          nc = read(@skip_buffer, 0, RJava.cast_to_int(Math.min(r, nn)))
+          nc = read(@skip_buffer, 0, (Math.min(r, nn)).to_int)
           if ((nc).equal?(-1))
             break
           end
@@ -293,12 +291,12 @@ module Java::Io
     # the line number appropriately.
     # 
     # @param  readAheadLimit
-    # Limit on the number of characters that may be read while still
-    # preserving the mark.  After reading this many characters,
-    # attempting to reset the stream may fail.
+    #         Limit on the number of characters that may be read while still
+    #         preserving the mark.  After reading this many characters,
+    #         attempting to reset the stream may fail.
     # 
     # @throws  IOException
-    # If an I/O error occurs
+    #          If an I/O error occurs
     def mark(read_ahead_limit)
       synchronized((self.attr_lock)) do
         super(read_ahead_limit)
@@ -311,8 +309,8 @@ module Java::Io
     # Reset the stream to the most recent mark.
     # 
     # @throws  IOException
-    # If the stream has not been marked, or if the mark has been
-    # invalidated
+    #          If the stream has not been marked, or if the mark has been
+    #          invalidated
     def reset
       synchronized((self.attr_lock)) do
         super

@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996 - 1998 - All Rights Reserved
 # 
@@ -447,8 +445,8 @@ module Java::Util
       # within the same Java Virtual Machine.
       # 
       # @throws SecurityException
-      # if a security manager exists and its
-      # <code>checkPermission</code> method doesn't allow the operation.
+      #        if a security manager exists and its
+      #        <code>checkPermission</code> method doesn't allow the operation.
       # @throws NullPointerException if <code>newLocale</code> is null
       # @param newLocale the new default locale
       # @see SecurityManager#checkPermission
@@ -529,10 +527,10 @@ module Java::Util
     # whose codes have changed, but this function always returns the old code.  If you
     # want to check for a specific language whose code has changed, don't do <pre>
     # if (locale.getLanguage().equals("he"))
-    # ...
+    #    ...
     # </pre>Instead, do<pre>
     # if (locale.getLanguage().equals(new Locale("he", "", "").getLanguage()))
-    # ...</pre>
+    #    ...</pre>
     # @see #getDisplayLanguage
     def get_language
       return @language
@@ -891,7 +889,6 @@ module Java::Util
     
     typesig { [Object] }
     # Overrides
-    # 
     # Returns true if this Locale is equal to another object.  A Locale is
     # deemed equal to another Locale with identical language, country,
     # and variant, and unequal to all other objects.
@@ -912,7 +909,6 @@ module Java::Util
     # ================= privates =====================================
     # XXX instance and class variables. For now keep these separate, since it is
     # faster to match. Later, make into single string.
-    # 
     # @serial
     # @see #getLanguage
     attr_accessor :language
@@ -946,7 +942,6 @@ module Java::Util
     undef_method :hashcode=
     
     # lazy evaluate
-    # 
     # Calculated hashcode to fix 4518797.
     attr_accessor :hash_code_value
     alias_method :attr_hash_code_value, :hash_code_value
@@ -1013,16 +1008,16 @@ module Java::Util
         end
         # Compose the list down to three elements if necessary
         if (string_list.attr_length > 3)
-          format = MessageFormat.new(list_composition_pattern)
-          string_list = compose_list(format, string_list)
+          format_ = MessageFormat.new(list_composition_pattern)
+          string_list = compose_list(format_, string_list)
         end
         # Rebuild the argument list with the list length as the first element
         args = Array.typed(Object).new(string_list.attr_length + 1) { nil }
         System.arraycopy(string_list, 0, args, 1, string_list.attr_length)
         args[0] = string_list.attr_length
         # Format it using the pattern in the resource
-        format = MessageFormat.new(list_pattern)
-        return format.format(args)
+        format_ = MessageFormat.new(list_pattern)
+        return format_.format(args)
       end
       
       typesig { [MessageFormat, Array.typed(String)] }
@@ -1154,9 +1149,10 @@ module Java::Util
             return locale_name_provider.get_display_country(code, locale)
           when DISPLAY_VARIANT
             return locale_name_provider.get_display_variant(code, locale)
+          # shouldn't happen
           else
             raise AssertError if not (false)
-          end # shouldn't happen
+          end
           return nil
         end
         

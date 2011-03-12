@@ -131,7 +131,7 @@ module Sun::Nio::Cs::Ext
       super(cs, ((CompoundTextSupport::MAX_CONTROL_SEQUENCE_LEN + 2)).to_f, ((CompoundTextSupport::MAX_CONTROL_SEQUENCE_LEN + 2)).to_f)
       @char_buf = CharArray.new(1)
       @charbuf = CharBuffer.wrap(@char_buf)
-      @fcb = CharBuffer.allocate(0)
+      @fcb = CharBuffer.allocate_(0)
       begin
         @encoder = Charset.for_name("ISO8859_1").new_encoder
       rescue IllegalArgumentException => cannot_happen
@@ -221,7 +221,7 @@ module Sun::Nio::Cs::Ext
     typesig { [CharsetEncoder, Array.typed(::Java::Byte)] }
     def init_non_standard_charset_buffer(c, esc_sequence)
       @non_standard_charset_buffer = ByteArrayOutputStream.new
-      @byte_buf = Array.typed(::Java::Byte).new(RJava.cast_to_int(c.max_bytes_per_char)) { 0 }
+      @byte_buf = Array.typed(::Java::Byte).new((c.max_bytes_per_char).to_int) { 0 }
       @bytebuf = ByteBuffer.wrap(@byte_buf)
       @non_standard_charset_buffer.write(esc_sequence, 0, esc_sequence.attr_length)
       @non_standard_charset_buffer.write(0) # M placeholder
@@ -238,7 +238,7 @@ module Sun::Nio::Cs::Ext
     typesig { [ByteBuffer] }
     def flush_non_standard_charset_buffer(out)
       if (@num_non_standard_chars > 0)
-        flush_buf = Array.typed(::Java::Byte).new(RJava.cast_to_int(@encoder.max_bytes_per_char) * @num_non_standard_chars) { 0 }
+        flush_buf = Array.typed(::Java::Byte).new((@encoder.max_bytes_per_char).to_int * @num_non_standard_chars) { 0 }
         bb = ByteBuffer.wrap(flush_buf)
         flush_encoder(@encoder, bb)
         bb.flip

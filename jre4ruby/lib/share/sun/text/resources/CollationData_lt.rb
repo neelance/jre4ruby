@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996 - 1998 - All Rights Reserved
 # 
@@ -49,14 +47,6 @@ module Sun::Text::Resources
     
     typesig { [] }
     def get_contents
-      # for lt, accents sorted backwards plus the following:
-      # tal : french secondary
-      # nt : open-o < c-caron
-      # nt : i is equivalent to y
-      # nt : long-s < s-caron
-      # nt : x < y-acute
-      # nt : y-circumflex < y-umlaut
-      # nt : ezh-tail < z-caron
       return Array.typed(Array.typed(Object)).new([Array.typed(Object).new(["Rule", "@" + ("& C < c".to_u << 0x030c << " , C".to_u << 0x030c << " ") + ("& I ; y = ".to_u << 0x0131 << " , Y = ".to_u << 0x0130 << " ") + ("& S < s".to_u << 0x030c << " , S".to_u << 0x030c << " ") + ("& X < y".to_u << 0x0301 << ", Y".to_u << 0x0301 << " ") + ("< y".to_u << 0x0302 << " , Y".to_u << 0x0302 << " < y".to_u << 0x0308 << ", Y".to_u << 0x0308 << " ") + ("& Z < z".to_u << 0x030c << " , Z".to_u << 0x030c << " ")])])
     end
     

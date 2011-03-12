@@ -71,7 +71,7 @@ module Java::Util::Prefs
     # @param node  The Preferences node that emitted the event.
     # @param key  The key of the preference that was changed.
     # @param newValue  The new value of the preference, or <tt>null</tt>
-    # if the preference is being removed.
+    #                  if the preference is being removed.
     def initialize(node, key, new_value)
       @key = nil
       @new_value = nil
@@ -100,7 +100,7 @@ module Java::Util::Prefs
     # Returns the new value for the preference.
     # 
     # @return  The new value for the preference, or <tt>null</tt> if the
-    # preference was removed.
+    #          preference was removed.
     def get_new_value
       return @new_value
     end

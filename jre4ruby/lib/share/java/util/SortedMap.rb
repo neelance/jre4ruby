@@ -87,13 +87,13 @@ module Java::Util
   # is a map whose keys are strings.  The following idiom obtains a view
   # containing all of the key-value mappings in <tt>m</tt> whose keys are
   # between <tt>low</tt> and <tt>high</tt>, inclusive:<pre>
-  # SortedMap&lt;String, V&gt; sub = m.subMap(low, high+"\0");</pre>
+  #   SortedMap&lt;String, V&gt; sub = m.subMap(low, high+"\0");</pre>
   # 
   # A similar technique can be used to generate an <i>open range</i>
   # (which contains neither endpoint).  The following idiom obtains a
   # view containing all of the key-value mappings in <tt>m</tt> whose keys
   # are between <tt>low</tt> and <tt>high</tt>, exclusive:<pre>
-  # SortedMap&lt;String, V&gt; sub = m.subMap(low+"\0", high);</pre>
+  #   SortedMap&lt;String, V&gt; sub = m.subMap(low+"\0", high);</pre>
   # 
   # <p>This interface is a member of the
   # <a href="{@docRoot}/../technotes/guides/collections/index.html">
@@ -121,8 +121,8 @@ module Java::Util
     # natural ordering} of its keys.
     # 
     # @return the comparator used to order the keys in this map,
-    # or <tt>null</tt> if this map uses the natural ordering
-    # of its keys
+    #         or <tt>null</tt> if this map uses the natural ordering
+    #         of its keys
     def comparator
       raise NotImplementedError
     end
@@ -142,19 +142,19 @@ module Java::Util
     # @param fromKey low endpoint (inclusive) of the keys in the returned map
     # @param toKey high endpoint (exclusive) of the keys in the returned map
     # @return a view of the portion of this map whose keys range from
-    # <tt>fromKey</tt>, inclusive, to <tt>toKey</tt>, exclusive
+    #         <tt>fromKey</tt>, inclusive, to <tt>toKey</tt>, exclusive
     # @throws ClassCastException if <tt>fromKey</tt> and <tt>toKey</tt>
-    # cannot be compared to one another using this map's comparator
-    # (or, if the map has no comparator, using natural ordering).
-    # Implementations may, but are not required to, throw this
-    # exception if <tt>fromKey</tt> or <tt>toKey</tt>
-    # cannot be compared to keys currently in the map.
+    #         cannot be compared to one another using this map's comparator
+    #         (or, if the map has no comparator, using natural ordering).
+    #         Implementations may, but are not required to, throw this
+    #         exception if <tt>fromKey</tt> or <tt>toKey</tt>
+    #         cannot be compared to keys currently in the map.
     # @throws NullPointerException if <tt>fromKey</tt> or <tt>toKey</tt>
-    # is null and this map does not permit null keys
+    #         is null and this map does not permit null keys
     # @throws IllegalArgumentException if <tt>fromKey</tt> is greater than
-    # <tt>toKey</tt>; or if this map itself has a restricted
-    # range, and <tt>fromKey</tt> or <tt>toKey</tt> lies
-    # outside the bounds of the range
+    #         <tt>toKey</tt>; or if this map itself has a restricted
+    #         range, and <tt>fromKey</tt> or <tt>toKey</tt> lies
+    #         outside the bounds of the range
     def sub_map(from_key, to_key)
       raise NotImplementedError
     end
@@ -171,18 +171,18 @@ module Java::Util
     # 
     # @param toKey high endpoint (exclusive) of the keys in the returned map
     # @return a view of the portion of this map whose keys are strictly
-    # less than <tt>toKey</tt>
+    #         less than <tt>toKey</tt>
     # @throws ClassCastException if <tt>toKey</tt> is not compatible
-    # with this map's comparator (or, if the map has no comparator,
-    # if <tt>toKey</tt> does not implement {@link Comparable}).
-    # Implementations may, but are not required to, throw this
-    # exception if <tt>toKey</tt> cannot be compared to keys
-    # currently in the map.
+    #         with this map's comparator (or, if the map has no comparator,
+    #         if <tt>toKey</tt> does not implement {@link Comparable}).
+    #         Implementations may, but are not required to, throw this
+    #         exception if <tt>toKey</tt> cannot be compared to keys
+    #         currently in the map.
     # @throws NullPointerException if <tt>toKey</tt> is null and
-    # this map does not permit null keys
+    #         this map does not permit null keys
     # @throws IllegalArgumentException if this map itself has a
-    # restricted range, and <tt>toKey</tt> lies outside the
-    # bounds of the range
+    #         restricted range, and <tt>toKey</tt> lies outside the
+    #         bounds of the range
     def head_map(to_key)
       raise NotImplementedError
     end
@@ -199,18 +199,18 @@ module Java::Util
     # 
     # @param fromKey low endpoint (inclusive) of the keys in the returned map
     # @return a view of the portion of this map whose keys are greater
-    # than or equal to <tt>fromKey</tt>
+    #         than or equal to <tt>fromKey</tt>
     # @throws ClassCastException if <tt>fromKey</tt> is not compatible
-    # with this map's comparator (or, if the map has no comparator,
-    # if <tt>fromKey</tt> does not implement {@link Comparable}).
-    # Implementations may, but are not required to, throw this
-    # exception if <tt>fromKey</tt> cannot be compared to keys
-    # currently in the map.
+    #         with this map's comparator (or, if the map has no comparator,
+    #         if <tt>fromKey</tt> does not implement {@link Comparable}).
+    #         Implementations may, but are not required to, throw this
+    #         exception if <tt>fromKey</tt> cannot be compared to keys
+    #         currently in the map.
     # @throws NullPointerException if <tt>fromKey</tt> is null and
-    # this map does not permit null keys
+    #         this map does not permit null keys
     # @throws IllegalArgumentException if this map itself has a
-    # restricted range, and <tt>fromKey</tt> lies outside the
-    # bounds of the range
+    #         restricted range, and <tt>fromKey</tt> lies outside the
+    #         bounds of the range
     def tail_map(from_key)
       raise NotImplementedError
     end
@@ -248,7 +248,7 @@ module Java::Util
     # operations.
     # 
     # @return a set view of the keys contained in this map, sorted in
-    # ascending order
+    #         ascending order
     def key_set
       raise NotImplementedError
     end
@@ -269,7 +269,7 @@ module Java::Util
     # support the <tt>add</tt> or <tt>addAll</tt> operations.
     # 
     # @return a collection view of the values contained in this map,
-    # sorted in ascending key order
+    #         sorted in ascending key order
     def values
       raise NotImplementedError
     end
@@ -290,7 +290,7 @@ module Java::Util
     # <tt>add</tt> or <tt>addAll</tt> operations.
     # 
     # @return a set view of the mappings contained in this map,
-    # sorted in ascending key order
+    #         sorted in ascending key order
     def entry_set
       raise NotImplementedError
     end

@@ -105,7 +105,7 @@ module Sun::Security::Util
     # @pos set by
     # 
     # @returns false if end of bytes has been reached, otherwise returns
-    # true
+    #          true
     def find_section(offset, pos)
       i = offset
       len = @raw_bytes.attr_length

@@ -22,17 +22,15 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996 - All Rights Reserved
 # 
-# The original version of this source code and documentation is copyrighted
+#   The original version of this source code and documentation is copyrighted
 # and owned by Taligent, Inc., a wholly-owned subsidiary of IBM. These
 # materials are provided under terms of a License Agreement between Taligent
 # and Sun. This technology is protected by multiple US and International
 # patents. This notice and attribution to Taligent may not be removed.
-# Taligent is a registered trademark of Taligent, Inc.
+#   Taligent is a registered trademark of Taligent, Inc.
 module Java::Util
   module TimeZoneImports #:nodoc:
     class_module.module_eval {
@@ -76,18 +74,18 @@ module Java::Util
   # 
   # <blockquote><pre>
   # <a name="CustomID"><i>CustomID:</i></a>
-  # <code>GMT</code> <i>Sign</i> <i>Hours</i> <code>:</code> <i>Minutes</i>
-  # <code>GMT</code> <i>Sign</i> <i>Hours</i> <i>Minutes</i>
-  # <code>GMT</code> <i>Sign</i> <i>Hours</i>
+  #         <code>GMT</code> <i>Sign</i> <i>Hours</i> <code>:</code> <i>Minutes</i>
+  #         <code>GMT</code> <i>Sign</i> <i>Hours</i> <i>Minutes</i>
+  #         <code>GMT</code> <i>Sign</i> <i>Hours</i>
   # <i>Sign:</i> one of
-  # <code>+ -</code>
+  #         <code>+ -</code>
   # <i>Hours:</i>
-  # <i>Digit</i>
-  # <i>Digit</i> <i>Digit</i>
+  #         <i>Digit</i>
+  #         <i>Digit</i> <i>Digit</i>
   # <i>Minutes:</i>
-  # <i>Digit</i> <i>Digit</i>
+  #         <i>Digit</i> <i>Digit</i>
   # <i>Digit:</i> one of
-  # <code>0 1 2 3 4 5 6 7 8 9</code>
+  #         <code>0 1 2 3 4 5 6 7 8 9</code>
   # </pre></blockquote>
   # 
   # <i>Hours</i> must be between 0 to 23 and <i>Minutes</i> must be
@@ -104,15 +102,15 @@ module Java::Util
   # zone ID is normalized in the following syntax:
   # <blockquote><pre>
   # <a name="NormalizedCustomID"><i>NormalizedCustomID:</i></a>
-  # <code>GMT</code> <i>Sign</i> <i>TwoDigitHours</i> <code>:</code> <i>Minutes</i>
+  #         <code>GMT</code> <i>Sign</i> <i>TwoDigitHours</i> <code>:</code> <i>Minutes</i>
   # <i>Sign:</i> one of
-  # <code>+ -</code>
+  #         <code>+ -</code>
   # <i>TwoDigitHours:</i>
-  # <i>Digit</i> <i>Digit</i>
+  #         <i>Digit</i> <i>Digit</i>
   # <i>Minutes:</i>
-  # <i>Digit</i> <i>Digit</i>
+  #         <i>Digit</i> <i>Digit</i>
   # <i>Digit:</i> one of
-  # <code>0 1 2 3 4 5 6 7 8 9</code>
+  #         <code>0 1 2 3 4 5 6 7 8 9</code>
   # </pre></blockquote>
   # For example, TimeZone.getTimeZone("GMT-8").getID() returns "GMT-08:00".
   # 
@@ -400,7 +398,7 @@ module Java::Util
         class_module.module_eval {
           # Cache for managing display names per timezone per locale
           # The structure is:
-          # Map(key=id, value=SoftReference(Map(key=locale, value=displaynames)))
+          #   Map(key=id, value=SoftReference(Map(key=locale, value=displaynames)))
           const_set_lazy(:CACHE) { class_self::ConcurrentHashMap.new }
           const_attr_reader  :CACHE
         }
@@ -709,7 +707,6 @@ module Java::Util
     }
     
     # =======================privates===============================
-    # 
     # The string identifier of this <code>TimeZone</code>.  This is a
     # programmatic identifier used internally to look up <code>TimeZone</code>
     # objects from the system table and also to map them to their localized

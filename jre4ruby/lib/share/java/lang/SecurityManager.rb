@@ -58,10 +58,10 @@ module Java::Lang
   # methods perform certain potentially sensitive operations. The
   # invocation of such a <code>check</code> method typically looks like this:
   # <p><blockquote><pre>
-  # SecurityManager security = System.getSecurityManager();
-  # if (security != null) {
-  # security.check<i>XXX</i>(argument, &nbsp;.&nbsp;.&nbsp;.&nbsp;);
-  # }
+  #     SecurityManager security = System.getSecurityManager();
+  #     if (security != null) {
+  #         security.check<i>XXX</i>(argument, &nbsp;.&nbsp;.&nbsp;.&nbsp;);
+  #     }
   # </pre></blockquote>
   # <p>
   # The security manager is thereby given an opportunity to prevent
@@ -84,7 +84,7 @@ module Java::Lang
   # default implementation calls
   # 
   # <pre>
-  # AccessController.checkPermission(perm);
+  #   AccessController.checkPermission(perm);
   # </pre>
   # 
   # <p>
@@ -115,9 +115,9 @@ module Java::Lang
   # the following:
   # 
   # <pre>
-  # Object context = null;
-  # SecurityManager sm = System.getSecurityManager();
-  # if (sm != null) context = sm.getSecurityContext();
+  #   Object context = null;
+  #   SecurityManager sm = System.getSecurityManager();
+  #   if (sm != null) context = sm.getSecurityContext();
   # </pre>
   # 
   # <p>
@@ -132,7 +132,7 @@ module Java::Lang
   # is the following:
   # 
   # <pre>
-  # if (sm != null) sm.checkPermission(permission, context);
+  #   if (sm != null) sm.checkPermission(permission, context);
   # </pre>
   # 
   # <p>Permissions fall into these categories: File, Socket, Net,
@@ -204,10 +204,10 @@ module Java::Lang
   # @see     java.lang.ClassLoader
   # @see     java.lang.SecurityException
   # @see     java.lang.SecurityManager#checkTopLevelWindow(java.lang.Object)
-  # checkTopLevelWindow
+  #  checkTopLevelWindow
   # @see     java.lang.System#getSecurityManager() getSecurityManager
   # @see     java.lang.System#setSecurityManager(java.lang.SecurityManager)
-  # setSecurityManager
+  #  setSecurityManager
   # @see     java.security.AccessController AccessController
   # @see     java.security.AccessControlContext AccessControlContext
   # @see     java.security.AccessControlException AccessControlException
@@ -230,8 +230,8 @@ module Java::Lang
     # progress; <code>false</code> otherwise.
     # 
     # @deprecated This type of security checking is not recommended.
-    # It is recommended that the <code>checkPermission</code>
-    # call be used instead.
+    #  It is recommended that the <code>checkPermission</code>
+    #  call be used instead.
     attr_accessor :in_check
     alias_method :attr_in_check, :in_check
     undef_method :in_check
@@ -260,13 +260,13 @@ module Java::Lang
     # Tests if there is a security check in progress.
     # 
     # @return the value of the <code>inCheck</code> field. This field
-    # should contain <code>true</code> if a security check is
-    # in progress,
-    # <code>false</code> otherwise.
+    #          should contain <code>true</code> if a security check is
+    #          in progress,
+    #          <code>false</code> otherwise.
     # @see     java.lang.SecurityManager#inCheck
     # @deprecated This type of security checking is not recommended.
-    # It is recommended that the <code>checkPermission</code>
-    # call be used instead.
+    #  It is recommended that the <code>checkPermission</code>
+    #  call be used instead.
     def get_in_check
       return @in_check
     end
@@ -282,8 +282,8 @@ module Java::Lang
     # This may result in throwing a <code>SecurityException</code>.
     # 
     # @exception  java.lang.SecurityException if a security manager already
-    # exists and its <code>checkPermission</code> method
-    # doesn't allow creation of a new security manager.
+    #             exists and its <code>checkPermission</code> method
+    #             doesn't allow creation of a new security manager.
     # @see        java.lang.System#getSecurityManager()
     # @see        #checkPermission(java.security.Permission) checkPermission
     # @see java.lang.RuntimePermission
@@ -325,28 +325,28 @@ module Java::Lang
     # This method will return
     # <code>null</code> in the following three cases:<p>
     # <ol>
-    # <li>All methods on the execution stack are from classes
-    # defined using the system class loader or one of its ancestors.
+    #   <li>All methods on the execution stack are from classes
+    #   defined using the system class loader or one of its ancestors.
     # 
-    # <li>All methods on the execution stack up to the first
-    # "privileged" caller
-    # (see {@link java.security.AccessController#doPrivileged})
-    # are from classes
-    # defined using the system class loader or one of its ancestors.
+    #   <li>All methods on the execution stack up to the first
+    #   "privileged" caller
+    #   (see {@link java.security.AccessController#doPrivileged})
+    #   are from classes
+    #   defined using the system class loader or one of its ancestors.
     # 
-    # <li> A call to <code>checkPermission</code> with
-    # <code>java.security.AllPermission</code> does not
-    # result in a SecurityException.
+    #   <li> A call to <code>checkPermission</code> with
+    #   <code>java.security.AllPermission</code> does not
+    #   result in a SecurityException.
     # 
     # </ol>
     # 
     # @return  the class loader of the most recent occurrence on the stack
-    # of a method from a class defined using a non-system class
-    # loader.
+    #          of a method from a class defined using a non-system class
+    #          loader.
     # 
     # @deprecated This type of security checking is not recommended.
-    # It is recommended that the <code>checkPermission</code>
-    # call be used instead.
+    #  It is recommended that the <code>checkPermission</code>
+    #  call be used instead.
     # 
     # @see  java.lang.ClassLoader#getSystemClassLoader() getSystemClassLoader
     # @see  #checkPermission(java.security.Permission) checkPermission
@@ -374,28 +374,28 @@ module Java::Lang
     # This method will return
     # <code>null</code> in the following three cases:<p>
     # <ol>
-    # <li>All methods on the execution stack are from classes
-    # defined using the system class loader or one of its ancestors.
+    #   <li>All methods on the execution stack are from classes
+    #   defined using the system class loader or one of its ancestors.
     # 
-    # <li>All methods on the execution stack up to the first
-    # "privileged" caller
-    # (see {@link java.security.AccessController#doPrivileged})
-    # are from classes
-    # defined using the system class loader or one of its ancestors.
+    #   <li>All methods on the execution stack up to the first
+    #   "privileged" caller
+    #   (see {@link java.security.AccessController#doPrivileged})
+    #   are from classes
+    #   defined using the system class loader or one of its ancestors.
     # 
-    # <li> A call to <code>checkPermission</code> with
-    # <code>java.security.AllPermission</code> does not
-    # result in a SecurityException.
+    #   <li> A call to <code>checkPermission</code> with
+    #   <code>java.security.AllPermission</code> does not
+    #   result in a SecurityException.
     # 
     # </ol>
     # 
     # @return  the class  of the most recent occurrence on the stack
-    # of a method from a class defined using a non-system class
-    # loader.
+    #          of a method from a class defined using a non-system class
+    #          loader.
     # 
     # @deprecated This type of security checking is not recommended.
-    # It is recommended that the <code>checkPermission</code>
-    # call be used instead.
+    #  It is recommended that the <code>checkPermission</code>
+    #  call be used instead.
     # 
     # @see  java.lang.ClassLoader#getSystemClassLoader() getSystemClassLoader
     # @see  #checkPermission(java.security.Permission) checkPermission
@@ -413,11 +413,11 @@ module Java::Lang
     # 
     # @param   name   the fully qualified name of the class to search for.
     # @return  the depth on the stack frame of the first occurrence of a
-    # method from a class with the specified name;
-    # <code>-1</code> if such a frame cannot be found.
+    #          method from a class with the specified name;
+    #          <code>-1</code> if such a frame cannot be found.
     # @deprecated This type of security checking is not recommended.
-    # It is recommended that the <code>checkPermission</code>
-    # call be used instead.
+    #  It is recommended that the <code>checkPermission</code>
+    #  call be used instead.
     def class_depth(name)
       JNI.call_native_method(:Java_java_lang_SecurityManager_classDepth, JNI.env, self.jni_id, name.jni_id)
     end
@@ -432,27 +432,27 @@ module Java::Lang
     # This method will return
     # -1 in the following three cases:<p>
     # <ol>
-    # <li>All methods on the execution stack are from classes
-    # defined using the system class loader or one of its ancestors.
+    #   <li>All methods on the execution stack are from classes
+    #   defined using the system class loader or one of its ancestors.
     # 
-    # <li>All methods on the execution stack up to the first
-    # "privileged" caller
-    # (see {@link java.security.AccessController#doPrivileged})
-    # are from classes
-    # defined using the system class loader or one of its ancestors.
+    #   <li>All methods on the execution stack up to the first
+    #   "privileged" caller
+    #   (see {@link java.security.AccessController#doPrivileged})
+    #   are from classes
+    #   defined using the system class loader or one of its ancestors.
     # 
-    # <li> A call to <code>checkPermission</code> with
-    # <code>java.security.AllPermission</code> does not
-    # result in a SecurityException.
+    #   <li> A call to <code>checkPermission</code> with
+    #   <code>java.security.AllPermission</code> does not
+    #   result in a SecurityException.
     # 
     # </ol>
     # 
     # @return the depth on the stack frame of the most recent occurrence of
-    # a method from a class defined using a non-system class loader.
+    #          a method from a class defined using a non-system class loader.
     # 
     # @deprecated This type of security checking is not recommended.
-    # It is recommended that the <code>checkPermission</code>
-    # call be used instead.
+    #  It is recommended that the <code>checkPermission</code>
+    #  call be used instead.
     # 
     # @see   java.lang.ClassLoader#getSystemClassLoader() getSystemClassLoader
     # @see   #checkPermission(java.security.Permission) checkPermission
@@ -476,28 +476,28 @@ module Java::Lang
     
     typesig { [String] }
     # Tests if a method from a class with the specified
-    # name is on the execution stack.
+    #         name is on the execution stack.
     # 
     # @param  name   the fully qualified name of the class.
     # @return <code>true</code> if a method from a class with the specified
-    # name is on the execution stack; <code>false</code> otherwise.
+    #         name is on the execution stack; <code>false</code> otherwise.
     # @deprecated This type of security checking is not recommended.
-    # It is recommended that the <code>checkPermission</code>
-    # call be used instead.
+    #  It is recommended that the <code>checkPermission</code>
+    #  call be used instead.
     def in_class(name)
       return class_depth(name) >= 0
     end
     
     typesig { [] }
     # Basically, tests if a method from a class defined using a
-    # class loader is on the execution stack.
+    #          class loader is on the execution stack.
     # 
     # @return  <code>true</code> if a call to <code>currentClassLoader</code>
-    # has a non-null return value.
+    #          has a non-null return value.
     # 
     # @deprecated This type of security checking is not recommended.
-    # It is recommended that the <code>checkPermission</code>
-    # call be used instead.
+    #  It is recommended that the <code>checkPermission</code>
+    #  call be used instead.
     # @see        #currentClassLoader() currentClassLoader
     def in_class_loader
       return !(current_class_loader).nil?
@@ -517,12 +517,12 @@ module Java::Lang
     # an <code>AccessControlContext</code> object.
     # 
     # @return  an implementation-dependent object that encapsulates
-    # sufficient information about the current execution environment
-    # to perform some security checks later.
+    #          sufficient information about the current execution environment
+    #          to perform some security checks later.
     # @see     java.lang.SecurityManager#checkConnect(java.lang.String, int,
-    # java.lang.Object) checkConnect
+    #   java.lang.Object) checkConnect
     # @see     java.lang.SecurityManager#checkRead(java.lang.String,
-    # java.lang.Object) checkRead
+    #   java.lang.Object) checkRead
     # @see     java.security.AccessControlContext AccessControlContext
     def get_security_context
       return AccessController.get_context
@@ -538,9 +538,9 @@ module Java::Lang
     # 
     # @param     perm   the requested permission.
     # @exception SecurityException if access is not permitted based on
-    # the current security policy.
+    #            the current security policy.
     # @exception NullPointerException if the permission argument is
-    # <code>null</code>.
+    #            <code>null</code>.
     # @since     1.2
     def check_permission(perm)
       Java::Security::AccessController.check_permission(perm)
@@ -568,11 +568,11 @@ module Java::Lang
     # @param      perm      the specified permission
     # @param      context   a system-dependent security context.
     # @exception  SecurityException  if the specified security context
-    # is not an instance of <code>AccessControlContext</code>
-    # (e.g., is <code>null</code>), or is denied access to the
-    # resource specified by the given permission.
+    #             is not an instance of <code>AccessControlContext</code>
+    #             (e.g., is <code>null</code>), or is denied access to the
+    #             resource specified by the given permission.
     # @exception  NullPointerException if the permission argument is
-    # <code>null</code>.
+    #             <code>null</code>.
     # @see        java.lang.SecurityManager#getSecurityContext()
     # @see java.security.AccessControlContext#checkPermission(java.security.Permission)
     # @since      1.2
@@ -598,8 +598,8 @@ module Java::Lang
     # exception.
     # 
     # @exception SecurityException if the calling thread does not
-    # have permission
-    # to create a new class loader.
+    #             have permission
+    #             to create a new class loader.
     # @see        java.lang.ClassLoader#ClassLoader()
     # @see        #checkPermission(java.security.Permission) checkPermission
     def check_create_class_loader
@@ -661,9 +661,9 @@ module Java::Lang
     # 
     # @param      t   the thread to be checked.
     # @exception  SecurityException  if the calling thread does not have
-    # permission to modify the thread.
+    #             permission to modify the thread.
     # @exception  NullPointerException if the thread argument is
-    # <code>null</code>.
+    #             <code>null</code>.
     # @see        java.lang.Thread#resume() resume
     # @see        java.lang.Thread#setDaemon(boolean) setDaemon
     # @see        java.lang.Thread#setName(java.lang.String) setName
@@ -714,9 +714,9 @@ module Java::Lang
     # 
     # @param      g   the thread group to be checked.
     # @exception  SecurityException  if the calling thread does not have
-    # permission to modify the thread group.
+    #             permission to modify the thread group.
     # @exception  NullPointerException if the thread group argument is
-    # <code>null</code>.
+    #             <code>null</code>.
     # @see        java.lang.ThreadGroup#destroy() destroy
     # @see        java.lang.ThreadGroup#resume() resume
     # @see        java.lang.ThreadGroup#setDaemon(boolean) setDaemon
@@ -755,8 +755,8 @@ module Java::Lang
     # 
     # @param      status   the exit status.
     # @exception SecurityException if the calling thread does not have
-    # permission to halt the Java Virtual Machine with
-    # the specified status.
+    #              permission to halt the Java Virtual Machine with
+    #              the specified status.
     # @see        java.lang.Runtime#exit(int) exit
     # @see        #checkPermission(java.security.Permission) checkPermission
     def check_exit(status)
@@ -783,9 +783,9 @@ module Java::Lang
     # 
     # @param      cmd   the specified system command.
     # @exception  SecurityException if the calling thread does not have
-    # permission to create a subprocess.
+    #             permission to create a subprocess.
     # @exception  NullPointerException if the <code>cmd</code> argument is
-    # <code>null</code>.
+    #             <code>null</code>.
     # @see     java.lang.Runtime#exec(java.lang.String)
     # @see     java.lang.Runtime#exec(java.lang.String, java.lang.String[])
     # @see     java.lang.Runtime#exec(java.lang.String[])
@@ -820,9 +820,9 @@ module Java::Lang
     # 
     # @param      lib   the name of the library.
     # @exception  SecurityException if the calling thread does not have
-    # permission to dynamically link the library.
+    #             permission to dynamically link the library.
     # @exception  NullPointerException if the <code>lib</code> argument is
-    # <code>null</code>.
+    #             <code>null</code>.
     # @see        java.lang.Runtime#load(java.lang.String)
     # @see        java.lang.Runtime#loadLibrary(java.lang.String)
     # @see        #checkPermission(java.security.Permission) checkPermission
@@ -849,9 +849,9 @@ module Java::Lang
     # 
     # @param      fd   the system-dependent file descriptor.
     # @exception  SecurityException  if the calling thread does not have
-    # permission to access the specified file descriptor.
+    #             permission to access the specified file descriptor.
     # @exception  NullPointerException if the file descriptor argument is
-    # <code>null</code>.
+    #             <code>null</code>.
     # @see        java.io.FileDescriptor
     # @see        #checkPermission(java.security.Permission) checkPermission
     def check_read(fd)
@@ -876,9 +876,9 @@ module Java::Lang
     # 
     # @param      file   the system-dependent file name.
     # @exception  SecurityException if the calling thread does not have
-    # permission to access the specified file.
+    #             permission to access the specified file.
     # @exception  NullPointerException if the <code>file</code> argument is
-    # <code>null</code>.
+    #             <code>null</code>.
     # @see        #checkPermission(java.security.Permission) checkPermission
     def check_read(file)
       check_permission(FilePermission.new(file, SecurityConstants::FILE_READ_ACTION))
@@ -906,11 +906,11 @@ module Java::Lang
     # @param      file      the system-dependent filename.
     # @param      context   a system-dependent security context.
     # @exception  SecurityException  if the specified security context
-    # is not an instance of <code>AccessControlContext</code>
-    # (e.g., is <code>null</code>), or does not have permission
-    # to read the specified file.
+    #             is not an instance of <code>AccessControlContext</code>
+    #             (e.g., is <code>null</code>), or does not have permission
+    #             to read the specified file.
     # @exception  NullPointerException if the <code>file</code> argument is
-    # <code>null</code>.
+    #             <code>null</code>.
     # @see        java.lang.SecurityManager#getSecurityContext()
     # @see        java.security.AccessControlContext#checkPermission(java.security.Permission)
     def check_read(file, context)
@@ -933,9 +933,9 @@ module Java::Lang
     # 
     # @param      fd   the system-dependent file descriptor.
     # @exception SecurityException  if the calling thread does not have
-    # permission to access the specified file descriptor.
+    #             permission to access the specified file descriptor.
     # @exception  NullPointerException if the file descriptor argument is
-    # <code>null</code>.
+    #             <code>null</code>.
     # @see        java.io.FileDescriptor
     # @see        #checkPermission(java.security.Permission) checkPermission
     def check_write(fd)
@@ -960,9 +960,9 @@ module Java::Lang
     # 
     # @param      file   the system-dependent filename.
     # @exception  SecurityException  if the calling thread does not
-    # have permission to access the specified file.
+    #             have permission to access the specified file.
     # @exception  NullPointerException if the <code>file</code> argument is
-    # <code>null</code>.
+    #             <code>null</code>.
     # @see        #checkPermission(java.security.Permission) checkPermission
     def check_write(file)
       check_permission(FilePermission.new(file, SecurityConstants::FILE_WRITE_ACTION))
@@ -985,9 +985,9 @@ module Java::Lang
     # 
     # @param      file   the system-dependent filename.
     # @exception  SecurityException if the calling thread does not
-    # have permission to delete the file.
+    #             have permission to delete the file.
     # @exception  NullPointerException if the <code>file</code> argument is
-    # <code>null</code>.
+    #             <code>null</code>.
     # @see        java.io.File#delete()
     # @see        #checkPermission(java.security.Permission) checkPermission
     def check_delete(file)
@@ -1017,10 +1017,10 @@ module Java::Lang
     # @param      host   the host name port to connect to.
     # @param      port   the protocol port to connect to.
     # @exception  SecurityException  if the calling thread does not have
-    # permission to open a socket connection to the specified
-    # <code>host</code> and <code>port</code>.
+    #             permission to open a socket connection to the specified
+    #               <code>host</code> and <code>port</code>.
     # @exception  NullPointerException if the <code>host</code> argument is
-    # <code>null</code>.
+    #             <code>null</code>.
     # @see        #checkPermission(java.security.Permission) checkPermission
     def check_connect(host, port)
       if ((host).nil?)
@@ -1066,12 +1066,12 @@ module Java::Lang
     # @param      port      the protocol port to connect to.
     # @param      context   a system-dependent security context.
     # @exception  SecurityException if the specified security context
-    # is not an instance of <code>AccessControlContext</code>
-    # (e.g., is <code>null</code>), or does not have permission
-    # to open a socket connection to the specified
-    # <code>host</code> and <code>port</code>.
+    #             is not an instance of <code>AccessControlContext</code>
+    #             (e.g., is <code>null</code>), or does not have permission
+    #             to open a socket connection to the specified
+    #             <code>host</code> and <code>port</code>.
     # @exception  NullPointerException if the <code>host</code> argument is
-    # <code>null</code>.
+    #             <code>null</code>.
     # @see        java.lang.SecurityManager#getSecurityContext()
     # @see        java.security.AccessControlContext#checkPermission(java.security.Permission)
     def check_connect(host, port, context)
@@ -1106,7 +1106,7 @@ module Java::Lang
     # 
     # @param      port   the local port.
     # @exception  SecurityException  if the calling thread does not have
-    # permission to listen on the specified port.
+    #             permission to listen on the specified port.
     # @see        #checkPermission(java.security.Permission) checkPermission
     def check_listen(port)
       if ((port).equal?(0))
@@ -1135,9 +1135,9 @@ module Java::Lang
     # @param      host   the host name of the socket connection.
     # @param      port   the port number of the socket connection.
     # @exception  SecurityException  if the calling thread does not have
-    # permission to accept the connection.
+    #             permission to accept the connection.
     # @exception  NullPointerException if the <code>host</code> argument is
-    # <code>null</code>.
+    #             <code>null</code>.
     # @see        java.net.ServerSocket#accept()
     # @see        #checkPermission(java.security.Permission) checkPermission
     def check_accept(host, port)
@@ -1166,9 +1166,9 @@ module Java::Lang
     # 
     # @param      maddr  Internet group address to be used.
     # @exception  SecurityException  if the calling thread is not allowed to
-    # use (join/leave/send/receive) IP multicast.
+    #  use (join/leave/send/receive) IP multicast.
     # @exception  NullPointerException if the address argument is
-    # <code>null</code>.
+    #             <code>null</code>.
     # @since      JDK1.1
     # @see        #checkPermission(java.security.Permission) checkPermission
     def check_multicast(maddr)
@@ -1198,9 +1198,9 @@ module Java::Lang
     # Note: this particular implementation does not use the ttl
     # parameter.
     # @exception  SecurityException  if the calling thread is not allowed to
-    # use (join/leave/send/receive) IP multicast.
+    #  use (join/leave/send/receive) IP multicast.
     # @exception  NullPointerException if the address argument is
-    # <code>null</code>.
+    #             <code>null</code>.
     # @since      JDK1.1
     # @deprecated Use #checkPermission(java.security.Permission) instead
     # @see        #checkPermission(java.security.Permission) checkPermission
@@ -1230,7 +1230,7 @@ module Java::Lang
     # <p>
     # 
     # @exception  SecurityException  if the calling thread does not have
-    # permission to access or modify the system properties.
+    #             permission to access or modify the system properties.
     # @see        java.lang.System#getProperties()
     # @see        java.lang.System#setProperties(java.util.Properties)
     # @see        #checkPermission(java.security.Permission) checkPermission
@@ -1258,9 +1258,9 @@ module Java::Lang
     # @param      key   a system property key.
     # 
     # @exception  SecurityException  if the calling thread does not have
-    # permission to access the specified system property.
+    #             permission to access the specified system property.
     # @exception  NullPointerException if the <code>key</code> argument is
-    # <code>null</code>.
+    #             <code>null</code>.
     # @exception  IllegalArgumentException if <code>key</code> is empty.
     # 
     # @see        java.lang.System#getProperty(java.lang.String)
@@ -1296,9 +1296,9 @@ module Java::Lang
     # 
     # @param      window   the new window that is being created.
     # @return     <code>true</code> if the calling thread is trusted to put up
-    # top-level windows; <code>false</code> otherwise.
+    #             top-level windows; <code>false</code> otherwise.
     # @exception  NullPointerException if the <code>window</code> argument is
-    # <code>null</code>.
+    #             <code>null</code>.
     # @see        java.awt.Window
     # @see        #checkPermission(java.security.Permission) checkPermission
     def check_top_level_window(window)
@@ -1329,7 +1329,7 @@ module Java::Lang
     # <p>
     # 
     # @exception  SecurityException  if the calling thread does not have
-    # permission to initiate a print job request.
+    #             permission to initiate a print job request.
     # @since   JDK1.1
     # @see        #checkPermission(java.security.Permission) checkPermission
     def check_print_job_access
@@ -1351,7 +1351,7 @@ module Java::Lang
     # 
     # @since   JDK1.1
     # @exception  SecurityException  if the calling thread does not have
-    # permission to access the system clipboard.
+    #             permission to access the system clipboard.
     # @see        #checkPermission(java.security.Permission) checkPermission
     def check_system_clipboard_access
       check_permission(SecurityConstants::ACCESS_CLIPBOARD_PERMISSION)
@@ -1371,7 +1371,7 @@ module Java::Lang
     # 
     # @since   JDK1.1
     # @exception  SecurityException  if the calling thread does not have
-    # permission to access the AWT event queue.
+    #             permission to access the AWT event queue.
     # @see        #checkPermission(java.security.Permission) checkPermission
     def check_awt_event_queue_access
       check_permission(SecurityConstants::CHECK_AWT_EVENTQUEUE_PERMISSION)
@@ -1488,11 +1488,11 @@ module Java::Lang
     # 
     # @param      pkg   the package name.
     # @exception  SecurityException  if the calling thread does not have
-    # permission to access the specified package.
+    #             permission to access the specified package.
     # @exception  NullPointerException if the package name argument is
-    # <code>null</code>.
+    #             <code>null</code>.
     # @see        java.lang.ClassLoader#loadClass(java.lang.String, boolean)
-    # loadClass
+    #  loadClass
     # @see        java.security.Security#getProperty getProperty
     # @see        #checkPermission(java.security.Permission) checkPermission
     def check_package_access(pkg)
@@ -1562,7 +1562,7 @@ module Java::Lang
     # 
     # @param      pkg   the package name.
     # @exception  SecurityException  if the calling thread does not have
-    # permission to define classes in the specified package.
+    #             permission to define classes in the specified package.
     # @see        java.lang.ClassLoader#loadClass(java.lang.String, boolean)
     # @see        java.security.Security#getProperty getProperty
     # @see        #checkPermission(java.security.Permission) checkPermission
@@ -1626,8 +1626,8 @@ module Java::Lang
     # <p>
     # 
     # @exception  SecurityException  if the calling thread does not have
-    # permission to specify a socket factory or a stream
-    # handler factory.
+    #             permission to specify a socket factory or a stream
+    #             handler factory.
     # 
     # @see        java.net.ServerSocket#setSocketFactory(java.net.SocketImplFactory) setSocketFactory
     # @see        java.net.Socket#setSocketImplFactory(java.net.SocketImplFactory) setSocketImplFactory
@@ -1658,9 +1658,9 @@ module Java::Lang
     # @param which type of access, PUBLIC or DECLARED.
     # 
     # @exception  SecurityException if the caller does not have
-    # permission to access members.
+    #             permission to access members.
     # @exception  NullPointerException if the <code>clazz</code> argument is
-    # <code>null</code>.
+    #             <code>null</code>.
     # @see java.lang.reflect.Member
     # @since JDK1.1
     # @see        #checkPermission(java.security.Permission) checkPermission

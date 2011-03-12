@@ -42,19 +42,19 @@ module Sun::Util
   # 
   # <blockquote><pre>
   # class FooMap
-  # extends sun.util.PreHashedMap&lt;String&gt;
+  #     extends sun.util.PreHashedMap&lt;String&gt;
   # {
   # 
-  # private FooMap() {
-  # super(ROWS, SIZE, SHIFT, MASK);
-  # }
+  #     private FooMap() {
+  #         super(ROWS, SIZE, SHIFT, MASK);
+  #     }
   # 
-  # protected void init(Object[] ht) {
-  # ht[0] = new Object[] { "key-1", value_1 };
-  # ht[1] = new Object[] { "key-2", value_2,
-  # new Object { "key-3", value_3 } };
-  # ...
-  # }
+  #     protected void init(Object[] ht) {
+  #         ht[0] = new Object[] { "key-1", value_1 };
+  #         ht[1] = new Object[] { "key-2", value_2,
+  #                      new Object { "key-3", value_3 } };
+  #         ...
+  #     }
   # 
   # }</pre></blockquote>
   # 
@@ -121,13 +121,13 @@ module Sun::Util
     # newly-constructed row array that is <tt>rows</tt> elements long.
     # 
     # @param rows
-    # The number of rows in the map
+    #        The number of rows in the map
     # @param size
-    # The number of entries in the map
+    #        The number of entries in the map
     # @param shift
-    # The value by which hash codes are right-shifted
+    #        The value by which hash codes are right-shifted
     # @param mask
-    # The value with which hash codes are masked after being shifted
+    #        The value with which hash codes are masked after being shifted
     def initialize(rows, size, shift, mask)
       @rows = 0
       @size = 0
@@ -150,7 +150,7 @@ module Sun::Util
     # the appropriate elements of the given hash-table row array.
     # 
     # @param rows
-    # The row array to be initialized
+    #        The row array to be initialized
     def init(ht)
       raise NotImplementedError
     end
@@ -181,7 +181,7 @@ module Sun::Util
     
     typesig { [String, Object] }
     # @throws UnsupportedOperationException
-    # If the given key is not part of this map's initial key set
+    #         If the given key is not part of this map's initial key set
     def put(k, v)
       h = (k.hash_code >> @shift) & @mask
       a = @ht[h]

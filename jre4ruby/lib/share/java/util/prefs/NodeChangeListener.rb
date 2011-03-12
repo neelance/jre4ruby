@@ -45,7 +45,7 @@ module Java::Util::Prefs
     # This method gets called when a child node is added.
     # 
     # @param evt A node change event object describing the parent
-    # and child node.
+    #            and child node.
     def child_added(evt)
       raise NotImplementedError
     end
@@ -54,7 +54,7 @@ module Java::Util::Prefs
     # This method gets called when a child node is removed.
     # 
     # @param evt A node change event object describing the parent
-    # and child node.
+    #            and child node.
     def child_removed(evt)
       raise NotImplementedError
     end

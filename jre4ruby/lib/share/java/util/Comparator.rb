@@ -72,9 +72,9 @@ module Java::Util
   # For the mathematically inclined, the <i>relation</i> that defines the
   # <i>imposed ordering</i> that a given comparator <tt>c</tt> imposes on a
   # given set of objects <tt>S</tt> is:<pre>
-  # {(x, y) such that c.compare(x, y) &lt;= 0}.
+  #       {(x, y) such that c.compare(x, y) &lt;= 0}.
   # </pre> The <i>quotient</i> for this total order is:<pre>
-  # {(x, y) such that c.compare(x, y) == 0}.
+  #       {(x, y) such that c.compare(x, y) == 0}.
   # </pre>
   # 
   # It follows immediately from the contract for <tt>compare</tt> that the
@@ -84,7 +84,7 @@ module Java::Util
   # equals</i>, we mean that the quotient for the ordering is the equivalence
   # relation defined by the objects' {@link Object#equals(Object)
   # equals(Object)} method(s):<pre>
-  # {(x, y) such that x.equals(y)}. </pre><p>
+  #     {(x, y) such that x.equals(y)}. </pre><p>
   # 
   # This interface is a member of the
   # <a href="{@docRoot}/../technotes/guides/collections/index.html">
@@ -133,10 +133,10 @@ module Java::Util
     # @param o1 the first object to be compared.
     # @param o2 the second object to be compared.
     # @return a negative integer, zero, or a positive integer as the
-    # first argument is less than, equal to, or greater than the
-    # second.
+    #         first argument is less than, equal to, or greater than the
+    #         second.
     # @throws ClassCastException if the arguments' types prevent them from
-    # being compared by this comparator.
+    #         being compared by this comparator.
     def compare(o1, o2)
       raise NotImplementedError
     end
@@ -158,8 +158,8 @@ module Java::Util
     # 
     # @param   obj   the reference object with which to compare.
     # @return  <code>true</code> only if the specified object is also
-    # a comparator and it imposes the same ordering as this
-    # comparator.
+    #          a comparator and it imposes the same ordering as this
+    #          comparator.
     # @see Object#equals(Object)
     # @see Object#hashCode()
     def ==(obj)

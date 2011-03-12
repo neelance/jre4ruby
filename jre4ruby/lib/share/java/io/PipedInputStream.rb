@@ -93,7 +93,6 @@ module Java::Io
       
       # The default size of the pipe's circular input buffer.
       # @since   JDK1.1
-      # 
       # This used to be a constant before the pipe size was allowed
       # to change. This field will continue to be maintained
       # for backward compatibility.
@@ -268,8 +267,8 @@ module Java::Io
     # available.
     # @param b the byte being received
     # @exception IOException If the pipe is <a href=#BROKEN> <code>broken</code></a>,
-    # {@link #connect(java.io.PipedOutputStream) unconnected},
-    # closed, or if an I/O error occurs.
+    #          {@link #connect(java.io.PipedOutputStream) unconnected},
+    #          closed, or if an I/O error occurs.
     # @since     JDK1.1
     def receive(b)
       synchronized(self) do
@@ -296,8 +295,8 @@ module Java::Io
     # @param off the start offset of the data
     # @param len the maximum number of bytes received
     # @exception IOException If the pipe is <a href=#BROKEN> broken</a>,
-    # {@link #connect(java.io.PipedOutputStream) unconnected},
-    # closed,or if an I/O error occurs.
+    #           {@link #connect(java.io.PipedOutputStream) unconnected},
+    #           closed,or if an I/O error occurs.
     def receive(b, off, len)
       synchronized(self) do
         check_state_for_receive
@@ -382,11 +381,11 @@ module Java::Io
     # stream is detected, or an exception is thrown.
     # 
     # @return     the next byte of data, or <code>-1</code> if the end of the
-    # stream is reached.
+    #             stream is reached.
     # @exception  IOException  if the pipe is
-    # {@link #connect(java.io.PipedOutputStream) unconnected},
-    # <a href=#BROKEN> <code>broken</code></a>, closed,
-    # or if an I/O error occurs.
+    #           {@link #connect(java.io.PipedOutputStream) unconnected},
+    #           <a href=#BROKEN> <code>broken</code></a>, closed,
+    #           or if an I/O error occurs.
     def read
       synchronized(self) do
         if (!@connected)
@@ -444,15 +443,15 @@ module Java::Io
     # @param      off   the start offset in the destination array <code>b</code>
     # @param      len   the maximum number of bytes read.
     # @return     the total number of bytes read into the buffer, or
-    # <code>-1</code> if there is no more data because the end of
-    # the stream has been reached.
+    #             <code>-1</code> if there is no more data because the end of
+    #             the stream has been reached.
     # @exception  NullPointerException If <code>b</code> is <code>null</code>.
     # @exception  IndexOutOfBoundsException If <code>off</code> is negative,
     # <code>len</code> is negative, or <code>len</code> is greater than
     # <code>b.length - off</code>
     # @exception  IOException if the pipe is <a href=#BROKEN> <code>broken</code></a>,
-    # {@link #connect(java.io.PipedOutputStream) unconnected},
-    # closed, or if an I/O error occurs.
+    #           {@link #connect(java.io.PipedOutputStream) unconnected},
+    #           closed, or if an I/O error occurs.
     def read(b, off, len)
       synchronized(self) do
         if ((b).nil?)
@@ -505,10 +504,10 @@ module Java::Io
     # stream without blocking.
     # 
     # @return the number of bytes that can be read from this input stream
-    # without blocking, or {@code 0} if this input stream has been
-    # closed by invoking its {@link #close()} method, or if the pipe
-    # is {@link #connect(java.io.PipedOutputStream) unconnected}, or
-    # <a href=#BROKEN> <code>broken</code></a>.
+    #         without blocking, or {@code 0} if this input stream has been
+    #         closed by invoking its {@link #close()} method, or if the pipe
+    #         is {@link #connect(java.io.PipedOutputStream) unconnected}, or
+    #          <a href=#BROKEN> <code>broken</code></a>.
     # 
     # @exception  IOException  if an I/O error occurs.
     # @since   JDK1.0.2

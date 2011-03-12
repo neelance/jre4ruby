@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5::Internal
@@ -143,11 +141,11 @@ module Sun::Security::Krb5::Internal
         # this method only used by KerberosTime class.
         # ASN.1 GeneralizedTime format:
         # "19700101000000Z"
-        # |   | | | | | |
-        # 0   4 6 8 | | |
-        # 10 | |
-        # 12 |
-        # 14
+        #  |   | | | | | |
+        #  0   4 6 8 | | |
+        #           10 | |
+        #                         12 |
+        #                           14
         if (!(time.length).equal?(15))
           raise Asn1Exception.new(Krb5::ASN1_BAD_TIMEFORMAT)
         end
@@ -321,7 +319,7 @@ module Sun::Security::Krb5::Internal
     
     typesig { [] }
     def hash_code
-      return 37 * 17 + RJava.cast_to_int((@kerberos_time ^ (@kerberos_time >> 32)))
+      return 37 * 17 + ((@kerberos_time ^ (@kerberos_time >> 32))).to_int
     end
     
     typesig { [] }

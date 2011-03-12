@@ -31,8 +31,6 @@ module Java::Lang::Instrument
   end
   
   # Copyright 2003 Wily Technology, Inc.
-  # 
-  # 
   # Thrown by an implementation of
   # {@link java.lang.instrument.ClassFileTransformer#transform ClassFileTransformer.transform}
   # when its input parameters are invalid.

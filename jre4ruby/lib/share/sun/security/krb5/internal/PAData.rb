@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5::Internal
@@ -40,9 +38,9 @@ module Sun::Security::Krb5::Internal
   # 
   # <xmp>
   # PA-DATA         ::= SEQUENCE {
-  # -- NOTE: first tag is [1], not [0]
-  # padata-type     [1] Int32,
-  # padata-value    [2] OCTET STRING -- might be encoded AP-REQ
+  #         -- NOTE: first tag is [1], not [0]
+  #         padata-type     [1] Int32,
+  #         padata-value    [2] OCTET STRING -- might be encoded AP-REQ
   # }
   # </xmp>
   # 

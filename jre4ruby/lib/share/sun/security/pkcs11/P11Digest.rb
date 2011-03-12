@@ -145,16 +145,16 @@ module Sun::Security::Pkcs11
       @token = token
       @algorithm = algorithm
       @mechanism = mechanism
-      case (RJava.cast_to_int(mechanism))
-      when RJava.cast_to_int(CKM_MD2), RJava.cast_to_int(CKM_MD5)
+      case ((mechanism).to_int)
+      when (CKM_MD2).to_int, (CKM_MD5).to_int
         @digest_length = 16
-      when RJava.cast_to_int(CKM_SHA_1)
+      when (CKM_SHA_1).to_int
         @digest_length = 20
-      when RJava.cast_to_int(CKM_SHA256)
+      when (CKM_SHA256).to_int
         @digest_length = 32
-      when RJava.cast_to_int(CKM_SHA384)
+      when (CKM_SHA384).to_int
         @digest_length = 48
-      when RJava.cast_to_int(CKM_SHA512)
+      when (CKM_SHA512).to_int
         @digest_length = 64
       else
         raise ProviderException.new("Unknown mechanism: " + RJava.cast_to_string(mechanism))

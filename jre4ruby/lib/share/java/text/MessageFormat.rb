@@ -22,17 +22,15 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996 - 1998 - All Rights Reserved
 # 
-# The original version of this source code and documentation is copyrighted
+#   The original version of this source code and documentation is copyrighted
 # and owned by Taligent, Inc., a wholly-owned subsidiary of IBM. These
 # materials are provided under terms of a License Agreement between Taligent
 # and Sun. This technology is protected by multiple US and International
 # patents. This notice and attribution to Taligent may not be removed.
-# Taligent is a registered trademark of Taligent, Inc.
+#   Taligent is a registered trademark of Taligent, Inc.
 module Java::Text
   module MessageFormatImports #:nodoc:
     class_module.module_eval {
@@ -73,43 +71,43 @@ module Java::Text
   # <code>MessageFormat</code> uses patterns of the following form:
   # <blockquote><pre>
   # <i>MessageFormatPattern:</i>
-  # <i>String</i>
-  # <i>MessageFormatPattern</i> <i>FormatElement</i> <i>String</i>
+  #         <i>String</i>
+  #         <i>MessageFormatPattern</i> <i>FormatElement</i> <i>String</i>
   # 
   # <i>FormatElement:</i>
-  # { <i>ArgumentIndex</i> }
-  # { <i>ArgumentIndex</i> , <i>FormatType</i> }
-  # { <i>ArgumentIndex</i> , <i>FormatType</i> , <i>FormatStyle</i> }
+  #         { <i>ArgumentIndex</i> }
+  #         { <i>ArgumentIndex</i> , <i>FormatType</i> }
+  #         { <i>ArgumentIndex</i> , <i>FormatType</i> , <i>FormatStyle</i> }
   # 
   # <i>FormatType: one of </i>
-  # number date time choice
+  #         number date time choice
   # 
   # <i>FormatStyle:</i>
-  # short
-  # medium
-  # long
-  # full
-  # integer
-  # currency
-  # percent
-  # <i>SubformatPattern</i>
+  #         short
+  #         medium
+  #         long
+  #         full
+  #         integer
+  #         currency
+  #         percent
+  #         <i>SubformatPattern</i>
   # 
   # <i>String:</i>
-  # <i>StringPart<sub>opt</sub></i>
-  # <i>String</i> <i>StringPart</i>
+  #         <i>StringPart<sub>opt</sub></i>
+  #         <i>String</i> <i>StringPart</i>
   # 
   # <i>StringPart:</i>
-  # ''
-  # ' <i>QuotedString</i> '
-  # <i>UnquotedString</i>
+  #         ''
+  #         ' <i>QuotedString</i> '
+  #         <i>UnquotedString</i>
   # 
   # <i>SubformatPattern:</i>
-  # <i>SubformatPatternPart<sub>opt</sub></i>
-  # <i>SubformatPattern</i> <i>SubformatPatternPart</i>
+  #         <i>SubformatPatternPart<sub>opt</sub></i>
+  #         <i>SubformatPattern</i> <i>SubformatPatternPart</i>
   # 
   # <i>SubFormatPatternPart:</i>
-  # ' <i>QuotedPattern</i> '
-  # <i>UnquotedPattern</i>
+  #         ' <i>QuotedPattern</i> '
+  #         <i>UnquotedPattern</i>
   # </pre></blockquote>
   # 
   # <p>
@@ -156,72 +154,72 @@ module Java::Text
   # be a valid pattern string for the Format subclass used.
   # <p>
   # <table border=1 summary="Shows how FormatType and FormatStyle values map to Format instances">
-  # <tr>
-  # <th id="ft">Format Type
-  # <th id="fs">Format Style
-  # <th id="sc">Subformat Created
-  # <tr>
-  # <td headers="ft"><i>(none)</i>
-  # <td headers="fs"><i>(none)</i>
-  # <td headers="sc"><code>null</code>
-  # <tr>
-  # <td headers="ft" rowspan=5><code>number</code>
-  # <td headers="fs"><i>(none)</i>
-  # <td headers="sc"><code>NumberFormat.getInstance(getLocale())</code>
-  # <tr>
-  # <td headers="fs"><code>integer</code>
-  # <td headers="sc"><code>NumberFormat.getIntegerInstance(getLocale())</code>
-  # <tr>
-  # <td headers="fs"><code>currency</code>
-  # <td headers="sc"><code>NumberFormat.getCurrencyInstance(getLocale())</code>
-  # <tr>
-  # <td headers="fs"><code>percent</code>
-  # <td headers="sc"><code>NumberFormat.getPercentInstance(getLocale())</code>
-  # <tr>
-  # <td headers="fs"><i>SubformatPattern</i>
-  # <td headers="sc"><code>new DecimalFormat(subformatPattern, DecimalFormatSymbols.getInstance(getLocale()))</code>
-  # <tr>
-  # <td headers="ft" rowspan=6><code>date</code>
-  # <td headers="fs"><i>(none)</i>
-  # <td headers="sc"><code>DateFormat.getDateInstance(DateFormat.DEFAULT, getLocale())</code>
-  # <tr>
-  # <td headers="fs"><code>short</code>
-  # <td headers="sc"><code>DateFormat.getDateInstance(DateFormat.SHORT, getLocale())</code>
-  # <tr>
-  # <td headers="fs"><code>medium</code>
-  # <td headers="sc"><code>DateFormat.getDateInstance(DateFormat.DEFAULT, getLocale())</code>
-  # <tr>
-  # <td headers="fs"><code>long</code>
-  # <td headers="sc"><code>DateFormat.getDateInstance(DateFormat.LONG, getLocale())</code>
-  # <tr>
-  # <td headers="fs"><code>full</code>
-  # <td headers="sc"><code>DateFormat.getDateInstance(DateFormat.FULL, getLocale())</code>
-  # <tr>
-  # <td headers="fs"><i>SubformatPattern</i>
-  # <td headers="sc"><code>new SimpleDateFormat(subformatPattern, getLocale())</code>
-  # <tr>
-  # <td headers="ft" rowspan=6><code>time</code>
-  # <td headers="fs"><i>(none)</i>
-  # <td headers="sc"><code>DateFormat.getTimeInstance(DateFormat.DEFAULT, getLocale())</code>
-  # <tr>
-  # <td headers="fs"><code>short</code>
-  # <td headers="sc"><code>DateFormat.getTimeInstance(DateFormat.SHORT, getLocale())</code>
-  # <tr>
-  # <td headers="fs"><code>medium</code>
-  # <td headers="sc"><code>DateFormat.getTimeInstance(DateFormat.DEFAULT, getLocale())</code>
-  # <tr>
-  # <td headers="fs"><code>long</code>
-  # <td headers="sc"><code>DateFormat.getTimeInstance(DateFormat.LONG, getLocale())</code>
-  # <tr>
-  # <td headers="fs"><code>full</code>
-  # <td headers="sc"><code>DateFormat.getTimeInstance(DateFormat.FULL, getLocale())</code>
-  # <tr>
-  # <td headers="fs"><i>SubformatPattern</i>
-  # <td headers="sc"><code>new SimpleDateFormat(subformatPattern, getLocale())</code>
-  # <tr>
-  # <td headers="ft"><code>choice</code>
-  # <td headers="fs"><i>SubformatPattern</i>
-  # <td headers="sc"><code>new ChoiceFormat(subformatPattern)</code>
+  #    <tr>
+  #       <th id="ft">Format Type
+  #       <th id="fs">Format Style
+  #       <th id="sc">Subformat Created
+  #    <tr>
+  #       <td headers="ft"><i>(none)</i>
+  #       <td headers="fs"><i>(none)</i>
+  #       <td headers="sc"><code>null</code>
+  #    <tr>
+  #       <td headers="ft" rowspan=5><code>number</code>
+  #       <td headers="fs"><i>(none)</i>
+  #       <td headers="sc"><code>NumberFormat.getInstance(getLocale())</code>
+  #    <tr>
+  #       <td headers="fs"><code>integer</code>
+  #       <td headers="sc"><code>NumberFormat.getIntegerInstance(getLocale())</code>
+  #    <tr>
+  #       <td headers="fs"><code>currency</code>
+  #       <td headers="sc"><code>NumberFormat.getCurrencyInstance(getLocale())</code>
+  #    <tr>
+  #       <td headers="fs"><code>percent</code>
+  #       <td headers="sc"><code>NumberFormat.getPercentInstance(getLocale())</code>
+  #    <tr>
+  #       <td headers="fs"><i>SubformatPattern</i>
+  #       <td headers="sc"><code>new DecimalFormat(subformatPattern, DecimalFormatSymbols.getInstance(getLocale()))</code>
+  #    <tr>
+  #       <td headers="ft" rowspan=6><code>date</code>
+  #       <td headers="fs"><i>(none)</i>
+  #       <td headers="sc"><code>DateFormat.getDateInstance(DateFormat.DEFAULT, getLocale())</code>
+  #    <tr>
+  #       <td headers="fs"><code>short</code>
+  #       <td headers="sc"><code>DateFormat.getDateInstance(DateFormat.SHORT, getLocale())</code>
+  #    <tr>
+  #       <td headers="fs"><code>medium</code>
+  #       <td headers="sc"><code>DateFormat.getDateInstance(DateFormat.DEFAULT, getLocale())</code>
+  #    <tr>
+  #       <td headers="fs"><code>long</code>
+  #       <td headers="sc"><code>DateFormat.getDateInstance(DateFormat.LONG, getLocale())</code>
+  #    <tr>
+  #       <td headers="fs"><code>full</code>
+  #       <td headers="sc"><code>DateFormat.getDateInstance(DateFormat.FULL, getLocale())</code>
+  #    <tr>
+  #       <td headers="fs"><i>SubformatPattern</i>
+  #       <td headers="sc"><code>new SimpleDateFormat(subformatPattern, getLocale())</code>
+  #    <tr>
+  #       <td headers="ft" rowspan=6><code>time</code>
+  #       <td headers="fs"><i>(none)</i>
+  #       <td headers="sc"><code>DateFormat.getTimeInstance(DateFormat.DEFAULT, getLocale())</code>
+  #    <tr>
+  #       <td headers="fs"><code>short</code>
+  #       <td headers="sc"><code>DateFormat.getTimeInstance(DateFormat.SHORT, getLocale())</code>
+  #    <tr>
+  #       <td headers="fs"><code>medium</code>
+  #       <td headers="sc"><code>DateFormat.getTimeInstance(DateFormat.DEFAULT, getLocale())</code>
+  #    <tr>
+  #       <td headers="fs"><code>long</code>
+  #       <td headers="sc"><code>DateFormat.getTimeInstance(DateFormat.LONG, getLocale())</code>
+  #    <tr>
+  #       <td headers="fs"><code>full</code>
+  #       <td headers="sc"><code>DateFormat.getTimeInstance(DateFormat.FULL, getLocale())</code>
+  #    <tr>
+  #       <td headers="fs"><i>SubformatPattern</i>
+  #       <td headers="sc"><code>new SimpleDateFormat(subformatPattern, getLocale())</code>
+  #    <tr>
+  #       <td headers="ft"><code>choice</code>
+  #       <td headers="fs"><i>SubformatPattern</i>
+  #       <td headers="sc"><code>new ChoiceFormat(subformatPattern)</code>
   # </table>
   # <p>
   # 
@@ -240,8 +238,8 @@ module Java::Text
   # String event = "a disturbance in the Force";
   # 
   # String result = MessageFormat.format(
-  # "At {1,time} on {1,date}, there was {2} on planet {0,number,integer}.",
-  # planet, new Date(), event);
+  #     "At {1,time} on {1,date}, there was {2} on planet {0,number,integer}.",
+  #     planet, new Date(), event);
   # </pre></blockquote>
   # The output is:
   # <blockquote><pre>
@@ -257,7 +255,7 @@ module Java::Text
   # Object[] testArgs = {new Long(fileCount), diskName};
   # 
   # MessageFormat form = new MessageFormat(
-  # "The disk \"{1}\" contains {0} file(s).");
+  #     "The disk \"{1}\" contains {0} file(s).");
   # 
   # System.out.println(form.format(testArgs));
   # </pre></blockquote>
@@ -297,7 +295,7 @@ module Java::Text
   # for more information.
   # <blockquote><pre>
   # form.applyPattern(
-  # "There {0,choice,0#are no files|1#is one file|1&lt;are {0,number,integer} files}.");
+  #    "There {0,choice,0#are no files|1#is one file|1&lt;are {0,number,integer} files}.");
   # </pre></blockquote>
   # 
   # <p>
@@ -414,13 +412,13 @@ module Java::Text
     # This affects subsequent calls
     # <ul>
     # <li>to the {@link #applyPattern applyPattern}
-    # and {@link #toPattern toPattern} methods if format elements specify
-    # a format type and therefore have the subformats created in the
-    # <code>applyPattern</code> method, as well as
+    #     and {@link #toPattern toPattern} methods if format elements specify
+    #     a format type and therefore have the subformats created in the
+    #     <code>applyPattern</code> method, as well as
     # <li>to the <code>format</code> and
-    # {@link #formatToCharacterIterator formatToCharacterIterator} methods
-    # if format elements do not specify a format type and therefore have
-    # the subformats created in the formatting methods.
+    #     {@link #formatToCharacterIterator formatToCharacterIterator} methods
+    #     if format elements do not specify a format type and therefore have
+    #     the subformats created in the formatting methods.
     # </ul>
     # Subformats that have already been created are not affected.
     # 
@@ -485,7 +483,6 @@ module Java::Text
             end
           else
             case (ch)
-            # fall through, so we keep quotes in other parts
             when Character.new(?,.ord)
               if (part < 3)
                 part += 1
@@ -506,8 +503,10 @@ module Java::Text
               end
             when Character.new(?\'.ord)
               in_quote = true
+              # fall through, so we keep quotes in other parts
               segments[part].append(ch)
             else
+              # fall through, so we keep quotes in other parts
               segments[part].append(ch)
             end
           end
@@ -725,7 +724,7 @@ module Java::Text
     # @param formatElementIndex the index of a format element within the pattern
     # @param newFormat the format to use for the specified format element
     # @exception ArrayIndexOutOfBoundsException if formatElementIndex is equal to or
-    # larger than the number of format elements in the pattern string
+    #            larger than the number of format elements in the pattern string
     def set_format(format_element_index, new_format)
       @formats[format_element_index] = new_format
     end
@@ -801,44 +800,44 @@ module Java::Text
     # <code>null</code> or has fewer than argumentIndex+1 elements.
     # <p>
     # <table border=1 summary="Examples of subformat,argument,and formatted text">
-    # <tr>
-    # <th>Subformat
-    # <th>Argument
-    # <th>Formatted Text
-    # <tr>
-    # <td><i>any</i>
-    # <td><i>unavailable</i>
-    # <td><code>"{" + argumentIndex + "}"</code>
-    # <tr>
-    # <td><i>any</i>
-    # <td><code>null</code>
-    # <td><code>"null"</code>
-    # <tr>
-    # <td><code>instanceof ChoiceFormat</code>
-    # <td><i>any</i>
-    # <td><code>subformat.format(argument).indexOf('{') >= 0 ?<br>
-    # (new MessageFormat(subformat.format(argument), getLocale())).format(argument) :
-    # subformat.format(argument)</code>
-    # <tr>
-    # <td><code>!= null</code>
-    # <td><i>any</i>
-    # <td><code>subformat.format(argument)</code>
-    # <tr>
-    # <td><code>null</code>
-    # <td><code>instanceof Number</code>
-    # <td><code>NumberFormat.getInstance(getLocale()).format(argument)</code>
-    # <tr>
-    # <td><code>null</code>
-    # <td><code>instanceof Date</code>
-    # <td><code>DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, getLocale()).format(argument)</code>
-    # <tr>
-    # <td><code>null</code>
-    # <td><code>instanceof String</code>
-    # <td><code>argument</code>
-    # <tr>
-    # <td><code>null</code>
-    # <td><i>any</i>
-    # <td><code>argument.toString()</code>
+    #    <tr>
+    #       <th>Subformat
+    #       <th>Argument
+    #       <th>Formatted Text
+    #    <tr>
+    #       <td><i>any</i>
+    #       <td><i>unavailable</i>
+    #       <td><code>"{" + argumentIndex + "}"</code>
+    #    <tr>
+    #       <td><i>any</i>
+    #       <td><code>null</code>
+    #       <td><code>"null"</code>
+    #    <tr>
+    #       <td><code>instanceof ChoiceFormat</code>
+    #       <td><i>any</i>
+    #       <td><code>subformat.format(argument).indexOf('{') >= 0 ?<br>
+    #           (new MessageFormat(subformat.format(argument), getLocale())).format(argument) :
+    #           subformat.format(argument)</code>
+    #    <tr>
+    #       <td><code>!= null</code>
+    #       <td><i>any</i>
+    #       <td><code>subformat.format(argument)</code>
+    #    <tr>
+    #       <td><code>null</code>
+    #       <td><code>instanceof Number</code>
+    #       <td><code>NumberFormat.getInstance(getLocale()).format(argument)</code>
+    #    <tr>
+    #       <td><code>null</code>
+    #       <td><code>instanceof Date</code>
+    #       <td><code>DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, getLocale()).format(argument)</code>
+    #    <tr>
+    #       <td><code>null</code>
+    #       <td><code>instanceof String</code>
+    #       <td><code>argument</code>
+    #    <tr>
+    #       <td><code>null</code>
+    #       <td><i>any</i>
+    #       <td><code>argument.toString()</code>
     # </table>
     # <p>
     # If <code>pos</code> is non-null, and refers to
@@ -848,10 +847,10 @@ module Java::Text
     # @param arguments an array of objects to be formatted and substituted.
     # @param result where text is appended.
     # @param pos On input: an alignment field, if desired.
-    # On output: the offsets of the alignment field.
+    #            On output: the offsets of the alignment field.
     # @exception IllegalArgumentException if an argument in the
-    # <code>arguments</code> array is not of the type
-    # expected by the format element(s) that use it.
+    #            <code>arguments</code> array is not of the type
+    #            expected by the format element(s) that use it.
     def format(arguments, result, pos)
       return subformat(arguments, result, pos, nil)
     end
@@ -861,13 +860,13 @@ module Java::Text
       # Creates a MessageFormat with the given pattern and uses it
       # to format the given arguments. This is equivalent to
       # <blockquote>
-      # <code>(new {@link #MessageFormat(String) MessageFormat}(pattern)).{@link #format(java.lang.Object[], java.lang.StringBuffer, java.text.FieldPosition) format}(arguments, new StringBuffer(), null).toString()</code>
+      #     <code>(new {@link #MessageFormat(String) MessageFormat}(pattern)).{@link #format(java.lang.Object[], java.lang.StringBuffer, java.text.FieldPosition) format}(arguments, new StringBuffer(), null).toString()</code>
       # </blockquote>
       # 
       # @exception IllegalArgumentException if the pattern is invalid,
-      # or if an argument in the <code>arguments</code> array
-      # is not of the type expected by the format element(s)
-      # that use it.
+      #            or if an argument in the <code>arguments</code> array
+      #            is not of the type expected by the format element(s)
+      #            that use it.
       def format(pattern, *arguments)
         temp = MessageFormat.new(pattern)
         return temp.format(arguments)
@@ -881,22 +880,21 @@ module Java::Text
     
     typesig { [Object, StringBuffer, FieldPosition] }
     # Overrides
-    # 
     # Formats an array of objects and appends the <code>MessageFormat</code>'s
     # pattern, with format elements replaced by the formatted objects, to the
     # provided <code>StringBuffer</code>.
     # This is equivalent to
     # <blockquote>
-    # <code>{@link #format(java.lang.Object[], java.lang.StringBuffer, java.text.FieldPosition) format}((Object[]) arguments, result, pos)</code>
+    #     <code>{@link #format(java.lang.Object[], java.lang.StringBuffer, java.text.FieldPosition) format}((Object[]) arguments, result, pos)</code>
     # </blockquote>
     # 
     # @param arguments an array of objects to be formatted and substituted.
     # @param result where text is appended.
     # @param pos On input: an alignment field, if desired.
-    # On output: the offsets of the alignment field.
+    #            On output: the offsets of the alignment field.
     # @exception IllegalArgumentException if an argument in the
-    # <code>arguments</code> array is not of the type
-    # expected by the format element(s) that use it.
+    #            <code>arguments</code> array is not of the type
+    #            expected by the format element(s) that use it.
     def format(arguments, result, pos)
       return subformat(arguments, result, pos, nil)
     end
@@ -912,7 +910,7 @@ module Java::Text
     # The text of the returned <code>AttributedCharacterIterator</code> is
     # the same that would be returned by
     # <blockquote>
-    # <code>{@link #format(java.lang.Object[], java.lang.StringBuffer, java.text.FieldPosition) format}(arguments, new StringBuffer(), null).toString()</code>
+    #     <code>{@link #format(java.lang.Object[], java.lang.StringBuffer, java.text.FieldPosition) format}(arguments, new StringBuffer(), null).toString()</code>
     # </blockquote>
     # <p>
     # In addition, the <code>AttributedCharacterIterator</code> contains at
@@ -932,8 +930,8 @@ module Java::Text
     # @return AttributedCharacterIterator describing the formatted value.
     # @exception NullPointerException if <code>arguments</code> is null.
     # @exception IllegalArgumentException if an argument in the
-    # <code>arguments</code> array is not of the type
-    # expected by the format element(s) that use it.
+    #            <code>arguments</code> array is not of the type
+    #            expected by the format element(s) that use it.
     # @since 1.4
     def format_to_character_iterator(arguments)
       result = StringBuffer.new
@@ -956,16 +954,16 @@ module Java::Text
     # <ul>
     # <li>If one of the arguments does not occur in the pattern.
     # <li>If the format of an argument loses information, such as
-    # with a choice format where a large number formats to "many".
+    #     with a choice format where a large number formats to "many".
     # <li>Does not yet handle recursion (where
-    # the substituted strings contain {n} references.)
+    #     the substituted strings contain {n} references.)
     # <li>Will not always find a match (or the correct match)
-    # if some part of the parse is ambiguous.
-    # For example, if the pattern "{1},{2}" is used with the
-    # string arguments {"a,b", "c"}, it will format as "a,b,c".
-    # When the result is parsed, it will return {"a", "b,c"}.
+    #     if some part of the parse is ambiguous.
+    #     For example, if the pattern "{1},{2}" is used with the
+    #     string arguments {"a,b", "c"}, it will format as "a,b,c".
+    #     When the result is parsed, it will return {"a", "b,c"}.
     # <li>If a single argument is parsed more than once in the string,
-    # then the later parse wins.
+    #     then the later parse wins.
     # </ul>
     # When the parse fails, use ParsePosition.getErrorIndex() to find out
     # where in the string the parsing failed.  The returned error
@@ -1057,7 +1055,7 @@ module Java::Text
     # @param source A <code>String</code> whose beginning should be parsed.
     # @return An <code>Object</code> array parsed from the string.
     # @exception ParseException if the beginning of the specified string
-    # cannot be parsed.
+    #            cannot be parsed.
     def parse(source)
       pos = ParsePosition.new(0)
       result = parse(source, pos)
@@ -1087,9 +1085,9 @@ module Java::Text
     # 
     # @param source A <code>String</code>, part of which should be parsed.
     # @param pos A <code>ParsePosition</code> object with index and error
-    # index information as described above.
+    #            index information as described above.
     # @return An <code>Object</code> array parsed from the string. In case of
-    # error, returns null.
+    #         error, returns null.
     # @exception NullPointerException if <code>pos</code> is null.
     def parse_object(source, pos)
       return parse(source, pos)
@@ -1163,7 +1161,7 @@ module Java::Text
         # Resolves instances being deserialized to the predefined constants.
         # 
         # @throws InvalidObjectException if the constant could not be
-        # resolved.
+        #         resolved.
         # @return resolved MessageFormat.Field constant
         def read_resolve
           if (!(self.get_class).equal?(MessageFormat::Field))
@@ -1173,8 +1171,8 @@ module Java::Text
         end
         
         class_module.module_eval {
-          # The constants
           # 
+          # The constants
           # 
           # Constant identifying a portion of a message that was generated
           # from an argument passed into <code>formatToCharacterIterator</code>.
@@ -1191,7 +1189,6 @@ module Java::Text
     }
     
     # ===========================privates============================
-    # 
     # The locale to use for formatting numbers and dates.
     # @serial
     attr_accessor :locale
@@ -1262,8 +1259,8 @@ module Java::Text
     # the first replaced argument will be set in it.
     # 
     # @exception IllegalArgumentException if an argument in the
-    # <code>arguments</code> array is not of the type
-    # expected by the format element(s) that use it.
+    #            <code>arguments</code> array is not of the type
+    #            expected by the format element(s) that use it.
     def subformat(arguments, result, fp, character_iterators)
       # note: this implementation assumes a fast substring & index.
       # if this is not true, would be better to append chars one by one.

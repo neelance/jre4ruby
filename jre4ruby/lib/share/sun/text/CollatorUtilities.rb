@@ -65,7 +65,7 @@ module Sun::Text
       # Collator.FULL_DECOMPOSITION
       
       def legacy_mode_map
-        defined?(@@legacy_mode_map) ? @@legacy_mode_map : @@legacy_mode_map= Array.typed(NormalizerBase::Mode).new([NormalizerBase::NONE, NormalizerBase::NFD, NormalizerBase::NFKD, ])
+        defined?(@@legacy_mode_map) ? @@legacy_mode_map : @@legacy_mode_map= Array.typed(NormalizerBase::Mode).new([NormalizerBase::NONE, NormalizerBase::NFD, NormalizerBase::NFKD])
       end
       alias_method :attr_legacy_mode_map, :legacy_mode_map
       

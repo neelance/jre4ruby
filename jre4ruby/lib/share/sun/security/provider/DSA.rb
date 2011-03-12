@@ -516,6 +516,7 @@ module Sun::Security::Provider
     def generate_k(seed, q)
       # check out t in the spec.
       t = Array.typed(::Java::Int).new([-0x10325477, -0x67452302, 0x10325476, -0x3c2d1e10, 0x67452301])
+      # 
       tmp = DSA._sha_7(seed, t)
       tmp_bytes = Array.typed(::Java::Byte).new(tmp.attr_length * 4) { 0 }
       i = 0
@@ -702,10 +703,10 @@ module Sun::Security::Provider
     def byte_array2int_array(byte_array)
       j = 0
       new_ba = nil
-      mod = byte_array.attr_length % 4
+      mod_ = byte_array.attr_length % 4
       # guarantee that the incoming byteArray is a multiple of 4
       # (pad with 0's)
-      case (mod)
+      case (mod_)
       when 3
         new_ba = Array.typed(::Java::Byte).new(byte_array.attr_length + 1) { 0 }
       when 2

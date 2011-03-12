@@ -76,8 +76,8 @@ module Java::Lang
     # @return  the specified <code>char</code> value
     # 
     # @throws  IndexOutOfBoundsException
-    # if the <tt>index</tt> argument is negative or not less than
-    # <tt>length()</tt>
+    #          if the <tt>index</tt> argument is negative or not less than
+    #          <tt>length()</tt>
     def char_at(index)
       raise NotImplementedError
     end
@@ -96,9 +96,9 @@ module Java::Lang
     # @return  the specified subsequence
     # 
     # @throws  IndexOutOfBoundsException
-    # if <tt>start</tt> or <tt>end</tt> are negative,
-    # if <tt>end</tt> is greater than <tt>length()</tt>,
-    # or if <tt>start</tt> is greater than <tt>end</tt>
+    #          if <tt>start</tt> or <tt>end</tt> are negative,
+    #          if <tt>end</tt> is greater than <tt>length()</tt>,
+    #          or if <tt>start</tt> is greater than <tt>end</tt>
     def sub_sequence(start, end_)
       raise NotImplementedError
     end

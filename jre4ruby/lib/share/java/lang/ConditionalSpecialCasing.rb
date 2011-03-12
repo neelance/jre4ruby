@@ -86,8 +86,8 @@ module Java::Lang
       # # LATIN CAPITAL LETTER I WITH TILDE
       # # ================================================================================
       # # Turkish and Azeri
-      # new Entry(0x0130, new char[]{0x0069}, new char[]{0x0130}, "tr", 0), // # LATIN CAPITAL LETTER I WITH DOT ABOVE
-      # new Entry(0x0130, new char[]{0x0069}, new char[]{0x0130}, "az", 0), // # LATIN CAPITAL LETTER I WITH DOT ABOVE
+      #      new Entry(0x0130, new char[]{0x0069}, new char[]{0x0130}, "tr", 0), // # LATIN CAPITAL LETTER I WITH DOT ABOVE
+      #      new Entry(0x0130, new char[]{0x0069}, new char[]{0x0130}, "az", 0), // # LATIN CAPITAL LETTER I WITH DOT ABOVE
       # # COMBINING DOT ABOVE
       # # COMBINING DOT ABOVE
       # # LATIN CAPITAL LETTER I
@@ -220,8 +220,8 @@ module Java::Lang
       # letter before C, and there is no cased letter after C.
       # 
       # Regular Expression:
-      # Before C: [{cased==true}][{wordBoundary!=true}]*
-      # After C: !([{wordBoundary!=true}]*[{cased}])
+      #   Before C: [{cased==true}][{wordBoundary!=true}]*
+      #   After C: !([{wordBoundary!=true}]*[{cased}])
       def is_final_cased(src, index, locale)
         word_boundary = BreakIterator.get_word_instance(locale)
         word_boundary.set_text(src)
@@ -255,7 +255,7 @@ module Java::Lang
       # and there is no intervening combining character class 230 (ABOVE).
       # 
       # Regular Expression:
-      # Before C: [I]([{cc!=230}&{cc!=0}])*
+      #   Before C: [I]([{cc!=230}&{cc!=0}])*
       def is_after_i(src, index)
         ch = 0
         cc = 0
@@ -284,7 +284,7 @@ module Java::Lang
       # combining character class 230 (ABOVE).
       # 
       # Regular Expression:
-      # Before C: [{Soft_Dotted==true}]([{cc!=230}&{cc!=0}])*
+      #   Before C: [{Soft_Dotted==true}]([{cc!=230}&{cc!=0}])*
       def is_after_soft_dotted(src, index)
         ch = 0
         cc = 0
@@ -312,7 +312,7 @@ module Java::Lang
       # class 230 (ABOVE) in the combining character sequence.
       # 
       # Regular Expression:
-      # After C: [{cc!=0}]*[{cc==230}]
+      #   After C: [{cc!=0}]*[{cc==230}]
       def is_more_above(src, index)
         ch = 0
         cc = 0
@@ -343,7 +343,7 @@ module Java::Lang
       # and the combining dot above.
       # 
       # Regular Expression:
-      # After C: ([{cc!=230}&{cc!=0}])*[\u0307]
+      #   After C: ([{cc!=230}&{cc!=0}])*[\u0307]
       def is_before_dot(src, index)
         ch = 0
         cc = 0
@@ -380,6 +380,7 @@ module Java::Lang
           return true
         else
           # Check for Other_Lowercase and Other_Uppercase
+          # 
           if ((ch >= 0x2b0) && (ch <= 0x2b8))
             # MODIFIER LETTER SMALL H..MODIFIER LETTER SMALL Y
             return true
@@ -429,16 +430,16 @@ module Java::Lang
       typesig { [::Java::Int] }
       def is_soft_dotted(ch)
         case (ch)
-        # Soft_Dotted # L&       LATIN SMALL LETTER I
-        # Soft_Dotted # L&       LATIN SMALL LETTER J
-        # Soft_Dotted # L&       LATIN SMALL LETTER I WITH OGONEK
-        # Soft_Dotted # L&       LATIN SMALL LETTER I WITH STROKE
-        # Soft_Dotted # L&       CYRILLIC SMALL LETTER BYELORUSSIAN-UKRAINIAN I
-        # Soft_Dotted # L&       CYRILLIC SMALL LETTER JE
-        # Soft_Dotted # L&       LATIN SUBSCRIPT SMALL LETTER I
-        # Soft_Dotted # L&       LATIN SMALL LETTER I WITH TILDE BELOW
-        # Soft_Dotted # L&       LATIN SMALL LETTER I WITH DOT BELOW
         when 0x69, 0x6a, 0x12f, 0x268, 0x456, 0x458, 0x1d62, 0x1e2d, 0x1ecb, 0x2071
+          # Soft_Dotted # L&       LATIN SMALL LETTER I
+          # Soft_Dotted # L&       LATIN SMALL LETTER J
+          # Soft_Dotted # L&       LATIN SMALL LETTER I WITH OGONEK
+          # Soft_Dotted # L&       LATIN SMALL LETTER I WITH STROKE
+          # Soft_Dotted # L&       CYRILLIC SMALL LETTER BYELORUSSIAN-UKRAINIAN I
+          # Soft_Dotted # L&       CYRILLIC SMALL LETTER JE
+          # Soft_Dotted # L&       LATIN SUBSCRIPT SMALL LETTER I
+          # Soft_Dotted # L&       LATIN SMALL LETTER I WITH TILDE BELOW
+          # Soft_Dotted # L&       LATIN SMALL LETTER I WITH DOT BELOW
           # Soft_Dotted # L&       SUPERSCRIPT LATIN SMALL LETTER I
           return true
         else

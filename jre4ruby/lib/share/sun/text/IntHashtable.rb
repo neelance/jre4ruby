@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996,1997 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996, 1997 - All Rights Reserved
 module Sun::Text
@@ -34,7 +32,7 @@ module Sun::Text
     }
   end
   
-  # Simple internal class for doing hash mapping. Much, much faster than the
+  #  Simple internal class for doing hash mapping. Much, much faster than the
   # standard Hashtable for integer to integer mappings,
   # and doesn't require object creation.<br>
   # If a key is not found, the defaultValue is returned.
@@ -63,7 +61,7 @@ module Sun::Text
       @count = 0
       @values = nil
       @key_list = nil
-      initialize_(least_greater_prime_index(RJava.cast_to_int((initial_size / HIGH_WATER_FACTOR))))
+      initialize_(least_greater_prime_index(((initial_size / HIGH_WATER_FACTOR)).to_int))
     end
     
     typesig { [] }
@@ -148,7 +146,7 @@ module Sun::Text
       # WARNING:  This function hasn't undergone rigorous testing to make sure it actually
       # gives good distribution.  We've eyeballed the results, and they appear okay, but
       # you copy this algorithm (or these seed and multiplier values) at your own risk.
-      # --rtg 8/17/99
+      #                                        --rtg 8/17/99
       result = 465 # an arbitrary seed value
       scrambler = 1362796821 # an arbitrary multiplier.
       i = 0
@@ -156,13 +154,13 @@ module Sun::Text
         # this line just scrambles the bits as each value is added into the
         # has value.  This helps to make sure we affect all the bits and that
         # the same values in a different order will produce a different hash value
-        result = RJava.cast_to_int((result * scrambler + 1))
+        result = ((result * scrambler + 1)).to_int
         result += @key_list[i]
         (i += 1)
       end
       i_ = 0
       while i_ < @values.attr_length
-        result = RJava.cast_to_int((result * scrambler + 1))
+        result = ((result * scrambler + 1)).to_int
         result += @values[i_]
         (i_ += 1)
       end
@@ -270,8 +268,8 @@ module Sun::Text
         (i += 1)
       end
       @count = 0
-      @low_water_mark = RJava.cast_to_int((initial_size * LOW_WATER_FACTOR))
-      @high_water_mark = RJava.cast_to_int((initial_size * HIGH_WATER_FACTOR))
+      @low_water_mark = ((initial_size * LOW_WATER_FACTOR)).to_int
+      @high_water_mark = ((initial_size * HIGH_WATER_FACTOR)).to_int
     end
     
     typesig { [] }

@@ -22,17 +22,14 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
-# 
 # (C) Copyright IBM Corp. 1996-2003 - All Rights Reserved                     *
-# *
+#                                                                             *
 # The original version of this source code and documentation is copyrighted   *
 # and owned by IBM, These materials are provided under terms of a License     *
 # Agreement between IBM and Sun. This technology is protected by multiple     *
 # US and International patents. This notice and attribution to IBM may not    *
 # to removed.                                                                 *
-# 
+# *****************************************************************************
 # 
 # This locale data is based on the ICU's Vietnamese locale data (rev. 1.38)
 # found at:
@@ -52,7 +49,7 @@ module Sun::Text::Resources
     
     typesig { [] }
     def get_contents
-      return Array.typed(Array.typed(Object)).new([Array.typed(Object).new(["Rule", ("&".to_u << 0x0300 << ";".to_u << 0x0309 << ";".to_u << 0x0303 << ";".to_u << 0x0301 << ";".to_u << 0x0323 << "") + ("&D<".to_u << 0x0111 << ",".to_u << 0x0110 << "") + ("&Z<".to_u << 0x0306 << "<".to_u << 0x0302 << "<".to_u << 0x031b << "")]), ])
+      return Array.typed(Array.typed(Object)).new([Array.typed(Object).new(["Rule", ("&".to_u << 0x0300 << ";".to_u << 0x0309 << ";".to_u << 0x0303 << ";".to_u << 0x0301 << ";".to_u << 0x0323 << "") + ("&D<".to_u << 0x0111 << ",".to_u << 0x0110 << "") + ("&Z<".to_u << 0x0306 << "<".to_u << 0x0302 << "<".to_u << 0x031b << "")])])
     end
     
     typesig { [] }

@@ -130,29 +130,29 @@ module Java::Util
       # 
       # table formats:
       # - mainTable:
-      # - maps country code to 32-bit int
-      # - 26*26 entries, corresponding to [A-Z]*[A-Z]
-      # - \u007F -> not valid country
-      # - bits 18-31: unused
-      # - bits 8-17: numeric code (0 to 1023)
-      # - bit 7: 1 - special case, bits 0-4 indicate which one
-      # 0 - simple country, bits 0-4 indicate final char of currency code
-      # - bits 5-6: fraction digits for simple countries, 0 for special cases
-      # - bits 0-4: final char for currency code for simple country, or ID of special case
+      #   - maps country code to 32-bit int
+      #   - 26*26 entries, corresponding to [A-Z]*[A-Z]
+      #   - \u007F -> not valid country
+      #   - bits 18-31: unused
+      #   - bits 8-17: numeric code (0 to 1023)
+      #   - bit 7: 1 - special case, bits 0-4 indicate which one
+      #            0 - simple country, bits 0-4 indicate final char of currency code
+      #   - bits 5-6: fraction digits for simple countries, 0 for special cases
+      #   - bits 0-4: final char for currency code for simple country, or ID of special case
       # - special case IDs:
-      # - 0: country has no currency
-      # - other: index into sc* arrays + 1
+      #   - 0: country has no currency
+      #   - other: index into sc* arrays + 1
       # - scCutOverTimes: cut-over time in millis as returned by
-      # System.currentTimeMillis for special case countries that are changing
-      # currencies; Long.MAX_VALUE for countries that are not changing currencies
+      #   System.currentTimeMillis for special case countries that are changing
+      #   currencies; Long.MAX_VALUE for countries that are not changing currencies
       # - scOldCurrencies: old currencies for special case countries
       # - scNewCurrencies: new currencies for special case countries that are
-      # changing currencies; null for others
+      #   changing currencies; null for others
       # - scOldCurrenciesDFD: default fraction digits for old currencies
       # - scNewCurrenciesDFD: default fraction digits for new currencies, 0 for
-      # countries that are not changing currencies
+      #   countries that are not changing currencies
       # - otherCurrencies: concatenation of all currency codes that are not the
-      # main currency of a simple country, separated by "-"
+      #   main currency of a simple country, separated by "-"
       # - otherCurrenciesDFD: decimal format digits for currencies in otherCurrencies, same order
       
       def format_version
@@ -566,7 +566,7 @@ module Java::Util
       # without affecting the available currencies in the runtime.
       # 
       # @return the set of available currencies.  If there is no currency
-      # available in the runtime, the returned set is empty.
+      #    available in the runtime, the returned set is empty.
       # @since 1.7
       def get_available_currencies
         synchronized((Currency)) do
@@ -773,13 +773,14 @@ module Java::Util
           raise AssertError if not ((params.attr_length).equal?(1))
           type = params[0]
           case (type)
-          # case DISPLAYNAME:
-          # return currencyNameProvider.getDisplayName(key, locale);
           when SYMBOL
             return currency_name_provider.get_symbol(key, locale)
+          # shouldn't happen
           else
+            #          case DISPLAYNAME:
+            #              return currencyNameProvider.getDisplayName(key, locale);
             raise AssertError if not (false)
-          end # shouldn't happen
+          end
           return nil
         end
         
@@ -835,9 +836,9 @@ module Java::Util
       # @param pattern regex pattern for the properties
       # @param ctry country code
       # @param data currency data.  This is a comma separated string that
-      # consists of "three-letter alphabet code", "three-digit numeric code",
-      # and "one-digit (0,1,2, or 3) default fraction digit".
-      # For example, "JPZ,392,0".
+      #    consists of "three-letter alphabet code", "three-digit numeric code",
+      #    and "one-digit (0,1,2, or 3) default fraction digit".
+      #    For example, "JPZ,392,0".
       # @throws
       def replace_currency_data(pattern, ctry, curdata)
         if (!(ctry.length).equal?(2))

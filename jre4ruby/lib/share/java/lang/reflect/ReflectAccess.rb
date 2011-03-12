@@ -95,8 +95,10 @@ module Java::Lang::Reflect
     end
     
     typesig { [Method] }
+    # 
     # Copying routines, needed to quickly fabricate new Field,
     # Method, and Constructor objects from templates
+    # 
     def copy_method(arg)
       return arg.copy
     end

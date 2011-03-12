@@ -156,7 +156,7 @@ module Sun::Security::Pkcs11
     typesig { [BigInteger, BigInteger] }
     def generate_public(n, e)
       RSAKeyFactory.check_key_lengths(n.bit_length, e, -1, 64 * 1024)
-      attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_CLASS, CKO_PUBLIC_KEY), CK_ATTRIBUTE.new(CKA_KEY_TYPE, CKK_RSA), CK_ATTRIBUTE.new(CKA_MODULUS, n), CK_ATTRIBUTE.new(CKA_PUBLIC_EXPONENT, e), ])
+      attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_CLASS, CKO_PUBLIC_KEY), CK_ATTRIBUTE.new(CKA_KEY_TYPE, CKK_RSA), CK_ATTRIBUTE.new(CKA_MODULUS, n), CK_ATTRIBUTE.new(CKA_PUBLIC_EXPONENT, e)])
       attributes = self.attr_token.get_attributes(O_IMPORT, CKO_PUBLIC_KEY, CKK_RSA, attributes)
       session = nil
       begin
@@ -171,7 +171,7 @@ module Sun::Security::Pkcs11
     typesig { [BigInteger, BigInteger] }
     def generate_private(n, d)
       RSAKeyFactory.check_key_lengths(n.bit_length, nil, -1, 64 * 1024)
-      attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_CLASS, CKO_PRIVATE_KEY), CK_ATTRIBUTE.new(CKA_KEY_TYPE, CKK_RSA), CK_ATTRIBUTE.new(CKA_MODULUS, n), CK_ATTRIBUTE.new(CKA_PRIVATE_EXPONENT, d), ])
+      attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_CLASS, CKO_PRIVATE_KEY), CK_ATTRIBUTE.new(CKA_KEY_TYPE, CKK_RSA), CK_ATTRIBUTE.new(CKA_MODULUS, n), CK_ATTRIBUTE.new(CKA_PRIVATE_EXPONENT, d)])
       attributes = self.attr_token.get_attributes(O_IMPORT, CKO_PRIVATE_KEY, CKK_RSA, attributes)
       session = nil
       begin
@@ -186,7 +186,7 @@ module Sun::Security::Pkcs11
     typesig { [BigInteger, BigInteger, BigInteger, BigInteger, BigInteger, BigInteger, BigInteger, BigInteger] }
     def generate_private(n, e, d, p, q, pe, qe, coeff)
       RSAKeyFactory.check_key_lengths(n.bit_length, e, -1, 64 * 1024)
-      attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_CLASS, CKO_PRIVATE_KEY), CK_ATTRIBUTE.new(CKA_KEY_TYPE, CKK_RSA), CK_ATTRIBUTE.new(CKA_MODULUS, n), CK_ATTRIBUTE.new(CKA_PUBLIC_EXPONENT, e), CK_ATTRIBUTE.new(CKA_PRIVATE_EXPONENT, d), CK_ATTRIBUTE.new(CKA_PRIME_1, p), CK_ATTRIBUTE.new(CKA_PRIME_2, q), CK_ATTRIBUTE.new(CKA_EXPONENT_1, pe), CK_ATTRIBUTE.new(CKA_EXPONENT_2, qe), CK_ATTRIBUTE.new(CKA_COEFFICIENT, coeff), ])
+      attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_CLASS, CKO_PRIVATE_KEY), CK_ATTRIBUTE.new(CKA_KEY_TYPE, CKK_RSA), CK_ATTRIBUTE.new(CKA_MODULUS, n), CK_ATTRIBUTE.new(CKA_PUBLIC_EXPONENT, e), CK_ATTRIBUTE.new(CKA_PRIVATE_EXPONENT, d), CK_ATTRIBUTE.new(CKA_PRIME_1, p), CK_ATTRIBUTE.new(CKA_PRIME_2, q), CK_ATTRIBUTE.new(CKA_EXPONENT_1, pe), CK_ATTRIBUTE.new(CKA_EXPONENT_2, qe), CK_ATTRIBUTE.new(CKA_COEFFICIENT, coeff)])
       attributes = self.attr_token.get_attributes(O_IMPORT, CKO_PRIVATE_KEY, CKK_RSA, attributes)
       session = nil
       begin
@@ -202,7 +202,7 @@ module Sun::Security::Pkcs11
     def impl_get_public_key_spec(key, key_spec, session)
       if (RSAPublicKeySpec.is_assignable_from(key_spec))
         session[0] = self.attr_token.get_obj_session
-        attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_MODULUS), CK_ATTRIBUTE.new(CKA_PUBLIC_EXPONENT), ])
+        attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_MODULUS), CK_ATTRIBUTE.new(CKA_PUBLIC_EXPONENT)])
         self.attr_token.attr_p11._c_get_attribute_value(session[0].id, key.attr_key_id, attributes)
         spec = RSAPublicKeySpec.new(attributes[0].get_big_integer, attributes[1].get_big_integer)
         return spec
@@ -216,14 +216,14 @@ module Sun::Security::Pkcs11
     def impl_get_private_key_spec(key, key_spec, session)
       if (RSAPrivateCrtKeySpec.is_assignable_from(key_spec))
         session[0] = self.attr_token.get_obj_session
-        attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_MODULUS), CK_ATTRIBUTE.new(CKA_PUBLIC_EXPONENT), CK_ATTRIBUTE.new(CKA_PRIVATE_EXPONENT), CK_ATTRIBUTE.new(CKA_PRIME_1), CK_ATTRIBUTE.new(CKA_PRIME_2), CK_ATTRIBUTE.new(CKA_EXPONENT_1), CK_ATTRIBUTE.new(CKA_EXPONENT_2), CK_ATTRIBUTE.new(CKA_COEFFICIENT), ])
+        attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_MODULUS), CK_ATTRIBUTE.new(CKA_PUBLIC_EXPONENT), CK_ATTRIBUTE.new(CKA_PRIVATE_EXPONENT), CK_ATTRIBUTE.new(CKA_PRIME_1), CK_ATTRIBUTE.new(CKA_PRIME_2), CK_ATTRIBUTE.new(CKA_EXPONENT_1), CK_ATTRIBUTE.new(CKA_EXPONENT_2), CK_ATTRIBUTE.new(CKA_COEFFICIENT)])
         self.attr_token.attr_p11._c_get_attribute_value(session[0].id, key.attr_key_id, attributes)
         spec = RSAPrivateCrtKeySpec.new(attributes[0].get_big_integer, attributes[1].get_big_integer, attributes[2].get_big_integer, attributes[3].get_big_integer, attributes[4].get_big_integer, attributes[5].get_big_integer, attributes[6].get_big_integer, attributes[7].get_big_integer)
         return spec
       else
         if (RSAPrivateKeySpec.is_assignable_from(key_spec))
           session[0] = self.attr_token.get_obj_session
-          attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_MODULUS), CK_ATTRIBUTE.new(CKA_PRIVATE_EXPONENT), ])
+          attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_MODULUS), CK_ATTRIBUTE.new(CKA_PRIVATE_EXPONENT)])
           self.attr_token.attr_p11._c_get_attribute_value(session[0].id, key.attr_key_id, attributes)
           spec = RSAPrivateKeySpec.new(attributes[0].get_big_integer, attributes[1].get_big_integer)
           return spec

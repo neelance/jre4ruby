@@ -107,7 +107,6 @@ module Sun::Security::X509
       
       # The following are defined for ease-of-use. These
       # are the most frequently retrieved attributes.
-      # 
       # x509.info.subject.dname
       const_set_lazy(:SUBJECT_DN) { NAME + DOT + INFO + DOT + RJava.cast_to_string(X509CertInfo::SUBJECT) + DOT + RJava.cast_to_string(CertificateSubjectName::DN_NAME) }
       const_attr_reader  :SUBJECT_DN
@@ -320,8 +319,8 @@ module Sun::Security::X509
     # X509Factory.END_CERT.
     # 
     # @param in an input stream holding at least one certificate that may
-    # be either DER-encoded or RFC1421 hex-encoded version of the
-    # DER-encoded certificate.
+    #        be either DER-encoded or RFC1421 hex-encoded version of the
+    #        DER-encoded certificate.
     # @exception CertificateException on parsing and initialization errors.
     def initialize(in_)
       @read_only = false
@@ -376,7 +375,7 @@ module Sun::Security::X509
     # @param in InputStream to read
     # @returns DerValue corresponding to decoded HEX-encoded bytes
     # @throws IOException if stream can not be interpreted as RFC1421
-    # encoded bytes
+    #                     encoded bytes
     def read_rfc1421cert(in_)
       der = nil
       line = nil
@@ -413,7 +412,7 @@ module Sun::Security::X509
     # in raw form and has to be signed to be useful.
     # 
     # @params info the X509CertificateInfo which the Certificate is to be
-    # created from.
+    #              created from.
     def initialize(cert_info)
       @read_only = false
       @signed_cert = nil
@@ -683,7 +682,7 @@ module Sun::Security::X509
     # valid at the specified date/time.
     # 
     # @param date the Date to check against to see if this certificate
-    # is valid at that date/time.
+    #        is valid at that date/time.
     # 
     # @exception CertificateExpiredException if the certificate has expired
     # with respect to the <code>date</code> supplied.
@@ -874,7 +873,6 @@ module Sun::Security::X509
     
     typesig { [] }
     # the strongly typed gets, as per java.security.cert.X509Certificate
-    # 
     # Gets the publickey from this certificate.
     # 
     # @return the publickey.
@@ -1087,7 +1085,7 @@ module Sun::Security::X509
     # certificate's signature algorithm.
     # 
     # @return the DER encoded signature algorithm parameters, or
-    # null if no parameters are present.
+    #         null if no parameters are present.
     def get_sig_alg_params
       if ((@alg_id).nil?)
         return nil
@@ -1313,7 +1311,7 @@ module Sun::Security::X509
     # 
     # @param oid the Object Identifier value for the extension.
     # @return Extension or null if certificate does not contain this
-    # extension
+    #         extension
     def get_extension(oid)
       if ((@info).nil?)
         return nil
@@ -1566,7 +1564,6 @@ module Sun::Security::X509
       typesig { [Collection] }
       # Checks a Collection of altNames and clones any name entries of type
       # byte [].
-      # 
       # only partially generified due to javac bug
       def clone_alt_names(alt_names)
         must_clone = false
@@ -1719,9 +1716,9 @@ module Sun::Security::X509
     typesig { [DerValue] }
     # Cert is a SIGNED ASN.1 macro, a three elment sequence:
     # 
-    # - Data to be signed (ToBeSigned) -- the "raw" cert
-    # - Signature algorithm (SigAlgId)
-    # - The signature bits
+    #  - Data to be signed (ToBeSigned) -- the "raw" cert
+    #  - Signature algorithm (SigAlgId)
+    #  - The signature bits
     # 
     # This routine unmarshals the certificate, saving the signature
     # parts away for later verification.

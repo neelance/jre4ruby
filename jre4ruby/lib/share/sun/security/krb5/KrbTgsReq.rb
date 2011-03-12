@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5
@@ -104,14 +102,7 @@ module Sun::Security::Krb5
     # 30 seconds
     # Used in CredentialsUtil
     def initialize(as_creds, sname)
-      # KerberosTime from
-      # KerberosTime till
-      # KerberosTime rtime
-      # eTypes, // null, // int[] eTypes
-      # HostAddresses addresses
-      # AuthorizationData authorizationData
-      # Ticket[] additionalTickets
-      initialize__krb_tgs_req(KDCOptions.new, as_creds, sname, nil, nil, nil, nil, nil, nil, nil, nil) # EncryptionKey subSessionKey
+      initialize__krb_tgs_req(KDCOptions.new, as_creds, sname, nil, nil, nil, nil, nil, nil, nil, nil) # KerberosTime from # KerberosTime till # KerberosTime rtime # eTypes, // null, // int[] eTypes # HostAddresses addresses # AuthorizationData authorizationData # Ticket[] additionalTickets # EncryptionKey subSessionKey
     end
     
     typesig { [KDCOptions, Credentials, PrincipalName, KerberosTime, KerberosTime, KerberosTime, Array.typed(::Java::Int), HostAddresses, AuthorizationData, Array.typed(Ticket), EncryptionKey] }
@@ -192,7 +183,6 @@ module Sun::Security::Krb5
       # XXX We need to revisit this to see if can't move it
       # up such that FORWARDED flag set in the options
       # is included in the marshaled request.
-      # 
       # If this is based on a forwarded ticket, record that in the
       # options, because the returned TgsRep will contain the
       # FORWARDED flag set.
@@ -281,9 +271,8 @@ module Sun::Security::Krb5
         else
           enc_authorization_data = EncryptedData.new(key, ad, KeyUsage::KU_TGS_REQ_AUTH_DATA_SESSKEY)
         end
-      end
+      end # TO
       # crealm,
-      # TO
       req_body = KDCReqBody.new(kdc_options, cname, sname.get_realm, sname, from, req_till, rtime, Nonce.value, req_e_types, addresses, enc_authorization_data, additional_tickets)
       temp = req_body.asn1_encode(Krb5::KRB_TGS_REQ)
       # if the checksum type is one of the keyed checksum types,
@@ -317,7 +306,7 @@ module Sun::Security::Krb5
     class_module.module_eval {
       typesig { [String] }
       def debug(message)
-        # System.err.println(">>> KrbTgsReq: " + message);
+        #      System.err.println(">>> KrbTgsReq: " + message);
       end
     }
     

@@ -60,7 +60,7 @@ module Java::Util
   # {@link Collections#synchronizedList Collections.synchronizedList}
   # method.  This is best done at creation time, to prevent accidental
   # unsynchronized access to the list:<pre>
-  # List list = Collections.synchronizedList(new LinkedList(...));</pre>
+  #   List list = Collections.synchronizedList(new LinkedList(...));</pre>
   # 
   # <p>The iterators returned by this class's <tt>iterator</tt> and
   # <tt>listIterator</tt> methods are <i>fail-fast</i>: if the list is
@@ -285,7 +285,7 @@ module Java::Util
     # specified collection's iterator.
     # 
     # @param index index at which to insert the first element
-    # from the specified collection
+    #              from the specified collection
     # @param c collection containing elements to be added to this list
     # @return <tt>true</tt> if this list changed as a result of the call
     # @throws IndexOutOfBoundsException {@inheritDoc}
@@ -331,7 +331,6 @@ module Java::Util
     
     typesig { [::Java::Int] }
     # Positional Access Operations
-    # 
     # Returns the element at the specified position in this list.
     # 
     # @param index index of the element to return
@@ -405,7 +404,6 @@ module Java::Util
     
     typesig { [Object] }
     # Search Operations
-    # 
     # Returns the index of the first occurrence of the specified element
     # in this list, or -1 if this list does not contain the element.
     # More formally, returns the lowest index <tt>i</tt> such that
@@ -414,7 +412,7 @@ module Java::Util
     # 
     # @param o element to search for
     # @return the index of the first occurrence of the specified element in
-    # this list, or -1 if this list does not contain the element
+    #         this list, or -1 if this list does not contain the element
     def index_of(o)
       index = 0
       if ((o).nil?)
@@ -448,7 +446,7 @@ module Java::Util
     # 
     # @param o element to search for
     # @return the index of the last occurrence of the specified element in
-    # this list, or -1 if this list does not contain the element
+    #         this list, or -1 if this list does not contain the element
     def last_index_of(o)
       index = @size
       if ((o).nil?)
@@ -475,7 +473,6 @@ module Java::Util
     
     typesig { [] }
     # Queue operations.
-    # 
     # Retrieves, but does not remove, the head (first element) of this list.
     # @return the head of this list, or <tt>null</tt> if this list is empty
     # @since 1.5
@@ -528,7 +525,6 @@ module Java::Util
     
     typesig { [Object] }
     # Deque operations
-    # 
     # Inserts the specified element at the front of this list.
     # 
     # @param e the element to insert
@@ -555,7 +551,7 @@ module Java::Util
     # or returns <tt>null</tt> if this list is empty.
     # 
     # @return the first element of this list, or <tt>null</tt>
-    # if this list is empty
+    #         if this list is empty
     # @since 1.6
     def peek_first
       if ((@size).equal?(0))
@@ -569,7 +565,7 @@ module Java::Util
     # or returns <tt>null</tt> if this list is empty.
     # 
     # @return the last element of this list, or <tt>null</tt>
-    # if this list is empty
+    #         if this list is empty
     # @since 1.6
     def peek_last
       if ((@size).equal?(0))
@@ -583,7 +579,7 @@ module Java::Util
     # or returns <tt>null</tt> if this list is empty.
     # 
     # @return the first element of this list, or <tt>null</tt> if
-    # this list is empty
+    #     this list is empty
     # @since 1.6
     def poll_first
       if ((@size).equal?(0))
@@ -597,7 +593,7 @@ module Java::Util
     # or returns <tt>null</tt> if this list is empty.
     # 
     # @return the last element of this list, or <tt>null</tt> if
-    # this list is empty
+    #     this list is empty
     # @since 1.6
     def poll_last
       if ((@size).equal?(0))
@@ -625,7 +621,7 @@ module Java::Util
     # <p>This method is equivalent to {@link #removeFirst()}.
     # 
     # @return the element at the front of this list (which is the top
-    # of the stack represented by this list)
+    #         of the stack represented by this list)
     # @throws NoSuchElementException if this list is empty
     # @since 1.6
     def pop
@@ -690,9 +686,9 @@ module Java::Util
     # time in the future.
     # 
     # @param index index of the first element to be returned from the
-    # list-iterator (by a call to <tt>next</tt>)
+    #              list-iterator (by a call to <tt>next</tt>)
     # @return a ListIterator of the elements in this list (in proper
-    # sequence), starting at the specified position in the list
+    #         sequence), starting at the specified position in the list
     # @throws IndexOutOfBoundsException {@inheritDoc}
     # @see List#listIterator(int)
     def list_iterator(index)
@@ -988,7 +984,7 @@ module Java::Util
     # APIs.
     # 
     # @return an array containing all of the elements in this list
-    # in proper sequence
+    #         in proper sequence
     def to_array
       result = Array.typed(Object).new(@size) { nil }
       i = 0
@@ -1024,18 +1020,18 @@ module Java::Util
     # allocated array of <tt>String</tt>:
     # 
     # <pre>
-    # String[] y = x.toArray(new String[0]);</pre>
+    #     String[] y = x.toArray(new String[0]);</pre>
     # 
     # Note that <tt>toArray(new Object[0])</tt> is identical in function to
     # <tt>toArray()</tt>.
     # 
     # @param a the array into which the elements of the list are to
-    # be stored, if it is big enough; otherwise, a new array of the
-    # same runtime type is allocated for this purpose.
+    #          be stored, if it is big enough; otherwise, a new array of the
+    #          same runtime type is allocated for this purpose.
     # @return an array containing the elements of the list
     # @throws ArrayStoreException if the runtime type of the specified array
-    # is not a supertype of the runtime type of every element in
-    # this list
+    #         is not a supertype of the runtime type of every element in
+    #         this list
     # @throws NullPointerException if the specified array is null
     def to_array(a)
       if (a.attr_length < @size)
@@ -1064,8 +1060,8 @@ module Java::Util
     # is, serialize it).
     # 
     # @serialData The size of the list (the number of elements it
-    # contains) is emitted (int), followed by all of its
-    # elements (each an Object) in the proper order.
+    #             contains) is emitted (int), followed by all of its
+    #             elements (each an Object) in the proper order.
     def write_object(s)
       # Write out any hidden serialization magic
       s.default_write_object

@@ -49,7 +49,7 @@ module Java::Io
   # 
   # <pre>
   # PrintWriter out
-  # = new PrintWriter(new BufferedWriter(new FileWriter("foo.out")));
+  #   = new PrintWriter(new BufferedWriter(new FileWriter("foo.out")));
   # </pre>
   # 
   # will buffer the PrintWriter's output to the file.  Without buffering, each

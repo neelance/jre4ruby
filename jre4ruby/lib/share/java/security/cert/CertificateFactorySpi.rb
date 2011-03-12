@@ -118,7 +118,7 @@ module Java::Security::Cert
     # 
     # @param inStream an <code>InputStream</code> containing the data
     # @return a <code>CertPath</code> initialized with the data from the
-    # <code>InputStream</code>
+    #   <code>InputStream</code>
     # @exception CertificateException if an exception occurs while decoding
     # @exception UnsupportedOperationException if the method is not supported
     # @since 1.4
@@ -139,9 +139,9 @@ module Java::Security::Cert
     # @param inStream an <code>InputStream</code> containing the data
     # @param encoding the encoding used for the data
     # @return a <code>CertPath</code> initialized with the data from the
-    # <code>InputStream</code>
+    #   <code>InputStream</code>
     # @exception CertificateException if an exception occurs while decoding or
-    # the encoding requested is not supported
+    #   the encoding requested is not supported
     # @exception UnsupportedOperationException if the method is not supported
     # @since 1.4
     def engine_generate_cert_path(in_stream, encoding)
@@ -163,7 +163,7 @@ module Java::Security::Cert
     # 
     # @param certificates a <code>List</code> of <code>Certificate</code>s
     # @return a <code>CertPath</code> initialized with the supplied list of
-    # certificates
+    #   certificates
     # @exception CertificateException if an exception occurs
     # @exception UnsupportedOperationException if the method is not supported
     # @since 1.4
@@ -189,7 +189,7 @@ module Java::Security::Cert
     # and by default throws an <code>UnsupportedOperationException</code>.
     # 
     # @return an <code>Iterator</code> over the names of the supported
-    # <code>CertPath</code> encodings (as <code>String</code>s)
+    #         <code>CertPath</code> encodings (as <code>String</code>s)
     # @exception UnsupportedOperationException if the method is not supported
     # @since 1.4
     def engine_get_cert_path_encodings

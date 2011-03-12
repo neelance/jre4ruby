@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5::Internal
@@ -72,7 +70,6 @@ module Sun::Security::Krb5::Internal
         # Workaround implementation incompatibilities by not generating
         # initial sequence numbers greater than 2^30, as done
         # in MIT distribution.
-        # 
         # get the random confounder
         data = Confounder.bytes(4)
         data[0] = (data[0] & 0x3f)

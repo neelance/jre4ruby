@@ -74,8 +74,8 @@ module Java::Security::Cert
   # CertificateFactory cf = CertificateFactory.getInstance("X.509");
   # 
   # while (bis.available() > 0) {
-  # Certificate cert = cf.generateCertificate(bis);
-  # System.out.println(cert.toString());
+  #    Certificate cert = cf.generateCertificate(bis);
+  #    System.out.println(cert.toString());
   # }
   # </pre>
   # 
@@ -88,8 +88,8 @@ module Java::Security::Cert
   # Collection c = cf.generateCertificates(fis);
   # Iterator i = c.iterator();
   # while (i.hasNext()) {
-  # Certificate cert = (Certificate)i.next();
-  # System.out.println(cert);
+  #    Certificate cert = (Certificate)i.next();
+  #    System.out.println(cert);
   # }
   # </pre>
   # 
@@ -168,8 +168,8 @@ module Java::Security::Cert
       # @return a certificate factory object for the specified type.
       # 
       # @exception CertificateException if no Provider supports a
-      # CertificateFactorySpi implementation for the
-      # specified type.
+      #          CertificateFactorySpi implementation for the
+      #          specified type.
       # 
       # @see java.security.Provider
       def get_instance(type)
@@ -204,14 +204,14 @@ module Java::Security::Cert
       # @return a certificate factory object for the specified type.
       # 
       # @exception CertificateException if a CertificateFactorySpi
-      # implementation for the specified algorithm is not
-      # available from the specified provider.
+      #          implementation for the specified algorithm is not
+      #          available from the specified provider.
       # 
       # @exception NoSuchProviderException if the specified provider is not
-      # registered in the security provider list.
+      #          registered in the security provider list.
       # 
       # @exception IllegalArgumentException if the provider name is null
-      # or empty.
+      #          or empty.
       # 
       # @see java.security.Provider
       def get_instance(type, provider)
@@ -243,11 +243,11 @@ module Java::Security::Cert
       # @return a certificate factory object for the specified type.
       # 
       # @exception CertificateException if a CertificateFactorySpi
-      # implementation for the specified algorithm is not available
-      # from the specified Provider object.
+      #          implementation for the specified algorithm is not available
+      #          from the specified Provider object.
       # 
       # @exception IllegalArgumentException if the <code>provider</code> is
-      # null.
+      #          null.
       # 
       # @see java.security.Provider
       # 
@@ -332,7 +332,7 @@ module Java::Security::Cert
     # <code>UnsupportedOperationException</code>.
     # 
     # @return an <code>Iterator</code> over the names of the supported
-    # <code>CertPath</code> encodings (as <code>String</code>s)
+    #         <code>CertPath</code> encodings (as <code>String</code>s)
     # @since 1.4
     def get_cert_path_encodings
       return (@cert_fac_spi.engine_get_cert_path_encodings)
@@ -347,7 +347,7 @@ module Java::Security::Cert
     # 
     # @param inStream an <code>InputStream</code> containing the data
     # @return a <code>CertPath</code> initialized with the data from the
-    # <code>InputStream</code>
+    #   <code>InputStream</code>
     # @exception CertificateException if an exception occurs while decoding
     # @since 1.4
     def generate_cert_path(in_stream)
@@ -365,9 +365,9 @@ module Java::Security::Cert
     # @param inStream an <code>InputStream</code> containing the data
     # @param encoding the encoding used for the data
     # @return a <code>CertPath</code> initialized with the data from the
-    # <code>InputStream</code>
+    #   <code>InputStream</code>
     # @exception CertificateException if an exception occurs while decoding or
-    # the encoding requested is not supported
+    #   the encoding requested is not supported
     # @since 1.4
     def generate_cert_path(in_stream, encoding)
       return (@cert_fac_spi.engine_generate_cert_path(in_stream, encoding))
@@ -383,7 +383,7 @@ module Java::Security::Cert
     # 
     # @param certificates a <code>List</code> of <code>Certificate</code>s
     # @return a <code>CertPath</code> initialized with the supplied list of
-    # certificates
+    #   certificates
     # @exception CertificateException if an exception occurs
     # @since 1.4
     def generate_cert_path(certificates)

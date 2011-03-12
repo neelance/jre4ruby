@@ -106,11 +106,11 @@ module Java::Io
     # the length of the prefix almost uniquely identifies the type of the path
     # and whether it is absolute or relative:
     # 
-    # 0  relative to both drive and directory
-    # 1  drive-relative (begins with '\\')
-    # 2  absolute UNC (if first char is '\\'),
-    # else directory-relative (has form "z:foo")
-    # 3  absolute local pathname (begins with "z:\\")
+    #     0  relative to both drive and directory
+    #     1  drive-relative (begins with '\\')
+    #     2  absolute UNC (if first char is '\\'),
+    #          else directory-relative (has form "z:foo")
+    #     3  absolute local pathname (begins with "z:\\")
     def normalize_prefix(path, len, sb)
       src = 0
       while ((src < len) && is_slash(path.char_at(src)))
@@ -149,8 +149,7 @@ module Java::Io
       end
       if (off < 3)
         off = 0
-      end
-      # Avoid fencepost cases with UNC pathnames
+      end # Avoid fencepost cases with UNC pathnames
       src = 0
       slash = @slash
       sb = StringBuffer.new(len)
@@ -250,21 +249,16 @@ module Java::Io
       if ((c0).equal?(slash))
         if ((c1).equal?(slash))
           return 2
-        end
-        # Absolute UNC pathname "\\\\foo"
-        return 1
-        # Drive-relative "\\foo"
+        end # Absolute UNC pathname "\\\\foo"
+        return 1 # Drive-relative "\\foo"
       end
       if (is_letter(c0) && ((c1).equal?(Character.new(?:.ord))))
         if ((n > 2) && ((path.char_at(2)).equal?(slash)))
           return 3
-        end
-        # Absolute local pathname "z:\\foo"
-        return 2
-        # Directory-relative "z:foo"
+        end # Absolute local pathname "z:\\foo"
+        return 2 # Directory-relative "z:foo"
       end
-      return 0
-      # Completely relative
+      return 0 # Completely relative
     end
     
     typesig { [String, String] }
@@ -409,16 +403,13 @@ module Java::Io
       pl = f.get_prefix_length
       if (((pl).equal?(2)) && ((path.char_at(0)).equal?(@slash)))
         return path
-      end
-      # UNC
+      end # UNC
       if ((pl).equal?(3))
         return path
-      end
-      # Absolute local
+      end # Absolute local
       if ((pl).equal?(0))
         return get_user_path + slashify(path)
-      end
-      # Completely relative
+      end # Completely relative
       if ((pl).equal?(1))
         # Drive-relative
         up = get_user_path
@@ -426,8 +417,7 @@ module Java::Io
         if (!(ud).nil?)
           return ud + path
         end
-        return up + path
-        # User dir is a UNC path
+        return up + path # User dir is a UNC path
       end
       if ((pl).equal?(2))
         # Directory-relative
@@ -455,8 +445,7 @@ module Java::Io
           end
           return p
         end
-        return RJava.cast_to_string(drive) + ":" + RJava.cast_to_string(slashify(path.substring(2)))
-        # fake it
+        return RJava.cast_to_string(drive) + ":" + RJava.cast_to_string(slashify(path.substring(2))) # fake it
       end
       raise InternalError.new("Unresolvable path: " + path)
     end

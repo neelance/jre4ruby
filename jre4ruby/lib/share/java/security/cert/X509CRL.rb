@@ -63,9 +63,9 @@ module Java::Security::Cert
   # The X.509 v2 CRL format is described below in ASN.1:
   # <pre>
   # CertificateList  ::=  SEQUENCE  {
-  # tbsCertList          TBSCertList,
-  # signatureAlgorithm   AlgorithmIdentifier,
-  # signature            BIT STRING  }
+  #     tbsCertList          TBSCertList,
+  #     signatureAlgorithm   AlgorithmIdentifier,
+  #     signature            BIT STRING  }
   # </pre>
   # <p>
   # More information can be found in
@@ -75,21 +75,21 @@ module Java::Security::Cert
   # The ASN.1 definition of <code>tbsCertList</code> is:
   # <pre>
   # TBSCertList  ::=  SEQUENCE  {
-  # version                 Version OPTIONAL,
-  # -- if present, must be v2
-  # signature               AlgorithmIdentifier,
-  # issuer                  Name,
-  # thisUpdate              ChoiceOfTime,
-  # nextUpdate              ChoiceOfTime OPTIONAL,
-  # revokedCertificates     SEQUENCE OF SEQUENCE  {
-  # userCertificate         CertificateSerialNumber,
-  # revocationDate          ChoiceOfTime,
-  # crlEntryExtensions      Extensions OPTIONAL
-  # -- if present, must be v2
-  # }  OPTIONAL,
-  # crlExtensions           [0]  EXPLICIT Extensions OPTIONAL
-  # -- if present, must be v2
-  # }
+  #     version                 Version OPTIONAL,
+  #                             -- if present, must be v2
+  #     signature               AlgorithmIdentifier,
+  #     issuer                  Name,
+  #     thisUpdate              ChoiceOfTime,
+  #     nextUpdate              ChoiceOfTime OPTIONAL,
+  #     revokedCertificates     SEQUENCE OF SEQUENCE  {
+  #         userCertificate         CertificateSerialNumber,
+  #         revocationDate          ChoiceOfTime,
+  #         crlEntryExtensions      Extensions OPTIONAL
+  #                                 -- if present, must be v2
+  #         }  OPTIONAL,
+  #     crlExtensions           [0]  EXPLICIT Extensions OPTIONAL
+  #                                  -- if present, must be v2
+  #     }
   # </pre>
   # <p>
   # CRLs are instantiated using a certificate factory. The following is an
@@ -97,13 +97,13 @@ module Java::Security::Cert
   # <pre><code>
   # InputStream inStream = null;
   # try {
-  # inStream = new FileInputStream("fileName-of-crl");
-  # CertificateFactory cf = CertificateFactory.getInstance("X.509");
-  # X509CRL crl = (X509CRL)cf.generateCRL(inStream);
+  #     inStream = new FileInputStream("fileName-of-crl");
+  #     CertificateFactory cf = CertificateFactory.getInstance("X.509");
+  #     X509CRL crl = (X509CRL)cf.generateCRL(inStream);
   # } finally {
-  # if (inStream != null) {
-  # inStream.close();
-  # }
+  #     if (inStream != null) {
+  #         inStream.close();
+  #     }
   # }
   # </code></pre>
   # 
@@ -228,10 +228,10 @@ module Java::Security::Cert
     # The ASN.1 definition for this is:
     # <pre>
     # version    Version OPTIONAL,
-    # -- if present, must be v2<p>
+    #             -- if present, must be v2<p>
     # Version  ::=  INTEGER  {  v1(0), v2(1), v3(2)  }
-    # -- v3 does not apply to CRLs but appears for consistency
-    # -- with definition of Version for certs
+    #             -- v3 does not apply to CRLs but appears for consistency
+    #             -- with definition of Version for certs
     # </pre>
     # 
     # @return the version number, i.e. 1 or 2.
@@ -259,11 +259,11 @@ module Java::Security::Cert
     # Name ::= CHOICE { RDNSequence }
     # RDNSequence ::= SEQUENCE OF RelativeDistinguishedName
     # RelativeDistinguishedName ::=
-    # SET OF AttributeValueAssertion
+    #     SET OF AttributeValueAssertion
     # 
     # AttributeValueAssertion ::= SEQUENCE {
-    # AttributeType,
-    # AttributeValue }
+    #                               AttributeType,
+    #                               AttributeValue }
     # AttributeType ::= OBJECT IDENTIFIER
     # AttributeValue ::= ANY
     # </pre>
@@ -288,7 +288,7 @@ module Java::Security::Cert
     # It is recommended that subclasses override this method.
     # 
     # @return an <code>X500Principal</code> representing the issuer
-    # distinguished name
+    #          distinguished name
     # @since 1.4
     def get_issuer_x500principal
       if ((@issuer_principal).nil?)
@@ -303,8 +303,8 @@ module Java::Security::Cert
     # <pre>
     # thisUpdate   ChoiceOfTime
     # ChoiceOfTime ::= CHOICE {
-    # utcTime        UTCTime,
-    # generalTime    GeneralizedTime }
+    #     utcTime        UTCTime,
+    #     generalTime    GeneralizedTime }
     # </pre>
     # 
     # @return the <code>thisUpdate</code> date from the CRL.
@@ -343,9 +343,9 @@ module Java::Security::Cert
     # support indirect CRLs should override this method.
     # 
     # @param certificate the certificate for which a CRL entry is to be looked
-    # up
+    #   up
     # @return the entry for the given certificate, or null if no such entry
-    # exists in this CRL.
+    #   exists in this CRL.
     # @exception NullPointerException if certificate is null
     # 
     # @since 1.5
@@ -399,11 +399,11 @@ module Java::Security::Cert
     # <pre>
     # signatureAlgorithm   AlgorithmIdentifier<p>
     # AlgorithmIdentifier  ::=  SEQUENCE  {
-    # algorithm               OBJECT IDENTIFIER,
-    # parameters              ANY DEFINED BY algorithm OPTIONAL  }
-    # -- contains a value of the type
-    # -- registered for use with the
-    # -- algorithm object identifier value
+    #     algorithm               OBJECT IDENTIFIER,
+    #     parameters              ANY DEFINED BY algorithm OPTIONAL  }
+    #                             -- contains a value of the type
+    #                             -- registered for use with the
+    #                             -- algorithm object identifier value
     # </pre>
     # 
     # <p>The algorithm name is determined from the <code>algorithm</code>
@@ -446,7 +446,7 @@ module Java::Security::Cert
     # relevant ASN.1 definitions.
     # 
     # @return the DER-encoded signature algorithm parameters, or
-    # null if no parameters are present.
+    #         null if no parameters are present.
     def get_sig_alg_params
       raise NotImplementedError
     end

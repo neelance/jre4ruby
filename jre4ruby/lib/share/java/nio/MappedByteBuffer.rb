@@ -80,18 +80,16 @@ module Java::Nio
     # package-private
     # This should only be invoked by the DirectByteBuffer constructors
     # 
-    # package-private
     def initialize(mark, pos, lim, cap, mapped)
       @is_amapped_buffer = false
-      super(mark, pos, lim, cap)
+      super(mark, pos, lim, cap) # package-private
       @is_amapped_buffer = mapped
     end
     
     typesig { [::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int] }
     def initialize(mark, pos, lim, cap)
-      # package-private
       @is_amapped_buffer = false
-      super(mark, pos, lim, cap)
+      super(mark, pos, lim, cap) # package-private
       @is_amapped_buffer = false
     end
     
@@ -119,7 +117,7 @@ module Java::Nio
     # by the time that an invocation of this method returns.  </p>
     # 
     # @return  <tt>true</tt> if it is likely that this buffer's content
-    # is resident in physical memory
+    #          is resident in physical memory
     def is_loaded
       check_mapped
       if (((self.attr_address).equal?(0)) || ((capacity).equal?(0)))
@@ -174,20 +172,20 @@ module Java::Nio
     
     JNI.load_native_method :Java_java_nio_MappedByteBuffer_isLoaded0, [:pointer, :long, :int64, :int64], :int8
     typesig { [::Java::Long, ::Java::Long] }
-    def is_loaded0(address, length)
-      JNI.call_native_method(:Java_java_nio_MappedByteBuffer_isLoaded0, JNI.env, self.jni_id, address.to_int, length.to_int) != 0
+    def is_loaded0(address_, length)
+      JNI.call_native_method(:Java_java_nio_MappedByteBuffer_isLoaded0, JNI.env, self.jni_id, address_.to_int, length.to_int) != 0
     end
     
     JNI.load_native_method :Java_java_nio_MappedByteBuffer_load0, [:pointer, :long, :int64, :int64, :int32], :int32
     typesig { [::Java::Long, ::Java::Long, ::Java::Int] }
-    def load0(address, length, page_size_)
-      JNI.call_native_method(:Java_java_nio_MappedByteBuffer_load0, JNI.env, self.jni_id, address.to_int, length.to_int, page_size_.to_int)
+    def load0(address_, length, page_size_)
+      JNI.call_native_method(:Java_java_nio_MappedByteBuffer_load0, JNI.env, self.jni_id, address_.to_int, length.to_int, page_size_.to_int)
     end
     
     JNI.load_native_method :Java_java_nio_MappedByteBuffer_force0, [:pointer, :long, :int64, :int64], :void
     typesig { [::Java::Long, ::Java::Long] }
-    def force0(address, length)
-      JNI.call_native_method(:Java_java_nio_MappedByteBuffer_force0, JNI.env, self.jni_id, address.to_int, length.to_int)
+    def force0(address_, length)
+      JNI.call_native_method(:Java_java_nio_MappedByteBuffer_force0, JNI.env, self.jni_id, address_.to_int, length.to_int)
     end
     
     private

@@ -48,11 +48,11 @@ module Sun::Misc
   # 
   # The three chars that make up an atom are encoded as follows:
   # <pre>
-  # 00xxxyyy 00axxxxx 00byyyyy
-  # 00 = leading zeros, all values are 0 - 63
-  # xxxyyy - Top 3 bits of X, Top 3 bits of Y
-  # axxxxx - a = X parity bit, xxxxx lower 5 bits of X
-  # byyyyy - b = Y parity bit, yyyyy lower 5 bits of Y
+  #      00xxxyyy 00axxxxx 00byyyyy
+  #      00 = leading zeros, all values are 0 - 63
+  #      xxxyyy - Top 3 bits of X, Top 3 bits of Y
+  #      axxxxx - a = X parity bit, xxxxx lower 5 bits of X
+  #      byyyyy - b = Y parity bit, yyyyy lower 5 bits of Y
   # </pre>
   # 
   # The atoms are arranged into lines suitable for inclusion into an
@@ -61,16 +61,16 @@ module Sun::Misc
   # 
   # Each line has the form(
   # <pre>
-  # *(LLSS)(DDDD)(DDDD)(DDDD)...(CRC)
-  # Where each (xxx) represents a three character atom.
-  # (LLSS) - 8 bit length (high byte), and sequence number
-  # modulo 256;
-  # (DDDD) - Data byte atoms, if length is odd, last data
-  # atom has (DD00) (high byte data, low byte 0)
-  # (CRC)  - 16 bit CRC for the line, includes length,
-  # sequence, and all data bytes. If there is a
-  # zero pad byte (odd length) it is _NOT_
-  # included in the CRC.
+  #  *(LLSS)(DDDD)(DDDD)(DDDD)...(CRC)
+  #  Where each (xxx) represents a three character atom.
+  #  (LLSS) - 8 bit length (high byte), and sequence number
+  #           modulo 256;
+  #  (DDDD) - Data byte atoms, if length is odd, last data
+  #           atom has (DD00) (high byte data, low byte 0)
+  #  (CRC)  - 16 bit CRC for the line, includes length,
+  #           sequence, and all data bytes. If there is a
+  #           zero pad byte (odd length) it is _NOT_
+  #           included in the CRC.
   # </pre>
   # 
   # @author      Chuck McManis
@@ -93,7 +93,7 @@ module Sun::Misc
     
     class_module.module_eval {
       # this is the UCE mapping of 0-63 to characters ..
-      # 0         1         2         3         4         5         6         7
+      #     0         1         2         3         4         5         6         7
       # 0
       # 1
       # 2

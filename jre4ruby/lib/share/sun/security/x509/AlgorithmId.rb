@@ -208,16 +208,16 @@ module Sun::Security::X509
         # MUST be omitted entirely
         # rfc3370 3.1: When the id-dsa-with-sha1 algorithm identifier
         # is used, the AlgorithmIdentifier parameters field MUST be absent.
-        # if (
-        # algid.equals((Object)SHA_oid) ||
-        # algid.equals((Object)SHA256_oid) ||
-        # algid.equals((Object)SHA384_oid) ||
-        # algid.equals((Object)SHA512_oid) ||
-        # algid.equals((Object)DSA_oid) ||
-        # algid.equals((Object)sha1WithDSA_oid)) {
-        # ; // no parameter part encoded
+        #   if (
+        #     algid.equals((Object)SHA_oid) ||
+        #     algid.equals((Object)SHA256_oid) ||
+        #     algid.equals((Object)SHA384_oid) ||
+        #     algid.equals((Object)SHA512_oid) ||
+        #     algid.equals((Object)DSA_oid) ||
+        #     algid.equals((Object)sha1WithDSA_oid)) {
+        #     ; // no parameter part encoded
         # } else {
-        # bytes.putNull();
+        #     bytes.putNull();
         # }
         bytes.put_null
       else
@@ -362,11 +362,11 @@ module Sun::Security::X509
       # 
       # @exception IOException on error.
       # @param val the input value, which contains the algid and, if
-      # there are any parameters, those parameters.
+      #          there are any parameters, those parameters.
       # @return an ID for the algorithm.  If the system is configured
-      # appropriately, this may be an instance of a class
-      # with some kind of special support for this algorithm.
-      # In that case, you may "narrow" the type of the ID.
+      #          appropriately, this may be an instance of a class
+      #          with some kind of special support for this algorithm.
+      #          In that case, you may "narrow" the type of the ID.
       def parse(val)
         if (!(val.attr_tag).equal?(DerValue.attr_tag_sequence))
           raise IOException.new("algid parse error, not a sequence")
@@ -578,8 +578,6 @@ module Sun::Security::X509
       alias_method :attr_oid_table=, :oid_table=
       
       # HASHING ALGORITHMS
-      # 
-      # 
       # Algorithm ID for the MD2 Message Digest Algorthm, from RFC 1319.
       # OID = 1.2.840.113549.2.2
       const_set_lazy(:MD2_oid) { ObjectIdentifier.new_internal(Array.typed(::Java::Int).new([1, 2, 840, 113549, 2, 2])) }
@@ -717,8 +715,6 @@ module Sun::Security::X509
         # Note the preferred OIDs are named simply with no "OIW" or
         # "PKIX" in them, even though they may point to data from these
         # specs; e.g. SHA_oid, DH_oid, DSA_oid, SHA1WithDSA_oid...
-        # 
-        # 
         # Algorithm ID for Diffie Hellman Key agreement, from PKCS #3.
         # Parameters include public values P and G, and may optionally specify
         # the length of the private key X.  Alternatively, algorithm parameters

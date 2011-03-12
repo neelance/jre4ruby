@@ -88,10 +88,10 @@ module Java::Security::Cert
     # and/or subject names are especially useful criteria.
     # 
     # @param selector A <code>CertSelector</code> used to select which
-    # <code>Certificate</code>s should be returned. Specify <code>null</code>
-    # to return all <code>Certificate</code>s (if supported).
+    #  <code>Certificate</code>s should be returned. Specify <code>null</code>
+    #  to return all <code>Certificate</code>s (if supported).
     # @return A <code>Collection</code> of <code>Certificate</code>s that
-    # match the specified selector (never <code>null</code>)
+    #         match the specified selector (never <code>null</code>)
     # @throws CertStoreException if an exception occurs
     def engine_get_certificates(selector)
       raise NotImplementedError
@@ -116,10 +116,10 @@ module Java::Security::Cert
     # and/or the certificate to be checked are especially useful.
     # 
     # @param selector A <code>CRLSelector</code> used to select which
-    # <code>CRL</code>s should be returned. Specify <code>null</code>
-    # to return all <code>CRL</code>s (if supported).
+    #  <code>CRL</code>s should be returned. Specify <code>null</code>
+    #  to return all <code>CRL</code>s (if supported).
     # @return A <code>Collection</code> of <code>CRL</code>s that
-    # match the specified selector (never <code>null</code>)
+    #         match the specified selector (never <code>null</code>)
     # @throws CertStoreException if an exception occurs
     def engine_get_crls(selector)
       raise NotImplementedError

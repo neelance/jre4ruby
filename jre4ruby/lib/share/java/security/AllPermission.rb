@@ -166,7 +166,6 @@ module Java::Security
     
     typesig { [] }
     # true if any all permissions have been added
-    # 
     # Create an empty AllPermissions object.
     def initialize
       @all_allowed = false
@@ -181,10 +180,10 @@ module Java::Security
     # @param permission the Permission object to add.
     # 
     # @exception IllegalArgumentException - if the permission is not a
-    # AllPermission
+    #                                       AllPermission
     # 
     # @exception SecurityException - if this AllPermissionCollection object
-    # has been marked readonly
+    #                                has been marked readonly
     def add(permission)
       if (!(permission.is_a?(AllPermission)))
         raise IllegalArgumentException.new("invalid permission: " + RJava.cast_to_string(permission))

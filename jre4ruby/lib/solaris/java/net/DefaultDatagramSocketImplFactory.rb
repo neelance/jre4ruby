@@ -69,9 +69,8 @@ module Java::Net
       # 
       # @param   isMulticast     true if this impl if for a MutlicastSocket
       # @return  a new instance of a <code>DatagramSocketImpl</code>.
-      # 
-      # unused on unix
       def create_datagram_socket_impl(is_multicast)
+        # unused on unix
         if (!(self.attr_prefix_impl_class).nil?)
           begin
             return self.attr_prefix_impl_class.new_instance

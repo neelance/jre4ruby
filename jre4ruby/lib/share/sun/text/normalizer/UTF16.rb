@@ -22,11 +22,8 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
-# 
 # (C) Copyright IBM Corp. 1996-2005 - All Rights Reserved                     *
-# *
+#                                                                             *
 # The original version of this source code and documentation is copyrighted   *
 # and owned by IBM, These materials are provided under terms of a License     *
 # Agreement between IBM and Sun. This technology is protected by multiple     *
@@ -54,66 +51,66 @@ module Sun::Text::Normalizer
   # <pre>
   # // iteration forwards: Original
   # for (int i = 0; i &lt; s.length(); ++i) {
-  # char ch = s.charAt(i);
-  # doSomethingWith(ch);
+  #     char ch = s.charAt(i);
+  #     doSomethingWith(ch);
   # }
   # 
   # // iteration forwards: Changes for UTF-32
   # int ch;
   # for (int i = 0; i &lt; s.length(); i+=UTF16.getCharCount(ch)) {
-  # ch = UTF16.charAt(s,i);
-  # doSomethingWith(ch);
+  #     ch = UTF16.charAt(s,i);
+  #     doSomethingWith(ch);
   # }
   # 
   # // iteration backwards: Original
   # for (int i = s.length() -1; i >= 0; --i) {
-  # char ch = s.charAt(i);
-  # doSomethingWith(ch);
+  #     char ch = s.charAt(i);
+  #     doSomethingWith(ch);
   # }
   # 
   # // iteration backwards: Changes for UTF-32
   # int ch;
   # for (int i = s.length() -1; i > 0; i-=UTF16.getCharCount(ch)) {
-  # ch = UTF16.charAt(s,i);
-  # doSomethingWith(ch);
+  #     ch = UTF16.charAt(s,i);
+  #     doSomethingWith(ch);
   # }
   # </pre>
   # <strong>Notes:</strong>
   # <ul>
-  # <li>
-  # <strong>Naming:</strong> For clarity, High and Low surrogates are called
-  # <code>Lead</code> and <code>Trail</code> in the API, which gives a better
-  # sense of their ordering in a string. <code>offset16</code> and
-  # <code>offset32</code> are used to distinguish offsets to UTF-16
-  # boundaries vs offsets to UTF-32 boundaries. <code>int char32</code> is
-  # used to contain UTF-32 characters, as opposed to <code>char16</code>,
-  # which is a UTF-16 code unit.
-  # </li>
-  # <li>
-  # <strong>Roundtripping Offsets:</strong> You can always roundtrip from a
-  # UTF-32 offset to a UTF-16 offset and back. Because of the difference in
-  # structure, you can roundtrip from a UTF-16 offset to a UTF-32 offset and
-  # back if and only if <code>bounds(string, offset16) != TRAIL</code>.
-  # </li>
-  # <li>
-  # <strong>Exceptions:</strong> The error checking will throw an exception
-  # if indices are out of bounds. Other than than that, all methods will
-  # behave reasonably, even if unmatched surrogates or out-of-bounds UTF-32
-  # values are present. <code>UCharacter.isLegal()</code> can be used to check
-  # for validity if desired.
-  # </li>
-  # <li>
-  # <strong>Unmatched Surrogates:</strong> If the string contains unmatched
-  # surrogates, then these are counted as one UTF-32 value. This matches
-  # their iteration behavior, which is vital. It also matches common display
-  # practice as missing glyphs (see the Unicode Standard Section 5.4, 5.5).
-  # </li>
-  # <li>
-  # <strong>Optimization:</strong> The method implementations may need
-  # optimization if the compiler doesn't fold static final methods. Since
-  # surrogate pairs will form an exceeding small percentage of all the text
-  # in the world, the singleton case should always be optimized for.
-  # </li>
+  #   <li>
+  #   <strong>Naming:</strong> For clarity, High and Low surrogates are called
+  #   <code>Lead</code> and <code>Trail</code> in the API, which gives a better
+  #   sense of their ordering in a string. <code>offset16</code> and
+  #   <code>offset32</code> are used to distinguish offsets to UTF-16
+  #   boundaries vs offsets to UTF-32 boundaries. <code>int char32</code> is
+  #   used to contain UTF-32 characters, as opposed to <code>char16</code>,
+  #   which is a UTF-16 code unit.
+  #   </li>
+  #   <li>
+  #   <strong>Roundtripping Offsets:</strong> You can always roundtrip from a
+  #   UTF-32 offset to a UTF-16 offset and back. Because of the difference in
+  #   structure, you can roundtrip from a UTF-16 offset to a UTF-32 offset and
+  #   back if and only if <code>bounds(string, offset16) != TRAIL</code>.
+  #   </li>
+  #   <li>
+  #    <strong>Exceptions:</strong> The error checking will throw an exception
+  #   if indices are out of bounds. Other than than that, all methods will
+  #   behave reasonably, even if unmatched surrogates or out-of-bounds UTF-32
+  #   values are present. <code>UCharacter.isLegal()</code> can be used to check
+  #   for validity if desired.
+  #   </li>
+  #   <li>
+  #   <strong>Unmatched Surrogates:</strong> If the string contains unmatched
+  #   surrogates, then these are counted as one UTF-32 value. This matches
+  #   their iteration behavior, which is vital. It also matches common display
+  #   practice as missing glyphs (see the Unicode Standard Section 5.4, 5.5).
+  #   </li>
+  #   <li>
+  #     <strong>Optimization:</strong> The method implementations may need
+  #     optimization if the compiler doesn't fold static final methods. Since
+  #     surrogate pairs will form an exceeding small percentage of all the text
+  #     in the world, the singleton case should always be optimized for.
+  #   </li>
   # </ul>
   # @author Mark Davis, with help from Markus Scherer
   # @stable ICU 2.1
@@ -122,7 +119,6 @@ module Sun::Text::Normalizer
     
     class_module.module_eval {
       # public variables ---------------------------------------------------
-      # 
       # The lowest Unicode code point value.
       # @stable ICU 2.1
       const_set_lazy(:CODEPOINT_MIN_VALUE) { 0 }
@@ -166,7 +162,6 @@ module Sun::Text::Normalizer
       
       typesig { [String, ::Java::Int] }
       # public method ------------------------------------------------------
-      # 
       # Extract a single UTF-32 value from a string.
       # Used when iterating forwards or backwards (with
       # <code>UTF16.getCharCount()</code>, as well as random access. If a
@@ -179,10 +174,10 @@ module Sun::Text::Normalizer
       # @param source array of UTF-16 chars
       # @param offset16 UTF-16 offset to the start of the character.
       # @return UTF-32 value for the UTF-32 value that contains the char at
-      # offset16. The boundaries of that codepoint are the same as in
-      # <code>bounds32()</code>.
+      #         offset16. The boundaries of that codepoint are the same as in
+      #         <code>bounds32()</code>.
       # @exception IndexOutOfBoundsException thrown if offset16 is out of
-      # bounds.
+      #            bounds.
       # @stable ICU 2.1
       def char_at(source, offset16)
         if (offset16 < 0 || offset16 >= source.length)
@@ -231,10 +226,10 @@ module Sun::Text::Normalizer
       # @param limit offset to substring in the source array for analyzing
       # @param offset16 UTF-16 offset relative to start
       # @return UTF-32 value for the UTF-32 value that contains the char at
-      # offset16. The boundaries of that codepoint are the same as in
-      # <code>bounds32()</code>.
+      #         offset16. The boundaries of that codepoint are the same as in
+      #         <code>bounds32()</code>.
       # @exception IndexOutOfBoundsException thrown if offset16 is not within
-      # the range of start and limit.
+      #            the range of start and limit.
       # @stable ICU 2.1
       def char_at(source, start, limit, offset16)
         offset16 += start
@@ -320,7 +315,7 @@ module Sun::Text::Normalizer
       # on char32 before calling.
       # @param char32 the input character.
       # @return lead surrogate if the getCharCount(ch) is 2; <br>
-      # and 0 otherwise (note: 0 is not a valid lead surrogate).
+      #         and 0 otherwise (note: 0 is not a valid lead surrogate).
       # @stable ICU 2.1
       def get_lead_surrogate(char32)
         if (char32 >= SUPPLEMENTARY_MIN_VALUE)
@@ -336,7 +331,7 @@ module Sun::Text::Normalizer
       # on char32 before calling.
       # @param char32 the input character.
       # @return the trail surrogate if the getCharCount(ch) is 2; <br>otherwise
-      # the character itself
+      #         the character itself
       # @stable ICU 2.1
       def get_trail_surrogate(char32)
         if (char32 >= SUPPLEMENTARY_MIN_VALUE)
@@ -354,7 +349,7 @@ module Sun::Text::Normalizer
       # @param char32 the input character.
       # @return string value of char32 in UTF16 format
       # @exception IllegalArgumentException thrown if char32 is a invalid
-      # codepoint.
+      #            codepoint.
       # @stable ICU 2.1
       def value_of(char32)
         if (char32 < CODEPOINT_MIN_VALUE || char32 > CODEPOINT_MAX_VALUE)
@@ -372,7 +367,7 @@ module Sun::Text::Normalizer
       # @param char32 value to append.
       # @return the updated StringBuffer
       # @exception IllegalArgumentException thrown when char32 does not lie
-      # within the range of the Unicode codepoints
+      #            within the range of the Unicode codepoints
       # @stable ICU 2.1
       def append(target, char32)
         # Check for irregular values
@@ -391,7 +386,6 @@ module Sun::Text::Normalizer
       
       typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int] }
       # // for StringPrep
-      # 
       # Shifts offset16 by the argument number of codepoints within a subarray.
       # @param source char array
       # @param start position of the subarray to be performed on
@@ -400,8 +394,8 @@ module Sun::Text::Normalizer
       # @param shift32 number of codepoints to shift
       # @return new shifted offset16 relative to start
       # @exception IndexOutOfBoundsException if the new offset16 is out of
-      # bounds with respect to the subarray or the subarray bounds
-      # are out of range.
+      #            bounds with respect to the subarray or the subarray bounds
+      #            are out of range.
       # @stable ICU 2.1
       def move_code_point_offset(source, start, limit, offset16, shift32)
         size = source.attr_length
@@ -455,7 +449,6 @@ module Sun::Text::Normalizer
       end
       
       # private data members -------------------------------------------------
-      # 
       # Shift value for lead surrogate to form a supplementary character.
       const_set_lazy(:LEAD_SURROGATE_SHIFT_) { 10 }
       const_attr_reader  :LEAD_SURROGATE_SHIFT_
@@ -470,7 +463,6 @@ module Sun::Text::Normalizer
       
       typesig { [::Java::Int] }
       # private methods ------------------------------------------------------
-      # 
       # <p>Converts argument code point and returns a String object representing
       # the code point's value in UTF16 format.</p>
       # <p>This method does not check for the validity of the codepoint, the

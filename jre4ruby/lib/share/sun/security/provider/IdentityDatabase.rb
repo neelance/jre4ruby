@@ -360,12 +360,12 @@ module Sun::Security::Provider
     
     typesig { [] }
     # private static File securityPropFile(String filename) {
-    # // maybe check for a system property which will specify where to
-    # // look.
-    # String sep = File.separator;
-    # return new File(System.getProperty("java.home") +
-    # sep + "lib" + sep + "security" +
-    # sep + filename);
+    #     // maybe check for a system property which will specify where to
+    #     // look.
+    #     String sep = File.separator;
+    #     return new File(System.getProperty("java.home") +
+    #                     sep + "lib" + sep + "security" +
+    #                     sep + filename);
     # }
     def to_s
       return "sun.security.provider.IdentityDatabase, source file: " + RJava.cast_to_string(@source_file)

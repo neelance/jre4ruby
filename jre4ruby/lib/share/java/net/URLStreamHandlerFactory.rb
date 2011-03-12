@@ -48,7 +48,7 @@ module Java::Net
     # protocol.
     # 
     # @param   protocol   the protocol ("<code>ftp</code>",
-    # "<code>http</code>", "<code>nntp</code>", etc.).
+    #                     "<code>http</code>", "<code>nntp</code>", etc.).
     # @return  a <code>URLStreamHandler</code> for the specific protocol.
     # @see     java.net.URLStreamHandler
     def create_urlstream_handler(protocol)

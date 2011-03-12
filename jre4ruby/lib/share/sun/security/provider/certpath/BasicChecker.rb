@@ -111,7 +111,7 @@ module Sun::Security::Provider::Certpath
     # should be determined
     # @param sigProvider the name of the signature provider
     # @param sigOnly true if only signature checking is to be done;
-    # if false, all checks are done
+    #        if false, all checks are done
     def initialize(anchor, test_date, sig_provider, sig_only)
       @trusted_pub_key = nil
       @ca_name = nil

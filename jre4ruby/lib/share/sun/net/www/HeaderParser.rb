@@ -32,32 +32,31 @@ module Sun::Net::Www
   end
   
   # public static void main(String[] a) throws Exception {
-  # System.out.print("enter line to parse> ");
-  # System.out.flush();
-  # DataInputStream dis = new DataInputStream(System.in);
-  # String line = dis.readLine();
-  # HeaderParser p = new HeaderParser(line);
-  # for (int i = 0; i < asize; ++i) {
-  # if (p.findKey(i) == null) break;
-  # String v = p.findValue(i);
-  # System.out.println(i + ") " +p.findKey(i) + "="+v);
-  # }
-  # System.out.println("Done!");
+  #     System.out.print("enter line to parse> ");
+  #     System.out.flush();
+  #     DataInputStream dis = new DataInputStream(System.in);
+  #     String line = dis.readLine();
+  #     HeaderParser p = new HeaderParser(line);
+  #     for (int i = 0; i < asize; ++i) {
+  #         if (p.findKey(i) == null) break;
+  #         String v = p.findValue(i);
+  #         System.out.println(i + ") " +p.findKey(i) + "="+v);
+  #     }
+  #     System.out.println("Done!");
   # 
   # }
-  # 
   # This is useful for the nightmare of parsing multi-part HTTP/RFC822 headers
   # sensibly:
   # From a String like: 'timeout=15, max=5'
   # create an array of Strings:
   # { {"timeout", "15"},
-  # {"max", "5"}
+  #   {"max", "5"}
   # }
   # From one like: 'Basic Realm="FuzzFace" Foo="Biz Bar Baz"'
   # create one like (no quotes in literal):
   # { {"basic", null},
-  # {"realm", "FuzzFace"}
-  # {"foo", "Biz Bar Baz"}
+  #   {"realm", "FuzzFace"}
+  #   {"foo", "Biz Bar Baz"}
   # }
   # keys are converted to lower case, vals are left as is....
   # 

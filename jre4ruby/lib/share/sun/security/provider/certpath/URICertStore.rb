@@ -258,10 +258,10 @@ module Sun::Security::Provider::Certpath
     # match the selector, an empty <code>Collection</code> will be returned.
     # 
     # @param selector a <code>CertSelector</code> used to select which
-    # <code>X509Certificate</code>s should be returned. Specify
-    # <code>null</code> to return all <code>X509Certificate</code>s.
+    #  <code>X509Certificate</code>s should be returned. Specify
+    #  <code>null</code> to return all <code>X509Certificate</code>s.
     # @return a <code>Collection</code> of <code>X509Certificate</code>s that
-    # match the specified selector
+    #         match the specified selector
     # @throws CertStoreException if an exception occurs
     def engine_get_certificates(selector)
       synchronized(self) do
@@ -374,10 +374,10 @@ module Sun::Security::Provider::Certpath
     # match the selector, an empty <code>Collection</code> will be returned.
     # 
     # @param selector A <code>CRLSelector</code> used to select which
-    # <code>X509CRL</code>s should be returned. Specify <code>null</code>
-    # to return all <code>X509CRL</code>s.
+    #  <code>X509CRL</code>s should be returned. Specify <code>null</code>
+    #  to return all <code>X509CRL</code>s.
     # @return A <code>Collection</code> of <code>X509CRL</code>s that
-    # match the specified selector
+    #         match the specified selector
     # @throws CertStoreException if an exception occurs
     def engine_get_crls(selector)
       synchronized(self) do

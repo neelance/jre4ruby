@@ -230,8 +230,7 @@ module Java::Io
     def fill
       buffer = get_buf_if_open
       if (@markpos < 0)
-        @pos = 0
-      # no mark: throw away the buffer
+        @pos = 0 # no mark: throw away the buffer
       else
         if (@pos >= buffer.attr_length)
           # no room left in buffer
@@ -243,10 +242,8 @@ module Java::Io
             @markpos = 0
           else
             if (buffer.attr_length >= @marklimit)
-              @markpos = -1
-              # buffer got too big, invalidate mark
-              @pos = 0
-              # drop buffer contents
+              @markpos = -1 # buffer got too big, invalidate mark
+              @pos = 0 # drop buffer contents
             else
               # grow buffer
               nsz = @pos * 2
@@ -281,10 +278,10 @@ module Java::Io
     # method of <code>InputStream</code>.
     # 
     # @return     the next byte of data, or <code>-1</code> if the end of the
-    # stream is reached.
+    #             stream is reached.
     # @exception  IOException  if this input stream has been closed by
-    # invoking its {@link #close()} method,
-    # or an I/O error occurs.
+    #                          invoking its {@link #close()} method,
+    #                          or an I/O error occurs.
     # @see        java.io.FilterInputStream#in
     def read
       synchronized(self) do
@@ -335,13 +332,13 @@ module Java::Io
     # iterated <code>read</code> continues until one of the following
     # conditions becomes true: <ul>
     # 
-    # <li> The specified number of bytes have been read,
+    #   <li> The specified number of bytes have been read,
     # 
-    # <li> The <code>read</code> method of the underlying stream returns
-    # <code>-1</code>, indicating end-of-file, or
+    #   <li> The <code>read</code> method of the underlying stream returns
+    #   <code>-1</code>, indicating end-of-file, or
     # 
-    # <li> The <code>available</code> method of the underlying stream
-    # returns zero, indicating that further input requests would block.
+    #   <li> The <code>available</code> method of the underlying stream
+    #   returns zero, indicating that further input requests would block.
     # 
     # </ul> If the first <code>read</code> on the underlying stream returns
     # <code>-1</code> to indicate end-of-file then this method returns
@@ -355,10 +352,10 @@ module Java::Io
     # @param      off   offset at which to start storing bytes.
     # @param      len   maximum number of bytes to read.
     # @return     the number of bytes read, or <code>-1</code> if the end of
-    # the stream has been reached.
+    #             the stream has been reached.
     # @exception  IOException  if this input stream has been closed by
-    # invoking its {@link #close()} method,
-    # or an I/O error occurs.
+    #                          invoking its {@link #close()} method,
+    #                          or an I/O error occurs.
     def read(b, off, len)
       synchronized(self) do
         get_buf_if_open # Check for closed stream
@@ -393,9 +390,9 @@ module Java::Io
     # method of <code>InputStream</code>.
     # 
     # @exception  IOException  if the stream does not support seek,
-    # or if this input stream has been closed by
-    # invoking its {@link #close()} method, or an
-    # I/O error occurs.
+    #                          or if this input stream has been closed by
+    #                          invoking its {@link #close()} method, or an
+    #                          I/O error occurs.
     def skip(n)
       synchronized(self) do
         get_buf_if_open # Check for closed stream
@@ -433,10 +430,10 @@ module Java::Io
     # {@link java.io.FilterInputStream#in in}.available().
     # 
     # @return     an estimate of the number of bytes that can be read (or skipped
-    # over) from this input stream without blocking.
+    #             over) from this input stream without blocking.
     # @exception  IOException  if this input stream has been closed by
-    # invoking its {@link #close()} method,
-    # or an I/O error occurs.
+    #                          invoking its {@link #close()} method,
+    #                          or an I/O error occurs.
     def available
       synchronized(self) do
         return get_in_if_open.available + (@count - @pos)
@@ -448,7 +445,7 @@ module Java::Io
     # method of <code>InputStream</code>.
     # 
     # @param   readlimit   the maximum limit of bytes that can be read before
-    # the mark position becomes invalid.
+    #                      the mark position becomes invalid.
     # @see     java.io.BufferedInputStream#reset()
     def mark(readlimit)
       synchronized(self) do
@@ -468,9 +465,9 @@ module Java::Io
     # set equal to <code>markpos</code>.
     # 
     # @exception  IOException  if this stream has not been marked or,
-    # if the mark has been invalidated, or the stream
-    # has been closed by invoking its {@link #close()}
-    # method, or an I/O error occurs.
+    #                  if the mark has been invalidated, or the stream
+    #                  has been closed by invoking its {@link #close()}
+    #                  method, or an I/O error occurs.
     # @see        java.io.BufferedInputStream#mark(int)
     def reset
       synchronized(self) do
@@ -489,7 +486,7 @@ module Java::Io
     # <code>true</code>.
     # 
     # @return  a <code>boolean</code> indicating if this stream type supports
-    # the <code>mark</code> and <code>reset</code> methods.
+    #          the <code>mark</code> and <code>reset</code> methods.
     # @see     java.io.InputStream#mark(int)
     # @see     java.io.InputStream#reset()
     def mark_supported

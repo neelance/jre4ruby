@@ -149,7 +149,7 @@ module Java::Io
     # behaves in exactly the same way as the invocation
     # 
     # <pre>
-    # out.write(csq.toString()) </pre>
+    #     out.write(csq.toString()) </pre>
     # 
     # <p> Depending on the specification of <tt>toString</tt> for the
     # character sequence <tt>csq</tt>, the entire sequence may not be
@@ -158,9 +158,9 @@ module Java::Io
     # the buffer's position and limit.
     # 
     # @param  csq
-    # The character sequence to append.  If <tt>csq</tt> is
-    # <tt>null</tt>, then the four characters <tt>"null"</tt> are
-    # appended to this writer.
+    #         The character sequence to append.  If <tt>csq</tt> is
+    #         <tt>null</tt>, then the four characters <tt>"null"</tt> are
+    #         appended to this writer.
     # 
     # @return  This writer
     # 
@@ -179,27 +179,27 @@ module Java::Io
     # exactly the same way as the invocation
     # 
     # <pre>
-    # out.write(csq.subSequence(start, end).toString()) </pre>
+    #     out.write(csq.subSequence(start, end).toString()) </pre>
     # 
     # @param  csq
-    # The character sequence from which a subsequence will be
-    # appended.  If <tt>csq</tt> is <tt>null</tt>, then characters
-    # will be appended as if <tt>csq</tt> contained the four
-    # characters <tt>"null"</tt>.
+    #         The character sequence from which a subsequence will be
+    #         appended.  If <tt>csq</tt> is <tt>null</tt>, then characters
+    #         will be appended as if <tt>csq</tt> contained the four
+    #         characters <tt>"null"</tt>.
     # 
     # @param  start
-    # The index of the first character in the subsequence
+    #         The index of the first character in the subsequence
     # 
     # @param  end
-    # The index of the character following the last character in the
-    # subsequence
+    #         The index of the character following the last character in the
+    #         subsequence
     # 
     # @return  This writer
     # 
     # @throws  IndexOutOfBoundsException
-    # If <tt>start</tt> or <tt>end</tt> are negative, <tt>start</tt>
-    # is greater than <tt>end</tt>, or <tt>end</tt> is greater than
-    # <tt>csq.length()</tt>
+    #          If <tt>start</tt> or <tt>end</tt> are negative, <tt>start</tt>
+    #          is greater than <tt>end</tt>, or <tt>end</tt> is greater than
+    #          <tt>csq.length()</tt>
     # 
     # @since  1.5
     def append(csq, start, end_)
@@ -215,10 +215,10 @@ module Java::Io
     # behaves in exactly the same way as the invocation
     # 
     # <pre>
-    # out.write(c) </pre>
+    #     out.write(c) </pre>
     # 
     # @param  c
-    # The 16-bit character to append
+    #         The 16-bit character to append
     # 
     # @return  This writer
     # 

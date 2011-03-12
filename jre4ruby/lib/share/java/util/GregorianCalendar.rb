@@ -22,17 +22,15 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996-1998 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996-1998 - All Rights Reserved
 # 
-# The original version of this source code and documentation is copyrighted
+#   The original version of this source code and documentation is copyrighted
 # and owned by Taligent, Inc., a wholly-owned subsidiary of IBM. These
 # materials are provided under terms of a License Agreement between Taligent
 # and Sun. This technology is protected by multiple US and International
 # patents. This notice and attribution to Taligent may not be removed.
-# Taligent is a registered trademark of Taligent, Inc.
+#   Taligent is a registered trademark of Taligent, Inc.
 module Java::Util
   module GregorianCalendarImports #:nodoc:
     class_module.module_eval {
@@ -130,90 +128,90 @@ module Java::Util
   # default value for each calendar field if its value is undefined.
   # 
   # <table cellpadding="0" cellspacing="3" border="0"
-  # summary="GregorianCalendar default field values"
-  # style="text-align: left; width: 66%;">
-  # <tbody>
-  # <tr>
-  # <th style="vertical-align: top; background-color: rgb(204, 204, 255);
-  # text-align: center;">Field<br>
-  # </th>
-  # <th style="vertical-align: top; background-color: rgb(204, 204, 255);
-  # text-align: center;">Default Value<br>
-  # </th>
-  # </tr>
-  # <tr>
-  # <td style="vertical-align: middle;">
-  # <code>ERA<br></code>
-  # </td>
-  # <td style="vertical-align: middle;">
-  # <code>AD<br></code>
-  # </td>
-  # </tr>
-  # <tr>
-  # <td style="vertical-align: middle; background-color: rgb(238, 238, 255);">
-  # <code>YEAR<br></code>
-  # </td>
-  # <td style="vertical-align: middle; background-color: rgb(238, 238, 255);">
-  # <code>1970<br></code>
-  # </td>
-  # </tr>
-  # <tr>
-  # <td style="vertical-align: middle;">
-  # <code>MONTH<br></code>
-  # </td>
-  # <td style="vertical-align: middle;">
-  # <code>JANUARY<br></code>
-  # </td>
-  # </tr>
-  # <tr>
-  # <td style="vertical-align: top; background-color: rgb(238, 238, 255);">
-  # <code>DAY_OF_MONTH<br></code>
-  # </td>
-  # <td style="vertical-align: top; background-color: rgb(238, 238, 255);">
-  # <code>1<br></code>
-  # </td>
-  # </tr>
-  # <tr>
-  # <td style="vertical-align: middle;">
-  # <code>DAY_OF_WEEK<br></code>
-  # </td>
-  # <td style="vertical-align: middle;">
-  # <code>the first day of week<br></code>
-  # </td>
-  # </tr>
-  # <tr>
-  # <td style="vertical-align: top; background-color: rgb(238, 238, 255);">
-  # <code>WEEK_OF_MONTH<br></code>
-  # </td>
-  # <td style="vertical-align: top; background-color: rgb(238, 238, 255);">
-  # <code>0<br></code>
-  # </td>
-  # </tr>
-  # <tr>
-  # <td style="vertical-align: top;">
-  # <code>DAY_OF_WEEK_IN_MONTH<br></code>
-  # </td>
-  # <td style="vertical-align: top;">
-  # <code>1<br></code>
-  # </td>
-  # </tr>
-  # <tr>
-  # <td style="vertical-align: middle; background-color: rgb(238, 238, 255);">
-  # <code>AM_PM<br></code>
-  # </td>
-  # <td style="vertical-align: middle; background-color: rgb(238, 238, 255);">
-  # <code>AM<br></code>
-  # </td>
-  # </tr>
-  # <tr>
-  # <td style="vertical-align: middle;">
-  # <code>HOUR, HOUR_OF_DAY, MINUTE, SECOND, MILLISECOND<br></code>
-  # </td>
-  # <td style="vertical-align: middle;">
-  # <code>0<br></code>
-  # </td>
-  # </tr>
-  # </tbody>
+  #        summary="GregorianCalendar default field values"
+  #        style="text-align: left; width: 66%;">
+  #   <tbody>
+  #     <tr>
+  #       <th style="vertical-align: top; background-color: rgb(204, 204, 255);
+  #           text-align: center;">Field<br>
+  #       </th>
+  #       <th style="vertical-align: top; background-color: rgb(204, 204, 255);
+  #           text-align: center;">Default Value<br>
+  #       </th>
+  #     </tr>
+  #     <tr>
+  #       <td style="vertical-align: middle;">
+  #              <code>ERA<br></code>
+  #       </td>
+  #       <td style="vertical-align: middle;">
+  #              <code>AD<br></code>
+  #       </td>
+  #     </tr>
+  #     <tr>
+  #       <td style="vertical-align: middle; background-color: rgb(238, 238, 255);">
+  #              <code>YEAR<br></code>
+  #       </td>
+  #       <td style="vertical-align: middle; background-color: rgb(238, 238, 255);">
+  #              <code>1970<br></code>
+  #       </td>
+  #     </tr>
+  #     <tr>
+  #       <td style="vertical-align: middle;">
+  #              <code>MONTH<br></code>
+  #       </td>
+  #       <td style="vertical-align: middle;">
+  #              <code>JANUARY<br></code>
+  #       </td>
+  #     </tr>
+  #     <tr>
+  #       <td style="vertical-align: top; background-color: rgb(238, 238, 255);">
+  #              <code>DAY_OF_MONTH<br></code>
+  #       </td>
+  #       <td style="vertical-align: top; background-color: rgb(238, 238, 255);">
+  #              <code>1<br></code>
+  #       </td>
+  #     </tr>
+  #     <tr>
+  #       <td style="vertical-align: middle;">
+  #              <code>DAY_OF_WEEK<br></code>
+  #       </td>
+  #       <td style="vertical-align: middle;">
+  #              <code>the first day of week<br></code>
+  #       </td>
+  #     </tr>
+  #     <tr>
+  #       <td style="vertical-align: top; background-color: rgb(238, 238, 255);">
+  #              <code>WEEK_OF_MONTH<br></code>
+  #       </td>
+  #       <td style="vertical-align: top; background-color: rgb(238, 238, 255);">
+  #              <code>0<br></code>
+  #       </td>
+  #     </tr>
+  #     <tr>
+  #       <td style="vertical-align: top;">
+  #              <code>DAY_OF_WEEK_IN_MONTH<br></code>
+  #       </td>
+  #       <td style="vertical-align: top;">
+  #              <code>1<br></code>
+  #       </td>
+  #     </tr>
+  #     <tr>
+  #       <td style="vertical-align: middle; background-color: rgb(238, 238, 255);">
+  #              <code>AM_PM<br></code>
+  #       </td>
+  #       <td style="vertical-align: middle; background-color: rgb(238, 238, 255);">
+  #              <code>AM<br></code>
+  #       </td>
+  #     </tr>
+  #     <tr>
+  #       <td style="vertical-align: middle;">
+  #              <code>HOUR, HOUR_OF_DAY, MINUTE, SECOND, MILLISECOND<br></code>
+  #       </td>
+  #       <td style="vertical-align: middle;">
+  #              <code>0<br></code>
+  #       </td>
+  #     </tr>
+  #   </tbody>
   # </table>
   # <br>Default values are not applicable for the fields not listed above.
   # 
@@ -225,9 +223,9 @@ module Java::Util
   # String[] ids = TimeZone.getAvailableIDs(-8 * 60 * 60 * 1000);
   # // if no ids were returned, something is wrong. get out.
   # if (ids.length == 0)
-  # System.exit(0);
+  #     System.exit(0);
   # 
-  # // begin output
+  #  // begin output
   # System.out.println("Current Time");
   # 
   # // create a Pacific Standard Time time zone
@@ -254,7 +252,7 @@ module Java::Util
   # System.out.println("DAY_OF_YEAR: " + calendar.get(Calendar.DAY_OF_YEAR));
   # System.out.println("DAY_OF_WEEK: " + calendar.get(Calendar.DAY_OF_WEEK));
   # System.out.println("DAY_OF_WEEK_IN_MONTH: "
-  # + calendar.get(Calendar.DAY_OF_WEEK_IN_MONTH));
+  #                    + calendar.get(Calendar.DAY_OF_WEEK_IN_MONTH));
   # System.out.println("AM_PM: " + calendar.get(Calendar.AM_PM));
   # System.out.println("HOUR: " + calendar.get(Calendar.HOUR));
   # System.out.println("HOUR_OF_DAY: " + calendar.get(Calendar.HOUR_OF_DAY));
@@ -262,9 +260,9 @@ module Java::Util
   # System.out.println("SECOND: " + calendar.get(Calendar.SECOND));
   # System.out.println("MILLISECOND: " + calendar.get(Calendar.MILLISECOND));
   # System.out.println("ZONE_OFFSET: "
-  # + (calendar.get(Calendar.ZONE_OFFSET)/(60*60*1000)));
+  #                    + (calendar.get(Calendar.ZONE_OFFSET)/(60*60*1000)));
   # System.out.println("DST_OFFSET: "
-  # + (calendar.get(Calendar.DST_OFFSET)/(60*60*1000)));
+  #                    + (calendar.get(Calendar.DST_OFFSET)/(60*60*1000)));
   # 
   # System.out.println("Current Time, with hour reset to 3");
   # calendar.clear(Calendar.HOUR_OF_DAY); // so doesn't override
@@ -279,7 +277,7 @@ module Java::Util
   # System.out.println("DAY_OF_YEAR: " + calendar.get(Calendar.DAY_OF_YEAR));
   # System.out.println("DAY_OF_WEEK: " + calendar.get(Calendar.DAY_OF_WEEK));
   # System.out.println("DAY_OF_WEEK_IN_MONTH: "
-  # + calendar.get(Calendar.DAY_OF_WEEK_IN_MONTH));
+  #                    + calendar.get(Calendar.DAY_OF_WEEK_IN_MONTH));
   # System.out.println("AM_PM: " + calendar.get(Calendar.AM_PM));
   # System.out.println("HOUR: " + calendar.get(Calendar.HOUR));
   # System.out.println("HOUR_OF_DAY: " + calendar.get(Calendar.HOUR_OF_DAY));
@@ -287,9 +285,9 @@ module Java::Util
   # System.out.println("SECOND: " + calendar.get(Calendar.SECOND));
   # System.out.println("MILLISECOND: " + calendar.get(Calendar.MILLISECOND));
   # System.out.println("ZONE_OFFSET: "
-  # + (calendar.get(Calendar.ZONE_OFFSET)/(60*60*1000))); // in hours
+  #        + (calendar.get(Calendar.ZONE_OFFSET)/(60*60*1000))); // in hours
   # System.out.println("DST_OFFSET: "
-  # + (calendar.get(Calendar.DST_OFFSET)/(60*60*1000))); // in hours
+  #        + (calendar.get(Calendar.DST_OFFSET)/(60*60*1000))); // in hours
   # </pre>
   # </blockquote>
   # 
@@ -323,11 +321,9 @@ module Java::Util
       # leap years in-between.  Thus date computations and functions
       # such as isLeapYear() are not intended to be historically
       # accurate.
-      # 
       # ////////////////
       # Class Variables
       # ////////////////
-      # 
       # Value of the <code>ERA</code> field indicating
       # the period before the common era (before Christ), also known as BCE.
       # The sequence of years at the transition from <code>BC</code> to <code>AD</code> is
@@ -394,7 +390,7 @@ module Java::Util
       const_attr_reader  :ONE_WEEK
       
       # <pre>
-      # Greatest       Least
+      #                            Greatest       Least
       # Field name        Minimum   Minimum     Maximum     Maximum
       # ----------        -------   -------     -------     -------
       # ERA                     0         0           1           1
@@ -416,7 +412,6 @@ module Java::Util
       # DST_OFFSET           0:00      0:00        0:20        2:00
       # </pre>
       # *: depends on the Gregorian change date
-      # 
       # ERA
       # YEAR
       # MONTH
@@ -518,7 +513,6 @@ module Java::Util
     # ///////////////////
     # Instance Variables
     # ///////////////////
-    # 
     # The point at which the Gregorian calendar rules are used, measured in
     # milliseconds from the standard epoch.  Default is October 15, 1582
     # (Gregorian) 00:00:00 UTC or -12219292800000L.  For this value, October 4,
@@ -539,7 +533,6 @@ module Java::Util
     undef_method :gregorian_cutover_date=
     
     # == 577736
-    # 
     # The normalized year of the gregorianCutover in Gregorian, with
     # 0 representing 1 BCE, -1 representing 2 BCE, etc.
     attr_accessor :gregorian_cutover_year
@@ -604,7 +597,6 @@ module Java::Util
     # /////////////
     # Constructors
     # /////////////
-    # 
     # Constructs a default <code>GregorianCalendar</code> using the current time
     # in the default time zone with the default locale.
     def initialize
@@ -767,7 +759,6 @@ module Java::Util
     # ///////////////
     # Public methods
     # ///////////////
-    # 
     # Sets the <code>GregorianCalendar</code> change date. This is the point when the switch
     # from Julian dates to Gregorian dates occurred. Default is October 15,
     # 1582 (Gregorian). Previous to this, dates will be in the Julian calendar.
@@ -875,7 +866,7 @@ module Java::Util
     typesig { [] }
     # Generates the hash code for this <code>GregorianCalendar</code> object.
     def hash_code
-      return super ^ RJava.cast_to_int(@gregorian_cutover_date)
+      return super ^ (@gregorian_cutover_date).to_int
     end
     
     typesig { [::Java::Int, ::Java::Int] }
@@ -976,7 +967,7 @@ module Java::Util
             end
           end
           if (month >= 0)
-            set(MONTH, RJava.cast_to_int((month % 12)))
+            set(MONTH, ((month % 12)).to_int)
           else
             # month < 0
             month %= 12
@@ -1000,13 +991,9 @@ module Java::Util
             delta = amount
             time_of_day = 0
             case (field)
-            # Handle the time fields here. Convert the given
-            # amount to milliseconds and call setTimeInMillis.
-            # Handle week, day and AM_PM fields which involves
-            # time zone offset change adjustment. Convert the
-            # given amount to the number of days.
-            # synonym of DATE
             when HOUR, HOUR_OF_DAY
+              # Handle the time fields here. Convert the given
+              # amount to milliseconds and call setTimeInMillis.
               delta *= 60 * 60 * 1000 # hours to minutes
             when MINUTE
               delta *= 60 * 1000 # minutes to seconds
@@ -1014,8 +1001,12 @@ module Java::Util
               delta *= 1000 # seconds to milliseconds
             when MILLISECOND
             when WEEK_OF_YEAR, WEEK_OF_MONTH, DAY_OF_WEEK_IN_MONTH
+              # Handle week, day and AM_PM fields which involves
+              # time zone offset change adjustment. Convert the
+              # given amount to the number of days.
               delta *= 7
             when DAY_OF_MONTH, DAY_OF_YEAR, DAY_OF_WEEK
+              # synonym of DATE
             when AM_PM
               # Convert the amount to the number of days (delta)
               # and +12 or -12 hours (timeOfDay).
@@ -1298,7 +1289,7 @@ module Java::Util
           month_day1st = @calsys.get_day_of_week_date_on_or_before(month1 + 6, get_first_day_of_week)
           # if the week has enough days to form a week, the
           # week starts from the previous month.
-          if (RJava.cast_to_int((month_day1st - month1)) >= get_minimal_days_in_first_week)
+          if (((month_day1st - month1)).to_int >= get_minimal_days_in_first_week)
             month_day1st -= 7
           end
           max = get_actual_maximum(field)
@@ -1322,7 +1313,7 @@ module Java::Util
             d = get_calendar_date(nfd)
             day_of_month = d.get_day_of_month
           else
-            day_of_month = RJava.cast_to_int((nfd - month1)) + 1
+            day_of_month = ((nfd - month1)).to_int + 1
           end
           set(DAY_OF_MONTH, day_of_month)
           return
@@ -1337,7 +1328,7 @@ module Java::Util
           # It may not be a regular month. Convert the date and range to
           # the relative values, perform the roll, and
           # convert the result back to the rolled date.
-          value = get_rolled_value(RJava.cast_to_int((fd - month1)), amount, 0, actual_month_length - 1)
+          value = get_rolled_value(((fd - month1)).to_int, amount, 0, actual_month_length - 1)
           d = get_calendar_date(month1 + value)
           raise AssertError if not ((d.get_month - 1).equal?(internal_get(MONTH)))
           set(DAY_OF_MONTH, d.get_day_of_month)
@@ -1350,7 +1341,7 @@ module Java::Util
           # Handle cutover here.
           fd = get_current_fixed_date
           jan1 = fd - internal_get(DAY_OF_YEAR) + 1
-          value = get_rolled_value(RJava.cast_to_int((fd - jan1)) + 1, amount, min, max)
+          value = get_rolled_value(((fd - jan1)).to_int + 1, amount, min, max)
           d = get_calendar_date(jan1 + value - 1)
           set(MONTH, d.get_month - 1)
           set(DAY_OF_MONTH, d.get_day_of_month)
@@ -1408,7 +1399,7 @@ module Java::Util
           month_length_ = actual_month_length
           last_days = month_length_ % 7
           max = month_length_ / 7
-          x = RJava.cast_to_int((fd - month1)) % 7
+          x = ((fd - month1)).to_int % 7
           if (x < last_days)
             max += 1
           end
@@ -1672,7 +1663,7 @@ module Java::Util
           end
           raise AssertError if not (jan1 <= cal.get_fixed_date(date.get_normalized_year, date.get_month, date.get_day_of_month, date))
           raise AssertError if not (next_jan1 >= cal.get_fixed_date(date.get_normalized_year, date.get_month, date.get_day_of_month, date))
-          value = RJava.cast_to_int((next_jan1 - jan1))
+          value = ((next_jan1 - jan1)).to_int
         when WEEK_OF_YEAR
           if (!gc.is_cutover_year(normalized_year))
             # Get the day of week of January 1 of the year
@@ -1765,9 +1756,9 @@ module Java::Util
           # 
           # The actual maxima for YEAR depend on the type of calendar:
           # 
-          # Gregorian = May 17, 292275056 BCE - Aug 17, 292278994 CE
-          # Julian    = Dec  2, 292269055 BCE - Jan  3, 292272993 CE
-          # Hybrid    = Dec  2, 292269055 BCE - Aug 17, 292278994 CE
+          #     Gregorian = May 17, 292275056 BCE - Aug 17, 292278994 CE
+          #     Julian    = Dec  2, 292269055 BCE - Jan  3, 292272993 CE
+          #     Hybrid    = Dec  2, 292269055 BCE - Aug 17, 292278994 CE
           # 
           # We know we've exceeded the maximum when either the month, date,
           # time, or era changes in response to setting the year.  We don't
@@ -1870,7 +1861,6 @@ module Java::Util
     # ////////////////////
     # Proposed public API
     # ////////////////////
-    # 
     # Returns the year that corresponds to the <code>WEEK_OF_YEAR</code> field.
     # This may be one year before or after the Gregorian or Julian year stored
     # in the <code>YEAR</code> field.  For example, January 1, 1999 is considered
@@ -1886,29 +1876,25 @@ module Java::Util
     # may be one year before or after the <code>YEAR</code> field.
     # @see #YEAR
     # @see #WEEK_OF_YEAR
-    # 
-    # 
     # public int getWeekBasedYear() {
-    # complete();
-    # // TODO: Below doesn't work for gregorian cutover...
-    # int weekOfYear = internalGet(WEEK_OF_YEAR);
-    # int year = internalGet(YEAR);
-    # if (internalGet(MONTH) == Calendar.JANUARY) {
-    # if (weekOfYear >= 52) {
-    # --year;
+    #     complete();
+    #     // TODO: Below doesn't work for gregorian cutover...
+    #     int weekOfYear = internalGet(WEEK_OF_YEAR);
+    #     int year = internalGet(YEAR);
+    #     if (internalGet(MONTH) == Calendar.JANUARY) {
+    #         if (weekOfYear >= 52) {
+    #             --year;
+    #         }
+    #     } else {
+    #         if (weekOfYear == 1) {
+    #             ++year;
+    #         }
+    #     }
+    #     return year;
     # }
-    # } else {
-    # if (weekOfYear == 1) {
-    # ++year;
-    # }
-    # }
-    # return year;
-    # }
-    # 
     # ///////////////////////////
     # Time => Fields computation
     # ///////////////////////////
-    # 
     # The fixed date corresponding to gdate. If the value is
     # Long.MIN_VALUE, the fixed date value is unknown. Currently,
     # Julian calendar dates are not cached.
@@ -1987,9 +1973,9 @@ module Java::Util
       # the wider range of time+zoneOffset than the previous
       # implementation.
       fixed_date = zone_offset / ONE_DAY
-      time_of_day = zone_offset % RJava.cast_to_int(ONE_DAY)
+      time_of_day = zone_offset % (ONE_DAY).to_int
       fixed_date += self.attr_time / ONE_DAY
-      time_of_day += RJava.cast_to_int((self.attr_time % ONE_DAY))
+      time_of_day += ((self.attr_time % ONE_DAY)).to_int
       if (time_of_day >= ONE_DAY)
         time_of_day -= ONE_DAY
         (fixed_date += 1)
@@ -2072,7 +2058,7 @@ module Java::Util
       if (!((field_mask & (DAY_OF_YEAR_MASK | WEEK_OF_YEAR_MASK | WEEK_OF_MONTH_MASK | DAY_OF_WEEK_IN_MONTH_MASK))).equal?(0))
         normalized_year = @cdate.get_normalized_year
         fixed_date_jan1 = @calsys.get_fixed_date(normalized_year, 1, 1, @cdate)
-        day_of_year = RJava.cast_to_int((fixed_date - fixed_date_jan1)) + 1
+        day_of_year = ((fixed_date - fixed_date_jan1)).to_int + 1
         fixed_date_month1 = fixed_date - day_of_month + 1
         cutover_gap = 0
         cutover_year = ((@calsys).equal?(Gcal)) ? @gregorian_cutover_year : @gregorian_cutover_year_julian
@@ -2089,10 +2075,10 @@ module Java::Util
               fixed_date_month1 = get_fixed_date_month1(@cdate, fixed_date)
             end
           end
-          real_day_of_year = RJava.cast_to_int((fixed_date - fixed_date_jan1)) + 1
+          real_day_of_year = ((fixed_date - fixed_date_jan1)).to_int + 1
           cutover_gap = day_of_year - real_day_of_year
           day_of_year = real_day_of_year
-          relative_day_of_month = RJava.cast_to_int((fixed_date - fixed_date_month1))
+          relative_day_of_month = ((fixed_date - fixed_date_month1)).to_int
         end
         internal_set(DAY_OF_YEAR, day_of_year)
         internal_set(DAY_OF_WEEK_IN_MONTH, relative_day_of_month / 7 + 1)
@@ -2135,7 +2121,7 @@ module Java::Util
                 next_jan1 += 1
               end
               next_jan1st = @calsys.get_day_of_week_date_on_or_before(next_jan1 + 6, get_first_day_of_week)
-              ndays = RJava.cast_to_int((next_jan1st - next_jan1))
+              ndays = ((next_jan1st - next_jan1)).to_int
               if (ndays >= get_minimal_days_in_first_week && fixed_date >= (next_jan1st - 7))
                 # The first days forms a week in which the date is included.
                 week_of_year = 1
@@ -2157,7 +2143,7 @@ module Java::Util
               cal_for_jan1 = Gcal
             end
             next_jan1st = cal_for_jan1.get_day_of_week_date_on_or_before(next_jan1 + 6, get_first_day_of_week)
-            ndays = RJava.cast_to_int((next_jan1st - next_jan1))
+            ndays = ((next_jan1st - next_jan1)).to_int
             if (ndays >= get_minimal_days_in_first_week && fixed_date >= (next_jan1st - 7))
               # The first days forms a week in which the date is included.
               week_of_year = 1
@@ -2183,12 +2169,12 @@ module Java::Util
       # We can always use `gcal' since Julian and Gregorian are the
       # same thing for this calculation.
       fixed_day1st = Gcal.get_day_of_week_date_on_or_before(fixed_day1 + 6, get_first_day_of_week)
-      ndays = RJava.cast_to_int((fixed_day1st - fixed_day1))
+      ndays = ((fixed_day1st - fixed_day1)).to_int
       raise AssertError if not (ndays <= 7)
       if (ndays >= get_minimal_days_in_first_week)
         fixed_day1st -= 7
       end
-      normalized_day_of_period = RJava.cast_to_int((fixed_date - fixed_day1st))
+      normalized_day_of_period = ((fixed_date - fixed_day1st)).to_int
       if (normalized_day_of_period >= 0)
         return normalized_day_of_period / 7 + 1
       end
@@ -2330,13 +2316,13 @@ module Java::Util
       # ambiguities here.  We'll assume a 2:00 am (wall time) switchover time
       # for discussion purposes here.
       # 1. The transition into DST.  Here, a designated time of 2:00 am - 2:59 am
-      # can be in standard or in DST depending.  However, 2:00 am is an invalid
-      # representation (the representation jumps from 1:59:59 am Std to 3:00:00 am DST).
-      # We assume standard time.
+      #    can be in standard or in DST depending.  However, 2:00 am is an invalid
+      #    representation (the representation jumps from 1:59:59 am Std to 3:00:00 am DST).
+      #    We assume standard time.
       # 2. The transition out of DST.  Here, a designated time of 1:00 am - 1:59 am
-      # can be in standard or DST.  Both are valid representations (the rep
-      # jumps from 1:59:59 DST to 1:00:00 Std).
-      # Again, we assume standard time.
+      #    can be in standard or DST.  Both are valid representations (the rep
+      #    jumps from 1:59:59 DST to 1:00:00 Std).
+      #    Again, we assume standard time.
       # We use the TimeZone object, unless the user has explicitly set the ZONE_OFFSET
       # or DST_OFFSET fields; then we use those fields.
       zone = get_zone
@@ -2670,14 +2656,14 @@ module Java::Util
       month1 = get_fixed_date_month1(date, fd)
       next1 = month1 + @calsys.get_month_length(date)
       if (next1 < @gregorian_cutover_date)
-        return RJava.cast_to_int((next1 - month1))
+        return ((next1 - month1)).to_int
       end
       if (!(@cdate).equal?(@gdate))
         date = Gcal.new_calendar_date(TimeZone::NO_TIMEZONE)
       end
       Gcal.get_calendar_date_from_fixed_date(date, next1)
       next1 = get_fixed_date_month1(date, next1)
-      return RJava.cast_to_int((next1 - month1))
+      return ((next1 - month1)).to_int
     end
     
     typesig { [::Java::Int] }

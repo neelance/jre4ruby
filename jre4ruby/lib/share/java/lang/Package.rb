@@ -110,9 +110,9 @@ module Java::Lang
     # Return the name of this package.
     # 
     # @return  The fully-qualified name of this package as defined in the
-    # <em>Java Language Specification, Third Edition</em>
-    # <a href="http://java.sun.com/docs/books/jls/third_edition/html/names.html#6.5.3">
-    # &sect;6.5.3</a>, for example, {@code java.lang}
+    #          <em>Java Language Specification, Third Edition</em>
+    #          <a href="http://java.sun.com/docs/books/jls/third_edition/html/names.html#6.5.3">
+    #          &sect;6.5.3</a>, for example, {@code java.lang}
     def get_name
       return @pkg_name
     end
@@ -207,10 +207,10 @@ module Java::Lang
     # 
     # @param desired the version string of the desired version.
     # @return true if this package's version number is greater
-    # than or equal to the desired version number
+    #          than or equal to the desired version number
     # 
     # @exception NumberFormatException if the desired or current version
-    # is not of the correct dotted form.
+    #          is not of the correct dotted form.
     def is_compatible_with(desired)
       if ((@spec_version).nil? || @spec_version.length < 1)
         raise NumberFormatException.new("Empty version string")
@@ -266,7 +266,7 @@ module Java::Lang
       # 
       # @param name a package name, for example, java.lang.
       # @return the package of the requested name. It may be null if no package
-      # information is available from the archive or codebase.
+      #          information is available from the archive or codebase.
       def get_package(name)
         l = ClassLoader.get_caller_class_loader
         if (!(l).nil?)
@@ -312,7 +312,7 @@ module Java::Lang
       # 
       # @param class the class to get the package of.
       # @return the package of the class. It may be null if no package
-      # information is available from the archive or codebase.
+      #          information is available from the archive or codebase.
       def get_package(c)
         name = c.get_name
         i = name.last_index_of(Character.new(?..ord))

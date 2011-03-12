@@ -53,14 +53,14 @@ module Java::Net
   # domain name string back and forth.
   # 
   # <p>The behavior of aforementioned conversion process can be adjusted by various flags:
-  # <ul>
-  # <li>If the ALLOW_UNASSIGNED flag is used, the domain name string to be converted
-  # can contain code points that are unassigned in Unicode 3.2, which is the
-  # Unicode version on which IDN conversion is based. If the flag is not used,
-  # the presence of such unassigned code points is treated as an error.
-  # <li>If the USE_STD3_ASCII_RULES flag is used, ASCII strings are checked against <a href="http://www.ietf.org/rfc/rfc1122.txt">RFC 1122</a> and <a href="http://www.ietf.org/rfc/rfc1123.txt">RFC 1123</a>.
-  # It is an error if they don't meet the requirements.
-  # </ul>
+  #   <ul>
+  #     <li>If the ALLOW_UNASSIGNED flag is used, the domain name string to be converted
+  #         can contain code points that are unassigned in Unicode 3.2, which is the
+  #         Unicode version on which IDN conversion is based. If the flag is not used,
+  #         the presence of such unassigned code points is treated as an error.
+  #     <li>If the USE_STD3_ASCII_RULES flag is used, ASCII strings are checked against <a href="http://www.ietf.org/rfc/rfc1122.txt">RFC 1122</a> and <a href="http://www.ietf.org/rfc/rfc1123.txt">RFC 1123</a>.
+  #         It is an error if they don't meet the requirements.
+  #   </ul>
   # These flags can be logically OR'ed together.
   # 
   # <p>The security consideration is important with respect to internationalization
@@ -253,12 +253,15 @@ module Java::Net
     # ---------------- Private operations --------------
     # 
     # to suppress the default zero-argument constructor
+    # 
     def initialize
     end
     
     class_module.module_eval {
       typesig { [String, ::Java::Int] }
+      # 
       # toASCII operation; should only apply to a single label
+      # 
       def to_asciiinternal(label, flag)
         # step 1
         # Check if the string contains code points outside the ASCII range 0..0x7c.
@@ -278,7 +281,7 @@ module Java::Net
         end
         # step 3
         # Verify the absence of non-LDH ASCII code points
-        # 0..0x2c, 0x2e..0x2f, 0x3a..0x40, 0x5b..0x60, 0x7b..0x7f
+        #   0..0x2c, 0x2e..0x2f, 0x3a..0x40, 0x5b..0x60, 0x7b..0x7f
         # Verify the absence of leading and trailing hyphen
         use_std3asciirules = (!((flag & USE_STD3_ASCII_RULES)).equal?(0))
         if (use_std3asciirules)
@@ -326,7 +329,9 @@ module Java::Net
       end
       
       typesig { [String, ::Java::Int] }
+      # 
       # toUnicode operation; should only apply to a single label
+      # 
       def to_unicode_internal(label, flag)
         case_flags = nil
         dest = nil
@@ -375,10 +380,12 @@ module Java::Net
       end
       
       typesig { [::Java::Int] }
+      # 
       # LDH stands for "letter/digit/hyphen", with characters restricted to the
       # 26-letter Latin alphabet <A-Z a-z>, the digits <0-9>, and the hyphen
       # <->
       # non-LDH = 0..0x2C, 0x2E..0x2F, 0x3A..0x40, 0x56..0x60, 0x7B..0x7F
+      # 
       def is_ldhchar(ch)
         # high runner case
         if (ch > 0x7a)
@@ -392,10 +399,12 @@ module Java::Net
       end
       
       typesig { [String, ::Java::Int] }
+      # 
       # search dots in a string and return the index of that character;
       # or if there is no dots, return the length of input string
       # dots might be: \u002E (full stop), \u3002 (ideographic full stop), \uFF0E (fullwidth full stop),
       # and \uFF61 (halfwidth ideographic full stop).
+      # 
       def search_dots(s, start)
         i = 0
         i = start
@@ -410,7 +419,9 @@ module Java::Net
       end
       
       typesig { [String] }
+      # 
       # to check if a string only contains US-ASCII code point
+      # 
       def is_all_ascii(input)
         is_ascii = true
         i = 0
@@ -426,7 +437,9 @@ module Java::Net
       end
       
       typesig { [StringBuffer] }
+      # 
       # to check if a string starts with ACE-prefix
+      # 
       def starts_with_aceprefix(input)
         starts_with_prefix = true
         if (input.length < ACE_PREFIX_LENGTH)

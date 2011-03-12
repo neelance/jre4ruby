@@ -59,8 +59,8 @@ module Java::Net
     # then it is replaced with the new one.
     # 
     # @param uri       the uri this cookie associated with.
-    # if <tt>null</tt>, this cookie will not be associated
-    # with an URI
+    #                  if <tt>null</tt>, this cookie will not be associated
+    #                  with an URI
     # @param cookie    the cookie to store
     # 
     # @throws NullPointerException if <tt>cookie</tt> is <tt>null</tt>
@@ -76,7 +76,7 @@ module Java::Net
     # This is called for every outgoing HTTP request.
     # 
     # @return          an immutable list of HttpCookie,
-    # return empty list if no cookies match the given URI
+    #                  return empty list if no cookies match the given URI
     # 
     # @throws NullPointerException if <tt>uri</tt> is <tt>null</tt>
     # 
@@ -89,7 +89,7 @@ module Java::Net
     # Get all not-expired cookies in cookie store.
     # 
     # @return          an immutable list of http cookies;
-    # return empty list if there's no http cookie in store
+    #                  return empty list if there's no http cookie in store
     def get_cookies
       raise NotImplementedError
     end
@@ -98,8 +98,8 @@ module Java::Net
     # Get all URIs which identify the cookies in this cookie store.
     # 
     # @return          an immutable list of URIs;
-    # return empty list if no cookie in this cookie store
-    # is associated with an URI
+    #                  return empty list if no cookie in this cookie store
+    #                  is associated with an URI
     def get_uris
       raise NotImplementedError
     end
@@ -108,9 +108,9 @@ module Java::Net
     # Remove a cookie from store.
     # 
     # @param uri       the uri this cookie associated with.
-    # if <tt>null</tt>, the cookie to be removed is not associated
-    # with an URI when added; if not <tt>null</tt>, the cookie
-    # to be removed is associated with the given URI when added.
+    #                  if <tt>null</tt>, the cookie to be removed is not associated
+    #                  with an URI when added; if not <tt>null</tt>, the cookie
+    #                  to be removed is associated with the given URI when added.
     # @param cookie    the cookie to remove
     # 
     # @return          <tt>true</tt> if this store contained the specified cookie

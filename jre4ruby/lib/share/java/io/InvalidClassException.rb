@@ -34,7 +34,7 @@ module Java::Io
   # problems with a Class.
   # <UL>
   # <LI> The serial version of the class does not match that of the class
-  # descriptor read from the stream
+  #      descriptor read from the stream
   # <LI> The class contains unknown datatypes
   # <LI> The class does not have an accessible no-arg constructor
   # </UL>

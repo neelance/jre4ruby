@@ -22,14 +22,13 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
 # -
-# netdoc urls point either into the local filesystem or externally
-# through an http url, with network documents being preferred.  Useful for
-# FAQs & other documents which are likely to be changing over time at the
-# central site, and where the user will want the most recent edition.
+#  netdoc urls point either into the local filesystem or externally
+#  through an http url, with network documents being preferred.  Useful for
+#  FAQs & other documents which are likely to be changing over time at the
+#  central site, and where the user will want the most recent edition.
 # 
-# @author Steven B. Byrne
+#  @author Steven B. Byrne
 module Sun::Net::Www::Protocol::Netdoc
   module HandlerImports #:nodoc:
     class_module.module_eval {

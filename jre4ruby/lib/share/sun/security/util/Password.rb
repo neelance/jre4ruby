@@ -132,7 +132,7 @@ module Sun::Security::Util
             self.attr_enc = Sun::Misc::SharedSecrets.get_java_ioaccess.charset.new_encoder.on_malformed_input(CodingErrorAction::REPLACE).on_unmappable_character(CodingErrorAction::REPLACE)
           end
         end
-        ba = Array.typed(::Java::Byte).new(RJava.cast_to_int((self.attr_enc.max_bytes_per_char * pass.attr_length))) { 0 }
+        ba = Array.typed(::Java::Byte).new(((self.attr_enc.max_bytes_per_char * pass.attr_length)).to_int) { 0 }
         bb = ByteBuffer.wrap(ba)
         synchronized((self.attr_enc)) do
           self.attr_enc.reset.encode(CharBuffer.wrap(pass), bb, true)

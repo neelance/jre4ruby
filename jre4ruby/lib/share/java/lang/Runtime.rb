@@ -62,7 +62,7 @@ module Java::Lang
       # methods and must be invoked with respect to the current runtime object.
       # 
       # @return  the <code>Runtime</code> object associated with the current
-      # Java application.
+      #          Java application.
       def get_runtime
         return self.attr_current_runtime
       end
@@ -98,13 +98,13 @@ module Java::Lang
     # conventional and convenient means of invoking this method. <p>
     # 
     # @param  status
-    # Termination status.  By convention, a nonzero status code
-    # indicates abnormal termination.
+    #         Termination status.  By convention, a nonzero status code
+    #         indicates abnormal termination.
     # 
     # @throws SecurityException
-    # If a security manager is present and its <tt>{@link
-    # SecurityManager#checkExit checkExit}</tt> method does not permit
-    # exiting with the specified status
+    #         If a security manager is present and its <tt>{@link
+    #         SecurityManager#checkExit checkExit}</tt> method does not permit
+    #         exiting with the specified status
     # 
     # @see java.lang.SecurityException
     # @see java.lang.SecurityManager#checkExit(int)
@@ -126,17 +126,17 @@ module Java::Lang
     # <p> The Java virtual machine <i>shuts down</i> in response to two kinds
     # of events:
     # 
-    # <ul>
+    #   <ul>
     # 
-    # <p> <li> The program <i>exits</i> normally, when the last non-daemon
-    # thread exits or when the <tt>{@link #exit exit}</tt> (equivalently,
-    # <tt>{@link System#exit(int) System.exit}</tt>) method is invoked, or
+    #   <p> <li> The program <i>exits</i> normally, when the last non-daemon
+    #   thread exits or when the <tt>{@link #exit exit}</tt> (equivalently,
+    #   <tt>{@link System#exit(int) System.exit}</tt>) method is invoked, or
     # 
-    # <p> <li> The virtual machine is <i>terminated</i> in response to a
-    # user interrupt, such as typing <tt>^C</tt>, or a system-wide event,
-    # such as user logoff or system shutdown.
+    #   <p> <li> The virtual machine is <i>terminated</i> in response to a
+    #   user interrupt, such as typing <tt>^C</tt>, or a system-wide event,
+    #   such as user logoff or system shutdown.
     # 
-    # </ul>
+    #   </ul>
     # 
     # <p> A <i>shutdown hook</i> is simply an initialized but unstarted
     # thread.  When the virtual machine begins its shutdown sequence it will
@@ -194,20 +194,20 @@ module Java::Lang
     # will be run. <p>
     # 
     # @param   hook
-    # An initialized but unstarted <tt>{@link Thread}</tt> object
+    #          An initialized but unstarted <tt>{@link Thread}</tt> object
     # 
     # @throws  IllegalArgumentException
-    # If the specified hook has already been registered,
-    # or if it can be determined that the hook is already running or
-    # has already been run
+    #          If the specified hook has already been registered,
+    #          or if it can be determined that the hook is already running or
+    #          has already been run
     # 
     # @throws  IllegalStateException
-    # If the virtual machine is already in the process
-    # of shutting down
+    #          If the virtual machine is already in the process
+    #          of shutting down
     # 
     # @throws  SecurityException
-    # If a security manager is present and it denies
-    # <tt>{@link RuntimePermission}("shutdownHooks")</tt>
+    #          If a security manager is present and it denies
+    #          <tt>{@link RuntimePermission}("shutdownHooks")</tt>
     # 
     # @see #removeShutdownHook
     # @see #halt(int)
@@ -230,12 +230,12 @@ module Java::Lang
     # otherwise.
     # 
     # @throws  IllegalStateException
-    # If the virtual machine is already in the process of shutting
-    # down
+    #          If the virtual machine is already in the process of shutting
+    #          down
     # 
     # @throws  SecurityException
-    # If a security manager is present and it denies
-    # <tt>{@link RuntimePermission}("shutdownHooks")</tt>
+    #          If a security manager is present and it denies
+    #          <tt>{@link RuntimePermission}("shutdownHooks")</tt>
     # 
     # @see #addShutdownHook
     # @see #exit(int)
@@ -260,16 +260,16 @@ module Java::Lang
     # shutdown hooks or finalizers to finish their work. <p>
     # 
     # @param  status
-    # Termination status.  By convention, a nonzero status code
-    # indicates abnormal termination.  If the <tt>{@link Runtime#exit
-    # exit}</tt> (equivalently, <tt>{@link System#exit(int)
-    # System.exit}</tt>) method has already been invoked then this
-    # status code will override the status code passed to that method.
+    #         Termination status.  By convention, a nonzero status code
+    #         indicates abnormal termination.  If the <tt>{@link Runtime#exit
+    #         exit}</tt> (equivalently, <tt>{@link System#exit(int)
+    #         System.exit}</tt>) method has already been invoked then this
+    #         status code will override the status code passed to that method.
     # 
     # @throws SecurityException
-    # If a security manager is present and its <tt>{@link
-    # SecurityManager#checkExit checkExit}</tt> method does not permit
-    # an exit with the specified status
+    #         If a security manager is present and its <tt>{@link
+    #         SecurityManager#checkExit checkExit}</tt> method does not permit
+    #         an exit with the specified status
     # 
     # @see #exit
     # @see #addShutdownHook
@@ -297,13 +297,13 @@ module Java::Lang
       # 
       # @param value true to enable finalization on exit, false to disable
       # @deprecated  This method is inherently unsafe.  It may result in
-      # finalizers being called on live objects while other threads are
-      # concurrently manipulating those objects, resulting in erratic
-      # behavior or deadlock.
+      #      finalizers being called on live objects while other threads are
+      #      concurrently manipulating those objects, resulting in erratic
+      #      behavior or deadlock.
       # 
       # @throws  SecurityException
-      # if a security manager exists and its <code>checkExit</code>
-      # method doesn't allow the exit.
+      #        if a security manager exists and its <code>checkExit</code>
+      #        method doesn't allow the exit.
       # 
       # @see     java.lang.Runtime#exit(int)
       # @see     java.lang.Runtime#gc()
@@ -335,18 +335,18 @@ module Java::Lang
     # @return  A new {@link Process} object for managing the subprocess
     # 
     # @throws  SecurityException
-    # If a security manager exists and its
-    # {@link SecurityManager#checkExec checkExec}
-    # method doesn't allow creation of the subprocess
+    #          If a security manager exists and its
+    #          {@link SecurityManager#checkExec checkExec}
+    #          method doesn't allow creation of the subprocess
     # 
     # @throws  IOException
-    # If an I/O error occurs
+    #          If an I/O error occurs
     # 
     # @throws  NullPointerException
-    # If <code>command</code> is <code>null</code>
+    #          If <code>command</code> is <code>null</code>
     # 
     # @throws  IllegalArgumentException
-    # If <code>command</code> is empty
+    #          If <code>command</code> is empty
     # 
     # @see     #exec(String[], String[], File)
     # @see     ProcessBuilder
@@ -366,27 +366,27 @@ module Java::Lang
     # @param   command   a specified system command.
     # 
     # @param   envp      array of strings, each element of which
-    # has environment variable settings in the format
-    # <i>name</i>=<i>value</i>, or
-    # <tt>null</tt> if the subprocess should inherit
-    # the environment of the current process.
+    #                    has environment variable settings in the format
+    #                    <i>name</i>=<i>value</i>, or
+    #                    <tt>null</tt> if the subprocess should inherit
+    #                    the environment of the current process.
     # 
     # @return  A new {@link Process} object for managing the subprocess
     # 
     # @throws  SecurityException
-    # If a security manager exists and its
-    # {@link SecurityManager#checkExec checkExec}
-    # method doesn't allow creation of the subprocess
+    #          If a security manager exists and its
+    #          {@link SecurityManager#checkExec checkExec}
+    #          method doesn't allow creation of the subprocess
     # 
     # @throws  IOException
-    # If an I/O error occurs
+    #          If an I/O error occurs
     # 
     # @throws  NullPointerException
-    # If <code>command</code> is <code>null</code>,
-    # or one of the elements of <code>envp</code> is <code>null</code>
+    #          If <code>command</code> is <code>null</code>,
+    #          or one of the elements of <code>envp</code> is <code>null</code>
     # 
     # @throws  IllegalArgumentException
-    # If <code>command</code> is empty
+    #          If <code>command</code> is empty
     # 
     # @see     #exec(String[], String[], File)
     # @see     ProcessBuilder
@@ -415,31 +415,31 @@ module Java::Lang
     # @param   command   a specified system command.
     # 
     # @param   envp      array of strings, each element of which
-    # has environment variable settings in the format
-    # <i>name</i>=<i>value</i>, or
-    # <tt>null</tt> if the subprocess should inherit
-    # the environment of the current process.
+    #                    has environment variable settings in the format
+    #                    <i>name</i>=<i>value</i>, or
+    #                    <tt>null</tt> if the subprocess should inherit
+    #                    the environment of the current process.
     # 
     # @param   dir       the working directory of the subprocess, or
-    # <tt>null</tt> if the subprocess should inherit
-    # the working directory of the current process.
+    #                    <tt>null</tt> if the subprocess should inherit
+    #                    the working directory of the current process.
     # 
     # @return  A new {@link Process} object for managing the subprocess
     # 
     # @throws  SecurityException
-    # If a security manager exists and its
-    # {@link SecurityManager#checkExec checkExec}
-    # method doesn't allow creation of the subprocess
+    #          If a security manager exists and its
+    #          {@link SecurityManager#checkExec checkExec}
+    #          method doesn't allow creation of the subprocess
     # 
     # @throws  IOException
-    # If an I/O error occurs
+    #          If an I/O error occurs
     # 
     # @throws  NullPointerException
-    # If <code>command</code> is <code>null</code>,
-    # or one of the elements of <code>envp</code> is <code>null</code>
+    #          If <code>command</code> is <code>null</code>,
+    #          or one of the elements of <code>envp</code> is <code>null</code>
     # 
     # @throws  IllegalArgumentException
-    # If <code>command</code> is empty
+    #          If <code>command</code> is empty
     # 
     # @see     ProcessBuilder
     # @since 1.3
@@ -466,25 +466,25 @@ module Java::Lang
     # <tt>{@link #exec(String[], String[], File) exec}(cmdarray, null, null)</tt>.
     # 
     # @param   cmdarray  array containing the command to call and
-    # its arguments.
+    #                    its arguments.
     # 
     # @return  A new {@link Process} object for managing the subprocess
     # 
     # @throws  SecurityException
-    # If a security manager exists and its
-    # {@link SecurityManager#checkExec checkExec}
-    # method doesn't allow creation of the subprocess
+    #          If a security manager exists and its
+    #          {@link SecurityManager#checkExec checkExec}
+    #          method doesn't allow creation of the subprocess
     # 
     # @throws  IOException
-    # If an I/O error occurs
+    #          If an I/O error occurs
     # 
     # @throws  NullPointerException
-    # If <code>cmdarray</code> is <code>null</code>,
-    # or one of the elements of <code>cmdarray</code> is <code>null</code>
+    #          If <code>cmdarray</code> is <code>null</code>,
+    #          or one of the elements of <code>cmdarray</code> is <code>null</code>
     # 
     # @throws  IndexOutOfBoundsException
-    # If <code>cmdarray</code> is an empty array
-    # (has length <code>0</code>)
+    #          If <code>cmdarray</code> is an empty array
+    #          (has length <code>0</code>)
     # 
     # @see     ProcessBuilder
     def exec(cmdarray)
@@ -501,32 +501,32 @@ module Java::Lang
     # <tt>{@link #exec(String[], String[], File) exec}(cmdarray, envp, null)</tt>.
     # 
     # @param   cmdarray  array containing the command to call and
-    # its arguments.
+    #                    its arguments.
     # 
     # @param   envp      array of strings, each element of which
-    # has environment variable settings in the format
-    # <i>name</i>=<i>value</i>, or
-    # <tt>null</tt> if the subprocess should inherit
-    # the environment of the current process.
+    #                    has environment variable settings in the format
+    #                    <i>name</i>=<i>value</i>, or
+    #                    <tt>null</tt> if the subprocess should inherit
+    #                    the environment of the current process.
     # 
     # @return  A new {@link Process} object for managing the subprocess
     # 
     # @throws  SecurityException
-    # If a security manager exists and its
-    # {@link SecurityManager#checkExec checkExec}
-    # method doesn't allow creation of the subprocess
+    #          If a security manager exists and its
+    #          {@link SecurityManager#checkExec checkExec}
+    #          method doesn't allow creation of the subprocess
     # 
     # @throws  IOException
-    # If an I/O error occurs
+    #          If an I/O error occurs
     # 
     # @throws  NullPointerException
-    # If <code>cmdarray</code> is <code>null</code>,
-    # or one of the elements of <code>cmdarray</code> is <code>null</code>,
-    # or one of the elements of <code>envp</code> is <code>null</code>
+    #          If <code>cmdarray</code> is <code>null</code>,
+    #          or one of the elements of <code>cmdarray</code> is <code>null</code>,
+    #          or one of the elements of <code>envp</code> is <code>null</code>
     # 
     # @throws  IndexOutOfBoundsException
-    # If <code>cmdarray</code> is an empty array
-    # (has length <code>0</code>)
+    #          If <code>cmdarray</code> is an empty array
+    #          (has length <code>0</code>)
     # 
     # @see     ProcessBuilder
     def exec(cmdarray, envp)
@@ -577,36 +577,36 @@ module Java::Lang
     # 
     # 
     # @param   cmdarray  array containing the command to call and
-    # its arguments.
+    #                    its arguments.
     # 
     # @param   envp      array of strings, each element of which
-    # has environment variable settings in the format
-    # <i>name</i>=<i>value</i>, or
-    # <tt>null</tt> if the subprocess should inherit
-    # the environment of the current process.
+    #                    has environment variable settings in the format
+    #                    <i>name</i>=<i>value</i>, or
+    #                    <tt>null</tt> if the subprocess should inherit
+    #                    the environment of the current process.
     # 
     # @param   dir       the working directory of the subprocess, or
-    # <tt>null</tt> if the subprocess should inherit
-    # the working directory of the current process.
+    #                    <tt>null</tt> if the subprocess should inherit
+    #                    the working directory of the current process.
     # 
     # @return  A new {@link Process} object for managing the subprocess
     # 
     # @throws  SecurityException
-    # If a security manager exists and its
-    # {@link SecurityManager#checkExec checkExec}
-    # method doesn't allow creation of the subprocess
+    #          If a security manager exists and its
+    #          {@link SecurityManager#checkExec checkExec}
+    #          method doesn't allow creation of the subprocess
     # 
     # @throws  IOException
-    # If an I/O error occurs
+    #          If an I/O error occurs
     # 
     # @throws  NullPointerException
-    # If <code>cmdarray</code> is <code>null</code>,
-    # or one of the elements of <code>cmdarray</code> is <code>null</code>,
-    # or one of the elements of <code>envp</code> is <code>null</code>
+    #          If <code>cmdarray</code> is <code>null</code>,
+    #          or one of the elements of <code>cmdarray</code> is <code>null</code>,
+    #          or one of the elements of <code>envp</code> is <code>null</code>
     # 
     # @throws  IndexOutOfBoundsException
-    # If <code>cmdarray</code> is an empty array
-    # (has length <code>0</code>)
+    #          If <code>cmdarray</code> is an empty array
+    #          (has length <code>0</code>)
     # 
     # @see     ProcessBuilder
     # @since 1.3
@@ -624,7 +624,7 @@ module Java::Lang
     # their resource usage appropriately. </p>
     # 
     # @return  the maximum number of processors available to the virtual
-    # machine; never smaller than one
+    #          machine; never smaller than one
     # @since 1.4
     def available_processors
       JNI.call_native_method(:Java_java_lang_Runtime_availableProcessors, JNI.env, self.jni_id)
@@ -638,7 +638,7 @@ module Java::Lang
     # by <code>freeMemory.</code>
     # 
     # @return  an approximation to the total amount of memory currently
-    # available for future allocated objects, measured in bytes.
+    #          available for future allocated objects, measured in bytes.
     def free_memory
       JNI.call_native_method(:Java_java_lang_Runtime_freeMemory, JNI.env, self.jni_id)
     end
@@ -653,7 +653,7 @@ module Java::Lang
     # given type may be implementation-dependent.
     # 
     # @return  the total amount of memory currently available for current
-    # and future objects, measured in bytes.
+    #          and future objects, measured in bytes.
     def total_memory
       JNI.call_native_method(:Java_java_lang_Runtime_totalMemory, JNI.env, self.jni_id)
     end
@@ -665,7 +665,7 @@ module Java::Lang
     # java.lang.Long#MAX_VALUE} will be returned. </p>
     # 
     # @return  the maximum amount of memory that the virtual machine will
-    # attempt to use, measured in bytes
+    #          attempt to use, measured in bytes
     # @since 1.4
     def max_memory
       JNI.call_native_method(:Java_java_lang_Runtime_maxMemory, JNI.env, self.jni_id)
@@ -738,7 +738,7 @@ module Java::Lang
     # detailed instruction trace it is performing.
     # 
     # @param   on   <code>true</code> to enable instruction tracing;
-    # <code>false</code> to disable this feature.
+    #               <code>false</code> to disable this feature.
     def trace_instructions(on)
       JNI.call_native_method(:Java_java_lang_Runtime_traceInstructions, JNI.env, self.jni_id, on ? 1 : 0)
     end
@@ -758,7 +758,7 @@ module Java::Lang
     # virtual machine cease emitting per-call debugging information.
     # 
     # @param   on   <code>true</code> to enable instruction tracing;
-    # <code>false</code> to disable this feature.
+    #               <code>false</code> to disable this feature.
     def trace_method_calls(on)
       JNI.call_native_method(:Java_java_lang_Runtime_traceMethodCalls, JNI.env, self.jni_id, on ? 1 : 0)
     end
@@ -782,11 +782,11 @@ module Java::Lang
     # 
     # @param      filename   the file to load.
     # @exception  SecurityException  if a security manager exists and its
-    # <code>checkLink</code> method doesn't allow
-    # loading of the specified dynamic library
+    #             <code>checkLink</code> method doesn't allow
+    #             loading of the specified dynamic library
     # @exception  UnsatisfiedLinkError  if the file does not exist.
     # @exception  NullPointerException if <code>filename</code> is
-    # <code>null</code>
+    #             <code>null</code>
     # @see        java.lang.Runtime#getRuntime()
     # @see        java.lang.SecurityException
     # @see        java.lang.SecurityManager#checkLink(java.lang.String)
@@ -837,11 +837,11 @@ module Java::Lang
     # 
     # @param      libname   the name of the library.
     # @exception  SecurityException  if a security manager exists and its
-    # <code>checkLink</code> method doesn't allow
-    # loading of the specified dynamic library
+    #             <code>checkLink</code> method doesn't allow
+    #             loading of the specified dynamic library
     # @exception  UnsatisfiedLinkError  if the library does not exist.
     # @exception  NullPointerException if <code>libname</code> is
-    # <code>null</code>
+    #             <code>null</code>
     # @see        java.lang.SecurityException
     # @see        java.lang.SecurityManager#checkLink(java.lang.String)
     def load_library(libname)
@@ -855,7 +855,7 @@ module Java::Lang
         if (!(security).nil?)
           security.check_link(libname)
         end
-        if (!(libname.index_of(RJava.cast_to_int(JavaFile.attr_separator_char))).equal?(-1))
+        if (!(libname.index_of((JavaFile.attr_separator_char).to_int)).equal?(-1))
           raise UnsatisfiedLinkError.new("Directory separator should not appear in library name: " + libname)
         end
         ClassLoader.load_library(from_class, libname, false)

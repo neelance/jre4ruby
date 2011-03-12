@@ -180,13 +180,11 @@ module Sun::Net::Httpserver
     typesig { [] }
     def consume_crlf
       c = 0
-      c = RJava.cast_to_char(self.attr_in.read)
-      # CR
+      c = RJava.cast_to_char(self.attr_in.read) # CR
       if (!(c).equal?(self.attr_cr))
         raise IOException.new("invalid chunk end")
       end
-      c = RJava.cast_to_char(self.attr_in.read)
-      # LF
+      c = RJava.cast_to_char(self.attr_in.read) # LF
       if (!(c).equal?(self.attr_lf))
         raise IOException.new("invalid chunk end")
       end

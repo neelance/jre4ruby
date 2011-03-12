@@ -48,7 +48,6 @@ module Java::Net
   
   # for javadoc
   # for javadoc
-  # 
   # Represents a Uniform Resource Identifier (URI) reference.
   # 
   # <p> Aside from some minor deviations noted below, an instance of this
@@ -220,8 +219,8 @@ module Java::Net
   # two normalized URIs <i>u</i> and&nbsp;<i>v</i>,
   # 
   # <blockquote>
-  # <i>u</i><tt>.relativize(</tt><i>u</i><tt>.resolve(</tt><i>v</i><tt>)).equals(</tt><i>v</i><tt>)</tt>&nbsp;&nbsp;and<br>
-  # <i>u</i><tt>.resolve(</tt><i>u</i><tt>.relativize(</tt><i>v</i><tt>)).equals(</tt><i>v</i><tt>)</tt>&nbsp;&nbsp;.<br>
+  #   <i>u</i><tt>.relativize(</tt><i>u</i><tt>.resolve(</tt><i>v</i><tt>)).equals(</tt><i>v</i><tt>)</tt>&nbsp;&nbsp;and<br>
+  #   <i>u</i><tt>.resolve(</tt><i>u</i><tt>.relativize(</tt><i>v</i><tt>)).equals(</tt><i>v</i><tt>)</tt>&nbsp;&nbsp;.<br>
   # </blockquote>
   # 
   # This operation is often useful when constructing a document containing URIs
@@ -249,36 +248,36 @@ module Java::Net
   # constraints:
   # 
   # <blockquote><table cellspacing=2 summary="Describes categories alpha,digit,alphanum,unreserved,punct,reserved,escaped,and other">
-  # <tr><th valign=top><i>alpha</i></th>
-  # <td>The US-ASCII alphabetic characters,
-  # <tt>'A'</tt>&nbsp;through&nbsp;<tt>'Z'</tt>
-  # and <tt>'a'</tt>&nbsp;through&nbsp;<tt>'z'</tt></td></tr>
-  # <tr><th valign=top><i>digit</i></th>
-  # <td>The US-ASCII decimal digit characters,
-  # <tt>'0'</tt>&nbsp;through&nbsp;<tt>'9'</tt></td></tr>
-  # <tr><th valign=top><i>alphanum</i></th>
-  # <td>All <i>alpha</i> and <i>digit</i> characters</td></tr>
-  # <tr><th valign=top><i>unreserved</i>&nbsp;&nbsp;&nbsp;&nbsp;</th>
-  # <td>All <i>alphanum</i> characters together with those in the string
-  # <tt>"_-!.~'()*"</tt></td></tr>
-  # <tr><th valign=top><i>punct</i></th>
-  # <td>The characters in the string <tt>",;:$&+="</tt></td></tr>
-  # <tr><th valign=top><i>reserved</i></th>
-  # <td>All <i>punct</i> characters together with those in the string
-  # <tt>"?/[]@"</tt></td></tr>
-  # <tr><th valign=top><i>escaped</i></th>
-  # <td>Escaped octets, that is, triplets consisting of the percent
-  # character (<tt>'%'</tt>) followed by two hexadecimal digits
-  # (<tt>'0'</tt>-<tt>'9'</tt>, <tt>'A'</tt>-<tt>'F'</tt>, and
-  # <tt>'a'</tt>-<tt>'f'</tt>)</td></tr>
-  # <tr><th valign=top><i>other</i></th>
-  # <td>The Unicode characters that are not in the US-ASCII character set,
-  # are not control characters (according to the {@link
-  # java.lang.Character#isISOControl(char) Character.isISOControl}
-  # method), and are not space characters (according to the {@link
-  # java.lang.Character#isSpaceChar(char) Character.isSpaceChar}
-  # method)&nbsp;&nbsp;<i>(<b>Deviation from RFC 2396</b>, which is
-  # limited to US-ASCII)</i></td></tr>
+  #   <tr><th valign=top><i>alpha</i></th>
+  #       <td>The US-ASCII alphabetic characters,
+  #        <tt>'A'</tt>&nbsp;through&nbsp;<tt>'Z'</tt>
+  #        and <tt>'a'</tt>&nbsp;through&nbsp;<tt>'z'</tt></td></tr>
+  #   <tr><th valign=top><i>digit</i></th>
+  #       <td>The US-ASCII decimal digit characters,
+  #       <tt>'0'</tt>&nbsp;through&nbsp;<tt>'9'</tt></td></tr>
+  #   <tr><th valign=top><i>alphanum</i></th>
+  #       <td>All <i>alpha</i> and <i>digit</i> characters</td></tr>
+  #   <tr><th valign=top><i>unreserved</i>&nbsp;&nbsp;&nbsp;&nbsp;</th>
+  #       <td>All <i>alphanum</i> characters together with those in the string
+  #        <tt>"_-!.~'()*"</tt></td></tr>
+  #   <tr><th valign=top><i>punct</i></th>
+  #       <td>The characters in the string <tt>",;:$&+="</tt></td></tr>
+  #   <tr><th valign=top><i>reserved</i></th>
+  #       <td>All <i>punct</i> characters together with those in the string
+  #        <tt>"?/[]@"</tt></td></tr>
+  #   <tr><th valign=top><i>escaped</i></th>
+  #       <td>Escaped octets, that is, triplets consisting of the percent
+  #           character (<tt>'%'</tt>) followed by two hexadecimal digits
+  #           (<tt>'0'</tt>-<tt>'9'</tt>, <tt>'A'</tt>-<tt>'F'</tt>, and
+  #           <tt>'a'</tt>-<tt>'f'</tt>)</td></tr>
+  #   <tr><th valign=top><i>other</i></th>
+  #       <td>The Unicode characters that are not in the US-ASCII character set,
+  #           are not control characters (according to the {@link
+  #           java.lang.Character#isISOControl(char) Character.isISOControl}
+  #           method), and are not space characters (according to the {@link
+  #           java.lang.Character#isSpaceChar(char) Character.isSpaceChar}
+  #           method)&nbsp;&nbsp;<i>(<b>Deviation from RFC 2396</b>, which is
+  #           limited to US-ASCII)</i></td></tr>
   # </table></blockquote>
   # 
   # <p><a name="legal-chars"></a> The set of all legal URI characters consists of
@@ -293,14 +292,14 @@ module Java::Net
   # 
   # <ul>
   # 
-  # <li><p> To <i>encode</i> non-US-ASCII characters when a URI is required to
-  # conform strictly to RFC&nbsp;2396 by not containing any <i>other</i>
-  # characters.  </p></li>
+  #   <li><p> To <i>encode</i> non-US-ASCII characters when a URI is required to
+  #   conform strictly to RFC&nbsp;2396 by not containing any <i>other</i>
+  #   characters.  </p></li>
   # 
-  # <li><p> To <i>quote</i> characters that are otherwise illegal in a
-  # component.  The user-info, path, query, and fragment components differ
-  # slightly in terms of which characters are considered legal and illegal.
-  # </p></li>
+  #   <li><p> To <i>quote</i> characters that are otherwise illegal in a
+  #   component.  The user-info, path, query, and fragment components differ
+  #   slightly in terms of which characters are considered legal and illegal.
+  #   </p></li>
   # 
   # </ul>
   # 
@@ -308,28 +307,28 @@ module Java::Net
   # 
   # <ul>
   # 
-  # <li><p><a name="encode"></a> A character is <i>encoded</i> by replacing it
-  # with the sequence of escaped octets that represent that character in the
-  # UTF-8 character set.  The Euro currency symbol (<tt>'&#92;u20AC'</tt>),
-  # for example, is encoded as <tt>"%E2%82%AC"</tt>.  <i>(<b>Deviation from
-  # RFC&nbsp;2396</b>, which does not specify any particular character
-  # set.)</i> </p></li>
+  #   <li><p><a name="encode"></a> A character is <i>encoded</i> by replacing it
+  #   with the sequence of escaped octets that represent that character in the
+  #   UTF-8 character set.  The Euro currency symbol (<tt>'&#92;u20AC'</tt>),
+  #   for example, is encoded as <tt>"%E2%82%AC"</tt>.  <i>(<b>Deviation from
+  #   RFC&nbsp;2396</b>, which does not specify any particular character
+  #   set.)</i> </p></li>
   # 
-  # <li><p><a name="quote"></a> An illegal character is <i>quoted</i> simply by
-  # encoding it.  The space character, for example, is quoted by replacing it
-  # with <tt>"%20"</tt>.  UTF-8 contains US-ASCII, hence for US-ASCII
-  # characters this transformation has exactly the effect required by
-  # RFC&nbsp;2396. </p></li>
+  #   <li><p><a name="quote"></a> An illegal character is <i>quoted</i> simply by
+  #   encoding it.  The space character, for example, is quoted by replacing it
+  #   with <tt>"%20"</tt>.  UTF-8 contains US-ASCII, hence for US-ASCII
+  #   characters this transformation has exactly the effect required by
+  #   RFC&nbsp;2396. </p></li>
   # 
-  # <li><p><a name="decode"></a>
-  # A sequence of escaped octets is <i>decoded</i> by
-  # replacing it with the sequence of characters that it represents in the
-  # UTF-8 character set.  UTF-8 contains US-ASCII, hence decoding has the
-  # effect of de-quoting any quoted US-ASCII characters as well as that of
-  # decoding any encoded non-US-ASCII characters.  If a <a
-  # href="../nio/charset/CharsetDecoder.html#ce">decoding error</a> occurs
-  # when decoding the escaped octets then the erroneous octets are replaced by
-  # <tt>'&#92;uFFFD'</tt>, the Unicode replacement character.  </p></li>
+  #   <li><p><a name="decode"></a>
+  #   A sequence of escaped octets is <i>decoded</i> by
+  #   replacing it with the sequence of characters that it represents in the
+  #   UTF-8 character set.  UTF-8 contains US-ASCII, hence decoding has the
+  #   effect of de-quoting any quoted US-ASCII characters as well as that of
+  #   decoding any encoded non-US-ASCII characters.  If a <a
+  #   href="../nio/charset/CharsetDecoder.html#ce">decoding error</a> occurs
+  #   when decoding the escaped octets then the erroneous octets are replaced by
+  #   <tt>'&#92;uFFFD'</tt>, the Unicode replacement character.  </p></li>
   # 
   # </ul>
   # 
@@ -338,42 +337,42 @@ module Java::Net
   # 
   # <ul>
   # 
-  # <li><p> The {@link #URI(java.lang.String) <code>single-argument
-  # constructor</code>} requires any illegal characters in its argument to be
-  # quoted and preserves any escaped octets and <i>other</i> characters that
-  # are present.  </p></li>
+  #   <li><p> The {@link #URI(java.lang.String) <code>single-argument
+  #   constructor</code>} requires any illegal characters in its argument to be
+  #   quoted and preserves any escaped octets and <i>other</i> characters that
+  #   are present.  </p></li>
   # 
-  # <li><p> The {@link
-  # #URI(java.lang.String,java.lang.String,java.lang.String,int,java.lang.String,java.lang.String,java.lang.String)
-  # <code>multi-argument constructors</code>} quote illegal characters as
-  # required by the components in which they appear.  The percent character
-  # (<tt>'%'</tt>) is always quoted by these constructors.  Any <i>other</i>
-  # characters are preserved.  </p></li>
+  #   <li><p> The {@link
+  #   #URI(java.lang.String,java.lang.String,java.lang.String,int,java.lang.String,java.lang.String,java.lang.String)
+  #   <code>multi-argument constructors</code>} quote illegal characters as
+  #   required by the components in which they appear.  The percent character
+  #   (<tt>'%'</tt>) is always quoted by these constructors.  Any <i>other</i>
+  #   characters are preserved.  </p></li>
   # 
-  # <li><p> The {@link #getRawUserInfo() getRawUserInfo}, {@link #getRawPath()
-  # getRawPath}, {@link #getRawQuery() getRawQuery}, {@link #getRawFragment()
-  # getRawFragment}, {@link #getRawAuthority() getRawAuthority}, and {@link
-  # #getRawSchemeSpecificPart() getRawSchemeSpecificPart} methods return the
-  # values of their corresponding components in raw form, without interpreting
-  # any escaped octets.  The strings returned by these methods may contain
-  # both escaped octets and <i>other</i> characters, and will not contain any
-  # illegal characters.  </p></li>
+  #   <li><p> The {@link #getRawUserInfo() getRawUserInfo}, {@link #getRawPath()
+  #   getRawPath}, {@link #getRawQuery() getRawQuery}, {@link #getRawFragment()
+  #   getRawFragment}, {@link #getRawAuthority() getRawAuthority}, and {@link
+  #   #getRawSchemeSpecificPart() getRawSchemeSpecificPart} methods return the
+  #   values of their corresponding components in raw form, without interpreting
+  #   any escaped octets.  The strings returned by these methods may contain
+  #   both escaped octets and <i>other</i> characters, and will not contain any
+  #   illegal characters.  </p></li>
   # 
-  # <li><p> The {@link #getUserInfo() getUserInfo}, {@link #getPath()
-  # getPath}, {@link #getQuery() getQuery}, {@link #getFragment()
-  # getFragment}, {@link #getAuthority() getAuthority}, and {@link
-  # #getSchemeSpecificPart() getSchemeSpecificPart} methods decode any escaped
-  # octets in their corresponding components.  The strings returned by these
-  # methods may contain both <i>other</i> characters and illegal characters,
-  # and will not contain any escaped octets.  </p></li>
+  #   <li><p> The {@link #getUserInfo() getUserInfo}, {@link #getPath()
+  #   getPath}, {@link #getQuery() getQuery}, {@link #getFragment()
+  #   getFragment}, {@link #getAuthority() getAuthority}, and {@link
+  #   #getSchemeSpecificPart() getSchemeSpecificPart} methods decode any escaped
+  #   octets in their corresponding components.  The strings returned by these
+  #   methods may contain both <i>other</i> characters and illegal characters,
+  #   and will not contain any escaped octets.  </p></li>
   # 
-  # <li><p> The {@link #toString() toString} method returns a URI string with
-  # all necessary quotation but which may contain <i>other</i> characters.
-  # </p></li>
+  #   <li><p> The {@link #toString() toString} method returns a URI string with
+  #   all necessary quotation but which may contain <i>other</i> characters.
+  #   </p></li>
   # 
-  # <li><p> The {@link #toASCIIString() toASCIIString} method returns a fully
-  # quoted and encoded URI string that does not contain any <i>other</i>
-  # characters.  </p></li>
+  #   <li><p> The {@link #toASCIIString() toASCIIString} method returns a fully
+  #   quoted and encoded URI string that does not contain any <i>other</i>
+  #   characters.  </p></li>
   # 
   # </ul>
   # 
@@ -625,7 +624,6 @@ module Java::Net
     
     typesig { [String] }
     # Used internally
-    # 
     # Constructs a URI by parsing the given string.
     # 
     # <p> This constructor parses the given string exactly as specified by the
@@ -635,64 +633,64 @@ module Java::Net
     # 
     # <ul type=disc>
     # 
-    # <li><p> An empty authority component is permitted as long as it is
-    # followed by a non-empty path, a query component, or a fragment
-    # component.  This allows the parsing of URIs such as
-    # <tt>"file:///foo/bar"</tt>, which seems to be the intent of
-    # RFC&nbsp;2396 although the grammar does not permit it.  If the
-    # authority component is empty then the user-information, host, and port
-    # components are undefined. </p></li>
+    #   <li><p> An empty authority component is permitted as long as it is
+    #   followed by a non-empty path, a query component, or a fragment
+    #   component.  This allows the parsing of URIs such as
+    #   <tt>"file:///foo/bar"</tt>, which seems to be the intent of
+    #   RFC&nbsp;2396 although the grammar does not permit it.  If the
+    #   authority component is empty then the user-information, host, and port
+    #   components are undefined. </p></li>
     # 
-    # <li><p> Empty relative paths are permitted; this seems to be the
-    # intent of RFC&nbsp;2396 although the grammar does not permit it.  The
-    # primary consequence of this deviation is that a standalone fragment
-    # such as <tt>"#foo"</tt> parses as a relative URI with an empty path
-    # and the given fragment, and can be usefully <a
-    # href="#resolve-frag">resolved</a> against a base URI.
+    #   <li><p> Empty relative paths are permitted; this seems to be the
+    #   intent of RFC&nbsp;2396 although the grammar does not permit it.  The
+    #   primary consequence of this deviation is that a standalone fragment
+    #   such as <tt>"#foo"</tt> parses as a relative URI with an empty path
+    #   and the given fragment, and can be usefully <a
+    #   href="#resolve-frag">resolved</a> against a base URI.
     # 
-    # <li><p> IPv4 addresses in host components are parsed rigorously, as
-    # specified by <a
-    # href="http://www.ietf.org/rfc/rfc2732.txt">RFC&nbsp;2732</a>: Each
-    # element of a dotted-quad address must contain no more than three
-    # decimal digits.  Each element is further constrained to have a value
-    # no greater than 255. </p></li>
+    #   <li><p> IPv4 addresses in host components are parsed rigorously, as
+    #   specified by <a
+    #   href="http://www.ietf.org/rfc/rfc2732.txt">RFC&nbsp;2732</a>: Each
+    #   element of a dotted-quad address must contain no more than three
+    #   decimal digits.  Each element is further constrained to have a value
+    #   no greater than 255. </p></li>
     # 
-    # <li> <p> Hostnames in host components that comprise only a single
-    # domain label are permitted to start with an <i>alphanum</i>
-    # character. This seems to be the intent of <a
-    # href="http://www.ietf.org/rfc/rfc2396.txt">RFC&nbsp;2396</a>
-    # section&nbsp;3.2.2 although the grammar does not permit it. The
-    # consequence of this deviation is that the authority component of a
-    # hierarchical URI such as <tt>s://123</tt>, will parse as a server-based
-    # authority. </p></li>
+    #   <li> <p> Hostnames in host components that comprise only a single
+    #   domain label are permitted to start with an <i>alphanum</i>
+    #   character. This seems to be the intent of <a
+    #   href="http://www.ietf.org/rfc/rfc2396.txt">RFC&nbsp;2396</a>
+    #   section&nbsp;3.2.2 although the grammar does not permit it. The
+    #   consequence of this deviation is that the authority component of a
+    #   hierarchical URI such as <tt>s://123</tt>, will parse as a server-based
+    #   authority. </p></li>
     # 
-    # <li><p> IPv6 addresses are permitted for the host component.  An IPv6
-    # address must be enclosed in square brackets (<tt>'['</tt> and
-    # <tt>']'</tt>) as specified by <a
-    # href="http://www.ietf.org/rfc/rfc2732.txt">RFC&nbsp;2732</a>.  The
-    # IPv6 address itself must parse according to <a
-    # href="http://www.ietf.org/rfc/rfc2373.txt">RFC&nbsp;2373</a>.  IPv6
-    # addresses are further constrained to describe no more than sixteen
-    # bytes of address information, a constraint implicit in RFC&nbsp;2373
-    # but not expressible in the grammar. </p></li>
+    #   <li><p> IPv6 addresses are permitted for the host component.  An IPv6
+    #   address must be enclosed in square brackets (<tt>'['</tt> and
+    #   <tt>']'</tt>) as specified by <a
+    #   href="http://www.ietf.org/rfc/rfc2732.txt">RFC&nbsp;2732</a>.  The
+    #   IPv6 address itself must parse according to <a
+    #   href="http://www.ietf.org/rfc/rfc2373.txt">RFC&nbsp;2373</a>.  IPv6
+    #   addresses are further constrained to describe no more than sixteen
+    #   bytes of address information, a constraint implicit in RFC&nbsp;2373
+    #   but not expressible in the grammar. </p></li>
     # 
-    # <li><p> Characters in the <i>other</i> category are permitted wherever
-    # RFC&nbsp;2396 permits <i>escaped</i> octets, that is, in the
-    # user-information, path, query, and fragment components, as well as in
-    # the authority component if the authority is registry-based.  This
-    # allows URIs to contain Unicode characters beyond those in the US-ASCII
-    # character set. </p></li>
+    #   <li><p> Characters in the <i>other</i> category are permitted wherever
+    #   RFC&nbsp;2396 permits <i>escaped</i> octets, that is, in the
+    #   user-information, path, query, and fragment components, as well as in
+    #   the authority component if the authority is registry-based.  This
+    #   allows URIs to contain Unicode characters beyond those in the US-ASCII
+    #   character set. </p></li>
     # 
     # </ul>
     # 
     # @param  str   The string to be parsed into a URI
     # 
     # @throws  NullPointerException
-    # If <tt>str</tt> is <tt>null</tt>
+    #          If <tt>str</tt> is <tt>null</tt>
     # 
     # @throws  URISyntaxException
-    # If the given string violates RFC&nbsp;2396, as augmented
-    # by the above deviations
+    #          If the given string violates RFC&nbsp;2396, as augmented
+    #          by the above deviations
     def initialize(str)
       @scheme = nil
       @fragment = nil
@@ -730,41 +728,41 @@ module Java::Net
     # 
     # <ol>
     # 
-    # <li><p> Initially, the result string is empty. </p></li>
+    #   <li><p> Initially, the result string is empty. </p></li>
     # 
-    # <li><p> If a scheme is given then it is appended to the result,
-    # followed by a colon character (<tt>':'</tt>).  </p></li>
+    #   <li><p> If a scheme is given then it is appended to the result,
+    #   followed by a colon character (<tt>':'</tt>).  </p></li>
     # 
-    # <li><p> If user information, a host, or a port are given then the
-    # string <tt>"//"</tt> is appended.  </p></li>
+    #   <li><p> If user information, a host, or a port are given then the
+    #   string <tt>"//"</tt> is appended.  </p></li>
     # 
-    # <li><p> If user information is given then it is appended, followed by
-    # a commercial-at character (<tt>'@'</tt>).  Any character not in the
-    # <i>unreserved</i>, <i>punct</i>, <i>escaped</i>, or <i>other</i>
-    # categories is <a href="#quote">quoted</a>.  </p></li>
+    #   <li><p> If user information is given then it is appended, followed by
+    #   a commercial-at character (<tt>'@'</tt>).  Any character not in the
+    #   <i>unreserved</i>, <i>punct</i>, <i>escaped</i>, or <i>other</i>
+    #   categories is <a href="#quote">quoted</a>.  </p></li>
     # 
-    # <li><p> If a host is given then it is appended.  If the host is a
-    # literal IPv6 address but is not enclosed in square brackets
-    # (<tt>'['</tt> and <tt>']'</tt>) then the square brackets are added.
-    # </p></li>
+    #   <li><p> If a host is given then it is appended.  If the host is a
+    #   literal IPv6 address but is not enclosed in square brackets
+    #   (<tt>'['</tt> and <tt>']'</tt>) then the square brackets are added.
+    #   </p></li>
     # 
-    # <li><p> If a port number is given then a colon character
-    # (<tt>':'</tt>) is appended, followed by the port number in decimal.
-    # </p></li>
+    #   <li><p> If a port number is given then a colon character
+    #   (<tt>':'</tt>) is appended, followed by the port number in decimal.
+    #   </p></li>
     # 
-    # <li><p> If a path is given then it is appended.  Any character not in
-    # the <i>unreserved</i>, <i>punct</i>, <i>escaped</i>, or <i>other</i>
-    # categories, and not equal to the slash character (<tt>'/'</tt>) or the
-    # commercial-at character (<tt>'@'</tt>), is quoted.  </p></li>
+    #   <li><p> If a path is given then it is appended.  Any character not in
+    #   the <i>unreserved</i>, <i>punct</i>, <i>escaped</i>, or <i>other</i>
+    #   categories, and not equal to the slash character (<tt>'/'</tt>) or the
+    #   commercial-at character (<tt>'@'</tt>), is quoted.  </p></li>
     # 
-    # <li><p> If a query is given then a question-mark character
-    # (<tt>'?'</tt>) is appended, followed by the query.  Any character that
-    # is not a <a href="#legal-chars">legal URI character</a> is quoted.
-    # </p></li>
+    #   <li><p> If a query is given then a question-mark character
+    #   (<tt>'?'</tt>) is appended, followed by the query.  Any character that
+    #   is not a <a href="#legal-chars">legal URI character</a> is quoted.
+    #   </p></li>
     # 
-    # <li><p> Finally, if a fragment is given then a hash character
-    # (<tt>'#'</tt>) is appended, followed by the fragment.  Any character
-    # that is not a legal URI character is quoted.  </p></li>
+    #   <li><p> Finally, if a fragment is given then a hash character
+    #   (<tt>'#'</tt>) is appended, followed by the fragment.  Any character
+    #   that is not a legal URI character is quoted.  </p></li>
     # 
     # </ol>
     # 
@@ -782,10 +780,10 @@ module Java::Net
     # @param   fragment  Fragment
     # 
     # @throws URISyntaxException
-    # If both a scheme and a path are given but the path is relative,
-    # if the URI string constructed from the given components violates
-    # RFC&nbsp;2396, or if the authority component of the string is
-    # present but cannot be parsed as a server-based authority
+    #         If both a scheme and a path are given but the path is relative,
+    #         if the URI string constructed from the given components violates
+    #         RFC&nbsp;2396, or if the authority component of the string is
+    #         present but cannot be parsed as a server-based authority
     def initialize(scheme, user_info, host, port, path, query, fragment)
       @scheme = nil
       @fragment = nil
@@ -824,32 +822,32 @@ module Java::Net
     # 
     # <ol>
     # 
-    # <li><p> Initially, the result string is empty.  </p></li>
+    #   <li><p> Initially, the result string is empty.  </p></li>
     # 
-    # <li><p> If a scheme is given then it is appended to the result,
-    # followed by a colon character (<tt>':'</tt>).  </p></li>
+    #   <li><p> If a scheme is given then it is appended to the result,
+    #   followed by a colon character (<tt>':'</tt>).  </p></li>
     # 
-    # <li><p> If an authority is given then the string <tt>"//"</tt> is
-    # appended, followed by the authority.  If the authority contains a
-    # literal IPv6 address then the address must be enclosed in square
-    # brackets (<tt>'['</tt> and <tt>']'</tt>).  Any character not in the
-    # <i>unreserved</i>, <i>punct</i>, <i>escaped</i>, or <i>other</i>
-    # categories, and not equal to the commercial-at character
-    # (<tt>'@'</tt>), is <a href="#quote">quoted</a>.  </p></li>
+    #   <li><p> If an authority is given then the string <tt>"//"</tt> is
+    #   appended, followed by the authority.  If the authority contains a
+    #   literal IPv6 address then the address must be enclosed in square
+    #   brackets (<tt>'['</tt> and <tt>']'</tt>).  Any character not in the
+    #   <i>unreserved</i>, <i>punct</i>, <i>escaped</i>, or <i>other</i>
+    #   categories, and not equal to the commercial-at character
+    #   (<tt>'@'</tt>), is <a href="#quote">quoted</a>.  </p></li>
     # 
-    # <li><p> If a path is given then it is appended.  Any character not in
-    # the <i>unreserved</i>, <i>punct</i>, <i>escaped</i>, or <i>other</i>
-    # categories, and not equal to the slash character (<tt>'/'</tt>) or the
-    # commercial-at character (<tt>'@'</tt>), is quoted.  </p></li>
+    #   <li><p> If a path is given then it is appended.  Any character not in
+    #   the <i>unreserved</i>, <i>punct</i>, <i>escaped</i>, or <i>other</i>
+    #   categories, and not equal to the slash character (<tt>'/'</tt>) or the
+    #   commercial-at character (<tt>'@'</tt>), is quoted.  </p></li>
     # 
-    # <li><p> If a query is given then a question-mark character
-    # (<tt>'?'</tt>) is appended, followed by the query.  Any character that
-    # is not a <a href="#legal-chars">legal URI character</a> is quoted.
-    # </p></li>
+    #   <li><p> If a query is given then a question-mark character
+    #   (<tt>'?'</tt>) is appended, followed by the query.  Any character that
+    #   is not a <a href="#legal-chars">legal URI character</a> is quoted.
+    #   </p></li>
     # 
-    # <li><p> Finally, if a fragment is given then a hash character
-    # (<tt>'#'</tt>) is appended, followed by the fragment.  Any character
-    # that is not a legal URI character is quoted.  </p></li>
+    #   <li><p> Finally, if a fragment is given then a hash character
+    #   (<tt>'#'</tt>) is appended, followed by the fragment.  Any character
+    #   that is not a legal URI character is quoted.  </p></li>
     # 
     # </ol>
     # 
@@ -865,10 +863,10 @@ module Java::Net
     # @param   fragment   Fragment
     # 
     # @throws URISyntaxException
-    # If both a scheme and a path are given but the path is relative,
-    # if the URI string constructed from the given components violates
-    # RFC&nbsp;2396, or if the authority component of the string is
-    # present but cannot be parsed as a server-based authority
+    #         If both a scheme and a path are given but the path is relative,
+    #         if the URI string constructed from the given components violates
+    #         RFC&nbsp;2396, or if the authority component of the string is
+    #         present but cannot be parsed as a server-based authority
     def initialize(scheme, authority, path, query, fragment)
       @scheme = nil
       @fragment = nil
@@ -911,8 +909,8 @@ module Java::Net
     # @param   fragment  Fragment
     # 
     # @throws  URISyntaxException
-    # If the URI string constructed from the given components
-    # violates RFC&nbsp;2396
+    #          If the URI string constructed from the given components
+    #          violates RFC&nbsp;2396
     def initialize(scheme, host, path, fragment)
       initialize__uri(scheme, nil, host, -1, path, nil, fragment)
     end
@@ -927,18 +925,18 @@ module Java::Net
     # 
     # <ol>
     # 
-    # <li><p> Initially, the result string is empty.  </p></li>
+    #   <li><p> Initially, the result string is empty.  </p></li>
     # 
-    # <li><p> If a scheme is given then it is appended to the result,
-    # followed by a colon character (<tt>':'</tt>).  </p></li>
+    #   <li><p> If a scheme is given then it is appended to the result,
+    #   followed by a colon character (<tt>':'</tt>).  </p></li>
     # 
-    # <li><p> If a scheme-specific part is given then it is appended.  Any
-    # character that is not a <a href="#legal-chars">legal URI character</a>
-    # is <a href="#quote">quoted</a>.  </p></li>
+    #   <li><p> If a scheme-specific part is given then it is appended.  Any
+    #   character that is not a <a href="#legal-chars">legal URI character</a>
+    #   is <a href="#quote">quoted</a>.  </p></li>
     # 
-    # <li><p> Finally, if a fragment is given then a hash character
-    # (<tt>'#'</tt>) is appended to the string, followed by the fragment.
-    # Any character that is not a legal URI character is quoted.  </p></li>
+    #   <li><p> Finally, if a fragment is given then a hash character
+    #   (<tt>'#'</tt>) is appended to the string, followed by the fragment.
+    #   Any character that is not a legal URI character is quoted.  </p></li>
     # 
     # </ol>
     # 
@@ -951,8 +949,8 @@ module Java::Net
     # @param   fragment  Fragment
     # 
     # @throws  URISyntaxException
-    # If the URI string constructed from the given components
-    # violates RFC&nbsp;2396
+    #          If the URI string constructed from the given components
+    #          violates RFC&nbsp;2396
     def initialize(scheme, ssp, fragment)
       @scheme = nil
       @fragment = nil
@@ -995,10 +993,10 @@ module Java::Net
       # @return The new URI
       # 
       # @throws  NullPointerException
-      # If <tt>str</tt> is <tt>null</tt>
+      #          If <tt>str</tt> is <tt>null</tt>
       # 
       # @throws  IllegalArgumentException
-      # If the given string violates RFC&nbsp;2396
+      #          If the given string violates RFC&nbsp;2396
       def create(str)
         begin
           return URI.new(str)
@@ -1012,7 +1010,6 @@ module Java::Net
     
     typesig { [] }
     # -- Operations --
-    # 
     # Attempts to parse this URI's authority component, if defined, into
     # user-information, host, and port components.
     # 
@@ -1052,12 +1049,12 @@ module Java::Net
     # that is thrown. </p>
     # 
     # @return  A URI whose authority field has been parsed
-    # as a server-based authority
+    #          as a server-based authority
     # 
     # @throws  URISyntaxException
-    # If the authority component of this URI is defined
-    # but cannot be parsed as a server-based authority
-    # according to RFC&nbsp;2396
+    #          If the authority component of this URI is defined
+    #          but cannot be parsed as a server-based authority
+    #          according to RFC&nbsp;2396
     def parse_server_authority
       # We could be clever and cache the error message and index from the
       # exception thrown during the original parse, but that would require
@@ -1083,18 +1080,18 @@ module Java::Net
     # 
     # <ol>
     # 
-    # <li><p> All <tt>"."</tt> segments are removed. </p></li>
+    #   <li><p> All <tt>"."</tt> segments are removed. </p></li>
     # 
-    # <li><p> If a <tt>".."</tt> segment is preceded by a non-<tt>".."</tt>
-    # segment then both of these segments are removed.  This step is
-    # repeated until it is no longer applicable. </p></li>
+    #   <li><p> If a <tt>".."</tt> segment is preceded by a non-<tt>".."</tt>
+    #   segment then both of these segments are removed.  This step is
+    #   repeated until it is no longer applicable. </p></li>
     # 
-    # <li><p> If the path is relative, and if its first segment contains a
-    # colon character (<tt>':'</tt>), then a <tt>"."</tt> segment is
-    # prepended.  This prevents a relative URI with a path such as
-    # <tt>"a:b/c/d"</tt> from later being re-parsed as an opaque URI with a
-    # scheme of <tt>"a"</tt> and a scheme-specific part of <tt>"b/c/d"</tt>.
-    # <b><i>(Deviation from RFC&nbsp;2396)</i></b> </p></li>
+    #   <li><p> If the path is relative, and if its first segment contains a
+    #   colon character (<tt>':'</tt>), then a <tt>"."</tt> segment is
+    #   prepended.  This prevents a relative URI with a path such as
+    #   <tt>"a:b/c/d"</tt> from later being re-parsed as an opaque URI with a
+    #   scheme of <tt>"a"</tt> and a scheme-specific part of <tt>"b/c/d"</tt>.
+    #   <b><i>(Deviation from RFC&nbsp;2396)</i></b> </p></li>
     # 
     # </ol>
     # 
@@ -1105,7 +1102,7 @@ module Java::Net
     # path will not contain any <tt>"."</tt> or <tt>".."</tt> segments. </p>
     # 
     # @return  A URI equivalent to this URI,
-    # but whose path is in normal form
+    #          but whose path is in normal form
     def normalize
       return normalize(self)
     end
@@ -1130,28 +1127,28 @@ module Java::Net
     # 
     # <ol>
     # 
-    # <li><p> A new URI is constructed with this URI's scheme and the given
-    # URI's query and fragment components. </p></li>
+    #   <li><p> A new URI is constructed with this URI's scheme and the given
+    #   URI's query and fragment components. </p></li>
     # 
-    # <li><p> If the given URI has an authority component then the new URI's
-    # authority and path are taken from the given URI. </p></li>
+    #   <li><p> If the given URI has an authority component then the new URI's
+    #   authority and path are taken from the given URI. </p></li>
     # 
-    # <li><p> Otherwise the new URI's authority component is copied from
-    # this URI, and its path is computed as follows: </p></li>
+    #   <li><p> Otherwise the new URI's authority component is copied from
+    #   this URI, and its path is computed as follows: </p></li>
     # 
-    # <ol type=a>
+    #   <ol type=a>
     # 
-    # <li><p> If the given URI's path is absolute then the new URI's path
-    # is taken from the given URI. </p></li>
+    #     <li><p> If the given URI's path is absolute then the new URI's path
+    #     is taken from the given URI. </p></li>
     # 
-    # <li><p> Otherwise the given URI's path is relative, and so the new
-    # URI's path is computed by resolving the path of the given URI
-    # against the path of this URI.  This is done by concatenating all but
-    # the last segment of this URI's path, if any, with the given URI's
-    # path and then normalizing the result as if by invoking the {@link
-    # #normalize() normalize} method. </p></li>
+    #     <li><p> Otherwise the given URI's path is relative, and so the new
+    #     URI's path is computed by resolving the path of the given URI
+    #     against the path of this URI.  This is done by concatenating all but
+    #     the last segment of this URI's path, if any, with the given URI's
+    #     path and then normalizing the result as if by invoking the {@link
+    #     #normalize() normalize} method. </p></li>
     # 
-    # </ol>
+    #   </ol>
     # 
     # </ol>
     # 
@@ -1162,7 +1159,7 @@ module Java::Net
     # @return The resulting URI
     # 
     # @throws  NullPointerException
-    # If <tt>uri</tt> is <tt>null</tt>
+    #          If <tt>uri</tt> is <tt>null</tt>
     def resolve(uri)
       return resolve(self, uri)
     end
@@ -1179,10 +1176,10 @@ module Java::Net
     # @return The resulting URI
     # 
     # @throws  NullPointerException
-    # If <tt>str</tt> is <tt>null</tt>
+    #          If <tt>str</tt> is <tt>null</tt>
     # 
     # @throws  IllegalArgumentException
-    # If the given string violates RFC&nbsp;2396
+    #          If the given string violates RFC&nbsp;2396
     def resolve(str)
       return resolve(URI.create(str))
     end
@@ -1195,15 +1192,15 @@ module Java::Net
     # 
     # <ol>
     # 
-    # <li><p> If either this URI or the given URI are opaque, or if the
-    # scheme and authority components of the two URIs are not identical, or
-    # if the path of this URI is not a prefix of the path of the given URI,
-    # then the given URI is returned. </p></li>
+    #   <li><p> If either this URI or the given URI are opaque, or if the
+    #   scheme and authority components of the two URIs are not identical, or
+    #   if the path of this URI is not a prefix of the path of the given URI,
+    #   then the given URI is returned. </p></li>
     # 
-    # <li><p> Otherwise a new relative hierarchical URI is constructed with
-    # query and fragment components taken from the given URI and with a path
-    # component computed by removing this URI's path from the beginning of
-    # the given URI's path. </p></li>
+    #   <li><p> Otherwise a new relative hierarchical URI is constructed with
+    #   query and fragment components taken from the given URI and with a path
+    #   component computed by removing this URI's path from the beginning of
+    #   the given URI's path. </p></li>
     # 
     # </ol>
     # 
@@ -1211,7 +1208,7 @@ module Java::Net
     # @return The resulting URI
     # 
     # @throws  NullPointerException
-    # If <tt>uri</tt> is <tt>null</tt>
+    #          If <tt>uri</tt> is <tt>null</tt>
     def relativize(uri)
       return relativize(self, uri)
     end
@@ -1226,11 +1223,11 @@ module Java::Net
     # @return  A URL constructed from this URI
     # 
     # @throws  IllegalArgumentException
-    # If this URL is not absolute
+    #          If this URL is not absolute
     # 
     # @throws  MalformedURLException
-    # If a protocol handler for the URL could not be found,
-    # or if some other error occurred while constructing the URL
+    #          If a protocol handler for the URL could not be found,
+    #          or if some other error occurred while constructing the URL
     def to_url
       if (!is_absolute)
         raise IllegalArgumentException.new("URI is not absolute")
@@ -1240,7 +1237,6 @@ module Java::Net
     
     typesig { [] }
     # -- Component access methods --
-    # 
     # Returns the scheme component of this URI.
     # 
     # <p> The scheme component of a URI, if defined, only contains characters
@@ -1251,7 +1247,7 @@ module Java::Net
     # method does not perform any decoding.
     # 
     # @return  The scheme component of this URI,
-    # or <tt>null</tt> if the scheme is undefined
+    #          or <tt>null</tt> if the scheme is undefined
     def get_scheme
       return @scheme
     end
@@ -1287,7 +1283,7 @@ module Java::Net
     # characters. </p>
     # 
     # @return  The raw scheme-specific part of this URI
-    # (never <tt>null</tt>)
+    #          (never <tt>null</tt>)
     def get_raw_scheme_specific_part
       define_scheme_specific_part
       return @scheme_specific_part
@@ -1302,7 +1298,7 @@ module Java::Net
     # href="#decode">decoded</a>.  </p>
     # 
     # @return  The decoded scheme-specific part of this URI
-    # (never <tt>null</tt>)
+    #          (never <tt>null</tt>)
     def get_scheme_specific_part
       if ((@decoded_scheme_specific_part).nil?)
         @decoded_scheme_specific_part = RJava.cast_to_string(decode(get_raw_scheme_specific_part))
@@ -1321,7 +1317,7 @@ module Java::Net
     # components. </p>
     # 
     # @return  The raw authority component of this URI,
-    # or <tt>null</tt> if the authority is undefined
+    #          or <tt>null</tt> if the authority is undefined
     def get_raw_authority
       return @authority
     end
@@ -1334,7 +1330,7 @@ module Java::Net
     # sequences of escaped octets are <a href="#decode">decoded</a>.  </p>
     # 
     # @return  The decoded authority component of this URI,
-    # or <tt>null</tt> if the authority is undefined
+    #          or <tt>null</tt> if the authority is undefined
     def get_authority
       if ((@decoded_authority).nil?)
         @decoded_authority = RJava.cast_to_string(decode(@authority))
@@ -1350,7 +1346,7 @@ module Java::Net
     # <i>other</i> categories. </p>
     # 
     # @return  The raw user-information component of this URI,
-    # or <tt>null</tt> if the user information is undefined
+    #          or <tt>null</tt> if the user information is undefined
     def get_raw_user_info
       return @user_info
     end
@@ -1363,7 +1359,7 @@ module Java::Net
     # sequences of escaped octets are <a href="#decode">decoded</a>.  </p>
     # 
     # @return  The decoded user-information component of this URI,
-    # or <tt>null</tt> if the user information is undefined
+    #          or <tt>null</tt> if the user information is undefined
     def get_user_info
       if (((@decoded_user_info).nil?) && (!(@user_info).nil?))
         @decoded_user_info = RJava.cast_to_string(decode(@user_info))
@@ -1379,25 +1375,25 @@ module Java::Net
     # 
     # <ul type=disc>
     # 
-    # <li><p> A domain name consisting of one or more <i>labels</i>
-    # separated by period characters (<tt>'.'</tt>), optionally followed by
-    # a period character.  Each label consists of <i>alphanum</i> characters
-    # as well as hyphen characters (<tt>'-'</tt>), though hyphens never
-    # occur as the first or last characters in a label. The rightmost
-    # label of a domain name consisting of two or more labels, begins
-    # with an <i>alpha</i> character. </li>
+    #   <li><p> A domain name consisting of one or more <i>labels</i>
+    #   separated by period characters (<tt>'.'</tt>), optionally followed by
+    #   a period character.  Each label consists of <i>alphanum</i> characters
+    #   as well as hyphen characters (<tt>'-'</tt>), though hyphens never
+    #   occur as the first or last characters in a label. The rightmost
+    #   label of a domain name consisting of two or more labels, begins
+    #   with an <i>alpha</i> character. </li>
     # 
-    # <li><p> A dotted-quad IPv4 address of the form
-    # <i>digit</i><tt>+.</tt><i>digit</i><tt>+.</tt><i>digit</i><tt>+.</tt><i>digit</i><tt>+</tt>,
-    # where no <i>digit</i> sequence is longer than three characters and no
-    # sequence has a value larger than 255. </p></li>
+    #   <li><p> A dotted-quad IPv4 address of the form
+    #   <i>digit</i><tt>+.</tt><i>digit</i><tt>+.</tt><i>digit</i><tt>+.</tt><i>digit</i><tt>+</tt>,
+    #   where no <i>digit</i> sequence is longer than three characters and no
+    #   sequence has a value larger than 255. </p></li>
     # 
-    # <li><p> An IPv6 address enclosed in square brackets (<tt>'['</tt> and
-    # <tt>']'</tt>) and consisting of hexadecimal digits, colon characters
-    # (<tt>':'</tt>), and possibly an embedded IPv4 address.  The full
-    # syntax of IPv6 addresses is specified in <a
-    # href="http://www.ietf.org/rfc/rfc2373.txt"><i>RFC&nbsp;2373: IPv6
-    # Addressing Architecture</i></a>.  </p></li>
+    #   <li><p> An IPv6 address enclosed in square brackets (<tt>'['</tt> and
+    #   <tt>']'</tt>) and consisting of hexadecimal digits, colon characters
+    #   (<tt>':'</tt>), and possibly an embedded IPv4 address.  The full
+    #   syntax of IPv6 addresses is specified in <a
+    #   href="http://www.ietf.org/rfc/rfc2373.txt"><i>RFC&nbsp;2373: IPv6
+    #   Addressing Architecture</i></a>.  </p></li>
     # 
     # </ul>
     # 
@@ -1405,7 +1401,7 @@ module Java::Net
     # method does not perform any decoding.
     # 
     # @return  The host component of this URI,
-    # or <tt>null</tt> if the host is undefined
+    #          or <tt>null</tt> if the host is undefined
     def get_host
       return @host
     end
@@ -1417,7 +1413,7 @@ module Java::Net
     # integer. </p>
     # 
     # @return  The port component of this URI,
-    # or <tt>-1</tt> if the port is undefined
+    #          or <tt>-1</tt> if the port is undefined
     def get_port
       return @port
     end
@@ -1431,7 +1427,7 @@ module Java::Net
     # and <i>other</i> categories. </p>
     # 
     # @return  The path component of this URI,
-    # or <tt>null</tt> if the path is undefined
+    #          or <tt>null</tt> if the path is undefined
     def get_raw_path
       return @path
     end
@@ -1444,7 +1440,7 @@ module Java::Net
     # escaped octets are <a href="#decode">decoded</a>.  </p>
     # 
     # @return  The decoded path component of this URI,
-    # or <tt>null</tt> if the path is undefined
+    #          or <tt>null</tt> if the path is undefined
     def get_path
       if (((@decoded_path).nil?) && (!(@path).nil?))
         @decoded_path = RJava.cast_to_string(decode(@path))
@@ -1459,7 +1455,7 @@ module Java::Net
     # characters. </p>
     # 
     # @return  The raw query component of this URI,
-    # or <tt>null</tt> if the query is undefined
+    #          or <tt>null</tt> if the query is undefined
     def get_raw_query
       return @query
     end
@@ -1472,7 +1468,7 @@ module Java::Net
     # escaped octets are <a href="#decode">decoded</a>.  </p>
     # 
     # @return  The decoded query component of this URI,
-    # or <tt>null</tt> if the query is undefined
+    #          or <tt>null</tt> if the query is undefined
     def get_query
       if (((@decoded_query).nil?) && (!(@query).nil?))
         @decoded_query = RJava.cast_to_string(decode(@query))
@@ -1487,7 +1483,7 @@ module Java::Net
     # characters. </p>
     # 
     # @return  The raw fragment component of this URI,
-    # or <tt>null</tt> if the fragment is undefined
+    #          or <tt>null</tt> if the fragment is undefined
     def get_raw_fragment
       return @fragment
     end
@@ -1500,7 +1496,7 @@ module Java::Net
     # sequences of escaped octets are <a href="#decode">decoded</a>.  </p>
     # 
     # @return  The decoded fragment component of this URI,
-    # or <tt>null</tt> if the fragment is undefined
+    #          or <tt>null</tt> if the fragment is undefined
     def get_fragment
       if (((@decoded_fragment).nil?) && (!(@fragment).nil?))
         @decoded_fragment = RJava.cast_to_string(decode(@fragment))
@@ -1510,7 +1506,6 @@ module Java::Net
     
     typesig { [Object] }
     # -- Equality, comparison, hash code, toString, and serialization --
-    # 
     # Tests this URI for equality with another object.
     # 
     # <p> If the given object is not a URI then this method immediately
@@ -1545,7 +1540,7 @@ module Java::Net
     # @param   ob   The object to which this object is to be compared
     # 
     # @return  <tt>true</tt> if, and only if, the given object is a URI that
-    # is identical to this URI
+    #          is identical to this URI
     def ==(ob)
       if ((ob).equal?(self))
         return true
@@ -1649,42 +1644,42 @@ module Java::Net
     # 
     # <ul type=disc>
     # 
-    # <li><p> Two URIs with different schemes are ordered according the
-    # ordering of their schemes, without regard to case. </p></li>
+    #   <li><p> Two URIs with different schemes are ordered according the
+    #   ordering of their schemes, without regard to case. </p></li>
     # 
-    # <li><p> A hierarchical URI is considered to be less than an opaque URI
-    # with an identical scheme. </p></li>
+    #   <li><p> A hierarchical URI is considered to be less than an opaque URI
+    #   with an identical scheme. </p></li>
     # 
-    # <li><p> Two opaque URIs with identical schemes are ordered according
-    # to the ordering of their scheme-specific parts. </p></li>
+    #   <li><p> Two opaque URIs with identical schemes are ordered according
+    #   to the ordering of their scheme-specific parts. </p></li>
     # 
-    # <li><p> Two opaque URIs with identical schemes and scheme-specific
-    # parts are ordered according to the ordering of their
-    # fragments. </p></li>
+    #   <li><p> Two opaque URIs with identical schemes and scheme-specific
+    #   parts are ordered according to the ordering of their
+    #   fragments. </p></li>
     # 
-    # <li><p> Two hierarchical URIs with identical schemes are ordered
-    # according to the ordering of their authority components: </p></li>
+    #   <li><p> Two hierarchical URIs with identical schemes are ordered
+    #   according to the ordering of their authority components: </p></li>
     # 
-    # <ul type=disc>
+    #   <ul type=disc>
     # 
-    # <li><p> If both authority components are server-based then the URIs
-    # are ordered according to their user-information components; if these
-    # components are identical then the URIs are ordered according to the
-    # ordering of their hosts, without regard to case; if the hosts are
-    # identical then the URIs are ordered according to the ordering of
-    # their ports. </p></li>
+    #     <li><p> If both authority components are server-based then the URIs
+    #     are ordered according to their user-information components; if these
+    #     components are identical then the URIs are ordered according to the
+    #     ordering of their hosts, without regard to case; if the hosts are
+    #     identical then the URIs are ordered according to the ordering of
+    #     their ports. </p></li>
     # 
-    # <li><p> If one or both authority components are registry-based then
-    # the URIs are ordered according to the ordering of their authority
-    # components. </p></li>
+    #     <li><p> If one or both authority components are registry-based then
+    #     the URIs are ordered according to the ordering of their authority
+    #     components. </p></li>
     # 
-    # </ul>
+    #   </ul>
     # 
-    # <li><p> Finally, two hierarchical URIs with identical schemes and
-    # authority components are ordered according to the ordering of their
-    # paths; if their paths are identical then they are ordered according to
-    # the ordering of their queries; if the queries are identical then they
-    # are ordered according to the order of their fragments. </p></li>
+    #   <li><p> Finally, two hierarchical URIs with identical schemes and
+    #   authority components are ordered according to the ordering of their
+    #   paths; if their paths are identical then they are ordered according to
+    #   the ordering of their queries; if the queries are identical then they
+    #   are ordered according to the order of their fragments. </p></li>
     # 
     # </ul>
     # 
@@ -1693,13 +1688,13 @@ module Java::Net
     # method. </p>
     # 
     # @param   that
-    # The object to which this URI is to be compared
+    #          The object to which this URI is to be compared
     # 
     # @return  A negative integer, zero, or a positive integer as this URI is
-    # less than, equal to, or greater than the given URI
+    #          less than, equal to, or greater than the given URI
     # 
     # @throws  ClassCastException
-    # If the given object is not a URI
+    #          If the given object is not a URI
     def compare_to(that)
       c = 0
       if (!((c = compare_ignoring_case(@scheme, that.attr_scheme))).equal?(0))
@@ -1779,8 +1774,8 @@ module Java::Net
     # href="#encode">encoding</a> the result.  </p>
     # 
     # @return  The string form of this URI, encoded as needed
-    # so that it only contains characters in the US-ASCII
-    # charset
+    #          so that it only contains characters in the US-ASCII
+    #          charset
     def to_asciistring
       define_string
       return encode(@string)
@@ -1788,7 +1783,6 @@ module Java::Net
     
     typesig { [ObjectOutputStream] }
     # -- Serialization support --
-    # 
     # Saves the content of this URI to the given serial stream.
     # 
     # <p> The only serializable field of a URI instance is its <tt>string</tt>
@@ -1797,7 +1791,7 @@ module Java::Net
     # method of the given object-output stream is invoked. </p>
     # 
     # @param  os  The object-output stream to which this object
-    # is to be written
+    #             is to be written
     def write_object(os)
       define_string
       os.default_write_object # Writes the string field only
@@ -1811,7 +1805,7 @@ module Java::Net
     # then parsed in the usual way.
     # 
     # @param  is  The object-input stream from which this object
-    # is being read
+    #             is being read
     def read_object(is)
       @port = -1 # Argh
       is.default_read_object
@@ -1974,6 +1968,7 @@ module Java::Net
       typesig { [String, String, String] }
       # -- String construction --
       # If a scheme is given then the path, if given, must be absolute
+      # 
       def check_path(s, scheme, path)
         if (!(scheme).nil?)
           if ((!(path).nil?) && ((path.length > 0) && (!(path.char_at(0)).equal?(Character.new(?/.ord)))))
@@ -2239,6 +2234,7 @@ module Java::Net
       typesig { [URI] }
       # If the given URI's path is normal then return the URI;
       # o.w., return a new URI containing the normalized path.
+      # 
       def normalize(u)
         if (u.is_opaque || ((u.attr_path).nil?) || ((u.attr_path.length).equal?(0)))
           return u
@@ -2264,6 +2260,7 @@ module Java::Net
       # identical, and the base path is a prefix of the child's path, then
       # return a relative URI that, when resolved against the base, yields the
       # child; otherwise, return the child.
+      # 
       def relativize(base, child)
         # check if child if opaque first so that NPE is thrown
         # if child is null.
@@ -2310,6 +2307,7 @@ module Java::Net
       # 
       # This method takes a string argument rather than a char array so that
       # this test can be performed without invoking path.toCharArray().
+      # 
       def needs_normalization(path)
         normal = true
         ns = 0 # Number of segments
@@ -2356,11 +2354,12 @@ module Java::Net
       # filling in the given segment-index array.
       # 
       # Preconditions:
-      # segs.length == Number of segments in path
+      #   segs.length == Number of segments in path
       # 
       # Postconditions:
-      # All slashes in path replaced by '\0'
-      # segs[i] == Index of first char in segment i (0 <= i < segs.length)
+      #   All slashes in path replaced by '\0'
+      #   segs[i] == Index of first char in segment i (0 <= i < segs.length)
+      # 
       def split(path, segs)
         end_ = path.attr_length - 1 # Index of last char in path
         p = 0 # Index of next char in path
@@ -2404,11 +2403,12 @@ module Java::Net
       # path.
       # 
       # Preconditions:
-      # segs[i] == -1 implies segment i is to be ignored
-      # path computed by split, as above, with '\0' having replaced '/'
+      #   segs[i] == -1 implies segment i is to be ignored
+      #   path computed by split, as above, with '\0' having replaced '/'
       # 
       # Postconditions:
-      # path[0] .. path[return value] == Resulting path
+      #   path[0] .. path[return value] == Resulting path
+      # 
       def join(path, segs)
         ns = segs.attr_length # Number of segments
         end_ = path.attr_length - 1 # Index of last char in path
@@ -2456,6 +2456,7 @@ module Java::Net
       typesig { [Array.typed(::Java::Char), Array.typed(::Java::Int)] }
       # Remove "." segments from the given path, and remove segment pairs
       # consisting of a non-".." segment followed by a ".." segment.
+      # 
       def remove_dots(path, segs)
         ns = segs.attr_length
         end_ = path.attr_length - 1
@@ -2516,6 +2517,7 @@ module Java::Net
       typesig { [Array.typed(::Java::Char), Array.typed(::Java::Int)] }
       # DEVIATION: If the normalized path is relative, and if the first
       # segment could be parsed as a scheme name, then prepend a "." segment
+      # 
       def maybe_add_leading_dot(path, segs)
         if ((path[0]).equal?(Character.new(?\0.ord)))
           # The path is absolute
@@ -2555,6 +2557,7 @@ module Java::Net
       # segments equal to ".." that are preceded by a segment not equal to "..".
       # In contrast to Unix-style pathname normalization, for URI paths we
       # always retain trailing slashes.
+      # 
       def normalize(ps)
         # Does this path need normalization?
         ns = needs_normalization(ps) # Number of segments
@@ -2668,7 +2671,7 @@ module Java::Net
       # Character-class masks, in reverse order from RFC2396 because
       # initializers for static fields cannot make forward references.
       # digit    = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" |
-      # "8" | "9"
+      #            "8" | "9"
       const_set_lazy(:L_DIGIT) { low_mask(Character.new(?0.ord), Character.new(?9.ord)) }
       const_attr_reader  :L_DIGIT
       
@@ -2676,8 +2679,8 @@ module Java::Net
       const_attr_reader  :H_DIGIT
       
       # upalpha  = "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" |
-      # "J" | "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" |
-      # "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z"
+      #            "J" | "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" |
+      #            "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z"
       const_set_lazy(:L_UPALPHA) { 0 }
       const_attr_reader  :L_UPALPHA
       
@@ -2685,8 +2688,8 @@ module Java::Net
       const_attr_reader  :H_UPALPHA
       
       # lowalpha = "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" |
-      # "j" | "k" | "l" | "m" | "n" | "o" | "p" | "q" | "r" |
-      # "s" | "t" | "u" | "v" | "w" | "x" | "y" | "z"
+      #            "j" | "k" | "l" | "m" | "n" | "o" | "p" | "q" | "r" |
+      #            "s" | "t" | "u" | "v" | "w" | "x" | "y" | "z"
       const_set_lazy(:L_LOWALPHA) { 0 }
       const_attr_reader  :L_LOWALPHA
       
@@ -2708,7 +2711,7 @@ module Java::Net
       const_attr_reader  :H_ALPHANUM
       
       # hex           = digit | "A" | "B" | "C" | "D" | "E" | "F" |
-      # "a" | "b" | "c" | "d" | "e" | "f"
+      #                         "a" | "b" | "c" | "d" | "e" | "f"
       const_set_lazy(:L_HEX) { L_DIGIT }
       const_attr_reader  :L_HEX
       
@@ -2716,7 +2719,7 @@ module Java::Net
       const_attr_reader  :H_HEX
       
       # mark          = "-" | "_" | "." | "!" | "~" | "*" | "'" |
-      # "(" | ")"
+      #                 "(" | ")"
       const_set_lazy(:L_MARK) { low_mask("-_.!~*'()") }
       const_attr_reader  :L_MARK
       
@@ -2731,7 +2734,7 @@ module Java::Net
       const_attr_reader  :H_UNRESERVED
       
       # reserved      = ";" | "/" | "?" | ":" | "@" | "&" | "=" | "+" |
-      # "$" | "," | "[" | "]"
+      #                 "$" | "," | "[" | "]"
       # Added per RFC2732: "[", "]"
       const_set_lazy(:L_RESERVED) { low_mask(";/?:@&=+$,[]") }
       const_attr_reader  :L_RESERVED
@@ -2755,7 +2758,7 @@ module Java::Net
       const_attr_reader  :H_URIC
       
       # pchar         = unreserved | escaped |
-      # ":" | "@" | "&" | "=" | "+" | "$" | ","
+      #                 ":" | "@" | "&" | "=" | "+" | "$" | ","
       const_set_lazy(:L_PCHAR) { L_UNRESERVED | L_ESCAPED | low_mask(":@&=+$,") }
       const_attr_reader  :L_PCHAR
       
@@ -2784,7 +2787,7 @@ module Java::Net
       const_attr_reader  :H_DOT
       
       # userinfo      = *( unreserved | escaped |
-      # ";" | ":" | "&" | "=" | "+" | "$" | "," )
+      #                    ";" | ":" | "&" | "=" | "+" | "$" | "," )
       const_set_lazy(:L_USERINFO) { L_UNRESERVED | L_ESCAPED | low_mask(";:&=+$,") }
       const_attr_reader  :L_USERINFO
       
@@ -2792,7 +2795,7 @@ module Java::Net
       const_attr_reader  :H_USERINFO
       
       # reg_name      = 1*( unreserved | escaped | "$" | "," |
-      # ";" | ":" | "@" | "&" | "=" | "+" )
+      #                     ";" | ":" | "@" | "&" | "=" | "+" )
       const_set_lazy(:L_REG_NAME) { L_UNRESERVED | L_ESCAPED | low_mask("$,;:@&=+") }
       const_attr_reader  :L_REG_NAME
       
@@ -2828,7 +2831,7 @@ module Java::Net
       const_attr_reader  :H_SCHEME
       
       # uric_no_slash = unreserved | escaped | ";" | "?" | ":" | "@" |
-      # "&" | "=" | "+" | "$" | ","
+      #                 "&" | "=" | "+" | "$" | ","
       const_set_lazy(:L_URIC_NO_SLASH) { L_UNRESERVED | L_ESCAPED | low_mask(";?:@&=+$,") }
       const_attr_reader  :L_URIC_NO_SLASH
       
@@ -2867,6 +2870,7 @@ module Java::Net
       typesig { [String, ::Java::Long, ::Java::Long] }
       # Quote any characters in s that are not permitted
       # by the given mask pair
+      # 
       def quote(s, low_mask_, high_mask_)
         n = s.length
         sb = nil
@@ -2907,6 +2911,7 @@ module Java::Net
       typesig { [String] }
       # Encodes all characters >= \u0080 into escaped, normalized UTF-8 octets,
       # assuming that s is otherwise legal
+      # 
       def encode(s)
         n = s.length
         if ((n).equal?(0))
@@ -2967,7 +2972,8 @@ module Java::Net
       # sequence of escaped octets is not valid UTF-8 then the erroneous octets
       # are replaced with '\uFFFD'.
       # Exception: any "%" found between "[]" is left alone. It is an IPv6 literal
-      # with a scope_id
+      #            with a scope_id
+      # 
       def decode(s)
         if ((s).nil?)
           return s
@@ -2980,8 +2986,8 @@ module Java::Net
           return s
         end
         sb = StringBuffer.new(n)
-        bb = ByteBuffer.allocate(n)
-        cb = CharBuffer.allocate(n)
+        bb = ByteBuffer.allocate_(n)
+        cb = CharBuffer.allocate_(n)
         dec = ThreadLocalCoders.decoder_for("UTF-8").on_malformed_input(CodingErrorAction::REPLACE).on_unmappable_character(CodingErrorAction::REPLACE)
         # This is not horribly efficient, but it will do for now
         c = s.char_at(0)
@@ -3083,6 +3089,7 @@ module Java::Net
         typesig { [::Java::Int, ::Java::Int] }
         # -- Simple access to the input string --
         # Return a substring of the input string
+        # 
         def substring(start, end_)
           return @input.substring(start, end_)
         end
@@ -3090,12 +3097,14 @@ module Java::Net
         typesig { [::Java::Int] }
         # Return the char at position p,
         # assuming that p < input.length()
+        # 
         def char_at(p)
           return @input.char_at(p)
         end
         
         typesig { [::Java::Int, ::Java::Int, ::Java::Char] }
         # Tells whether start < end and, if so, whether charAt(start) == c
+        # 
         def at(start, end_, c)
           return (start < end_) && ((char_at(start)).equal?(c))
         end
@@ -3103,6 +3112,7 @@ module Java::Net
         typesig { [::Java::Int, ::Java::Int, String] }
         # Tells whether start + s.length() < end and, if so,
         # whether the chars at the start position match s exactly
+        # 
         def at(start, end_, s)
           p = start
           sn = s.length
@@ -3132,20 +3142,21 @@ module Java::Net
         # the position of the first char after the last char scanned.  Thus
         # a typical idiom is
         # 
-        # int p = start;
-        # int q = scan(p, end, ...);
-        # if (q > p)
-        # // We scanned something
-        # ...;
-        # else if (q == p)
-        # // We scanned nothing
-        # ...;
-        # else if (q == -1)
-        # // Something went wrong
-        # ...;
+        #     int p = start;
+        #     int q = scan(p, end, ...);
+        #     if (q > p)
+        #         // We scanned something
+        #         ...;
+        #     else if (q == p)
+        #         // We scanned nothing
+        #         ...;
+        #     else if (q == -1)
+        #         // Something went wrong
+        #         ...;
         # Scan a specific char: If the char at the given start position is
         # equal to c, return the index of the next char; otherwise, return the
         # start position.
+        # 
         def scan(start, end_, c)
           if ((start < end_) && ((char_at(start)).equal?(c)))
             return start + 1
@@ -3160,6 +3171,7 @@ module Java::Net
         # returned), or the end of the input string (in which case the length
         # of the input string is returned).  May return the start position if
         # nothing matches.
+        # 
         def scan(start, end_, err, stop)
           p = start
           while (p < end_)
@@ -3181,6 +3193,7 @@ module Java::Net
         # 
         # This method assumes that if escapes are allowed then visible
         # non-US-ASCII chars are also allowed.
+        # 
         def scan_escape(start, n, first)
           p = start
           c = first
@@ -3201,6 +3214,7 @@ module Java::Net
         
         typesig { [::Java::Int, ::Java::Int, ::Java::Long, ::Java::Long] }
         # Scan chars that match the given mask pair
+        # 
         def scan(start, n, low_mask, high_mask)
           p = start
           while (p < n)
@@ -3223,6 +3237,7 @@ module Java::Net
         
         typesig { [::Java::Int, ::Java::Int, ::Java::Long, ::Java::Long, String] }
         # Check that each of the chars in [start, end) matches the given mask
+        # 
         def check_chars(start, end_, low_mask, high_mask, what)
           p = scan(start, end_, low_mask, high_mask)
           if (p < end_)
@@ -3232,6 +3247,7 @@ module Java::Net
         
         typesig { [::Java::Int, ::Java::Long, ::Java::Long, String] }
         # Check that the char at position p matches the given mask
+        # 
         def check_char(p, low_mask, high_mask, what)
           check_chars(p, p + 1, low_mask, high_mask, what)
         end
@@ -3239,6 +3255,7 @@ module Java::Net
         typesig { [::Java::Boolean] }
         # -- Parsing --
         # [<scheme>:]<scheme-specific-part>[#<fragment>]
+        # 
         def parse(rsa)
           @require_server_authority = rsa
           ssp = 0 # Start of scheme-specific part
@@ -3292,6 +3309,7 @@ module Java::Net
         # to be the intent of RFC2396, but the grammar does not permit it.
         # The primary consequence of this deviation is that "#f" parses as a
         # relative URI with an empty path.
+        # 
         def parse_hierarchical(start, n)
           p = start
           if (at(p, n, Character.new(?/.ord)) && at(p + 1, n, Character.new(?/.ord)))
@@ -3330,6 +3348,7 @@ module Java::Net
         # the authority component is always followed by '/' or the end of the
         # input string to resolve this: If the complete authority did not
         # parse as a server then we try to parse it as a registry name.
+        # 
         def parse_authority(start, n)
           p = start
           q = p
@@ -3394,6 +3413,7 @@ module Java::Net
         
         typesig { [::Java::Int, ::Java::Int] }
         # [<userinfo>@]<host>[:<port>]
+        # 
         def parse_server(start, n)
           p = start
           q = 0
@@ -3455,6 +3475,7 @@ module Java::Net
         
         typesig { [::Java::Int, ::Java::Int] }
         # Scan a string of decimal digits whose value fits in a byte
+        # 
         def scan_byte(start, n)
           p = start
           q = scan(p, n, L_DIGIT, H_DIGIT)
@@ -3482,6 +3503,7 @@ module Java::Net
         # We assume that any string of decimal digits and dots must be an IPv4
         # address.  It won't parse as a hostname anyway, so making that
         # assumption here allows more meaningful exceptions to be thrown.
+        # 
         def scan_ipv4address(start, n, strict)
           p = start
           q = 0
@@ -3532,6 +3554,7 @@ module Java::Net
         typesig { [::Java::Int, ::Java::Int, String] }
         # Take an IPv4 address: Throw an exception if the given interval
         # contains anything except an IPv4 address
+        # 
         def take_ipv4address(start, n, expected)
           p = scan_ipv4address(start, n, true)
           if (p <= start)
@@ -3544,6 +3567,7 @@ module Java::Net
         # Attempt to parse an IPv4 address, returning -1 on failure but
         # allowing the given interval to contain [:<characters>] after
         # the IPv4 address.
+        # 
         def parse_ipv4address(start, n)
           p = 0
           begin
@@ -3571,6 +3595,7 @@ module Java::Net
         # hostname      = domainlabel [ "." ] | 1*( domainlabel "." ) toplabel [ "." ]
         # domainlabel   = alphanum | alphanum *( alphanum | "-" ) alphanum
         # toplabel      = alpha | alpha *( alphanum | "-" ) alphanum
+        # 
         def parse_hostname(start, n)
           p = start
           q = 0
@@ -3619,40 +3644,40 @@ module Java::Net
         # the form ::12.34.56.78, which are clearly shown in the examples
         # earlier in the document.  Here is the original grammar:
         # 
-        # IPv6address = hexpart [ ":" IPv4address ]
-        # hexpart     = hexseq | hexseq "::" [ hexseq ] | "::" [ hexseq ]
-        # hexseq      = hex4 *( ":" hex4)
-        # hex4        = 1*4HEXDIG
+        #   IPv6address = hexpart [ ":" IPv4address ]
+        #   hexpart     = hexseq | hexseq "::" [ hexseq ] | "::" [ hexseq ]
+        #   hexseq      = hex4 *( ":" hex4)
+        #   hex4        = 1*4HEXDIG
         # 
         # We therefore use the following revised grammar:
         # 
-        # IPv6address = hexseq [ ":" IPv4address ]
-        # | hexseq [ "::" [ hexpost ] ]
-        # | "::" [ hexpost ]
-        # hexpost     = hexseq | hexseq ":" IPv4address | IPv4address
-        # hexseq      = hex4 *( ":" hex4)
-        # hex4        = 1*4HEXDIG
+        #   IPv6address = hexseq [ ":" IPv4address ]
+        #                 | hexseq [ "::" [ hexpost ] ]
+        #                 | "::" [ hexpost ]
+        #   hexpost     = hexseq | hexseq ":" IPv4address | IPv4address
+        #   hexseq      = hex4 *( ":" hex4)
+        #   hex4        = 1*4HEXDIG
         # 
         # This covers all and only the following cases:
         # 
-        # hexseq
-        # hexseq : IPv4address
-        # hexseq ::
-        # hexseq :: hexseq
-        # hexseq :: hexseq : IPv4address
-        # hexseq :: IPv4address
-        # :: hexseq
-        # :: hexseq : IPv4address
-        # :: IPv4address
-        # ::
+        #   hexseq
+        #   hexseq : IPv4address
+        #   hexseq ::
+        #   hexseq :: hexseq
+        #   hexseq :: hexseq : IPv4address
+        #   hexseq :: IPv4address
+        #   :: hexseq
+        #   :: hexseq : IPv4address
+        #   :: IPv4address
+        #   ::
         # 
         # Additionally we constrain the IPv6 address as follows :-
         # 
-        # i.  IPv6 addresses without compressed zeros should contain
-        # exactly 16 bytes.
+        #  i.  IPv6 addresses without compressed zeros should contain
+        #      exactly 16 bytes.
         # 
-        # ii. IPv6 addresses with compressed zeros should contain
-        # less than 16 bytes.
+        #  ii. IPv6 addresses with compressed zeros should contain
+        #      less than 16 bytes.
         attr_accessor :ipv6byte_count
         alias_method :attr_ipv6byte_count, :ipv6byte_count
         undef_method :ipv6byte_count
@@ -3721,6 +3746,7 @@ module Java::Net
         
         typesig { [::Java::Int, ::Java::Int] }
         # Scan a hex sequence; return -1 if one could not be scanned
+        # 
         def scan_hex_seq(start, n)
           p = start
           q = 0

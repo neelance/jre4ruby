@@ -53,8 +53,8 @@ module Sun::Nio::Ch
     # ops are turned on without affecting the other ops.
     # 
     # @return  true iff the new value of sk.readyOps() set by this method
-    # contains at least one bit that the previous value did not
-    # contain
+    #          contains at least one bit that the previous value did not
+    #          contain
     def translate_and_update_ready_ops(ops, sk)
       raise NotImplementedError
     end
@@ -64,8 +64,8 @@ module Sun::Nio::Ch
     # ops are turned on, and all other ops are turned off.
     # 
     # @return  true iff the new value of sk.readyOps() set by this method
-    # contains at least one bit that the previous value did not
-    # contain
+    #          contains at least one bit that the previous value did not
+    #          contain
     def translate_and_set_ready_ops(ops, sk)
       raise NotImplementedError
     end

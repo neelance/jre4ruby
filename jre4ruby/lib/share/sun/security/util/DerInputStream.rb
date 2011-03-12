@@ -96,9 +96,9 @@ module Sun::Security::Util
     # 
     # @param data the buffer from which to create the string (CONSUMED)
     # @param offset the first index of <em>data</em> which will
-    # be read as DER input in the new stream
+    #          be read as DER input in the new stream
     # @param len how long a chunk of the buffer to use,
-    # starting at "offset"
+    #          starting at "offset"
     def initialize(data, offset, len)
       @buffer = nil
       @tag = 0
@@ -135,11 +135,11 @@ module Sun::Security::Util
     # Creates a new DER input stream from part of this input stream.
     # 
     # @param len how long a chunk of the current input stream to use,
-    # starting at the current position.
+    #          starting at the current position.
     # @param do_skip true if the existing data in the input stream should
-    # be skipped.  If this value is false, the next data read
-    # on this stream and the newly created stream will be the
-    # same.
+    #          be skipped.  If this value is false, the next data read
+    #          on this stream and the newly created stream will be the
+    #          same.
     def sub_stream(len, do_skip)
       newbuf = @buffer.dup
       newbuf.truncate(len)
@@ -159,13 +159,11 @@ module Sun::Security::Util
     typesig { [] }
     # PRIMITIVES -- these are "universal" ASN.1 simple types.
     # 
-    # INTEGER, ENUMERATED, BIT STRING, OCTET STRING, NULL
-    # OBJECT IDENTIFIER, SEQUENCE (OF), SET (OF)
-    # UTF8String, PrintableString, T61String, IA5String, UTCTime,
-    # GeneralizedTime, BMPString.
+    #  INTEGER, ENUMERATED, BIT STRING, OCTET STRING, NULL
+    #  OBJECT IDENTIFIER, SEQUENCE (OF), SET (OF)
+    #  UTF8String, PrintableString, T61String, IA5String, UTCTime,
+    #  GeneralizedTime, BMPString.
     # Note: UniversalString not supported till encoder is available.
-    # 
-    # 
     # Get an integer from the input stream as an integer.
     # 
     # @return the integer held in this DER input stream.
@@ -282,7 +280,7 @@ module Sun::Security::Util
     # specific values.
     # 
     # @param startLen guess about how long the sequence will be
-    # (used to initialize an auto-growing data structure)
+    #          (used to initialize an auto-growing data structure)
     # @return array of the values in the sequence
     def get_sequence(start_len)
       @tag = @buffer.read
@@ -299,7 +297,7 @@ module Sun::Security::Util
     # to facilitate binary comparisons of encoded values.
     # 
     # @param startLen guess about how large the set will be
-    # (used to initialize an auto-growing data structure)
+    #          (used to initialize an auto-growing data structure)
     # @return array of the values in the sequence
     def get_set(start_len)
       @tag = @buffer.read
@@ -316,7 +314,7 @@ module Sun::Security::Util
     # to facilitate binary comparisons of encoded values.
     # 
     # @param startLen guess about how large the set will be
-    # (used to initialize an auto-growing data structure)
+    #          (used to initialize an auto-growing data structure)
     # @param implicit if true tag is assumed implicit.
     # @return array of the values in the sequence
     def get_set(start_len, implicit)
@@ -474,7 +472,6 @@ module Sun::Security::Util
     
     typesig { [] }
     # Get a byte from the input stream.
-    # 
     # package private
     def get_byte
       return (0xff & @buffer.read)

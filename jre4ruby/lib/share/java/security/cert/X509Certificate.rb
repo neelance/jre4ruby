@@ -46,9 +46,9 @@ module Java::Security::Cert
   # ISO/IEC and ANSI X9, which is described below in ASN.1:
   # <pre>
   # Certificate  ::=  SEQUENCE  {
-  # tbsCertificate       TBSCertificate,
-  # signatureAlgorithm   AlgorithmIdentifier,
-  # signature            BIT STRING  }
+  #     tbsCertificate       TBSCertificate,
+  #     signatureAlgorithm   AlgorithmIdentifier,
+  #     signature            BIT STRING  }
   # </pre>
   # <p>
   # These certificates are widely used to support authentication and
@@ -72,20 +72,20 @@ module Java::Security::Cert
   # The ASN.1 definition of <code>tbsCertificate</code> is:
   # <pre>
   # TBSCertificate  ::=  SEQUENCE  {
-  # version         [0]  EXPLICIT Version DEFAULT v1,
-  # serialNumber         CertificateSerialNumber,
-  # signature            AlgorithmIdentifier,
-  # issuer               Name,
-  # validity             Validity,
-  # subject              Name,
-  # subjectPublicKeyInfo SubjectPublicKeyInfo,
-  # issuerUniqueID  [1]  IMPLICIT UniqueIdentifier OPTIONAL,
-  # -- If present, version must be v2 or v3
-  # subjectUniqueID [2]  IMPLICIT UniqueIdentifier OPTIONAL,
-  # -- If present, version must be v2 or v3
-  # extensions      [3]  EXPLICIT Extensions OPTIONAL
-  # -- If present, version must be v3
-  # }
+  #     version         [0]  EXPLICIT Version DEFAULT v1,
+  #     serialNumber         CertificateSerialNumber,
+  #     signature            AlgorithmIdentifier,
+  #     issuer               Name,
+  #     validity             Validity,
+  #     subject              Name,
+  #     subjectPublicKeyInfo SubjectPublicKeyInfo,
+  #     issuerUniqueID  [1]  IMPLICIT UniqueIdentifier OPTIONAL,
+  #                          -- If present, version must be v2 or v3
+  #     subjectUniqueID [2]  IMPLICIT UniqueIdentifier OPTIONAL,
+  #                          -- If present, version must be v2 or v3
+  #     extensions      [3]  EXPLICIT Extensions OPTIONAL
+  #                          -- If present, version must be v3
+  #     }
   # </pre>
   # <p>
   # Certificates are instantiated using a certificate factory. The following is
@@ -93,13 +93,13 @@ module Java::Security::Cert
   # <pre>
   # InputStream inStream = null;
   # try {
-  # inStream = new FileInputStream("fileName-of-cert");
-  # CertificateFactory cf = CertificateFactory.getInstance("X.509");
-  # X509Certificate cert = (X509Certificate)cf.generateCertificate(inStream);
+  #     inStream = new FileInputStream("fileName-of-cert");
+  #     CertificateFactory cf = CertificateFactory.getInstance("X.509");
+  #     X509Certificate cert = (X509Certificate)cf.generateCertificate(inStream);
   # } finally {
-  # if (inStream != null) {
-  # inStream.close();
-  # }
+  #     if (inStream != null) {
+  #         inStream.close();
+  #     }
   # }
   # </pre>
   # 
@@ -152,11 +152,11 @@ module Java::Security::Cert
     # <pre>
     # validity             Validity<p>
     # Validity ::= SEQUENCE {
-    # notBefore      CertificateValidityDate,
-    # notAfter       CertificateValidityDate }<p>
+    #     notBefore      CertificateValidityDate,
+    #     notAfter       CertificateValidityDate }<p>
     # CertificateValidityDate ::= CHOICE {
-    # utcTime        UTCTime,
-    # generalTime    GeneralizedTime }
+    #     utcTime        UTCTime,
+    #     generalTime    GeneralizedTime }
     # </pre>
     # 
     # @exception CertificateExpiredException if the certificate has expired.
@@ -172,7 +172,7 @@ module Java::Security::Cert
     # certificate would be valid at the given date/time.
     # 
     # @param date the Date to check against to see if this certificate
-    # is valid at that date/time.
+    #        is valid at that date/time.
     # 
     # @exception CertificateExpiredException if the certificate has expired
     # with respect to the <code>date</code> supplied.
@@ -235,11 +235,11 @@ module Java::Security::Cert
     # Name ::= CHOICE { RDNSequence }
     # RDNSequence ::= SEQUENCE OF RelativeDistinguishedName
     # RelativeDistinguishedName ::=
-    # SET OF AttributeValueAssertion
+    #     SET OF AttributeValueAssertion
     # 
     # AttributeValueAssertion ::= SEQUENCE {
-    # AttributeType,
-    # AttributeValue }
+    #                               AttributeType,
+    #                               AttributeValue }
     # AttributeType ::= OBJECT IDENTIFIER
     # AttributeValue ::= ANY
     # </pre>
@@ -264,7 +264,7 @@ module Java::Security::Cert
     # It is recommended that subclasses override this method.
     # 
     # @return an <code>X500Principal</code> representing the issuer
-    # distinguished name
+    #          distinguished name
     # @since 1.4
     def get_issuer_x500principal
       if ((@issuer_x500principal).nil?)
@@ -307,7 +307,7 @@ module Java::Security::Cert
     # It is recommended that subclasses override this method.
     # 
     # @return an <code>X500Principal</code> representing the subject
-    # distinguished name
+    #          distinguished name
     # @since 1.4
     def get_subject_x500principal
       if ((@subject_x500principal).nil?)
@@ -324,11 +324,11 @@ module Java::Security::Cert
     # validity             Validity<p>
     # 
     # Validity ::= SEQUENCE {
-    # notBefore      CertificateValidityDate,
-    # notAfter       CertificateValidityDate }<p>
+    #     notBefore      CertificateValidityDate,
+    #     notAfter       CertificateValidityDate }<p>
     # CertificateValidityDate ::= CHOICE {
-    # utcTime        UTCTime,
-    # generalTime    GeneralizedTime }
+    #     utcTime        UTCTime,
+    #     generalTime    GeneralizedTime }
     # </pre>
     # 
     # @return the start date of the validity period.
@@ -379,11 +379,11 @@ module Java::Security::Cert
     # <pre>
     # signatureAlgorithm   AlgorithmIdentifier<p>
     # AlgorithmIdentifier  ::=  SEQUENCE  {
-    # algorithm               OBJECT IDENTIFIER,
-    # parameters              ANY DEFINED BY algorithm OPTIONAL  }
-    # -- contains a value of the type
-    # -- registered for use with the
-    # -- algorithm object identifier value
+    #     algorithm               OBJECT IDENTIFIER,
+    #     parameters              ANY DEFINED BY algorithm OPTIONAL  }
+    #                             -- contains a value of the type
+    #                             -- registered for use with the
+    #                             -- algorithm object identifier value
     # </pre>
     # 
     # <p>The algorithm name is determined from the <code>algorithm</code>
@@ -426,7 +426,7 @@ module Java::Security::Cert
     # relevant ASN.1 definitions.
     # 
     # @return the DER-encoded signature algorithm parameters, or
-    # null if no parameters are present.
+    #         null if no parameters are present.
     def get_sig_alg_params
       raise NotImplementedError
     end
@@ -476,15 +476,15 @@ module Java::Security::Cert
     # The ASN.1 definition for this is:
     # <pre>
     # KeyUsage ::= BIT STRING {
-    # digitalSignature        (0),
-    # nonRepudiation          (1),
-    # keyEncipherment         (2),
-    # dataEncipherment        (3),
-    # keyAgreement            (4),
-    # keyCertSign             (5),
-    # cRLSign                 (6),
-    # encipherOnly            (7),
-    # decipherOnly            (8) }
+    #     digitalSignature        (0),
+    #     nonRepudiation          (1),
+    #     keyEncipherment         (2),
+    #     dataEncipherment        (3),
+    #     keyAgreement            (4),
+    #     keyCertSign             (5),
+    #     cRLSign                 (6),
+    #     encipherOnly            (7),
+    #     decipherOnly            (8) }
     # </pre>
     # RFC 3280 recommends that when used, this be marked
     # as a critical extension.
@@ -526,9 +526,9 @@ module Java::Security::Cert
     # should override this method with a correct implementation.
     # 
     # @return the ExtendedKeyUsage extension of this certificate,
-    # as an unmodifiable list of object identifiers represented
-    # as Strings. Returns null if this certificate does not
-    # contain an ExtendedKeyUsage extension.
+    #         as an unmodifiable list of object identifiers represented
+    #         as Strings. Returns null if this certificate does not
+    #         contain an ExtendedKeyUsage extension.
     # @throws CertificateParsingException if the extension cannot be decoded
     # @since 1.4
     def get_extended_key_usage
@@ -551,8 +551,8 @@ module Java::Security::Cert
     # The ASN.1 definition for this is:
     # <pre>
     # BasicConstraints ::= SEQUENCE {
-    # cA                  BOOLEAN DEFAULT FALSE,
-    # pathLenConstraint   INTEGER (0..MAX) OPTIONAL }
+    #     cA                  BOOLEAN DEFAULT FALSE,
+    #     pathLenConstraint   INTEGER (0..MAX) OPTIONAL }
     # </pre>
     # 
     # @return the value of <code>pathLenConstraint</code> if the
@@ -577,15 +577,15 @@ module Java::Security::Cert
     # GeneralNames :: = SEQUENCE SIZE (1..MAX) OF GeneralName
     # 
     # GeneralName ::= CHOICE {
-    # otherName                       [0]     OtherName,
-    # rfc822Name                      [1]     IA5String,
-    # dNSName                         [2]     IA5String,
-    # x400Address                     [3]     ORAddress,
-    # directoryName                   [4]     Name,
-    # ediPartyName                    [5]     EDIPartyName,
-    # uniformResourceIdentifier       [6]     IA5String,
-    # iPAddress                       [7]     OCTET STRING,
-    # registeredID                    [8]     OBJECT IDENTIFIER}
+    #      otherName                       [0]     OtherName,
+    #      rfc822Name                      [1]     IA5String,
+    #      dNSName                         [2]     IA5String,
+    #      x400Address                     [3]     ORAddress,
+    #      directoryName                   [4]     Name,
+    #      ediPartyName                    [5]     EDIPartyName,
+    #      uniformResourceIdentifier       [6]     IA5String,
+    #      iPAddress                       [7]     OCTET STRING,
+    #      registeredID                    [8]     OBJECT IDENTIFIER}
     # </pre>
     # <p>
     # If this certificate does not contain a <code>SubjectAltName</code>

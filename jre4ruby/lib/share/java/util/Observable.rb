@@ -159,9 +159,9 @@ module Java::Util
         # does not (should not).  The worst result of any
         # potential race-condition here is that:
         # 1) a newly-added Observer will miss a
-        # notification in progress
+        #   notification in progress
         # 2) a recently unregistered Observer will be
-        # wrongly notified when it doesn't care
+        #   wrongly notified when it doesn't care
         if (!@changed)
           return
         end
@@ -211,9 +211,9 @@ module Java::Util
     # Tests if this object has changed.
     # 
     # @return  <code>true</code> if and only if the <code>setChanged</code>
-    # method has been called more recently than the
-    # <code>clearChanged</code> method on this object;
-    # <code>false</code> otherwise.
+    #          method has been called more recently than the
+    #          <code>clearChanged</code> method on this object;
+    #          <code>false</code> otherwise.
     # @see     java.util.Observable#clearChanged()
     # @see     java.util.Observable#setChanged()
     def has_changed

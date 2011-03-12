@@ -22,17 +22,15 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996 - All Rights Reserved
 # 
-# The original version of this source code and documentation is copyrighted
+#   The original version of this source code and documentation is copyrighted
 # and owned by Taligent, Inc., a wholly-owned subsidiary of IBM. These
 # materials are provided under terms of a License Agreement between Taligent
 # and Sun. This technology is protected by multiple US and International
 # patents. This notice and attribution to Taligent may not be removed.
-# Taligent is a registered trademark of Taligent, Inc.
+#   Taligent is a registered trademark of Taligent, Inc.
 module Java::Text
   module FieldPositionImports #:nodoc:
     class_module.module_eval {
@@ -45,11 +43,11 @@ module Java::Text
   # and its subclasses to identify fields in formatted output. Fields can
   # be identified in two ways:
   # <ul>
-  # <li>By an integer constant, whose names typically end with
-  # <code>_FIELD</code>. The constants are defined in the various
-  # subclasses of <code>Format</code>.
-  # <li>By a <code>Format.Field</code> constant, see <code>ERA_FIELD</code>
-  # and its friends in <code>DateFormat</code> for an example.
+  #  <li>By an integer constant, whose names typically end with
+  #      <code>_FIELD</code>. The constants are defined in the various
+  #      subclasses of <code>Format</code>.
+  #  <li>By a <code>Format.Field</code> constant, see <code>ERA_FIELD</code>
+  #      and its friends in <code>DateFormat</code> for an example.
   # </ul>
   # <p>
   # <code>FieldPosition</code> keeps track of the position of the

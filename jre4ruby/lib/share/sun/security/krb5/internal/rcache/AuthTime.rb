@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5::Internal::Rcache
@@ -82,7 +80,7 @@ module Sun::Security::Krb5::Internal::Rcache
     # @return  a <code>hash code</code> value for this object.
     def hash_code
       result = 17
-      result = 37 * result + RJava.cast_to_int((@kerberos_time ^ (@kerberos_time >> 32)))
+      result = 37 * result + ((@kerberos_time ^ (@kerberos_time >> 32))).to_int
       result = 37 * result + @cusec
       return result
     end

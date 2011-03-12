@@ -120,12 +120,14 @@ module Sun::Net::Spi::Nameservice::Dns
       thr_ctxt = nil
       ns_list = nil
       # if no property specified we need to obtain the list of servers
+      # 
       if ((@name_provider_url).nil?)
         ns_list = ResolverConfiguration.open.nameservers
       end
       # if soft reference hasn't been gc'ed no property has been
       # specified then we need to check if the DNS configuration
       # has changed.
+      # 
       if ((!(ref).nil?) && (!((thr_ctxt = ref.get)).nil?))
         if ((@name_provider_url).nil?)
           if (!(thr_ctxt.nameservers == ns_list))
@@ -140,6 +142,7 @@ module Sun::Net::Spi::Nameservice::Dns
         env.put("java.naming.factory.initial", "com.sun.jndi.dns.DnsContextFactory")
         # If no nameservers property specified we create provider URL
         # based on system configured name servers
+        # 
         prov_url = @name_provider_url
         if ((prov_url).nil?)
           prov_url = RJava.cast_to_string(create_provider_url(ns_list))
@@ -150,6 +153,7 @@ module Sun::Net::Spi::Nameservice::Dns
         env.put("java.naming.provider.url", prov_url)
         # Need to create directory context in privileged block
         # as JNDI-DNS needs to resolve the name servers.
+        # 
         dir_ctxt = nil
         begin
           dir_ctxt = Java::Security::AccessController.do_privileged(Class.new(Java::Security::PrivilegedExceptionAction.class == Class ? Java::Security::PrivilegedExceptionAction : Object) do
@@ -181,6 +185,7 @@ module Sun::Net::Spi::Nameservice::Dns
           raise pae.get_exception
         end
         # create new soft reference to our thread context
+        # 
         thr_ctxt = ThreadContext.new(dir_ctxt, ns_list)
         self.attr_context_ref.set(SoftReference.new(thr_ctxt))
       end
@@ -290,6 +295,7 @@ module Sun::Net::Spi::Nameservice::Dns
       else
         # no property specified so check host DNS resolver configured
         # with at least one nameserver in dotted notation.
+        # 
         ns_list = ResolverConfiguration.open.nameservers
         if ((ns_list.size).equal?(0))
           raise RuntimeException.new("no nameservers provided")
@@ -450,7 +456,6 @@ module Sun::Net::Spi::Nameservice::Dns
         else
           if ((addr.attr_length).equal?(16))
             # IPv6 Address
-            # 
             # Because RFC 3152 changed the root domain name for reverse
             # lookups from IP6.INT. to IP6.ARPA., we need to check
             # both. I.E. first the new one, IP6.ARPA, then if it fails
@@ -504,7 +509,7 @@ module Sun::Net::Spi::Nameservice::Dns
       
       typesig { [JavaList] }
       # @return String containing the JNDI-DNS provider URL
-      # corresponding to the supplied List of nameservers.
+      #         corresponding to the supplied List of nameservers.
       def create_provider_url(ns_list)
         i = ns_list.iterator
         sb = StringBuffer.new
@@ -516,8 +521,8 @@ module Sun::Net::Spi::Nameservice::Dns
       
       typesig { [String] }
       # @return String containing the JNDI-DNS provider URL
-      # corresponding to the list of nameservers
-      # contained in the provided str.
+      #         corresponding to the list of nameservers
+      #         contained in the provided str.
       def create_provider_url(str)
         sb = StringBuffer.new
         st = StringTokenizer.new(str, ",")

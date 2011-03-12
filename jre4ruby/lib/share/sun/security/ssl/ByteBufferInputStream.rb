@@ -119,7 +119,7 @@ module Sun::Security::Ssl
       end
       # ByteBuffers have at most an int, so lose the upper bits.
       # The contract allows this.
-      n_int = RJava.cast_to_int(n)
+      n_int = (n).to_int
       skip = Math.min(@bb.remaining, n_int)
       @bb.position(@bb.position + skip)
       return n_int

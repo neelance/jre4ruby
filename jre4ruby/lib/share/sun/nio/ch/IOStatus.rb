@@ -69,15 +69,16 @@ module Sun::Nio::Ch
       # but also checked for illegal negative values before the return
       # completes, like so:
       # 
-      # int n = 0;
-      # try {
-      # begin();
-      # n = op(fd, buf, ...);
-      # return IOStatus.normalize(n);    // Converts UNAVAILABLE to zero
-      # } finally {
-      # end(n > 0);
-      # assert IOStatus.check(n);        // Checks other negative values
-      # }
+      #     int n = 0;
+      #     try {
+      #         begin();
+      #         n = op(fd, buf, ...);
+      #         return IOStatus.normalize(n);    // Converts UNAVAILABLE to zero
+      #     } finally {
+      #         end(n > 0);
+      #         assert IOStatus.check(n);        // Checks other negative values
+      #     }
+      # 
       def normalize(n)
         if ((n).equal?(UNAVAILABLE))
           return 0

@@ -58,8 +58,8 @@ module Java::Io
     # 
     # @param fileName  String The system-dependent filename.
     # @throws IOException  if the named file exists but is a directory rather
-    # than a regular file, does not exist but cannot be
-    # created, or cannot be opened for any other reason
+    #                  than a regular file, does not exist but cannot be
+    #                  created, or cannot be opened for any other reason
     def initialize(file_name)
       super(FileOutputStream.new(file_name))
     end
@@ -70,10 +70,10 @@ module Java::Io
     # 
     # @param fileName  String The system-dependent filename.
     # @param append    boolean if <code>true</code>, then data will be written
-    # to the end of the file rather than the beginning.
+    #                  to the end of the file rather than the beginning.
     # @throws IOException  if the named file exists but is a directory rather
-    # than a regular file, does not exist but cannot be
-    # created, or cannot be opened for any other reason
+    #                  than a regular file, does not exist but cannot be
+    #                  created, or cannot be opened for any other reason
     def initialize(file_name, append)
       super(FileOutputStream.new(file_name, append))
     end
@@ -83,8 +83,8 @@ module Java::Io
     # 
     # @param file  a File object to write to.
     # @throws IOException  if the file exists but is a directory rather than
-    # a regular file, does not exist but cannot be created,
-    # or cannot be opened for any other reason
+    #                  a regular file, does not exist but cannot be created,
+    #                  or cannot be opened for any other reason
     def initialize(file)
       super(FileOutputStream.new(file))
     end
@@ -96,10 +96,10 @@ module Java::Io
     # 
     # @param file  a File object to write to
     # @param     append    if <code>true</code>, then bytes will be written
-    # to the end of the file rather than the beginning
+    #                      to the end of the file rather than the beginning
     # @throws IOException  if the file exists but is a directory rather than
-    # a regular file, does not exist but cannot be created,
-    # or cannot be opened for any other reason
+    #                  a regular file, does not exist but cannot be created,
+    #                  or cannot be opened for any other reason
     # @since 1.4
     def initialize(file, append)
       super(FileOutputStream.new(file, append))

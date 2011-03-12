@@ -52,7 +52,7 @@ module Sun::Misc
   # <P>
   # To automatically track startup performance in an app or applet,
   # use the command-line parameter sun.perflog as follows:<BR>
-  # -Dsun.perflog[=file:<filename>]
+  #     -Dsun.perflog[=file:<filename>]
   # <BR>
   # where simply using the parameter with no value will enable output
   # to the console and a value of "file:<filename>" will cause
@@ -60,7 +60,7 @@ module Sun::Misc
   # <P>
   # By default, times are measured using System.currentTimeMillis().  To use
   # System.nanoTime() instead, add the command-line parameter:<BR>
-  # -Dsun.perflog.nano=true
+  #     -Dsun.perflog.nano=true
   # <BR>
   # <P>
   # <B>Warning: Use at your own risk!</B>

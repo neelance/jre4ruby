@@ -127,7 +127,7 @@ module Java::Util
       # Creates an empty enum set with the specified element type.
       # 
       # @param elementType the class object of the element type for this enum
-      # set
+      #     set
       # @throws NullPointerException if <tt>elementType</tt> is null
       def none_of(element_type)
         universe = get_universe(element_type)
@@ -146,7 +146,7 @@ module Java::Util
       # element type.
       # 
       # @param elementType the class object of the element type for this enum
-      # set
+      #     set
       # @throws NullPointerException if <tt>elementType</tt> is null
       def all_of(element_type)
         result = none_of(element_type)
@@ -182,7 +182,7 @@ module Java::Util
       # 
       # @param c the collection from which to initialize this enum set
       # @throws IllegalArgumentException if <tt>c</tt> is not an
-      # <tt>EnumSet</tt> instance and contains no elements
+      #     <tt>EnumSet</tt> instance and contains no elements
       # @throws NullPointerException if <tt>c</tt> is null
       def copy_of(c)
         if (c.is_a?(EnumSet))
@@ -334,7 +334,7 @@ module Java::Util
       # @param first an element that the set is to contain initially
       # @param rest the remaining elements the set is to contain initially
       # @throws NullPointerException if any of the specified elements are null,
-      # or if <tt>rest</tt> is null
+      #     or if <tt>rest</tt> is null
       # @return an enum set initially containing the specified elements
       def of(first, *rest)
         result = none_of(first.get_declaring_class)
@@ -361,7 +361,7 @@ module Java::Util
       # @throws NullPointerException if {@code from} or {@code to} are null
       # @throws IllegalArgumentException if {@code from.compareTo(to) > 0}
       # @return an enum set initially containing all of the elements in the
-      # range defined by the two specified endpoints
+      #         range defined by the two specified endpoints
       def range(from, to)
         if ((from <=> to) > 0)
           raise IllegalArgumentException.new(RJava.cast_to_string(from) + " > " + RJava.cast_to_string(to))

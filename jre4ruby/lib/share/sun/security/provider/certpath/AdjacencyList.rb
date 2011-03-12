@@ -107,7 +107,7 @@ module Sun::Security::Provider::Certpath
     # <code>List</code>. See the example above.
     # 
     # @param list a <code>List</code> of <code>List</code>s of
-    # <code>Vertex</code> objects
+    #             <code>Vertex</code> objects
     def initialize(list)
       @m_step_list = nil
       @m_orig_list = nil

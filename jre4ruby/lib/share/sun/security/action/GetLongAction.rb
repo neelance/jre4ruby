@@ -44,10 +44,10 @@ module Sun::Security::Action
   # 
   # <pre>
   # Long tmp = java.security.AccessController.doPrivileged
-  # (new sun.security.action.GetLongAction("prop"));
+  #     (new sun.security.action.GetLongAction("prop"));
   # long l;
   # if (tmp != null) {
-  # l = tmp.longValue();
+  #     l = tmp.longValue();
   # }
   # </pre>
   # 
@@ -58,7 +58,7 @@ module Sun::Security::Action
   # 
   # <pre>
   # long l = java.security.AccessController.doPrivileged
-  # (new GetLongAction("prop")).longValue();
+  #      (new GetLongAction("prop")).longValue();
   # </pre>
   # 
   # @author Roland Schemers

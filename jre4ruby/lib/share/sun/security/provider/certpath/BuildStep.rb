@@ -104,7 +104,7 @@ module Sun::Security::Provider::Certpath
     # 
     # @param vtx description of the vertex at this step
     # @param res result, where result is one of POSSIBLE, BACK,
-    # FOLLOW, FAIL, SUCCEED
+    #            FOLLOW, FAIL, SUCCEED
     def initialize(vtx, res)
       @vertex = nil
       @cert = nil

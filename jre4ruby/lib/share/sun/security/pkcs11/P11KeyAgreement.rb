@@ -210,7 +210,7 @@ module Sun::Security::Pkcs11
       session = nil
       begin
         session = @token.get_op_session
-        attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_CLASS, CKO_SECRET_KEY), CK_ATTRIBUTE.new(CKA_KEY_TYPE, CKK_GENERIC_SECRET), ])
+        attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_CLASS, CKO_SECRET_KEY), CK_ATTRIBUTE.new(CKA_KEY_TYPE, CKK_GENERIC_SECRET)])
         attributes = @token.get_attributes(O_GENERATE, CKO_SECRET_KEY, CKK_GENERIC_SECRET, attributes)
         key_id = @token.attr_p11._c_derive_key(session.id, CK_MECHANISM.new(@mechanism, @public_value), @private_key.attr_key_id, attributes)
         attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_VALUE)])
@@ -306,12 +306,12 @@ module Sun::Security::Pkcs11
       session = nil
       begin
         session = @token.get_obj_session
-        attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_CLASS, CKO_SECRET_KEY), CK_ATTRIBUTE.new(CKA_KEY_TYPE, key_type), ])
+        attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_CLASS, CKO_SECRET_KEY), CK_ATTRIBUTE.new(CKA_KEY_TYPE, key_type)])
         attributes = @token.get_attributes(O_GENERATE, CKO_SECRET_KEY, key_type, attributes)
         key_id = @token.attr_p11._c_derive_key(session.id, CK_MECHANISM.new(@mechanism, @public_value), @private_key.attr_key_id, attributes)
-        len_attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_VALUE_LEN), ])
+        len_attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_VALUE_LEN)])
         @token.attr_p11._c_get_attribute_value(session.id, key_id, len_attributes)
-        key_len = RJava.cast_to_int(len_attributes[0].get_long)
+        key_len = (len_attributes[0].get_long).to_int
         key = P11Key.secret_key(session, key_id, algorithm, key_len << 3, attributes)
         if (("RAW" == key.get_format))
           # Workaround for Solaris bug 6318543.

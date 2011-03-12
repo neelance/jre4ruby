@@ -122,19 +122,19 @@ module Sun::Reflect::Generics::ReflectiveObjects
     # 
     # <p>For each upper bound B:
     # <ul>
-    # <li>if B is a parameterized type or a type variable, it is created,
-    # (see {@link #ParameterizedType} for the details of the creation
-    # process for parameterized types).
-    # <li>Otherwise, B is resolved.
+    #  <li>if B is a parameterized type or a type variable, it is created,
+    #  (see {@link #ParameterizedType} for the details of the creation
+    #  process for parameterized types).
+    #  <li>Otherwise, B is resolved.
     # </ul>
     # 
     # @throws <tt>TypeNotPresentException</tt>  if any of the
-    # bounds refers to a non-existent type declaration
+    #     bounds refers to a non-existent type declaration
     # @throws <tt>MalformedParameterizedTypeException</tt> if any of the
-    # bounds refer to a parameterized type that cannot be instantiated
-    # for any reason
+    #     bounds refer to a parameterized type that cannot be instantiated
+    #     for any reason
     # @return an array of Types representing the upper bound(s) of this
-    # type variable
+    #     type variable
     def get_bounds
       # lazily initialize bounds if necessary
       if ((@bounds).nil?)

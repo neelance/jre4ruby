@@ -22,11 +22,8 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
-# 
 # (C) Copyright IBM Corp. 1996-2005 - All Rights Reserved                     *
-# *
+#                                                                             *
 # The original version of this source code and documentation is copyrighted   *
 # and owned by IBM, These materials are provided under terms of a License     *
 # Agreement between IBM and Sun. This technology is protected by multiple     *
@@ -53,7 +50,6 @@ module Sun::Text::Normalizer
     
     typesig { [String] }
     # public constructor ------------------------------------------------------
-    # 
     # Public constructor
     # @param str text which the iterator will be based on
     def initialize(str)
@@ -69,7 +65,6 @@ module Sun::Text::Normalizer
     
     typesig { [StringBuffer] }
     # // for StringPrep
-    # 
     # Public constructor
     # @param buf buffer of text on which the iterator will be based
     def initialize(buf)
@@ -85,7 +80,6 @@ module Sun::Text::Normalizer
     
     typesig { [] }
     # public methods ----------------------------------------------------------
-    # 
     # Creates a copy of this iterator, does not clone the underlying
     # <code>Replaceable</code>object
     # @return copy of this iterator
@@ -127,7 +121,7 @@ module Sun::Text::Normalizer
     # currentIndex is reset to the text length and a value of DONECODEPOINT is
     # returned.
     # @return next UTF16 character in text or DONE if the new currentIndex is off the
-    # end of the text range.
+    #         end of the text range.
     def next_
       if (@current_index < @replaceable.length)
         return @replaceable.char_at(((@current_index += 1) - 1))
@@ -141,7 +135,7 @@ module Sun::Text::Normalizer
     # If the resulting currentIndex is less than 0, the currentIndex is reset to 0 and a
     # value of DONECODEPOINT is returned.
     # @return next UTF16 character in text or DONE if the new currentIndex is off the
-    # start of the text range.
+    #         start of the text range.
     def previous
       if (@current_index > 0)
         return @replaceable.char_at((@current_index -= 1))
@@ -155,9 +149,9 @@ module Sun::Text::Normalizer
     # This assumes the text is stored as 16-bit code units.</p>
     # @param currentIndex the currentIndex within the text.
     # @exception IllegalArgumentException is thrown if an invalid currentIndex is
-    # supplied. i.e. currentIndex is out of bounds.
+    #            supplied. i.e. currentIndex is out of bounds.
     # @return the character at the specified currentIndex or DONE if the specified
-    # currentIndex is equal to the end of the text.
+    #         currentIndex is equal to the end of the text.
     def set_index(current_index)
       if (current_index < 0 || current_index > @replaceable.length)
         raise IllegalArgumentException.new
@@ -177,7 +171,6 @@ module Sun::Text::Normalizer
     end
     
     # private data members ----------------------------------------------------
-    # 
     # Replacable object
     attr_accessor :replaceable
     alias_method :attr_replaceable, :replaceable

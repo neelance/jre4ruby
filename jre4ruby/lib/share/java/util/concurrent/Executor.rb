@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # This file is available under and governed by the GNU General Public
 # License version 2 only, as published by the Free Software Foundation.
 # However, the following notice accompanied the original version of this
@@ -61,9 +59,9 @@ module Java::Util::Concurrent
   # 
   # <pre>
   # class DirectExecutor implements Executor {
-  # public void execute(Runnable r) {
-  # r.run();
-  # }
+  #     public void execute(Runnable r) {
+  #         r.run();
+  #     }
   # }</pre>
   # 
   # More typically, tasks are executed in some thread other
@@ -72,9 +70,9 @@ module Java::Util::Concurrent
   # 
   # <pre>
   # class ThreadPerTaskExecutor implements Executor {
-  # public void execute(Runnable r) {
-  # new Thread(r).start();
-  # }
+  #     public void execute(Runnable r) {
+  #         new Thread(r).start();
+  #     }
   # }</pre>
   # 
   # Many <tt>Executor</tt> implementations impose some sort of
@@ -84,34 +82,34 @@ module Java::Util::Concurrent
   # 
   # <pre>
   # class SerialExecutor implements Executor {
-  # final Queue&lt;Runnable&gt; tasks = new ArrayDeque&lt;Runnable&gt;();
-  # final Executor executor;
-  # Runnable active;
+  #     final Queue&lt;Runnable&gt; tasks = new ArrayDeque&lt;Runnable&gt;();
+  #     final Executor executor;
+  #     Runnable active;
   # 
-  # SerialExecutor(Executor executor) {
-  # this.executor = executor;
-  # }
+  #     SerialExecutor(Executor executor) {
+  #         this.executor = executor;
+  #     }
   # 
-  # public synchronized void execute(final Runnable r) {
-  # tasks.offer(new Runnable() {
-  # public void run() {
-  # try {
-  # r.run();
-  # } finally {
-  # scheduleNext();
-  # }
-  # }
-  # });
-  # if (active == null) {
-  # scheduleNext();
-  # }
-  # }
+  #     public synchronized void execute(final Runnable r) {
+  #         tasks.offer(new Runnable() {
+  #             public void run() {
+  #                 try {
+  #                     r.run();
+  #                 } finally {
+  #                     scheduleNext();
+  #                 }
+  #             }
+  #         });
+  #         if (active == null) {
+  #             scheduleNext();
+  #         }
+  #     }
   # 
-  # protected synchronized void scheduleNext() {
-  # if ((active = tasks.poll()) != null) {
-  # executor.execute(active);
-  # }
-  # }
+  #     protected synchronized void scheduleNext() {
+  #         if ((active = tasks.poll()) != null) {
+  #             executor.execute(active);
+  #         }
+  #     }
   # }</pre>
   # 
   # The <tt>Executor</tt> implementations provided in this package

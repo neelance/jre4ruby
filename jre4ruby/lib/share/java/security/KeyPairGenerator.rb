@@ -188,8 +188,8 @@ module Java::Security
       # @return the new KeyPairGenerator object.
       # 
       # @exception NoSuchAlgorithmException if no Provider supports a
-      # KeyPairGeneratorSpi implementation for the
-      # specified algorithm.
+      #          KeyPairGeneratorSpi implementation for the
+      #          specified algorithm.
       # 
       # @see Provider
       def get_instance(algorithm)
@@ -241,14 +241,14 @@ module Java::Security
       # @return the new KeyPairGenerator object.
       # 
       # @exception NoSuchAlgorithmException if a KeyPairGeneratorSpi
-      # implementation for the specified algorithm is not
-      # available from the specified provider.
+      #          implementation for the specified algorithm is not
+      #          available from the specified provider.
       # 
       # @exception NoSuchProviderException if the specified provider is not
-      # registered in the security provider list.
+      #          registered in the security provider list.
       # 
       # @exception IllegalArgumentException if the provider name is null
-      # or empty.
+      #          or empty.
       # 
       # @see Provider
       def get_instance(algorithm, provider)
@@ -276,8 +276,8 @@ module Java::Security
       # @return the new KeyPairGenerator object.
       # 
       # @exception NoSuchAlgorithmException if a KeyPairGeneratorSpi
-      # implementation for the specified algorithm is not available
-      # from the specified Provider object.
+      #          implementation for the specified algorithm is not available
+      #          from the specified Provider object.
       # 
       # @exception IllegalArgumentException if the specified provider is null.
       # 
@@ -339,12 +339,12 @@ module Java::Security
     def initialize_(keysize, random)
       # This does nothing, because either
       # 1. the implementation object returned by getInstance() is an
-      # instance of KeyPairGenerator which has its own
-      # initialize(keysize, random) method, so the application would
-      # be calling that method directly, or
+      #    instance of KeyPairGenerator which has its own
+      #    initialize(keysize, random) method, so the application would
+      #    be calling that method directly, or
       # 2. the implementation returned by getInstance() is an instance
-      # of Delegate, in which case initialize(keysize, random) is
-      # overridden to call the corresponding SPI method.
+      #    of Delegate, in which case initialize(keysize, random) is
+      #    overridden to call the corresponding SPI method.
       # (This is a special case, because the API and SPI method have the
       # same name.)
     end
@@ -405,12 +405,12 @@ module Java::Security
     def initialize_(params, random)
       # This does nothing, because either
       # 1. the implementation object returned by getInstance() is an
-      # instance of KeyPairGenerator which has its own
-      # initialize(params, random) method, so the application would
-      # be calling that method directly, or
+      #    instance of KeyPairGenerator which has its own
+      #    initialize(params, random) method, so the application would
+      #    be calling that method directly, or
       # 2. the implementation returned by getInstance() is an instance
-      # of Delegate, in which case initialize(params, random) is
-      # overridden to call the corresponding SPI method.
+      #    of Delegate, in which case initialize(params, random) is
+      #    overridden to call the corresponding SPI method.
       # (This is a special case, because the API and SPI method have the
       # same name.)
     end
@@ -451,13 +451,13 @@ module Java::Security
       # This does nothing (except returning null), because either:
       # 
       # 1. the implementation object returned by getInstance() is an
-      # instance of KeyPairGenerator which has its own implementation
-      # of generateKeyPair (overriding this one), so the application
-      # would be calling that method directly, or
+      #    instance of KeyPairGenerator which has its own implementation
+      #    of generateKeyPair (overriding this one), so the application
+      #    would be calling that method directly, or
       # 
       # 2. the implementation returned by getInstance() is an instance
-      # of Delegate, in which case generateKeyPair is
-      # overridden to invoke the corresponding SPI method.
+      #    of Delegate, in which case generateKeyPair is
+      #    overridden to invoke the corresponding SPI method.
       # 
       # (This is a special case, because in JDK 1.1.x the generateKeyPair
       # method was used both as an API and a SPI method.)
@@ -478,25 +478,25 @@ module Java::Security
       # been interposed in the hierarchy between the API (KeyPairGenerator)
       # and its original parent (Object).
       # 
-      # 
       # error failover notes:
       # 
-      # . we failover if the implementation throws an error during init
-      # by retrying the init on other providers
+      #  . we failover if the implementation throws an error during init
+      #    by retrying the init on other providers
       # 
-      # . we also failover if the init succeeded but the subsequent call
-      # to generateKeyPair() fails. In order for this to work, we need
-      # to remember the parameters to the last successful call to init
-      # and initialize() the next spi using them.
+      #  . we also failover if the init succeeded but the subsequent call
+      #    to generateKeyPair() fails. In order for this to work, we need
+      #    to remember the parameters to the last successful call to init
+      #    and initialize() the next spi using them.
       # 
-      # . although not specified, KeyPairGenerators could be thread safe,
-      # so we make sure we do not interfere with that
+      #  . although not specified, KeyPairGenerators could be thread safe,
+      #    so we make sure we do not interfere with that
       # 
-      # . failover is not available, if:
-      # . getInstance(algorithm, provider) was used
-      # . a provider extends KeyPairGenerator rather than
-      # KeyPairGeneratorSpi (JDK 1.1 style)
-      # . once getProvider() is called
+      #  . failover is not available, if:
+      #    . getInstance(algorithm, provider) was used
+      #    . a provider extends KeyPairGenerator rather than
+      #      KeyPairGeneratorSpi (JDK 1.1 style)
+      #    . once getProvider() is called
+      # 
       const_set_lazy(:Delegate) { Class.new(KeyPairGenerator) do
         include_class_members KeyPairGenerator
         

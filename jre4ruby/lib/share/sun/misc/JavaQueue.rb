@@ -88,7 +88,7 @@ module Sun::Misc
     # 
     # @return    the oldest object on the queue.
     # @exception java.lang.InterruptedException if any thread has
-    # interrupted this thread.
+    #              interrupted this thread.
     def dequeue
       return dequeue(0)
     end
@@ -100,7 +100,7 @@ module Sun::Misc
     # 
     # @return    the oldest object on the queue.
     # @exception java.lang.InterruptedException if any thread has
-    # interrupted this thread.
+    #              interrupted this thread.
     def dequeue(time_out)
       synchronized(self) do
         while ((@tail).nil?)

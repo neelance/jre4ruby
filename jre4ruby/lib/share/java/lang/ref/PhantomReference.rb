@@ -75,7 +75,7 @@ module Java::Lang::Ref
     # 
     # @param referent the object the new phantom reference will refer to
     # @param q the queue with which the reference is to be registered,
-    # or <tt>null</tt> if registration is not required
+    #          or <tt>null</tt> if registration is not required
     def initialize(referent, q)
       super(referent, q)
     end

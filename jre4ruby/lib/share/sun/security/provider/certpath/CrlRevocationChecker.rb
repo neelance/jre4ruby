@@ -141,7 +141,7 @@ module Sun::Security::Provider::Certpath
     # 
     # @param anchor anchor selected to validate the target certificate
     # @param params <code>PKIXParameters</code> to be used for
-    # finding certificates and CRLs, etc.
+    #               finding certificates and CRLs, etc.
     def initialize(anchor, params)
       initialize__crl_revocation_checker(anchor, params, nil)
     end
@@ -153,11 +153,11 @@ module Sun::Security::Provider::Certpath
     # 
     # @param anchor anchor selected to validate the target certificate
     # @param params <code>PKIXParameters</code> to be used for
-    # finding certificates and CRLs, etc.
+    #               finding certificates and CRLs, etc.
     # @param certs a <code>Collection</code> of certificates
-    # that may be useful, beyond those available
-    # through <code>params</code> (<code>null</code>
-    # if none)
+    #              that may be useful, beyond those available
+    #              through <code>params</code> (<code>null</code>
+    #              if none)
     def initialize(anchor, params, certs)
       @m_anchor = nil
       @m_stores = nil
@@ -253,7 +253,7 @@ module Sun::Security::Provider::Certpath
     # @return a boolean specifying if the cert is allowed to vouch for the
     # validity of a CRL for the next iteration
     # @exception CertPathValidatorException Exception thrown if
-    # certificate does not verify.
+    #            certificate does not verify.
     def check(curr_cert, prev_key, sign_flag)
       verify_revocation_status(curr_cert, prev_key, sign_flag, true)
       return cert_can_sign_crl(curr_cert)
@@ -287,11 +287,11 @@ module Sun::Security::Provider::Certpath
     typesig { [X509Certificate, PublicKey, ::Java::Boolean, ::Java::Boolean, JavaSet] }
     # Internal method to start the verification of a cert
     # @param stackedCerts a <code>Set</code> of <code>X509Certificate</code>s>
-    # whose revocation status depends on the
-    # non-revoked status of this cert. To avoid
-    # circular dependencies, we assume they're
-    # revoked while checking the revocation
-    # status of this cert.
+    #                     whose revocation status depends on the
+    #                     non-revoked status of this cert. To avoid
+    #                     circular dependencies, we assume they're
+    #                     revoked while checking the revocation
+    #                     status of this cert.
     def verify_revocation_status(curr_cert, prev_key, sign_flag, allow_separate_key, stacked_certs)
       msg = "revocation status"
       if (!(Debug).nil?)
@@ -406,13 +406,13 @@ module Sun::Security::Provider::Certpath
     # @param prevKey the <code>PublicKey</code> that failed
     # @param signFlag <code>true</code> if that key was trusted to sign CRLs
     # @param stackedCerts a <code>Set</code> of <code>X509Certificate</code>s>
-    # whose revocation status depends on the
-    # non-revoked status of this cert. To avoid
-    # circular dependencies, we assume they're
-    # revoked while checking the revocation
-    # status of this cert.
+    #                     whose revocation status depends on the
+    #                     non-revoked status of this cert. To avoid
+    #                     circular dependencies, we assume they're
+    #                     revoked while checking the revocation
+    #                     status of this cert.
     # @throws CertPathValidatorException if the cert's revocation status
-    # cannot be verified successfully with another key
+    #         cannot be verified successfully with another key
     def verify_with_separate_signing_key(curr_cert, prev_key, sign_flag, stacked_certs)
       msg = "revocation status"
       if (!(Debug).nil?)
@@ -445,10 +445,10 @@ module Sun::Security::Provider::Certpath
     # 
     # @param currCert the <code>X509Certificate</code> to be checked
     # @param prevKey the <code>PublicKey</code> of the certificate whose key
-    # cannot be used to vouch for the CRL and should be ignored
+    #    cannot be used to vouch for the CRL and should be ignored
     # @param stackedCerts a <code>Set</code> of <code>X509Certificate</code>s>
-    # whose revocation status depends on the
-    # establishment of this path.
+    #                     whose revocation status depends on the
+    #                     establishment of this path.
     # @throws CertPathValidatorException on failure
     def build_to_new_key(curr_cert, prev_key, stacked_certs)
       if (!(Debug).nil?)
@@ -622,9 +622,9 @@ module Sun::Security::Provider::Certpath
         # Creates a new <code>RejectKeySelector</code>.
         # 
         # @param badPublicKeys a <code>Set</code> of
-        # <code>PublicKey</code>s that
-        # should be rejected (or <code>null</code>
-        # if no such check should be done)
+        #                      <code>PublicKey</code>s that
+        #                      should be rejected (or <code>null</code>
+        #                      if no such check should be done)
         def initialize(bad_public_keys)
           @bad_key_set = nil
           super()
@@ -636,7 +636,7 @@ module Sun::Security::Provider::Certpath
         # 
         # @param cert the <code>Certificate</code> to be checked
         # @return <code>true</code> if the <code>Certificate</code> should be
-        # selected, <code>false</code> otherwise
+        #         selected, <code>false</code> otherwise
         def match(cert)
           if (!super(cert))
             return (false)
@@ -657,7 +657,7 @@ module Sun::Security::Provider::Certpath
         # Return a printable representation of the <code>CertSelector</code>.
         # 
         # @return a <code>String</code> describing the contents of the
-        # <code>CertSelector</code>
+        #         <code>CertSelector</code>
         def to_s
           sb = self.class::StringBuilder.new
           sb.append("RejectCertSelector: [\n")

@@ -22,11 +22,8 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
-# 
 # (C) Copyright IBM Corp. 1996-2005 - All Rights Reserved                     *
-# *
+#                                                                             *
 # The original version of this source code and documentation is copyrighted   *
 # and owned by IBM, These materials are provided under terms of a License     *
 # Agreement between IBM and Sun. This technology is protected by multiple     *
@@ -73,7 +70,6 @@ module Sun::Text::Normalizer
     
     typesig { [StringBuffer] }
     # // for StringPrep
-    # 
     # Construct a new object using <code>buf</code> for internal
     # storage.  The contents of <code>buf</code> at the time of
     # construction are used as the initial contents.  <em>Note!
@@ -106,7 +102,6 @@ module Sun::Text::Normalizer
     
     typesig { [::Java::Int, ::Java::Int, Array.typed(::Java::Char), ::Java::Int] }
     # // for StringPrep
-    # 
     # Copies characters from this object into the destination
     # character array.  The first character to be copied is at index
     # <code>srcStart</code>; the last character to be copied is at

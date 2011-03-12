@@ -90,6 +90,7 @@ module Sun::Nio::Cs
     class_module.module_eval {
       typesig { [String] }
       # Private ASCII-only version, optimized for interpretation during startup
+      # 
       def to_lower(s)
         n = s.length
         all_lower = true

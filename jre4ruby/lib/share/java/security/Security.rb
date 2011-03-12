@@ -245,11 +245,11 @@ module Java::Security
       # properties file.
       def get_provider_property(key)
         entry = nil
-        providers = Providers.get_provider_list.providers
+        providers_ = Providers.get_provider_list.providers
         i = 0
-        while i < providers.size
+        while i < providers_.size
           match_key = nil
-          prov = providers.get(i)
+          prov = providers_.get(i)
           prop = prov.get_property(key)
           if ((prop).nil?)
             # Is there a match if we do a case-insensitive property name
@@ -360,9 +360,9 @@ module Java::Security
       # 
       # @throws  NullPointerException if provider is null
       # @throws  SecurityException
-      # if a security manager exists and its <code>{@link
-      # java.lang.SecurityManager#checkSecurityAccess}</code> method
-      # denies access to add a new provider
+      #          if a security manager exists and its <code>{@link
+      #          java.lang.SecurityManager#checkSecurityAccess}</code> method
+      #          denies access to add a new provider
       # 
       # @see #getProvider
       # @see #removeProvider
@@ -404,9 +404,9 @@ module Java::Security
       # 
       # @throws  NullPointerException if provider is null
       # @throws  SecurityException
-      # if a security manager exists and its <code>{@link
-      # java.lang.SecurityManager#checkSecurityAccess}</code> method
-      # denies access to add a new provider
+      #          if a security manager exists and its <code>{@link
+      #          java.lang.SecurityManager#checkSecurityAccess}</code> method
+      #          denies access to add a new provider
       # 
       # @see #getProvider
       # @see #removeProvider
@@ -443,10 +443,10 @@ module Java::Security
       # @param name the name of the provider to remove.
       # 
       # @throws  SecurityException
-      # if a security manager exists and its <code>{@link
-      # java.lang.SecurityManager#checkSecurityAccess}</code> method
-      # denies
-      # access to remove the provider
+      #          if a security manager exists and its <code>{@link
+      #          java.lang.SecurityManager#checkSecurityAccess}</code> method
+      #          denies
+      #          access to remove the provider
       # 
       # @see #getProvider
       # @see #addProvider
@@ -513,7 +513,7 @@ module Java::Security
       # <p> The cryptographic service name must not contain any dots. There
       # must be one or more space charaters between the the
       # <i>&lt;algorithm_or_type></i> and the <i>&lt;attribute_name></i>.
-      # <p> A provider satisfies this selection criterion iff the
+      #  <p> A provider satisfies this selection criterion iff the
       # provider implements the specified algorithm or type for the specified
       # cryptographic service and its implementation meets the
       # constraint expressed by the specified attribute name/value pair.
@@ -536,7 +536,7 @@ module Java::Security
       # criterion, or null if no such providers have been installed.
       # 
       # @throws InvalidParameterException
-      # if the filter is not in the required format
+      #         if the filter is not in the required format
       # @throws NullPointerException if filter is null
       # 
       # @see #getProviders(java.util.Map)
@@ -600,7 +600,7 @@ module Java::Security
       # criteria, or null if no such providers have been installed.
       # 
       # @throws InvalidParameterException
-      # if the filter is not in the required format
+      #         if the filter is not in the required format
       # @throws NullPointerException if filter is null
       # 
       # @see #getProviders(java.lang.String)
@@ -732,10 +732,10 @@ module Java::Security
       # @return the value of the security property corresponding to key.
       # 
       # @throws  SecurityException
-      # if a security manager exists and its <code>{@link
-      # java.lang.SecurityManager#checkPermission}</code> method
-      # denies
-      # access to retrieve the specified security property value
+      #          if a security manager exists and its <code>{@link
+      #          java.lang.SecurityManager#checkPermission}</code> method
+      #          denies
+      #          access to retrieve the specified security property value
       # @throws  NullPointerException is key is null
       # 
       # @see #setProperty
@@ -766,9 +766,9 @@ module Java::Security
       # @param datum the value of the property to be set.
       # 
       # @throws  SecurityException
-      # if a security manager exists and its <code>{@link
-      # java.lang.SecurityManager#checkPermission}</code> method
-      # denies access to set the specified security property value
+      #          if a security manager exists and its <code>{@link
+      #          java.lang.SecurityManager#checkPermission}</code> method
+      #          denies access to set the specified security property value
       # @throws  NullPointerException if key or datum is null
       # 
       # @see #getProperty
@@ -776,8 +776,7 @@ module Java::Security
       def set_property(key, datum)
         check("setProperty." + key)
         self.attr_props.put(key, datum)
-        invalidate_smcache(key)
-        # See below.
+        invalidate_smcache(key) # See below.
       end
       
       typesig { [String] }
@@ -837,10 +836,8 @@ module Java::Security
             
             private
             alias_method :initialize_anonymous, :initialize
-          end.new_local(self))
-          # PrivilegedAction
-        end
-        # if
+          end.new_local(self)) # PrivilegedAction
+        end # if
       end
       
       typesig { [String] }
@@ -1032,11 +1029,11 @@ module Java::Security
           return Collections::EMPTY_SET
         end
         result = HashSet.new
-        providers = Security.get_providers
+        providers_ = Security.get_providers
         i = 0
-        while i < providers.attr_length
+        while i < providers_.attr_length
           # Check the keys for each provider.
-          e = providers[i].keys
+          e = providers_[i].keys
           while e.has_more_elements
             current_key = (e.next_element).to_upper_case
             if (current_key.starts_with(service_name.to_upper_case))

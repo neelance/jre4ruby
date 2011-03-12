@@ -77,7 +77,7 @@ module Java::Lang
     # Returns the length (character count).
     # 
     # @return  the length of the sequence of characters currently
-    # represented by this object
+    #          represented by this object
     def length
       return @count
     end
@@ -161,7 +161,7 @@ module Java::Lang
     # 
     # @param      newLength   the new length
     # @throws     IndexOutOfBoundsException  if the
-    # <code>newLength</code> argument is negative.
+    #               <code>newLength</code> argument is negative.
     def set_length(new_length)
       if (new_length < 0)
         raise StringIndexOutOfBoundsException.new(new_length)
@@ -194,7 +194,7 @@ module Java::Lang
     # @param      index   the index of the desired <code>char</code> value.
     # @return     the <code>char</code> value at the specified index.
     # @throws     IndexOutOfBoundsException  if <code>index</code> is
-    # negative or greater than or equal to <code>length()</code>.
+    #             negative or greater than or equal to <code>length()</code>.
     def char_at(index)
       if ((index < 0) || (index >= @count))
         raise StringIndexOutOfBoundsException.new(index)
@@ -218,10 +218,10 @@ module Java::Lang
     # 
     # @param      index the index to the <code>char</code> values
     # @return     the code point value of the character at the
-    # <code>index</code>
+    #             <code>index</code>
     # @exception  IndexOutOfBoundsException  if the <code>index</code>
-    # argument is negative or not less than the length of this
-    # sequence.
+    #             argument is negative or not less than the length of this
+    #             sequence.
     def code_point_at(index)
       if ((index < 0) || (index >= @count))
         raise StringIndexOutOfBoundsException.new(index)
@@ -247,8 +247,8 @@ module Java::Lang
     # @param     index the index following the code point that should be returned
     # @return    the Unicode code point value before the given index.
     # @exception IndexOutOfBoundsException if the <code>index</code>
-    # argument is less than 1 or greater than the length
-    # of this sequence.
+    #            argument is less than 1 or greater than the length
+    #            of this sequence.
     def code_point_before(index)
       i = index - 1
       if ((i < 0) || (i >= @count))
@@ -294,13 +294,13 @@ module Java::Lang
     # @param codePointOffset the offset in code points
     # @return the index within this sequence
     # @exception IndexOutOfBoundsException if <code>index</code>
-    # is negative or larger then the length of this sequence,
-    # or if <code>codePointOffset</code> is positive and the subsequence
-    # starting with <code>index</code> has fewer than
-    # <code>codePointOffset</code> code points,
-    # or if <code>codePointOffset</code> is negative and the subsequence
-    # before <code>index</code> has fewer than the absolute value of
-    # <code>codePointOffset</code> code points.
+    #   is negative or larger then the length of this sequence,
+    #   or if <code>codePointOffset</code> is positive and the subsequence
+    #   starting with <code>index</code> has fewer than
+    #   <code>codePointOffset</code> code points,
+    #   or if <code>codePointOffset</code> is negative and the subsequence
+    #   before <code>index</code> has fewer than the absolute value of
+    #   <code>codePointOffset</code> code points.
     def offset_by_code_points(index, code_point_offset)
       if (index < 0 || index > @count)
         raise IndexOutOfBoundsException.new
@@ -325,18 +325,18 @@ module Java::Lang
     # @param      dst        the array to copy the data into.
     # @param      dstBegin   offset into <code>dst</code>.
     # @throws     NullPointerException if <code>dst</code> is
-    # <code>null</code>.
+    #             <code>null</code>.
     # @throws     IndexOutOfBoundsException  if any of the following is true:
-    # <ul>
-    # <li><code>srcBegin</code> is negative
-    # <li><code>dstBegin</code> is negative
-    # <li>the <code>srcBegin</code> argument is greater than
-    # the <code>srcEnd</code> argument.
-    # <li><code>srcEnd</code> is greater than
-    # <code>this.length()</code>.
-    # <li><code>dstBegin+srcEnd-srcBegin</code> is greater than
-    # <code>dst.length</code>
-    # </ul>
+    #             <ul>
+    #             <li><code>srcBegin</code> is negative
+    #             <li><code>dstBegin</code> is negative
+    #             <li>the <code>srcBegin</code> argument is greater than
+    #             the <code>srcEnd</code> argument.
+    #             <li><code>srcEnd</code> is greater than
+    #             <code>this.length()</code>.
+    #             <li><code>dstBegin+srcEnd-srcBegin</code> is greater than
+    #             <code>dst.length</code>
+    #             </ul>
     def get_chars(src_begin, src_end, dst, dst_begin)
       if (src_begin < 0)
         raise StringIndexOutOfBoundsException.new(src_begin)
@@ -362,7 +362,7 @@ module Java::Lang
     # @param      index   the index of the character to modify.
     # @param      ch      the new character.
     # @throws     IndexOutOfBoundsException  if <code>index</code> is
-    # negative or greater than or equal to <code>length()</code>.
+    #             negative or greater than or equal to <code>length()</code>.
     def set_char_at(index, ch)
       if ((index < 0) || (index >= @count))
         raise StringIndexOutOfBoundsException.new(index)
@@ -474,9 +474,9 @@ module Java::Lang
     # @param   end     the end index of the subsequence to be appended.
     # @return  a reference to this object.
     # @throws     IndexOutOfBoundsException if
-    # <code>start</code> or <code>end</code> are negative, or
-    # <code>start</code> is greater than <code>end</code> or
-    # <code>end</code> is greater than <code>s.length()</code>
+    #                  <code>start</code> or <code>end</code> are negative, or
+    #             <code>start</code> is greater than <code>end</code> or
+    #             <code>end</code> is greater than <code>s.length()</code>
     def append(s, start, end_)
       if ((s).nil?)
         s = "null"
@@ -702,8 +702,8 @@ module Java::Lang
     # @param      end    The ending index, exclusive.
     # @return     This object.
     # @throws     StringIndexOutOfBoundsException  if <code>start</code>
-    # is negative, greater than <code>length()</code>, or
-    # greater than <code>end</code>.
+    #             is negative, greater than <code>length()</code>, or
+    #             greater than <code>end</code>.
     def delete(start, end_)
       if (start < 0)
         raise StringIndexOutOfBoundsException.new(start)
@@ -775,8 +775,8 @@ module Java::Lang
     # @param       index  Index of <code>char</code> to remove
     # @return      This object.
     # @throws      StringIndexOutOfBoundsException  if the <code>index</code>
-    # is negative or greater than or equal to
-    # <code>length()</code>.
+    #              is negative or greater than or equal to
+    #              <code>length()</code>.
     def delete_char_at(index)
       if ((index < 0) || (index >= @count))
         raise StringIndexOutOfBoundsException.new(index)
@@ -802,8 +802,8 @@ module Java::Lang
     # @param      str   String that will replace previous contents.
     # @return     This object.
     # @throws     StringIndexOutOfBoundsException  if <code>start</code>
-    # is negative, greater than <code>length()</code>, or
-    # greater than <code>end</code>.
+    #             is negative, greater than <code>length()</code>, or
+    #             greater than <code>end</code>.
     def replace(start, end_, str)
       if (start < 0)
         raise StringIndexOutOfBoundsException.new(start)
@@ -837,7 +837,7 @@ module Java::Lang
     # @param      start    The beginning index, inclusive.
     # @return     The new string.
     # @throws     StringIndexOutOfBoundsException  if <code>start</code> is
-    # less than zero, or greater than the length of this object.
+    #             less than zero, or greater than the length of this object.
     def substring(start)
       return substring(start, @count)
     end
@@ -863,9 +863,9 @@ module Java::Lang
     # @return     the specified subsequence.
     # 
     # @throws  IndexOutOfBoundsException
-    # if <tt>start</tt> or <tt>end</tt> are negative,
-    # if <tt>end</tt> is greater than <tt>length()</tt>,
-    # or if <tt>start</tt> is greater than <tt>end</tt>
+    #          if <tt>start</tt> or <tt>end</tt> are negative,
+    #          if <tt>end</tt> is greater than <tt>length()</tt>,
+    #          or if <tt>start</tt> is greater than <tt>end</tt>
     # @spec JSR-51
     def sub_sequence(start, end_)
       return substring(start, end_)
@@ -881,9 +881,9 @@ module Java::Lang
     # @param      end      The ending index, exclusive.
     # @return     The new string.
     # @throws     StringIndexOutOfBoundsException  if <code>start</code>
-    # or <code>end</code> are negative or greater than
-    # <code>length()</code>, or <code>start</code> is
-    # greater than <code>end</code>.
+    #             or <code>end</code> are negative or greater than
+    #             <code>length()</code>, or <code>start</code> is
+    #             greater than <code>end</code>.
     def substring(start, end_)
       if (start < 0)
         raise StringIndexOutOfBoundsException.new(start)
@@ -908,15 +908,15 @@ module Java::Lang
     # @param      index    position at which to insert subarray.
     # @param      str       A <code>char</code> array.
     # @param      offset   the index of the first <code>char</code> in subarray to
-    # be inserted.
+    #             be inserted.
     # @param      len      the number of <code>char</code>s in the subarray to
-    # be inserted.
+    #             be inserted.
     # @return     This object
     # @throws     StringIndexOutOfBoundsException  if <code>index</code>
-    # is negative or greater than <code>length()</code>, or
-    # <code>offset</code> or <code>len</code> are negative, or
-    # <code>(offset+len)</code> is greater than
-    # <code>str.length</code>.
+    #             is negative or greater than <code>length()</code>, or
+    #             <code>offset</code> or <code>len</code> are negative, or
+    #             <code>(offset+len)</code> is greater than
+    #             <code>str.length</code>.
     def insert(index, str, offset, len)
       if ((index < 0) || (index > length))
         raise StringIndexOutOfBoundsException.new(index)
@@ -1105,10 +1105,10 @@ module Java::Lang
     # @param      end     the end index of the subsequence to be inserted.
     # @return     a reference to this object.
     # @throws     IndexOutOfBoundsException  if <code>dstOffset</code>
-    # is negative or greater than <code>this.length()</code>, or
-    # <code>start</code> or <code>end</code> are negative, or
-    # <code>start</code> is greater than <code>end</code> or
-    # <code>end</code> is greater than <code>s.length()</code>
+    #             is negative or greater than <code>this.length()</code>, or
+    #              <code>start</code> or <code>end</code> are negative, or
+    #              <code>start</code> is greater than <code>end</code> or
+    #              <code>end</code> is greater than <code>s.length()</code>
     def insert(dst_offset, s, start, end_)
       if ((s).nil?)
         s = "null"
@@ -1286,11 +1286,11 @@ module Java::Lang
     # 
     # @param   str   any string.
     # @return  if the string argument occurs as a substring within this
-    # object, then the index of the first character of the first
-    # such substring is returned; if it does not occur as a
-    # substring, <code>-1</code> is returned.
+    #          object, then the index of the first character of the first
+    #          such substring is returned; if it does not occur as a
+    #          substring, <code>-1</code> is returned.
     # @throws  java.lang.NullPointerException if <code>str</code> is
-    # <code>null</code>.
+    #          <code>null</code>.
     def index_of(str)
       return index_of(str, 0)
     end
@@ -1300,17 +1300,17 @@ module Java::Lang
     # specified substring, starting at the specified index.  The integer
     # returned is the smallest value <tt>k</tt> for which:
     # <blockquote><pre>
-    # k >= Math.min(fromIndex, str.length()) &&
-    # this.toString().startsWith(str, k)
+    #     k >= Math.min(fromIndex, str.length()) &&
+    #                   this.toString().startsWith(str, k)
     # </pre></blockquote>
     # If no such value of <i>k</i> exists, then -1 is returned.
     # 
     # @param   str         the substring for which to search.
     # @param   fromIndex   the index from which to start the search.
     # @return  the index within this string of the first occurrence of the
-    # specified substring, starting at the specified index.
+    #          specified substring, starting at the specified index.
     # @throws  java.lang.NullPointerException if <code>str</code> is
-    # <code>null</code>.
+    #            <code>null</code>.
     def index_of(str, from_index)
       return String.index_of(@value, 0, @count, str.to_char_array, 0, str.length, from_index)
     end
@@ -1327,11 +1327,11 @@ module Java::Lang
     # 
     # @param   str   the substring to search for.
     # @return  if the string argument occurs one or more times as a substring
-    # within this object, then the index of the first character of
-    # the last such substring is returned. If it does not occur as
-    # a substring, <code>-1</code> is returned.
+    #          within this object, then the index of the first character of
+    #          the last such substring is returned. If it does not occur as
+    #          a substring, <code>-1</code> is returned.
     # @throws  java.lang.NullPointerException  if <code>str</code> is
-    # <code>null</code>.
+    #          <code>null</code>.
     def last_index_of(str)
       return last_index_of(str, @count)
     end
@@ -1341,17 +1341,17 @@ module Java::Lang
     # specified substring. The integer returned is the largest value <i>k</i>
     # such that:
     # <blockquote><pre>
-    # k <= Math.min(fromIndex, str.length()) &&
-    # this.toString().startsWith(str, k)
+    #     k <= Math.min(fromIndex, str.length()) &&
+    #                   this.toString().startsWith(str, k)
     # </pre></blockquote>
     # If no such value of <i>k</i> exists, then -1 is returned.
     # 
     # @param   str         the substring to search for.
     # @param   fromIndex   the index to start the search from.
     # @return  the index within this sequence of the last occurrence of the
-    # specified substring.
+    #          specified substring.
     # @throws  java.lang.NullPointerException if <code>str</code> is
-    # <code>null</code>.
+    #          <code>null</code>.
     def last_index_of(str, from_index)
       return String.last_index_of(@value, 0, @count, str.to_char_array, 0, str.length, from_index)
     end

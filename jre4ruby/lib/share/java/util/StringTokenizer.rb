@@ -47,12 +47,12 @@ module Java::Util
   # or <code>false</code>:
   # <ul>
   # <li>If the flag is <code>false</code>, delimiter characters serve to
-  # separate tokens. A token is a maximal sequence of consecutive
-  # characters that are not delimiters.
+  #     separate tokens. A token is a maximal sequence of consecutive
+  #     characters that are not delimiters.
   # <li>If the flag is <code>true</code>, delimiter characters are themselves
-  # considered to be tokens. A token is thus either one delimiter
-  # character, or a maximal sequence of consecutive characters that are
-  # not delimiters.
+  #     considered to be tokens. A token is thus either one delimiter
+  #     character, or a maximal sequence of consecutive characters that are
+  #     not delimiters.
   # </ul><p>
   # A <tt>StringTokenizer</tt> object internally maintains a current
   # position within the string to be tokenized. Some operations advance this
@@ -62,18 +62,18 @@ module Java::Util
   # <p>
   # The following is one example of the use of the tokenizer. The code:
   # <blockquote><pre>
-  # StringTokenizer st = new StringTokenizer("this is a test");
-  # while (st.hasMoreTokens()) {
-  # System.out.println(st.nextToken());
-  # }
+  #     StringTokenizer st = new StringTokenizer("this is a test");
+  #     while (st.hasMoreTokens()) {
+  #         System.out.println(st.nextToken());
+  #     }
   # </pre></blockquote>
   # <p>
   # prints the following output:
   # <blockquote><pre>
-  # this
-  # is
-  # a
-  # test
+  #     this
+  #     is
+  #     a
+  #     test
   # </pre></blockquote>
   # 
   # <p>
@@ -85,17 +85,17 @@ module Java::Util
   # The following example illustrates how the <tt>String.split</tt>
   # method can be used to break up a string into its basic tokens:
   # <blockquote><pre>
-  # String[] result = "this is a test".split("\\s");
-  # for (int x=0; x&lt;result.length; x++)
-  # System.out.println(result[x]);
+  #     String[] result = "this is a test".split("\\s");
+  #     for (int x=0; x&lt;result.length; x++)
+  #         System.out.println(result[x]);
   # </pre></blockquote>
   # <p>
   # prints the following output:
   # <blockquote><pre>
-  # this
-  # is
-  # a
-  # test
+  #     this
+  #     is
+  #     a
+  #     test
   # </pre></blockquote>
   # 
   # @author  unascribed
@@ -236,7 +236,7 @@ module Java::Util
     # @param   str            a string to be parsed.
     # @param   delim          the delimiters.
     # @param   returnDelims   flag indicating whether to return the delimiters
-    # as tokens.
+    #                         as tokens.
     # @exception NullPointerException if str is <CODE>null</CODE>
     def initialize(str, delim, return_delims)
       @current_position = 0
@@ -372,8 +372,8 @@ module Java::Util
     # <tt>nextToken</tt> with no argument will successfully return a token.
     # 
     # @return  <code>true</code> if and only if there is at least one token
-    # in the string after the current position; <code>false</code>
-    # otherwise.
+    #          in the string after the current position; <code>false</code>
+    #          otherwise.
     def has_more_tokens
       # Temporarily store this position and use it in the following
       # nextToken() method only if the delimiters haven't been changed in
@@ -387,7 +387,7 @@ module Java::Util
     # 
     # @return     the next token from this string tokenizer.
     # @exception  NoSuchElementException  if there are no more tokens in this
-    # tokenizer's string.
+    #               tokenizer's string.
     def next_token
       # If next position already computed in hasMoreElements() and
       # delimiters have changed between the computation and this invocation,
@@ -416,7 +416,7 @@ module Java::Util
     # @param      delim   the new delimiters.
     # @return     the next token, after switching to the new delimiter set.
     # @exception  NoSuchElementException  if there are no more tokens in this
-    # tokenizer's string.
+    #               tokenizer's string.
     # @exception NullPointerException if delim is <CODE>null</CODE>
     def next_token(delim)
       @delimiters = delim
@@ -432,7 +432,7 @@ module Java::Util
     # <code>Enumeration</code> interface.
     # 
     # @return  <code>true</code> if there are more tokens;
-    # <code>false</code> otherwise.
+    #          <code>false</code> otherwise.
     # @see     java.util.Enumeration
     # @see     java.util.StringTokenizer#hasMoreTokens()
     def has_more_elements
@@ -447,7 +447,7 @@ module Java::Util
     # 
     # @return     the next token in the string.
     # @exception  NoSuchElementException  if there are no more tokens in this
-    # tokenizer's string.
+    #               tokenizer's string.
     # @see        java.util.Enumeration
     # @see        java.util.StringTokenizer#nextToken()
     def next_element
@@ -460,7 +460,7 @@ module Java::Util
     # exception. The current position is not advanced.
     # 
     # @return  the number of tokens remaining in the string using the current
-    # delimiter set.
+    #          delimiter set.
     # @see     java.util.StringTokenizer#nextToken()
     def count_tokens
       count = 0

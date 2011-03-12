@@ -22,7 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
 # -- This file was mechanically generated: Do not edit! -- //
 module Java::Nio
   module DirectDoubleBufferSImports #:nodoc:
@@ -54,7 +53,7 @@ module Java::Nio
     
     # Base address, used in all indexing calculations
     # NOTE: moved up to Buffer.java for speed in JNI GetDirectBufferAddress
-    # protected long address;
+    #    protected long address;
     # If this buffer is a view of another buffer then we keep a reference to
     # that buffer so that its memory isn't freed before we're done with it
     attr_accessor :viewed_buffer
@@ -76,11 +75,10 @@ module Java::Nio
     typesig { [DirectBuffer, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int] }
     # For duplicates and slices
     # 
-    # package-private
     def initialize(db, mark, pos, lim, cap, off)
       @viewed_buffer = nil
       super(mark, pos, lim, cap)
-      @viewed_buffer = nil
+      @viewed_buffer = nil # package-private
       self.attr_address = db.address + off
       @viewed_buffer = db
     end

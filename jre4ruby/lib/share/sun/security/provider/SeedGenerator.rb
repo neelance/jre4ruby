@@ -241,7 +241,7 @@ module Sun::Security::Provider
       
       # // This method helps the test utility receive unprocessed seed bytes.
       # public static int genTestSeed() {
-      # return myself.getByte();
+      #     return myself.getByte();
       # }
       const_set_lazy(:ThreadedSeedGenerator) { Class.new(SeedGenerator) do
         include_class_members SeedGenerator

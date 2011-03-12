@@ -32,7 +32,6 @@ module Sun::Security::Ssl
   end
   
   # inherit default mark/reset behavior (throw Exceptions) from InputStream
-  # 
   # InputStream for application data as returned by SSLSocket.getInputStream().
   # It uses an InputRecord as internal buffer that is refilled on demand
   # whenever it runs out of data.
@@ -142,7 +141,7 @@ module Sun::Security::Ssl
       synchronized(self) do
         skipped = 0
         while (n > 0)
-          len = RJava.cast_to_int(Math.min(n, SKIP_ARRAY.attr_length))
+          len = (Math.min(n, SKIP_ARRAY.attr_length)).to_int
           r = read(SKIP_ARRAY, 0, len)
           if (r <= 0)
             break

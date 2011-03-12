@@ -155,9 +155,9 @@ module Java::Security
       # @return the installed Policy.
       # 
       # @throws SecurityException
-      # if a security manager exists and its
-      # <code>checkPermission</code> method doesn't allow
-      # getting the Policy object.
+      #        if a security manager exists and its
+      #        <code>checkPermission</code> method doesn't allow
+      #        getting the Policy object.
       # 
       # @see SecurityManager#checkPermission(Permission)
       # @see #setPolicy(java.security.Policy)
@@ -207,7 +207,6 @@ module Java::Security
               # provider that is on the bootclasspath
               # If it loads then shift gears to using the configured
               # provider.
-              # 
               # install the bootstrap provider to avoid recursion
               self.attr_policy = Sun::Security::Provider::PolicyFile.new
               pc = policy_class
@@ -268,9 +267,9 @@ module Java::Security
       # @param p the new system Policy object.
       # 
       # @throws SecurityException
-      # if a security manager exists and its
-      # <code>checkPermission</code> method doesn't allow
-      # setting the Policy.
+      #        if a security manager exists and its
+      #        <code>checkPermission</code> method doesn't allow
+      #        setting the Policy.
       # 
       # @see SecurityManager#checkPermission(Permission)
       # @see #getPolicy()
@@ -368,25 +367,25 @@ module Java::Security
       # the {@link Security#getProviders() Security.getProviders()} method.
       # 
       # @param type the specified Policy type.  See Appendix A in the
-      # <a href="../../../technotes/guides/security/crypto/CryptoSpec.html#AppA">
-      # Java Cryptography Architecture API Specification &amp; Reference </a>
-      # for a list of standard Policy types.
+      #    <a href="../../../technotes/guides/security/crypto/CryptoSpec.html#AppA">
+      #    Java Cryptography Architecture API Specification &amp; Reference </a>
+      #    for a list of standard Policy types.
       # 
       # @param params parameters for the Policy, which may be null.
       # 
       # @return the new Policy object.
       # 
       # @exception SecurityException if the caller does not have permission
-      # to get a Policy instance for the specified type.
+      #          to get a Policy instance for the specified type.
       # 
       # @exception NullPointerException if the specified type is null.
       # 
       # @exception IllegalArgumentException if the specified parameters
-      # are not understood by the PolicySpi implementation
-      # from the selected Provider.
+      #          are not understood by the PolicySpi implementation
+      #          from the selected Provider.
       # 
       # @exception NoSuchAlgorithmException if no Provider supports a PolicySpi
-      # implementation for the specified type.
+      #          implementation for the specified type.
       # 
       # @see Provider
       # @since 1.6
@@ -412,9 +411,9 @@ module Java::Security
       # the {@link Security#getProviders() Security.getProviders()} method.
       # 
       # @param type the specified Policy type.  See Appendix A in the
-      # <a href="../../../technotes/guides/security/crypto/CryptoSpec.html#AppA">
-      # Java Cryptography Architecture API Specification &amp; Reference </a>
-      # for a list of standard Policy types.
+      #    <a href="../../../technotes/guides/security/crypto/CryptoSpec.html#AppA">
+      #    Java Cryptography Architecture API Specification &amp; Reference </a>
+      #    for a list of standard Policy types.
       # 
       # @param params parameters for the Policy, which may be null.
       # 
@@ -423,20 +422,20 @@ module Java::Security
       # @return the new Policy object.
       # 
       # @exception SecurityException if the caller does not have permission
-      # to get a Policy instance for the specified type.
+      #          to get a Policy instance for the specified type.
       # 
       # @exception NullPointerException if the specified type is null.
       # 
       # @exception IllegalArgumentException if the specified provider
-      # is null or empty,
-      # or if the specified parameters are not understood by
-      # the PolicySpi implementation from the specified provider.
+      #          is null or empty,
+      #          or if the specified parameters are not understood by
+      #          the PolicySpi implementation from the specified provider.
       # 
       # @exception NoSuchProviderException if the specified provider is not
-      # registered in the security provider list.
+      #          registered in the security provider list.
       # 
       # @exception NoSuchAlgorithmException if the specified provider does not
-      # support a PolicySpi implementation for the specified type.
+      #          support a PolicySpi implementation for the specified type.
       # 
       # @see Provider
       # @since 1.6
@@ -462,9 +461,9 @@ module Java::Security
       # does not have to be registered in the provider list.
       # 
       # @param type the specified Policy type.  See Appendix A in the
-      # <a href="../../../technotes/guides/security/crypto/CryptoSpec.html#AppA">
-      # Java Cryptography Architecture API Specification &amp; Reference </a>
-      # for a list of standard Policy types.
+      #    <a href="../../../technotes/guides/security/crypto/CryptoSpec.html#AppA">
+      #    Java Cryptography Architecture API Specification &amp; Reference </a>
+      #    for a list of standard Policy types.
       # 
       # @param params parameters for the Policy, which may be null.
       # 
@@ -473,16 +472,16 @@ module Java::Security
       # @return the new Policy object.
       # 
       # @exception SecurityException if the caller does not have permission
-      # to get a Policy instance for the specified type.
+      #          to get a Policy instance for the specified type.
       # 
       # @exception NullPointerException if the specified type is null.
       # 
       # @exception IllegalArgumentException if the specified Provider is null,
-      # or if the specified parameters are not understood by
-      # the PolicySpi implementation from the specified Provider.
+      #          or if the specified parameters are not understood by
+      #          the PolicySpi implementation from the specified Provider.
       # 
       # @exception NoSuchAlgorithmException if the specified Provider does not
-      # support a PolicySpi implementation for the specified type.
+      #          support a PolicySpi implementation for the specified type.
       # 
       # @see Provider
       # @since 1.6
@@ -568,14 +567,14 @@ module Java::Security
     # permissions granted to a CodeSource.
     # 
     # @param codesource the CodeSource to which the returned
-    # PermissionCollection has been granted.
+    #          PermissionCollection has been granted.
     # 
     # @return a set of permissions granted to the specified CodeSource.
-    # If this operation is supported, the returned
-    # set of permissions must be a new mutable instance
-    # and it must support heterogeneous Permission types.
-    # If this operation is not supported,
-    # Policy.UNSUPPORTED_EMPTY_COLLECTION is returned.
+    #          If this operation is supported, the returned
+    #          set of permissions must be a new mutable instance
+    #          and it must support heterogeneous Permission types.
+    #          If this operation is not supported,
+    #          Policy.UNSUPPORTED_EMPTY_COLLECTION is returned.
     def get_permissions(codesource)
       return Policy::UNSUPPORTED_EMPTY_COLLECTION
     end
@@ -603,14 +602,14 @@ module Java::Security
     # supports returning a set of permissions granted to a ProtectionDomain.
     # 
     # @param domain the ProtectionDomain to which the returned
-    # PermissionCollection has been granted.
+    #          PermissionCollection has been granted.
     # 
     # @return a set of permissions granted to the specified ProtectionDomain.
-    # If this operation is supported, the returned
-    # set of permissions must be a new mutable instance
-    # and it must support heterogeneous Permission types.
-    # If this operation is not supported,
-    # Policy.UNSUPPORTED_EMPTY_COLLECTION is returned.
+    #          If this operation is supported, the returned
+    #          set of permissions must be a new mutable instance
+    #          and it must support heterogeneous Permission types.
+    #          If this operation is not supported,
+    #          Policy.UNSUPPORTED_EMPTY_COLLECTION is returned.
     # 
     # @since 1.4
     def get_permissions(domain)
@@ -820,7 +819,7 @@ module Java::Security
         # @param permission the Permission object to add.
         # 
         # @exception SecurityException - if this PermissionCollection object
-        # has been marked readonly
+        #                                has been marked readonly
         def add(permission)
           @perms.add(permission)
         end

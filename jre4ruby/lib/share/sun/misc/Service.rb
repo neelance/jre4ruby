@@ -86,8 +86,8 @@ module Sun::Misc
   # <tt>java.io.spi.CharCodec</tt>.  It has two abstract methods:
   # 
   # <pre>
-  # public abstract CharEncoder getEncoder(String encodingName);
-  # public abstract CharDecoder getDecoder(String encodingName);
+  #   public abstract CharEncoder getEncoder(String encodingName);
+  #   public abstract CharDecoder getDecoder(String encodingName);
   # </pre>
   # 
   # Each method returns an appropriate object or <tt>null</tt> if it cannot
@@ -100,23 +100,23 @@ module Sun::Misc
   # the single line:
   # 
   # <pre>
-  # sun.io.StandardCodec    # Standard codecs for the platform
+  #   sun.io.StandardCodec    # Standard codecs for the platform
   # </pre>
   # 
   # To locate an encoder for a given encoding name, the internal I/O code would
   # do something like this:
   # 
   # <pre>
-  # CharEncoder getEncoder(String encodingName) {
-  # Iterator ps = Service.providers(CharCodec.class);
-  # while (ps.hasNext()) {
-  # CharCodec cc = (CharCodec)ps.next();
-  # CharEncoder ce = cc.getEncoder(encodingName);
-  # if (ce != null)
-  # return ce;
-  # }
-  # return null;
-  # }
+  #   CharEncoder getEncoder(String encodingName) {
+  #       Iterator ps = Service.providers(CharCodec.class);
+  #       while (ps.hasNext()) {
+  #           CharCodec cc = (CharCodec)ps.next();
+  #           CharEncoder ce = cc.getEncoder(encodingName);
+  #           if (ce != null)
+  #               return ce;
+  #       }
+  #       return null;
+  #   }
   # </pre>
   # 
   # The provider-lookup mechanism always executes in the security context of the
@@ -198,24 +198,24 @@ module Sun::Misc
       # Parse the content of the given URL as a provider-configuration file.
       # 
       # @param  service
-      # The service class for which providers are being sought;
-      # used to construct error detail strings
+      #         The service class for which providers are being sought;
+      #         used to construct error detail strings
       # 
       # @param  url
-      # The URL naming the configuration file to be parsed
+      #         The URL naming the configuration file to be parsed
       # 
       # @param  returned
-      # A Set containing the names of provider classes that have already
-      # been returned.  This set will be updated to contain the names
-      # that will be yielded from the returned <tt>Iterator</tt>.
+      #         A Set containing the names of provider classes that have already
+      #         been returned.  This set will be updated to contain the names
+      #         that will be yielded from the returned <tt>Iterator</tt>.
       # 
       # @return A (possibly empty) <tt>Iterator</tt> that will yield the
-      # provider-class names in the given configuration file that are
-      # not yet members of the returned set
+      #         provider-class names in the given configuration file that are
+      #         not yet members of the returned set
       # 
       # @throws ServiceConfigurationError
-      # If an I/O error occurs while reading from the given URL, or
-      # if a configuration-file format error is detected
+      #         If an I/O error occurs while reading from the given URL, or
+      #         if a configuration-file format error is detected
       def parse(service, u, returned)
         in_ = nil
         r = nil
@@ -337,8 +337,7 @@ module Sun::Misc
           rescue self.class::JavaException => x
             fail(@service, "Provider " + cn + " could not be instantiated: " + RJava.cast_to_string(x), x)
           end
-          return nil
-          # This cannot happen
+          return nil # This cannot happen
         end
         
         typesig { [] }
@@ -367,23 +366,23 @@ module Sun::Misc
       # it is invoked. <p>
       # 
       # @param  service
-      # The service's abstract service class
+      #         The service's abstract service class
       # 
       # @param  loader
-      # The class loader to be used to load provider-configuration files
-      # and instantiate provider classes, or <tt>null</tt> if the system
-      # class loader (or, failing that the bootstrap class loader) is to
-      # be used
+      #         The class loader to be used to load provider-configuration files
+      #         and instantiate provider classes, or <tt>null</tt> if the system
+      #         class loader (or, failing that the bootstrap class loader) is to
+      #         be used
       # 
       # @return An <tt>Iterator</tt> that yields provider objects for the given
-      # service, in some arbitrary order.  The iterator will throw a
-      # <tt>ServiceConfigurationError</tt> if a provider-configuration
-      # file violates the specified format or if a provider class cannot
-      # be found and instantiated.
+      #         service, in some arbitrary order.  The iterator will throw a
+      #         <tt>ServiceConfigurationError</tt> if a provider-configuration
+      #         file violates the specified format or if a provider class cannot
+      #         be found and instantiated.
       # 
       # @throws ServiceConfigurationError
-      # If a provider-configuration file violates the specified format
-      # or names a provider class that cannot be found and instantiated
+      #         If a provider-configuration file violates the specified format
+      #         or names a provider class that cannot be found and instantiated
       # 
       # @see #providers(java.lang.Class)
       # @see #installedProviders(java.lang.Class)
@@ -397,22 +396,22 @@ module Sun::Misc
       # is equivalent to
       # 
       # <pre>
-      # ClassLoader cl = Thread.currentThread().getContextClassLoader();
-      # return Service.providers(service, cl);
+      #   ClassLoader cl = Thread.currentThread().getContextClassLoader();
+      #   return Service.providers(service, cl);
       # </pre>
       # 
       # @param  service
-      # The service's abstract service class
+      #         The service's abstract service class
       # 
       # @return An <tt>Iterator</tt> that yields provider objects for the given
-      # service, in some arbitrary order.  The iterator will throw a
-      # <tt>ServiceConfigurationError</tt> if a provider-configuration
-      # file violates the specified format or if a provider class cannot
-      # be found and instantiated.
+      #         service, in some arbitrary order.  The iterator will throw a
+      #         <tt>ServiceConfigurationError</tt> if a provider-configuration
+      #         file violates the specified format or if a provider class cannot
+      #         be found and instantiated.
       # 
       # @throws ServiceConfigurationError
-      # If a provider-configuration file violates the specified format
-      # or names a provider class that cannot be found and instantiated
+      #         If a provider-configuration file violates the specified format
+      #         or names a provider class that cannot be found and instantiated
       # 
       # @see #providers(java.lang.Class, java.lang.ClassLoader)
       def providers(service)
@@ -427,7 +426,7 @@ module Sun::Misc
       # <tt>extClassLoader</tt>, and then does
       # 
       # <pre>
-      # return Service.providers(service, extClassLoader);
+      #   return Service.providers(service, extClassLoader);
       # </pre>
       # 
       # If the extension class loader cannot be found then the system class
@@ -435,17 +434,17 @@ module Sun::Misc
       # class loader is used.
       # 
       # @param  service
-      # The service's abstract service class
+      #         The service's abstract service class
       # 
       # @return An <tt>Iterator</tt> that yields provider objects for the given
-      # service, in some arbitrary order.  The iterator will throw a
-      # <tt>ServiceConfigurationError</tt> if a provider-configuration
-      # file violates the specified format or if a provider class cannot
-      # be found and instantiated.
+      #         service, in some arbitrary order.  The iterator will throw a
+      #         <tt>ServiceConfigurationError</tt> if a provider-configuration
+      #         file violates the specified format or if a provider class cannot
+      #         be found and instantiated.
       # 
       # @throws ServiceConfigurationError
-      # If a provider-configuration file violates the specified format
-      # or names a provider class that cannot be found and instantiated
+      #         If a provider-configuration file violates the specified format
+      #         or names a provider class that cannot be found and instantiated
       # 
       # @see #providers(java.lang.Class, java.lang.ClassLoader)
       def installed_providers(service)

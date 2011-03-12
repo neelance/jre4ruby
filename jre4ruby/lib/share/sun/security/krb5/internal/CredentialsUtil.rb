@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5::Internal
@@ -65,20 +63,20 @@ module Sun::Security::Krb5::Internal
       alias_method :attr_debug=, :debug=
       
       typesig { [String, Credentials] }
-      # Acquires credentials for a specified service using initial credential. Wh
+      #     * Acquires credentials for a specified service using initial credential. Wh
       # en the service has a different realm
-      # from the initial credential, we do cross-realm authentication - first, we
-      # use the current credential to get
-      # a cross-realm credential from the local KDC, then use that cross-realm cr
+      #     * from the initial credential, we do cross-realm authentication - first, we
+      #  use the current credential to get
+      #     * a cross-realm credential from the local KDC, then use that cross-realm cr
       # edential to request service credential
-      # from the foreigh KDC.
-      # 
-      # @param service the name of service principal using format components@real
+      #     * from the foreigh KDC.
+      #     *
+      #     * @param service the name of service principal using format components@real
       # m
-      # @param ccreds client's initial credential.
-      # @exception Exception general exception will be thrown when any error occu
+      #     * @param ccreds client's initial credential.
+      #     * @exception Exception general exception will be thrown when any error occu
       # rs.
-      # @return a <code>Credentials</code> object.
+      #     * @return a <code>Credentials</code> object.
       def acquire_service_creds(service, ccreds)
         sname = ServiceName.new(service)
         service_realm = sname.get_realm_string

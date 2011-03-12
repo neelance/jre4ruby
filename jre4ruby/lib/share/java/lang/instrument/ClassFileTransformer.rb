@@ -32,8 +32,6 @@ module Java::Lang::Instrument
   end
   
   # Copyright 2003 Wily Technology, Inc.
-  # 
-  # 
   # An agent provides an implementation of this interface in order
   # to transform class files.
   # The transformation occurs before the class is defined by the JVM.
@@ -58,15 +56,15 @@ module Java::Lang::Instrument
     # There are two kinds of transformers, determined by the <code>canRetransform</code>
     # parameter of
     # {@link java.lang.instrument.Instrumentation#addTransformer(ClassFileTransformer,boolean)}:
-    # <ul>
-    # <li><i>retransformation capable</i> transformers that were added with
-    # <code>canRetransform</code> as true
-    # </li>
-    # <li><i>retransformation incapable</i> transformers that were added with
-    # <code>canRetransform</code> as false or where added with
-    # {@link java.lang.instrument.Instrumentation#addTransformer(ClassFileTransformer)}
-    # </li>
-    # </ul>
+    #  <ul>
+    #    <li><i>retransformation capable</i> transformers that were added with
+    #        <code>canRetransform</code> as true
+    #    </li>
+    #    <li><i>retransformation incapable</i> transformers that were added with
+    #        <code>canRetransform</code> as false or where added with
+    #        {@link java.lang.instrument.Instrumentation#addTransformer(ClassFileTransformer)}
+    #    </li>
+    #  </ul>
     # 
     # <P>
     # Once a transformer has been registered with
@@ -92,16 +90,16 @@ module Java::Lang::Instrument
     # 
     # <P>
     # Transformations are applied in the following order:
-    # <ul>
-    # <li>Retransformation incapable transformers
-    # </li>
-    # <li>Retransformation incapable native transformers
-    # </li>
-    # <li>Retransformation capable transformers
-    # </li>
-    # <li>Retransformation capable native transformers
-    # </li>
-    # </ul>
+    #  <ul>
+    #    <li>Retransformation incapable transformers
+    #    </li>
+    #    <li>Retransformation incapable native transformers
+    #    </li>
+    #    <li>Retransformation capable transformers
+    #    </li>
+    #    <li>Retransformation capable native transformers
+    #    </li>
+    #  </ul>
     # 
     # <P>
     # For retransformations, the retransformation incapable transformers are not
@@ -114,25 +112,25 @@ module Java::Lang::Instrument
     # <P>
     # The input (via the <code>classfileBuffer</code> parameter) to the first
     # transformer is:
-    # <ul>
-    # <li>for new class definition,
-    # the bytes passed to <code>ClassLoader.defineClass</code>
-    # </li>
-    # <li>for class redefinition,
-    # <code>definitions.getDefinitionClassFile()</code> where
-    # <code>definitions</code> is the parameter to
-    # {@link java.lang.instrument.Instrumentation#redefineClasses
-    # Instrumentation.redefineClasses}
-    # </li>
-    # <li>for class retransformation,
-    # the bytes passed to the new class definition or, if redefined,
-    # the last redefinition, with all transformations made by retransformation
-    # incapable transformers reapplied automatically and unaltered;
-    # for details see
-    # {@link java.lang.instrument.Instrumentation#retransformClasses
-    # Instrumentation.retransformClasses}
-    # </li>
-    # </ul>
+    #  <ul>
+    #    <li>for new class definition,
+    #        the bytes passed to <code>ClassLoader.defineClass</code>
+    #    </li>
+    #    <li>for class redefinition,
+    #        <code>definitions.getDefinitionClassFile()</code> where
+    #        <code>definitions</code> is the parameter to
+    #        {@link java.lang.instrument.Instrumentation#redefineClasses
+    #         Instrumentation.redefineClasses}
+    #    </li>
+    #    <li>for class retransformation,
+    #         the bytes passed to the new class definition or, if redefined,
+    #         the last redefinition, with all transformations made by retransformation
+    #         incapable transformers reapplied automatically and unaltered;
+    #         for details see
+    #         {@link java.lang.instrument.Instrumentation#retransformClasses
+    #          Instrumentation.retransformClasses}
+    #    </li>
+    #  </ul>
     # 
     # <P>
     # If the implementing method determines that no transformations are needed,
@@ -164,20 +162,20 @@ module Java::Lang::Instrument
     # logging or debugging of format corruptions.
     # 
     # @param loader                the defining loader of the class to be transformed,
-    # may be <code>null</code> if the bootstrap loader
+    #                              may be <code>null</code> if the bootstrap loader
     # @param className             the name of the class in the internal form of fully
-    # qualified class and interface names as defined in
-    # <i>The Java Virtual Machine Specification</i>.
-    # For example, <code>"java/util/List"</code>.
+    #                              qualified class and interface names as defined in
+    #                              <i>The Java Virtual Machine Specification</i>.
+    #                              For example, <code>"java/util/List"</code>.
     # @param classBeingRedefined   if this is triggered by a redefine or retransform,
-    # the class being redefined or retransformed;
-    # if this is a class load, <code>null</code>
+    #                              the class being redefined or retransformed;
+    #                              if this is a class load, <code>null</code>
     # @param protectionDomain      the protection domain of the class being defined or redefined
     # @param classfileBuffer       the input byte buffer in class file format - must not be modified
     # 
     # @throws IllegalClassFormatException if the input does not represent a well-formed class file
     # @return  a well-formed class file buffer (the result of the transform),
-    # or <code>null</code> if no transform is performed.
+    #          or <code>null</code> if no transform is performed.
     # @see Instrumentation#redefineClasses
     def transform(loader, class_name, class_being_redefined, protection_domain, classfile_buffer)
       raise NotImplementedError

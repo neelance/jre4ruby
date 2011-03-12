@@ -160,7 +160,7 @@ module Java::Lang::Ref
     # returned.  Otherwise this method immediately returns <tt>null</tt>.
     # 
     # @return  A reference object, if one was immediately available,
-    # otherwise <code>null</code>
+    #          otherwise <code>null</code>
     def poll
       synchronized((@lock)) do
         return really_poll
@@ -175,17 +175,17 @@ module Java::Lang::Ref
     # timeout as if by invoking the {@link Object#wait(long)} method.
     # 
     # @param  timeout  If positive, block for up to <code>timeout</code>
-    # milliseconds while waiting for a reference to be
-    # added to this queue.  If zero, block indefinitely.
+    #                  milliseconds while waiting for a reference to be
+    #                  added to this queue.  If zero, block indefinitely.
     # 
     # @return  A reference object, if one was available within the specified
-    # timeout period, otherwise <code>null</code>
+    #          timeout period, otherwise <code>null</code>
     # 
     # @throws  IllegalArgumentException
-    # If the value of the timeout argument is negative
+    #          If the value of the timeout argument is negative
     # 
     # @throws  InterruptedException
-    # If the timeout wait is interrupted
+    #          If the timeout wait is interrupted
     def remove(timeout)
       if (timeout < 0)
         raise IllegalArgumentException.new("Negative timeout value")

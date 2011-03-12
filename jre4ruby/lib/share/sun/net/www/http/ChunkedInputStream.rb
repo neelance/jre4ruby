@@ -158,7 +158,7 @@ module Sun::Net::Www::Http
     
     class_module.module_eval {
       # State to indicate that next field should be :-
-      # chunk-size [ chunk-extension ] CRLF
+      #  chunk-size [ chunk-extension ] CRLF
       const_set_lazy(:STATE_AWAITING_CHUNK_HEADER) { 1 }
       const_attr_reader  :STATE_AWAITING_CHUNK_HEADER
       
@@ -291,20 +291,8 @@ module Sun::Net::Www::Http
       i = 0
       while (!(@state).equal?(STATE_DONE))
         case (@state)
-        # We are awaiting a line with a chunk header
-        # 
-        # 
-        # We are awaiting raw entity data (some may have already been
-        # read). chunkSize is the size of the chunk; chunkRead is the
-        # total read from the underlying stream to date.
-        # 
-        # 
-        # Awaiting CRLF after the chunk
-        # 
-        # 
-        # Last chunk has been read so not we're waiting for optional
-        # trailers.
         when STATE_AWAITING_CHUNK_HEADER
+          # We are awaiting a line with a chunk header
           # Find \n to indicate end of chunk header. If not found when there is
           # insufficient bytes in the raw buffer to parse a chunk header.
           pos = @raw_pos
@@ -343,6 +331,9 @@ module Sun::Net::Www::Http
             @state = STATE_AWAITING_TRAILERS
           end
         when STATE_READING_CHUNK
+          # We are awaiting raw entity data (some may have already been
+          # read). chunkSize is the size of the chunk; chunkRead is the
+          # total read from the underlying stream to date.
           # no data available yet
           if (@raw_pos >= @raw_count)
             return
@@ -377,6 +368,7 @@ module Sun::Net::Www::Http
             return
           end
         when STATE_AWAITING_CHUNK_EOL
+          # Awaiting CRLF after the chunk
           # not available yet
           if (@raw_pos + 1 >= @raw_count)
             return
@@ -393,6 +385,8 @@ module Sun::Net::Www::Http
           # Move onto the next chunk
           @state = STATE_AWAITING_CHUNK_HEADER
         when STATE_AWAITING_TRAILERS
+          # Last chunk has been read so not we're waiting for optional
+          # trailers.
           # Do we have an entire line in the raw buffer?
           pos = @raw_pos
           while (pos < @raw_count)
@@ -430,7 +424,7 @@ module Sun::Net::Www::Http
           @responses.add(key, value)
           # Move onto the next trailer.
           @raw_pos = pos + 1
-        end
+        end # switch
       end
     end
     
@@ -455,8 +449,7 @@ module Sun::Net::Www::Http
           raise e
         end
         if (nread < 0)
-          @error = true
-          # premature EOF ?
+          @error = true # premature EOF ?
           return -1
         end
         @raw_count += nread
@@ -533,7 +526,7 @@ module Sun::Net::Www::Http
     # @param   in   the underlying input stream.
     # @param   hc   the HttpClient
     # @param   responses   the MessageHeader that should be populated with optional
-    # trailers.
+    #                      trailers.
     def initialize(in_, hc, responses)
       @in = nil
       @hc = nil
@@ -567,7 +560,7 @@ module Sun::Net::Www::Http
     # method of <code>InputStream</code>.
     # 
     # @return     the next byte of data, or <code>-1</code> if the end of the
-    # stream is reached.
+    #             stream is reached.
     # @exception  IOException  if an I/O error occurs.
     # @see        java.io.FilterInputStream#in
     def read
@@ -590,7 +583,7 @@ module Sun::Net::Www::Http
     # @param      off   offset at which to start storing bytes.
     # @param      len   maximum number of bytes to read.
     # @return     the number of bytes read, or <code>-1</code> if the end of
-    # the stream has been reached.
+    #             the stream has been reached.
     # @exception  IOException  if an I/O error occurs.
     def read(b, off, len)
       synchronized(self) do
@@ -614,8 +607,7 @@ module Sun::Net::Www::Http
           # until there is some chunk data available.
           avail = read_ahead(true)
           if (avail < 0)
-            return -1
-            # EOF
+            return -1 # EOF
           end
         end
         cnt = (avail < len) ? avail : len
@@ -630,7 +622,7 @@ module Sun::Net::Www::Http
     # stream without blocking.
     # 
     # @return     the number of bytes that can be read from this input
-    # stream without blocking.
+    #             stream without blocking.
     # @exception  IOException  if an I/O error occurs.
     # @see        java.io.FilterInputStream#in
     def available

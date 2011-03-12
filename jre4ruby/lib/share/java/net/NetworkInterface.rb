@@ -223,7 +223,7 @@ module Java::Net
     # a SecurityException will be returned in the List.
     # 
     # @return a <code>List</code> object with all or a subset of the
-    # InterfaceAddresss of this network interface
+    #         InterfaceAddresss of this network interface
     # @since 1.6
     def get_interface_addresses
       lst = Java::Util::ArrayList.new(1)
@@ -313,7 +313,7 @@ module Java::Net
     # device.
     # 
     # @return the display name of this network interface,
-    # or null if no display name is available.
+    #         or null if no display name is available.
     def get_display_name
       return @display_name
     end
@@ -323,17 +323,17 @@ module Java::Net
       # Searches for the network interface with the specified name.
       # 
       # @param   name
-      # The name of the network interface.
+      #          The name of the network interface.
       # 
       # @return  A <tt>NetworkInterface</tt> with the specified name,
-      # or <tt>null</tt> if there is no network interface
-      # with the specified name.
+      #          or <tt>null</tt> if there is no network interface
+      #          with the specified name.
       # 
       # @throws  SocketException
-      # If an I/O error occurs.
+      #          If an I/O error occurs.
       # 
       # @throws  NullPointerException
-      # If the specified name is <tt>null</tt>.
+      #          If the specified name is <tt>null</tt>.
       def get_by_name(name)
         if ((name).nil?)
           raise NullPointerException.new
@@ -362,17 +362,17 @@ module Java::Net
       # returned.
       # 
       # @param   addr
-      # The <tt>InetAddress</tt> to search with.
+      #          The <tt>InetAddress</tt> to search with.
       # 
       # @return  A <tt>NetworkInterface</tt>
-      # or <tt>null</tt> if there is no network interface
-      # with the specified IP address.
+      #          or <tt>null</tt> if there is no network interface
+      #          with the specified IP address.
       # 
       # @throws  SocketException
-      # If an I/O error occurs.
+      #          If an I/O error occurs.
       # 
       # @throws  NullPointerException
-      # If the specified address is <tt>null</tt>.
+      #          If the specified address is <tt>null</tt>.
       def get_by_inet_address(addr)
         if ((addr).nil?)
           raise NullPointerException.new
@@ -385,7 +385,7 @@ module Java::Net
       # network interfaces could be found on this machine.
       # 
       # NOTE: can use getNetworkInterfaces()+getInetAddresses()
-      # to obtain all IP addresses for this node
+      #       to obtain all IP addresses for this node
       # 
       # @return an Enumeration of NetworkInterfaces found on this machine
       # @exception  SocketException  if an I/O error occurs.
@@ -478,7 +478,7 @@ module Java::Net
     # a modem.
     # 
     # @return  <code>true</code> if the interface is a point to point
-    # interface.
+    #          interface.
     # @exception       SocketException if an I/O error occurs.
     # @since 1.6
     def is_point_to_point
@@ -500,7 +500,7 @@ module Java::Net
     # has one and if it can be accessed given the current privileges.
     # 
     # @return  a byte array containing the address or <code>null</code> if
-    # the address doesn't exist or is not accessible.
+    #          the address doesn't exist or is not accessible.
     # @exception       SocketException if an I/O error occurs.
     # @since 1.6
     def get_hardware_address
@@ -599,7 +599,7 @@ module Java::Net
     # 
     # @param   obj   the object to compare against.
     # @return  <code>true</code> if the objects are the same;
-    # <code>false</code> otherwise.
+    #          <code>false</code> otherwise.
     # @see     java.net.InetAddress#getAddress()
     def ==(obj)
       if (((obj).nil?) || !(obj.is_a?(NetworkInterface)))

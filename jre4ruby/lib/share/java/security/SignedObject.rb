@@ -48,9 +48,9 @@ module Java::Security
   # 
   # <p> <code> <pre>
   # Signature signingEngine = Signature.getInstance(algorithm,
-  # provider);
+  #                                                 provider);
   # SignedObject so = new SignedObject(myobject, signingKey,
-  # signingEngine);
+  #                                    signingEngine);
   # </pre> </code>
   # 
   # <p> A typical usage for verification is the following (having
@@ -58,11 +58,11 @@ module Java::Security
   # 
   # <p> <code> <pre>
   # Signature verificationEngine =
-  # Signature.getInstance(algorithm, provider);
+  #     Signature.getInstance(algorithm, provider);
   # if (so.verify(publickey, verificationEngine))
-  # try {
-  # Object myobj = so.getObject();
-  # } catch (java.lang.ClassNotFoundException e) {};
+  #     try {
+  #         Object myobj = so.getObject();
+  #     } catch (java.lang.ClassNotFoundException e) {};
   # </pre> </code>
   # 
   # <p> Several points are worth noting.  First, there is no need to

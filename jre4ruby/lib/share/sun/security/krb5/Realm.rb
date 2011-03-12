@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5
@@ -313,19 +311,17 @@ module Sun::Security::Krb5
       # @param sRealm the target realm
       # @returns array of realms
       # @ throws KrbException
-      # 
-      # 
       # parseCapaths works for a capaths organized such that
       # for a given client realm C there is a tag C that
       # contains subtags Ci ... Cn that completely define intermediate
       # realms from C to target T. For example:
       # 
       # [capaths]
-      # TIVOLI.COM = {
-      # IBM.COM = IBM_LDAPCENTRAL.COM MOONLITE.ORG
-      # IBM_LDAPCENTRAL.COM = LDAPCENTRAL.NET
-      # LDAPCENTRAL.NET = .
-      # }
+      #    TIVOLI.COM = {
+      #        IBM.COM = IBM_LDAPCENTRAL.COM MOONLITE.ORG
+      #        IBM_LDAPCENTRAL.COM = LDAPCENTRAL.NET
+      #        LDAPCENTRAL.NET = .
+      #    }
       # 
       # The tag TIVOLI.COM contains subtags IBM.COM, IBM_LDAPCENTRAL.COM
       # and LDAPCENTRAL.NET that completely define the path from TIVOLI.COM
@@ -476,7 +472,7 @@ module Sun::Security::Krb5
         # Determine common components, if any.
         common_components = 0
         # while (sCount > 0 && cCount > 0 &&
-        # sComponents[--sCount].equals(cComponents[--cCount]))
+        #          sComponents[--sCount].equals(cComponents[--cCount]))
         s_count -= 1
         c_count -= 1
         while s_count >= 0 && c_count >= 0 && (s_components[s_count] == c_components[c_count])
@@ -564,7 +560,7 @@ module Sun::Security::Krb5
       
       typesig { [::Java::Int] }
       def get_rand_index(array_size)
-        return RJava.cast_to_int((Math.random * 16384.0)) % array_size
+        return ((Math.random * 16384.0)).to_int % array_size
       end
       
       typesig { [Array.typed(String)] }

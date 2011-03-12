@@ -252,7 +252,7 @@ module Sun::Nio::Cs
         end
       end
       if ((@ch).nil?)
-        @bb = ByteBuffer.allocate(DEFAULT_BYTE_BUFFER_SIZE)
+        @bb = ByteBuffer.allocate_(DEFAULT_BYTE_BUFFER_SIZE)
       end
     end
     
@@ -275,7 +275,7 @@ module Sun::Nio::Cs
       @ch = ch
       @cs = enc.charset
       @encoder = enc
-      @bb = ByteBuffer.allocate(mbc < 0 ? DEFAULT_BYTE_BUFFER_SIZE : mbc)
+      @bb = ByteBuffer.allocate_(mbc < 0 ? DEFAULT_BYTE_BUFFER_SIZE : mbc)
     end
     
     typesig { [] }
@@ -303,7 +303,7 @@ module Sun::Nio::Cs
         return
       end
       if ((@lcb).nil?)
-        @lcb = CharBuffer.allocate(2)
+        @lcb = CharBuffer.allocate_(2)
       else
         @lcb.clear
       end

@@ -91,9 +91,9 @@ module Java::Io
     # <tt>buf.length-offset</tt>, whichever is smaller.
     # 
     # @throws IllegalArgumentException
-    # If <tt>offset</tt> is negative or greater than
-    # <tt>buf.length</tt>, or if <tt>length</tt> is negative, or if
-    # the sum of these two values is negative.
+    #         If <tt>offset</tt> is negative or greater than
+    #         <tt>buf.length</tt>, or if <tt>length</tt> is negative, or if
+    #         the sum of these two values is negative.
     # 
     # @param buf       Input buffer (not copied)
     # @param offset    Offset of the first char to read
@@ -143,7 +143,7 @@ module Java::Io
     # @param off  Offset at which to start storing characters
     # @param len   Maximum number of characters to read
     # @return  The actual number of characters read, or -1 if
-    # the end of the stream has been reached
+    #          the end of the stream has been reached
     # 
     # @exception   IOException  If an I/O error occurs
     def read(b, off, len)
@@ -219,10 +219,10 @@ module Java::Io
     # will reposition the stream to this point.
     # 
     # @param  readAheadLimit  Limit on the number of characters that may be
-    # read while still preserving the mark.  Because
-    # the stream's input comes from a character array,
-    # there is no actual limit; hence this argument is
-    # ignored.
+    #                         read while still preserving the mark.  Because
+    #                         the stream's input comes from a character array,
+    #                         there is no actual limit; hence this argument is
+    #                         ignored.
     # 
     # @exception  IOException  If an I/O error occurs
     def mark(read_ahead_limit)

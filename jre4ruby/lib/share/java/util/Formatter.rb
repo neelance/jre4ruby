@@ -80,54 +80,54 @@ module Java::Util
   # <p> Examples of expected usage:
   # 
   # <blockquote><pre>
-  # StringBuilder sb = new StringBuilder();
-  # // Send all output to the Appendable object sb
-  # Formatter formatter = new Formatter(sb, Locale.US);
+  #   StringBuilder sb = new StringBuilder();
+  #   // Send all output to the Appendable object sb
+  #   Formatter formatter = new Formatter(sb, Locale.US);
   # 
-  # // Explicit argument indices may be used to re-order output.
-  # formatter.format("%4$2s %3$2s %2$2s %1$2s", "a", "b", "c", "d")
-  # // -&gt; " d  c  b  a"
+  #   // Explicit argument indices may be used to re-order output.
+  #   formatter.format("%4$2s %3$2s %2$2s %1$2s", "a", "b", "c", "d")
+  #   // -&gt; " d  c  b  a"
   # 
-  # // Optional locale as the first argument can be used to get
-  # // locale-specific formatting of numbers.  The precision and width can be
-  # // given to round and align the value.
-  # formatter.format(Locale.FRANCE, "e = %+10.4f", Math.E);
-  # // -&gt; "e =    +2,7183"
+  #   // Optional locale as the first argument can be used to get
+  #   // locale-specific formatting of numbers.  The precision and width can be
+  #   // given to round and align the value.
+  #   formatter.format(Locale.FRANCE, "e = %+10.4f", Math.E);
+  #   // -&gt; "e =    +2,7183"
   # 
-  # // The '(' numeric flag may be used to format negative numbers with
-  # // parentheses rather than a minus sign.  Group separators are
-  # // automatically inserted.
-  # formatter.format("Amount gained or lost since last statement: $ %(,.2f",
-  # balanceDelta);
-  # // -&gt; "Amount gained or lost since last statement: $ (6,217.58)"
+  #   // The '(' numeric flag may be used to format negative numbers with
+  #   // parentheses rather than a minus sign.  Group separators are
+  #   // automatically inserted.
+  #   formatter.format("Amount gained or lost since last statement: $ %(,.2f",
+  #                    balanceDelta);
+  #   // -&gt; "Amount gained or lost since last statement: $ (6,217.58)"
   # </pre></blockquote>
   # 
   # <p> Convenience methods for common formatting requests exist as illustrated
   # by the following invocations:
   # 
   # <blockquote><pre>
-  # // Writes a formatted string to System.out.
-  # System.out.format("Local time: %tT", Calendar.getInstance());
-  # // -&gt; "Local time: 13:34:18"
+  #   // Writes a formatted string to System.out.
+  #   System.out.format("Local time: %tT", Calendar.getInstance());
+  #   // -&gt; "Local time: 13:34:18"
   # 
-  # // Writes formatted output to System.err.
-  # System.err.printf("Unable to open file '%1$s': %2$s",
-  # fileName, exception.getMessage());
-  # // -&gt; "Unable to open file 'food': No such file or directory"
+  #   // Writes formatted output to System.err.
+  #   System.err.printf("Unable to open file '%1$s': %2$s",
+  #                     fileName, exception.getMessage());
+  #   // -&gt; "Unable to open file 'food': No such file or directory"
   # </pre></blockquote>
   # 
   # <p> Like C's <tt>sprintf(3)</tt>, Strings may be formatted using the static
   # method {@link String#format(String,Object...) String.format}:
   # 
   # <blockquote><pre>
-  # // Format a string containing a date.
-  # import java.util.Calendar;
-  # import java.util.GregorianCalendar;
-  # import static java.util.Calendar.*;
+  #   // Format a string containing a date.
+  #   import java.util.Calendar;
+  #   import java.util.GregorianCalendar;
+  #   import static java.util.Calendar.*;
   # 
-  # Calendar c = new GregorianCalendar(1995, MAY, 23);
-  # String s = String.format("Duke's Birthday: %1$tm %1$te,%1$tY", c);
-  # // -&gt; s == "Duke's Birthday: May 23, 1995"
+  #   Calendar c = new GregorianCalendar(1995, MAY, 23);
+  #   String s = String.format("Duke's Birthday: %1$tm %1$te,%1$tY", c);
+  #   // -&gt; s == "Duke's Birthday: May 23, 1995"
   # </pre></blockquote>
   # 
   # <h3><a name="org">Organization</a></h3>
@@ -154,8 +154,8 @@ module Java::Util
   # specifiers</i>.  Consider the following example:
   # 
   # <blockquote><pre>
-  # Calendar c = ...;
-  # String s = String.format("Duke's Birthday: %1$tm %1$te,%1$tY", c);
+  #   Calendar c = ...;
+  #   String s = String.format("Duke's Birthday: %1$tm %1$te,%1$tY", c);
   # </pre></blockquote>
   # 
   # This format string is the first argument to the <tt>format</tt> method.  It
@@ -175,7 +175,7 @@ module Java::Util
   # the following syntax:
   # 
   # <blockquote><pre>
-  # %[argument_index$][flags][width][.precision]conversion
+  #   %[argument_index$][flags][width][.precision]conversion
   # </pre></blockquote>
   # 
   # <p> The optional <i>argument_index</i> is a decimal integer indicating the
@@ -200,7 +200,7 @@ module Java::Util
   # times have the following syntax:
   # 
   # <blockquote><pre>
-  # %[argument_index$][flags][width]conversion
+  #   %[argument_index$][flags][width]conversion
   # </pre></blockquote>
   # 
   # <p> The optional <i>argument_index</i>, <i>flags</i> and <i>width</i> are
@@ -216,7 +216,7 @@ module Java::Util
   # following syntax:
   # 
   # <blockquote><pre>
-  # %[flags][width]conversion
+  #   %[flags][width]conversion
   # </pre></blockquote>
   # 
   # <p> The optional <i>flags</i> and <i>width</i> is defined as above.
@@ -277,82 +277,82 @@ module Java::Util
   # String#toUpperCase()}
   # 
   # <pre>
-  # out.toUpperCase() </pre>
+  #    out.toUpperCase() </pre>
   # 
   # <table cellpadding=5 summary="genConv">
   # 
   # <tr><th valign="bottom"> Conversion
-  # <th valign="bottom"> Argument Category
-  # <th valign="bottom"> Description
+  #     <th valign="bottom"> Argument Category
+  #     <th valign="bottom"> Description
   # 
   # <tr><td valign="top"> <tt>'b'</tt>, <tt>'B'</tt>
-  # <td valign="top"> general
-  # <td> If the argument <i>arg</i> is <tt>null</tt>, then the result is
-  # "<tt>false</tt>".  If <i>arg</i> is a <tt>boolean</tt> or {@link
-  # Boolean}, then the result is the string returned by {@link
-  # String#valueOf(boolean) String.valueOf(arg)}.  Otherwise, the result is
-  # "true".
+  #     <td valign="top"> general
+  #     <td> If the argument <i>arg</i> is <tt>null</tt>, then the result is
+  #     "<tt>false</tt>".  If <i>arg</i> is a <tt>boolean</tt> or {@link
+  #     Boolean}, then the result is the string returned by {@link
+  #     String#valueOf(boolean) String.valueOf(arg)}.  Otherwise, the result is
+  #     "true".
   # 
   # <tr><td valign="top"> <tt>'h'</tt>, <tt>'H'</tt>
-  # <td valign="top"> general
-  # <td> If the argument <i>arg</i> is <tt>null</tt>, then the result is
-  # "<tt>null</tt>".  Otherwise, the result is obtained by invoking
-  # <tt>Integer.toHexString(arg.hashCode())</tt>.
+  #     <td valign="top"> general
+  #     <td> If the argument <i>arg</i> is <tt>null</tt>, then the result is
+  #     "<tt>null</tt>".  Otherwise, the result is obtained by invoking
+  #     <tt>Integer.toHexString(arg.hashCode())</tt>.
   # 
   # <tr><td valign="top"> <tt>'s'</tt>, <tt>'S'</tt>
-  # <td valign="top"> general
-  # <td> If the argument <i>arg</i> is <tt>null</tt>, then the result is
-  # "<tt>null</tt>".  If <i>arg</i> implements {@link Formattable}, then
-  # {@link Formattable#formatTo arg.formatTo} is invoked. Otherwise, the
-  # result is obtained by invoking <tt>arg.toString()</tt>.
+  #     <td valign="top"> general
+  #     <td> If the argument <i>arg</i> is <tt>null</tt>, then the result is
+  #     "<tt>null</tt>".  If <i>arg</i> implements {@link Formattable}, then
+  #     {@link Formattable#formatTo arg.formatTo} is invoked. Otherwise, the
+  #     result is obtained by invoking <tt>arg.toString()</tt>.
   # 
   # <tr><td valign="top"><tt>'c'</tt>, <tt>'C'</tt>
-  # <td valign="top"> character
-  # <td> The result is a Unicode character
+  #     <td valign="top"> character
+  #     <td> The result is a Unicode character
   # 
   # <tr><td valign="top"><tt>'d'</tt>
-  # <td valign="top"> integral
-  # <td> The result is formatted as a decimal integer
+  #     <td valign="top"> integral
+  #     <td> The result is formatted as a decimal integer
   # 
   # <tr><td valign="top"><tt>'o'</tt>
-  # <td valign="top"> integral
-  # <td> The result is formatted as an octal integer
+  #     <td valign="top"> integral
+  #     <td> The result is formatted as an octal integer
   # 
   # <tr><td valign="top"><tt>'x'</tt>, <tt>'X'</tt>
-  # <td valign="top"> integral
-  # <td> The result is formatted as a hexadecimal integer
+  #     <td valign="top"> integral
+  #     <td> The result is formatted as a hexadecimal integer
   # 
   # <tr><td valign="top"><tt>'e'</tt>, <tt>'E'</tt>
-  # <td valign="top"> floating point
-  # <td> The result is formatted as a decimal number in computerized
-  # scientific notation
+  #     <td valign="top"> floating point
+  #     <td> The result is formatted as a decimal number in computerized
+  #     scientific notation
   # 
   # <tr><td valign="top"><tt>'f'</tt>
-  # <td valign="top"> floating point
-  # <td> The result is formatted as a decimal number
+  #     <td valign="top"> floating point
+  #     <td> The result is formatted as a decimal number
   # 
   # <tr><td valign="top"><tt>'g'</tt>, <tt>'G'</tt>
-  # <td valign="top"> floating point
-  # <td> The result is formatted using computerized scientific notation or
-  # decimal format, depending on the precision and the value after rounding.
+  #     <td valign="top"> floating point
+  #     <td> The result is formatted using computerized scientific notation or
+  #     decimal format, depending on the precision and the value after rounding.
   # 
   # <tr><td valign="top"><tt>'a'</tt>, <tt>'A'</tt>
-  # <td valign="top"> floating point
-  # <td> The result is formatted as a hexadecimal floating-point number with
-  # a significand and an exponent
+  #     <td valign="top"> floating point
+  #     <td> The result is formatted as a hexadecimal floating-point number with
+  #     a significand and an exponent
   # 
   # <tr><td valign="top"><tt>'t'</tt>, <tt>'T'</tt>
-  # <td valign="top"> date/time
-  # <td> Prefix for date and time conversion characters.  See <a
-  # href="#dt">Date/Time Conversions</a>.
+  #     <td valign="top"> date/time
+  #     <td> Prefix for date and time conversion characters.  See <a
+  #     href="#dt">Date/Time Conversions</a>.
   # 
   # <tr><td valign="top"><tt>'%'</tt>
-  # <td valign="top"> percent
-  # <td> The result is a literal <tt>'%'</tt> (<tt>'&#92;u0025'</tt>)
+  #     <td valign="top"> percent
+  #     <td> The result is a literal <tt>'%'</tt> (<tt>'&#92;u0025'</tt>)
   # 
   # <tr><td valign="top"><tt>'n'</tt>
-  # <td valign="top"> line separator
-  # <td> The result is the platform-specific line separator
+  #     <td valign="top"> line separator
+  #     <td> The result is the platform-specific line separator
   # 
   # </table>
   # 
@@ -373,59 +373,59 @@ module Java::Util
   # <table cellpadding=5 summary="time">
   # 
   # <tr><td valign="top"> <tt>'H'</tt>
-  # <td> Hour of the day for the 24-hour clock, formatted as two digits with
-  # a leading zero as necessary i.e. <tt>00 - 23</tt>.
+  #     <td> Hour of the day for the 24-hour clock, formatted as two digits with
+  #     a leading zero as necessary i.e. <tt>00 - 23</tt>.
   # 
   # <tr><td valign="top"><tt>'I'</tt>
-  # <td> Hour for the 12-hour clock, formatted as two digits with a leading
-  # zero as necessary, i.e.  <tt>01 - 12</tt>.
+  #     <td> Hour for the 12-hour clock, formatted as two digits with a leading
+  #     zero as necessary, i.e.  <tt>01 - 12</tt>.
   # 
   # <tr><td valign="top"><tt>'k'</tt>
-  # <td> Hour of the day for the 24-hour clock, i.e. <tt>0 - 23</tt>.
+  #     <td> Hour of the day for the 24-hour clock, i.e. <tt>0 - 23</tt>.
   # 
   # <tr><td valign="top"><tt>'l'</tt>
-  # <td> Hour for the 12-hour clock, i.e. <tt>1 - 12</tt>.
+  #     <td> Hour for the 12-hour clock, i.e. <tt>1 - 12</tt>.
   # 
   # <tr><td valign="top"><tt>'M'</tt>
-  # <td> Minute within the hour formatted as two digits with a leading zero
-  # as necessary, i.e.  <tt>00 - 59</tt>.
+  #     <td> Minute within the hour formatted as two digits with a leading zero
+  #     as necessary, i.e.  <tt>00 - 59</tt>.
   # 
   # <tr><td valign="top"><tt>'S'</tt>
-  # <td> Seconds within the minute, formatted as two digits with a leading
-  # zero as necessary, i.e. <tt>00 - 60</tt> ("<tt>60</tt>" is a special
-  # value required to support leap seconds).
+  #     <td> Seconds within the minute, formatted as two digits with a leading
+  #     zero as necessary, i.e. <tt>00 - 60</tt> ("<tt>60</tt>" is a special
+  #     value required to support leap seconds).
   # 
   # <tr><td valign="top"><tt>'L'</tt>
-  # <td> Millisecond within the second formatted as three digits with
-  # leading zeros as necessary, i.e. <tt>000 - 999</tt>.
+  #     <td> Millisecond within the second formatted as three digits with
+  #     leading zeros as necessary, i.e. <tt>000 - 999</tt>.
   # 
   # <tr><td valign="top"><tt>'N'</tt>
-  # <td> Nanosecond within the second, formatted as nine digits with leading
-  # zeros as necessary, i.e. <tt>000000000 - 999999999</tt>.
+  #     <td> Nanosecond within the second, formatted as nine digits with leading
+  #     zeros as necessary, i.e. <tt>000000000 - 999999999</tt>.
   # 
   # <tr><td valign="top"><tt>'p'</tt>
-  # <td> Locale-specific {@linkplain
-  # java.text.DateFormatSymbols#getAmPmStrings morning or afternoon} marker
-  # in lower case, e.g."<tt>am</tt>" or "<tt>pm</tt>". Use of the conversion
-  # prefix <tt>'T'</tt> forces this output to upper case.
+  #     <td> Locale-specific {@linkplain
+  #     java.text.DateFormatSymbols#getAmPmStrings morning or afternoon} marker
+  #     in lower case, e.g."<tt>am</tt>" or "<tt>pm</tt>". Use of the conversion
+  #     prefix <tt>'T'</tt> forces this output to upper case.
   # 
   # <tr><td valign="top"><tt>'z'</tt>
-  # <td> <a href="http://www.ietf.org/rfc/rfc0822.txt">RFC&nbsp;822</a>
-  # style numeric time zone offset from GMT, e.g. <tt>-0800</tt>.
+  #     <td> <a href="http://www.ietf.org/rfc/rfc0822.txt">RFC&nbsp;822</a>
+  #     style numeric time zone offset from GMT, e.g. <tt>-0800</tt>.
   # 
   # <tr><td valign="top"><tt>'Z'</tt>
-  # <td> A string representing the abbreviation for the time zone.  The
-  # Formatter's locale will supersede the locale of the argument (if any).
+  #     <td> A string representing the abbreviation for the time zone.  The
+  #     Formatter's locale will supersede the locale of the argument (if any).
   # 
   # <tr><td valign="top"><tt>'s'</tt>
-  # <td> Seconds since the beginning of the epoch starting at 1 January 1970
-  # <tt>00:00:00</tt> UTC, i.e. <tt>Long.MIN_VALUE/1000</tt> to
-  # <tt>Long.MAX_VALUE/1000</tt>.
+  #     <td> Seconds since the beginning of the epoch starting at 1 January 1970
+  #     <tt>00:00:00</tt> UTC, i.e. <tt>Long.MIN_VALUE/1000</tt> to
+  #     <tt>Long.MAX_VALUE/1000</tt>.
   # 
   # <tr><td valign="top"><tt>'Q'</tt>
-  # <td> Milliseconds since the beginning of the epoch starting at 1 January
-  # 1970 <tt>00:00:00</tt> UTC, i.e. <tt>Long.MIN_VALUE</tt> to
-  # <tt>Long.MAX_VALUE</tt>.
+  #     <td> Milliseconds since the beginning of the epoch starting at 1 January
+  #     1970 <tt>00:00:00</tt> UTC, i.e. <tt>Long.MIN_VALUE</tt> to
+  #     <tt>Long.MAX_VALUE</tt>.
   # 
   # </table>
   # 
@@ -434,54 +434,54 @@ module Java::Util
   # <table cellpadding=5 summary="date">
   # 
   # <tr><td valign="top"><tt>'B'</tt>
-  # <td> Locale-specific {@linkplain java.text.DateFormatSymbols#getMonths
-  # full month name}, e.g. <tt>"January"</tt>, <tt>"February"</tt>.
+  #     <td> Locale-specific {@linkplain java.text.DateFormatSymbols#getMonths
+  #     full month name}, e.g. <tt>"January"</tt>, <tt>"February"</tt>.
   # 
   # <tr><td valign="top"><tt>'b'</tt>
-  # <td> Locale-specific {@linkplain
-  # java.text.DateFormatSymbols#getShortMonths abbreviated month name},
-  # e.g. <tt>"Jan"</tt>, <tt>"Feb"</tt>.
+  #     <td> Locale-specific {@linkplain
+  #     java.text.DateFormatSymbols#getShortMonths abbreviated month name},
+  #     e.g. <tt>"Jan"</tt>, <tt>"Feb"</tt>.
   # 
   # <tr><td valign="top"><tt>'h'</tt>
-  # <td> Same as <tt>'b'</tt>.
+  #     <td> Same as <tt>'b'</tt>.
   # 
   # <tr><td valign="top"><tt>'A'</tt>
-  # <td> Locale-specific full name of the {@linkplain
-  # java.text.DateFormatSymbols#getWeekdays day of the week},
-  # e.g. <tt>"Sunday"</tt>, <tt>"Monday"</tt>
+  #     <td> Locale-specific full name of the {@linkplain
+  #     java.text.DateFormatSymbols#getWeekdays day of the week},
+  #     e.g. <tt>"Sunday"</tt>, <tt>"Monday"</tt>
   # 
   # <tr><td valign="top"><tt>'a'</tt>
-  # <td> Locale-specific short name of the {@linkplain
-  # java.text.DateFormatSymbols#getShortWeekdays day of the week},
-  # e.g. <tt>"Sun"</tt>, <tt>"Mon"</tt>
+  #     <td> Locale-specific short name of the {@linkplain
+  #     java.text.DateFormatSymbols#getShortWeekdays day of the week},
+  #     e.g. <tt>"Sun"</tt>, <tt>"Mon"</tt>
   # 
   # <tr><td valign="top"><tt>'C'</tt>
-  # <td> Four-digit year divided by <tt>100</tt>, formatted as two digits
-  # with leading zero as necessary, i.e. <tt>00 - 99</tt>
+  #     <td> Four-digit year divided by <tt>100</tt>, formatted as two digits
+  #     with leading zero as necessary, i.e. <tt>00 - 99</tt>
   # 
   # <tr><td valign="top"><tt>'Y'</tt>
-  # <td> Year, formatted as at least four digits with leading zeros as
-  # necessary, e.g. <tt>0092</tt> equals <tt>92</tt> CE for the Gregorian
-  # calendar.
+  #     <td> Year, formatted as at least four digits with leading zeros as
+  #     necessary, e.g. <tt>0092</tt> equals <tt>92</tt> CE for the Gregorian
+  #     calendar.
   # 
   # <tr><td valign="top"><tt>'y'</tt>
-  # <td> Last two digits of the year, formatted with leading zeros as
-  # necessary, i.e. <tt>00 - 99</tt>.
+  #     <td> Last two digits of the year, formatted with leading zeros as
+  #     necessary, i.e. <tt>00 - 99</tt>.
   # 
   # <tr><td valign="top"><tt>'j'</tt>
-  # <td> Day of year, formatted as three digits with leading zeros as
-  # necessary, e.g. <tt>001 - 366</tt> for the Gregorian calendar.
+  #     <td> Day of year, formatted as three digits with leading zeros as
+  #     necessary, e.g. <tt>001 - 366</tt> for the Gregorian calendar.
   # 
   # <tr><td valign="top"><tt>'m'</tt>
-  # <td> Month, formatted as two digits with leading zeros as necessary,
-  # i.e. <tt>01 - 13</tt>.
+  #     <td> Month, formatted as two digits with leading zeros as necessary,
+  #     i.e. <tt>01 - 13</tt>.
   # 
   # <tr><td valign="top"><tt>'d'</tt>
-  # <td> Day of month, formatted as two digits with leading zeros as
-  # necessary, i.e. <tt>01 - 31</tt>
+  #     <td> Day of month, formatted as two digits with leading zeros as
+  #     necessary, i.e. <tt>01 - 31</tt>
   # 
   # <tr><td valign="top"><tt>'e'</tt>
-  # <td> Day of month, formatted as two digits, i.e. <tt>1 - 31</tt>.
+  #     <td> Day of month, formatted as two digits, i.e. <tt>1 - 31</tt>.
   # 
   # </table>
   # 
@@ -491,26 +491,26 @@ module Java::Util
   # <table cellpadding=5 summary="composites">
   # 
   # <tr><td valign="top"><tt>'R'</tt>
-  # <td> Time formatted for the 24-hour clock as <tt>"%tH:%tM"</tt>
+  #     <td> Time formatted for the 24-hour clock as <tt>"%tH:%tM"</tt>
   # 
   # <tr><td valign="top"><tt>'T'</tt>
-  # <td> Time formatted for the 24-hour clock as <tt>"%tH:%tM:%tS"</tt>.
+  #     <td> Time formatted for the 24-hour clock as <tt>"%tH:%tM:%tS"</tt>.
   # 
   # <tr><td valign="top"><tt>'r'</tt>
-  # <td> Time formatted for the 12-hour clock as <tt>"%tI:%tM:%tS %Tp"</tt>.
-  # The location of the morning or afternoon marker (<tt>'%Tp'</tt>) may be
-  # locale-dependent.
+  #     <td> Time formatted for the 12-hour clock as <tt>"%tI:%tM:%tS %Tp"</tt>.
+  #     The location of the morning or afternoon marker (<tt>'%Tp'</tt>) may be
+  #     locale-dependent.
   # 
   # <tr><td valign="top"><tt>'D'</tt>
-  # <td> Date formatted as <tt>"%tm/%td/%ty"</tt>.
+  #     <td> Date formatted as <tt>"%tm/%td/%ty"</tt>.
   # 
   # <tr><td valign="top"><tt>'F'</tt>
-  # <td> <a href="http://www.w3.org/TR/NOTE-datetime">ISO&nbsp;8601</a>
-  # complete date formatted as <tt>"%tY-%tm-%td"</tt>.
+  #     <td> <a href="http://www.w3.org/TR/NOTE-datetime">ISO&nbsp;8601</a>
+  #     complete date formatted as <tt>"%tY-%tm-%td"</tt>.
   # 
   # <tr><td valign="top"><tt>'c'</tt>
-  # <td> Date and time formatted as <tt>"%ta %tb %td %tT %tZ %tY"</tt>,
-  # e.g. <tt>"Sun Jul 20 16:17:00 EDT 1969"</tt>.
+  #     <td> Date and time formatted as <tt>"%ta %tb %td %tT %tZ %tY"</tt>,
+  #     e.g. <tt>"Sun Jul 20 16:17:00 EDT 1969"</tt>.
   # 
   # </table>
   # 
@@ -525,60 +525,60 @@ module Java::Util
   # <table cellpadding=5 summary="genConv">
   # 
   # <tr><th valign="bottom"> Flag <th valign="bottom"> General
-  # <th valign="bottom"> Character <th valign="bottom"> Integral
-  # <th valign="bottom"> Floating Point
-  # <th valign="bottom"> Date/Time
-  # <th valign="bottom"> Description
+  #     <th valign="bottom"> Character <th valign="bottom"> Integral
+  #     <th valign="bottom"> Floating Point
+  #     <th valign="bottom"> Date/Time
+  #     <th valign="bottom"> Description
   # 
   # <tr><td> '-' <td align="center" valign="top"> y
-  # <td align="center" valign="top"> y
-  # <td align="center" valign="top"> y
-  # <td align="center" valign="top"> y
-  # <td align="center" valign="top"> y
-  # <td> The result will be left-justified.
+  #     <td align="center" valign="top"> y
+  #     <td align="center" valign="top"> y
+  #     <td align="center" valign="top"> y
+  #     <td align="center" valign="top"> y
+  #     <td> The result will be left-justified.
   # 
   # <tr><td> '#' <td align="center" valign="top"> y<sup>1</sup>
-  # <td align="center" valign="top"> -
-  # <td align="center" valign="top"> y<sup>3</sup>
-  # <td align="center" valign="top"> y
-  # <td align="center" valign="top"> -
-  # <td> The result should use a conversion-dependent alternate form
+  #     <td align="center" valign="top"> -
+  #     <td align="center" valign="top"> y<sup>3</sup>
+  #     <td align="center" valign="top"> y
+  #     <td align="center" valign="top"> -
+  #     <td> The result should use a conversion-dependent alternate form
   # 
   # <tr><td> '+' <td align="center" valign="top"> -
-  # <td align="center" valign="top"> -
-  # <td align="center" valign="top"> y<sup>4</sup>
-  # <td align="center" valign="top"> y
-  # <td align="center" valign="top"> -
-  # <td> The result will always include a sign
+  #     <td align="center" valign="top"> -
+  #     <td align="center" valign="top"> y<sup>4</sup>
+  #     <td align="center" valign="top"> y
+  #     <td align="center" valign="top"> -
+  #     <td> The result will always include a sign
   # 
   # <tr><td> '&nbsp;&nbsp;' <td align="center" valign="top"> -
-  # <td align="center" valign="top"> -
-  # <td align="center" valign="top"> y<sup>4</sup>
-  # <td align="center" valign="top"> y
-  # <td align="center" valign="top"> -
-  # <td> The result will include a leading space for positive values
+  #     <td align="center" valign="top"> -
+  #     <td align="center" valign="top"> y<sup>4</sup>
+  #     <td align="center" valign="top"> y
+  #     <td align="center" valign="top"> -
+  #     <td> The result will include a leading space for positive values
   # 
   # <tr><td> '0' <td align="center" valign="top"> -
-  # <td align="center" valign="top"> -
-  # <td align="center" valign="top"> y
-  # <td align="center" valign="top"> y
-  # <td align="center" valign="top"> -
-  # <td> The result will be zero-padded
+  #     <td align="center" valign="top"> -
+  #     <td align="center" valign="top"> y
+  #     <td align="center" valign="top"> y
+  #     <td align="center" valign="top"> -
+  #     <td> The result will be zero-padded
   # 
   # <tr><td> ',' <td align="center" valign="top"> -
-  # <td align="center" valign="top"> -
-  # <td align="center" valign="top"> y<sup>2</sup>
-  # <td align="center" valign="top"> y<sup>5</sup>
-  # <td align="center" valign="top"> -
-  # <td> The result will include locale-specific {@linkplain
-  # java.text.DecimalFormatSymbols#getGroupingSeparator grouping separators}
+  #     <td align="center" valign="top"> -
+  #     <td align="center" valign="top"> y<sup>2</sup>
+  #     <td align="center" valign="top"> y<sup>5</sup>
+  #     <td align="center" valign="top"> -
+  #     <td> The result will include locale-specific {@linkplain
+  #     java.text.DecimalFormatSymbols#getGroupingSeparator grouping separators}
   # 
   # <tr><td> '(' <td align="center" valign="top"> -
-  # <td align="center" valign="top"> -
-  # <td align="center" valign="top"> y<sup>4</sup>
-  # <td align="center" valign="top"> y<sup>5</sup>
-  # <td align="center"> -
-  # <td> The result will enclose negative numbers in parentheses
+  #     <td align="center" valign="top"> -
+  #     <td align="center" valign="top"> y<sup>4</sup>
+  #     <td align="center" valign="top"> y<sup>5</sup>
+  #     <td align="center"> -
+  #     <td> The result will enclose negative numbers in parentheses
   # 
   # </table>
   # 
@@ -634,10 +634,10 @@ module Java::Util
   # statements would produce identical strings:
   # 
   # <blockquote><pre>
-  # Calendar c = ...;
-  # String s1 = String.format("Duke's Birthday: %1$tm %1$te,%1$tY", c);
+  #   Calendar c = ...;
+  #   String s1 = String.format("Duke's Birthday: %1$tm %1$te,%1$tY", c);
   # 
-  # String s2 = String.format("Duke's Birthday: %1$tm %&lt;te,%&lt;tY", c);
+  #   String s2 = String.format("Duke's Birthday: %1$tm %&lt;te,%&lt;tY", c);
   # </pre></blockquote>
   # 
   # <hr>
@@ -677,7 +677,7 @@ module Java::Util
   # invocation of {@link String#toUpperCase()}
   # 
   # <pre>
-  # out.toUpperCase() </pre>
+  #    out.toUpperCase() </pre>
   # 
   # <h4><a name="dgen">General</a></h4>
   # 
@@ -686,55 +686,55 @@ module Java::Util
   # <table cellpadding=5 summary="dgConv">
   # 
   # <tr><td valign="top"> <tt>'b'</tt>
-  # <td valign="top"> <tt>'&#92;u0062'</tt>
-  # <td> Produces either "<tt>true</tt>" or "<tt>false</tt>" as returned by
-  # {@link Boolean#toString(boolean)}.
+  #     <td valign="top"> <tt>'&#92;u0062'</tt>
+  #     <td> Produces either "<tt>true</tt>" or "<tt>false</tt>" as returned by
+  #     {@link Boolean#toString(boolean)}.
   # 
-  # <p> If the argument is <tt>null</tt>, then the result is
-  # "<tt>false</tt>".  If the argument is a <tt>boolean</tt> or {@link
-  # Boolean}, then the result is the string returned by {@link
-  # String#valueOf(boolean) String.valueOf()}.  Otherwise, the result is
-  # "<tt>true</tt>".
+  #     <p> If the argument is <tt>null</tt>, then the result is
+  #     "<tt>false</tt>".  If the argument is a <tt>boolean</tt> or {@link
+  #     Boolean}, then the result is the string returned by {@link
+  #     String#valueOf(boolean) String.valueOf()}.  Otherwise, the result is
+  #     "<tt>true</tt>".
   # 
-  # <p> If the <tt>'#'</tt> flag is given, then a {@link
-  # FormatFlagsConversionMismatchException} will be thrown.
+  #     <p> If the <tt>'#'</tt> flag is given, then a {@link
+  #     FormatFlagsConversionMismatchException} will be thrown.
   # 
   # <tr><td valign="top"> <tt>'B'</tt>
-  # <td valign="top"> <tt>'&#92;u0042'</tt>
-  # <td> The upper-case variant of <tt>'b'</tt>.
+  #     <td valign="top"> <tt>'&#92;u0042'</tt>
+  #     <td> The upper-case variant of <tt>'b'</tt>.
   # 
   # <tr><td valign="top"> <tt>'h'</tt>
-  # <td valign="top"> <tt>'&#92;u0068'</tt>
-  # <td> Produces a string representing the hash code value of the object.
+  #     <td valign="top"> <tt>'&#92;u0068'</tt>
+  #     <td> Produces a string representing the hash code value of the object.
   # 
-  # <p> If the argument, <i>arg</i> is <tt>null</tt>, then the
-  # result is "<tt>null</tt>".  Otherwise, the result is obtained
-  # by invoking <tt>Integer.toHexString(arg.hashCode())</tt>.
+  #     <p> If the argument, <i>arg</i> is <tt>null</tt>, then the
+  #     result is "<tt>null</tt>".  Otherwise, the result is obtained
+  #     by invoking <tt>Integer.toHexString(arg.hashCode())</tt>.
   # 
-  # <p> If the <tt>'#'</tt> flag is given, then a {@link
-  # FormatFlagsConversionMismatchException} will be thrown.
+  #     <p> If the <tt>'#'</tt> flag is given, then a {@link
+  #     FormatFlagsConversionMismatchException} will be thrown.
   # 
   # <tr><td valign="top"> <tt>'H'</tt>
-  # <td valign="top"> <tt>'&#92;u0048'</tt>
-  # <td> The upper-case variant of <tt>'h'</tt>.
+  #     <td valign="top"> <tt>'&#92;u0048'</tt>
+  #     <td> The upper-case variant of <tt>'h'</tt>.
   # 
   # <tr><td valign="top"> <tt>'s'</tt>
-  # <td valign="top"> <tt>'&#92;u0073'</tt>
-  # <td> Produces a string.
+  #     <td valign="top"> <tt>'&#92;u0073'</tt>
+  #     <td> Produces a string.
   # 
-  # <p> If the argument is <tt>null</tt>, then the result is
-  # "<tt>null</tt>".  If the argument implements {@link Formattable}, then
-  # its {@link Formattable#formatTo formatTo} method is invoked.
-  # Otherwise, the result is obtained by invoking the argument's
-  # <tt>toString()</tt> method.
+  #     <p> If the argument is <tt>null</tt>, then the result is
+  #     "<tt>null</tt>".  If the argument implements {@link Formattable}, then
+  #     its {@link Formattable#formatTo formatTo} method is invoked.
+  #     Otherwise, the result is obtained by invoking the argument's
+  #     <tt>toString()</tt> method.
   # 
-  # <p> If the <tt>'#'</tt> flag is given and the argument is not a {@link
-  # Formattable} , then a {@link FormatFlagsConversionMismatchException}
-  # will be thrown.
+  #     <p> If the <tt>'#'</tt> flag is given and the argument is not a {@link
+  #     Formattable} , then a {@link FormatFlagsConversionMismatchException}
+  #     will be thrown.
   # 
   # <tr><td valign="top"> <tt>'S'</tt>
-  # <td valign="top"> <tt>'&#92;u0053'</tt>
-  # <td> The upper-case variant of <tt>'s'</tt>.
+  #     <td valign="top"> <tt>'&#92;u0053'</tt>
+  #     <td> The upper-case variant of <tt>'s'</tt>.
   # 
   # </table>
   # 
@@ -743,17 +743,17 @@ module Java::Util
   # <table cellpadding=5 summary="dFlags">
   # 
   # <tr><td valign="top"> <tt>'-'</tt>
-  # <td valign="top"> <tt>'&#92;u002d'</tt>
-  # <td> Left justifies the output.  Spaces (<tt>'&#92;u0020'</tt>) will be
-  # added at the end of the converted value as required to fill the minimum
-  # width of the field.  If the width is not provided, then a {@link
-  # MissingFormatWidthException} will be thrown.  If this flag is not given
-  # then the output will be right-justified.
+  #     <td valign="top"> <tt>'&#92;u002d'</tt>
+  #     <td> Left justifies the output.  Spaces (<tt>'&#92;u0020'</tt>) will be
+  #     added at the end of the converted value as required to fill the minimum
+  #     width of the field.  If the width is not provided, then a {@link
+  #     MissingFormatWidthException} will be thrown.  If this flag is not given
+  #     then the output will be right-justified.
   # 
   # <tr><td valign="top"> <tt>'#'</tt>
-  # <td valign="top"> <tt>'&#92;u0023'</tt>
-  # <td> Requires the output use an alternate form.  The definition of the
-  # form is specified by the conversion.
+  #     <td valign="top"> <tt>'&#92;u0023'</tt>
+  #     <td> Requires the output use an alternate form.  The definition of the
+  #     form is specified by the conversion.
   # 
   # </table>
   # 
@@ -784,18 +784,18 @@ module Java::Util
   # <table cellpadding=5 summary="charConv">
   # 
   # <tr><td valign="top"> <tt>'c'</tt>
-  # <td valign="top"> <tt>'&#92;u0063'</tt>
-  # <td> Formats the argument as a Unicode character as described in <a
-  # href="../lang/Character.html#unicode">Unicode Character
-  # Representation</a>.  This may be more than one 16-bit <tt>char</tt> in
-  # the case where the argument represents a supplementary character.
+  #     <td valign="top"> <tt>'&#92;u0063'</tt>
+  #     <td> Formats the argument as a Unicode character as described in <a
+  #     href="../lang/Character.html#unicode">Unicode Character
+  #     Representation</a>.  This may be more than one 16-bit <tt>char</tt> in
+  #     the case where the argument represents a supplementary character.
   # 
-  # <p> If the <tt>'#'</tt> flag is given, then a {@link
-  # FormatFlagsConversionMismatchException} will be thrown.
+  #     <p> If the <tt>'#'</tt> flag is given, then a {@link
+  #     FormatFlagsConversionMismatchException} will be thrown.
   # 
   # <tr><td valign="top"> <tt>'C'</tt>
-  # <td valign="top"> <tt>'&#92;u0043'</tt>
-  # <td> The upper-case variant of <tt>'c'</tt>.
+  #     <td valign="top"> <tt>'&#92;u0043'</tt>
+  #     <td> The upper-case variant of <tt>'c'</tt>.
   # 
   # </table>
   # 
@@ -885,68 +885,68 @@ module Java::Util
   # <table cellpadding=5 summary="IntConv">
   # 
   # <tr><td valign="top"> <tt>'d'</tt>
-  # <td valign="top"> <tt>'&#92;u0054'</tt>
-  # <td> Formats the argument as a decimal integer. The <a
-  # href="#l10n algorithm">localization algorithm</a> is applied.
+  #     <td valign="top"> <tt>'&#92;u0054'</tt>
+  #     <td> Formats the argument as a decimal integer. The <a
+  #     href="#l10n algorithm">localization algorithm</a> is applied.
   # 
-  # <p> If the <tt>'0'</tt> flag is given and the value is negative, then
-  # the zero padding will occur after the sign.
+  #     <p> If the <tt>'0'</tt> flag is given and the value is negative, then
+  #     the zero padding will occur after the sign.
   # 
-  # <p> If the <tt>'#'</tt> flag is given then a {@link
-  # FormatFlagsConversionMismatchException} will be thrown.
+  #     <p> If the <tt>'#'</tt> flag is given then a {@link
+  #     FormatFlagsConversionMismatchException} will be thrown.
   # 
   # <tr><td valign="top"> <tt>'o'</tt>
-  # <td valign="top"> <tt>'&#92;u006f'</tt>
-  # <td> Formats the argument as an integer in base eight.  No localization
-  # is applied.
+  #     <td valign="top"> <tt>'&#92;u006f'</tt>
+  #     <td> Formats the argument as an integer in base eight.  No localization
+  #     is applied.
   # 
-  # <p> If <i>x</i> is negative then the result will be an unsigned value
-  # generated by adding 2<sup>n</sup> to the value where <tt>n</tt> is the
-  # number of bits in the type as returned by the static <tt>SIZE</tt> field
-  # in the {@linkplain Byte#SIZE Byte}, {@linkplain Short#SIZE Short},
-  # {@linkplain Integer#SIZE Integer}, or {@linkplain Long#SIZE Long}
-  # classes as appropriate.
+  #     <p> If <i>x</i> is negative then the result will be an unsigned value
+  #     generated by adding 2<sup>n</sup> to the value where <tt>n</tt> is the
+  #     number of bits in the type as returned by the static <tt>SIZE</tt> field
+  #     in the {@linkplain Byte#SIZE Byte}, {@linkplain Short#SIZE Short},
+  #     {@linkplain Integer#SIZE Integer}, or {@linkplain Long#SIZE Long}
+  #     classes as appropriate.
   # 
-  # <p> If the <tt>'#'</tt> flag is given then the output will always begin
-  # with the radix indicator <tt>'0'</tt>.
+  #     <p> If the <tt>'#'</tt> flag is given then the output will always begin
+  #     with the radix indicator <tt>'0'</tt>.
   # 
-  # <p> If the <tt>'0'</tt> flag is given then the output will be padded
-  # with leading zeros to the field width following any indication of sign.
+  #     <p> If the <tt>'0'</tt> flag is given then the output will be padded
+  #     with leading zeros to the field width following any indication of sign.
   # 
-  # <p> If <tt>'('</tt>, <tt>'+'</tt>, '&nbsp&nbsp;', or <tt>','</tt> flags
-  # are given then a {@link FormatFlagsConversionMismatchException} will be
-  # thrown.
+  #     <p> If <tt>'('</tt>, <tt>'+'</tt>, '&nbsp&nbsp;', or <tt>','</tt> flags
+  #     are given then a {@link FormatFlagsConversionMismatchException} will be
+  #     thrown.
   # 
   # <tr><td valign="top"> <tt>'x'</tt>
-  # <td valign="top"> <tt>'&#92;u0078'</tt>
-  # <td> Formats the argument as an integer in base sixteen. No
-  # localization is applied.
+  #     <td valign="top"> <tt>'&#92;u0078'</tt>
+  #     <td> Formats the argument as an integer in base sixteen. No
+  #     localization is applied.
   # 
-  # <p> If <i>x</i> is negative then the result will be an unsigned value
-  # generated by adding 2<sup>n</sup> to the value where <tt>n</tt> is the
-  # number of bits in the type as returned by the static <tt>SIZE</tt> field
-  # in the {@linkplain Byte#SIZE Byte}, {@linkplain Short#SIZE Short},
-  # {@linkplain Integer#SIZE Integer}, or {@linkplain Long#SIZE Long}
-  # classes as appropriate.
+  #     <p> If <i>x</i> is negative then the result will be an unsigned value
+  #     generated by adding 2<sup>n</sup> to the value where <tt>n</tt> is the
+  #     number of bits in the type as returned by the static <tt>SIZE</tt> field
+  #     in the {@linkplain Byte#SIZE Byte}, {@linkplain Short#SIZE Short},
+  #     {@linkplain Integer#SIZE Integer}, or {@linkplain Long#SIZE Long}
+  #     classes as appropriate.
   # 
-  # <p> If the <tt>'#'</tt> flag is given then the output will always begin
-  # with the radix indicator <tt>"0x"</tt>.
+  #     <p> If the <tt>'#'</tt> flag is given then the output will always begin
+  #     with the radix indicator <tt>"0x"</tt>.
   # 
-  # <p> If the <tt>'0'</tt> flag is given then the output will be padded to
-  # the field width with leading zeros after the radix indicator or sign (if
-  # present).
+  #     <p> If the <tt>'0'</tt> flag is given then the output will be padded to
+  #     the field width with leading zeros after the radix indicator or sign (if
+  #     present).
   # 
-  # <p> If <tt>'('</tt>, <tt>'&nbsp;&nbsp;'</tt>, <tt>'+'</tt>, or
-  # <tt>','</tt> flags are given then a {@link
-  # FormatFlagsConversionMismatchException} will be thrown.
+  #     <p> If <tt>'('</tt>, <tt>'&nbsp;&nbsp;'</tt>, <tt>'+'</tt>, or
+  #     <tt>','</tt> flags are given then a {@link
+  #     FormatFlagsConversionMismatchException} will be thrown.
   # 
   # <tr><td valign="top"> <tt>'X'</tt>
-  # <td valign="top"> <tt>'&#92;u0058'</tt>
-  # <td> The upper-case variant of <tt>'x'</tt>.  The entire string
-  # representing the number will be converted to {@linkplain
-  # String#toUpperCase upper case} including the <tt>'x'</tt> (if any) and
-  # all hexadecimal digits <tt>'a'</tt> - <tt>'f'</tt>
-  # (<tt>'&#92;u0061'</tt> -  <tt>'&#92;u0066'</tt>).
+  #     <td valign="top"> <tt>'&#92;u0058'</tt>
+  #     <td> The upper-case variant of <tt>'x'</tt>.  The entire string
+  #     representing the number will be converted to {@linkplain
+  #     String#toUpperCase upper case} including the <tt>'x'</tt> (if any) and
+  #     all hexadecimal digits <tt>'a'</tt> - <tt>'f'</tt>
+  #     (<tt>'&#92;u0061'</tt> -  <tt>'&#92;u0066'</tt>).
   # 
   # </table>
   # 
@@ -965,45 +965,45 @@ module Java::Util
   # <table cellpadding=5 summary="intFlags">
   # 
   # <tr><td valign="top"> <tt>'+'</tt>
-  # <td valign="top"> <tt>'&#92;u002b'</tt>
-  # <td> Requires the output to include a positive sign for all positive
-  # numbers.  If this flag is not given then only negative values will
-  # include a sign.
+  #     <td valign="top"> <tt>'&#92;u002b'</tt>
+  #     <td> Requires the output to include a positive sign for all positive
+  #     numbers.  If this flag is not given then only negative values will
+  #     include a sign.
   # 
-  # <p> If both the <tt>'+'</tt> and <tt>'&nbsp;&nbsp;'</tt> flags are given
-  # then an {@link IllegalFormatFlagsException} will be thrown.
+  #     <p> If both the <tt>'+'</tt> and <tt>'&nbsp;&nbsp;'</tt> flags are given
+  #     then an {@link IllegalFormatFlagsException} will be thrown.
   # 
   # <tr><td valign="top"> <tt>'&nbsp;&nbsp;'</tt>
-  # <td valign="top"> <tt>'&#92;u0020'</tt>
-  # <td> Requires the output to include a single extra space
-  # (<tt>'&#92;u0020'</tt>) for non-negative values.
+  #     <td valign="top"> <tt>'&#92;u0020'</tt>
+  #     <td> Requires the output to include a single extra space
+  #     (<tt>'&#92;u0020'</tt>) for non-negative values.
   # 
-  # <p> If both the <tt>'+'</tt> and <tt>'&nbsp;&nbsp;'</tt> flags are given
-  # then an {@link IllegalFormatFlagsException} will be thrown.
+  #     <p> If both the <tt>'+'</tt> and <tt>'&nbsp;&nbsp;'</tt> flags are given
+  #     then an {@link IllegalFormatFlagsException} will be thrown.
   # 
   # <tr><td valign="top"> <tt>'0'</tt>
-  # <td valign="top"> <tt>'&#92;u0030'</tt>
-  # <td> Requires the output to be padded with leading {@linkplain
-  # java.text.DecimalFormatSymbols#getZeroDigit zeros} to the minimum field
-  # width following any sign or radix indicator except when converting NaN
-  # or infinity.  If the width is not provided, then a {@link
-  # MissingFormatWidthException} will be thrown.
+  #     <td valign="top"> <tt>'&#92;u0030'</tt>
+  #     <td> Requires the output to be padded with leading {@linkplain
+  #     java.text.DecimalFormatSymbols#getZeroDigit zeros} to the minimum field
+  #     width following any sign or radix indicator except when converting NaN
+  #     or infinity.  If the width is not provided, then a {@link
+  #     MissingFormatWidthException} will be thrown.
   # 
-  # <p> If both the <tt>'-'</tt> and <tt>'0'</tt> flags are given then an
-  # {@link IllegalFormatFlagsException} will be thrown.
+  #     <p> If both the <tt>'-'</tt> and <tt>'0'</tt> flags are given then an
+  #     {@link IllegalFormatFlagsException} will be thrown.
   # 
   # <tr><td valign="top"> <tt>','</tt>
-  # <td valign="top"> <tt>'&#92;u002c'</tt>
-  # <td> Requires the output to include the locale-specific {@linkplain
-  # java.text.DecimalFormatSymbols#getGroupingSeparator group separators} as
-  # described in the <a href="#l10n group">"group" section</a> of the
-  # localization algorithm.
+  #     <td valign="top"> <tt>'&#92;u002c'</tt>
+  #     <td> Requires the output to include the locale-specific {@linkplain
+  #     java.text.DecimalFormatSymbols#getGroupingSeparator group separators} as
+  #     described in the <a href="#l10n group">"group" section</a> of the
+  #     localization algorithm.
   # 
   # <tr><td valign="top"> <tt>'('</tt>
-  # <td valign="top"> <tt>'&#92;u0028'</tt>
-  # <td> Requires the output to prepend a <tt>'('</tt>
-  # (<tt>'&#92;u0028'</tt>) and append a <tt>')'</tt>
-  # (<tt>'&#92;u0029'</tt>) to negative values.
+  #     <td valign="top"> <tt>'&#92;u0028'</tt>
+  #     <td> Requires the output to prepend a <tt>'('</tt>
+  #     (<tt>'&#92;u0028'</tt>) and append a <tt>')'</tt>
+  #     (<tt>'&#92;u0029'</tt>) to negative values.
   # 
   # </table>
   # 
@@ -1043,67 +1043,67 @@ module Java::Util
   # <table cellpadding=5 summary="BIntConv">
   # 
   # <tr><td valign="top"> <tt>'d'</tt>
-  # <td valign="top"> <tt>'&#92;u0054'</tt>
-  # <td> Requires the output to be formatted as a decimal integer. The <a
-  # href="#l10n algorithm">localization algorithm</a> is applied.
+  #     <td valign="top"> <tt>'&#92;u0054'</tt>
+  #     <td> Requires the output to be formatted as a decimal integer. The <a
+  #     href="#l10n algorithm">localization algorithm</a> is applied.
   # 
-  # <p> If the <tt>'#'</tt> flag is given {@link
-  # FormatFlagsConversionMismatchException} will be thrown.
+  #     <p> If the <tt>'#'</tt> flag is given {@link
+  #     FormatFlagsConversionMismatchException} will be thrown.
   # 
   # <tr><td valign="top"> <tt>'o'</tt>
-  # <td valign="top"> <tt>'&#92;u006f'</tt>
-  # <td> Requires the output to be formatted as an integer in base eight.
-  # No localization is applied.
+  #     <td valign="top"> <tt>'&#92;u006f'</tt>
+  #     <td> Requires the output to be formatted as an integer in base eight.
+  #     No localization is applied.
   # 
-  # <p> If <i>x</i> is negative then the result will be a signed value
-  # beginning with <tt>'-'</tt> (<tt>'&#92;u002d'</tt>).  Signed output is
-  # allowed for this type because unlike the primitive types it is not
-  # possible to create an unsigned equivalent without assuming an explicit
-  # data-type size.
+  #     <p> If <i>x</i> is negative then the result will be a signed value
+  #     beginning with <tt>'-'</tt> (<tt>'&#92;u002d'</tt>).  Signed output is
+  #     allowed for this type because unlike the primitive types it is not
+  #     possible to create an unsigned equivalent without assuming an explicit
+  #     data-type size.
   # 
-  # <p> If <i>x</i> is positive or zero and the <tt>'+'</tt> flag is given
-  # then the result will begin with <tt>'+'</tt> (<tt>'&#92;u002b'</tt>).
+  #     <p> If <i>x</i> is positive or zero and the <tt>'+'</tt> flag is given
+  #     then the result will begin with <tt>'+'</tt> (<tt>'&#92;u002b'</tt>).
   # 
-  # <p> If the <tt>'#'</tt> flag is given then the output will always begin
-  # with <tt>'0'</tt> prefix.
+  #     <p> If the <tt>'#'</tt> flag is given then the output will always begin
+  #     with <tt>'0'</tt> prefix.
   # 
-  # <p> If the <tt>'0'</tt> flag is given then the output will be padded
-  # with leading zeros to the field width following any indication of sign.
+  #     <p> If the <tt>'0'</tt> flag is given then the output will be padded
+  #     with leading zeros to the field width following any indication of sign.
   # 
-  # <p> If the <tt>','</tt> flag is given then a {@link
-  # FormatFlagsConversionMismatchException} will be thrown.
+  #     <p> If the <tt>','</tt> flag is given then a {@link
+  #     FormatFlagsConversionMismatchException} will be thrown.
   # 
   # <tr><td valign="top"> <tt>'x'</tt>
-  # <td valign="top"> <tt>'&#92;u0078'</tt>
-  # <td> Requires the output to be formatted as an integer in base
-  # sixteen.  No localization is applied.
+  #     <td valign="top"> <tt>'&#92;u0078'</tt>
+  #     <td> Requires the output to be formatted as an integer in base
+  #     sixteen.  No localization is applied.
   # 
-  # <p> If <i>x</i> is negative then the result will be a signed value
-  # beginning with <tt>'-'</tt> (<tt>'&#92;u002d'</tt>).  Signed output is
-  # allowed for this type because unlike the primitive types it is not
-  # possible to create an unsigned equivalent without assuming an explicit
-  # data-type size.
+  #     <p> If <i>x</i> is negative then the result will be a signed value
+  #     beginning with <tt>'-'</tt> (<tt>'&#92;u002d'</tt>).  Signed output is
+  #     allowed for this type because unlike the primitive types it is not
+  #     possible to create an unsigned equivalent without assuming an explicit
+  #     data-type size.
   # 
-  # <p> If <i>x</i> is positive or zero and the <tt>'+'</tt> flag is given
-  # then the result will begin with <tt>'+'</tt> (<tt>'&#92;u002b'</tt>).
+  #     <p> If <i>x</i> is positive or zero and the <tt>'+'</tt> flag is given
+  #     then the result will begin with <tt>'+'</tt> (<tt>'&#92;u002b'</tt>).
   # 
-  # <p> If the <tt>'#'</tt> flag is given then the output will always begin
-  # with the radix indicator <tt>"0x"</tt>.
+  #     <p> If the <tt>'#'</tt> flag is given then the output will always begin
+  #     with the radix indicator <tt>"0x"</tt>.
   # 
-  # <p> If the <tt>'0'</tt> flag is given then the output will be padded to
-  # the field width with leading zeros after the radix indicator or sign (if
-  # present).
+  #     <p> If the <tt>'0'</tt> flag is given then the output will be padded to
+  #     the field width with leading zeros after the radix indicator or sign (if
+  #     present).
   # 
-  # <p> If the <tt>','</tt> flag is given then a {@link
-  # FormatFlagsConversionMismatchException} will be thrown.
+  #     <p> If the <tt>','</tt> flag is given then a {@link
+  #     FormatFlagsConversionMismatchException} will be thrown.
   # 
   # <tr><td valign="top"> <tt>'X'</tt>
-  # <td valign="top"> <tt>'&#92;u0058'</tt>
-  # <td> The upper-case variant of <tt>'x'</tt>.  The entire string
-  # representing the number will be converted to {@linkplain
-  # String#toUpperCase upper case} including the <tt>'x'</tt> (if any) and
-  # all hexadecimal digits <tt>'a'</tt> - <tt>'f'</tt>
-  # (<tt>'&#92;u0061'</tt> - <tt>'&#92;u0066'</tt>).
+  #     <td valign="top"> <tt>'&#92;u0058'</tt>
+  #     <td> The upper-case variant of <tt>'x'</tt>.  The entire string
+  #     representing the number will be converted to {@linkplain
+  #     String#toUpperCase upper case} including the <tt>'x'</tt> (if any) and
+  #     all hexadecimal digits <tt>'a'</tt> - <tt>'f'</tt>
+  #     (<tt>'&#92;u0061'</tt> - <tt>'&#92;u0066'</tt>).
   # 
   # </table>
   # 
@@ -1137,172 +1137,172 @@ module Java::Util
   # <table cellpadding=5 summary="floatConv">
   # 
   # <tr><td valign="top"> <tt>'e'</tt>
-  # <td valign="top"> <tt>'&#92;u0065'</tt>
-  # <td> Requires the output to be formatted using <a
-  # name="scientific">computerized scientific notation</a>.  The <a
-  # href="#l10n algorithm">localization algorithm</a> is applied.
+  #     <td valign="top"> <tt>'&#92;u0065'</tt>
+  #     <td> Requires the output to be formatted using <a
+  #     name="scientific">computerized scientific notation</a>.  The <a
+  #     href="#l10n algorithm">localization algorithm</a> is applied.
   # 
-  # <p> The formatting of the magnitude <i>m</i> depends upon its value.
+  #     <p> The formatting of the magnitude <i>m</i> depends upon its value.
   # 
-  # <p> If <i>m</i> is NaN or infinite, the literal strings "NaN" or
-  # "Infinity", respectively, will be output.  These values are not
-  # localized.
+  #     <p> If <i>m</i> is NaN or infinite, the literal strings "NaN" or
+  #     "Infinity", respectively, will be output.  These values are not
+  #     localized.
   # 
-  # <p> If <i>m</i> is positive-zero or negative-zero, then the exponent
-  # will be <tt>"+00"</tt>.
+  #     <p> If <i>m</i> is positive-zero or negative-zero, then the exponent
+  #     will be <tt>"+00"</tt>.
   # 
-  # <p> Otherwise, the result is a string that represents the sign and
-  # magnitude (absolute value) of the argument.  The formatting of the sign
-  # is described in the <a href="#l10n algorithm">localization
-  # algorithm</a>. The formatting of the magnitude <i>m</i> depends upon its
-  # value.
+  #     <p> Otherwise, the result is a string that represents the sign and
+  #     magnitude (absolute value) of the argument.  The formatting of the sign
+  #     is described in the <a href="#l10n algorithm">localization
+  #     algorithm</a>. The formatting of the magnitude <i>m</i> depends upon its
+  #     value.
   # 
-  # <p> Let <i>n</i> be the unique integer such that 10<sup><i>n</i></sup>
-  # &lt;= <i>m</i> &lt; 10<sup><i>n</i>+1</sup>; then let <i>a</i> be the
-  # mathematically exact quotient of <i>m</i> and 10<sup><i>n</i></sup> so
-  # that 1 &lt;= <i>a</i> &lt; 10. The magnitude is then represented as the
-  # integer part of <i>a</i>, as a single decimal digit, followed by the
-  # decimal separator followed by decimal digits representing the fractional
-  # part of <i>a</i>, followed by the exponent symbol <tt>'e'</tt>
-  # (<tt>'&#92;u0065'</tt>), followed by the sign of the exponent, followed
-  # by a representation of <i>n</i> as a decimal integer, as produced by the
-  # method {@link Long#toString(long, int)}, and zero-padded to include at
-  # least two digits.
+  #     <p> Let <i>n</i> be the unique integer such that 10<sup><i>n</i></sup>
+  #     &lt;= <i>m</i> &lt; 10<sup><i>n</i>+1</sup>; then let <i>a</i> be the
+  #     mathematically exact quotient of <i>m</i> and 10<sup><i>n</i></sup> so
+  #     that 1 &lt;= <i>a</i> &lt; 10. The magnitude is then represented as the
+  #     integer part of <i>a</i>, as a single decimal digit, followed by the
+  #     decimal separator followed by decimal digits representing the fractional
+  #     part of <i>a</i>, followed by the exponent symbol <tt>'e'</tt>
+  #     (<tt>'&#92;u0065'</tt>), followed by the sign of the exponent, followed
+  #     by a representation of <i>n</i> as a decimal integer, as produced by the
+  #     method {@link Long#toString(long, int)}, and zero-padded to include at
+  #     least two digits.
   # 
-  # <p> The number of digits in the result for the fractional part of
-  # <i>m</i> or <i>a</i> is equal to the precision.  If the precision is not
-  # specified then the default value is <tt>6</tt>. If the precision is less
-  # than the number of digits which would appear after the decimal point in
-  # the string returned by {@link Float#toString(float)} or {@link
-  # Double#toString(double)} respectively, then the value will be rounded
-  # using the {@linkplain java.math.BigDecimal#ROUND_HALF_UP round half up
-  # algorithm}.  Otherwise, zeros may be appended to reach the precision.
-  # For a canonical representation of the value, use {@link
-  # Float#toString(float)} or {@link Double#toString(double)} as
-  # appropriate.
+  #     <p> The number of digits in the result for the fractional part of
+  #     <i>m</i> or <i>a</i> is equal to the precision.  If the precision is not
+  #     specified then the default value is <tt>6</tt>. If the precision is less
+  #     than the number of digits which would appear after the decimal point in
+  #     the string returned by {@link Float#toString(float)} or {@link
+  #     Double#toString(double)} respectively, then the value will be rounded
+  #     using the {@linkplain java.math.BigDecimal#ROUND_HALF_UP round half up
+  #     algorithm}.  Otherwise, zeros may be appended to reach the precision.
+  #     For a canonical representation of the value, use {@link
+  #     Float#toString(float)} or {@link Double#toString(double)} as
+  #     appropriate.
   # 
-  # <p>If the <tt>','</tt> flag is given, then an {@link
-  # FormatFlagsConversionMismatchException} will be thrown.
+  #     <p>If the <tt>','</tt> flag is given, then an {@link
+  #     FormatFlagsConversionMismatchException} will be thrown.
   # 
   # <tr><td valign="top"> <tt>'E'</tt>
-  # <td valign="top"> <tt>'&#92;u0045'</tt>
-  # <td> The upper-case variant of <tt>'e'</tt>.  The exponent symbol
-  # will be <tt>'E'</tt> (<tt>'&#92;u0045'</tt>).
+  #     <td valign="top"> <tt>'&#92;u0045'</tt>
+  #     <td> The upper-case variant of <tt>'e'</tt>.  The exponent symbol
+  #     will be <tt>'E'</tt> (<tt>'&#92;u0045'</tt>).
   # 
   # <tr><td valign="top"> <tt>'g'</tt>
-  # <td valign="top"> <tt>'&#92;u0067'</tt>
-  # <td> Requires the output to be formatted in general scientific notation
-  # as described below. The <a href="#l10n algorithm">localization
-  # algorithm</a> is applied.
+  #     <td valign="top"> <tt>'&#92;u0067'</tt>
+  #     <td> Requires the output to be formatted in general scientific notation
+  #     as described below. The <a href="#l10n algorithm">localization
+  #     algorithm</a> is applied.
   # 
-  # <p> After rounding for the precision, the formatting of the resulting
-  # magnitude <i>m</i> depends on its value.
+  #     <p> After rounding for the precision, the formatting of the resulting
+  #     magnitude <i>m</i> depends on its value.
   # 
-  # <p> If <i>m</i> is greater than or equal to 10<sup>-4</sup> but less
-  # than 10<sup>precision</sup> then it is represented in <i><a
-  # href="#decimal">decimal format</a></i>.
+  #     <p> If <i>m</i> is greater than or equal to 10<sup>-4</sup> but less
+  #     than 10<sup>precision</sup> then it is represented in <i><a
+  #     href="#decimal">decimal format</a></i>.
   # 
-  # <p> If <i>m</i> is less than 10<sup>-4</sup> or greater than or equal to
-  # 10<sup>precision</sup>, then it is represented in <i><a
-  # href="#scientific">computerized scientific notation</a></i>.
+  #     <p> If <i>m</i> is less than 10<sup>-4</sup> or greater than or equal to
+  #     10<sup>precision</sup>, then it is represented in <i><a
+  #     href="#scientific">computerized scientific notation</a></i>.
   # 
-  # <p> The total number of significant digits in <i>m</i> is equal to the
-  # precision.  If the precision is not specified, then the default value is
-  # <tt>6</tt>.  If the precision is <tt>0</tt>, then it is taken to be
-  # <tt>1</tt>.
+  #     <p> The total number of significant digits in <i>m</i> is equal to the
+  #     precision.  If the precision is not specified, then the default value is
+  #     <tt>6</tt>.  If the precision is <tt>0</tt>, then it is taken to be
+  #     <tt>1</tt>.
   # 
-  # <p> If the <tt>'#'</tt> flag is given then an {@link
-  # FormatFlagsConversionMismatchException} will be thrown.
+  #     <p> If the <tt>'#'</tt> flag is given then an {@link
+  #     FormatFlagsConversionMismatchException} will be thrown.
   # 
   # <tr><td valign="top"> <tt>'G'</tt>
-  # <td valign="top"> <tt>'&#92;u0047'</tt>
-  # <td> The upper-case variant of <tt>'g'</tt>.
+  #     <td valign="top"> <tt>'&#92;u0047'</tt>
+  #     <td> The upper-case variant of <tt>'g'</tt>.
   # 
   # <tr><td valign="top"> <tt>'f'</tt>
-  # <td valign="top"> <tt>'&#92;u0066'</tt>
-  # <td> Requires the output to be formatted using <a name="decimal">decimal
-  # format</a>.  The <a href="#l10n algorithm">localization algorithm</a> is
-  # applied.
+  #     <td valign="top"> <tt>'&#92;u0066'</tt>
+  #     <td> Requires the output to be formatted using <a name="decimal">decimal
+  #     format</a>.  The <a href="#l10n algorithm">localization algorithm</a> is
+  #     applied.
   # 
-  # <p> The result is a string that represents the sign and magnitude
-  # (absolute value) of the argument.  The formatting of the sign is
-  # described in the <a href="#l10n algorithm">localization
-  # algorithm</a>. The formatting of the magnitude <i>m</i> depends upon its
-  # value.
+  #     <p> The result is a string that represents the sign and magnitude
+  #     (absolute value) of the argument.  The formatting of the sign is
+  #     described in the <a href="#l10n algorithm">localization
+  #     algorithm</a>. The formatting of the magnitude <i>m</i> depends upon its
+  #     value.
   # 
-  # <p> If <i>m</i> NaN or infinite, the literal strings "NaN" or
-  # "Infinity", respectively, will be output.  These values are not
-  # localized.
+  #     <p> If <i>m</i> NaN or infinite, the literal strings "NaN" or
+  #     "Infinity", respectively, will be output.  These values are not
+  #     localized.
   # 
-  # <p> The magnitude is formatted as the integer part of <i>m</i>, with no
-  # leading zeroes, followed by the decimal separator followed by one or
-  # more decimal digits representing the fractional part of <i>m</i>.
+  #     <p> The magnitude is formatted as the integer part of <i>m</i>, with no
+  #     leading zeroes, followed by the decimal separator followed by one or
+  #     more decimal digits representing the fractional part of <i>m</i>.
   # 
-  # <p> The number of digits in the result for the fractional part of
-  # <i>m</i> or <i>a</i> is equal to the precision.  If the precision is not
-  # specified then the default value is <tt>6</tt>. If the precision is less
-  # than the number of digits which would appear after the decimal point in
-  # the string returned by {@link Float#toString(float)} or {@link
-  # Double#toString(double)} respectively, then the value will be rounded
-  # using the {@linkplain java.math.BigDecimal#ROUND_HALF_UP round half up
-  # algorithm}.  Otherwise, zeros may be appended to reach the precision.
-  # For a canonical representation of the value,use {@link
-  # Float#toString(float)} or {@link Double#toString(double)} as
-  # appropriate.
+  #     <p> The number of digits in the result for the fractional part of
+  #     <i>m</i> or <i>a</i> is equal to the precision.  If the precision is not
+  #     specified then the default value is <tt>6</tt>. If the precision is less
+  #     than the number of digits which would appear after the decimal point in
+  #     the string returned by {@link Float#toString(float)} or {@link
+  #     Double#toString(double)} respectively, then the value will be rounded
+  #     using the {@linkplain java.math.BigDecimal#ROUND_HALF_UP round half up
+  #     algorithm}.  Otherwise, zeros may be appended to reach the precision.
+  #     For a canonical representation of the value,use {@link
+  #     Float#toString(float)} or {@link Double#toString(double)} as
+  #     appropriate.
   # 
   # <tr><td valign="top"> <tt>'a'</tt>
-  # <td valign="top"> <tt>'&#92;u0061'</tt>
-  # <td> Requires the output to be formatted in hexadecimal exponential
-  # form.  No localization is applied.
+  #     <td valign="top"> <tt>'&#92;u0061'</tt>
+  #     <td> Requires the output to be formatted in hexadecimal exponential
+  #     form.  No localization is applied.
   # 
-  # <p> The result is a string that represents the sign and magnitude
-  # (absolute value) of the argument <i>x</i>.
+  #     <p> The result is a string that represents the sign and magnitude
+  #     (absolute value) of the argument <i>x</i>.
   # 
-  # <p> If <i>x</i> is negative or a negative-zero value then the result
-  # will begin with <tt>'-'</tt> (<tt>'&#92;u002d'</tt>).
+  #     <p> If <i>x</i> is negative or a negative-zero value then the result
+  #     will begin with <tt>'-'</tt> (<tt>'&#92;u002d'</tt>).
   # 
-  # <p> If <i>x</i> is positive or a positive-zero value and the
-  # <tt>'+'</tt> flag is given then the result will begin with <tt>'+'</tt>
-  # (<tt>'&#92;u002b'</tt>).
+  #     <p> If <i>x</i> is positive or a positive-zero value and the
+  #     <tt>'+'</tt> flag is given then the result will begin with <tt>'+'</tt>
+  #     (<tt>'&#92;u002b'</tt>).
   # 
-  # <p> The formatting of the magnitude <i>m</i> depends upon its value.
+  #     <p> The formatting of the magnitude <i>m</i> depends upon its value.
   # 
-  # <ul>
+  #     <ul>
   # 
-  # <li> If the value is NaN or infinite, the literal strings "NaN" or
-  # "Infinity", respectively, will be output.
+  #     <li> If the value is NaN or infinite, the literal strings "NaN" or
+  #     "Infinity", respectively, will be output.
   # 
-  # <li> If <i>m</i> is zero then it is represented by the string
-  # <tt>"0x0.0p0"</tt>.
+  #     <li> If <i>m</i> is zero then it is represented by the string
+  #     <tt>"0x0.0p0"</tt>.
   # 
-  # <li> If <i>m</i> is a <tt>double</tt> value with a normalized
-  # representation then substrings are used to represent the significand and
-  # exponent fields.  The significand is represented by the characters
-  # <tt>"0x1."</tt> followed by the hexadecimal representation of the rest
-  # of the significand as a fraction.  The exponent is represented by
-  # <tt>'p'</tt> (<tt>'&#92;u0070'</tt>) followed by a decimal string of the
-  # unbiased exponent as if produced by invoking {@link
-  # Integer#toString(int) Integer.toString} on the exponent value.
+  #     <li> If <i>m</i> is a <tt>double</tt> value with a normalized
+  #     representation then substrings are used to represent the significand and
+  #     exponent fields.  The significand is represented by the characters
+  #     <tt>"0x1."</tt> followed by the hexadecimal representation of the rest
+  #     of the significand as a fraction.  The exponent is represented by
+  #     <tt>'p'</tt> (<tt>'&#92;u0070'</tt>) followed by a decimal string of the
+  #     unbiased exponent as if produced by invoking {@link
+  #     Integer#toString(int) Integer.toString} on the exponent value.
   # 
-  # <li> If <i>m</i> is a <tt>double</tt> value with a subnormal
-  # representation then the significand is represented by the characters
-  # <tt>'0x0.'</tt> followed by the hexadecimal representation of the rest
-  # of the significand as a fraction.  The exponent is represented by
-  # <tt>'p-1022'</tt>.  Note that there must be at least one nonzero digit
-  # in a subnormal significand.
+  #     <li> If <i>m</i> is a <tt>double</tt> value with a subnormal
+  #     representation then the significand is represented by the characters
+  #     <tt>'0x0.'</tt> followed by the hexadecimal representation of the rest
+  #     of the significand as a fraction.  The exponent is represented by
+  #     <tt>'p-1022'</tt>.  Note that there must be at least one nonzero digit
+  #     in a subnormal significand.
   # 
-  # </ul>
+  #     </ul>
   # 
-  # <p> If the <tt>'('</tt> or <tt>','</tt> flags are given, then a {@link
-  # FormatFlagsConversionMismatchException} will be thrown.
+  #     <p> If the <tt>'('</tt> or <tt>','</tt> flags are given, then a {@link
+  #     FormatFlagsConversionMismatchException} will be thrown.
   # 
   # <tr><td valign="top"> <tt>'A'</tt>
-  # <td valign="top"> <tt>'&#92;u0041'</tt>
-  # <td> The upper-case variant of <tt>'a'</tt>.  The entire string
-  # representing the number will be converted to upper case including the
-  # <tt>'x'</tt> (<tt>'&#92;u0078'</tt>) and <tt>'p'</tt>
-  # (<tt>'&#92;u0070'</tt> and all hexadecimal digits <tt>'a'</tt> -
-  # <tt>'f'</tt> (<tt>'&#92;u0061'</tt> - <tt>'&#92;u0066'</tt>).
+  #     <td valign="top"> <tt>'&#92;u0041'</tt>
+  #     <td> The upper-case variant of <tt>'a'</tt>.  The entire string
+  #     representing the number will be converted to upper case including the
+  #     <tt>'x'</tt> (<tt>'&#92;u0078'</tt>) and <tt>'p'</tt>
+  #     (<tt>'&#92;u0070'</tt> and all hexadecimal digits <tt>'a'</tt> -
+  #     <tt>'f'</tt> (<tt>'&#92;u0061'</tt> - <tt>'&#92;u0066'</tt>).
   # 
   # </table>
   # 
@@ -1364,108 +1364,108 @@ module Java::Util
   # <table cellpadding=5 summary="floatConv">
   # 
   # <tr><td valign="top"> <tt>'e'</tt>
-  # <td valign="top"> <tt>'&#92;u0065'</tt>
-  # <td> Requires the output to be formatted using <a
-  # name="scientific">computerized scientific notation</a>.  The <a
-  # href="#l10n algorithm">localization algorithm</a> is applied.
+  #     <td valign="top"> <tt>'&#92;u0065'</tt>
+  #     <td> Requires the output to be formatted using <a
+  #     name="scientific">computerized scientific notation</a>.  The <a
+  #     href="#l10n algorithm">localization algorithm</a> is applied.
   # 
-  # <p> The formatting of the magnitude <i>m</i> depends upon its value.
+  #     <p> The formatting of the magnitude <i>m</i> depends upon its value.
   # 
-  # <p> If <i>m</i> is positive-zero or negative-zero, then the exponent
-  # will be <tt>"+00"</tt>.
+  #     <p> If <i>m</i> is positive-zero or negative-zero, then the exponent
+  #     will be <tt>"+00"</tt>.
   # 
-  # <p> Otherwise, the result is a string that represents the sign and
-  # magnitude (absolute value) of the argument.  The formatting of the sign
-  # is described in the <a href="#l10n algorithm">localization
-  # algorithm</a>. The formatting of the magnitude <i>m</i> depends upon its
-  # value.
+  #     <p> Otherwise, the result is a string that represents the sign and
+  #     magnitude (absolute value) of the argument.  The formatting of the sign
+  #     is described in the <a href="#l10n algorithm">localization
+  #     algorithm</a>. The formatting of the magnitude <i>m</i> depends upon its
+  #     value.
   # 
-  # <p> Let <i>n</i> be the unique integer such that 10<sup><i>n</i></sup>
-  # &lt;= <i>m</i> &lt; 10<sup><i>n</i>+1</sup>; then let <i>a</i> be the
-  # mathematically exact quotient of <i>m</i> and 10<sup><i>n</i></sup> so
-  # that 1 &lt;= <i>a</i> &lt; 10. The magnitude is then represented as the
-  # integer part of <i>a</i>, as a single decimal digit, followed by the
-  # decimal separator followed by decimal digits representing the fractional
-  # part of <i>a</i>, followed by the exponent symbol <tt>'e'</tt>
-  # (<tt>'&#92;u0065'</tt>), followed by the sign of the exponent, followed
-  # by a representation of <i>n</i> as a decimal integer, as produced by the
-  # method {@link Long#toString(long, int)}, and zero-padded to include at
-  # least two digits.
+  #     <p> Let <i>n</i> be the unique integer such that 10<sup><i>n</i></sup>
+  #     &lt;= <i>m</i> &lt; 10<sup><i>n</i>+1</sup>; then let <i>a</i> be the
+  #     mathematically exact quotient of <i>m</i> and 10<sup><i>n</i></sup> so
+  #     that 1 &lt;= <i>a</i> &lt; 10. The magnitude is then represented as the
+  #     integer part of <i>a</i>, as a single decimal digit, followed by the
+  #     decimal separator followed by decimal digits representing the fractional
+  #     part of <i>a</i>, followed by the exponent symbol <tt>'e'</tt>
+  #     (<tt>'&#92;u0065'</tt>), followed by the sign of the exponent, followed
+  #     by a representation of <i>n</i> as a decimal integer, as produced by the
+  #     method {@link Long#toString(long, int)}, and zero-padded to include at
+  #     least two digits.
   # 
-  # <p> The number of digits in the result for the fractional part of
-  # <i>m</i> or <i>a</i> is equal to the precision.  If the precision is not
-  # specified then the default value is <tt>6</tt>.  If the precision is
-  # less than the number of digits which would appear after the decimal
-  # point in the string returned by {@link Float#toString(float)} or {@link
-  # Double#toString(double)} respectively, then the value will be rounded
-  # using the {@linkplain java.math.BigDecimal#ROUND_HALF_UP round half up
-  # algorithm}.  Otherwise, zeros may be appended to reach the precision.
-  # For a canonical representation of the value, use {@link
-  # BigDecimal#toString()}.
+  #     <p> The number of digits in the result for the fractional part of
+  #     <i>m</i> or <i>a</i> is equal to the precision.  If the precision is not
+  #     specified then the default value is <tt>6</tt>.  If the precision is
+  #     less than the number of digits which would appear after the decimal
+  #     point in the string returned by {@link Float#toString(float)} or {@link
+  #     Double#toString(double)} respectively, then the value will be rounded
+  #     using the {@linkplain java.math.BigDecimal#ROUND_HALF_UP round half up
+  #     algorithm}.  Otherwise, zeros may be appended to reach the precision.
+  #     For a canonical representation of the value, use {@link
+  #     BigDecimal#toString()}.
   # 
-  # <p> If the <tt>','</tt> flag is given, then an {@link
-  # FormatFlagsConversionMismatchException} will be thrown.
+  #     <p> If the <tt>','</tt> flag is given, then an {@link
+  #     FormatFlagsConversionMismatchException} will be thrown.
   # 
   # <tr><td valign="top"> <tt>'E'</tt>
-  # <td valign="top"> <tt>'&#92;u0045'</tt>
-  # <td> The upper-case variant of <tt>'e'</tt>.  The exponent symbol
-  # will be <tt>'E'</tt> (<tt>'&#92;u0045'</tt>).
+  #     <td valign="top"> <tt>'&#92;u0045'</tt>
+  #     <td> The upper-case variant of <tt>'e'</tt>.  The exponent symbol
+  #     will be <tt>'E'</tt> (<tt>'&#92;u0045'</tt>).
   # 
   # <tr><td valign="top"> <tt>'g'</tt>
-  # <td valign="top"> <tt>'&#92;u0067'</tt>
-  # <td> Requires the output to be formatted in general scientific notation
-  # as described below. The <a href="#l10n algorithm">localization
-  # algorithm</a> is applied.
+  #     <td valign="top"> <tt>'&#92;u0067'</tt>
+  #     <td> Requires the output to be formatted in general scientific notation
+  #     as described below. The <a href="#l10n algorithm">localization
+  #     algorithm</a> is applied.
   # 
-  # <p> After rounding for the precision, the formatting of the resulting
-  # magnitude <i>m</i> depends on its value.
+  #     <p> After rounding for the precision, the formatting of the resulting
+  #     magnitude <i>m</i> depends on its value.
   # 
-  # <p> If <i>m</i> is greater than or equal to 10<sup>-4</sup> but less
-  # than 10<sup>precision</sup> then it is represented in <i><a
-  # href="#decimal">decimal format</a></i>.
+  #     <p> If <i>m</i> is greater than or equal to 10<sup>-4</sup> but less
+  #     than 10<sup>precision</sup> then it is represented in <i><a
+  #     href="#decimal">decimal format</a></i>.
   # 
-  # <p> If <i>m</i> is less than 10<sup>-4</sup> or greater than or equal to
-  # 10<sup>precision</sup>, then it is represented in <i><a
-  # href="#scientific">computerized scientific notation</a></i>.
+  #     <p> If <i>m</i> is less than 10<sup>-4</sup> or greater than or equal to
+  #     10<sup>precision</sup>, then it is represented in <i><a
+  #     href="#scientific">computerized scientific notation</a></i>.
   # 
-  # <p> The total number of significant digits in <i>m</i> is equal to the
-  # precision.  If the precision is not specified, then the default value is
-  # <tt>6</tt>.  If the precision is <tt>0</tt>, then it is taken to be
-  # <tt>1</tt>.
+  #     <p> The total number of significant digits in <i>m</i> is equal to the
+  #     precision.  If the precision is not specified, then the default value is
+  #     <tt>6</tt>.  If the precision is <tt>0</tt>, then it is taken to be
+  #     <tt>1</tt>.
   # 
-  # <p> If the <tt>'#'</tt> flag is given then an {@link
-  # FormatFlagsConversionMismatchException} will be thrown.
+  #     <p> If the <tt>'#'</tt> flag is given then an {@link
+  #     FormatFlagsConversionMismatchException} will be thrown.
   # 
   # <tr><td valign="top"> <tt>'G'</tt>
-  # <td valign="top"> <tt>'&#92;u0047'</tt>
-  # <td> The upper-case variant of <tt>'g'</tt>.
+  #     <td valign="top"> <tt>'&#92;u0047'</tt>
+  #     <td> The upper-case variant of <tt>'g'</tt>.
   # 
   # <tr><td valign="top"> <tt>'f'</tt>
-  # <td valign="top"> <tt>'&#92;u0066'</tt>
-  # <td> Requires the output to be formatted using <a name="decimal">decimal
-  # format</a>.  The <a href="#l10n algorithm">localization algorithm</a> is
-  # applied.
+  #     <td valign="top"> <tt>'&#92;u0066'</tt>
+  #     <td> Requires the output to be formatted using <a name="decimal">decimal
+  #     format</a>.  The <a href="#l10n algorithm">localization algorithm</a> is
+  #     applied.
   # 
-  # <p> The result is a string that represents the sign and magnitude
-  # (absolute value) of the argument.  The formatting of the sign is
-  # described in the <a href="#l10n algorithm">localization
-  # algorithm</a>. The formatting of the magnitude <i>m</i> depends upon its
-  # value.
+  #     <p> The result is a string that represents the sign and magnitude
+  #     (absolute value) of the argument.  The formatting of the sign is
+  #     described in the <a href="#l10n algorithm">localization
+  #     algorithm</a>. The formatting of the magnitude <i>m</i> depends upon its
+  #     value.
   # 
-  # <p> The magnitude is formatted as the integer part of <i>m</i>, with no
-  # leading zeroes, followed by the decimal separator followed by one or
-  # more decimal digits representing the fractional part of <i>m</i>.
+  #     <p> The magnitude is formatted as the integer part of <i>m</i>, with no
+  #     leading zeroes, followed by the decimal separator followed by one or
+  #     more decimal digits representing the fractional part of <i>m</i>.
   # 
-  # <p> The number of digits in the result for the fractional part of
-  # <i>m</i> or <i>a</i> is equal to the precision.  If the precision is not
-  # specified then the default value is <tt>6</tt>.  If the precision is
-  # less than the number of digits which would appear after the decimal
-  # point in the string returned by {@link Float#toString(float)} or {@link
-  # Double#toString(double)} respectively, then the value will be rounded
-  # using the {@linkplain java.math.BigDecimal#ROUND_HALF_UP round half up
-  # algorithm}.  Otherwise, zeros may be appended to reach the precision.
-  # For a canonical representation of the value, use {@link
-  # BigDecimal#toString()}.
+  #     <p> The number of digits in the result for the fractional part of
+  #     <i>m</i> or <i>a</i> is equal to the precision.  If the precision is not
+  #     specified then the default value is <tt>6</tt>.  If the precision is
+  #     less than the number of digits which would appear after the decimal
+  #     point in the string returned by {@link Float#toString(float)} or {@link
+  #     Double#toString(double)} respectively, then the value will be rounded
+  #     using the {@linkplain java.math.BigDecimal#ROUND_HALF_UP round half up
+  #     algorithm}.  Otherwise, zeros may be appended to reach the precision.
+  #     For a canonical representation of the value, use {@link
+  #     BigDecimal#toString()}.
   # 
   # </table>
   # 
@@ -1490,11 +1490,11 @@ module Java::Util
   # <table cellpadding=5 summary="DTConv">
   # 
   # <tr><td valign="top"> <tt>'t'</tt>
-  # <td valign="top"> <tt>'&#92;u0074'</tt>
-  # <td> Prefix for date and time conversion characters.
+  #     <td valign="top"> <tt>'&#92;u0074'</tt>
+  #     <td> Prefix for date and time conversion characters.
   # <tr><td valign="top"> <tt>'T'</tt>
-  # <td valign="top"> <tt>'&#92;u0054'</tt>
-  # <td> The upper-case variant of <tt>'t'</tt>.
+  #     <td valign="top"> <tt>'&#92;u0054'</tt>
+  #     <td> The upper-case variant of <tt>'t'</tt>.
   # 
   # </table>
   # 
@@ -1510,81 +1510,81 @@ module Java::Util
   # <table cellpadding=5 summary="time">
   # 
   # <tr><td valign="top"> <tt>'H'</tt>
-  # <td valign="top"> <tt>'&#92;u0048'</tt>
-  # <td> Hour of the day for the 24-hour clock, formatted as two digits with
-  # a leading zero as necessary i.e. <tt>00 - 23</tt>. <tt>00</tt>
-  # corresponds to midnight.
+  #     <td valign="top"> <tt>'&#92;u0048'</tt>
+  #     <td> Hour of the day for the 24-hour clock, formatted as two digits with
+  #     a leading zero as necessary i.e. <tt>00 - 23</tt>. <tt>00</tt>
+  #     corresponds to midnight.
   # 
   # <tr><td valign="top"><tt>'I'</tt>
-  # <td valign="top"> <tt>'&#92;u0049'</tt>
-  # <td> Hour for the 12-hour clock, formatted as two digits with a leading
-  # zero as necessary, i.e.  <tt>01 - 12</tt>.  <tt>01</tt> corresponds to
-  # one o'clock (either morning or afternoon).
+  #     <td valign="top"> <tt>'&#92;u0049'</tt>
+  #     <td> Hour for the 12-hour clock, formatted as two digits with a leading
+  #     zero as necessary, i.e.  <tt>01 - 12</tt>.  <tt>01</tt> corresponds to
+  #     one o'clock (either morning or afternoon).
   # 
   # <tr><td valign="top"><tt>'k'</tt>
-  # <td valign="top"> <tt>'&#92;u006b'</tt>
-  # <td> Hour of the day for the 24-hour clock, i.e. <tt>0 - 23</tt>.
-  # <tt>0</tt> corresponds to midnight.
+  #     <td valign="top"> <tt>'&#92;u006b'</tt>
+  #     <td> Hour of the day for the 24-hour clock, i.e. <tt>0 - 23</tt>.
+  #     <tt>0</tt> corresponds to midnight.
   # 
   # <tr><td valign="top"><tt>'l'</tt>
-  # <td valign="top"> <tt>'&#92;u006c'</tt>
-  # <td> Hour for the 12-hour clock, i.e. <tt>1 - 12</tt>.  <tt>1</tt>
-  # corresponds to one o'clock (either morning or afternoon).
+  #     <td valign="top"> <tt>'&#92;u006c'</tt>
+  #     <td> Hour for the 12-hour clock, i.e. <tt>1 - 12</tt>.  <tt>1</tt>
+  #     corresponds to one o'clock (either morning or afternoon).
   # 
   # <tr><td valign="top"><tt>'M'</tt>
-  # <td valign="top"> <tt>'&#92;u004d'</tt>
-  # <td> Minute within the hour formatted as two digits with a leading zero
-  # as necessary, i.e.  <tt>00 - 59</tt>.
+  #     <td valign="top"> <tt>'&#92;u004d'</tt>
+  #     <td> Minute within the hour formatted as two digits with a leading zero
+  #     as necessary, i.e.  <tt>00 - 59</tt>.
   # 
   # <tr><td valign="top"><tt>'S'</tt>
-  # <td valign="top"> <tt>'&#92;u0053'</tt>
-  # <td> Seconds within the minute, formatted as two digits with a leading
-  # zero as necessary, i.e. <tt>00 - 60</tt> ("<tt>60</tt>" is a special
-  # value required to support leap seconds).
+  #     <td valign="top"> <tt>'&#92;u0053'</tt>
+  #     <td> Seconds within the minute, formatted as two digits with a leading
+  #     zero as necessary, i.e. <tt>00 - 60</tt> ("<tt>60</tt>" is a special
+  #     value required to support leap seconds).
   # 
   # <tr><td valign="top"><tt>'L'</tt>
-  # <td valign="top"> <tt>'&#92;u004c'</tt>
-  # <td> Millisecond within the second formatted as three digits with
-  # leading zeros as necessary, i.e. <tt>000 - 999</tt>.
+  #     <td valign="top"> <tt>'&#92;u004c'</tt>
+  #     <td> Millisecond within the second formatted as three digits with
+  #     leading zeros as necessary, i.e. <tt>000 - 999</tt>.
   # 
   # <tr><td valign="top"><tt>'N'</tt>
-  # <td valign="top"> <tt>'&#92;u004e'</tt>
-  # <td> Nanosecond within the second, formatted as nine digits with leading
-  # zeros as necessary, i.e. <tt>000000000 - 999999999</tt>.  The precision
-  # of this value is limited by the resolution of the underlying operating
-  # system or hardware.
+  #     <td valign="top"> <tt>'&#92;u004e'</tt>
+  #     <td> Nanosecond within the second, formatted as nine digits with leading
+  #     zeros as necessary, i.e. <tt>000000000 - 999999999</tt>.  The precision
+  #     of this value is limited by the resolution of the underlying operating
+  #     system or hardware.
   # 
   # <tr><td valign="top"><tt>'p'</tt>
-  # <td valign="top"> <tt>'&#92;u0070'</tt>
-  # <td> Locale-specific {@linkplain
-  # java.text.DateFormatSymbols#getAmPmStrings morning or afternoon} marker
-  # in lower case, e.g."<tt>am</tt>" or "<tt>pm</tt>".  Use of the
-  # conversion prefix <tt>'T'</tt> forces this output to upper case.  (Note
-  # that <tt>'p'</tt> produces lower-case output.  This is different from
-  # GNU <tt>date</tt> and POSIX <tt>strftime(3c)</tt> which produce
-  # upper-case output.)
+  #     <td valign="top"> <tt>'&#92;u0070'</tt>
+  #     <td> Locale-specific {@linkplain
+  #     java.text.DateFormatSymbols#getAmPmStrings morning or afternoon} marker
+  #     in lower case, e.g."<tt>am</tt>" or "<tt>pm</tt>".  Use of the
+  #     conversion prefix <tt>'T'</tt> forces this output to upper case.  (Note
+  #     that <tt>'p'</tt> produces lower-case output.  This is different from
+  #     GNU <tt>date</tt> and POSIX <tt>strftime(3c)</tt> which produce
+  #     upper-case output.)
   # 
   # <tr><td valign="top"><tt>'z'</tt>
-  # <td valign="top"> <tt>'&#92;u007a'</tt>
-  # <td> <a href="http://www.ietf.org/rfc/rfc0822.txt">RFC&nbsp;822</a>
-  # style numeric time zone offset from GMT, e.g. <tt>-0800</tt>.
+  #     <td valign="top"> <tt>'&#92;u007a'</tt>
+  #     <td> <a href="http://www.ietf.org/rfc/rfc0822.txt">RFC&nbsp;822</a>
+  #     style numeric time zone offset from GMT, e.g. <tt>-0800</tt>.
   # 
   # <tr><td valign="top"><tt>'Z'</tt>
-  # <td valign="top"> <tt>'&#92;u005a'</tt>
-  # <td> A string representing the abbreviation for the time zone.
+  #     <td valign="top"> <tt>'&#92;u005a'</tt>
+  #     <td> A string representing the abbreviation for the time zone.
   # 
   # <tr><td valign="top"><tt>'s'</tt>
-  # <td valign="top"> <tt>'&#92;u0073'</tt>
-  # <td> Seconds since the beginning of the epoch starting at 1 January 1970
-  # <tt>00:00:00</tt> UTC, i.e. <tt>Long.MIN_VALUE/1000</tt> to
-  # <tt>Long.MAX_VALUE/1000</tt>.
+  #     <td valign="top"> <tt>'&#92;u0073'</tt>
+  #     <td> Seconds since the beginning of the epoch starting at 1 January 1970
+  #     <tt>00:00:00</tt> UTC, i.e. <tt>Long.MIN_VALUE/1000</tt> to
+  #     <tt>Long.MAX_VALUE/1000</tt>.
   # 
   # <tr><td valign="top"><tt>'Q'</tt>
-  # <td valign="top"> <tt>'&#92;u004f'</tt>
-  # <td> Milliseconds since the beginning of the epoch starting at 1 January
-  # 1970 <tt>00:00:00</tt> UTC, i.e. <tt>Long.MIN_VALUE</tt> to
-  # <tt>Long.MAX_VALUE</tt>. The precision of this value is limited by
-  # the resolution of the underlying operating system or hardware.
+  #     <td valign="top"> <tt>'&#92;u004f'</tt>
+  #     <td> Milliseconds since the beginning of the epoch starting at 1 January
+  #     1970 <tt>00:00:00</tt> UTC, i.e. <tt>Long.MIN_VALUE</tt> to
+  #     <tt>Long.MAX_VALUE</tt>. The precision of this value is limited by
+  #     the resolution of the underlying operating system or hardware.
   # 
   # </table>
   # 
@@ -1593,70 +1593,70 @@ module Java::Util
   # <table cellpadding=5 summary="date">
   # 
   # <tr><td valign="top"><tt>'B'</tt>
-  # <td valign="top"> <tt>'&#92;u0042'</tt>
-  # <td> Locale-specific {@linkplain java.text.DateFormatSymbols#getMonths
-  # full month name}, e.g. <tt>"January"</tt>, <tt>"February"</tt>.
+  #     <td valign="top"> <tt>'&#92;u0042'</tt>
+  #     <td> Locale-specific {@linkplain java.text.DateFormatSymbols#getMonths
+  #     full month name}, e.g. <tt>"January"</tt>, <tt>"February"</tt>.
   # 
   # <tr><td valign="top"><tt>'b'</tt>
-  # <td valign="top"> <tt>'&#92;u0062'</tt>
-  # <td> Locale-specific {@linkplain
-  # java.text.DateFormatSymbols#getShortMonths abbreviated month name},
-  # e.g. <tt>"Jan"</tt>, <tt>"Feb"</tt>.
+  #     <td valign="top"> <tt>'&#92;u0062'</tt>
+  #     <td> Locale-specific {@linkplain
+  #     java.text.DateFormatSymbols#getShortMonths abbreviated month name},
+  #     e.g. <tt>"Jan"</tt>, <tt>"Feb"</tt>.
   # 
   # <tr><td valign="top"><tt>'h'</tt>
-  # <td valign="top"> <tt>'&#92;u0068'</tt>
-  # <td> Same as <tt>'b'</tt>.
+  #     <td valign="top"> <tt>'&#92;u0068'</tt>
+  #     <td> Same as <tt>'b'</tt>.
   # 
   # <tr><td valign="top"><tt>'A'</tt>
-  # <td valign="top"> <tt>'&#92;u0041'</tt>
-  # <td> Locale-specific full name of the {@linkplain
-  # java.text.DateFormatSymbols#getWeekdays day of the week},
-  # e.g. <tt>"Sunday"</tt>, <tt>"Monday"</tt>
+  #     <td valign="top"> <tt>'&#92;u0041'</tt>
+  #     <td> Locale-specific full name of the {@linkplain
+  #     java.text.DateFormatSymbols#getWeekdays day of the week},
+  #     e.g. <tt>"Sunday"</tt>, <tt>"Monday"</tt>
   # 
   # <tr><td valign="top"><tt>'a'</tt>
-  # <td valign="top"> <tt>'&#92;u0061'</tt>
-  # <td> Locale-specific short name of the {@linkplain
-  # java.text.DateFormatSymbols#getShortWeekdays day of the week},
-  # e.g. <tt>"Sun"</tt>, <tt>"Mon"</tt>
+  #     <td valign="top"> <tt>'&#92;u0061'</tt>
+  #     <td> Locale-specific short name of the {@linkplain
+  #     java.text.DateFormatSymbols#getShortWeekdays day of the week},
+  #     e.g. <tt>"Sun"</tt>, <tt>"Mon"</tt>
   # 
   # <tr><td valign="top"><tt>'C'</tt>
-  # <td valign="top"> <tt>'&#92;u0043'</tt>
-  # <td> Four-digit year divided by <tt>100</tt>, formatted as two digits
-  # with leading zero as necessary, i.e. <tt>00 - 99</tt>
+  #     <td valign="top"> <tt>'&#92;u0043'</tt>
+  #     <td> Four-digit year divided by <tt>100</tt>, formatted as two digits
+  #     with leading zero as necessary, i.e. <tt>00 - 99</tt>
   # 
   # <tr><td valign="top"><tt>'Y'</tt>
-  # <td valign="top"> <tt>'&#92;u0059'</tt> <td> Year, formatted to at least
-  # four digits with leading zeros as necessary, e.g. <tt>0092</tt> equals
-  # <tt>92</tt> CE for the Gregorian calendar.
+  #     <td valign="top"> <tt>'&#92;u0059'</tt> <td> Year, formatted to at least
+  #     four digits with leading zeros as necessary, e.g. <tt>0092</tt> equals
+  #     <tt>92</tt> CE for the Gregorian calendar.
   # 
   # <tr><td valign="top"><tt>'y'</tt>
-  # <td valign="top"> <tt>'&#92;u0079'</tt>
-  # <td> Last two digits of the year, formatted with leading zeros as
-  # necessary, i.e. <tt>00 - 99</tt>.
+  #     <td valign="top"> <tt>'&#92;u0079'</tt>
+  #     <td> Last two digits of the year, formatted with leading zeros as
+  #     necessary, i.e. <tt>00 - 99</tt>.
   # 
   # <tr><td valign="top"><tt>'j'</tt>
-  # <td valign="top"> <tt>'&#92;u006a'</tt>
-  # <td> Day of year, formatted as three digits with leading zeros as
-  # necessary, e.g. <tt>001 - 366</tt> for the Gregorian calendar.
-  # <tt>001</tt> corresponds to the first day of the year.
+  #     <td valign="top"> <tt>'&#92;u006a'</tt>
+  #     <td> Day of year, formatted as three digits with leading zeros as
+  #     necessary, e.g. <tt>001 - 366</tt> for the Gregorian calendar.
+  #     <tt>001</tt> corresponds to the first day of the year.
   # 
   # <tr><td valign="top"><tt>'m'</tt>
-  # <td valign="top"> <tt>'&#92;u006d'</tt>
-  # <td> Month, formatted as two digits with leading zeros as necessary,
-  # i.e. <tt>01 - 13</tt>, where "<tt>01</tt>" is the first month of the
-  # year and ("<tt>13</tt>" is a special value required to support lunar
-  # calendars).
+  #     <td valign="top"> <tt>'&#92;u006d'</tt>
+  #     <td> Month, formatted as two digits with leading zeros as necessary,
+  #     i.e. <tt>01 - 13</tt>, where "<tt>01</tt>" is the first month of the
+  #     year and ("<tt>13</tt>" is a special value required to support lunar
+  #     calendars).
   # 
   # <tr><td valign="top"><tt>'d'</tt>
-  # <td valign="top"> <tt>'&#92;u0064'</tt>
-  # <td> Day of month, formatted as two digits with leading zeros as
-  # necessary, i.e. <tt>01 - 31</tt>, where "<tt>01</tt>" is the first day
-  # of the month.
+  #     <td valign="top"> <tt>'&#92;u0064'</tt>
+  #     <td> Day of month, formatted as two digits with leading zeros as
+  #     necessary, i.e. <tt>01 - 31</tt>, where "<tt>01</tt>" is the first day
+  #     of the month.
   # 
   # <tr><td valign="top"><tt>'e'</tt>
-  # <td valign="top"> <tt>'&#92;u0065'</tt>
-  # <td> Day of month, formatted as two digits, i.e. <tt>1 - 31</tt> where
-  # "<tt>1</tt>" is the first day of the month.
+  #     <td valign="top"> <tt>'&#92;u0065'</tt>
+  #     <td> Day of month, formatted as two digits, i.e. <tt>1 - 31</tt> where
+  #     "<tt>1</tt>" is the first day of the month.
   # 
   # </table>
   # 
@@ -1666,32 +1666,32 @@ module Java::Util
   # <table cellpadding=5 summary="composites">
   # 
   # <tr><td valign="top"><tt>'R'</tt>
-  # <td valign="top"> <tt>'&#92;u0052'</tt>
-  # <td> Time formatted for the 24-hour clock as <tt>"%tH:%tM"</tt>
+  #     <td valign="top"> <tt>'&#92;u0052'</tt>
+  #     <td> Time formatted for the 24-hour clock as <tt>"%tH:%tM"</tt>
   # 
   # <tr><td valign="top"><tt>'T'</tt>
-  # <td valign="top"> <tt>'&#92;u0054'</tt>
-  # <td> Time formatted for the 24-hour clock as <tt>"%tH:%tM:%tS"</tt>.
+  #     <td valign="top"> <tt>'&#92;u0054'</tt>
+  #     <td> Time formatted for the 24-hour clock as <tt>"%tH:%tM:%tS"</tt>.
   # 
   # <tr><td valign="top"><tt>'r'</tt>
-  # <td valign="top"> <tt>'&#92;u0072'</tt>
-  # <td> Time formatted for the 12-hour clock as <tt>"%tI:%tM:%tS
-  # %Tp"</tt>.  The location of the morning or afternoon marker
-  # (<tt>'%Tp'</tt>) may be locale-dependent.
+  #     <td valign="top"> <tt>'&#92;u0072'</tt>
+  #     <td> Time formatted for the 12-hour clock as <tt>"%tI:%tM:%tS
+  #     %Tp"</tt>.  The location of the morning or afternoon marker
+  #     (<tt>'%Tp'</tt>) may be locale-dependent.
   # 
   # <tr><td valign="top"><tt>'D'</tt>
-  # <td valign="top"> <tt>'&#92;u0044'</tt>
-  # <td> Date formatted as <tt>"%tm/%td/%ty"</tt>.
+  #     <td valign="top"> <tt>'&#92;u0044'</tt>
+  #     <td> Date formatted as <tt>"%tm/%td/%ty"</tt>.
   # 
   # <tr><td valign="top"><tt>'F'</tt>
-  # <td valign="top"> <tt>'&#92;u0046'</tt>
-  # <td> <a href="http://www.w3.org/TR/NOTE-datetime">ISO&nbsp;8601</a>
-  # complete date formatted as <tt>"%tY-%tm-%td"</tt>.
+  #     <td valign="top"> <tt>'&#92;u0046'</tt>
+  #     <td> <a href="http://www.w3.org/TR/NOTE-datetime">ISO&nbsp;8601</a>
+  #     complete date formatted as <tt>"%tY-%tm-%td"</tt>.
   # 
   # <tr><td valign="top"><tt>'c'</tt>
-  # <td valign="top"> <tt>'&#92;u0063'</tt>
-  # <td> Date and time formatted as <tt>"%ta %tb %td %tT %tZ %tY"</tt>,
-  # e.g. <tt>"Sun Jul 20 16:17:00 EDT 1969"</tt>.
+  #     <td valign="top"> <tt>'&#92;u0063'</tt>
+  #     <td> Date and time formatted as <tt>"%ta %tb %td %tT %tZ %tY"</tt>,
+  #     e.g. <tt>"Sun Jul 20 16:17:00 EDT 1969"</tt>.
   # 
   # </table>
   # 
@@ -1717,7 +1717,7 @@ module Java::Util
   # <table cellpadding=5 summary="DTConv">
   # 
   # <tr><td valign="top"><tt>'%'</tt>
-  # <td> The result is a literal <tt>'%'</tt> (<tt>'&#92;u0025'</tt>)
+  #     <td> The result is a literal <tt>'%'</tt> (<tt>'&#92;u0025'</tt>)
   # 
   # <p> The <a name="dtWidth">width</a> is the minimum number of characters to
   # be written to the output including the <tt>'%'</tt>.  If the length of the
@@ -1742,8 +1742,8 @@ module Java::Util
   # <table cellpadding=5 summary="DTConv">
   # 
   # <tr><td valign="top"><tt>'n'</tt>
-  # <td> the platform-specific line separator as returned by {@link
-  # System#getProperty System.getProperty("line.separator")}.
+  #     <td> the platform-specific line separator as returned by {@link
+  #     System#getProperty System.getProperty("line.separator")}.
   # 
   # </table>
   # 
@@ -1766,9 +1766,9 @@ module Java::Util
   # <p> For example:
   # 
   # <blockquote><pre>
-  # formatter.format("%4$s %3$s %2$s %1$s %4$s %3$s %2$s %1$s",
-  # "a", "b", "c", "d")
-  # // -&gt; "d c b a d c b a"
+  #   formatter.format("%4$s %3$s %2$s %1$s %4$s %3$s %2$s %1$s",
+  #                    "a", "b", "c", "d")
+  #   // -&gt; "d c b a d c b a"
   # </pre></blockquote>
   # 
   # <li> <i>Relative indexing</i> is used when the format specifier contains a
@@ -1777,9 +1777,9 @@ module Java::Util
   # argument, then a {@link MissingFormatArgumentException} is thrown.
   # 
   # <blockquote><pre>
-  # formatter.format("%s %s %&lt;s %&lt;s", "a", "b", "c", "d")
-  # // -&gt; "a b b b"
-  # // "c" and "d" are ignored because they are not referenced
+  #    formatter.format("%s %s %&lt;s %&lt;s", "a", "b", "c", "d")
+  #    // -&gt; "a b b b"
+  #    // "c" and "d" are ignored because they are not referenced
   # </pre></blockquote>
   # 
   # <li> <i>Ordinary indexing</i> is used when the format specifier contains
@@ -1789,8 +1789,8 @@ module Java::Util
   # relative indexing.
   # 
   # <blockquote><pre>
-  # formatter.format("%s %s %s %s", "a", "b", "c", "d")
-  # // -&gt; "a b c d"
+  #   formatter.format("%s %s %s %s", "a", "b", "c", "d")
+  #   // -&gt; "a b c d"
   # </pre></blockquote>
   # 
   # </ul>
@@ -1799,9 +1799,9 @@ module Java::Util
   # for example:
   # 
   # <blockquote><pre>
-  # formatter.format("%2$s %s %&lt;s %s", "a", "b", "c", "d")
-  # // -&gt; "b a a b"
-  # // "c" and "d" are ignored because they are not referenced
+  #   formatter.format("%2$s %s %&lt;s %s", "a", "b", "c", "d")
+  #   // -&gt; "b a a b"
+  #   // "c" and "d" are ignored because they are not referenced
   # </pre></blockquote>
   # 
   # <p> The maximum number of arguments is limited by the maximum dimension of a
@@ -1898,8 +1898,8 @@ module Java::Util
     # locale} for this instance of the Java virtual machine.
     # 
     # @param  a
-    # Destination for the formatted output.  If <tt>a</tt> is
-    # <tt>null</tt> then a {@link StringBuilder} will be created.
+    #         Destination for the formatted output.  If <tt>a</tt> is
+    #         <tt>null</tt> then a {@link StringBuilder} will be created.
     def initialize(a)
       @a = nil
       @l = nil
@@ -1920,9 +1920,9 @@ module Java::Util
     # toString()}.
     # 
     # @param  l
-    # The {@linkplain java.util.Locale locale} to apply during
-    # formatting.  If <tt>l</tt> is <tt>null</tt> then no localization
-    # is applied.
+    #         The {@linkplain java.util.Locale locale} to apply during
+    #         formatting.  If <tt>l</tt> is <tt>null</tt> then no localization
+    #         is applied.
     def initialize(l)
       @a = nil
       @l = nil
@@ -1935,13 +1935,13 @@ module Java::Util
     # Constructs a new formatter with the specified destination and locale.
     # 
     # @param  a
-    # Destination for the formatted output.  If <tt>a</tt> is
-    # <tt>null</tt> then a {@link StringBuilder} will be created.
+    #         Destination for the formatted output.  If <tt>a</tt> is
+    #         <tt>null</tt> then a {@link StringBuilder} will be created.
     # 
     # @param  l
-    # The {@linkplain java.util.Locale locale} to apply during
-    # formatting.  If <tt>l</tt> is <tt>null</tt> then no localization
-    # is applied.
+    #         The {@linkplain java.util.Locale locale} to apply during
+    #         formatting.  If <tt>l</tt> is <tt>null</tt> then no localization
+    #         is applied.
     def initialize(a, l)
       @a = nil
       @l = nil
@@ -1964,21 +1964,21 @@ module Java::Util
     # locale} for this instance of the Java virtual machine.
     # 
     # @param  fileName
-    # The name of the file to use as the destination of this
-    # formatter.  If the file exists then it will be truncated to
-    # zero size; otherwise, a new file will be created.  The output
-    # will be written to the file and is buffered.
+    #         The name of the file to use as the destination of this
+    #         formatter.  If the file exists then it will be truncated to
+    #         zero size; otherwise, a new file will be created.  The output
+    #         will be written to the file and is buffered.
     # 
     # @throws  SecurityException
-    # If a security manager is present and {@link
-    # SecurityManager#checkWrite checkWrite(fileName)} denies write
-    # access to the file
+    #          If a security manager is present and {@link
+    #          SecurityManager#checkWrite checkWrite(fileName)} denies write
+    #          access to the file
     # 
     # @throws  FileNotFoundException
-    # If the given file name does not denote an existing, writable
-    # regular file and a new regular file of that name cannot be
-    # created, or if some other error occurs while opening or
-    # creating the file
+    #          If the given file name does not denote an existing, writable
+    #          regular file and a new regular file of that name cannot be
+    #          created, or if some other error occurs while opening or
+    #          creating the file
     def initialize(file_name)
       @a = nil
       @l = nil
@@ -1994,28 +1994,28 @@ module Java::Util
     # locale} for this instance of the Java virtual machine.
     # 
     # @param  fileName
-    # The name of the file to use as the destination of this
-    # formatter.  If the file exists then it will be truncated to
-    # zero size; otherwise, a new file will be created.  The output
-    # will be written to the file and is buffered.
+    #         The name of the file to use as the destination of this
+    #         formatter.  If the file exists then it will be truncated to
+    #         zero size; otherwise, a new file will be created.  The output
+    #         will be written to the file and is buffered.
     # 
     # @param  csn
-    # The name of a supported {@linkplain java.nio.charset.Charset
-    # charset}
+    #         The name of a supported {@linkplain java.nio.charset.Charset
+    #         charset}
     # 
     # @throws  FileNotFoundException
-    # If the given file name does not denote an existing, writable
-    # regular file and a new regular file of that name cannot be
-    # created, or if some other error occurs while opening or
-    # creating the file
+    #          If the given file name does not denote an existing, writable
+    #          regular file and a new regular file of that name cannot be
+    #          created, or if some other error occurs while opening or
+    #          creating the file
     # 
     # @throws  SecurityException
-    # If a security manager is present and {@link
-    # SecurityManager#checkWrite checkWrite(fileName)} denies write
-    # access to the file
+    #          If a security manager is present and {@link
+    #          SecurityManager#checkWrite checkWrite(fileName)} denies write
+    #          access to the file
     # 
     # @throws  UnsupportedEncodingException
-    # If the named charset is not supported
+    #          If the named charset is not supported
     def initialize(file_name, csn)
       initialize__formatter(file_name, csn, Locale.get_default)
     end
@@ -2025,33 +2025,33 @@ module Java::Util
     # locale.
     # 
     # @param  fileName
-    # The name of the file to use as the destination of this
-    # formatter.  If the file exists then it will be truncated to
-    # zero size; otherwise, a new file will be created.  The output
-    # will be written to the file and is buffered.
+    #         The name of the file to use as the destination of this
+    #         formatter.  If the file exists then it will be truncated to
+    #         zero size; otherwise, a new file will be created.  The output
+    #         will be written to the file and is buffered.
     # 
     # @param  csn
-    # The name of a supported {@linkplain java.nio.charset.Charset
-    # charset}
+    #         The name of a supported {@linkplain java.nio.charset.Charset
+    #         charset}
     # 
     # @param  l
-    # The {@linkplain java.util.Locale locale} to apply during
-    # formatting.  If <tt>l</tt> is <tt>null</tt> then no localization
-    # is applied.
+    #         The {@linkplain java.util.Locale locale} to apply during
+    #         formatting.  If <tt>l</tt> is <tt>null</tt> then no localization
+    #         is applied.
     # 
     # @throws  FileNotFoundException
-    # If the given file name does not denote an existing, writable
-    # regular file and a new regular file of that name cannot be
-    # created, or if some other error occurs while opening or
-    # creating the file
+    #          If the given file name does not denote an existing, writable
+    #          regular file and a new regular file of that name cannot be
+    #          created, or if some other error occurs while opening or
+    #          creating the file
     # 
     # @throws  SecurityException
-    # If a security manager is present and {@link
-    # SecurityManager#checkWrite checkWrite(fileName)} denies write
-    # access to the file
+    #          If a security manager is present and {@link
+    #          SecurityManager#checkWrite checkWrite(fileName)} denies write
+    #          access to the file
     # 
     # @throws  UnsupportedEncodingException
-    # If the named charset is not supported
+    #          If the named charset is not supported
     def initialize(file_name, csn, l)
       @a = nil
       @l = nil
@@ -2071,21 +2071,21 @@ module Java::Util
     # locale} for this instance of the Java virtual machine.
     # 
     # @param  file
-    # The file to use as the destination of this formatter.  If the
-    # file exists then it will be truncated to zero size; otherwise,
-    # a new file will be created.  The output will be written to the
-    # file and is buffered.
+    #         The file to use as the destination of this formatter.  If the
+    #         file exists then it will be truncated to zero size; otherwise,
+    #         a new file will be created.  The output will be written to the
+    #         file and is buffered.
     # 
     # @throws  SecurityException
-    # If a security manager is present and {@link
-    # SecurityManager#checkWrite checkWrite(file.getPath())} denies
-    # write access to the file
+    #          If a security manager is present and {@link
+    #          SecurityManager#checkWrite checkWrite(file.getPath())} denies
+    #          write access to the file
     # 
     # @throws  FileNotFoundException
-    # If the given file object does not denote an existing, writable
-    # regular file and a new regular file of that name cannot be
-    # created, or if some other error occurs while opening or
-    # creating the file
+    #          If the given file object does not denote an existing, writable
+    #          regular file and a new regular file of that name cannot be
+    #          created, or if some other error occurs while opening or
+    #          creating the file
     def initialize(file)
       @a = nil
       @l = nil
@@ -2101,28 +2101,28 @@ module Java::Util
     # locale} for this instance of the Java virtual machine.
     # 
     # @param  file
-    # The file to use as the destination of this formatter.  If the
-    # file exists then it will be truncated to zero size; otherwise,
-    # a new file will be created.  The output will be written to the
-    # file and is buffered.
+    #         The file to use as the destination of this formatter.  If the
+    #         file exists then it will be truncated to zero size; otherwise,
+    #         a new file will be created.  The output will be written to the
+    #         file and is buffered.
     # 
     # @param  csn
-    # The name of a supported {@linkplain java.nio.charset.Charset
-    # charset}
+    #         The name of a supported {@linkplain java.nio.charset.Charset
+    #         charset}
     # 
     # @throws  FileNotFoundException
-    # If the given file object does not denote an existing, writable
-    # regular file and a new regular file of that name cannot be
-    # created, or if some other error occurs while opening or
-    # creating the file
+    #          If the given file object does not denote an existing, writable
+    #          regular file and a new regular file of that name cannot be
+    #          created, or if some other error occurs while opening or
+    #          creating the file
     # 
     # @throws  SecurityException
-    # If a security manager is present and {@link
-    # SecurityManager#checkWrite checkWrite(file.getPath())} denies
-    # write access to the file
+    #          If a security manager is present and {@link
+    #          SecurityManager#checkWrite checkWrite(file.getPath())} denies
+    #          write access to the file
     # 
     # @throws  UnsupportedEncodingException
-    # If the named charset is not supported
+    #          If the named charset is not supported
     def initialize(file, csn)
       initialize__formatter(file, csn, Locale.get_default)
     end
@@ -2132,33 +2132,33 @@ module Java::Util
     # locale.
     # 
     # @param  file
-    # The file to use as the destination of this formatter.  If the
-    # file exists then it will be truncated to zero size; otherwise,
-    # a new file will be created.  The output will be written to the
-    # file and is buffered.
+    #         The file to use as the destination of this formatter.  If the
+    #         file exists then it will be truncated to zero size; otherwise,
+    #         a new file will be created.  The output will be written to the
+    #         file and is buffered.
     # 
     # @param  csn
-    # The name of a supported {@linkplain java.nio.charset.Charset
-    # charset}
+    #         The name of a supported {@linkplain java.nio.charset.Charset
+    #         charset}
     # 
     # @param  l
-    # The {@linkplain java.util.Locale locale} to apply during
-    # formatting.  If <tt>l</tt> is <tt>null</tt> then no localization
-    # is applied.
+    #         The {@linkplain java.util.Locale locale} to apply during
+    #         formatting.  If <tt>l</tt> is <tt>null</tt> then no localization
+    #         is applied.
     # 
     # @throws  FileNotFoundException
-    # If the given file object does not denote an existing, writable
-    # regular file and a new regular file of that name cannot be
-    # created, or if some other error occurs while opening or
-    # creating the file
+    #          If the given file object does not denote an existing, writable
+    #          regular file and a new regular file of that name cannot be
+    #          created, or if some other error occurs while opening or
+    #          creating the file
     # 
     # @throws  SecurityException
-    # If a security manager is present and {@link
-    # SecurityManager#checkWrite checkWrite(file.getPath())} denies
-    # write access to the file
+    #          If a security manager is present and {@link
+    #          SecurityManager#checkWrite checkWrite(file.getPath())} denies
+    #          write access to the file
     # 
     # @throws  UnsupportedEncodingException
-    # If the named charset is not supported
+    #          If the named charset is not supported
     def initialize(file, csn, l)
       @a = nil
       @l = nil
@@ -2178,7 +2178,7 @@ module Java::Util
     # charset.
     # 
     # @param  ps
-    # The stream to use as the destination of this formatter.
+    #         The stream to use as the destination of this formatter.
     def initialize(ps)
       @a = nil
       @l = nil
@@ -2201,8 +2201,8 @@ module Java::Util
     # locale} for this instance of the Java virtual machine.
     # 
     # @param  os
-    # The output stream to use as the destination of this formatter.
-    # The output will be buffered.
+    #         The output stream to use as the destination of this formatter.
+    #         The output will be buffered.
     def initialize(os)
       @a = nil
       @l = nil
@@ -2219,15 +2219,15 @@ module Java::Util
     # locale} for this instance of the Java virtual machine.
     # 
     # @param  os
-    # The output stream to use as the destination of this formatter.
-    # The output will be buffered.
+    #         The output stream to use as the destination of this formatter.
+    #         The output will be buffered.
     # 
     # @param  csn
-    # The name of a supported {@linkplain java.nio.charset.Charset
-    # charset}
+    #         The name of a supported {@linkplain java.nio.charset.Charset
+    #         charset}
     # 
     # @throws  UnsupportedEncodingException
-    # If the named charset is not supported
+    #          If the named charset is not supported
     def initialize(os, csn)
       initialize__formatter(os, csn, Locale.get_default)
     end
@@ -2237,20 +2237,20 @@ module Java::Util
     # and locale.
     # 
     # @param  os
-    # The output stream to use as the destination of this formatter.
-    # The output will be buffered.
+    #         The output stream to use as the destination of this formatter.
+    #         The output will be buffered.
     # 
     # @param  csn
-    # The name of a supported {@linkplain java.nio.charset.Charset
-    # charset}
+    #         The name of a supported {@linkplain java.nio.charset.Charset
+    #         charset}
     # 
     # @param  l
-    # The {@linkplain java.util.Locale locale} to apply during
-    # formatting.  If <tt>l</tt> is <tt>null</tt> then no localization
-    # is applied.
+    #         The {@linkplain java.util.Locale locale} to apply during
+    #         formatting.  If <tt>l</tt> is <tt>null</tt> then no localization
+    #         is applied.
     # 
     # @throws  UnsupportedEncodingException
-    # If the named charset is not supported
+    #          If the named charset is not supported
     def initialize(os, csn, l)
       @a = nil
       @l = nil
@@ -2274,11 +2274,11 @@ module Java::Util
     # for this object which has a locale argument does not change this value.
     # 
     # @return  <tt>null</tt> if no localization is applied, otherwise a
-    # locale
+    #          locale
     # 
     # @throws  FormatterClosedException
-    # If this formatter has been closed by invoking its {@link
-    # #close()} method
+    #          If this formatter has been closed by invoking its {@link
+    #          #close()} method
     def locale
       ensure_open
       return @l
@@ -2290,8 +2290,8 @@ module Java::Util
     # @return  The destination for the output
     # 
     # @throws  FormatterClosedException
-    # If this formatter has been closed by invoking its {@link
-    # #close()} method
+    #          If this formatter has been closed by invoking its {@link
+    #          #close()} method
     def out
       ensure_open
       return @a
@@ -2303,17 +2303,17 @@ module Java::Util
     # {@link StringBuilder} then retrieves the resultant string:
     # 
     # <blockquote><pre>
-    # Formatter f = new Formatter();
-    # f.format("Last reboot at %tc", lastRebootDate);
-    # String s = f.toString();
-    # // -&gt; s == "Last reboot at Sat Jan 01 00:00:00 PST 2000"
+    #   Formatter f = new Formatter();
+    #   f.format("Last reboot at %tc", lastRebootDate);
+    #   String s = f.toString();
+    #   // -&gt; s == "Last reboot at Sat Jan 01 00:00:00 PST 2000"
     # </pre></blockquote>
     # 
     # <p> An invocation of this method behaves in exactly the same way as the
     # invocation
     # 
     # <pre>
-    # out().toString() </pre>
+    #     out().toString() </pre>
     # 
     # <p> Depending on the specification of <tt>toString</tt> for the {@link
     # Appendable}, the returned string may or may not contain the characters
@@ -2322,11 +2322,11 @@ module Java::Util
     # data is discarded.
     # 
     # @return  The result of invoking <tt>toString()</tt> on the destination
-    # for the output
+    #          for the output
     # 
     # @throws  FormatterClosedException
-    # If this formatter has been closed by invoking its {@link
-    # #close()} method
+    #          If this formatter has been closed by invoking its {@link
+    #          #close()} method
     def to_s
       ensure_open
       return @a.to_s
@@ -2340,8 +2340,8 @@ module Java::Util
     # to the underlying stream.
     # 
     # @throws  FormatterClosedException
-    # If this formatter has been closed by invoking its {@link
-    # #close()} method
+    #          If this formatter has been closed by invoking its {@link
+    #          #close()} method
     def flush
       ensure_open
       if (@a.is_a?(Flushable))
@@ -2394,7 +2394,7 @@ module Java::Util
     # <tt>IOException</tt>, then this method will always return <tt>null</tt>.
     # 
     # @return  The last exception thrown by the Appendable or <tt>null</tt> if
-    # no such exception exists.
+    #          no such exception exists.
     def io_exception
       return @last_exception
     end
@@ -2405,28 +2405,28 @@ module Java::Util
     # defined during the construction of this formatter.
     # 
     # @param  format
-    # A format string as described in <a href="#syntax">Format string
-    # syntax</a>.
+    #         A format string as described in <a href="#syntax">Format string
+    #         syntax</a>.
     # 
     # @param  args
-    # Arguments referenced by the format specifiers in the format
-    # string.  If there are more arguments than format specifiers, the
-    # extra arguments are ignored.  The maximum number of arguments is
-    # limited by the maximum dimension of a Java array as defined by
-    # the <a href="http://java.sun.com/docs/books/vmspec/">Java
-    # Virtual Machine Specification</a>.
+    #         Arguments referenced by the format specifiers in the format
+    #         string.  If there are more arguments than format specifiers, the
+    #         extra arguments are ignored.  The maximum number of arguments is
+    #         limited by the maximum dimension of a Java array as defined by
+    #         the <a href="http://java.sun.com/docs/books/vmspec/">Java
+    #         Virtual Machine Specification</a>.
     # 
     # @throws  IllegalFormatException
-    # If a format string contains an illegal syntax, a format
-    # specifier that is incompatible with the given arguments,
-    # insufficient arguments given the format string, or other
-    # illegal conditions.  For specification of all possible
-    # formatting errors, see the <a href="#detail">Details</a>
-    # section of the formatter class specification.
+    #          If a format string contains an illegal syntax, a format
+    #          specifier that is incompatible with the given arguments,
+    #          insufficient arguments given the format string, or other
+    #          illegal conditions.  For specification of all possible
+    #          formatting errors, see the <a href="#detail">Details</a>
+    #          section of the formatter class specification.
     # 
     # @throws  FormatterClosedException
-    # If this formatter has been closed by invoking its {@link
-    # #close()} method
+    #          If this formatter has been closed by invoking its {@link
+    #          #close()} method
     # 
     # @return  This formatter
     def format(format, *args)
@@ -2443,34 +2443,34 @@ module Java::Util
     # specified locale, format string, and arguments.
     # 
     # @param  l
-    # The {@linkplain java.util.Locale locale} to apply during
-    # formatting.  If <tt>l</tt> is <tt>null</tt> then no localization
-    # is applied.  This does not change this object's locale that was
-    # set during construction.
+    #         The {@linkplain java.util.Locale locale} to apply during
+    #         formatting.  If <tt>l</tt> is <tt>null</tt> then no localization
+    #         is applied.  This does not change this object's locale that was
+    #         set during construction.
     # 
     # @param  format
-    # A format string as described in <a href="#syntax">Format string
-    # syntax</a>
+    #         A format string as described in <a href="#syntax">Format string
+    #         syntax</a>
     # 
     # @param  args
-    # Arguments referenced by the format specifiers in the format
-    # string.  If there are more arguments than format specifiers, the
-    # extra arguments are ignored.  The maximum number of arguments is
-    # limited by the maximum dimension of a Java array as defined by
-    # the <a href="http://java.sun.com/docs/books/vmspec/">Java
-    # Virtual Machine Specification</a>
+    #         Arguments referenced by the format specifiers in the format
+    #         string.  If there are more arguments than format specifiers, the
+    #         extra arguments are ignored.  The maximum number of arguments is
+    #         limited by the maximum dimension of a Java array as defined by
+    #         the <a href="http://java.sun.com/docs/books/vmspec/">Java
+    #         Virtual Machine Specification</a>
     # 
     # @throws  IllegalFormatException
-    # If a format string contains an illegal syntax, a format
-    # specifier that is incompatible with the given arguments,
-    # insufficient arguments given the format string, or other
-    # illegal conditions.  For specification of all possible
-    # formatting errors, see the <a href="#detail">Details</a>
-    # section of the formatter class specification.
+    #          If a format string contains an illegal syntax, a format
+    #          specifier that is incompatible with the given arguments,
+    #          insufficient arguments given the format string, or other
+    #          illegal conditions.  For specification of all possible
+    #          formatting errors, see the <a href="#detail">Details</a>
+    #          section of the formatter class specification.
     # 
     # @throws  FormatterClosedException
-    # If this formatter has been closed by invoking its {@link
-    # #close()} method
+    #          If this formatter has been closed by invoking its {@link
+    #          #close()} method
     # 
     # @return  This formatter
     def format(l, format_, *args)
@@ -2565,7 +2565,7 @@ module Java::Util
             sa[j] = m.group(j + 1)
             j += 1
           end
-          # System.out.println();
+          #              System.out.println();
           al.add(FormatSpecifier.new_local(self, self, sa))
           i = m.end_
         else
@@ -2577,9 +2577,9 @@ module Java::Util
           break
         end
       end
-      # FormatString[] fs = new FormatString[al.size()];
-      # for (int j = 0; j < al.size(); j++)
-      # System.out.println(((FormatString) al.get(j)).toString());
+      #      FormatString[] fs = new FormatString[al.size()];
+      #      for (int j = 0; j < al.size(); j++)
+      #          System.out.println(((FormatString) al.get(j)).toString());
       return al.to_array(Array.typed(FormatString).new(0) { nil })
     end
     
@@ -3872,14 +3872,14 @@ module Java::Util
                 if (((value == BigDecimal::ZERO)) || ((!((value <=> ten_to_the_neg_four)).equal?(-1)) && (((value <=> ten_to_the_prec)).equal?(-1))))
                   e = -value.scale + (value.unscaled_value.to_s.length - 1)
                   # xxx.yyy
-                  # g precision (# sig digits) = #x + #y
-                  # f precision = #y
-                  # exponent = #x - 1
+                  #   g precision (# sig digits) = #x + #y
+                  #   f precision = #y
+                  #   exponent = #x - 1
                   # => f precision = g precision - exponent - 1
                   # 0.000zzz
-                  # g precision (# sig digits) = #z
-                  # f precision = #0 (after '.') + #z
-                  # exponent = - #0 (after '.') - 1
+                  #   g precision (# sig digits) = #z
+                  #   f precision = #0 (after '.') + #z
+                  #   exponent = - #0 (after '.') - 1
                   # => f precision = g precision - exponent - 1
                   prec = prec - e - 1
                   print(sb, value, l, f, Conversion::DECIMAL_FLOAT, prec, neg)
@@ -4127,19 +4127,10 @@ module Java::Util
             sb = self.class::StringBuilder.new
           end
           case (c)
-          # 'H' (00 - 23)
-          # 'I' (01 - 12)
-          # 'k' (0 - 23) -- like H
-          # Date
-          # 'a'
-          # 'b'
-          # 'h' -- same b
-          # 'C' (00 - 99)
-          # 'y' (00 - 99)
-          # 'd' (01 - 31)
-          # Composites
-          # 'T' (24 hour hh:mm:ss - %tH:%tM:%tS)
           when DateTime::HOUR_OF_DAY_0, DateTime::HOUR_0, DateTime::HOUR_OF_DAY, DateTime::HOUR
+            # 'H' (00 - 23)
+            # 'I' (01 - 12)
+            # 'k' (0 - 23) -- like H
             # 'l' (1 - 12) -- like I
             i = t.get(Calendar::HOUR_OF_DAY)
             if ((c).equal?(DateTime::HOUR_0) || (c).equal?(DateTime::HOUR))
@@ -4205,6 +4196,8 @@ module Java::Util
             tz = t.get_time_zone
             sb.append(tz.get_display_name((!(t.get(Calendar::DST_OFFSET)).equal?(0)), TimeZone::SHORT, ((l).nil?) ? Locale::US : l))
           when DateTime::NAME_OF_DAY_ABBREV, DateTime::NAME_OF_DAY
+            # Date
+            # 'a'
             # 'A'
             i = t.get(Calendar::DAY_OF_WEEK)
             lt = (((l).nil?) ? Locale::US : l)
@@ -4215,6 +4208,8 @@ module Java::Util
               sb.append(dfs.get_short_weekdays[i])
             end
           when DateTime::NAME_OF_MONTH_ABBREV, DateTime::NAME_OF_MONTH_ABBREV_X, DateTime::NAME_OF_MONTH
+            # 'b'
+            # 'h' -- same b
             # 'B'
             i = t.get(Calendar::MONTH)
             lt = (((l).nil?) ? Locale::US : l)
@@ -4225,6 +4220,8 @@ module Java::Util
               sb.append(dfs.get_short_months[i])
             end
           when DateTime::CENTURY, DateTime::YEAR_2, DateTime::YEAR_4
+            # 'C' (00 - 99)
+            # 'y' (00 - 99)
             # 'Y' (0000 - 9999)
             i = t.get(Calendar::YEAR)
             size = 2
@@ -4239,6 +4236,7 @@ module Java::Util
             flags_ = Flags::ZERO_PAD
             sb.append(localized_magnitude(nil, i, flags_, size, l))
           when DateTime::DAY_OF_MONTH_0, DateTime::DAY_OF_MONTH
+            # 'd' (01 - 31)
             # 'e' (1 - 31) -- like d
             i = t.get(Calendar::DATE)
             flags_ = ((c).equal?(DateTime::DAY_OF_MONTH_0) ? Flags::ZERO_PAD : Flags::NONE)
@@ -4254,6 +4252,8 @@ module Java::Util
             flags_ = Flags::ZERO_PAD
             sb.append(localized_magnitude(nil, i, flags_, 2, l))
           when DateTime::TIME, DateTime::TIME_24_HOUR
+            # Composites
+            # 'T' (24 hour hh:mm:ss - %tH:%tM:%tS)
             # 'R' (hh:mm same as %H:%M)
             sep = Character.new(?:.ord)
             print(sb, t, DateTime::HOUR_OF_DAY_0, l).append(sep)
@@ -4868,17 +4868,17 @@ module Java::Util
           # *    static final char LOCALE_DATE           = 'x'; // (mm/dd/yy)
           def is_valid(c)
             case (c)
-            # Date
-            # *        case ISO_WEEK_OF_YEAR_2:
-            # *        case ISO_WEEK_OF_YEAR_4:
-            # *        case DAY_OF_WEEK_1:
-            # *        case WEEK_OF_YEAR_SUNDAY:
-            # *        case WEEK_OF_YEAR_MONDAY_01:
-            # *        case DAY_OF_WEEK_0:
-            # *        case WEEK_OF_YEAR_MONDAY:
-            # Composites
-            # *        case LOCALE_TIME:
             when self.class::HOUR_OF_DAY_0, self.class::HOUR_0, self.class::HOUR_OF_DAY, self.class::HOUR, self.class::MINUTE, self.class::NANOSECOND, self.class::MILLISECOND, self.class::MILLISECOND_SINCE_EPOCH, self.class::AM_PM, self.class::SECONDS_SINCE_EPOCH, self.class::SECOND, self.class::TIME, self.class::ZONE_NUMERIC, self.class::ZONE, self.class::NAME_OF_DAY_ABBREV, self.class::NAME_OF_DAY, self.class::NAME_OF_MONTH_ABBREV, self.class::NAME_OF_MONTH, self.class::CENTURY, self.class::DAY_OF_MONTH_0, self.class::DAY_OF_MONTH, self.class::NAME_OF_MONTH_ABBREV_X, self.class::DAY_OF_YEAR, self.class::MONTH, self.class::YEAR_2, self.class::YEAR_4, self.class::TIME_12_HOUR, self.class::TIME_24_HOUR, self.class::DATE_TIME, self.class::DATE, self.class::ISO_STANDARD_DATE
+              # Date
+              # *        case ISO_WEEK_OF_YEAR_2:
+              # *        case ISO_WEEK_OF_YEAR_4:
+              # *        case DAY_OF_WEEK_1:
+              # *        case WEEK_OF_YEAR_SUNDAY:
+              # *        case WEEK_OF_YEAR_MONDAY_01:
+              # *        case DAY_OF_WEEK_0:
+              # *        case WEEK_OF_YEAR_MONDAY:
+              # Composites
+              # *        case LOCALE_TIME:
               # *        case LOCALE_DATE:
               return true
             else

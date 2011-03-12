@@ -73,9 +73,9 @@ module Java::Lang
   # 
   # For the mathematically inclined, the <i>relation</i> that defines
   # the natural ordering on a given class C is:<pre>
-  # {(x, y) such that x.compareTo(y) &lt;= 0}.
+  #       {(x, y) such that x.compareTo(y) &lt;= 0}.
   # </pre> The <i>quotient</i> for this total order is: <pre>
-  # {(x, y) such that x.compareTo(y) == 0}.
+  #       {(x, y) such that x.compareTo(y) == 0}.
   # </pre>
   # 
   # It follows immediately from the contract for <tt>compareTo</tt> that the
@@ -84,7 +84,7 @@ module Java::Lang
   # class's natural ordering is <i>consistent with equals</i>, we mean that the
   # quotient for the natural ordering is the equivalence relation defined by
   # the class's {@link Object#equals(Object) equals(Object)} method:<pre>
-  # {(x, y) such that x.equals(y)}. </pre><p>
+  #     {(x, y) such that x.equals(y)}. </pre><p>
   # 
   # This interface is a member of the
   # <a href="{@docRoot}/../technotes/guides/collections/index.html">
@@ -131,10 +131,10 @@ module Java::Lang
     # 
     # @param   o the object to be compared.
     # @return  a negative integer, zero, or a positive integer as this object
-    # is less than, equal to, or greater than the specified object.
+    #          is less than, equal to, or greater than the specified object.
     # 
     # @throws ClassCastException if the specified object's type prevents it
-    # from being compared to this object.
+    #         from being compared to this object.
     def compare_to(o)
       raise NotImplementedError
     end

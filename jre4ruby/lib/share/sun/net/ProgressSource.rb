@@ -278,15 +278,15 @@ module Sun::Net
       # The threshold effectively divides the progress into
       # different set of ranges:
       # 
-      # Range 0: 0..threshold-1,
-      # Range 1: threshold .. 2*threshold-1
-      # ....
-      # Range n: n*threshold .. (n+1)*threshold-1
+      #      Range 0: 0..threshold-1,
+      #      Range 1: threshold .. 2*threshold-1
+      #      ....
+      #      Range n: n*threshold .. (n+1)*threshold-1
       # 
       # To determine which range the progress belongs to, it
       # would be calculated as follow:
       # 
-      # range number = progress / threshold
+      #      range number = progress / threshold
       # 
       # Notification should only be triggered when the current
       # progress and the last progress are in different ranges,
@@ -294,6 +294,7 @@ module Sun::Net
       # 
       # Using this range scheme, notification will be generated
       # only once when the progress reaches each range.
+      # 
       if (!(@last_progress / @threshold).equal?(@progress / @threshold))
         @progress_monitor.update_progress(self)
       end

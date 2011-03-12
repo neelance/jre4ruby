@@ -212,8 +212,7 @@ module Java::Lang
               begin
                 self.attr_pid = fork_and_exec(prog, arg_block, argc, env_block, envc, dir, redirect_error_stream, self.attr_stdin_fd, self.attr_stdout_fd, self.attr_stderr_fd)
               rescue self.class::IOException => e
-                gate.set_exception(e)
-                # remember to rethrow later
+                gate.set_exception(e) # remember to rethrow later
                 gate.exit
                 return
               end
@@ -239,8 +238,7 @@ module Java::Lang
                 private
                 alias_method :initialize_anonymous, :initialize
               end.new_local(self))
-              gate.exit
-              # exit from constructor
+              gate.exit # exit from constructor
               res = wait_for_process_exit(self.attr_pid)
               synchronized((@local_class_parent.local_class_parent)) do
                 self.attr_has_exited = true

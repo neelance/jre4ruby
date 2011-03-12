@@ -118,7 +118,7 @@ module Java::Net
     # @param len the maximum number of bytes read
     # @param timeout the read timeout in ms
     # @return the actual number of bytes read, -1 is
-    # returned when the end of the stream is reached.
+    #          returned when the end of the stream is reached.
     # @exception IOException If an I/O error has occurred.
     def socket_read0(fd, b, off, len, timeout)
       JNI.call_native_method(:Java_java_net_SocketInputStream_socketRead0, JNI.env, self.jni_id, fd.jni_id, b.jni_id, off.to_int, len.to_int, timeout.to_int)
@@ -128,7 +128,7 @@ module Java::Net
     # Reads into a byte array data from the socket.
     # @param b the buffer into which the data is read
     # @return the actual number of bytes read, -1 is
-    # returned when the end of the stream is reached.
+    #          returned when the end of the stream is reached.
     # @exception IOException If an I/O error has occurred.
     def read(b)
       return read(b, 0, b.attr_length)
@@ -141,7 +141,7 @@ module Java::Net
     # @param off the start offset of the data
     # @param len the maximum number of bytes read
     # @return the actual number of bytes read, -1 is
-    # returned when the end of the stream is reached.
+    #          returned when the end of the stream is reached.
     # @exception IOException If an I/O error has occurred.
     def read(b, off, length)
       n = 0
@@ -227,10 +227,10 @@ module Java::Net
         return 0
       end
       n = numbytes
-      buflen = RJava.cast_to_int(Math.min(1024, n))
+      buflen = (Math.min(1024, n)).to_int
       data = Array.typed(::Java::Byte).new(buflen) { 0 }
       while (n > 0)
-        r = read(data, 0, RJava.cast_to_int(Math.min(buflen, n)))
+        r = read(data, 0, (Math.min(buflen, n)).to_int)
         if (r < 0)
           break
         end

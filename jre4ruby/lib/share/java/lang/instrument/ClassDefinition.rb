@@ -31,8 +31,6 @@ module Java::Lang::Instrument
   end
   
   # Copyright 2003 Wily Technology, Inc.
-  # 
-  # 
   # This class serves as a parameter block to the <code>Instrumentation.redefineClasses</code> method.
   # Serves to bind the <code>Class</code> that needs redefining together with the new class file bytes.
   # 
@@ -56,8 +54,8 @@ module Java::Lang::Instrument
     undef_method :m_class_file=
     
     typesig { [Class, Array.typed(::Java::Byte)] }
-    # Creates a new <code>ClassDefinition</code> binding using the supplied
-    # class and class file bytes. Does not copy the supplied buffer, just captures a reference to it.
+    #  Creates a new <code>ClassDefinition</code> binding using the supplied
+    #  class and class file bytes. Does not copy the supplied buffer, just captures a reference to it.
     # 
     # @param theClass the <code>Class</code> that needs redefining
     # @param theClassFile the new class file bytes

@@ -279,9 +279,9 @@ module Sun::Misc
     # the relative path of the current index.
     # 
     # @param toIndex The destination index which the current index will
-    # merge into.
+    #                merge into.
     # @param path    The relative path of the this index to the destination
-    # index.
+    #                index.
     def merge(to_index, path)
       itr = @index_map.entry_set.iterator
       while (itr.has_next)

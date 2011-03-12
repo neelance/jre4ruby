@@ -55,22 +55,22 @@ module Java::Net
   # <p>
   # <ul>
   # <li>The alphanumeric characters &quot;<code>a</code>&quot; through
-  # &quot;<code>z</code>&quot;, &quot;<code>A</code>&quot; through
-  # &quot;<code>Z</code>&quot; and &quot;<code>0</code>&quot;
-  # through &quot;<code>9</code>&quot; remain the same.
+  #     &quot;<code>z</code>&quot;, &quot;<code>A</code>&quot; through
+  #     &quot;<code>Z</code>&quot; and &quot;<code>0</code>&quot;
+  #     through &quot;<code>9</code>&quot; remain the same.
   # <li>The special characters &quot;<code>.</code>&quot;,
-  # &quot;<code>-</code>&quot;, &quot;<code>*</code>&quot;, and
-  # &quot;<code>_</code>&quot; remain the same.
+  #     &quot;<code>-</code>&quot;, &quot;<code>*</code>&quot;, and
+  #     &quot;<code>_</code>&quot; remain the same.
   # <li>The space character &quot;<code>&nbsp;</code>&quot; is
-  # converted into a plus sign &quot;<code>+</code>&quot;.
+  #     converted into a plus sign &quot;<code>+</code>&quot;.
   # <li>All other characters are unsafe and are first converted into
-  # one or more bytes using some encoding scheme. Then each byte is
-  # represented by the 3-character string
-  # &quot;<code>%<i>xy</i></code>&quot;, where <i>xy</i> is the
-  # two-digit hexadecimal representation of the byte.
-  # The recommended encoding scheme to use is UTF-8. However,
-  # for compatibility reasons, if an encoding is not specified,
-  # then the default encoding of the platform is used.
+  #     one or more bytes using some encoding scheme. Then each byte is
+  #     represented by the 3-character string
+  #     &quot;<code>%<i>xy</i></code>&quot;, where <i>xy</i> is the
+  #     two-digit hexadecimal representation of the byte.
+  #     The recommended encoding scheme to use is UTF-8. However,
+  #     for compatibility reasons, if an encoding is not specified,
+  #     then the default encoding of the platform is used.
   # </ul>
   # 
   # <p>
@@ -164,7 +164,7 @@ module Java::Net
         end
         self.attr_dont_need_encoding.set(Character.new(?\s.ord))
         # encoding a space to a + is done
-        # in the encode() method
+        #                                 * in the encode() method
         self.attr_dont_need_encoding.set(Character.new(?-.ord))
         self.attr_dont_need_encoding.set(Character.new(?_.ord))
         self.attr_dont_need_encoding.set(Character.new(?..ord))
@@ -186,8 +186,8 @@ module Java::Net
       # 
       # @param   s   <code>String</code> to be translated.
       # @deprecated The resulting string may vary depending on the platform's
-      # default encoding. Instead, use the encode(String,String)
-      # method to specify the encoding.
+      #             default encoding. Instead, use the encode(String,String)
+      #             method to specify the encoding.
       # @return  the translated <code>String</code>.
       def encode(s)
         str = nil
@@ -213,11 +213,11 @@ module Java::Net
       # 
       # @param   s   <code>String</code> to be translated.
       # @param   enc   The name of a supported
-      # <a href="../lang/package-summary.html#charenc">character
-      # encoding</a>.
+      #    <a href="../lang/package-summary.html#charenc">character
+      #    encoding</a>.
       # @return  the translated <code>String</code>.
       # @exception  UnsupportedEncodingException
-      # If the named encoding is not supported
+      #             If the named encoding is not supported
       # @see URLDecoder#decode(java.lang.String, java.lang.String)
       # @since 1.4
       def encode(s, enc)
@@ -237,7 +237,7 @@ module Java::Net
         end
         i = 0
         while i < s.length
-          c = RJava.cast_to_int(s.char_at(i))
+          c = (s.char_at(i)).to_int
           # System.out.println("Examining character: " + c);
           if (self.attr_dont_need_encoding.get(c))
             if ((c).equal?(Character.new(?\s.ord)))
@@ -261,7 +261,7 @@ module Java::Net
                 # System.out.println(Integer.toHexString(c)
                 # + " is high surrogate");
                 if ((i + 1) < s.length)
-                  d = RJava.cast_to_int(s.char_at(i + 1))
+                  d = (s.char_at(i + 1)).to_int
                   # System.out.println("\tExamining "
                   # + Integer.toHexString(d));
                   if (d >= 0xdc00 && d <= 0xdfff)
@@ -274,7 +274,7 @@ module Java::Net
                 end
               end
               i += 1
-            end while (i < s.length && !self.attr_dont_need_encoding.get((c = RJava.cast_to_int(s.char_at(i)))))
+            end while (i < s.length && !self.attr_dont_need_encoding.get((c = (s.char_at(i)).to_int)))
             char_array_writer.flush
             str = String.new(char_array_writer.to_char_array)
             ba = str.get_bytes(charset)

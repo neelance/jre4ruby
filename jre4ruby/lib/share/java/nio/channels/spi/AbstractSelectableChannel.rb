@@ -60,6 +60,7 @@ module Java::Nio::Channels::Spi
     # Keys that have been created by registering this channel with selectors.
     # They are saved because if this channel is closed the keys must be
     # deregistered.  Protected by keyLock.
+    # 
     attr_accessor :keys
     alias_method :attr_keys, :keys
     undef_method :keys
@@ -259,7 +260,6 @@ module Java::Nio::Channels::Spi
     
     typesig { [] }
     # -- Closing --
-    # 
     # Closes this channel.
     # 
     # <p> This method, which is specified in the {@link
@@ -345,7 +345,7 @@ module Java::Nio::Channels::Spi
     # is different from the current mode.  </p>
     # 
     # @throws IOException
-    # If an I/O error occurs
+    #         If an I/O error occurs
     def impl_configure_blocking(block)
       raise NotImplementedError
     end

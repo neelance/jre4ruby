@@ -37,7 +37,7 @@ module Java::Security
   # <UL>
   # <LI> add a permission to the collection using the <code>add</code> method.
   # <LI> check to see if a particular permission is implied in the
-  # collection, using the <code>implies</code> method.
+  #      collection, using the <code>implies</code> method.
   # <LI> enumerate all the permissions, using the <code>elements</code> method.
   # </UL>
   # <P>
@@ -115,7 +115,7 @@ module Java::Security
     # @param permission the Permission object to add.
     # 
     # @exception SecurityException -  if this PermissionCollection object
-    # has been marked readonly
+    #                                 has been marked readonly
     def add(permission)
       raise NotImplementedError
     end
@@ -169,9 +169,9 @@ module Java::Security
     # The format is:
     # <pre>
     # super.toString() (
-    # // enumerate all the Permission
-    # // objects and call toString() on them,
-    # // one per line..
+    #   // enumerate all the Permission
+    #   // objects and call toString() on them,
+    #   // one per line..
     # )</pre>
     # 
     # <code>super.toString</code> is a call to the <code>toString</code>
@@ -182,7 +182,7 @@ module Java::Security
     # PermissionCollections object, even if they contain the same permissions.
     # 
     # @return information about this PermissionCollection object,
-    # as described above.
+    #         as described above.
     def to_s
       enum_ = elements
       sb = StringBuilder.new

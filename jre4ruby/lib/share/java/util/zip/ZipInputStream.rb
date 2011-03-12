@@ -191,7 +191,7 @@ module Java::Util::Zip
     # @param off the start offset in the destination array <code>b</code>
     # @param len the maximum number of bytes read
     # @return the actual number of bytes read, or -1 if the end of the
-    # entry is reached
+    #         entry is reached
     # @exception  NullPointerException If <code>b</code> is <code>null</code>.
     # @exception  IndexOutOfBoundsException If <code>off</code> is negative,
     # <code>len</code> is negative, or <code>len</code> is greater than
@@ -228,7 +228,7 @@ module Java::Util::Zip
           return -1
         end
         if (len > @remaining)
-          len = RJava.cast_to_int(@remaining)
+          len = (@remaining).to_int
         end
         len = self.attr_in.read(b, off, len)
         if ((len).equal?(-1))
@@ -257,7 +257,7 @@ module Java::Util::Zip
         raise IllegalArgumentException.new("negative skip length")
       end
       ensure_open
-      max = RJava.cast_to_int(Math.min(n, JavaInteger::MAX_VALUE))
+      max = (Math.min(n, JavaInteger::MAX_VALUE)).to_int
       total = 0
       while (total < max)
         len = max - total

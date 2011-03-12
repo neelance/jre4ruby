@@ -70,11 +70,11 @@ module Sun::Misc
   # for example, a simple URL-content cache can be constructed as follows:
   # 
   # <pre>
-  # public class URLCache extends SoftCache {
-  # protected Object fill(Object key) {
-  # return ((URL)key).getContent();
-  # }
-  # }
+  #     public class URLCache extends SoftCache {
+  #         protected Object fill(Object key) {
+  #             return ((URL)key).getContent();
+  #         }
+  #     }
   # </pre>
   # 
   # <p> The behavior of the <code>SoftCache</code> class depends in part upon
@@ -227,7 +227,6 @@ module Sun::Misc
     
     typesig { [::Java::Int, ::Java::Float] }
     # -- Constructors --
-    # 
     # Construct a new, empty <code>SoftCache</code> with the given
     # initial capacity and the given load factor.
     # 
@@ -236,8 +235,8 @@ module Sun::Misc
     # @param  loadFactor       A number between 0.0 and 1.0
     # 
     # @throws IllegalArgumentException  If the initial capacity is less than
-    # or equal to zero, or if the load
-    # factor is less than zero
+    #                                   or equal to zero, or if the load
+    #                                   factor is less than zero
     def initialize(initial_capacity, load_factor)
       @hash = nil
       @queue = nil
@@ -255,7 +254,7 @@ module Sun::Misc
     # @param  initialCapacity  The initial capacity of the cache
     # 
     # @throws IllegalArgumentException  If the initial capacity is less than
-    # or equal to zero
+    #                                   or equal to zero
     def initialize(initial_capacity)
       @hash = nil
       @queue = nil
@@ -281,7 +280,6 @@ module Sun::Misc
     
     typesig { [] }
     # -- Simple queries --
-    # 
     # Return the number of key-value mappings in this cache.  The time
     # required by this operation is linear in the size of the map.
     def size
@@ -306,7 +304,6 @@ module Sun::Misc
     
     typesig { [Object] }
     # -- Lookup and modification operations --
-    # 
     # Create a value object for the given <code>key</code>.  This method is
     # invoked by the <code>get</code> method when there is no entry for
     # <code>key</code>.  If this method returns a non-<code>null</code> value,
@@ -320,7 +317,7 @@ module Sun::Misc
     # @param  key  The key for which a value is to be computed
     # 
     # @return      A value for <code>key</code>, or <code>null</code> if one
-    # could not be computed
+    #              could not be computed
     # @see #get
     def fill(key)
       return nil
@@ -361,12 +358,12 @@ module Sun::Misc
     # returned.
     # 
     # @param  key    The key that is to be mapped to the given
-    # <code>value</code>
+    #                <code>value</code>
     # @param  value  The value to which the given <code>key</code> is to be
-    # mapped
+    #                mapped
     # 
     # @return  The previous value to which this key was mapped, or
-    # <code>null</code> if if there was no mapping for the key
+    #          <code>null</code> if if there was no mapping for the key
     def put(key, value)
       process_queue
       vc = ValueCell.create(key, value, @queue)
@@ -380,7 +377,7 @@ module Sun::Misc
     # @param  key  The key whose mapping is to be removed
     # 
     # @return  The value to which this key was mapped, or <code>null</code> if
-    # there was no mapping for the key
+    #          there was no mapping for the key
     def remove(key)
       process_queue
       return ValueCell.strip(@hash.remove(key), true)
@@ -421,8 +418,8 @@ module Sun::Misc
         
         typesig { [class_self::Map::Entry, Object] }
         # Strong reference to value, to prevent the GC
-        # from flushing the value while this Entry
-        # exists
+        #                              from flushing the value while this Entry
+        #                              exists
         def initialize(ent, value)
           @ent = nil
           @value = nil

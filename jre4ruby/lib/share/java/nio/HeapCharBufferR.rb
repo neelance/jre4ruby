@@ -22,7 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
 # -- This file was mechanically generated: Do not edit! -- //
 module Java::Nio
   module HeapCharBufferRImports #:nodoc:
@@ -43,15 +42,13 @@ module Java::Nio
     # For speed these fields are actually declared in X-Buffer;
     # these declarations are here as documentation
     def initialize(cap, lim)
-      # package-private
-      super(cap, lim)
+      super(cap, lim) # package-private
       self.attr_is_read_only = true
     end
     
     typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int] }
     def initialize(buf, off, len)
-      # package-private
-      super(buf, off, len)
+      super(buf, off, len) # package-private
       self.attr_is_read_only = true
     end
     

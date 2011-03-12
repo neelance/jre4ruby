@@ -65,7 +65,7 @@ module Sun::Misc
     
     typesig { [] }
     # @returns the platform specific path corresponding to the URL
-    # so long as the URL does not contain a hostname in the authority field.
+    #  so long as the URL does not contain a hostname in the authority field.
     def get_path
       if (!(@path).nil?)
         return @path

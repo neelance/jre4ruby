@@ -175,7 +175,7 @@ module Sun::Security::Util
       # 
       # @param s file name
       # @return true if the input file name is a supported
-      # Signature File or PKCS7 block file name
+      #          Signature File or PKCS7 block file name
       def is_block_or_sf(s)
         # we currently only support DSA and RSA PKCS7 blocks
         if (s.ends_with(".SF") || s.ends_with(".DSA") || s.ends_with(".RSA"))
@@ -337,8 +337,8 @@ module Sun::Security::Util
         end
       end
       # this method returns 'true' if either:
-      # . manifest main attributes were not signed, or
-      # . manifest main attributes were signed and verified
+      #      . manifest main attributes were not signed, or
+      #      . manifest main attributes were signed and verified
       return attrs_verified
     end
     
@@ -448,13 +448,13 @@ module Sun::Security::Util
     # 
     # @return A timestamp token or null if none is present.
     # @throws IOException if an error is encountered while parsing the
-    # PKCS7 data.
+    #         PKCS7 data.
     # @throws NoSuchAlgorithmException if an error is encountered while
-    # verifying the PKCS7 object.
+    #         verifying the PKCS7 object.
     # @throws SignatureException if an error is encountered while
-    # verifying the PKCS7 object.
+    #         verifying the PKCS7 object.
     # @throws CertificateException if an error is encountered while generating
-    # the TSA's certpath.
+    #         the TSA's certpath.
     def get_timestamp(info)
       timestamp = nil
       # Extract the signer's unsigned attributes

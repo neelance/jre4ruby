@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996 - 1998 - All Rights Reserved
 # 
@@ -50,45 +48,7 @@ module Sun::Text::Resources
     typesig { [] }
     # Overrides ListResourceBundle
     def get_contents
-      # january
-      # february
-      # march
-      # april
-      # may
-      # june
-      # july
-      # august
-      # september
-      # october
-      # november
-      # december
-      # month 13 if applicable
-      # abb january
-      # abb february
-      # abb march
-      # abb april
-      # abb may
-      # abb june
-      # abb july
-      # abb august
-      # abb september
-      # abb october
-      # abb november
-      # abb december
-      # abb month 13 if applicable
-      # decimal pattern
-      # currency pattern
-      # percent pattern
-      # full time pattern
-      # long time pattern
-      # medium time pattern
-      # short time pattern
-      # full date pattern
-      # long date pattern
-      # medium date pattern
-      # short date pattern
-      # date-time pattern
-      return Array.typed(Array.typed(Object)).new([Array.typed(Object).new(["MonthNames", Array.typed(String).new([("J".to_u << 0x00e4 << "nner"), "Februar", ("M".to_u << 0x00e4 << "rz"), "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember", ""])]), Array.typed(Object).new(["MonthAbbreviations", Array.typed(String).new([("J".to_u << 0x00e4 << "n"), "Feb", ("M".to_u << 0x00e4 << "r"), "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez", ""])]), Array.typed(Object).new(["NumberPatterns", Array.typed(String).new(["#,##0.###;-#,##0.###", ("".to_u << 0x00A4 << " #,##0.00;-".to_u << 0x00A4 << " #,##0.00"), "#,##0%"])]), Array.typed(Object).new(["DateTimePatterns", Array.typed(String).new(["HH:mm' Uhr 'z", "HH:mm:ss z", "HH:mm:ss", "HH:mm", "EEEE, dd. MMMM yyyy", "dd. MMMM yyyy", "dd.MM.yyyy", "dd.MM.yy", "{1} {0}"])]), Array.typed(Object).new(["DateTimePatternChars", "GuMtkHmsSEDFwWahKzZ"]), ])
+      return Array.typed(Array.typed(Object)).new([Array.typed(Object).new(["MonthNames", Array.typed(String).new([("J".to_u << 0x00e4 << "nner"), "Februar", ("M".to_u << 0x00e4 << "rz"), "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember", ""])]), Array.typed(Object).new(["MonthAbbreviations", Array.typed(String).new([("J".to_u << 0x00e4 << "n"), "Feb", ("M".to_u << 0x00e4 << "r"), "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez", ""])]), Array.typed(Object).new(["NumberPatterns", Array.typed(String).new(["#,##0.###;-#,##0.###", ("".to_u << 0x00A4 << " #,##0.00;-".to_u << 0x00A4 << " #,##0.00"), "#,##0%"])]), Array.typed(Object).new(["DateTimePatterns", Array.typed(String).new(["HH:mm' Uhr 'z", "HH:mm:ss z", "HH:mm:ss", "HH:mm", "EEEE, dd. MMMM yyyy", "dd. MMMM yyyy", "dd.MM.yyyy", "dd.MM.yy", "{1} {0}"])]), Array.typed(Object).new(["DateTimePatternChars", "GuMtkHmsSEDFwWahKzZ"])])
     end
     
     typesig { [] }

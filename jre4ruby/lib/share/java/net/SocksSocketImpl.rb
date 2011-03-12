@@ -39,7 +39,6 @@ module Java::Net
   end
   
   # import org.ietf.jgss.*;
-  # 
   # SOCKS (V4 & V5) TCP socket implementation (RFC 1928).
   # This is a subclass of PlainSocketImpl.
   # Note this class should <b>NOT</b> be public.
@@ -224,7 +223,7 @@ module Java::Net
       # User/Password authentication. Try, in that order :
       # - The application provided Authenticator, if any
       # - The user preferences java.net.socks.username &
-      # java.net.socks.password
+      #   java.net.socks.password
       # - the user.name & no password (backward compatibility behavior).
       if ((method).equal?(USER_PASSW))
         user_name = nil
@@ -338,56 +337,55 @@ module Java::Net
       # GSSAPI authentication mechanism.
       # Unfortunately the RFC seems out of sync with the Reference
       # implementation. I'll leave this in for future completion.
-      # 
-      # if (method == GSSAPI) {
-      # try {
-      # GSSManager manager = GSSManager.getInstance();
-      # GSSName name = manager.createName("SERVICE:socks@"+server,
-      # null);
-      # GSSContext context = manager.createContext(name, null, null,
-      # GSSContext.DEFAULT_LIFETIME);
-      # context.requestMutualAuth(true);
-      # context.requestReplayDet(true);
-      # context.requestSequenceDet(true);
-      # context.requestCredDeleg(true);
-      # byte []inToken = new byte[0];
-      # while (!context.isEstablished()) {
-      # byte[] outToken
-      # = context.initSecContext(inToken, 0, inToken.length);
-      # // send the output token if generated
-      # if (outToken != null) {
-      # out.write(1);
-      # out.write(1);
-      # out.writeShort(outToken.length);
-      # out.write(outToken);
-      # out.flush();
-      # data = new byte[2];
-      # i = readSocksReply(in, data);
-      # if (i != 2 || data[1] == 0xff) {
-      # in.close();
-      # out.close();
-      # return false;
-      # }
-      # i = readSocksReply(in, data);
-      # int len = 0;
-      # len = ((int)data[0] & 0xff) << 8;
-      # len += data[1];
-      # data = new byte[len];
-      # i = readSocksReply(in, data);
-      # if (i == len)
-      # return true;
-      # in.close();
-      # out.close();
-      # }
-      # }
-      # } catch (GSSException e) {
-      # /* RFC 1961 states that if Context initialisation fails the connection
-      # MUST be closed */
-      # e.printStackTrace();
-      # in.close();
-      # out.close();
-      # }
-      # }
+      #      if (method == GSSAPI) {
+      #          try {
+      #              GSSManager manager = GSSManager.getInstance();
+      #              GSSName name = manager.createName("SERVICE:socks@"+server,
+      #                                                   null);
+      #              GSSContext context = manager.createContext(name, null, null,
+      #                                                         GSSContext.DEFAULT_LIFETIME);
+      #              context.requestMutualAuth(true);
+      #              context.requestReplayDet(true);
+      #              context.requestSequenceDet(true);
+      #              context.requestCredDeleg(true);
+      #              byte []inToken = new byte[0];
+      #              while (!context.isEstablished()) {
+      #                  byte[] outToken
+      #                      = context.initSecContext(inToken, 0, inToken.length);
+      #                  // send the output token if generated
+      #                  if (outToken != null) {
+      #                      out.write(1);
+      #                      out.write(1);
+      #                      out.writeShort(outToken.length);
+      #                      out.write(outToken);
+      #                      out.flush();
+      #                      data = new byte[2];
+      #                      i = readSocksReply(in, data);
+      #                      if (i != 2 || data[1] == 0xff) {
+      #                          in.close();
+      #                          out.close();
+      #                          return false;
+      #                      }
+      #                      i = readSocksReply(in, data);
+      #                      int len = 0;
+      #                      len = ((int)data[0] & 0xff) << 8;
+      #                      len += data[1];
+      #                      data = new byte[len];
+      #                      i = readSocksReply(in, data);
+      #                      if (i == len)
+      #                          return true;
+      #                      in.close();
+      #                      out.close();
+      #                  }
+      #              }
+      #          } catch (GSSException e) {
+      #              /* RFC 1961 states that if Context initialisation fails the connection
+      #                 MUST be closed */
+      #              e.printStackTrace();
+      #              in.close();
+      #              out.close();
+      #          }
+      #      }
       return false
     end
     
@@ -448,9 +446,9 @@ module Java::Net
     # @param   timeout         the timeout value in milliseconds
     # @throws  IOException     if the connection can't be established.
     # @throws  SecurityException if there is a security manager and it
-    # doesn't allow the connection
+    #                          doesn't allow the connection
     # @throws  IllegalArgumentException if endpoint is null or a
-    # SocketAddress subclass not supported by this socket
+    #          SocketAddress subclass not supported by this socket
     def connect(endpoint, timeout)
       security = System.get_security_manager
       if ((endpoint).nil? || !(endpoint.is_a?(InetSocketAddress)))
@@ -574,7 +572,7 @@ module Java::Net
       out.flush
       data = Array.typed(::Java::Byte).new(2) { 0 }
       i = read_socks_reply(in_, data)
-      if (!(i).equal?(2) || !((RJava.cast_to_int(data[0]))).equal?(PROTO_VERS))
+      if (!(i).equal?(2) || !(((data[0]).to_int)).equal?(PROTO_VERS))
         # Maybe it's not a V5 sever after all
         # Let's try V4 before we give up
         # SOCKS Protocol version 4 doesn't know how to deal with
@@ -585,7 +583,7 @@ module Java::Net
         connect_v4(in_, out, epoint)
         return
       end
-      if (((RJava.cast_to_int(data[1]))).equal?(NO_METHODS))
+      if ((((data[1]).to_int)).equal?(NO_METHODS))
         raise SocketException.new("SOCKS : No acceptable methods")
       end
       if (!authenticate(data[1], in_, out))
@@ -643,8 +641,8 @@ module Java::Net
           if (!(i).equal?(2))
             raise SocketException.new("Reply from SOCKS server badly formatted")
           end
-          nport = (RJava.cast_to_int(data[0]) & 0xff) << 8
-          nport += (RJava.cast_to_int(data[1]) & 0xff)
+          nport = ((data[0]).to_int & 0xff) << 8
+          nport += ((data[1]).to_int & 0xff)
         when DOMAIN_NAME
           len = data[1]
           host = Array.typed(::Java::Byte).new(len) { 0 }
@@ -657,8 +655,8 @@ module Java::Net
           if (!(i).equal?(2))
             raise SocketException.new("Reply from SOCKS server badly formatted")
           end
-          nport = (RJava.cast_to_int(data[0]) & 0xff) << 8
-          nport += (RJava.cast_to_int(data[1]) & 0xff)
+          nport = ((data[0]).to_int & 0xff) << 8
+          nport += ((data[1]).to_int & 0xff)
         when IPV6
           len = data[1]
           addr = Array.typed(::Java::Byte).new(len) { 0 }
@@ -671,8 +669,8 @@ module Java::Net
           if (!(i).equal?(2))
             raise SocketException.new("Reply from SOCKS server badly formatted")
           end
-          nport = (RJava.cast_to_int(data[0]) & 0xff) << 8
-          nport += (RJava.cast_to_int(data[1]) & 0xff)
+          nport = ((data[0]).to_int & 0xff) << 8
+          nport += ((data[1]).to_int & 0xff)
         else
           ex = SocketException.new("Reply from SOCKS server contains wrong code")
         end
@@ -911,13 +909,13 @@ module Java::Net
         out.flush
         data = Array.typed(::Java::Byte).new(2) { 0 }
         i = read_socks_reply(in_, data)
-        if (!(i).equal?(2) || !((RJava.cast_to_int(data[0]))).equal?(PROTO_VERS))
+        if (!(i).equal?(2) || !(((data[0]).to_int)).equal?(PROTO_VERS))
           # Maybe it's not a V5 sever after all
           # Let's try V4 before we give up
           bind_v4(in_, out, saddr.get_address, saddr.get_port)
           return
         end
-        if (((RJava.cast_to_int(data[1]))).equal?(NO_METHODS))
+        if ((((data[1]).to_int)).equal?(NO_METHODS))
           raise SocketException.new("SOCKS : No acceptable methods")
         end
         if (!authenticate(data[1], in_, out))
@@ -982,8 +980,8 @@ module Java::Net
             if (!(i).equal?(2))
               raise SocketException.new("Reply from SOCKS server badly formatted")
             end
-            nport = (RJava.cast_to_int(data[0]) & 0xff) << 8
-            nport += (RJava.cast_to_int(data[1]) & 0xff)
+            nport = ((data[0]).to_int & 0xff) << 8
+            nport += ((data[1]).to_int & 0xff)
             @external_address = InetSocketAddress.new(Inet4Address.new("", addr), nport)
           when DOMAIN_NAME
             len = data[1]
@@ -997,8 +995,8 @@ module Java::Net
             if (!(i).equal?(2))
               raise SocketException.new("Reply from SOCKS server badly formatted")
             end
-            nport = (RJava.cast_to_int(data[0]) & 0xff) << 8
-            nport += (RJava.cast_to_int(data[1]) & 0xff)
+            nport = ((data[0]).to_int & 0xff) << 8
+            nport += ((data[1]).to_int & 0xff)
             @external_address = InetSocketAddress.new(String.new(host), nport)
           when IPV6
             len = data[1]
@@ -1012,8 +1010,8 @@ module Java::Net
             if (!(i).equal?(2))
               raise SocketException.new("Reply from SOCKS server badly formatted")
             end
-            nport = (RJava.cast_to_int(data[0]) & 0xff) << 8
-            nport += (RJava.cast_to_int(data[1]) & 0xff)
+            nport = ((data[0]).to_int & 0xff) << 8
+            nport += ((data[1]).to_int & 0xff)
             @external_address = InetSocketAddress.new(Inet6Address.new("", addr), nport)
           end
         when GENERAL_FAILURE
@@ -1050,9 +1048,9 @@ module Java::Net
     # 
     # @param      s   the accepted connection.
     # @param      saddr the socket address of the host we do accept
-    # connection from
+    #               connection from
     # @exception  IOException  if an I/O error occurs when accepting the
-    # connection.
+    #               connection.
     def accept_from(s, saddr)
       if ((@cmdsock).nil?)
         # Not a Socks ServerSocket.

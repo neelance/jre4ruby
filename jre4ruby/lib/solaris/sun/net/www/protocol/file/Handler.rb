@@ -108,6 +108,7 @@ module Sun::Net::Www::Protocol::JavaFile
     
     typesig { [URL, JavaFile] }
     # Template method to be overriden by Java Plug-in. [stanleyh]
+    # 
     def create_file_urlconnection(u, file)
       return FileURLConnection.new(u, file)
     end

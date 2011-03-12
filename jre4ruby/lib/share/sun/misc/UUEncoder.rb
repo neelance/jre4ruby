@@ -48,12 +48,12 @@ module Sun::Misc
   # 
   # In this encoding, the buffer prefix is:
   # <pre>
-  # begin [mode] [filename]
+  #     begin [mode] [filename]
   # </pre>
   # 
   # This is followed by one or more lines of the form:
   # <pre>
-  # (len)(data)(data)(data) ...
+  #      (len)(data)(data)(data) ...
   # </pre>
   # where (len) is the number of bytes on this line. Note that groupings
   # are always four characters, even if length is not a multiple of three
@@ -82,7 +82,7 @@ module Sun::Misc
     # read, write, and execute permission of the owner, group owner, and
     # others. They should be interpreted as the bit groups:
     # (owner) (group) (others)
-    # rwx      rwx     rwx    (r = read, w = write, x = execute)
+    #  rwx      rwx     rwx    (r = read, w = write, x = execute)
     # 
     # By default these are set to 644 (UNIX rw-r--r-- permissions).
     attr_accessor :mode
@@ -94,7 +94,7 @@ module Sun::Misc
     typesig { [] }
     # Default - buffer begin line will be:
     # <pre>
-    # begin 644 encoder.buf
+    #  begin 644 encoder.buf
     # </pre>
     def initialize
       @buffer_name = nil
@@ -107,7 +107,7 @@ module Sun::Misc
     typesig { [String] }
     # Specifies a name for the encoded buffer, begin line will be:
     # <pre>
-    # begin 644 [FNAME]
+    #  begin 644 [FNAME]
     # </pre>
     def initialize(fname)
       @buffer_name = nil
@@ -120,7 +120,7 @@ module Sun::Misc
     typesig { [String, ::Java::Int] }
     # Specifies a name and mode for the encoded buffer, begin line will be:
     # <pre>
-    # begin [MODE] [FNAME]
+    #  begin [MODE] [FNAME]
     # </pre>
     def initialize(fname, new_mode)
       @buffer_name = nil

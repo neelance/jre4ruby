@@ -67,16 +67,16 @@ module Java::Util::Spi
     # @param ID a time zone ID string
     # @param daylight if true, return the daylight saving name.
     # @param style either {@link java.util.TimeZone#LONG TimeZone.LONG} or
-    # {@link java.util.TimeZone#SHORT TimeZone.SHORT}
+    #    {@link java.util.TimeZone#SHORT TimeZone.SHORT}
     # @param locale the desired locale
     # @return the human-readable name of the given time zone in the
-    # given locale, or null if it's not available.
+    #     given locale, or null if it's not available.
     # @exception IllegalArgumentException if <code>style</code> is invalid,
-    # or <code>locale</code> isn't one of the locales returned from
-    # {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-    # getAvailableLocales()}.
+    #     or <code>locale</code> isn't one of the locales returned from
+    #     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
+    #     getAvailableLocales()}.
     # @exception NullPointerException if <code>ID</code> or <code>locale</code>
-    # is null
+    #     is null
     # @see java.util.TimeZone#getDisplayName(boolean, int, java.util.Locale)
     def get_display_name(id, daylight, style, locale)
       raise NotImplementedError

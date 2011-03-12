@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # ByteArrayTagOrder: a class for comparing two DER encodings by the
 # order of their tags.
 # 
@@ -44,7 +42,7 @@ module Sun::Security::Util
     typesig { [Array.typed(::Java::Byte), Array.typed(::Java::Byte)] }
     # Compare two byte arrays, by the order of their tags,
     # as defined in ITU-T X.680, sec. 6.4.  (First compare
-    # tag classes, then tag numbers, ignoring the constructivity bit.)
+    #  tag classes, then tag numbers, ignoring the constructivity bit.)
     # 
     # @param  bytes1 first byte array to compare.
     # @param  bytes2 second byte array to compare.

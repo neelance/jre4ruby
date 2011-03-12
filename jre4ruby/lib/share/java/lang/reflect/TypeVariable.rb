@@ -67,12 +67,12 @@ module Java::Lang::Reflect
     # <li>Otherwise, B is resolved.  </ul>
     # 
     # @throws TypeNotPresentException  if any of the
-    # bounds refers to a non-existent type declaration
+    #     bounds refers to a non-existent type declaration
     # @throws MalformedParameterizedTypeException if any of the
-    # bounds refer to a parameterized type that cannot be instantiated
-    # for any reason
+    #     bounds refer to a parameterized type that cannot be instantiated
+    #     for any reason
     # @return an array of {@code Type}s representing the upper
-    # bound(s) of this type variable
+    #     bound(s) of this type variable
     def get_bounds
       raise NotImplementedError
     end

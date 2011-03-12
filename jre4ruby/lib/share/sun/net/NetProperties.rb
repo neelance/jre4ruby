@@ -110,10 +110,10 @@ module Sun::Net
       # <code>null</code>.
       # @param      key  the property name.
       # @throws  SecurityException  if a security manager exists and its
-      # <code>checkPropertiesAccess</code> method doesn't allow access
-      # to the system properties.
+      #          <code>checkPropertiesAccess</code> method doesn't allow access
+      #          to the system properties.
       # @return the <code>String</code> value for the property,
-      # or <code>null</code>
+      #         or <code>null</code>
       def get(key)
         def_ = self.attr_props.get_property(key)
         begin
@@ -131,10 +131,10 @@ module Sun::Net
       # @param   key     the property name.
       # @param   defval  the default value to use if the property is not found
       # @throws  SecurityException  if a security manager exists and its
-      # <code>checkPropertiesAccess</code> method doesn't allow access
-      # to the system properties.
+      #          <code>checkPropertiesAccess</code> method doesn't allow access
+      #          to the system properties.
       # @return the <code>Integer</code> value for the property,
-      # or <code>null</code>
+      #         or <code>null</code>
       def get_integer(key, defval)
         val = nil
         begin
@@ -157,10 +157,10 @@ module Sun::Net
       # <code>null</code>.
       # @param   key     the property name.
       # @throws  SecurityException  if a security manager exists and its
-      # <code>checkPropertiesAccess</code> method doesn't allow access
-      # to the system properties.
+      #          <code>checkPropertiesAccess</code> method doesn't allow access
+      #          to the system properties.
       # @return the <code>Boolean</code> value for the property,
-      # or <code>null</code>
+      #         or <code>null</code>
       def get_boolean(key)
         val = nil
         begin

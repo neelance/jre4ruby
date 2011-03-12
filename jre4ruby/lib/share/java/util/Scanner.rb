@@ -39,311 +39,311 @@ module Java::Util
     }
   end
   
-  # A simple text scanner which can parse primitive types and strings using
-  # regular expressions.
+  #  A simple text scanner which can parse primitive types and strings using
+  #  regular expressions.
   # 
-  # <p>A <code>Scanner</code> breaks its input into tokens using a
-  # delimiter pattern, which by default matches whitespace. The resulting
-  # tokens may then be converted into values of different types using the
-  # various <tt>next</tt> methods.
+  #  <p>A <code>Scanner</code> breaks its input into tokens using a
+  #  delimiter pattern, which by default matches whitespace. The resulting
+  #  tokens may then be converted into values of different types using the
+  #  various <tt>next</tt> methods.
   # 
-  # <p>For example, this code allows a user to read a number from
-  # <tt>System.in</tt>:
+  #  <p>For example, this code allows a user to read a number from
+  #  <tt>System.in</tt>:
+  #  <blockquote><pre>
+  #      Scanner sc = new Scanner(System.in);
+  #      int i = sc.nextInt();
+  #  </pre></blockquote>
+  # 
+  #  <p>As another example, this code allows <code>long</code> types to be
+  #  assigned from entries in a file <code>myNumbers</code>:
+  #  <blockquote><pre>
+  #       Scanner sc = new Scanner(new File("myNumbers"));
+  #       while (sc.hasNextLong()) {
+  #           long aLong = sc.nextLong();
+  #       }</pre></blockquote>
+  # 
+  #  <p>The scanner can also use delimiters other than whitespace. This
+  #  example reads several items in from a string:
   # <blockquote><pre>
-  # Scanner sc = new Scanner(System.in);
-  # int i = sc.nextInt();
-  # </pre></blockquote>
+  #      String input = "1 fish 2 fish red fish blue fish";
+  #      Scanner s = new Scanner(input).useDelimiter("\\s*fish\\s*");
+  #      System.out.println(s.nextInt());
+  #      System.out.println(s.nextInt());
+  #      System.out.println(s.next());
+  #      System.out.println(s.next());
+  #      s.close(); </pre></blockquote>
+  #  <p>
+  #  prints the following output:
+  #  <blockquote><pre>
+  #      1
+  #      2
+  #      red
+  #      blue </pre></blockquote>
   # 
-  # <p>As another example, this code allows <code>long</code> types to be
-  # assigned from entries in a file <code>myNumbers</code>:
+  #  <p>The same output can be generated with this code, which uses a regular
+  #  expression to parse all four tokens at once:
   # <blockquote><pre>
-  # Scanner sc = new Scanner(new File("myNumbers"));
-  # while (sc.hasNextLong()) {
-  # long aLong = sc.nextLong();
-  # }</pre></blockquote>
+  #      String input = "1 fish 2 fish red fish blue fish";
+  #      Scanner s = new Scanner(input);
+  #      s.findInLine("(\\d+) fish (\\d+) fish (\\w+) fish (\\w+)");
+  #      MatchResult result = s.match();
+  #      for (int i=1; i<=result.groupCount(); i++)
+  #          System.out.println(result.group(i));
+  #      s.close(); </pre></blockquote>
   # 
-  # <p>The scanner can also use delimiters other than whitespace. This
-  # example reads several items in from a string:
-  # <blockquote><pre>
-  # String input = "1 fish 2 fish red fish blue fish";
-  # Scanner s = new Scanner(input).useDelimiter("\\s*fish\\s*");
-  # System.out.println(s.nextInt());
-  # System.out.println(s.nextInt());
-  # System.out.println(s.next());
-  # System.out.println(s.next());
-  # s.close(); </pre></blockquote>
-  # <p>
-  # prints the following output:
-  # <blockquote><pre>
-  # 1
-  # 2
-  # red
-  # blue </pre></blockquote>
+  #  <p>The <a name="default-delimiter">default whitespace delimiter</a> used
+  #  by a scanner is as recognized by {@link java.lang.Character}.{@link
+  #  java.lang.Character#isWhitespace(char) isWhitespace}. The {@link #reset}
+  #  method will reset the value of the scanner's delimiter to the default
+  #  whitespace delimiter regardless of whether it was previously changed.
   # 
-  # <p>The same output can be generated with this code, which uses a regular
-  # expression to parse all four tokens at once:
-  # <blockquote><pre>
-  # String input = "1 fish 2 fish red fish blue fish";
-  # Scanner s = new Scanner(input);
-  # s.findInLine("(\\d+) fish (\\d+) fish (\\w+) fish (\\w+)");
-  # MatchResult result = s.match();
-  # for (int i=1; i<=result.groupCount(); i++)
-  # System.out.println(result.group(i));
-  # s.close(); </pre></blockquote>
+  #  <p>A scanning operation may block waiting for input.
   # 
-  # <p>The <a name="default-delimiter">default whitespace delimiter</a> used
-  # by a scanner is as recognized by {@link java.lang.Character}.{@link
-  # java.lang.Character#isWhitespace(char) isWhitespace}. The {@link #reset}
-  # method will reset the value of the scanner's delimiter to the default
-  # whitespace delimiter regardless of whether it was previously changed.
+  #  <p>The {@link #next} and {@link #hasNext} methods and their
+  #  primitive-type companion methods (such as {@link #nextInt} and
+  #  {@link #hasNextInt}) first skip any input that matches the delimiter
+  #  pattern, and then attempt to return the next token. Both <tt>hasNext</tt>
+  #  and <tt>next</tt> methods may block waiting for further input.  Whether a
+  #  <tt>hasNext</tt> method blocks has no connection to whether or not its
+  #  associated <tt>next</tt> method will block.
   # 
-  # <p>A scanning operation may block waiting for input.
+  #  <p> The {@link #findInLine}, {@link #findWithinHorizon}, and {@link #skip}
+  #  methods operate independently of the delimiter pattern. These methods will
+  #  attempt to match the specified pattern with no regard to delimiters in the
+  #  input and thus can be used in special circumstances where delimiters are
+  #  not relevant. These methods may block waiting for more input.
   # 
-  # <p>The {@link #next} and {@link #hasNext} methods and their
-  # primitive-type companion methods (such as {@link #nextInt} and
-  # {@link #hasNextInt}) first skip any input that matches the delimiter
-  # pattern, and then attempt to return the next token. Both <tt>hasNext</tt>
-  # and <tt>next</tt> methods may block waiting for further input.  Whether a
-  # <tt>hasNext</tt> method blocks has no connection to whether or not its
-  # associated <tt>next</tt> method will block.
+  #  <p>When a scanner throws an {@link InputMismatchException}, the scanner
+  #  will not pass the token that caused the exception, so that it may be
+  #  retrieved or skipped via some other method.
   # 
-  # <p> The {@link #findInLine}, {@link #findWithinHorizon}, and {@link #skip}
-  # methods operate independently of the delimiter pattern. These methods will
-  # attempt to match the specified pattern with no regard to delimiters in the
-  # input and thus can be used in special circumstances where delimiters are
-  # not relevant. These methods may block waiting for more input.
+  #  <p>Depending upon the type of delimiting pattern, empty tokens may be
+  #  returned. For example, the pattern <tt>"\\s+"</tt> will return no empty
+  #  tokens since it matches multiple instances of the delimiter. The delimiting
+  #  pattern <tt>"\\s"</tt> could return empty tokens since it only passes one
+  #  space at a time.
   # 
-  # <p>When a scanner throws an {@link InputMismatchException}, the scanner
-  # will not pass the token that caused the exception, so that it may be
-  # retrieved or skipped via some other method.
+  #  <p> A scanner can read text from any object which implements the {@link
+  #  java.lang.Readable} interface.  If an invocation of the underlying
+  #  readable's {@link java.lang.Readable#read} method throws an {@link
+  #  java.io.IOException} then the scanner assumes that the end of the input
+  #  has been reached.  The most recent <tt>IOException</tt> thrown by the
+  #  underlying readable can be retrieved via the {@link #ioException} method.
   # 
-  # <p>Depending upon the type of delimiting pattern, empty tokens may be
-  # returned. For example, the pattern <tt>"\\s+"</tt> will return no empty
-  # tokens since it matches multiple instances of the delimiter. The delimiting
-  # pattern <tt>"\\s"</tt> could return empty tokens since it only passes one
-  # space at a time.
+  #  <p>When a <code>Scanner</code> is closed, it will close its input source
+  #  if the source implements the {@link java.io.Closeable} interface.
   # 
-  # <p> A scanner can read text from any object which implements the {@link
-  # java.lang.Readable} interface.  If an invocation of the underlying
-  # readable's {@link java.lang.Readable#read} method throws an {@link
-  # java.io.IOException} then the scanner assumes that the end of the input
-  # has been reached.  The most recent <tt>IOException</tt> thrown by the
-  # underlying readable can be retrieved via the {@link #ioException} method.
+  #  <p>A <code>Scanner</code> is not safe for multithreaded use without
+  #  external synchronization.
   # 
-  # <p>When a <code>Scanner</code> is closed, it will close its input source
-  # if the source implements the {@link java.io.Closeable} interface.
+  #  <p>Unless otherwise mentioned, passing a <code>null</code> parameter into
+  #  any method of a <code>Scanner</code> will cause a
+  #  <code>NullPointerException</code> to be thrown.
   # 
-  # <p>A <code>Scanner</code> is not safe for multithreaded use without
-  # external synchronization.
+  #  <p>A scanner will default to interpreting numbers as decimal unless a
+  #  different radix has been set by using the {@link #useRadix} method. The
+  #  {@link #reset} method will reset the value of the scanner's radix to
+  #  <code>10</code> regardless of whether it was previously changed.
   # 
-  # <p>Unless otherwise mentioned, passing a <code>null</code> parameter into
-  # any method of a <code>Scanner</code> will cause a
-  # <code>NullPointerException</code> to be thrown.
+  #  <a name="localized-numbers">
+  #  <h4> Localized numbers </h4>
   # 
-  # <p>A scanner will default to interpreting numbers as decimal unless a
-  # different radix has been set by using the {@link #useRadix} method. The
-  # {@link #reset} method will reset the value of the scanner's radix to
-  # <code>10</code> regardless of whether it was previously changed.
+  #  <p> An instance of this class is capable of scanning numbers in the standard
+  #  formats as well as in the formats of the scanner's locale. A scanner's
+  #  <a name="initial-locale">initial locale </a>is the value returned by the {@link
+  #  java.util.Locale#getDefault} method; it may be changed via the {@link
+  #  #useLocale} method. The {@link #reset} method will reset the value of the
+  #  scanner's locale to the initial locale regardless of whether it was
+  #  previously changed.
   # 
-  # <a name="localized-numbers">
-  # <h4> Localized numbers </h4>
+  #  <p>The localized formats are defined in terms of the following parameters,
+  #  which for a particular locale are taken from that locale's {@link
+  #  java.text.DecimalFormat DecimalFormat} object, <tt>df</tt>, and its and
+  #  {@link java.text.DecimalFormatSymbols DecimalFormatSymbols} object,
+  #  <tt>dfs</tt>.
   # 
-  # <p> An instance of this class is capable of scanning numbers in the standard
-  # formats as well as in the formats of the scanner's locale. A scanner's
-  # <a name="initial-locale">initial locale </a>is the value returned by the {@link
-  # java.util.Locale#getDefault} method; it may be changed via the {@link
-  # #useLocale} method. The {@link #reset} method will reset the value of the
-  # scanner's locale to the initial locale regardless of whether it was
-  # previously changed.
+  #  <blockquote><table>
+  #  <tr><td valign="top"><i>LocalGroupSeparator&nbsp;&nbsp;</i></td>
+  #      <td valign="top">The character used to separate thousands groups,
+  #                       <i>i.e.,</i>&nbsp;<tt>dfs.</tt>{@link
+  #                       java.text.DecimalFormatSymbols#getGroupingSeparator
+  #                       getGroupingSeparator()}</td></tr>
+  #  <tr><td valign="top"><i>LocalDecimalSeparator&nbsp;&nbsp;</i></td>
+  #      <td valign="top">The character used for the decimal point,
+  #                       <i>i.e.,</i>&nbsp;<tt>dfs.</tt>{@link
+  #                       java.text.DecimalFormatSymbols#getDecimalSeparator
+  #                       getDecimalSeparator()}</td></tr>
+  #  <tr><td valign="top"><i>LocalPositivePrefix&nbsp;&nbsp;</i></td>
+  #      <td valign="top">The string that appears before a positive number (may
+  #                       be empty), <i>i.e.,</i>&nbsp;<tt>df.</tt>{@link
+  #                       java.text.DecimalFormat#getPositivePrefix
+  #                       getPositivePrefix()}</td></tr>
+  #  <tr><td valign="top"><i>LocalPositiveSuffix&nbsp;&nbsp;</i></td>
+  #      <td valign="top">The string that appears after a positive number (may be
+  #                       empty), <i>i.e.,</i>&nbsp;<tt>df.</tt>{@link
+  #                       java.text.DecimalFormat#getPositiveSuffix
+  #                       getPositiveSuffix()}</td></tr>
+  #  <tr><td valign="top"><i>LocalNegativePrefix&nbsp;&nbsp;</i></td>
+  #      <td valign="top">The string that appears before a negative number (may
+  #                       be empty), <i>i.e.,</i>&nbsp;<tt>df.</tt>{@link
+  #                       java.text.DecimalFormat#getNegativePrefix
+  #                       getNegativePrefix()}</td></tr>
+  #  <tr><td valign="top"><i>LocalNegativeSuffix&nbsp;&nbsp;</i></td>
+  #      <td valign="top">The string that appears after a negative number (may be
+  #                       empty), <i>i.e.,</i>&nbsp;<tt>df.</tt>{@link
+  #                       java.text.DecimalFormat#getNegativeSuffix
+  #                       getNegativeSuffix()}</td></tr>
+  #  <tr><td valign="top"><i>LocalNaN&nbsp;&nbsp;</i></td>
+  #      <td valign="top">The string that represents not-a-number for
+  #                       floating-point values,
+  #                       <i>i.e.,</i>&nbsp;<tt>dfs.</tt>{@link
+  #                       java.text.DecimalFormatSymbols#getNaN
+  #                       getNaN()}</td></tr>
+  #  <tr><td valign="top"><i>LocalInfinity&nbsp;&nbsp;</i></td>
+  #      <td valign="top">The string that represents infinity for floating-point
+  #                       values, <i>i.e.,</i>&nbsp;<tt>dfs.</tt>{@link
+  #                       java.text.DecimalFormatSymbols#getInfinity
+  #                       getInfinity()}</td></tr>
+  #  </table></blockquote>
   # 
-  # <p>The localized formats are defined in terms of the following parameters,
-  # which for a particular locale are taken from that locale's {@link
-  # java.text.DecimalFormat DecimalFormat} object, <tt>df</tt>, and its and
-  # {@link java.text.DecimalFormatSymbols DecimalFormatSymbols} object,
-  # <tt>dfs</tt>.
+  #  <a name="number-syntax">
+  #  <h4> Number syntax </h4>
   # 
-  # <blockquote><table>
-  # <tr><td valign="top"><i>LocalGroupSeparator&nbsp;&nbsp;</i></td>
-  # <td valign="top">The character used to separate thousands groups,
-  # <i>i.e.,</i>&nbsp;<tt>dfs.</tt>{@link
-  # java.text.DecimalFormatSymbols#getGroupingSeparator
-  # getGroupingSeparator()}</td></tr>
-  # <tr><td valign="top"><i>LocalDecimalSeparator&nbsp;&nbsp;</i></td>
-  # <td valign="top">The character used for the decimal point,
-  # <i>i.e.,</i>&nbsp;<tt>dfs.</tt>{@link
-  # java.text.DecimalFormatSymbols#getDecimalSeparator
-  # getDecimalSeparator()}</td></tr>
-  # <tr><td valign="top"><i>LocalPositivePrefix&nbsp;&nbsp;</i></td>
-  # <td valign="top">The string that appears before a positive number (may
-  # be empty), <i>i.e.,</i>&nbsp;<tt>df.</tt>{@link
-  # java.text.DecimalFormat#getPositivePrefix
-  # getPositivePrefix()}</td></tr>
-  # <tr><td valign="top"><i>LocalPositiveSuffix&nbsp;&nbsp;</i></td>
-  # <td valign="top">The string that appears after a positive number (may be
-  # empty), <i>i.e.,</i>&nbsp;<tt>df.</tt>{@link
-  # java.text.DecimalFormat#getPositiveSuffix
-  # getPositiveSuffix()}</td></tr>
-  # <tr><td valign="top"><i>LocalNegativePrefix&nbsp;&nbsp;</i></td>
-  # <td valign="top">The string that appears before a negative number (may
-  # be empty), <i>i.e.,</i>&nbsp;<tt>df.</tt>{@link
-  # java.text.DecimalFormat#getNegativePrefix
-  # getNegativePrefix()}</td></tr>
-  # <tr><td valign="top"><i>LocalNegativeSuffix&nbsp;&nbsp;</i></td>
-  # <td valign="top">The string that appears after a negative number (may be
-  # empty), <i>i.e.,</i>&nbsp;<tt>df.</tt>{@link
-  # java.text.DecimalFormat#getNegativeSuffix
-  # getNegativeSuffix()}</td></tr>
-  # <tr><td valign="top"><i>LocalNaN&nbsp;&nbsp;</i></td>
-  # <td valign="top">The string that represents not-a-number for
-  # floating-point values,
-  # <i>i.e.,</i>&nbsp;<tt>dfs.</tt>{@link
-  # java.text.DecimalFormatSymbols#getNaN
-  # getNaN()}</td></tr>
-  # <tr><td valign="top"><i>LocalInfinity&nbsp;&nbsp;</i></td>
-  # <td valign="top">The string that represents infinity for floating-point
-  # values, <i>i.e.,</i>&nbsp;<tt>dfs.</tt>{@link
-  # java.text.DecimalFormatSymbols#getInfinity
-  # getInfinity()}</td></tr>
-  # </table></blockquote>
+  #  <p> The strings that can be parsed as numbers by an instance of this class
+  #  are specified in terms of the following regular-expression grammar, where
+  #  Rmax is the highest digit in the radix being used (for example, Rmax is 9
+  #  in base 10).
   # 
-  # <a name="number-syntax">
-  # <h4> Number syntax </h4>
+  #  <p>
+  #  <table cellspacing=0 cellpadding=0 align=center>
   # 
-  # <p> The strings that can be parsed as numbers by an instance of this class
-  # are specified in terms of the following regular-expression grammar, where
-  # Rmax is the highest digit in the radix being used (for example, Rmax is 9
-  # in base 10).
+  #    <tr><td valign=top align=right><i>NonASCIIDigit</i>&nbsp;&nbsp;::</td>
+  #        <td valign=top>= A non-ASCII character c for which
+  #             {@link java.lang.Character#isDigit Character.isDigit}<tt>(c)</tt>
+  #                         returns&nbsp;true</td></tr>
   # 
-  # <p>
-  # <table cellspacing=0 cellpadding=0 align=center>
+  #    <tr><td>&nbsp;</td></tr>
   # 
-  # <tr><td valign=top align=right><i>NonASCIIDigit</i>&nbsp;&nbsp;::</td>
-  # <td valign=top>= A non-ASCII character c for which
-  # {@link java.lang.Character#isDigit Character.isDigit}<tt>(c)</tt>
-  # returns&nbsp;true</td></tr>
+  #    <tr><td align=right><i>Non0Digit</i>&nbsp;&nbsp;::</td>
+  #    <td><tt>= [1-</tt><i>Rmax</i><tt>] | </tt><i>NonASCIIDigit</i></td></tr>
   # 
-  # <tr><td>&nbsp;</td></tr>
+  #    <tr><td>&nbsp;</td></tr>
   # 
-  # <tr><td align=right><i>Non0Digit</i>&nbsp;&nbsp;::</td>
-  # <td><tt>= [1-</tt><i>Rmax</i><tt>] | </tt><i>NonASCIIDigit</i></td></tr>
+  #    <tr><td align=right><i>Digit</i>&nbsp;&nbsp;::</td>
+  #    <td><tt>= [0-</tt><i>Rmax</i><tt>] | </tt><i>NonASCIIDigit</i></td></tr>
   # 
-  # <tr><td>&nbsp;</td></tr>
+  #    <tr><td>&nbsp;</td></tr>
   # 
-  # <tr><td align=right><i>Digit</i>&nbsp;&nbsp;::</td>
-  # <td><tt>= [0-</tt><i>Rmax</i><tt>] | </tt><i>NonASCIIDigit</i></td></tr>
+  #    <tr><td valign=top align=right><i>GroupedNumeral</i>&nbsp;&nbsp;::</td>
+  #        <td valign=top>
+  #          <table cellpadding=0 cellspacing=0>
+  #            <tr><td><tt>= (&nbsp;</tt></td>
+  #                <td><i>Non0Digit</i><tt>
+  #                    </tt><i>Digit</i><tt>?
+  #                    </tt><i>Digit</i><tt>?</tt></td></tr>
+  #            <tr><td></td>
+  #                <td><tt>(&nbsp;</tt><i>LocalGroupSeparator</i><tt>
+  #                          </tt><i>Digit</i><tt>
+  #                          </tt><i>Digit</i><tt>
+  #                          </tt><i>Digit</i><tt> )+ )</tt></td></tr>
+  #          </table></td></tr>
   # 
-  # <tr><td>&nbsp;</td></tr>
+  #    <tr><td>&nbsp;</td></tr>
   # 
-  # <tr><td valign=top align=right><i>GroupedNumeral</i>&nbsp;&nbsp;::</td>
-  # <td valign=top>
-  # <table cellpadding=0 cellspacing=0>
-  # <tr><td><tt>= (&nbsp;</tt></td>
-  # <td><i>Non0Digit</i><tt>
-  # </tt><i>Digit</i><tt>?
-  # </tt><i>Digit</i><tt>?</tt></td></tr>
-  # <tr><td></td>
-  # <td><tt>(&nbsp;</tt><i>LocalGroupSeparator</i><tt>
-  # </tt><i>Digit</i><tt>
-  # </tt><i>Digit</i><tt>
-  # </tt><i>Digit</i><tt> )+ )</tt></td></tr>
-  # </table></td></tr>
+  #    <tr><td align=right><i>Numeral</i>&nbsp;&nbsp;::</td>
+  #        <td><tt>= ( ( </tt><i>Digit</i><tt>+ )
+  #                | </tt><i>GroupedNumeral</i><tt> )</tt></td></tr>
   # 
-  # <tr><td>&nbsp;</td></tr>
+  #    <tr><td>&nbsp;</td></tr>
   # 
-  # <tr><td align=right><i>Numeral</i>&nbsp;&nbsp;::</td>
-  # <td><tt>= ( ( </tt><i>Digit</i><tt>+ )
-  # | </tt><i>GroupedNumeral</i><tt> )</tt></td></tr>
+  #    <tr><td valign=top align=right>
+  #          <a name="Integer-regex"><i>Integer</i>&nbsp;&nbsp;::</td>
+  #        <td valign=top><tt>= ( [-+]? ( </tt><i>Numeral</i><tt>
+  #                                ) )</tt></td></tr>
+  #    <tr><td></td>
+  #        <td><tt>| </tt><i>LocalPositivePrefix</i><tt> </tt><i>Numeral</i><tt>
+  #                       </tt><i>LocalPositiveSuffix</i></td></tr>
+  #    <tr><td></td>
+  #        <td><tt>| </tt><i>LocalNegativePrefix</i><tt> </tt><i>Numeral</i><tt>
+  #                  </tt><i>LocalNegativeSuffix</i></td></tr>
   # 
-  # <tr><td>&nbsp;</td></tr>
+  #    <tr><td>&nbsp;</td></tr>
   # 
-  # <tr><td valign=top align=right>
-  # <a name="Integer-regex"><i>Integer</i>&nbsp;&nbsp;::</td>
-  # <td valign=top><tt>= ( [-+]? ( </tt><i>Numeral</i><tt>
-  # ) )</tt></td></tr>
-  # <tr><td></td>
-  # <td><tt>| </tt><i>LocalPositivePrefix</i><tt> </tt><i>Numeral</i><tt>
-  # </tt><i>LocalPositiveSuffix</i></td></tr>
-  # <tr><td></td>
-  # <td><tt>| </tt><i>LocalNegativePrefix</i><tt> </tt><i>Numeral</i><tt>
-  # </tt><i>LocalNegativeSuffix</i></td></tr>
+  #    <tr><td align=right><i>DecimalNumeral</i>&nbsp;&nbsp;::</td>
+  #        <td><tt>= </tt><i>Numeral</i></td></tr>
+  #    <tr><td></td>
+  #        <td><tt>| </tt><i>Numeral</i><tt>
+  #                  </tt><i>LocalDecimalSeparator</i><tt>
+  #                  </tt><i>Digit</i><tt>*</tt></td></tr>
+  #    <tr><td></td>
+  #        <td><tt>| </tt><i>LocalDecimalSeparator</i><tt>
+  #                  </tt><i>Digit</i><tt>+</tt></td></tr>
   # 
-  # <tr><td>&nbsp;</td></tr>
+  #    <tr><td>&nbsp;</td></tr>
   # 
-  # <tr><td align=right><i>DecimalNumeral</i>&nbsp;&nbsp;::</td>
-  # <td><tt>= </tt><i>Numeral</i></td></tr>
-  # <tr><td></td>
-  # <td><tt>| </tt><i>Numeral</i><tt>
-  # </tt><i>LocalDecimalSeparator</i><tt>
-  # </tt><i>Digit</i><tt>*</tt></td></tr>
-  # <tr><td></td>
-  # <td><tt>| </tt><i>LocalDecimalSeparator</i><tt>
-  # </tt><i>Digit</i><tt>+</tt></td></tr>
+  #    <tr><td align=right><i>Exponent</i>&nbsp;&nbsp;::</td>
+  #        <td><tt>= ( [eE] [+-]? </tt><i>Digit</i><tt>+ )</tt></td></tr>
   # 
-  # <tr><td>&nbsp;</td></tr>
+  #    <tr><td>&nbsp;</td></tr>
   # 
-  # <tr><td align=right><i>Exponent</i>&nbsp;&nbsp;::</td>
-  # <td><tt>= ( [eE] [+-]? </tt><i>Digit</i><tt>+ )</tt></td></tr>
+  #    <tr><td align=right>
+  #          <a name="Decimal-regex"><i>Decimal</i>&nbsp;&nbsp;::</td>
+  #        <td><tt>= ( [-+]? </tt><i>DecimalNumeral</i><tt>
+  #                          </tt><i>Exponent</i><tt>? )</tt></td></tr>
+  #    <tr><td></td>
+  #        <td><tt>| </tt><i>LocalPositivePrefix</i><tt>
+  #                  </tt><i>DecimalNumeral</i><tt>
+  #                  </tt><i>LocalPositiveSuffix</i>
+  #                  </tt><i>Exponent</i><tt>?</td></tr>
+  #    <tr><td></td>
+  #        <td><tt>| </tt><i>LocalNegativePrefix</i><tt>
+  #                  </tt><i>DecimalNumeral</i><tt>
+  #                  </tt><i>LocalNegativeSuffix</i>
+  #                  </tt><i>Exponent</i><tt>?</td></tr>
   # 
-  # <tr><td>&nbsp;</td></tr>
+  #    <tr><td>&nbsp;</td></tr>
   # 
-  # <tr><td align=right>
-  # <a name="Decimal-regex"><i>Decimal</i>&nbsp;&nbsp;::</td>
-  # <td><tt>= ( [-+]? </tt><i>DecimalNumeral</i><tt>
-  # </tt><i>Exponent</i><tt>? )</tt></td></tr>
-  # <tr><td></td>
-  # <td><tt>| </tt><i>LocalPositivePrefix</i><tt>
-  # </tt><i>DecimalNumeral</i><tt>
-  # </tt><i>LocalPositiveSuffix</i>
-  # </tt><i>Exponent</i><tt>?</td></tr>
-  # <tr><td></td>
-  # <td><tt>| </tt><i>LocalNegativePrefix</i><tt>
-  # </tt><i>DecimalNumeral</i><tt>
-  # </tt><i>LocalNegativeSuffix</i>
-  # </tt><i>Exponent</i><tt>?</td></tr>
+  #    <tr><td align=right><i>HexFloat</i>&nbsp;&nbsp;::</td>
+  #        <td><tt>= [-+]? 0[xX][0-9a-fA-F]*\.[0-9a-fA-F]+
+  #                  ([pP][-+]?[0-9]+)?</tt></td></tr>
   # 
-  # <tr><td>&nbsp;</td></tr>
+  #    <tr><td>&nbsp;</td></tr>
   # 
-  # <tr><td align=right><i>HexFloat</i>&nbsp;&nbsp;::</td>
-  # <td><tt>= [-+]? 0[xX][0-9a-fA-F]*\.[0-9a-fA-F]+
-  # ([pP][-+]?[0-9]+)?</tt></td></tr>
+  #    <tr><td align=right><i>NonNumber</i>&nbsp;&nbsp;::</td>
+  #        <td valign=top><tt>= NaN
+  #                           | </tt><i>LocalNan</i><tt>
+  #                           | Infinity
+  #                           | </tt><i>LocalInfinity</i></td></tr>
   # 
-  # <tr><td>&nbsp;</td></tr>
+  #    <tr><td>&nbsp;</td></tr>
   # 
-  # <tr><td align=right><i>NonNumber</i>&nbsp;&nbsp;::</td>
-  # <td valign=top><tt>= NaN
-  # | </tt><i>LocalNan</i><tt>
-  # | Infinity
-  # | </tt><i>LocalInfinity</i></td></tr>
+  #    <tr><td align=right><i>SignedNonNumber</i>&nbsp;&nbsp;::</td>
+  #        <td><tt>= ( [-+]? </tt><i>NonNumber</i><tt> )</tt></td></tr>
+  #    <tr><td></td>
+  #        <td><tt>| </tt><i>LocalPositivePrefix</i><tt>
+  #                  </tt><i>NonNumber</i><tt>
+  #                  </tt><i>LocalPositiveSuffix</i></td></tr>
+  #    <tr><td></td>
+  #        <td><tt>| </tt><i>LocalNegativePrefix</i><tt>
+  #                  </tt><i>NonNumber</i><tt>
+  #                  </tt><i>LocalNegativeSuffix</i></td></tr>
   # 
-  # <tr><td>&nbsp;</td></tr>
+  #    <tr><td>&nbsp;</td></tr>
   # 
-  # <tr><td align=right><i>SignedNonNumber</i>&nbsp;&nbsp;::</td>
-  # <td><tt>= ( [-+]? </tt><i>NonNumber</i><tt> )</tt></td></tr>
-  # <tr><td></td>
-  # <td><tt>| </tt><i>LocalPositivePrefix</i><tt>
-  # </tt><i>NonNumber</i><tt>
-  # </tt><i>LocalPositiveSuffix</i></td></tr>
-  # <tr><td></td>
-  # <td><tt>| </tt><i>LocalNegativePrefix</i><tt>
-  # </tt><i>NonNumber</i><tt>
-  # </tt><i>LocalNegativeSuffix</i></td></tr>
+  #    <tr><td valign=top align=right>
+  #          <a name="Float-regex"><i>Float</i>&nbsp;&nbsp;::</td>
+  #        <td valign=top><tt>= </tt><i>Decimal</i><tt></td></tr>
+  #        <tr><td></td>
+  #            <td><tt>| </tt><i>HexFloat</i><tt></td></tr>
+  #        <tr><td></td>
+  #            <td><tt>| </tt><i>SignedNonNumber</i><tt></td></tr>
   # 
-  # <tr><td>&nbsp;</td></tr>
+  #  </table>
+  #  </center>
   # 
-  # <tr><td valign=top align=right>
-  # <a name="Float-regex"><i>Float</i>&nbsp;&nbsp;::</td>
-  # <td valign=top><tt>= </tt><i>Decimal</i><tt></td></tr>
-  # <tr><td></td>
-  # <td><tt>| </tt><i>HexFloat</i><tt></td></tr>
-  # <tr><td></td>
-  # <td><tt>| </tt><i>SignedNonNumber</i><tt></td></tr>
+  #  <p> Whitespace is not significant in the above regular expressions.
   # 
-  # </table>
-  # </center>
-  # 
-  # <p> Whitespace is not significant in the above regular expressions.
-  # 
-  # @since   1.5
+  #  @since   1.5
   class Scanner 
     include_class_members ScannerImports
     include Iterator
@@ -534,7 +534,6 @@ module Java::Util
     }
     
     # Fields and methods to support scanning primitive types
-    # 
     # Locale dependent values used to scan numbers
     attr_accessor :group_separator
     alias_method :attr_group_separator, :group_separator
@@ -762,7 +761,6 @@ module Java::Util
     
     typesig { [Readable, Pattern] }
     # Constructors
-    # 
     # Constructs a <code>Scanner</code> that returns values scanned
     # from the specified source delimited by the specified pattern.
     # 
@@ -834,7 +832,7 @@ module Java::Util
       end
       @source = source
       @delim_pattern = pattern
-      @buf = CharBuffer.allocate(BUFFER_SIZE)
+      @buf = CharBuffer.allocate_(BUFFER_SIZE)
       @buf.limit(0)
       @matcher = @delim_pattern.matcher(@buf)
       @matcher.use_transparent_bounds(true)
@@ -847,7 +845,7 @@ module Java::Util
     # from the specified source.
     # 
     # @param  source A character source implementing the {@link Readable}
-    # interface
+    #         interface
     def initialize(source)
       initialize__scanner(source, self.attr_whitespace_pattern)
     end
@@ -870,9 +868,9 @@ module Java::Util
     # 
     # @param  source An input stream to be scanned
     # @param charsetName The encoding type used to convert bytes from the
-    # stream into characters to be scanned
+    #        stream into characters to be scanned
     # @throws IllegalArgumentException if the specified character set
-    # does not exist
+    #         does not exist
     def initialize(source, charset_name)
       initialize__scanner(make_readable(source, charset_name), self.attr_whitespace_pattern)
     end
@@ -914,10 +912,10 @@ module Java::Util
     # 
     # @param  source A file to be scanned
     # @param charsetName The encoding type used to convert bytes from the file
-    # into characters to be scanned
+    #        into characters to be scanned
     # @throws FileNotFoundException if source is not found
     # @throws IllegalArgumentException if the specified encoding is
-    # not found
+    #         not found
     def initialize(source, charset_name)
       initialize__scanner((FileInputStream.new(source).get_channel), charset_name)
     end
@@ -960,9 +958,9 @@ module Java::Util
     # 
     # @param  source A channel to scan
     # @param charsetName The encoding type used to convert bytes from the
-    # channel into characters to be scanned
+    #        channel into characters to be scanned
     # @throws IllegalArgumentException if the specified character set
-    # does not exist
+    #         does not exist
     def initialize(source, charset_name)
       initialize__scanner(make_readable(source, charset_name), self.attr_whitespace_pattern)
     end
@@ -1088,7 +1086,7 @@ module Java::Util
       end
       # Gain space by growing buffer
       new_size = @buf.capacity * 2
-      new_buf = CharBuffer.allocate(new_size)
+      new_buf = CharBuffer.allocate_(new_size)
       new_buf.put(@buf)
       new_buf.flip
       translate_saved_indexes(offset)
@@ -1209,7 +1207,7 @@ module Java::Util
           # Must continue with match to provide valid MatchResult
           pattern_ = self.attr_find_any_pattern
         end
-        # Attempt to match against the desired pattern
+        #  Attempt to match against the desired pattern
         @matcher.use_pattern(pattern_)
         @matcher.region(@position, token_end)
         if (@matcher.matches)
@@ -1327,7 +1325,6 @@ module Java::Util
     
     typesig { [] }
     # Public methods
-    # 
     # Closes this scanner.
     # 
     # <p> If this scanner has not yet been closed then if its underlying
@@ -1637,7 +1634,7 @@ module Java::Util
     # 
     # @param pattern a string specifying the pattern to scan
     # @return true if and only if this scanner has another token matching
-    # the specified pattern
+    #         the specified pattern
     # @throws IllegalStateException if this scanner is closed
     def has_next(pattern_)
       return has_next(@pattern_cache.for_name(pattern_))
@@ -1668,7 +1665,7 @@ module Java::Util
     # 
     # @param pattern the pattern to scan for
     # @return true if and only if this scanner has another token matching
-    # the specified pattern
+    #         the specified pattern
     # @throws IllegalStateException if this scanner is closed
     def has_next(pattern_)
       ensure_open
@@ -1790,7 +1787,6 @@ module Java::Util
     
     typesig { [String] }
     # Public methods that ignore delimiters
-    # 
     # Attempts to find the next occurrence of a pattern constructed from the
     # specified string, ignoring delimiters.
     # 
@@ -1988,14 +1984,13 @@ module Java::Util
     
     typesig { [] }
     # Convenience methods for scanning primitives
-    # 
     # Returns true if the next token in this scanner's input can be
     # interpreted as a boolean value using a case insensitive pattern
     # created from the string "true|false".  The scanner does not
     # advance past the input that matched.
     # 
     # @return true if and only if this scanner's next token is a valid
-    # boolean value
+    #         boolean value
     # @throws IllegalStateException if this scanner is closed
     def has_next_boolean
       return has_next(bool_pattern)
@@ -2023,7 +2018,7 @@ module Java::Util
     # {@link #nextByte} method. The scanner does not advance past any input.
     # 
     # @return true if and only if this scanner's next token is a valid
-    # byte value
+    #         byte value
     # @throws IllegalStateException if this scanner is closed
     def has_next_byte
       return has_next_byte(@default_radix)
@@ -2036,7 +2031,7 @@ module Java::Util
     # 
     # @param radix the radix used to interpret the token as a byte value
     # @return true if and only if this scanner's next token is a valid
-    # byte value
+    #         byte value
     # @throws IllegalStateException if this scanner is closed
     def has_next_byte(radix)
       set_radix(radix)
@@ -2063,8 +2058,8 @@ module Java::Util
     # 
     # @return the <tt>byte</tt> scanned from the input
     # @throws InputMismatchException
-    # if the next token does not match the <i>Integer</i>
-    # regular expression, or is out of range
+    #         if the next token does not match the <i>Integer</i>
+    #         regular expression, or is out of range
     # @throws NoSuchElementException if input is exhausted
     # @throws IllegalStateException if this scanner is closed
     def next_byte
@@ -2092,8 +2087,8 @@ module Java::Util
     # @param radix the radix used to interpret the token as a byte value
     # @return the <tt>byte</tt> scanned from the input
     # @throws InputMismatchException
-    # if the next token does not match the <i>Integer</i>
-    # regular expression, or is out of range
+    #         if the next token does not match the <i>Integer</i>
+    #         regular expression, or is out of range
     # @throws NoSuchElementException if input is exhausted
     # @throws IllegalStateException if this scanner is closed
     def next_byte(radix)
@@ -2124,7 +2119,7 @@ module Java::Util
     # {@link #nextShort} method. The scanner does not advance past any input.
     # 
     # @return true if and only if this scanner's next token is a valid
-    # short value in the default radix
+    #         short value in the default radix
     # @throws IllegalStateException if this scanner is closed
     def has_next_short
       return has_next_short(@default_radix)
@@ -2137,7 +2132,7 @@ module Java::Util
     # 
     # @param radix the radix used to interpret the token as a short value
     # @return true if and only if this scanner's next token is a valid
-    # short value in the specified radix
+    #         short value in the specified radix
     # @throws IllegalStateException if this scanner is closed
     def has_next_short(radix)
       set_radix(radix)
@@ -2164,8 +2159,8 @@ module Java::Util
     # 
     # @return the <tt>short</tt> scanned from the input
     # @throws InputMismatchException
-    # if the next token does not match the <i>Integer</i>
-    # regular expression, or is out of range
+    #         if the next token does not match the <i>Integer</i>
+    #         regular expression, or is out of range
     # @throws NoSuchElementException if input is exhausted
     # @throws IllegalStateException if this scanner is closed
     def next_short
@@ -2193,8 +2188,8 @@ module Java::Util
     # @param radix the radix used to interpret the token as a short value
     # @return the <tt>short</tt> scanned from the input
     # @throws InputMismatchException
-    # if the next token does not match the <i>Integer</i>
-    # regular expression, or is out of range
+    #         if the next token does not match the <i>Integer</i>
+    #         regular expression, or is out of range
     # @throws NoSuchElementException if input is exhausted
     # @throws IllegalStateException if this scanner is closed
     def next_short(radix)
@@ -2225,7 +2220,7 @@ module Java::Util
     # {@link #nextInt} method. The scanner does not advance past any input.
     # 
     # @return true if and only if this scanner's next token is a valid
-    # int value
+    #         int value
     # @throws IllegalStateException if this scanner is closed
     def has_next_int
       return has_next_int(@default_radix)
@@ -2238,7 +2233,7 @@ module Java::Util
     # 
     # @param radix the radix used to interpret the token as an int value
     # @return true if and only if this scanner's next token is a valid
-    # int value
+    #         int value
     # @throws IllegalStateException if this scanner is closed
     def has_next_int(radix)
       set_radix(radix)
@@ -2288,8 +2283,8 @@ module Java::Util
     # 
     # @return the <tt>int</tt> scanned from the input
     # @throws InputMismatchException
-    # if the next token does not match the <i>Integer</i>
-    # regular expression, or is out of range
+    #         if the next token does not match the <i>Integer</i>
+    #         regular expression, or is out of range
     # @throws NoSuchElementException if input is exhausted
     # @throws IllegalStateException if this scanner is closed
     def next_int
@@ -2317,8 +2312,8 @@ module Java::Util
     # @param radix the radix used to interpret the token as an int value
     # @return the <tt>int</tt> scanned from the input
     # @throws InputMismatchException
-    # if the next token does not match the <i>Integer</i>
-    # regular expression, or is out of range
+    #         if the next token does not match the <i>Integer</i>
+    #         regular expression, or is out of range
     # @throws NoSuchElementException if input is exhausted
     # @throws IllegalStateException if this scanner is closed
     def next_int(radix)
@@ -2349,7 +2344,7 @@ module Java::Util
     # {@link #nextLong} method. The scanner does not advance past any input.
     # 
     # @return true if and only if this scanner's next token is a valid
-    # long value
+    #         long value
     # @throws IllegalStateException if this scanner is closed
     def has_next_long
       return has_next_long(@default_radix)
@@ -2362,7 +2357,7 @@ module Java::Util
     # 
     # @param radix the radix used to interpret the token as a long value
     # @return true if and only if this scanner's next token is a valid
-    # long value
+    #         long value
     # @throws IllegalStateException if this scanner is closed
     def has_next_long(radix)
       set_radix(radix)
@@ -2389,8 +2384,8 @@ module Java::Util
     # 
     # @return the <tt>long</tt> scanned from the input
     # @throws InputMismatchException
-    # if the next token does not match the <i>Integer</i>
-    # regular expression, or is out of range
+    #         if the next token does not match the <i>Integer</i>
+    #         regular expression, or is out of range
     # @throws NoSuchElementException if input is exhausted
     # @throws IllegalStateException if this scanner is closed
     def next_long
@@ -2418,8 +2413,8 @@ module Java::Util
     # @param radix the radix used to interpret the token as an int value
     # @return the <tt>long</tt> scanned from the input
     # @throws InputMismatchException
-    # if the next token does not match the <i>Integer</i>
-    # regular expression, or is out of range
+    #         if the next token does not match the <i>Integer</i>
+    #         regular expression, or is out of range
     # @throws NoSuchElementException if input is exhausted
     # @throws IllegalStateException if this scanner is closed
     def next_long(radix)
@@ -2505,7 +2500,7 @@ module Java::Util
     # method. The scanner does not advance past any input.
     # 
     # @return true if and only if this scanner's next token is a valid
-    # float value
+    #         float value
     # @throws IllegalStateException if this scanner is closed
     def has_next_float
       set_radix(10)
@@ -2544,8 +2539,8 @@ module Java::Util
     # 
     # @return the <tt>float</tt> scanned from the input
     # @throws InputMismatchException
-    # if the next token does not match the <i>Float</i>
-    # regular expression, or is out of range
+    #         if the next token does not match the <i>Float</i>
+    #         regular expression, or is out of range
     # @throws NoSuchElementException if input is exhausted
     # @throws IllegalStateException if this scanner is closed
     def next_float
@@ -2571,7 +2566,7 @@ module Java::Util
     # method. The scanner does not advance past any input.
     # 
     # @return true if and only if this scanner's next token is a valid
-    # double value
+    #         double value
     # @throws IllegalStateException if this scanner is closed
     def has_next_double
       set_radix(10)
@@ -2610,8 +2605,8 @@ module Java::Util
     # 
     # @return the <tt>double</tt> scanned from the input
     # @throws InputMismatchException
-    # if the next token does not match the <i>Float</i>
-    # regular expression, or is out of range
+    #         if the next token does not match the <i>Float</i>
+    #         regular expression, or is out of range
     # @throws NoSuchElementException if the input is exhausted
     # @throws IllegalStateException if this scanner is closed
     def next_double
@@ -2634,14 +2629,13 @@ module Java::Util
     
     typesig { [] }
     # Convenience methods for scanning multi precision numbers
-    # 
     # Returns true if the next token in this scanner's input can be
     # interpreted as a <code>BigInteger</code> in the default radix using the
     # {@link #nextBigInteger} method. The scanner does not advance past any
     # input.
     # 
     # @return true if and only if this scanner's next token is a valid
-    # <code>BigInteger</code>
+    #         <code>BigInteger</code>
     # @throws IllegalStateException if this scanner is closed
     def has_next_big_integer
       return has_next_big_integer(@default_radix)
@@ -2655,7 +2649,7 @@ module Java::Util
     # 
     # @param radix the radix used to interpret the token as an integer
     # @return true if and only if this scanner's next token is a valid
-    # <code>BigInteger</code>
+    #         <code>BigInteger</code>
     # @throws IllegalStateException if this scanner is closed
     def has_next_big_integer(radix)
       set_radix(radix)
@@ -2683,8 +2677,8 @@ module Java::Util
     # 
     # @return the <tt>BigInteger</tt> scanned from the input
     # @throws InputMismatchException
-    # if the next token does not match the <i>Integer</i>
-    # regular expression, or is out of range
+    #         if the next token does not match the <i>Integer</i>
+    #         regular expression, or is out of range
     # @throws NoSuchElementException if the input is exhausted
     # @throws IllegalStateException if this scanner is closed
     def next_big_integer
@@ -2707,8 +2701,8 @@ module Java::Util
     # @param radix the radix used to interpret the token
     # @return the <tt>BigInteger</tt> scanned from the input
     # @throws InputMismatchException
-    # if the next token does not match the <i>Integer</i>
-    # regular expression, or is out of range
+    #         if the next token does not match the <i>Integer</i>
+    #         regular expression, or is out of range
     # @throws NoSuchElementException if the input is exhausted
     # @throws IllegalStateException if this scanner is closed
     def next_big_integer(radix)
@@ -2740,7 +2734,7 @@ module Java::Util
     # input.
     # 
     # @return true if and only if this scanner's next token is a valid
-    # <code>BigDecimal</code>
+    #         <code>BigDecimal</code>
     # @throws IllegalStateException if this scanner is closed
     def has_next_big_decimal
       set_radix(10)
@@ -2772,8 +2766,8 @@ module Java::Util
     # 
     # @return the <tt>BigDecimal</tt> scanned from the input
     # @throws InputMismatchException
-    # if the next token does not match the <i>Decimal</i>
-    # regular expression, or is out of range
+    #         if the next token does not match the <i>Decimal</i>
+    #         regular expression, or is out of range
     # @throws NoSuchElementException if the input is exhausted
     # @throws IllegalStateException if this scanner is closed
     def next_big_decimal
@@ -2807,9 +2801,9 @@ module Java::Util
     # invocation
     # 
     # <blockquote><pre>
-    # scanner.useDelimiter("\\p{javaWhitespace}+")
-    # .useLocale(Locale.getDefault())
-    # .useRadix(10);
+    #   scanner.useDelimiter("\\p{javaWhitespace}+")
+    #          .useLocale(Locale.getDefault())
+    #          .useRadix(10);
     # </pre></blockquote>
     # 
     # @return this scanner

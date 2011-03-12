@@ -42,18 +42,7 @@ module Sun::Text::Resources
     typesig { [] }
     # Overrides ListResourceBundle
     def get_contents
-      # decimal separator
-      # group (thousands) separator
-      # list separator
-      # percent sign
-      # native 0 digit
-      # pattern digit
-      # minus sign
-      # exponential
-      # per mille
-      # infinity
-      # NaN
-      return Array.typed(Array.typed(Object)).new([Array.typed(Object).new(["NumberElements", Array.typed(String).new([".", ",", ";", "%", ("".to_u << 0x0E50 << ""), "#", "-", "E", ("".to_u << 0x2030 << ""), ("".to_u << 0x221e << ""), ("".to_u << 0xfffd << "")])]), ])
+      return Array.typed(Array.typed(Object)).new([Array.typed(Object).new(["NumberElements", Array.typed(String).new([".", ",", ";", "%", ("".to_u << 0x0E50 << ""), "#", "-", "E", ("".to_u << 0x2030 << ""), ("".to_u << 0x221e << ""), ("".to_u << 0xfffd << "")])])])
     end
     
     typesig { [] }

@@ -82,6 +82,7 @@ module Sun::Net::Dns
     typesig { [String, ::Java::Int, ::Java::Int] }
     # Parse /etc/resolv.conf to get the values for a particular
     # keyword.
+    # 
     def resolvconf(keyword, maxperkeyword, maxkeywords)
       ll = LinkedList.new
       begin
@@ -149,8 +150,7 @@ module Sun::Net::Dns
         if ((curr_time - self.attr_last_refresh) < TIMEOUT)
           return
         end
-      end
-      # run
+      end # run
       @nameservers = Java::Security::AccessController.do_privileged(# get the name servers from /etc/resolv.conf
       Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
         local_class_in ResolverConfigurationImpl
@@ -181,8 +181,7 @@ module Sun::Net::Dns
     typesig { [] }
     # obtain search list or local domain
     def get_search_list
-      sl = nil
-      # run
+      sl = nil # run
       sl = Java::Security::AccessController.do_privileged(# first try the search keyword in /etc/resolv.conf
       Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
         local_class_in ResolverConfigurationImpl
@@ -218,8 +217,7 @@ module Sun::Net::Dns
         sl = LinkedList.new
         sl.add(local_domain)
         return sl
-      end
-      # run
+      end # run
       sl = Java::Security::AccessController.do_privileged(# try domain keyword in /etc/resolv.conf
       Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
         local_class_in ResolverConfigurationImpl

@@ -22,11 +22,8 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
-# 
 # (C) Copyright IBM Corp. 1996-2005 - All Rights Reserved                     *
-# *
+#                                                                             *
 # The original version of this source code and documentation is copyrighted   *
 # and owned by IBM, These materials are provided under terms of a License     *
 # Agreement between IBM and Sun. This technology is protected by multiple     *
@@ -72,7 +69,6 @@ module Sun::Text::Normalizer
       
       typesig { [String] }
       # static final methods ----------------------------------------------------
-      # 
       # Returns a <code>UCharacterIterator</code> object given a
       # source string.
       # @param source a string
@@ -85,7 +81,6 @@ module Sun::Text::Normalizer
       
       typesig { [StringBuffer] }
       # // for StringPrep
-      # 
       # Returns a <code>UCharacterIterator</code> object given a
       # source StringBuffer.
       # @param source an string buffer of UTF-16 code units
@@ -110,7 +105,6 @@ module Sun::Text::Normalizer
     
     typesig { [] }
     # public methods ----------------------------------------------------------
-    # 
     # Returns the code unit at the current index.  If index is out
     # of range, returns DONE.  Index is not changed.
     # @return current code unit
@@ -141,7 +135,7 @@ module Sun::Text::Normalizer
     # range, DONE is returned, and the iterator is reset to the limit
     # of the text.
     # @return the next UTF16 code unit, or DONE if the index is at the limit
-    # of the text.
+    #         of the text.
     # @stable ICU 2.4
     def next_
       raise NotImplementedError
@@ -155,7 +149,7 @@ module Sun::Text::Normalizer
     # the surrogate pair, and the code point represented by the pair
     # is returned.
     # @return the next codepoint in text, or DONE if the index is at
-    # the limit of the text.
+    #         the limit of the text.
     # @stable ICU 2.4
     def next_code_point
       ch1 = next_
@@ -179,7 +173,7 @@ module Sun::Text::Normalizer
     # resulting index is less than 0, the index is reset to 0 and
     # DONE is returned.
     # @return the previous code unit in the text, or DONE if the new
-    # index is before the start of the text.
+    #         index is before the start of the text.
     # @stable ICU 2.4
     def previous
       raise NotImplementedError
@@ -189,7 +183,7 @@ module Sun::Text::Normalizer
     # Sets the index to the specified index in the text.
     # @param index the index within the text.
     # @exception IndexOutOfBoundsException is thrown if an invalid index is
-    # supplied
+    #            supplied
     # @stable ICU 2.4
     def set_index(index)
       raise NotImplementedError
@@ -197,7 +191,6 @@ module Sun::Text::Normalizer
     
     typesig { [Array.typed(::Java::Char), ::Java::Int] }
     # // for StringPrep
-    # 
     # Fills the buffer with the underlying text storage of the iterator
     # If the buffer capacity is not enough a exception is thrown. The capacity
     # of the fill in buffer should at least be equal to length of text in the
@@ -206,30 +199,30 @@ module Sun::Text::Normalizer
     # 
     # <code>
     # <pre>
-    # UChacterIterator iter = new UCharacterIterator.getInstance(text);
-    # char[] buf = new char[iter.getLength()];
-    # iter.getText(buf);
+    #         UChacterIterator iter = new UCharacterIterator.getInstance(text);
+    #         char[] buf = new char[iter.getLength()];
+    #         iter.getText(buf);
     # 
-    # OR
-    # char[] buf= new char[1];
-    # int len = 0;
-    # for(;;){
-    # try{
-    # len = iter.getText(buf);
-    # break;
-    # }catch(IndexOutOfBoundsException e){
-    # buf = new char[iter.getLength()];
-    # }
-    # }
+    #         OR
+    #         char[] buf= new char[1];
+    #         int len = 0;
+    #         for(;;){
+    #             try{
+    #                 len = iter.getText(buf);
+    #                 break;
+    #             }catch(IndexOutOfBoundsException e){
+    #                 buf = new char[iter.getLength()];
+    #             }
+    #         }
     # </pre>
     # </code>
     # 
     # @param fillIn an array of chars to fill with the underlying UTF-16 code
-    # units.
+    #         units.
     # @param offset the position within the array to start putting the data.
     # @return the number of code units added to fillIn, as a convenience
     # @exception IndexOutOfBounds exception if there is not enough
-    # room after offset in the array, or if offset < 0.
+    #            room after offset in the array, or if offset < 0.
     # @stable ICU 2.4
     def get_text(fill_in, offset)
       raise NotImplementedError
@@ -237,14 +230,13 @@ module Sun::Text::Normalizer
     
     typesig { [Array.typed(::Java::Char)] }
     # // for StringPrep
-    # 
     # Convenience override for <code>getText(char[], int)</code> that provides
     # an offset of 0.
     # @param fillIn an array of chars to fill with the underlying UTF-16 code
-    # units.
+    #         units.
     # @return the number of code units added to fillIn, as a convenience
     # @exception IndexOutOfBounds exception if there is not enough
-    # room in the array.
+    #            room in the array.
     # @stable ICU 2.4
     def get_text(fill_in)
       return get_text(fill_in, 0)
@@ -252,7 +244,6 @@ module Sun::Text::Normalizer
     
     typesig { [] }
     # // for StringPrep
-    # 
     # Convenience method for returning the underlying text storage as as string
     # @return the underlying text storage in the iterator as a string
     # @stable ICU 2.4
@@ -271,10 +262,10 @@ module Sun::Text::Normalizer
     # set to limit.
     # 
     # @param delta the number of code units to move the current
-    # index.
+    #              index.
     # @return the new index.
     # @exception IndexOutOfBoundsException is thrown if an invalid index is
-    # supplied
+    #            supplied
     # @stable ICU 2.4
     def move_index(delta)
       x = Math.max(0, Math.min(get_index + delta, get_length))

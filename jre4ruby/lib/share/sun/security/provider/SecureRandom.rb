@@ -203,7 +203,7 @@ module Sun::Security::Provider
         i = 0
         while i < state.attr_length
           # Add two bytes
-          v = RJava.cast_to_int(state[i]) + RJava.cast_to_int(output[i]) + last
+          v = (state[i]).to_int + (output[i]).to_int + last
           # Result is lower 8 bits
           t = v
           # Store result. Check for state collision.

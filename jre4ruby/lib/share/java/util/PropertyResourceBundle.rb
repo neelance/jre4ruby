@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996 - 1998 - All Rights Reserved
 # 
@@ -123,7 +121,7 @@ module Java::Util
     # must be encoded in ISO-8859-1.
     # 
     # @param stream an InputStream that represents a property file
-    # to read from.
+    #        to read from.
     # @throws IOException if an I/O error occurs
     # @throws NullPointerException if <code>stream</code> is null
     def initialize(stream)
@@ -141,7 +139,7 @@ module Java::Util
     # there is no limitation as to the encoding of the input property file.
     # 
     # @param reader a Reader that represents a property file to
-    # read from.
+    #        read from.
     # @throws IOException if an I/O error occurs
     # @throws NullPointerException if <code>reader</code> is null
     # @since 1.6
@@ -167,7 +165,7 @@ module Java::Util
     # this <code>ResourceBundle</code> and its parent bundles.
     # 
     # @return an <code>Enumeration</code> of the keys contained in
-    # this <code>ResourceBundle</code> and its parent bundles.
+    #         this <code>ResourceBundle</code> and its parent bundles.
     # @see #keySet()
     def get_keys
       parent = self.attr_parent
@@ -179,7 +177,7 @@ module Java::Util
     # <em>only</em> in this <code>ResourceBundle</code>.
     # 
     # @return a <code>Set</code> of the keys contained only in this
-    # <code>ResourceBundle</code>
+    #         <code>ResourceBundle</code>
     # @since 1.6
     # @see #keySet()
     def handle_key_set

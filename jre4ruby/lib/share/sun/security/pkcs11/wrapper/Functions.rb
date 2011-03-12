@@ -1,48 +1,46 @@
 require "rjava"
-
-# Portions Copyright 2003-2005 Sun Microsystems, Inc.  All Rights Reserved.
-# 
+ # * Portions Copyright 2003-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # Copyright  (c) 2002 Graz University of Technology. All rights reserved.
 # 
 # Redistribution and use in  source and binary forms, with or without
 # modification, are permitted  provided that the following conditions are met:
 # 
 # 1. Redistributions of  source code must retain the above copyright notice,
-# this list of conditions and the following disclaimer.
+#    this list of conditions and the following disclaimer.
 # 
 # 2. Redistributions in  binary form must reproduce the above copyright notice,
-# this list of conditions and the following disclaimer in the documentation
-# and/or other materials provided with the distribution.
+#    this list of conditions and the following disclaimer in the documentation
+#    and/or other materials provided with the distribution.
 # 
 # 3. The end-user documentation included with the redistribution, if any, must
-# include the following acknowledgment:
+#    include the following acknowledgment:
 # 
-# "This product includes software developed by IAIK of Graz University of
-# Technology."
+#    "This product includes software developed by IAIK of Graz University of
+#     Technology."
 # 
-# Alternately, this acknowledgment may appear in the software itself, if
-# and wherever such third-party acknowledgments normally appear.
+#    Alternately, this acknowledgment may appear in the software itself, if
+#    and wherever such third-party acknowledgments normally appear.
 # 
 # 4. The names "Graz University of Technology" and "IAIK of Graz University of
-# Technology" must not be used to endorse or promote products derived from
-# this software without prior written permission.
+#    Technology" must not be used to endorse or promote products derived from
+#    this software without prior written permission.
 # 
 # 5. Products derived from this software may not be called
-# "IAIK PKCS Wrapper", nor may "IAIK" appear in their name, without prior
-# written permission of Graz University of Technology.
+#    "IAIK PKCS Wrapper", nor may "IAIK" appear in their name, without prior
+#    written permission of Graz University of Technology.
 # 
-# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED
-# WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
-# PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE LICENSOR BE
-# LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
-# OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
-# PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
-# OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
-# ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-# OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
-# OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-# POSSIBILITY  OF SUCH DAMAGE.
+#  THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED
+#  WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+#  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+#  PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE LICENSOR BE
+#  LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
+#  OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+#  PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
+#  OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+#  ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+#  OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+#  OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+#  POSSIBILITY  OF SUCH DAMAGE.
 module Sun::Security::Pkcs11::Wrapper
   module FunctionsImports #:nodoc:
     class_module.module_eval {
@@ -108,7 +106,7 @@ module Sun::Security::Pkcs11::Wrapper
         string_buffer = StringBuffer.new(16)
         j = 0
         while j < 16
-          current_digit = RJava.cast_to_int(current_value) & 0xf
+          current_digit = (current_value).to_int & 0xf
           string_buffer.append(HEX_DIGITS[current_digit])
           current_value >>= 4
           j += 1
@@ -236,7 +234,7 @@ module Sun::Security::Pkcs11::Wrapper
         alias_method :initialize__flags, :initialize
       end }
       
-      const_set_lazy(:SlotInfoFlags) { Flags.new(Array.typed(::Java::Long).new([CKF_TOKEN_PRESENT, CKF_REMOVABLE_DEVICE, CKF_HW_SLOT, ]), Array.typed(String).new(["CKF_TOKEN_PRESENT", "CKF_REMOVABLE_DEVICE", "CKF_HW_SLOT", ])) }
+      const_set_lazy(:SlotInfoFlags) { Flags.new(Array.typed(::Java::Long).new([CKF_TOKEN_PRESENT, CKF_REMOVABLE_DEVICE, CKF_HW_SLOT]), Array.typed(String).new(["CKF_TOKEN_PRESENT", "CKF_REMOVABLE_DEVICE", "CKF_HW_SLOT"])) }
       const_attr_reader  :SlotInfoFlags
       
       typesig { [::Java::Long] }
@@ -248,7 +246,7 @@ module Sun::Security::Pkcs11::Wrapper
         return SlotInfoFlags.to_s(flags)
       end
       
-      const_set_lazy(:TokenInfoFlags) { Flags.new(Array.typed(::Java::Long).new([CKF_RNG, CKF_WRITE_PROTECTED, CKF_LOGIN_REQUIRED, CKF_USER_PIN_INITIALIZED, CKF_RESTORE_KEY_NOT_NEEDED, CKF_CLOCK_ON_TOKEN, CKF_PROTECTED_AUTHENTICATION_PATH, CKF_DUAL_CRYPTO_OPERATIONS, CKF_TOKEN_INITIALIZED, CKF_SECONDARY_AUTHENTICATION, CKF_USER_PIN_COUNT_LOW, CKF_USER_PIN_FINAL_TRY, CKF_USER_PIN_LOCKED, CKF_USER_PIN_TO_BE_CHANGED, CKF_SO_PIN_COUNT_LOW, CKF_SO_PIN_FINAL_TRY, CKF_SO_PIN_LOCKED, CKF_SO_PIN_TO_BE_CHANGED, ]), Array.typed(String).new(["CKF_RNG", "CKF_WRITE_PROTECTED", "CKF_LOGIN_REQUIRED", "CKF_USER_PIN_INITIALIZED", "CKF_RESTORE_KEY_NOT_NEEDED", "CKF_CLOCK_ON_TOKEN", "CKF_PROTECTED_AUTHENTICATION_PATH", "CKF_DUAL_CRYPTO_OPERATIONS", "CKF_TOKEN_INITIALIZED", "CKF_SECONDARY_AUTHENTICATION", "CKF_USER_PIN_COUNT_LOW", "CKF_USER_PIN_FINAL_TRY", "CKF_USER_PIN_LOCKED", "CKF_USER_PIN_TO_BE_CHANGED", "CKF_SO_PIN_COUNT_LOW", "CKF_SO_PIN_FINAL_TRY", "CKF_SO_PIN_LOCKED", "CKF_SO_PIN_TO_BE_CHANGED", ])) }
+      const_set_lazy(:TokenInfoFlags) { Flags.new(Array.typed(::Java::Long).new([CKF_RNG, CKF_WRITE_PROTECTED, CKF_LOGIN_REQUIRED, CKF_USER_PIN_INITIALIZED, CKF_RESTORE_KEY_NOT_NEEDED, CKF_CLOCK_ON_TOKEN, CKF_PROTECTED_AUTHENTICATION_PATH, CKF_DUAL_CRYPTO_OPERATIONS, CKF_TOKEN_INITIALIZED, CKF_SECONDARY_AUTHENTICATION, CKF_USER_PIN_COUNT_LOW, CKF_USER_PIN_FINAL_TRY, CKF_USER_PIN_LOCKED, CKF_USER_PIN_TO_BE_CHANGED, CKF_SO_PIN_COUNT_LOW, CKF_SO_PIN_FINAL_TRY, CKF_SO_PIN_LOCKED, CKF_SO_PIN_TO_BE_CHANGED]), Array.typed(String).new(["CKF_RNG", "CKF_WRITE_PROTECTED", "CKF_LOGIN_REQUIRED", "CKF_USER_PIN_INITIALIZED", "CKF_RESTORE_KEY_NOT_NEEDED", "CKF_CLOCK_ON_TOKEN", "CKF_PROTECTED_AUTHENTICATION_PATH", "CKF_DUAL_CRYPTO_OPERATIONS", "CKF_TOKEN_INITIALIZED", "CKF_SECONDARY_AUTHENTICATION", "CKF_USER_PIN_COUNT_LOW", "CKF_USER_PIN_FINAL_TRY", "CKF_USER_PIN_LOCKED", "CKF_USER_PIN_TO_BE_CHANGED", "CKF_SO_PIN_COUNT_LOW", "CKF_SO_PIN_FINAL_TRY", "CKF_SO_PIN_LOCKED", "CKF_SO_PIN_TO_BE_CHANGED"])) }
       const_attr_reader  :TokenInfoFlags
       
       typesig { [::Java::Long] }
@@ -260,7 +258,7 @@ module Sun::Security::Pkcs11::Wrapper
         return TokenInfoFlags.to_s(flags)
       end
       
-      const_set_lazy(:SessionInfoFlags) { Flags.new(Array.typed(::Java::Long).new([CKF_RW_SESSION, CKF_SERIAL_SESSION, ]), Array.typed(String).new(["CKF_RW_SESSION", "CKF_SERIAL_SESSION", ])) }
+      const_set_lazy(:SessionInfoFlags) { Flags.new(Array.typed(::Java::Long).new([CKF_RW_SESSION, CKF_SERIAL_SESSION]), Array.typed(String).new(["CKF_RW_SESSION", "CKF_SERIAL_SESSION"])) }
       const_attr_reader  :SessionInfoFlags
       
       typesig { [::Java::Long] }
@@ -303,7 +301,7 @@ module Sun::Security::Pkcs11::Wrapper
         return name
       end
       
-      const_set_lazy(:MechanismInfoFlags) { Flags.new(Array.typed(::Java::Long).new([CKF_HW, CKF_ENCRYPT, CKF_DECRYPT, CKF_DIGEST, CKF_SIGN, CKF_SIGN_RECOVER, CKF_VERIFY, CKF_VERIFY_RECOVER, CKF_GENERATE, CKF_GENERATE_KEY_PAIR, CKF_WRAP, CKF_UNWRAP, CKF_DERIVE, CKF_EC_F_P, CKF_EC_F_2M, CKF_EC_ECPARAMETERS, CKF_EC_NAMEDCURVE, CKF_EC_UNCOMPRESS, CKF_EC_COMPRESS, CKF_EXTENSION, ]), Array.typed(String).new(["CKF_HW", "CKF_ENCRYPT", "CKF_DECRYPT", "CKF_DIGEST", "CKF_SIGN", "CKF_SIGN_RECOVER", "CKF_VERIFY", "CKF_VERIFY_RECOVER", "CKF_GENERATE", "CKF_GENERATE_KEY_PAIR", "CKF_WRAP", "CKF_UNWRAP", "CKF_DERIVE", "CKF_EC_F_P", "CKF_EC_F_2M", "CKF_EC_ECPARAMETERS", "CKF_EC_NAMEDCURVE", "CKF_EC_UNCOMPRESS", "CKF_EC_COMPRESS", "CKF_EXTENSION", ])) }
+      const_set_lazy(:MechanismInfoFlags) { Flags.new(Array.typed(::Java::Long).new([CKF_HW, CKF_ENCRYPT, CKF_DECRYPT, CKF_DIGEST, CKF_SIGN, CKF_SIGN_RECOVER, CKF_VERIFY, CKF_VERIFY_RECOVER, CKF_GENERATE, CKF_GENERATE_KEY_PAIR, CKF_WRAP, CKF_UNWRAP, CKF_DERIVE, CKF_EC_F_P, CKF_EC_F_2M, CKF_EC_ECPARAMETERS, CKF_EC_NAMEDCURVE, CKF_EC_UNCOMPRESS, CKF_EC_COMPRESS, CKF_EXTENSION]), Array.typed(String).new(["CKF_HW", "CKF_ENCRYPT", "CKF_DECRYPT", "CKF_DIGEST", "CKF_SIGN", "CKF_SIGN_RECOVER", "CKF_VERIFY", "CKF_VERIFY_RECOVER", "CKF_GENERATE", "CKF_GENERATE_KEY_PAIR", "CKF_WRAP", "CKF_UNWRAP", "CKF_DERIVE", "CKF_EC_F_P", "CKF_EC_F_2M", "CKF_EC_ECPARAMETERS", "CKF_EC_NAMEDCURVE", "CKF_EC_UNCOMPRESS", "CKF_EC_COMPRESS", "CKF_EXTENSION"])) }
       const_attr_reader  :MechanismInfoFlags
       
       typesig { [::Java::Long] }
@@ -319,7 +317,7 @@ module Sun::Security::Pkcs11::Wrapper
       def get_name(name_map, id)
         name = nil
         if (((id >> 32)).equal?(0))
-          name = RJava.cast_to_string(name_map.get(JavaInteger.value_of(RJava.cast_to_int(id))))
+          name = RJava.cast_to_string(name_map.get(JavaInteger.value_of((id).to_int)))
         end
         if ((name).nil?)
           name = "Unknown 0x" + RJava.cast_to_string(to_full_hex_string(id))
@@ -384,7 +382,7 @@ module Sun::Security::Pkcs11::Wrapper
       # @param array1 The first array.
       # @param array2 The second array.
       # @return True, if both arrays are <code>null</code> or both have the same
-      # length and contain exactly the same byte values. False, otherwise.
+      #         length and contain exactly the same byte values. False, otherwise.
       # @preconditions
       # @postconditions
       def ==(array1, array2)
@@ -399,7 +397,7 @@ module Sun::Security::Pkcs11::Wrapper
       # @param array1 The first array.
       # @param array2 The second array.
       # @return True, if both arrays are <code>null</code> or both have the same
-      # length and contain exactly the same char values. False, otherwise.
+      #         length and contain exactly the same char values. False, otherwise.
       # @preconditions
       # @postconditions
       def ==(array1, array2)
@@ -414,7 +412,7 @@ module Sun::Security::Pkcs11::Wrapper
       # @param date1 The first date.
       # @param date2 The second date.
       # @return True, if both dates are <code>null</code> or both contain the same
-      # char values. False, otherwise.
+      #         char values. False, otherwise.
       # @preconditions
       # @postconditions
       def ==(date1, date2)
@@ -443,7 +441,7 @@ module Sun::Security::Pkcs11::Wrapper
         if (!(array).nil?)
           i = 0
           while (i < 4) && (i < array.attr_length)
-            hash ^= (RJava.cast_to_int((0xff & array[i]))) << ((i % 4) << 3)
+            hash ^= (((0xff & array[i])).to_int) << ((i % 4) << 3)
             i += 1
           end
         end
@@ -462,7 +460,7 @@ module Sun::Security::Pkcs11::Wrapper
         if (!(array).nil?)
           i = 0
           while (i < 4) && (i < array.attr_length)
-            hash ^= (RJava.cast_to_int((0xffff & array[i]))) << ((i % 2) << 4)
+            hash ^= (((0xffff & array[i])).to_int) << ((i % 2) << 4)
             i += 1
           end
         end
@@ -480,18 +478,18 @@ module Sun::Security::Pkcs11::Wrapper
         hash = 0
         if (!(date).nil?)
           if ((date.attr_year.attr_length).equal?(4))
-            hash ^= (RJava.cast_to_int((0xffff & date.attr_year[0]))) << 16
-            hash ^= RJava.cast_to_int((0xffff & date.attr_year[1]))
-            hash ^= (RJava.cast_to_int((0xffff & date.attr_year[2]))) << 16
-            hash ^= RJava.cast_to_int((0xffff & date.attr_year[3]))
+            hash ^= (((0xffff & date.attr_year[0])).to_int) << 16
+            hash ^= ((0xffff & date.attr_year[1])).to_int
+            hash ^= (((0xffff & date.attr_year[2])).to_int) << 16
+            hash ^= ((0xffff & date.attr_year[3])).to_int
           end
           if ((date.attr_month.attr_length).equal?(2))
-            hash ^= (RJava.cast_to_int((0xffff & date.attr_month[0]))) << 16
-            hash ^= RJava.cast_to_int((0xffff & date.attr_month[1]))
+            hash ^= (((0xffff & date.attr_month[0])).to_int) << 16
+            hash ^= ((0xffff & date.attr_month[1])).to_int
           end
           if ((date.attr_day.attr_length).equal?(2))
-            hash ^= (RJava.cast_to_int((0xffff & date.attr_day[0]))) << 16
-            hash ^= RJava.cast_to_int((0xffff & date.attr_day[1]))
+            hash ^= (((0xffff & date.attr_day[0])).to_int) << 16
+            hash ^= ((0xffff & date.attr_day[1])).to_int
           end
         end
         return hash
@@ -502,7 +500,7 @@ module Sun::Security::Pkcs11::Wrapper
         if (!((id >> 32)).equal?(0))
           raise AssertionError.new("Id has high bits set: " + RJava.cast_to_string(id) + ", " + name)
         end
-        int_id = JavaInteger.value_of(RJava.cast_to_int(id))
+        int_id = JavaInteger.value_of((id).to_int)
         if (!(name_map.put(int_id, name)).nil?)
           raise AssertionError.new("Duplicate id: " + RJava.cast_to_string(id) + ", " + name)
         end

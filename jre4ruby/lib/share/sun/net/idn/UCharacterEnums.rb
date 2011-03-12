@@ -21,18 +21,15 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
-# 
-# 
-# Copyright (C) 2004, International Business Machines Corporation and         *
-# others. All Rights Reserved.                                                *
-# 
-# 
+# /**
+#  *******************************************************************************
+#  * Copyright (C) 2004, International Business Machines Corporation and         *
+#  * others. All Rights Reserved.                                                *
 # CHANGELOG
-# 2005-05-19 Edward Wang
-# - copy this file from icu4jsrc_3_2/src/com/ibm/icu/lang/UCharacterEnums.java
-# - move from package com.ibm.icu.lang to package sun.net.idn
+#      2005-05-19 Edward Wang
+#          - copy this file from icu4jsrc_3_2/src/com/ibm/icu/lang/UCharacterEnums.java
+#          - move from package com.ibm.icu.lang to package sun.net.idn
+# 
 module Sun::Net::Idn
   module UCharacterEnumsImports #:nodoc:
     class_module.module_eval {
@@ -215,10 +212,10 @@ module Sun::Net::Idn
           const_set_lazy(:INITIAL_PUNCTUATION) { 28 }
           const_attr_reader  :INITIAL_PUNCTUATION
           
-          # Character type Pi
-          # This name is compatible with java.lang.Character's name for this type.
-          # @see #INITIAL_PUNCTUATION
-          # @draft ICU 2.8
+          #   * Character type Pi
+          #   * This name is compatible with java.lang.Character's name for this type.
+          #   * @see #INITIAL_PUNCTUATION
+          #   * @draft ICU 2.8
           # @deprecated This is a draft API and might change in a future release of ICU.
           const_set_lazy(:INITIAL_QUOTE_PUNCTUATION) { 28 }
           const_attr_reader  :INITIAL_QUOTE_PUNCTUATION
@@ -229,10 +226,10 @@ module Sun::Net::Idn
           const_set_lazy(:FINAL_PUNCTUATION) { 29 }
           const_attr_reader  :FINAL_PUNCTUATION
           
-          # Character type Pf
-          # This name is compatible with java.lang.Character's name for this type.
-          # @see #FINAL_PUNCTUATION
-          # @draft ICU 2.8
+          #   * Character type Pf
+          #   * This name is compatible with java.lang.Character's name for this type.
+          #   * @see #FINAL_PUNCTUATION
+          #   * @draft ICU 2.8
           # @deprecated This is a draft API and might change in a future release of ICU.
           const_set_lazy(:FINAL_QUOTE_PUNCTUATION) { 29 }
           const_attr_reader  :FINAL_QUOTE_PUNCTUATION
@@ -260,8 +257,8 @@ module Sun::Net::Idn
           const_set_lazy(:LEFT_TO_RIGHT) { 0 }
           const_attr_reader  :LEFT_TO_RIGHT
           
-          # JDK-compatible synonum for LEFT_TO_RIGHT.
-          # @draft ICU 3.0
+          #   * JDK-compatible synonum for LEFT_TO_RIGHT.
+          #   * @draft ICU 3.0
           # @deprecated This is a draft API and might change in a future release of ICU.
           const_set_lazy(:DIRECTIONALITY_LEFT_TO_RIGHT) { LEFT_TO_RIGHT }
           const_attr_reader  :DIRECTIONALITY_LEFT_TO_RIGHT
@@ -271,8 +268,8 @@ module Sun::Net::Idn
           const_set_lazy(:RIGHT_TO_LEFT) { 1 }
           const_attr_reader  :RIGHT_TO_LEFT
           
-          # JDK-compatible synonum for RIGHT_TO_LEFT.
-          # @draft ICU 3.0
+          #   * JDK-compatible synonum for RIGHT_TO_LEFT.
+          #   * @draft ICU 3.0
           # @deprecated This is a draft API and might change in a future release of ICU.
           const_set_lazy(:DIRECTIONALITY_RIGHT_TO_LEFT) { RIGHT_TO_LEFT }
           const_attr_reader  :DIRECTIONALITY_RIGHT_TO_LEFT
@@ -282,8 +279,8 @@ module Sun::Net::Idn
           const_set_lazy(:EUROPEAN_NUMBER) { 2 }
           const_attr_reader  :EUROPEAN_NUMBER
           
-          # JDK-compatible synonum for EUROPEAN_NUMBER.
-          # @draft ICU 3.0
+          #   * JDK-compatible synonum for EUROPEAN_NUMBER.
+          #   * @draft ICU 3.0
           # @deprecated This is a draft API and might change in a future release of ICU.
           const_set_lazy(:DIRECTIONALITY_EUROPEAN_NUMBER) { EUROPEAN_NUMBER }
           const_attr_reader  :DIRECTIONALITY_EUROPEAN_NUMBER
@@ -293,8 +290,8 @@ module Sun::Net::Idn
           const_set_lazy(:EUROPEAN_NUMBER_SEPARATOR) { 3 }
           const_attr_reader  :EUROPEAN_NUMBER_SEPARATOR
           
-          # JDK-compatible synonum for EUROPEAN_NUMBER_SEPARATOR.
-          # @draft ICU 3.0
+          #   * JDK-compatible synonum for EUROPEAN_NUMBER_SEPARATOR.
+          #   * @draft ICU 3.0
           # @deprecated This is a draft API and might change in a future release of ICU.
           const_set_lazy(:DIRECTIONALITY_EUROPEAN_NUMBER_SEPARATOR) { EUROPEAN_NUMBER_SEPARATOR }
           const_attr_reader  :DIRECTIONALITY_EUROPEAN_NUMBER_SEPARATOR
@@ -304,8 +301,8 @@ module Sun::Net::Idn
           const_set_lazy(:EUROPEAN_NUMBER_TERMINATOR) { 4 }
           const_attr_reader  :EUROPEAN_NUMBER_TERMINATOR
           
-          # JDK-compatible synonum for EUROPEAN_NUMBER_TERMINATOR.
-          # @draft ICU 3.0
+          #   * JDK-compatible synonum for EUROPEAN_NUMBER_TERMINATOR.
+          #   * @draft ICU 3.0
           # @deprecated This is a draft API and might change in a future release of ICU.
           const_set_lazy(:DIRECTIONALITY_EUROPEAN_NUMBER_TERMINATOR) { EUROPEAN_NUMBER_TERMINATOR }
           const_attr_reader  :DIRECTIONALITY_EUROPEAN_NUMBER_TERMINATOR
@@ -315,8 +312,8 @@ module Sun::Net::Idn
           const_set_lazy(:ARABIC_NUMBER) { 5 }
           const_attr_reader  :ARABIC_NUMBER
           
-          # JDK-compatible synonum for ARABIC_NUMBER.
-          # @draft ICU 3.0
+          #   * JDK-compatible synonum for ARABIC_NUMBER.
+          #   * @draft ICU 3.0
           # @deprecated This is a draft API and might change in a future release of ICU.
           const_set_lazy(:DIRECTIONALITY_ARABIC_NUMBER) { ARABIC_NUMBER }
           const_attr_reader  :DIRECTIONALITY_ARABIC_NUMBER
@@ -326,8 +323,8 @@ module Sun::Net::Idn
           const_set_lazy(:COMMON_NUMBER_SEPARATOR) { 6 }
           const_attr_reader  :COMMON_NUMBER_SEPARATOR
           
-          # JDK-compatible synonum for COMMON_NUMBER_SEPARATOR.
-          # @draft ICU 3.0
+          #   * JDK-compatible synonum for COMMON_NUMBER_SEPARATOR.
+          #   * @draft ICU 3.0
           # @deprecated This is a draft API and might change in a future release of ICU.
           const_set_lazy(:DIRECTIONALITY_COMMON_NUMBER_SEPARATOR) { COMMON_NUMBER_SEPARATOR }
           const_attr_reader  :DIRECTIONALITY_COMMON_NUMBER_SEPARATOR
@@ -337,8 +334,8 @@ module Sun::Net::Idn
           const_set_lazy(:BLOCK_SEPARATOR) { 7 }
           const_attr_reader  :BLOCK_SEPARATOR
           
-          # JDK-compatible synonum for BLOCK_SEPARATOR.
-          # @draft ICU 3.0
+          #   * JDK-compatible synonum for BLOCK_SEPARATOR.
+          #   * @draft ICU 3.0
           # @deprecated This is a draft API and might change in a future release of ICU.
           const_set_lazy(:DIRECTIONALITY_PARAGRAPH_SEPARATOR) { BLOCK_SEPARATOR }
           const_attr_reader  :DIRECTIONALITY_PARAGRAPH_SEPARATOR
@@ -348,8 +345,8 @@ module Sun::Net::Idn
           const_set_lazy(:SEGMENT_SEPARATOR) { 8 }
           const_attr_reader  :SEGMENT_SEPARATOR
           
-          # JDK-compatible synonum for SEGMENT_SEPARATOR.
-          # @draft ICU 3.0
+          #   * JDK-compatible synonum for SEGMENT_SEPARATOR.
+          #   * @draft ICU 3.0
           # @deprecated This is a draft API and might change in a future release of ICU.
           const_set_lazy(:DIRECTIONALITY_SEGMENT_SEPARATOR) { SEGMENT_SEPARATOR }
           const_attr_reader  :DIRECTIONALITY_SEGMENT_SEPARATOR
@@ -359,8 +356,8 @@ module Sun::Net::Idn
           const_set_lazy(:WHITE_SPACE_NEUTRAL) { 9 }
           const_attr_reader  :WHITE_SPACE_NEUTRAL
           
-          # JDK-compatible synonum for WHITE_SPACE_NEUTRAL.
-          # @draft ICU 3.0
+          #   * JDK-compatible synonum for WHITE_SPACE_NEUTRAL.
+          #   * @draft ICU 3.0
           # @deprecated This is a draft API and might change in a future release of ICU.
           const_set_lazy(:DIRECTIONALITY_WHITESPACE) { WHITE_SPACE_NEUTRAL }
           const_attr_reader  :DIRECTIONALITY_WHITESPACE
@@ -370,8 +367,8 @@ module Sun::Net::Idn
           const_set_lazy(:OTHER_NEUTRAL) { 10 }
           const_attr_reader  :OTHER_NEUTRAL
           
-          # JDK-compatible synonum for OTHER_NEUTRAL.
-          # @draft ICU 3.0
+          #   * JDK-compatible synonum for OTHER_NEUTRAL.
+          #   * @draft ICU 3.0
           # @deprecated This is a draft API and might change in a future release of ICU.
           const_set_lazy(:DIRECTIONALITY_OTHER_NEUTRALS) { OTHER_NEUTRAL }
           const_attr_reader  :DIRECTIONALITY_OTHER_NEUTRALS
@@ -381,8 +378,8 @@ module Sun::Net::Idn
           const_set_lazy(:LEFT_TO_RIGHT_EMBEDDING) { 11 }
           const_attr_reader  :LEFT_TO_RIGHT_EMBEDDING
           
-          # JDK-compatible synonum for LEFT_TO_RIGHT_EMBEDDING.
-          # @draft ICU 3.0
+          #   * JDK-compatible synonum for LEFT_TO_RIGHT_EMBEDDING.
+          #   * @draft ICU 3.0
           # @deprecated This is a draft API and might change in a future release of ICU.
           const_set_lazy(:DIRECTIONALITY_LEFT_TO_RIGHT_EMBEDDING) { LEFT_TO_RIGHT_EMBEDDING }
           const_attr_reader  :DIRECTIONALITY_LEFT_TO_RIGHT_EMBEDDING
@@ -392,8 +389,8 @@ module Sun::Net::Idn
           const_set_lazy(:LEFT_TO_RIGHT_OVERRIDE) { 12 }
           const_attr_reader  :LEFT_TO_RIGHT_OVERRIDE
           
-          # JDK-compatible synonum for LEFT_TO_RIGHT_OVERRIDE.
-          # @draft ICU 3.0
+          #   * JDK-compatible synonum for LEFT_TO_RIGHT_OVERRIDE.
+          #   * @draft ICU 3.0
           # @deprecated This is a draft API and might change in a future release of ICU.
           const_set_lazy(:DIRECTIONALITY_LEFT_TO_RIGHT_OVERRIDE) { LEFT_TO_RIGHT_OVERRIDE }
           const_attr_reader  :DIRECTIONALITY_LEFT_TO_RIGHT_OVERRIDE
@@ -403,8 +400,8 @@ module Sun::Net::Idn
           const_set_lazy(:RIGHT_TO_LEFT_ARABIC) { 13 }
           const_attr_reader  :RIGHT_TO_LEFT_ARABIC
           
-          # JDK-compatible synonum for RIGHT_TO_LEFT_ARABIC.
-          # @draft ICU 3.0
+          #   * JDK-compatible synonum for RIGHT_TO_LEFT_ARABIC.
+          #   * @draft ICU 3.0
           # @deprecated This is a draft API and might change in a future release of ICU.
           const_set_lazy(:DIRECTIONALITY_RIGHT_TO_LEFT_ARABIC) { RIGHT_TO_LEFT_ARABIC }
           const_attr_reader  :DIRECTIONALITY_RIGHT_TO_LEFT_ARABIC
@@ -414,8 +411,8 @@ module Sun::Net::Idn
           const_set_lazy(:RIGHT_TO_LEFT_EMBEDDING) { 14 }
           const_attr_reader  :RIGHT_TO_LEFT_EMBEDDING
           
-          # JDK-compatible synonum for RIGHT_TO_LEFT_EMBEDDING.
-          # @draft ICU 3.0
+          #   * JDK-compatible synonum for RIGHT_TO_LEFT_EMBEDDING.
+          #   * @draft ICU 3.0
           # @deprecated This is a draft API and might change in a future release of ICU.
           const_set_lazy(:DIRECTIONALITY_RIGHT_TO_LEFT_EMBEDDING) { RIGHT_TO_LEFT_EMBEDDING }
           const_attr_reader  :DIRECTIONALITY_RIGHT_TO_LEFT_EMBEDDING
@@ -425,8 +422,8 @@ module Sun::Net::Idn
           const_set_lazy(:RIGHT_TO_LEFT_OVERRIDE) { 15 }
           const_attr_reader  :RIGHT_TO_LEFT_OVERRIDE
           
-          # JDK-compatible synonum for RIGHT_TO_LEFT_OVERRIDE.
-          # @draft ICU 3.0
+          #   * JDK-compatible synonum for RIGHT_TO_LEFT_OVERRIDE.
+          #   * @draft ICU 3.0
           # @deprecated This is a draft API and might change in a future release of ICU.
           const_set_lazy(:DIRECTIONALITY_RIGHT_TO_LEFT_OVERRIDE) { RIGHT_TO_LEFT_OVERRIDE }
           const_attr_reader  :DIRECTIONALITY_RIGHT_TO_LEFT_OVERRIDE
@@ -436,8 +433,8 @@ module Sun::Net::Idn
           const_set_lazy(:POP_DIRECTIONAL_FORMAT) { 16 }
           const_attr_reader  :POP_DIRECTIONAL_FORMAT
           
-          # JDK-compatible synonum for POP_DIRECTIONAL_FORMAT.
-          # @draft ICU 3.0
+          #   * JDK-compatible synonum for POP_DIRECTIONAL_FORMAT.
+          #   * @draft ICU 3.0
           # @deprecated This is a draft API and might change in a future release of ICU.
           const_set_lazy(:DIRECTIONALITY_POP_DIRECTIONAL_FORMAT) { POP_DIRECTIONAL_FORMAT }
           const_attr_reader  :DIRECTIONALITY_POP_DIRECTIONAL_FORMAT
@@ -447,8 +444,8 @@ module Sun::Net::Idn
           const_set_lazy(:DIR_NON_SPACING_MARK) { 17 }
           const_attr_reader  :DIR_NON_SPACING_MARK
           
-          # JDK-compatible synonum for DIR_NON_SPACING_MARK.
-          # @draft ICU 3.0
+          #   * JDK-compatible synonum for DIR_NON_SPACING_MARK.
+          #   * @draft ICU 3.0
           # @deprecated This is a draft API and might change in a future release of ICU.
           const_set_lazy(:DIRECTIONALITY_NON_SPACING_MARK) { DIR_NON_SPACING_MARK }
           const_attr_reader  :DIRECTIONALITY_NON_SPACING_MARK
@@ -458,8 +455,8 @@ module Sun::Net::Idn
           const_set_lazy(:BOUNDARY_NEUTRAL) { 18 }
           const_attr_reader  :BOUNDARY_NEUTRAL
           
-          # JDK-compatible synonum for BOUNDARY_NEUTRAL.
-          # @draft ICU 3.0
+          #   * JDK-compatible synonum for BOUNDARY_NEUTRAL.
+          #   * @draft ICU 3.0
           # @deprecated This is a draft API and might change in a future release of ICU.
           const_set_lazy(:DIRECTIONALITY_BOUNDARY_NEUTRAL) { BOUNDARY_NEUTRAL }
           const_attr_reader  :DIRECTIONALITY_BOUNDARY_NEUTRAL
@@ -469,8 +466,8 @@ module Sun::Net::Idn
           const_set_lazy(:CHAR_DIRECTION_COUNT) { 19 }
           const_attr_reader  :CHAR_DIRECTION_COUNT
           
-          # Undefined bidirectional character type. Undefined <code>char</code>
-          # values have undefined directionality in the Unicode specification.
+          #   * Undefined bidirectional character type. Undefined <code>char</code>
+          #   * values have undefined directionality in the Unicode specification.
           # @draft ICU 3.0
           # @deprecated This is a draft API and might change in a future release of ICU.
           const_set_lazy(:DIRECTIONALITY_UNDEFINED) { -1 }

@@ -132,9 +132,9 @@ module Java::Io
     # 
     # @param      c   the <code>char</code> to be written.
     # @exception  IOException  if the pipe is
-    # <a href=PipedOutputStream.html#BROKEN> <code>broken</code></a>,
-    # {@link #connect(java.io.PipedReader) unconnected}, closed
-    # or an I/O error occurs.
+    #          <a href=PipedOutputStream.html#BROKEN> <code>broken</code></a>,
+    #          {@link #connect(java.io.PipedReader) unconnected}, closed
+    #          or an I/O error occurs.
     def write(c)
       if ((@sink).nil?)
         raise IOException.new("Pipe not connected")
@@ -155,9 +155,9 @@ module Java::Io
     # @param      off   the start offset in the data.
     # @param      len   the number of characters to write.
     # @exception  IOException  if the pipe is
-    # <a href=PipedOutputStream.html#BROKEN> <code>broken</code></a>,
-    # {@link #connect(java.io.PipedReader) unconnected}, closed
-    # or an I/O error occurs.
+    #          <a href=PipedOutputStream.html#BROKEN> <code>broken</code></a>,
+    #          {@link #connect(java.io.PipedReader) unconnected}, closed
+    #          or an I/O error occurs.
     def write(cbuf, off, len)
       if ((@sink).nil?)
         raise IOException.new("Pipe not connected")

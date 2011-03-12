@@ -43,8 +43,8 @@ module Sun::Security::X509
   # <pre>
   # The ASN.1 syntax for this extension is:
   # BasicConstraints ::= SEQUENCE {
-  # cA                BOOLEAN DEFAULT FALSE,
-  # pathLenConstraint INTEGER (0..MAX) OPTIONAL
+  #     cA                BOOLEAN DEFAULT FALSE,
+  #     pathLenConstraint INTEGER (0..MAX) OPTIONAL
   # }
   # </pre>
   # @author Amit Kapoor
@@ -181,9 +181,9 @@ module Sun::Security::X509
       # is a standard and this check no longer imposes an
       # interoperability barrier.
       # if (ca) {
-      # if (!this.critical) {
-      # throw new IOException("Criticality cannot be false for CA.");
-      # }
+      #   if (!this.critical) {
+      #   throw new IOException("Criticality cannot be false for CA.");
+      #   }
       # }
     end
     

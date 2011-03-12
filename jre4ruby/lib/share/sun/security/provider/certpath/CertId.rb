@@ -43,11 +43,11 @@ module Sun::Security::Provider::Certpath
   # <pre>
   # 
   # CertID          ::=     SEQUENCE {
-  # hashAlgorithm       AlgorithmIdentifier,
-  # issuerNameHash      OCTET STRING, -- Hash of Issuer's DN
-  # issuerKeyHash       OCTET STRING, -- Hash of Issuers public key
-  # serialNumber        CertificateSerialNumber
-  # }
+  #      hashAlgorithm       AlgorithmIdentifier,
+  #      issuerNameHash      OCTET STRING, -- Hash of Issuer's DN
+  #      issuerKeyHash       OCTET STRING, -- Hash of Issuers public key
+  #      serialNumber        CertificateSerialNumber
+  #      }
   # 
   # </pre>
   # 
@@ -92,7 +92,6 @@ module Sun::Security::Provider::Certpath
     
     typesig { [X509CertImpl, SerialNumber] }
     # hashcode for this CertId
-    # 
     # Creates a CertId. The hash algorithm used is SHA-1.
     def initialize(issuer_cert, serial_number)
       @hash_alg_id = nil

@@ -365,7 +365,7 @@ module Sun::Security::X509
     # of course <code>getFormat</code>.
     # 
     # @param in an input stream with a DER-encoded X.509
-    # SubjectPublicKeyInfo value
+    #          SubjectPublicKeyInfo value
     # @exception InvalidKeyException on parsing errors.
     def decode(in_)
       val = nil

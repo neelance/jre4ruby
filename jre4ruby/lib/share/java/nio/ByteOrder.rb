@@ -72,7 +72,7 @@ module Java::Nio
       # used.  </p>
       # 
       # @return  The native byte order of the hardware upon which this Java
-      # virtual machine is running
+      #          virtual machine is running
       def native_order
         return Bits.byte_order
       end

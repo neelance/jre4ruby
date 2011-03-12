@@ -127,12 +127,12 @@ module Sun::Reflect::Generics::ReflectiveObjects
     # a parameterized type.
     # 
     # @return an array of <tt>Type</tt> objects representing the actual type
-    # arguments to this type
+    #     arguments to this type
     # @throws <tt>TypeNotPresentException</tt> if any of the
-    # actual type arguments refers to a non-existent type declaration
+    #     actual type arguments refers to a non-existent type declaration
     # @throws <tt>MalformedParameterizedTypeException</tt> if any of the
-    # actual type parameters refer to a parameterized type that cannot
-    # be instantiated for any reason
+    #     actual type parameters refer to a parameterized type that cannot
+    #     be instantiated for any reason
     # @since 1.5
     def get_actual_type_arguments
       return @actual_type_arguments.clone
@@ -143,7 +143,7 @@ module Sun::Reflect::Generics::ReflectiveObjects
     # that declared this type.
     # 
     # @return the <tt>Type</tt> object representing the class or interface
-    # that declared this type
+    #     that declared this type
     def get_raw_type
       return @raw_type
     end
@@ -156,13 +156,13 @@ module Sun::Reflect::Generics::ReflectiveObjects
     # <p>If this type is a top-level type, <tt>null</tt> is returned.
     # 
     # @return a <tt>Type</tt> object representing the type that
-    # this type is a member of. If this type is a top-level type,
-    # <tt>null</tt> is returned
+    #     this type is a member of. If this type is a top-level type,
+    #     <tt>null</tt> is returned
     # @throws <tt>TypeNotPresentException</tt> if the owner type
-    # refers to a non-existent type declaration
+    #     refers to a non-existent type declaration
     # @throws <tt>MalformedParameterizedTypeException</tt> if the owner type
-    # refers to a parameterized type that cannot be instantiated
-    # for any reason
+    #     refers to a parameterized type that cannot be instantiated
+    #     for any reason
     def get_owner_type
       return @owner_type
     end
@@ -185,8 +185,7 @@ module Sun::Reflect::Generics::ReflectiveObjects
         if (false)
           # Debugging
           owner_equality = ((@owner_type).nil? ? (that_owner).nil? : (@owner_type == that_owner))
-          raw_equality = ((@raw_type).nil? ? (that_raw_type).nil? : (@raw_type == that_raw_type))
-          # avoid clone
+          raw_equality = ((@raw_type).nil? ? (that_raw_type).nil? : (@raw_type == that_raw_type)) # avoid clone
           type_arg_equality = Arrays.==(@actual_type_arguments, that.get_actual_type_arguments)
           @actual_type_arguments.each do |t|
             System.out.printf("\t\t%s%s%n", t, t.get_class)
@@ -194,7 +193,6 @@ module Sun::Reflect::Generics::ReflectiveObjects
           System.out.printf("\towner %s\traw %s\ttypeArg %s%n", owner_equality, raw_equality, type_arg_equality)
           return owner_equality && raw_equality && type_arg_equality
         end
-        # avoid clone
         return ((@owner_type).nil? ? (that_owner).nil? : (@owner_type == that_owner)) && ((@raw_type).nil? ? (that_raw_type).nil? : (@raw_type == that_raw_type)) && Arrays.==(@actual_type_arguments, that.get_actual_type_arguments)
       else
         return false

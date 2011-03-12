@@ -1,8 +1,5 @@
 require "rjava"
-
-# Portions Copyright 2004-2007 Sun Microsystems, Inc.  All Rights Reserved.
-# 
-# 
+ # * Portions Copyright 2004-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # Copyright (C) 1998 by the FundsXpress, INC.
 # 
 # All rights reserved.
@@ -96,19 +93,19 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
     # From RFC 3961.
     # 
     # encryption function       conf = random string of length c
-    # pad = shortest string to bring confounder
-    # and plaintext to a length that's a
-    # multiple of m
-    # (C1, newIV) = E(Ke, conf | plaintext | pad,
-    # oldstate.ivec)
-    # H1 = HMAC(Ki, conf | plaintext | pad)
-    # ciphertext =  C1 | H1[1..h]
-    # newstate.ivec = newIV
+    #                     pad = shortest string to bring confounder
+    #                           and plaintext to a length that's a
+    #                           multiple of m
+    #                     (C1, newIV) = E(Ke, conf | plaintext | pad,
+    #                                     oldstate.ivec)
+    #                    H1 = HMAC(Ki, conf | plaintext | pad)
+    #                     ciphertext =  C1 | H1[1..h]
+    #                     newstate.ivec = newIV
     # 
     # @param ivec initial vector to use when initializing the cipher; if null,
-    # then blocksize number of zeros are used,
+    #     then blocksize number of zeros are used,
     # @param new_ivec if non-null, it is updated upon return to be the
-    # new ivec to use when calling encrypt next time
+    #       new ivec to use when calling encrypt next time
     def encrypt(base_key, usage, ivec, new_ivec, plaintext, start, len)
       if (!KeyUsage.is_valid(usage))
         raise GeneralSecurityException.new("Invalid key usage number: " + RJava.cast_to_string(usage))
@@ -389,7 +386,7 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
     # From RFC 3961.
     # 
     # DR(Key, Constant) = k-truncate(E(Key, Constant,
-    # initial-cipher-state))
+    #                                  initial-cipher-state))
     # 
     # Here DR is the random-octet generation function described below, and
     # DK is the key-derivation function produced from it.  In this
@@ -451,20 +448,16 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
       typesig { [Array.typed(::Java::Byte), ::Java::Int] }
       # ---------------------------------
       # From MIT-1.3.1 distribution
-      # 
       # n-fold(k-bits):
-      # l = lcm(n,k)
-      # r = l/k
+      #   l = lcm(n,k)
+      #   r = l/k
       # s = k-bits | k-bits rot 13 | k-bits rot 13*2 | ... | k-bits rot 13*(r-1)
       # compute the 1's complement sum:
       # n-fold = s[0..n-1]+s[n..2n-1]+s[2n..3n-1]+..+s[(k-1)*n..k*n-1]
-      # 
-      # 
       # representation: msb first, assume n and k are multiples of 8, and
-      # that k>=16.  this is the case of all the cryptosystems which are
-      # likely to be used.  this function can be replaced if that
-      # assumption ever fails.
-      # 
+      #  that k>=16.  this is the case of all the cryptosystems which are
+      #  likely to be used.  this function can be replaced if that
+      #  assumption ever fails.
       # input length is in bits
       def nfold(in_, outbits)
         inbits = in_.attr_length
@@ -509,9 +502,9 @@ module Sun::Security::Krb5::Internal::Crypto::Dk
           # Use >>> to avoid sign extension
           bval = ((((in_[((inbits - 1) - (msbit >> 3)) % inbits] & 0xff) << 8) | (in_[((inbits) - (msbit >> 3)) % inbits] & 0xff)) >> ((msbit & 7) + 1)) & 0xff
           # System.err.println("((" +
-          # ((in[((inbits-1)-(msbit>>>3))%inbits]&0xff)<<8)
-          # + "|" + (in[((inbits)-(msbit>>>3))%inbits]&0xff) + ")"
-          # + ">>>" + ((msbit&7)+1) + ")&0xff = " + bval);
+          #     ((in[((inbits-1)-(msbit>>>3))%inbits]&0xff)<<8)
+          #     + "|" + (in[((inbits)-(msbit>>>3))%inbits]&0xff) + ")"
+          #     + ">>>" + ((msbit&7)+1) + ")&0xff = " + bval);
           thisbyte += bval
           # do the addition
           # Mask off values using &0xff to get only the lower byte

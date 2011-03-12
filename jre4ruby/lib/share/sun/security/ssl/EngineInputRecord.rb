@@ -56,7 +56,7 @@ module Sun::Security::Ssl
       # is stored internally.  It'll never actually be used.
       
       def tmp_bb
-        defined?(@@tmp_bb) ? @@tmp_bb : @@tmp_bb= ByteBuffer.allocate(0)
+        defined?(@@tmp_bb) ? @@tmp_bb : @@tmp_bb= ByteBuffer.allocate_(0)
       end
       alias_method :attr_tmp_bb, :tmp_bb
       
@@ -159,12 +159,12 @@ module Sun::Security::Ssl
     # the MAC checks out OK.
     # 
     # On entry:
-    # position = beginning of app/MAC data
-    # limit = end of MAC data.
+    #     position = beginning of app/MAC data
+    #     limit = end of MAC data.
     # 
     # On return:
-    # position = beginning of app data
-    # limit = end of app data
+    #     position = beginning of app data
+    #     limit = end of app data
     def check_mac(signer, bb)
       if (@internal_data)
         return check_mac(signer)
@@ -233,7 +233,7 @@ module Sun::Security::Ssl
     # generated.
     def write_buffer(s, buf, off, len)
       # Copy data out of buffer, it's ready to go.
-      net_bb = (ByteBuffer.allocate(len).put(buf, 0, len).flip)
+      net_bb = (ByteBuffer.allocate_(len).put(buf, 0, len).flip)
       @engine.attr_writer.put_outbound_data_sync(net_bb)
     end
     
@@ -249,8 +249,6 @@ module Sun::Security::Ssl
       # Could have a src == null/dst == null check here,
       # but that was already checked by SSLEngine.unwrap before
       # ever attempting to read.
-      # 
-      # 
       # If we have anything besides application data,
       # or if we haven't even done the initial v2 verification,
       # we send this down to be processed by the underlying

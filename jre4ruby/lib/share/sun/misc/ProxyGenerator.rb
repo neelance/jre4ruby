@@ -60,7 +60,6 @@ module Sun::Misc
       # Specification Second Edition and "JLS" refers to the original
       # version of The Java Language Specification, unless otherwise
       # specified.
-      # 
       # generate 1.5-era class file version
       const_set_lazy(:CLASSFILE_MAJOR_VERSION) { 49 }
       const_attr_reader  :CLASSFILE_MAJOR_VERSION
@@ -70,7 +69,6 @@ module Sun::Misc
       
       # beginning of constants copied from
       # sun.tools.java.RuntimeConstants (which no longer exists):
-      # 
       # constant pool tags
       const_set_lazy(:CONSTANT_UTF8) { 1 }
       const_attr_reader  :CONSTANT_UTF8
@@ -115,44 +113,44 @@ module Sun::Misc
       const_set_lazy(:ACC_PRIVATE) { 0x2 }
       const_attr_reader  :ACC_PRIVATE
       
-      # private static final int ACC_PROTECTED              = 0x00000004;
+      #  private static final int ACC_PROTECTED              = 0x00000004;
       const_set_lazy(:ACC_STATIC) { 0x8 }
       const_attr_reader  :ACC_STATIC
       
       const_set_lazy(:ACC_FINAL) { 0x10 }
       const_attr_reader  :ACC_FINAL
       
-      # private static final int ACC_SYNCHRONIZED           = 0x00000020;
-      # private static final int ACC_VOLATILE               = 0x00000040;
-      # private static final int ACC_TRANSIENT              = 0x00000080;
-      # private static final int ACC_NATIVE                 = 0x00000100;
-      # private static final int ACC_INTERFACE              = 0x00000200;
-      # private static final int ACC_ABSTRACT               = 0x00000400;
+      #  private static final int ACC_SYNCHRONIZED           = 0x00000020;
+      #  private static final int ACC_VOLATILE               = 0x00000040;
+      #  private static final int ACC_TRANSIENT              = 0x00000080;
+      #  private static final int ACC_NATIVE                 = 0x00000100;
+      #  private static final int ACC_INTERFACE              = 0x00000200;
+      #  private static final int ACC_ABSTRACT               = 0x00000400;
       const_set_lazy(:ACC_SUPER) { 0x20 }
       const_attr_reader  :ACC_SUPER
       
-      # private static final int ACC_STRICT                 = 0x00000800;
+      #  private static final int ACC_STRICT                 = 0x00000800;
       # opcodes
-      # private static final int opc_nop                    = 0;
+      #  private static final int opc_nop                    = 0;
       const_set_lazy(:Opc_aconst_null) { 1 }
       const_attr_reader  :Opc_aconst_null
       
-      # private static final int opc_iconst_m1              = 2;
+      #  private static final int opc_iconst_m1              = 2;
       const_set_lazy(:Opc_iconst_0) { 3 }
       const_attr_reader  :Opc_iconst_0
       
-      # private static final int opc_iconst_1               = 4;
-      # private static final int opc_iconst_2               = 5;
-      # private static final int opc_iconst_3               = 6;
-      # private static final int opc_iconst_4               = 7;
-      # private static final int opc_iconst_5               = 8;
-      # private static final int opc_lconst_0               = 9;
-      # private static final int opc_lconst_1               = 10;
-      # private static final int opc_fconst_0               = 11;
-      # private static final int opc_fconst_1               = 12;
-      # private static final int opc_fconst_2               = 13;
-      # private static final int opc_dconst_0               = 14;
-      # private static final int opc_dconst_1               = 15;
+      #  private static final int opc_iconst_1               = 4;
+      #  private static final int opc_iconst_2               = 5;
+      #  private static final int opc_iconst_3               = 6;
+      #  private static final int opc_iconst_4               = 7;
+      #  private static final int opc_iconst_5               = 8;
+      #  private static final int opc_lconst_0               = 9;
+      #  private static final int opc_lconst_1               = 10;
+      #  private static final int opc_fconst_0               = 11;
+      #  private static final int opc_fconst_1               = 12;
+      #  private static final int opc_fconst_2               = 13;
+      #  private static final int opc_dconst_0               = 14;
+      #  private static final int opc_dconst_1               = 15;
       const_set_lazy(:Opc_bipush) { 16 }
       const_attr_reader  :Opc_bipush
       
@@ -165,7 +163,7 @@ module Sun::Misc
       const_set_lazy(:Opc_ldc_w) { 19 }
       const_attr_reader  :Opc_ldc_w
       
-      # private static final int opc_ldc2_w                 = 20;
+      #  private static final int opc_ldc2_w                 = 20;
       const_set_lazy(:Opc_iload) { 21 }
       const_attr_reader  :Opc_iload
       
@@ -184,169 +182,169 @@ module Sun::Misc
       const_set_lazy(:Opc_iload_0) { 26 }
       const_attr_reader  :Opc_iload_0
       
-      # private static final int opc_iload_1                = 27;
-      # private static final int opc_iload_2                = 28;
-      # private static final int opc_iload_3                = 29;
+      #  private static final int opc_iload_1                = 27;
+      #  private static final int opc_iload_2                = 28;
+      #  private static final int opc_iload_3                = 29;
       const_set_lazy(:Opc_lload_0) { 30 }
       const_attr_reader  :Opc_lload_0
       
-      # private static final int opc_lload_1                = 31;
-      # private static final int opc_lload_2                = 32;
-      # private static final int opc_lload_3                = 33;
+      #  private static final int opc_lload_1                = 31;
+      #  private static final int opc_lload_2                = 32;
+      #  private static final int opc_lload_3                = 33;
       const_set_lazy(:Opc_fload_0) { 34 }
       const_attr_reader  :Opc_fload_0
       
-      # private static final int opc_fload_1                = 35;
-      # private static final int opc_fload_2                = 36;
-      # private static final int opc_fload_3                = 37;
+      #  private static final int opc_fload_1                = 35;
+      #  private static final int opc_fload_2                = 36;
+      #  private static final int opc_fload_3                = 37;
       const_set_lazy(:Opc_dload_0) { 38 }
       const_attr_reader  :Opc_dload_0
       
-      # private static final int opc_dload_1                = 39;
-      # private static final int opc_dload_2                = 40;
-      # private static final int opc_dload_3                = 41;
+      #  private static final int opc_dload_1                = 39;
+      #  private static final int opc_dload_2                = 40;
+      #  private static final int opc_dload_3                = 41;
       const_set_lazy(:Opc_aload_0) { 42 }
       const_attr_reader  :Opc_aload_0
       
-      # private static final int opc_aload_1                = 43;
-      # private static final int opc_aload_2                = 44;
-      # private static final int opc_aload_3                = 45;
-      # private static final int opc_iaload                 = 46;
-      # private static final int opc_laload                 = 47;
-      # private static final int opc_faload                 = 48;
-      # private static final int opc_daload                 = 49;
-      # private static final int opc_aaload                 = 50;
-      # private static final int opc_baload                 = 51;
-      # private static final int opc_caload                 = 52;
-      # private static final int opc_saload                 = 53;
-      # private static final int opc_istore                 = 54;
-      # private static final int opc_lstore                 = 55;
-      # private static final int opc_fstore                 = 56;
-      # private static final int opc_dstore                 = 57;
+      #  private static final int opc_aload_1                = 43;
+      #  private static final int opc_aload_2                = 44;
+      #  private static final int opc_aload_3                = 45;
+      #  private static final int opc_iaload                 = 46;
+      #  private static final int opc_laload                 = 47;
+      #  private static final int opc_faload                 = 48;
+      #  private static final int opc_daload                 = 49;
+      #  private static final int opc_aaload                 = 50;
+      #  private static final int opc_baload                 = 51;
+      #  private static final int opc_caload                 = 52;
+      #  private static final int opc_saload                 = 53;
+      #  private static final int opc_istore                 = 54;
+      #  private static final int opc_lstore                 = 55;
+      #  private static final int opc_fstore                 = 56;
+      #  private static final int opc_dstore                 = 57;
       const_set_lazy(:Opc_astore) { 58 }
       const_attr_reader  :Opc_astore
       
-      # private static final int opc_istore_0               = 59;
-      # private static final int opc_istore_1               = 60;
-      # private static final int opc_istore_2               = 61;
-      # private static final int opc_istore_3               = 62;
-      # private static final int opc_lstore_0               = 63;
-      # private static final int opc_lstore_1               = 64;
-      # private static final int opc_lstore_2               = 65;
-      # private static final int opc_lstore_3               = 66;
-      # private static final int opc_fstore_0               = 67;
-      # private static final int opc_fstore_1               = 68;
-      # private static final int opc_fstore_2               = 69;
-      # private static final int opc_fstore_3               = 70;
-      # private static final int opc_dstore_0               = 71;
-      # private static final int opc_dstore_1               = 72;
-      # private static final int opc_dstore_2               = 73;
-      # private static final int opc_dstore_3               = 74;
+      #  private static final int opc_istore_0               = 59;
+      #  private static final int opc_istore_1               = 60;
+      #  private static final int opc_istore_2               = 61;
+      #  private static final int opc_istore_3               = 62;
+      #  private static final int opc_lstore_0               = 63;
+      #  private static final int opc_lstore_1               = 64;
+      #  private static final int opc_lstore_2               = 65;
+      #  private static final int opc_lstore_3               = 66;
+      #  private static final int opc_fstore_0               = 67;
+      #  private static final int opc_fstore_1               = 68;
+      #  private static final int opc_fstore_2               = 69;
+      #  private static final int opc_fstore_3               = 70;
+      #  private static final int opc_dstore_0               = 71;
+      #  private static final int opc_dstore_1               = 72;
+      #  private static final int opc_dstore_2               = 73;
+      #  private static final int opc_dstore_3               = 74;
       const_set_lazy(:Opc_astore_0) { 75 }
       const_attr_reader  :Opc_astore_0
       
-      # private static final int opc_astore_1               = 76;
-      # private static final int opc_astore_2               = 77;
-      # private static final int opc_astore_3               = 78;
-      # private static final int opc_iastore                = 79;
-      # private static final int opc_lastore                = 80;
-      # private static final int opc_fastore                = 81;
-      # private static final int opc_dastore                = 82;
+      #  private static final int opc_astore_1               = 76;
+      #  private static final int opc_astore_2               = 77;
+      #  private static final int opc_astore_3               = 78;
+      #  private static final int opc_iastore                = 79;
+      #  private static final int opc_lastore                = 80;
+      #  private static final int opc_fastore                = 81;
+      #  private static final int opc_dastore                = 82;
       const_set_lazy(:Opc_aastore) { 83 }
       const_attr_reader  :Opc_aastore
       
-      # private static final int opc_bastore                = 84;
-      # private static final int opc_castore                = 85;
-      # private static final int opc_sastore                = 86;
+      #  private static final int opc_bastore                = 84;
+      #  private static final int opc_castore                = 85;
+      #  private static final int opc_sastore                = 86;
       const_set_lazy(:Opc_pop) { 87 }
       const_attr_reader  :Opc_pop
       
-      # private static final int opc_pop2                   = 88;
+      #  private static final int opc_pop2                   = 88;
       const_set_lazy(:Opc_dup) { 89 }
       const_attr_reader  :Opc_dup
       
-      # private static final int opc_dup_x1                 = 90;
-      # private static final int opc_dup_x2                 = 91;
-      # private static final int opc_dup2                   = 92;
-      # private static final int opc_dup2_x1                = 93;
-      # private static final int opc_dup2_x2                = 94;
-      # private static final int opc_swap                   = 95;
-      # private static final int opc_iadd                   = 96;
-      # private static final int opc_ladd                   = 97;
-      # private static final int opc_fadd                   = 98;
-      # private static final int opc_dadd                   = 99;
-      # private static final int opc_isub                   = 100;
-      # private static final int opc_lsub                   = 101;
-      # private static final int opc_fsub                   = 102;
-      # private static final int opc_dsub                   = 103;
-      # private static final int opc_imul                   = 104;
-      # private static final int opc_lmul                   = 105;
-      # private static final int opc_fmul                   = 106;
-      # private static final int opc_dmul                   = 107;
-      # private static final int opc_idiv                   = 108;
-      # private static final int opc_ldiv                   = 109;
-      # private static final int opc_fdiv                   = 110;
-      # private static final int opc_ddiv                   = 111;
-      # private static final int opc_irem                   = 112;
-      # private static final int opc_lrem                   = 113;
-      # private static final int opc_frem                   = 114;
-      # private static final int opc_drem                   = 115;
-      # private static final int opc_ineg                   = 116;
-      # private static final int opc_lneg                   = 117;
-      # private static final int opc_fneg                   = 118;
-      # private static final int opc_dneg                   = 119;
-      # private static final int opc_ishl                   = 120;
-      # private static final int opc_lshl                   = 121;
-      # private static final int opc_ishr                   = 122;
-      # private static final int opc_lshr                   = 123;
-      # private static final int opc_iushr                  = 124;
-      # private static final int opc_lushr                  = 125;
-      # private static final int opc_iand                   = 126;
-      # private static final int opc_land                   = 127;
-      # private static final int opc_ior                    = 128;
-      # private static final int opc_lor                    = 129;
-      # private static final int opc_ixor                   = 130;
-      # private static final int opc_lxor                   = 131;
-      # private static final int opc_iinc                   = 132;
-      # private static final int opc_i2l                    = 133;
-      # private static final int opc_i2f                    = 134;
-      # private static final int opc_i2d                    = 135;
-      # private static final int opc_l2i                    = 136;
-      # private static final int opc_l2f                    = 137;
-      # private static final int opc_l2d                    = 138;
-      # private static final int opc_f2i                    = 139;
-      # private static final int opc_f2l                    = 140;
-      # private static final int opc_f2d                    = 141;
-      # private static final int opc_d2i                    = 142;
-      # private static final int opc_d2l                    = 143;
-      # private static final int opc_d2f                    = 144;
-      # private static final int opc_i2b                    = 145;
-      # private static final int opc_i2c                    = 146;
-      # private static final int opc_i2s                    = 147;
-      # private static final int opc_lcmp                   = 148;
-      # private static final int opc_fcmpl                  = 149;
-      # private static final int opc_fcmpg                  = 150;
-      # private static final int opc_dcmpl                  = 151;
-      # private static final int opc_dcmpg                  = 152;
-      # private static final int opc_ifeq                   = 153;
-      # private static final int opc_ifne                   = 154;
-      # private static final int opc_iflt                   = 155;
-      # private static final int opc_ifge                   = 156;
-      # private static final int opc_ifgt                   = 157;
-      # private static final int opc_ifle                   = 158;
-      # private static final int opc_if_icmpeq              = 159;
-      # private static final int opc_if_icmpne              = 160;
-      # private static final int opc_if_icmplt              = 161;
-      # private static final int opc_if_icmpge              = 162;
-      # private static final int opc_if_icmpgt              = 163;
-      # private static final int opc_if_icmple              = 164;
-      # private static final int opc_if_acmpeq              = 165;
-      # private static final int opc_if_acmpne              = 166;
-      # private static final int opc_goto                   = 167;
-      # private static final int opc_jsr                    = 168;
-      # private static final int opc_ret                    = 169;
-      # private static final int opc_tableswitch            = 170;
-      # private static final int opc_lookupswitch           = 171;
+      #  private static final int opc_dup_x1                 = 90;
+      #  private static final int opc_dup_x2                 = 91;
+      #  private static final int opc_dup2                   = 92;
+      #  private static final int opc_dup2_x1                = 93;
+      #  private static final int opc_dup2_x2                = 94;
+      #  private static final int opc_swap                   = 95;
+      #  private static final int opc_iadd                   = 96;
+      #  private static final int opc_ladd                   = 97;
+      #  private static final int opc_fadd                   = 98;
+      #  private static final int opc_dadd                   = 99;
+      #  private static final int opc_isub                   = 100;
+      #  private static final int opc_lsub                   = 101;
+      #  private static final int opc_fsub                   = 102;
+      #  private static final int opc_dsub                   = 103;
+      #  private static final int opc_imul                   = 104;
+      #  private static final int opc_lmul                   = 105;
+      #  private static final int opc_fmul                   = 106;
+      #  private static final int opc_dmul                   = 107;
+      #  private static final int opc_idiv                   = 108;
+      #  private static final int opc_ldiv                   = 109;
+      #  private static final int opc_fdiv                   = 110;
+      #  private static final int opc_ddiv                   = 111;
+      #  private static final int opc_irem                   = 112;
+      #  private static final int opc_lrem                   = 113;
+      #  private static final int opc_frem                   = 114;
+      #  private static final int opc_drem                   = 115;
+      #  private static final int opc_ineg                   = 116;
+      #  private static final int opc_lneg                   = 117;
+      #  private static final int opc_fneg                   = 118;
+      #  private static final int opc_dneg                   = 119;
+      #  private static final int opc_ishl                   = 120;
+      #  private static final int opc_lshl                   = 121;
+      #  private static final int opc_ishr                   = 122;
+      #  private static final int opc_lshr                   = 123;
+      #  private static final int opc_iushr                  = 124;
+      #  private static final int opc_lushr                  = 125;
+      #  private static final int opc_iand                   = 126;
+      #  private static final int opc_land                   = 127;
+      #  private static final int opc_ior                    = 128;
+      #  private static final int opc_lor                    = 129;
+      #  private static final int opc_ixor                   = 130;
+      #  private static final int opc_lxor                   = 131;
+      #  private static final int opc_iinc                   = 132;
+      #  private static final int opc_i2l                    = 133;
+      #  private static final int opc_i2f                    = 134;
+      #  private static final int opc_i2d                    = 135;
+      #  private static final int opc_l2i                    = 136;
+      #  private static final int opc_l2f                    = 137;
+      #  private static final int opc_l2d                    = 138;
+      #  private static final int opc_f2i                    = 139;
+      #  private static final int opc_f2l                    = 140;
+      #  private static final int opc_f2d                    = 141;
+      #  private static final int opc_d2i                    = 142;
+      #  private static final int opc_d2l                    = 143;
+      #  private static final int opc_d2f                    = 144;
+      #  private static final int opc_i2b                    = 145;
+      #  private static final int opc_i2c                    = 146;
+      #  private static final int opc_i2s                    = 147;
+      #  private static final int opc_lcmp                   = 148;
+      #  private static final int opc_fcmpl                  = 149;
+      #  private static final int opc_fcmpg                  = 150;
+      #  private static final int opc_dcmpl                  = 151;
+      #  private static final int opc_dcmpg                  = 152;
+      #  private static final int opc_ifeq                   = 153;
+      #  private static final int opc_ifne                   = 154;
+      #  private static final int opc_iflt                   = 155;
+      #  private static final int opc_ifge                   = 156;
+      #  private static final int opc_ifgt                   = 157;
+      #  private static final int opc_ifle                   = 158;
+      #  private static final int opc_if_icmpeq              = 159;
+      #  private static final int opc_if_icmpne              = 160;
+      #  private static final int opc_if_icmplt              = 161;
+      #  private static final int opc_if_icmpge              = 162;
+      #  private static final int opc_if_icmpgt              = 163;
+      #  private static final int opc_if_icmple              = 164;
+      #  private static final int opc_if_acmpeq              = 165;
+      #  private static final int opc_if_acmpne              = 166;
+      #  private static final int opc_goto                   = 167;
+      #  private static final int opc_jsr                    = 168;
+      #  private static final int opc_ret                    = 169;
+      #  private static final int opc_tableswitch            = 170;
+      #  private static final int opc_lookupswitch           = 171;
       const_set_lazy(:Opc_ireturn) { 172 }
       const_attr_reader  :Opc_ireturn
       
@@ -374,7 +372,7 @@ module Sun::Misc
       const_set_lazy(:Opc_getfield) { 180 }
       const_attr_reader  :Opc_getfield
       
-      # private static final int opc_putfield               = 181;
+      #  private static final int opc_putfield               = 181;
       const_set_lazy(:Opc_invokevirtual) { 182 }
       const_attr_reader  :Opc_invokevirtual
       
@@ -390,28 +388,28 @@ module Sun::Misc
       const_set_lazy(:Opc_new) { 187 }
       const_attr_reader  :Opc_new
       
-      # private static final int opc_newarray               = 188;
+      #  private static final int opc_newarray               = 188;
       const_set_lazy(:Opc_anewarray) { 189 }
       const_attr_reader  :Opc_anewarray
       
-      # private static final int opc_arraylength            = 190;
+      #  private static final int opc_arraylength            = 190;
       const_set_lazy(:Opc_athrow) { 191 }
       const_attr_reader  :Opc_athrow
       
       const_set_lazy(:Opc_checkcast) { 192 }
       const_attr_reader  :Opc_checkcast
       
-      # private static final int opc_instanceof             = 193;
-      # private static final int opc_monitorenter           = 194;
-      # private static final int opc_monitorexit            = 195;
+      #  private static final int opc_instanceof             = 193;
+      #  private static final int opc_monitorenter           = 194;
+      #  private static final int opc_monitorexit            = 195;
       const_set_lazy(:Opc_wide) { 196 }
       const_attr_reader  :Opc_wide
       
-      # private static final int opc_multianewarray         = 197;
-      # private static final int opc_ifnull                 = 198;
-      # private static final int opc_ifnonnull              = 199;
-      # private static final int opc_goto_w                 = 200;
-      # private static final int opc_jsr_w                  = 201;
+      #  private static final int opc_multianewarray         = 197;
+      #  private static final int opc_ifnull                 = 198;
+      #  private static final int opc_ifnonnull              = 199;
+      #  private static final int opc_goto_w                 = 200;
+      #  private static final int opc_jsr_w                  = 201;
       # end of constants copied from sun.tools.java.RuntimeConstants
       # name of the superclass of proxy classes
       const_set_lazy(:SuperclassName) { "java/lang/reflect/Proxy" }
@@ -580,8 +578,6 @@ module Sun::Misc
       # ============================================================
       # Step 1: Assemble ProxyMethod objects for all methods to
       # generate proxy dispatching code for.
-      # 
-      # 
       # Record that proxy methods are needed for the hashCode, equals,
       # and toString methods of java.lang.Object.  This is done before
       # the methods from the proxy interfaces so that the methods from
@@ -633,8 +629,6 @@ module Sun::Misc
       end
       # ============================================================
       # Step 3: Write the final class file.
-      # 
-      # 
       # Make sure that constant pool indexes are reserved for the
       # following items before starting to write the final class file.
       @cp.get_class(dot_to_slash(@class_name))
@@ -652,7 +646,6 @@ module Sun::Misc
       begin
         # Write all the items of the "ClassFile" structure.
         # See JVMS section 4.1.
-        # 
         # u4 magic;
         dout.write_int(-0x35014542)
         # u2 minor_version;
@@ -845,7 +838,6 @@ module Sun::Misc
         def write(out)
           # Write all the items of the "field_info" structure.
           # See JVMS section 4.5.
-          # 
           # u2 access_flags;
           out.write_short(@access_flags)
           # u2 name_index;
@@ -986,7 +978,6 @@ module Sun::Misc
         def write(out)
           # Write all the items of the "method_info" structure.
           # See JVMS section 4.6.
-          # 
           # u2 access_flags;
           out.write_short(@access_flags)
           # u2 name_index;
@@ -1352,8 +1343,6 @@ module Sun::Misc
     
     typesig { [::Java::Int, DataOutputStream] }
     # =============== Code Generation Utility Methods ===============
-    # 
-    # 
     # The following methods generate code for the load or store operation
     # indicated by their name for the given local variable.  The code is
     # written to the supplied stream.
@@ -1382,26 +1371,26 @@ module Sun::Misc
     end
     
     typesig { [::Java::Int, DataOutputStream] }
-    # private void code_istore(int lvar, DataOutputStream out)
-    # throws IOException
-    # {
-    # codeLocalLoadStore(lvar, opc_istore, opc_istore_0, out);
-    # }
-    # private void code_lstore(int lvar, DataOutputStream out)
-    # throws IOException
-    # {
-    # codeLocalLoadStore(lvar, opc_lstore, opc_lstore_0, out);
-    # }
-    # private void code_fstore(int lvar, DataOutputStream out)
-    # throws IOException
-    # {
-    # codeLocalLoadStore(lvar, opc_fstore, opc_fstore_0, out);
-    # }
-    # private void code_dstore(int lvar, DataOutputStream out)
-    # throws IOException
-    # {
-    # codeLocalLoadStore(lvar, opc_dstore, opc_dstore_0, out);
-    # }
+    #  private void code_istore(int lvar, DataOutputStream out)
+    #      throws IOException
+    #  {
+    #      codeLocalLoadStore(lvar, opc_istore, opc_istore_0, out);
+    #  }
+    #  private void code_lstore(int lvar, DataOutputStream out)
+    #      throws IOException
+    #  {
+    #      codeLocalLoadStore(lvar, opc_lstore, opc_lstore_0, out);
+    #  }
+    #  private void code_fstore(int lvar, DataOutputStream out)
+    #      throws IOException
+    #  {
+    #      codeLocalLoadStore(lvar, opc_fstore, opc_fstore_0, out);
+    #  }
+    #  private void code_dstore(int lvar, DataOutputStream out)
+    #      throws IOException
+    #  {
+    #      codeLocalLoadStore(lvar, opc_dstore, opc_dstore_0, out);
+    #  }
     def code_astore(lvar, out)
       code_local_load_store(lvar, Opc_astore, Opc_astore_0, out)
     end
@@ -1484,8 +1473,6 @@ module Sun::Misc
     class_module.module_eval {
       typesig { [String] }
       # ==================== General Utility Methods ====================
-      # 
-      # 
       # Convert a fully qualified class name that uses '.' as the package
       # separator, the external representation used by the Java language
       # and APIs, to a fully qualified class name that uses '/' as the
@@ -1532,7 +1519,7 @@ module Sun::Misc
             # return the VM type descriptor format for array classes (only);
             # using that should be quicker than the otherwise obvious code:
             # 
-            # return "[" + getTypeDescriptor(type.getComponentType());
+            #     return "[" + getTypeDescriptor(type.getComponentType());
             return type.get_name.replace(Character.new(?..ord), Character.new(?/.ord))
           else
             return "L" + RJava.cast_to_string(dot_to_slash(type.get_name)) + ";"
@@ -1929,11 +1916,11 @@ module Sun::Misc
         # a direct value.  The type of the given object determines the
         # type of the desired entry as follows:
         # 
-        # java.lang.String        CONSTANT_Utf8
-        # java.lang.Integer       CONSTANT_Integer
-        # java.lang.Float         CONSTANT_Float
-        # java.lang.Long          CONSTANT_Long
-        # java.lang.Double        CONSTANT_DOUBLE
+        #      java.lang.String        CONSTANT_Utf8
+        #      java.lang.Integer       CONSTANT_Integer
+        #      java.lang.Float         CONSTANT_Float
+        #      java.lang.Long          CONSTANT_Long
+        #      java.lang.Double        CONSTANT_DOUBLE
         def get_value(key)
           index = @map.get(key)
           if (!(index).nil?)
@@ -2044,9 +2031,9 @@ module Sun::Misc
           # IndirectEntry represents a constant pool entry of a type that
           # references other constant pool entries, i.e., the following types:
           # 
-          # CONSTANT_Class, CONSTANT_String, CONSTANT_Fieldref,
-          # CONSTANT_Methodref, CONSTANT_InterfaceMethodref, and
-          # CONSTANT_NameAndType.
+          #      CONSTANT_Class, CONSTANT_String, CONSTANT_Fieldref,
+          #      CONSTANT_Methodref, CONSTANT_InterfaceMethodref, and
+          #      CONSTANT_NameAndType.
           # 
           # Each of these entry types contains either one or two indexes of
           # other constant pool entries.

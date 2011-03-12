@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5::Internal::Crypto
@@ -189,11 +187,11 @@ module Sun::Security::Krb5::Internal::Crypto
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # // Not used.
+    #     // Not used.
     # public void setChecksum(byte[] data, int size) throws KrbCryptoException{
-    # resetChecksumField(data);
-    # byte[] cksum = calculateChecksum(data, size);
-    # copyChecksumField(data, cksum);
+    #     resetChecksumField(data);
+    #     byte[] cksum = calculateChecksum(data, size);
+    #     copyChecksumField(data, cksum);
     # }
     def generate_checksum(data)
       cksum1 = checksum_field(data)

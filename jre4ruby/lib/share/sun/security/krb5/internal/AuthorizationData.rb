@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5::Internal
@@ -41,16 +39,16 @@ module Sun::Security::Krb5::Internal
   # In RFC4120, the ASN.1 AuthorizationData is defined as:
   # 
   # AuthorizationData            ::= SEQUENCE OF SEQUENCE {
-  # ad-type         [0] Int32,
-  # ad-data         [1] OCTET STRING
+  #              ad-type         [0] Int32,
+  #              ad-data         [1] OCTET STRING
   # }
   # 
   # Here, two classes are used to implement it and they can be represented as follows:
   # 
   # AuthorizationData ::= SEQUENCE OF AuthorizationDataEntry
   # AuthorizationDataEntry ::= SEQUENCE {
-  # ad-type[0]  Int32,
-  # ad-data[1]  OCTET STRING
+  #              ad-type[0]  Int32,
+  #              ad-data[1]  OCTET STRING
   # }
   class AuthorizationData 
     include_class_members AuthorizationDataImports

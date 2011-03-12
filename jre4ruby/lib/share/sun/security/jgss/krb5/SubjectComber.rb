@@ -81,9 +81,9 @@ module Sun::Security::Jgss::Krb5
           if ((cred_class).equal?(KerberosKey))
             # We are looking for a KerberosKey credentials for the
             # serverPrincipal
-            iterator = subject.get_private_credentials(KerberosKey).iterator
-            while (iterator.has_next)
-              key = iterator.next_
+            iterator_ = subject.get_private_credentials(KerberosKey).iterator
+            while (iterator_.has_next)
+              key = iterator_.next_
               if ((server_principal).nil? || (server_principal == key.get_principal.get_name))
                 if (DEBUG)
                   System.out.println("Found key for " + RJava.cast_to_string(key.get_principal) + "(" + RJava.cast_to_string(key.get_key_type) + ")")

@@ -222,6 +222,7 @@ module Sun::Security::Pkcs11
       use_secmod = @config.get_nss_use_secmod
       nss_use_secmod_trust = @config.get_nss_use_secmod_trust
       nss_module = nil
+      # 
       # Initialization via Secmod. The way this works is as follows:
       # SunPKCS11 is either in normal mode or in NSS Secmod mode.
       # Secmod is activated by specifying one or more of the following
@@ -233,6 +234,7 @@ module Sun::Security::Pkcs11
       # If we are in Secmod mode and configured to use either the
       # nssKeyStore or the nssTrustAnchors module, we automatically
       # switch to using the NSS trust attributes for trusted certs (KeyStore).
+      # 
       if (use_secmod)
         # note: Config ensures library/slot/slotListIndex not specified
         # in secmod mode.
@@ -563,22 +565,22 @@ module Sun::Security::Pkcs11
       
       typesig { [::Java::Long] }
       def m(m1)
-        return Array.typed(::Java::Int).new([RJava.cast_to_int(m1)])
+        return Array.typed(::Java::Int).new([(m1).to_int])
       end
       
       typesig { [::Java::Long, ::Java::Long] }
       def m(m1, m2)
-        return Array.typed(::Java::Int).new([RJava.cast_to_int(m1), RJava.cast_to_int(m2)])
+        return Array.typed(::Java::Int).new([(m1).to_int, (m2).to_int])
       end
       
       typesig { [::Java::Long, ::Java::Long, ::Java::Long] }
       def m(m1, m2, m3)
-        return Array.typed(::Java::Int).new([RJava.cast_to_int(m1), RJava.cast_to_int(m2), RJava.cast_to_int(m3)])
+        return Array.typed(::Java::Int).new([(m1).to_int, (m2).to_int, (m3).to_int])
       end
       
       typesig { [::Java::Long, ::Java::Long, ::Java::Long, ::Java::Long] }
       def m(m1, m2, m3, m4)
-        return Array.typed(::Java::Int).new([RJava.cast_to_int(m1), RJava.cast_to_int(m2), RJava.cast_to_int(m3), RJava.cast_to_int(m4)])
+        return Array.typed(::Java::Int).new([(m1).to_int, (m2).to_int, (m3).to_int, (m4).to_int])
       end
       
       typesig { [String, String, String, Array.typed(::Java::Int)] }
@@ -807,11 +809,11 @@ module Sun::Security::Pkcs11
     
     typesig { [] }
     def has_valid_token
-      # Commented out to work with Solaris softtoken impl which
-      # returns 0-value flags, e.g. both REMOVABLE_DEVICE and
-      # TOKEN_PRESENT are false, when it can't access the token.
+      #    Commented out to work with Solaris softtoken impl which
+      #    returns 0-value flags, e.g. both REMOVABLE_DEVICE and
+      #    TOKEN_PRESENT are false, when it can't access the token.
       # if (removable == false) {
-      # return true;
+      #     return true;
       # }
       token = @token
       return (!(token).nil?) && token.is_valid
@@ -897,7 +899,7 @@ module Sun::Security::Pkcs11
           i += 1
           next
         end
-        mech = RJava.cast_to_int(long_mech)
+        mech = (long_mech).to_int
         integer_mech = JavaInteger.value_of(mech)
         ds = Descriptors.get(integer_mech)
         if ((ds).nil?)
@@ -1171,13 +1173,13 @@ module Sun::Security::Pkcs11
     # 
     # @param subject this parameter is ignored
     # @param handler the <code>CallbackHandler</code> used by
-    # this provider to communicate with the caller
+    #  this provider to communicate with the caller
     # 
     # @exception LoginException if the login operation fails
     # @exception SecurityException if the does not pass a security check for
-    # <code>SecurityPermission("authProvider.<i>name</i>")</code>,
-    # where <i>name</i> is the value returned by
-    # this provider's <code>getName</code> method
+    #  <code>SecurityPermission("authProvider.<i>name</i>")</code>,
+    #  where <i>name</i> is the value returned by
+    #  this provider's <code>getName</code> method
     def login(subject, handler)
       # security check
       sm = System.get_security_manager
@@ -1278,9 +1280,9 @@ module Sun::Security::Pkcs11
     # 
     # @exception LoginException if the logout operation fails
     # @exception SecurityException if the does not pass a security check for
-    # <code>SecurityPermission("authProvider.<i>name</i>")</code>,
-    # where <i>name</i> is the value returned by
-    # this provider's <code>getName</code> method
+    #  <code>SecurityPermission("authProvider.<i>name</i>")</code>,
+    #  where <i>name</i> is the value returned by
+    #  this provider's <code>getName</code> method
     def logout
       # security check
       sm = System.get_security_manager
@@ -1346,13 +1348,13 @@ module Sun::Security::Pkcs11
     # for obtaining authentication information.
     # 
     # @param handler a <code>CallbackHandler</code> for obtaining
-    # authentication information, which may be <code>null</code>
+    #          authentication information, which may be <code>null</code>
     # 
     # @exception SecurityException if the caller does not pass a
-    # security check for
-    # <code>SecurityPermission("authProvider.<i>name</i>")</code>,
-    # where <i>name</i> is the value returned by
-    # this provider's <code>getName</code> method
+    #  security check for
+    #  <code>SecurityPermission("authProvider.<i>name</i>")</code>,
+    #  where <i>name</i> is the value returned by
+    #  this provider's <code>getName</code> method
     def set_callback_handler(handler)
       # security check
       sm = System.get_security_manager

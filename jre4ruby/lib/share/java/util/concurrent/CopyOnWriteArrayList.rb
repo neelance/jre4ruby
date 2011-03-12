@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # Written by Doug Lea with assistance from members of JCP JSR-166
 # Expert Group.  Adapted and released, under explicit permission,
 # from JDK ArrayList.java which carries the following copyright:
@@ -146,7 +144,7 @@ module Java::Util::Concurrent
     # Creates a list holding a copy of the given array.
     # 
     # @param toCopyIn the array (a copy of this array is used as the
-    # internal array)
+    #        internal array)
     # @throws NullPointerException if the specified array is null
     def initialize(to_copy_in)
       @lock = ReentrantLock.new
@@ -265,8 +263,8 @@ module Java::Util::Concurrent
     # @param e element to search for
     # @param index index to start searching from
     # @return the index of the first occurrence of the element in
-    # this list at position <tt>index</tt> or later in the list;
-    # <tt>-1</tt> if the element is not found.
+    #         this list at position <tt>index</tt> or later in the list;
+    #         <tt>-1</tt> if the element is not found.
     # @throws IndexOutOfBoundsException if the specified index is negative
     def index_of(e, index)
       elements = get_array
@@ -291,10 +289,10 @@ module Java::Util::Concurrent
     # @param e element to search for
     # @param index index to start searching backwards from
     # @return the index of the last occurrence of the element at position
-    # less than or equal to <tt>index</tt> in this list;
-    # -1 if the element is not found.
+    #         less than or equal to <tt>index</tt> in this list;
+    #         -1 if the element is not found.
     # @throws IndexOutOfBoundsException if the specified index is greater
-    # than or equal to the current size of this list
+    #         than or equal to the current size of this list
     def last_index_of(e, index)
       elements = get_array
       return last_index_of(e, elements, index)
@@ -358,18 +356,18 @@ module Java::Util::Concurrent
     # allocated array of <tt>String</tt>:
     # 
     # <pre>
-    # String[] y = x.toArray(new String[0]);</pre>
+    #     String[] y = x.toArray(new String[0]);</pre>
     # 
     # Note that <tt>toArray(new Object[0])</tt> is identical in function to
     # <tt>toArray()</tt>.
     # 
     # @param a the array into which the elements of the list are to
-    # be stored, if it is big enough; otherwise, a new array of the
-    # same runtime type is allocated for this purpose.
+    #          be stored, if it is big enough; otherwise, a new array of the
+    #          same runtime type is allocated for this purpose.
     # @return an array containing all the elements in this list
     # @throws ArrayStoreException if the runtime type of the specified array
-    # is not a supertype of the runtime type of every element in
-    # this list
+    #         is not a supertype of the runtime type of every element in
+    #         this list
     # @throws NullPointerException if the specified array is null
     def to_array(a)
       elements = get_array
@@ -565,7 +563,7 @@ module Java::Util::Concurrent
     # @param fromIndex index of first element to be removed
     # @param toIndex index after last element to be removed
     # @throws IndexOutOfBoundsException if fromIndex or toIndex out of range
-    # (@code{fromIndex < 0 || toIndex > size() || toIndex < fromIndex})
+    #         (@code{fromIndex < 0 || toIndex > size() || toIndex < fromIndex})
     def remove_range(from_index, to_index)
       lock_ = @lock
       lock_.lock
@@ -607,8 +605,7 @@ module Java::Util::Concurrent
         i = 0
         while i < len
           if (eq(e, elements[i]))
-            return false
-             # exit, throwing away copy
+            return false # exit, throwing away copy
           else
             new_elements[i] = elements[i]
           end
@@ -628,7 +625,7 @@ module Java::Util::Concurrent
     # 
     # @param c collection to be checked for containment in this list
     # @return <tt>true</tt> if this list contains all of the elements of the
-    # specified collection
+    #         specified collection
     # @throws NullPointerException if the specified collection is null
     # @see #contains(Object)
     def contains_all(c)
@@ -650,10 +647,10 @@ module Java::Util::Concurrent
     # @param c collection containing elements to be removed from this list
     # @return <tt>true</tt> if this list changed as a result of the call
     # @throws ClassCastException if the class of an element of this list
-    # is incompatible with the specified collection (optional)
+    #         is incompatible with the specified collection (optional)
     # @throws NullPointerException if this list contains a null element and the
-    # specified collection does not permit null elements (optional),
-    # or if the specified collection is null
+    #         specified collection does not permit null elements (optional),
+    #         or if the specified collection is null
     # @see #remove(Object)
     def remove_all(c)
       lock_ = @lock
@@ -692,10 +689,10 @@ module Java::Util::Concurrent
     # @param c collection containing elements to be retained in this list
     # @return <tt>true</tt> if this list changed as a result of the call
     # @throws ClassCastException if the class of an element of this list
-    # is incompatible with the specified collection (optional)
+    #         is incompatible with the specified collection (optional)
     # @throws NullPointerException if this list contains a null element and the
-    # specified collection does not permit null elements (optional),
-    # or if the specified collection is null
+    #         specified collection does not permit null elements (optional),
+    #         or if the specified collection is null
     # @see #remove(Object)
     def retain_all(c)
       lock_ = @lock
@@ -818,7 +815,7 @@ module Java::Util::Concurrent
     # specified collection's iterator.
     # 
     # @param index index at which to insert the first element
-    # from the specified collection
+    #        from the specified collection
     # @param c collection containing elements to be added to this list
     # @return <tt>true</tt> if this list changed as a result of the call
     # @throws IndexOutOfBoundsException {@inheritDoc}
@@ -858,8 +855,8 @@ module Java::Util::Concurrent
     # Save the state of the list to a stream (i.e., serialize it).
     # 
     # @serialData The length of the array backing the list is emitted
-    # (int), followed by all of its elements (each an Object)
-    # in the proper order.
+    #               (int), followed by all of its elements (each an Object)
+    #               in the proper order.
     # @param s the stream
     def write_object(s)
       # Write out element count, and any hidden stuff
@@ -1074,7 +1071,7 @@ module Java::Util::Concurrent
         typesig { [] }
         # Not supported. Always throws UnsupportedOperationException.
         # @throws UnsupportedOperationException always; <tt>remove</tt>
-        # is not supported by this iterator.
+        #         is not supported by this iterator.
         def remove
           raise self.class::UnsupportedOperationException.new
         end
@@ -1082,7 +1079,7 @@ module Java::Util::Concurrent
         typesig { [Object] }
         # Not supported. Always throws UnsupportedOperationException.
         # @throws UnsupportedOperationException always; <tt>set</tt>
-        # is not supported by this iterator.
+        #         is not supported by this iterator.
         def set(e)
           raise self.class::UnsupportedOperationException.new
         end
@@ -1090,7 +1087,7 @@ module Java::Util::Concurrent
         typesig { [Object] }
         # Not supported. Always throws UnsupportedOperationException.
         # @throws UnsupportedOperationException always; <tt>add</tt>
-        # is not supported by this iterator.
+        #         is not supported by this iterator.
         def add(e)
           raise self.class::UnsupportedOperationException.new
         end

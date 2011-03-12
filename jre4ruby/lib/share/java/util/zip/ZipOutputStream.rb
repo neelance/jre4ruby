@@ -206,7 +206,7 @@ module Java::Util::Zip
     # Sets the ZIP file comment.
     # @param comment the comment string
     # @exception IllegalArgumentException if the length of the specified
-    # ZIP file comment is greater than 0xFFFF bytes
+    #            ZIP file comment is greater than 0xFFFF bytes
     def set_comment(comment)
       if (!(comment).nil? && comment.length > 0xffff / 3 && get_utf8length(comment) > 0xffff)
         raise IllegalArgumentException.new("ZIP file comment too long.")
@@ -220,7 +220,7 @@ module Java::Util::Zip
     # for an individual ZIP file entry, and is initially set to DEFLATED.
     # @param method the default compression method
     # @exception IllegalArgumentException if the specified compression method
-    # is invalid
+    #            is invalid
     def set_method(method)
       if (!(method).equal?(DEFLATED) && !(method).equal?(STORED))
         raise IllegalArgumentException.new("invalid compression method")
@@ -526,10 +526,10 @@ module Java::Util::Zip
     # Writes a 32-bit int to the output stream in little-endian byte order.
     def write_int(v)
       out = self.attr_out
-      out.write(RJava.cast_to_int(((v >> 0) & 0xff)))
-      out.write(RJava.cast_to_int(((v >> 8) & 0xff)))
-      out.write(RJava.cast_to_int(((v >> 16) & 0xff)))
-      out.write(RJava.cast_to_int(((v >> 24) & 0xff)))
+      out.write((((v >> 0) & 0xff)).to_int)
+      out.write((((v >> 8) & 0xff)).to_int)
+      out.write((((v >> 16) & 0xff)).to_int)
+      out.write((((v >> 24) & 0xff)).to_int)
       @written += 4
     end
     

@@ -35,12 +35,13 @@ module Sun::Nio::Ch
   
   # Typical use:
   # 
-  # sc.options()
-  # .noDelay(true)
-  # .typeOfService(SocketOpts.IP.TOS_RELIABILITY)
-  # .sendBufferSize(1024)
-  # .receiveBufferSize(1024)
-  # .keepAlive(true);
+  #     sc.options()
+  #         .noDelay(true)
+  #         .typeOfService(SocketOpts.IP.TOS_RELIABILITY)
+  #         .sendBufferSize(1024)
+  #         .receiveBufferSize(1024)
+  #         .keepAlive(true);
+  # 
   module SocketOpts
     include_class_members SocketOptsImports
     

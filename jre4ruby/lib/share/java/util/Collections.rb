@@ -80,7 +80,6 @@ module Java::Util
     
     class_module.module_eval {
       # Algorithms
-      # 
       # Tuning parameters for algorithms - Many of the List algorithms have
       # two implementations, one of which is appropriate for RandomAccess
       # lists, the other for "sequential."  Often, the random access variant
@@ -143,9 +142,9 @@ module Java::Util
       # 
       # @param  list the list to be sorted.
       # @throws ClassCastException if the list contains elements that are not
-      # <i>mutually comparable</i> (for example, strings and integers).
+      #         <i>mutually comparable</i> (for example, strings and integers).
       # @throws UnsupportedOperationException if the specified list's
-      # list-iterator does not support the <tt>set</tt> operation.
+      #         list-iterator does not support the <tt>set</tt> operation.
       # @see Comparable
       def sort(list)
         a = list.to_array
@@ -183,12 +182,12 @@ module Java::Util
       # 
       # @param  list the list to be sorted.
       # @param  c the comparator to determine the order of the list.  A
-      # <tt>null</tt> value indicates that the elements' <i>natural
-      # ordering</i> should be used.
+      #        <tt>null</tt> value indicates that the elements' <i>natural
+      #        ordering</i> should be used.
       # @throws ClassCastException if the list contains elements that are not
-      # <i>mutually comparable</i> using the specified comparator.
+      #         <i>mutually comparable</i> using the specified comparator.
       # @throws UnsupportedOperationException if the specified list's
-      # list-iterator does not support the <tt>set</tt> operation.
+      #         list-iterator does not support the <tt>set</tt> operation.
       # @see Comparator
       def sort(list, c)
         a = list.to_array
@@ -220,17 +219,17 @@ module Java::Util
       # @param  list the list to be searched.
       # @param  key the key to be searched for.
       # @return the index of the search key, if it is contained in the list;
-      # otherwise, <tt>(-(<i>insertion point</i>) - 1)</tt>.  The
-      # <i>insertion point</i> is defined as the point at which the
-      # key would be inserted into the list: the index of the first
-      # element greater than the key, or <tt>list.size()</tt> if all
-      # elements in the list are less than the specified key.  Note
-      # that this guarantees that the return value will be &gt;= 0 if
-      # and only if the key is found.
+      #         otherwise, <tt>(-(<i>insertion point</i>) - 1)</tt>.  The
+      #         <i>insertion point</i> is defined as the point at which the
+      #         key would be inserted into the list: the index of the first
+      #         element greater than the key, or <tt>list.size()</tt> if all
+      #         elements in the list are less than the specified key.  Note
+      #         that this guarantees that the return value will be &gt;= 0 if
+      #         and only if the key is found.
       # @throws ClassCastException if the list contains elements that are not
-      # <i>mutually comparable</i> (for example, strings and
-      # integers), or the search key is not mutually comparable
-      # with the elements of the list.
+      #         <i>mutually comparable</i> (for example, strings and
+      #         integers), or the search key is not mutually comparable
+      #         with the elements of the list.
       def binary_search(list, key)
         if (list.is_a?(RandomAccess) || list.size < BINARYSEARCH_THRESHOLD)
           return Collections.indexed_binary_search(list, key)
@@ -319,20 +318,20 @@ module Java::Util
       # @param  list the list to be searched.
       # @param  key the key to be searched for.
       # @param  c the comparator by which the list is ordered.
-      # A <tt>null</tt> value indicates that the elements'
-      # {@linkplain Comparable natural ordering} should be used.
+      #         A <tt>null</tt> value indicates that the elements'
+      #         {@linkplain Comparable natural ordering} should be used.
       # @return the index of the search key, if it is contained in the list;
-      # otherwise, <tt>(-(<i>insertion point</i>) - 1)</tt>.  The
-      # <i>insertion point</i> is defined as the point at which the
-      # key would be inserted into the list: the index of the first
-      # element greater than the key, or <tt>list.size()</tt> if all
-      # elements in the list are less than the specified key.  Note
-      # that this guarantees that the return value will be &gt;= 0 if
-      # and only if the key is found.
+      #         otherwise, <tt>(-(<i>insertion point</i>) - 1)</tt>.  The
+      #         <i>insertion point</i> is defined as the point at which the
+      #         key would be inserted into the list: the index of the first
+      #         element greater than the key, or <tt>list.size()</tt> if all
+      #         elements in the list are less than the specified key.  Note
+      #         that this guarantees that the return value will be &gt;= 0 if
+      #         and only if the key is found.
       # @throws ClassCastException if the list contains elements that are not
-      # <i>mutually comparable</i> using the specified comparator,
-      # or the search key is not mutually comparable with the
-      # elements of the list using this comparator.
+      #         <i>mutually comparable</i> using the specified comparator,
+      #         or the search key is not mutually comparable with the
+      #         elements of the list using this comparator.
       def binary_search(list, key, c)
         if ((c).nil?)
           return binary_search(list, key)
@@ -399,7 +398,7 @@ module Java::Util
       # 
       # @param  list the list whose elements are to be reversed.
       # @throws UnsupportedOperationException if the specified list or
-      # its list-iterator does not support the <tt>set</tt> operation.
+      #         its list-iterator does not support the <tt>set</tt> operation.
       def reverse(list)
         size_ = list.size
         if (size_ < REVERSE_THRESHOLD || list.is_a?(RandomAccess))
@@ -451,7 +450,7 @@ module Java::Util
       # 
       # @param  list the list to be shuffled.
       # @throws UnsupportedOperationException if the specified list or
-      # its list-iterator does not support the <tt>set</tt> operation.
+      #         its list-iterator does not support the <tt>set</tt> operation.
       def shuffle(list)
         if ((self.attr_r).nil?)
           self.attr_r = Random.new
@@ -491,7 +490,7 @@ module Java::Util
       # @param  list the list to be shuffled.
       # @param  rnd the source of randomness to use to shuffle the list.
       # @throws UnsupportedOperationException if the specified list or its
-      # list-iterator does not support the <tt>set</tt> operation.
+      #         list-iterator does not support the <tt>set</tt> operation.
       def shuffle(list, rnd)
         size_ = list.size
         if (size_ < SHUFFLE_THRESHOLD || list.is_a?(RandomAccess))
@@ -528,8 +527,8 @@ module Java::Util
       # @param i the index of one element to be swapped.
       # @param j the index of the other element to be swapped.
       # @throws IndexOutOfBoundsException if either <tt>i</tt> or <tt>j</tt>
-      # is out of range (i &lt; 0 || i &gt;= list.size()
-      # || j &lt; 0 || j &gt;= list.size()).
+      #         is out of range (i &lt; 0 || i &gt;= list.size()
+      #         || j &lt; 0 || j &gt;= list.size()).
       # @since 1.4
       def swap(list, i, j)
         l = list
@@ -553,7 +552,7 @@ module Java::Util
       # @param  list the list to be filled with the specified element.
       # @param  obj The element with which to fill the specified list.
       # @throws UnsupportedOperationException if the specified list or its
-      # list-iterator does not support the <tt>set</tt> operation.
+      #         list-iterator does not support the <tt>set</tt> operation.
       def fill(list, obj)
         size_ = list.size
         if (size_ < FILL_THRESHOLD || list.is_a?(RandomAccess))
@@ -585,9 +584,9 @@ module Java::Util
       # @param  dest The destination list.
       # @param  src The source list.
       # @throws IndexOutOfBoundsException if the destination list is too small
-      # to contain the entire source List.
+      #         to contain the entire source List.
       # @throws UnsupportedOperationException if the destination list's
-      # list-iterator does not support the <tt>set</tt> operation.
+      #         list-iterator does not support the <tt>set</tt> operation.
       def copy(dest, src)
         src_size = src.size
         if (src_size > dest.size)
@@ -625,10 +624,10 @@ module Java::Util
       # 
       # @param  coll the collection whose minimum element is to be determined.
       # @return the minimum element of the given collection, according
-      # to the <i>natural ordering</i> of its elements.
+      #         to the <i>natural ordering</i> of its elements.
       # @throws ClassCastException if the collection contains elements that are
-      # not <i>mutually comparable</i> (for example, strings and
-      # integers).
+      #         not <i>mutually comparable</i> (for example, strings and
+      #         integers).
       # @throws NoSuchElementException if the collection is empty.
       # @see Comparable
       def min(coll)
@@ -656,12 +655,12 @@ module Java::Util
       # 
       # @param  coll the collection whose minimum element is to be determined.
       # @param  comp the comparator with which to determine the minimum element.
-      # A <tt>null</tt> value indicates that the elements' <i>natural
-      # ordering</i> should be used.
+      #         A <tt>null</tt> value indicates that the elements' <i>natural
+      #         ordering</i> should be used.
       # @return the minimum element of the given collection, according
-      # to the specified comparator.
+      #         to the specified comparator.
       # @throws ClassCastException if the collection contains elements that are
-      # not <i>mutually comparable</i> using the specified comparator.
+      #         not <i>mutually comparable</i> using the specified comparator.
       # @throws NoSuchElementException if the collection is empty.
       # @see Comparable
       def min(coll, comp)
@@ -693,10 +692,10 @@ module Java::Util
       # 
       # @param  coll the collection whose maximum element is to be determined.
       # @return the maximum element of the given collection, according
-      # to the <i>natural ordering</i> of its elements.
+      #         to the <i>natural ordering</i> of its elements.
       # @throws ClassCastException if the collection contains elements that are
-      # not <i>mutually comparable</i> (for example, strings and
-      # integers).
+      #         not <i>mutually comparable</i> (for example, strings and
+      #         integers).
       # @throws NoSuchElementException if the collection is empty.
       # @see Comparable
       def max(coll)
@@ -724,12 +723,12 @@ module Java::Util
       # 
       # @param  coll the collection whose maximum element is to be determined.
       # @param  comp the comparator with which to determine the maximum element.
-      # A <tt>null</tt> value indicates that the elements' <i>natural
-      # ordering</i> should be used.
+      #         A <tt>null</tt> value indicates that the elements' <i>natural
+      #        ordering</i> should be used.
       # @return the maximum element of the given collection, according
-      # to the specified comparator.
+      #         to the specified comparator.
       # @throws ClassCastException if the collection contains elements that are
-      # not <i>mutually comparable</i> using the specified comparator.
+      #         not <i>mutually comparable</i> using the specified comparator.
       # @throws NoSuchElementException if the collection is empty.
       # @see Comparable
       def max(coll, comp)
@@ -766,13 +765,13 @@ module Java::Util
       # moves the element at index <tt>j</tt> forward to position
       # <tt>k</tt> (which must be greater than or equal to <tt>j</tt>):
       # <pre>
-      # Collections.rotate(list.subList(j, k+1), -1);
+      #     Collections.rotate(list.subList(j, k+1), -1);
       # </pre>
       # To make this concrete, suppose <tt>list</tt> comprises
       # <tt>[a, b, c, d, e]</tt>.  To move the element at index <tt>1</tt>
       # (<tt>b</tt>) forward two positions, perform the following invocation:
       # <pre>
-      # Collections.rotate(l.subList(1, 4), -1);
+      #     Collections.rotate(l.subList(1, 4), -1);
       # </pre>
       # The resulting list is <tt>[a, c, d, b, e]</tt>.
       # 
@@ -796,10 +795,10 @@ module Java::Util
       # 
       # @param list the list to be rotated.
       # @param distance the distance to rotate the list.  There are no
-      # constraints on this value; it may be zero, negative, or
-      # greater than <tt>list.size()</tt>.
+      #        constraints on this value; it may be zero, negative, or
+      #        greater than <tt>list.size()</tt>.
       # @throws UnsupportedOperationException if the specified list or
-      # its list-iterator does not support the <tt>set</tt> operation.
+      #         its list-iterator does not support the <tt>set</tt> operation.
       # @since 1.4
       def rotate(list, distance)
         if (list.is_a?(RandomAccess) || list.size < ROTATE_THRESHOLD)
@@ -867,12 +866,12 @@ module Java::Util
       # @param list the list in which replacement is to occur.
       # @param oldVal the old value to be replaced.
       # @param newVal the new value with which <tt>oldVal</tt> is to be
-      # replaced.
+      #        replaced.
       # @return <tt>true</tt> if <tt>list</tt> contained one or more elements
-      # <tt>e</tt> such that
-      # <tt>(oldVal==null ?  e==null : oldVal.equals(e))</tt>.
+      #         <tt>e</tt> such that
+      #         <tt>(oldVal==null ?  e==null : oldVal.equals(e))</tt>.
       # @throws UnsupportedOperationException if the specified list or
-      # its list-iterator does not support the <tt>set</tt> operation.
+      #         its list-iterator does not support the <tt>set</tt> operation.
       # @since  1.4
       def replace_all(list, old_val, new_val)
         result = false
@@ -935,11 +934,11 @@ module Java::Util
       # location in turn.
       # 
       # @param source the list in which to search for the first occurrence
-      # of <tt>target</tt>.
+      #        of <tt>target</tt>.
       # @param target the list to search for as a subList of <tt>source</tt>.
       # @return the starting position of the first occurrence of the specified
-      # target list within the specified source list, or -1 if there
-      # is no such occurrence.
+      #         target list within the specified source list, or -1 if there
+      #         is no such occurrence.
       # @since  1.4
       def index_of_sub_list(source, target)
         source_size = source.size
@@ -1003,11 +1002,11 @@ module Java::Util
       # location in turn.
       # 
       # @param source the list in which to search for the last occurrence
-      # of <tt>target</tt>.
+      #        of <tt>target</tt>.
       # @param target the list to search for as a subList of <tt>source</tt>.
       # @return the starting position of the last occurrence of the specified
-      # target list within the specified source list, or -1 if there
-      # is no such occurrence.
+      #         target list within the specified source list, or -1 if there
+      #         is no such occurrence.
       # @since  1.4
       def last_index_of_sub_list(source, target)
         source_size = source.size
@@ -1066,7 +1065,6 @@ module Java::Util
       
       typesig { [Collection] }
       # Unmodifiable Wrappers
-      # 
       # Returns an unmodifiable view of the specified collection.  This method
       # allows modules to provide users with "read-only" access to internal
       # collections.  Query operations on the returned collection "read through"
@@ -1084,7 +1082,7 @@ module Java::Util
       # is serializable.
       # 
       # @param  c the collection for which an unmodifiable view is to be
-      # returned.
+      #         returned.
       # @return an unmodifiable view of the specified collection.
       def unmodifiable_collection(c)
         return UnmodifiableCollection.new(c)
@@ -1286,7 +1284,7 @@ module Java::Util
       # is serializable.
       # 
       # @param s the sorted set for which an unmodifiable view is to be
-      # returned.
+      #        returned.
       # @return an unmodifiable view of the specified sorted set.
       def unmodifiable_sorted_set(s)
         return UnmodifiableSortedSet.new(s)
@@ -1939,7 +1937,7 @@ module Java::Util
       # is serializable.
       # 
       # @param m the sorted map for which an unmodifiable view is to be
-      # returned.
+      #        returned.
       # @return an unmodifiable view of the specified sorted map.
       def unmodifiable_sorted_map(m)
         return UnmodifiableSortedMap.new(m)
@@ -2007,7 +2005,6 @@ module Java::Util
       
       typesig { [Collection] }
       # Synch Wrappers
-      # 
       # Returns a synchronized (thread-safe) collection backed by the specified
       # collection.  In order to guarantee serial access, it is critical that
       # <strong>all</strong> access to the backing collection is accomplished
@@ -2016,13 +2013,13 @@ module Java::Util
       # It is imperative that the user manually synchronize on the returned
       # collection when iterating over it:
       # <pre>
-      # Collection c = Collections.synchronizedCollection(myCollection);
-      # ...
-      # synchronized(c) {
-      # Iterator i = c.iterator(); // Must be in the synchronized block
-      # while (i.hasNext())
-      # foo(i.next());
-      # }
+      #  Collection c = Collections.synchronizedCollection(myCollection);
+      #     ...
+      #  synchronized(c) {
+      #      Iterator i = c.iterator(); // Must be in the synchronized block
+      #      while (i.hasNext())
+      #         foo(i.next());
+      #  }
       # </pre>
       # Failure to follow this advice may result in non-deterministic behavior.
       # 
@@ -2206,13 +2203,13 @@ module Java::Util
       # It is imperative that the user manually synchronize on the returned
       # set when iterating over it:
       # <pre>
-      # Set s = Collections.synchronizedSet(new HashSet());
-      # ...
-      # synchronized(s) {
-      # Iterator i = s.iterator(); // Must be in the synchronized block
-      # while (i.hasNext())
-      # foo(i.next());
-      # }
+      #  Set s = Collections.synchronizedSet(new HashSet());
+      #      ...
+      #  synchronized(s) {
+      #      Iterator i = s.iterator(); // Must be in the synchronized block
+      #      while (i.hasNext())
+      #          foo(i.next());
+      #  }
       # </pre>
       # Failure to follow this advice may result in non-deterministic behavior.
       # 
@@ -2280,24 +2277,24 @@ module Java::Util
       # sorted set when iterating over it or any of its <tt>subSet</tt>,
       # <tt>headSet</tt>, or <tt>tailSet</tt> views.
       # <pre>
-      # SortedSet s = Collections.synchronizedSortedSet(new TreeSet());
-      # ...
-      # synchronized(s) {
-      # Iterator i = s.iterator(); // Must be in the synchronized block
-      # while (i.hasNext())
-      # foo(i.next());
-      # }
+      #  SortedSet s = Collections.synchronizedSortedSet(new TreeSet());
+      #      ...
+      #  synchronized(s) {
+      #      Iterator i = s.iterator(); // Must be in the synchronized block
+      #      while (i.hasNext())
+      #          foo(i.next());
+      #  }
       # </pre>
       # or:
       # <pre>
-      # SortedSet s = Collections.synchronizedSortedSet(new TreeSet());
-      # SortedSet s2 = s.headSet(foo);
-      # ...
-      # synchronized(s) {  // Note: s, not s2!!!
-      # Iterator i = s2.iterator(); // Must be in the synchronized block
-      # while (i.hasNext())
-      # foo(i.next());
-      # }
+      #  SortedSet s = Collections.synchronizedSortedSet(new TreeSet());
+      #  SortedSet s2 = s.headSet(foo);
+      #      ...
+      #  synchronized(s) {  // Note: s, not s2!!!
+      #      Iterator i = s2.iterator(); // Must be in the synchronized block
+      #      while (i.hasNext())
+      #          foo(i.next());
+      #  }
       # </pre>
       # Failure to follow this advice may result in non-deterministic behavior.
       # 
@@ -2397,13 +2394,13 @@ module Java::Util
       # It is imperative that the user manually synchronize on the returned
       # list when iterating over it:
       # <pre>
-      # List list = Collections.synchronizedList(new ArrayList());
-      # ...
-      # synchronized(list) {
-      # Iterator i = list.iterator(); // Must be in synchronized block
-      # while (i.hasNext())
-      # foo(i.next());
-      # }
+      #  List list = Collections.synchronizedList(new ArrayList());
+      #      ...
+      #  synchronized(list) {
+      #      Iterator i = list.iterator(); // Must be in synchronized block
+      #      while (i.hasNext())
+      #          foo(i.next());
+      #  }
       # </pre>
       # Failure to follow this advice may result in non-deterministic behavior.
       # 
@@ -2603,15 +2600,15 @@ module Java::Util
       # It is imperative that the user manually synchronize on the returned
       # map when iterating over any of its collection views:
       # <pre>
-      # Map m = Collections.synchronizedMap(new HashMap());
-      # ...
-      # Set s = m.keySet();  // Needn't be in synchronized block
-      # ...
-      # synchronized(m) {  // Synchronizing on m, not s!
-      # Iterator i = s.iterator(); // Must be in synchronized block
-      # while (i.hasNext())
-      # foo(i.next());
-      # }
+      #  Map m = Collections.synchronizedMap(new HashMap());
+      #      ...
+      #  Set s = m.keySet();  // Needn't be in synchronized block
+      #      ...
+      #  synchronized(m) {  // Synchronizing on m, not s!
+      #      Iterator i = s.iterator(); // Must be in synchronized block
+      #      while (i.hasNext())
+      #          foo(i.next());
+      #  }
       # </pre>
       # Failure to follow this advice may result in non-deterministic behavior.
       # 
@@ -2828,28 +2825,28 @@ module Java::Util
       # collections views of any of its <tt>subMap</tt>, <tt>headMap</tt> or
       # <tt>tailMap</tt> views.
       # <pre>
-      # SortedMap m = Collections.synchronizedSortedMap(new TreeMap());
-      # ...
-      # Set s = m.keySet();  // Needn't be in synchronized block
-      # ...
-      # synchronized(m) {  // Synchronizing on m, not s!
-      # Iterator i = s.iterator(); // Must be in synchronized block
-      # while (i.hasNext())
-      # foo(i.next());
-      # }
+      #  SortedMap m = Collections.synchronizedSortedMap(new TreeMap());
+      #      ...
+      #  Set s = m.keySet();  // Needn't be in synchronized block
+      #      ...
+      #  synchronized(m) {  // Synchronizing on m, not s!
+      #      Iterator i = s.iterator(); // Must be in synchronized block
+      #      while (i.hasNext())
+      #          foo(i.next());
+      #  }
       # </pre>
       # or:
       # <pre>
-      # SortedMap m = Collections.synchronizedSortedMap(new TreeMap());
-      # SortedMap m2 = m.subMap(foo, bar);
-      # ...
-      # Set s2 = m2.keySet();  // Needn't be in synchronized block
-      # ...
-      # synchronized(m) {  // Synchronizing on m, not m2 or s2!
-      # Iterator i = s.iterator(); // Must be in synchronized block
-      # while (i.hasNext())
-      # foo(i.next());
-      # }
+      #  SortedMap m = Collections.synchronizedSortedMap(new TreeMap());
+      #  SortedMap m2 = m.subMap(foo, bar);
+      #      ...
+      #  Set s2 = m2.keySet();  // Needn't be in synchronized block
+      #      ...
+      #  synchronized(m) {  // Synchronizing on m, not m2 or s2!
+      #      Iterator i = s.iterator(); // Must be in synchronized block
+      #      while (i.hasNext())
+      #          foo(i.next());
+      #  }
       # </pre>
       # Failure to follow this advice may result in non-deterministic behavior.
       # 
@@ -2942,7 +2939,6 @@ module Java::Util
       
       typesig { [Collection, Class] }
       # Dynamically typesafe collection wrappers
-      # 
       # Returns a dynamically typesafe view of the specified collection.
       # Any attempt to insert an element of the wrong type will result in an
       # immediate {@link ClassCastException}.  Assuming a collection
@@ -2970,13 +2966,13 @@ module Java::Util
       # one can quickly determine its source by temporarily modifying the
       # program to wrap the collection with a dynamically typesafe view.
       # For example, this declaration:
-      # <pre> {@code
-      # Collection<String> c = new HashSet<String>();
+      #  <pre> {@code
+      #     Collection<String> c = new HashSet<String>();
       # }</pre>
       # may be replaced temporarily by this one:
-      # <pre> {@code
-      # Collection<String> c = Collections.checkedCollection(
-      # new HashSet<String>(), String.class);
+      #  <pre> {@code
+      #     Collection<String> c = Collections.checkedCollection(
+      #         new HashSet<String>(), String.class);
       # }</pre>
       # Running the program again will cause it to fail at the point where
       # an incorrectly typed element is inserted into the collection, clearly
@@ -2997,7 +2993,7 @@ module Java::Util
       # whenever the backing collection does.
       # 
       # @param c the collection for which a dynamically typesafe view is to be
-      # returned
+      #          returned
       # @param type the type of element that {@code c} is permitted to hold
       # @return a dynamically typesafe view of the specified collection
       # @since 1.5
@@ -3222,7 +3218,7 @@ module Java::Util
       # the backing set does.
       # 
       # @param s the set for which a dynamically typesafe view is to be
-      # returned
+      #          returned
       # @param type the type of element that {@code s} is permitted to hold
       # @return a dynamically typesafe view of the specified set
       # @since 1.5
@@ -3284,7 +3280,7 @@ module Java::Util
       # whenever the backing sorted set does.
       # 
       # @param s the sorted set for which a dynamically typesafe view is to be
-      # returned
+      #          returned
       # @param type the type of element that {@code s} is permitted to hold
       # @return a dynamically typesafe view of the specified sorted set
       # @since 1.5
@@ -3373,7 +3369,7 @@ module Java::Util
       # the backing list does.
       # 
       # @param list the list for which a dynamically typesafe view is to be
-      # returned
+      #             returned
       # @param type the type of element that {@code list} is permitted to hold
       # @return a dynamically typesafe view of the specified list
       # @since 1.5
@@ -3586,7 +3582,7 @@ module Java::Util
       # whenever the backing map does.
       # 
       # @param m the map for which a dynamically typesafe view is to be
-      # returned
+      #          returned
       # @param keyType the type of key that {@code m} is permitted to hold
       # @param valueType the type of value that {@code m} is permitted to hold
       # @return a dynamically typesafe view of the specified map
@@ -4085,7 +4081,7 @@ module Java::Util
       # whenever the backing map does.
       # 
       # @param m the map for which a dynamically typesafe view is to be
-      # returned
+      #          returned
       # @param keyType the type of key that {@code m} is permitted to hold
       # @param valueType the type of value that {@code m} is permitted to hold
       # @return a dynamically typesafe view of the specified map
@@ -4156,7 +4152,6 @@ module Java::Util
       
       typesig { [] }
       # Empty collections
-      # 
       # Returns an iterator that has no elements.  More precisely,
       # 
       # <ul compact>
@@ -4359,7 +4354,7 @@ module Java::Util
       # 
       # <p>This example illustrates the type-safe way to obtain an empty set:
       # <pre>
-      # Set&lt;String&gt; s = Collections.emptySet();
+      #     Set&lt;String&gt; s = Collections.emptySet();
       # </pre>
       # Implementation note:  Implementations of this method need not
       # create a separate <tt>Set</tt> object for each call.   Using this
@@ -4448,7 +4443,7 @@ module Java::Util
       # 
       # <p>This example illustrates the type-safe way to obtain an empty list:
       # <pre>
-      # List&lt;String&gt; s = Collections.emptyList();
+      #     List&lt;String&gt; s = Collections.emptyList();
       # </pre>
       # Implementation note:  Implementations of this method need not
       # create a separate <tt>List</tt> object for each call.   Using this
@@ -4559,7 +4554,7 @@ module Java::Util
       # 
       # <p>This example illustrates the type-safe way to obtain an empty set:
       # <pre>
-      # Map&lt;String, Date&gt; s = Collections.emptyMap();
+      #     Map&lt;String, Date&gt; s = Collections.emptyMap();
       # </pre>
       # Implementation note:  Implementations of this method need not
       # create a separate <tt>Map</tt> object for each call.   Using this
@@ -4650,7 +4645,6 @@ module Java::Util
       
       typesig { [Object] }
       # Singleton collections
-      # 
       # Returns an immutable set containing only the specified object.
       # The returned set is serializable.
       # 
@@ -4818,7 +4812,7 @@ module Java::Util
       # @param key the sole key to be stored in the returned map.
       # @param value the value to which the returned map maps <tt>key</tt>.
       # @return an immutable map containing only the specified key-value
-      # mapping.
+      #         mapping.
       # @since 1.3
       def singleton_map(key, value)
         return SingletonMap.new(key, value)
@@ -4935,7 +4929,6 @@ module Java::Util
       
       typesig { [::Java::Int, Object] }
       # Miscellaneous
-      # 
       # Returns an immutable list consisting of <tt>n</tt> copies of the
       # specified object.  The newly allocated data object is tiny (it contains
       # a single reference to the data object).  This method is useful in
@@ -4945,7 +4938,7 @@ module Java::Util
       # @param  n the number of elements in the returned list.
       # @param  o the element to appear repeatedly in the returned list.
       # @return an immutable list consisting of <tt>n</tt> copies of the
-      # specified object.
+      #         specified object.
       # @throws IllegalArgumentException if n &lt; 0.
       # @see    List#addAll(Collection)
       # @see    List#addAll(int, Collection)
@@ -5072,14 +5065,14 @@ module Java::Util
       # objects that implement the <tt>Comparable</tt> interface in
       # reverse-natural-order.  For example, suppose a is an array of
       # strings. Then: <pre>
-      # Arrays.sort(a, Collections.reverseOrder());
+      #          Arrays.sort(a, Collections.reverseOrder());
       # </pre> sorts the array in reverse-lexicographic (alphabetical) order.<p>
       # 
       # The returned comparator is serializable.
       # 
       # @return a comparator that imposes the reverse of the <i>natural
-      # ordering</i> on a collection of objects that implement
-      # the <tt>Comparable</tt> interface.
+      #         ordering</i> on a collection of objects that implement
+      #         the <tt>Comparable</tt> interface.
       # @see Comparable
       def reverse_order
         return ReverseComparator::REVERSE_ORDER
@@ -5128,7 +5121,7 @@ module Java::Util
       # comparator is also serializable or null).
       # 
       # @return a comparator that imposes the reverse ordering of the
-      # specified comparator
+      #         specified comparator
       # @since 1.5
       def reverse_order(cmp)
         if ((cmp).nil?)
@@ -5238,9 +5231,9 @@ module Java::Util
       # collections.
       # 
       # @param e enumeration providing elements for the returned
-      # array list
+      #          array list
       # @return an array list containing the elements returned
-      # by the specified enumeration.
+      #         by the specified enumeration.
       # @since 1.4
       # @see Enumeration
       # @see ArrayList
@@ -5265,7 +5258,7 @@ module Java::Util
       # <tt>(o == null ? e == null : o.equals(e))</tt>.
       # 
       # @param c the collection in which to determine the frequency
-      # of <tt>o</tt>
+      #     of <tt>o</tt>
       # @param o the object whose frequency is to be determined
       # @throws NullPointerException if <tt>c</tt> is null
       # @since 1.5
@@ -5337,19 +5330,19 @@ module Java::Util
       # <p>When elements are specified individually, this method provides a
       # convenient way to add a few elements to an existing collection:
       # <pre>
-      # Collections.addAll(flavors, "Peaches 'n Plutonium", "Rocky Racoon");
+      #     Collections.addAll(flavors, "Peaches 'n Plutonium", "Rocky Racoon");
       # </pre>
       # 
       # @param c the collection into which <tt>elements</tt> are to be inserted
       # @param elements the elements to insert into <tt>c</tt>
       # @return <tt>true</tt> if the collection changed as a result of the call
       # @throws UnsupportedOperationException if <tt>c</tt> does not support
-      # the <tt>add</tt> operation
+      #         the <tt>add</tt> operation
       # @throws NullPointerException if <tt>elements</tt> contains one or more
-      # null values and <tt>c</tt> does not permit null elements, or
-      # if <tt>c</tt> or <tt>elements</tt> are <tt>null</tt>
+      #         null values and <tt>c</tt> does not permit null elements, or
+      #         if <tt>c</tt> or <tt>elements</tt> are <tt>null</tt>
       # @throws IllegalArgumentException if some property of a value in
-      # <tt>elements</tt> prevents it from being added to <tt>c</tt>
+      #         <tt>elements</tt> prevents it from being added to <tt>c</tt>
       # @see Collection#addAll(Collection)
       # @since 1.5
       def add_all(c, *elements)
@@ -5385,8 +5378,8 @@ module Java::Util
       # to this method, and no reference to the map is retained, as illustrated
       # in the following code fragment:
       # <pre>
-      # Set&lt;Object&gt; weakHashSet = Collections.newSetFromMap(
-      # new WeakHashMap&lt;Object, Boolean&gt;());
+      #    Set&lt;Object&gt; weakHashSet = Collections.newSetFromMap(
+      #        new WeakHashMap&lt;Object, Boolean&gt;());
       # </pre>
       # 
       # @param map the backing map

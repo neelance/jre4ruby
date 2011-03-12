@@ -175,11 +175,11 @@ module Sun::Security::X509
     # @param in Reader containing AVA String
     # @param format parsing format
     # @param keywordMap a Map where a keyword String maps to a corresponding
-    # OID String. Each AVA keyword will be mapped to the corresponding OID.
-    # If an entry does not exist, it will fallback to the builtin
-    # keyword/OID mapping.
+    #   OID String. Each AVA keyword will be mapped to the corresponding OID.
+    #   If an entry does not exist, it will fallback to the builtin
+    #   keyword/OID mapping.
     # @throws IOException if the AVA String is not valid in the specified
-    # standard or an OID String from the keywordMap is improperly formatted
+    #   standard or an OID String from the keywordMap is improperly formatted
     def initialize(in_, format, keyword_map)
       @oid = nil
       @value = nil
@@ -244,7 +244,7 @@ module Sun::Security::X509
     # Get the value of this AVA as a String.
     # 
     # @exception RuntimeException if we could not obtain the string form
-    # (should not occur)
+    #    (should not occur)
     def get_value_string
       begin
         s = @value.get_as_string
@@ -712,10 +712,10 @@ module Sun::Security::X509
         # following characters which need escaping, then that string can be
         # used as the string representation of the value.
         # 
-        # o   a space or "#" character occurring at the beginning of the
-        # string
-        # o   a space character occurring at the end of the string
-        # o   one of the characters ",", "+", """, "\", "<", ">" or ";"
+        #   o   a space or "#" character occurring at the beginning of the
+        #       string
+        #   o   a space character occurring at the end of the string
+        #   o   one of the characters ",", "+", """, "\", "<", ">" or ";"
         # 
         # Implementations MAY escape other characters.
         # 
@@ -849,11 +849,11 @@ module Sun::Security::X509
         # following characters which need escaping, then that string can be
         # used as the string representation of the value.
         # 
-        # o   a space or "#" character occurring at the beginning of the
-        # string
-        # o   a space character occurring at the end of the string
+        #   o   a space or "#" character occurring at the beginning of the
+        #       string
+        #   o   a space character occurring at the end of the string
         # 
-        # o   one of the characters ",", "+", """, "\", "<", ">" or ";"
+        #   o   one of the characters ",", "+", """, "\", "<", ">" or ";"
         # 
         # If a character to be escaped is one of the list shown above, then
         # it is prefixed by a backslash ('\' ASCII 92).
@@ -1124,11 +1124,11 @@ module Sun::Security::X509
       # string encoded object identifier) in the given standard.
       # 
       # @param keywordMap a Map where a keyword String maps to a corresponding
-      # OID String. Each AVA keyword will be mapped to the corresponding OID.
-      # If an entry does not exist, it will fallback to the builtin
-      # keyword/OID mapping.
+      #   OID String. Each AVA keyword will be mapped to the corresponding OID.
+      #   If an entry does not exist, it will fallback to the builtin
+      #   keyword/OID mapping.
       # @throws IOException If the keyword is not valid in the specified standard
-      # or the OID String to which a keyword maps to is improperly formatted.
+      #   or the OID String to which a keyword maps to is improperly formatted.
       def get_oid(keyword, standard, extra_keyword_map)
         keyword = RJava.cast_to_string(keyword.to_upper_case)
         if ((standard).equal?(AVA::RFC2253))

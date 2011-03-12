@@ -416,7 +416,7 @@ module Java::Util::Logging
     # Get the parameters to the log message.
     # 
     # @return the log message parameters.  May be null if
-    # there are no parameters.
+    #                  there are no parameters.
     def get_parameters
       return @parameters
     end

@@ -96,7 +96,7 @@ module Java::Nio::Channels
       # @return  A new datagram channel
       # 
       # @throws  IOException
-      # If an I/O error occurs
+      #          If an I/O error occurs
       def open
         return SelectorProvider.provider.open_datagram_channel
       end
@@ -117,7 +117,6 @@ module Java::Nio::Channels
     
     typesig { [] }
     # -- Socket-specific operations --
-    # 
     # Retrieves a datagram socket associated with this channel.
     # 
     # <p> The returned object will not declare any public methods that are not
@@ -132,7 +131,7 @@ module Java::Nio::Channels
     # Tells whether or not this channel's socket is connected.  </p>
     # 
     # @return  <tt>true</tt> if, and only if, this channel's socket
-    # is connected
+    #          is connected
     def is_connected
       raise NotImplementedError
     end
@@ -160,29 +159,29 @@ module Java::Nio::Channels
     # that it is invoked.  </p>
     # 
     # @param  remote
-    # The remote address to which this channel is to be connected
+    #         The remote address to which this channel is to be connected
     # 
     # @return  This datagram channel
     # 
     # @throws  ClosedChannelException
-    # If this channel is closed
+    #          If this channel is closed
     # 
     # @throws  AsynchronousCloseException
-    # If another thread closes this channel
-    # while the connect operation is in progress
+    #          If another thread closes this channel
+    #          while the connect operation is in progress
     # 
     # @throws  ClosedByInterruptException
-    # If another thread interrupts the current thread
-    # while the connect operation is in progress, thereby
-    # closing the channel and setting the current thread's
-    # interrupt status
+    #          If another thread interrupts the current thread
+    #          while the connect operation is in progress, thereby
+    #          closing the channel and setting the current thread's
+    #          interrupt status
     # 
     # @throws  SecurityException
-    # If a security manager has been installed
-    # and it does not permit access to the given remote address
+    #          If a security manager has been installed
+    #          and it does not permit access to the given remote address
     # 
     # @throws  IOException
-    # If some other I/O error occurs
+    #          If some other I/O error occurs
     def connect(remote)
       raise NotImplementedError
     end
@@ -204,7 +203,7 @@ module Java::Nio::Channels
     # @return  This datagram channel
     # 
     # @throws  IOException
-    # If some other I/O error occurs
+    #          If some other I/O error occurs
     def disconnect
       raise NotImplementedError
     end
@@ -241,32 +240,32 @@ module Java::Nio::Channels
     # complete. </p>
     # 
     # @param  dst
-    # The buffer into which the datagram is to be transferred
+    #         The buffer into which the datagram is to be transferred
     # 
     # @return  The datagram's source address,
-    # or <tt>null</tt> if this channel is in non-blocking mode
-    # and no datagram was immediately available
+    #          or <tt>null</tt> if this channel is in non-blocking mode
+    #          and no datagram was immediately available
     # 
     # @throws  ClosedChannelException
-    # If this channel is closed
+    #          If this channel is closed
     # 
     # @throws  AsynchronousCloseException
-    # If another thread closes this channel
-    # while the read operation is in progress
+    #          If another thread closes this channel
+    #          while the read operation is in progress
     # 
     # @throws  ClosedByInterruptException
-    # If another thread interrupts the current thread
-    # while the read operation is in progress, thereby
-    # closing the channel and setting the current thread's
-    # interrupt status
+    #          If another thread interrupts the current thread
+    #          while the read operation is in progress, thereby
+    #          closing the channel and setting the current thread's
+    #          interrupt status
     # 
     # @throws  SecurityException
-    # If a security manager has been installed
-    # and it does not permit datagrams to be accepted
-    # from the datagram's sender
+    #          If a security manager has been installed
+    #          and it does not permit datagrams to be accepted
+    #          from the datagram's sender
     # 
     # @throws  IOException
-    # If some other I/O error occurs
+    #          If some other I/O error occurs
     def receive(dst)
       raise NotImplementedError
     end
@@ -299,44 +298,43 @@ module Java::Nio::Channels
     # complete. </p>
     # 
     # @param  src
-    # The buffer containing the datagram to be sent
+    #         The buffer containing the datagram to be sent
     # 
     # @param  target
-    # The address to which the datagram is to be sent
+    #         The address to which the datagram is to be sent
     # 
     # @return   The number of bytes sent, which will be either the number
-    # of bytes that were remaining in the source buffer when this
-    # method was invoked or, if this channel is non-blocking, may be
-    # zero if there was insufficient room for the datagram in the
-    # underlying output buffer
+    #           of bytes that were remaining in the source buffer when this
+    #           method was invoked or, if this channel is non-blocking, may be
+    #           zero if there was insufficient room for the datagram in the
+    #           underlying output buffer
     # 
     # @throws  ClosedChannelException
-    # If this channel is closed
+    #          If this channel is closed
     # 
     # @throws  AsynchronousCloseException
-    # If another thread closes this channel
-    # while the read operation is in progress
+    #          If another thread closes this channel
+    #          while the read operation is in progress
     # 
     # @throws  ClosedByInterruptException
-    # If another thread interrupts the current thread
-    # while the read operation is in progress, thereby
-    # closing the channel and setting the current thread's
-    # interrupt status
+    #          If another thread interrupts the current thread
+    #          while the read operation is in progress, thereby
+    #          closing the channel and setting the current thread's
+    #          interrupt status
     # 
     # @throws  SecurityException
-    # If a security manager has been installed
-    # and it does not permit datagrams to be sent
-    # to the given address
+    #          If a security manager has been installed
+    #          and it does not permit datagrams to be sent
+    #          to the given address
     # 
     # @throws  IOException
-    # If some other I/O error occurs
+    #          If some other I/O error occurs
     def send(src, target)
       raise NotImplementedError
     end
     
     typesig { [ByteBuffer] }
     # -- ByteChannel operations --
-    # 
     # Reads a datagram from this channel.
     # 
     # <p> This method may only be invoked if this channel's socket is
@@ -347,7 +345,7 @@ module Java::Nio::Channels
     # ReadableByteChannel} interface.  </p>
     # 
     # @throws  NotYetConnectedException
-    # If this channel's socket is not connected
+    #          If this channel's socket is not connected
     def read(dst)
       raise NotImplementedError
     end
@@ -363,7 +361,7 @@ module Java::Nio::Channels
     # ScatteringByteChannel} interface.  </p>
     # 
     # @throws  NotYetConnectedException
-    # If this channel's socket is not connected
+    #          If this channel's socket is not connected
     def read(dsts, offset, length)
       raise NotImplementedError
     end
@@ -379,7 +377,7 @@ module Java::Nio::Channels
     # ScatteringByteChannel} interface.  </p>
     # 
     # @throws  NotYetConnectedException
-    # If this channel's socket is not connected
+    #          If this channel's socket is not connected
     def read(dsts)
       return read(dsts, 0, dsts.attr_length)
     end
@@ -393,7 +391,7 @@ module Java::Nio::Channels
     # WritableByteChannel} interface.  </p>
     # 
     # @throws  NotYetConnectedException
-    # If this channel's socket is not connected
+    #          If this channel's socket is not connected
     def write(src)
       raise NotImplementedError
     end
@@ -407,13 +405,13 @@ module Java::Nio::Channels
     # GatheringByteChannel} interface.  </p>
     # 
     # @return   The number of bytes sent, which will be either the number
-    # of bytes that were remaining in the source buffer when this
-    # method was invoked or, if this channel is non-blocking, may be
-    # zero if there was insufficient room for the datagram in the
-    # underlying output buffer
+    #           of bytes that were remaining in the source buffer when this
+    #           method was invoked or, if this channel is non-blocking, may be
+    #           zero if there was insufficient room for the datagram in the
+    #           underlying output buffer
     # 
     # @throws  NotYetConnectedException
-    # If this channel's socket is not connected
+    #          If this channel's socket is not connected
     def write(srcs, offset, length)
       raise NotImplementedError
     end
@@ -427,13 +425,13 @@ module Java::Nio::Channels
     # GatheringByteChannel} interface.  </p>
     # 
     # @return   The number of bytes sent, which will be either the number
-    # of bytes that were remaining in the source buffer when this
-    # method was invoked or, if this channel is non-blocking, may be
-    # zero if there was insufficient room for the datagram in the
-    # underlying output buffer
+    #           of bytes that were remaining in the source buffer when this
+    #           method was invoked or, if this channel is non-blocking, may be
+    #           zero if there was insufficient room for the datagram in the
+    #           underlying output buffer
     # 
     # @throws  NotYetConnectedException
-    # If this channel's socket is not connected
+    #          If this channel's socket is not connected
     def write(srcs)
       return write(srcs, 0, srcs.attr_length)
     end

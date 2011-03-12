@@ -94,7 +94,7 @@ module Java::Util
   # {@link Collections#synchronizedMap Collections.synchronizedMap}
   # method.  This is best done at creation time, to prevent accidental
   # unsynchronized access to the map:<pre>
-  # Map m = Collections.synchronizedMap(new IdentityHashMap(...));</pre>
+  #   Map m = Collections.synchronizedMap(new IdentityHashMap(...));</pre>
   # 
   # <p>The iterators returned by the <tt>iterator</tt> method of the
   # collections returned by all of this class's "collection view
@@ -289,8 +289,8 @@ module Java::Util
     # @param m the map whose mappings are to be placed into this map
     # @throws NullPointerException if the specified map is null
     def initialize(m)
+      initialize__identity_hash_map((((1 + m.size) * 1.1)).to_int)
       # Allow for a bit of growth
-      initialize__identity_hash_map(RJava.cast_to_int(((1 + m.size) * 1.1)))
       put_all(m)
     end
     
@@ -307,7 +307,7 @@ module Java::Util
     # mappings.
     # 
     # @return <tt>true</tt> if this identity hash map contains no key-value
-    # mappings
+    #         mappings
     def is_empty
       return (@size).equal?(0)
     end
@@ -367,7 +367,7 @@ module Java::Util
     # 
     # @param   key   possible key
     # @return  <code>true</code> if the specified object reference is a key
-    # in this map
+    #          in this map
     # @see     #containsValue(Object)
     def contains_key(key)
       k = mask_null(key)
@@ -392,7 +392,7 @@ module Java::Util
     # 
     # @param value value whose presence in this map is to be tested
     # @return <tt>true</tt> if this map maps one or more keys to the
-    # specified object reference
+    #         specified object reference
     # @see     #containsKey(Object)
     def contains_value(value)
       tab = @table
@@ -412,7 +412,7 @@ module Java::Util
     # @param   key   possible key
     # @param   value possible value
     # @return  <code>true</code> if and only if the specified key-value
-    # mapping is in the map
+    #          mapping is in the map
     def contains_mapping(key, value)
       k = mask_null(key)
       tab = @table
@@ -438,9 +438,9 @@ module Java::Util
     # @param key the key with which the specified value is to be associated
     # @param value the value to be associated with the specified key
     # @return the previous value associated with <tt>key</tt>, or
-    # <tt>null</tt> if there was no mapping for <tt>key</tt>.
-    # (A <tt>null</tt> return can also indicate that the map
-    # previously associated <tt>null</tt> with <tt>key</tt>.)
+    #         <tt>null</tt> if there was no mapping for <tt>key</tt>.
+    #         (A <tt>null</tt> return can also indicate that the map
+    #         previously associated <tt>null</tt> with <tt>key</tt>.)
     # @see     Object#equals(Object)
     # @see     #get(Object)
     # @see     #containsKey(Object)
@@ -534,9 +534,9 @@ module Java::Util
     # 
     # @param key key whose mapping is to be removed from the map
     # @return the previous value associated with <tt>key</tt>, or
-    # <tt>null</tt> if there was no mapping for <tt>key</tt>.
-    # (A <tt>null</tt> return can also indicate that the map
-    # previously associated <tt>null</tt> with <tt>key</tt>.)
+    #         <tt>null</tt> if there was no mapping for <tt>key</tt>.
+    #         (A <tt>null</tt> return can also indicate that the map
+    #         previously associated <tt>null</tt> with <tt>key</tt>.)
     def remove(key)
       k = mask_null(key)
       tab = @table
@@ -566,7 +566,7 @@ module Java::Util
     # @param   key   possible key
     # @param   value possible value
     # @return  <code>true</code> if and only if the specified key-value
-    # mapping was in the map
+    #          mapping was in the map
     def remove_mapping(key, value)
       k = mask_null(key)
       tab = @table
@@ -1011,7 +1011,6 @@ module Java::Util
     }
     
     # Views
-    # 
     # This field is initialized to contain an instance of the entry set
     # view the first time this view is requested.  The view is stateless,
     # so there's no reason to create more than one.
@@ -1358,10 +1357,10 @@ module Java::Util
     # (i.e., serialize it).
     # 
     # @serialData The <i>size</i> of the HashMap (the number of key-value
-    # mappings) (<tt>int</tt>), followed by the key (Object) and
-    # value (Object) for each key-value mapping represented by the
-    # IdentityHashMap.  The key-value mappings are emitted in no
-    # particular order.
+    #          mappings) (<tt>int</tt>), followed by the key (Object) and
+    #          value (Object) for each key-value mapping represented by the
+    #          IdentityHashMap.  The key-value mappings are emitted in no
+    #          particular order.
     def write_object(s)
       # Write out and any hidden stuff
       s.default_write_object

@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # This file is available under and governed by the GNU General Public
 # License version 2 only, as published by the Free Software Foundation.
 # However, the following notice accompanied the original version of this
@@ -54,45 +52,45 @@ module Java::Util::Concurrent
   # for updating shared-state before any of the parties continue.
   # 
   # <p><b>Sample usage:</b> Here is an example of
-  # using a barrier in a parallel decomposition design:
+  #  using a barrier in a parallel decomposition design:
   # <pre>
   # class Solver {
-  # final int N;
-  # final float[][] data;
-  # final CyclicBarrier barrier;
+  #   final int N;
+  #   final float[][] data;
+  #   final CyclicBarrier barrier;
   # 
-  # class Worker implements Runnable {
-  # int myRow;
-  # Worker(int row) { myRow = row; }
-  # public void run() {
-  # while (!done()) {
-  # processRow(myRow);
+  #   class Worker implements Runnable {
+  #     int myRow;
+  #     Worker(int row) { myRow = row; }
+  #     public void run() {
+  #       while (!done()) {
+  #         processRow(myRow);
   # 
-  # try {
-  # barrier.await();
-  # } catch (InterruptedException ex) {
-  # return;
-  # } catch (BrokenBarrierException ex) {
-  # return;
-  # }
-  # }
-  # }
-  # }
+  #         try {
+  #           barrier.await();
+  #         } catch (InterruptedException ex) {
+  #           return;
+  #         } catch (BrokenBarrierException ex) {
+  #           return;
+  #         }
+  #       }
+  #     }
+  #   }
   # 
-  # public Solver(float[][] matrix) {
-  # data = matrix;
-  # N = matrix.length;
-  # barrier = new CyclicBarrier(N,
-  # new Runnable() {
-  # public void run() {
-  # mergeRows(...);
-  # }
-  # });
-  # for (int i = 0; i < N; ++i)
-  # new Thread(new Worker(i)).start();
+  #   public Solver(float[][] matrix) {
+  #     data = matrix;
+  #     N = matrix.length;
+  #     barrier = new CyclicBarrier(N,
+  #                                 new Runnable() {
+  #                                   public void run() {
+  #                                     mergeRows(...);
+  #                                   }
+  #                                 });
+  #     for (int i = 0; i < N; ++i)
+  #       new Thread(new Worker(i)).start();
   # 
-  # waitUntilDone();
-  # }
+  #     waitUntilDone();
+  #   }
   # }
   # </pre>
   # Here, each worker thread processes a row of the matrix then waits at the
@@ -109,8 +107,8 @@ module Java::Util::Concurrent
   # You can then choose which thread should execute the barrier action, for
   # example:
   # <pre>  if (barrier.await() == 0) {
-  # // log the completion of this iteration
-  # }</pre>
+  #     // log the completion of this iteration
+  #   }</pre>
   # 
   # <p>The <tt>CyclicBarrier</tt> uses an all-or-none breakage model
   # for failed synchronization attempts: If a thread leaves a barrier
@@ -303,9 +301,9 @@ module Java::Util::Concurrent
     # performed by the last thread entering the barrier.
     # 
     # @param parties the number of threads that must invoke {@link #await}
-    # before the barrier is tripped
+    #        before the barrier is tripped
     # @param barrierAction the command to execute when the barrier is
-    # tripped, or {@code null} if there is no action
+    #        tripped, or {@code null} if there is no action
     # @throws IllegalArgumentException if {@code parties} is less than 1
     def initialize(parties, barrier_action)
       @lock = ReentrantLock.new
@@ -328,7 +326,7 @@ module Java::Util::Concurrent
     # does not perform a predefined action when the barrier is tripped.
     # 
     # @param parties the number of threads that must invoke {@link #await}
-    # before the barrier is tripped
+    #        before the barrier is tripped
     # @throws IllegalArgumentException if {@code parties} is less than 1
     def initialize(parties)
       initialize__cyclic_barrier(parties, nil)
@@ -386,15 +384,15 @@ module Java::Util::Concurrent
     # the broken state.
     # 
     # @return the arrival index of the current thread, where index
-    # <tt>{@link #getParties()} - 1</tt> indicates the first
-    # to arrive and zero indicates the last to arrive
+    #         <tt>{@link #getParties()} - 1</tt> indicates the first
+    #         to arrive and zero indicates the last to arrive
     # @throws InterruptedException if the current thread was interrupted
-    # while waiting
+    #         while waiting
     # @throws BrokenBarrierException if <em>another</em> thread was
-    # interrupted or timed out while the current thread was
-    # waiting, or the barrier was reset, or the barrier was
-    # broken when {@code await} was called, or the barrier
-    # action (if present) failed due an exception.
+    #         interrupted or timed out while the current thread was
+    #         waiting, or the barrier was reset, or the barrier was
+    #         broken when {@code await} was called, or the barrier
+    #         action (if present) failed due an exception.
     def await
       begin
         return dowait(false, 0)
@@ -454,16 +452,16 @@ module Java::Util::Concurrent
     # @param timeout the time to wait for the barrier
     # @param unit the time unit of the timeout parameter
     # @return the arrival index of the current thread, where index
-    # <tt>{@link #getParties()} - 1</tt> indicates the first
-    # to arrive and zero indicates the last to arrive
+    #         <tt>{@link #getParties()} - 1</tt> indicates the first
+    #         to arrive and zero indicates the last to arrive
     # @throws InterruptedException if the current thread was interrupted
-    # while waiting
+    #         while waiting
     # @throws TimeoutException if the specified timeout elapses
     # @throws BrokenBarrierException if <em>another</em> thread was
-    # interrupted or timed out while the current thread was
-    # waiting, or the barrier was reset, or the barrier was broken
-    # when {@code await} was called, or the barrier action (if
-    # present) failed due an exception
+    #         interrupted or timed out while the current thread was
+    #         waiting, or the barrier was reset, or the barrier was broken
+    #         when {@code await} was called, or the barrier action (if
+    #         present) failed due an exception
     def await(timeout, unit)
       return dowait(true, unit.to_nanos(timeout))
     end
@@ -472,9 +470,9 @@ module Java::Util::Concurrent
     # Queries if this barrier is in a broken state.
     # 
     # @return {@code true} if one or more parties broke out of this
-    # barrier due to interruption or timeout since
-    # construction or the last reset, or a barrier action
-    # failed due to an exception; {@code false} otherwise.
+    #         barrier due to interruption or timeout since
+    #         construction or the last reset, or a barrier action
+    #         failed due to an exception; {@code false} otherwise.
     def is_broken
       lock_ = @lock
       lock_.lock

@@ -301,11 +301,11 @@ module Java::Io
     # the stream is detected, or an exception is thrown.
     # 
     # @return     the next character of data, or <code>-1</code> if the end of the
-    # stream is reached.
+    #             stream is reached.
     # @exception  IOException  if the pipe is
-    # <a href=PipedInputStream.html#BROKEN> <code>broken</code></a>,
-    # {@link #connect(java.io.PipedWriter) unconnected}, closed,
-    # or an I/O error occurs.
+    #          <a href=PipedInputStream.html#BROKEN> <code>broken</code></a>,
+    #          {@link #connect(java.io.PipedWriter) unconnected}, closed,
+    #          or an I/O error occurs.
     def read
       synchronized(self) do
         if (!@connected)
@@ -360,12 +360,12 @@ module Java::Io
     # @param      off   the start offset of the data.
     # @param      len   the maximum number of characters read.
     # @return     the total number of characters read into the buffer, or
-    # <code>-1</code> if there is no more data because the end of
-    # the stream has been reached.
+    #             <code>-1</code> if there is no more data because the end of
+    #             the stream has been reached.
     # @exception  IOException  if the pipe is
-    # <a href=PipedInputStream.html#BROKEN> <code>broken</code></a>,
-    # {@link #connect(java.io.PipedWriter) unconnected}, closed,
-    # or an I/O error occurs.
+    #                  <a href=PipedInputStream.html#BROKEN> <code>broken</code></a>,
+    #                  {@link #connect(java.io.PipedWriter) unconnected}, closed,
+    #                  or an I/O error occurs.
     def read(cbuf, off, len)
       synchronized(self) do
         if (!@connected)
@@ -413,8 +413,8 @@ module Java::Io
     # stream is ready if the circular buffer is not empty.
     # 
     # @exception  IOException  if the pipe is
-    # <a href=PipedInputStream.html#BROKEN> <code>broken</code></a>,
-    # {@link #connect(java.io.PipedWriter) unconnected}, or closed.
+    #                  <a href=PipedInputStream.html#BROKEN> <code>broken</code></a>,
+    #                  {@link #connect(java.io.PipedWriter) unconnected}, or closed.
     def ready
       synchronized(self) do
         if (!@connected)

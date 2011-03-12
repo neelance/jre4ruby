@@ -22,9 +22,8 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
 # -
-# mailto stream opener
+#       mailto stream opener
 module Sun::Net::Www::Protocol::Mailto
   module HandlerImports #:nodoc:
     class_module.module_eval {
@@ -114,7 +113,7 @@ module Sun::Net::Www::Protocol::Mailto
     # @param   u the URL to receive the result of parsing the spec
     # @param   spec the URL string to parse
     # @param   start the character position to start parsing at.  This is
-    # just past the ':'.
+    #          just past the ':'.
     # @param   limit the character position to stop parsing at.
     def parse_url(u, spec, start, limit)
       protocol = u.get_protocol

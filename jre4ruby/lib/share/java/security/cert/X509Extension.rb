@@ -54,12 +54,12 @@ module Java::Security::Cert
   # Extensions  ::=  SEQUENCE SIZE (1..MAX) OF Extension
   # 
   # Extension  ::=  SEQUENCE  {
-  # extnId        OBJECT IDENTIFIER,
-  # critical      BOOLEAN DEFAULT FALSE,
-  # extnValue     OCTET STRING
-  # -- contains a DER encoding of a value
-  # -- of the type registered for use with
-  # -- the extnId object identifier value
+  #     extnId        OBJECT IDENTIFIER,
+  #     critical      BOOLEAN DEFAULT FALSE,
+  #     extnValue     OCTET STRING
+  #                   -- contains a DER encoding of a value
+  #                   -- of the type registered for use with
+  #                   -- the extnId object identifier value
   # }
   # </pre>
   # Since not all extensions are known, the <code>getExtensionValue</code>
@@ -91,21 +91,21 @@ module Java::Security::Cert
     # InputStream inStrm = null;
     # X509Certificate cert = null;
     # try {
-    # inStrm = new FileInputStream("DER-encoded-Cert");
-    # CertificateFactory cf = CertificateFactory.getInstance("X.509");
-    # cert = (X509Certificate)cf.generateCertificate(inStrm);
+    #     inStrm = new FileInputStream("DER-encoded-Cert");
+    #     CertificateFactory cf = CertificateFactory.getInstance("X.509");
+    #     cert = (X509Certificate)cf.generateCertificate(inStrm);
     # } finally {
-    # if (inStrm != null) {
-    # inStrm.close();
-    # }
+    #     if (inStrm != null) {
+    #         inStrm.close();
+    #     }
     # }<p>
     # 
     # Set<String> critSet = cert.getCriticalExtensionOIDs();
     # if (critSet != null && !critSet.isEmpty()) {
-    # System.out.println("Set of critical extensions:");
-    # for (String oid : critSet) {
-    # System.out.println(oid);
-    # }
+    #     System.out.println("Set of critical extensions:");
+    #     for (String oid : critSet) {
+    #         System.out.println(oid);
+    #     }
     # }
     # </code></pre>
     # @return a Set (or an empty Set if none are marked critical) of
@@ -128,13 +128,13 @@ module Java::Security::Cert
     # CertificateFactory cf = null;
     # X509CRL crl = null;
     # try {
-    # inStrm = new FileInputStream("DER-encoded-CRL");
-    # cf = CertificateFactory.getInstance("X.509");
-    # crl = (X509CRL)cf.generateCRL(inStrm);
+    #     inStrm = new FileInputStream("DER-encoded-CRL");
+    #     cf = CertificateFactory.getInstance("X.509");
+    #     crl = (X509CRL)cf.generateCRL(inStrm);
     # } finally {
-    # if (inStrm != null) {
-    # inStrm.close();
-    # }
+    #     if (inStrm != null) {
+    #         inStrm.close();
+    #     }
     # }<p>
     # 
     # byte[] certData = &lt;DER-encoded certificate data&gt;
@@ -142,14 +142,14 @@ module Java::Security::Cert
     # X509Certificate cert = (X509Certificate)cf.generateCertificate(bais);
     # bais.close();
     # X509CRLEntry badCert =
-    # crl.getRevokedCertificate(cert.getSerialNumber());<p>
+    #              crl.getRevokedCertificate(cert.getSerialNumber());<p>
     # 
     # if (badCert != null) {
-    # Set<String> nonCritSet = badCert.getNonCriticalExtensionOIDs();<p>
-    # if (nonCritSet != null)
-    # for (String oid : nonCritSet) {
-    # System.out.println(oid);
-    # }
+    #     Set<String> nonCritSet = badCert.getNonCriticalExtensionOIDs();<p>
+    #     if (nonCritSet != null)
+    #         for (String oid : nonCritSet) {
+    #             System.out.println(oid);
+    #         }
     # }
     # </code></pre>
     # 

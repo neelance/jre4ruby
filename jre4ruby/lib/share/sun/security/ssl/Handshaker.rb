@@ -344,9 +344,11 @@ module Sun::Security::Ssl
       set_cipher_suite(CipherSuite::C_NULL)
       @md5tmp = JsseJce.get_md5
       @sha_tmp = JsseJce.get_sha
+      # 
       # We accumulate digests of the handshake messages so that
       # we can read/write CertificateVerify and Finished messages,
       # getting assurance against some particular active attacks.
+      # 
       @handshake_hash = HandshakeHash.new(need_cert_verify)
       set_enabled_protocols(enabled_protocols)
       if (!(@conn).nil?)
@@ -355,6 +357,7 @@ module Sun::Security::Ssl
         # engine != null
         @engine.attr_input_record.set_handshake_hash(@handshake_hash)
       end
+      # 
       # In addition to the connection state machine, controlling
       # how the connection deals with the different sorts of records
       # that get sent (notably handshake transitions!), there's
@@ -366,6 +369,7 @@ module Sun::Security::Ssl
       # type constant for the last message seen:  except for the
       # client's cert verify, those constants are in a convenient
       # order to drastically simplify state machine checking.
+      # 
       @state = -1
     end
     
@@ -918,7 +922,9 @@ module Sun::Security::Ssl
       rescue GeneralSecurityException => e
         raise ProviderException.new(e)
       end
+      # 
       # Dump the connection keys as they're generated.
+      # 
       if (!(Debug).nil? && Debug.is_on("keygen"))
         synchronized((System.out)) do
           dump = HexDumpEncoder.new

@@ -79,7 +79,7 @@ module Sun::Reflect::Generics::Visitor
     end
     
     typesig { [ByteSignature] }
-    # Primitives and Void
+    #  Primitives and Void
     def visit_byte_signature(b)
       raise NotImplementedError
     end

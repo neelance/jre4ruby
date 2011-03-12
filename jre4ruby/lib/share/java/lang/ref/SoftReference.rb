@@ -105,7 +105,7 @@ module Java::Lang::Ref
     # 
     # @param referent object the new soft reference will refer to
     # @param q the queue with which the reference is to be registered,
-    # or <tt>null</tt> if registration is not required
+    #          or <tt>null</tt> if registration is not required
     def initialize(referent, q)
       @timestamp = 0
       super(referent, q)
@@ -118,7 +118,7 @@ module Java::Lang::Ref
     # this method returns <code>null</code>.
     # 
     # @return   The object to which this reference refers, or
-    # <code>null</code> if this reference object has been cleared
+    #           <code>null</code> if this reference object has been cleared
     def get
       o = super
       if (!(o).nil?)

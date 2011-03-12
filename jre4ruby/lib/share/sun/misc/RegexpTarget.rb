@@ -31,7 +31,7 @@ module Sun::Misc
   end
   
   # A class to define actions to be performed when a regular expression match
-  # occurs.
+  #  occurs.
   # @author  James Gosling
   module RegexpTarget
     include_class_members RegexpTargetImports

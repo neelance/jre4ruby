@@ -88,7 +88,7 @@ module Sun::Security::Timestamp
     # @param tsQuery The timestamp query.
     # @return The result of the timestamp query.
     # @throws IOException The exception is thrown if a problem occurs while
-    # communicating with the TSA.
+    #         communicating with the TSA.
     def generate_timestamp(ts_query)
       connection = URL.new(@tsa_url).open_connection
       connection.set_do_output(true)

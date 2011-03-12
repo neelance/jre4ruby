@@ -214,7 +214,7 @@ module Sun::Security::Provider::Certpath
     # 
     # @param params the algorithm parameters
     # @exception InvalidAlgorithmParameterException if params is not an
-    # instance of <code>LDAPCertStoreParameters</code>
+    #   instance of <code>LDAPCertStoreParameters</code>
     def initialize(params)
       @cf = nil
       @ctx = nil
@@ -308,11 +308,11 @@ module Sun::Security::Provider::Certpath
       # Private class encapsulating the actual LDAP operations and cache
       # handling. Use:
       # 
-      # LDAPRequest request = new LDAPRequest(dn);
-      # request.addRequestedAttribute(CROSS_CERT);
-      # request.addRequestedAttribute(CA_CERT);
-      # byte[][] crossValues = request.getValues(CROSS_CERT);
-      # byte[][] caValues = request.getValues(CA_CERT);
+      #   LDAPRequest request = new LDAPRequest(dn);
+      #   request.addRequestedAttribute(CROSS_CERT);
+      #   request.addRequestedAttribute(CA_CERT);
+      #   byte[][] crossValues = request.getValues(CROSS_CERT);
+      #   byte[][] caValues = request.getValues(CA_CERT);
       # 
       # At most one LDAP request is sent for each instance created. If all
       # getValues() calls can be satisfied from the cache, no request
@@ -604,9 +604,9 @@ module Sun::Security::Provider::Certpath
     # thrown.
     # 
     # @param selector a <code>CertSelector</code> used to select which
-    # <code>Certificate</code>s should be returned.
+    #  <code>Certificate</code>s should be returned.
     # @return a <code>Collection</code> of <code>Certificate</code>s that
-    # match the specified selector
+    #         match the specified selector
     # @throws CertStoreException if an exception occurs
     def engine_get_certificates(selector)
       synchronized(self) do
@@ -630,7 +630,7 @@ module Sun::Security::Provider::Certpath
         # basicConstraints:
         # -2: only EE certs accepted
         # -1: no check is done
-        # 0: any CA certificate accepted
+        #  0: any CA certificate accepted
         # >1: certificate's basicConstraints extension pathlen must match
         if (!(subject).nil?)
           if (!(Debug).nil?)
@@ -760,10 +760,10 @@ module Sun::Security::Provider::Certpath
     # <code>CertStoreException</code> is thrown.
     # 
     # @param selector A <code>CRLSelector</code> used to select which
-    # <code>CRL</code>s should be returned. Specify <code>null</code>
-    # to return all <code>CRL</code>s.
+    #  <code>CRL</code>s should be returned. Specify <code>null</code>
+    #  to return all <code>CRL</code>s.
     # @return A <code>Collection</code> of <code>CRL</code>s that
-    # match the specified selector
+    #         match the specified selector
     # @throws CertStoreException if an exception occurs
     def engine_get_crls(selector)
       synchronized(self) do
@@ -954,7 +954,7 @@ module Sun::Security::Provider::Certpath
         # 
         # @param selector the X509CertSelector to wrap
         # @param certSubject the subject DN of the certificate that you want
-        # to retrieve via LDAP
+        #      to retrieve via LDAP
         # @param ldapDN the LDAP DN where the certificate is stored
         def initialize(selector, cert_subject, ldap_dn)
           @cert_subject = nil
@@ -1129,7 +1129,7 @@ module Sun::Security::Provider::Certpath
         # 
         # @param selector the X509CRLSelector to wrap
         # @param certIssuers the issuer DNs of the CRLs that you want
-        # to retrieve via LDAP
+        #      to retrieve via LDAP
         # @param ldapDN the LDAP DN where the CRL is stored
         def initialize(selector, cert_issuers, ldap_dn)
           @selector = nil

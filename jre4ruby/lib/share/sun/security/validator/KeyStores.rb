@@ -51,48 +51,45 @@ module Sun::Security::Validator
       typesig { [KeyStore] }
       # in the future, all accesses to the system cacerts keystore should
       # go through this class. but not right now.
-      # 
       # private final static String javaHome =
-      # (String)AccessController.doPrivileged(new GetPropertyAction("java.home"));
+      #     (String)AccessController.doPrivileged(new GetPropertyAction("java.home"));
       # 
       # private final static char SEP = File.separatorChar;
       # 
       # private static KeyStore caCerts;
       # 
       # private static KeyStore getKeyStore(String type, String name,
-      # char[] password) throws IOException {
-      # if (type == null) {
-      # type = "JKS";
-      # }
-      # try {
-      # KeyStore ks = KeyStore.getInstance(type);
-      # FileInputStream in = (FileInputStream)AccessController.doPrivileged
-      # (new OpenFileInputStreamAction(name));
-      # ks.load(in, password);
-      # return ks;
-      # } catch (GeneralSecurityException e) {
-      # // XXX
-      # throw new IOException();
-      # } catch (PrivilegedActionException e) {
-      # throw (IOException)e.getCause();
-      # }
+      #         char[] password) throws IOException {
+      #     if (type == null) {
+      #         type = "JKS";
+      #     }
+      #     try {
+      #         KeyStore ks = KeyStore.getInstance(type);
+      #         FileInputStream in = (FileInputStream)AccessController.doPrivileged
+      #                                     (new OpenFileInputStreamAction(name));
+      #         ks.load(in, password);
+      #         return ks;
+      #     } catch (GeneralSecurityException e) {
+      #         // XXX
+      #         throw new IOException();
+      #     } catch (PrivilegedActionException e) {
+      #         throw (IOException)e.getCause();
+      #     }
       # }
       # 
-      # 
-      # Return a KeyStore with the contents of the lib/security/cacerts file.
-      # The file is only opened once per JVM invocation and the contents
-      # cached subsequently.
-      # 
+      # /**
+      #  * Return a KeyStore with the contents of the lib/security/cacerts file.
+      #  * The file is only opened once per JVM invocation and the contents
+      #  * cached subsequently.
+      #  *
       # public synchronized static KeyStore getCaCerts() throws IOException {
-      # if (caCerts != null) {
-      # return caCerts;
+      #     if (caCerts != null) {
+      #         return caCerts;
+      #     }
+      #     String name = javaHome + SEP + "lib" + SEP + "security" + SEP + "cacerts";
+      #     caCerts = getKeyStore(null, name, null);
+      #     return caCerts;
       # }
-      # String name = javaHome + SEP + "lib" + SEP + "security" + SEP + "cacerts";
-      # caCerts = getKeyStore(null, name, null);
-      # return caCerts;
-      # }
-      # 
-      # 
       # Return a Set with all trusted X509Certificates contained in
       # this KeyStore.
       def get_trusted_certs(ks)

@@ -57,7 +57,6 @@ module Sun::Reflect::Generics::Repository
     
     typesig { [] }
     # public API
-    # 
     # When queried for a particular piece of type information, the
     # general pattern is to consult the corresponding cached value.
     # If the corresponding field is non-null, it is returned.
@@ -66,11 +65,8 @@ module Sun::Reflect::Generics::Repository
     # using a visitor.
     # a visitor, which is created by feeding it the factory
     # with which the repository was created.
-    # 
-    # 
     # Return the formal type parameters of this generic declaration.
     # @return the formal type parameters of this generic declaration
-    # 
     # <?>
     def get_type_parameters
       if ((@type_params).nil?)

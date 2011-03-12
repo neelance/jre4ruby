@@ -110,7 +110,7 @@ module Java::Security
             Class.for_name(classname)
           rescue ClassNotFoundException => e
             # Security.error("unable to establish a system scope from " +
-            # classname);
+            #             classname);
             e.print_stack_trace
           end
         end

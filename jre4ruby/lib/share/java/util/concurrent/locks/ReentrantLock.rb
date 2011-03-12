@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # This file is available under and governed by the GNU General Public
 # License version 2 only, as published by the Free Software Foundation.
 # However, the following notice accompanied the original version of this
@@ -78,17 +76,17 @@ module Java::Util::Concurrent::Locks
   # 
   # <pre>
   # class X {
-  # private final ReentrantLock lock = new ReentrantLock();
-  # // ...
+  #   private final ReentrantLock lock = new ReentrantLock();
+  #   // ...
   # 
-  # public void m() {
-  # lock.lock();  // block until condition holds
-  # try {
-  # // ... method body
-  # } finally {
-  # lock.unlock()
-  # }
-  # }
+  #   public void m() {
+  #     lock.lock();  // block until condition holds
+  #     try {
+  #       // ... method body
+  #     } finally {
+  #       lock.unlock()
+  #     }
+  #   }
   # }
   # </pre>
   # 
@@ -419,8 +417,8 @@ module Java::Util::Concurrent::Locks
     # immediately with the value {@code false}.
     # 
     # @return {@code true} if the lock was free and was acquired by the
-    # current thread, or the lock was already held by the current
-    # thread; and {@code false} otherwise
+    #         current thread, or the lock was already held by the current
+    #         thread; and {@code false} otherwise
     def try_lock
       return @sync.nonfair_try_acquire(1)
     end
@@ -488,9 +486,9 @@ module Java::Util::Concurrent::Locks
     # @param timeout the time to wait for the lock
     # @param unit the time unit of the timeout argument
     # @return {@code true} if the lock was free and was acquired by the
-    # current thread, or the lock was already held by the current
-    # thread; and {@code false} if the waiting time elapsed before
-    # the lock could be acquired
+    #         current thread, or the lock was already held by the current
+    #         thread; and {@code false} if the waiting time elapsed before
+    #         the lock could be acquired
     # @throws InterruptedException if the current thread is interrupted
     # @throws NullPointerException if the time unit is null
     def try_lock(timeout, unit)
@@ -506,7 +504,7 @@ module Java::Util::Concurrent::Locks
     # lock then {@link IllegalMonitorStateException} is thrown.
     # 
     # @throws IllegalMonitorStateException if the current thread does not
-    # hold this lock
+    #         hold this lock
     def unlock
       @sync.release(1)
     end
@@ -566,22 +564,22 @@ module Java::Util::Concurrent::Locks
     # 
     # <pre>
     # class X {
-    # ReentrantLock lock = new ReentrantLock();
-    # // ...
-    # public void m() {
-    # assert lock.getHoldCount() == 0;
-    # lock.lock();
-    # try {
-    # // ... method body
-    # } finally {
-    # lock.unlock();
-    # }
-    # }
+    #   ReentrantLock lock = new ReentrantLock();
+    #   // ...
+    #   public void m() {
+    #     assert lock.getHoldCount() == 0;
+    #     lock.lock();
+    #     try {
+    #       // ... method body
+    #     } finally {
+    #       lock.unlock();
+    #     }
+    #   }
     # }
     # </pre>
     # 
     # @return the number of holds on this lock by the current thread,
-    # or zero if this lock is not held by the current thread
+    #         or zero if this lock is not held by the current thread
     def get_hold_count
       return @sync.get_hold_count
     end
@@ -596,13 +594,13 @@ module Java::Util::Concurrent::Locks
     # 
     # <pre>
     # class X {
-    # ReentrantLock lock = new ReentrantLock();
-    # // ...
+    #   ReentrantLock lock = new ReentrantLock();
+    #   // ...
     # 
-    # public void m() {
-    # assert lock.isHeldByCurrentThread();
-    # // ... method body
-    # }
+    #   public void m() {
+    #       assert lock.isHeldByCurrentThread();
+    #       // ... method body
+    #   }
     # }
     # </pre>
     # 
@@ -611,23 +609,23 @@ module Java::Util::Concurrent::Locks
     # 
     # <pre>
     # class X {
-    # ReentrantLock lock = new ReentrantLock();
-    # // ...
+    #   ReentrantLock lock = new ReentrantLock();
+    #   // ...
     # 
-    # public void m() {
-    # assert !lock.isHeldByCurrentThread();
-    # lock.lock();
-    # try {
-    # // ... method body
-    # } finally {
-    # lock.unlock();
-    # }
-    # }
+    #   public void m() {
+    #       assert !lock.isHeldByCurrentThread();
+    #       lock.lock();
+    #       try {
+    #           // ... method body
+    #       } finally {
+    #           lock.unlock();
+    #       }
+    #   }
     # }
     # </pre>
     # 
     # @return {@code true} if current thread holds this lock and
-    # {@code false} otherwise
+    #         {@code false} otherwise
     def is_held_by_current_thread
       return @sync.is_held_exclusively
     end
@@ -638,7 +636,7 @@ module Java::Util::Concurrent::Locks
     # not for synchronization control.
     # 
     # @return {@code true} if any thread holds this lock and
-    # {@code false} otherwise
+    #         {@code false} otherwise
     def is_locked
       return @sync.is_locked
     end
@@ -675,7 +673,7 @@ module Java::Util::Concurrent::Locks
     # monitoring of the system state.
     # 
     # @return {@code true} if there may be other threads waiting to
-    # acquire the lock
+    #         acquire the lock
     def has_queued_threads
       return @sync.has_queued_threads
     end
@@ -733,7 +731,7 @@ module Java::Util::Concurrent::Locks
     # @return {@code true} if there are any waiting threads
     # @throws IllegalMonitorStateException if this lock is not held
     # @throws IllegalArgumentException if the given condition is
-    # not associated with this lock
+    #         not associated with this lock
     # @throws NullPointerException if the condition is null
     def has_waiters(condition)
       if ((condition).nil?)
@@ -757,7 +755,7 @@ module Java::Util::Concurrent::Locks
     # @return the estimated number of waiting threads
     # @throws IllegalMonitorStateException if this lock is not held
     # @throws IllegalArgumentException if the given condition is
-    # not associated with this lock
+    #         not associated with this lock
     # @throws NullPointerException if the condition is null
     def get_wait_queue_length(condition)
       if ((condition).nil?)
@@ -783,7 +781,7 @@ module Java::Util::Concurrent::Locks
     # @return the collection of threads
     # @throws IllegalMonitorStateException if this lock is not held
     # @throws IllegalArgumentException if the given condition is
-    # not associated with this lock
+    #         not associated with this lock
     # @throws NullPointerException if the condition is null
     def get_waiting_threads(condition)
       if ((condition).nil?)

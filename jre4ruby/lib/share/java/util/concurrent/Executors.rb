@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # This file is available under and governed by the GNU General Public
 # License version 2 only, as published by the Free Software Foundation.
 # However, the following notice accompanied the original version of this
@@ -54,18 +52,18 @@ module Java::Util::Concurrent
   # package. This class supports the following kinds of methods:
   # 
   # <ul>
-  # <li> Methods that create and return an {@link ExecutorService}
-  # set up with commonly useful configuration settings.
-  # <li> Methods that create and return a {@link ScheduledExecutorService}
-  # set up with commonly useful configuration settings.
-  # <li> Methods that create and return a "wrapped" ExecutorService, that
-  # disables reconfiguration by making implementation-specific methods
-  # inaccessible.
-  # <li> Methods that create and return a {@link ThreadFactory}
-  # that sets newly created threads to a known state.
-  # <li> Methods that create and return a {@link Callable}
-  # out of other closure-like forms, so they can be used
-  # in execution methods requiring <tt>Callable</tt>.
+  #   <li> Methods that create and return an {@link ExecutorService}
+  #        set up with commonly useful configuration settings.
+  #   <li> Methods that create and return a {@link ScheduledExecutorService}
+  #        set up with commonly useful configuration settings.
+  #   <li> Methods that create and return a "wrapped" ExecutorService, that
+  #        disables reconfiguration by making implementation-specific methods
+  #        inaccessible.
+  #   <li> Methods that create and return a {@link ThreadFactory}
+  #        that sets newly created threads to a known state.
+  #   <li> Methods that create and return a {@link Callable}
+  #        out of other closure-like forms, so they can be used
+  #        in execution methods requiring <tt>Callable</tt>.
   # </ul>
   # 
   # @since 1.5
@@ -458,7 +456,6 @@ module Java::Util::Concurrent
       end
       
       # Non-public classes supporting the public methods
-      # 
       # A callable that runs given task and returns given result
       const_set_lazy(:RunnableAdapter) { Class.new do
         include_class_members Executors

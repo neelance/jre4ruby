@@ -39,8 +39,8 @@ module Sun::Security::Pkcs
   # 
   # <pre>
   # EncryptedPrivateKeyInfo ::=  SEQUENCE {
-  # encryptionAlgorithm   AlgorithmIdentifier,
-  # encryptedData   OCTET STRING }
+  #     encryptionAlgorithm   AlgorithmIdentifier,
+  #     encryptedData   OCTET STRING }
   # </pre>
   # 
   # @author Jan Luehe

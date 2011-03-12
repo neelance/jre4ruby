@@ -77,7 +77,7 @@ module Java::Util::Zip
     # @param off the start offset in the destination array <code>b</code>
     # @param len the maximum number of bytes read
     # @return    the actual number of bytes read, or -1 if the end
-    # of the stream is reached.
+    #            of the stream is reached.
     # @exception  NullPointerException If <code>buf</code> is <code>null</code>.
     # @exception  IndexOutOfBoundsException If <code>off</code> is negative,
     # <code>len</code> is negative, or <code>len</code> is greater than
@@ -101,7 +101,7 @@ module Java::Util::Zip
       total = 0
       while (total < n)
         len = n - total
-        len = read(buf, 0, len < buf.attr_length ? RJava.cast_to_int(len) : buf.attr_length)
+        len = read(buf, 0, len < buf.attr_length ? (len).to_int : buf.attr_length)
         if ((len).equal?(-1))
           return total
         end

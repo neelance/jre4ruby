@@ -55,29 +55,29 @@ module Java::Util::Logging
   # (or have invalid values) then the specified default values are used.
   # <ul>
   # <li>   java.util.logging.FileHandler.level
-  # specifies the default level for the <tt>Handler</tt>
-  # (defaults to <tt>Level.ALL</tt>).
+  #        specifies the default level for the <tt>Handler</tt>
+  #        (defaults to <tt>Level.ALL</tt>).
   # <li>   java.util.logging.FileHandler.filter
-  # specifies the name of a <tt>Filter</tt> class to use
-  # (defaults to no <tt>Filter</tt>).
+  #        specifies the name of a <tt>Filter</tt> class to use
+  #        (defaults to no <tt>Filter</tt>).
   # <li>   java.util.logging.FileHandler.formatter
-  # specifies the name of a <tt>Formatter</tt> class to use
-  # (defaults to <tt>java.util.logging.XMLFormatter</tt>)
+  #        specifies the name of a <tt>Formatter</tt> class to use
+  #        (defaults to <tt>java.util.logging.XMLFormatter</tt>)
   # <li>   java.util.logging.FileHandler.encoding
-  # the name of the character set encoding to use (defaults to
-  # the default platform encoding).
+  #        the name of the character set encoding to use (defaults to
+  #        the default platform encoding).
   # <li>   java.util.logging.FileHandler.limit
-  # specifies an approximate maximum amount to write (in bytes)
-  # to any one file.  If this is zero, then there is no limit.
-  # (Defaults to no limit).
+  #        specifies an approximate maximum amount to write (in bytes)
+  #        to any one file.  If this is zero, then there is no limit.
+  #        (Defaults to no limit).
   # <li>   java.util.logging.FileHandler.count
-  # specifies how many output files to cycle through (defaults to 1).
+  #        specifies how many output files to cycle through (defaults to 1).
   # <li>   java.util.logging.FileHandler.pattern
-  # specifies a pattern for generating the output file name.  See
-  # below for details. (Defaults to "%h/java%u.log").
+  #        specifies a pattern for generating the output file name.  See
+  #        below for details. (Defaults to "%h/java%u.log").
   # <li>   java.util.logging.FileHandler.append
-  # specifies whether the FileHandler should append onto
-  # any existing files (defaults to false).
+  #        specifies whether the FileHandler should append onto
+  #        any existing files (defaults to false).
   # </ul>
   # <p>
   # <p>
@@ -186,8 +186,8 @@ module Java::Util::Logging
       alias_method :attr_locks=, :locks=
       
       # A metered stream is a subclass of OutputStream that
-      # (a) forwards all its output to a target stream
-      # (b) keeps track of how many bytes have been written
+      #   (a) forwards all its output to a target stream
+      #   (b) keeps track of how many bytes have been written
       const_set_lazy(:MeteredStream) { Class.new(OutputStream) do
         local_class_in FileHandler
         include_class_members FileHandler
@@ -250,7 +250,7 @@ module Java::Util::Logging
     def open(fname, append)
       len = 0
       if (append)
-        len = RJava.cast_to_int(fname.length)
+        len = (fname.length).to_int
       end
       fout = FileOutputStream.new(fname.to_s, append)
       bout = BufferedOutputStream.new(fout)
@@ -296,7 +296,7 @@ module Java::Util::Logging
     # <p>
     # @exception  IOException if there are IO problems opening the files.
     # @exception  SecurityException  if a security manager exists and if
-    # the caller does not have <tt>LoggingPermission("control"))</tt>.
+    #             the caller does not have <tt>LoggingPermission("control"))</tt>.
     # @exception  NullPointerException if pattern property is an empty String.
     def initialize
       @meter = nil
@@ -327,7 +327,7 @@ module Java::Util::Logging
     # @param pattern  the name of the output file
     # @exception  IOException if there are IO problems opening the files.
     # @exception  SecurityException  if a security manager exists and if
-    # the caller does not have <tt>LoggingPermission("control")</tt>.
+    #             the caller does not have <tt>LoggingPermission("control")</tt>.
     # @exception  IllegalArgumentException if pattern is an empty string
     def initialize(pattern)
       @meter = nil
@@ -367,7 +367,7 @@ module Java::Util::Logging
     # @param append  specifies append mode
     # @exception  IOException if there are IO problems opening the files.
     # @exception  SecurityException  if a security manager exists and if
-    # the caller does not have <tt>LoggingPermission("control")</tt>.
+    #             the caller does not have <tt>LoggingPermission("control")</tt>.
     # @exception  IllegalArgumentException if pattern is an empty string
     def initialize(pattern, append)
       @meter = nil
@@ -410,7 +410,7 @@ module Java::Util::Logging
     # @param count  the number of files to use
     # @exception  IOException if there are IO problems opening the files.
     # @exception  SecurityException  if a security manager exists and if
-    # the caller does not have <tt>LoggingPermission("control")</tt>.
+    #             the caller does not have <tt>LoggingPermission("control")</tt>.
     # @exception IllegalArgumentException if limit < 0, or count < 1.
     # @exception  IllegalArgumentException if pattern is an empty string
     def initialize(pattern, limit, count)
@@ -455,7 +455,7 @@ module Java::Util::Logging
     # @param append  specifies append mode
     # @exception  IOException if there are IO problems opening the files.
     # @exception  SecurityException  if a security manager exists and if
-    # the caller does not have <tt>LoggingPermission("control")</tt>.
+    #             the caller does not have <tt>LoggingPermission("control")</tt>.
     # @exception IllegalArgumentException if limit < 0, or count < 1.
     # @exception  IllegalArgumentException if pattern is an empty string
     def initialize(pattern, limit, count, append)
@@ -693,7 +693,7 @@ module Java::Util::Logging
     # Format and publish a <tt>LogRecord</tt>.
     # 
     # @param  record  description of the log event. A null record is
-    # silently ignored and is not published
+    #                 silently ignored and is not published
     def publish(record)
       synchronized(self) do
         if (!is_loggable(record))
@@ -734,7 +734,7 @@ module Java::Util::Logging
     # Close all the files.
     # 
     # @exception  SecurityException  if a security manager exists and if
-    # the caller does not have <tt>LoggingPermission("control")</tt>.
+    #             the caller does not have <tt>LoggingPermission("control")</tt>.
     def close
       synchronized(self) do
         super

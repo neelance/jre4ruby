@@ -92,9 +92,9 @@ module Java::Net
     # Creates either a stream or a datagram socket.
     # 
     # @param      stream   if <code>true</code>, create a stream socket;
-    # otherwise, create a datagram socket.
+    #                      otherwise, create a datagram socket.
     # @exception  IOException  if an I/O error occurs while creating the
-    # socket.
+    #               socket.
     def create(stream)
       raise NotImplementedError
     end
@@ -105,7 +105,7 @@ module Java::Net
     # @param      host   the name of the remote host.
     # @param      port   the port number.
     # @exception  IOException  if an I/O error occurs when connecting to the
-    # remote host.
+    #               remote host.
     def connect(host, port)
       raise NotImplementedError
     end
@@ -116,7 +116,7 @@ module Java::Net
     # @param      address   the IP address of the remote host.
     # @param      port      the port number.
     # @exception  IOException  if an I/O error occurs when attempting a
-    # connection.
+    #               connection.
     def connect(address, port)
       raise NotImplementedError
     end
@@ -129,7 +129,7 @@ module Java::Net
     # @param      address   the Socket address of the remote host.
     # @param     timeout  the timeout value, in milliseconds, or zero for no timeout.
     # @exception  IOException  if an I/O error occurs when attempting a
-    # connection.
+    #               connection.
     # @since 1.4
     def connect(address, timeout)
       raise NotImplementedError
@@ -162,7 +162,7 @@ module Java::Net
     # 
     # @param      s   the accepted connection.
     # @exception  IOException  if an I/O error occurs when accepting the
-    # connection.
+    #               connection.
     def accept(s)
       raise NotImplementedError
     end
@@ -172,7 +172,7 @@ module Java::Net
     # 
     # @return     a stream for reading from this socket.
     # @exception  IOException  if an I/O error occurs when creating the
-    # input stream.
+    #               input stream.
     def get_input_stream
       raise NotImplementedError
     end
@@ -182,7 +182,7 @@ module Java::Net
     # 
     # @return     an output stream for writing to this socket.
     # @exception  IOException  if an I/O error occurs when creating the
-    # output stream.
+    #               output stream.
     def get_output_stream
       raise NotImplementedError
     end
@@ -192,9 +192,9 @@ module Java::Net
     # without blocking.
     # 
     # @return     the number of bytes that can be read from this socket
-    # without blocking.
+    #             without blocking.
     # @exception  IOException  if an I/O error occurs when determining the
-    # number of bytes available.
+    #               number of bytes available.
     def available
       raise NotImplementedError
     end
@@ -288,7 +288,7 @@ module Java::Net
     # The byte to be sent is the low eight bits of the parameter
     # @param data The byte of data to send
     # @exception IOException if there is an error
-    # sending the data.
+    #  sending the data.
     # @since 1.4
     def send_urgent_data(data)
       raise NotImplementedError
@@ -363,16 +363,16 @@ module Java::Net
     # a sub-class.
     # 
     # @param  connectionTime
-    # An <tt>int</tt> expressing the relative importance of a short
-    # connection time
+    #         An <tt>int</tt> expressing the relative importance of a short
+    #         connection time
     # 
     # @param  latency
-    # An <tt>int</tt> expressing the relative importance of low
-    # latency
+    #         An <tt>int</tt> expressing the relative importance of low
+    #         latency
     # 
     # @param  bandwidth
-    # An <tt>int</tt> expressing the relative importance of high
-    # bandwidth
+    #         An <tt>int</tt> expressing the relative importance of high
+    #         bandwidth
     # 
     # @since 1.5
     def set_performance_preferences(connection_time, latency, bandwidth)

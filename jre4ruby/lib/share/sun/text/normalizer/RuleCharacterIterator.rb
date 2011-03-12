@@ -22,20 +22,13 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
-# 
 # (C) Copyright IBM Corp. 1996-2005 - All Rights Reserved                     *
-# *
+#                                                                             *
 # The original version of this source code and documentation is copyrighted   *
 # and owned by IBM, These materials are provided under terms of a License     *
 # Agreement between IBM and Sun. This technology is protected by multiple     *
 # US and International patents. This notice and attribution to IBM may not    *
 # to removed.                                                                 *
-# 
-# 
-# 
-# 
 # Author: Alan Liu
 # Created: September 23 2003
 # Since: ICU 2.8
@@ -63,7 +56,6 @@ module Sun::Text::Normalizer
     # is reached -- this is an alternate usage model, probably not useful.
     # 3. Return isEscaped from next().  If this happens,
     # don't keep an isEscaped member variable.
-    # 
     # Text being iterated.
     attr_accessor :text
     alias_method :attr_text, :text
@@ -233,9 +225,9 @@ module Sun::Text::Normalizer
     # RuleCharacterIterator iterator = ...;
     # Object pos = iterator.getPos(null); // allocate position object
     # for (;;) {
-    # pos = iterator.getPos(pos); // reuse position object
-    # int c = iterator.next(...);
-    # ...
+    #   pos = iterator.getPos(pos); // reuse position object
+    #   int c = iterator.next(...);
+    #   ...
     # }
     # iterator.setPos(pos);
     # 

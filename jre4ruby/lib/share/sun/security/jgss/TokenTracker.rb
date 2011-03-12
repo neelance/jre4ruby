@@ -143,37 +143,37 @@ module Sun::Security::Jgss
     # between them show the different sequencing and replay state
     # possibilites for tokens that fall in there.
     # 
-    # (1)      windowStart
-    # initNumber               expectedNumber
-    # |                           |
-    # ---|---------------------------|---
-    # GAP |    DUP/UNSEQ              | GAP
+    #  (1)      windowStart
+    #           initNumber               expectedNumber
+    #              |                           |
+    #           ---|---------------------------|---
+    #          GAP |    DUP/UNSEQ              | GAP
     # 
     # 
-    # (2)       initNumber   windowStart   expectedNumber
-    # |               |              |
-    # ---|---------------|--------------|---
-    # GAP |      OLD      |  DUP/UNSEQ   | GAP
+    #  (2)       initNumber   windowStart   expectedNumber
+    #              |               |              |
+    #           ---|---------------|--------------|---
+    #          GAP |      OLD      |  DUP/UNSEQ   | GAP
     # 
     # 
-    # (3)                                windowStart
-    # expectedNumber            initNumber
-    # |                           |
-    # ---|---------------------------|---
-    # DUP/UNSEQ |           GAP             | DUP/UNSEQ
+    #  (3)                                windowStart
+    #           expectedNumber            initNumber
+    #              |                           |
+    #           ---|---------------------------|---
+    #    DUP/UNSEQ |           GAP             | DUP/UNSEQ
     # 
     # 
-    # (4)      expectedNumber    initNumber   windowStart
-    # |               |              |
-    # ---|---------------|--------------|---
-    # DUP/UNSEQ |        GAP    |    OLD       | DUP/UNSEQ
+    #  (4)      expectedNumber    initNumber   windowStart
+    #              |               |              |
+    #           ---|---------------|--------------|---
+    #    DUP/UNSEQ |        GAP    |    OLD       | DUP/UNSEQ
     # 
     # 
     # 
-    # (5)      windowStart   expectedNumber    initNumber
-    # |               |              |
-    # ---|---------------|--------------|---
-    # OLD |    DUP/UNSEQ  |     GAP      | OLD
+    #  (5)      windowStart   expectedNumber    initNumber
+    #              |               |              |
+    #           ---|---------------|--------------|---
+    #          OLD |    DUP/UNSEQ  |     GAP      | OLD
     # 
     # 
     # 
@@ -253,10 +253,10 @@ module Sun::Security::Jgss
           @expected_number = number + 1
         end
         prop.set_supplementary_states(duplicate, old, unsequenced, gap, 0, nil)
+        # System.out.println("Leaving with state:");
+        # System.out.println(toString());
+        # System.out.println("==========\n");
       end
-      # System.out.println("Leaving with state:");
-      # System.out.println(toString());
-      # System.out.println("==========\n");
     end
     
     typesig { [::Java::Int, ::Java::Int] }

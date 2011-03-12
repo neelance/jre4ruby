@@ -44,36 +44,36 @@ module Sun::Security::Util
       # 1+3+4 and 2+3+5. make sure your translation also does.
       # rest is same as -certreq starting from -keystore *
       # {"-export      [-v] [-rfc] [-protected]",
-      # "-export      [-v] [-rfc] [-protected]"},
+      #       "-export      [-v] [-rfc] [-protected]"},
       # rest is same as -certreq starting from -keystore *
       # {"-genkey      [-v] [-protected]",
-      # "-genkey      [-v] [-protected]"},
+      #        "-genkey      [-v] [-protected]"},
       # rest is same as -certreq starting from -keystore *
       # rest is same as -certreq starting from -keystore *
       # {"-identitydb  [-v] [-protected]",
-      # "-identitydb  [-v] [-protected]"},
+      #      "-identitydb  [-v] [-protected]"},
       # {"\t     [-file <idb_file>]", "\t     [-file <\u8fa8\u8b58\u8cc7\u6599\u5eab\u6a94\u6848>]"},
       # rest is same as -certreq starting from -keystore *
       # {"-import      [-v] [-noprompt] [-trustcacerts] [-protected]",
-      # "-import      [-v] [-noprompt] [-trustcacerts] [-protected]"},
+      #       "-import      [-v] [-noprompt] [-trustcacerts] [-protected]"},
       # rest is same as -certreq starting from -keystore *
       # \u884c\u592a\u9577\uff0c\u8acb\u5206\u70ba 2 \u884c
       # rest is same as -certreq starting from -keystore *
       # {"-keyclone    [-v] [-protected]",
-      # "-keyclone    [-v] [-protected]"},
+      #      "-keyclone    [-v] [-protected]"},
       # {"\t     [-alias <alias>] -dest <dest_alias>",
-      # "\t     [-alias <\u5225\u540d>] -dest <\u76ee\u6a19\u5225\u540d>"},
+      #      "\t     [-alias <\u5225\u540d>] -dest <\u76ee\u6a19\u5225\u540d>"},
       # {"\t     [-keypass <keypass>] [-new <new_keypass>]",
-      # "\t     [-keypass <\u4e3b\u5bc6\u78bc>] [-new <\u65b0\u4e3b\u5bc6\u78bc>]"},
+      #      "\t     [-keypass <\u4e3b\u5bc6\u78bc>] [-new <\u65b0\u4e3b\u5bc6\u78bc>]"},
       # rest is same as -certreq starting from -keystore *
       # rest is same as -certreq starting from -keystore *
       # rest is same as -certreq starting from -keystore *
       # {"-selfcert    [-v] [-protected]",
-      # "-selfcert    [-v] [-protected]"},
+      #      "-selfcert    [-v] [-protected]"},
       # {"\t     [-dname <dname>] [-validity <valDays>]",
-      # "\t     [-dname <\u7db2\u57df\u540d\u7a31>] [-validity <\u6709\u6548\u5929\u6578>]"},
+      #      "\t     [-dname <\u7db2\u57df\u540d\u7a31>] [-validity <\u6709\u6548\u5929\u6578>]"},
       # {"\t     [-keypass <keypass>] [-sigalg <sigalg>]",
-      # "\t     [-keypass <\u4e3b\u5bc6\u78bc>] [-sigalg <\u7c3d\u7ae0\u6f14\u7b97\u6cd5>]"},
+      #      "\t     [-keypass <\u4e3b\u5bc6\u78bc>] [-sigalg <\u7c3d\u7ae0\u6f14\u7b97\u6cd5>]"},
       # rest is same as -certreq starting from -keystore *
       # rest is same as -certreq starting from -keystore *
       # policytool

@@ -63,7 +63,7 @@ module Sun::Security::X509
       const_set_lazy(:Verf_INVALID_EXPIRED) { 4 }
       const_attr_reader  :Verf_INVALID_EXPIRED
       
-      # Indicates that a certificate authority in the certification
+      #  Indicates that a certificate authority in the certification
       # chain is not trusted.
       const_set_lazy(:Verf_CA_UNTRUSTED) { 5 }
       const_attr_reader  :Verf_CA_UNTRUSTED

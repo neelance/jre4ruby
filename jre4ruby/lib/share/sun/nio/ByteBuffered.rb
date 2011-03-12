@@ -51,10 +51,10 @@ module Sun::Nio
     # to return <tt>null</tt> for any reason.
     # 
     # @return  The <tt>ByteBuffer</tt>, if this particular instance has one,
-    # or <tt>null</tt> otherwise.
+    #          or <tt>null</tt> otherwise.
     # 
     # @throws  IOException
-    # If the ByteBuffer is no longer valid.
+    #          If the ByteBuffer is no longer valid.
     # 
     # @since  1.5
     def get_byte_buffer

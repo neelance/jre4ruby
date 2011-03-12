@@ -161,7 +161,7 @@ module Java::Security::Cert
     # <code>PKIXCertPathValidatorResult</code>.
     # 
     # @return a <code>String</code> describing the contents of this
-    # <code>PKIXCertPathValidatorResult</code>
+    #         <code>PKIXCertPathValidatorResult</code>
     def to_s
       sb = StringBuffer.new
       sb.append("PKIXCertPathValidatorResult: [\n")

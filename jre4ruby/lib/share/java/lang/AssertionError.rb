@@ -34,7 +34,7 @@ module Java::Lang
   # <p>The seven one-argument public constructors provided by this
   # class ensure that the assertion error returned by the invocation:
   # <pre>
-  # new AssertionError(<i>expression</i>)
+  #     new AssertionError(<i>expression</i>)
   # </pre>
   # has as its detail message the <i>string conversion</i> of
   # <i>expression</i> (as defined in <a
@@ -62,16 +62,16 @@ module Java::Lang
     end
     
     typesig { [Object] }
-    # Constructs an AssertionError with its detail message derived
-    # from the specified object, which is converted to a string as
-    # defined in <i>The Java Language Specification, Second
-    # Edition</i>, Section 15.18.1.1.
+    #  Constructs an AssertionError with its detail message derived
+    #  from the specified object, which is converted to a string as
+    #  defined in <i>The Java Language Specification, Second
+    #  Edition</i>, Section 15.18.1.1.
     # <p>
-    # If the specified object is an instance of <tt>Throwable</tt>, it
-    # becomes the <i>cause</i> of the newly constructed assertion error.
+    #  If the specified object is an instance of <tt>Throwable</tt>, it
+    #  becomes the <i>cause</i> of the newly constructed assertion error.
     # 
-    # @param detailMessage value to be used in constructing detail message
-    # @see   Throwable#getCause()
+    #  @param detailMessage value to be used in constructing detail message
+    #  @see   Throwable#getCause()
     def initialize(detail_message)
       initialize__assertion_error("" + RJava.cast_to_string(detail_message))
       if (detail_message.is_a?(JavaThrowable))

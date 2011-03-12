@@ -22,9 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996 - 2002 - All Rights Reserved
 # 
@@ -67,7 +64,6 @@ module Java::Text
       # =========================================================================
       # data members
       # =========================================================================
-      # 
       # The version of the dictionary that was read in.
       
       def supported_version
@@ -316,7 +312,6 @@ module Java::Text
     # =========================================================================
     # access to the words
     # =========================================================================
-    # 
     # Uses the column map to map the character to a column number, then
     # passes the row and column number to getNextState()
     # @param row The current state
@@ -365,12 +360,12 @@ module Java::Text
       # populated cell in the row
       if (@row_index_flags_index[row] < 0)
         return (col).equal?(-@row_index_flags_index[row])
-      # if it's a positive number, it's the offset of an entry in the bitmap
-      # list.  If the table is more than 32 columns wide, the bitmap is stored
-      # successive entries in the bitmap list, so we have to divide the column
-      # number by 32 and offset the number we got out of the index by the result.
-      # Once we have the appropriate piece of the bitmap, test the appropriate
-      # bit and return the result.
+        # if it's a positive number, it's the offset of an entry in the bitmap
+        # list.  If the table is more than 32 columns wide, the bitmap is stored
+        # successive entries in the bitmap list, so we have to divide the column
+        # number by 32 and offset the number we got out of the index by the result.
+        # Once we have the appropriate piece of the bitmap, test the appropriate
+        # bit and return the result.
       else
         flags = @row_index_flags[@row_index_flags_index[row] + (col >> 5)]
         return !((flags & (1 << (col & 0x1f)))).equal?(0)

@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5::Internal
@@ -44,10 +42,10 @@ module Sun::Security::Krb5::Internal
   # 
   # <xmp>
   # KRB-CRED     ::= [APPLICATION 22] SEQUENCE {
-  # pvno            [0] INTEGER (5),
-  # msg-type        [1] INTEGER (22),
-  # tickets         [2] SEQUENCE OF Ticket,
-  # enc-part        [3] EncryptedData -- EncKrbCredPart
+  #      pvno            [0] INTEGER (5),
+  #      msg-type        [1] INTEGER (22),
+  #      tickets         [2] SEQUENCE OF Ticket,
+  #      enc-part        [3] EncryptedData -- EncKrbCredPart
   # }
   # </xmp>
   # 
@@ -130,7 +128,7 @@ module Sun::Security::Krb5::Internal
     # @exception Asn1Exception if an error occurs while decoding an ASN1 encoded data.
     # @exception IOException if an I/O error occurs while reading encoded data.
     # @exception KrbApErrException if the value read from the DER-encoded data
-    # stream does not match the pre-defined value.
+    #  stream does not match the pre-defined value.
     # @exception RealmException if an error occurs while parsing a Realm object.
     def init(encoding)
       if ((!((encoding.get_tag & 0x1f)).equal?(0x16)) || (!(encoding.is_application).equal?(true)) || (!(encoding.is_constructed).equal?(true)))

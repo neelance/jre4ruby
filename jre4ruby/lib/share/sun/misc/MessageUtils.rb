@@ -136,6 +136,7 @@ module Sun::Misc
       
       typesig { [] }
       # Print a stack trace to stderr
+      # 
       def where
         t = JavaThrowable.new
         es = t.get_stack_trace

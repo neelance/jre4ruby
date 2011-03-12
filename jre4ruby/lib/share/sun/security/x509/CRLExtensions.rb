@@ -46,17 +46,17 @@ module Sun::Security::X509
   # which are defined are follows:
   # <pre>
   # TBSCertList  ::=  SEQUENCE  {
-  # version              Version OPTIONAL,   -- if present, must be v2
-  # signature            AlgorithmIdentifier,
-  # issuer               Name,
-  # thisUpdate           Time,
-  # nextUpdate           Time  OPTIONAL,
-  # revokedCertificates  SEQUENCE OF SEQUENCE  {
-  # userCertificate         CertificateSerialNumber,
-  # revocationDate          Time,
-  # crlEntryExtensions      Extensions OPTIONAL  -- if present, must be v2
-  # }  OPTIONAL,
-  # crlExtensions        [0] EXPLICIT Extensions OPTIONAL  -- if present, must be v2
+  #    version              Version OPTIONAL,   -- if present, must be v2
+  #    signature            AlgorithmIdentifier,
+  #    issuer               Name,
+  #    thisUpdate           Time,
+  #    nextUpdate           Time  OPTIONAL,
+  #    revokedCertificates  SEQUENCE OF SEQUENCE  {
+  #        userCertificate         CertificateSerialNumber,
+  #        revocationDate          Time,
+  #        crlEntryExtensions      Extensions OPTIONAL  -- if present, must be v2
+  #    }  OPTIONAL,
+  #    crlExtensions        [0] EXPLICIT Extensions OPTIONAL  -- if present, must be v2
   # }
   # </pre>
   # 
@@ -87,7 +87,7 @@ module Sun::Security::X509
     # Create the object, decoding the values from the passed DER stream.
     # 
     # @param in the DerInputStream to read the Extension from, i.e. the
-    # sequence of extensions.
+    #        sequence of extensions.
     # @exception CRLException on decoding errors.
     def initialize(in_)
       @map = Hashtable.new
@@ -215,7 +215,7 @@ module Sun::Security::X509
     # 
     # @param alias the identifier string for the extension to set.
     # @param obj the Object to set the extension identified by the
-    # alias.
+    #        alias.
     def set(alias_, obj)
       @map.put(alias_, obj)
     end

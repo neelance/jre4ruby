@@ -42,8 +42,8 @@ module Sun::Security::Mscapi
   # Objects should be instantiated by calling Cipher.getInstance() using the
   # following algorithm name:
   # 
-  # . "RSA/ECB/PKCS1Padding" (or "RSA") for PKCS#1 padding. The mode (blocktype)
-  # is selected based on the en/decryption mode and public/private key used.
+  #  . "RSA/ECB/PKCS1Padding" (or "RSA") for PKCS#1 padding. The mode (blocktype)
+  #    is selected based on the en/decryption mode and public/private key used.
   # 
   # We only do one RSA operation per doFinal() call. If the application passes
   # more data via calls to update() or doFinal(), we throw an

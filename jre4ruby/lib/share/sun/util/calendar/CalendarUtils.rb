@@ -121,11 +121,11 @@ module Sun::Util::Calendar
       # @return the floor of the quotient.
       def floor_divide(n, d, r)
         if (n >= 0)
-          r[0] = RJava.cast_to_int((n % d))
-          return RJava.cast_to_int((n / d))
+          r[0] = ((n % d)).to_int
+          return ((n / d)).to_int
         end
-        q = RJava.cast_to_int((((n + 1) / d) - 1))
-        r[0] = RJava.cast_to_int((n - (q * d)))
+        q = ((((n + 1) / d) - 1)).to_int
+        r[0] = ((n - (q * d))).to_int
         return q
       end
       

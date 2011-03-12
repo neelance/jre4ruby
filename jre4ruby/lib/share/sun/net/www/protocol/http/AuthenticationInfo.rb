@@ -44,13 +44,12 @@ module Sun::Net::Www::Protocol::Http
   # @author Jon Payne
   # @author Herb Jellinek
   # @author Bill Foote
-  # 
   # REMIND:  It would be nice if this class understood about partial matching.
-  # If you're authorized for foo.com, chances are high you're also
-  # authorized for baz.foo.com.
+  #      If you're authorized for foo.com, chances are high you're also
+  #      authorized for baz.foo.com.
   # NB:  When this gets implemented, be careful about the uncaching
-  # policy in HttpURLConnection.  A failure on baz.foo.com shouldn't
-  # uncache foo.com!
+  #      policy in HttpURLConnection.  A failure on baz.foo.com shouldn't
+  #      uncache foo.com!
   class AuthenticationInfo < AuthenticationInfoImports.const_get :AuthCacheValue
     include_class_members AuthenticationInfoImports
     overload_protected {
@@ -192,7 +191,7 @@ module Sun::Net::Www::Protocol::Http
     # return ("{"+type+":"+authType+":"+protocol+":"+host+":"+port+":"+realm+":"+path+"}");
     # }
     # REMIND:  This cache just grows forever.  We should put in a bounded
-    # cache, or maybe something using WeakRef's.
+    #          cache, or maybe something using WeakRef's.
     # The type (server/proxy) of authentication this is.  Used for key lookup
     attr_accessor :type
     alias_method :attr_type, :type
@@ -434,7 +433,7 @@ module Sun::Net::Www::Protocol::Http
     
     typesig { [] }
     # @return the name of the HTTP header this authentication wants set.
-    # This is used for preemptive authorization.
+    #          This is used for preemptive authorization.
     def get_header_name
       raise NotImplementedError
     end
@@ -446,7 +445,7 @@ module Sun::Net::Www::Protocol::Http
     # @param url The URL
     # @param method The request method
     # @return the value of the HTTP header this authentication wants set.
-    # Used for preemptive authorization.
+    #          Used for preemptive authorization.
     def get_header_value(url, method)
       raise NotImplementedError
     end
@@ -484,7 +483,7 @@ module Sun::Net::Www::Protocol::Http
     typesig { [::Java::Boolean] }
     # Give a key for hash table lookups.
     # @param includeRealm if you want the realm considered.  Preemptively
-    # setting an authorization is done before the realm is known.
+    #          setting an authorization is done before the realm is known.
     def cache_key(include_realm)
       # This must be kept in sync with the getXXXAuth() methods in this
       # class.

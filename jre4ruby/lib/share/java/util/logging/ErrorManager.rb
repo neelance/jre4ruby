@@ -48,8 +48,6 @@ module Java::Util::Logging
     
     class_module.module_eval {
       # We declare standard error codes for important categories of errors.
-      # 
-      # 
       # GENERIC_FAILURE is used for failure that don't fit
       # into one of the other categories.
       const_set_lazy(:GENERIC_FAILURE) { 0 }

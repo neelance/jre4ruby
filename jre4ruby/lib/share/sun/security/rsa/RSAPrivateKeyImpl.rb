@@ -73,7 +73,6 @@ module Sun::Security::Rsa
     
     typesig { [BigInteger, BigInteger] }
     # private exponent
-    # 
     # Construct a key from its components. Used by the
     # RSAKeyFactory and the RSAKeyPairGenerator.
     def initialize(n, d)

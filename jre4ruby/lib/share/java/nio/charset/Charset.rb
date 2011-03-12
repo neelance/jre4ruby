@@ -75,26 +75,26 @@ module Java::Nio::Charset
   # 
   # <ul>
   # 
-  # <li> The uppercase letters <tt>'A'</tt> through <tt>'Z'</tt>
-  # (<tt>'&#92;u0041'</tt>&nbsp;through&nbsp;<tt>'&#92;u005a'</tt>),
+  #   <li> The uppercase letters <tt>'A'</tt> through <tt>'Z'</tt>
+  #        (<tt>'&#92;u0041'</tt>&nbsp;through&nbsp;<tt>'&#92;u005a'</tt>),
   # 
-  # <li> The lowercase letters <tt>'a'</tt> through <tt>'z'</tt>
-  # (<tt>'&#92;u0061'</tt>&nbsp;through&nbsp;<tt>'&#92;u007a'</tt>),
+  #   <li> The lowercase letters <tt>'a'</tt> through <tt>'z'</tt>
+  #        (<tt>'&#92;u0061'</tt>&nbsp;through&nbsp;<tt>'&#92;u007a'</tt>),
   # 
-  # <li> The digits <tt>'0'</tt> through <tt>'9'</tt>
-  # (<tt>'&#92;u0030'</tt>&nbsp;through&nbsp;<tt>'&#92;u0039'</tt>),
+  #   <li> The digits <tt>'0'</tt> through <tt>'9'</tt>
+  #        (<tt>'&#92;u0030'</tt>&nbsp;through&nbsp;<tt>'&#92;u0039'</tt>),
   # 
-  # <li> The dash character <tt>'-'</tt>
-  # (<tt>'&#92;u002d'</tt>,&nbsp;<small>HYPHEN-MINUS</small>),
+  #   <li> The dash character <tt>'-'</tt>
+  #        (<tt>'&#92;u002d'</tt>,&nbsp;<small>HYPHEN-MINUS</small>),
   # 
-  # <li> The period character <tt>'.'</tt>
-  # (<tt>'&#92;u002e'</tt>,&nbsp;<small>FULL STOP</small>),
+  #   <li> The period character <tt>'.'</tt>
+  #        (<tt>'&#92;u002e'</tt>,&nbsp;<small>FULL STOP</small>),
   # 
-  # <li> The colon character <tt>':'</tt>
-  # (<tt>'&#92;u003a'</tt>,&nbsp;<small>COLON</small>), and
+  #   <li> The colon character <tt>':'</tt>
+  #        (<tt>'&#92;u003a'</tt>,&nbsp;<small>COLON</small>), and
   # 
-  # <li> The underscore character <tt>'_'</tt>
-  # (<tt>'&#92;u005f'</tt>,&nbsp;<small>LOW&nbsp;LINE</small>).
+  #   <li> The underscore character <tt>'_'</tt>
+  #        (<tt>'&#92;u005f'</tt>,&nbsp;<small>LOW&nbsp;LINE</small>).
   # 
   # </ul>
   # 
@@ -150,21 +150,21 @@ module Java::Nio::Charset
   # <blockquote><table width="80%" summary="Description of standard charsets">
   # <tr><th><p align="left">Charset</p></th><th><p align="left">Description</p></th></tr>
   # <tr><td valign=top><tt>US-ASCII</tt></td>
-  # <td>Seven-bit ASCII, a.k.a. <tt>ISO646-US</tt>,
-  # a.k.a. the Basic Latin block of the Unicode character set</td></tr>
+  #     <td>Seven-bit ASCII, a.k.a. <tt>ISO646-US</tt>,
+  #         a.k.a. the Basic Latin block of the Unicode character set</td></tr>
   # <tr><td valign=top><tt>ISO-8859-1&nbsp;&nbsp;</tt></td>
-  # <td>ISO Latin Alphabet No. 1, a.k.a. <tt>ISO-LATIN-1</tt></td></tr>
+  #     <td>ISO Latin Alphabet No. 1, a.k.a. <tt>ISO-LATIN-1</tt></td></tr>
   # <tr><td valign=top><tt>UTF-8</tt></td>
-  # <td>Eight-bit UCS Transformation Format</td></tr>
+  #     <td>Eight-bit UCS Transformation Format</td></tr>
   # <tr><td valign=top><tt>UTF-16BE</tt></td>
-  # <td>Sixteen-bit UCS Transformation Format,
-  # big-endian byte&nbsp;order</td></tr>
+  #     <td>Sixteen-bit UCS Transformation Format,
+  #         big-endian byte&nbsp;order</td></tr>
   # <tr><td valign=top><tt>UTF-16LE</tt></td>
-  # <td>Sixteen-bit UCS Transformation Format,
-  # little-endian byte&nbsp;order</td></tr>
+  #     <td>Sixteen-bit UCS Transformation Format,
+  #         little-endian byte&nbsp;order</td></tr>
   # <tr><td valign=top><tt>UTF-16</tt></td>
-  # <td>Sixteen-bit UCS Transformation Format,
-  # byte&nbsp;order identified by an optional byte-order mark</td></tr>
+  #     <td>Sixteen-bit UCS Transformation Format,
+  #         byte&nbsp;order identified by an optional byte-order mark</td></tr>
   # </table></blockquote>
   # 
   # <p> The <tt>UTF-8</tt> charset is specified by <a
@@ -189,14 +189,14 @@ module Java::Nio::Charset
   # 
   # <ul>
   # 
-  # <li><p> When decoding, the <tt>UTF-16BE</tt> and <tt>UTF-16LE</tt>
-  # charsets ignore byte-order marks; when encoding, they do not write
-  # byte-order marks. </p></li>
+  #   <li><p> When decoding, the <tt>UTF-16BE</tt> and <tt>UTF-16LE</tt>
+  #   charsets ignore byte-order marks; when encoding, they do not write
+  #   byte-order marks. </p></li>
   # 
-  # <li><p> When decoding, the <tt>UTF-16</tt> charset interprets a byte-order
-  # mark to indicate the byte order of the stream but defaults to big-endian
-  # if there is no byte-order mark; when encoding, it uses big-endian byte
-  # order and writes a big-endian byte-order mark. </p></li>
+  #   <li><p> When decoding, the <tt>UTF-16</tt> charset interprets a byte-order
+  #   mark to indicate the byte order of the stream but defaults to big-endian
+  #   if there is no byte-order mark; when encoding, it uses big-endian byte
+  #   order and writes a big-endian byte-order mark. </p></li>
   # 
   # </ul>
   # 
@@ -290,10 +290,10 @@ module Java::Nio::Charset
       # Checks that the given string is a legal charset name. </p>
       # 
       # @param  s
-      # A purported charset name
+      #         A purported charset name
       # 
       # @throws  IllegalCharsetNameException
-      # If the given name is not a legal charset name
+      #          If the given name is not a legal charset name
       def check_name(s)
         n = s.length
         if (!at_bug_level("1.4"))
@@ -351,6 +351,7 @@ module Java::Nio::Charset
       
       # Cache of the most-recently-returned charsets,
       # along with the names that were used to find them
+      # 
       
       def cache1
         defined?(@@cache1) ? @@cache1 : @@cache1= nil
@@ -385,6 +386,7 @@ module Java::Nio::Charset
       # Creates an iterator that walks over the available providers, ignoring
       # those whose lookup or instantiation causes a security exception to be
       # thrown.  Should be invoked with full privileges.
+      # 
       def providers
         return Class.new(Iterator.class == Class ? Iterator : Object) do
           local_class_in Charset
@@ -493,6 +495,7 @@ module Java::Nio::Charset
         # however, so we can't look for providers because doing so will cause
         # that loader to be prematurely initialized with incomplete
         # information.
+        # 
         if (!Sun::Misc::VM.is_booted)
           return nil
         end
@@ -650,17 +653,17 @@ module Java::Nio::Charset
       # Tells whether the named charset is supported. </p>
       # 
       # @param  charsetName
-      # The name of the requested charset; may be either
-      # a canonical name or an alias
+      #         The name of the requested charset; may be either
+      #         a canonical name or an alias
       # 
       # @return  <tt>true</tt> if, and only if, support for the named charset
-      # is available in the current Java virtual machine
+      #          is available in the current Java virtual machine
       # 
       # @throws IllegalCharsetNameException
-      # If the given charset name is illegal
+      #         If the given charset name is illegal
       # 
       # @throws  IllegalArgumentException
-      # If the given <tt>charsetName</tt> is null
+      #          If the given <tt>charsetName</tt> is null
       def is_supported(charset_name)
         return (!(lookup(charset_name)).nil?)
       end
@@ -669,20 +672,20 @@ module Java::Nio::Charset
       # Returns a charset object for the named charset. </p>
       # 
       # @param  charsetName
-      # The name of the requested charset; may be either
-      # a canonical name or an alias
+      #         The name of the requested charset; may be either
+      #         a canonical name or an alias
       # 
       # @return  A charset object for the named charset
       # 
       # @throws  IllegalCharsetNameException
-      # If the given charset name is illegal
+      #          If the given charset name is illegal
       # 
       # @throws  IllegalArgumentException
-      # If the given <tt>charsetName</tt> is null
+      #          If the given <tt>charsetName</tt> is null
       # 
       # @throws  UnsupportedCharsetException
-      # If no support for the named charset is available
-      # in this instance of the Java virtual machine
+      #          If no support for the named charset is available
+      #          in this instance of the Java virtual machine
       def for_name(charset_name)
         cs = lookup(charset_name)
         if (!(cs).nil?)
@@ -694,6 +697,7 @@ module Java::Nio::Charset
       typesig { [Iterator, Map] }
       # Fold charsets from the given iterator into the given map, ignoring
       # charsets whose names already have entries in the map.
+      # 
       def put(i, m)
         while (i.has_next)
           cs = i.next_
@@ -727,7 +731,7 @@ module Java::Nio::Charset
       # #forName forName} method.  </p>
       # 
       # @return An immutable, case-insensitive map from canonical charset names
-      # to charset objects
+      #         to charset objects
       def available_charsets
         return AccessController.do_privileged(Class.new(PrivilegedAction.class == Class ? PrivilegedAction : Object) do
           local_class_in Charset
@@ -819,13 +823,13 @@ module Java::Nio::Charset
     # set. </p>
     # 
     # @param  canonicalName
-    # The canonical name of this charset
+    #         The canonical name of this charset
     # 
     # @param  aliases
-    # An array of this charset's aliases, or null if it has no aliases
+    #         An array of this charset's aliases, or null if it has no aliases
     # 
     # @throws IllegalCharsetNameException
-    # If the canonical name or any of the aliases are illegal
+    #         If the canonical name or any of the aliases are illegal
     def initialize(canonical_name, aliases)
       @name = nil
       @aliases = nil
@@ -886,7 +890,7 @@ module Java::Nio::Charset
     # Registry</a>.  </p>
     # 
     # @return  <tt>true</tt> if, and only if, this charset is known by its
-    # implementor to be registered with the IANA
+    #          implementor to be registered with the IANA
     def is_registered
       return !@name.starts_with("X-") && !@name.starts_with("x-")
     end
@@ -899,7 +903,7 @@ module Java::Nio::Charset
     # override this method in order to provide a localized display name. </p>
     # 
     # @param  locale
-    # The locale for which the display name is to be retrieved
+    #         The locale for which the display name is to be retrieved
     # 
     # @return  The display name of this charset in the given locale
     def display_name(locale)
@@ -947,7 +951,7 @@ module Java::Nio::Charset
     # @return  A new encoder for this charset
     # 
     # @throws  UnsupportedOperationException
-    # If this charset does not support encoding
+    #          If this charset does not support encoding
     def new_encoder
       raise NotImplementedError
     end
@@ -976,10 +980,10 @@ module Java::Nio::Charset
     # same result as the expression
     # 
     # <pre>
-    # cs.newDecoder()
-    # .onMalformedInput(CodingErrorAction.REPLACE)
-    # .onUnmappableCharacter(CodingErrorAction.REPLACE)
-    # .decode(bb); </pre>
+    #     cs.newDecoder()
+    #       .onMalformedInput(CodingErrorAction.REPLACE)
+    #       .onUnmappableCharacter(CodingErrorAction.REPLACE)
+    #       .decode(bb); </pre>
     # 
     # except that it is potentially more efficient because it can cache
     # decoders between successive invocations.
@@ -1008,10 +1012,10 @@ module Java::Nio::Charset
     # same result as the expression
     # 
     # <pre>
-    # cs.newEncoder()
-    # .onMalformedInput(CodingErrorAction.REPLACE)
-    # .onUnmappableCharacter(CodingErrorAction.REPLACE)
-    # .encode(bb); </pre>
+    #     cs.newEncoder()
+    #       .onMalformedInput(CodingErrorAction.REPLACE)
+    #       .onUnmappableCharacter(CodingErrorAction.REPLACE)
+    #       .encode(bb); </pre>
     # 
     # except that it is potentially more efficient because it can cache
     # encoders between successive invocations.
@@ -1039,7 +1043,7 @@ module Java::Nio::Charset
     # same result as the expression
     # 
     # <pre>
-    # cs.encode(CharBuffer.wrap(s)); </pre>
+    #     cs.encode(CharBuffer.wrap(s)); </pre>
     # 
     # @param  str  The string to be encoded
     # 
@@ -1055,10 +1059,10 @@ module Java::Nio::Charset
     # case. </p>
     # 
     # @param  that
-    # The charset to which this charset is to be compared
+    #         The charset to which this charset is to be compared
     # 
     # @return A negative integer, zero, or a positive integer as this charset
-    # is less than, equal to, or greater than the specified charset
+    #         is less than, equal to, or greater than the specified charset
     def compare_to(that)
       return (name.compare_to_ignore_case(that.name))
     end
@@ -1078,7 +1082,7 @@ module Java::Nio::Charset
     # names.  A charset is never equal to any other type of object.  </p>
     # 
     # @return  <tt>true</tt> if, and only if, this charset is equal to the
-    # given object
+    #          given object
     def ==(ob)
       if (!(ob.is_a?(Charset)))
         return false

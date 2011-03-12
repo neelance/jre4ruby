@@ -118,7 +118,7 @@ module Sun::Security::Jgss::Krb5
     undef_method :data_len=
     
     # the len of the token data:
-    # (confounder || data || tokenHeader || checksum)
+    #          (confounder || data || tokenHeader || checksum)
     attr_accessor :data_size
     alias_method :attr_data_size, :data_size
     undef_method :data_size
@@ -156,7 +156,6 @@ module Sun::Security::Jgss::Krb5
     # parsed token will be stored.
     # @throws GSSException if the token is defective
     def initialize(context, token_bytes, token_offset, token_len, prop)
-      # Just parse the MessageToken part first
       @read_token_from_input_stream = false
       @is = nil
       @token_bytes = nil
@@ -182,6 +181,7 @@ module Sun::Security::Jgss::Krb5
       @confounder = nil
       @privacy = false
       @initiator = true
+      # Just parse the MessageToken part first
       @read_token_from_input_stream = false
       # rotate token bytes as per RRC
       new_token_bytes = Array.typed(::Java::Byte).new(token_len) { 0 }
@@ -211,7 +211,6 @@ module Sun::Security::Jgss::Krb5
     # @throws GSSException if the token is defective or if there is
     # a problem reading from the InputStream
     def initialize(context, is, prop)
-      # Just parse the MessageToken part first
       @read_token_from_input_stream = false
       @is = nil
       @token_bytes = nil
@@ -237,6 +236,7 @@ module Sun::Security::Jgss::Krb5
       @confounder = nil
       @privacy = false
       @initiator = true
+      # Just parse the MessageToken part first
       # Will need the token bytes again when extracting data
       @is = is
       @privacy = prop.get_privacy
@@ -308,17 +308,17 @@ module Sun::Security::Jgss::Krb5
         raise GSSException.new(GSSException::DEFECTIVE_TOKEN, -1, "Insufficient data in " + RJava.cast_to_string(get_token_name(get_token_id)))
       end
       # debug("WrapToken cons: data is token is [" +
-      # getHexBytes(tokenBytes, tokenOffset, tokenLen) + "]\n");
+      #      getHexBytes(tokenBytes, tokenOffset, tokenLen) + "]\n");
       @confounder = Array.typed(::Java::Byte).new(CONFOUNDER_SIZE) { 0 }
       # Do decryption if this token was privacy protected.
       if (@privacy)
         # decrypt data
         self.attr_cipher_helper.decrypt_data(self, @token_bytes, data_pos, @data_size, data_buf, data_buf_offset, get_key_usage)
         # debug("\t\tDecrypted data is [" +
-        # getHexBytes(confounder) + " " +
-        # getHexBytes(dataBuf, dataBufOffset,
-        # dataSize - CONFOUNDER_SIZE) +
-        # "]\n");
+        #     getHexBytes(confounder) + " " +
+        #     getHexBytes(dataBuf, dataBufOffset,
+        #     dataSize - CONFOUNDER_SIZE) +
+        #     "]\n");
         data_length = @data_size - CONFOUNDER_SIZE - TOKEN_HEADER_SIZE - self.attr_cipher_helper.get_checksum_length
       else
         # Token data is in cleartext
@@ -327,7 +327,6 @@ module Sun::Security::Jgss::Krb5
         data_length = @data_size - self.attr_cipher_helper.get_checksum_length
         System.arraycopy(@token_bytes, data_pos, data_buf, data_buf_offset, data_length)
         # debug("\t\tData is: " + getHexBytes(dataBuf, data_length));
-        # 
         # Make sure checksum is not corrupt
         if (!verify_sign(data_buf, data_buf_offset, data_length))
           raise GSSException.new(GSSException::BAD_MIC, -1, "Corrupt checksum in Wrap token")
@@ -355,10 +354,10 @@ module Sun::Security::Jgss::Krb5
         if (@privacy)
           self.attr_cipher_helper.decrypt_data(self, @is, @data_size, data_buf, data_buf_offset, get_key_usage)
           # debug("\t\tDecrypted data is [" +
-          # getHexBytes(confounder) + " " +
-          # getHexBytes(dataBuf, dataBufOffset,
-          # dataSize - CONFOUNDER_SIZE) +
-          # "]\n");
+          #      getHexBytes(confounder) + " " +
+          #      getHexBytes(dataBuf, dataBufOffset,
+          #   dataSize - CONFOUNDER_SIZE) +
+          #      "]\n");
           data_length = @data_size - CONFOUNDER_SIZE - TOKEN_HEADER_SIZE - self.attr_cipher_helper.get_checksum_length
         else
           # Token data is in cleartext
@@ -440,7 +439,7 @@ module Sun::Security::Jgss::Krb5
         os.write(@data_bytes, @data_offset, @data_len)
         # write HMAC
         # debug(" " + getHexBytes(checksum,
-        # cipherHelper.getChecksumLength()));
+        #                  cipherHelper.getChecksumLength()));
         os.write(checksum)
       else
         # Wrap Tokens (with confidentiality) =
@@ -482,7 +481,7 @@ module Sun::Security::Jgss::Krb5
         offset += @data_len
         # write HMAC
         # debug(" " + getHexBytes(checksum,
-        # cipherHelper.getChecksumLength()));
+        #                  cipherHelper.getChecksumLength()));
         System.arraycopy(checksum, 0, out_token, offset, self.attr_cipher_helper.get_checksum_length)
         ret_val = header.attr_length + @data_len + self.attr_cipher_helper.get_checksum_length
       else
@@ -509,7 +508,6 @@ module Sun::Security::Jgss::Krb5
       # This implementation is way to conservative. And it certainly
       # doesn't return the maximum limit.
       def get_size_limit(qop, conf_req, max_token_size, ch)
-        # safety
         return (GSSHeader.get_max_mech_token_size(OID, max_token_size) - (get_token_size(ch) + CONFOUNDER_SIZE) - 8)
       end
     }

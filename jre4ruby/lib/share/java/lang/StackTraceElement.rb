@@ -73,19 +73,19 @@ module Java::Lang
     # point.
     # 
     # @param declaringClass the fully qualified name of the class containing
-    # the execution point represented by the stack trace element
+    #        the execution point represented by the stack trace element
     # @param methodName the name of the method containing the execution point
-    # represented by the stack trace element
+    #        represented by the stack trace element
     # @param fileName the name of the file containing the execution point
-    # represented by the stack trace element, or <tt>null</tt> if
-    # this information is unavailable
+    #         represented by the stack trace element, or <tt>null</tt> if
+    #         this information is unavailable
     # @param lineNumber the line number of the source line containing the
-    # execution point represented by this stack trace element, or
-    # a negative number if this information is unavailable. A value
-    # of -2 indicates that the method containing the execution point
-    # is a native method
+    #         execution point represented by this stack trace element, or
+    #         a negative number if this information is unavailable. A value
+    #         of -2 indicates that the method containing the execution point
+    #         is a native method
     # @throws NullPointerException if <tt>declaringClass</tt> or
-    # <tt>methodName</tt> is null
+    #         <tt>methodName</tt> is null
     # @since 1.5
     def initialize(declaring_class, method_name, file_name, line_number)
       @declaring_class = nil
@@ -113,8 +113,8 @@ module Java::Lang
     # other than a file, such as an entry in source repository.
     # 
     # @return the name of the file containing the execution point
-    # represented by this stack trace element, or <tt>null</tt> if
-    # this information is unavailable.
+    #         represented by this stack trace element, or <tt>null</tt> if
+    #         this information is unavailable.
     def get_file_name
       return @file_name
     end
@@ -127,8 +127,8 @@ module Java::Lang
     # Specification</i>, Section 4.7.8).
     # 
     # @return the line number of the source line containing the execution
-    # point represented by this stack trace element, or a negative
-    # number if this information is unavailable.
+    #         point represented by this stack trace element, or a negative
+    #         number if this information is unavailable.
     def get_line_number
       return @line_number
     end
@@ -138,7 +138,7 @@ module Java::Lang
     # execution point represented by this stack trace element.
     # 
     # @return the fully qualified name of the <tt>Class</tt> containing
-    # the execution point represented by this stack trace element.
+    #         the execution point represented by this stack trace element.
     def get_class_name
       return @declaring_class
     end
@@ -152,7 +152,7 @@ module Java::Lang
     # Machine Specification</i>.
     # 
     # @return the name of the method containing the execution point
-    # represented by this stack trace element.
+    #         represented by this stack trace element.
     def get_method_name
       return @method_name
     end
@@ -162,7 +162,7 @@ module Java::Lang
     # represented by this stack trace element is a native method.
     # 
     # @return <tt>true</tt> if the method containing the execution point
-    # represented by this stack trace element is a native method.
+    #         represented by this stack trace element is a native method.
     def is_native_method
       return (@line_number).equal?(-2)
     end
@@ -173,23 +173,23 @@ module Java::Lang
     # examples may be regarded as typical:
     # <ul>
     # <li>
-    # <tt>"MyClass.mash(MyClass.java:9)"</tt> - Here, <tt>"MyClass"</tt>
-    # is the <i>fully-qualified name</i> of the class containing the
-    # execution point represented by this stack trace element,
-    # <tt>"mash"</tt> is the name of the method containing the execution
-    # point, <tt>"MyClass.java"</tt> is the source file containing the
-    # execution point, and <tt>"9"</tt> is the line number of the source
-    # line containing the execution point.
+    #   <tt>"MyClass.mash(MyClass.java:9)"</tt> - Here, <tt>"MyClass"</tt>
+    #   is the <i>fully-qualified name</i> of the class containing the
+    #   execution point represented by this stack trace element,
+    #   <tt>"mash"</tt> is the name of the method containing the execution
+    #   point, <tt>"MyClass.java"</tt> is the source file containing the
+    #   execution point, and <tt>"9"</tt> is the line number of the source
+    #   line containing the execution point.
     # <li>
-    # <tt>"MyClass.mash(MyClass.java)"</tt> - As above, but the line
-    # number is unavailable.
+    #   <tt>"MyClass.mash(MyClass.java)"</tt> - As above, but the line
+    #   number is unavailable.
     # <li>
-    # <tt>"MyClass.mash(Unknown Source)"</tt> - As above, but neither
-    # the file name nor the line  number are available.
+    #   <tt>"MyClass.mash(Unknown Source)"</tt> - As above, but neither
+    #   the file name nor the line  number are available.
     # <li>
-    # <tt>"MyClass.mash(Native Method)"</tt> - As above, but neither
-    # the file name nor the line  number are available, and the method
-    # containing the execution point is known to be a native method.
+    #   <tt>"MyClass.mash(Native Method)"</tt> - As above, but neither
+    #   the file name nor the line  number are available, and the method
+    #   containing the execution point is known to be a native method.
     # </ul>
     # @see    Throwable#printStackTrace()
     def to_s
@@ -202,22 +202,22 @@ module Java::Lang
     # point as this instance.  Two stack trace elements <tt>a</tt> and
     # <tt>b</tt> are equal if and only if:
     # <pre>
-    # equals(a.getFileName(), b.getFileName()) &&
-    # a.getLineNumber() == b.getLineNumber()) &&
-    # equals(a.getClassName(), b.getClassName()) &&
-    # equals(a.getMethodName(), b.getMethodName())
+    #     equals(a.getFileName(), b.getFileName()) &&
+    #     a.getLineNumber() == b.getLineNumber()) &&
+    #     equals(a.getClassName(), b.getClassName()) &&
+    #     equals(a.getMethodName(), b.getMethodName())
     # </pre>
     # where <tt>equals</tt> is defined as:
     # <pre>
-    # static boolean equals(Object a, Object b) {
-    # return a==b || (a != null && a.equals(b));
-    # }
+    #     static boolean equals(Object a, Object b) {
+    #         return a==b || (a != null && a.equals(b));
+    #     }
     # </pre>
     # 
     # @param  obj the object to be compared with this stack trace element.
     # @return true if the specified object is another
-    # <tt>StackTraceElement</tt> instance representing the same
-    # execution point as this instance.
+    #         <tt>StackTraceElement</tt> instance representing the same
+    #         execution point as this instance.
     def ==(obj)
       if ((obj).equal?(self))
         return true

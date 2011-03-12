@@ -62,8 +62,8 @@ module Java::Lang::Annotation
     # 
     # @param element the <tt>Method</tt> object for the annotation element
     # @param foundType the (erroneous) type of data found in the annotation.
-    # This string may, but is not required to, contain the value
-    # as well.  The exact format of the string is unspecified.
+    #        This string may, but is not required to, contain the value
+    #        as well.  The exact format of the string is unspecified.
     def initialize(element, found_type)
       @element = nil
       @found_type = nil

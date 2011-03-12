@@ -171,7 +171,7 @@ module Java::Lang
       # 
       # @param   angdeg   an angle, in degrees
       # @return  the measurement of the angle {@code angdeg}
-      # in radians.
+      #          in radians.
       def to_radians(angdeg)
         return angdeg / 180.0 * PI
       end
@@ -185,7 +185,7 @@ module Java::Lang
       # 
       # @param   angrad   an angle, in radians
       # @return  the measurement of the angle {@code angrad}
-      # in degrees.
+      #          in degrees.
       def to_degrees(angrad)
         return angrad * 180.0 / PI
       end
@@ -202,7 +202,7 @@ module Java::Lang
       # 
       # @param   a   the exponent to raise <i>e</i> to.
       # @return  the value <i>e</i><sup>{@code a}</sup>,
-      # where <i>e</i> is the base of the natural logarithms.
+      #          where <i>e</i> is the base of the natural logarithms.
       def exp(a)
         JNI.call_native_method(:Java_java_lang_StrictMath_exp, JNI.env, self.jni_id, a)
       end
@@ -220,7 +220,7 @@ module Java::Lang
       # 
       # @param   a   a value
       # @return  the value ln&nbsp;{@code a}, the natural logarithm of
-      # {@code a}.
+      #          {@code a}.
       def log(a)
         JNI.call_native_method(:Java_java_lang_StrictMath_log, JNI.env, self.jni_id, a)
       end
@@ -315,7 +315,7 @@ module Java::Lang
       # @param   f1   the dividend.
       # @param   f2   the divisor.
       # @return  the remainder when {@code f1} is divided by
-      # {@code f2}.
+      #          {@code f2}.
       def _ieeeremainder(f1, f2)
         JNI.call_native_method(:Java_java_lang_StrictMath_IEEEremainder, JNI.env, self.jni_id, f1, f2)
       end
@@ -336,8 +336,8 @@ module Java::Lang
       # 
       # @param   a   a value.
       # @return  the smallest (closest to negative infinity)
-      # floating-point value that is greater than or equal to
-      # the argument and is equal to a mathematical integer.
+      #          floating-point value that is greater than or equal to
+      #          the argument and is equal to a mathematical integer.
       def ceil(a)
         JNI.call_native_method(:Java_java_lang_StrictMath_ceil, JNI.env, self.jni_id, a)
       end
@@ -355,8 +355,8 @@ module Java::Lang
       # 
       # @param   a   a value.
       # @return  the largest (closest to positive infinity)
-      # floating-point value that less than or equal to the argument
-      # and is equal to a mathematical integer.
+      #          floating-point value that less than or equal to the argument
+      #          and is equal to a mathematical integer.
       def floor(a)
         JNI.call_native_method(:Java_java_lang_StrictMath_floor, JNI.env, self.jni_id, a)
       end
@@ -374,7 +374,7 @@ module Java::Lang
       # 
       # @param   a   a value.
       # @return  the closest floating-point value to {@code a} that is
-      # equal to a mathematical integer.
+      #          equal to a mathematical integer.
       # @author Joseph D. Darcy
       def rint(a)
         # If the absolute value of a is not less than 2^52, it
@@ -456,9 +456,9 @@ module Java::Lang
       # @param   y   the ordinate coordinate
       # @param   x   the abscissa coordinate
       # @return  the <i>theta</i> component of the point
-      # (<i>r</i>,&nbsp;<i>theta</i>)
-      # in polar coordinates that corresponds to the point
-      # (<i>x</i>,&nbsp;<i>y</i>) in Cartesian coordinates.
+      #          (<i>r</i>,&nbsp;<i>theta</i>)
+      #          in polar coordinates that corresponds to the point
+      #          (<i>x</i>,&nbsp;<i>y</i>) in Cartesian coordinates.
       def atan2(y, x)
         JNI.call_native_method(:Java_java_lang_StrictMath_atan2, JNI.env, self.jni_id, y, x)
       end
@@ -605,11 +605,11 @@ module Java::Lang
       # 
       # @param   a   a floating-point value to be rounded to an integer.
       # @return  the value of the argument rounded to the nearest
-      # {@code int} value.
+      #          {@code int} value.
       # @see     java.lang.Integer#MAX_VALUE
       # @see     java.lang.Integer#MIN_VALUE
       def round(a)
-        return RJava.cast_to_int(floor(a + 0.5))
+        return (floor(a + 0.5)).to_int
       end
       
       typesig { [::Java::Double] }
@@ -629,9 +629,9 @@ module Java::Lang
       # equal to the value of {@code Long.MAX_VALUE}.</ul>
       # 
       # @param   a  a floating-point value to be rounded to a
-      # {@code long}.
+      #          {@code long}.
       # @return  the value of the argument rounded to the nearest
-      # {@code long} value.
+      #          {@code long} value.
       # @see     java.lang.Long#MAX_VALUE
       # @see     java.lang.Long#MIN_VALUE
       def round(a)
@@ -980,7 +980,7 @@ module Java::Lang
       # <ul>
       # <li> If the argument is NaN, then the result is NaN.
       # <li> If the argument is positive zero or negative zero, then the
-      # result is the same as the argument.
+      #      result is the same as the argument.
       # </ul>
       # 
       # @param d the floating-point value whose signum is to be returned
@@ -1000,7 +1000,7 @@ module Java::Lang
       # <ul>
       # <li> If the argument is NaN, then the result is NaN.
       # <li> If the argument is positive zero or negative zero, then the
-      # result is the same as the argument.
+      #      result is the same as the argument.
       # </ul>
       # 
       # @param f the floating-point value whose signum is to be returned
@@ -1145,7 +1145,7 @@ module Java::Lang
       # </ul>
       # 
       # @param   x   the exponent to raise <i>e</i> to in the computation of
-      # <i>e</i><sup>{@code x}</sup>&nbsp;-1.
+      #              <i>e</i><sup>{@code x}</sup>&nbsp;-1.
       # @return  the value <i>e</i><sup>{@code x}</sup>&nbsp;-&nbsp;1.
       # @since 1.5
       def expm1(x)

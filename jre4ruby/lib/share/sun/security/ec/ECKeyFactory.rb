@@ -38,16 +38,16 @@ module Sun::Security::Ec
   # between the following:
   # 
   # For public keys:
-  # . PublicKey with an X.509 encoding
-  # . ECPublicKey
-  # . ECPublicKeySpec
-  # . X509EncodedKeySpec
+  #  . PublicKey with an X.509 encoding
+  #  . ECPublicKey
+  #  . ECPublicKeySpec
+  #  . X509EncodedKeySpec
   # 
   # For private keys:
-  # . PrivateKey with a PKCS#8 encoding
-  # . ECPrivateKey
-  # . ECPrivateKeySpec
-  # . PKCS8EncodedKeySpec
+  #  . PrivateKey with a PKCS#8 encoding
+  #  . ECPrivateKey
+  #  . ECPrivateKeySpec
+  #  . PKCS8EncodedKeySpec
   # 
   # @since   1.6
   # @author  Andreas Sterbenz

@@ -261,7 +261,7 @@ module Sun::Security::Pkcs11
       key_type = 0
       if ((@algorithm == "RSA"))
         key_type = CKK_RSA
-        public_key_template = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_MODULUS_BITS, @key_size), CK_ATTRIBUTE.new(CKA_PUBLIC_EXPONENT, @rsa_public_exponent), ])
+        public_key_template = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_MODULUS_BITS, @key_size), CK_ATTRIBUTE.new(CKA_PUBLIC_EXPONENT, @rsa_public_exponent)])
         # empty
         private_key_template = Array.typed(CK_ATTRIBUTE).new([])
       else
@@ -277,7 +277,7 @@ module Sun::Security::Pkcs11
           else
             dsa_params = @params
           end
-          public_key_template = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_PRIME, dsa_params.get_p), CK_ATTRIBUTE.new(CKA_SUBPRIME, dsa_params.get_q), CK_ATTRIBUTE.new(CKA_BASE, dsa_params.get_g), ])
+          public_key_template = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_PRIME, dsa_params.get_p), CK_ATTRIBUTE.new(CKA_SUBPRIME, dsa_params.get_q), CK_ATTRIBUTE.new(CKA_BASE, dsa_params.get_g)])
           # empty
           private_key_template = Array.typed(CK_ATTRIBUTE).new([])
         else
@@ -301,12 +301,12 @@ module Sun::Security::Pkcs11
               private_bits = (@key_size >= 1024) ? 768 : 512
             end
             public_key_template = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_PRIME, dh_params.get_p), CK_ATTRIBUTE.new(CKA_BASE, dh_params.get_g)])
-            private_key_template = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_VALUE_BITS, private_bits), ])
+            private_key_template = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_VALUE_BITS, private_bits)])
           else
             if ((@algorithm == "EC"))
               key_type = CKK_EC
               encoded_params = P11ECKeyFactory.encode_parameters(@params)
-              public_key_template = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_EC_PARAMS, encoded_params), ])
+              public_key_template = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_EC_PARAMS, encoded_params)])
               # empty
               private_key_template = Array.typed(CK_ATTRIBUTE).new([])
             else

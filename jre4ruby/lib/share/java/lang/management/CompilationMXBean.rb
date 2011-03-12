@@ -44,14 +44,14 @@ module Java::Lang::Management
   # <p>The <tt>ObjectName</tt> for uniquely identifying the MXBean for
   # the compilation system within an MBeanServer is:
   # <blockquote>
-  # {@link ManagementFactory#COMPILATION_MXBEAN_NAME
-  # <tt>java.lang:type=Compilation</tt>}
+  #  {@link ManagementFactory#COMPILATION_MXBEAN_NAME
+  #         <tt>java.lang:type=Compilation</tt>}
   # </blockquote>
   # 
   # @see <a href="../../../javax/management/package-summary.html">
-  # JMX Specification.</a>
+  #      JMX Specification.</a>
   # @see <a href="package-summary.html#examples">
-  # Ways to Access MXBeans</a>
+  #      Ways to Access MXBeans</a>
   # 
   # @author  Mandy Chung
   # @since   1.5

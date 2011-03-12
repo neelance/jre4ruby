@@ -123,7 +123,6 @@ module Java::Security::Cert
     
     typesig { [String] }
     # the type of certificates in this chain
-    # 
     # Creates a <code>CertPath</code> of the specified type.
     # <p>
     # This constructor is protected because most users should use a
@@ -155,7 +154,7 @@ module Java::Security::Cert
     # <code>UnsupportedOperationException</code>.
     # 
     # @return an <code>Iterator</code> over the names of the supported
-    # encodings (as Strings)
+    #         encodings (as Strings)
     def get_encodings
       raise NotImplementedError
     end
@@ -195,8 +194,8 @@ module Java::Security::Cert
     # a certification path is defined to be the result of the following
     # calculation:
     # <pre><code>
-    # hashCode = path.getType().hashCode();
-    # hashCode = 31*hashCode + path.getCertificates().hashCode();
+    #  hashCode = path.getType().hashCode();
+    #  hashCode = 31*hashCode + path.getCertificates().hashCode();
     # </code></pre>
     # This ensures that <code>path1.equals(path2)</code> implies that
     # <code>path1.hashCode()==path2.hashCode()</code> for any two certification
@@ -250,7 +249,7 @@ module Java::Security::Cert
     # @param encoding the name of the encoding to use
     # @return the encoded bytes
     # @exception CertificateEncodingException if an encoding error occurs or
-    # the encoding requested is not supported
+    #   the encoding requested is not supported
     def get_encoded(encoding)
       raise NotImplementedError
     end
@@ -260,7 +259,7 @@ module Java::Security::Cert
     # The <code>List</code> returned must be immutable and thread-safe.
     # 
     # @return an immutable <code>List</code> of <code>Certificate</code>s
-    # (may be empty, but not null)
+    #         (may be empty, but not null)
     def get_certificates
       raise NotImplementedError
     end

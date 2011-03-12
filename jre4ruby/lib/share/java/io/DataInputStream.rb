@@ -106,8 +106,8 @@ module Java::Io
     # 
     # @param      b   the buffer into which the data is read.
     # @return     the total number of bytes read into the buffer, or
-    # <code>-1</code> if there is no more data because the end
-    # of the stream has been reached.
+    #             <code>-1</code> if there is no more data because the end
+    #             of the stream has been reached.
     # @exception  IOException if the first byte cannot be read for any reason
     # other than end of file, the stream has been closed and the underlying
     # input stream does not support reading after close, or another I/O
@@ -150,8 +150,8 @@ module Java::Io
     # @param off the start offset in the destination array <code>b</code>
     # @param      len   the maximum number of bytes read.
     # @return     the total number of bytes read into the buffer, or
-    # <code>-1</code> if there is no more data because the end
-    # of the stream has been reached.
+    #             <code>-1</code> if there is no more data because the end
+    #             of the stream has been reached.
     # @exception  NullPointerException If <code>b</code> is <code>null</code>.
     # @exception  IndexOutOfBoundsException If <code>off</code> is negative,
     # <code>len</code> is negative, or <code>len</code> is greater than
@@ -176,10 +176,10 @@ module Java::Io
     # 
     # @param      b   the buffer into which the data is read.
     # @exception  EOFException  if this input stream reaches the end before
-    # reading all the bytes.
+    #             reading all the bytes.
     # @exception  IOException   the stream has been closed and the contained
-    # input stream does not support reading after close, or
-    # another I/O error occurs.
+    #             input stream does not support reading after close, or
+    #             another I/O error occurs.
     # @see        java.io.FilterInputStream#in
     def read_fully(b)
       read_fully(b, 0, b.attr_length)
@@ -197,10 +197,10 @@ module Java::Io
     # @param      off   the start offset of the data.
     # @param      len   the number of bytes to read.
     # @exception  EOFException  if this input stream reaches the end before
-    # reading all the bytes.
+    #               reading all the bytes.
     # @exception  IOException   the stream has been closed and the contained
-    # input stream does not support reading after close, or
-    # another I/O error occurs.
+    #             input stream does not support reading after close, or
+    #             another I/O error occurs.
     # @see        java.io.FilterInputStream#in
     def read_fully(b, off, len)
       if (len < 0)
@@ -226,13 +226,13 @@ module Java::Io
     # @param      n   the number of bytes to be skipped.
     # @return     the actual number of bytes skipped.
     # @exception  IOException  if the contained input stream does not support
-    # seek, or the stream has been closed and
-    # the contained input stream does not support
-    # reading after close, or another I/O error occurs.
+    #             seek, or the stream has been closed and
+    #             the contained input stream does not support
+    #             reading after close, or another I/O error occurs.
     def skip_bytes(n)
       total = 0
       cur = 0
-      while ((total < n) && ((cur = RJava.cast_to_int(self.attr_in.skip(n - total))) > 0))
+      while ((total < n) && ((cur = (self.attr_in.skip(n - total)).to_int) > 0))
         total += cur
       end
       return total
@@ -248,8 +248,8 @@ module Java::Io
     # @return     the <code>boolean</code> value read.
     # @exception  EOFException  if this input stream has reached the end.
     # @exception  IOException   the stream has been closed and the contained
-    # input stream does not support reading after close, or
-    # another I/O error occurs.
+    #             input stream does not support reading after close, or
+    #             another I/O error occurs.
     # @see        java.io.FilterInputStream#in
     def read_boolean
       ch = self.attr_in.read
@@ -268,11 +268,11 @@ module Java::Io
     # input stream.
     # 
     # @return     the next byte of this input stream as a signed 8-bit
-    # <code>byte</code>.
+    #             <code>byte</code>.
     # @exception  EOFException  if this input stream has reached the end.
     # @exception  IOException   the stream has been closed and the contained
-    # input stream does not support reading after close, or
-    # another I/O error occurs.
+    #             input stream does not support reading after close, or
+    #             another I/O error occurs.
     # @see        java.io.FilterInputStream#in
     def read_byte
       ch = self.attr_in.read
@@ -291,11 +291,11 @@ module Java::Io
     # input stream.
     # 
     # @return     the next byte of this input stream, interpreted as an
-    # unsigned 8-bit number.
+    #             unsigned 8-bit number.
     # @exception  EOFException  if this input stream has reached the end.
     # @exception  IOException   the stream has been closed and the contained
-    # input stream does not support reading after close, or
-    # another I/O error occurs.
+    #             input stream does not support reading after close, or
+    #             another I/O error occurs.
     # @see         java.io.FilterInputStream#in
     def read_unsigned_byte
       ch = self.attr_in.read
@@ -314,12 +314,12 @@ module Java::Io
     # input stream.
     # 
     # @return     the next two bytes of this input stream, interpreted as a
-    # signed 16-bit number.
+    #             signed 16-bit number.
     # @exception  EOFException  if this input stream reaches the end before
-    # reading two bytes.
+    #               reading two bytes.
     # @exception  IOException   the stream has been closed and the contained
-    # input stream does not support reading after close, or
-    # another I/O error occurs.
+    #             input stream does not support reading after close, or
+    #             another I/O error occurs.
     # @see        java.io.FilterInputStream#in
     def read_short
       ch1 = self.attr_in.read
@@ -339,12 +339,12 @@ module Java::Io
     # input stream.
     # 
     # @return     the next two bytes of this input stream, interpreted as an
-    # unsigned 16-bit integer.
+    #             unsigned 16-bit integer.
     # @exception  EOFException  if this input stream reaches the end before
-    # reading two bytes.
+    #             reading two bytes.
     # @exception  IOException   the stream has been closed and the contained
-    # input stream does not support reading after close, or
-    # another I/O error occurs.
+    #             input stream does not support reading after close, or
+    #             another I/O error occurs.
     # @see        java.io.FilterInputStream#in
     def read_unsigned_short
       ch1 = self.attr_in.read
@@ -364,12 +364,12 @@ module Java::Io
     # input stream.
     # 
     # @return     the next two bytes of this input stream, interpreted as a
-    # <code>char</code>.
+    #             <code>char</code>.
     # @exception  EOFException  if this input stream reaches the end before
-    # reading two bytes.
+    #               reading two bytes.
     # @exception  IOException   the stream has been closed and the contained
-    # input stream does not support reading after close, or
-    # another I/O error occurs.
+    #             input stream does not support reading after close, or
+    #             another I/O error occurs.
     # @see        java.io.FilterInputStream#in
     def read_char
       ch1 = self.attr_in.read
@@ -389,12 +389,12 @@ module Java::Io
     # input stream.
     # 
     # @return     the next four bytes of this input stream, interpreted as an
-    # <code>int</code>.
+    #             <code>int</code>.
     # @exception  EOFException  if this input stream reaches the end before
-    # reading four bytes.
+    #               reading four bytes.
     # @exception  IOException   the stream has been closed and the contained
-    # input stream does not support reading after close, or
-    # another I/O error occurs.
+    #             input stream does not support reading after close, or
+    #             another I/O error occurs.
     # @see        java.io.FilterInputStream#in
     def read_int
       ch1 = self.attr_in.read
@@ -422,12 +422,12 @@ module Java::Io
     # input stream.
     # 
     # @return     the next eight bytes of this input stream, interpreted as a
-    # <code>long</code>.
+    #             <code>long</code>.
     # @exception  EOFException  if this input stream reaches the end before
-    # reading eight bytes.
+    #               reading eight bytes.
     # @exception  IOException   the stream has been closed and the contained
-    # input stream does not support reading after close, or
-    # another I/O error occurs.
+    #             input stream does not support reading after close, or
+    #             another I/O error occurs.
     # @see        java.io.FilterInputStream#in
     def read_long
       read_fully(@read_buffer, 0, 8)
@@ -443,12 +443,12 @@ module Java::Io
     # input stream.
     # 
     # @return     the next four bytes of this input stream, interpreted as a
-    # <code>float</code>.
+    #             <code>float</code>.
     # @exception  EOFException  if this input stream reaches the end before
-    # reading four bytes.
+    #               reading four bytes.
     # @exception  IOException   the stream has been closed and the contained
-    # input stream does not support reading after close, or
-    # another I/O error occurs.
+    #             input stream does not support reading after close, or
+    #             another I/O error occurs.
     # @see        java.io.DataInputStream#readInt()
     # @see        java.lang.Float#intBitsToFloat(int)
     def read_float
@@ -464,12 +464,12 @@ module Java::Io
     # input stream.
     # 
     # @return     the next eight bytes of this input stream, interpreted as a
-    # <code>double</code>.
+    #             <code>double</code>.
     # @exception  EOFException  if this input stream reaches the end before
-    # reading eight bytes.
+    #               reading eight bytes.
     # @exception  IOException   the stream has been closed and the contained
-    # input stream does not support reading after close, or
-    # another I/O error occurs.
+    #             input stream does not support reading after close, or
+    #             another I/O error occurs.
     # @see        java.io.DataInputStream#readLong()
     # @see        java.lang.Double#longBitsToDouble(long)
     def read_double
@@ -496,12 +496,12 @@ module Java::Io
     # <code>DataInputStream</code> class to read lines can be converted to use
     # the <code>BufferedReader</code> class by replacing code of the form:
     # <blockquote><pre>
-    # DataInputStream d =&nbsp;new&nbsp;DataInputStream(in);
+    #     DataInputStream d =&nbsp;new&nbsp;DataInputStream(in);
     # </pre></blockquote>
     # with:
     # <blockquote><pre>
-    # BufferedReader d
-    # =&nbsp;new&nbsp;BufferedReader(new&nbsp;InputStreamReader(in));
+    #     BufferedReader d
+    #          =&nbsp;new&nbsp;BufferedReader(new&nbsp;InputStreamReader(in));
     # </pre></blockquote>
     # 
     # @return     the next line of text from this input stream.
@@ -555,12 +555,12 @@ module Java::Io
     # 
     # @return     a Unicode string.
     # @exception  EOFException  if this input stream reaches the end before
-    # reading all the bytes.
+    #               reading all the bytes.
     # @exception  IOException   the stream has been closed and the contained
-    # input stream does not support reading after close, or
-    # another I/O error occurs.
+    #             input stream does not support reading after close, or
+    #             another I/O error occurs.
     # @exception  UTFDataFormatException if the bytes do not represent a valid
-    # modified UTF-8 encoding of a string.
+    #             modified UTF-8 encoding of a string.
     # @see        java.io.DataInputStream#readUTF(java.io.DataInput)
     def read_utf
       return read_utf(self)
@@ -580,12 +580,12 @@ module Java::Io
       # @param      in   a data input stream.
       # @return     a Unicode string.
       # @exception  EOFException            if the input stream reaches the end
-      # before all the bytes.
+      #               before all the bytes.
       # @exception  IOException   the stream has been closed and the contained
-      # input stream does not support reading after close, or
-      # another I/O error occurs.
+      #             input stream does not support reading after close, or
+      #             another I/O error occurs.
       # @exception  UTFDataFormatException  if the bytes do not represent a
-      # valid modified UTF-8 encoding of a Unicode string.
+      #               valid modified UTF-8 encoding of a Unicode string.
       # @see        java.io.DataInputStream#readUnsignedShort()
       def read_utf(in_)
         utflen = in_.read_unsigned_short
@@ -610,7 +610,7 @@ module Java::Io
         chararr_count = 0
         in_.read_fully(bytearr, 0, utflen)
         while (count < utflen)
-          c = RJava.cast_to_int(bytearr[count]) & 0xff
+          c = (bytearr[count]).to_int & 0xff
           if (c > 127)
             break
           end
@@ -618,7 +618,7 @@ module Java::Io
           chararr[((chararr_count += 1) - 1)] = RJava.cast_to_char(c)
         end
         while (count < utflen)
-          c = RJava.cast_to_int(bytearr[count]) & 0xff
+          c = (bytearr[count]).to_int & 0xff
           case (c >> 4)
           when 0, 1, 2, 3, 4, 5, 6, 7
             # 0xxxxxxx
@@ -630,7 +630,7 @@ module Java::Io
             if (count > utflen)
               raise UTFDataFormatException.new("malformed input: partial character at end")
             end
-            char2 = RJava.cast_to_int(bytearr[count - 1])
+            char2 = (bytearr[count - 1]).to_int
             if (!((char2 & 0xc0)).equal?(0x80))
               raise UTFDataFormatException.new("malformed input around byte " + RJava.cast_to_string(count))
             end
@@ -641,8 +641,8 @@ module Java::Io
             if (count > utflen)
               raise UTFDataFormatException.new("malformed input: partial character at end")
             end
-            char2 = RJava.cast_to_int(bytearr[count - 2])
-            char3 = RJava.cast_to_int(bytearr[count - 1])
+            char2 = (bytearr[count - 2]).to_int
+            char3 = (bytearr[count - 1]).to_int
             if ((!((char2 & 0xc0)).equal?(0x80)) || (!((char3 & 0xc0)).equal?(0x80)))
               raise UTFDataFormatException.new("malformed input around byte " + RJava.cast_to_string((count - 1)))
             end

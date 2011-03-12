@@ -76,210 +76,208 @@ module Sun::Security::Provider
   # import java.lang.reflect.ReflectPermission;
   # import javax.sound.sampled.AudioPermission;
   # import javax.net.ssl.SSLPermission;
+  #  This class represents a default implementation for
+  #  <code>java.security.Policy</code>.
+  # 
+  #  Note:
+  #  For backward compatibility with JAAS 1.0 it loads
+  #  both java.auth.policy and java.policy. However it
+  #  is recommended that java.auth.policy be not used
+  #  and the java.policy contain all grant entries including
+  #  that contain principal-based entries.
   # 
   # 
-  # This class represents a default implementation for
-  # <code>java.security.Policy</code>.
+  #  <p> This object stores the policy for entire Java runtime,
+  #  and is the amalgamation of multiple static policy
+  #  configurations that resides in files.
+  #  The algorithm for locating the policy file(s) and reading their
+  #  information into this <code>Policy</code> object is:
   # 
-  # Note:
-  # For backward compatibility with JAAS 1.0 it loads
-  # both java.auth.policy and java.policy. However it
-  # is recommended that java.auth.policy be not used
-  # and the java.policy contain all grant entries including
-  # that contain principal-based entries.
+  #  <ol>
+  #  <li>
+  #    Loop through the <code>java.security.Security</code> properties,
+  #    <i>policy.url.1</i>, <i>policy.url.2</i>, ...,
+  #    <i>policy.url.X</i>" and
+  #    <i>auth.policy.url.1</i>, <i>auth.policy.url.2</i>, ...,
+  #    <i>auth.policy.url.X</i>".  These properties are set
+  #    in the Java security properties file, which is located in the file named
+  #    &lt;JAVA_HOME&gt;/lib/security/java.security.
+  #    &lt;JAVA_HOME&gt; refers to the value of the java.home system property,
+  #    and specifies the directory where the JRE is installed.
+  #    Each property value specifies a <code>URL</code> pointing to a
+  #    policy file to be loaded.  Read in and load each policy.
   # 
+  #    <i>auth.policy.url</i> is supported only for backward compatibility.
   # 
-  # <p> This object stores the policy for entire Java runtime,
-  # and is the amalgamation of multiple static policy
-  # configurations that resides in files.
-  # The algorithm for locating the policy file(s) and reading their
-  # information into this <code>Policy</code> object is:
+  #  <li>
+  #    The <code>java.lang.System</code> property <i>java.security.policy</i>
+  #    may also be set to a <code>URL</code> pointing to another policy file
+  #    (which is the case when a user uses the -D switch at runtime).
+  #    If this property is defined, and its use is allowed by the
+  #    security property file (the Security property,
+  #    <i>policy.allowSystemProperty</i> is set to <i>true</i>),
+  #    also load that policy.
   # 
-  # <ol>
-  # <li>
-  # Loop through the <code>java.security.Security</code> properties,
-  # <i>policy.url.1</i>, <i>policy.url.2</i>, ...,
-  # <i>policy.url.X</i>" and
-  # <i>auth.policy.url.1</i>, <i>auth.policy.url.2</i>, ...,
-  # <i>auth.policy.url.X</i>".  These properties are set
-  # in the Java security properties file, which is located in the file named
-  # &lt;JAVA_HOME&gt;/lib/security/java.security.
-  # &lt;JAVA_HOME&gt; refers to the value of the java.home system property,
-  # and specifies the directory where the JRE is installed.
-  # Each property value specifies a <code>URL</code> pointing to a
-  # policy file to be loaded.  Read in and load each policy.
+  #  <li>
+  #    The <code>java.lang.System</code> property
+  #    <i>java.security.auth.policy</i> may also be set to a
+  #    <code>URL</code> pointing to another policy file
+  #    (which is the case when a user uses the -D switch at runtime).
+  #    If this property is defined, and its use is allowed by the
+  #    security property file (the Security property,
+  #    <i>policy.allowSystemProperty</i> is set to <i>true</i>),
+  #    also load that policy.
   # 
-  # <i>auth.policy.url</i> is supported only for backward compatibility.
+  #    <i>java.security.auth.policy</i> is supported only for backward
+  #    compatibility.
   # 
-  # <li>
-  # The <code>java.lang.System</code> property <i>java.security.policy</i>
-  # may also be set to a <code>URL</code> pointing to another policy file
-  # (which is the case when a user uses the -D switch at runtime).
-  # If this property is defined, and its use is allowed by the
-  # security property file (the Security property,
-  # <i>policy.allowSystemProperty</i> is set to <i>true</i>),
-  # also load that policy.
+  #    If the  <i>java.security.policy</i> or
+  #    <i>java.security.auth.policy</i> property is defined using
+  #    "==" (rather than "="), then ignore all other specified
+  #    policies and only load this policy.
+  #  </ol>
   # 
-  # <li>
-  # The <code>java.lang.System</code> property
-  # <i>java.security.auth.policy</i> may also be set to a
-  # <code>URL</code> pointing to another policy file
-  # (which is the case when a user uses the -D switch at runtime).
-  # If this property is defined, and its use is allowed by the
-  # security property file (the Security property,
-  # <i>policy.allowSystemProperty</i> is set to <i>true</i>),
-  # also load that policy.
+  #  Each policy file consists of one or more grant entries, each of
+  #  which consists of a number of permission entries.
   # 
-  # <i>java.security.auth.policy</i> is supported only for backward
-  # compatibility.
+  #  <pre>
+  #    grant signedBy "<b>alias</b>", codeBase "<b>URL</b>",
+  #          principal <b>principalClass</b> "<b>principalName</b>",
+  #          principal <b>principalClass</b> "<b>principalName</b>",
+  #          ... {
   # 
-  # If the  <i>java.security.policy</i> or
-  # <i>java.security.auth.policy</i> property is defined using
-  # "==" (rather than "="), then ignore all other specified
-  # policies and only load this policy.
-  # </ol>
+  #      permission <b>Type</b> "<b>name</b> "<b>action</b>",
+  #          signedBy "<b>alias</b>";
+  #      permission <b>Type</b> "<b>name</b> "<b>action</b>",
+  #          signedBy "<b>alias</b>";
+  #      ....
+  #    };
+  #  </pre>
   # 
-  # Each policy file consists of one or more grant entries, each of
-  # which consists of a number of permission entries.
+  #  All non-bold items above must appear as is (although case
+  #  doesn't matter and some are optional, as noted below).
+  #  principal entries are optional and need not be present.
+  #  Italicized items represent variable values.
   # 
-  # <pre>
-  # grant signedBy "<b>alias</b>", codeBase "<b>URL</b>",
-  # principal <b>principalClass</b> "<b>principalName</b>",
-  # principal <b>principalClass</b> "<b>principalName</b>",
-  # ... {
+  #  <p> A grant entry must begin with the word <code>grant</code>.
+  #  The <code>signedBy</code>,<code>codeBase</code> and <code>principal</code>
+  #  name/value pairs are optional.
+  #  If they are not present, then any signer (including unsigned code)
+  #  will match, and any codeBase will match.
+  #  Note that the <i>principalClass</i>
+  #  may be set to the wildcard value, *, which allows it to match
+  #  any <code>Principal</code> class.  In addition, the <i>principalName</i>
+  #  may also be set to the wildcard value, *, allowing it to match
+  #  any <code>Principal</code> name.  When setting the <i>principalName</i>
+  #  to the *, do not surround the * with quotes.
   # 
-  # permission <b>Type</b> "<b>name</b> "<b>action</b>",
-  # signedBy "<b>alias</b>";
-  # permission <b>Type</b> "<b>name</b> "<b>action</b>",
-  # signedBy "<b>alias</b>";
-  # ....
-  # };
-  # </pre>
+  #  <p> A permission entry must begin with the word <code>permission</code>.
+  #  The word <code><i>Type</i></code> in the template above is
+  #  a specific permission type, such as <code>java.io.FilePermission</code>
+  #  or <code>java.lang.RuntimePermission</code>.
   # 
-  # All non-bold items above must appear as is (although case
-  # doesn't matter and some are optional, as noted below).
-  # principal entries are optional and need not be present.
-  # Italicized items represent variable values.
+  #  <p> The "<i>action</i>" is required for
+  #  many permission types, such as <code>java.io.FilePermission</code>
+  #  (where it specifies what type of file access that is permitted).
+  #  It is not required for categories such as
+  #  <code>java.lang.RuntimePermission</code>
+  #  where it is not necessary - you either have the
+  #  permission specified by the <code>"<i>name</i>"</code>
+  #  value following the type name or you don't.
   # 
-  # <p> A grant entry must begin with the word <code>grant</code>.
-  # The <code>signedBy</code>,<code>codeBase</code> and <code>principal</code>
-  # name/value pairs are optional.
-  # If they are not present, then any signer (including unsigned code)
-  # will match, and any codeBase will match.
-  # Note that the <i>principalClass</i>
-  # may be set to the wildcard value, *, which allows it to match
-  # any <code>Principal</code> class.  In addition, the <i>principalName</i>
-  # may also be set to the wildcard value, *, allowing it to match
-  # any <code>Principal</code> name.  When setting the <i>principalName</i>
-  # to the *, do not surround the * with quotes.
+  #  <p> The <code>signedBy</code> name/value pair for a permission entry
+  #  is optional. If present, it indicates a signed permission. That is,
+  #  the permission class itself must be signed by the given alias in
+  #  order for it to be granted. For example,
+  #  suppose you have the following grant entry:
   # 
-  # <p> A permission entry must begin with the word <code>permission</code>.
-  # The word <code><i>Type</i></code> in the template above is
-  # a specific permission type, such as <code>java.io.FilePermission</code>
-  # or <code>java.lang.RuntimePermission</code>.
+  #  <pre>
+  #    grant principal foo.com.Principal "Duke" {
+  #      permission Foo "foobar", signedBy "FooSoft";
+  #    }
+  #  </pre>
   # 
-  # <p> The "<i>action</i>" is required for
-  # many permission types, such as <code>java.io.FilePermission</code>
-  # (where it specifies what type of file access that is permitted).
-  # It is not required for categories such as
-  # <code>java.lang.RuntimePermission</code>
-  # where it is not necessary - you either have the
-  # permission specified by the <code>"<i>name</i>"</code>
-  # value following the type name or you don't.
-  # 
-  # <p> The <code>signedBy</code> name/value pair for a permission entry
-  # is optional. If present, it indicates a signed permission. That is,
-  # the permission class itself must be signed by the given alias in
-  # order for it to be granted. For example,
-  # suppose you have the following grant entry:
-  # 
-  # <pre>
-  # grant principal foo.com.Principal "Duke" {
-  # permission Foo "foobar", signedBy "FooSoft";
-  # }
-  # </pre>
-  # 
-  # <p> Then this permission of type <i>Foo</i> is granted if the
-  # <code>Foo.class</code> permission has been signed by the
-  # "FooSoft" alias, or if XXX <code>Foo.class</code> is a
-  # system class (i.e., is found on the CLASSPATH).
+  #  <p> Then this permission of type <i>Foo</i> is granted if the
+  #  <code>Foo.class</code> permission has been signed by the
+  #  "FooSoft" alias, or if XXX <code>Foo.class</code> is a
+  #  system class (i.e., is found on the CLASSPATH).
   # 
   # 
-  # <p> Items that appear in an entry must appear in the specified order
-  # (<code>permission</code>, <i>Type</i>, "<i>name</i>", and
-  # "<i>action</i>"). An entry is terminated with a semicolon.
+  #  <p> Items that appear in an entry must appear in the specified order
+  #  (<code>permission</code>, <i>Type</i>, "<i>name</i>", and
+  #  "<i>action</i>"). An entry is terminated with a semicolon.
   # 
-  # <p> Case is unimportant for the identifiers (<code>permission</code>,
-  # <code>signedBy</code>, <code>codeBase</code>, etc.) but is
-  # significant for the <i>Type</i>
-  # or for any string that is passed in as a value. <p>
+  #  <p> Case is unimportant for the identifiers (<code>permission</code>,
+  #  <code>signedBy</code>, <code>codeBase</code>, etc.) but is
+  #  significant for the <i>Type</i>
+  #  or for any string that is passed in as a value. <p>
   # 
-  # <p> An example of two entries in a policy configuration file is
-  # <pre>
-  # // if the code is comes from "foo.com" and is running as "Duke",
-  # // grant it read/write to all files in /tmp.
+  #  <p> An example of two entries in a policy configuration file is
+  #  <pre>
+  #    // if the code is comes from "foo.com" and is running as "Duke",
+  #    // grant it read/write to all files in /tmp.
   # 
-  # grant codeBase "foo.com", principal foo.com.Principal "Duke" {
-  # permission java.io.FilePermission "/tmp/*", "read,write";
-  # };
+  #    grant codeBase "foo.com", principal foo.com.Principal "Duke" {
+  #               permission java.io.FilePermission "/tmp/*", "read,write";
+  #    };
   # 
-  # // grant any code running as "Duke" permission to read
-  # // the "java.vendor" Property.
+  #    // grant any code running as "Duke" permission to read
+  #    // the "java.vendor" Property.
   # 
-  # grant principal foo.com.Principal "Duke" {
-  # permission java.util.PropertyPermission "java.vendor";
+  #    grant principal foo.com.Principal "Duke" {
+  #          permission java.util.PropertyPermission "java.vendor";
   # 
   # 
-  # </pre>
-  # This Policy implementation supports special handling of any
-  # permission that contains the string, "<b>${{self}}</b>", as part of
-  # its target name.  When such a permission is evaluated
-  # (such as during a security check), <b>${{self}}</b> is replaced
-  # with one or more Principal class/name pairs.  The exact
-  # replacement performed depends upon the contents of the
-  # grant clause to which the permission belongs.
+  #  </pre>
+  #   This Policy implementation supports special handling of any
+  #   permission that contains the string, "<b>${{self}}</b>", as part of
+  #   its target name.  When such a permission is evaluated
+  #   (such as during a security check), <b>${{self}}</b> is replaced
+  #   with one or more Principal class/name pairs.  The exact
+  #   replacement performed depends upon the contents of the
+  #   grant clause to which the permission belongs.
   # <p>
   # 
-  # If the grant clause does not contain any principal information,
-  # the permission will be ignored (permissions containing
-  # <b>${{self}}</b> in their target names are only valid in the context
-  # of a principal-based grant clause).  For example, BarPermission
-  # will always be ignored in the following grant clause:
+  #   If the grant clause does not contain any principal information,
+  #   the permission will be ignored (permissions containing
+  #   <b>${{self}}</b> in their target names are only valid in the context
+  #   of a principal-based grant clause).  For example, BarPermission
+  #   will always be ignored in the following grant clause:
   # 
   # <pre>
-  # grant codebase "www.foo.com", signedby "duke" {
-  # permission BarPermission "... ${{self}} ...";
-  # };
+  #     grant codebase "www.foo.com", signedby "duke" {
+  #       permission BarPermission "... ${{self}} ...";
+  #     };
   # </pre>
   # 
-  # If the grant clause contains principal information, <b>${{self}}</b>
-  # will be replaced with that same principal information.
-  # For example, <b>${{self}}</b> in BarPermission will be replaced by
-  # <b>javax.security.auth.x500.X500Principal "cn=Duke"</b>
-  # in the following grant clause:
+  #   If the grant clause contains principal information, <b>${{self}}</b>
+  #   will be replaced with that same principal information.
+  #   For example, <b>${{self}}</b> in BarPermission will be replaced by
+  #   <b>javax.security.auth.x500.X500Principal "cn=Duke"</b>
+  #   in the following grant clause:
   # 
-  # <pre>
-  # grant principal javax.security.auth.x500.X500Principal "cn=Duke" {
-  # permission BarPermission "... ${{self}} ...";
-  # };
-  # </pre>
+  #   <pre>
+  #     grant principal javax.security.auth.x500.X500Principal "cn=Duke" {
+  #       permission BarPermission "... ${{self}} ...";
+  #     };
+  #   </pre>
   # 
-  # If there is a comma-separated list of principals in the grant
-  # clause, then <b>${{self}}</b> will be replaced by the same
-  # comma-separated list or principals.
-  # In the case where both the principal class and name are
-  # wildcarded in the grant clause, <b>${{self}}</b> is replaced
-  # with all the principals associated with the <code>Subject</code>
-  # in the current <code>AccessControlContext</code>.
+  #   If there is a comma-separated list of principals in the grant
+  #   clause, then <b>${{self}}</b> will be replaced by the same
+  #   comma-separated list or principals.
+  #   In the case where both the principal class and name are
+  #   wildcarded in the grant clause, <b>${{self}}</b> is replaced
+  #   with all the principals associated with the <code>Subject</code>
+  #   in the current <code>AccessControlContext</code>.
   # 
   # 
-  # <p> For PrivateCredentialPermissions, you can also use "<b>self</b>"
-  # instead of "<b>${{self}}</b>". However the use of "<b>self</b>" is
-  # deprecated in favour of "<b>${{self}}</b>".
+  #  <p> For PrivateCredentialPermissions, you can also use "<b>self</b>"
+  #  instead of "<b>${{self}}</b>". However the use of "<b>self</b>" is
+  #  deprecated in favour of "<b>${{self}}</b>".
   # 
-  # @see java.security.CodeSource
-  # @see java.security.Permissions
-  # @see java.security.ProtectionDomain
+  #  @see java.security.CodeSource
+  #  @see java.security.Permissions
+  #  @see java.security.ProtectionDomain
   class PolicyFile < Java::Security::Policy
     include_class_members PolicyFileImports
     
@@ -435,30 +433,30 @@ module Sun::Security::Provider
     # The algorithm for locating the policy file(s) and reading their
     # information into the Policy object is:
     # <pre>
-    # loop through the Security Properties named "policy.url.1",
-    # ""policy.url.2", "auth.policy.url.1",  "auth.policy.url.2" etc, until
-    # you don't find one. Each of these specify a policy file.
+    #   loop through the Security Properties named "policy.url.1",
+    #  ""policy.url.2", "auth.policy.url.1",  "auth.policy.url.2" etc, until
+    #   you don't find one. Each of these specify a policy file.
     # 
-    # if none of these could be loaded, use a builtin static policy
-    # equivalent to the default lib/security/java.policy file.
+    #   if none of these could be loaded, use a builtin static policy
+    #      equivalent to the default lib/security/java.policy file.
     # 
-    # if the system property "java.policy" or "java.auth.policy" is defined
+    #   if the system property "java.policy" or "java.auth.policy" is defined
     # (which is the
-    # case when the user uses the -D switch at runtime), and
-    # its use is allowed by the security property file,
-    # also load it.
+    #      case when the user uses the -D switch at runtime), and
+    #     its use is allowed by the security property file,
+    #     also load it.
     # </pre>
     # 
     # Each policy file consists of one or more grant entries, each of
     # which consists of a number of permission entries.
     # <pre>
-    # grant signedBy "<i>alias</i>", codeBase "<i>URL</i>" {
-    # permission <i>Type</i> "<i>name</i>", "<i>action</i>",
-    # signedBy "<i>alias</i>";
-    # ....
-    # permission <i>Type</i> "<i>name</i>", "<i>action</i>",
-    # signedBy "<i>alias</i>";
-    # };
+    #   grant signedBy "<i>alias</i>", codeBase "<i>URL</i>" {
+    #     permission <i>Type</i> "<i>name</i>", "<i>action</i>",
+    #         signedBy "<i>alias</i>";
+    #     ....
+    #     permission <i>Type</i> "<i>name</i>", "<i>action</i>",
+    #         signedBy "<i>alias</i>";
+    #   };
     # 
     # </pre>
     # 
@@ -494,9 +492,9 @@ module Sun::Security::Provider
     # suppose you have the following grant entry:
     # 
     # <pre>
-    # grant {
-    # permission Foo "foobar", signedBy "FooSoft";
-    # }
+    #   grant {
+    #     permission Foo "foobar", signedBy "FooSoft";
+    #   }
     # </pre>
     # 
     # <p>Then this permission of type <i>Foo</i> is granted if the
@@ -515,19 +513,19 @@ module Sun::Security::Provider
     # 
     # <p>An example of two entries in a policy configuration file is
     # <pre>
-    # //  if the code is signed by "Duke", grant it read/write to all
-    # // files in /tmp.
+    #   //  if the code is signed by "Duke", grant it read/write to all
+    #   // files in /tmp.
     # 
-    # grant signedBy "Duke" {
-    # permission java.io.FilePermission "/tmp/*", "read,write";
-    # };
+    #   grant signedBy "Duke" {
+    #          permission java.io.FilePermission "/tmp/*", "read,write";
+    #   };
     # <p>
-    # // grant everyone the following permission
+    #   // grant everyone the following permission
     # 
-    # grant {
-    # permission java.util.PropertyPermission "java.vendor";
-    # };
-    # </pre>
+    #   grant {
+    #     permission java.util.PropertyPermission "java.vendor";
+    #   };
+    #  </pre>
     def init(url)
       num_cache_str = AccessController.do_privileged(# Properties are set once for each init(); ignore changes between
       # between diff invocations of initPolicyFile(policy, url, info).
@@ -975,20 +973,20 @@ module Sun::Security::Provider
       # @param actions the actions of the Permission being created.
       # 
       # @exception  ClassNotFoundException  if the particular Permission
-      # class could not be found.
+      #             class could not be found.
       # 
       # @exception  IllegalAccessException  if the class or initializer is
-      # not accessible.
+      #               not accessible.
       # 
       # @exception  InstantiationException  if getInstance tries to
-      # instantiate an abstract class or an interface, or if the
-      # instantiation fails for some other reason.
+      #               instantiate an abstract class or an interface, or if the
+      #               instantiation fails for some other reason.
       # 
       # @exception  NoSuchMethodException if the (String, String) constructor
-      # is not found.
+      #               is not found.
       # 
       # @exception  InvocationTargetException if the underlying Permission
-      # constructor throws an exception.
+      #               constructor throws an exception.
       def get_instance(type, name, actions)
         # XXX we might want to keep a hash of created factories...
         pc = Class.for_name(type)
@@ -1052,27 +1050,27 @@ module Sun::Security::Provider
                     if ((claz == AWTPermission))
                       return AWTPermission.new(name, actions)
                       # } else if (claz.equals(ReflectPermission.class)) {
-                      # return new ReflectPermission(name, actions);
+                      #     return new ReflectPermission(name, actions);
                       # } else if (claz.equals(SecurityPermission.class)) {
-                      # return new SecurityPermission(name, actions);
+                      #     return new SecurityPermission(name, actions);
                       # } else if (claz.equals(PrivateCredentialPermission.class)) {
-                      # return new PrivateCredentialPermission(name, actions);
+                      #     return new PrivateCredentialPermission(name, actions);
                       # } else if (claz.equals(AuthPermission.class)) {
-                      # return new AuthPermission(name, actions);
+                      #     return new AuthPermission(name, actions);
                       # } else if (claz.equals(ServicePermission.class)) {
-                      # return new ServicePermission(name, actions);
+                      #     return new ServicePermission(name, actions);
                       # } else if (claz.equals(DelegationPermission.class)) {
-                      # return new DelegationPermission(name, actions);
+                      #     return new DelegationPermission(name, actions);
                       # } else if (claz.equals(SerializablePermission.class)) {
-                      # return new SerializablePermission(name, actions);
+                      #     return new SerializablePermission(name, actions);
                       # } else if (claz.equals(AudioPermission.class)) {
-                      # return new AudioPermission(name, actions);
+                      #     return new AudioPermission(name, actions);
                       # } else if (claz.equals(SSLPermission.class)) {
-                      # return new SSLPermission(name, actions);
+                      #     return new SSLPermission(name, actions);
                       # } else if (claz.equals(LoggingPermission.class)) {
-                      # return new LoggingPermission(name, actions);
+                      #     return new LoggingPermission(name, actions);
                       # } else if (claz.equals(SQLPermission.class)) {
-                      # return new SQLPermission(name, actions);
+                      #     return new SQLPermission(name, actions);
                     else
                       return nil
                     end
@@ -1185,10 +1183,10 @@ module Sun::Security::Provider
     # <p>
     # 
     # @param domain the Permissions granted to this
-    # <code>ProtectionDomain</code> are returned.
+    #          <code>ProtectionDomain</code> are returned.
     # 
     # @return the Permissions granted to the provided
-    # <code>ProtectionDomain</code>.
+    #          <code>ProtectionDomain</code>.
     def get_permissions(domain)
       perms = Permissions.new
       if ((domain).nil?)
@@ -1197,8 +1195,8 @@ module Sun::Security::Provider
       # first get policy perms
       get_permissions(perms, domain)
       # add static perms
-      # - adding static perms after policy perms is necessary
-      # to avoid a regression for 4301064
+      #      - adding static perms after policy perms is necessary
+      #        to avoid a regression for 4301064
       pc = domain.get_permissions
       if (!(pc).nil?)
         synchronized((pc)) do
@@ -1489,14 +1487,14 @@ module Sun::Security::Provider
     # wildcards (*) for both the <code>Principal</code> class and name.
     # 
     # @param pList an array of principals from the current thread's
-    # AccessControlContext.
+    #          AccessControlContext.
     # 
     # @param pppe a Principal specified in a policy grant entry.
     # 
     # @return true if the current thread's pList "contains" the
-    # principal in the policy entry, pppe.  This method
-    # also returns true if the policy entry's principal
-    # appropriately wildcarded.
+    #          principal in the policy entry, pppe.  This method
+    #          also returns true if the policy entry's principal
+    #          appropriately wildcarded.
     def check_entry_ps(p_list, pppe)
       i = 0
       while i < p_list.attr_length
@@ -1520,7 +1518,7 @@ module Sun::Security::Provider
     # @param pdp Principal array from the current ProtectionDomain.
     # 
     # @param perms the PermissionCollection where the individual
-    # Permissions will be added after expansion.
+    #                  Permissions will be added after expansion.
     def expand_self(sp, entry_ps, pdp, perms)
       if ((entry_ps).nil? || (entry_ps.size).equal?(0))
         # No principals in the grant to substitute
@@ -1616,8 +1614,8 @@ module Sun::Security::Provider
     typesig { [PolicyParser::PrincipalEntry, Array.typed(Principal)] }
     # return the principal class/name pair in the 2D array.
     # array[x][y]:     x corresponds to the array length.
-    # if (y == 0), it's the principal class.
-    # if (y == 1), it's the principal name.
+    #                  if (y == 0), it's the principal class.
+    #                  if (y == 1), it's the principal name.
     def get_principal_info(pe, pdp)
       # there are 3 possibilities:
       # 1) the entry's Principal class and name are not wildcarded
@@ -2040,8 +2038,8 @@ module Sun::Security::Provider
       # <p>
       # For example, the entry
       # <pre>
-      # permission java.io.File "/tmp", "read,write",
-      # signedBy "Duke";
+      #          permission java.io.File "/tmp", "read,write",
+      #          signedBy "Duke";
       # </pre>
       # is represented internally
       # <pre>
@@ -2087,10 +2085,10 @@ module Sun::Security::Provider
         # XXX policy entries
         # 
         # @param cs the CodeSource, which encapsulates the URL and the
-        # public key
-        # attributes from the policy config file. Validity checks
-        # are performed on the public key before PolicyEntry is
-        # called.
+        #        public key
+        #        attributes from the policy config file. Validity checks
+        #        are performed on the public key before PolicyEntry is
+        #        called.
         def initialize(cs, principals)
           @codesource = nil
           @permissions = nil

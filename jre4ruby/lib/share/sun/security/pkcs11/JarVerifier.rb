@@ -41,7 +41,6 @@ module Sun::Security::Pkcs11
   
   # NOTE: this class is duplicated amongst SunJCE, SunPKCS11, and SunMSCAPI.
   # All files should be kept in sync.
-  # 
   # This class verifies JAR files (and any supporting JAR files), and
   # determines whether they may be used in this implementation.
   # 

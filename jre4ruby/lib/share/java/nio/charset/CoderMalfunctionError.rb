@@ -48,7 +48,7 @@ module Java::Nio::Charset
     # Initializes an instance of this class.
     # 
     # @param  cause
-    # The unexpected exception that was thrown
+    #         The unexpected exception that was thrown
     def initialize(cause)
       super(cause)
     end

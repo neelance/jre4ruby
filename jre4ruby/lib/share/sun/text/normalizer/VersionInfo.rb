@@ -22,11 +22,8 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
-# 
 # (C) Copyright IBM Corp. 1996-2005 - All Rights Reserved                     *
-# *
+#                                                                             *
 # The original version of this source code and documentation is copyrighted   *
 # and owned by IBM, These materials are provided under terms of a License     *
 # Agreement between IBM and Sun. This technology is protected by multiple     *
@@ -50,17 +47,16 @@ module Sun::Text::Normalizer
     class_module.module_eval {
       typesig { [String] }
       # public methods ------------------------------------------------------
-      # 
       # Returns an instance of VersionInfo with the argument version.
       # @param version version String in the format of "major.minor.milli.micro"
-      # or "major.minor.milli" or "major.minor" or "major",
-      # where major, minor, milli, micro are non-negative numbers
-      # <= 255. If the trailing version numbers are
-      # not specified they are taken as 0s. E.g. Version "3.1" is
-      # equivalent to "3.1.0.0".
+      #                or "major.minor.milli" or "major.minor" or "major",
+      #                where major, minor, milli, micro are non-negative numbers
+      #                <= 255. If the trailing version numbers are
+      #                not specified they are taken as 0s. E.g. Version "3.1" is
+      #                equivalent to "3.1.0.0".
       # @return an instance of VersionInfo with the argument version.
       # @exception throws an IllegalArgumentException when the argument version
-      # is not in the right format
+      #                is not in the right format
       # @stable ICU 2.6
       def get_instance(version)
         length_ = version.length
@@ -101,7 +97,7 @@ module Sun::Text::Normalizer
       # @param milli milli version, non-negative number <= 255.
       # @param micro micro version, non-negative number <= 255.
       # @exception throws an IllegalArgumentException when either arguments are
-      # negative or > 255
+      #                                     negative or > 255
       # @stable ICU 2.6
       def get_instance(major, minor, milli, micro)
         # checks if it is in the hashmap
@@ -124,18 +120,17 @@ module Sun::Text::Normalizer
     # Compares other with this VersionInfo.
     # @param other VersionInfo to be compared
     # @return 0 if the argument is a VersionInfo object that has version
-    # information equals to this object.
-    # Less than 0 if the argument is a VersionInfo object that has
-    # version information greater than this object.
-    # Greater than 0 if the argument is a VersionInfo object that
-    # has version information less than this object.
+    #           information equals to this object.
+    #           Less than 0 if the argument is a VersionInfo object that has
+    #           version information greater than this object.
+    #           Greater than 0 if the argument is a VersionInfo object that
+    #           has version information less than this object.
     # @stable ICU 2.6
     def compare_to(other)
       return @m_version_ - other.attr_m_version_
     end
     
     # private data members ----------------------------------------------
-    # 
     # Version number stored as a byte for each of the major, minor, milli and
     # micro numbers in the 32 bit int.
     # Most significant for the major and the least significant contains the
@@ -158,7 +153,6 @@ module Sun::Text::Normalizer
     
     typesig { [::Java::Int] }
     # private constructor -----------------------------------------------
-    # 
     # Constructor with int
     # @param compactversion a 32 bit int with each byte representing a number
     def initialize(compactversion)

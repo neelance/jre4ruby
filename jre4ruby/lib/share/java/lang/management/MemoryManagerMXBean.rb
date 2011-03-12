@@ -45,16 +45,16 @@ module Java::Lang::Management
   # <p>The <tt>ObjectName</tt> for uniquely identifying the MXBean for
   # a memory manager within an MBeanServer is:
   # <blockquote>
-  # {@link ManagementFactory#MEMORY_MANAGER_MXBEAN_DOMAIN_TYPE
-  # <tt>java.lang:type=MemoryManager</tt>}<tt>,name=</tt><i>manager's name</i>
+  #   {@link ManagementFactory#MEMORY_MANAGER_MXBEAN_DOMAIN_TYPE
+  #    <tt>java.lang:type=MemoryManager</tt>}<tt>,name=</tt><i>manager's name</i>
   # </blockquote>
   # 
   # @see MemoryMXBean
   # 
   # @see <a href="../../../javax/management/package-summary.html">
-  # JMX Specification.</a>
+  #      JMX Specification.</a>
   # @see <a href="package-summary.html#examples">
-  # Ways to Access MXBeans</a>
+  #      Ways to Access MXBeans</a>
   # 
   # @author  Mandy Chung
   # @since   1.5
@@ -75,8 +75,8 @@ module Java::Lang::Management
     # machine removes it from the memory system.
     # 
     # @return <tt>true</tt> if the memory manager is valid in the
-    # Java virtual machine;
-    # <tt>false</tt> otherwise.
+    #               Java virtual machine;
+    #         <tt>false</tt> otherwise.
     def is_valid
       raise NotImplementedError
     end

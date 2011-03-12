@@ -22,10 +22,8 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
 # -- This file was mechanically generated: Do not edit! -- //
 module Java::Nio
-  # package-private
   module ByteBufferAsFloatBufferBImports #:nodoc:
     class_module.module_eval {
       include ::Java::Lang
@@ -36,6 +34,7 @@ module Java::Nio
   class ByteBufferAsFloatBufferB < ByteBufferAsFloatBufferBImports.const_get :FloatBuffer
     include_class_members ByteBufferAsFloatBufferBImports
     
+    # package-private
     attr_accessor :bb
     alias_method :attr_bb, :bb
     undef_method :bb
@@ -50,10 +49,9 @@ module Java::Nio
     
     typesig { [ByteBuffer] }
     def initialize(bb)
-      # package-private
       @bb = nil
       @offset = 0
-      super(-1, 0, bb.remaining >> 2, bb.remaining >> 2)
+      super(-1, 0, bb.remaining >> 2, bb.remaining >> 2) # package-private
       @bb = bb
       # enforce limit == capacity
       cap = self.capacity

@@ -61,15 +61,15 @@ module Sun::Util::Calendar
   # <blockquote>
   # <pre>
   # &lt;java.home&gt;/lib/zi/Africa/Addis_Ababa
-  # /Africa/Dakar
-  # /America/Los_Angeles
-  # /Asia/Singapore
-  # /EET
-  # /Europe/Oslo
-  # /GMT
-  # /Pacific/Galapagos
-  # ...
-  # /ZoneInfoMappings
+  #                   /Africa/Dakar
+  #                   /America/Los_Angeles
+  #                   /Asia/Singapore
+  #                   /EET
+  #                   /Europe/Oslo
+  #                   /GMT
+  #                   /Pacific/Galapagos
+  #                       ...
+  #                   /ZoneInfoMappings
   # </pre>
   # </blockquote>
   # 
@@ -84,11 +84,11 @@ module Sun::Util::Calendar
   # to describe TimeZone information. The generic format of a data file is:
   # <blockquote>
   # <pre>
-  # DataFile {
-  # u1              magic[7];
-  # u1              version;
-  # data_item       data[];
-  # }
+  #    DataFile {
+  #      u1              magic[7];
+  #      u1              version;
+  #      data_item       data[];
+  #    }
   # </pre>
   # </blockquote>
   # where <code>magic</code> is a magic number identifying a file
@@ -97,11 +97,11 @@ module Sun::Util::Calendar
   # <code>data_item</code> structure is:
   # <blockquote>
   # <pre>
-  # data_item {
-  # u1              tag;
-  # u2              length;
-  # u1              value[length];
-  # }
+  #    data_item {
+  #      u1              tag;
+  #      u2              length;
+  #      u1              value[length];
+  #    }
   # </pre>
   # </blockquote>
   # where <code>tag</code> indicates the data type of the item,
@@ -117,21 +117,21 @@ module Sun::Util::Calendar
   # <br>
   # <blockquote>
   # <pre>
-  # ZoneInfoDataFile {
-  # u1              magic[7];
-  # u1              version;
-  # SET OF<sup>1</sup> {
-  # transition            transitions<sup>2</sup>;
-  # offset_table          offsets<sup>2</sup>;
-  # simpletimezone        stzparams<sup>2</sup>;
-  # raw_offset            rawoffset;
-  # dstsaving             dst;
-  # checksum              crc32;
-  # gmtoffsetwillchange   gmtflag<sup>2</sup>;
-  # }
-  # }
-  # 1: an unordered collection of zero or one occurrences of each item
-  # 2: optional item
+  #    ZoneInfoDataFile {
+  #      u1              magic[7];
+  #      u1              version;
+  #      SET OF<sup>1</sup> {
+  #        transition            transitions<sup>2</sup>;
+  #        offset_table          offsets<sup>2</sup>;
+  #        simpletimezone        stzparams<sup>2</sup>;
+  #        raw_offset            rawoffset;
+  #        dstsaving             dst;
+  #        checksum              crc32;
+  #        gmtoffsetwillchange   gmtflag<sup>2</sup>;
+  #      }
+  #   }
+  #   1: an unordered collection of zero or one occurrences of each item
+  #   2: optional item
   # </pre>
   # </blockquote>
   # <code>magic</code> is a byte-string constant identifying the
@@ -154,11 +154,11 @@ module Sun::Util::Calendar
   # <p><strong>1.1 <code>transition</code> structure</strong><p><a name="transition"></a>
   # <blockquote>
   # <pre>
-  # transition {
-  # u1      tag;              // 0x04 : constant
-  # u2      length;           // byte length of whole values
-  # s8      value[length/8];  // transitions in `long'
-  # }
+  #    transition {
+  #      u1      tag;              // 0x04 : constant
+  #      u2      length;           // byte length of whole values
+  #      s8      value[length/8];  // transitions in `long'
+  #    }
   # </pre>
   # </blockquote>
   # See {@link ZoneInfo#transitions ZoneInfo.transitions} about the value.
@@ -166,11 +166,11 @@ module Sun::Util::Calendar
   # <p><strong>1.2 <code>offset_table</code> structure</strong><p>
   # <blockquote>
   # <pre>
-  # offset_table {
-  # u1      tag;              // 0x05 : constant
-  # u2      length;           // byte length of whole values
-  # s4      value[length/4];  // offset values in `int'
-  # }
+  #    offset_table {
+  #      u1      tag;              // 0x05 : constant
+  #      u2      length;           // byte length of whole values
+  #      s4      value[length/4];  // offset values in `int'
+  #    }
   # </pre>
   # </blockquote>
   # 
@@ -179,11 +179,11 @@ module Sun::Util::Calendar
   # about the value.
   # <blockquote>
   # <pre>
-  # simpletimezone {
-  # u1      tag;              // 0x06 : constant
-  # u2      length;           // byte length of whole values
-  # s4      value[length/4];  // SimpleTimeZone parameters
-  # }
+  #    simpletimezone {
+  #      u1      tag;              // 0x06 : constant
+  #      u2      length;           // byte length of whole values
+  #      s4      value[length/4];  // SimpleTimeZone parameters
+  #    }
   # </pre>
   # </blockquote>
   # See {@link ZoneInfo#offsets ZoneInfo.offsets} about the value.
@@ -191,11 +191,11 @@ module Sun::Util::Calendar
   # <p><strong>1.4 <code>raw_offset</code> structure</strong><p>
   # <blockquote>
   # <pre>
-  # raw_offset {
-  # u1      tag;              // 0x01 : constant
-  # u2      length;           // must be 4.
-  # s4      value;            // raw GMT offset [millisecond]
-  # }
+  #    raw_offset {
+  #      u1      tag;              // 0x01 : constant
+  #      u2      length;           // must be 4.
+  #      s4      value;            // raw GMT offset [millisecond]
+  #    }
   # </pre>
   # </blockquote>
   # See {@link ZoneInfo#rawOffset ZoneInfo.rawOffset} about the value.
@@ -204,11 +204,11 @@ module Sun::Util::Calendar
   # Value has dstSaving in seconds.
   # <blockquote>
   # <pre>
-  # dstsaving {
-  # u1      tag;              // 0x02 : constant
-  # u2      length;           // must be 2.
-  # s2      value;            // DST save value [second]
-  # }
+  #    dstsaving {
+  #      u1      tag;              // 0x02 : constant
+  #      u2      length;           // must be 2.
+  #      s2      value;            // DST save value [second]
+  #    }
   # </pre>
   # </blockquote>
   # See {@link ZoneInfo#dstSavings ZoneInfo.dstSavings} about value.
@@ -216,11 +216,11 @@ module Sun::Util::Calendar
   # <p><strong>1.6 <code>checksum</code> structure</strong><p>
   # <blockquote>
   # <pre>
-  # checksum {
-  # u1      tag;              // 0x03 : constant
-  # u2      length;           // must be 4.
-  # s4      value;            // CRC32 value of transitions
-  # }
+  #    checksum {
+  #      u1      tag;              // 0x03 : constant
+  #      u2      length;           // must be 4.
+  #      s4      value;            // CRC32 value of transitions
+  #    }
   # </pre>
   # </blockquote>
   # See {@link ZoneInfo#checksum ZoneInfo.checksum}.
@@ -231,12 +231,12 @@ module Sun::Util::Calendar
   # the value.
   # <blockquote>
   # <pre>
-  # gmtoffsetwillchange {
-  # u1      tag;             // 0x07 : constant
-  # u2      length;          // must be 1.
-  # u1      value;           // 1: if the GMT raw offset will change
-  # // in the future, 0, otherwise.
-  # }
+  #    gmtoffsetwillchange {
+  #      u1      tag;             // 0x07 : constant
+  #      u2      length;          // must be 1.
+  #      u1      value;           // 1: if the GMT raw offset will change
+  #                               // in the future, 0, otherwise.
+  #     }
   # </pre>
   # </blockquote>
   # 
@@ -247,18 +247,18 @@ module Sun::Util::Calendar
   # <br>
   # <blockquote>
   # <pre>
-  # ZoneInfoMappings {
-  # u1      magic[7];
-  # u1      version;
-  # SET OF {
-  # versionName                   version;
-  # zone_id_table                 zoneIDs;
-  # raw_offset_table              rawoffsets;
-  # raw_offset_index_table        rawoffsetindices;
-  # alias_table                   aliases;
-  # excluded_list                 excludedList;
-  # }
-  # }
+  #    ZoneInfoMappings {
+  #      u1      magic[7];
+  #      u1      version;
+  #      SET OF {
+  #        versionName                   version;
+  #        zone_id_table                 zoneIDs;
+  #        raw_offset_table              rawoffsets;
+  #        raw_offset_index_table        rawoffsetindices;
+  #        alias_table                   aliases;
+  #        excluded_list                 excludedList;
+  #      }
+  #   }
   # </pre>
   # </blockquote>
   # 
@@ -283,17 +283,17 @@ module Sun::Util::Calendar
   # <br>
   # <blockquote>
   # <pre>
-  # zone_id_table {
-  # u1      tag;              // 0x40 : constant
-  # u2      length;           // byte length of whole values
-  # u2      zone_id_count;
-  # zone_id value[zone_id_count];
-  # }
+  #    zone_id_table {
+  #      u1      tag;              // 0x40 : constant
+  #      u2      length;           // byte length of whole values
+  #      u2      zone_id_count;
+  #      zone_id value[zone_id_count];
+  #    }
   # 
-  # zone_id {
-  # u1      byte_length;      // byte length of id
-  # u1      id[byte_length];  // zone name string
-  # }
+  #    zone_id {
+  #      u1      byte_length;      // byte length of id
+  #      u1      id[byte_length];  // zone name string
+  #    }
   # </pre>
   # </blockquote>
   # 
@@ -301,11 +301,11 @@ module Sun::Util::Calendar
   # <br>
   # <blockquote>
   # <pre>
-  # raw_offset_table {
-  # u1      tag;              // 0x41 : constant
-  # u2      length;           // byte length of whole values
-  # s4      value[length/4];  // raw GMT offset in milliseconds
-  # }
+  #    raw_offset_table {
+  #      u1      tag;              // 0x41 : constant
+  #      u2      length;           // byte length of whole values
+  #      s4      value[length/4];  // raw GMT offset in milliseconds
+  #   }
   # </pre>
   # </blockquote>
   # 
@@ -313,11 +313,11 @@ module Sun::Util::Calendar
   # <br>
   # <blockquote>
   # <pre>
-  # raw_offset_index_table {
-  # u1      tag;              // 0x42 : constant
-  # u2      length;           // byte length of whole values
-  # u1      value[length];
-  # }
+  #    raw_offset_index_table {
+  #      u1      tag;              // 0x42 : constant
+  #      u2      length;           // byte length of whole values
+  #      u1      value[length];
+  #    }
   # </pre>
   # </blockquote>
   # 
@@ -325,17 +325,17 @@ module Sun::Util::Calendar
   # <br>
   # <blockquote>
   # <pre>
-  # alias_table {
-  # u1      tag;              // 0x43 : constant
-  # u2      length;           // byte length of whole values
-  # u2      nentries;         // number of id-pairs
-  # id_pair value[nentries];
-  # }
+  #   alias_table {
+  #      u1      tag;              // 0x43 : constant
+  #      u2      length;           // byte length of whole values
+  #      u2      nentries;         // number of id-pairs
+  #      id_pair value[nentries];
+  #   }
   # 
-  # id_pair {
-  # zone_id aliasname;
-  # zone_id ID;
-  # }
+  #   id_pair {
+  #      zone_id aliasname;
+  #      zone_id ID;
+  #   }
   # </pre>
   # </blockquote>
   # 
@@ -343,11 +343,11 @@ module Sun::Util::Calendar
   # <br>
   # <blockquote>
   # <pre>
-  # versionName {
-  # u1      tag;              // 0x44 : constant
-  # u2      length;           // byte length of whole values
-  # u1      value[length];
-  # }
+  #   versionName {
+  #      u1      tag;              // 0x44 : constant
+  #      u2      length;           // byte length of whole values
+  #      u1      value[length];
+  #   }
   # </pre>
   # </blockquote>
   # 
@@ -360,12 +360,12 @@ module Sun::Util::Calendar
   # <br>
   # <blockquote>
   # <pre>
-  # excluded_list {
-  # u1      tag;              // 0x45 : constant
-  # u2      length;           // byte length of whole values
-  # u2      nentries;         // number of zone_ids
-  # zone_id value[nentries];  // excluded zone IDs
-  # }
+  #   excluded_list {
+  #      u1      tag;              // 0x45 : constant
+  #      u2      length;           // byte length of whole values
+  #      u2      nentries;         // number of zone_ids
+  #      zone_id value[nentries];  // excluded zone IDs
+  #   }
   # </pre>
   # </blockquote>
   # 
@@ -1009,7 +1009,7 @@ module Sun::Util::Calendar
               if (!file.can_read)
                 return nil
               end
-              filesize = RJava.cast_to_int(file.length)
+              filesize = (file.length).to_int
               buf = Array.typed(::Java::Byte).new(filesize) { 0 }
               fis = self.class::FileInputStream.new(file)
               if (!(fis.read(buf)).equal?(filesize))

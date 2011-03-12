@@ -22,9 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996 - 2002 - All Rights Reserved
 # 
@@ -89,130 +86,130 @@ module Java::Text
   # <p>The special characters recognized by the regular-expression parser are as follows:</p>
   # 
   # <blockquote>
-  # <table border="1" width="100%">
-  # <tr>
-  # <td width="6%">*</td>
-  # <td width="94%">Specifies that the expression preceding the asterisk may occur any number
-  # of times (including not at all).</td>
-  # </tr>
-  # <tr>
-  # <td width="6%">{}</td>
-  # <td width="94%">Encloses a sequence of characters that is optional.</td>
-  # </tr>
-  # <tr>
-  # <td width="6%">()</td>
-  # <td width="94%">Encloses a sequence of characters.&nbsp; If followed by *, the sequence
-  # repeats.&nbsp; Otherwise, the parentheses are just a grouping device and a way to delimit
-  # the ends of expressions containing |.</td>
-  # </tr>
-  # <tr>
-  # <td width="6%">|</td>
-  # <td width="94%">Separates two alternative sequences of characters.&nbsp; Either one
-  # sequence or the other, but not both, matches this expression.&nbsp; The | character can
-  # only occur inside ().</td>
-  # </tr>
-  # <tr>
-  # <td width="6%">.</td>
-  # <td width="94%">Matches any character.</td>
-  # </tr>
-  # <tr>
-  # <td width="6%">*?</td>
-  # <td width="94%">Specifies a non-greedy asterisk.&nbsp; *? works the same way as *, except
-  # when there is overlap between the last group of characters in the expression preceding the
-  # * and the first group of characters following the *.&nbsp; When there is this kind of
-  # overlap, * will match the longest sequence of characters that match the expression before
-  # the *, and *? will match the shortest sequence of characters matching the expression
-  # before the *?.&nbsp; For example, if you have &quot;xxyxyyyxyxyxxyxyxyy&quot; in the text,
-  # &quot;x[xy]*x&quot; will match through to the last x (i.e., &quot;<strong>xxyxyyyxyxyxxyxyx</strong>yy&quot;,
-  # but &quot;x[xy]*?x&quot; will only match the first two xes (&quot;<strong>xx</strong>yxyyyxyxyxxyxyxyy&quot;).</td>
-  # </tr>
-  # <tr>
-  # <td width="6%">[]</td>
-  # <td width="94%">Specifies a group of alternative characters.&nbsp; A [] expression will
-  # match any single character that is specified in the [] expression.&nbsp; For more on the
-  # syntax of [] expressions, see below.</td>
-  # </tr>
-  # <tr>
-  # <td width="6%">/</td>
-  # <td width="94%">Specifies where the break position should go if text matches this
-  # expression.&nbsp; (e.g., &quot;[a-z]&#42;/[:Zs:]*[1-0]&quot; will match if the iterator sees a run
-  # of letters, followed by a run of whitespace, followed by a digit, but the break position
-  # will actually go before the whitespace).&nbsp; Expressions that don't contain / put the
-  # break position at the end of the matching text.</td>
-  # </tr>
-  # <tr>
-  # <td width="6%">\</td>
-  # <td width="94%">Escape character.&nbsp; The \ itself is ignored, but causes the next
-  # character to be treated as literal character.&nbsp; This has no effect for many
-  # characters, but for the characters listed above, this deprives them of their special
-  # meaning.&nbsp; (There are no special escape sequences for Unicode characters, or tabs and
-  # newlines; these are all handled by a higher-level protocol.&nbsp; In a Java string,
-  # &quot;\n&quot; will be converted to a literal newline character by the time the
-  # regular-expression parser sees it.&nbsp; Of course, this means that \ sequences that are
-  # visible to the regexp parser must be written as \\ when inside a Java string.)&nbsp; All
-  # characters in the ASCII range except for letters, digits, and control characters are
-  # reserved characters to the parser and must be preceded by \ even if they currently don't
-  # mean anything.</td>
-  # </tr>
-  # <tr>
-  # <td width="6%">!</td>
-  # <td width="94%">If ! appears at the beginning of a regular expression, it tells the regexp
-  # parser that this expression specifies the backwards-iteration behavior of the iterator,
-  # and not its normal iteration behavior.&nbsp; This is generally only used in situations
-  # where the automatically-generated backwards-iteration brhavior doesn't produce
-  # satisfactory results and must be supplemented with extra client-specified rules.</td>
-  # </tr>
-  # <tr>
-  # <td width="6%"><em>(all others)</em></td>
-  # <td width="94%">All other characters are treated as literal characters, which must match
-  # the corresponding character(s) in the text exactly.</td>
-  # </tr>
-  # </table>
+  #   <table border="1" width="100%">
+  #     <tr>
+  #       <td width="6%">*</td>
+  #       <td width="94%">Specifies that the expression preceding the asterisk may occur any number
+  #       of times (including not at all).</td>
+  #     </tr>
+  #     <tr>
+  #       <td width="6%">{}</td>
+  #       <td width="94%">Encloses a sequence of characters that is optional.</td>
+  #     </tr>
+  #     <tr>
+  #       <td width="6%">()</td>
+  #       <td width="94%">Encloses a sequence of characters.&nbsp; If followed by *, the sequence
+  #       repeats.&nbsp; Otherwise, the parentheses are just a grouping device and a way to delimit
+  #       the ends of expressions containing |.</td>
+  #     </tr>
+  #     <tr>
+  #       <td width="6%">|</td>
+  #       <td width="94%">Separates two alternative sequences of characters.&nbsp; Either one
+  #       sequence or the other, but not both, matches this expression.&nbsp; The | character can
+  #       only occur inside ().</td>
+  #     </tr>
+  #     <tr>
+  #       <td width="6%">.</td>
+  #       <td width="94%">Matches any character.</td>
+  #     </tr>
+  #     <tr>
+  #       <td width="6%">*?</td>
+  #       <td width="94%">Specifies a non-greedy asterisk.&nbsp; *? works the same way as *, except
+  #       when there is overlap between the last group of characters in the expression preceding the
+  #       * and the first group of characters following the *.&nbsp; When there is this kind of
+  #       overlap, * will match the longest sequence of characters that match the expression before
+  #       the *, and *? will match the shortest sequence of characters matching the expression
+  #       before the *?.&nbsp; For example, if you have &quot;xxyxyyyxyxyxxyxyxyy&quot; in the text,
+  #       &quot;x[xy]*x&quot; will match through to the last x (i.e., &quot;<strong>xxyxyyyxyxyxxyxyx</strong>yy&quot;,
+  #       but &quot;x[xy]*?x&quot; will only match the first two xes (&quot;<strong>xx</strong>yxyyyxyxyxxyxyxyy&quot;).</td>
+  #     </tr>
+  #     <tr>
+  #       <td width="6%">[]</td>
+  #       <td width="94%">Specifies a group of alternative characters.&nbsp; A [] expression will
+  #       match any single character that is specified in the [] expression.&nbsp; For more on the
+  #       syntax of [] expressions, see below.</td>
+  #     </tr>
+  #     <tr>
+  #       <td width="6%">/</td>
+  #       <td width="94%">Specifies where the break position should go if text matches this
+  #       expression.&nbsp; (e.g., &quot;[a-z]&#42;/[:Zs:]*[1-0]&quot; will match if the iterator sees a run
+  #       of letters, followed by a run of whitespace, followed by a digit, but the break position
+  #       will actually go before the whitespace).&nbsp; Expressions that don't contain / put the
+  #       break position at the end of the matching text.</td>
+  #     </tr>
+  #     <tr>
+  #       <td width="6%">\</td>
+  #       <td width="94%">Escape character.&nbsp; The \ itself is ignored, but causes the next
+  #       character to be treated as literal character.&nbsp; This has no effect for many
+  #       characters, but for the characters listed above, this deprives them of their special
+  #       meaning.&nbsp; (There are no special escape sequences for Unicode characters, or tabs and
+  #       newlines; these are all handled by a higher-level protocol.&nbsp; In a Java string,
+  #       &quot;\n&quot; will be converted to a literal newline character by the time the
+  #       regular-expression parser sees it.&nbsp; Of course, this means that \ sequences that are
+  #       visible to the regexp parser must be written as \\ when inside a Java string.)&nbsp; All
+  #       characters in the ASCII range except for letters, digits, and control characters are
+  #       reserved characters to the parser and must be preceded by \ even if they currently don't
+  #       mean anything.</td>
+  #     </tr>
+  #     <tr>
+  #       <td width="6%">!</td>
+  #       <td width="94%">If ! appears at the beginning of a regular expression, it tells the regexp
+  #       parser that this expression specifies the backwards-iteration behavior of the iterator,
+  #       and not its normal iteration behavior.&nbsp; This is generally only used in situations
+  #       where the automatically-generated backwards-iteration brhavior doesn't produce
+  #       satisfactory results and must be supplemented with extra client-specified rules.</td>
+  #     </tr>
+  #     <tr>
+  #       <td width="6%"><em>(all others)</em></td>
+  #       <td width="94%">All other characters are treated as literal characters, which must match
+  #       the corresponding character(s) in the text exactly.</td>
+  #     </tr>
+  #   </table>
   # </blockquote>
   # 
   # <p>Within a [] expression, a number of other special characters can be used to specify
   # groups of characters:</p>
   # 
   # <blockquote>
-  # <table border="1" width="100%">
-  # <tr>
-  # <td width="6%">-</td>
-  # <td width="94%">Specifies a range of matching characters.&nbsp; For example
-  # &quot;[a-p]&quot; matches all lowercase Latin letters from a to p (inclusive).&nbsp; The -
-  # sign specifies ranges of continuous Unicode numeric values, not ranges of characters in a
-  # language's alphabetical order: &quot;[a-z]&quot; doesn't include capital letters, nor does
-  # it include accented letters such as a-umlaut.</td>
-  # </tr>
-  # <tr>
-  # <td width="6%">::</td>
-  # <td width="94%">A pair of colons containing a one- or two-letter code matches all
-  # characters in the corresponding Unicode category.&nbsp; The two-letter codes are the same
-  # as the two-letter codes in the Unicode database (for example, &quot;[:Sc::Sm:]&quot;
-  # matches all currency symbols and all math symbols).&nbsp; Specifying a one-letter code is
-  # the same as specifying all two-letter codes that begin with that letter (for example,
-  # &quot;[:L:]&quot; matches all letters, and is equivalent to
-  # &quot;[:Lu::Ll::Lo::Lm::Lt:]&quot;).&nbsp; Anything other than a valid two-letter Unicode
-  # category code or a single letter that begins a Unicode category code is illegal within
-  # colons.</td>
-  # </tr>
-  # <tr>
-  # <td width="6%">[]</td>
-  # <td width="94%">[] expressions can nest.&nbsp; This has no effect, except when used in
-  # conjunction with the ^ token.</td>
-  # </tr>
-  # <tr>
-  # <td width="6%">^</td>
-  # <td width="94%">Excludes the character (or the characters in the [] expression) following
-  # it from the group of characters.&nbsp; For example, &quot;[a-z^p]&quot; matches all Latin
-  # lowercase letters except p.&nbsp; &quot;[:L:^[&#92;u4e00-&#92;u9fff]]&quot; matches all letters
-  # except the Han ideographs.</td>
-  # </tr>
-  # <tr>
-  # <td width="6%"><em>(all others)</em></td>
-  # <td width="94%">All other characters are treated as literal characters.&nbsp; (For
-  # example, &quot;[aeiou]&quot; specifies just the letters a, e, i, o, and u.)</td>
-  # </tr>
-  # </table>
+  #   <table border="1" width="100%">
+  #     <tr>
+  #       <td width="6%">-</td>
+  #       <td width="94%">Specifies a range of matching characters.&nbsp; For example
+  #       &quot;[a-p]&quot; matches all lowercase Latin letters from a to p (inclusive).&nbsp; The -
+  #       sign specifies ranges of continuous Unicode numeric values, not ranges of characters in a
+  #       language's alphabetical order: &quot;[a-z]&quot; doesn't include capital letters, nor does
+  #       it include accented letters such as a-umlaut.</td>
+  #     </tr>
+  #     <tr>
+  #       <td width="6%">::</td>
+  #       <td width="94%">A pair of colons containing a one- or two-letter code matches all
+  #       characters in the corresponding Unicode category.&nbsp; The two-letter codes are the same
+  #       as the two-letter codes in the Unicode database (for example, &quot;[:Sc::Sm:]&quot;
+  #       matches all currency symbols and all math symbols).&nbsp; Specifying a one-letter code is
+  #       the same as specifying all two-letter codes that begin with that letter (for example,
+  #       &quot;[:L:]&quot; matches all letters, and is equivalent to
+  #       &quot;[:Lu::Ll::Lo::Lm::Lt:]&quot;).&nbsp; Anything other than a valid two-letter Unicode
+  #       category code or a single letter that begins a Unicode category code is illegal within
+  #       colons.</td>
+  #     </tr>
+  #     <tr>
+  #       <td width="6%">[]</td>
+  #       <td width="94%">[] expressions can nest.&nbsp; This has no effect, except when used in
+  #       conjunction with the ^ token.</td>
+  #     </tr>
+  #     <tr>
+  #       <td width="6%">^</td>
+  #       <td width="94%">Excludes the character (or the characters in the [] expression) following
+  #       it from the group of characters.&nbsp; For example, &quot;[a-z^p]&quot; matches all Latin
+  #       lowercase letters except p.&nbsp; &quot;[:L:^[&#92;u4e00-&#92;u9fff]]&quot; matches all letters
+  #       except the Han ideographs.</td>
+  #     </tr>
+  #     <tr>
+  #       <td width="6%"><em>(all others)</em></td>
+  #       <td width="94%">All other characters are treated as literal characters.&nbsp; (For
+  #       example, &quot;[aeiou]&quot; specifies just the letters a, e, i, o, and u.)</td>
+  #     </tr>
+  #   </table>
   # </blockquote>
   # 
   # <p>For a more complete explanation, see <a
@@ -334,7 +331,6 @@ module Java::Text
     # =======================================================================
     # constructors
     # =======================================================================
-    # 
     # Constructs a RuleBasedBreakIterator according to the datafile
     # provided.
     def initialize(datafile)
@@ -363,32 +359,32 @@ module Java::Text
     typesig { [String] }
     # Read datafile. The datafile's format is as follows:
     # <pre>
-    # BreakIteratorData {
-    # u1           magic[7];
-    # u1           version;
-    # u4           totalDataSize;
-    # header_info  header;
-    # body         value;
-    # }
+    #   BreakIteratorData {
+    #       u1           magic[7];
+    #       u1           version;
+    #       u4           totalDataSize;
+    #       header_info  header;
+    #       body         value;
+    #   }
     # </pre>
     # <code>totalDataSize</code> is the summation of the size of
     # <code>header_info</code> and <code>body</code> in byte count.
     # <p>
     # In <code>header</code>, each field except for checksum implies the
     # length of each field. Since <code>BMPdataLength</code> is a fixed-length
-    # data(512 entries), its length isn't included in <code>header</code>.
+    #  data(512 entries), its length isn't included in <code>header</code>.
     # <code>checksum</code> is a CRC32 value of all in <code>body</code>.
     # <pre>
-    # header_info {
-    # u4           stateTableLength;
-    # u4           backwardsStateTableLength;
-    # u4           endStatesLength;
-    # u4           lookaheadStatesLength;
-    # u4           BMPdataLength;
-    # u4           nonBMPdataLength;
-    # u4           additionalDataLength;
-    # u8           checksum;
-    # }
+    #   header_info {
+    #       u4           stateTableLength;
+    #       u4           backwardsStateTableLength;
+    #       u4           endStatesLength;
+    #       u4           lookaheadStatesLength;
+    #       u4           BMPdataLength;
+    #       u4           nonBMPdataLength;
+    #       u4           additionalDataLength;
+    #       u8           checksum;
+    #   }
     # </pre>
     # <p>
     # 
@@ -396,16 +392,16 @@ module Java::Text
     # <code>charCategoryTable</code>. <code>nonBMPdata</code> is set to
     # <code>supplementaryCharCategoryTable</code>.
     # <pre>
-    # body {
-    # u2           stateTable[stateTableLength];
-    # u2           backwardsStateTable[backwardsStateTableLength];
-    # u1           endStates[endStatesLength];
-    # u1           lookaheadStates[lookaheadStatesLength];
-    # u2           BMPindices[512];
-    # u1           BMPdata[BMPdataLength];
-    # u4           nonBMPdata[numNonBMPdataLength];
-    # u1           additionalData[additionalDataLength];
-    # }
+    #   body {
+    #       u2           stateTable[stateTableLength];
+    #       u2           backwardsStateTable[backwardsStateTableLength];
+    #       u1           endStates[endStatesLength];
+    #       u1           lookaheadStates[lookaheadStatesLength];
+    #       u2           BMPindices[512];
+    #       u1           BMPdata[BMPdataLength];
+    #       u4           nonBMPdata[numNonBMPdataLength];
+    #       u1           additionalData[additionalDataLength];
+    #   }
     # </pre>
     def read_tables(datafile)
       buffer = read_file(datafile)
@@ -550,7 +546,6 @@ module Java::Text
     # =======================================================================
     # boilerplate
     # =======================================================================
-    # 
     # Clones this iterator.
     # @return A newly-constructed RuleBasedBreakIterator with the same
     # behavior as this one.
@@ -598,14 +593,13 @@ module Java::Text
     # Compute a hashcode for this BreakIterator
     # @return A hash code
     def hash_code
-      return RJava.cast_to_int(@checksum)
+      return (@checksum).to_int
     end
     
     typesig { [] }
     # =======================================================================
     # BreakIterator overrides
     # =======================================================================
-    # 
     # Sets the current iteration position to the beginning of the text.
     # (i.e., the CharacterIterator's starting offset).
     # @return The offset of the beginning of the text.
@@ -698,7 +692,7 @@ module Java::Text
           @text.next_
         end
       end
-      return RJava.cast_to_int(c2)
+      return (c2).to_int
     end
     
     typesig { [] }
@@ -712,7 +706,7 @@ module Java::Text
           return Character.to_code_point(c1, c2)
         end
       end
-      return RJava.cast_to_int(c1)
+      return (c1).to_int
     end
     
     typesig { [] }
@@ -818,9 +812,9 @@ module Java::Text
       check_offset(offset, text)
       if ((offset).equal?(text.get_begin_index))
         return true
-      # to check whether this is a boundary, we can use following() on the
-      # position before the specified one and return true if the position we
-      # get back is the one the user specified
+        # to check whether this is a boundary, we can use following() on the
+        # position before the specified one and return true if the position we
+        # get back is the one the user specified
       else
         return (following(offset - 1)).equal?(offset)
       end
@@ -879,7 +873,6 @@ module Java::Text
     # =======================================================================
     # implementation
     # =======================================================================
-    # 
     # This method is the actual implementation of the next() method.  All iteration
     # vectors through here.  This method initializes the state machine to state 1
     # and advances through the text character by character until we reach the end
@@ -918,8 +911,8 @@ module Java::Text
           else
             lookahead_result = get_next_index
           end
-        # otherwise, if the state we've just transitioned to is an accepting
-        # state, update the break position to be the current iteration position
+          # otherwise, if the state we've just transitioned to is an accepting
+          # state, update the break position to be the current iteration position
         else
           if (@end_states[state])
             result = get_next_index

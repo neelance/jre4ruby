@@ -282,7 +282,7 @@ module Sun::Security::Ssl
       # Grow "buf" if needed
       len = r.available + self.attr_count
       if (self.attr_buf.attr_length < len)
-        newbuf = 0
+        newbuf = nil
         newbuf = Array.typed(::Java::Byte).new(len) { 0 }
         System.arraycopy(self.attr_buf, 0, newbuf, 0, self.attr_count)
         self.attr_buf = newbuf
@@ -318,7 +318,6 @@ module Sun::Security::Ssl
       # We may need to send this SSL v2 "No Cipher" message back, if we
       # are faced with an SSLv2 "hello" that's not saying "I talk v3".
       # It's the only one documented in the V2 spec as a fatal error.
-      # 
       # unpadded 3 byte record
       # ... error message
       # ... NO_CIPHER error
@@ -526,12 +525,10 @@ module Sun::Security::Ssl
       self.attr_buf[2] = self.attr_buf[4]
       # header [3..4] for handshake message length
       # count = 5;
-      # 
       # Store the generic V3 handshake header:  4 bytes
       self.attr_buf[5] = 1 # HandshakeMessage.ht_client_hello
       # buf [6..8] for length of ClientHello (int24)
       # count += 4;
-      # 
       # ClientHello header starts with SSL version
       self.attr_buf[9] = self.attr_buf[1]
       self.attr_buf[10] = self.attr_buf[2]

@@ -50,7 +50,6 @@ module Java::Security
     
     class_module.module_eval {
       # Declare serialVersionUID to be compatible with JDK1.1
-      # 
       # The class fingerprint that is set to indicate serialization
       # compatibility with a previous version of the class.
       const_set_lazy(:SerialVersionUID) { 7187392471159151072 }

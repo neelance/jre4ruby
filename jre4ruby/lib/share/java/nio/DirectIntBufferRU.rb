@@ -22,7 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
 # -- This file was mechanically generated: Do not edit! -- //
 module Java::Nio
   module DirectIntBufferRUImports #:nodoc:
@@ -45,9 +44,8 @@ module Java::Nio
     typesig { [DirectBuffer, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int] }
     # For duplicates and slices
     # 
-    # package-private
     def initialize(db, mark, pos, lim, cap, off)
-      super(db, mark, pos, lim, cap, off)
+      super(db, mark, pos, lim, cap, off) # package-private
     end
     
     typesig { [] }

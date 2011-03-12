@@ -89,7 +89,7 @@ module Java::Util
       # The bits in this BitSet.  The ith bit is stored in bits[i/64] at
       # bit position i % 64 (where bit position 0 refers to the least
       # significant bit and 63 refers to the most significant bit).
-      const_set_lazy(:SerialPersistentFields) { Array.typed(ObjectStreamField).new([ObjectStreamField.new("bits", Array), ]) }
+      const_set_lazy(:SerialPersistentFields) { Array.typed(ObjectStreamField).new([ObjectStreamField.new("bits", Array)]) }
       const_attr_reader  :SerialPersistentFields
     }
     
@@ -169,7 +169,7 @@ module Java::Util
     # 
     # @param  nbits the initial size of the bit set
     # @throws NegativeArraySizeException if the specified initial size
-    # is negative
+    #         is negative
     def initialize(nbits)
       @words = nil
       @words_in_use = 0
@@ -267,8 +267,8 @@ module Java::Util
     # @param  fromIndex index of the first bit to flip
     # @param  toIndex index after the last bit to flip
     # @throws IndexOutOfBoundsException if {@code fromIndex} is negative,
-    # or {@code toIndex} is negative, or {@code fromIndex} is
-    # larger than {@code toIndex}
+    #         or {@code toIndex} is negative, or {@code fromIndex} is
+    #         larger than {@code toIndex}
     # @since  1.4
     def flip(from_index, to_index)
       check_range(from_index, to_index)
@@ -338,8 +338,8 @@ module Java::Util
     # @param  fromIndex index of the first bit to be set
     # @param  toIndex index after the last bit to be set
     # @throws IndexOutOfBoundsException if {@code fromIndex} is negative,
-    # or {@code toIndex} is negative, or {@code fromIndex} is
-    # larger than {@code toIndex}
+    #         or {@code toIndex} is negative, or {@code fromIndex} is
+    #         larger than {@code toIndex}
     # @since  1.4
     def set(from_index, to_index)
       check_range(from_index, to_index)
@@ -379,8 +379,8 @@ module Java::Util
     # @param  toIndex index after the last bit to be set
     # @param  value value to set the selected bits to
     # @throws IndexOutOfBoundsException if {@code fromIndex} is negative,
-    # or {@code toIndex} is negative, or {@code fromIndex} is
-    # larger than {@code toIndex}
+    #         or {@code toIndex} is negative, or {@code fromIndex} is
+    #         larger than {@code toIndex}
     # @since  1.4
     def set(from_index, to_index, value)
       if (value)
@@ -416,8 +416,8 @@ module Java::Util
     # @param  fromIndex index of the first bit to be cleared
     # @param  toIndex index after the last bit to be cleared
     # @throws IndexOutOfBoundsException if {@code fromIndex} is negative,
-    # or {@code toIndex} is negative, or {@code fromIndex} is
-    # larger than {@code toIndex}
+    #         or {@code toIndex} is negative, or {@code fromIndex} is
+    #         larger than {@code toIndex}
     # @since  1.4
     def clear(from_index, to_index)
       check_range(from_index, to_index)
@@ -491,8 +491,8 @@ module Java::Util
     # @param  toIndex index after the last bit to include
     # @return a new {@code BitSet} from a range of this {@code BitSet}
     # @throws IndexOutOfBoundsException if {@code fromIndex} is negative,
-    # or {@code toIndex} is negative, or {@code fromIndex} is
-    # larger than {@code toIndex}
+    #         or {@code toIndex} is negative, or {@code fromIndex} is
+    #         larger than {@code toIndex}
     # @since  1.4
     def get(from_index, to_index)
       check_range(from_index, to_index)
@@ -518,8 +518,7 @@ module Java::Util
         source_index += 1
       end
       # Process the last word
-      last_word_mask = WORD_MASK >> -to_index
-      # straddles source words
+      last_word_mask = WORD_MASK >> -to_index # straddles source words
       result.attr_words[target_words - 1] = ((to_index - 1) & BIT_INDEX_MASK) < (from_index & BIT_INDEX_MASK) ? ((@words[source_index] >> from_index) | (@words[source_index + 1] & last_word_mask) << -from_index) : ((@words[source_index] & last_word_mask) >> from_index)
       # Set wordsInUse correctly
       result.attr_words_in_use = target_words
@@ -536,14 +535,14 @@ module Java::Util
     # <p>To iterate over the {@code true} bits in a {@code BitSet},
     # use the following loop:
     # 
-    # <pre> {@code
+    #  <pre> {@code
     # for (int i = bs.nextSetBit(0); i >= 0; i = bs.nextSetBit(i+1)) {
-    # // operate on index i here
+    #     // operate on index i here
     # }}</pre>
     # 
     # @param  fromIndex the index to start checking from (inclusive)
     # @return the index of the next set bit, or {@code -1} if there
-    # is no such bit
+    #         is no such bit
     # @throws IndexOutOfBoundsException if the specified index is negative
     # @since  1.4
     def next_set_bit(from_index)
@@ -628,7 +627,7 @@ module Java::Util
     # 
     # @param  set {@code BitSet} to intersect with
     # @return boolean indicating whether this {@code BitSet} intersects
-    # the specified {@code BitSet}
+    #         the specified {@code BitSet}
     # @since  1.4
     def intersects(set_)
       i = Math.min(@words_in_use, set_.attr_words_in_use) - 1
@@ -719,9 +718,9 @@ module Java::Util
     # statements holds:
     # <ul>
     # <li>The bit initially has the value {@code true}, and the
-    # corresponding bit in the argument has the value {@code false}.
+    #     corresponding bit in the argument has the value {@code false}.
     # <li>The bit initially has the value {@code false}, and the
-    # corresponding bit in the argument has the value {@code true}.
+    #     corresponding bit in the argument has the value {@code true}.
     # </ul>
     # 
     # @param  set a bit set
@@ -750,7 +749,7 @@ module Java::Util
     # bit is set in the specified {@code BitSet}.
     # 
     # @param  set the {@code BitSet} with which to mask this
-    # {@code BitSet}
+    #         {@code BitSet}
     # @since  1.2
     def and_not(set_)
       # Perform logical (a & !b) on words in common
@@ -778,11 +777,11 @@ module Java::Util
     # method would be a correct implementation of the actual algorithm:
     # <pre>
     # public int hashCode() {
-    # long h = 1234;
-    # for (int i = words.length; --i &gt;= 0; ) {
-    # h ^= words[i] * (i + 1);
-    # }
-    # return (int)((h &gt;&gt; 32) ^ h);
+    #      long h = 1234;
+    #      for (int i = words.length; --i &gt;= 0; ) {
+    #           h ^= words[i] * (i + 1);
+    #      }
+    #      return (int)((h &gt;&gt; 32) ^ h);
     # }</pre>
     # Note that the hash code values change if the set of bits is altered.
     # <p>Overrides the <code>hashCode</code> method of <code>Object</code>.
@@ -794,7 +793,7 @@ module Java::Util
       while (i -= 1) >= 0
         h ^= @words[i] * (i + 1)
       end
-      return RJava.cast_to_int(((h >> 32) ^ h))
+      return (((h >> 32) ^ h)).to_int
     end
     
     typesig { [] }
@@ -818,7 +817,7 @@ module Java::Util
     # 
     # @param  obj the object to compare with
     # @return {@code true} if the objects are the same;
-    # {@code false} otherwise
+    #         {@code false} otherwise
     # @see    #size()
     def ==(obj)
       if (!(obj.is_a?(BitSet)))

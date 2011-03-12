@@ -52,33 +52,33 @@ module Java::Lang::Management
   # An application can access a platform MXBean in the following ways:
   # <ul>
   # <li><i>Direct access to an MXBean interface</i>
-  # <ol type="a">
-  # <li>Get the MXBean instance through the static factory method
-  # and access the MXBean locally of the running
-  # virtual machine.
-  # </li>
-  # <li>Construct an MXBean proxy instance that forwards the
-  # method calls to a given {@link MBeanServer MBeanServer} by calling
-  # {@link #newPlatformMXBeanProxy newPlatfromMXBeanProxy}.
-  # A proxy is typically constructed to remotely access
-  # an MXBean of another running virtual machine.
-  # </li>
-  # </ol></li>
+  #     <ol type="a">
+  #     <li>Get the MXBean instance through the static factory method
+  #         and access the MXBean locally of the running
+  #         virtual machine.
+  #         </li>
+  #     <li>Construct an MXBean proxy instance that forwards the
+  #         method calls to a given {@link MBeanServer MBeanServer} by calling
+  #         {@link #newPlatformMXBeanProxy newPlatfromMXBeanProxy}.
+  #         A proxy is typically constructed to remotely access
+  #         an MXBean of another running virtual machine.
+  #         </li>
+  #     </ol></li>
   # <li><i>Indirect access to an MXBean interface via MBeanServer</i>
-  # <ol type="a">
-  # <li>Go through the {@link #getPlatformMBeanServer
-  # platform MBeanServer} to access MXBeans locally or
-  # a specific <tt>MBeanServerConnection</tt> to access
-  # MXBeans remotely.
-  # The attributes and operations of an MXBean use only
-  # <em>JMX open types</em> which include basic data types,
-  # {@link javax.management.openmbean.CompositeData CompositeData},
-  # and {@link javax.management.openmbean.TabularData TabularData}
-  # defined in
-  # {@link javax.management.openmbean.OpenType OpenType}.
-  # The mapping is specified below.
-  # </li>
-  # </ol></li>
+  #     <ol type="a">
+  #     <li>Go through the {@link #getPlatformMBeanServer
+  #         platform MBeanServer} to access MXBeans locally or
+  #         a specific <tt>MBeanServerConnection</tt> to access
+  #         MXBeans remotely.
+  #         The attributes and operations of an MXBean use only
+  #         <em>JMX open types</em> which include basic data types,
+  #         {@link javax.management.openmbean.CompositeData CompositeData},
+  #         and {@link javax.management.openmbean.TabularData TabularData}
+  #         defined in
+  #         {@link javax.management.openmbean.OpenType OpenType}.
+  #         The mapping is specified below.
+  #        </li>
+  #     </ol></li>
   # </ul>
   # 
   # <h4><a name="MXBean">Platform MXBeans</a></h4>
@@ -97,30 +97,30 @@ module Java::Lang::Management
   # <p>
   # The platform MXBean interfaces use only the following data types:
   # <ul>
-  # <li>Primitive types such as <tt>int</tt>, <tt>long</tt>,
-  # <tt>boolean</tt>, etc</li>
-  # <li>Wrapper classes for primitive types such as
-  # {@link java.lang.Integer Integer}, {@link java.lang.Long Long},
-  # {@link java.lang.Boolean Boolean}, etc and
-  # {@link java.lang.String String}</li>
-  # <li>{@link java.lang.Enum Enum} classes</li>
-  # <li>Classes that define only getter methods and define a static
-  # <tt>from</tt> method with a
-  # {@link javax.management.openmbean.CompositeData CompositeData}
-  # argument to convert from an input <tt>CompositeData</tt> to
-  # an instance of that class
-  # </li>
-  # <li>{@link java.util.List List&lt;E&gt;}
-  # where <tt>E</tt> is a primitive type, a wrapper class,
-  # an enum class, or a class supporting conversion from a
-  # <tt>CompositeData</tt> to its class
-  # </li>
-  # <li>{@link java.util.Map Map&lt;K,V&gt;}
-  # where <tt>K</tt> and <tt>V</tt> are
-  # a primitive type, a wrapper class,
-  # an enum class, or a class supporting conversion from a
-  # <tt>CompositeData</tt> to its class
-  # </li>
+  #   <li>Primitive types such as <tt>int</tt>, <tt>long</tt>,
+  #       <tt>boolean</tt>, etc</li>
+  #   <li>Wrapper classes for primitive types such as
+  #       {@link java.lang.Integer Integer}, {@link java.lang.Long Long},
+  #       {@link java.lang.Boolean Boolean}, etc and
+  #       {@link java.lang.String String}</li>
+  #   <li>{@link java.lang.Enum Enum} classes</li>
+  #   <li>Classes that define only getter methods and define a static
+  #       <tt>from</tt> method with a
+  #       {@link javax.management.openmbean.CompositeData CompositeData}
+  #       argument to convert from an input <tt>CompositeData</tt> to
+  #       an instance of that class
+  #       </li>
+  #   <li>{@link java.util.List List&lt;E&gt;}
+  #       where <tt>E</tt> is a primitive type, a wrapper class,
+  #       an enum class, or a class supporting conversion from a
+  #       <tt>CompositeData</tt> to its class
+  #       </li>
+  #   <li>{@link java.util.Map Map&lt;K,V&gt;}
+  #       where <tt>K</tt> and <tt>V</tt> are
+  #       a primitive type, a wrapper class,
+  #       an enum class, or a class supporting conversion from a
+  #       <tt>CompositeData</tt> to its class
+  #       </li>
   # </ul>
   # 
   # <p>
@@ -128,32 +128,32 @@ module Java::Lang::Management
   # is accessed via an <tt>MBeanServer</tt>, the data types are mapped
   # as follows:
   # <ul>
-  # <li>A primitive type or a wrapper class is mapped
-  # to the same type.
-  # </li>
-  # <li>An {@link Enum} is mapped to
-  # <tt>String</tt> whose value is the name of the enum constant.
-  # <li>A class that defines only getter methods and a static
-  # <tt>from</tt> method with a
-  # {@link javax.management.openmbean.CompositeData CompositeData}
-  # argument is mapped to
-  # {@link javax.management.openmbean.CompositeData CompositeData}.
-  # </li>
-  # <li><tt>Map&lt;K,V&gt;</tt> is mapped to
-  # {@link javax.management.openmbean.TabularData TabularData}
-  # whose row type is a
-  # {@link javax.management.openmbean.CompositeType CompositeType} with
-  # two items whose names are <i>"key"</i> and <i>"value"</i>
-  # and the item types are
-  # the corresponding mapped type of <tt>K</tt> and <tt>V</tt>
-  # respectively and the <i>"key"</i> is the index.
-  # </li>
-  # <li><tt>List&lt;E&gt;</tt> is mapped to an array with the mapped
-  # type of <tt>E</tt> as the element type.
-  # </li>
-  # <li>An array of element type <tt>E</tt> is mapped to
-  # an array of the same dimenions with the mapped type of <tt>E</tt>
-  # as the element type.</li>
+  #   <li>A primitive type or a wrapper class is mapped
+  #       to the same type.
+  #       </li>
+  #   <li>An {@link Enum} is mapped to
+  #       <tt>String</tt> whose value is the name of the enum constant.
+  #   <li>A class that defines only getter methods and a static
+  #       <tt>from</tt> method with a
+  #       {@link javax.management.openmbean.CompositeData CompositeData}
+  #       argument is mapped to
+  #       {@link javax.management.openmbean.CompositeData CompositeData}.
+  #       </li>
+  #   <li><tt>Map&lt;K,V&gt;</tt> is mapped to
+  #       {@link javax.management.openmbean.TabularData TabularData}
+  #       whose row type is a
+  #       {@link javax.management.openmbean.CompositeType CompositeType} with
+  #       two items whose names are <i>"key"</i> and <i>"value"</i>
+  #       and the item types are
+  #       the corresponding mapped type of <tt>K</tt> and <tt>V</tt>
+  #       respectively and the <i>"key"</i> is the index.
+  #       </li>
+  #   <li><tt>List&lt;E&gt;</tt> is mapped to an array with the mapped
+  #       type of <tt>E</tt> as the element type.
+  #       </li>
+  #   <li>An array of element type <tt>E</tt> is mapped to
+  #       an array of the same dimenions with the mapped type of <tt>E</tt>
+  #       as the element type.</li>
   # </ul>
   # 
   # The {@link javax.management.MBeanInfo MBeanInfo}
@@ -177,17 +177,17 @@ module Java::Lang::Management
   # <blockquote>
   # <table border>
   # <tr>
-  # <th>Attribute Name</th>
-  # <th>Type</th>
+  #   <th>Attribute Name</th>
+  #   <th>Type</th>
+  #   </tr>
+  # <tr>
+  #   <td><tt>HeapMemoryUsage</tt></td>
+  #   <td>{@link MemoryUsage#from
+  #              CompositeData representing MemoryUsage}</td>
   # </tr>
   # <tr>
-  # <td><tt>HeapMemoryUsage</tt></td>
-  # <td>{@link MemoryUsage#from
-  # CompositeData representing MemoryUsage}</td>
-  # </tr>
-  # <tr>
-  # <td><tt>Verbose</tt></td>
-  # <td><tt>boolean</tt></td>
+  #   <td><tt>Verbose</tt></td>
+  #   <td><tt>boolean</tt></td>
   # </tr>
   # </table>
   # </blockquote>
@@ -208,27 +208,27 @@ module Java::Lang::Management
   # <tr>
   # <td> {@link ClassLoadingMXBean} </td>
   # <td> {@link #CLASS_LOADING_MXBEAN_NAME
-  # <tt>java.lang:type=ClassLoading</tt>}</td>
+  #             <tt>java.lang:type=ClassLoading</tt>}</td>
   # </tr>
   # <tr>
   # <td> {@link MemoryMXBean} </td>
   # <td> {@link #MEMORY_MXBEAN_NAME
-  # <tt>java.lang:type=Memory</tt>}</td>
+  #             <tt>java.lang:type=Memory</tt>}</td>
   # </tr>
   # <tr>
   # <td> {@link ThreadMXBean} </td>
   # <td> {@link #THREAD_MXBEAN_NAME
-  # <tt>java.lang:type=Threading</tt>}</td>
+  #             <tt>java.lang:type=Threading</tt>}</td>
   # </tr>
   # <tr>
   # <td> {@link RuntimeMXBean} </td>
   # <td> {@link #RUNTIME_MXBEAN_NAME
-  # <tt>java.lang:type=Runtime</tt>}</td>
+  #             <tt>java.lang:type=Runtime</tt>}</td>
   # </tr>
   # <tr>
   # <td> {@link OperatingSystemMXBean} </td>
   # <td> {@link #OPERATING_SYSTEM_MXBEAN_NAME
-  # <tt>java.lang:type=OperatingSystem</tt>}</td>
+  #             <tt>java.lang:type=OperatingSystem</tt>}</td>
   # </tr>
   # </table>
   # </blockquote>
@@ -246,7 +246,7 @@ module Java::Lang::Management
   # <tr>
   # <td> {@link CompilationMXBean} </td>
   # <td> {@link #COMPILATION_MXBEAN_NAME
-  # <tt>java.lang:type=Compilation</tt>}</td>
+  #             <tt>java.lang:type=Compilation</tt>}</td>
   # </tr>
   # </table>
   # </blockquote>
@@ -263,25 +263,25 @@ module Java::Lang::Management
   # <tr>
   # <td> {@link GarbageCollectorMXBean} </td>
   # <td> {@link #GARBAGE_COLLECTOR_MXBEAN_DOMAIN_TYPE
-  # <tt>java.lang:type=GarbageCollector</tt>}<tt>,name=</tt><i>collector's name</i></td>
+  #    <tt>java.lang:type=GarbageCollector</tt>}<tt>,name=</tt><i>collector's name</i></td>
   # </tr>
   # <tr>
   # <td> {@link MemoryManagerMXBean} </td>
   # <td> {@link #MEMORY_MANAGER_MXBEAN_DOMAIN_TYPE
-  # <tt>java.lang:type=MemoryManager</tt>}<tt>,name=</tt><i>manager's name</i></td>
+  #    <tt>java.lang:type=MemoryManager</tt>}<tt>,name=</tt><i>manager's name</i></td>
   # </tr>
   # <tr>
   # <td> {@link MemoryPoolMXBean} </td>
   # <td> {@link #MEMORY_POOL_MXBEAN_DOMAIN_TYPE
-  # <tt>java.lang:type=MemoryPool</tt>}<tt>,name=</tt><i>pool's name</i></td>
+  #    <tt>java.lang:type=MemoryPool</tt>}<tt>,name=</tt><i>pool's name</i></td>
   # </tr>
   # </table>
   # </blockquote>
   # 
   # @see <a href="../../../javax/management/package-summary.html">
-  # JMX Specification.</a>
+  #      JMX Specification.</a>
   # @see <a href="package-summary.html#examples">
-  # Ways to Access Management Metrics</a>
+  #      Ways to Access Management Metrics</a>
   # @see java.util.logging.LoggingMXBean
   # @see javax.management.MXBean
   # 
@@ -393,8 +393,8 @@ module Java::Lang::Management
       # if the Java virtual machine has no compilation system.
       # 
       # @return a {@link CompilationMXBean} object for the Java virtual
-      # machine or <tt>null</tt> if the Java virtual machine has
-      # no compilation system.
+      #   machine or <tt>null</tt> if the Java virtual machine has
+      #   no compilation system.
       def get_compilation_mxbean
         return Sun::Management::ManagementFactory.get_compilation_mxbean
       end
@@ -486,8 +486,8 @@ module Java::Lang::Management
       # Name conflicts with the platform MXBeans should be avoided.
       # 
       # @return the platform <tt>MBeanServer</tt>; the platform
-      # MXBeans are registered into the platform <tt>MBeanServer</tt>
-      # at the first time this method is called.
+      #         MXBeans are registered into the platform <tt>MBeanServer</tt>
+      #         at the first time this method is called.
       # 
       # @exception SecurityException if there is a security manager
       # and the caller does not have the permission required by
@@ -510,88 +510,88 @@ module Java::Lang::Management
       end
       
       typesig { [MBeanServerConnection, String, Class] }
-      # Returns a proxy for a platform MXBean interface of a
-      # given <a href="#MXBeanNames">MXBean name</a>
-      # that forwards its method calls through the given
-      # <tt>MBeanServerConnection</tt>.
+      #  Returns a proxy for a platform MXBean interface of a
+      #  given <a href="#MXBeanNames">MXBean name</a>
+      #  that forwards its method calls through the given
+      #  <tt>MBeanServerConnection</tt>.
       # 
-      # <p>This method is equivalent to:
-      # <blockquote>
-      # {@link java.lang.reflect.Proxy#newProxyInstance
-      # Proxy.newProxyInstance}<tt>(mxbeanInterface.getClassLoader(),
-      # new Class[] { mxbeanInterface }, handler)</tt>
-      # </blockquote>
+      #  <p>This method is equivalent to:
+      #  <blockquote>
+      #  {@link java.lang.reflect.Proxy#newProxyInstance
+      #         Proxy.newProxyInstance}<tt>(mxbeanInterface.getClassLoader(),
+      #         new Class[] { mxbeanInterface }, handler)</tt>
+      #  </blockquote>
       # 
-      # where <tt>handler</tt> is an {@link java.lang.reflect.InvocationHandler
-      # InvocationHandler} to which method invocations to the MXBean interface
-      # are dispatched. This <tt>handler</tt> converts an input parameter
-      # from an MXBean data type to its mapped open type before forwarding
-      # to the <tt>MBeanServer</tt> and converts a return value from
-      # an MXBean method call through the <tt>MBeanServer</tt>
-      # from an open type to the corresponding return type declared in
-      # the MXBean interface.
+      #  where <tt>handler</tt> is an {@link java.lang.reflect.InvocationHandler
+      #  InvocationHandler} to which method invocations to the MXBean interface
+      #  are dispatched. This <tt>handler</tt> converts an input parameter
+      #  from an MXBean data type to its mapped open type before forwarding
+      #  to the <tt>MBeanServer</tt> and converts a return value from
+      #  an MXBean method call through the <tt>MBeanServer</tt>
+      #  from an open type to the corresponding return type declared in
+      #  the MXBean interface.
       # 
-      # <p>
-      # If the MXBean is a notification emitter (i.e.,
-      # it implements
-      # {@link javax.management.NotificationEmitter NotificationEmitter}),
-      # both the <tt>mxbeanInterface</tt> and <tt>NotificationEmitter</tt>
-      # will be implemented by this proxy.
+      #  <p>
+      #  If the MXBean is a notification emitter (i.e.,
+      #  it implements
+      #  {@link javax.management.NotificationEmitter NotificationEmitter}),
+      #  both the <tt>mxbeanInterface</tt> and <tt>NotificationEmitter</tt>
+      #  will be implemented by this proxy.
       # 
-      # <p>
-      # <b>Notes:</b>
-      # <ol>
-      # <li>Using an MXBean proxy is a convenience remote access to
-      # a platform MXBean of a running virtual machine.  All method
-      # calls to the MXBean proxy are forwarded to an
-      # <tt>MBeanServerConnection</tt> where
-      # {@link java.io.IOException IOException} may be thrown
-      # when the communication problem occurs with the connector server.
-      # An application remotely accesses the platform MXBeans using
-      # proxy should prepare to catch <tt>IOException</tt> as if
-      # accessing with the <tt>MBeanServerConnector</tt> interface.</li>
+      #  <p>
+      #  <b>Notes:</b>
+      #  <ol>
+      #  <li>Using an MXBean proxy is a convenience remote access to
+      #  a platform MXBean of a running virtual machine.  All method
+      #  calls to the MXBean proxy are forwarded to an
+      #  <tt>MBeanServerConnection</tt> where
+      #  {@link java.io.IOException IOException} may be thrown
+      #  when the communication problem occurs with the connector server.
+      #  An application remotely accesses the platform MXBeans using
+      #  proxy should prepare to catch <tt>IOException</tt> as if
+      #  accessing with the <tt>MBeanServerConnector</tt> interface.</li>
       # 
-      # <li>When a client application is designed to remotely access MXBeans
-      # for a running virtual machine whose version is different than
-      # the version on which the application is running,
-      # it should prepare to catch
-      # {@link java.io.InvalidObjectException InvalidObjectException}
-      # which is thrown when an MXBean proxy receives a name of an
-      # enum constant which is missing in the enum class loaded in
-      # the client application. </li>
+      #  <li>When a client application is designed to remotely access MXBeans
+      #  for a running virtual machine whose version is different than
+      #  the version on which the application is running,
+      #  it should prepare to catch
+      #  {@link java.io.InvalidObjectException InvalidObjectException}
+      #  which is thrown when an MXBean proxy receives a name of an
+      #  enum constant which is missing in the enum class loaded in
+      #  the client application. </li>
       # 
-      # <li>{@link javax.management.MBeanServerInvocationHandler
-      # MBeanServerInvocationHandler} or its
-      # {@link javax.management.MBeanServerInvocationHandler#newProxyInstance
-      # newProxyInstance} method cannot be used to create
-      # a proxy for a platform MXBean. The proxy object created
-      # by <tt>MBeanServerInvocationHandler</tt> does not handle
-      # the properties of the platform MXBeans described in
-      # the <a href="#MXBean">class specification</a>.
+      #  <li>{@link javax.management.MBeanServerInvocationHandler
+      #  MBeanServerInvocationHandler} or its
+      #  {@link javax.management.MBeanServerInvocationHandler#newProxyInstance
+      #  newProxyInstance} method cannot be used to create
+      #  a proxy for a platform MXBean. The proxy object created
+      #  by <tt>MBeanServerInvocationHandler</tt> does not handle
+      #  the properties of the platform MXBeans described in
+      #  the <a href="#MXBean">class specification</a>.
       # </li>
-      # </ol>
+      #  </ol>
       # 
-      # @param connection the <tt>MBeanServerConnection</tt> to forward to.
-      # @param mxbeanName the name of a platform MXBean within
-      # <tt>connection</tt> to forward to. <tt>mxbeanName</tt> must be
-      # in the format of {@link ObjectName ObjectName}.
-      # @param mxbeanInterface the MXBean interface to be implemented
-      # by the proxy.
+      #  @param connection the <tt>MBeanServerConnection</tt> to forward to.
+      #  @param mxbeanName the name of a platform MXBean within
+      #  <tt>connection</tt> to forward to. <tt>mxbeanName</tt> must be
+      #  in the format of {@link ObjectName ObjectName}.
+      #  @param mxbeanInterface the MXBean interface to be implemented
+      #  by the proxy.
       # 
-      # @throws IllegalArgumentException if
-      # <ul>
-      # <li><tt>mxbeanName</tt> is not with a valid
-      # {@link ObjectName ObjectName} format, or</li>
-      # <li>the named MXBean in the <tt>connection</tt> is
-      # not a MXBean provided by the platform, or</li>
-      # <li>the named MXBean is not registered in the
-      # <tt>MBeanServerConnection</tt>, or</li>
-      # <li>the named MXBean is not an instance of the given
-      # <tt>mxbeanInterface</tt></li>
-      # </ul>
+      #  @throws IllegalArgumentException if
+      #  <ul>
+      #  <li><tt>mxbeanName</tt> is not with a valid
+      #      {@link ObjectName ObjectName} format, or</li>
+      #  <li>the named MXBean in the <tt>connection</tt> is
+      #      not a MXBean provided by the platform, or</li>
+      #  <li>the named MXBean is not registered in the
+      #      <tt>MBeanServerConnection</tt>, or</li>
+      #  <li>the named MXBean is not an instance of the given
+      #      <tt>mxbeanInterface</tt></li>
+      #  </ul>
       # 
-      # @throws java.io.IOException if a communication problem
-      # occurred when accessing the <tt>MBeanServerConnection</tt>.
+      #  @throws java.io.IOException if a communication problem
+      #  occurred when accessing the <tt>MBeanServerConnection</tt>.
       def new_platform_mxbean_proxy(connection, mxbean_name, mxbean_interface)
         interface_class = mxbean_interface
         loader = AccessController.do_privileged(# Only allow MXBean interfaces from rt.jar loaded by the

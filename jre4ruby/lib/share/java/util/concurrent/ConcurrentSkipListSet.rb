@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # This file is available under and governed by the GNU General Public
 # License version 2 only, as published by the Free Software Foundation.
 # However, the following notice accompanied the original version of this
@@ -118,8 +116,8 @@ module Java::Util::Concurrent
     # the specified comparator.
     # 
     # @param comparator the comparator that will be used to order this set.
-    # If <tt>null</tt>, the {@linkplain Comparable natural
-    # ordering} of the elements will be used.
+    #        If <tt>null</tt>, the {@linkplain Comparable natural
+    #        ordering} of the elements will be used.
     def initialize(comparator)
       @m = nil
       super()
@@ -133,9 +131,9 @@ module Java::Util::Concurrent
     # 
     # @param c The elements that will comprise the new set
     # @throws ClassCastException if the elements in <tt>c</tt> are
-    # not {@link Comparable}, or are not mutually comparable
+    #         not {@link Comparable}, or are not mutually comparable
     # @throws NullPointerException if the specified collection or any
-    # of its elements are null
+    #         of its elements are null
     def initialize(c)
       @m = nil
       super()
@@ -149,7 +147,7 @@ module Java::Util::Concurrent
     # 
     # @param s sorted set whose elements will comprise the new set
     # @throws NullPointerException if the specified sorted set or any
-    # of its elements are null
+    #         of its elements are null
     def initialize(s)
       @m = nil
       super()
@@ -183,7 +181,6 @@ module Java::Util::Concurrent
     
     typesig { [] }
     # ---------------- Set operations --------------
-    # 
     # Returns the number of elements in this set.  If this set
     # contains more than <tt>Integer.MAX_VALUE</tt> elements, it
     # returns <tt>Integer.MAX_VALUE</tt>.
@@ -217,7 +214,7 @@ module Java::Util::Concurrent
     # @param o object to be checked for containment in this set
     # @return <tt>true</tt> if this set contains the specified element
     # @throws ClassCastException if the specified element cannot be
-    # compared with the elements currently in this set
+    #         compared with the elements currently in this set
     # @throws NullPointerException if the specified element is null
     def contains(o)
       return @m.contains_key(o)
@@ -232,9 +229,9 @@ module Java::Util::Concurrent
     # 
     # @param e element to be added to this set
     # @return <tt>true</tt> if this set did not already contain the
-    # specified element
+    #         specified element
     # @throws ClassCastException if <tt>e</tt> cannot be compared
-    # with the elements currently in this set
+    #         with the elements currently in this set
     # @throws NullPointerException if the specified element is null
     def add(e)
       return (@m.put_if_absent(e, Boolean::TRUE)).nil?
@@ -251,7 +248,7 @@ module Java::Util::Concurrent
     # @param o object to be removed from this set, if present
     # @return <tt>true</tt> if this set contained the specified element
     # @throws ClassCastException if <tt>o</tt> cannot be compared
-    # with the elements currently in this set
+    #         with the elements currently in this set
     # @throws NullPointerException if the specified element is null
     def remove(o)
       return @m.remove(o, Boolean::TRUE)
@@ -281,7 +278,6 @@ module Java::Util::Concurrent
     
     typesig { [Object] }
     # ---------------- AbstractSet Overrides --------------
-    # 
     # Compares the specified object with this set for equality.  Returns
     # <tt>true</tt> if the specified object is also a set, the two sets
     # have the same size, and every member of the specified set is
@@ -319,9 +315,9 @@ module Java::Util::Concurrent
     # @param  c collection containing elements to be removed from this set
     # @return <tt>true</tt> if this set changed as a result of the call
     # @throws ClassCastException if the types of one or more elements in this
-    # set are incompatible with the specified collection
+    #         set are incompatible with the specified collection
     # @throws NullPointerException if the specified collection or any
-    # of its elements are null
+    #         of its elements are null
     def remove_all(c)
       # Override AbstractSet version to avoid unnecessary call to size()
       modified = false
@@ -336,7 +332,6 @@ module Java::Util::Concurrent
     
     typesig { [Object] }
     # ---------------- Relational operations --------------
-    # 
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if the specified element is null
     def lower(e)
@@ -397,7 +392,7 @@ module Java::Util::Concurrent
     typesig { [Object, ::Java::Boolean, Object, ::Java::Boolean] }
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if {@code fromElement} or
-    # {@code toElement} is null
+    #         {@code toElement} is null
     # @throws IllegalArgumentException {@inheritDoc}
     def sub_set(from_element, from_inclusive, to_element, to_inclusive)
       return ConcurrentSkipListSet.new(@m.sub_map(from_element, from_inclusive, to_element, to_inclusive))
@@ -422,7 +417,7 @@ module Java::Util::Concurrent
     typesig { [Object, Object] }
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if {@code fromElement} or
-    # {@code toElement} is null
+    #         {@code toElement} is null
     # @throws IllegalArgumentException {@inheritDoc}
     def sub_set(from_element, to_element)
       return sub_set(from_element, true, to_element, false)

@@ -169,17 +169,17 @@ module Java::Security
     # 
     # @param type either one of Type.SECRET, Type.PUBLIC, or Type.PRIVATE
     # @param algorithm the algorithm returned from
-    # <code>Key.getAlgorithm()</code>
+    #          <code>Key.getAlgorithm()</code>
     # @param format the encoding format returned from
-    # <code>Key.getFormat()</code>
+    #          <code>Key.getFormat()</code>
     # @param encoded the encoded bytes returned from
-    # <code>Key.getEncoded()</code>
+    #          <code>Key.getEncoded()</code>
     # 
     # @exception NullPointerException
-    # if type is <code>null</code>,
-    # if algorithm is <code>null</code>,
-    # if format is <code>null</code>,
-    # or if encoded is <code>null</code>
+    #          if type is <code>null</code>,
+    #          if algorithm is <code>null</code>,
+    #          if format is <code>null</code>,
+    #          or if encoded is <code>null</code>
     def initialize(type, algorithm, format, encoded)
       @type = nil
       @algorithm = nil
@@ -214,9 +214,9 @@ module Java::Security
     # @return the resolved Key object
     # 
     # @exception ObjectStreamException if the Type/format
-    # combination is unrecognized, if the algorithm, key format, or
-    # encoded key bytes are unrecognized/invalid, of if the
-    # resolution of the key fails for any reason
+    #  combination is unrecognized, if the algorithm, key format, or
+    #  encoded key bytes are unrecognized/invalid, of if the
+    #  resolution of the key fails for any reason
     def read_resolve
       begin
         if ((@type).equal?(Type::SECRET) && (RAW == @format))

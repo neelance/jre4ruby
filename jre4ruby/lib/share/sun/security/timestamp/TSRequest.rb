@@ -42,21 +42,21 @@ module Sun::Security::Timestamp
   # The TimeStampReq ASN.1 type has the following definition:
   # <pre>
   # 
-  # TimeStampReq ::= SEQUENCE {
-  # version           INTEGER { v1(1) },
-  # messageImprint    MessageImprint
-  # -- a hash algorithm OID and the hash value of the data to be
-  # -- time-stamped.
-  # reqPolicy         TSAPolicyId    OPTIONAL,
-  # nonce             INTEGER        OPTIONAL,
-  # certReq           BOOLEAN        DEFAULT FALSE,
-  # extensions        [0] IMPLICIT Extensions OPTIONAL }
+  #     TimeStampReq ::= SEQUENCE {
+  #         version           INTEGER { v1(1) },
+  #         messageImprint    MessageImprint
+  #           -- a hash algorithm OID and the hash value of the data to be
+  #           -- time-stamped.
+  #         reqPolicy         TSAPolicyId    OPTIONAL,
+  #         nonce             INTEGER        OPTIONAL,
+  #         certReq           BOOLEAN        DEFAULT FALSE,
+  #         extensions        [0] IMPLICIT Extensions OPTIONAL }
   # 
-  # MessageImprint ::= SEQUENCE {
-  # hashAlgorithm     AlgorithmIdentifier,
-  # hashedMessage     OCTET STRING }
+  #     MessageImprint ::= SEQUENCE {
+  #         hashAlgorithm     AlgorithmIdentifier,
+  #         hashedMessage     OCTET STRING }
   # 
-  # TSAPolicyId ::= OBJECT IDENTIFIER
+  #     TSAPolicyId ::= OBJECT IDENTIFIER
   # 
   # </pre>
   # 
@@ -182,7 +182,7 @@ module Sun::Security::Timestamp
     # Request that the TSA include its signing certificate in the response.
     # 
     # @param returnCertificate True if the TSA should return its signing
-    # certificate. By default it is not returned.
+    #                          certificate. By default it is not returned.
     def request_certificate(return_certificate)
       @return_certificate = return_certificate
     end

@@ -98,7 +98,7 @@ module Java::Lang
       # character.  The following ASCII characters are used as digits:
       # 
       # <blockquote>
-      # {@code 0123456789abcdefghijklmnopqrstuvwxyz}
+      #   {@code 0123456789abcdefghijklmnopqrstuvwxyz}
       # </blockquote>
       # 
       # These are <code>'&#92;u0030'</code> through
@@ -112,7 +112,7 @@ module Java::Lang
       # be called on the result:
       # 
       # <blockquote>
-      # {@code Integer.toString(n, 16).toUpperCase()}
+      #  {@code Integer.toString(n, 16).toUpperCase()}
       # </blockquote>
       # 
       # @param   i       an integer to be converted to a string.
@@ -161,7 +161,7 @@ module Java::Lang
       # hexadecimal digits:
       # 
       # <blockquote>
-      # {@code 0123456789abcdef}
+      #  {@code 0123456789abcdef}
       # </blockquote>
       # 
       # These are the characters <code>'&#92;u0030'</code> through
@@ -171,12 +171,12 @@ module Java::Lang
       # be called on the result:
       # 
       # <blockquote>
-      # {@code Integer.toHexString(n).toUpperCase()}
+      #  {@code Integer.toHexString(n).toUpperCase()}
       # </blockquote>
       # 
       # @param   i   an integer to be converted to a string.
       # @return  the string representation of the unsigned integer value
-      # represented by the argument in hexadecimal (base&nbsp;16).
+      #          represented by the argument in hexadecimal (base&nbsp;16).
       # @since   JDK1.0.2
       def to_hex_string(i)
         return to_unsigned_string(i, 4)
@@ -207,7 +207,7 @@ module Java::Lang
       # 
       # @param   i   an integer to be converted to a string.
       # @return  the string representation of the unsigned integer value
-      # represented by the argument in octal (base&nbsp;8).
+      #          represented by the argument in octal (base&nbsp;8).
       # @since   JDK1.0.2
       def to_octal_string(i)
         return to_unsigned_string(i, 3)
@@ -231,7 +231,7 @@ module Java::Lang
       # 
       # @param   i   an integer to be converted to a string.
       # @return  the string representation of the unsigned integer value
-      # represented by the argument in binary (base&nbsp;2).
+      #          represented by the argument in binary (base&nbsp;2).
       # @since   JDK1.0.2
       def to_binary_string(i)
         return to_unsigned_string(i, 1)
@@ -251,10 +251,10 @@ module Java::Lang
         return String.new(buf, char_pos, (32 - char_pos))
       end
       
-      const_set_lazy(:DigitTens) { Array.typed(::Java::Char).new([Character.new(?0.ord), Character.new(?0.ord), Character.new(?0.ord), Character.new(?0.ord), Character.new(?0.ord), Character.new(?0.ord), Character.new(?0.ord), Character.new(?0.ord), Character.new(?0.ord), Character.new(?0.ord), Character.new(?1.ord), Character.new(?1.ord), Character.new(?1.ord), Character.new(?1.ord), Character.new(?1.ord), Character.new(?1.ord), Character.new(?1.ord), Character.new(?1.ord), Character.new(?1.ord), Character.new(?1.ord), Character.new(?2.ord), Character.new(?2.ord), Character.new(?2.ord), Character.new(?2.ord), Character.new(?2.ord), Character.new(?2.ord), Character.new(?2.ord), Character.new(?2.ord), Character.new(?2.ord), Character.new(?2.ord), Character.new(?3.ord), Character.new(?3.ord), Character.new(?3.ord), Character.new(?3.ord), Character.new(?3.ord), Character.new(?3.ord), Character.new(?3.ord), Character.new(?3.ord), Character.new(?3.ord), Character.new(?3.ord), Character.new(?4.ord), Character.new(?4.ord), Character.new(?4.ord), Character.new(?4.ord), Character.new(?4.ord), Character.new(?4.ord), Character.new(?4.ord), Character.new(?4.ord), Character.new(?4.ord), Character.new(?4.ord), Character.new(?5.ord), Character.new(?5.ord), Character.new(?5.ord), Character.new(?5.ord), Character.new(?5.ord), Character.new(?5.ord), Character.new(?5.ord), Character.new(?5.ord), Character.new(?5.ord), Character.new(?5.ord), Character.new(?6.ord), Character.new(?6.ord), Character.new(?6.ord), Character.new(?6.ord), Character.new(?6.ord), Character.new(?6.ord), Character.new(?6.ord), Character.new(?6.ord), Character.new(?6.ord), Character.new(?6.ord), Character.new(?7.ord), Character.new(?7.ord), Character.new(?7.ord), Character.new(?7.ord), Character.new(?7.ord), Character.new(?7.ord), Character.new(?7.ord), Character.new(?7.ord), Character.new(?7.ord), Character.new(?7.ord), Character.new(?8.ord), Character.new(?8.ord), Character.new(?8.ord), Character.new(?8.ord), Character.new(?8.ord), Character.new(?8.ord), Character.new(?8.ord), Character.new(?8.ord), Character.new(?8.ord), Character.new(?8.ord), Character.new(?9.ord), Character.new(?9.ord), Character.new(?9.ord), Character.new(?9.ord), Character.new(?9.ord), Character.new(?9.ord), Character.new(?9.ord), Character.new(?9.ord), Character.new(?9.ord), Character.new(?9.ord), ]) }
+      const_set_lazy(:DigitTens) { Array.typed(::Java::Char).new([Character.new(?0.ord), Character.new(?0.ord), Character.new(?0.ord), Character.new(?0.ord), Character.new(?0.ord), Character.new(?0.ord), Character.new(?0.ord), Character.new(?0.ord), Character.new(?0.ord), Character.new(?0.ord), Character.new(?1.ord), Character.new(?1.ord), Character.new(?1.ord), Character.new(?1.ord), Character.new(?1.ord), Character.new(?1.ord), Character.new(?1.ord), Character.new(?1.ord), Character.new(?1.ord), Character.new(?1.ord), Character.new(?2.ord), Character.new(?2.ord), Character.new(?2.ord), Character.new(?2.ord), Character.new(?2.ord), Character.new(?2.ord), Character.new(?2.ord), Character.new(?2.ord), Character.new(?2.ord), Character.new(?2.ord), Character.new(?3.ord), Character.new(?3.ord), Character.new(?3.ord), Character.new(?3.ord), Character.new(?3.ord), Character.new(?3.ord), Character.new(?3.ord), Character.new(?3.ord), Character.new(?3.ord), Character.new(?3.ord), Character.new(?4.ord), Character.new(?4.ord), Character.new(?4.ord), Character.new(?4.ord), Character.new(?4.ord), Character.new(?4.ord), Character.new(?4.ord), Character.new(?4.ord), Character.new(?4.ord), Character.new(?4.ord), Character.new(?5.ord), Character.new(?5.ord), Character.new(?5.ord), Character.new(?5.ord), Character.new(?5.ord), Character.new(?5.ord), Character.new(?5.ord), Character.new(?5.ord), Character.new(?5.ord), Character.new(?5.ord), Character.new(?6.ord), Character.new(?6.ord), Character.new(?6.ord), Character.new(?6.ord), Character.new(?6.ord), Character.new(?6.ord), Character.new(?6.ord), Character.new(?6.ord), Character.new(?6.ord), Character.new(?6.ord), Character.new(?7.ord), Character.new(?7.ord), Character.new(?7.ord), Character.new(?7.ord), Character.new(?7.ord), Character.new(?7.ord), Character.new(?7.ord), Character.new(?7.ord), Character.new(?7.ord), Character.new(?7.ord), Character.new(?8.ord), Character.new(?8.ord), Character.new(?8.ord), Character.new(?8.ord), Character.new(?8.ord), Character.new(?8.ord), Character.new(?8.ord), Character.new(?8.ord), Character.new(?8.ord), Character.new(?8.ord), Character.new(?9.ord), Character.new(?9.ord), Character.new(?9.ord), Character.new(?9.ord), Character.new(?9.ord), Character.new(?9.ord), Character.new(?9.ord), Character.new(?9.ord), Character.new(?9.ord), Character.new(?9.ord)]) }
       const_attr_reader  :DigitTens
       
-      const_set_lazy(:DigitOnes) { Array.typed(::Java::Char).new([Character.new(?0.ord), Character.new(?1.ord), Character.new(?2.ord), Character.new(?3.ord), Character.new(?4.ord), Character.new(?5.ord), Character.new(?6.ord), Character.new(?7.ord), Character.new(?8.ord), Character.new(?9.ord), Character.new(?0.ord), Character.new(?1.ord), Character.new(?2.ord), Character.new(?3.ord), Character.new(?4.ord), Character.new(?5.ord), Character.new(?6.ord), Character.new(?7.ord), Character.new(?8.ord), Character.new(?9.ord), Character.new(?0.ord), Character.new(?1.ord), Character.new(?2.ord), Character.new(?3.ord), Character.new(?4.ord), Character.new(?5.ord), Character.new(?6.ord), Character.new(?7.ord), Character.new(?8.ord), Character.new(?9.ord), Character.new(?0.ord), Character.new(?1.ord), Character.new(?2.ord), Character.new(?3.ord), Character.new(?4.ord), Character.new(?5.ord), Character.new(?6.ord), Character.new(?7.ord), Character.new(?8.ord), Character.new(?9.ord), Character.new(?0.ord), Character.new(?1.ord), Character.new(?2.ord), Character.new(?3.ord), Character.new(?4.ord), Character.new(?5.ord), Character.new(?6.ord), Character.new(?7.ord), Character.new(?8.ord), Character.new(?9.ord), Character.new(?0.ord), Character.new(?1.ord), Character.new(?2.ord), Character.new(?3.ord), Character.new(?4.ord), Character.new(?5.ord), Character.new(?6.ord), Character.new(?7.ord), Character.new(?8.ord), Character.new(?9.ord), Character.new(?0.ord), Character.new(?1.ord), Character.new(?2.ord), Character.new(?3.ord), Character.new(?4.ord), Character.new(?5.ord), Character.new(?6.ord), Character.new(?7.ord), Character.new(?8.ord), Character.new(?9.ord), Character.new(?0.ord), Character.new(?1.ord), Character.new(?2.ord), Character.new(?3.ord), Character.new(?4.ord), Character.new(?5.ord), Character.new(?6.ord), Character.new(?7.ord), Character.new(?8.ord), Character.new(?9.ord), Character.new(?0.ord), Character.new(?1.ord), Character.new(?2.ord), Character.new(?3.ord), Character.new(?4.ord), Character.new(?5.ord), Character.new(?6.ord), Character.new(?7.ord), Character.new(?8.ord), Character.new(?9.ord), Character.new(?0.ord), Character.new(?1.ord), Character.new(?2.ord), Character.new(?3.ord), Character.new(?4.ord), Character.new(?5.ord), Character.new(?6.ord), Character.new(?7.ord), Character.new(?8.ord), Character.new(?9.ord), ]) }
+      const_set_lazy(:DigitOnes) { Array.typed(::Java::Char).new([Character.new(?0.ord), Character.new(?1.ord), Character.new(?2.ord), Character.new(?3.ord), Character.new(?4.ord), Character.new(?5.ord), Character.new(?6.ord), Character.new(?7.ord), Character.new(?8.ord), Character.new(?9.ord), Character.new(?0.ord), Character.new(?1.ord), Character.new(?2.ord), Character.new(?3.ord), Character.new(?4.ord), Character.new(?5.ord), Character.new(?6.ord), Character.new(?7.ord), Character.new(?8.ord), Character.new(?9.ord), Character.new(?0.ord), Character.new(?1.ord), Character.new(?2.ord), Character.new(?3.ord), Character.new(?4.ord), Character.new(?5.ord), Character.new(?6.ord), Character.new(?7.ord), Character.new(?8.ord), Character.new(?9.ord), Character.new(?0.ord), Character.new(?1.ord), Character.new(?2.ord), Character.new(?3.ord), Character.new(?4.ord), Character.new(?5.ord), Character.new(?6.ord), Character.new(?7.ord), Character.new(?8.ord), Character.new(?9.ord), Character.new(?0.ord), Character.new(?1.ord), Character.new(?2.ord), Character.new(?3.ord), Character.new(?4.ord), Character.new(?5.ord), Character.new(?6.ord), Character.new(?7.ord), Character.new(?8.ord), Character.new(?9.ord), Character.new(?0.ord), Character.new(?1.ord), Character.new(?2.ord), Character.new(?3.ord), Character.new(?4.ord), Character.new(?5.ord), Character.new(?6.ord), Character.new(?7.ord), Character.new(?8.ord), Character.new(?9.ord), Character.new(?0.ord), Character.new(?1.ord), Character.new(?2.ord), Character.new(?3.ord), Character.new(?4.ord), Character.new(?5.ord), Character.new(?6.ord), Character.new(?7.ord), Character.new(?8.ord), Character.new(?9.ord), Character.new(?0.ord), Character.new(?1.ord), Character.new(?2.ord), Character.new(?3.ord), Character.new(?4.ord), Character.new(?5.ord), Character.new(?6.ord), Character.new(?7.ord), Character.new(?8.ord), Character.new(?9.ord), Character.new(?0.ord), Character.new(?1.ord), Character.new(?2.ord), Character.new(?3.ord), Character.new(?4.ord), Character.new(?5.ord), Character.new(?6.ord), Character.new(?7.ord), Character.new(?8.ord), Character.new(?9.ord), Character.new(?0.ord), Character.new(?1.ord), Character.new(?2.ord), Character.new(?3.ord), Character.new(?4.ord), Character.new(?5.ord), Character.new(?6.ord), Character.new(?7.ord), Character.new(?8.ord), Character.new(?9.ord)]) }
       const_attr_reader  :DigitOnes
       
       typesig { [::Java::Int] }
@@ -273,9 +273,8 @@ module Java::Lang
       # sequence.
       # 
       # RE:  Division by Invariant Integers using Multiplication
-      # T Gralund, P Montgomery
-      # ACM PLDI 1994
-      # 
+      #      T Gralund, P Montgomery
+      #      ACM PLDI 1994
       # 
       # Returns a {@code String} object representing the
       # specified integer. The argument is converted to signed decimal
@@ -397,12 +396,12 @@ module Java::Lang
       # </pre></blockquote>
       # 
       # @param      s   the {@code String} containing the integer
-      # representation to be parsed
+      #                  representation to be parsed
       # @param      radix   the radix to be used while parsing {@code s}.
       # @return     the integer represented by the string argument in the
-      # specified radix.
+      #             specified radix.
       # @exception  NumberFormatException if the {@code String}
-      # does not contain a parsable {@code int}.
+      #             does not contain a parsable {@code int}.
       def parse_int(s, radix)
         if ((s).nil?)
           raise NumberFormatException.new("null")
@@ -468,10 +467,10 @@ module Java::Lang
       # #parseInt(java.lang.String, int)} method.
       # 
       # @param s    a {@code String} containing the {@code int}
-      # representation to be parsed
+      #             representation to be parsed
       # @return     the integer value represented by the argument in decimal.
       # @exception  NumberFormatException  if the string does not contain a
-      # parsable integer.
+      #               parsable integer.
       def parse_int(s)
         return parse_int(s, 10)
       end
@@ -490,16 +489,16 @@ module Java::Lang
       # object equal to the value of:
       # 
       # <blockquote>
-      # {@code new Integer(Integer.parseInt(s, radix))}
+      #  {@code new Integer(Integer.parseInt(s, radix))}
       # </blockquote>
       # 
       # @param      s   the string to be parsed.
       # @param      radix the radix to be used in interpreting {@code s}
       # @return     an {@code Integer} object holding the value
-      # represented by the string argument in the specified
-      # radix.
+      #             represented by the string argument in the specified
+      #             radix.
       # @exception NumberFormatException if the {@code String}
-      # does not contain a parsable {@code int}.
+      #            does not contain a parsable {@code int}.
       def value_of(s, radix)
         return parse_int(s, radix)
       end
@@ -517,14 +516,14 @@ module Java::Lang
       # object equal to the value of:
       # 
       # <blockquote>
-      # {@code new Integer(Integer.parseInt(s))}
+      #  {@code new Integer(Integer.parseInt(s))}
       # </blockquote>
       # 
       # @param      s   the string to be parsed.
       # @return     an {@code Integer} object holding the value
-      # represented by the string argument.
+      #             represented by the string argument.
       # @exception  NumberFormatException  if the string cannot be parsed
-      # as an integer.
+      #             as an integer.
       def value_of(s)
         return parse_int(s, 10)
       end
@@ -588,7 +587,7 @@ module Java::Lang
     # represents the specified {@code int} value.
     # 
     # @param   value   the value to be represented by the
-    # {@code Integer} object.
+    #                  {@code Integer} object.
     def initialize(value)
       @value = 0
       super()
@@ -603,9 +602,9 @@ module Java::Lang
     # {@code parseInt} method for radix 10.
     # 
     # @param      s   the {@code String} to be converted to an
-    # {@code Integer}.
+    #                 {@code Integer}.
     # @exception  NumberFormatException  if the {@code String} does not
-    # contain a parsable integer.
+    #               contain a parsable integer.
     # @see        java.lang.Integer#parseInt(java.lang.String, int)
     def initialize(s)
       @value = 0
@@ -663,7 +662,7 @@ module Java::Lang
     # java.lang.Integer#toString(int)} method.
     # 
     # @return  a string representation of the value of this object in
-    # base&nbsp;10.
+    #          base&nbsp;10.
     def to_s
       return String.value_of(@value)
     end
@@ -672,8 +671,8 @@ module Java::Lang
     # Returns a hash code for this {@code Integer}.
     # 
     # @return  a hash code value for this object, equal to the
-    # primitive {@code int} value represented by this
-    # {@code Integer} object.
+    #          primitive {@code int} value represented by this
+    #          {@code Integer} object.
     def hash_code
       return @value
     end
@@ -686,7 +685,7 @@ module Java::Lang
     # 
     # @param   obj   the object to compare with.
     # @return  {@code true} if the objects are the same;
-    # {@code false} otherwise.
+    #          {@code false} otherwise.
     def ==(obj)
       if (obj.is_a?(JavaInteger))
         return (@value).equal?((obj).int_value)
@@ -715,7 +714,7 @@ module Java::Lang
       # object equal to the value of:
       # 
       # <blockquote>
-      # {@code getInteger(nm, null)}
+      #  {@code getInteger(nm, null)}
       # </blockquote>
       # 
       # @param   nm   property name.
@@ -748,7 +747,7 @@ module Java::Lang
       # equal to the value of:
       # 
       # <blockquote>
-      # {@code getInteger(nm, new Integer(val))}
+      #  {@code getInteger(nm, new Integer(val))}
       # </blockquote>
       # 
       # but in practice it may be implemented in a manner such as:
@@ -782,14 +781,14 @@ module Java::Lang
       # returned.
       # 
       # <ul><li>If the property value begins with the two ASCII characters
-      # {@code 0x} or the ASCII character {@code #}, not
-      # followed by a minus sign, then the rest of it is parsed as a
-      # hexadecimal integer exactly as by the method
-      # {@link #valueOf(java.lang.String, int)} with radix 16.
+      #         {@code 0x} or the ASCII character {@code #}, not
+      #      followed by a minus sign, then the rest of it is parsed as a
+      #      hexadecimal integer exactly as by the method
+      #      {@link #valueOf(java.lang.String, int)} with radix 16.
       # <li>If the property value begins with the ASCII character
-      # {@code 0} followed by another character, it is parsed as an
-      # octal integer exactly as by the method
-      # {@link #valueOf(java.lang.String, int)} with radix 8.
+      #     {@code 0} followed by another character, it is parsed as an
+      #     octal integer exactly as by the method
+      #     {@link #valueOf(java.lang.String, int)} with radix 8.
       # <li>Otherwise, the property value is parsed as a decimal integer
       # exactly as by the method {@link #valueOf(java.lang.String, int)}
       # with radix 10.
@@ -858,9 +857,9 @@ module Java::Lang
       # 
       # @param     nm the {@code String} to decode.
       # @return    an {@code Integer} object holding the {@code int}
-      # value represented by {@code nm}
+      #             value represented by {@code nm}
       # @exception NumberFormatException  if the {@code String} does not
-      # contain a parsable integer.
+      #            contain a parsable integer.
       # @see java.lang.Integer#parseInt(java.lang.String, int)
       def decode(nm)
         radix = 10
@@ -913,12 +912,12 @@ module Java::Lang
     # 
     # @param   anotherInteger   the {@code Integer} to be compared.
     # @return  the value {@code 0} if this {@code Integer} is
-    # equal to the argument {@code Integer}; a value less than
-    # {@code 0} if this {@code Integer} is numerically less
-    # than the argument {@code Integer}; and a value greater
-    # than {@code 0} if this {@code Integer} is numerically
-    # greater than the argument {@code Integer} (signed
-    # comparison).
+    #          equal to the argument {@code Integer}; a value less than
+    #          {@code 0} if this {@code Integer} is numerically less
+    #          than the argument {@code Integer}; and a value greater
+    #          than {@code 0} if this {@code Integer} is numerically
+    #           greater than the argument {@code Integer} (signed
+    #           comparison).
     # @since   1.2
     def compare_to(another_integer)
       this_val = @value
@@ -928,7 +927,6 @@ module Java::Lang
     
     class_module.module_eval {
       # Bit twiddling
-      # 
       # The number of bits used to represent an {@code int} value in two's
       # complement binary form.
       # 
@@ -944,8 +942,8 @@ module Java::Lang
       # is equal to zero.
       # 
       # @return an {@code int} value with a single one-bit, in the position
-      # of the highest-order one-bit in the specified value, or zero if
-      # the specified value is itself equal to zero.
+      #     of the highest-order one-bit in the specified value, or zero if
+      #     the specified value is itself equal to zero.
       # @since 1.5
       def highest_one_bit(i)
         # HD, Figure 3-1
@@ -965,8 +963,8 @@ module Java::Lang
       # is equal to zero.
       # 
       # @return an {@code int} value with a single one-bit, in the position
-      # of the lowest-order one-bit in the specified value, or zero if
-      # the specified value is itself equal to zero.
+      #     of the lowest-order one-bit in the specified value, or zero if
+      #     the specified value is itself equal to zero.
       # @since 1.5
       def lowest_one_bit(i)
         # HD, Section 2-1
@@ -988,9 +986,9 @@ module Java::Lang
       # </ul>
       # 
       # @return the number of zero bits preceding the highest-order
-      # ("leftmost") one-bit in the two's complement binary representation
-      # of the specified {@code int} value, or 32 if the value
-      # is equal to zero.
+      #     ("leftmost") one-bit in the two's complement binary representation
+      #     of the specified {@code int} value, or 32 if the value
+      #     is equal to zero.
       # @since 1.5
       def number_of_leading_zeros(i)
         # HD, Figure 5-6
@@ -1026,9 +1024,9 @@ module Java::Lang
       # equal to zero.
       # 
       # @return the number of zero bits following the lowest-order ("rightmost")
-      # one-bit in the two's complement binary representation of the
-      # specified {@code int} value, or 32 if the value is equal
-      # to zero.
+      #     one-bit in the two's complement binary representation of the
+      #     specified {@code int} value, or 32 if the value is equal
+      #     to zero.
       # @since 1.5
       def number_of_trailing_zeros(i)
         # HD, Figure 5-14
@@ -1066,7 +1064,7 @@ module Java::Lang
       # sometimes referred to as the <i>population count</i>.
       # 
       # @return the number of one-bits in the two's complement binary
-      # representation of the specified {@code int} value.
+      #     representation of the specified {@code int} value.
       # @since 1.5
       def bit_count(i)
         # HD, Figure 5-2
@@ -1092,8 +1090,8 @@ module Java::Lang
       # distance) == rotateLeft(val, distance & 0x1F)}.
       # 
       # @return the value obtained by rotating the two's complement binary
-      # representation of the specified {@code int} value left by the
-      # specified number of bits.
+      #     representation of the specified {@code int} value left by the
+      #     specified number of bits.
       # @since 1.5
       def rotate_left(i, distance)
         return (i << distance) | (i >> -distance)
@@ -1113,8 +1111,8 @@ module Java::Lang
       # distance) == rotateRight(val, distance & 0x1F)}.
       # 
       # @return the value obtained by rotating the two's complement binary
-      # representation of the specified {@code int} value right by the
-      # specified number of bits.
+      #     representation of the specified {@code int} value right by the
+      #     specified number of bits.
       # @since 1.5
       def rotate_right(i, distance)
         return (i >> distance) | (i << -distance)
@@ -1126,7 +1124,7 @@ module Java::Lang
       # value.
       # 
       # @return the value obtained by reversing order of the bits in the
-      # specified {@code int} value.
+      #     specified {@code int} value.
       # @since 1.5
       def reverse(i)
         # HD, Figure 7-1
@@ -1154,7 +1152,7 @@ module Java::Lang
       # two's complement representation of the specified {@code int} value.
       # 
       # @return the value obtained by reversing the bytes in the specified
-      # {@code int} value.
+      #     {@code int} value.
       # @since 1.5
       def reverse_bytes(i)
         return ((i >> 24)) | ((i >> 8) & 0xff00) | ((i << 8) & 0xff0000) | ((i << 24))

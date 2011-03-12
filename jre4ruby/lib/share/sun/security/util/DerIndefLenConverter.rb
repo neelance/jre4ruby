@@ -118,8 +118,6 @@ module Sun::Security::Util
     
     typesig { [::Java::Int] }
     def is_eoc(tag)
-      # EOC
-      # primitive
       return ((((tag & TAG_MASK)).equal?(0x0)) && (((tag & FORM_MASK)).equal?(0x0)) && (((tag & CLASS_MASK)).equal?(0x0))) # universal
     end
     
@@ -150,9 +148,9 @@ module Sun::Security::Util
       # <em>Indefinite</em>.
       # 
       # @param lengthByte the length byte from a DER encoded
-      # object.
+      #        object.
       # @return true if the byte is of Indefinite form otherwise
-      # returns false.
+      #         returns false.
       def is_indefinite(length_byte)
         return (is_long_form(length_byte) && (((length_byte & LEN_MASK)).equal?(0)))
       end
@@ -391,9 +389,9 @@ module Sun::Security::Util
     # a definte length DER encoding.
     # 
     # @param indefData the byte array holding the indefinite
-    # length encoding.
+    #        length encoding.
     # @return the byte array containing the definite length
-    # DER encoding.
+    #         DER encoding.
     # @exception IOException on parsing or re-writing errors.
     def convert(indef_data)
       @data = indef_data

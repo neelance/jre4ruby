@@ -129,19 +129,19 @@ module Sun::Reflect::Generics::ReflectiveObjects
     # 
     # <p>For each upper bound B :
     # <ul>
-    # <li>if B is a parameterized type or a type variable, it is created,
-    # (see {@link #ParameterizedType} for the details of the creation
-    # process for parameterized types).
-    # <li>Otherwise, B is resolved.
+    #  <li>if B is a parameterized type or a type variable, it is created,
+    #  (see {@link #ParameterizedType} for the details of the creation
+    #  process for parameterized types).
+    #  <li>Otherwise, B is resolved.
     # </ul>
     # 
     # @return an array of Types representing the upper bound(s) of this
-    # type variable
+    #     type variable
     # @throws <tt>TypeNotPresentException</tt> if any of the
-    # bounds refers to a non-existent type declaration
+    #     bounds refers to a non-existent type declaration
     # @throws <tt>MalformedParameterizedTypeException</tt> if any of the
-    # bounds refer to a parameterized type that cannot be instantiated
-    # for any reason
+    #     bounds refer to a parameterized type that cannot be instantiated
+    #     for any reason
     def get_upper_bounds
       # lazily initialize bounds if necessary
       if ((@upper_bounds).nil?)
@@ -172,19 +172,19 @@ module Sun::Reflect::Generics::ReflectiveObjects
     # 
     # <p>For each lower bound B :
     # <ul>
-    # <li>if B is a parameterized type or a type variable, it is created,
-    # (see {@link #ParameterizedType} for the details of the creation
-    # process for parameterized types).
-    # <li>Otherwise, B is resolved.
+    #   <li>if B is a parameterized type or a type variable, it is created,
+    #   (see {@link #ParameterizedType} for the details of the creation
+    #   process for parameterized types).
+    #   <li>Otherwise, B is resolved.
     # </ul>
     # 
     # @return an array of Types representing the lower bound(s) of this
-    # type variable
+    #     type variable
     # @throws <tt>TypeNotPresentException</tt> if any of the
-    # bounds refers to a non-existent type declaration
+    #     bounds refers to a non-existent type declaration
     # @throws <tt>MalformedParameterizedTypeException</tt> if any of the
-    # bounds refer to a parameterized type that cannot be instantiated
-    # for any reason
+    #     bounds refer to a parameterized type that cannot be instantiated
+    #     for any reason
     def get_lower_bounds
       # lazily initialize bounds if necessary
       if ((@lower_bounds).nil?)

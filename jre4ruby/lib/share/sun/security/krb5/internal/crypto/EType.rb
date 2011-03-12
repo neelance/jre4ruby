@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5::Internal::Crypto
@@ -189,10 +187,10 @@ module Sun::Security::Krb5::Internal::Crypto
     end
     
     class_module.module_eval {
-      const_set_lazy(:BUILTIN_ETYPES) { Array.typed(::Java::Int).new([EncryptedData::ETYPE_DES_CBC_MD5, EncryptedData::ETYPE_DES_CBC_CRC, EncryptedData::ETYPE_ARCFOUR_HMAC, EncryptedData::ETYPE_DES3_CBC_HMAC_SHA1_KD, EncryptedData::ETYPE_AES128_CTS_HMAC_SHA1_96, EncryptedData::ETYPE_AES256_CTS_HMAC_SHA1_96, ]) }
+      const_set_lazy(:BUILTIN_ETYPES) { Array.typed(::Java::Int).new([EncryptedData::ETYPE_DES_CBC_MD5, EncryptedData::ETYPE_DES_CBC_CRC, EncryptedData::ETYPE_ARCFOUR_HMAC, EncryptedData::ETYPE_DES3_CBC_HMAC_SHA1_KD, EncryptedData::ETYPE_AES128_CTS_HMAC_SHA1_96, EncryptedData::ETYPE_AES256_CTS_HMAC_SHA1_96]) }
       const_attr_reader  :BUILTIN_ETYPES
       
-      const_set_lazy(:BUILTIN_ETYPES_NOAES256) { Array.typed(::Java::Int).new([EncryptedData::ETYPE_DES_CBC_MD5, EncryptedData::ETYPE_DES_CBC_CRC, EncryptedData::ETYPE_ARCFOUR_HMAC, EncryptedData::ETYPE_DES3_CBC_HMAC_SHA1_KD, EncryptedData::ETYPE_AES128_CTS_HMAC_SHA1_96, ]) }
+      const_set_lazy(:BUILTIN_ETYPES_NOAES256) { Array.typed(::Java::Int).new([EncryptedData::ETYPE_DES_CBC_MD5, EncryptedData::ETYPE_DES_CBC_CRC, EncryptedData::ETYPE_ARCFOUR_HMAC, EncryptedData::ETYPE_DES3_CBC_HMAC_SHA1_KD, EncryptedData::ETYPE_AES128_CTS_HMAC_SHA1_96]) }
       const_attr_reader  :BUILTIN_ETYPES_NOAES256
       
       typesig { [] }
@@ -213,7 +211,6 @@ module Sun::Security::Krb5::Internal::Crypto
       typesig { [String] }
       # Retrieves the default etypes from the configuration file, or
       # if that's not available, return the built-in list of default etypes.
-      # 
       # used in KrbAsReq, KeyTab
       def get_defaults(config_name)
         begin

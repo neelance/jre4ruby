@@ -137,12 +137,12 @@ module Sun::Nio::Cs
           end
           
           typesig { [Object] }
-          define_method :create do |name|
-            if (name.is_a?(String))
-              return Charset.for_name(name).new_decoder
+          define_method :create do |name_|
+            if (name_.is_a?(String))
+              return Charset.for_name(name_).new_decoder
             end
-            if (name.is_a?(self.class::Charset))
-              return (name).new_decoder
+            if (name_.is_a?(self.class::Charset))
+              return (name_).new_decoder
             end
             raise AssertError if not (false)
             return nil
@@ -190,12 +190,12 @@ module Sun::Nio::Cs
           end
           
           typesig { [Object] }
-          define_method :create do |name|
-            if (name.is_a?(String))
-              return Charset.for_name(name).new_encoder
+          define_method :create do |name_|
+            if (name_.is_a?(String))
+              return Charset.for_name(name_).new_encoder
             end
-            if (name.is_a?(self.class::Charset))
-              return (name).new_encoder
+            if (name_.is_a?(self.class::Charset))
+              return (name_).new_encoder
             end
             raise AssertError if not (false)
             return nil

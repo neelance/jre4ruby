@@ -22,11 +22,8 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
-# 
 # (C) Copyright IBM Corp. 1996-2005 - All Rights Reserved                     *
-# *
+#                                                                             *
 # The original version of this source code and documentation is copyrighted   *
 # and owned by IBM, These materials are provided under terms of a License     *
 # Agreement between IBM and Sun. This technology is protected by multiple     *
@@ -55,14 +52,14 @@ module Java::Text
   # In Unicode, this can be encoded as a single character (the "composed" form):
   # 
   # <p><pre>
-  # U+00C1    LATIN CAPITAL LETTER A WITH ACUTE</pre>
+  #      U+00C1    LATIN CAPITAL LETTER A WITH ACUTE</pre>
   # </p>
   # 
   # or as two separate characters (the "decomposed" form):
   # 
   # <p><pre>
-  # U+0041    LATIN CAPITAL LETTER A
-  # U+0301    COMBINING ACUTE ACCENT</pre>
+  #      U+0041    LATIN CAPITAL LETTER A
+  #      U+0301    COMBINING ACUTE ACCENT</pre>
   # </p>
   # 
   # To a user of your program, however, both of these sequences should be
@@ -76,15 +73,15 @@ module Java::Text
   # Similarly, the string "ffi" can be encoded as three separate letters:
   # 
   # <p><pre>
-  # U+0066    LATIN SMALL LETTER F
-  # U+0066    LATIN SMALL LETTER F
-  # U+0069    LATIN SMALL LETTER I</pre>
+  #      U+0066    LATIN SMALL LETTER F
+  #      U+0066    LATIN SMALL LETTER F
+  #      U+0069    LATIN SMALL LETTER I</pre>
   # </p>
   # 
   # or as the single character
   # 
   # <p><pre>
-  # U+FB03    LATIN SMALL LIGATURE FFI</pre>
+  #      U+FB03    LATIN SMALL LIGATURE FFI</pre>
   # </p>
   # 
   # The ffi ligature is not a distinct semantic character, and strictly speaking
@@ -190,10 +187,10 @@ module Java::Text
       # from.
       # @param src        The sequence of char values to normalize.
       # @param form       The normalization form; one of
-      # {@link java.text.Normalizer.Form#NFC},
-      # {@link java.text.Normalizer.Form#NFD},
-      # {@link java.text.Normalizer.Form#NFKC},
-      # {@link java.text.Normalizer.Form#NFKD}
+      #                   {@link java.text.Normalizer.Form#NFC},
+      #                   {@link java.text.Normalizer.Form#NFD},
+      #                   {@link java.text.Normalizer.Form#NFKC},
+      #                   {@link java.text.Normalizer.Form#NFKD}
       # @return The normalized String
       # @throws NullPointerException If <code>src</code> or <code>form</code>
       # is null.
@@ -205,10 +202,10 @@ module Java::Text
       # Determines if the given sequence of char values is normalized.
       # @param src        The sequence of char values to be checked.
       # @param form       The normalization form; one of
-      # {@link java.text.Normalizer.Form#NFC},
-      # {@link java.text.Normalizer.Form#NFD},
-      # {@link java.text.Normalizer.Form#NFKC},
-      # {@link java.text.Normalizer.Form#NFKD}
+      #                   {@link java.text.Normalizer.Form#NFC},
+      #                   {@link java.text.Normalizer.Form#NFD},
+      #                   {@link java.text.Normalizer.Form#NFKC},
+      #                   {@link java.text.Normalizer.Form#NFKD}
       # @return true if the sequence of char values is normalized;
       # false otherwise.
       # @throws NullPointerException If <code>src</code> or <code>form</code>

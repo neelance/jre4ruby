@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5::Internal
@@ -39,32 +37,32 @@ module Sun::Security::Krb5::Internal
   # 
   # <xmp>
   # KDCOptions   ::= KerberosFlags
-  # -- reserved(0),
-  # -- forwardable(1),
-  # -- forwarded(2),
-  # -- proxiable(3),
-  # -- proxy(4),
-  # -- allow-postdate(5),
-  # -- postdated(6),
-  # -- unused7(7),
-  # -- renewable(8),
-  # -- unused9(9),
-  # -- unused10(10),
-  # -- opt-hardware-auth(11),
-  # -- unused12(12),
-  # -- unused13(13),
+  #      -- reserved(0),
+  #      -- forwardable(1),
+  #      -- forwarded(2),
+  #      -- proxiable(3),
+  #      -- proxy(4),
+  #      -- allow-postdate(5),
+  #      -- postdated(6),
+  #      -- unused7(7),
+  #      -- renewable(8),
+  #      -- unused9(9),
+  #      -- unused10(10),
+  #      -- opt-hardware-auth(11),
+  #      -- unused12(12),
+  #      -- unused13(13),
   # -- 15 is reserved for canonicalize
-  # -- unused15(15),
+  #      -- unused15(15),
   # -- 26 was unused in 1510
-  # -- disable-transited-check(26),
-  # -- renewable-ok(27),
-  # -- enc-tkt-in-skey(28),
-  # -- renew(30),
-  # -- validate(31)
+  #      -- disable-transited-check(26),
+  #      -- renewable-ok(27),
+  #      -- enc-tkt-in-skey(28),
+  #      -- renew(30),
+  #      -- validate(31)
   # 
   # KerberosFlags ::= BIT STRING (SIZE (32..MAX))
-  # -- minimum number of bits shall be sent,
-  # -- but no fewer than 32
+  #                   -- minimum number of bits shall be sent,
+  #                   -- but no fewer than 32
   # </xmp>
   # 
   # <p>

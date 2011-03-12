@@ -1,48 +1,46 @@
 require "rjava"
-
-# Portions Copyright 2003-2005 Sun Microsystems, Inc.  All Rights Reserved.
-# 
+ # * Portions Copyright 2003-2005 Sun Microsystems, Inc.  All Rights Reserved.
 # Copyright  (c) 2002 Graz University of Technology. All rights reserved.
 # 
 # Redistribution and use in  source and binary forms, with or without
 # modification, are permitted  provided that the following conditions are met:
 # 
 # 1. Redistributions of  source code must retain the above copyright notice,
-# this list of conditions and the following disclaimer.
+#    this list of conditions and the following disclaimer.
 # 
 # 2. Redistributions in  binary form must reproduce the above copyright notice,
-# this list of conditions and the following disclaimer in the documentation
-# and/or other materials provided with the distribution.
+#    this list of conditions and the following disclaimer in the documentation
+#    and/or other materials provided with the distribution.
 # 
 # 3. The end-user documentation included with the redistribution, if any, must
-# include the following acknowledgment:
+#    include the following acknowledgment:
 # 
-# "This product includes software developed by IAIK of Graz University of
-# Technology."
+#    "This product includes software developed by IAIK of Graz University of
+#     Technology."
 # 
-# Alternately, this acknowledgment may appear in the software itself, if
-# and wherever such third-party acknowledgments normally appear.
+#    Alternately, this acknowledgment may appear in the software itself, if
+#    and wherever such third-party acknowledgments normally appear.
 # 
 # 4. The names "Graz University of Technology" and "IAIK of Graz University of
-# Technology" must not be used to endorse or promote products derived from
-# this software without prior written permission.
+#    Technology" must not be used to endorse or promote products derived from
+#    this software without prior written permission.
 # 
 # 5. Products derived from this software may not be called
-# "IAIK PKCS Wrapper", nor may "IAIK" appear in their name, without prior
-# written permission of Graz University of Technology.
+#    "IAIK PKCS Wrapper", nor may "IAIK" appear in their name, without prior
+#    written permission of Graz University of Technology.
 # 
-# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED
-# WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
-# PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE LICENSOR BE
-# LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
-# OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
-# PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
-# OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
-# ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-# OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
-# OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-# POSSIBILITY  OF SUCH DAMAGE.
+#  THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED
+#  WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+#  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+#  PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE LICENSOR BE
+#  LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
+#  OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+#  PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
+#  OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+#  ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+#  OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+#  OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+#  POSSIBILITY  OF SUCH DAMAGE.
 module Sun::Security::Pkcs11::Wrapper
   module CK_TOKEN_INFOImports #:nodoc:
     class_module.module_eval {
@@ -55,24 +53,24 @@ module Sun::Security::Pkcs11::Wrapper
   # <B>PKCS#11 structure:</B>
   # <PRE>
   # typedef struct CK_TOKEN_INFO {&nbsp;&nbsp;
-  # CK_UTF8CHAR label[32];&nbsp;&nbsp;
-  # CK_UTF8CHAR manufacturerID[32];&nbsp;&nbsp;
-  # CK_UTF8CHAR model[16];&nbsp;&nbsp;
-  # CK_CHAR serialNumber[16];&nbsp;&nbsp;
-  # CK_FLAGS flags;&nbsp;&nbsp;
-  # CK_ULONG ulMaxSessionCount;&nbsp;&nbsp;
-  # CK_ULONG ulSessionCount;&nbsp;&nbsp;
-  # CK_ULONG ulMaxRwSessionCount;&nbsp;&nbsp;
-  # CK_ULONG ulRwSessionCount;&nbsp;&nbsp;
-  # CK_ULONG ulMaxPinLen;&nbsp;&nbsp;
-  # CK_ULONG ulMinPinLen;&nbsp;&nbsp;
-  # CK_ULONG ulTotalPublicMemory;&nbsp;&nbsp;
-  # CK_ULONG ulFreePublicMemory;&nbsp;&nbsp;
-  # CK_ULONG ulTotalPrivateMemory;&nbsp;&nbsp;
-  # CK_ULONG ulFreePrivateMemory;&nbsp;&nbsp;
-  # CK_VERSION hardwareVersion;&nbsp;&nbsp;
-  # CK_VERSION firmwareVersion;&nbsp;&nbsp;
-  # CK_CHAR utcTime[16];&nbsp;&nbsp;
+  #   CK_UTF8CHAR label[32];&nbsp;&nbsp;
+  #   CK_UTF8CHAR manufacturerID[32];&nbsp;&nbsp;
+  #   CK_UTF8CHAR model[16];&nbsp;&nbsp;
+  #   CK_CHAR serialNumber[16];&nbsp;&nbsp;
+  #   CK_FLAGS flags;&nbsp;&nbsp;
+  #   CK_ULONG ulMaxSessionCount;&nbsp;&nbsp;
+  #   CK_ULONG ulSessionCount;&nbsp;&nbsp;
+  #   CK_ULONG ulMaxRwSessionCount;&nbsp;&nbsp;
+  #   CK_ULONG ulRwSessionCount;&nbsp;&nbsp;
+  #   CK_ULONG ulMaxPinLen;&nbsp;&nbsp;
+  #   CK_ULONG ulMinPinLen;&nbsp;&nbsp;
+  #   CK_ULONG ulTotalPublicMemory;&nbsp;&nbsp;
+  #   CK_ULONG ulFreePublicMemory;&nbsp;&nbsp;
+  #   CK_ULONG ulTotalPrivateMemory;&nbsp;&nbsp;
+  #   CK_ULONG ulFreePrivateMemory;&nbsp;&nbsp;
+  #   CK_VERSION hardwareVersion;&nbsp;&nbsp;
+  #   CK_VERSION firmwareVersion;&nbsp;&nbsp;
+  #   CK_CHAR utcTime[16];&nbsp;&nbsp;
   # } CK_TOKEN_INFO;
   # &nbsp;&nbsp;
   # </PRE>
@@ -84,11 +82,10 @@ module Sun::Security::Pkcs11::Wrapper
     
     # label, manufacturerID, and model have been changed from
     # CK_CHAR to CK_UTF8CHAR for v2.11.
-    # 
     # must be blank padded and only the first 32 chars will be used<p>
     # <B>PKCS#11:</B>
     # <PRE>
-    # CK_UTF8CHAR label[32];
+    #   CK_UTF8CHAR label[32];
     # </PRE>
     attr_accessor :label
     alias_method :attr_label, :label
@@ -97,11 +94,10 @@ module Sun::Security::Pkcs11::Wrapper
     undef_method :label=
     
     # blank padded
-    # 
     # must be blank padded and only the first 32 chars will be used<p>
     # <B>PKCS#11:</B>
     # <PRE>
-    # CK_UTF8CHAR manufacturerID[32];
+    #   CK_UTF8CHAR manufacturerID[32];
     # </PRE>
     attr_accessor :manufacturer_id
     alias_method :attr_manufacturer_id, :manufacturer_id
@@ -110,11 +106,10 @@ module Sun::Security::Pkcs11::Wrapper
     undef_method :manufacturer_id=
     
     # blank padded
-    # 
     # must be blank padded and only the first 16 chars will be used<p>
     # <B>PKCS#11:</B>
     # <PRE>
-    # CK_UTF8CHAR model[16];
+    #   CK_UTF8CHAR model[16];
     # </PRE>
     attr_accessor :model
     alias_method :attr_model, :model
@@ -123,11 +118,10 @@ module Sun::Security::Pkcs11::Wrapper
     undef_method :model=
     
     # blank padded
-    # 
     # must be blank padded and only the first 16 chars will be used<p>
     # <B>PKCS#11:</B>
     # <PRE>
-    # CK_CHAR serialNumber[16];
+    #   CK_CHAR serialNumber[16];
     # </PRE>
     attr_accessor :serial_number
     alias_method :attr_serial_number, :serial_number
@@ -136,10 +130,9 @@ module Sun::Security::Pkcs11::Wrapper
     undef_method :serial_number=
     
     # blank padded
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
-    # CK_FLAGS flags;
+    #   CK_FLAGS flags;
     # </PRE>
     attr_accessor :flags
     alias_method :attr_flags, :flags
@@ -151,10 +144,9 @@ module Sun::Security::Pkcs11::Wrapper
     # ulMaxSessionCount, ulSessionCount, ulMaxRwSessionCount,
     # ulRwSessionCount, ulMaxPinLen, and ulMinPinLen have all been
     # changed from CK_USHORT to CK_ULONG for v2.0
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
-    # CK_ULONG ulMaxSessionCount;
+    #   CK_ULONG ulMaxSessionCount;
     # </PRE>
     attr_accessor :ul_max_session_count
     alias_method :attr_ul_max_session_count, :ul_max_session_count
@@ -163,10 +155,9 @@ module Sun::Security::Pkcs11::Wrapper
     undef_method :ul_max_session_count=
     
     # max open sessions
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
-    # CK_ULONG ulSessionCount;
+    #   CK_ULONG ulSessionCount;
     # </PRE>
     attr_accessor :ul_session_count
     alias_method :attr_ul_session_count, :ul_session_count
@@ -175,10 +166,9 @@ module Sun::Security::Pkcs11::Wrapper
     undef_method :ul_session_count=
     
     # sess. now open
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
-    # CK_ULONG ulMaxRwSessionCount;
+    #   CK_ULONG ulMaxRwSessionCount;
     # </PRE>
     attr_accessor :ul_max_rw_session_count
     alias_method :attr_ul_max_rw_session_count, :ul_max_rw_session_count
@@ -187,10 +177,9 @@ module Sun::Security::Pkcs11::Wrapper
     undef_method :ul_max_rw_session_count=
     
     # max R/W sessions
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
-    # CK_ULONG ulRwSessionCount;
+    #   CK_ULONG ulRwSessionCount;
     # </PRE>
     attr_accessor :ul_rw_session_count
     alias_method :attr_ul_rw_session_count, :ul_rw_session_count
@@ -199,10 +188,9 @@ module Sun::Security::Pkcs11::Wrapper
     undef_method :ul_rw_session_count=
     
     # R/W sess. now open
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
-    # CK_ULONG ulMaxPinLen;
+    #   CK_ULONG ulMaxPinLen;
     # </PRE>
     attr_accessor :ul_max_pin_len
     alias_method :attr_ul_max_pin_len, :ul_max_pin_len
@@ -211,10 +199,9 @@ module Sun::Security::Pkcs11::Wrapper
     undef_method :ul_max_pin_len=
     
     # in bytes
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
-    # CK_ULONG ulMinPinLen;
+    #   CK_ULONG ulMinPinLen;
     # </PRE>
     attr_accessor :ul_min_pin_len
     alias_method :attr_ul_min_pin_len, :ul_min_pin_len
@@ -223,10 +210,9 @@ module Sun::Security::Pkcs11::Wrapper
     undef_method :ul_min_pin_len=
     
     # in bytes
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
-    # CK_ULONG ulTotalPublicMemory;
+    #   CK_ULONG ulTotalPublicMemory;
     # </PRE>
     attr_accessor :ul_total_public_memory
     alias_method :attr_ul_total_public_memory, :ul_total_public_memory
@@ -235,10 +221,9 @@ module Sun::Security::Pkcs11::Wrapper
     undef_method :ul_total_public_memory=
     
     # in bytes
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
-    # CK_ULONG ulFreePublicMemory;
+    #   CK_ULONG ulFreePublicMemory;
     # </PRE>
     attr_accessor :ul_free_public_memory
     alias_method :attr_ul_free_public_memory, :ul_free_public_memory
@@ -247,10 +232,9 @@ module Sun::Security::Pkcs11::Wrapper
     undef_method :ul_free_public_memory=
     
     # in bytes
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
-    # CK_ULONG ulTotalPrivateMemory;
+    #   CK_ULONG ulTotalPrivateMemory;
     # </PRE>
     attr_accessor :ul_total_private_memory
     alias_method :attr_ul_total_private_memory, :ul_total_private_memory
@@ -259,10 +243,9 @@ module Sun::Security::Pkcs11::Wrapper
     undef_method :ul_total_private_memory=
     
     # in bytes
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
-    # CK_ULONG ulFreePrivateMemory;
+    #   CK_ULONG ulFreePrivateMemory;
     # </PRE>
     attr_accessor :ul_free_private_memory
     alias_method :attr_ul_free_private_memory, :ul_free_private_memory
@@ -273,10 +256,9 @@ module Sun::Security::Pkcs11::Wrapper
     # in bytes
     # hardwareVersion, firmwareVersion, and time are new for
     # v2.0
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
-    # CK_VERSION hardwareVersion;
+    #   CK_VERSION hardwareVersion;
     # </PRE>
     attr_accessor :hardware_version
     alias_method :attr_hardware_version, :hardware_version
@@ -285,10 +267,9 @@ module Sun::Security::Pkcs11::Wrapper
     undef_method :hardware_version=
     
     # version of hardware
-    # 
     # <B>PKCS#11:</B>
     # <PRE>
-    # CK_VERSION firmwareVersion;
+    #   CK_VERSION firmwareVersion;
     # </PRE>
     attr_accessor :firmware_version
     alias_method :attr_firmware_version, :firmware_version
@@ -297,11 +278,10 @@ module Sun::Security::Pkcs11::Wrapper
     undef_method :firmware_version=
     
     # version of firmware
-    # 
     # only the first 16 chars will be used
     # <B>PKCS#11:</B>
     # <PRE>
-    # CK_CHAR utcTime[16];
+    #   CK_CHAR utcTime[16];
     # </PRE>
     attr_accessor :utc_time
     alias_method :attr_utc_time, :utc_time

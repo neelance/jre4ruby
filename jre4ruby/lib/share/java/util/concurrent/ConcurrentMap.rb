@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # This file is available under and governed by the GNU General Public
 # License version 2 only, as published by the Free Software Foundation.
 # However, the following notice accompanied the original version of this
@@ -67,27 +65,27 @@ module Java::Util::Concurrent
     # with a value, associate it with the given value.
     # This is equivalent to
     # <pre>
-    # if (!map.containsKey(key))
-    # return map.put(key, value);
-    # else
-    # return map.get(key);</pre>
+    #   if (!map.containsKey(key))
+    #       return map.put(key, value);
+    #   else
+    #       return map.get(key);</pre>
     # except that the action is performed atomically.
     # 
     # @param key key with which the specified value is to be associated
     # @param value value to be associated with the specified key
     # @return the previous value associated with the specified key, or
-    # <tt>null</tt> if there was no mapping for the key.
-    # (A <tt>null</tt> return can also indicate that the map
-    # previously associated <tt>null</tt> with the key,
-    # if the implementation supports null values.)
+    #         <tt>null</tt> if there was no mapping for the key.
+    #         (A <tt>null</tt> return can also indicate that the map
+    #         previously associated <tt>null</tt> with the key,
+    #         if the implementation supports null values.)
     # @throws UnsupportedOperationException if the <tt>put</tt> operation
-    # is not supported by this map
+    #         is not supported by this map
     # @throws ClassCastException if the class of the specified key or value
-    # prevents it from being stored in this map
+    #         prevents it from being stored in this map
     # @throws NullPointerException if the specified key or value is null,
-    # and this map does not permit null keys or values
+    #         and this map does not permit null keys or values
     # @throws IllegalArgumentException if some property of the specified key
-    # or value prevents it from being stored in this map
+    #         or value prevents it from being stored in this map
     def put_if_absent(key, value)
       raise NotImplementedError
     end
@@ -96,21 +94,21 @@ module Java::Util::Concurrent
     # Removes the entry for a key only if currently mapped to a given value.
     # This is equivalent to
     # <pre>
-    # if (map.containsKey(key) &amp;&amp; map.get(key).equals(value)) {
-    # map.remove(key);
-    # return true;
-    # } else return false;</pre>
+    #   if (map.containsKey(key) &amp;&amp; map.get(key).equals(value)) {
+    #       map.remove(key);
+    #       return true;
+    #   } else return false;</pre>
     # except that the action is performed atomically.
     # 
     # @param key key with which the specified value is associated
     # @param value value expected to be associated with the specified key
     # @return <tt>true</tt> if the value was removed
     # @throws UnsupportedOperationException if the <tt>remove</tt> operation
-    # is not supported by this map
+    #         is not supported by this map
     # @throws ClassCastException if the key or value is of an inappropriate
-    # type for this map (optional)
+    #         type for this map (optional)
     # @throws NullPointerException if the specified key or value is null,
-    # and this map does not permit null keys or values (optional)
+    #         and this map does not permit null keys or values (optional)
     def remove(key, value)
       raise NotImplementedError
     end
@@ -119,10 +117,10 @@ module Java::Util::Concurrent
     # Replaces the entry for a key only if currently mapped to a given value.
     # This is equivalent to
     # <pre>
-    # if (map.containsKey(key) &amp;&amp; map.get(key).equals(oldValue)) {
-    # map.put(key, newValue);
-    # return true;
-    # } else return false;</pre>
+    #   if (map.containsKey(key) &amp;&amp; map.get(key).equals(oldValue)) {
+    #       map.put(key, newValue);
+    #       return true;
+    #   } else return false;</pre>
     # except that the action is performed atomically.
     # 
     # @param key key with which the specified value is associated
@@ -130,13 +128,13 @@ module Java::Util::Concurrent
     # @param newValue value to be associated with the specified key
     # @return <tt>true</tt> if the value was replaced
     # @throws UnsupportedOperationException if the <tt>put</tt> operation
-    # is not supported by this map
+    #         is not supported by this map
     # @throws ClassCastException if the class of a specified key or value
-    # prevents it from being stored in this map
+    #         prevents it from being stored in this map
     # @throws NullPointerException if a specified key or value is null,
-    # and this map does not permit null keys or values
+    #         and this map does not permit null keys or values
     # @throws IllegalArgumentException if some property of a specified key
-    # or value prevents it from being stored in this map
+    #         or value prevents it from being stored in this map
     def replace(key, old_value, new_value)
       raise NotImplementedError
     end
@@ -145,26 +143,26 @@ module Java::Util::Concurrent
     # Replaces the entry for a key only if currently mapped to some value.
     # This is equivalent to
     # <pre>
-    # if (map.containsKey(key)) {
-    # return map.put(key, value);
-    # } else return null;</pre>
+    #   if (map.containsKey(key)) {
+    #       return map.put(key, value);
+    #   } else return null;</pre>
     # except that the action is performed atomically.
     # 
     # @param key key with which the specified value is associated
     # @param value value to be associated with the specified key
     # @return the previous value associated with the specified key, or
-    # <tt>null</tt> if there was no mapping for the key.
-    # (A <tt>null</tt> return can also indicate that the map
-    # previously associated <tt>null</tt> with the key,
-    # if the implementation supports null values.)
+    #         <tt>null</tt> if there was no mapping for the key.
+    #         (A <tt>null</tt> return can also indicate that the map
+    #         previously associated <tt>null</tt> with the key,
+    #         if the implementation supports null values.)
     # @throws UnsupportedOperationException if the <tt>put</tt> operation
-    # is not supported by this map
+    #         is not supported by this map
     # @throws ClassCastException if the class of the specified key or value
-    # prevents it from being stored in this map
+    #         prevents it from being stored in this map
     # @throws NullPointerException if the specified key or value is null,
-    # and this map does not permit null keys or values
+    #         and this map does not permit null keys or values
     # @throws IllegalArgumentException if some property of the specified key
-    # or value prevents it from being stored in this map
+    #         or value prevents it from being stored in this map
     def replace(key, value)
       raise NotImplementedError
     end

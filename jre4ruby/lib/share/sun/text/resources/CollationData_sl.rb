@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996 - 1998 - All Rights Reserved
 # 
@@ -49,23 +47,6 @@ module Sun::Text::Resources
     
     typesig { [] }
     def get_contents
-      # for sl, default sorting except for the following:
-      # add d<stroke> between d and e.
-      # add l<stroke> between l and m.
-      # add nj "ligature" between n and o.
-      # add z<abovedot> after z.
-      # C < c-caron
-      # c-acute
-      # dz
-      # dz-caron
-      # d-stroke
-      # l < l-stroke
-      # ligature updated
-      # s < s-caron
-      # s-acute
-      # z < z-caron
-      # z-acute
-      # z-dot-above
       return Array.typed(Array.typed(Object)).new([Array.typed(Object).new(["Rule", ("& C < c".to_u << 0x030c << " , C".to_u << 0x030c << " ") + ("< c".to_u << 0x0301 << " , C".to_u << 0x0301 << " ") + ("& D < ".to_u << 0x01f3 << " , ".to_u << 0x01f2 << " , ".to_u << 0x01f1 << " ") + ("< ".to_u << 0x01c6 << " , ".to_u << 0x01c5 << " , ".to_u << 0x01c4 << " ") + ("< ".to_u << 0x0111 << " , ".to_u << 0x0110 << " ") + ("& L < ".to_u << 0x0142 << " , ".to_u << 0x0141 << " ") + "& N < nj , nJ , Nj , NJ " + ("& S < s".to_u << 0x030c << " , S".to_u << 0x030c << " ") + ("< s".to_u << 0x0301 << ", S".to_u << 0x0301 << " ") + ("& Z < z".to_u << 0x030c << " , Z".to_u << 0x030c << " ") + ("< z".to_u << 0x0301 << " , Z".to_u << 0x0301 << " ") + ("< z".to_u << 0x0307 << " , Z".to_u << 0x0307 << " ")])])
     end
     

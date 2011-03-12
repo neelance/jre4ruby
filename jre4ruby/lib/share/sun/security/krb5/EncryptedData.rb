@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5
@@ -156,15 +154,14 @@ module Sun::Security::Krb5
     typesig { [EncryptionKey, Array.typed(::Java::Byte), ::Java::Int] }
     # // Not used.
     # public EncryptedData(
-    # EncryptionKey key,
-    # byte[] plaintext)
-    # throws KdcErrException, KrbCryptoException {
-    # EType etypeEngine = EType.getInstance(key.getEType());
-    # cipher = etypeEngine.encrypt(plaintext, key.getBytes());
-    # eType = key.getEType();
-    # kvno = key.getKeyVersionNumber();
+    #                      EncryptionKey key,
+    #                      byte[] plaintext)
+    #     throws KdcErrException, KrbCryptoException {
+    #     EType etypeEngine = EType.getInstance(key.getEType());
+    #     cipher = etypeEngine.encrypt(plaintext, key.getBytes());
+    #     eType = key.getEType();
+    #     kvno = key.getKeyVersionNumber();
     # }
-    # 
     # used in KrbApRep, KrbApReq, KrbAsReq, KrbCred, KrbPriv
     # Used in JSSE (com.sun.net.ssl.internal.KerberosPreMasterSecret)
     def initialize(key, plaintext, usage)
@@ -181,29 +178,26 @@ module Sun::Security::Krb5
     typesig { [EncryptionKey, ::Java::Int] }
     # // Not used.
     # public EncryptedData(
-    # EncryptionKey key,
-    # byte[] ivec,
-    # byte[] plaintext)
-    # throws KdcErrException, KrbCryptoException {
-    # EType etypeEngine = EType.getInstance(key.getEType());
-    # cipher = etypeEngine.encrypt(plaintext, key.getBytes(), ivec);
-    # eType = key.getEType();
-    # kvno = key.getKeyVersionNumber();
+    #                      EncryptionKey key,
+    #                      byte[] ivec,
+    #                      byte[] plaintext)
+    #     throws KdcErrException, KrbCryptoException {
+    #     EType etypeEngine = EType.getInstance(key.getEType());
+    #     cipher = etypeEngine.encrypt(plaintext, key.getBytes(), ivec);
+    #     eType = key.getEType();
+    #     kvno = key.getKeyVersionNumber();
     # }
-    # 
-    # 
     # // Not used.
     # EncryptedData(
-    # StringBuffer password,
-    # byte[] plaintext)
-    # throws KdcErrException, KrbCryptoException {
-    # EncryptionKey key = new EncryptionKey(password);
-    # EType etypeEngine = EType.getInstance(key.getEType());
-    # cipher = etypeEngine.encrypt(plaintext, key.getBytes());
-    # eType = key.getEType();
-    # kvno = key.getKeyVersionNumber();
+    #               StringBuffer password,
+    #               byte[] plaintext)
+    #     throws KdcErrException, KrbCryptoException {
+    #     EncryptionKey key = new EncryptionKey(password);
+    #     EType etypeEngine = EType.getInstance(key.getEType());
+    #     cipher = etypeEngine.encrypt(plaintext, key.getBytes());
+    #     eType = key.getEType();
+    #     kvno = key.getKeyVersionNumber();
     # }
-    # 
     # currently destructive on cipher
     def decrypt(key, usage)
       if (!(@e_type).equal?(key.get_etype))
@@ -219,27 +213,27 @@ module Sun::Security::Krb5
     # // currently destructive on cipher
     # // Not used.
     # public byte[] decrypt(
-    # EncryptionKey key,
-    # byte[] ivec, int usage)
-    # throws KdcErrException, KrbApErrException, KrbCryptoException {
-    # // XXX check for matching eType and kvno here
-    # EType etypeEngine = EType.getInstance(eType);
-    # plain = etypeEngine.decrypt(cipher, key.getBytes(), ivec, usage);
-    # cipher = null;
-    # return etypeEngine.decryptedData(plain);
-    # }
+    #                       EncryptionKey key,
+    #                       byte[] ivec, int usage)
+    #     throws KdcErrException, KrbApErrException, KrbCryptoException {
+    #         // XXX check for matching eType and kvno here
+    #         EType etypeEngine = EType.getInstance(eType);
+    #         plain = etypeEngine.decrypt(cipher, key.getBytes(), ivec, usage);
+    #         cipher = null;
+    #         return etypeEngine.decryptedData(plain);
+    #     }
     # 
     # // currently destructive on cipher
     # // Not used.
     # byte[] decrypt(StringBuffer password)
-    # throws KdcErrException, KrbApErrException, KrbCryptoException {
-    # EncryptionKey key = new EncryptionKey(password);
-    # // XXX check for matching eType here
-    # EType etypeEngine = EType.getInstance(eType);
-    # plain = etypeEngine.decrypt(cipher, key.getBytes());
-    # cipher = null;
-    # return etypeEngine.decryptedData(plain);
-    # }
+    #     throws KdcErrException, KrbApErrException, KrbCryptoException {
+    #         EncryptionKey key = new EncryptionKey(password);
+    #         // XXX check for matching eType here
+    #         EType etypeEngine = EType.getInstance(eType);
+    #         plain = etypeEngine.decrypt(cipher, key.getBytes());
+    #         cipher = null;
+    #         return etypeEngine.decryptedData(plain);
+    #     }
     def decrypted_data
       if (!(@plain).nil?)
         etype_engine = EType.get_instance(@e_type)
@@ -255,8 +249,6 @@ module Sun::Security::Krb5
     # ASN1 encoded data.
     # @exception IOException if an I/O error occurs while reading encoded
     # data.
-    # 
-    # 
     # Used by self
     def initialize(encoding)
       @e_type = 0
@@ -296,9 +288,9 @@ module Sun::Security::Krb5
     # 
     # <xmp>
     # EncryptedData   ::= SEQUENCE {
-    # etype   [0] Int32 -- EncryptionType --,
-    # kvno    [1] UInt32 OPTIONAL,
-    # cipher  [2] OCTET STRING -- ciphertext
+    #     etype   [0] Int32 -- EncryptionType --,
+    #     kvno    [1] UInt32 OPTIONAL,
+    #     cipher  [2] OCTET STRING -- ciphertext
     # }
     # </xmp>
     # 
@@ -339,7 +331,7 @@ module Sun::Security::Krb5
       # a constructed sequence and uses explicitly tagged type.
       # 
       # @param data the Der input stream value, which contains one or more
-      # marshaled value.
+      #        marshaled value.
       # @param explicitTag tag number.
       # @param optional indicate if this data field is optional
       # @exception Asn1Exception if an error occurs while decoding an

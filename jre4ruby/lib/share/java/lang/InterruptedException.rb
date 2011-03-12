@@ -36,8 +36,8 @@ module Java::Lang
   # this exception.  The following code can be used to achieve
   # this effect:
   # <pre>
-  # if (Thread.interrupted())  // Clears interrupted status!
-  # throw new InterruptedException();
+  #  if (Thread.interrupted())  // Clears interrupted status!
+  #      throw new InterruptedException();
   # </pre>
   # 
   # @author  Frank Yellin

@@ -157,8 +157,8 @@ module Sun::Security::Jgss::Wrapper
     
     typesig { [] }
     def initialize
-      # We are the Sun NativeGSS provider
       super(NAME, 1.0, INFO)
+      # We are the Sun NativeGSS provider
       if (!(self.attr_mech_map).nil?)
         AccessController.do_privileged(PutAllAction.new(self, self.attr_mech_map))
       end

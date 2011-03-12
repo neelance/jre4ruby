@@ -86,8 +86,6 @@ module Sun::Nio::Cs::Ext
     
     typesig { [Charset] }
     def contains(cs)
-      # GB2312-80 repertoire
-      # CNS11643 repertoire
       return ((cs.is_a?(EUC_CN)) || (cs.is_a?(US_ASCII)) || (cs.is_a?(EUC_TW)) || (cs.is_a?(ISO2022_CN)))
     end
     

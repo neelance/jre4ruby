@@ -441,7 +441,7 @@ module Java::Security
     # has not been resolved.
     # 
     # @return the type (class name) of the underlying permission that
-    # has not been resolved
+    #  has not been resolved
     # 
     # @since 1.5
     def get_unresolved_type
@@ -453,8 +453,8 @@ module Java::Security
     # has not been resolved.
     # 
     # @return the target name of the underlying permission that
-    # has not been resolved, or <code>null</code>,
-    # if there is no targe name
+    #          has not been resolved, or <code>null</code>,
+    #          if there is no targe name
     # 
     # @since 1.5
     def get_unresolved_name
@@ -466,8 +466,8 @@ module Java::Security
     # has not been resolved.
     # 
     # @return the actions for the underlying permission that
-    # has not been resolved, or <code>null</code>
-    # if there are no actions
+    #          has not been resolved, or <code>null</code>
+    #          if there are no actions
     # 
     # @since 1.5
     def get_unresolved_actions

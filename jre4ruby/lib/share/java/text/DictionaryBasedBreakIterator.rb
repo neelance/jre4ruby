@@ -22,9 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996 - 2002 - All Rights Reserved
 # 
@@ -192,9 +189,9 @@ module Java::Text
         (@position_in_cache -= 1)
         text.set_index(@cached_break_positions[@position_in_cache])
         return @cached_break_positions[@position_in_cache]
-      # otherwise, dump the cache and use the inherited previous() method to move
-      # backward.  This may fill up the cache with new break positions, in which
-      # case we have to mark our position in the cache
+        # otherwise, dump the cache and use the inherited previous() method to move
+        # backward.  This may fill up the cache with new break positions, in which
+        # case we have to mark our position in the cache
       else
         @cached_break_positions = nil
         result = super
@@ -220,9 +217,9 @@ module Java::Text
       if ((@cached_break_positions).nil? || offset <= @cached_break_positions[0] || offset > @cached_break_positions[@cached_break_positions.attr_length - 1])
         @cached_break_positions = nil
         return super(offset)
-      # on the other hand, if "offset" is within the range covered by the cache,
-      # then all we have to do is search the cache for the last break position
-      # before "offset"
+        # on the other hand, if "offset" is within the range covered by the cache,
+        # then all we have to do is search the cache for the last break position
+        # before "offset"
       else
         @position_in_cache = 0
         while (@position_in_cache < @cached_break_positions.attr_length && offset > @cached_break_positions[@position_in_cache])
@@ -249,9 +246,9 @@ module Java::Text
       if ((@cached_break_positions).nil? || offset < @cached_break_positions[0] || offset >= @cached_break_positions[@cached_break_positions.attr_length - 1])
         @cached_break_positions = nil
         return super(offset)
-      # on the other hand, if "offset" is within the range covered by the
-      # cache, then just search the cache for the first break position
-      # after "offset"
+        # on the other hand, if "offset" is within the range covered by the
+        # cache, then just search the cache for the first break position
+        # after "offset"
       else
         @position_in_cache = 0
         while (@position_in_cache < @cached_break_positions.attr_length && offset >= @cached_break_positions[@position_in_cache])
@@ -281,8 +278,8 @@ module Java::Text
         # for the new range
         if (@dictionary_char_count > 1 && result - start_pos > 1)
           divide_up_dictionary_range(start_pos, result)
-        # otherwise, the value we got back from the inherited fuction
-        # is our return value, and we can dump the cache
+          # otherwise, the value we got back from the inherited fuction
+          # is our return value, and we can dump the cache
         else
           @cached_break_positions = nil
           return result
@@ -380,10 +377,10 @@ module Java::Text
         if ((state).equal?(-1))
           current_break_positions.push(text.get_index)
           break
-        # if the character we're sitting on causes us to transition to
-        # the error state, or if we've gone off the end of the range
-        # without transitioning to the "end of word" state, we've hit
-        # an error...
+          # if the character we're sitting on causes us to transition to
+          # the error state, or if we've gone off the end of the range
+          # without transitioning to the "end of word" state, we've hit
+          # an error...
         else
           if ((state).equal?(0) || text.get_index >= end_pos)
             # if this is the farthest we've gotten, take note of it in
@@ -429,11 +426,11 @@ module Java::Text
                 get_next
                 current_break_positions.push(text.get_index)
               end
-            # if we still have more break positions we can try, then promote the
-            # last break in possibleBreakPositions into currentBreakPositions,
-            # and get rid of all entries in currentBreakPositions that come after
-            # it.  Then back up to that position and start over from there (i.e.,
-            # treat that position as the beginning of a new word)
+              # if we still have more break positions we can try, then promote the
+              # last break in possibleBreakPositions into currentBreakPositions,
+              # and get rid of all entries in currentBreakPositions that come after
+              # it.  Then back up to that position and start over from there (i.e.,
+              # treat that position as the beginning of a new word)
             else
               temp = possible_break_positions.pop
               temp2 = nil
@@ -450,8 +447,8 @@ module Java::Text
             if (text.get_index >= end_pos)
               break
             end
-          # if we didn't hit any exceptional conditions on this last iteration,
-          # just advance to the next character and loop
+            # if we didn't hit any exceptional conditions on this last iteration,
+            # just advance to the next character and loop
           else
             c = get_next
           end

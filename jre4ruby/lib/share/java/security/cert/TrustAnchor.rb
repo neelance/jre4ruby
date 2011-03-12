@@ -113,29 +113,29 @@ module Java::Security::Cert
     # and X.509. The ASN.1 definition of this structure appears below.
     # 
     # <pre><code>
-    # NameConstraints ::= SEQUENCE {
-    # permittedSubtrees       [0]     GeneralSubtrees OPTIONAL,
-    # excludedSubtrees        [1]     GeneralSubtrees OPTIONAL }
+    #  NameConstraints ::= SEQUENCE {
+    #       permittedSubtrees       [0]     GeneralSubtrees OPTIONAL,
+    #       excludedSubtrees        [1]     GeneralSubtrees OPTIONAL }
     # 
-    # GeneralSubtrees ::= SEQUENCE SIZE (1..MAX) OF GeneralSubtree
+    #  GeneralSubtrees ::= SEQUENCE SIZE (1..MAX) OF GeneralSubtree
     # 
-    # GeneralSubtree ::= SEQUENCE {
-    # base                    GeneralName,
-    # minimum         [0]     BaseDistance DEFAULT 0,
-    # maximum         [1]     BaseDistance OPTIONAL }
+    #  GeneralSubtree ::= SEQUENCE {
+    #       base                    GeneralName,
+    #       minimum         [0]     BaseDistance DEFAULT 0,
+    #       maximum         [1]     BaseDistance OPTIONAL }
     # 
-    # BaseDistance ::= INTEGER (0..MAX)
+    #  BaseDistance ::= INTEGER (0..MAX)
     # 
-    # GeneralName ::= CHOICE {
-    # otherName                       [0]     OtherName,
-    # rfc822Name                      [1]     IA5String,
-    # dNSName                         [2]     IA5String,
-    # x400Address                     [3]     ORAddress,
-    # directoryName                   [4]     Name,
-    # ediPartyName                    [5]     EDIPartyName,
-    # uniformResourceIdentifier       [6]     IA5String,
-    # iPAddress                       [7]     OCTET STRING,
-    # registeredID                    [8]     OBJECT IDENTIFIER}
+    #  GeneralName ::= CHOICE {
+    #       otherName                       [0]     OtherName,
+    #       rfc822Name                      [1]     IA5String,
+    #       dNSName                         [2]     IA5String,
+    #       x400Address                     [3]     ORAddress,
+    #       directoryName                   [4]     Name,
+    #       ediPartyName                    [5]     EDIPartyName,
+    #       uniformResourceIdentifier       [6]     IA5String,
+    #       iPAddress                       [7]     OCTET STRING,
+    #       registeredID                    [8]     OBJECT IDENTIFIER}
     # </code></pre>
     # <p>
     # Note that the name constraints byte array supplied is cloned to protect
@@ -341,8 +341,8 @@ module Java::Security::Cert
     # subsequent modifications.
     # 
     # @return a byte array containing the ASN.1 DER encoding of
-    # a NameConstraints extension used for checking name constraints,
-    # or <code>null</code> if not set.
+    #         a NameConstraints extension used for checking name constraints,
+    #         or <code>null</code> if not set.
     def get_name_constraints
       return ((@nc_bytes).nil? ? nil : @nc_bytes.clone)
     end

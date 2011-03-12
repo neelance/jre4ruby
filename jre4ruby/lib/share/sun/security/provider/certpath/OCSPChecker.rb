@@ -157,7 +157,7 @@ module Sun::Security::Provider::Certpath
     # @param cert the Certificate
     # @param unresolvedCritExts the unresolved critical extensions
     # @exception CertPathValidatorException Exception is thrown if the
-    # certificate has been revoked.
+    #            certificate has been revoked.
     def check(cert, unresolved_crit_exts)
       in_ = nil
       out = nil
@@ -169,10 +169,10 @@ module Sun::Security::Provider::Certpath
         responder_issuer_name = nil
         responder_serial_number = nil
         # OCSP security property values, in the following order:
-        # 1. ocsp.responderURL
-        # 2. ocsp.responderCertSubjectName
-        # 3. ocsp.responderCertIssuerName
-        # 4. ocsp.responderCertSerialNumber
+        #   1. ocsp.responderURL
+        #   2. ocsp.responderCertSubjectName
+        #   3. ocsp.responderCertIssuerName
+        #   4. ocsp.responderCertSerialNumber
         properties = get_ocspproperties
         # When responder's subject name is set then the issuer/serial
         # properties are ignored
@@ -214,8 +214,8 @@ module Sun::Security::Provider::Certpath
           end
         end
         # Check anchor certs for:
-        # - the issuer cert (of the cert being validated)
-        # - the OCSP responder's cert
+        #    - the issuer cert (of the cert being validated)
+        #    - the OCSP responder's cert
         if (seek_issuer_cert || seek_responder_cert)
           if (!(DEBUG).nil? && seek_responder_cert)
             DEBUG.println("Searching trust anchors for responder's " + "certificate")
@@ -374,10 +374,10 @@ module Sun::Security::Provider::Certpath
     class_module.module_eval {
       typesig { [X509CertImpl, Array.typed(String)] }
       # The OCSP security property values are in the following order:
-      # 1. ocsp.responderURL
-      # 2. ocsp.responderCertSubjectName
-      # 3. ocsp.responderCertIssuerName
-      # 4. ocsp.responderCertSerialNumber
+      #   1. ocsp.responderURL
+      #   2. ocsp.responderCertSubjectName
+      #   3. ocsp.responderCertIssuerName
+      #   4. ocsp.responderCertSerialNumber
       def get_ocspserver_url(curr_cert_impl, properties)
         if (!(properties[0]).nil?)
           begin

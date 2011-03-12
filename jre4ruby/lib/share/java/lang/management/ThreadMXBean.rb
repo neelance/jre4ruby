@@ -45,8 +45,8 @@ module Java::Lang::Management
   # <p>The <tt>ObjectName</tt> for uniquely identifying the MXBean for
   # the thread system within an MBeanServer is:
   # <blockquote>
-  # {@link ManagementFactory#THREAD_MXBEAN_NAME
-  # <tt>java.lang:type=Threading</tt>}
+  #    {@link ManagementFactory#THREAD_MXBEAN_NAME
+  #           <tt>java.lang:type=Threading</tt>}
   # </blockquote>
   # 
   # <h4>Thread ID</h4>
@@ -112,9 +112,9 @@ module Java::Lang::Management
   # the running application.
   # 
   # @see <a href="../../../javax/management/package-summary.html">
-  # JMX Specification.</a>
+  #      JMX Specification.</a>
   # @see <a href="package-summary.html#examples">
-  # Ways to Access MXBeans</a>
+  #      Ways to Access MXBeans</a>
   # 
   # @author  Mandy Chung
   # @since   1.5
@@ -164,8 +164,8 @@ module Java::Lang::Management
     # @return an array of <tt>long</tt>, each is a thread ID.
     # 
     # @throws java.lang.SecurityException if a security manager
-    # exists and the caller does not have
-    # ManagementPermission("monitor").
+    #         exists and the caller does not have
+    #         ManagementPermission("monitor").
     def get_all_thread_ids
       raise NotImplementedError
     end
@@ -175,7 +175,7 @@ module Java::Lang::Management
     # <tt>id</tt> with no stack trace.
     # This method is equivalent to calling:
     # <blockquote>
-    # {@link #getThreadInfo(long, int) getThreadInfo(id, 0);}
+    #   {@link #getThreadInfo(long, int) getThreadInfo(id, 0);}
     # </blockquote>
     # 
     # <p>
@@ -204,8 +204,8 @@ module Java::Lang::Management
     # 
     # @throws IllegalArgumentException if <tt>id &lt= 0</tt>.
     # @throws java.lang.SecurityException if a security manager
-    # exists and the caller does not have
-    # ManagementPermission("monitor").
+    #         exists and the caller does not have
+    #         ManagementPermission("monitor").
     def get_thread_info(id)
       raise NotImplementedError
     end
@@ -215,7 +215,7 @@ module Java::Lang::Management
     # whose ID is in the input array <tt>ids</tt> with no stack trace.
     # This method is equivalent to calling:
     # <blockquote><pre>
-    # {@link #getThreadInfo(long[], int) getThreadInfo}(ids, 0);
+    #   {@link #getThreadInfo(long[], int) getThreadInfo}(ids, 0);
     # </pre></blockquote>
     # 
     # <p>
@@ -241,10 +241,10 @@ module Java::Lang::Management
     # with no stack trace, no locked monitor and no synchronizer info.
     # 
     # @throws IllegalArgumentException if any element in the input array
-    # <tt>ids</tt> is <tt>&lt= 0</tt>.
+    #      <tt>ids</tt> is <tt>&lt= 0</tt>.
     # @throws java.lang.SecurityException if a security manager
-    # exists and the caller does not have
-    # ManagementPermission("monitor").
+    #         exists and the caller does not have
+    #         ManagementPermission("monitor").
     def get_thread_info(ids)
       raise NotImplementedError
     end
@@ -291,8 +291,8 @@ module Java::Lang::Management
     # @throws IllegalArgumentException if <tt>id &lt= 0</tt>.
     # @throws IllegalArgumentException if <tt>maxDepth is negative</tt>.
     # @throws java.lang.SecurityException if a security manager
-    # exists and the caller does not have
-    # ManagementPermission("monitor").
+    #         exists and the caller does not have
+    #         ManagementPermission("monitor").
     def get_thread_info(id, max_depth)
       raise NotImplementedError
     end
@@ -342,10 +342,10 @@ module Java::Lang::Management
     # 
     # @throws IllegalArgumentException if <tt>maxDepth is negative</tt>.
     # @throws IllegalArgumentException if any element in the input array
-    # <tt>ids</tt> is <tt>&lt= 0</tt>.
+    #      <tt>ids</tt> is <tt>&lt= 0</tt>.
     # @throws java.lang.SecurityException if a security manager
-    # exists and the caller does not have
-    # ManagementPermission("monitor").
+    #         exists and the caller does not have
+    #         ManagementPermission("monitor").
     def get_thread_info(ids, max_depth)
       raise NotImplementedError
     end
@@ -354,9 +354,9 @@ module Java::Lang::Management
     # Tests if the Java virtual machine supports thread contention monitoring.
     # 
     # @return
-    # <tt>true</tt>
-    # if the Java virtual machine supports thread contention monitoring;
-    # <tt>false</tt> otherwise.
+    #   <tt>true</tt>
+    #     if the Java virtual machine supports thread contention monitoring;
+    #   <tt>false</tt> otherwise.
     def is_thread_contention_monitoring_supported
       raise NotImplementedError
     end
@@ -365,7 +365,7 @@ module Java::Lang::Management
     # Tests if thread contention monitoring is enabled.
     # 
     # @return <tt>true</tt> if thread contention monitoring is enabled;
-    # <tt>false</tt> otherwise.
+    #         <tt>false</tt> otherwise.
     # 
     # @throws java.lang.UnsupportedOperationException if the Java virtual
     # machine does not support thread contention monitoring.
@@ -380,14 +380,14 @@ module Java::Lang::Management
     # Thread contention monitoring is disabled by default.
     # 
     # @param enable <tt>true</tt> to enable;
-    # <tt>false</tt> to disable.
+    #               <tt>false</tt> to disable.
     # 
     # @throws java.lang.UnsupportedOperationException if the Java
     # virtual machine does not support thread contention monitoring.
     # 
     # @throws java.lang.SecurityException if a security manager
-    # exists and the caller does not have
-    # ManagementPermission("control").
+    #         exists and the caller does not have
+    #         ManagementPermission("control").
     # 
     # @see #isThreadContentionMonitoringSupported
     def set_thread_contention_monitoring_enabled(enable)
@@ -406,7 +406,7 @@ module Java::Lang::Management
     # This is a convenient method for local management use and is
     # equivalent to calling:
     # <blockquote><pre>
-    # {@link #getThreadCpuTime getThreadCpuTime}(Thread.currentThread().getId());
+    #   {@link #getThreadCpuTime getThreadCpuTime}(Thread.currentThread().getId());
     # </pre></blockquote>
     # 
     # @return the total CPU time for the current thread if CPU time
@@ -434,7 +434,7 @@ module Java::Lang::Management
     # This is a convenient method for local management use and is
     # equivalent to calling:
     # <blockquote><pre>
-    # {@link #getThreadUserTime getThreadUserTime}(Thread.currentThread().getId());
+    #   {@link #getThreadUserTime getThreadUserTime}(Thread.currentThread().getId());
     # </pre></blockquote>
     # 
     # @return the user-level CPU time for the current thread if CPU time
@@ -534,10 +534,10 @@ module Java::Lang::Management
     # measurement for the current thread.
     # 
     # @return
-    # <tt>true</tt>
-    # if the Java virtual machine supports CPU time
-    # measurement for any thread;
-    # <tt>false</tt> otherwise.
+    #   <tt>true</tt>
+    #     if the Java virtual machine supports CPU time
+    #     measurement for any thread;
+    #   <tt>false</tt> otherwise.
     def is_thread_cpu_time_supported
       raise NotImplementedError
     end
@@ -549,10 +549,10 @@ module Java::Lang::Management
     # returns <tt>true</tt>.
     # 
     # @return
-    # <tt>true</tt>
-    # if the Java virtual machine supports CPU time
-    # measurement for current thread;
-    # <tt>false</tt> otherwise.
+    #   <tt>true</tt>
+    #     if the Java virtual machine supports CPU time
+    #     measurement for current thread;
+    #   <tt>false</tt> otherwise.
     def is_current_thread_cpu_time_supported
       raise NotImplementedError
     end
@@ -561,7 +561,7 @@ module Java::Lang::Management
     # Tests if thread CPU time measurement is enabled.
     # 
     # @return <tt>true</tt> if thread CPU time measurement is enabled;
-    # <tt>false</tt> otherwise.
+    #         <tt>false</tt> otherwise.
     # 
     # @throws java.lang.UnsupportedOperationException if the Java virtual
     # machine does not support CPU time measurement for other threads
@@ -578,15 +578,15 @@ module Java::Lang::Management
     # is platform dependent.
     # 
     # @param enable <tt>true</tt> to enable;
-    # <tt>false</tt> to disable.
+    #               <tt>false</tt> to disable.
     # 
     # @throws java.lang.UnsupportedOperationException if the Java
     # virtual machine does not support CPU time measurement for
     # any threads nor for the current thread.
     # 
     # @throws java.lang.SecurityException if a security manager
-    # exists and the caller does not have
-    # ManagementPermission("control").
+    #         exists and the caller does not have
+    #         ManagementPermission("control").
     # 
     # @see #isThreadCpuTimeSupported
     # @see #isCurrentThreadCpuTimeSupported
@@ -622,8 +622,8 @@ module Java::Lang::Management
     # deadlocked, if any; <tt>null</tt> otherwise.
     # 
     # @throws java.lang.SecurityException if a security manager
-    # exists and the caller does not have
-    # ManagementPermission("monitor").
+    #         exists and the caller does not have
+    #         ManagementPermission("monitor").
     # 
     # @see #findDeadlockedThreads
     def find_monitor_deadlocked_threads
@@ -635,8 +635,8 @@ module Java::Lang::Management
     # live threads.
     # 
     # @throws java.lang.SecurityException if a security manager
-    # exists and the caller does not have
-    # ManagementPermission("control").
+    #         exists and the caller does not have
+    #         ManagementPermission("control").
     # 
     # @see #getPeakThreadCount
     # @see #getThreadCount
@@ -662,8 +662,8 @@ module Java::Lang::Management
     # <tt>null</tt> otherwise.
     # 
     # @throws java.lang.SecurityException if a security manager
-    # exists and the caller does not have
-    # ManagementPermission("monitor").
+    #         exists and the caller does not have
+    #         ManagementPermission("monitor").
     # @throws java.lang.UnsupportedOperationException if the Java virtual
     # machine does not support monitoriing of ownable synchronizer usage.
     # 
@@ -679,10 +679,10 @@ module Java::Lang::Management
     # object monitor usage.
     # 
     # @return
-    # <tt>true</tt>
-    # if the Java virtual machine supports monitoring of
-    # object monitor usage;
-    # <tt>false</tt> otherwise.
+    #   <tt>true</tt>
+    #     if the Java virtual machine supports monitoring of
+    #     object monitor usage;
+    #   <tt>false</tt> otherwise.
     # 
     # @see #dumpAllThreads
     # @since 1.6
@@ -696,10 +696,10 @@ module Java::Lang::Management
     # ownable synchronizer</a> usage.
     # 
     # @return
-    # <tt>true</tt>
-    # if the Java virtual machine supports monitoring of ownable
-    # synchronizer usage;
-    # <tt>false</tt> otherwise.
+    #   <tt>true</tt>
+    #     if the Java virtual machine supports monitoring of ownable
+    #     synchronizer usage;
+    #   <tt>false</tt> otherwise.
     # 
     # @see #dumpAllThreads
     # @since 1.6
@@ -716,12 +716,12 @@ module Java::Lang::Management
     # This method obtains a snapshot of the thread information
     # for each thread including:
     # <ul>
-    # <li>the entire stack trace,</li>
-    # <li>the object monitors currently locked by the thread
-    # if <tt>lockedMonitors</tt> is <tt>true</tt>, and</li>
-    # <li>the <a href="LockInfo.html#OwnableSynchronizer">
-    # ownable synchronizers</a> currently locked by the thread
-    # if <tt>lockedSynchronizers</tt> is <tt>true</tt>.</li>
+    #    <li>the entire stack trace,</li>
+    #    <li>the object monitors currently locked by the thread
+    #        if <tt>lockedMonitors</tt> is <tt>true</tt>, and</li>
+    #    <li>the <a href="LockInfo.html#OwnableSynchronizer">
+    #        ownable synchronizers</a> currently locked by the thread
+    #        if <tt>lockedSynchronizers</tt> is <tt>true</tt>.</li>
     # </ul>
     # <p>
     # This method returns an array of the <tt>ThreadInfo</tt> objects,
@@ -743,7 +743,7 @@ module Java::Lang::Management
     # When both <tt>lockedMonitors</tt> and <tt>lockedSynchronizers</tt>
     # parameters are <tt>false</tt>, it is equivalent to calling:
     # <blockquote><pre>
-    # {@link #getThreadInfo(long[], int)  getThreadInfo(ids, Integer.MAX_VALUE)}
+    #     {@link #getThreadInfo(long[], int)  getThreadInfo(ids, Integer.MAX_VALUE)}
     # </pre></blockquote>
     # 
     # <p>
@@ -759,26 +759,26 @@ module Java::Lang::Management
     # @param  ids an array of thread IDs.
     # @param  lockedMonitors if <tt>true</tt>, retrieves all locked monitors.
     # @param  lockedSynchronizers if <tt>true</tt>, retrieves all locked
-    # ownable synchronizers.
+    #             ownable synchronizers.
     # 
     # @return an array of the {@link ThreadInfo} objects, each containing
     # information about a thread whose ID is in the corresponding
     # element of the input array of IDs.
     # 
     # @throws java.lang.SecurityException if a security manager
-    # exists and the caller does not have
-    # ManagementPermission("monitor").
+    #         exists and the caller does not have
+    #         ManagementPermission("monitor").
     # @throws java.lang.UnsupportedOperationException
-    # <ul>
-    # <li>if <tt>lockedMonitors</tt> is <tt>true</tt> but
-    # the Java virtual machine does not support monitoring
-    # of {@linkplain #isObjectMonitorUsageSupported
-    # object monitor usage}; or</li>
-    # <li>if <tt>lockedSynchronizers</tt> is <tt>true</tt> but
-    # the Java virtual machine does not support monitoring
-    # of {@linkplain #isSynchronizerUsageSupported
-    # ownable synchronizer usage}.</li>
-    # </ul>
+    #         <ul>
+    #           <li>if <tt>lockedMonitors</tt> is <tt>true</tt> but
+    #               the Java virtual machine does not support monitoring
+    #               of {@linkplain #isObjectMonitorUsageSupported
+    #               object monitor usage}; or</li>
+    #           <li>if <tt>lockedSynchronizers</tt> is <tt>true</tt> but
+    #               the Java virtual machine does not support monitoring
+    #               of {@linkplain #isSynchronizerUsageSupported
+    #               ownable synchronizer usage}.</li>
+    #         </ul>
     # 
     # @see #isObjectMonitorUsageSupported
     # @see #isSynchronizerUsageSupported
@@ -801,24 +801,24 @@ module Java::Lang::Management
     # 
     # @param  lockedMonitors if <tt>true</tt>, dump all locked monitors.
     # @param  lockedSynchronizers if <tt>true</tt>, dump all locked
-    # ownable synchronizers.
+    #             ownable synchronizers.
     # 
     # @return an array of {@link ThreadInfo} for all live threads.
     # 
     # @throws java.lang.SecurityException if a security manager
-    # exists and the caller does not have
-    # ManagementPermission("monitor").
+    #         exists and the caller does not have
+    #         ManagementPermission("monitor").
     # @throws java.lang.UnsupportedOperationException
-    # <ul>
-    # <li>if <tt>lockedMonitors</tt> is <tt>true</tt> but
-    # the Java virtual machine does not support monitoring
-    # of {@linkplain #isObjectMonitorUsageSupported
-    # object monitor usage}; or</li>
-    # <li>if <tt>lockedSynchronizers</tt> is <tt>true</tt> but
-    # the Java virtual machine does not support monitoring
-    # of {@linkplain #isSynchronizerUsageSupported
-    # ownable synchronizer usage}.</li>
-    # </ul>
+    #         <ul>
+    #           <li>if <tt>lockedMonitors</tt> is <tt>true</tt> but
+    #               the Java virtual machine does not support monitoring
+    #               of {@linkplain #isObjectMonitorUsageSupported
+    #               object monitor usage}; or</li>
+    #           <li>if <tt>lockedSynchronizers</tt> is <tt>true</tt> but
+    #               the Java virtual machine does not support monitoring
+    #               of {@linkplain #isSynchronizerUsageSupported
+    #               ownable synchronizer usage}.</li>
+    #         </ul>
     # 
     # @see #isObjectMonitorUsageSupported
     # @see #isSynchronizerUsageSupported

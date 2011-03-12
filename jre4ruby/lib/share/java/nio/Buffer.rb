@@ -38,16 +38,16 @@ module Java::Nio
   # 
   # <blockquote>
   # 
-  # <p> A buffer's <i>capacity</i> is the number of elements it contains.  The
-  # capacity of a buffer is never negative and never changes.  </p>
+  #   <p> A buffer's <i>capacity</i> is the number of elements it contains.  The
+  #   capacity of a buffer is never negative and never changes.  </p>
   # 
-  # <p> A buffer's <i>limit</i> is the index of the first element that should
-  # not be read or written.  A buffer's limit is never negative and is never
-  # greater than its capacity.  </p>
+  #   <p> A buffer's <i>limit</i> is the index of the first element that should
+  #   not be read or written.  A buffer's limit is never negative and is never
+  #   greater than its capacity.  </p>
   # 
-  # <p> A buffer's <i>position</i> is the index of the next element to be
-  # read or written.  A buffer's position is never negative and is never
-  # greater than its limit.  </p>
+  #   <p> A buffer's <i>position</i> is the index of the next element to be
+  #   read or written.  A buffer's position is never negative and is never
+  #   greater than its limit.  </p>
   # 
   # </blockquote>
   # 
@@ -61,17 +61,17 @@ module Java::Nio
   # 
   # <blockquote>
   # 
-  # <p> <i>Relative</i> operations read or write one or more elements starting
-  # at the current position and then increment the position by the number of
-  # elements transferred.  If the requested transfer exceeds the limit then a
-  # relative <i>get</i> operation throws a {@link BufferUnderflowException}
-  # and a relative <i>put</i> operation throws a {@link
-  # BufferOverflowException}; in either case, no data is transferred.  </p>
+  #   <p> <i>Relative</i> operations read or write one or more elements starting
+  #   at the current position and then increment the position by the number of
+  #   elements transferred.  If the requested transfer exceeds the limit then a
+  #   relative <i>get</i> operation throws a {@link BufferUnderflowException}
+  #   and a relative <i>put</i> operation throws a {@link
+  #   BufferOverflowException}; in either case, no data is transferred.  </p>
   # 
-  # <p> <i>Absolute</i> operations take an explicit element index and do not
-  # affect the position.  Absolute <i>get</i> and <i>put</i> operations throw
-  # an {@link IndexOutOfBoundsException} if the index argument exceeds the
-  # limit.  </p>
+  #   <p> <i>Absolute</i> operations take an explicit element index and do not
+  #   affect the position.  Absolute <i>get</i> and <i>put</i> operations throw
+  #   an {@link IndexOutOfBoundsException} if the index argument exceeds the
+  #   limit.  </p>
   # 
   # </blockquote>
   # 
@@ -97,11 +97,11 @@ module Java::Nio
   # capacity values:
   # 
   # <blockquote>
-  # <tt>0</tt> <tt>&lt;=</tt>
-  # <i>mark</i> <tt>&lt;=</tt>
-  # <i>position</i> <tt>&lt;=</tt>
-  # <i>limit</i> <tt>&lt;=</tt>
-  # <i>capacity</i>
+  #     <tt>0</tt> <tt>&lt;=</tt>
+  #     <i>mark</i> <tt>&lt;=</tt>
+  #     <i>position</i> <tt>&lt;=</tt>
+  #     <i>limit</i> <tt>&lt;=</tt>
+  #     <i>capacity</i>
   # </blockquote>
   # 
   # <p> A newly-created buffer always has a position of zero and a mark that is
@@ -118,17 +118,17 @@ module Java::Nio
   # 
   # <ul>
   # 
-  # <li><p> {@link #clear} makes a buffer ready for a new sequence of
-  # channel-read or relative <i>put</i> operations: It sets the limit to the
-  # capacity and the position to zero.  </p></li>
+  #   <li><p> {@link #clear} makes a buffer ready for a new sequence of
+  #   channel-read or relative <i>put</i> operations: It sets the limit to the
+  #   capacity and the position to zero.  </p></li>
   # 
-  # <li><p> {@link #flip} makes a buffer ready for a new sequence of
-  # channel-write or relative <i>get</i> operations: It sets the limit to the
-  # current position and then sets the position to zero.  </p></li>
+  #   <li><p> {@link #flip} makes a buffer ready for a new sequence of
+  #   channel-write or relative <i>get</i> operations: It sets the limit to the
+  #   current position and then sets the position to zero.  </p></li>
   # 
-  # <li><p> {@link #rewind} makes a buffer ready for re-reading the data that
-  # it already contains: It leaves the limit unchanged and sets the position
-  # to zero.  </p></li>
+  #   <li><p> {@link #rewind} makes a buffer ready for re-reading the data that
+  #   it already contains: It leaves the limit unchanged and sets the position
+  #   to zero.  </p></li>
   # 
   # </ul>
   # 
@@ -210,6 +210,7 @@ module Java::Nio
     typesig { [::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int] }
     # Creates a new buffer with the given mark, position, limit, and capacity,
     # after checking invariants.
+    # 
     def initialize(mark, pos, lim, cap)
       @mark = -1
       @position = 0
@@ -251,13 +252,13 @@ module Java::Nio
     # new position then it is discarded. </p>
     # 
     # @param  newPosition
-    # The new position value; must be non-negative
-    # and no larger than the current limit
+    #         The new position value; must be non-negative
+    #         and no larger than the current limit
     # 
     # @return  This buffer
     # 
     # @throws  IllegalArgumentException
-    # If the preconditions on <tt>newPosition</tt> do not hold
+    #          If the preconditions on <tt>newPosition</tt> do not hold
     def position(new_position)
       if ((new_position > @limit) || (new_position < 0))
         raise IllegalArgumentException.new
@@ -283,13 +284,13 @@ module Java::Nio
     # the new limit then it is discarded. </p>
     # 
     # @param  newLimit
-    # The new limit value; must be non-negative
-    # and no larger than this buffer's capacity
+    #         The new limit value; must be non-negative
+    #         and no larger than this buffer's capacity
     # 
     # @return  This buffer
     # 
     # @throws  IllegalArgumentException
-    # If the preconditions on <tt>newLimit</tt> do not hold
+    #          If the preconditions on <tt>newLimit</tt> do not hold
     def limit(new_limit)
       if ((new_limit > @capacity) || (new_limit < 0))
         raise IllegalArgumentException.new
@@ -322,7 +323,7 @@ module Java::Nio
     # @return  This buffer
     # 
     # @throws  InvalidMarkException
-    # If the mark has not been set
+    #          If the mark has not been set
     def reset
       m = @mark
       if (m < 0)
@@ -416,7 +417,7 @@ module Java::Nio
     # the limit. </p>
     # 
     # @return  <tt>true</tt> if, and only if, there is at least one element
-    # remaining in this buffer
+    #          remaining in this buffer
     def has_remaining
       return @position < @limit
     end
@@ -438,7 +439,7 @@ module Java::Nio
     # </p>
     # 
     # @return  <tt>true</tt> if, and only if, this buffer
-    # is backed by an array and is not read-only
+    #          is backed by an array and is not read-only
     # 
     # @since 1.6
     def has_array
@@ -463,10 +464,10 @@ module Java::Nio
     # @return  The array that backs this buffer
     # 
     # @throws  ReadOnlyBufferException
-    # If this buffer is backed by an array but is read-only
+    #          If this buffer is backed by an array but is read-only
     # 
     # @throws  UnsupportedOperationException
-    # If this buffer is not backed by an accessible array
+    #          If this buffer is not backed by an accessible array
     # 
     # @since 1.6
     def array
@@ -485,13 +486,13 @@ module Java::Nio
     # array.  </p>
     # 
     # @return  The offset within this buffer's array
-    # of the first element of the buffer
+    #          of the first element of the buffer
     # 
     # @throws  ReadOnlyBufferException
-    # If this buffer is backed by an array but is read-only
+    #          If this buffer is backed by an array but is read-only
     # 
     # @throws  UnsupportedOperationException
-    # If this buffer is not backed by an accessible array
+    #          If this buffer is not backed by an accessible array
     # 
     # @since 1.6
     def array_offset
@@ -511,7 +512,6 @@ module Java::Nio
     
     typesig { [] }
     # -- Package-private methods for bounds checking, etc. --
-    # 
     # Checks the current position against the limit, throwing a {@link
     # BufferUnderflowException} if it is not smaller than the limit, and then
     # increments the position. </p>

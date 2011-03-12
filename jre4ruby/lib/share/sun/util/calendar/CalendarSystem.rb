@@ -63,11 +63,11 @@ module Sun::Util::Calendar
   # runtime in this release supports the following calendar systems.
   # 
   # <pre>
-  # Name          Calendar System
-  # ---------------------------------------
-  # gregorian     Gregorian Calendar
-  # julian        Julian Calendar
-  # japanese      Japanese Imperial Calendar
+  #  Name          Calendar System
+  #  ---------------------------------------
+  #  gregorian     Gregorian Calendar
+  #  julian        Julian Calendar
+  #  japanese      Japanese Imperial Calendar
   # </pre>
   # 
   # @see CalendarDate
@@ -120,7 +120,7 @@ module Sun::Util::Calendar
       # "iso8601", "ISOCalendar",
       # "taiwanese", "LocalGregorianCalendar",
       # "thaibuddhist", "LocalGregorianCalendar",
-      const_set_lazy(:NamePairs) { Array.typed(String).new(["gregorian", "Gregorian", "japanese", "LocalGregorianCalendar", "julian", "JulianCalendar", ]) }
+      const_set_lazy(:NamePairs) { Array.typed(String).new(["gregorian", "Gregorian", "japanese", "LocalGregorianCalendar", "julian", "JulianCalendar"]) }
       const_attr_reader  :NamePairs
       
       typesig { [] }
@@ -202,7 +202,6 @@ module Sun::Util::Calendar
     
     typesig { [] }
     # ////////////////////////////// Calendar API //////////////////////////////////
-    # 
     # Returns the name of this calendar system.
     def get_name
       raise NotImplementedError
@@ -303,7 +302,6 @@ module Sun::Util::Calendar
     
     typesig { [] }
     # no setter
-    # 
     # Returns the length in days of a week in this calendar
     # system. If this calendar system has multiple radix weeks, this
     # method returns only one of them.

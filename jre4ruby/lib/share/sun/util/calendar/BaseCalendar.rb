@@ -178,7 +178,7 @@ module Sun::Util::Calendar
       # 2037
       # 2038
       # 2039
-      const_set_lazy(:FIXED_DATES) { Array.typed(::Java::Int).new([719163, 719528, 719893, 720259, 720624, 720989, 721354, 721720, 722085, 722450, 722815, 723181, 723546, 723911, 724276, 724642, 725007, 725372, 725737, 726103, 726468, 726833, 727198, 727564, 727929, 728294, 728659, 729025, 729390, 729755, 730120, 730486, 730851, 731216, 731581, 731947, 732312, 732677, 733042, 733408, 733773, 734138, 734503, 734869, 735234, 735599, 735964, 736330, 736695, 737060, 737425, 737791, 738156, 738521, 738886, 739252, 739617, 739982, 740347, 740713, 741078, 741443, 741808, 742174, 742539, 742904, 743269, 743635, 744000, 744365, ]) }
+      const_set_lazy(:FIXED_DATES) { Array.typed(::Java::Int).new([719163, 719528, 719893, 720259, 720624, 720989, 721354, 721720, 722085, 722450, 722815, 723181, 723546, 723911, 724276, 724642, 725007, 725372, 725737, 726103, 726468, 726833, 727198, 727564, 727929, 728294, 728659, 729025, 729390, 729755, 730120, 730486, 730851, 731216, 731581, 731947, 732312, 732677, 733042, 733408, 733773, 734138, 734503, 734869, 735234, 735599, 735964, 736330, 736695, 737060, 737425, 737791, 738156, 738521, 738886, 739252, 739617, 739982, 740347, 740713, 741078, 741443, 741808, 742174, 742539, 742904, 743269, 743635, 744000, 744365]) }
       const_attr_reader  :FIXED_DATES
       
       const_set_lazy(:JavaDate) { Class.new(CalendarDate) do
@@ -324,7 +324,7 @@ module Sun::Util::Calendar
         if (d <= 0 && d > -28)
           ml = get_month_length(y, (m -= 1))
           d += ml
-          bdate.set_day_of_month(RJava.cast_to_int(d))
+          bdate.set_day_of_month((d).to_int)
           if ((m).equal?(0))
             m = DECEMBER
             bdate.set_normalized_year(y - 1)
@@ -334,7 +334,7 @@ module Sun::Util::Calendar
           if (d > ml && d < (ml + 28))
             d -= ml
             (m += 1)
-            bdate.set_day_of_month(RJava.cast_to_int(d))
+            bdate.set_day_of_month((d).to_int)
             if (m > DECEMBER)
               bdate.set_normalized_year(y + 1)
               m = JANUARY
@@ -362,16 +362,16 @@ module Sun::Util::Calendar
       month = bdate.get_month
       if (month <= 0)
         xm = 1 - month
-        year -= RJava.cast_to_int(((xm / 12) + 1))
+        year -= (((xm / 12) + 1)).to_int
         month = 13 - (xm % 12)
         bdate.set_normalized_year(year)
-        bdate.set_month(RJava.cast_to_int(month))
+        bdate.set_month((month).to_int)
       else
         if (month > DECEMBER)
-          year += RJava.cast_to_int(((month - 1) / 12))
+          year += (((month - 1) / 12)).to_int
           month = ((month - 1)) % 12 + 1
           bdate.set_normalized_year(year)
-          bdate.set_month(RJava.cast_to_int(month))
+          bdate.set_month((month).to_int)
         end
       end
     end
@@ -397,15 +397,15 @@ module Sun::Util::Calendar
     end
     
     class_module.module_eval {
-      # 12   1   2   3   4   5   6   7   8   9  10  11  12
+      #  12   1   2   3   4   5   6   7   8   9  10  11  12
       const_set_lazy(:DAYS_IN_MONTH) { Array.typed(::Java::Int).new([31, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]) }
       const_attr_reader  :DAYS_IN_MONTH
       
-      # 12/1 1/1 2/1 3/1 4/1 5/1 6/1 7/1 8/1 9/1 10/1 11/1 12/1
+      #  12/1 1/1 2/1 3/1 4/1 5/1 6/1 7/1 8/1 9/1 10/1 11/1 12/1
       const_set_lazy(:ACCUMULATED_DAYS_IN_MONTH) { Array.typed(::Java::Int).new([-30, 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334]) }
       const_attr_reader  :ACCUMULATED_DAYS_IN_MONTH
       
-      # 12/1 1/1 2/1   3/1   4/1   5/1   6/1   7/1   8/1   9/1   10/1   11/1   12/1
+      #  12/1 1/1 2/1   3/1   4/1   5/1   6/1   7/1   8/1   9/1   10/1   11/1   12/1
       const_set_lazy(:ACCUMULATED_DAYS_IN_MONTH_LEAP) { Array.typed(::Java::Int).new([-30, 0, 31, 59 + 1, 90 + 1, 120 + 1, 151 + 1, 181 + 1, 212 + 1, 243 + 1, 273 + 1, 304 + 1, 334 + 1]) }
       const_attr_reader  :ACCUMULATED_DAYS_IN_MONTH_LEAP
     }
@@ -489,7 +489,6 @@ module Sun::Util::Calendar
     typesig { [CalendarDate, ::Java::Long] }
     # Calculates calendar fields and store them in the specified
     # <code>CalendarDate</code>.
-    # 
     # should be 'protected'
     def get_calendar_date_from_fixed_date(date, fixed_date)
       gdate = date
@@ -510,7 +509,7 @@ module Sun::Util::Calendar
         # Update the cache data
         gdate.set_cache(year, jan1, is_leap ? 366 : 365)
       end
-      prior_days = RJava.cast_to_int((fixed_date - jan1))
+      prior_days = ((fixed_date - jan1)).to_int
       mar1 = jan1 + 31 + 28
       if (is_leap)
         (mar1 += 1)
@@ -528,7 +527,7 @@ module Sun::Util::Calendar
       if (is_leap && month >= MARCH)
         (month1 += 1)
       end
-      day_of_month = RJava.cast_to_int((fixed_date - month1)) + 1
+      day_of_month = ((fixed_date - month1)).to_int + 1
       day_of_week = get_day_of_week_from_fixed_date(fixed_date)
       raise AssertError, "negative day of week " + RJava.cast_to_string(day_of_week) if not (day_of_week > 0)
       gdate.set_normalized_year(year)
@@ -551,9 +550,9 @@ module Sun::Util::Calendar
       def get_day_of_week_from_fixed_date(fixed_date)
         # The fixed day 1 (January 1, 1 Gregorian) is Monday.
         if (fixed_date >= 0)
-          return RJava.cast_to_int((fixed_date % 7)) + SUNDAY
+          return ((fixed_date % 7)).to_int + SUNDAY
         end
-        return RJava.cast_to_int(CalendarUtils.mod(fixed_date, 7)) + SUNDAY
+        return (CalendarUtils.mod(fixed_date, 7)).to_int + SUNDAY
       end
     }
     
@@ -577,8 +576,8 @@ module Sun::Util::Calendar
       year = 0
       if (fixed_date > 0)
         d0 = fixed_date - 1
-        n400 = RJava.cast_to_int((d0 / 146097))
-        d1 = RJava.cast_to_int((d0 % 146097))
+        n400 = ((d0 / 146097)).to_int
+        d1 = ((d0 % 146097)).to_int
         n100 = d1 / 36524
         d2 = d1 % 36524
         n4 = d2 / 1461
@@ -587,8 +586,8 @@ module Sun::Util::Calendar
         d4 = (d3 % 365) + 1
       else
         d0 = fixed_date - 1
-        n400 = RJava.cast_to_int(CalendarUtils.floor_divide(d0, 146097))
-        d1 = RJava.cast_to_int(CalendarUtils.mod(d0, 146097))
+        n400 = (CalendarUtils.floor_divide(d0, 146097)).to_int
+        d1 = (CalendarUtils.mod(d0, 146097)).to_int
         n100 = CalendarUtils.floor_divide(d1, 36524)
         d2 = CalendarUtils.mod(d1, 36524)
         n4 = CalendarUtils.floor_divide(d2, 1461)

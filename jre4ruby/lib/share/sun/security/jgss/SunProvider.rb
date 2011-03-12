@@ -40,15 +40,15 @@ module Sun::Security::Jgss
   # Mechanisms supported are:
   # 
   # - Kerberos v5 as defined in RFC 1964.
-  # Oid is 1.2.840.113554.1.2.2
+  #   Oid is 1.2.840.113554.1.2.2
   # 
   # - SPNEGO as defined in RFC 2478
-  # Oid is 1.3.6.1.5.5.2
+  #   Oid is 1.3.6.1.5.5.2
   # 
-  # [Dummy mechanism is no longer compiled:
+  #   [Dummy mechanism is no longer compiled:
   # - Dummy mechanism. This is primarily useful to test a multi-mech
-  # environment.
-  # Oid is 1.3.6.1.4.1.42.2.26.1.2]
+  #   environment.
+  #   Oid is 1.3.6.1.4.1.42.2.26.1.2]
   # 
   # @author Mayank Upadhyay
   class SunProvider < SunProviderImports.const_get :Provider
@@ -61,16 +61,16 @@ module Sun::Security::Jgss
       const_set_lazy(:INFO) { "Sun " + "(Kerberos v5, SPNEGO)" }
       const_attr_reader  :INFO
       
-      # "(Kerberos v5, Dummy GSS-API Mechanism)";
+      #  "(Kerberos v5, Dummy GSS-API Mechanism)";
       const_set_lazy(:INSTANCE) { SunProvider.new }
       const_attr_reader  :INSTANCE
     }
     
     typesig { [] }
     def initialize
-      # We are the Sun JGSS provider
       super("SunJGSS", 1.0, INFO)
-      AccessController.do_privileged(Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
+      AccessController.do_privileged(# We are the Sun JGSS provider
+      Class.new(Java::Security::PrivilegedAction.class == Class ? Java::Security::PrivilegedAction : Object) do
         local_class_in SunProvider
         include_class_members SunProvider
         include Java::Security::PrivilegedAction if Java::Security::PrivilegedAction.class == Module

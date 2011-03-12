@@ -51,7 +51,7 @@ module Java::Net
     # @param   mimetype   the MIME type for which a content handler is desired.
     # 
     # @return  a new <code>ContentHandler</code> to read an object from a
-    # <code>URLStreamHandler</code>.
+    #          <code>URLStreamHandler</code>.
     # @see     java.net.ContentHandler
     # @see     java.net.URLStreamHandler
     def create_content_handler(mimetype)

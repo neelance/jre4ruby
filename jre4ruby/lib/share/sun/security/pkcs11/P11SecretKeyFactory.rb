@@ -172,19 +172,19 @@ module Sun::Security::Pkcs11
       def create_key(token, encoded, algorithm, key_type)
         n = encoded.attr_length
         key_length = 0
-        case (RJava.cast_to_int(key_type))
-        when RJava.cast_to_int(CKK_RC4)
+        case ((key_type).to_int)
+        when (CKK_RC4).to_int
           if ((n < 5) || (n > 128))
             raise InvalidKeyException.new("ARCFOUR key length must be between 5 and 128 bytes")
           end
           key_length = n << 3
-        when RJava.cast_to_int(CKK_DES)
+        when (CKK_DES).to_int
           if (!(n).equal?(8))
             raise InvalidKeyException.new("DES key length must be 8 bytes")
           end
           key_length = 56
           fix_desparity(encoded, 0)
-        when RJava.cast_to_int(CKK_DES3)
+        when (CKK_DES3).to_int
           if ((n).equal?(16))
             key_type = CKK_DES2
           else
@@ -198,20 +198,20 @@ module Sun::Security::Pkcs11
           fix_desparity(encoded, 0)
           fix_desparity(encoded, 8)
           key_length = n * 7
-        when RJava.cast_to_int(CKK_AES)
+        when (CKK_AES).to_int
           if ((!(n).equal?(16)) && (!(n).equal?(24)) && (!(n).equal?(32)))
             raise InvalidKeyException.new("AES key length must be 16, 24, or 32 bytes")
           end
           key_length = n << 3
-        when RJava.cast_to_int(CKK_BLOWFISH)
+        when (CKK_BLOWFISH).to_int
           if ((n < 5) || (n > 56))
             raise InvalidKeyException.new("Blowfish key length must be between 5 and 56 bytes")
           end
           key_length = n << 3
-        when RJava.cast_to_int(CKK_GENERIC_SECRET), RJava.cast_to_int(PCKK_TLSPREMASTER), RJava.cast_to_int(PCKK_TLSRSAPREMASTER), RJava.cast_to_int(PCKK_TLSMASTER)
+        when (CKK_GENERIC_SECRET).to_int, (PCKK_TLSPREMASTER).to_int, (PCKK_TLSRSAPREMASTER).to_int, (PCKK_TLSMASTER).to_int
           key_type = CKK_GENERIC_SECRET
           key_length = n << 3
-        when RJava.cast_to_int(PCKK_SSLMAC), RJava.cast_to_int(PCKK_HMAC)
+        when (PCKK_SSLMAC).to_int, (PCKK_HMAC).to_int
           if ((n).equal?(0))
             raise InvalidKeyException.new("MAC keys must not be empty")
           end
@@ -222,7 +222,7 @@ module Sun::Security::Pkcs11
         end
         session = nil
         begin
-          attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_CLASS, CKO_SECRET_KEY), CK_ATTRIBUTE.new(CKA_KEY_TYPE, key_type), CK_ATTRIBUTE.new(CKA_VALUE, encoded), ])
+          attributes = Array.typed(CK_ATTRIBUTE).new([CK_ATTRIBUTE.new(CKA_CLASS, CKO_SECRET_KEY), CK_ATTRIBUTE.new(CKA_KEY_TYPE, key_type), CK_ATTRIBUTE.new(CKA_VALUE, encoded)])
           attributes = token.get_attributes(O_IMPORT, CKO_SECRET_KEY, key_type, attributes)
           session = token.get_obj_session
           key_id = token.attr_p11._c_create_object(session.id, attributes)

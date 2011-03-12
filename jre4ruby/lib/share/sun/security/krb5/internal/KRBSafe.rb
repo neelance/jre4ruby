@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5::Internal
@@ -43,10 +41,10 @@ module Sun::Security::Krb5::Internal
   # 
   # <xmp>
   # KRB-SAFE        ::= [APPLICATION 20] SEQUENCE {
-  # pvno            [0] INTEGER (5),
-  # msg-type        [1] INTEGER (20),
-  # safe-body       [2] KRB-SAFE-BODY,
-  # cksum           [3] Checksum
+  #         pvno            [0] INTEGER (5),
+  #         msg-type        [1] INTEGER (20),
+  #         safe-body       [2] KRB-SAFE-BODY,
+  #         cksum           [3] Checksum
   # }
   # </xmp>
   # 
@@ -119,7 +117,7 @@ module Sun::Security::Krb5::Internal
     # @exception IOException if an I/O error occurs while reading encoded data.
     # @exception RealmException if an error occurs while parsing a Realm object.
     # @exception KrbApErrException if the value read from the DER-encoded data
-    # stream does not match the pre-defined value.
+    #  stream does not match the pre-defined value.
     def init(encoding)
       der = nil
       sub_der = nil

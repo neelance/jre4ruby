@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5::Internal::Tools
@@ -292,7 +290,7 @@ module Sun::Security::Krb5::Internal::Tools
     
     typesig { [String] }
     # Reformats the date from the form -
-    # dow mon dd hh:mm:ss zzz yyyy to mon/dd/yyyy hh:mm
+    #     dow mon dd hh:mm:ss zzz yyyy to mon/dd/yyyy hh:mm
     # where dow is the day of the week, mon is the month,
     # dd is the day of the month, hh is the hour of
     # the day, mm is the minute within the hour,
@@ -332,5 +330,6 @@ module Sun::Security::Krb5::Internal::Tools
     alias_method :initialize__klist, :initialize
   end
   
-  Klist.main($*) if $0 == __FILE__
 end
+
+Sun::Security::Krb5::Internal::Tools::Klist.main($*) if $0 == __FILE__

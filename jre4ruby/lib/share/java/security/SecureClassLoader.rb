@@ -74,8 +74,8 @@ module Java::Security
     # <p>
     # @param parent the parent ClassLoader
     # @exception  SecurityException  if a security manager exists and its
-    # <code>checkCreateClassLoader</code> method doesn't allow
-    # creation of a class loader.
+    #             <code>checkCreateClassLoader</code> method doesn't allow
+    #             creation of a class loader.
     # @see SecurityManager#checkCreateClassLoader
     def initialize(parent)
       @initialized = false
@@ -100,8 +100,8 @@ module Java::Security
     # method  to ensure creation of a class loader is allowed.
     # 
     # @exception  SecurityException  if a security manager exists and its
-    # <code>checkCreateClassLoader</code> method doesn't allow
-    # creation of a class loader.
+    #             <code>checkCreateClassLoader</code> method doesn't allow
+    #             creation of a class loader.
     # @see SecurityManager#checkCreateClassLoader
     def initialize
       @initialized = false
@@ -126,28 +126,28 @@ module Java::Security
     # constructed and associated with the class being defined.
     # <p>
     # @param      name the expected name of the class, or <code>null</code>
-    # if not known, using '.' and not '/' as the separator
-    # and without a trailing ".class" suffix.
+    #                  if not known, using '.' and not '/' as the separator
+    #                  and without a trailing ".class" suffix.
     # @param      b    the bytes that make up the class data. The bytes in
-    # positions <code>off</code> through <code>off+len-1</code>
-    # should have the format of a valid class file as defined
-    # by the
-    # <a href="http://java.sun.com/docs/books/vmspec/">Java
-    # Virtual Machine Specification</a>.
+    #             positions <code>off</code> through <code>off+len-1</code>
+    #             should have the format of a valid class file as defined
+    #             by the
+    #             <a href="http://java.sun.com/docs/books/vmspec/">Java
+    #             Virtual Machine Specification</a>.
     # @param      off  the start offset in <code>b</code> of the class data
     # @param      len  the length of the class data
     # @param      cs   the associated CodeSource, or <code>null</code> if none
     # @return the <code>Class</code> object created from the data,
-    # and optional CodeSource.
+    #         and optional CodeSource.
     # @exception  ClassFormatError if the data did not contain a valid class
     # @exception  IndexOutOfBoundsException if either <code>off</code> or
-    # <code>len</code> is negative, or if
-    # <code>off+len</code> is greater than <code>b.length</code>.
+    #             <code>len</code> is negative, or if
+    #             <code>off+len</code> is greater than <code>b.length</code>.
     # 
     # @exception  SecurityException if an attempt is made to add this class
-    # to a package that contains classes that were signed by
-    # a different set of certificates than this class, or if
-    # the class name begins with "java.".
+    #             to a package that contains classes that were signed by
+    #             a different set of certificates than this class, or if
+    #             the class name begins with "java.".
     def define_class(name, b, off, len, cs)
       if ((cs).nil?)
         return define_class(name, b, off, len)
@@ -165,21 +165,21 @@ module Java::Security
     # constructed and associated with the class being defined.
     # <p>
     # @param      name the expected name of the class, or <code>null</code>
-    # if not known, using '.' and not '/' as the separator
-    # and without a trailing ".class" suffix.
+    #                  if not known, using '.' and not '/' as the separator
+    #                  and without a trailing ".class" suffix.
     # @param      b    the bytes that make up the class data.  The bytes from positions
-    # <tt>b.position()</tt> through <tt>b.position() + b.limit() -1</tt>
-    # should have the format of a valid class file as defined by the
-    # <a href="http://java.sun.com/docs/books/vmspec/">Java Virtual
-    # Machine Specification</a>.
+    #                  <tt>b.position()</tt> through <tt>b.position() + b.limit() -1</tt>
+    #                  should have the format of a valid class file as defined by the
+    #                  <a href="http://java.sun.com/docs/books/vmspec/">Java Virtual
+    #                  Machine Specification</a>.
     # @param      cs   the associated CodeSource, or <code>null</code> if none
     # @return the <code>Class</code> object created from the data,
-    # and optional CodeSource.
+    #         and optional CodeSource.
     # @exception  ClassFormatError if the data did not contain a valid class
     # @exception  SecurityException if an attempt is made to add this class
-    # to a package that contains classes that were signed by
-    # a different set of certificates than this class, or if
-    # the class name begins with "java.".
+    #             to a package that contains classes that were signed by
+    #             a different set of certificates than this class, or if
+    #             the class name begins with "java.".
     # 
     # @since  1.5
     def define_class(name, b, cs)

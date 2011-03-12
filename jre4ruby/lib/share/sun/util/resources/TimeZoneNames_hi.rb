@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # Copyright (c) 1998 International Business Machines.
 # All Rights Reserved.
 module Sun::Util::Resources
@@ -39,7 +37,7 @@ module Sun::Util::Resources
     
     typesig { [] }
     def get_contents
-      return Array.typed(Array.typed(Object)).new([Array.typed(Object).new(["Asia/Calcutta", Array.typed(String).new([("".to_u << 0x092d << "".to_u << 0x093e << "".to_u << 0x0930 << "".to_u << 0x0924 << "".to_u << 0x0940 << "".to_u << 0x092f << " ".to_u << 0x0938 << "".to_u << 0x092e << "".to_u << 0x092f << ""), "IST", ("".to_u << 0x092d << "".to_u << 0x093e << "".to_u << 0x0930 << "".to_u << 0x0924 << "".to_u << 0x0940 << "".to_u << 0x092f << " ".to_u << 0x0938 << "".to_u << 0x092e << "".to_u << 0x092f << ""), "IST"])]), ])
+      return Array.typed(Array.typed(Object)).new([Array.typed(Object).new(["Asia/Calcutta", Array.typed(String).new([("".to_u << 0x092d << "".to_u << 0x093e << "".to_u << 0x0930 << "".to_u << 0x0924 << "".to_u << 0x0940 << "".to_u << 0x092f << " ".to_u << 0x0938 << "".to_u << 0x092e << "".to_u << 0x092f << ""), "IST", ("".to_u << 0x092d << "".to_u << 0x093e << "".to_u << 0x0930 << "".to_u << 0x0924 << "".to_u << 0x0940 << "".to_u << 0x092f << " ".to_u << 0x0938 << "".to_u << 0x092e << "".to_u << 0x092f << ""), "IST"])])])
     end
     
     typesig { [] }

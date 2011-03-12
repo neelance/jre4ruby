@@ -588,7 +588,7 @@ module Sun::Security::Tools
                                     else
                                       if ((Collator.compare(flags, "-genseckey")).equal?(0))
                                         @command = GENSECKEY
-                                      # specifiers
+                                        # specifiers
                                       else
                                         if ((Collator.compare(flags, "-keystore")).equal?(0) || (Collator.compare(flags, "-destkeystore")).equal?(0))
                                           if (((i += 1)).equal?(args.attr_length))
@@ -748,7 +748,7 @@ module Sun::Security::Tools
                                                                                         end
                                                                                       end
                                                                                       @providers.add(Pair.new(provider_class, provider_arg))
-                                                                                    # options
+                                                                                      # options
                                                                                     else
                                                                                       if ((Collator.compare(flags, "-v")).equal?(0))
                                                                                         @verbose = true
@@ -1840,8 +1840,8 @@ module Sun::Security::Tools
     typesig { [KeyStore, String] }
     # Import a single entry named alias from srckeystore
     # @returns 1 if the import action succeed
-    # 0 if user choose to ignore an alias-dumplicated entry
-    # 2 if setEntry throws Exception
+    #          0 if user choose to ignore an alias-dumplicated entry
+    #          2 if setEntry throws Exception
     def do_import_key_store_single(srckeystore, alias_)
       new_alias = ((@dest).nil?) ? alias_ : @dest
       if (@key_store.contains_alias(new_alias))
@@ -2031,7 +2031,7 @@ module Sun::Security::Tools
       interval = CertificateValidity.new(first_date, last_date)
       cert_info.set(X509CertInfo::VALIDITY, interval)
       # Make new serial number
-      cert_info.set(X509CertInfo::SERIAL_NUMBER, CertificateSerialNumber.new(RJava.cast_to_int((first_date.get_time / 1000))))
+      cert_info.set(X509CertInfo::SERIAL_NUMBER, CertificateSerialNumber.new(((first_date.get_time / 1000)).to_int))
       # Set owner and issuer fields
       owner = nil
       if ((dname).nil?)
@@ -2313,20 +2313,20 @@ module Sun::Security::Tools
     # Prints a certificate in a human readable format.
     def print_x509cert(cert, out)
       # out.println("Owner: "
-      # + cert.getSubjectDN().toString()
-      # + "\n"
-      # + "Issuer: "
-      # + cert.getIssuerDN().toString()
-      # + "\n"
-      # + "Serial number: " + cert.getSerialNumber().toString(16)
-      # + "\n"
-      # + "Valid from: " + cert.getNotBefore().toString()
-      # + " until: " + cert.getNotAfter().toString()
-      # + "\n"
-      # + "Certificate fingerprints:\n"
-      # + "\t MD5:  " + getCertFingerPrint("MD5", cert)
-      # + "\n"
-      # + "\t SHA1: " + getCertFingerPrint("SHA1", cert));
+      #             + cert.getSubjectDN().toString()
+      #             + "\n"
+      #             + "Issuer: "
+      #             + cert.getIssuerDN().toString()
+      #             + "\n"
+      #             + "Serial number: " + cert.getSerialNumber().toString(16)
+      #             + "\n"
+      #             + "Valid from: " + cert.getNotBefore().toString()
+      #             + " until: " + cert.getNotAfter().toString()
+      #             + "\n"
+      #             + "Certificate fingerprints:\n"
+      #             + "\t MD5:  " + getCertFingerPrint("MD5", cert)
+      #             + "\n"
+      #             + "\t SHA1: " + getCertFingerPrint("SHA1", cert));
       form = MessageFormat.new(Rb.get_string("*PATTERN* printX509Cert"))
       source = Array.typed(Object).new([cert.get_subject_dn.to_s, cert.get_issuer_dn.to_s, cert.get_serial_number.to_s(16), cert.get_not_before.to_s, cert.get_not_after.to_s, get_cert_finger_print("MD5", cert), get_cert_finger_print("SHA1", cert), cert.get_sig_alg_name, cert.get_version])
       out.println(form.format(source))
@@ -3149,5 +3149,6 @@ module Sun::Security::Tools
     alias_method :initialize__pair, :initialize
   end
   
-  KeyTool.main($*) if $0 == __FILE__
 end
+
+Sun::Security::Tools::KeyTool.main($*) if $0 == __FILE__

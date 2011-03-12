@@ -56,11 +56,11 @@ module Java::Io
   # </tr>
   # 
   # <tr>
-  # <td>enableSubclassImplementation</td>
-  # <td>Subclass implementation of ObjectOutputStream or ObjectInputStream
+  #   <td>enableSubclassImplementation</td>
+  #   <td>Subclass implementation of ObjectOutputStream or ObjectInputStream
   # to override the default serialization or deserialization, respectively,
   # of objects</td>
-  # <td>Code can use this to serialize or
+  #   <td>Code can use this to serialize or
   # deserialize classes in a purposefully malfeasant manner. For example,
   # during serialization, malicious code can use this to
   # purposefully store confidential private field data in a way easily accessible
@@ -69,10 +69,10 @@ module Java::Io
   # </tr>
   # 
   # <tr>
-  # <td>enableSubstitution</td>
-  # <td>Substitution of one object for another during
+  #   <td>enableSubstitution</td>
+  #   <td>Substitution of one object for another during
   # serialization or deserialization</td>
-  # <td>This is dangerous because malicious code
+  #   <td>This is dangerous because malicious code
   # can replace the actual object with one which has incorrect or
   # malignant data.</td>
   # </tr>
@@ -88,7 +88,6 @@ module Java::Io
   # 
   # @author Joe Fialli
   # @since 1.2
-  # 
   # code was borrowed originally from java.lang.RuntimePermission.
   class SerializablePermission < SerializablePermissionImports.const_get :BasicPermission
     include_class_members SerializablePermissionImports

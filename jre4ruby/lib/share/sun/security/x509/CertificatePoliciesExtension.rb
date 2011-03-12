@@ -57,9 +57,9 @@ module Sun::Security::X509
   # certificatePolicies ::= SEQUENCE SIZE (1..MAX) OF PolicyInformation
   # 
   # PolicyInformation ::= SEQUENCE {
-  # policyIdentifier   CertPolicyId,
-  # policyQualifiers   SEQUENCE SIZE (1..MAX) OF
-  # PolicyQualifierInfo OPTIONAL }
+  #      policyIdentifier   CertPolicyId,
+  #      policyQualifiers   SEQUENCE SIZE (1..MAX) OF
+  #                              PolicyQualifierInfo OPTIONAL }
   # 
   # CertPolicyId ::= OBJECT IDENTIFIER
   # </pre>

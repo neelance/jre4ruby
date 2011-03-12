@@ -50,10 +50,10 @@ module Sun::Security::X509
   # The ASN.1 definition for this is:
   # <pre>
   # revokedCertificates    SEQUENCE OF SEQUENCE  {
-  # userCertificate    CertificateSerialNumber,
-  # revocationDate     ChoiceOfTime,
-  # crlEntryExtensions Extensions OPTIONAL
-  # -- if present, must be v2
+  #     userCertificate    CertificateSerialNumber,
+  #     revocationDate     ChoiceOfTime,
+  #     crlEntryExtensions Extensions OPTIONAL
+  #                        -- if present, must be v2
   # }  OPTIONAL
   # 
   # CertificateSerialNumber  ::=  INTEGER
@@ -61,12 +61,12 @@ module Sun::Security::X509
   # Extensions  ::=  SEQUENCE SIZE (1..MAX) OF Extension
   # 
   # Extension  ::=  SEQUENCE  {
-  # extnId        OBJECT IDENTIFIER,
-  # critical      BOOLEAN DEFAULT FALSE,
-  # extnValue     OCTET STRING
-  # -- contains a DER encoding of a value
-  # -- of the type registered for use with
-  # -- the extnId object identifier value
+  #     extnId        OBJECT IDENTIFIER,
+  #     critical      BOOLEAN DEFAULT FALSE,
+  #     extnValue     OCTET STRING
+  #                   -- contains a DER encoding of a value
+  #                   -- of the type registered for use with
+  #                   -- the extnId object identifier value
   # }
   # </pre>
   # 

@@ -35,10 +35,10 @@ module Java::Util
   # differ from enumerations in two ways:
   # 
   # <ul>
-  # <li> Iterators allow the caller to remove elements from the
-  # underlying collection during the iteration with well-defined
-  # semantics.
-  # <li> Method names have been improved.
+  #      <li> Iterators allow the caller to remove elements from the
+  #           underlying collection during the iteration with well-defined
+  #           semantics.
+  #      <li> Method names have been improved.
   # </ul>
   # 
   # <p>This interface is a member of the
@@ -81,12 +81,12 @@ module Java::Util
     # method.
     # 
     # @throws UnsupportedOperationException if the {@code remove}
-    # operation is not supported by this iterator
+    #         operation is not supported by this iterator
     # 
     # @throws IllegalStateException if the {@code next} method has not
-    # yet been called, or the {@code remove} method has already
-    # been called after the last call to the {@code next}
-    # method
+    #         yet been called, or the {@code remove} method has already
+    #         been called after the last call to the {@code next}
+    #         method
     def remove
       raise NotImplementedError
     end

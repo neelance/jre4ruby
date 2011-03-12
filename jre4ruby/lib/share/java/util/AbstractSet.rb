@@ -72,7 +72,6 @@ module Java::Util
     
     typesig { [Object] }
     # Comparison and hashing
-    # 
     # Compares the specified object with this set for equality.  Returns
     # <tt>true</tt> if the given object is also a set, the two sets have
     # the same size, and every member of the given set is contained in
@@ -162,12 +161,12 @@ module Java::Util
     # @param  c collection containing elements to be removed from this set
     # @return <tt>true</tt> if this set changed as a result of the call
     # @throws UnsupportedOperationException if the <tt>removeAll</tt> operation
-    # is not supported by this set
+    #         is not supported by this set
     # @throws ClassCastException if the class of an element of this set
-    # is incompatible with the specified collection (optional)
+    #         is incompatible with the specified collection (optional)
     # @throws NullPointerException if this set contains a null element and the
-    # specified collection does not permit null elements (optional),
-    # or if the specified collection is null
+    #         specified collection does not permit null elements (optional),
+    #         or if the specified collection is null
     # @see #remove(Object)
     # @see #contains(Object)
     def remove_all(c)

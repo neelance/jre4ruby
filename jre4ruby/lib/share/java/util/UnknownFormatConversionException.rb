@@ -55,7 +55,7 @@ module Java::Util
     # Constructs an instance of this class with the unknown conversion.
     # 
     # @param  s
-    # Unknown conversion
+    #         Unknown conversion
     def initialize(s)
       @s = nil
       super()

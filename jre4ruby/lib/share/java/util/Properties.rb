@@ -89,19 +89,19 @@ module Java::Util
   # <i>not</i> accessed when exporting or importing properties; it merely
   # serves as a string to uniquely identify the DTD, which is:
   # <pre>
-  # &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+  #    &lt;?xml version="1.0" encoding="UTF-8"?&gt;
   # 
-  # &lt;!-- DTD for properties --&gt;
+  #    &lt;!-- DTD for properties --&gt;
   # 
-  # &lt;!ELEMENT properties ( comment?, entry* ) &gt;
+  #    &lt;!ELEMENT properties ( comment?, entry* ) &gt;
   # 
-  # &lt;!ATTLIST properties version CDATA #FIXED "1.0"&gt;
+  #    &lt;!ATTLIST properties version CDATA #FIXED "1.0"&gt;
   # 
-  # &lt;!ELEMENT comment (#PCDATA) &gt;
+  #    &lt;!ELEMENT comment (#PCDATA) &gt;
   # 
-  # &lt;!ELEMENT entry (#PCDATA) &gt;
+  #    &lt;!ELEMENT entry (#PCDATA) &gt;
   # 
-  # &lt;!ATTLIST entry key CDATA #REQUIRED&gt;
+  #    &lt;!ATTLIST entry key CDATA #REQUIRED&gt;
   # </pre>
   # 
   # @see <a href="../../../technotes/tools/solaris/native2ascii.html">native2ascii tool for Solaris</a>
@@ -158,7 +158,7 @@ module Java::Util
     # @param key the key to be placed into this property list.
     # @param value the value corresponding to <tt>key</tt>.
     # @return     the previous value of the specified key in this property
-    # list, or <code>null</code> if it did not have one.
+    #             list, or <code>null</code> if it did not have one.
     # @see #getProperty
     # @since    1.2
     def set_property(key, value)
@@ -247,7 +247,7 @@ module Java::Util
     # <p>
     # <pre>
     # Truth = Beauty
-    # Truth:Beauty
+    #  Truth:Beauty
     # Truth                    :Beauty
     # </pre>
     # As another example, the following three lines specify a single
@@ -255,8 +255,8 @@ module Java::Util
     # <p>
     # <pre>
     # fruits                           apple, banana, pear, \
-    # cantaloupe, watermelon, \
-    # kiwi, mango
+    #                                  cantaloupe, watermelon, \
+    #                                  kiwi, mango
     # </pre>
     # The key is <code>"fruits"</code> and the associated element is:
     # <p>
@@ -316,9 +316,9 @@ module Java::Util
     # 
     # @param   reader   the input character stream.
     # @throws  IOException  if an error occurred when reading from the
-    # input stream.
+    #          input stream.
     # @throws  IllegalArgumentException if a malformed Unicode escape
-    # appears in the input.
+    #          appears in the input.
     # @since   1.6
     def load(reader)
       synchronized(self) do
@@ -340,9 +340,9 @@ module Java::Util
     # 
     # @param      inStream   the input stream.
     # @exception  IOException  if an error occurred when reading from the
-    # input stream.
+    #             input stream.
     # @throws     IllegalArgumentException if the input stream contains a
-    # malformed Unicode escape sequence.
+    #             malformed Unicode escape sequence.
     # @since 1.2
     def load(in_stream)
       synchronized(self) do
@@ -676,9 +676,6 @@ module Java::Util
           next
         end
         case (a_char)
-        # Fall through
-        # Fall through
-        # Fall through
         when Character.new(?\s.ord)
           if ((x).equal?(0) || escape_space)
             out_buffer.append(Character.new(?\\.ord))
@@ -697,6 +694,9 @@ module Java::Util
           out_buffer.append(Character.new(?\\.ord))
           out_buffer.append(Character.new(?f.ord))
         when Character.new(?=.ord), Character.new(?:.ord), Character.new(?#.ord), Character.new(?!.ord)
+          # Fall through
+          # Fall through
+          # Fall through
           out_buffer.append(Character.new(?\\.ord))
           out_buffer.append(a_char)
         else
@@ -771,8 +771,8 @@ module Java::Util
     # @param   out      an output stream.
     # @param   comments   a description of the property list.
     # @exception  ClassCastException  if this <code>Properties</code> object
-    # contains any keys or values that are not
-    # <code>Strings</code>.
+    #             contains any keys or values that are not
+    #             <code>Strings</code>.
     def save(out, comments)
       synchronized(self) do
         begin
@@ -824,9 +824,9 @@ module Java::Util
     # @param   writer      an output character stream writer.
     # @param   comments   a description of the property list.
     # @exception  IOException if writing this property list to the specified
-    # output stream throws an <tt>IOException</tt>.
+    #             output stream throws an <tt>IOException</tt>.
     # @exception  ClassCastException  if this <code>Properties</code> object
-    # contains any keys or values that are not <code>Strings</code>.
+    #             contains any keys or values that are not <code>Strings</code>.
     # @exception  NullPointerException  if <code>writer</code> is null.
     # @since 1.6
     def store(writer, comments)
@@ -865,9 +865,9 @@ module Java::Util
     # @param   out      an output stream.
     # @param   comments   a description of the property list.
     # @exception  IOException if writing this property list to the specified
-    # output stream throws an <tt>IOException</tt>.
+    #             output stream throws an <tt>IOException</tt>.
     # @exception  ClassCastException  if this <code>Properties</code> object
-    # contains any keys or values that are not <code>Strings</code>.
+    #             contains any keys or values that are not <code>Strings</code>.
     # @exception  NullPointerException  if <code>out</code> is null.
     # @since 1.2
     def store(out, comments)
@@ -912,9 +912,9 @@ module Java::Util
     # 
     # @param in the input stream from which to read the XML document.
     # @throws IOException if reading from the specified input stream
-    # results in an <tt>IOException</tt>.
+    #         results in an <tt>IOException</tt>.
     # @throws InvalidPropertiesFormatException Data on input stream does not
-    # constitute a valid XML document with the mandated document type.
+    #         constitute a valid XML document with the mandated document type.
     # @throws NullPointerException if <code>in</code> is null.
     # @see    #storeToXML(OutputStream, String, String)
     # @since 1.5
@@ -938,13 +938,13 @@ module Java::Util
     # 
     # @param os the output stream on which to emit the XML document.
     # @param comment a description of the property list, or <code>null</code>
-    # if no comment is desired.
+    #        if no comment is desired.
     # @throws IOException if writing to the specified output stream
-    # results in an <tt>IOException</tt>.
+    #         results in an <tt>IOException</tt>.
     # @throws NullPointerException if <code>os</code> is null.
     # @throws ClassCastException  if this <code>Properties</code> object
-    # contains any keys or values that are not
-    # <code>Strings</code>.
+    #         contains any keys or values that are not
+    #         <code>Strings</code>.
     # @see    #loadFromXML(InputStream)
     # @since 1.5
     def store_to_xml(os, comment)
@@ -957,31 +957,31 @@ module Java::Util
     end
     
     typesig { [OutputStream, String, String] }
-    # Emits an XML document representing all of the properties contained
-    # in this table, using the specified encoding.
+    #  Emits an XML document representing all of the properties contained
+    #  in this table, using the specified encoding.
     # 
-    # <p>The XML document will have the following DOCTYPE declaration:
-    # <pre>
-    # &lt;!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd"&gt;
-    # </pre>
+    #  <p>The XML document will have the following DOCTYPE declaration:
+    #  <pre>
+    #  &lt;!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd"&gt;
+    #  </pre>
     # 
     # <p>If the specified comment is <code>null</code> then no comment
-    # will be stored in the document.
+    #  will be stored in the document.
     # 
-    # <p>The specified stream remains open after this method returns.
+    #  <p>The specified stream remains open after this method returns.
     # 
-    # @param os the output stream on which to emit the XML document.
-    # @param comment a description of the property list, or <code>null</code>
-    # if no comment is desired.
-    # @throws IOException if writing to the specified output stream
-    # results in an <tt>IOException</tt>.
-    # @throws NullPointerException if <code>os</code> is <code>null</code>,
-    # or if <code>encoding</code> is <code>null</code>.
-    # @throws ClassCastException  if this <code>Properties</code> object
-    # contains any keys or values that are not
-    # <code>Strings</code>.
-    # @see    #loadFromXML(InputStream)
-    # @since 1.5
+    #  @param os the output stream on which to emit the XML document.
+    #  @param comment a description of the property list, or <code>null</code>
+    #         if no comment is desired.
+    #  @throws IOException if writing to the specified output stream
+    #          results in an <tt>IOException</tt>.
+    #  @throws NullPointerException if <code>os</code> is <code>null</code>,
+    #          or if <code>encoding</code> is <code>null</code>.
+    #  @throws ClassCastException  if this <code>Properties</code> object
+    #          contains any keys or values that are not
+    #          <code>Strings</code>.
+    #  @see    #loadFromXML(InputStream)
+    #  @since 1.5
     def store_to_xml(os, comment, encoding)
       synchronized(self) do
         if ((os).nil?)
@@ -1031,9 +1031,9 @@ module Java::Util
     # properties list.
     # 
     # @return  an enumeration of all the keys in this property list, including
-    # the keys in the default property list.
+    #          the keys in the default property list.
     # @throws  ClassCastException if any key in this property list
-    # is not a string.
+    #          is not a string.
     # @see     java.util.Enumeration
     # @see     java.util.Properties#defaults
     # @see     #stringPropertyNames
@@ -1056,8 +1056,8 @@ module Java::Util
     # or vice versa.
     # 
     # @return  a set of keys in this property list where
-    # the key and its corresponding value are strings,
-    # including the keys in the default property list.
+    #          the key and its corresponding value are strings,
+    #          including the keys in the default property list.
     # @see     java.util.Properties#defaults
     # @since   1.6
     def string_property_names
@@ -1072,7 +1072,7 @@ module Java::Util
     # 
     # @param   out   an output stream.
     # @throws  ClassCastException if any key in this property list
-    # is not a string.
+    #          is not a string.
     def list(out)
       out.println("-- listing properties --")
       h = Hashtable.new
@@ -1094,10 +1094,8 @@ module Java::Util
     # 
     # @param   out   an output stream.
     # @throws  ClassCastException if any key in this property list
-    # is not a string.
+    #          is not a string.
     # @since   JDK1.1
-    # 
-    # 
     # Rather than use an anonymous inner class to share common code, this
     # method is duplicated in order to ensure that a non-1.1 compiler can
     # compile this file.
@@ -1120,7 +1118,7 @@ module Java::Util
     # Enumerates all key/value pairs in the specified hashtable.
     # @param h the hashtable
     # @throws ClassCastException if any of the property keys
-    # is not of String type.
+    #         is not of String type.
     def enumerate(h)
       synchronized(self) do
         if (!(@defaults).nil?)

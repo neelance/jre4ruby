@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # This file is available under and governed by the GNU General Public
 # License version 2 only, as published by the Free Software Foundation.
 # However, the following notice accompanied the original version of this
@@ -56,12 +54,12 @@ module Java::Util::Concurrent
   # java.util.concurrent.locks.Lock lock} is not available:
   # 
   # <pre>  Lock lock = ...;
-  # if ( lock.tryLock(50L, TimeUnit.MILLISECONDS) ) ...
+  #  if ( lock.tryLock(50L, TimeUnit.MILLISECONDS) ) ...
   # </pre>
   # while this code will timeout in 50 seconds:
   # <pre>
-  # Lock lock = ...;
-  # if ( lock.tryLock(50L, TimeUnit.SECONDS) ) ...
+  #  Lock lock = ...;
+  #  if ( lock.tryLock(50L, TimeUnit.SECONDS) ) ...
   # </pre>
   # 
   # Note however, that there is no guarantee that a particular timeout
@@ -74,25 +72,424 @@ module Java::Util::Concurrent
     include_class_members TimeUnitImports
     
     class_module.module_eval {
-      const_set_lazy(:NANOSECONDS) { nanoseconds_class.new.set_value_name("NANOSECONDS") }
+      const_set_lazy(:NANOSECONDS) { Class.new(TimeUnit.class == Class ? TimeUnit : Object) do
+        local_class_in TimeUnit
+        include_class_members TimeUnit
+        include TimeUnit if TimeUnit.class == Module
+        
+        typesig { [] }
+        define_method :initialize do
+          super "NANOSECONDS"
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_nanos do |d|
+          return d
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_micros do |d|
+          return d / (C1 / C0)
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_millis do |d|
+          return d / (C2 / C0)
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_seconds do |d|
+          return d / (C3 / C0)
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_minutes do |d|
+          return d / (C4 / C0)
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_hours do |d|
+          return d / (C5 / C0)
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_days do |d|
+          return d / (C6 / C0)
+        end
+        
+        typesig { [::Java::Long, TimeUnit] }
+        define_method :convert do |d, u|
+          return u.to_nanos(d)
+        end
+        
+        typesig { [::Java::Long, ::Java::Long] }
+        define_method :excess_nanos do |d, m|
+          return ((d - (m * C2))).to_int
+        end
+        
+        private
+        alias_method :initialize__nanoseconds, :initialize
+      end.new.set_value_name("NANOSECONDS") }
       const_attr_reader  :NANOSECONDS
       
-      const_set_lazy(:MICROSECONDS) { microseconds_class.new.set_value_name("MICROSECONDS") }
+      const_set_lazy(:MICROSECONDS) { Class.new(TimeUnit.class == Class ? TimeUnit : Object) do
+        local_class_in TimeUnit
+        include_class_members TimeUnit
+        include TimeUnit if TimeUnit.class == Module
+        
+        typesig { [] }
+        define_method :initialize do
+          super "MICROSECONDS"
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_nanos do |d|
+          return x(d, C1 / C0, MAX / (C1 / C0))
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_micros do |d|
+          return d
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_millis do |d|
+          return d / (C2 / C1)
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_seconds do |d|
+          return d / (C3 / C1)
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_minutes do |d|
+          return d / (C4 / C1)
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_hours do |d|
+          return d / (C5 / C1)
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_days do |d|
+          return d / (C6 / C1)
+        end
+        
+        typesig { [::Java::Long, TimeUnit] }
+        define_method :convert do |d, u|
+          return u.to_micros(d)
+        end
+        
+        typesig { [::Java::Long, ::Java::Long] }
+        define_method :excess_nanos do |d, m|
+          return (((d * C1) - (m * C2))).to_int
+        end
+        
+        private
+        alias_method :initialize__microseconds, :initialize
+      end.new.set_value_name("MICROSECONDS") }
       const_attr_reader  :MICROSECONDS
       
-      const_set_lazy(:MILLISECONDS) { milliseconds_class.new.set_value_name("MILLISECONDS") }
+      const_set_lazy(:MILLISECONDS) { Class.new(TimeUnit.class == Class ? TimeUnit : Object) do
+        local_class_in TimeUnit
+        include_class_members TimeUnit
+        include TimeUnit if TimeUnit.class == Module
+        
+        typesig { [] }
+        define_method :initialize do
+          super "MILLISECONDS"
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_nanos do |d|
+          return x(d, C2 / C0, MAX / (C2 / C0))
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_micros do |d|
+          return x(d, C2 / C1, MAX / (C2 / C1))
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_millis do |d|
+          return d
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_seconds do |d|
+          return d / (C3 / C2)
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_minutes do |d|
+          return d / (C4 / C2)
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_hours do |d|
+          return d / (C5 / C2)
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_days do |d|
+          return d / (C6 / C2)
+        end
+        
+        typesig { [::Java::Long, TimeUnit] }
+        define_method :convert do |d, u|
+          return u.to_millis(d)
+        end
+        
+        typesig { [::Java::Long, ::Java::Long] }
+        define_method :excess_nanos do |d, m|
+          return 0
+        end
+        
+        private
+        alias_method :initialize__milliseconds, :initialize
+      end.new.set_value_name("MILLISECONDS") }
       const_attr_reader  :MILLISECONDS
       
-      const_set_lazy(:SECONDS) { seconds_class.new.set_value_name("SECONDS") }
+      const_set_lazy(:SECONDS) { Class.new(TimeUnit.class == Class ? TimeUnit : Object) do
+        local_class_in TimeUnit
+        include_class_members TimeUnit
+        include TimeUnit if TimeUnit.class == Module
+        
+        typesig { [] }
+        define_method :initialize do
+          super "SECONDS"
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_nanos do |d|
+          return x(d, C3 / C0, MAX / (C3 / C0))
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_micros do |d|
+          return x(d, C3 / C1, MAX / (C3 / C1))
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_millis do |d|
+          return x(d, C3 / C2, MAX / (C3 / C2))
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_seconds do |d|
+          return d
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_minutes do |d|
+          return d / (C4 / C3)
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_hours do |d|
+          return d / (C5 / C3)
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_days do |d|
+          return d / (C6 / C3)
+        end
+        
+        typesig { [::Java::Long, TimeUnit] }
+        define_method :convert do |d, u|
+          return u.to_seconds(d)
+        end
+        
+        typesig { [::Java::Long, ::Java::Long] }
+        define_method :excess_nanos do |d, m|
+          return 0
+        end
+        
+        private
+        alias_method :initialize__seconds, :initialize
+      end.new.set_value_name("SECONDS") }
       const_attr_reader  :SECONDS
       
-      const_set_lazy(:MINUTES) { minutes_class.new.set_value_name("MINUTES") }
+      const_set_lazy(:MINUTES) { Class.new(TimeUnit.class == Class ? TimeUnit : Object) do
+        local_class_in TimeUnit
+        include_class_members TimeUnit
+        include TimeUnit if TimeUnit.class == Module
+        
+        typesig { [] }
+        define_method :initialize do
+          super "MINUTES"
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_nanos do |d|
+          return x(d, C4 / C0, MAX / (C4 / C0))
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_micros do |d|
+          return x(d, C4 / C1, MAX / (C4 / C1))
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_millis do |d|
+          return x(d, C4 / C2, MAX / (C4 / C2))
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_seconds do |d|
+          return x(d, C4 / C3, MAX / (C4 / C3))
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_minutes do |d|
+          return d
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_hours do |d|
+          return d / (C5 / C4)
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_days do |d|
+          return d / (C6 / C4)
+        end
+        
+        typesig { [::Java::Long, TimeUnit] }
+        define_method :convert do |d, u|
+          return u.to_minutes(d)
+        end
+        
+        typesig { [::Java::Long, ::Java::Long] }
+        define_method :excess_nanos do |d, m|
+          return 0
+        end
+        
+        private
+        alias_method :initialize__minutes, :initialize
+      end.new.set_value_name("MINUTES") }
       const_attr_reader  :MINUTES
       
-      const_set_lazy(:HOURS) { hours_class.new.set_value_name("HOURS") }
+      const_set_lazy(:HOURS) { Class.new(TimeUnit.class == Class ? TimeUnit : Object) do
+        local_class_in TimeUnit
+        include_class_members TimeUnit
+        include TimeUnit if TimeUnit.class == Module
+        
+        typesig { [] }
+        define_method :initialize do
+          super "HOURS"
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_nanos do |d|
+          return x(d, C5 / C0, MAX / (C5 / C0))
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_micros do |d|
+          return x(d, C5 / C1, MAX / (C5 / C1))
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_millis do |d|
+          return x(d, C5 / C2, MAX / (C5 / C2))
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_seconds do |d|
+          return x(d, C5 / C3, MAX / (C5 / C3))
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_minutes do |d|
+          return x(d, C5 / C4, MAX / (C5 / C4))
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_hours do |d|
+          return d
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_days do |d|
+          return d / (C6 / C5)
+        end
+        
+        typesig { [::Java::Long, TimeUnit] }
+        define_method :convert do |d, u|
+          return u.to_hours(d)
+        end
+        
+        typesig { [::Java::Long, ::Java::Long] }
+        define_method :excess_nanos do |d, m|
+          return 0
+        end
+        
+        private
+        alias_method :initialize__hours, :initialize
+      end.new.set_value_name("HOURS") }
       const_attr_reader  :HOURS
       
-      const_set_lazy(:DAYS) { days_class.new.set_value_name("DAYS") }
+      const_set_lazy(:DAYS) { Class.new(TimeUnit.class == Class ? TimeUnit : Object) do
+        local_class_in TimeUnit
+        include_class_members TimeUnit
+        include TimeUnit if TimeUnit.class == Module
+        
+        typesig { [] }
+        define_method :initialize do
+          super "DAYS"
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_nanos do |d|
+          return x(d, C6 / C0, MAX / (C6 / C0))
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_micros do |d|
+          return x(d, C6 / C1, MAX / (C6 / C1))
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_millis do |d|
+          return x(d, C6 / C2, MAX / (C6 / C2))
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_seconds do |d|
+          return x(d, C6 / C3, MAX / (C6 / C3))
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_minutes do |d|
+          return x(d, C6 / C4, MAX / (C6 / C4))
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_hours do |d|
+          return x(d, C6 / C5, MAX / (C6 / C5))
+        end
+        
+        typesig { [::Java::Long] }
+        define_method :to_days do |d|
+          return d
+        end
+        
+        typesig { [::Java::Long, TimeUnit] }
+        define_method :convert do |d, u|
+          return u.to_days(d)
+        end
+        
+        typesig { [::Java::Long, ::Java::Long] }
+        define_method :excess_nanos do |d, m|
+          return 0
+        end
+        
+        private
+        alias_method :initialize__days, :initialize
+      end.new.set_value_name("DAYS") }
       const_attr_reader  :DAYS
       
       # Handy constants for conversion methods
@@ -139,7 +536,6 @@ module Java::Util::Concurrent
     # clarity of the generated javadoc (see 6287639: Abstract methods in
     # enum classes should not be listed as abstract), method convert
     # etc. are not declared abstract but otherwise act as abstract methods.
-    # 
     # Convert the given time duration in the given unit to this
     # unit.  Conversions from finer to coarser granularities
     # truncate, so lose precision. For example converting
@@ -259,11 +655,11 @@ module Java::Util::Concurrent
     # using:
     # 
     # <pre>  public synchronized Object poll(long timeout, TimeUnit unit) throws InterruptedException {
-    # while (empty) {
-    # unit.timedWait(this, timeout);
-    # ...
-    # }
-    # }</pre>
+    #    while (empty) {
+    #      unit.timedWait(this, timeout);
+    #      ...
+    #    }
+    #  }</pre>
     # 
     # @param obj the object to wait on
     # @param timeout the maximum time to wait. If less than

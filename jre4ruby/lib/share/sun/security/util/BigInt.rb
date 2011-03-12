@@ -57,7 +57,7 @@ module Sun::Security::Util
     # Leading zeroes should be stripped off.
     # 
     # @param data a sequence of bytes, most significant bytes/digits
-    # first.  CONSUMED.
+    #          first.  CONSUMED.
     def initialize(data)
       @places = nil
       @places = data.clone
@@ -127,7 +127,7 @@ module Sun::Security::Util
       retval = 0
       i = 0
       while i < @places.attr_length
-        retval = (retval << 8) + (RJava.cast_to_int(@places[i]) & 0xff)
+        retval = (retval << 8) + ((@places[i]).to_int & 0xff)
         i += 1
       end
       return retval

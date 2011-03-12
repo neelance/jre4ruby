@@ -63,10 +63,10 @@ module Java::Util
     # the corresponding argument class.
     # 
     # @param  c
-    # Inapplicable conversion
+    #         Inapplicable conversion
     # 
     # @param  arg
-    # Class of the mismatched argument
+    #         Class of the mismatched argument
     def initialize(c, arg)
       @c = 0
       @arg = nil

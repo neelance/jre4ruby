@@ -52,7 +52,7 @@ module Sun::Misc
     # An IEEE 754 number has three fields, from most significant bit
     # to to least significant, sign, exponent, and significand.
     # 
-    # msb                                lsb
+    #  msb                                lsb
     # [sign|exponent|  fractional_significand]
     # 
     # Using some encoding cleverness, explained below, the high order
@@ -121,8 +121,6 @@ module Sun::Misc
     # Joseph D. Darcy, "Writing robust IEEE recommended functions in
     # ``100% Pure Java''(TM)," University of California, Berkeley
     # technical report UCB//CSD-98-1009.
-    # 
-    # 
     # Don't let anyone instantiate this class.
     def initialize
     end
@@ -156,13 +154,12 @@ module Sun::Misc
       # The following helper methods are used in the implementation of
       # the public recommended functions; they generally omit certain
       # tests for exception cases.
-      # 
       # Returns unbiased exponent of a <code>double</code>.
       def get_exponent(d)
         # Bitwise convert d to long, mask out exponent bits, shift
         # to the right and then subtract out double's bias adjust to
         # get true exponent value.
-        return RJava.cast_to_int((((Double.double_to_raw_long_bits(d) & DoubleConsts::EXP_BIT_MASK) >> (DoubleConsts::SIGNIFICAND_WIDTH - 1)) - DoubleConsts::EXP_BIAS))
+        return ((((Double.double_to_raw_long_bits(d) & DoubleConsts::EXP_BIT_MASK) >> (DoubleConsts::SIGNIFICAND_WIDTH - 1)) - DoubleConsts::EXP_BIAS)).to_int
       end
       
       typesig { [::Java::Float] }
@@ -225,8 +222,6 @@ module Sun::Misc
       end
       
       typesig { [::Java::Double] }
-      # *****************************************************************
-      # 
       # Returns <code>true</code> if the argument is a finite
       # floating-point value; returns <code>false</code> otherwise (for
       # NaN and infinity arguments).
@@ -260,7 +255,7 @@ module Sun::Misc
       # 
       # @param   d   the value to be tested.
       # @return  <code>true</code> if the value of the argument is positive
-      # infinity or negative infinity; <code>false</code> otherwise.
+      #          infinity or negative infinity; <code>false</code> otherwise.
       def is_infinite(d)
         return Double.is_infinite(d)
       end
@@ -275,7 +270,7 @@ module Sun::Misc
       # 
       # @param   f   the value to be tested.
       # @return  <code>true</code> if the argument is positive infinity or
-      # negative infinity; <code>false</code> otherwise.
+      #          negative infinity; <code>false</code> otherwise.
       def is_infinite(f)
         return Float.is_infinite(f)
       end
@@ -290,7 +285,7 @@ module Sun::Misc
       # 
       # @param   d   the value to be tested.
       # @return  <code>true</code> if the value of the argument is NaN;
-      # <code>false</code> otherwise.
+      #          <code>false</code> otherwise.
       def is_na_n(d)
         return Double.is_na_n(d)
       end
@@ -305,7 +300,7 @@ module Sun::Misc
       # 
       # @param   f   the value to be tested.
       # @return  <code>true</code> if the argument is NaN;
-      # <code>false</code> otherwise.
+      #          <code>false</code> otherwise.
       def is_na_n(f)
         return Float.is_na_n(f)
       end
@@ -360,19 +355,17 @@ module Sun::Misc
       def ilogb(d)
         exponent = get_exponent(d)
         case (exponent)
-        # 2^28
-        # break;
-        # break;
         when DoubleConsts::MAX_EXPONENT + 1
           # NaN or infinity
           if (is_na_n(d))
-            return (1 << 30)
-             # 2^30
+            return (1 << 30) # 2^30
           else
             # infinite value
             return (1 << 28)
           end
         when DoubleConsts::MIN_EXPONENT - 1
+          # 2^28
+          # break;
           # zero or subnormal
           if ((d).equal?(0.0))
             return -(1 << 28) # -(2^28)
@@ -383,7 +376,6 @@ module Sun::Misc
             # is normalized is done in integer arithmetic.
             # (there must be at least one "1" bit in the
             # significand since zero has been screened out.
-            # 
             # isolate significand bits
             transducer &= DoubleConsts::SIGNIF_BIT_MASK
             raise AssertError if not ((!(transducer).equal?(0)))
@@ -399,11 +391,15 @@ module Sun::Misc
             raise AssertError if not ((exponent >= DoubleConsts::MIN_EXPONENT - (DoubleConsts::SIGNIFICAND_WIDTH - 1) && exponent < DoubleConsts::MIN_EXPONENT))
             return exponent
           end
+          # break;
+          raise AssertError if not ((exponent >= DoubleConsts::MIN_EXPONENT && exponent <= DoubleConsts::MAX_EXPONENT))
+          return exponent
+        # break;
         else
+          # break;
           raise AssertError if not ((exponent >= DoubleConsts::MIN_EXPONENT && exponent <= DoubleConsts::MAX_EXPONENT))
           return exponent
         end
-        # break;
       end
       
       typesig { [::Java::Float] }
@@ -426,19 +422,17 @@ module Sun::Misc
       def ilogb(f)
         exponent = get_exponent(f)
         case (exponent)
-        # 2^28
-        # break;
-        # break;
         when FloatConsts::MAX_EXPONENT + 1
           # NaN or infinity
           if (is_na_n(f))
-            return (1 << 30)
-             # 2^30
+            return (1 << 30) # 2^30
           else
             # infinite value
             return (1 << 28)
           end
         when FloatConsts::MIN_EXPONENT - 1
+          # 2^28
+          # break;
           # zero or subnormal
           if ((f).equal?(0.0))
             return -(1 << 28) # -(2^28)
@@ -449,7 +443,6 @@ module Sun::Misc
             # is normalized is done in integer arithmetic.
             # (there must be at least one "1" bit in the
             # significand since zero has been screened out.
-            # 
             # isolate significand bits
             transducer &= FloatConsts::SIGNIF_BIT_MASK
             raise AssertError if not ((!(transducer).equal?(0)))
@@ -465,11 +458,15 @@ module Sun::Misc
             raise AssertError if not ((exponent >= FloatConsts::MIN_EXPONENT - (FloatConsts::SIGNIFICAND_WIDTH - 1) && exponent < FloatConsts::MIN_EXPONENT))
             return exponent
           end
+          # break;
+          raise AssertError if not ((exponent >= FloatConsts::MIN_EXPONENT && exponent <= FloatConsts::MAX_EXPONENT))
+          return exponent
+        # break;
         else
+          # break;
           raise AssertError if not ((exponent >= FloatConsts::MIN_EXPONENT && exponent <= FloatConsts::MAX_EXPONENT))
           return exponent
         end
-        # break;
       end
       
       typesig { [::Java::Double, ::Java::Int] }
@@ -505,39 +502,37 @@ module Sun::Misc
       # more efficient to provide a double[] scalb(double[], int)
       # version of scalb to avoid having to recompute the needed
       # scaling factors for each floating-point value.
-      # 
-      # 
-      # Return <code>d</code> &times;
-      # 2<sup><code>scale_factor</code></sup> rounded as if performed
-      # by a single correctly rounded floating-point multiply to a
-      # member of the double value set.  See <a
-      # href="http://java.sun.com/docs/books/jls/second_edition/html/typesValues.doc.html#9208">&sect;4.2.3</a>
-      # of the <a href="http://java.sun.com/docs/books/jls/html/">Java
-      # Language Specification</a> for a discussion of floating-point
-      # value sets.  If the exponent of the result is between the
-      # <code>double</code>'s minimum exponent and maximum exponent,
-      # the answer is calculated exactly.  If the exponent of the
-      # result would be larger than <code>doubles</code>'s maximum
-      # exponent, an infinity is returned.  Note that if the result is
-      # subnormal, precision may be lost; that is, when <code>scalb(x,
-      # n)</code> is subnormal, <code>scalb(scalb(x, n), -n)</code> may
-      # not equal <i>x</i>.  When the result is non-NaN, the result has
-      # the same sign as <code>d</code>.
+      #  Return <code>d</code> &times;
+      #  2<sup><code>scale_factor</code></sup> rounded as if performed
+      #  by a single correctly rounded floating-point multiply to a
+      #  member of the double value set.  See <a
+      #  href="http://java.sun.com/docs/books/jls/second_edition/html/typesValues.doc.html#9208">&sect;4.2.3</a>
+      #  of the <a href="http://java.sun.com/docs/books/jls/html/">Java
+      #  Language Specification</a> for a discussion of floating-point
+      #  value sets.  If the exponent of the result is between the
+      #  <code>double</code>'s minimum exponent and maximum exponent,
+      #  the answer is calculated exactly.  If the exponent of the
+      #  result would be larger than <code>doubles</code>'s maximum
+      #  exponent, an infinity is returned.  Note that if the result is
+      #  subnormal, precision may be lost; that is, when <code>scalb(x,
+      #  n)</code> is subnormal, <code>scalb(scalb(x, n), -n)</code> may
+      #  not equal <i>x</i>.  When the result is non-NaN, the result has
+      #  the same sign as <code>d</code>.
       # 
       # <p>
-      # Special cases:
-      # <ul>
-      # <li> If the first argument is NaN, NaN is returned.
-      # <li> If the first argument is infinite, then an infinity of the
-      # same sign is returned.
-      # <li> If the first argument is zero, then a zero of the same
-      # sign is returned.
-      # </ul>
+      #  Special cases:
+      #  <ul>
+      #  <li> If the first argument is NaN, NaN is returned.
+      #  <li> If the first argument is infinite, then an infinity of the
+      #  same sign is returned.
+      #  <li> If the first argument is zero, then a zero of the same
+      #  sign is returned.
+      #  </ul>
       # 
-      # @param d number to be scaled by a power of two.
-      # @param scale_factor power of 2 used to scale <code>d</code>
-      # @return <code>d * </code>2<sup><code>scale_factor</code></sup>
-      # @author Joseph D. Darcy
+      #  @param d number to be scaled by a power of two.
+      #  @param scale_factor power of 2 used to scale <code>d</code>
+      #  @return <code>d * </code>2<sup><code>scale_factor</code></sup>
+      #  @author Joseph D. Darcy
       def scalb(d, scale_factor)
         # This method does not need to be declared strictfp to
         # compute the same correct result on all platforms.  When
@@ -574,7 +569,6 @@ module Sun::Misc
         # without any undue performance burden, there is no
         # compelling reason to allow double rounding on underflow in
         # scalb.
-        # 
         # magnitude of a power of two so large that scaling a finite
         # nonzero value by it would be guaranteed to over or
         # underflow; due to rounding, scaling down takes takes an
@@ -607,37 +601,37 @@ module Sun::Misc
       end
       
       typesig { [::Java::Float, ::Java::Int] }
-      # Return <code>f </code>&times;
-      # 2<sup><code>scale_factor</code></sup> rounded as if performed
-      # by a single correctly rounded floating-point multiply to a
-      # member of the float value set.  See <a
-      # href="http://java.sun.com/docs/books/jls/second_edition/html/typesValues.doc.html#9208">&sect;4.2.3</a>
-      # of the <a href="http://java.sun.com/docs/books/jls/html/">Java
-      # Language Specification</a> for a discussion of floating-point
-      # value set. If the exponent of the result is between the
-      # <code>float</code>'s minimum exponent and maximum exponent, the
-      # answer is calculated exactly.  If the exponent of the result
-      # would be larger than <code>float</code>'s maximum exponent, an
-      # infinity is returned.  Note that if the result is subnormal,
-      # precision may be lost; that is, when <code>scalb(x, n)</code>
-      # is subnormal, <code>scalb(scalb(x, n), -n)</code> may not equal
-      # <i>x</i>.  When the result is non-NaN, the result has the same
-      # sign as <code>f</code>.
+      #  Return <code>f </code>&times;
+      #  2<sup><code>scale_factor</code></sup> rounded as if performed
+      #  by a single correctly rounded floating-point multiply to a
+      #  member of the float value set.  See <a
+      #  href="http://java.sun.com/docs/books/jls/second_edition/html/typesValues.doc.html#9208">&sect;4.2.3</a>
+      #  of the <a href="http://java.sun.com/docs/books/jls/html/">Java
+      #  Language Specification</a> for a discussion of floating-point
+      #  value set. If the exponent of the result is between the
+      #  <code>float</code>'s minimum exponent and maximum exponent, the
+      #  answer is calculated exactly.  If the exponent of the result
+      #  would be larger than <code>float</code>'s maximum exponent, an
+      #  infinity is returned.  Note that if the result is subnormal,
+      #  precision may be lost; that is, when <code>scalb(x, n)</code>
+      #  is subnormal, <code>scalb(scalb(x, n), -n)</code> may not equal
+      #  <i>x</i>.  When the result is non-NaN, the result has the same
+      #  sign as <code>f</code>.
       # 
       # <p>
-      # Special cases:
-      # <ul>
-      # <li> If the first argument is NaN, NaN is returned.
-      # <li> If the first argument is infinite, then an infinity of the
-      # same sign is returned.
-      # <li> If the first argument is zero, then a zero of the same
-      # sign is returned.
-      # </ul>
+      #  Special cases:
+      #  <ul>
+      #  <li> If the first argument is NaN, NaN is returned.
+      #  <li> If the first argument is infinite, then an infinity of the
+      #  same sign is returned.
+      #  <li> If the first argument is zero, then a zero of the same
+      #  sign is returned.
+      #  </ul>
       # 
-      # @param f number to be scaled by a power of two.
-      # @param scale_factor power of 2 used to scale <code>f</code>
-      # @return <code>f * </code>2<sup><code>scale_factor</code></sup>
-      # @author Joseph D. Darcy
+      #  @param f number to be scaled by a power of two.
+      #  @param scale_factor power of 2 used to scale <code>f</code>
+      #  @return <code>f * </code>2<sup><code>scale_factor</code></sup>
+      #  @author Joseph D. Darcy
       def scalb(f, scale_factor)
         # magnitude of a power of two so large that scaling a finite
         # nonzero value by it would be guaranteed to over or
@@ -704,7 +698,6 @@ module Sun::Misc
         # nextAfter(-infinity, -infinity)  == -infinity
         # 
         # are naturally handled without any additional testing
-        # 
         # First check for NaN values
         if (is_na_n(start) || is_na_n(direction))
           # return a NaN derived from the input NaN(s)
@@ -738,12 +731,12 @@ module Sun::Misc
               else
                 if (transducer < 0)
                   (transducer += 1)
-                # transducer==0, the result is -MIN_VALUE
-                # 
-                # The transition from zero (implicitly
-                # positive) to the smallest negative
-                # signed magnitude value must be done
-                # explicitly.
+                  # transducer==0, the result is -MIN_VALUE
+                  # 
+                  # The transition from zero (implicitly
+                  # positive) to the smallest negative
+                  # signed magnitude value must be done
+                  # explicitly.
                 else
                   transducer = DoubleConsts::SIGN_BIT_MASK | 1
                 end
@@ -802,7 +795,6 @@ module Sun::Misc
         # nextAfter(-infinity, -infinity)  == -infinity
         # 
         # are naturally handled without any additional testing
-        # 
         # First check for NaN values
         if (is_na_n(start) || is_na_n(direction))
           # return a NaN derived from the input NaN(s)
@@ -836,12 +828,12 @@ module Sun::Misc
               else
                 if (transducer < 0)
                   (transducer += 1)
-                # transducer==0, the result is -MIN_VALUE
-                # 
-                # The transition from zero (implicitly
-                # positive) to the smallest negative
-                # signed magnitude value must be done
-                # explicitly.
+                  # transducer==0, the result is -MIN_VALUE
+                  # 
+                  # The transition from zero (implicitly
+                  # positive) to the smallest negative
+                  # signed magnitude value must be done
+                  # explicitly.
                 else
                   transducer = FloatConsts::SIGN_BIT_MASK | 1
                 end
@@ -1046,15 +1038,16 @@ module Sun::Misc
       def ulp(d)
         exp = get_exponent(d)
         case (exp)
-        # break;
-        # break
         when DoubleConsts::MAX_EXPONENT + 1
           # NaN or infinity
           return Math.abs(d)
         when DoubleConsts::MIN_EXPONENT - 1
+          # break;
           # zero or subnormal
           return Double::MIN_VALUE
+        # break
         else
+          # break
           raise AssertError if not (exp <= DoubleConsts::MAX_EXPONENT && exp >= DoubleConsts::MIN_EXPONENT)
           # ulp(x) is usually 2^(SIGNIFICAND_WIDTH-1)*(2^ilogb(x))
           exp = exp - (DoubleConsts::SIGNIFICAND_WIDTH - 1)
@@ -1067,7 +1060,6 @@ module Sun::Misc
             return Double.long_bits_to_double(1 << (exp - (DoubleConsts::MIN_EXPONENT - (DoubleConsts::SIGNIFICAND_WIDTH - 1))))
           end
         end
-        # break
       end
       
       typesig { [::Java::Float] }
@@ -1095,15 +1087,16 @@ module Sun::Misc
       def ulp(f)
         exp = get_exponent(f)
         case (exp)
-        # break;
-        # break
         when FloatConsts::MAX_EXPONENT + 1
           # NaN or infinity
           return Math.abs(f)
         when FloatConsts::MIN_EXPONENT - 1
+          # break;
           # zero or subnormal
           return FloatConsts::MIN_VALUE
+        # break
         else
+          # break
           raise AssertError if not (exp <= FloatConsts::MAX_EXPONENT && exp >= FloatConsts::MIN_EXPONENT)
           # ulp(x) is usually 2^(SIGNIFICAND_WIDTH-1)*(2^ilogb(x))
           exp = exp - (FloatConsts::SIGNIFICAND_WIDTH - 1)
@@ -1116,7 +1109,6 @@ module Sun::Misc
             return Float.int_bits_to_float(1 << (exp - (FloatConsts::MIN_EXPONENT - (FloatConsts::SIGNIFICAND_WIDTH - 1))))
           end
         end
-        # break
       end
       
       typesig { [::Java::Double] }
@@ -1128,7 +1120,7 @@ module Sun::Misc
       # <ul>
       # <li> If the argument is NaN, then the result is NaN.
       # <li> If the argument is positive zero or negative zero, then the
-      # result is the same as the argument.
+      #      result is the same as the argument.
       # </ul>
       # 
       # @param d the floating-point value whose signum is to be returned
@@ -1148,7 +1140,7 @@ module Sun::Misc
       # <ul>
       # <li> If the argument is NaN, then the result is NaN.
       # <li> If the argument is positive zero or negative zero, then the
-      # result is the same as the argument.
+      #      result is the same as the argument.
       # </ul>
       # 
       # @param f the floating-point value whose signum is to be returned

@@ -22,19 +22,10 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # Provides library support for the Java programming language
 # annotation facility.
 # 
 # @author Josh Bloch
 # @since 1.5
 module Java::Lang::Annotation
-  module Package-infoImports #:nodoc:
-    class_module.module_eval {
-      include ::Java::Lang
-      include ::Java::Lang::Annotation
-    }
-  end
-  
 end

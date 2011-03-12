@@ -22,17 +22,15 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996 - 1998 - All Rights Reserved
 # 
-# The original version of this source code and documentation is copyrighted
+#   The original version of this source code and documentation is copyrighted
 # and owned by Taligent, Inc., a wholly-owned subsidiary of IBM. These
 # materials are provided under terms of a License Agreement between Taligent
 # and Sun. This technology is protected by multiple US and International
 # patents. This notice and attribution to Taligent may not be removed.
-# Taligent is a registered trademark of Taligent, Inc.
+#   Taligent is a registered trademark of Taligent, Inc.
 module Java::Text
   module FormatImports #:nodoc:
     class_module.module_eval {
@@ -150,13 +148,13 @@ module Java::Text
     # Formats an object to produce a string. This is equivalent to
     # <blockquote>
     # {@link #format(Object, StringBuffer, FieldPosition) format}<code>(obj,
-    # new StringBuffer(), new FieldPosition(0)).toString();</code>
+    #         new StringBuffer(), new FieldPosition(0)).toString();</code>
     # </blockquote>
     # 
     # @param obj    The object to format
     # @return       Formatted string.
     # @exception IllegalArgumentException if the Format cannot format the given
-    # object
+    #            object
     def format(obj)
       return format(obj, StringBuffer.new, FieldPosition.new(0)).to_s
     end
@@ -171,13 +169,13 @@ module Java::Text
     # @param obj    The object to format
     # @param toAppendTo    where the text is to be appended
     # @param pos    A <code>FieldPosition</code> identifying a field
-    # in the formatted text
+    #               in the formatted text
     # @return       the string buffer passed in as <code>toAppendTo</code>,
-    # with formatted text appended
+    #               with formatted text appended
     # @exception NullPointerException if <code>toAppendTo</code> or
-    # <code>pos</code> is null
+    #            <code>pos</code> is null
     # @exception IllegalArgumentException if the Format cannot format the given
-    # object
+    #            object
     def format(obj, to_append_to, pos)
       raise NotImplementedError
     end
@@ -200,7 +198,7 @@ module Java::Text
     # 
     # @exception NullPointerException if obj is null.
     # @exception IllegalArgumentException when the Format cannot format the
-    # given object.
+    #            given object.
     # @param obj The object to format
     # @return AttributedCharacterIterator describing the formatted value.
     # @since 1.4
@@ -224,9 +222,9 @@ module Java::Text
     # 
     # @param source A <code>String</code>, part of which should be parsed.
     # @param pos A <code>ParsePosition</code> object with index and error
-    # index information as described above.
+    #            index information as described above.
     # @return An <code>Object</code> parsed from the string. In case of
-    # error, returns null.
+    #         error, returns null.
     # @exception NullPointerException if <code>pos</code> is null.
     def parse_object(source, pos)
       raise NotImplementedError
@@ -239,7 +237,7 @@ module Java::Text
     # @param source A <code>String</code> whose beginning should be parsed.
     # @return An <code>Object</code> parsed from the string.
     # @exception ParseException if the beginning of the specified string
-    # cannot be parsed.
+    #            cannot be parsed.
     def parse_object(source)
       pos = ParsePosition.new(0)
       result = parse_object(source, pos)
@@ -263,9 +261,9 @@ module Java::Text
     end
     
     typesig { [String] }
+    # 
     # Convenience methods for creating AttributedCharacterIterators from
     # different parameters.
-    # 
     # 
     # Creates an <code>AttributedCharacterIterator</code> for the String
     # <code>s</code>.
@@ -283,9 +281,9 @@ module Java::Text
     # <code>AttributedCharacterIterator</code>s.
     # 
     # @param iterators AttributedCharacterIterators used to create resulting
-    # AttributedCharacterIterators
+    #                  AttributedCharacterIterators
     # @return AttributedCharacterIterator wrapping passed in
-    # AttributedCharacterIterators
+    #         AttributedCharacterIterators
     def create_attributed_character_iterator(iterators)
       as = AttributedString.new(iterators)
       return as.get_iterator
@@ -373,7 +371,7 @@ module Java::Text
         # @param start Beginning location of the field, will be >= 0
         # @param end End of the field, will be >= start and <= buffer.length()
         # @param buffer Contains current formatted value, receiver should
-        # NOT modify it.
+        #        NOT modify it.
         def formatted(attr, value, start, end_, buffer)
           raise NotImplementedError
         end
@@ -387,7 +385,7 @@ module Java::Text
         # @param start Beginning location of the field, will be >= 0
         # @param end End of the field, will be >= start and <= buffer.length()
         # @param buffer Contains current formatted value, receiver should
-        # NOT modify it.
+        #        NOT modify it.
         def formatted(field_id, attr, value, start, end_, buffer)
           raise NotImplementedError
         end

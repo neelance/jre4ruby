@@ -53,9 +53,9 @@ module Java::Io
     # 
     # @param fileName the name of the file to read from
     # @exception  FileNotFoundException  if the named file does not exist,
-    # is a directory rather than a regular file,
-    # or for some other reason cannot be opened for
-    # reading.
+    #                   is a directory rather than a regular file,
+    #                   or for some other reason cannot be opened for
+    #                   reading.
     def initialize(file_name)
       super(FileInputStream.new(file_name))
     end
@@ -66,9 +66,9 @@ module Java::Io
     # 
     # @param file the <tt>File</tt> to read from
     # @exception  FileNotFoundException  if the file does not exist,
-    # is a directory rather than a regular file,
-    # or for some other reason cannot be opened for
-    # reading.
+    #                   is a directory rather than a regular file,
+    #                   or for some other reason cannot be opened for
+    #                   reading.
     def initialize(file)
       super(FileInputStream.new(file))
     end

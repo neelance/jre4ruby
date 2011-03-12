@@ -393,8 +393,8 @@ module Java::Io
     # Return an array of the fields of this serializable class.
     # 
     # @return  an array containing an element for each persistent field of
-    # this class. Returns an array of length zero if there are no
-    # fields.
+    #          this class. Returns an array of length zero if there are no
+    #          fields.
     # @since 1.2
     def get_fields
       return get_fields(true)
@@ -405,7 +405,7 @@ module Java::Io
     # 
     # @param   name the name of the data field to look for
     # @return  The ObjectStreamField object of the named field or null if
-    # there is no such named field.
+    #          there is no such named field.
     def get_field(name)
       return get_field(name, nil)
     end
@@ -423,7 +423,7 @@ module Java::Io
       # 
       # @param   cl class to look up
       # @param   all if true, return descriptors for all classes; if false, only
-      # return descriptors for serializable classes
+      #          return descriptors for serializable classes
       def lookup(cl, all)
         if (!(all || Serializable.is_assignable_from(cl)))
           return nil
@@ -1985,7 +1985,6 @@ module Java::Io
       end }
       
       # Class for setting and retrieving serializable field values in batch.
-      # 
       # REMIND: dynamically generate these?
       const_set_lazy(:FieldReflector) { Class.new do
         include_class_members ObjectStreamClass

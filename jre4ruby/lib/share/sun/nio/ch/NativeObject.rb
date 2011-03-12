@@ -34,7 +34,6 @@ module Sun::Nio::Ch
   
   # Formerly in sun.misc
   # ## In the fullness of time, this class will be eliminated
-  # 
   # Proxies for objects that reside in native memory.
   class NativeObject 
     include_class_members NativeObjectImports
@@ -47,6 +46,7 @@ module Sun::Nio::Ch
     
     # Native allocation address;
     # may be smaller than the base address due to page-size rounding
+    # 
     attr_accessor :allocation_address
     alias_method :attr_allocation_address, :allocation_address
     undef_method :allocation_address
@@ -54,6 +54,7 @@ module Sun::Nio::Ch
     undef_method :allocation_address=
     
     # Native base address
+    # 
     attr_accessor :address
     alias_method :attr_address, :address
     undef_method :address
@@ -81,6 +82,7 @@ module Sun::Nio::Ch
     
     typesig { [::Java::Int, ::Java::Boolean] }
     # Invoked only by AllocatedNativeObject
+    # 
     def initialize(size, page_aligned)
       @allocation_address = 0
       @address = 0
@@ -113,8 +115,8 @@ module Sun::Nio::Ch
     # of this native object.
     # 
     # @param  offset
-    # The offset from the base of this native object that is to be
-    # the base of the new native object
+    #         The offset from the base of this native object that is to be
+    #         the base of the new native object
     # 
     # @return The newly created native object
     def sub_object(offset)
@@ -126,11 +128,11 @@ module Sun::Nio::Ch
     # constructs a native object using that address.
     # 
     # @param  offset
-    # The offset of the address to be read.  Note that the size of an
-    # address is implementation-dependent.
+    #         The offset of the address to be read.  Note that the size of an
+    #         address is implementation-dependent.
     # 
     # @return The native object created using the address read from the
-    # given offset
+    #         given offset
     def get_object(offset)
       new_address = 0
       case (address_size)
@@ -149,17 +151,17 @@ module Sun::Nio::Ch
     # of this native object.
     # 
     # @param  offset
-    # The offset at which the address is to be written.  Note that the
-    # size of an address is implementation-dependent.
+    #         The offset at which the address is to be written.  Note that the
+    #         size of an address is implementation-dependent.
     # 
     # @param  ob
-    # The native object whose address is to be written
+    #         The native object whose address is to be written
     def put_object(offset, ob)
       case (address_size)
       when 8
         put_long(offset, ob.attr_address)
       when 4
-        put_int(offset, RJava.cast_to_int((ob.attr_address & -0x1)))
+        put_int(offset, ((ob.attr_address & -0x1)).to_int)
       else
         raise InternalError.new("Address size not supported")
       end
@@ -167,12 +169,11 @@ module Sun::Nio::Ch
     
     typesig { [::Java::Int] }
     # -- Value accessors: No range checking! --
-    # 
     # Reads a byte starting at the given offset from base of this native
     # object.
     # 
     # @param  offset
-    # The offset at which to read the byte
+    #         The offset at which to read the byte
     # 
     # @return The byte value read
     def get_byte(offset)
@@ -184,10 +185,10 @@ module Sun::Nio::Ch
     # base address.
     # 
     # @param  offset
-    # The offset at which to write the byte
+    #         The offset at which to write the byte
     # 
     # @param  value
-    # The byte value to be written
+    #         The byte value to be written
     def put_byte(offset, value)
       UnsafeInstance.put_byte(offset + @address, value)
     end
@@ -197,7 +198,7 @@ module Sun::Nio::Ch
     # object.
     # 
     # @param  offset
-    # The offset at which to read the short
+    #         The offset at which to read the short
     # 
     # @return The short value read
     def get_short(offset)
@@ -209,10 +210,10 @@ module Sun::Nio::Ch
     # base address.
     # 
     # @param  offset
-    # The offset at which to write the short
+    #         The offset at which to write the short
     # 
     # @param  value
-    # The short value to be written
+    #         The short value to be written
     def put_short(offset, value)
       UnsafeInstance.put_short(offset + @address, value)
     end
@@ -222,7 +223,7 @@ module Sun::Nio::Ch
     # object.
     # 
     # @param  offset
-    # The offset at which to read the char
+    #         The offset at which to read the char
     # 
     # @return The char value read
     def get_char(offset)
@@ -234,10 +235,10 @@ module Sun::Nio::Ch
     # base address.
     # 
     # @param  offset
-    # The offset at which to write the char
+    #         The offset at which to write the char
     # 
     # @param  value
-    # The char value to be written
+    #         The char value to be written
     def put_char(offset, value)
       UnsafeInstance.put_char(offset + @address, value)
     end
@@ -247,7 +248,7 @@ module Sun::Nio::Ch
     # object.
     # 
     # @param  offset
-    # The offset at which to read the int
+    #         The offset at which to read the int
     # 
     # @return The int value read
     def get_int(offset)
@@ -259,10 +260,10 @@ module Sun::Nio::Ch
     # base address.
     # 
     # @param  offset
-    # The offset at which to write the int
+    #         The offset at which to write the int
     # 
     # @param  value
-    # The int value to be written
+    #         The int value to be written
     def put_int(offset, value)
       UnsafeInstance.put_int(offset + @address, value)
     end
@@ -272,7 +273,7 @@ module Sun::Nio::Ch
     # object.
     # 
     # @param  offset
-    # The offset at which to read the long
+    #         The offset at which to read the long
     # 
     # @return The long value read
     def get_long(offset)
@@ -284,10 +285,10 @@ module Sun::Nio::Ch
     # base address.
     # 
     # @param  offset
-    # The offset at which to write the long
+    #         The offset at which to write the long
     # 
     # @param  value
-    # The long value to be written
+    #         The long value to be written
     def put_long(offset, value)
       UnsafeInstance.put_long(offset + @address, value)
     end
@@ -297,7 +298,7 @@ module Sun::Nio::Ch
     # object.
     # 
     # @param  offset
-    # The offset at which to read the float
+    #         The offset at which to read the float
     # 
     # @return The float value read
     def get_float(offset)
@@ -309,10 +310,10 @@ module Sun::Nio::Ch
     # base address.
     # 
     # @param  offset
-    # The offset at which to write the float
+    #         The offset at which to write the float
     # 
     # @param  value
-    # The float value to be written
+    #         The float value to be written
     def put_float(offset, value)
       UnsafeInstance.put_float(offset + @address, value)
     end
@@ -322,7 +323,7 @@ module Sun::Nio::Ch
     # object.
     # 
     # @param  offset
-    # The offset at which to read the double
+    #         The offset at which to read the double
     # 
     # @return The double value read
     def get_double(offset)
@@ -334,10 +335,10 @@ module Sun::Nio::Ch
     # base address.
     # 
     # @param  offset
-    # The offset at which to write the double
+    #         The offset at which to write the double
     # 
     # @param  value
-    # The double value to be written
+    #         The double value to be written
     def put_double(offset, value)
       UnsafeInstance.put_double(offset + @address, value)
     end

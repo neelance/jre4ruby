@@ -78,10 +78,10 @@ module Sun::Misc
       # 
       # <blockquote><pre>
       # class MyTrustedClass {
-      # private static final Unsafe unsafe = Unsafe.getUnsafe();
-      # ...
-      # private long myCountAddress = ...;
-      # public int getCount() { return unsafe.getByte(myCountAddress); }
+      #   private static final Unsafe unsafe = Unsafe.getUnsafe();
+      #   ...
+      #   private long myCountAddress = ...;
+      #   public int getCount() { return unsafe.getByte(myCountAddress); }
       # }
       # </pre></blockquote>
       # 
@@ -89,8 +89,8 @@ module Sun::Misc
       # <code>final</code>.)
       # 
       # @exception  SecurityException  if a security manager exists and its
-      # <code>checkPropertiesAccess</code> method doesn't allow
-      # access to the system properties.
+      #             <code>checkPropertiesAccess</code> method doesn't allow
+      #             access to the system properties.
       def get_unsafe
         cc = Sun::Reflect::Reflection.get_caller_class(2)
         if (!(cc.get_class_loader).nil?)
@@ -106,7 +106,6 @@ module Sun::Misc
     # / (compilers should optimize these to memory ops)
     # These work on object fields in the Java heap.
     # They will not work on elements of packed arrays.
-    # 
     # Fetches a value from a given Java variable.
     # More specifically, fetches a field or array element within the given
     # object <code>o</code> at the given offset, or (if <code>o</code> is
@@ -152,13 +151,13 @@ module Sun::Misc
     # mode.
     # 
     # @param o Java heap object in which the variable resides, if any, else
-    # null
+    #        null
     # @param offset indication of where the variable resides in a Java heap
-    # object, if any, else a memory address locating the variable
-    # statically
+    #        object, if any, else a memory address locating the variable
+    #        statically
     # @return the value fetched from the indicated Java variable
     # @throws RuntimeException No defined exceptions are thrown, not even
-    # {@link NullPointerException}
+    #         {@link NullPointerException}
     def get_int(o, offset)
       JNI.call_native_method("Java_sun_misc_Unsafe_getInt__L#{Object.jni_package_name}_Object_2J".to_sym, JNI.env, self.jni_id, o.jni_id, offset.to_int)
     end
@@ -176,13 +175,13 @@ module Sun::Misc
     # parameter <code>x</code>.
     # 
     # @param o Java heap object in which the variable resides, if any, else
-    # null
+    #        null
     # @param offset indication of where the variable resides in a Java heap
-    # object, if any, else a memory address locating the variable
-    # statically
+    #        object, if any, else a memory address locating the variable
+    #        statically
     # @param x the value to store into the indicated Java variable
     # @throws RuntimeException No defined exceptions are thrown, not even
-    # {@link NullPointerException}
+    #         {@link NullPointerException}
     def put_int(o, offset, x)
       JNI.call_native_method("Java_sun_misc_Unsafe_putInt__L#{Object.jni_package_name}_Object_2JI".to_sym, JNI.env, self.jni_id, o.jni_id, offset.to_int, x.to_int)
     end
@@ -440,7 +439,6 @@ module Sun::Misc
     JNI.load_native_method :Java_sun_misc_Unsafe_getByte__J, [:pointer, :long, :int64], :int8
     typesig { [::Java::Long] }
     # These work on values in the C heap.
-    # 
     # Fetches a value from a given memory address.  If the address is zero, or
     # does not point into a block obtained from {@link #allocateMemory}, the
     # results are undefined.
@@ -580,7 +578,6 @@ module Sun::Misc
     JNI.load_native_method :Java_sun_misc_Unsafe_allocateMemory, [:pointer, :long, :int64], :int64
     typesig { [::Java::Long] }
     # / wrappers for malloc, realloc, free:
-    # 
     # Allocates a new block of native memory, of the given size in bytes.  The
     # contents of the memory are uninitialized; they will generally be
     # garbage.  The resulting native pointer will never be zero, and will be
@@ -588,7 +585,7 @@ module Sun::Misc
     # #freeMemory}, or resize it with {@link #reallocateMemory}.
     # 
     # @throws IllegalArgumentException if the size is negative or too large
-    # for the native size_t type
+    #         for the native size_t type
     # 
     # @throws OutOfMemoryError if the allocation is refused by the system
     # 
@@ -610,7 +607,7 @@ module Sun::Misc
     # which case an allocation will be performed.
     # 
     # @throws IllegalArgumentException if the size is negative or too large
-    # for the native size_t type
+    #         for the native size_t type
     # 
     # @throws OutOfMemoryError if the allocation is refused by the system
     # 
@@ -648,7 +645,6 @@ module Sun::Misc
     
     class_module.module_eval {
       # / random queries
-      # 
       # This constant differs from all results that will ever be returned from
       # {@link #staticFieldOffset}, {@link #objectFieldOffset},
       # or {@link #arrayBaseOffset}.
@@ -661,19 +657,19 @@ module Sun::Misc
     # This method is implemented as follows:
     # <blockquote><pre>
     # public int fieldOffset(Field f) {
-    # if (Modifier.isStatic(f.getModifiers()))
-    # return (int) staticFieldOffset(f);
-    # else
-    # return (int) objectFieldOffset(f);
+    #     if (Modifier.isStatic(f.getModifiers()))
+    #         return (int) staticFieldOffset(f);
+    #     else
+    #         return (int) objectFieldOffset(f);
     # }
     # </pre></blockquote>
     # @deprecated As of 1.4.1, use {@link #staticFieldOffset} for static
     # fields and {@link #objectFieldOffset} for non-static fields.
     def field_offset(f)
       if (Modifier.is_static(f.get_modifiers))
-        return RJava.cast_to_int(static_field_offset(f))
+        return (static_field_offset(f)).to_int
       else
-        return RJava.cast_to_int(object_field_offset(f))
+        return (object_field_offset(f)).to_int
       end
     end
     
@@ -682,13 +678,13 @@ module Sun::Misc
     # in the given class.  This method is implemented as follows:
     # <blockquote><pre>
     # public Object staticFieldBase(Class c) {
-    # Field[] fields = c.getDeclaredFields();
-    # for (int i = 0; i < fields.length; i++) {
-    # if (Modifier.isStatic(fields[i].getModifiers())) {
-    # return staticFieldBase(fields[i]);
-    # }
-    # }
-    # return null;
+    #     Field[] fields = c.getDeclaredFields();
+    #     for (int i = 0; i < fields.length; i++) {
+    #         if (Modifier.isStatic(fields[i].getModifiers())) {
+    #             return staticFieldBase(fields[i]);
+    #         }
+    #     }
+    #     return null;
     # }
     # </pre></blockquote>
     # @deprecated As of 1.4.1, use {@link #staticFieldBase(Field)}
@@ -823,7 +819,6 @@ module Sun::Misc
     JNI.load_native_method "Java_sun_misc_Unsafe_defineClass__L#{String.jni_package_name}_String_2_3BIIL#{ClassLoader.jni_package_name}_ClassLoader_2L#{ProtectionDomain.jni_package_name}_ProtectionDomain_2".to_sym, [:pointer, :long, :long, :long, :int32, :int32, :long, :long], :long
     typesig { [String, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int, ClassLoader, ProtectionDomain] }
     # / random trusted operations from JNI:
-    # 
     # Tell the VM to define a class, without security checks.  By default, the
     # class loader and protection domain come from the caller's class.
     def define_class(name, b, off, len, loader, protection_domain)
@@ -1096,10 +1091,10 @@ module Sun::Misc
     # 
     # @params loadavg an array of double of size nelems
     # @params nelems the number of samples to be retrieved and
-    # must be 1 to 3.
+    #         must be 1 to 3.
     # 
     # @return the number of samples actually retrieved; or -1
-    # if the load average is unobtainable.
+    #         if the load average is unobtainable.
     def get_load_average(loadavg, nelems)
       JNI.call_native_method(:Java_sun_misc_Unsafe_getLoadAverage, JNI.env, self.jni_id, loadavg.jni_id, nelems.to_int)
     end

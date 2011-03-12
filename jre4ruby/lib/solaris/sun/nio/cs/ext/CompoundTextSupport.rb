@@ -80,18 +80,16 @@ module Sun::Nio::Cs::Ext
           length = esc_sequence.attr_length
           i = 0
           while i < esc_sequence.attr_length
-            hash += ((RJava.cast_to_int(esc_sequence[i])) & 0xff) << (i % 4)
+            hash += (((esc_sequence[i]).to_int) & 0xff) << (i % 4)
             i += 1
           end
           if (!(encoding).nil?)
             i_ = 0
             while i_ < encoding.attr_length
-              hash += ((RJava.cast_to_int(encoding[i_])) & 0xff) << (i_ % 4)
+              hash += (((encoding[i_]).to_int) & 0xff) << (i_ % 4)
               i_ += 1
-            end
-            # M L
-            length += 2 + encoding.attr_length + 1
-            # 0x02
+            end # M L
+            length += 2 + encoding.attr_length + 1 # 0x02
           end
           @hash = hash
           if (self.attr_max_control_sequence_len < length)
@@ -174,16 +172,13 @@ module Sun::Nio::Cs::Ext
         t_encodings = ArrayList.new(21)
         if (!(is_encoding_supported("US-ASCII") && is_encoding_supported("ISO-8859-1")))
           raise ExceptionInInitializerError.new("US-ASCII and ISO-8859-1 unsupported")
-        end
-        # high bit off, leave off
+        end # high bit off, leave off
         left_ascii = ControlSequence.new(Array.typed(::Java::Byte).new([0x1b, 0x28, 0x42]))
         t_sequence_to_encoding_map.put(left_ascii, "US-ASCII")
-        t_high_bits_map.put(left_ascii, Boolean::FALSE)
-        # high bit on, turn off
+        t_high_bits_map.put(left_ascii, Boolean::FALSE) # high bit on, turn off
         right_ascii = ControlSequence.new(Array.typed(::Java::Byte).new([0x1b, 0x29, 0x42]))
         t_sequence_to_encoding_map.put(right_ascii, "US-ASCII")
-        t_high_bits_map.put(right_ascii, Boolean::FALSE)
-        # high bit on, leave on
+        t_high_bits_map.put(right_ascii, Boolean::FALSE) # high bit on, leave on
         right_half = ControlSequence.new(Array.typed(::Java::Byte).new([0x1b, 0x2d, 0x41]))
         t_sequence_to_encoding_map.put(right_half, "ISO-8859-1")
         t_high_bits_map.put(right_half, Boolean::TRUE)
@@ -264,12 +259,9 @@ module Sun::Nio::Cs::Ext
         end
         if (is_encoding_supported("JIS_X0201"))
           # high bit off, leave off
-          gl_left = ControlSequence.new(Array.typed(::Java::Byte).new([0x1b, 0x28, 0x4a]))
-          # high bit off, turn on
-          gl_right = ControlSequence.new(Array.typed(::Java::Byte).new([0x1b, 0x28, 0x49]))
-          # high bit on, turn off
-          gr_left = ControlSequence.new(Array.typed(::Java::Byte).new([0x1b, 0x29, 0x4a]))
-          # high bit on, leave on
+          gl_left = ControlSequence.new(Array.typed(::Java::Byte).new([0x1b, 0x28, 0x4a])) # high bit off, turn on
+          gl_right = ControlSequence.new(Array.typed(::Java::Byte).new([0x1b, 0x28, 0x49])) # high bit on, turn off
+          gr_left = ControlSequence.new(Array.typed(::Java::Byte).new([0x1b, 0x29, 0x4a])) # high bit on, leave on
           gr_right = ControlSequence.new(Array.typed(::Java::Byte).new([0x1b, 0x29, 0x49]))
           t_sequence_to_encoding_map.put(gl_left, "JIS_X0201")
           t_sequence_to_encoding_map.put(gl_right, "JIS_X0201")
@@ -285,8 +277,7 @@ module Sun::Nio::Cs::Ext
         end
         if (is_encoding_supported("X11GB2312"))
           # high bit off, leave off
-          left_half = ControlSequence.new(Array.typed(::Java::Byte).new([0x1b, 0x24, 0x28, 0x41]))
-          # high bit on, turn off
+          left_half = ControlSequence.new(Array.typed(::Java::Byte).new([0x1b, 0x24, 0x28, 0x41])) # high bit on, turn off
           right_half = ControlSequence.new(Array.typed(::Java::Byte).new([0x1b, 0x24, 0x29, 0x41]))
           t_sequence_to_encoding_map.put(left_half, "X11GB2312")
           t_sequence_to_encoding_map.put(right_half, "X11GB2312")
@@ -297,8 +288,7 @@ module Sun::Nio::Cs::Ext
         end
         if (is_encoding_supported("x-JIS0208"))
           # high bit off, leave off
-          left_half = ControlSequence.new(Array.typed(::Java::Byte).new([0x1b, 0x24, 0x28, 0x42]))
-          # high bit on, turn off
+          left_half = ControlSequence.new(Array.typed(::Java::Byte).new([0x1b, 0x24, 0x28, 0x42])) # high bit on, turn off
           right_half = ControlSequence.new(Array.typed(::Java::Byte).new([0x1b, 0x24, 0x29, 0x42]))
           t_sequence_to_encoding_map.put(left_half, "x-JIS0208")
           t_sequence_to_encoding_map.put(right_half, "x-JIS0208")
@@ -309,8 +299,7 @@ module Sun::Nio::Cs::Ext
         end
         if (is_encoding_supported("X11KSC5601"))
           # high bit off, leave off
-          left_half = ControlSequence.new(Array.typed(::Java::Byte).new([0x1b, 0x24, 0x28, 0x43]))
-          # high bit on, turn off
+          left_half = ControlSequence.new(Array.typed(::Java::Byte).new([0x1b, 0x24, 0x28, 0x43])) # high bit on, turn off
           right_half = ControlSequence.new(Array.typed(::Java::Byte).new([0x1b, 0x24, 0x29, 0x43]))
           t_sequence_to_encoding_map.put(left_half, "X11KSC5601")
           t_sequence_to_encoding_map.put(right_half, "X11KSC5601")
@@ -342,8 +331,7 @@ module Sun::Nio::Cs::Ext
         end
         if (is_encoding_supported("JIS_X0212-1990"))
           # high bit off, leave off
-          left_half = ControlSequence.new(Array.typed(::Java::Byte).new([0x1b, 0x24, 0x28, 0x44]))
-          # high bit on, turn off
+          left_half = ControlSequence.new(Array.typed(::Java::Byte).new([0x1b, 0x24, 0x28, 0x44])) # high bit on, turn off
           right_half = ControlSequence.new(Array.typed(::Java::Byte).new([0x1b, 0x24, 0x29, 0x44]))
           t_sequence_to_encoding_map.put(left_half, "JIS_X0212-1990")
           t_sequence_to_encoding_map.put(right_half, "JIS_X0212-1990")
@@ -354,8 +342,7 @@ module Sun::Nio::Cs::Ext
         end
         if (is_encoding_supported("X11CNS11643P1"))
           # high bit off, leave off
-          left_half = ControlSequence.new(Array.typed(::Java::Byte).new([0x1b, 0x24, 0x28, 0x47]))
-          # high bit on, turn off
+          left_half = ControlSequence.new(Array.typed(::Java::Byte).new([0x1b, 0x24, 0x28, 0x47])) # high bit on, turn off
           right_half = ControlSequence.new(Array.typed(::Java::Byte).new([0x1b, 0x24, 0x29, 0x47]))
           t_sequence_to_encoding_map.put(left_half, "X11CNS11643P1")
           t_sequence_to_encoding_map.put(right_half, "X11CNS11643P1")
@@ -366,8 +353,7 @@ module Sun::Nio::Cs::Ext
         end
         if (is_encoding_supported("X11CNS11643P2"))
           # high bit off, leave off
-          left_half = ControlSequence.new(Array.typed(::Java::Byte).new([0x1b, 0x24, 0x28, 0x48]))
-          # high bit on, turn off
+          left_half = ControlSequence.new(Array.typed(::Java::Byte).new([0x1b, 0x24, 0x28, 0x48])) # high bit on, turn off
           right_half = ControlSequence.new(Array.typed(::Java::Byte).new([0x1b, 0x24, 0x29, 0x48]))
           t_sequence_to_encoding_map.put(left_half, "X11CNS11643P2")
           t_sequence_to_encoding_map.put(right_half, "X11CNS11643P2")
@@ -378,8 +364,7 @@ module Sun::Nio::Cs::Ext
         end
         if (is_encoding_supported("X11CNS11643P3"))
           # high bit off, leave off
-          left_half = ControlSequence.new(Array.typed(::Java::Byte).new([0x1b, 0x24, 0x28, 0x49]))
-          # high bit on, turn off
+          left_half = ControlSequence.new(Array.typed(::Java::Byte).new([0x1b, 0x24, 0x28, 0x49])) # high bit on, turn off
           right_half = ControlSequence.new(Array.typed(::Java::Byte).new([0x1b, 0x24, 0x29, 0x49]))
           t_sequence_to_encoding_map.put(left_half, "X11CNS11643P3")
           t_sequence_to_encoding_map.put(right_half, "X11CNS11643P3")

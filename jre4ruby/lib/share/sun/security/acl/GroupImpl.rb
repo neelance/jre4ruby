@@ -131,9 +131,11 @@ module Sun::Security::Acl
     # @return true if the principal is a member of this group,
     # false otherwise
     def is_member(member)
+      # 
       # if the member is part of the group (common case), return true.
       # if not, recursively search depth first in the group looking for the
       # principal.
+      # 
       if (@group_members.contains(member))
         return true
       else
@@ -149,10 +151,12 @@ module Sun::Security::Acl
     end
     
     typesig { [Principal, Vector] }
+    # 
     # This function is the recursive search of groups for this
     # implementation of the Group. The search proceeds building up
     # a vector of already seen groups. Only new groups are considered,
     # thereby avoiding loops.
+    # 
     def is_member_recurse(member, already_seen)
       e = members
       while (e.has_more_elements)
@@ -163,6 +167,7 @@ module Sun::Security::Acl
           return true
         else
           if (p.is_a?(GroupImpl))
+            # 
             # if not recurse if the group has not been checked already.
             # Can call method in this package only if the object is an
             # instance of this class. Otherwise call the method defined
@@ -170,6 +175,7 @@ module Sun::Security::Acl
             # implementations form a loop, but we live with this improbable
             # case rather than clutter the interface by forcing the
             # implementation of this method.)
+            # 
             g = p
             already_seen.add_element(self)
             if (!already_seen.contains(g))

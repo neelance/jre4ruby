@@ -22,9 +22,8 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
 # -
-# news stream opener
+#       news stream opener
 module Sun::Net::Www
   module MessageHeaderImports #:nodoc:
     class_module.module_eval {
@@ -164,9 +163,9 @@ module Sun::Net::Www
     # It finds the first value that follows v. To iterate
     # over all the values of a key use:
     # <pre>
-    # for(String v=h.findValue(k); v!=null; v=h.findNextValue(k, v)) {
-    # ...
-    # }
+    #         for(String v=h.findValue(k); v!=null; v=h.findNextValue(k, v)) {
+    #             ...
+    #         }
     # </pre>
     def find_next_value(k, v)
       synchronized(self) do
@@ -397,7 +396,7 @@ module Sun::Net::Www
     end
     
     typesig { [::Java::Int, String, String] }
-    # Overwrite the previous key/val pair at location 'i'
+    #  Overwrite the previous key/val pair at location 'i'
     # with the new k/v.  If the index didn't exist before
     # the key/val is simply tacked onto the end.
     def set(i, k, v)

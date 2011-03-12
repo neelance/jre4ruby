@@ -74,8 +74,8 @@ module Sun::Security::Ssl
     end
     
     class_module.module_eval {
-      # CONSTANTS AND STATIC METHODS
       # 
+      # CONSTANTS AND STATIC METHODS
       # 
       # TLS requires that a close_notify warning alert is sent before the
       # connection is closed in order to avoid truncation attacks. Some
@@ -91,8 +91,8 @@ module Sun::Security::Ssl
     }
     
     typesig { [] }
-    # MISC SOCKET METHODS
     # 
+    # MISC SOCKET METHODS
     # 
     # Returns the unique {@link java.nio.SocketChannel SocketChannel} object
     # associated with this socket, if any.
@@ -179,8 +179,8 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # CLOSE RELATED METHODS
     # 
+    # CLOSE RELATED METHODS
     # 
     # The semantics of shutdownInput is not supported in TLS 1.0
     # spec. Thus when the method is called on an SSL socket, an
@@ -251,8 +251,8 @@ module Sun::Security::Ssl
     end
     
     typesig { [] }
-    # GET ADDRESS METHODS
     # 
+    # GET ADDRESS METHODS
     # 
     # Returns the address of the remote peer for this connection.
     def get_inet_address
@@ -297,8 +297,8 @@ module Sun::Security::Ssl
     end
     
     typesig { [::Java::Boolean] }
-    # SOCKET OPTION METHODS
     # 
+    # SOCKET OPTION METHODS
     # 
     # Enables or disables the Nagle optimization.
     # @see java.net.Socket#setTcpNoDelay

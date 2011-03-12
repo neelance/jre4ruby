@@ -35,7 +35,6 @@ module Java::Util
     
     class_module.module_eval {
       # The 2- and 3-letter ISO 639 language codes.
-      # 
       # Afar
       # Abkhazian
       # Avestan
@@ -227,9 +226,7 @@ module Java::Util
       const_attr_reader  :IsoLanguageTable
       
       # Zulu
-      # 
       # The 2- and 3-letter ISO 3166 country codes.
-      # 
       # Andorra, Principality of
       # United Arab Emirates
       # Afghanistan

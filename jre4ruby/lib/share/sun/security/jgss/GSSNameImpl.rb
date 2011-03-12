@@ -218,11 +218,11 @@ module Sun::Security::Jgss
         @printable_name_type = @mech_element.get_string_name_type
       end
       # At this point the GSSNameImpl has the following set:
-      # appNameStr or appNameBytes
-      # appNameType (could be null)
-      # printableName
-      # printableNameType
-      # mechElement (which also exists in the hashmap of elements)
+      #  appNameStr or appNameBytes
+      #  appNameType (could be null)
+      #  printableName
+      #  printableNameType
+      #  mechElement (which also exists in the hashmap of elements)
     end
     
     typesig { [GSSManagerImpl, Object] }
@@ -343,28 +343,28 @@ module Sun::Security::Jgss
     end
     
     typesig { [] }
-    # Returns a flat name representation for this object. The name
-    # format is defined in RFC 2743:
+    #  Returns a flat name representation for this object. The name
+    #  format is defined in RFC 2743:
     # <pre>
-    # Length           Name          Description
-    # 2               TOK_ID          Token Identifier
-    # For exported name objects, this
-    # must be hex 04 01.
-    # 2               MECH_OID_LEN    Length of the Mechanism OID
-    # MECH_OID_LEN    MECH_OID        Mechanism OID, in DER
-    # 4               NAME_LEN        Length of name
-    # NAME_LEN        NAME            Exported name; format defined in
-    # applicable mechanism draft.
+    #  Length           Name          Description
+    #  2               TOK_ID          Token Identifier
+    #                                  For exported name objects, this
+    #                                  must be hex 04 01.
+    #  2               MECH_OID_LEN    Length of the Mechanism OID
+    #  MECH_OID_LEN    MECH_OID        Mechanism OID, in DER
+    #  4               NAME_LEN        Length of name
+    #  NAME_LEN        NAME            Exported name; format defined in
+    #                                  applicable mechanism draft.
     # </pre>
     # 
-    # Note that it is not required to canonicalize a name before
-    # calling export(). i.e., the name need not be an MN. If it is
-    # not an MN, an implementation defined algorithm can be used for
-    # choosing the mechanism which should export this name.
+    #  Note that it is not required to canonicalize a name before
+    #  calling export(). i.e., the name need not be an MN. If it is
+    #  not an MN, an implementation defined algorithm can be used for
+    #  choosing the mechanism which should export this name.
     # 
-    # @return the flat name representation for this object
-    # @exception GSSException with major codes NAME_NOT_MN, BAD_NAME,
-    # BAD_NAME, FAILURE.
+    #  @return the flat name representation for this object
+    #  @exception GSSException with major codes NAME_NOT_MN, BAD_NAME,
+    #   BAD_NAME, FAILURE.
     def export
       if ((@mech_element).nil?)
         # Use default mech

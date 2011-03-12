@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5::Internal
@@ -46,8 +44,8 @@ module Sun::Security::Krb5::Internal
   # 
   # <xmp>
   # HostAddress     ::= SEQUENCE  {
-  # addr-type       [0] Int32,
-  # address         [1] OCTET STRING
+  #         addr-type       [0] Int32,
+  #         address         [1] OCTET STRING
   # }
   # </xmp>
   # 
@@ -213,8 +211,8 @@ module Sun::Security::Krb5::Internal
     # Creates a HostAddress from the specified address and address type.
     # 
     # @param new_addrType the value of the address type which matches the defined
-    # address family constants in the Berkeley Standard
-    # Distributions of Unix.
+    #                       address family constants in the Berkeley Standard
+    #                       Distributions of Unix.
     # @param new_address network address.
     # @exception KrbApErrException if address type and address length do not match defined value.
     def initialize(new_addr_type, new_address)
@@ -323,7 +321,7 @@ module Sun::Security::Krb5::Internal
       typesig { [DerInputStream, ::Java::Byte, ::Java::Boolean] }
       # Parses (unmarshal) a host address from a DER input stream.  This form
       # parsing might be used when expanding a value which is part of
-      # a constructed sequence and uses explicitly tagged type.
+      #   * a constructed sequence and uses explicitly tagged type.
       # 
       # @exception Asn1Exception on error.
       # @exception IOException if an I/O error occurs while reading encoded data.

@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5::Internal
@@ -41,9 +39,9 @@ module Sun::Security::Krb5::Internal
     
     typesig { [EncryptionKey, LastReq, ::Java::Int, KerberosTime, TicketFlags, KerberosTime, KerberosTime, KerberosTime, KerberosTime, Realm, PrincipalName, HostAddresses] }
     def initialize(new_key, new_last_req, new_nonce, new_key_expiration, new_flags, new_authtime, new_starttime, new_endtime, new_renew_till, new_srealm, new_sname, new_caddr)
+      super(new_key, new_last_req, new_nonce, new_key_expiration, new_flags, new_authtime, new_starttime, new_endtime, new_renew_till, new_srealm, new_sname, new_caddr, Krb5::KRB_ENC_AS_REP_PART)
       # may need to use Krb5.KRB_ENC_TGS_REP_PART to mimic
       # behavior of other implementaions, instead of above
-      super(new_key, new_last_req, new_nonce, new_key_expiration, new_flags, new_authtime, new_starttime, new_endtime, new_renew_till, new_srealm, new_sname, new_caddr, Krb5::KRB_ENC_AS_REP_PART)
     end
     
     typesig { [Array.typed(::Java::Byte)] }

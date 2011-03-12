@@ -62,7 +62,7 @@ module Java::Io
     # to remember it for later use.
     # 
     # @param   in   the underlying input stream, or <code>null</code> if
-    # this instance is to be created without an underlying stream.
+    #          this instance is to be created without an underlying stream.
     def initialize(in_)
       @in = nil
       super()
@@ -82,7 +82,7 @@ module Java::Io
     # simply performs <code>in.read()</code> and returns the result.
     # 
     # @return     the next byte of data, or <code>-1</code> if the end of the
-    # stream is reached.
+    #             stream is reached.
     # @exception  IOException  if an I/O error occurs.
     # @see        java.io.FilterInputStream#in
     def read
@@ -104,8 +104,8 @@ module Java::Io
     # 
     # @param      b   the buffer into which the data is read.
     # @return     the total number of bytes read into the buffer, or
-    # <code>-1</code> if there is no more data because the end of
-    # the stream has been reached.
+    #             <code>-1</code> if there is no more data because the end of
+    #             the stream has been reached.
     # @exception  IOException  if an I/O error occurs.
     # @see        java.io.FilterInputStream#read(byte[], int, int)
     def read(b)
@@ -125,8 +125,8 @@ module Java::Io
     # @param      off   the start offset in the destination array <code>b</code>
     # @param      len   the maximum number of bytes read.
     # @return     the total number of bytes read into the buffer, or
-    # <code>-1</code> if there is no more data because the end of
-    # the stream has been reached.
+    #             <code>-1</code> if there is no more data because the end of
+    #             the stream has been reached.
     # @exception  NullPointerException If <code>b</code> is <code>null</code>.
     # @exception  IndexOutOfBoundsException If <code>off</code> is negative,
     # <code>len</code> is negative, or <code>len</code> is greater than
@@ -155,7 +155,7 @@ module Java::Io
     # This method returns the result of {@link #in in}.available().
     # 
     # @return     an estimate of the number of bytes that can be read (or skipped
-    # over) from this input stream without blocking.
+    #             over) from this input stream without blocking.
     # @exception  IOException  if an I/O error occurs.
     def available
       return @in.available
@@ -185,7 +185,7 @@ module Java::Io
     # This method simply performs <code>in.mark(readlimit)</code>.
     # 
     # @param   readlimit   the maximum limit of bytes that can be read before
-    # the mark position becomes invalid.
+    #                      the mark position becomes invalid.
     # @see     java.io.FilterInputStream#in
     # @see     java.io.FilterInputStream#reset()
     def mark(readlimit)
@@ -211,7 +211,7 @@ module Java::Io
     # code to reset the stream and try another parser.
     # 
     # @exception  IOException  if the stream has not been marked or if the
-    # mark has been invalidated.
+    #               mark has been invalidated.
     # @see        java.io.FilterInputStream#in
     # @see        java.io.FilterInputStream#mark(int)
     def reset
@@ -227,8 +227,8 @@ module Java::Io
     # simply performs <code>in.markSupported()</code>.
     # 
     # @return  <code>true</code> if this stream type supports the
-    # <code>mark</code> and <code>reset</code> method;
-    # <code>false</code> otherwise.
+    #          <code>mark</code> and <code>reset</code> method;
+    #          <code>false</code> otherwise.
     # @see     java.io.FilterInputStream#in
     # @see     java.io.InputStream#mark(int)
     # @see     java.io.InputStream#reset()

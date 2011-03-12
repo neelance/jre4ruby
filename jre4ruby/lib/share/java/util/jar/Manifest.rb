@@ -118,7 +118,7 @@ module Java::Util::Jar
     # Returns the Attributes for the specified entry name.
     # This method is defined as:
     # <pre>
-    # return (Attributes)getEntries().get(name)
+    #      return (Attributes)getEntries().get(name)
     # </pre>
     # Though {@code null} is a valid {@code name}, when
     # {@code getAttributes(null)} is invoked on a {@code Manifest}
@@ -312,7 +312,7 @@ module Java::Util::Jar
     # Returns a shallow copy of this Manifest.  The shallow copy is
     # implemented as follows:
     # <pre>
-    # public Object clone() { return new Manifest(this); }
+    #     public Object clone() { return new Manifest(this); }
     # </pre>
     # @return a shallow copy of this Manifest
     def clone

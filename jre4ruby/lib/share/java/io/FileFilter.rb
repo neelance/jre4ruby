@@ -46,7 +46,7 @@ module Java::Io
     # 
     # @param  pathname  The abstract pathname to be tested
     # @return  <code>true</code> if and only if <code>pathname</code>
-    # should be included
+    #          should be included
     def accept(pathname)
       raise NotImplementedError
     end

@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # This file is available under and governed by the GNU General Public
 # License version 2 only, as published by the Free Software Foundation.
 # However, the following notice accompanied the original version of this
@@ -107,7 +105,7 @@ module Java::Util::Concurrent
     # 
     # @param c the collection of elements to initially contain
     # @throws NullPointerException if the specified collection or any
-    # of its elements are null
+    #         of its elements are null
     def initialize(c)
       @lock = nil
       @available = nil
@@ -178,7 +176,7 @@ module Java::Util::Concurrent
     # if this queue has no elements with an expired delay.
     # 
     # @return the head of this queue, or <tt>null</tt> if this
-    # queue has no elements with an expired delay
+    #         queue has no elements with an expired delay
     def poll
       lock_ = @lock
       lock_.lock
@@ -238,8 +236,8 @@ module Java::Util::Concurrent
     # or the specified wait time expires.
     # 
     # @return the head of this queue, or <tt>null</tt> if the
-    # specified waiting time elapses before an element with
-    # an expired delay becomes available
+    #         specified waiting time elapses before an element with
+    #         an expired delay becomes available
     # @throws InterruptedException {@inheritDoc}
     def poll(timeout, unit)
       nanos = unit.to_nanos(timeout)
@@ -288,7 +286,7 @@ module Java::Util::Concurrent
     # if one exists.
     # 
     # @return the head of this queue, or <tt>null</tt> if this
-    # queue is empty.
+    #         queue is empty.
     def peek
       lock_ = @lock
       lock_.lock
@@ -447,18 +445,18 @@ module Java::Util::Concurrent
     # allocated array of <tt>Delayed</tt>:
     # 
     # <pre>
-    # Delayed[] a = q.toArray(new Delayed[0]);</pre>
+    #     Delayed[] a = q.toArray(new Delayed[0]);</pre>
     # 
     # Note that <tt>toArray(new Object[0])</tt> is identical in function to
     # <tt>toArray()</tt>.
     # 
     # @param a the array into which the elements of the queue are to
-    # be stored, if it is big enough; otherwise, a new array of the
-    # same runtime type is allocated for this purpose
+    #          be stored, if it is big enough; otherwise, a new array of the
+    #          same runtime type is allocated for this purpose
     # @return an array containing all of the elements in this queue
     # @throws ArrayStoreException if the runtime type of the specified array
-    # is not a supertype of the runtime type of every element in
-    # this queue
+    #         is not a supertype of the runtime type of every element in
+    #         this queue
     # @throws NullPointerException if the specified array is null
     def to_array(a)
       lock_ = @lock

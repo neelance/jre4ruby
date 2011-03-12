@@ -61,6 +61,7 @@ module Sun::Nio::Cs
     # In order to handle surrogates properly we must never try to produce
     # fewer than two characters at a time.  If we're only asked to return one
     # character then the other is saved here to be returned later.
+    # 
     attr_accessor :have_leftover_char
     alias_method :attr_have_leftover_char, :have_leftover_char
     undef_method :have_leftover_char
@@ -136,14 +137,15 @@ module Sun::Nio::Cs
         cb = CharArray.new(2)
         n = read(cb, 0, 2)
         case (n)
-        # FALL THROUGH
         when -1
           return -1
         when 2
           @leftover_char = cb[1]
           @have_leftover_char = true
+          # FALL THROUGH
           return cb[0]
         when 1
+          # FALL THROUGH
           return cb[0]
         else
           raise AssertError, RJava.cast_to_string(n) if not (false)
@@ -219,6 +221,7 @@ module Sun::Nio::Cs
       # In the early stages of the build we haven't yet built the NIO native
       # code, so guard against that by catching the first UnsatisfiedLinkError
       # and setting this flag so that later attempts fail quickly.
+      # 
       
       def channels_available
         defined?(@@channels_available) ? @@channels_available : @@channels_available= true
@@ -305,7 +308,7 @@ module Sun::Nio::Cs
       if ((@ch).nil?)
         @in = in_
         @ch = nil
-        @bb = ByteBuffer.allocate(DEFAULT_BYTE_BUFFER_SIZE)
+        @bb = ByteBuffer.allocate_(DEFAULT_BYTE_BUFFER_SIZE)
       end
       @bb.flip # So that bb is initially empty
     end
@@ -327,7 +330,7 @@ module Sun::Nio::Cs
       @ch = ch
       @decoder = dec
       @cs = dec.charset
-      @bb = ByteBuffer.allocate(mbc < 0 ? DEFAULT_BYTE_BUFFER_SIZE : (mbc < MIN_BYTE_BUFFER_SIZE ? MIN_BYTE_BUFFER_SIZE : mbc))
+      @bb = ByteBuffer.allocate_(mbc < 0 ? DEFAULT_BYTE_BUFFER_SIZE : (mbc < MIN_BYTE_BUFFER_SIZE ? MIN_BYTE_BUFFER_SIZE : mbc))
       @bb.flip
     end
     

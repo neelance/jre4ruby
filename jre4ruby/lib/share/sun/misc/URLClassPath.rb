@@ -130,7 +130,7 @@ module Sun::Misc
     # the URL is assumed to refer to a JAR file.
     # 
     # @param urls the directory and JAR file URLs to search for classes
-    # and resources
+    #        and resources
     # @param factory the URLStreamHandlerFactory to use when creating new URLs
     def initialize(urls, factory)
       @path = ArrayList.new
@@ -889,7 +889,7 @@ module Sun::Misc
             
             typesig { [] }
             define_method :get_content_length do
-              return RJava.cast_to_int(entry.get_size)
+              return (entry.get_size).to_int
             end
             
             typesig { [] }
@@ -1207,7 +1207,7 @@ module Sun::Misc
                 
                 typesig { [] }
                 define_method :get_content_length do
-                  return RJava.cast_to_int(file.length)
+                  return (file.length).to_int
                 end
                 
                 typesig { [Vararg.new(Object)] }

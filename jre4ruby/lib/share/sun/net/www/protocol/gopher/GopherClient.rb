@@ -54,8 +54,6 @@ module Sun::Net::Www::Protocol::Gopher
       # 
       # These data members are not used, and their values are meaningless.
       # REMIND:  Take them out for JDK 2.0!
-      # 
-      # 
       # @deprecated
       
       def use_gopher_proxy
@@ -143,7 +141,7 @@ module Sun::Net::Www::Protocol::Gopher
     class_module.module_eval {
       typesig { [] }
       # @return true if gopher connections should go through a proxy, according
-      # to system properties.
+      #          to system properties.
       def get_use_gopher_proxy
         return Java::Security::AccessController.do_privileged(GetBooleanAction.new("gopherProxySet")).boolean_value
       end

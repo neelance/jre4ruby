@@ -51,8 +51,8 @@ module Sun::Security::X509
   # 
   # <pre>
   # PrivateKeyUsagePeriod ::= SEQUENCE {
-  # notBefore  [0]  GeneralizedTime OPTIONAL,
-  # notAfter   [1]  GeneralizedTime OPTIONAL }
+  #     notBefore  [0]  GeneralizedTime OPTIONAL,
+  #     notAfter   [1]  GeneralizedTime OPTIONAL }
   # </pre>
   # 
   # @author Amit Kapoor
@@ -128,9 +128,9 @@ module Sun::Security::X509
     # The default constructor for PrivateKeyUsageExtension.
     # 
     # @param notBefore the date/time before which the private key
-    # should not be used.
+    #         should not be used.
     # @param notAfter the date/time after which the private key
-    # should not be used.
+    #         should not be used.
     def initialize(not_before, not_after)
       @not_before = nil
       @not_after = nil

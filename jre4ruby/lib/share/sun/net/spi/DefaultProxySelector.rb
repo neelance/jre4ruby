@@ -58,18 +58,16 @@ module Sun::Net::Spi
       # - 1 row per protocol (http, ftp, ...)
       # - 1st element of each row is the protocol name
       # - subsequent elements are prefixes for Host & Port properties
-      # listed in order of priority.
+      #   listed in order of priority.
       # Example:
       # {"ftp", "ftp.proxy", "ftpProxy", "proxy", "socksProxy"},
       # means for FTP we try in that oder:
-      # + ftp.proxyHost & ftp.proxyPort
-      # + ftpProxyHost & ftpProxyPort
-      # + proxyHost & proxyPort
-      # + socksProxyHost & socksProxyPort
+      #          + ftp.proxyHost & ftp.proxyPort
+      #          + ftpProxyHost & ftpProxyPort
+      #          + proxyHost & proxyPort
+      #          + socksProxyHost & socksProxyPort
       # 
       # Note that the socksProxy should *always* be the last on the list
-      # 
-      # 
       # protocol, Property prefix 1, Property prefix 2, ...
       const_set_lazy(:Props) { Array.typed(Array.typed(String)).new([Array.typed(String).new(["http", "http.proxy", "proxy", "socksProxy"]), Array.typed(String).new(["https", "https.proxy", "proxy", "socksProxy"]), Array.typed(String).new(["ftp", "ftp.proxy", "ftpProxy", "proxy", "socksProxy"]), Array.typed(String).new(["gopher", "gopherProxy", "socksProxy"]), Array.typed(String).new(["socket", "socksProxy"])]) }
       const_attr_reader  :Props
@@ -487,7 +485,7 @@ module Sun::Net::Spi
       end
       
       # digit    = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" |
-      # "8" | "9"
+      #            "8" | "9"
       const_set_lazy(:L_DIGIT) { low_mask(Character.new(?0.ord), Character.new(?9.ord)) }
       const_attr_reader  :L_DIGIT
       
@@ -496,6 +494,7 @@ module Sun::Net::Spi
     }
     
     # Scan a string of decimal digits whose value fits in a byte
+    # 
     attr_accessor :number
     alias_method :attr_number, :number
     undef_method :number
@@ -520,6 +519,7 @@ module Sun::Net::Spi
     # Scan a specific char: If the char at the given start position is
     # equal to c, return the index of the next char; otherwise, return the
     # start position.
+    # 
     def scan(input, start, end_, c)
       if ((start < end_) && ((input.char_at(start)).equal?(c)))
         return start + 1
@@ -529,6 +529,7 @@ module Sun::Net::Spi
     
     typesig { [String, ::Java::Int, ::Java::Int, ::Java::Long, ::Java::Long] }
     # Scan chars that match the given mask pair
+    # 
     def scan(input, start, n, low_mask_, high_mask)
       p = start
       while (p < n)

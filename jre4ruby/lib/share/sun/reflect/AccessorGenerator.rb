@@ -443,78 +443,78 @@ module Sun::Reflect
     # Constant pool entries required to be able to box/unbox primitive
     # types. Note that we don't emit these if we don't need them.
     def emit_boxing_contant_pool_entries
-      # *  [UTF-8] "java/lang/Boolean"
-      # *  [CONSTANT_Class_info] for above
-      # *  [UTF-8] "(Z)V"
-      # *  [CONSTANT_NameAndType_info] for above
-      # *  [CONSTANT_Methodref_info] for above
-      # *  [UTF-8] "booleanValue"
-      # *  [UTF-8] "()Z"
-      # *  [CONSTANT_NameAndType_info] for above
-      # *  [CONSTANT_Methodref_info] for above
-      # *  [UTF-8] "java/lang/Byte"
-      # *  [CONSTANT_Class_info] for above
-      # *  [UTF-8] "(B)V"
-      # *  [CONSTANT_NameAndType_info] for above
-      # *  [CONSTANT_Methodref_info] for above
-      # *  [UTF-8] "byteValue"
-      # *  [UTF-8] "()B"
-      # *  [CONSTANT_NameAndType_info] for above
-      # *  [CONSTANT_Methodref_info] for above
-      # *  [UTF-8] "java/lang/Character"
-      # *  [CONSTANT_Class_info] for above
-      # *  [UTF-8] "(C)V"
-      # *  [CONSTANT_NameAndType_info] for above
-      # *  [CONSTANT_Methodref_info] for above
-      # *  [UTF-8] "charValue"
-      # *  [UTF-8] "()C"
-      # *  [CONSTANT_NameAndType_info] for above
-      # *  [CONSTANT_Methodref_info] for above
-      # *  [UTF-8] "java/lang/Double"
-      # *  [CONSTANT_Class_info] for above
-      # *  [UTF-8] "(D)V"
-      # *  [CONSTANT_NameAndType_info] for above
-      # *  [CONSTANT_Methodref_info] for above
-      # *  [UTF-8] "doubleValue"
-      # *  [UTF-8] "()D"
-      # *  [CONSTANT_NameAndType_info] for above
-      # *  [CONSTANT_Methodref_info] for above
-      # *  [UTF-8] "java/lang/Float"
-      # *  [CONSTANT_Class_info] for above
-      # *  [UTF-8] "(F)V"
-      # *  [CONSTANT_NameAndType_info] for above
-      # *  [CONSTANT_Methodref_info] for above
-      # *  [UTF-8] "floatValue"
-      # *  [UTF-8] "()F"
-      # *  [CONSTANT_NameAndType_info] for above
-      # *  [CONSTANT_Methodref_info] for above
-      # *  [UTF-8] "java/lang/Integer"
-      # *  [CONSTANT_Class_info] for above
-      # *  [UTF-8] "(I)V"
-      # *  [CONSTANT_NameAndType_info] for above
-      # *  [CONSTANT_Methodref_info] for above
-      # *  [UTF-8] "intValue"
-      # *  [UTF-8] "()I"
-      # *  [CONSTANT_NameAndType_info] for above
-      # *  [CONSTANT_Methodref_info] for above
-      # *  [UTF-8] "java/lang/Long"
-      # *  [CONSTANT_Class_info] for above
-      # *  [UTF-8] "(J)V"
-      # *  [CONSTANT_NameAndType_info] for above
-      # *  [CONSTANT_Methodref_info] for above
-      # *  [UTF-8] "longValue"
-      # *  [UTF-8] "()J"
-      # *  [CONSTANT_NameAndType_info] for above
-      # *  [CONSTANT_Methodref_info] for above
-      # *  [UTF-8] "java/lang/Short"
-      # *  [CONSTANT_Class_info] for above
-      # *  [UTF-8] "(S)V"
-      # *  [CONSTANT_NameAndType_info] for above
-      # *  [CONSTANT_Methodref_info] for above
-      # *  [UTF-8] "shortValue"
-      # *  [UTF-8] "()S"
-      # *  [CONSTANT_NameAndType_info] for above
-      # *  [CONSTANT_Methodref_info] for above
+      #  *  [UTF-8] "java/lang/Boolean"
+      #  *  [CONSTANT_Class_info] for above
+      #  *  [UTF-8] "(Z)V"
+      #  *  [CONSTANT_NameAndType_info] for above
+      #  *  [CONSTANT_Methodref_info] for above
+      #  *  [UTF-8] "booleanValue"
+      #  *  [UTF-8] "()Z"
+      #  *  [CONSTANT_NameAndType_info] for above
+      #  *  [CONSTANT_Methodref_info] for above
+      #  *  [UTF-8] "java/lang/Byte"
+      #  *  [CONSTANT_Class_info] for above
+      #  *  [UTF-8] "(B)V"
+      #  *  [CONSTANT_NameAndType_info] for above
+      #  *  [CONSTANT_Methodref_info] for above
+      #  *  [UTF-8] "byteValue"
+      #  *  [UTF-8] "()B"
+      #  *  [CONSTANT_NameAndType_info] for above
+      #  *  [CONSTANT_Methodref_info] for above
+      #  *  [UTF-8] "java/lang/Character"
+      #  *  [CONSTANT_Class_info] for above
+      #  *  [UTF-8] "(C)V"
+      #  *  [CONSTANT_NameAndType_info] for above
+      #  *  [CONSTANT_Methodref_info] for above
+      #  *  [UTF-8] "charValue"
+      #  *  [UTF-8] "()C"
+      #  *  [CONSTANT_NameAndType_info] for above
+      #  *  [CONSTANT_Methodref_info] for above
+      #  *  [UTF-8] "java/lang/Double"
+      #  *  [CONSTANT_Class_info] for above
+      #  *  [UTF-8] "(D)V"
+      #  *  [CONSTANT_NameAndType_info] for above
+      #  *  [CONSTANT_Methodref_info] for above
+      #  *  [UTF-8] "doubleValue"
+      #  *  [UTF-8] "()D"
+      #  *  [CONSTANT_NameAndType_info] for above
+      #  *  [CONSTANT_Methodref_info] for above
+      #  *  [UTF-8] "java/lang/Float"
+      #  *  [CONSTANT_Class_info] for above
+      #  *  [UTF-8] "(F)V"
+      #  *  [CONSTANT_NameAndType_info] for above
+      #  *  [CONSTANT_Methodref_info] for above
+      #  *  [UTF-8] "floatValue"
+      #  *  [UTF-8] "()F"
+      #  *  [CONSTANT_NameAndType_info] for above
+      #  *  [CONSTANT_Methodref_info] for above
+      #  *  [UTF-8] "java/lang/Integer"
+      #  *  [CONSTANT_Class_info] for above
+      #  *  [UTF-8] "(I)V"
+      #  *  [CONSTANT_NameAndType_info] for above
+      #  *  [CONSTANT_Methodref_info] for above
+      #  *  [UTF-8] "intValue"
+      #  *  [UTF-8] "()I"
+      #  *  [CONSTANT_NameAndType_info] for above
+      #  *  [CONSTANT_Methodref_info] for above
+      #  *  [UTF-8] "java/lang/Long"
+      #  *  [CONSTANT_Class_info] for above
+      #  *  [UTF-8] "(J)V"
+      #  *  [CONSTANT_NameAndType_info] for above
+      #  *  [CONSTANT_Methodref_info] for above
+      #  *  [UTF-8] "longValue"
+      #  *  [UTF-8] "()J"
+      #  *  [CONSTANT_NameAndType_info] for above
+      #  *  [CONSTANT_Methodref_info] for above
+      #  *  [UTF-8] "java/lang/Short"
+      #  *  [CONSTANT_Class_info] for above
+      #  *  [UTF-8] "(S)V"
+      #  *  [CONSTANT_NameAndType_info] for above
+      #  *  [CONSTANT_Methodref_info] for above
+      #  *  [UTF-8] "shortValue"
+      #  *  [UTF-8] "()S"
+      #  *  [CONSTANT_NameAndType_info] for above
+      #  *  [CONSTANT_Methodref_info] for above
       # Boolean
       @asm.emit_constant_pool_utf8("java/lang/Boolean")
       @asm.emit_constant_pool_class(@asm.cpi)
@@ -848,12 +848,12 @@ module Sun::Reflect
           return false
         end
         # Widening conversions (from JVM spec):
-        # byte to short, int, long, float, or double
-        # short to int, long, float, or double
-        # char to int, long, float, or double
-        # int to long, float, or double
-        # long to float or double
-        # float to double
+        #  byte to short, int, long, float, or double
+        #  short to int, long, float, or double
+        #  char to int, long, float, or double
+        #  int to long, float, or double
+        #  long to float or double
+        #  float to double
         if ((type).equal?(Boolean::TYPE))
           if ((other_type).equal?(Boolean::TYPE))
             return true
@@ -914,12 +914,12 @@ module Sun::Reflect
         # "s2i") are no-ops since values on the Java stack are
         # sign-extended.
         # Widening conversions (from JVM spec):
-        # byte to short, int, long, float, or double
-        # short to int, long, float, or double
-        # char to int, long, float, or double
-        # int to long, float, or double
-        # long to float or double
-        # float to double
+        #  byte to short, int, long, float, or double
+        #  short to int, long, float, or double
+        #  char to int, long, float, or double
+        #  int to long, float, or double
+        #  long to float or double
+        #  float to double
         if ((from_type).equal?(Byte::TYPE) || (from_type).equal?(Short::TYPE) || (from_type).equal?(Character::TYPE) || (from_type).equal?(JavaInteger::TYPE))
           if ((to_type).equal?(Long::TYPE))
             cb.opc_i2l

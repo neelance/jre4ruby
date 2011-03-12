@@ -46,10 +46,10 @@ module Sun::Security::Ec
   # EXPLICIT TAGS
   # 
   # ECPrivateKey ::= SEQUENCE {
-  # version INTEGER { ecPrivkeyVer1(1) } (ecPrivkeyVer1),
-  # privateKey OCTET STRING,
-  # parameters [0] ECDomainParameters {{ SECGCurveNames }} OPTIONAL,
-  # publicKey [1] BIT STRING OPTIONAL
+  #   version INTEGER { ecPrivkeyVer1(1) } (ecPrivkeyVer1),
+  #   privateKey OCTET STRING,
+  #   parameters [0] ECDomainParameters {{ SECGCurveNames }} OPTIONAL,
+  #   publicKey [1] BIT STRING OPTIONAL
   # }
   # </pre>
   # 

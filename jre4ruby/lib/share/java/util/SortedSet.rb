@@ -84,13 +84,13 @@ module Java::Util
   # is a sorted set of strings.  The following idiom obtains a view
   # containing all of the strings in <tt>s</tt> from <tt>low</tt> to
   # <tt>high</tt>, inclusive:<pre>
-  # SortedSet&lt;String&gt; sub = s.subSet(low, high+"\0");</pre>
+  #   SortedSet&lt;String&gt; sub = s.subSet(low, high+"\0");</pre>
   # 
   # A similar technique can be used to generate an <i>open range</i> (which
   # contains neither endpoint).  The following idiom obtains a view
   # containing all of the Strings in <tt>s</tt> from <tt>low</tt> to
   # <tt>high</tt>, exclusive:<pre>
-  # SortedSet&lt;String&gt; sub = s.subSet(low+"\0", high);</pre>
+  #   SortedSet&lt;String&gt; sub = s.subSet(low+"\0", high);</pre>
   # 
   # <p>This interface is a member of the
   # <a href="{@docRoot}/../technotes/guides/collections/index.html">
@@ -117,8 +117,8 @@ module Java::Util
     # natural ordering} of its elements.
     # 
     # @return the comparator used to order the elements in this set,
-    # or <tt>null</tt> if this set uses the natural ordering
-    # of its elements
+    #         or <tt>null</tt> if this set uses the natural ordering
+    #         of its elements
     def comparator
       raise NotImplementedError
     end
@@ -138,21 +138,21 @@ module Java::Util
     # @param fromElement low endpoint (inclusive) of the returned set
     # @param toElement high endpoint (exclusive) of the returned set
     # @return a view of the portion of this set whose elements range from
-    # <tt>fromElement</tt>, inclusive, to <tt>toElement</tt>, exclusive
+    #         <tt>fromElement</tt>, inclusive, to <tt>toElement</tt>, exclusive
     # @throws ClassCastException if <tt>fromElement</tt> and
-    # <tt>toElement</tt> cannot be compared to one another using this
-    # set's comparator (or, if the set has no comparator, using
-    # natural ordering).  Implementations may, but are not required
-    # to, throw this exception if <tt>fromElement</tt> or
-    # <tt>toElement</tt> cannot be compared to elements currently in
-    # the set.
+    #         <tt>toElement</tt> cannot be compared to one another using this
+    #         set's comparator (or, if the set has no comparator, using
+    #         natural ordering).  Implementations may, but are not required
+    #         to, throw this exception if <tt>fromElement</tt> or
+    #         <tt>toElement</tt> cannot be compared to elements currently in
+    #         the set.
     # @throws NullPointerException if <tt>fromElement</tt> or
-    # <tt>toElement</tt> is null and this set does not permit null
-    # elements
+    #         <tt>toElement</tt> is null and this set does not permit null
+    #         elements
     # @throws IllegalArgumentException if <tt>fromElement</tt> is
-    # greater than <tt>toElement</tt>; or if this set itself
-    # has a restricted range, and <tt>fromElement</tt> or
-    # <tt>toElement</tt> lies outside the bounds of the range
+    #         greater than <tt>toElement</tt>; or if this set itself
+    #         has a restricted range, and <tt>fromElement</tt> or
+    #         <tt>toElement</tt> lies outside the bounds of the range
     def sub_set(from_element, to_element)
       raise NotImplementedError
     end
@@ -169,18 +169,18 @@ module Java::Util
     # 
     # @param toElement high endpoint (exclusive) of the returned set
     # @return a view of the portion of this set whose elements are strictly
-    # less than <tt>toElement</tt>
+    #         less than <tt>toElement</tt>
     # @throws ClassCastException if <tt>toElement</tt> is not compatible
-    # with this set's comparator (or, if the set has no comparator,
-    # if <tt>toElement</tt> does not implement {@link Comparable}).
-    # Implementations may, but are not required to, throw this
-    # exception if <tt>toElement</tt> cannot be compared to elements
-    # currently in the set.
+    #         with this set's comparator (or, if the set has no comparator,
+    #         if <tt>toElement</tt> does not implement {@link Comparable}).
+    #         Implementations may, but are not required to, throw this
+    #         exception if <tt>toElement</tt> cannot be compared to elements
+    #         currently in the set.
     # @throws NullPointerException if <tt>toElement</tt> is null and
-    # this set does not permit null elements
+    #         this set does not permit null elements
     # @throws IllegalArgumentException if this set itself has a
-    # restricted range, and <tt>toElement</tt> lies outside the
-    # bounds of the range
+    #         restricted range, and <tt>toElement</tt> lies outside the
+    #         bounds of the range
     def head_set(to_element)
       raise NotImplementedError
     end
@@ -197,18 +197,18 @@ module Java::Util
     # 
     # @param fromElement low endpoint (inclusive) of the returned set
     # @return a view of the portion of this set whose elements are greater
-    # than or equal to <tt>fromElement</tt>
+    #         than or equal to <tt>fromElement</tt>
     # @throws ClassCastException if <tt>fromElement</tt> is not compatible
-    # with this set's comparator (or, if the set has no comparator,
-    # if <tt>fromElement</tt> does not implement {@link Comparable}).
-    # Implementations may, but are not required to, throw this
-    # exception if <tt>fromElement</tt> cannot be compared to elements
-    # currently in the set.
+    #         with this set's comparator (or, if the set has no comparator,
+    #         if <tt>fromElement</tt> does not implement {@link Comparable}).
+    #         Implementations may, but are not required to, throw this
+    #         exception if <tt>fromElement</tt> cannot be compared to elements
+    #         currently in the set.
     # @throws NullPointerException if <tt>fromElement</tt> is null
-    # and this set does not permit null elements
+    #         and this set does not permit null elements
     # @throws IllegalArgumentException if this set itself has a
-    # restricted range, and <tt>fromElement</tt> lies outside the
-    # bounds of the range
+    #         restricted range, and <tt>fromElement</tt> lies outside the
+    #         bounds of the range
     def tail_set(from_element)
       raise NotImplementedError
     end

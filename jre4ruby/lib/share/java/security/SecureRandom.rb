@@ -53,7 +53,7 @@ module Java::Security
   # no-argument constructor or one of the <code>getInstance</code> methods:
   # 
   # <pre>
-  # SecureRandom random = new SecureRandom();
+  #      SecureRandom random = new SecureRandom();
   # </pre>
   # 
   # <p> Many SecureRandom implementations are in the form of a pseudo-random
@@ -66,16 +66,16 @@ module Java::Security
   # to retrieve random bytes:
   # 
   # <pre>
-  # SecureRandom random = new SecureRandom();
-  # byte bytes[] = new byte[20];
-  # random.nextBytes(bytes);
+  #      SecureRandom random = new SecureRandom();
+  #      byte bytes[] = new byte[20];
+  #      random.nextBytes(bytes);
   # </pre>
   # 
   # <p> Callers may also invoke the <code>generateSeed</code> method
   # to generate a given number of seed bytes (to seed other random number
   # generators, for example):
   # <pre>
-  # byte seed[] = random.generateSeed(20);
+  #      byte seed[] = random.generateSeed(20);
   # </pre>
   # 
   # @see java.security.SecureRandomSpi
@@ -157,9 +157,6 @@ module Java::Security
     # This self-seeding will not occur if <code>setSeed</code> was
     # previously called.
     def initialize
-      # This call to our superclass constructor will result in a call
-      # to our own <code>setSeed</code> method, which will return
-      # immediately when it is passed zero.
       @provider = nil
       @secure_random_spi = nil
       @algorithm = nil
@@ -172,6 +169,9 @@ module Java::Security
       @provider = nil
       @secure_random_spi = nil
       @digest = nil
+      # This call to our superclass constructor will result in a call
+      # to our own <code>setSeed</code> method, which will return
+      # immediately when it is passed zero.
       get_default_prng(false, nil)
     end
     
@@ -305,8 +305,8 @@ module Java::Security
       # @return the new SecureRandom object.
       # 
       # @exception NoSuchAlgorithmException if no Provider supports a
-      # SecureRandomSpi implementation for the
-      # specified algorithm.
+      #          SecureRandomSpi implementation for the
+      #          specified algorithm.
       # 
       # @see Provider
       # 
@@ -346,14 +346,14 @@ module Java::Security
       # @return the new SecureRandom object.
       # 
       # @exception NoSuchAlgorithmException if a SecureRandomSpi
-      # implementation for the specified algorithm is not
-      # available from the specified provider.
+      #          implementation for the specified algorithm is not
+      #          available from the specified provider.
       # 
       # @exception NoSuchProviderException if the specified provider is not
-      # registered in the security provider list.
+      #          registered in the security provider list.
       # 
       # @exception IllegalArgumentException if the provider name is null
-      # or empty.
+      #          or empty.
       # 
       # @see Provider
       # 
@@ -390,8 +390,8 @@ module Java::Security
       # @return the new SecureRandom object.
       # 
       # @exception NoSuchAlgorithmException if a SecureRandomSpi
-      # implementation for the specified algorithm is not available
-      # from the specified Provider object.
+      #          implementation for the specified algorithm is not available
+      #          from the specified Provider object.
       # 
       # @exception IllegalArgumentException if the specified provider is null.
       # 
@@ -423,7 +423,7 @@ module Java::Security
     # object.
     # 
     # @return the name of the algorithm or <code>unknown</code>
-    # if the algorithm name cannot be determined.
+    #          if the algorithm name cannot be determined.
     # @since 1.5
     def get_algorithm
       return (!(@algorithm).nil?) ? @algorithm : "unknown"
@@ -580,7 +580,6 @@ module Java::Security
     }
     
     # Retain unused values serialized from JDK1.1
-    # 
     # @serial
     attr_accessor :state
     alias_method :attr_state, :state

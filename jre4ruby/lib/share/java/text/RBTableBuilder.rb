@@ -22,17 +22,15 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996-1998 - All Rights Reserved
 # 
-# The original version of this source code and documentation is copyrighted
+#   The original version of this source code and documentation is copyrighted
 # and owned by Taligent, Inc., a wholly-owned subsidiary of IBM. These
 # materials are provided under terms of a License Agreement between Taligent
 # and Sun. This technology is protected by multiple US and International
 # patents. This notice and attribution to Taligent may not be removed.
-# Taligent is a registered trademark of Taligent, Inc.
+#   Taligent is a registered trademark of Taligent, Inc.
 module Java::Text
   module RBTableBuilderImports #:nodoc:
     class_module.module_eval {
@@ -96,7 +94,7 @@ module Java::Text
         raise ParseException.new("Build rules empty.", 0)
       end
       # This array maps Unicode characters to their collation ordering
-      @mapping = UCompactIntArray.new(RJava.cast_to_int(RBCollationTables::UNMAPPED))
+      @mapping = UCompactIntArray.new((RBCollationTables::UNMAPPED).to_int)
       # Normalize the build rules.  Find occurances of all decomposed characters
       # and normalize the rules before feeding into the builder.  By "normalize",
       # we mean that all precomposed Unicode characters must be converted into
@@ -121,6 +119,7 @@ module Java::Text
       # this splits all of the rules in the string out into separate
       # objects and then sorts them.  In the above example, it merges the
       # "C < CH" rule in just before the "C < D" rule.
+      # 
       @m_pattern = MergeCollation.new(pattern)
       order = 0
       # Now walk though each entry and add it to my own tables
@@ -164,16 +163,16 @@ module Java::Text
       @mapping.compact
       # System.out.println("mappingSize=" + mapping.getKSize());
       # for (int j = 0; j < 0xffff; j++) {
-      # int value = mapping.elementAt(j);
-      # if (value != RBCollationTables.UNMAPPED)
-      # System.out.println("index=" + Integer.toString(j, 16)
-      # + ", value=" + Integer.toString(value, 16));
+      #     int value = mapping.elementAt(j);
+      #     if (value != RBCollationTables.UNMAPPED)
+      #         System.out.println("index=" + Integer.toString(j, 16)
+      #                    + ", value=" + Integer.toString(value, 16));
       # }
       @tables.fill_in_tables(@french_sec, @se_asian_swapping, @mapping, @contract_table, @expand_table, @contract_flags, @max_sec_order, @max_ter_order)
     end
     
     typesig { [] }
-    # Add expanding entries for pre-composed unicode characters so that this
+    #  Add expanding entries for pre-composed unicode characters so that this
     # collator can be used reasonably well with decomposition turned off.
     def add_composed_chars
       # Iterate through all of the pre-composed characters in Unicode
@@ -181,6 +180,7 @@ module Java::Text
       c = 0
       while (!((c = iter.next_)).equal?(ComposedCharIter::DONE))
         if ((get_char_order(c)).equal?(RBCollationTables::UNMAPPED))
+          # 
           # We don't already have an ordering for this pre-composed character.
           # 
           # First, see if the decomposed string is already in our
@@ -195,6 +195,7 @@ module Java::Text
           # the expansion table.
           # That would be more correct but also significantly slower, so
           # I'm not totally sure it's worth doing.
+          # 
           s = iter.decomposition
           # sherman/Note: if this is 1 character decomposed string, the
           # only thing need to do is to check if this decomposed character
@@ -225,10 +226,12 @@ module Java::Text
           if (!(contract_order).equal?(RBCollationTables::UNMAPPED))
             add_order(c, contract_order)
           else
+            # 
             # We don't have a contracting ordering for the entire string
             # that results from the decomposition, but if we have orders
             # for each individual character, we can add an expanding
             # table entry for the pre-composed character
+            # 
             all_there = true
             i = 0
             while i < s.length
@@ -351,8 +354,7 @@ module Java::Text
       ch = group_chars.code_point_at(0)
       # char ch0 = groupChars.charAt(0);
       # int ch = Character.isHighSurrogate(ch0)?
-      # Character.toCodePoint(ch0, groupChars.charAt(1)):ch0;
-      # 
+      #   Character.toCodePoint(ch0, groupChars.charAt(1)):ch0;
       # See if the initial character of the string already has a contract table.
       entry = @mapping.element_at(ch)
       entry_table = get_contract_values_impl(entry - RBCollationTables::CONTRACTCHARINDEX)
@@ -403,7 +405,7 @@ module Java::Text
         ch = group_chars.code_point_at(0)
         # char ch0 = groupChars.charAt(0);
         # int ch = Character.isHighSurrogate(ch0)?
-        # Character.toCodePoint(ch0, groupChars.charAt(1)):ch0;
+        #   Character.toCodePoint(ch0, groupChars.charAt(1)):ch0;
         entry_table = get_contract_values(ch)
         if (!(entry_table).nil?)
           index = RBCollationTables.get_entry(entry_table, group_chars, true)

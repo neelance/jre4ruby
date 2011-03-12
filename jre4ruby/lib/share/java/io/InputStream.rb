@@ -78,7 +78,7 @@ module Java::Io
     # <p> A subclass must provide an implementation of this method.
     # 
     # @return     the next byte of data, or <code>-1</code> if the end of the
-    # stream is reached.
+    #             stream is reached.
     # @exception  IOException  if an I/O error occurs.
     def read
       raise NotImplementedError
@@ -109,8 +109,8 @@ module Java::Io
     # 
     # @param      b   the buffer into which the data is read.
     # @return     the total number of bytes read into the buffer, or
-    # <code>-1</code> is there is no more data because the end of
-    # the stream has been reached.
+    #             <code>-1</code> is there is no more data because the end of
+    #             the stream has been reached.
     # @exception  IOException  If the first byte cannot be read for any reason
     # other than the end of the file, if the input stream has been closed, or
     # if some other I/O error occurs.
@@ -163,11 +163,11 @@ module Java::Io
     # 
     # @param      b     the buffer into which the data is read.
     # @param      off   the start offset in array <code>b</code>
-    # at which the data is written.
+    #                   at which the data is written.
     # @param      len   the maximum number of bytes to read.
     # @return     the total number of bytes read into the buffer, or
-    # <code>-1</code> if there is no more data because the end of
-    # the stream has been reached.
+    #             <code>-1</code> if there is no more data because the end of
+    #             the stream has been reached.
     # @exception  IOException If the first byte cannot be read for any reason
     # other than end of file, or if the input stream has been closed, or if
     # some other I/O error occurs.
@@ -226,7 +226,7 @@ module Java::Io
     # @param      n   the number of bytes to be skipped.
     # @return     the actual number of bytes skipped.
     # @exception  IOException  if the stream does not support seek,
-    # or if some other I/O error occurs.
+    #                          or if some other I/O error occurs.
     def skip(n)
       remaining = n
       nr = 0
@@ -238,7 +238,7 @@ module Java::Io
         return 0
       end
       while (remaining > 0)
-        nr = read(local_skip_buffer, 0, RJava.cast_to_int(Math.min(SKIP_BUFFER_SIZE, remaining)))
+        nr = read(local_skip_buffer, 0, (Math.min(SKIP_BUFFER_SIZE, remaining)).to_int)
         if (nr < 0)
           break
         end
@@ -269,8 +269,8 @@ module Java::Io
     # <p> This method should be overridden by subclasses.
     # 
     # @return     an estimate of the number of bytes that can be read (or skipped
-    # over) from this input stream without blocking or {@code 0} when
-    # it reaches the end of the input stream.
+    #             over) from this input stream without blocking or {@code 0} when
+    #             it reaches the end of the input stream.
     # @exception  IOException if an I/O error occurs.
     def available
       return 0
@@ -310,7 +310,7 @@ module Java::Io
     # nothing.
     # 
     # @param   readlimit   the maximum limit of bytes that can be read before
-    # the mark position becomes invalid.
+    #                      the mark position becomes invalid.
     # @see     java.io.InputStream#reset()
     def mark(readlimit)
       synchronized(self) do
@@ -328,37 +328,37 @@ module Java::Io
     # <li> If the method <code>markSupported</code> returns
     # <code>true</code>, then:
     # 
-    # <ul><li> If the method <code>mark</code> has not been called since
-    # the stream was created, or the number of bytes read from the stream
-    # since <code>mark</code> was last called is larger than the argument
-    # to <code>mark</code> at that last call, then an
-    # <code>IOException</code> might be thrown.
+    #     <ul><li> If the method <code>mark</code> has not been called since
+    #     the stream was created, or the number of bytes read from the stream
+    #     since <code>mark</code> was last called is larger than the argument
+    #     to <code>mark</code> at that last call, then an
+    #     <code>IOException</code> might be thrown.
     # 
-    # <li> If such an <code>IOException</code> is not thrown, then the
-    # stream is reset to a state such that all the bytes read since the
-    # most recent call to <code>mark</code> (or since the start of the
-    # file, if <code>mark</code> has not been called) will be resupplied
-    # to subsequent callers of the <code>read</code> method, followed by
-    # any bytes that otherwise would have been the next input data as of
-    # the time of the call to <code>reset</code>. </ul>
+    #     <li> If such an <code>IOException</code> is not thrown, then the
+    #     stream is reset to a state such that all the bytes read since the
+    #     most recent call to <code>mark</code> (or since the start of the
+    #     file, if <code>mark</code> has not been called) will be resupplied
+    #     to subsequent callers of the <code>read</code> method, followed by
+    #     any bytes that otherwise would have been the next input data as of
+    #     the time of the call to <code>reset</code>. </ul>
     # 
     # <li> If the method <code>markSupported</code> returns
     # <code>false</code>, then:
     # 
-    # <ul><li> The call to <code>reset</code> may throw an
-    # <code>IOException</code>.
+    #     <ul><li> The call to <code>reset</code> may throw an
+    #     <code>IOException</code>.
     # 
-    # <li> If an <code>IOException</code> is not thrown, then the stream
-    # is reset to a fixed state that depends on the particular type of the
-    # input stream and how it was created. The bytes that will be supplied
-    # to subsequent callers of the <code>read</code> method depend on the
-    # particular type of the input stream. </ul></ul>
+    #     <li> If an <code>IOException</code> is not thrown, then the stream
+    #     is reset to a fixed state that depends on the particular type of the
+    #     input stream and how it was created. The bytes that will be supplied
+    #     to subsequent callers of the <code>read</code> method depend on the
+    #     particular type of the input stream. </ul></ul>
     # 
     # <p>The method <code>reset</code> for class <code>InputStream</code>
     # does nothing except throw an <code>IOException</code>.
     # 
     # @exception  IOException  if this stream has not been marked or if the
-    # mark has been invalidated.
+    #               mark has been invalidated.
     # @see     java.io.InputStream#mark(int)
     # @see     java.io.IOException
     def reset
@@ -375,7 +375,7 @@ module Java::Io
     # of <code>InputStream</code> returns <code>false</code>.
     # 
     # @return  <code>true</code> if this stream instance supports the mark
-    # and reset methods; <code>false</code> otherwise.
+    #          and reset methods; <code>false</code> otherwise.
     # @see     java.io.InputStream#mark(int)
     # @see     java.io.InputStream#reset()
     def mark_supported

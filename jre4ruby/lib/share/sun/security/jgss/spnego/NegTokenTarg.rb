@@ -39,13 +39,13 @@ module Sun::Security::Jgss::Spnego
   # as specified in RFC 2478
   # 
   # NegTokenTarg ::= SEQUENCE {
-  # negResult   [0] ENUMERATED {
-  # accept_completed        (0),
-  # accept_incomplete       (1),
-  # reject                  (2) }   OPTIONAL,
-  # supportedMech   [1] MechType            OPTIONAL,
-  # responseToken   [2] OCTET STRING        OPTIONAL,
-  # mechListMIC     [3] OCTET STRING        OPTIONAL
+  #      negResult   [0] ENUMERATED {
+  #              accept_completed        (0),
+  #              accept_incomplete       (1),
+  #              reject                  (2) }   OPTIONAL,
+  #      supportedMech   [1] MechType            OPTIONAL,
+  #      responseToken   [2] OCTET STRING        OPTIONAL,
+  #      mechListMIC     [3] OCTET STRING        OPTIONAL
   # }
   # 
   # MechType::= OBJECT IDENTIFIER

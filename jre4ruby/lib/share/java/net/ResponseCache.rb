@@ -39,11 +39,11 @@ module Java::Net
   # ResponseCache.setDefault(ResponseCache), and the system will call
   # this object in order to:
   # 
-  # <ul><li>store resource data which has been retrieved from an
-  # external source into the cache</li>
-  # <li>try to fetch a requested resource that may have been
-  # stored in the cache</li>
-  # </ul>
+  #    <ul><li>store resource data which has been retrieved from an
+  #            external source into the cache</li>
+  #         <li>try to fetch a requested resource that may have been
+  #            stored in the cache</li>
+  #    </ul>
   # 
   # The ResponseCache implementation decides which resources
   # should be cached, and for how long they should be cached. If a
@@ -84,7 +84,7 @@ module Java::Net
       # Gets the system-wide response cache.
       # 
       # @throws  SecurityException
-      # If a security manager has been installed and it denies
+      #          If a security manager has been installed and it denies
       # {@link NetPermission}<tt>("getResponseCache")</tt>
       # 
       # @see #setDefault(ResponseCache)
@@ -106,10 +106,10 @@ module Java::Net
       # Note: non-standard procotol handlers may ignore this setting.
       # 
       # @param responseCache The response cache, or
-      # <code>null</code> to unset the cache.
+      #          <code>null</code> to unset the cache.
       # 
       # @throws  SecurityException
-      # If a security manager has been installed and it denies
+      #          If a security manager has been installed and it denies
       # {@link NetPermission}<tt>("setResponseCache")</tt>
       # 
       # @see #getDefault()
@@ -133,14 +133,14 @@ module Java::Net
     # that resource is used instead.
     # 
     # @param uri a <code>URI</code> used to reference the requested
-    # network resource
+    #            network resource
     # @param rqstMethod a <code>String</code> representing the request
-    # method
+    #            method
     # @param rqstHeaders - a Map from request header
-    # field names to lists of field values representing
-    # the current request headers
+    #            field names to lists of field values representing
+    #            the current request headers
     # @return a <code>CacheResponse</code> instance if available
-    # from cache, or null otherwise
+    #          from cache, or null otherwise
     # @throws  IOException if an I/O error occurs
     # @throws  IllegalArgumentException if any one of the arguments is null
     # 
@@ -162,15 +162,15 @@ module Java::Net
     # not to be cached, then put must return null.
     # 
     # @param uri a <code>URI</code> used to reference the requested
-    # network resource
+    #            network resource
     # @param conn - a URLConnection instance that is used to fetch
-    # the response to be cached
+    #            the response to be cached
     # @return a <code>CacheRequest</code> for recording the
-    # response to be cached. Null return indicates that
-    # the caller does not intend to cache the response.
+    #            response to be cached. Null return indicates that
+    #            the caller does not intend to cache the response.
     # @throws IOException if an I/O error occurs
     # @throws IllegalArgumentException if any one of the arguments is
-    # null
+    #            null
     def put(uri, conn)
       raise NotImplementedError
     end

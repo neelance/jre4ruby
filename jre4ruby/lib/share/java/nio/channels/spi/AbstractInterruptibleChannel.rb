@@ -50,11 +50,11 @@ module Java::Nio::Channels::Spi
   # <blockquote><pre>
   # boolean completed = false;
   # try {
-  # begin();
-  # completed = ...;    // Perform blocking I/O operation
-  # return ...;         // Return result
+  #     begin();
+  #     completed = ...;    // Perform blocking I/O operation
+  #     return ...;         // Return result
   # } finally {
-  # end(completed);
+  #     end(completed);
   # }</pre></blockquote>
   # 
   # <p> The <tt>completed</tt> argument to the {@link #end end} method tells
@@ -116,7 +116,7 @@ module Java::Nio::Channels::Spi
     # complete the close operation.  </p>
     # 
     # @throws  IOException
-    # If an I/O error occurs
+    #          If an I/O error occurs
     def close
       synchronized((@close_lock)) do
         if (!@open)
@@ -141,7 +141,7 @@ module Java::Nio::Channels::Spi
     # </p>
     # 
     # @throws  IOException
-    # If an I/O error occurs while closing the channel
+    #          If an I/O error occurs while closing the channel
     def impl_close_channel
       raise NotImplementedError
     end
@@ -217,15 +217,15 @@ module Java::Nio::Channels::Spi
     # closing and interruption for this channel.  </p>
     # 
     # @param  completed
-    # <tt>true</tt> if, and only if, the I/O operation completed
-    # successfully, that is, had some effect that would be visible to
-    # the operation's invoker
+    #         <tt>true</tt> if, and only if, the I/O operation completed
+    #         successfully, that is, had some effect that would be visible to
+    #         the operation's invoker
     # 
     # @throws  AsynchronousCloseException
-    # If the channel was asynchronously closed
+    #          If the channel was asynchronously closed
     # 
     # @throws  ClosedByInterruptException
-    # If the thread blocked in the I/O operation was interrupted
+    #          If the thread blocked in the I/O operation was interrupted
     def end_(completed)
       blocked_on(nil)
       if (completed)

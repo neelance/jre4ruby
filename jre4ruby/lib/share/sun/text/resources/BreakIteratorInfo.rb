@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # Licensed Materials - Property of IBM
 # 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
@@ -51,14 +49,7 @@ module Sun::Text::Resources
     
     typesig { [] }
     def get_contents
-      # BreakIteratorClasses lists the class names to instantiate for each
-      # built-in type of BreakIterator
-      # character-break iterator class
-      # word-break iterator class
-      # line-break iterator class
-      # sentence-break iterator class
-      # Rules filename for each break-iterator
-      return Array.typed(Array.typed(Object)).new([Array.typed(Object).new(["BreakIteratorClasses", Array.typed(String).new(["RuleBasedBreakIterator", "RuleBasedBreakIterator", "RuleBasedBreakIterator", "RuleBasedBreakIterator"])]), Array.typed(Object).new(["CharacterData", "CharacterBreakIteratorData"]), Array.typed(Object).new(["WordData", "WordBreakIteratorData"]), Array.typed(Object).new(["LineData", "LineBreakIteratorData"]), Array.typed(Object).new(["SentenceData", "SentenceBreakIteratorData"]), ])
+      return Array.typed(Array.typed(Object)).new([Array.typed(Object).new(["BreakIteratorClasses", Array.typed(String).new(["RuleBasedBreakIterator", "RuleBasedBreakIterator", "RuleBasedBreakIterator", "RuleBasedBreakIterator"])]), Array.typed(Object).new(["CharacterData", "CharacterBreakIteratorData"]), Array.typed(Object).new(["WordData", "WordBreakIteratorData"]), Array.typed(Object).new(["LineData", "LineBreakIteratorData"]), Array.typed(Object).new(["SentenceData", "SentenceBreakIteratorData"])])
     end
     
     typesig { [] }

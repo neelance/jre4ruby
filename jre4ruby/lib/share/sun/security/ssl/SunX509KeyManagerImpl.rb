@@ -56,11 +56,11 @@ module Sun::Security::Ssl
   # 
   # Note that this class currently implements no checking of the local
   # certificates. In particular, it is *not* guaranteed that:
-  # . the certificates are within their validity period and not revoked
-  # . the signatures verify
-  # . they form a PKIX compliant chain.
-  # . the certificate extensions allow the certificate to be used for
-  # the desired purpose.
+  #  . the certificates are within their validity period and not revoked
+  #  . the signatures verify
+  #  . they form a PKIX compliant chain.
+  #  . the certificate extensions allow the certificate to be used for
+  #    the desired purpose.
   # 
   # Chains that fail any of these criteria will probably be rejected by
   # the remote peer.

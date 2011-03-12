@@ -23,8 +23,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # -- This file was mechanically generated: Do not edit! -- //
 module Sun::Nio::Cs
   module StandardCharsetsImports #:nodoc:
@@ -39,118 +37,118 @@ module Sun::Nio::Cs
     include_class_members StandardCharsetsImports
     
     class_module.module_eval {
-      const_set_lazy(:Aliases_US_ASCII) { Array.typed(String).new(["iso-ir-6", "ANSI_X3.4-1986", "ISO_646.irv:1991", "ASCII", "ISO646-US", "us", "IBM367", "cp367", "csASCII", "default", "646", "iso_646.irv:1983", "ANSI_X3.4-1968", "ascii7", ]) }
+      const_set_lazy(:Aliases_US_ASCII) { Array.typed(String).new(["iso-ir-6", "ANSI_X3.4-1986", "ISO_646.irv:1991", "ASCII", "ISO646-US", "us", "IBM367", "cp367", "csASCII", "default", "646", "iso_646.irv:1983", "ANSI_X3.4-1968", "ascii7"]) }
       const_attr_reader  :Aliases_US_ASCII
       
-      const_set_lazy(:Aliases_UTF_8) { Array.typed(String).new(["UTF8", "unicode-1-1-utf-8", ]) }
+      const_set_lazy(:Aliases_UTF_8) { Array.typed(String).new(["UTF8", "unicode-1-1-utf-8"]) }
       const_attr_reader  :Aliases_UTF_8
       
-      const_set_lazy(:Aliases_UTF_16) { Array.typed(String).new(["UTF_16", "utf16", "unicode", "UnicodeBig", ]) }
+      const_set_lazy(:Aliases_UTF_16) { Array.typed(String).new(["UTF_16", "utf16", "unicode", "UnicodeBig"]) }
       const_attr_reader  :Aliases_UTF_16
       
-      const_set_lazy(:Aliases_UTF_16BE) { Array.typed(String).new(["UTF_16BE", "ISO-10646-UCS-2", "X-UTF-16BE", "UnicodeBigUnmarked", ]) }
+      const_set_lazy(:Aliases_UTF_16BE) { Array.typed(String).new(["UTF_16BE", "ISO-10646-UCS-2", "X-UTF-16BE", "UnicodeBigUnmarked"]) }
       const_attr_reader  :Aliases_UTF_16BE
       
-      const_set_lazy(:Aliases_UTF_16LE) { Array.typed(String).new(["UTF_16LE", "X-UTF-16LE", "UnicodeLittleUnmarked", ]) }
+      const_set_lazy(:Aliases_UTF_16LE) { Array.typed(String).new(["UTF_16LE", "X-UTF-16LE", "UnicodeLittleUnmarked"]) }
       const_attr_reader  :Aliases_UTF_16LE
       
-      const_set_lazy(:Aliases_UTF_16LE_BOM) { Array.typed(String).new(["UnicodeLittle", ]) }
+      const_set_lazy(:Aliases_UTF_16LE_BOM) { Array.typed(String).new(["UnicodeLittle"]) }
       const_attr_reader  :Aliases_UTF_16LE_BOM
       
-      const_set_lazy(:Aliases_UTF_32) { Array.typed(String).new(["UTF_32", "UTF32", ]) }
+      const_set_lazy(:Aliases_UTF_32) { Array.typed(String).new(["UTF_32", "UTF32"]) }
       const_attr_reader  :Aliases_UTF_32
       
-      const_set_lazy(:Aliases_UTF_32LE) { Array.typed(String).new(["UTF_32LE", "X-UTF-32LE", ]) }
+      const_set_lazy(:Aliases_UTF_32LE) { Array.typed(String).new(["UTF_32LE", "X-UTF-32LE"]) }
       const_attr_reader  :Aliases_UTF_32LE
       
-      const_set_lazy(:Aliases_UTF_32BE) { Array.typed(String).new(["UTF_32BE", "X-UTF-32BE", ]) }
+      const_set_lazy(:Aliases_UTF_32BE) { Array.typed(String).new(["UTF_32BE", "X-UTF-32BE"]) }
       const_attr_reader  :Aliases_UTF_32BE
       
-      const_set_lazy(:Aliases_UTF_32LE_BOM) { Array.typed(String).new(["UTF_32LE_BOM", "UTF-32LE-BOM", ]) }
+      const_set_lazy(:Aliases_UTF_32LE_BOM) { Array.typed(String).new(["UTF_32LE_BOM", "UTF-32LE-BOM"]) }
       const_attr_reader  :Aliases_UTF_32LE_BOM
       
-      const_set_lazy(:Aliases_UTF_32BE_BOM) { Array.typed(String).new(["UTF_32BE_BOM", "UTF-32BE-BOM", ]) }
+      const_set_lazy(:Aliases_UTF_32BE_BOM) { Array.typed(String).new(["UTF_32BE_BOM", "UTF-32BE-BOM"]) }
       const_attr_reader  :Aliases_UTF_32BE_BOM
       
-      const_set_lazy(:Aliases_ISO_8859_1) { Array.typed(String).new(["iso-ir-100", "ISO_8859-1", "latin1", "l1", "IBM819", "cp819", "csISOLatin1", "819", "IBM-819", "ISO8859_1", "ISO_8859-1:1987", "ISO_8859_1", "8859_1", "ISO8859-1", ]) }
+      const_set_lazy(:Aliases_ISO_8859_1) { Array.typed(String).new(["iso-ir-100", "ISO_8859-1", "latin1", "l1", "IBM819", "cp819", "csISOLatin1", "819", "IBM-819", "ISO8859_1", "ISO_8859-1:1987", "ISO_8859_1", "8859_1", "ISO8859-1"]) }
       const_attr_reader  :Aliases_ISO_8859_1
       
-      const_set_lazy(:Aliases_ISO_8859_2) { Array.typed(String).new(["iso8859_2", "8859_2", "iso-ir-101", "ISO_8859-2", "ISO_8859-2:1987", "ISO8859-2", "latin2", "l2", "ibm912", "ibm-912", "cp912", "912", "csISOLatin2", ]) }
+      const_set_lazy(:Aliases_ISO_8859_2) { Array.typed(String).new(["iso8859_2", "8859_2", "iso-ir-101", "ISO_8859-2", "ISO_8859-2:1987", "ISO8859-2", "latin2", "l2", "ibm912", "ibm-912", "cp912", "912", "csISOLatin2"]) }
       const_attr_reader  :Aliases_ISO_8859_2
       
-      const_set_lazy(:Aliases_ISO_8859_4) { Array.typed(String).new(["iso8859_4", "iso8859-4", "8859_4", "iso-ir-110", "ISO_8859-4", "ISO_8859-4:1988", "latin4", "l4", "ibm914", "ibm-914", "cp914", "914", "csISOLatin4", ]) }
+      const_set_lazy(:Aliases_ISO_8859_4) { Array.typed(String).new(["iso8859_4", "iso8859-4", "8859_4", "iso-ir-110", "ISO_8859-4", "ISO_8859-4:1988", "latin4", "l4", "ibm914", "ibm-914", "cp914", "914", "csISOLatin4"]) }
       const_attr_reader  :Aliases_ISO_8859_4
       
-      const_set_lazy(:Aliases_ISO_8859_5) { Array.typed(String).new(["iso8859_5", "8859_5", "iso-ir-144", "ISO_8859-5", "ISO_8859-5:1988", "ISO8859-5", "cyrillic", "ibm915", "ibm-915", "cp915", "915", "csISOLatinCyrillic", ]) }
+      const_set_lazy(:Aliases_ISO_8859_5) { Array.typed(String).new(["iso8859_5", "8859_5", "iso-ir-144", "ISO_8859-5", "ISO_8859-5:1988", "ISO8859-5", "cyrillic", "ibm915", "ibm-915", "cp915", "915", "csISOLatinCyrillic"]) }
       const_attr_reader  :Aliases_ISO_8859_5
       
-      const_set_lazy(:Aliases_ISO_8859_7) { Array.typed(String).new(["iso8859_7", "8859_7", "iso-ir-126", "ISO_8859-7", "ISO_8859-7:1987", "ELOT_928", "ECMA-118", "greek", "greek8", "csISOLatinGreek", "sun_eu_greek", "ibm813", "ibm-813", "813", "cp813", "iso8859-7", ]) }
+      const_set_lazy(:Aliases_ISO_8859_7) { Array.typed(String).new(["iso8859_7", "8859_7", "iso-ir-126", "ISO_8859-7", "ISO_8859-7:1987", "ELOT_928", "ECMA-118", "greek", "greek8", "csISOLatinGreek", "sun_eu_greek", "ibm813", "ibm-813", "813", "cp813", "iso8859-7"]) }
       const_attr_reader  :Aliases_ISO_8859_7
       
-      const_set_lazy(:Aliases_ISO_8859_9) { Array.typed(String).new(["iso8859_9", "8859_9", "iso-ir-148", "ISO_8859-9", "ISO_8859-9:1989", "ISO8859-9", "latin5", "l5", "ibm920", "ibm-920", "920", "cp920", "csISOLatin5", ]) }
+      const_set_lazy(:Aliases_ISO_8859_9) { Array.typed(String).new(["iso8859_9", "8859_9", "iso-ir-148", "ISO_8859-9", "ISO_8859-9:1989", "ISO8859-9", "latin5", "l5", "ibm920", "ibm-920", "920", "cp920", "csISOLatin5"]) }
       const_attr_reader  :Aliases_ISO_8859_9
       
-      const_set_lazy(:Aliases_ISO_8859_13) { Array.typed(String).new(["iso8859_13", "8859_13", "iso_8859-13", "ISO8859-13", ]) }
+      const_set_lazy(:Aliases_ISO_8859_13) { Array.typed(String).new(["iso8859_13", "8859_13", "iso_8859-13", "ISO8859-13"]) }
       const_attr_reader  :Aliases_ISO_8859_13
       
-      const_set_lazy(:Aliases_ISO_8859_15) { Array.typed(String).new(["ISO_8859-15", "8859_15", "ISO-8859-15", "ISO8859_15", "ISO8859-15", "IBM923", "IBM-923", "cp923", "923", "LATIN0", "LATIN9", "L9", "csISOlatin0", "csISOlatin9", "ISO8859_15_FDIS", ]) }
+      const_set_lazy(:Aliases_ISO_8859_15) { Array.typed(String).new(["ISO_8859-15", "8859_15", "ISO-8859-15", "ISO8859_15", "ISO8859-15", "IBM923", "IBM-923", "cp923", "923", "LATIN0", "LATIN9", "L9", "csISOlatin0", "csISOlatin9", "ISO8859_15_FDIS"]) }
       const_attr_reader  :Aliases_ISO_8859_15
       
-      const_set_lazy(:Aliases_KOI8_R) { Array.typed(String).new(["koi8_r", "koi8", "cskoi8r", ]) }
+      const_set_lazy(:Aliases_KOI8_R) { Array.typed(String).new(["koi8_r", "koi8", "cskoi8r"]) }
       const_attr_reader  :Aliases_KOI8_R
       
-      const_set_lazy(:Aliases_KOI8_U) { Array.typed(String).new(["koi8_u", ]) }
+      const_set_lazy(:Aliases_KOI8_U) { Array.typed(String).new(["koi8_u"]) }
       const_attr_reader  :Aliases_KOI8_U
       
-      const_set_lazy(:Aliases_MS1250) { Array.typed(String).new(["cp1250", "cp5346", ]) }
+      const_set_lazy(:Aliases_MS1250) { Array.typed(String).new(["cp1250", "cp5346"]) }
       const_attr_reader  :Aliases_MS1250
       
-      const_set_lazy(:Aliases_MS1251) { Array.typed(String).new(["cp1251", "cp5347", "ansi-1251", ]) }
+      const_set_lazy(:Aliases_MS1251) { Array.typed(String).new(["cp1251", "cp5347", "ansi-1251"]) }
       const_attr_reader  :Aliases_MS1251
       
-      const_set_lazy(:Aliases_MS1252) { Array.typed(String).new(["cp1252", "cp5348", ]) }
+      const_set_lazy(:Aliases_MS1252) { Array.typed(String).new(["cp1252", "cp5348"]) }
       const_attr_reader  :Aliases_MS1252
       
-      const_set_lazy(:Aliases_MS1253) { Array.typed(String).new(["cp1253", "cp5349", ]) }
+      const_set_lazy(:Aliases_MS1253) { Array.typed(String).new(["cp1253", "cp5349"]) }
       const_attr_reader  :Aliases_MS1253
       
-      const_set_lazy(:Aliases_MS1254) { Array.typed(String).new(["cp1254", "cp5350", ]) }
+      const_set_lazy(:Aliases_MS1254) { Array.typed(String).new(["cp1254", "cp5350"]) }
       const_attr_reader  :Aliases_MS1254
       
-      const_set_lazy(:Aliases_MS1257) { Array.typed(String).new(["cp1257", "cp5353", ]) }
+      const_set_lazy(:Aliases_MS1257) { Array.typed(String).new(["cp1257", "cp5353"]) }
       const_attr_reader  :Aliases_MS1257
       
-      const_set_lazy(:Aliases_IBM437) { Array.typed(String).new(["cp437", "ibm437", "ibm-437", "437", "cspc8codepage437", "windows-437", ]) }
+      const_set_lazy(:Aliases_IBM437) { Array.typed(String).new(["cp437", "ibm437", "ibm-437", "437", "cspc8codepage437", "windows-437"]) }
       const_attr_reader  :Aliases_IBM437
       
-      const_set_lazy(:Aliases_IBM737) { Array.typed(String).new(["cp737", "ibm737", "ibm-737", "737", ]) }
+      const_set_lazy(:Aliases_IBM737) { Array.typed(String).new(["cp737", "ibm737", "ibm-737", "737"]) }
       const_attr_reader  :Aliases_IBM737
       
-      const_set_lazy(:Aliases_IBM775) { Array.typed(String).new(["cp775", "ibm775", "ibm-775", "775", ]) }
+      const_set_lazy(:Aliases_IBM775) { Array.typed(String).new(["cp775", "ibm775", "ibm-775", "775"]) }
       const_attr_reader  :Aliases_IBM775
       
-      const_set_lazy(:Aliases_IBM850) { Array.typed(String).new(["cp850", "ibm-850", "ibm850", "850", "cspc850multilingual", ]) }
+      const_set_lazy(:Aliases_IBM850) { Array.typed(String).new(["cp850", "ibm-850", "ibm850", "850", "cspc850multilingual"]) }
       const_attr_reader  :Aliases_IBM850
       
-      const_set_lazy(:Aliases_IBM852) { Array.typed(String).new(["cp852", "ibm852", "ibm-852", "852", "csPCp852", ]) }
+      const_set_lazy(:Aliases_IBM852) { Array.typed(String).new(["cp852", "ibm852", "ibm-852", "852", "csPCp852"]) }
       const_attr_reader  :Aliases_IBM852
       
-      const_set_lazy(:Aliases_IBM855) { Array.typed(String).new(["cp855", "ibm-855", "ibm855", "855", "cspcp855", ]) }
+      const_set_lazy(:Aliases_IBM855) { Array.typed(String).new(["cp855", "ibm-855", "ibm855", "855", "cspcp855"]) }
       const_attr_reader  :Aliases_IBM855
       
-      const_set_lazy(:Aliases_IBM857) { Array.typed(String).new(["cp857", "ibm857", "ibm-857", "857", "csIBM857", ]) }
+      const_set_lazy(:Aliases_IBM857) { Array.typed(String).new(["cp857", "ibm857", "ibm-857", "857", "csIBM857"]) }
       const_attr_reader  :Aliases_IBM857
       
-      const_set_lazy(:Aliases_IBM858) { Array.typed(String).new(["cp858", "ccsid00858", "cp00858", "858", ]) }
+      const_set_lazy(:Aliases_IBM858) { Array.typed(String).new(["cp858", "ccsid00858", "cp00858", "858"]) }
       const_attr_reader  :Aliases_IBM858
       
-      const_set_lazy(:Aliases_IBM862) { Array.typed(String).new(["cp862", "ibm862", "ibm-862", "862", "csIBM862", "cspc862latinhebrew", ]) }
+      const_set_lazy(:Aliases_IBM862) { Array.typed(String).new(["cp862", "ibm862", "ibm-862", "862", "csIBM862", "cspc862latinhebrew"]) }
       const_attr_reader  :Aliases_IBM862
       
-      const_set_lazy(:Aliases_IBM866) { Array.typed(String).new(["cp866", "ibm866", "ibm-866", "866", "csIBM866", ]) }
+      const_set_lazy(:Aliases_IBM866) { Array.typed(String).new(["cp866", "ibm866", "ibm-866", "866", "csIBM866"]) }
       const_attr_reader  :Aliases_IBM866
       
-      const_set_lazy(:Aliases_IBM874) { Array.typed(String).new(["cp874", "ibm874", "ibm-874", "874", ]) }
+      const_set_lazy(:Aliases_IBM874) { Array.typed(String).new(["cp874", "ibm874", "ibm-874", "874"]) }
       const_attr_reader  :Aliases_IBM874
       
       const_set_lazy(:Aliases) { Class.new(Sun::Util::PreHashedMap) do

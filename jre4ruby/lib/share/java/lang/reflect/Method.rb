@@ -289,11 +289,11 @@ module Java::Lang::Reflect
     # variables.
     # 
     # @return an array of {@code TypeVariable} objects that represent
-    # the type variables declared by this generic declaration
+    #     the type variables declared by this generic declaration
     # @throws GenericSignatureFormatError if the generic
-    # signature of this generic declaration does not conform to
-    # the format specified in the Java Virtual Machine Specification,
-    # 3rd edition
+    #     signature of this generic declaration does not conform to
+    #     the format specified in the Java Virtual Machine Specification,
+    #     3rd edition
     # @since 1.5
     def get_type_parameters
       if (!(get_generic_signature).nil?)
@@ -324,15 +324,15 @@ module Java::Lang::Reflect
     # is created. Otherwise, it is resolved.
     # 
     # @return  a {@code Type} object that represents the formal return
-    # type of the underlying  method
+    #     type of the underlying  method
     # @throws GenericSignatureFormatError
-    # if the generic method signature does not conform to the format
-    # specified in the Java Virtual Machine Specification, 3rd edition
+    #     if the generic method signature does not conform to the format
+    #     specified in the Java Virtual Machine Specification, 3rd edition
     # @throws TypeNotPresentException if the underlying method's
-    # return type refers to a non-existent type declaration
+    #     return type refers to a non-existent type declaration
     # @throws MalformedParameterizedTypeException if the
-    # underlying method's return typed refers to a parameterized
-    # type that cannot be instantiated for any reason
+    #     underlying method's return typed refers to a parameterized
+    #     type that cannot be instantiated for any reason
     # @since 1.5
     def get_generic_return_type
       if (!(get_generic_signature).nil?)
@@ -368,16 +368,16 @@ module Java::Lang::Reflect
     # type, it is created. Otherwise, it is resolved.
     # 
     # @return an array of Types that represent the formal
-    # parameter types of the underlying method, in declaration order
+    #     parameter types of the underlying method, in declaration order
     # @throws GenericSignatureFormatError
-    # if the generic method signature does not conform to the format
-    # specified in the Java Virtual Machine Specification, 3rd edition
+    #     if the generic method signature does not conform to the format
+    #     specified in the Java Virtual Machine Specification, 3rd edition
     # @throws TypeNotPresentException if any of the parameter
-    # types of the underlying method refers to a non-existent type
-    # declaration
+    #     types of the underlying method refers to a non-existent type
+    #     declaration
     # @throws MalformedParameterizedTypeException if any of
-    # the underlying method's parameter types refer to a parameterized
-    # type that cannot be instantiated for any reason
+    #     the underlying method's parameter types refer to a parameterized
+    #     type that cannot be instantiated for any reason
     # @since 1.5
     def get_generic_parameter_types
       if (!(get_generic_signature).nil?)
@@ -414,15 +414,15 @@ module Java::Lang::Reflect
     # type, it is created. Otherwise, it is resolved.
     # 
     # @return an array of Types that represent the exception types
-    # thrown by the underlying method
+    #     thrown by the underlying method
     # @throws GenericSignatureFormatError
-    # if the generic method signature does not conform to the format
-    # specified in the Java Virtual Machine Specification, 3rd edition
+    #     if the generic method signature does not conform to the format
+    #     specified in the Java Virtual Machine Specification, 3rd edition
     # @throws TypeNotPresentException if the underlying method's
-    # {@code throws} clause refers to a non-existent type declaration
+    #     {@code throws} clause refers to a non-existent type declaration
     # @throws MalformedParameterizedTypeException if
-    # the underlying method's {@code throws} clause refers to a
-    # parameterized type that cannot be instantiated for any reason
+    #     the underlying method's {@code throws} clause refers to a
+    #     parameterized type that cannot be instantiated for any reason
     # @since 1.5
     def get_generic_exception_types
       result = nil
@@ -483,7 +483,7 @@ module Java::Lang::Reflect
     # comma-separated list of the thrown exception types.
     # For example:
     # <pre>
-    # public boolean java.lang.Object.equals(java.lang.Object)
+    #    public boolean java.lang.Object.equals(java.lang.Object)
     # </pre>
     # 
     # <p>The access modifiers are placed in canonical order as
@@ -655,22 +655,22 @@ module Java::Lang::Reflect
     # {@code args}
     # 
     # @exception IllegalAccessException    if this {@code Method} object
-    # enforces Java language access control and the underlying
-    # method is inaccessible.
+    #              enforces Java language access control and the underlying
+    #              method is inaccessible.
     # @exception IllegalArgumentException  if the method is an
-    # instance method and the specified object argument
-    # is not an instance of the class or interface
-    # declaring the underlying method (or of a subclass
-    # or implementor thereof); if the number of actual
-    # and formal parameters differ; if an unwrapping
-    # conversion for primitive arguments fails; or if,
-    # after possible unwrapping, a parameter value
-    # cannot be converted to the corresponding formal
-    # parameter type by a method invocation conversion.
+    #              instance method and the specified object argument
+    #              is not an instance of the class or interface
+    #              declaring the underlying method (or of a subclass
+    #              or implementor thereof); if the number of actual
+    #              and formal parameters differ; if an unwrapping
+    #              conversion for primitive arguments fails; or if,
+    #              after possible unwrapping, a parameter value
+    #              cannot be converted to the corresponding formal
+    #              parameter type by a method invocation conversion.
     # @exception InvocationTargetException if the underlying method
-    # throws an exception.
+    #              throws an exception.
     # @exception NullPointerException      if the specified object is null
-    # and the method is an instance method.
+    #              and the method is an instance method.
     # @exception ExceptionInInitializerError if the initialization
     # provoked by this method fails.
     def invoke(obj, *args)
@@ -820,10 +820,10 @@ module Java::Lang::Reflect
     # instance does not represent a declared member of an annotation type.
     # 
     # @return the default value for the annotation member represented
-    # by this {@code Method} instance.
+    #     by this {@code Method} instance.
     # @throws TypeNotPresentException if the annotation is of type
-    # {@link Class} and no definition can be found for the
-    # default class value.
+    #     {@link Class} and no definition can be found for the
+    #     default class value.
     # @since  1.5
     def get_default_value
       if ((@annotation_default).nil?)
@@ -849,8 +849,8 @@ module Java::Lang::Reflect
     # other callers.
     # 
     # @return an array of arrays that represent the annotations on the formal
-    # parameters, in declaration order, of the method represented by this
-    # Method object
+    #    parameters, in declaration order, of the method represented by this
+    #    Method object
     # @since 1.5
     def get_parameter_annotations
       num_parameters = @parameter_types.attr_length

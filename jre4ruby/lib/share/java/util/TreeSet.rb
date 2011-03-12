@@ -59,7 +59,7 @@ module Java::Util
   # {@link Collections#synchronizedSortedSet Collections.synchronizedSortedSet}
   # method.  This is best done at creation time, to prevent accidental
   # unsynchronized access to the set: <pre>
-  # SortedSet s = Collections.synchronizedSortedSet(new TreeSet(...));</pre>
+  #   SortedSet s = Collections.synchronizedSortedSet(new TreeSet(...));</pre>
   # 
   # <p>The iterators returned by this class's {@code iterator} method are
   # <i>fail-fast</i>: if the set is modified at any time after the iterator is
@@ -146,8 +146,8 @@ module Java::Util
     # {@code add} call will throw a {@code ClassCastException}.
     # 
     # @param comparator the comparator that will be used to order this set.
-    # If {@code null}, the {@linkplain Comparable natural
-    # ordering} of the elements will be used.
+    #        If {@code null}, the {@linkplain Comparable natural
+    #        ordering} of the elements will be used.
     def initialize(comparator)
       initialize__tree_set(TreeMap.new(comparator))
     end
@@ -163,7 +163,7 @@ module Java::Util
     # 
     # @param c collection whose elements will comprise the new set
     # @throws ClassCastException if the elements in {@code c} are
-    # not {@link Comparable}, or are not mutually comparable
+    #         not {@link Comparable}, or are not mutually comparable
     # @throws NullPointerException if the specified collection is null
     def initialize(c)
       initialize__tree_set()
@@ -229,10 +229,10 @@ module Java::Util
     # @param o object to be checked for containment in this set
     # @return {@code true} if this set contains the specified element
     # @throws ClassCastException if the specified object cannot be compared
-    # with the elements currently in the set
+    #         with the elements currently in the set
     # @throws NullPointerException if the specified element is null
-    # and this set uses natural ordering, or its comparator
-    # does not permit null elements
+    #         and this set uses natural ordering, or its comparator
+    #         does not permit null elements
     def contains(o)
       return @m.contains_key(o)
     end
@@ -247,12 +247,12 @@ module Java::Util
     # 
     # @param e element to be added to this set
     # @return {@code true} if this set did not already contain the specified
-    # element
+    #         element
     # @throws ClassCastException if the specified object cannot be compared
-    # with the elements currently in this set
+    #         with the elements currently in this set
     # @throws NullPointerException if the specified element is null
-    # and this set uses natural ordering, or its comparator
-    # does not permit null elements
+    #         and this set uses natural ordering, or its comparator
+    #         does not permit null elements
     def add(e)
       return (@m.put(e, PRESENT)).nil?
     end
@@ -269,10 +269,10 @@ module Java::Util
     # @param o object to be removed from this set, if present
     # @return {@code true} if this set contained the specified element
     # @throws ClassCastException if the specified object cannot be compared
-    # with the elements currently in this set
+    #         with the elements currently in this set
     # @throws NullPointerException if the specified element is null
-    # and this set uses natural ordering, or its comparator
-    # does not permit null elements
+    #         and this set uses natural ordering, or its comparator
+    #         does not permit null elements
     def remove(o)
       return (@m.remove(o)).equal?(PRESENT)
     end
@@ -290,10 +290,10 @@ module Java::Util
     # @param c collection containing elements to be added to this set
     # @return {@code true} if this set changed as a result of the call
     # @throws ClassCastException if the elements provided cannot be compared
-    # with the elements currently in the set
+    #         with the elements currently in the set
     # @throws NullPointerException if the specified collection is null or
-    # if any element is null and this set uses natural ordering, or
-    # its comparator does not permit null elements
+    #         if any element is null and this set uses natural ordering, or
+    #         its comparator does not permit null elements
     def add_all(c)
       # Use linear-time version if applicable
       if ((@m.size).equal?(0) && c.size > 0 && c.is_a?(SortedSet) && @m.is_a?(TreeMap))
@@ -312,8 +312,8 @@ module Java::Util
     typesig { [Object, ::Java::Boolean, Object, ::Java::Boolean] }
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if {@code fromElement} or {@code toElement}
-    # is null and this set uses natural ordering, or its comparator
-    # does not permit null elements
+    #         is null and this set uses natural ordering, or its comparator
+    #         does not permit null elements
     # @throws IllegalArgumentException {@inheritDoc}
     # @since 1.6
     def sub_set(from_element, from_inclusive, to_element, to_inclusive)
@@ -323,8 +323,8 @@ module Java::Util
     typesig { [Object, ::Java::Boolean] }
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if {@code toElement} is null and
-    # this set uses natural ordering, or its comparator does
-    # not permit null elements
+    #         this set uses natural ordering, or its comparator does
+    #         not permit null elements
     # @throws IllegalArgumentException {@inheritDoc}
     # @since 1.6
     def head_set(to_element, inclusive)
@@ -334,8 +334,8 @@ module Java::Util
     typesig { [Object, ::Java::Boolean] }
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if {@code fromElement} is null and
-    # this set uses natural ordering, or its comparator does
-    # not permit null elements
+    #         this set uses natural ordering, or its comparator does
+    #         not permit null elements
     # @throws IllegalArgumentException {@inheritDoc}
     # @since 1.6
     def tail_set(from_element, inclusive)
@@ -345,8 +345,8 @@ module Java::Util
     typesig { [Object, Object] }
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if {@code fromElement} or
-    # {@code toElement} is null and this set uses natural ordering,
-    # or its comparator does not permit null elements
+    #         {@code toElement} is null and this set uses natural ordering,
+    #         or its comparator does not permit null elements
     # @throws IllegalArgumentException {@inheritDoc}
     def sub_set(from_element, to_element)
       return sub_set(from_element, true, to_element, false)
@@ -355,8 +355,8 @@ module Java::Util
     typesig { [Object] }
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if {@code toElement} is null
-    # and this set uses natural ordering, or its comparator does
-    # not permit null elements
+    #         and this set uses natural ordering, or its comparator does
+    #         not permit null elements
     # @throws IllegalArgumentException {@inheritDoc}
     def head_set(to_element)
       return head_set(to_element, false)
@@ -365,8 +365,8 @@ module Java::Util
     typesig { [Object] }
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if {@code fromElement} is null
-    # and this set uses natural ordering, or its comparator does
-    # not permit null elements
+    #         and this set uses natural ordering, or its comparator does
+    #         not permit null elements
     # @throws IllegalArgumentException {@inheritDoc}
     def tail_set(from_element)
       return tail_set(from_element, true)
@@ -391,11 +391,10 @@ module Java::Util
     
     typesig { [Object] }
     # NavigableSet API methods
-    # 
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if the specified element is null
-    # and this set uses natural ordering, or its comparator
-    # does not permit null elements
+    #         and this set uses natural ordering, or its comparator
+    #         does not permit null elements
     # @since 1.6
     def lower(e)
       return @m.lower_key(e)
@@ -404,8 +403,8 @@ module Java::Util
     typesig { [Object] }
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if the specified element is null
-    # and this set uses natural ordering, or its comparator
-    # does not permit null elements
+    #         and this set uses natural ordering, or its comparator
+    #         does not permit null elements
     # @since 1.6
     def floor(e)
       return @m.floor_key(e)
@@ -414,8 +413,8 @@ module Java::Util
     typesig { [Object] }
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if the specified element is null
-    # and this set uses natural ordering, or its comparator
-    # does not permit null elements
+    #         and this set uses natural ordering, or its comparator
+    #         does not permit null elements
     # @since 1.6
     def ceiling(e)
       return @m.ceiling_key(e)
@@ -424,8 +423,8 @@ module Java::Util
     typesig { [Object] }
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if the specified element is null
-    # and this set uses natural ordering, or its comparator
-    # does not permit null elements
+    #         and this set uses natural ordering, or its comparator
+    #         does not permit null elements
     # @since 1.6
     def higher(e)
       return @m.higher_key(e)
@@ -466,12 +465,12 @@ module Java::Util
     # serialize it).
     # 
     # @serialData Emits the comparator used to order this set, or
-    # {@code null} if it obeys its elements' natural ordering
-    # (Object), followed by the size of the set (the number of
-    # elements it contains) (int), followed by all of its
-    # elements (each an Object) in order (as determined by the
-    # set's Comparator, or by the elements' natural ordering if
-    # the set has no Comparator).
+    #             {@code null} if it obeys its elements' natural ordering
+    #             (Object), followed by the size of the set (the number of
+    #             elements it contains) (int), followed by all of its
+    #             elements (each an Object) in order (as determined by the
+    #             set's Comparator, or by the elements' natural ordering if
+    #             the set has no Comparator).
     def write_object(s)
       # Write out any hidden stuff
       s.default_write_object

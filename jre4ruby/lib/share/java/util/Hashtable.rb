@@ -70,18 +70,18 @@ module Java::Util
   # This example creates a hashtable of numbers. It uses the names of
   # the numbers as keys:
   # <pre>   {@code
-  # Hashtable<String, Integer> numbers
-  # = new Hashtable<String, Integer>();
-  # numbers.put("one", 1);
-  # numbers.put("two", 2);
-  # numbers.put("three", 3);}</pre>
+  #   Hashtable<String, Integer> numbers
+  #     = new Hashtable<String, Integer>();
+  #   numbers.put("one", 1);
+  #   numbers.put("two", 2);
+  #   numbers.put("three", 3);}</pre>
   # 
   # <p>To retrieve a number, use the following code:
   # <pre>   {@code
-  # Integer n = numbers.get("two");
-  # if (n != null) {
-  # System.out.println("two = " + n);
-  # }}</pre>
+  #   Integer n = numbers.get("two");
+  #   if (n != null) {
+  #     System.out.println("two = " + n);
+  #   }}</pre>
   # 
   # <p>The iterators returned by the <tt>iterator</tt> method of the collections
   # returned by all of this class's "collection view methods" are
@@ -184,7 +184,7 @@ module Java::Util
     # @param      initialCapacity   the initial capacity of the hashtable.
     # @param      loadFactor        the load factor of the hashtable.
     # @exception  IllegalArgumentException  if the initial capacity is less
-    # than zero, or if the load factor is nonpositive.
+    #             than zero, or if the load factor is nonpositive.
     def initialize(initial_capacity, load_factor)
       @table = nil
       @count = 0
@@ -210,7 +210,7 @@ module Java::Util
       end
       @load_factor = load_factor
       @table = Array.typed(Entry).new(initial_capacity) { nil }
-      @threshold = RJava.cast_to_int((initial_capacity * load_factor))
+      @threshold = ((initial_capacity * load_factor)).to_int
     end
     
     typesig { [::Java::Int] }
@@ -219,7 +219,7 @@ module Java::Util
     # 
     # @param     initialCapacity   the initial capacity of the hashtable.
     # @exception IllegalArgumentException if the initial capacity is less
-    # than zero.
+    #              than zero.
     def initialize(initial_capacity)
       initialize__hashtable(initial_capacity, 0.75)
     end
@@ -258,7 +258,7 @@ module Java::Util
     # Tests if this hashtable maps no keys to values.
     # 
     # @return  <code>true</code> if this hashtable maps no keys to values;
-    # <code>false</code> otherwise.
+    #          <code>false</code> otherwise.
     def is_empty
       synchronized(self) do
         return (@count).equal?(0)
@@ -306,9 +306,9 @@ module Java::Util
     # 
     # @param      value   a value to search for
     # @return     <code>true</code> if and only if some key maps to the
-    # <code>value</code> argument in this hashtable as
-    # determined by the <tt>equals</tt> method;
-    # <code>false</code> otherwise.
+    #             <code>value</code> argument in this hashtable as
+    #             determined by the <tt>equals</tt> method;
+    #             <code>false</code> otherwise.
     # @exception  NullPointerException  if the value is <code>null</code>
     def contains(value)
       synchronized(self) do
@@ -338,7 +338,7 @@ module Java::Util
     # 
     # @param value value whose presence in this hashtable is to be tested
     # @return <tt>true</tt> if this map maps one or more keys to the
-    # specified value
+    #         specified value
     # @throws NullPointerException  if the value is <code>null</code>
     # @since 1.2
     def contains_value(value)
@@ -350,8 +350,8 @@ module Java::Util
     # 
     # @param   key   possible key
     # @return  <code>true</code> if and only if the specified object
-    # is a key in this hashtable, as determined by the
-    # <tt>equals</tt> method; <code>false</code> otherwise.
+    #          is a key in this hashtable, as determined by the
+    #          <tt>equals</tt> method; <code>false</code> otherwise.
     # @throws  NullPointerException  if the key is <code>null</code>
     # @see     #contains(Object)
     def contains_key(key)
@@ -381,7 +381,7 @@ module Java::Util
     # 
     # @param key the key whose associated value is to be returned
     # @return the value to which the specified key is mapped, or
-    # {@code null} if this map contains no mapping for the key
+    #         {@code null} if this map contains no mapping for the key
     # @throws NullPointerException if the specified key is null
     # @see     #put(Object, Object)
     def get(key)
@@ -412,7 +412,7 @@ module Java::Util
       new_capacity = old_capacity * 2 + 1
       new_map = Array.typed(Entry).new(new_capacity) { nil }
       @mod_count += 1
-      @threshold = RJava.cast_to_int((new_capacity * @load_factor))
+      @threshold = ((new_capacity * @load_factor)).to_int
       @table = new_map
       i = old_capacity
       while ((i -= 1) + 1) > 0
@@ -438,9 +438,9 @@ module Java::Util
     # @param      key     the hashtable key
     # @param      value   the value
     # @return     the previous value of the specified key in this hashtable,
-    # or <code>null</code> if it did not have one
+    #             or <code>null</code> if it did not have one
     # @exception  NullPointerException  if the key or value is
-    # <code>null</code>
+    #               <code>null</code>
     # @see     Object#equals(Object)
     # @see     #get(Object)
     def put(key, value)
@@ -483,7 +483,7 @@ module Java::Util
     # 
     # @param   key   the key that needs to be removed
     # @return  the value to which the key had been mapped in this hashtable,
-    # or <code>null</code> if the key did not have a mapping
+    #          or <code>null</code> if the key did not have a mapping
     # @throws  NullPointerException  if the key is <code>null</code>
     def remove(key)
       synchronized(self) do
@@ -623,7 +623,6 @@ module Java::Util
     end
     
     # Views
-    # 
     # Each of these fields are initialized to contain an instance of the
     # appropriate view the first time this view is requested.  The views are
     # stateless, so there's no reason to create more than one of each.
@@ -871,7 +870,6 @@ module Java::Util
     
     typesig { [Object] }
     # Comparison and hashing
-    # 
     # Compares the specified Object with this Map for equality,
     # as per the definition in the Map interface.
     # 
@@ -956,11 +954,11 @@ module Java::Util
     # Save the state of the Hashtable to a stream (i.e., serialize it).
     # 
     # @serialData The <i>capacity</i> of the Hashtable (the length of the
-    # bucket array) is emitted (int), followed by the
-    # <i>size</i> of the Hashtable (the number of key-value
-    # mappings), followed by the key (Object) and value (Object)
-    # for each key-value mapping represented by the Hashtable
-    # The key-value mappings are emitted in no particular order.
+    #             bucket array) is emitted (int), followed by the
+    #             <i>size</i> of the Hashtable (the number of key-value
+    #             mappings), followed by the key (Object) and value (Object)
+    #             for each key-value mapping represented by the Hashtable
+    #             The key-value mappings are emitted in no particular order.
     def write_object(s)
       synchronized(self) do
         # Write out the length, threshold, loadfactor
@@ -993,7 +991,7 @@ module Java::Util
       # no larger than the original size.  Make the length
       # odd if it's large enough, this helps distribute the entries.
       # Guard against the length ending up zero, that's not valid.
-      length = RJava.cast_to_int((elements * @load_factor)) + (elements / 20) + 3
+      length = ((elements * @load_factor)).to_int + (elements / 20) + 3
       if (length > elements && ((length & 1)).equal?(0))
         length -= 1
       end

@@ -41,7 +41,7 @@ module Java::Util
   # An iterator for a list of length {@code n} has {@code n+1} possible
   # cursor positions, as illustrated by the carets ({@code ^}) below:
   # <PRE>
-  # Element(0)   Element(1)   Element(2)   ... Element(n-1)
+  #                      Element(0)   Element(1)   Element(2)   ... Element(n-1)
   # cursor positions:  ^            ^            ^            ^                  ^
   # </PRE>
   # Note that the {@link #remove} and {@link #set(Object)} methods are
@@ -66,14 +66,13 @@ module Java::Util
     
     typesig { [] }
     # Query Operations
-    # 
     # Returns {@code true} if this list iterator has more elements when
     # traversing the list in the forward direction. (In other words,
     # returns {@code true} if {@link #next} would return an element rather
     # than throwing an exception.)
     # 
     # @return {@code true} if the list iterator has more elements when
-    # traversing the list in the forward direction
+    #         traversing the list in the forward direction
     def has_next
       raise NotImplementedError
     end
@@ -98,7 +97,7 @@ module Java::Util
     # rather than throwing an exception.)
     # 
     # @return {@code true} if the list iterator has more elements when
-    # traversing the list in the reverse direction
+    #         traversing the list in the reverse direction
     def has_previous
       raise NotImplementedError
     end
@@ -113,7 +112,7 @@ module Java::Util
     # 
     # @return the previous element in the list
     # @throws NoSuchElementException if the iteration has no previous
-    # element
+    #         element
     def previous
       raise NotImplementedError
     end
@@ -124,8 +123,8 @@ module Java::Util
     # iterator is at the end of the list.)
     # 
     # @return the index of the element that would be returned by a
-    # subsequent call to {@code next}, or list size if the list
-    # iterator is at the end of the list
+    #         subsequent call to {@code next}, or list size if the list
+    #         iterator is at the end of the list
     def next_index
       raise NotImplementedError
     end
@@ -136,15 +135,14 @@ module Java::Util
     # iterator is at the beginning of the list.)
     # 
     # @return the index of the element that would be returned by a
-    # subsequent call to {@code previous}, or -1 if the list
-    # iterator is at the beginning of the list
+    #         subsequent call to {@code previous}, or -1 if the list
+    #         iterator is at the beginning of the list
     def previous_index
       raise NotImplementedError
     end
     
     typesig { [] }
     # Modification Operations
-    # 
     # Removes from the list the last element that was returned by {@link
     # #next} or {@link #previous} (optional operation).  This call can
     # only be made once per call to {@code next} or {@code previous}.
@@ -152,11 +150,11 @@ module Java::Util
     # called after the last call to {@code next} or {@code previous}.
     # 
     # @throws UnsupportedOperationException if the {@code remove}
-    # operation is not supported by this list iterator
+    #         operation is not supported by this list iterator
     # @throws IllegalStateException if neither {@code next} nor
-    # {@code previous} have been called, or {@code remove} or
-    # {@code add} have been called after the last call to
-    # {@code next} or {@code previous}
+    #         {@code previous} have been called, or {@code remove} or
+    #         {@code add} have been called after the last call to
+    #         {@code next} or {@code previous}
     def remove
       raise NotImplementedError
     end
@@ -169,17 +167,17 @@ module Java::Util
     # {@code previous}.
     # 
     # @param e the element with which to replace the last element returned by
-    # {@code next} or {@code previous}
+    #          {@code next} or {@code previous}
     # @throws UnsupportedOperationException if the {@code set} operation
-    # is not supported by this list iterator
+    #         is not supported by this list iterator
     # @throws ClassCastException if the class of the specified element
-    # prevents it from being added to this list
+    #         prevents it from being added to this list
     # @throws IllegalArgumentException if some aspect of the specified
-    # element prevents it from being added to this list
+    #         element prevents it from being added to this list
     # @throws IllegalStateException if neither {@code next} nor
-    # {@code previous} have been called, or {@code remove} or
-    # {@code add} have been called after the last call to
-    # {@code next} or {@code previous}
+    #         {@code previous} have been called, or {@code remove} or
+    #         {@code add} have been called after the last call to
+    #         {@code next} or {@code previous}
     def set(e)
       raise NotImplementedError
     end
@@ -198,11 +196,11 @@ module Java::Util
     # 
     # @param e the element to insert
     # @throws UnsupportedOperationException if the {@code add} method is
-    # not supported by this list iterator
+    #         not supported by this list iterator
     # @throws ClassCastException if the class of the specified element
-    # prevents it from being added to this list
+    #         prevents it from being added to this list
     # @throws IllegalArgumentException if some aspect of this element
-    # prevents it from being added to this list
+    #         prevents it from being added to this list
     def add(e)
       raise NotImplementedError
     end

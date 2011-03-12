@@ -45,9 +45,9 @@ module Sun::Security::X509
   # The ASN.1 syntax for this is:
   # <pre>
   # AuthorityKeyIdentifier ::= SEQUENCE {
-  # keyIdentifier             [0] KeyIdentifier           OPTIONAL,
-  # authorityCertIssuer       [1] GeneralNames            OPTIONAL,
-  # authorityCertSerialNumber [2] CertificateSerialNumber OPTIONAL
+  #    keyIdentifier             [0] KeyIdentifier           OPTIONAL,
+  #    authorityCertIssuer       [1] GeneralNames            OPTIONAL,
+  #    authorityCertSerialNumber [2] CertificateSerialNumber OPTIONAL
   # }
   # KeyIdentifier ::= OCTET STRING
   # </pre>
@@ -148,7 +148,7 @@ module Sun::Security::X509
     # @param id the KeyIdentifier associated with this extension.
     # @param names the GeneralNames associated with this extension
     # @param serialNum the CertificateSerialNumber associated with
-    # this extension.
+    #         this extension.
     # @exception IOException on error.
     def initialize(kid, name, sn)
       @id = nil

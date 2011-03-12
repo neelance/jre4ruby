@@ -131,13 +131,13 @@ module Sun::Security::Ssl
   # digest.
   # 
   # Example:
-  # MessageDigest md = CloneableDigest.getDigest("SHA", 2);
-  # md.update(data1);
-  # MessageDigest md2 = (MessageDigest)md.clone();
-  # md2.update(data2);
-  # byte[] d1 = md2.digest(); // digest of data1 || data2
-  # md.update(data3);
-  # byte[] d2 = md.digest();  // digest of data1 || data3
+  #   MessageDigest md = CloneableDigest.getDigest("SHA", 2);
+  #   md.update(data1);
+  #   MessageDigest md2 = (MessageDigest)md.clone();
+  #   md2.update(data2);
+  #   byte[] d1 = md2.digest(); // digest of data1 || data2
+  #   md.update(data3);
+  #   byte[] d2 = md.digest();  // digest of data1 || data3
   # 
   # This class is not thread safe.
   class CloneableDigest < HandshakeHashImports.const_get :MessageDigest
@@ -195,7 +195,7 @@ module Sun::Security::Ssl
     def check_state
       # XXX handshaking currently doesn't stop updating hashes...
       # if (digests[0] == null) {
-      # throw new IllegalStateException("no digests left");
+      #     throw new IllegalStateException("no digests left");
       # }
     end
     
@@ -228,9 +228,9 @@ module Sun::Security::Ssl
     typesig { [] }
     def engine_digest
       check_state
-      digest = @digests[0].digest
+      digest_ = @digests[0].digest
       digest_reset
-      return digest
+      return digest_
     end
     
     typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
@@ -269,9 +269,9 @@ module Sun::Security::Ssl
       i = @digests.attr_length - 1
       while i >= 0
         if (!(@digests[i]).nil?)
-          digest = @digests[i]
+          digest_ = @digests[i]
           @digests[i] = nil
-          return digest
+          return digest_
         end
         i -= 1
       end

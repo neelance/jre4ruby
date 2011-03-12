@@ -79,8 +79,8 @@ module Sun::Security::Jgss::Krb5
     typesig { [Krb5Context, MessageProp, Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
     def initialize(context, prop, data, pos, len)
       super(Krb5Token::MIC_ID_v2, context)
-      # debug("Application data to MicToken verify is [" +
-      # getHexBytes(data, pos, len) + "]\n");
+      #      debug("Application data to MicToken verify is [" +
+      #            getHexBytes(data, pos, len) + "]\n");
       if ((prop).nil?)
         prop = MessageProp.new(0, false)
       end
@@ -93,7 +93,7 @@ module Sun::Security::Jgss::Krb5
       data_bytes = Array.typed(::Java::Byte).new(data.available) { 0 }
       data.read(data_bytes)
       # debug("Application data to MicToken cons is [" +
-      # getHexBytes(dataBytes) + "]\n");
+      #     getHexBytes(dataBytes) + "]\n");
       if ((prop).nil?)
         prop = MessageProp.new(0, false)
       end

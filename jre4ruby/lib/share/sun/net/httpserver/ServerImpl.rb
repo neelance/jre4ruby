@@ -505,8 +505,7 @@ module Sun::Net::Httpserver
                   end
                   chan = self.attr_schan.accept
                   if ((chan).nil?)
-                    next
-                    # cancel something ?
+                    next # cancel something ?
                   end
                   chan.configure_blocking(false)
                   newkey = chan.register(self.attr_selector, SelectionKey::OP_READ)
@@ -770,8 +769,8 @@ module Sun::Net::Httpserver
               else
                 if (chdr.equals_ignore_case("keep-alive"))
                   rheaders.set("Connection", "keep-alive")
-                  idle = RJava.cast_to_int(ServerConfig.get_idle_interval) / 1000
-                  max = RJava.cast_to_int(ServerConfig.get_max_idle_connections)
+                  idle = (ServerConfig.get_idle_interval).to_int / 1000
+                  max = (ServerConfig.get_max_idle_connections).to_int
                   val = "timeout=" + RJava.cast_to_string(idle) + ", max=" + RJava.cast_to_string(max)
                   rheaders.set("Keep-Alive", val)
                 end

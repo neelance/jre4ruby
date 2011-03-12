@@ -47,10 +47,10 @@ module Java::Util
   # produce a copy of a set that has the same order as the original, regardless
   # of the original set's implementation:
   # <pre>
-  # void foo(Set s) {
-  # Set copy = new LinkedHashSet(s);
-  # ...
-  # }
+  #     void foo(Set s) {
+  #         Set copy = new LinkedHashSet(s);
+  #         ...
+  #     }
   # </pre>
   # This technique is particularly useful if a module takes a set on input,
   # copies it, and later returns results whose order is determined by that of
@@ -85,7 +85,7 @@ module Java::Util
   # {@link Collections#synchronizedSet Collections.synchronizedSet}
   # method.  This is best done at creation time, to prevent accidental
   # unsynchronized access to the set: <pre>
-  # Set s = Collections.synchronizedSet(new LinkedHashSet(...));</pre>
+  #   Set s = Collections.synchronizedSet(new LinkedHashSet(...));</pre>
   # 
   # <p>The iterators returned by this class's <tt>iterator</tt> method are
   # <em>fail-fast</em>: if the set is modified at any time after the iterator
@@ -137,7 +137,7 @@ module Java::Util
     # @param      initialCapacity the initial capacity of the linked hash set
     # @param      loadFactor      the load factor of the linked hash set
     # @throws     IllegalArgumentException  if the initial capacity is less
-    # than zero, or if the load factor is nonpositive
+    #               than zero, or if the load factor is nonpositive
     def initialize(initial_capacity, load_factor)
       super(initial_capacity, load_factor, true)
     end
@@ -148,7 +148,7 @@ module Java::Util
     # 
     # @param   initialCapacity   the initial capacity of the LinkedHashSet
     # @throws  IllegalArgumentException if the initial capacity is less
-    # than zero
+    #              than zero
     def initialize(initial_capacity)
       super(initial_capacity, 0.75, true)
     end
@@ -167,7 +167,7 @@ module Java::Util
     # and the default load factor (0.75).
     # 
     # @param c  the collection whose elements are to be placed into
-    # this set
+    #           this set
     # @throws NullPointerException if the specified collection is null
     def initialize(c)
       super(Math.max(2 * c.size, 11), 0.75, true)

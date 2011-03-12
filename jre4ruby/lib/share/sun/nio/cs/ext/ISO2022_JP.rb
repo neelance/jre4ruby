@@ -61,62 +61,62 @@ module Sun::Nio::Cs::Ext
   # and the CP50220/50221 specific are
   # 
   # 0208 mapping:
-  # 1)0x213d <-> U2015 (compared to U2014)
-  # 2)One way mappings for 5 characters below
-  # u2225 (ms) -> 0x2142 <-> u2016 (jis)
-  # uff0d (ms) -> 0x215d <-> u2212 (jis)
-  # uffe0 (ms) -> 0x2171 <-> u00a2 (jis)
-  # uffe1 (ms) -> 0x2172 <-> u00a3 (jis)
-  # uffe2 (ms) -> 0x224c <-> u00ac (jis)
-  # //should consider 0xff5e -> 0x2141 <-> U301c?
-  # 3)NEC Row13 0x2d21-0x2d79
-  # 4)85-94 ku <-> UE000,UE3AB (includes NEC selected
-  # IBM kanji in 89-92ku)
-  # 5)UFF61-UFF9f -> Fullwidth 0208 KANA
+  #              1)0x213d <-> U2015 (compared to U2014)
+  #              2)One way mappings for 5 characters below
+  #                u2225 (ms) -> 0x2142 <-> u2016 (jis)
+  #                uff0d (ms) -> 0x215d <-> u2212 (jis)
+  #                uffe0 (ms) -> 0x2171 <-> u00a2 (jis)
+  #                uffe1 (ms) -> 0x2172 <-> u00a3 (jis)
+  #                uffe2 (ms) -> 0x224c <-> u00ac (jis)
+  #                //should consider 0xff5e -> 0x2141 <-> U301c?
+  #              3)NEC Row13 0x2d21-0x2d79
+  #              4)85-94 ku <-> UE000,UE3AB (includes NEC selected
+  #                IBM kanji in 89-92ku)
+  #              5)UFF61-UFF9f -> Fullwidth 0208 KANA
   # 
   # 0212 mapping:
-  # 1)0x2237 <-> UFF5E (Fullwidth Tilde)
-  # 2)0x2271 <-> U2116 (Numero Sign)
-  # 3)85-94 ku <-> UE3AC - UE757
+  #              1)0x2237 <-> UFF5E (Fullwidth Tilde)
+  #              2)0x2271 <-> U2116 (Numero Sign)
+  #              3)85-94 ku <-> UE3AC - UE757
   # 
   # (3)MSISO2022JP uses a JIS0208 mapping generated from MS932DB.b2c
   # and MS932DB.c2b by converting the SJIS codepoints back to their
   # JIS0208 counterparts. With the exception of
   # 
   # (a)Codepoints with a resulting JIS0208 codepoints beyond 0x7e00 are
-  # dropped (this includs the IBM Extended Kanji/Non-kanji from 0x9321
-  # to 0x972c)
+  #    dropped (this includs the IBM Extended Kanji/Non-kanji from 0x9321
+  #    to 0x972c)
   # (b)The Unicode codepoints that the IBM Extended Kanji/Non-kanji are
-  # mapped to (in MS932) are mapped back to NEC selected IBM Kanji/
-  # Non-kanji area at 0x7921-0x7c7e.
+  #    mapped to (in MS932) are mapped back to NEC selected IBM Kanji/
+  #    Non-kanji area at 0x7921-0x7c7e.
   # 
   # Compared to JIS_X_0208 mapping, this MS932 based mapping has
   # 
   # (a)different mappings for 7 JIS codepoints
-  # 0x213d <-> U2015
-  # 0x2141 <-> UFF5E
-  # 0x2142 <-> U2225
-  # 0x215d <-> Uff0d
-  # 0x2171 <-> Uffe0
-  # 0x2172 <-> Uffe1
-  # 0x224c <-> Uffe2
+  #        0x213d <-> U2015
+  #        0x2141 <-> UFF5E
+  #        0x2142 <-> U2225
+  #        0x215d <-> Uff0d
+  #        0x2171 <-> Uffe0
+  #        0x2172 <-> Uffe1
+  #        0x224c <-> Uffe2
   # (b)added one-way c2b mappings for
-  # U00b8 -> 0x2124
-  # U00b7 -> 0x2126
-  # U00af -> 0x2131
-  # U00ab -> 0x2263
-  # U00bb -> 0x2264
-  # U3094 -> 0x2574
-  # U00b5 -> 0x264c
+  #        U00b8 -> 0x2124
+  #        U00b7 -> 0x2126
+  #        U00af -> 0x2131
+  #        U00ab -> 0x2263
+  #        U00bb -> 0x2264
+  #        U3094 -> 0x2574
+  #        U00b5 -> 0x264c
   # (c)NEC Row 13
   # (d)NEC selected IBM extended Kanji/Non-kanji
-  # These codepoints are mapped to the same Unicode codepoints as
-  # the MS932 does, while MS50220/50221 maps them to the Unicode
-  # private area.
+  #    These codepoints are mapped to the same Unicode codepoints as
+  #    the MS932 does, while MS50220/50221 maps them to the Unicode
+  #    private area.
   # 
   # # There is also an interesting difference when compared to MS5022X
-  # 0208 mapping for JIS codepoint "0x2D60", MS932 maps it to U301d
-  # but MS5022X maps it to U301e, obvious MS5022X is wrong, but...
+  #   0208 mapping for JIS codepoint "0x2D60", MS932 maps it to U301d
+  #   but MS5022X maps it to U301e, obvious MS5022X is wrong, but...
   class ISO2022_JP < ISO2022_JPImports.const_get :Charset
     include_class_members ISO2022_JPImports
     overload_protected {

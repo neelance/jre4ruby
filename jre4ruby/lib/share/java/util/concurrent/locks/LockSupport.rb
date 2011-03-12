@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # This file is available under and governed by the GNU General Public
 # License version 2 only, as published by the Free Software Foundation.
 # However, the following notice accompanied the original version of this
@@ -90,32 +88,32 @@ module Java::Util::Concurrent::Locks
   # non-reentrant lock class:
   # <pre>{@code
   # class FIFOMutex {
-  # private final AtomicBoolean locked = new AtomicBoolean(false);
-  # private final Queue<Thread> waiters
-  # = new ConcurrentLinkedQueue<Thread>();
+  #   private final AtomicBoolean locked = new AtomicBoolean(false);
+  #   private final Queue<Thread> waiters
+  #     = new ConcurrentLinkedQueue<Thread>();
   # 
-  # public void lock() {
-  # boolean wasInterrupted = false;
-  # Thread current = Thread.currentThread();
-  # waiters.add(current);
+  #   public void lock() {
+  #     boolean wasInterrupted = false;
+  #     Thread current = Thread.currentThread();
+  #     waiters.add(current);
   # 
-  # // Block while not first in queue or cannot acquire lock
-  # while (waiters.peek() != current ||
-  # !locked.compareAndSet(false, true)) {
-  # LockSupport.park(this);
-  # if (Thread.interrupted()) // ignore interrupts while waiting
-  # wasInterrupted = true;
-  # }
+  #     // Block while not first in queue or cannot acquire lock
+  #     while (waiters.peek() != current ||
+  #            !locked.compareAndSet(false, true)) {
+  #        LockSupport.park(this);
+  #        if (Thread.interrupted()) // ignore interrupts while waiting
+  #          wasInterrupted = true;
+  #     }
   # 
-  # waiters.remove();
-  # if (wasInterrupted)          // reassert interrupt status on exit
-  # current.interrupt();
-  # }
+  #     waiters.remove();
+  #     if (wasInterrupted)          // reassert interrupt status on exit
+  #        current.interrupt();
+  #   }
   # 
-  # public void unlock() {
-  # locked.set(false);
-  # LockSupport.unpark(waiters.peek());
-  # }
+  #   public void unlock() {
+  #     locked.set(false);
+  #     LockSupport.unpark(waiters.peek());
+  #   }
   # }}</pre>
   class LockSupport 
     include_class_members LockSupportImports
@@ -153,7 +151,7 @@ module Java::Util::Concurrent::Locks
       # thread has not been started.
       # 
       # @param thread the thread to unpark, or {@code null}, in which case
-      # this operation has no effect
+      #        this operation has no effect
       def unpark(thread)
         if (!(thread).nil?)
           UnsafeInstance.unpark(thread)
@@ -185,7 +183,7 @@ module Java::Util::Concurrent::Locks
       # for example, the interrupt status of the thread upon return.
       # 
       # @param blocker the synchronization object responsible for this
-      # thread parking
+      #        thread parking
       # @since 1.6
       def park(blocker)
         t = JavaThread.current_thread
@@ -222,7 +220,7 @@ module Java::Util::Concurrent::Locks
       # upon return.
       # 
       # @param blocker the synchronization object responsible for this
-      # thread parking
+      #        thread parking
       # @param nanos the maximum number of nanoseconds to wait
       # @since 1.6
       def park_nanos(blocker, nanos)
@@ -262,9 +260,9 @@ module Java::Util::Concurrent::Locks
       # upon return.
       # 
       # @param blocker the synchronization object responsible for this
-      # thread parking
+      #        thread parking
       # @param deadline the absolute time, in milliseconds from the Epoch,
-      # to wait until
+      #        to wait until
       # @since 1.6
       def park_until(blocker, deadline)
         t = JavaThread.current_thread
@@ -376,7 +374,7 @@ module Java::Util::Concurrent::Locks
       # upon return.
       # 
       # @param deadline the absolute time, in milliseconds from the Epoch,
-      # to wait until
+      #        to wait until
       def park_until(deadline)
         UnsafeInstance.park(true, deadline)
       end

@@ -72,7 +72,7 @@ module Sun::Misc
     # 
     # @param desiredState the desired state
     # @exception  java.lang.InterruptedException if any thread has
-    # interrupted this thread.
+    #               interrupted this thread.
     def lock_when(desired_state)
       synchronized(self) do
         while (!(@state).equal?(desired_state))

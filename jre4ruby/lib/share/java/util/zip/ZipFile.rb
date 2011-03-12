@@ -118,7 +118,7 @@ module Java::Util::Zip
     # @throws ZipException if a ZIP format error has occurred
     # @throws IOException if an I/O error has occurred
     # @throws SecurityException if a security manager exists and its
-    # <code>checkRead</code> method doesn't allow read access to the file.
+    #         <code>checkRead</code> method doesn't allow read access to the file.
     # @see SecurityManager#checkRead(java.lang.String)
     def initialize(name)
       initialize__zip_file(JavaFile.new(name), OPEN_READ)
@@ -138,10 +138,10 @@ module Java::Util::Zip
     # @throws ZipException if a ZIP format error has occurred
     # @throws IOException if an I/O error has occurred
     # @throws SecurityException if a security manager exists and
-    # its <code>checkRead</code> method
-    # doesn't allow read access to the file,
-    # or its <code>checkDelete</code> method doesn't allow deleting
-    # the file when the <tt>OPEN_DELETE</tt> flag is set.
+    #         its <code>checkRead</code> method
+    #         doesn't allow read access to the file,
+    #         or its <code>checkDelete</code> method doesn't allow deleting
+    #         the file when the <tt>OPEN_DELETE</tt> flag is set.
     # @throws IllegalArgumentException if the <tt>mode</tt> argument is invalid
     # @see SecurityManager#checkRead(java.lang.String)
     # @since 1.3
@@ -325,7 +325,7 @@ module Java::Util::Zip
               return 0
             end
             avail = zfin.size - self.attr_inf.get_bytes_written
-            return avail > JavaInteger::MAX_VALUE ? JavaInteger::MAX_VALUE : RJava.cast_to_int(avail)
+            return avail > JavaInteger::MAX_VALUE ? JavaInteger::MAX_VALUE : (avail).to_int
           end
           
           typesig { [Vararg.new(Object)] }
@@ -338,7 +338,7 @@ module Java::Util::Zip
           
           private
           alias_method :initialize_anonymous, :initialize
-        end.new_local(self, zfin, get_inflater, RJava.cast_to_int(size))
+        end.new_local(self, zfin, get_inflater, (size).to_int)
       else
         raise ZipException.new("invalid compression method")
       end
@@ -595,7 +595,7 @@ module Java::Util::Zip
             return 0
           end
           if (len > @rem)
-            len = RJava.cast_to_int(@rem)
+            len = (@rem).to_int
           end
           synchronized((@local_class_parent)) do
             ensure_open_or_zip_exception
@@ -636,7 +636,7 @@ module Java::Util::Zip
         
         typesig { [] }
         def available
-          return @rem > JavaInteger::MAX_VALUE ? JavaInteger::MAX_VALUE : RJava.cast_to_int(@rem)
+          return @rem > JavaInteger::MAX_VALUE ? JavaInteger::MAX_VALUE : (@rem).to_int
         end
         
         typesig { [] }

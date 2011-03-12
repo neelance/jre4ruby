@@ -45,7 +45,6 @@ module Sun::Security::Ssl
   
   # explicit import to override the Provider class in this package
   # need internal Sun classes for FIPS tricks
-  # 
   # This class contains a few static methods for interaction with the JCA/JCE
   # to obtain implementations, etc.
   # 

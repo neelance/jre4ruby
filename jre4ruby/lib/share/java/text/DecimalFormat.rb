@@ -22,17 +22,15 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996 - 1998 - All Rights Reserved
 # 
-# The original version of this source code and documentation is copyrighted
+#   The original version of this source code and documentation is copyrighted
 # and owned by Taligent, Inc., a wholly-owned subsidiary of IBM. These
 # materials are provided under terms of a License Agreement between Taligent
 # and Sun. This technology is protected by multiple US and International
 # patents. This notice and attribution to Taligent may not be removed.
-# Taligent is a registered trademark of Taligent, Inc.
+#   Taligent is a registered trademark of Taligent, Inc.
 module Java::Text
   module DecimalFormatImports #:nodoc:
     class_module.module_eval {
@@ -74,7 +72,7 @@ module Java::Text
   # <blockquote><pre>
   # NumberFormat f = NumberFormat.getInstance(loc);
   # if (f instanceof DecimalFormat) {
-  # ((DecimalFormat) f).setDecimalSeparatorAlwaysShown(true);
+  #     ((DecimalFormat) f).setDecimalSeparatorAlwaysShown(true);
   # }
   # </pre></blockquote>
   # 
@@ -90,38 +88,38 @@ module Java::Text
   # <code>DecimalFormat</code> patterns have the following syntax:
   # <blockquote><pre>
   # <i>Pattern:</i>
-  # <i>PositivePattern</i>
-  # <i>PositivePattern</i> ; <i>NegativePattern</i>
+  #         <i>PositivePattern</i>
+  #         <i>PositivePattern</i> ; <i>NegativePattern</i>
   # <i>PositivePattern:</i>
-  # <i>Prefix<sub>opt</sub></i> <i>Number</i> <i>Suffix<sub>opt</sub></i>
+  #         <i>Prefix<sub>opt</sub></i> <i>Number</i> <i>Suffix<sub>opt</sub></i>
   # <i>NegativePattern:</i>
-  # <i>Prefix<sub>opt</sub></i> <i>Number</i> <i>Suffix<sub>opt</sub></i>
+  #         <i>Prefix<sub>opt</sub></i> <i>Number</i> <i>Suffix<sub>opt</sub></i>
   # <i>Prefix:</i>
-  # any Unicode characters except &#92;uFFFE, &#92;uFFFF, and special characters
+  #         any Unicode characters except &#92;uFFFE, &#92;uFFFF, and special characters
   # <i>Suffix:</i>
-  # any Unicode characters except &#92;uFFFE, &#92;uFFFF, and special characters
+  #         any Unicode characters except &#92;uFFFE, &#92;uFFFF, and special characters
   # <i>Number:</i>
-  # <i>Integer</i> <i>Exponent<sub>opt</sub></i>
-  # <i>Integer</i> . <i>Fraction</i> <i>Exponent<sub>opt</sub></i>
+  #         <i>Integer</i> <i>Exponent<sub>opt</sub></i>
+  #         <i>Integer</i> . <i>Fraction</i> <i>Exponent<sub>opt</sub></i>
   # <i>Integer:</i>
-  # <i>MinimumInteger</i>
-  # #
-  # # <i>Integer</i>
-  # # , <i>Integer</i>
+  #         <i>MinimumInteger</i>
+  #         #
+  #         # <i>Integer</i>
+  #         # , <i>Integer</i>
   # <i>MinimumInteger:</i>
-  # 0
-  # 0 <i>MinimumInteger</i>
-  # 0 , <i>MinimumInteger</i>
+  #         0
+  #         0 <i>MinimumInteger</i>
+  #         0 , <i>MinimumInteger</i>
   # <i>Fraction:</i>
-  # <i>MinimumFraction<sub>opt</sub></i> <i>OptionalFraction<sub>opt</sub></i>
+  #         <i>MinimumFraction<sub>opt</sub></i> <i>OptionalFraction<sub>opt</sub></i>
   # <i>MinimumFraction:</i>
-  # 0 <i>MinimumFraction<sub>opt</sub></i>
+  #         0 <i>MinimumFraction<sub>opt</sub></i>
   # <i>OptionalFraction:</i>
-  # # <i>OptionalFraction<sub>opt</sub></i>
+  #         # <i>OptionalFraction<sub>opt</sub></i>
   # <i>Exponent:</i>
-  # E <i>MinimumExponent</i>
+  #         E <i>MinimumExponent</i>
   # <i>MinimumExponent:</i>
-  # 0 <i>MinimumExponent<sub>opt</sub></i>
+  #         0 <i>MinimumExponent<sub>opt</sub></i>
   # </pre></blockquote>
   # 
   # <p>A <code>DecimalFormat</code> pattern contains a positive and negative
@@ -171,74 +169,74 @@ module Java::Text
   # 
   # <blockquote>
   # <table border=0 cellspacing=3 cellpadding=0 summary="Chart showing symbol,
-  # location, localized, and meaning.">
-  # <tr bgcolor="#ccccff">
-  # <th align=left>Symbol
-  # <th align=left>Location
-  # <th align=left>Localized?
-  # <th align=left>Meaning
-  # <tr valign=top>
-  # <td><code>0</code>
-  # <td>Number
-  # <td>Yes
-  # <td>Digit
-  # <tr valign=top bgcolor="#eeeeff">
-  # <td><code>#</code>
-  # <td>Number
-  # <td>Yes
-  # <td>Digit, zero shows as absent
-  # <tr valign=top>
-  # <td><code>.</code>
-  # <td>Number
-  # <td>Yes
-  # <td>Decimal separator or monetary decimal separator
-  # <tr valign=top bgcolor="#eeeeff">
-  # <td><code>-</code>
-  # <td>Number
-  # <td>Yes
-  # <td>Minus sign
-  # <tr valign=top>
-  # <td><code>,</code>
-  # <td>Number
-  # <td>Yes
-  # <td>Grouping separator
-  # <tr valign=top bgcolor="#eeeeff">
-  # <td><code>E</code>
-  # <td>Number
-  # <td>Yes
-  # <td>Separates mantissa and exponent in scientific notation.
-  # <em>Need not be quoted in prefix or suffix.</em>
-  # <tr valign=top>
-  # <td><code>;</code>
-  # <td>Subpattern boundary
-  # <td>Yes
-  # <td>Separates positive and negative subpatterns
-  # <tr valign=top bgcolor="#eeeeff">
-  # <td><code>%</code>
-  # <td>Prefix or suffix
-  # <td>Yes
-  # <td>Multiply by 100 and show as percentage
-  # <tr valign=top>
-  # <td><code>&#92;u2030</code>
-  # <td>Prefix or suffix
-  # <td>Yes
-  # <td>Multiply by 1000 and show as per mille value
-  # <tr valign=top bgcolor="#eeeeff">
-  # <td><code>&#164;</code> (<code>&#92;u00A4</code>)
-  # <td>Prefix or suffix
-  # <td>No
-  # <td>Currency sign, replaced by currency symbol.  If
-  # doubled, replaced by international currency symbol.
-  # If present in a pattern, the monetary decimal separator
-  # is used instead of the decimal separator.
-  # <tr valign=top>
-  # <td><code>'</code>
-  # <td>Prefix or suffix
-  # <td>No
-  # <td>Used to quote special characters in a prefix or suffix,
-  # for example, <code>"'#'#"</code> formats 123 to
-  # <code>"#123"</code>.  To create a single quote
-  # itself, use two in a row: <code>"# o''clock"</code>.
+  #  location, localized, and meaning.">
+  #     <tr bgcolor="#ccccff">
+  #          <th align=left>Symbol
+  #          <th align=left>Location
+  #          <th align=left>Localized?
+  #          <th align=left>Meaning
+  #     <tr valign=top>
+  #          <td><code>0</code>
+  #          <td>Number
+  #          <td>Yes
+  #          <td>Digit
+  #     <tr valign=top bgcolor="#eeeeff">
+  #          <td><code>#</code>
+  #          <td>Number
+  #          <td>Yes
+  #          <td>Digit, zero shows as absent
+  #     <tr valign=top>
+  #          <td><code>.</code>
+  #          <td>Number
+  #          <td>Yes
+  #          <td>Decimal separator or monetary decimal separator
+  #     <tr valign=top bgcolor="#eeeeff">
+  #          <td><code>-</code>
+  #          <td>Number
+  #          <td>Yes
+  #          <td>Minus sign
+  #     <tr valign=top>
+  #          <td><code>,</code>
+  #          <td>Number
+  #          <td>Yes
+  #          <td>Grouping separator
+  #     <tr valign=top bgcolor="#eeeeff">
+  #          <td><code>E</code>
+  #          <td>Number
+  #          <td>Yes
+  #          <td>Separates mantissa and exponent in scientific notation.
+  #              <em>Need not be quoted in prefix or suffix.</em>
+  #     <tr valign=top>
+  #          <td><code>;</code>
+  #          <td>Subpattern boundary
+  #          <td>Yes
+  #          <td>Separates positive and negative subpatterns
+  #     <tr valign=top bgcolor="#eeeeff">
+  #          <td><code>%</code>
+  #          <td>Prefix or suffix
+  #          <td>Yes
+  #          <td>Multiply by 100 and show as percentage
+  #     <tr valign=top>
+  #          <td><code>&#92;u2030</code>
+  #          <td>Prefix or suffix
+  #          <td>Yes
+  #          <td>Multiply by 1000 and show as per mille value
+  #     <tr valign=top bgcolor="#eeeeff">
+  #          <td><code>&#164;</code> (<code>&#92;u00A4</code>)
+  #          <td>Prefix or suffix
+  #          <td>No
+  #          <td>Currency sign, replaced by currency symbol.  If
+  #              doubled, replaced by international currency symbol.
+  #              If present in a pattern, the monetary decimal separator
+  #              is used instead of the decimal separator.
+  #     <tr valign=top>
+  #          <td><code>'</code>
+  #          <td>Prefix or suffix
+  #          <td>No
+  #          <td>Used to quote special characters in a prefix or suffix,
+  #              for example, <code>"'#'#"</code> formats 123 to
+  #              <code>"#123"</code>.  To create a single quote
+  #              itself, use two in a row: <code>"# o''clock"</code>.
   # </table>
   # </blockquote>
   # 
@@ -319,7 +317,7 @@ module Java::Text
   # <li><code>BigDecimal(0)</code> if <code>isParseBigDecimal()</code> is
   # true,
   # <li><code>Long(0)</code> if <code>isParseBigDecimal()</code> is false
-  # and <code>isParseIntegerOnly()</code> is true,
+  #     and <code>isParseIntegerOnly()</code> is true,
   # <li><code>Double(-0.0)</code> if both <code>isParseBigDecimal()</code>
   # and <code>isParseIntegerOnly()</code> are false.
   # </ul>
@@ -341,30 +339,30 @@ module Java::Text
   # double myNumber = -1234.56;
   # NumberFormat form;
   # for (int j=0; j<4; ++j) {
-  # System.out.println("FORMAT");
-  # for (int i = 0; i < locales.length; ++i) {
-  # if (locales[i].getCountry().length() == 0) {
-  # continue; // Skip language-only locales
-  # }
-  # System.out.print(locales[i].getDisplayName());
-  # switch (j) {
-  # case 0:
-  # form = NumberFormat.getInstance(locales[i]); break;
-  # case 1:
-  # form = NumberFormat.getIntegerInstance(locales[i]); break;
-  # case 2:
-  # form = NumberFormat.getCurrencyInstance(locales[i]); break;
-  # default:
-  # form = NumberFormat.getPercentInstance(locales[i]); break;
-  # }
-  # if (form instanceof DecimalFormat) {
-  # System.out.print(": " + ((DecimalFormat) form).toPattern());
-  # }
-  # System.out.print(" -> " + form.format(myNumber));
-  # try {
-  # System.out.println(" -> " + form.parse(form.format(myNumber)));
-  # } catch (ParseException e) {}
-  # }
+  #     System.out.println("FORMAT");
+  #     for (int i = 0; i < locales.length; ++i) {
+  #         if (locales[i].getCountry().length() == 0) {
+  #            continue; // Skip language-only locales
+  #         }
+  #         System.out.print(locales[i].getDisplayName());
+  #         switch (j) {
+  #         case 0:
+  #             form = NumberFormat.getInstance(locales[i]); break;
+  #         case 1:
+  #             form = NumberFormat.getIntegerInstance(locales[i]); break;
+  #         case 2:
+  #             form = NumberFormat.getCurrencyInstance(locales[i]); break;
+  #         default:
+  #             form = NumberFormat.getPercentInstance(locales[i]); break;
+  #         }
+  #         if (form instanceof DecimalFormat) {
+  #             System.out.print(": " + ((DecimalFormat) form).toPattern());
+  #         }
+  #         System.out.print(" -> " + form.format(myNumber));
+  #         try {
+  #             System.out.println(" -> " + form.parse(form.format(myNumber)));
+  #         } catch (ParseException e) {}
+  #     }
   # }
   # </pre></blockquote>
   # 
@@ -601,7 +599,6 @@ module Java::Text
     
     typesig { [Object, StringBuffer, FieldPosition] }
     # Overrides
-    # 
     # Formats a number and appends the resulting text to the given string
     # buffer.
     # The number can be of any subclass of {@link java.lang.Number}.
@@ -609,16 +606,16 @@ module Java::Text
     # This implementation uses the maximum precision permitted.
     # @param number     the number to format
     # @param toAppendTo the <code>StringBuffer</code> to which the formatted
-    # text is to be appended
+    #                   text is to be appended
     # @param pos        On input: an alignment field, if desired.
-    # On output: the offsets of the alignment field.
+    #                   On output: the offsets of the alignment field.
     # @return           the value passed in as <code>toAppendTo</code>
     # @exception        IllegalArgumentException if <code>number</code> is
-    # null or not an instance of <code>Number</code>.
+    #                   null or not an instance of <code>Number</code>.
     # @exception        NullPointerException if <code>toAppendTo</code> or
-    # <code>pos</code> is null
+    #                   <code>pos</code> is null
     # @exception        ArithmeticException if rounding is needed with rounding
-    # mode being set to RoundingMode.UNNECESSARY
+    #                   mode being set to RoundingMode.UNNECESSARY
     # @see              java.text.FieldPosition
     def format(number, to_append_to, pos)
       if (number.is_a?(Long) || number.is_a?(JavaInteger) || number.is_a?(Short) || number.is_a?(Byte) || number.is_a?(AtomicInteger) || number.is_a?(AtomicLong) || (number.is_a?(BigInteger) && (number).bit_length < 64))
@@ -647,7 +644,7 @@ module Java::Text
     # @param fieldPosition    On input: an alignment field, if desired.
     # On output: the offsets of the alignment field.
     # @exception ArithmeticException if rounding is needed with rounding
-    # mode being set to RoundingMode.UNNECESSARY
+    #            mode being set to RoundingMode.UNNECESSARY
     # @return The formatted number string
     # @see java.text.FieldPosition
     def format(number, result, field_position)
@@ -662,7 +659,7 @@ module Java::Text
     # @param result    where the text is to be appended
     # @param delegate notified of locations of sub fields
     # @exception       ArithmeticException if rounding is needed with rounding
-    # mode being set to RoundingMode.UNNECESSARY
+    #                  mode being set to RoundingMode.UNNECESSARY
     # @return The formatted number string
     def format(number, result, delegate)
       if (Double.is_na_n(number) || (Double.is_infinite(number) && (@multiplier).equal?(0)))
@@ -722,7 +719,7 @@ module Java::Text
     # @param fieldPosition    On input: an alignment field, if desired.
     # On output: the offsets of the alignment field.
     # @exception       ArithmeticException if rounding is needed with rounding
-    # mode being set to RoundingMode.UNNECESSARY
+    #                  mode being set to RoundingMode.UNNECESSARY
     # @return The formatted number string
     # @see java.text.FieldPosition
     def format(number, result, field_position)
@@ -738,7 +735,7 @@ module Java::Text
     # @param delegate notified of locations of sub fields
     # @return The formatted number string
     # @exception        ArithmeticException if rounding is needed with rounding
-    # mode being set to RoundingMode.UNNECESSARY
+    #                   mode being set to RoundingMode.UNNECESSARY
     # @see java.text.FieldPosition
     def format(number, result, delegate)
       is_negative = (number < 0)
@@ -800,7 +797,7 @@ module Java::Text
     # On output: the offsets of the alignment field.
     # @return The formatted number string
     # @exception        ArithmeticException if rounding is needed with rounding
-    # mode being set to RoundingMode.UNNECESSARY
+    #                   mode being set to RoundingMode.UNNECESSARY
     # @see java.text.FieldPosition
     def format(number, result, field_position)
       field_position.set_begin_index(0)
@@ -814,7 +811,7 @@ module Java::Text
     # @param result    where the text is to be appended
     # @param delegate notified of locations of sub fields
     # @exception        ArithmeticException if rounding is needed with rounding
-    # mode being set to RoundingMode.UNNECESSARY
+    #                   mode being set to RoundingMode.UNNECESSARY
     # @return The formatted number string
     def format(number, result, delegate)
       if (!(@multiplier).equal?(1))
@@ -843,7 +840,7 @@ module Java::Text
     # On output: the offsets of the alignment field.
     # @return The formatted number string
     # @exception        ArithmeticException if rounding is needed with rounding
-    # mode being set to RoundingMode.UNNECESSARY
+    #                   mode being set to RoundingMode.UNNECESSARY
     # @see java.text.FieldPosition
     def format(number, result, field_position)
       field_position.set_begin_index(0)
@@ -858,7 +855,7 @@ module Java::Text
     # @param delegate notified of locations of sub fields
     # @return The formatted number string
     # @exception        ArithmeticException if rounding is needed with rounding
-    # mode being set to RoundingMode.UNNECESSARY
+    #                   mode being set to RoundingMode.UNNECESSARY
     # @see java.text.FieldPosition
     def format(number, result, delegate, format_long)
       if (!(@multiplier).equal?(1))
@@ -907,9 +904,9 @@ module Java::Text
     # 
     # @exception NullPointerException if obj is null.
     # @exception IllegalArgumentException when the Format cannot format the
-    # given object.
+    #            given object.
     # @exception        ArithmeticException if rounding is needed with rounding
-    # mode being set to RoundingMode.UNNECESSARY
+    #                   mode being set to RoundingMode.UNNECESSARY
     # @param obj The object to format
     # @return AttributedCharacterIterator describing the formatted value.
     # @since 1.4
@@ -946,17 +943,17 @@ module Java::Text
     def subformat(result, delegate, is_negative, is_integer, max_int_digits, min_int_digits, max_fra_digits, min_fra_digits)
       # NOTE: This isn't required anymore because DigitList takes care of this.
       # 
-      # // The negative of the exponent represents the number of leading
-      # // zeros between the decimal and the first non-zero digit, for
-      # // a value < 0.1 (e.g., for 0.00123, -fExponent == 2).  If this
-      # // is more than the maximum fraction digits, then we have an underflow
-      # // for the printed representation.  We recognize this here and set
-      # // the DigitList representation to zero in this situation.
+      #  // The negative of the exponent represents the number of leading
+      #  // zeros between the decimal and the first non-zero digit, for
+      #  // a value < 0.1 (e.g., for 0.00123, -fExponent == 2).  If this
+      #  // is more than the maximum fraction digits, then we have an underflow
+      #  // for the printed representation.  We recognize this here and set
+      #  // the DigitList representation to zero in this situation.
       # 
-      # if (-digitList.decimalAt >= getMaximumFractionDigits())
-      # {
-      # digitList.count = 0;
-      # }
+      #  if (-digitList.decimalAt >= getMaximumFractionDigits())
+      #  {
+      #      digitList.count = 0;
+      #  }
       zero = @symbols.get_zero_digit
       zero_delta = zero - Character.new(?0.ord) # '0' is the DigitList representation of zero
       grouping = @symbols.get_grouping_separator
@@ -1238,30 +1235,30 @@ module Java::Text
     # The subclass returned depends on the value of {@link #isParseBigDecimal}
     # as well as on the string being parsed.
     # <ul>
-    # <li>If <code>isParseBigDecimal()</code> is false (the default),
-    # most integer values are returned as <code>Long</code>
-    # objects, no matter how they are written: <code>"17"</code> and
-    # <code>"17.000"</code> both parse to <code>Long(17)</code>.
-    # Values that cannot fit into a <code>Long</code> are returned as
-    # <code>Double</code>s. This includes values with a fractional part,
-    # infinite values, <code>NaN</code>, and the value -0.0.
-    # <code>DecimalFormat</code> does <em>not</em> decide whether to
-    # return a <code>Double</code> or a <code>Long</code> based on the
-    # presence of a decimal separator in the source string. Doing so
-    # would prevent integers that overflow the mantissa of a double,
-    # such as <code>"-9,223,372,036,854,775,808.00"</code>, from being
-    # parsed accurately.
-    # <p>
-    # Callers may use the <code>Number</code> methods
-    # <code>doubleValue</code>, <code>longValue</code>, etc., to obtain
-    # the type they want.
-    # <li>If <code>isParseBigDecimal()</code> is true, values are returned
-    # as <code>BigDecimal</code> objects. The values are the ones
-    # constructed by {@link java.math.BigDecimal#BigDecimal(String)}
-    # for corresponding strings in locale-independent format. The
-    # special cases negative and positive infinity and NaN are returned
-    # as <code>Double</code> instances holding the values of the
-    # corresponding <code>Double</code> constants.
+    #   <li>If <code>isParseBigDecimal()</code> is false (the default),
+    #       most integer values are returned as <code>Long</code>
+    #       objects, no matter how they are written: <code>"17"</code> and
+    #       <code>"17.000"</code> both parse to <code>Long(17)</code>.
+    #       Values that cannot fit into a <code>Long</code> are returned as
+    #       <code>Double</code>s. This includes values with a fractional part,
+    #       infinite values, <code>NaN</code>, and the value -0.0.
+    #       <code>DecimalFormat</code> does <em>not</em> decide whether to
+    #       return a <code>Double</code> or a <code>Long</code> based on the
+    #       presence of a decimal separator in the source string. Doing so
+    #       would prevent integers that overflow the mantissa of a double,
+    #       such as <code>"-9,223,372,036,854,775,808.00"</code>, from being
+    #       parsed accurately.
+    #       <p>
+    #       Callers may use the <code>Number</code> methods
+    #       <code>doubleValue</code>, <code>longValue</code>, etc., to obtain
+    #       the type they want.
+    #   <li>If <code>isParseBigDecimal()</code> is true, values are returned
+    #       as <code>BigDecimal</code> objects. The values are the ones
+    #       constructed by {@link java.math.BigDecimal#BigDecimal(String)}
+    #       for corresponding strings in locale-independent format. The
+    #       special cases negative and positive infinity and NaN are returned
+    #       as <code>Double</code> instances holding the values of the
+    #       corresponding <code>Double</code> constants.
     # </ul>
     # <p>
     # <code>DecimalFormat</code> parses all Unicode characters that represent
@@ -1272,10 +1269,10 @@ module Java::Text
     # 
     # @param text the string to be parsed
     # @param pos  A <code>ParsePosition</code> object with index and error
-    # index information as described above.
+    #             index information as described above.
     # @return     the parsed value, or <code>null</code> if the parse fails
     # @exception  NullPointerException if <code>text</code> or
-    # <code>pos</code> is null.
+    #             <code>pos</code> is null.
     def parse(text, pos)
       # special case NaN
       if (text.region_matches(pos.attr_index, @symbols.get_na_n, 0, @symbols.get_na_n.length))
@@ -1546,7 +1543,7 @@ module Java::Text
                     exponent_digits = DigitList.new
                     if (subparse(text, pos, "", Character.to_s(@symbols.get_minus_sign), exponent_digits, true, stat) && exponent_digits.fits_into_long(stat[STATUS_POSITIVE], true))
                       position = pos.attr_index # Advance past the exponent
-                      exponent = RJava.cast_to_int(exponent_digits.get_long)
+                      exponent = (exponent_digits.get_long).to_int
                       if (!stat[STATUS_POSITIVE])
                         exponent = -exponent
                       end
@@ -2191,8 +2188,7 @@ module Java::Text
           end
         end
         if ((j).equal?(1))
-          append_affix(result, @pos_suffix_pattern, @positive_suffix, localized)
-          # n == p == null
+          append_affix(result, @pos_suffix_pattern, @positive_suffix, localized) # n == p == null
           if (((@neg_suffix_pattern).equal?(@pos_suffix_pattern) && (@negative_suffix == @positive_suffix)) || (!(@neg_suffix_pattern).nil? && (@neg_suffix_pattern == @pos_suffix_pattern)))
             # n == p == null
             if ((!(@neg_prefix_pattern).nil? && !(@pos_prefix_pattern).nil? && (@neg_prefix_pattern == "'-" + @pos_prefix_pattern)) || ((@neg_prefix_pattern).equal?(@pos_prefix_pattern) && (@negative_prefix == RJava.cast_to_string(@symbols.get_minus_sign) + @positive_prefix)))
@@ -2384,7 +2380,7 @@ module Java::Text
                       pos = pattern.length
                       (pos += 1)
                       next
-                    # Next handle characters which are appended directly.
+                      # Next handle characters which are appended directly.
                     else
                       if ((ch).equal?(percent))
                         if (!(multiplier).equal?(1))
@@ -2973,7 +2969,6 @@ module Java::Text
     undef_method :grouping_size=
     
     # invariant, > 0 if useThousands
-    # 
     # If true, forces the decimal separator to always appear in a formatted
     # number, even if the fractional part of the number is zero.
     # 
@@ -3018,7 +3013,6 @@ module Java::Text
     undef_method :symbols=
     
     # LIU new DecimalFormatSymbols();
-    # 
     # True to force the use of exponential (i.e. scientific) notation when formatting
     # numbers.
     # 
@@ -3031,7 +3025,6 @@ module Java::Text
     undef_method :use_exponential_notation=
     
     # Newly persistent in the Java 2 platform v.1.2
-    # 
     # FieldPositions describing the positive prefix String. This is
     # lazily created. Use <code>getPositivePrefixFieldPositions</code>
     # when needed.
@@ -3081,7 +3074,6 @@ module Java::Text
     undef_method :min_exponent_digits=
     
     # Newly persistent in the Java 2 platform v.1.2
-    # 
     # The maximum number of digits allowed in the integer portion of a
     # <code>BigInteger</code> or <code>BigDecimal</code> number.
     # <code>maximumIntegerDigits</code> must be greater than or equal to
@@ -3159,19 +3151,19 @@ module Java::Text
     # <ul>
     # <li><b>0</b> (default): versions before the Java 2 platform v1.2
     # <li><b>1</b>: version for 1.2, which includes the two new fields
-    # <code>useExponentialNotation</code> and
-    # <code>minExponentDigits</code>.
+    #      <code>useExponentialNotation</code> and
+    #      <code>minExponentDigits</code>.
     # <li><b>2</b>: version for 1.3 and later, which adds four new fields:
-    # <code>posPrefixPattern</code>, <code>posSuffixPattern</code>,
-    # <code>negPrefixPattern</code>, and <code>negSuffixPattern</code>.
+    #      <code>posPrefixPattern</code>, <code>posSuffixPattern</code>,
+    #      <code>negPrefixPattern</code>, and <code>negSuffixPattern</code>.
     # <li><b>3</b>: version for 1.5 and later, which adds five new fields:
-    # <code>maximumIntegerDigits</code>,
-    # <code>minimumIntegerDigits</code>,
-    # <code>maximumFractionDigits</code>,
-    # <code>minimumFractionDigits</code>, and
-    # <code>parseBigDecimal</code>.
+    #      <code>maximumIntegerDigits</code>,
+    #      <code>minimumIntegerDigits</code>,
+    #      <code>maximumFractionDigits</code>,
+    #      <code>minimumFractionDigits</code>, and
+    #      <code>parseBigDecimal</code>.
     # <li><b>4</b>: version for 1.6 and later, which adds one new field:
-    # <code>roundingMode</code>.
+    #      <code>roundingMode</code>.
     # </ul>
     # @since 1.2
     # @serial

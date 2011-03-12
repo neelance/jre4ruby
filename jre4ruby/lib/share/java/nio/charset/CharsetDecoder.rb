@@ -22,7 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
 # -- This file was mechanically generated: Do not edit! -- //
 module Java::Nio::Charset
   module CharsetDecoderImports #:nodoc:
@@ -40,7 +39,6 @@ module Java::Nio::Charset
   end
   
   # javadoc
-  # 
   # An engine that can transform a sequence of bytes in a specific charset into a sequence of
   # sixteen-bit Unicode characters.
   # 
@@ -54,19 +52,19 @@ module Java::Nio::Charset
   # 
   # <ol>
   # 
-  # <li><p> Reset the decoder via the {@link #reset reset} method, unless it
-  # has not been used before; </p></li>
+  #   <li><p> Reset the decoder via the {@link #reset reset} method, unless it
+  #   has not been used before; </p></li>
   # 
-  # <li><p> Invoke the {@link #decode decode} method zero or more times, as
-  # long as additional input may be available, passing <tt>false</tt> for the
-  # <tt>endOfInput</tt> argument and filling the input buffer and flushing the
-  # output buffer between invocations; </p></li>
+  #   <li><p> Invoke the {@link #decode decode} method zero or more times, as
+  #   long as additional input may be available, passing <tt>false</tt> for the
+  #   <tt>endOfInput</tt> argument and filling the input buffer and flushing the
+  #   output buffer between invocations; </p></li>
   # 
-  # <li><p> Invoke the {@link #decode decode} method one final time, passing
-  # <tt>true</tt> for the <tt>endOfInput</tt> argument; and then </p></li>
+  #   <li><p> Invoke the {@link #decode decode} method one final time, passing
+  #   <tt>true</tt> for the <tt>endOfInput</tt> argument; and then </p></li>
   # 
-  # <li><p> Invoke the {@link #flush flush} method so that the decoder can
-  # flush any internal state to the output buffer. </p></li>
+  #   <li><p> Invoke the {@link #flush flush} method so that the decoder can
+  #   flush any internal state to the output buffer. </p></li>
   # 
   # </ol>
   # 
@@ -176,6 +174,7 @@ module Java::Nio::Charset
     
     class_module.module_eval {
       # Internal states
+      # 
       const_set_lazy(:ST_RESET) { 0 }
       const_attr_reader  :ST_RESET
       
@@ -213,20 +212,20 @@ module Java::Nio::Charset
     # chars-per-byte and replacement values. </p>
     # 
     # @param  averageCharsPerByte
-    # A positive float value indicating the expected number of
-    # characters that will be produced for each input byte
+    #         A positive float value indicating the expected number of
+    #         characters that will be produced for each input byte
     # 
     # @param  maxCharsPerByte
-    # A positive float value indicating the maximum number of
-    # characters that will be produced for each input byte
+    #         A positive float value indicating the maximum number of
+    #         characters that will be produced for each input byte
     # 
     # @param  replacement
-    # The initial replacement; must not be <tt>null</tt>, must have
-    # non-zero length, must not be longer than maxCharsPerByte,
-    # and must be {@link #isLegalReplacement </code>legal<code>}
+    #         The initial replacement; must not be <tt>null</tt>, must have
+    #         non-zero length, must not be longer than maxCharsPerByte,
+    #         and must be {@link #isLegalReplacement </code>legal<code>}
     # 
     # @throws  IllegalArgumentException
-    # If the preconditions on the parameters do not hold
+    #          If the preconditions on the parameters do not hold
     def initialize(cs, average_chars_per_byte, max_chars_per_byte, replacement)
       @charset = nil
       @average_chars_per_byte = 0.0
@@ -259,15 +258,15 @@ module Java::Nio::Charset
     # string <tt>"&#92;uFFFD"</tt>. </p>
     # 
     # @param  averageCharsPerByte
-    # A positive float value indicating the expected number of
-    # characters that will be produced for each input byte
+    #         A positive float value indicating the expected number of
+    #         characters that will be produced for each input byte
     # 
     # @param  maxCharsPerByte
-    # A positive float value indicating the maximum number of
-    # characters that will be produced for each input byte
+    #         A positive float value indicating the maximum number of
+    #         characters that will be produced for each input byte
     # 
     # @throws  IllegalArgumentException
-    # If the preconditions on the parameters do not hold
+    #          If the preconditions on the parameters do not hold
     def initialize(cs, average_chars_per_byte, max_chars_per_byte)
       initialize__charset_decoder(cs, average_chars_per_byte, max_chars_per_byte, ("".to_u << 0xFFFD << ""))
     end
@@ -284,7 +283,7 @@ module Java::Nio::Charset
     # Returns this decoder's replacement value. </p>
     # 
     # @return  This decoder's current replacement,
-    # which is never <tt>null</tt> and is never empty
+    #          which is never <tt>null</tt> and is never empty
     def replacement
       return @replacement
     end
@@ -299,8 +298,8 @@ module Java::Nio::Charset
     # @param  newReplacement
     # 
     # 
-    # The new replacement; must not be <tt>null</tt>
-    # and must have non-zero length
+    #         The new replacement; must not be <tt>null</tt>
+    #         and must have non-zero length
     # 
     # 
     # 
@@ -312,7 +311,7 @@ module Java::Nio::Charset
     # @return  This decoder
     # 
     # @throws  IllegalArgumentException
-    # If the preconditions on the parameter do not hold
+    #          If the preconditions on the parameter do not hold
     def replace_with(new_replacement)
       if ((new_replacement).nil?)
         raise IllegalArgumentException.new("Null replacement")
@@ -359,7 +358,7 @@ module Java::Nio::Charset
     # @return  This decoder
     # 
     # @throws IllegalArgumentException
-    # If the precondition on the parameter does not hold
+    #         If the precondition on the parameter does not hold
     def on_malformed_input(new_action)
       if ((new_action).nil?)
         raise IllegalArgumentException.new("Null action")
@@ -383,7 +382,7 @@ module Java::Nio::Charset
     # </p>
     # 
     # @return The current unmappable-character action, which is never
-    # <tt>null</tt>
+    #         <tt>null</tt>
     def unmappable_character_action
       return @unmappable_character_action
     end
@@ -399,7 +398,7 @@ module Java::Nio::Charset
     # @return  This decoder
     # 
     # @throws IllegalArgumentException
-    # If the precondition on the parameter does not hold
+    #         If the precondition on the parameter does not hold
     def on_unmappable_character(new_action)
       if ((new_action).nil?)
         raise IllegalArgumentException.new("Null action")
@@ -424,7 +423,7 @@ module Java::Nio::Charset
     # of the output buffer required for a given input sequence. </p>
     # 
     # @return  The average number of characters produced
-    # per byte of input
+    #          per byte of input
     def average_chars_per_byte
       return @average_chars_per_byte
     end
@@ -435,7 +434,7 @@ module Java::Nio::Charset
     # of the output buffer required for a given input sequence. </p>
     # 
     # @return  The maximum number of characters that will be produced per
-    # byte of input
+    #          byte of input
     def max_chars_per_byte
       return @max_chars_per_byte
     end
@@ -457,39 +456,39 @@ module Java::Nio::Charset
     # 
     # <ul>
     # 
-    # <li><p> {@link CoderResult#UNDERFLOW} indicates that as much of the
-    # input buffer as possible has been decoded.  If there is no further
-    # input then the invoker can proceed to the next step of the
-    # <a href="#steps">decoding operation</a>.  Otherwise this method
-    # should be invoked again with further input.  </p></li>
+    #   <li><p> {@link CoderResult#UNDERFLOW} indicates that as much of the
+    #   input buffer as possible has been decoded.  If there is no further
+    #   input then the invoker can proceed to the next step of the
+    #   <a href="#steps">decoding operation</a>.  Otherwise this method
+    #   should be invoked again with further input.  </p></li>
     # 
-    # <li><p> {@link CoderResult#OVERFLOW} indicates that there is
-    # insufficient space in the output buffer to decode any more bytes.
-    # This method should be invoked again with an output buffer that has
-    # more {@linkplain Buffer#remaining remaining} characters. This is
-    # typically done by draining any decoded characters from the output
-    # buffer.  </p></li>
+    #   <li><p> {@link CoderResult#OVERFLOW} indicates that there is
+    #   insufficient space in the output buffer to decode any more bytes.
+    #   This method should be invoked again with an output buffer that has
+    #   more {@linkplain Buffer#remaining remaining} characters. This is
+    #   typically done by draining any decoded characters from the output
+    #   buffer.  </p></li>
     # 
-    # <li><p> A {@link CoderResult#malformedForLength
-    # </code>malformed-input<code>} result indicates that a malformed-input
-    # error has been detected.  The malformed bytes begin at the input
-    # buffer's (possibly incremented) position; the number of malformed
-    # bytes may be determined by invoking the result object's {@link
-    # CoderResult#length() length} method.  This case applies only if the
-    # {@link #onMalformedInput </code>malformed action<code>} of this decoder
-    # is {@link CodingErrorAction#REPORT}; otherwise the malformed input
-    # will be ignored or replaced, as requested.  </p></li>
+    #   <li><p> A {@link CoderResult#malformedForLength
+    #   </code>malformed-input<code>} result indicates that a malformed-input
+    #   error has been detected.  The malformed bytes begin at the input
+    #   buffer's (possibly incremented) position; the number of malformed
+    #   bytes may be determined by invoking the result object's {@link
+    #   CoderResult#length() length} method.  This case applies only if the
+    #   {@link #onMalformedInput </code>malformed action<code>} of this decoder
+    #   is {@link CodingErrorAction#REPORT}; otherwise the malformed input
+    #   will be ignored or replaced, as requested.  </p></li>
     # 
-    # <li><p> An {@link CoderResult#unmappableForLength
-    # </code>unmappable-character<code>} result indicates that an
-    # unmappable-character error has been detected.  The bytes that
-    # decode the unmappable character begin at the input buffer's (possibly
-    # incremented) position; the number of such bytes may be determined
-    # by invoking the result object's {@link CoderResult#length() length}
-    # method.  This case applies only if the {@link #onUnmappableCharacter
-    # </code>unmappable action<code>} of this decoder is {@link
-    # CodingErrorAction#REPORT}; otherwise the unmappable character will be
-    # ignored or replaced, as requested.  </p></li>
+    #   <li><p> An {@link CoderResult#unmappableForLength
+    #   </code>unmappable-character<code>} result indicates that an
+    #   unmappable-character error has been detected.  The bytes that
+    #   decode the unmappable character begin at the input buffer's (possibly
+    #   incremented) position; the number of such bytes may be determined
+    #   by invoking the result object's {@link CoderResult#length() length}
+    #   method.  This case applies only if the {@link #onUnmappableCharacter
+    #   </code>unmappable action<code>} of this decoder is {@link
+    #   CodingErrorAction#REPORT}; otherwise the unmappable character will be
+    #   ignored or replaced, as requested.  </p></li>
     # 
     # </ul>
     # 
@@ -515,28 +514,28 @@ module Java::Nio::Charset
     # 
     # 
     # @param  in
-    # The input byte buffer
+    #         The input byte buffer
     # 
     # @param  out
-    # The output character buffer
+    #         The output character buffer
     # 
     # @param  endOfInput
-    # <tt>true</tt> if, and only if, the invoker can provide no
-    # additional input bytes beyond those in the given buffer
+    #         <tt>true</tt> if, and only if, the invoker can provide no
+    #         additional input bytes beyond those in the given buffer
     # 
     # @return  A coder-result object describing the reason for termination
     # 
     # @throws  IllegalStateException
-    # If a decoding operation is already in progress and the previous
-    # step was an invocation neither of the {@link #reset reset}
-    # method, nor of this method with a value of <tt>false</tt> for
-    # the <tt>endOfInput</tt> parameter, nor of this method with a
-    # value of <tt>true</tt> for the <tt>endOfInput</tt> parameter
-    # but a return value indicating an incomplete decoding operation
+    #          If a decoding operation is already in progress and the previous
+    #          step was an invocation neither of the {@link #reset reset}
+    #          method, nor of this method with a value of <tt>false</tt> for
+    #          the <tt>endOfInput</tt> parameter, nor of this method with a
+    #          value of <tt>true</tt> for the <tt>endOfInput</tt> parameter
+    #          but a return value indicating an incomplete decoding operation
     # 
     # @throws  CoderMalfunctionError
-    # If an invocation of the decodeLoop method threw
-    # an unexpected exception
+    #          If an invocation of the decodeLoop method threw
+    #          an unexpected exception
     def decode(in_, out, end_of_input)
       new_state = end_of_input ? ST_END : ST_CODING
       if ((!(@state).equal?(ST_RESET)) && (!(@state).equal?(ST_CODING)) && !(end_of_input && ((@state).equal?(ST_END))))
@@ -617,18 +616,18 @@ module Java::Nio::Charset
     # perform the actual flushing operation.  </p>
     # 
     # @param  out
-    # The output character buffer
+    #         The output character buffer
     # 
     # @return  A coder-result object, either {@link CoderResult#UNDERFLOW} or
-    # {@link CoderResult#OVERFLOW}
+    #          {@link CoderResult#OVERFLOW}
     # 
     # @throws  IllegalStateException
-    # If the previous step of the current decoding operation was an
-    # invocation neither of the {@link #flush flush} method nor of
-    # the three-argument {@link
-    # #decode(ByteBuffer,CharBuffer,boolean) decode} method
-    # with a value of <tt>true</tt> for the <tt>endOfInput</tt>
-    # parameter
+    #          If the previous step of the current decoding operation was an
+    #          invocation neither of the {@link #flush flush} method nor of
+    #          the three-argument {@link
+    #          #decode(ByteBuffer,CharBuffer,boolean) decode} method
+    #          with a value of <tt>true</tt> for the <tt>endOfInput</tt>
+    #          parameter
     def flush(out)
       if ((@state).equal?(ST_END))
         cr = impl_flush(out)
@@ -652,10 +651,10 @@ module Java::Nio::Charset
     # once the entire input sequence has been read. </p>
     # 
     # @param  out
-    # The output character buffer
+    #         The output character buffer
     # 
     # @return  A coder-result object, either {@link CoderResult#UNDERFLOW} or
-    # {@link CoderResult#OVERFLOW}
+    #          {@link CoderResult#OVERFLOW}
     def impl_flush(out)
       return CoderResult::UNDERFLOW
     end
@@ -710,10 +709,10 @@ module Java::Nio::Charset
     # input.  </p>
     # 
     # @param  in
-    # The input byte buffer
+    #         The input byte buffer
     # 
     # @param  out
-    # The output character buffer
+    #         The output character buffer
     # 
     # @return  A coder-result object describing the reason for termination
     def decode_loop(in_, out)
@@ -731,28 +730,28 @@ module Java::Nio::Charset
     # operation is already in progress.  </p>
     # 
     # @param  in
-    # The input byte buffer
+    #         The input byte buffer
     # 
     # @return A newly-allocated character buffer containing the result of the
-    # decoding operation.  The buffer's position will be zero and its
-    # limit will follow the last character written.
+    #         decoding operation.  The buffer's position will be zero and its
+    #         limit will follow the last character written.
     # 
     # @throws  IllegalStateException
-    # If a decoding operation is already in progress
+    #          If a decoding operation is already in progress
     # 
     # @throws  MalformedInputException
-    # If the byte sequence starting at the input buffer's current
-    # position is not legal for this charset and the current malformed-input action
-    # is {@link CodingErrorAction#REPORT}
+    #          If the byte sequence starting at the input buffer's current
+    #          position is not legal for this charset and the current malformed-input action
+    #          is {@link CodingErrorAction#REPORT}
     # 
     # @throws  UnmappableCharacterException
-    # If the byte sequence starting at the input buffer's current
-    # position cannot be mapped to an equivalent character sequence and
-    # the current unmappable-character action is {@link
-    # CodingErrorAction#REPORT}
+    #          If the byte sequence starting at the input buffer's current
+    #          position cannot be mapped to an equivalent character sequence and
+    #          the current unmappable-character action is {@link
+    #          CodingErrorAction#REPORT}
     def decode(in_)
-      n = RJava.cast_to_int((in_.remaining * average_chars_per_byte))
-      out = CharBuffer.allocate(n)
+      n = ((in_.remaining * average_chars_per_byte)).to_int
+      out = CharBuffer.allocate_(n)
       if (((n).equal?(0)) && ((in_.remaining).equal?(0)))
         return out
       end
@@ -767,7 +766,7 @@ module Java::Nio::Charset
         end
         if (cr.is_overflow)
           n = 2 * n + 1 # Ensure progress; n might be 0!
-          o = CharBuffer.allocate(n)
+          o = CharBuffer.allocate_(n)
           out.flip
           o.put(out)
           out = o
@@ -787,7 +786,7 @@ module Java::Nio::Charset
     # return <tt>true</tt>.  </p>
     # 
     # @return  <tt>true</tt> if, and only if, this decoder implements an
-    # auto-detecting charset
+    #          auto-detecting charset
     def is_auto_detecting
       return false
     end
@@ -813,10 +812,10 @@ module Java::Nio::Charset
     # has been determined.  </p>
     # 
     # @return  <tt>true</tt> if, and only if, this decoder has detected a
-    # specific charset
+    #          specific charset
     # 
     # @throws  UnsupportedOperationException
-    # If this decoder does not implement an auto-detecting charset
+    #          If this decoder does not implement an auto-detecting charset
     def is_charset_detected
       raise UnsupportedOperationException.new
     end
@@ -837,13 +836,13 @@ module Java::Nio::Charset
     # auto-detecting decoders to return the appropriate value.  </p>
     # 
     # @return  The charset detected by this auto-detecting decoder,
-    # or <tt>null</tt> if the charset has not yet been determined
+    #          or <tt>null</tt> if the charset has not yet been determined
     # 
     # @throws  IllegalStateException
-    # If insufficient bytes have been read to determine a charset
+    #          If insufficient bytes have been read to determine a charset
     # 
     # @throws  UnsupportedOperationException
-    # If this decoder does not implement an auto-detecting charset
+    #          If this decoder does not implement an auto-detecting charset
     def detected_charset
       raise UnsupportedOperationException.new
     end

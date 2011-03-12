@@ -203,7 +203,7 @@ module Java::Net
     # @param timeout the timeout value in milliseconds, or zero for no timeout.
     # @throws IOException if connection fails
     # @throws  IllegalArgumentException if address is null or is a
-    # SocketAddress subclass not supported by this socket
+    #          SocketAddress subclass not supported by this socket
     # @since 1.4
     def connect(address, timeout)
       if ((address).nil? || !(address.is_a?(InetSocketAddress)))
@@ -241,10 +241,10 @@ module Java::Net
       end
       on = true
       case (opt)
-      # check type safety b4 going native.  These should never
-      # fail, since only java.Socket* has access to
-      # PlainSocketImpl.setOption().
       when SO_LINGER
+        # check type safety b4 going native.  These should never
+        # fail, since only java.Socket* has access to
+        # PlainSocketImpl.setOption().
         if ((val).nil? || (!(val.is_a?(JavaInteger)) && !(val.is_a?(Boolean))))
           raise SocketException.new("Bad parameter for option")
         end
@@ -313,7 +313,6 @@ module Java::Net
       # the option but its turned off.  It will raise a SocketException
       # if "opt" isn't one it understands.
       case (opt)
-      # should never get here
       when TCP_NODELAY
         ret = socket_get_option(opt, nil)
         return Boolean.value_of(!(ret).equal?(-1))
@@ -345,6 +344,7 @@ module Java::Net
         ret = socket_get_option(opt, nil)
         return Boolean.value_of(!(ret).equal?(-1))
       else
+        # should never get here
         return nil
       end
     end

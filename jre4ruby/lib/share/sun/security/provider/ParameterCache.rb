@@ -119,8 +119,6 @@ module Sun::Security::Provider
         # Change No 1, which updates the test vector using SHA-1
         # instead of SHA (for both the G function and the message
         # hash.
-        # 
-        # 
         # L = 512
         # SEED = b869c82b35d70e1b1ff91b28e37a62ecdc34409b
         # counter = 123

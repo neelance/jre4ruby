@@ -43,8 +43,8 @@ module Java::Net
   # such as a query to a database or to a search engine. More
   # information on the types of URLs and their formats can be found at:
   # <blockquote>
-  # <a href="http://www.socs.uts.edu.au/MosaicDocs-old/url-primer.html">
-  # <i>http://www.socs.uts.edu.au/MosaicDocs-old/url-primer.html</i></a>
+  #     <a href="http://www.socs.uts.edu.au/MosaicDocs-old/url-primer.html">
+  #    <i>http://www.socs.uts.edu.au/MosaicDocs-old/url-primer.html</i></a>
   # </blockquote>
   # <p>
   # In general, a URL can be broken into several parts. The previous
@@ -65,7 +65,7 @@ module Java::Net
   # <code>http</code> is <code>80</code>. An alternative port could be
   # specified as:
   # <blockquote><pre>
-  # http://www.socs.uts.edu.au:80/MosaicDocs-old/url-primer.html
+  #     http://www.socs.uts.edu.au:80/MosaicDocs-old/url-primer.html
   # </pre></blockquote>
   # <p>
   # The syntax of <code>URL</code> is defined by  <a
@@ -80,7 +80,7 @@ module Java::Net
   # as a "ref" or a "reference". The fragment is indicated by the sharp
   # sign character "#" followed by more characters. For example,
   # <blockquote><pre>
-  # http://java.sun.com/index.html#chapter1
+  #     http://java.sun.com/index.html#chapter1
   # </pre></blockquote>
   # <p>
   # This fragment is not technically part of the URL. Rather, it
@@ -94,15 +94,15 @@ module Java::Net
   # relative to another URL. Relative URLs are frequently used within
   # HTML pages. For example, if the contents of the URL:
   # <blockquote><pre>
-  # http://java.sun.com/index.html
+  #     http://java.sun.com/index.html
   # </pre></blockquote>
   # contained within it the relative URL:
   # <blockquote><pre>
-  # FAQ.html
+  #     FAQ.html
   # </pre></blockquote>
   # it would be a shorthand for:
   # <blockquote><pre>
-  # http://java.sun.com/FAQ.html
+  #     http://java.sun.com/FAQ.html
   # </pre></blockquote>
   # <p>
   # The relative URL need not specify all the components of a URL. If
@@ -270,43 +270,43 @@ module Java::Net
     # class <code>URLStreamHandler</code>, is created for that protocol:
     # <ol>
     # <li>If the application has previously set up an instance of
-    # <code>URLStreamHandlerFactory</code> as the stream handler factory,
-    # then the <code>createURLStreamHandler</code> method of that instance
-    # is called with the protocol string as an argument to create the
-    # stream protocol handler.
+    #     <code>URLStreamHandlerFactory</code> as the stream handler factory,
+    #     then the <code>createURLStreamHandler</code> method of that instance
+    #     is called with the protocol string as an argument to create the
+    #     stream protocol handler.
     # <li>If no <code>URLStreamHandlerFactory</code> has yet been set up,
-    # or if the factory's <code>createURLStreamHandler</code> method
-    # returns <code>null</code>, then the constructor finds the
-    # value of the system property:
-    # <blockquote><pre>
-    # java.protocol.handler.pkgs
-    # </pre></blockquote>
-    # If the value of that system property is not <code>null</code>,
-    # it is interpreted as a list of packages separated by a vertical
-    # slash character '<code>|</code>'. The constructor tries to load
-    # the class named:
-    # <blockquote><pre>
-    # &lt;<i>package</i>&gt;.&lt;<i>protocol</i>&gt;.Handler
-    # </pre></blockquote>
-    # where &lt;<i>package</i>&gt; is replaced by the name of the package
-    # and &lt;<i>protocol</i>&gt; is replaced by the name of the protocol.
-    # If this class does not exist, or if the class exists but it is not
-    # a subclass of <code>URLStreamHandler</code>, then the next package
-    # in the list is tried.
+    #     or if the factory's <code>createURLStreamHandler</code> method
+    #     returns <code>null</code>, then the constructor finds the
+    #     value of the system property:
+    #     <blockquote><pre>
+    #         java.protocol.handler.pkgs
+    #     </pre></blockquote>
+    #     If the value of that system property is not <code>null</code>,
+    #     it is interpreted as a list of packages separated by a vertical
+    #     slash character '<code>|</code>'. The constructor tries to load
+    #     the class named:
+    #     <blockquote><pre>
+    #         &lt;<i>package</i>&gt;.&lt;<i>protocol</i>&gt;.Handler
+    #     </pre></blockquote>
+    #     where &lt;<i>package</i>&gt; is replaced by the name of the package
+    #     and &lt;<i>protocol</i>&gt; is replaced by the name of the protocol.
+    #     If this class does not exist, or if the class exists but it is not
+    #     a subclass of <code>URLStreamHandler</code>, then the next package
+    #     in the list is tried.
     # <li>If the previous step fails to find a protocol handler, then the
-    # constructor tries to load from a system default package.
-    # <blockquote><pre>
-    # &lt;<i>system default package</i>&gt;.&lt;<i>protocol</i>&gt;.Handler
-    # </pre></blockquote>
-    # If this class does not exist, or if the class exists but it is not a
-    # subclass of <code>URLStreamHandler</code>, then a
-    # <code>MalformedURLException</code> is thrown.
+    #     constructor tries to load from a system default package.
+    #     <blockquote><pre>
+    #         &lt;<i>system default package</i>&gt;.&lt;<i>protocol</i>&gt;.Handler
+    #     </pre></blockquote>
+    #     If this class does not exist, or if the class exists but it is not a
+    #     subclass of <code>URLStreamHandler</code>, then a
+    #     <code>MalformedURLException</code> is thrown.
     # </ol>
     # 
     # <p>Protocol handlers for the following protocols are guaranteed
     # to exist on the search path :-
     # <blockquote><pre>
-    # http, https, ftp, file, and jar
+    #     http, https, ftp, file, and jar
     # </pre></blockquote>
     # Protocol handlers for additional protocols may also be
     # available.
@@ -320,10 +320,10 @@ module Java::Net
     # @exception  MalformedURLException  if an unknown protocol is specified.
     # @see        java.lang.System#getProperty(java.lang.String)
     # @see        java.net.URL#setURLStreamHandlerFactory(
-    # java.net.URLStreamHandlerFactory)
+    #                  java.net.URLStreamHandlerFactory)
     # @see        java.net.URLStreamHandler
     # @see        java.net.URLStreamHandlerFactory#createURLStreamHandler(
-    # java.lang.String)
+    #                  java.lang.String)
     def initialize(protocol, host, port, file)
       initialize__url(protocol, host, port, file, nil)
     end
@@ -344,7 +344,7 @@ module Java::Net
     # @param      file       the file on the host.
     # @exception  MalformedURLException  if an unknown protocol is specified.
     # @see        java.net.URL#URL(java.lang.String, java.lang.String,
-    # int, java.lang.String)
+    #                  int, java.lang.String)
     def initialize(protocol, host, file)
       initialize__url(protocol, host, -1, file)
     end
@@ -358,8 +358,8 @@ module Java::Net
     # a <code>handler</code> of <code>null</code> indicates that the URL
     # should use a default stream handler for the protocol, as outlined
     # for:
-    # java.net.URL#URL(java.lang.String, java.lang.String, int,
-    # java.lang.String)
+    #     java.net.URL#URL(java.lang.String, java.lang.String, int,
+    #                      java.lang.String)
     # 
     # <p>If the handler is not null and there is a security manager,
     # the security manager's <code>checkPermission</code>
@@ -376,15 +376,15 @@ module Java::Net
     # @param      handler    the stream handler for the URL.
     # @exception  MalformedURLException  if an unknown protocol is specified.
     # @exception  SecurityException
-    # if a security manager exists and its
-    # <code>checkPermission</code> method doesn't allow
-    # specifying a stream handler explicitly.
+    #        if a security manager exists and its
+    #        <code>checkPermission</code> method doesn't allow
+    #        specifying a stream handler explicitly.
     # @see        java.lang.System#getProperty(java.lang.String)
     # @see        java.net.URL#setURLStreamHandlerFactory(
-    # java.net.URLStreamHandlerFactory)
+    #                  java.net.URLStreamHandlerFactory)
     # @see        java.net.URLStreamHandler
     # @see        java.net.URLStreamHandlerFactory#createURLStreamHandler(
-    # java.lang.String)
+    #                  java.lang.String)
     # @see        SecurityManager#checkPermission
     # @see        java.net.NetPermission
     def initialize(protocol, host, port, file, handler)
@@ -448,7 +448,7 @@ module Java::Net
     # 
     # @param      spec   the <code>String</code> to parse as a URL.
     # @exception  MalformedURLException  If the string specifies an
-    # unknown protocol.
+    #               unknown protocol.
     # @see        java.net.URL#URL(java.net.URL, java.lang.String)
     def initialize(spec)
       initialize__url(nil, spec)
@@ -461,7 +461,7 @@ module Java::Net
     # argument as described in
     # RFC2396 &quot;Uniform Resource Identifiers : Generic * Syntax&quot; :
     # <blockquote><pre>
-    # &lt;scheme&gt;://&lt;authority&gt;&lt;path&gt;?&lt;query&gt;#&lt;fragment&gt;
+    #          &lt;scheme&gt;://&lt;authority&gt;&lt;path&gt;?&lt;query&gt;#&lt;fragment&gt;
     # </pre></blockquote>
     # The reference is parsed into the scheme, authority, path, query and
     # fragment parts. If the path component is empty and the scheme,
@@ -494,12 +494,12 @@ module Java::Net
     # @param      context   the context in which to parse the specification.
     # @param      spec      the <code>String</code> to parse as a URL.
     # @exception  MalformedURLException  if no protocol is specified, or an
-    # unknown protocol is found.
+    #               unknown protocol is found.
     # @see        java.net.URL#URL(java.lang.String, java.lang.String,
-    # int, java.lang.String)
+    #                  int, java.lang.String)
     # @see        java.net.URLStreamHandler
     # @see        java.net.URLStreamHandler#parseURL(java.net.URL,
-    # java.lang.String, int, int)
+    #                  java.lang.String, int, int)
     def initialize(context, spec)
       initialize__url(context, spec, nil)
     end
@@ -513,16 +513,16 @@ module Java::Net
     # @param      spec      the <code>String</code> to parse as a URL.
     # @param      handler   the stream handler for the URL.
     # @exception  MalformedURLException  if no protocol is specified, or an
-    # unknown protocol is found.
+    #               unknown protocol is found.
     # @exception  SecurityException
-    # if a security manager exists and its
-    # <code>checkPermission</code> method doesn't allow
-    # specifying a stream handler.
+    #        if a security manager exists and its
+    #        <code>checkPermission</code> method doesn't allow
+    #        specifying a stream handler.
     # @see        java.net.URL#URL(java.lang.String, java.lang.String,
-    # int, java.lang.String)
+    #                  int, java.lang.String)
     # @see        java.net.URLStreamHandler
     # @see        java.net.URLStreamHandler#parseURL(java.net.URL,
-    # java.lang.String, int, int)
+    #                  java.lang.String, int, int)
     def initialize(context, spec, handler)
       @protocol = nil
       @host = nil
@@ -827,7 +827,7 @@ module Java::Net
     # <code>URL</code>.
     # 
     # @return  the anchor (also known as the "reference") of this
-    # <code>URL</code>, or <CODE>null</CODE> if one does not exist
+    #          <code>URL</code>, or <CODE>null</CODE> if one does not exist
     def get_ref
       return @ref
     end
@@ -855,7 +855,7 @@ module Java::Net
     # 
     # @param   obj   the URL to compare against.
     # @return  <code>true</code> if the objects are the same;
-    # <code>false</code> otherwise.
+    #          <code>false</code> otherwise.
     def ==(obj)
       if (!(obj.is_a?(URL)))
         return false
@@ -890,7 +890,7 @@ module Java::Net
     # 
     # @param   other   the <code>URL</code> to compare against.
     # @return  <code>true</code> if they reference the same remote object;
-    # <code>false</code> otherwise.
+    #          <code>false</code> otherwise.
     def same_file(other)
       return @handler.same_file(self, other)
     end
@@ -902,7 +902,7 @@ module Java::Net
     # 
     # @return  a string representation of this object.
     # @see     java.net.URL#URL(java.lang.String, java.lang.String, int,
-    # java.lang.String)
+    #                  java.lang.String)
     # @see     java.net.URLStreamHandler#toExternalForm(java.net.URL)
     def to_s
       return to_external_form
@@ -915,7 +915,7 @@ module Java::Net
     # 
     # @return  a string representation of this object.
     # @see     java.net.URL#URL(java.lang.String, java.lang.String,
-    # int, java.lang.String)
+    #                  int, java.lang.String)
     # @see     java.net.URLStreamHandler#toExternalForm(java.net.URL)
     def to_external_form
       return @handler.to_external_form(self)
@@ -929,7 +929,7 @@ module Java::Net
     # can not be converted to a URI.
     # 
     # @exception URISyntaxException if this URL is not formatted strictly according to
-    # to RFC2396 and cannot be converted to a URI.
+    #            to RFC2396 and cannot be converted to a URI.
     # 
     # @return    a URI instance equivalent to this URL.
     # @since 1.5
@@ -956,7 +956,7 @@ module Java::Net
     # @return     a <code>URLConnection</code> to the URL.
     # @exception  IOException  if an I/O exception occurs.
     # @see        java.net.URL#URL(java.lang.String, java.lang.String,
-    # int, java.lang.String)
+    #             int, java.lang.String)
     # @see        java.net.URLConnection
     # @see java.net.URLStreamHandler#openConnection(java.net.URL)
     def open_connection
@@ -973,23 +973,23 @@ module Java::Net
     # settings.
     # 
     # @param      proxy the Proxy through which this connection
-    # will be made. If direct connection is desired,
-    # Proxy.NO_PROXY should be specified.
+    #             will be made. If direct connection is desired,
+    #             Proxy.NO_PROXY should be specified.
     # @return     a <code>URLConnection</code> to the URL.
     # @exception  IOException  if an I/O exception occurs.
     # @exception  SecurityException if a security manager is present
-    # and the caller doesn't have permission to connect
-    # to the proxy.
+    #             and the caller doesn't have permission to connect
+    #             to the proxy.
     # @exception  IllegalArgumentException will be thrown if proxy is null,
-    # or proxy has the wrong type
+    #             or proxy has the wrong type
     # @exception  UnsupportedOperationException if the subclass that
-    # implements the protocol handler doesn't support
-    # this method.
+    #             implements the protocol handler doesn't support
+    #             this method.
     # @see        java.net.URL#URL(java.lang.String, java.lang.String,
-    # int, java.lang.String)
+    #             int, java.lang.String)
     # @see        java.net.URLConnection
     # @see        java.net.URLStreamHandler#openConnection(java.net.URL,
-    # java.net.Proxy)
+    #             java.net.Proxy)
     # @since      1.5
     def open_connection(proxy)
       if ((proxy).nil?)
@@ -1012,7 +1012,7 @@ module Java::Net
     # <code>InputStream</code> for reading from that connection. This
     # method is a shorthand for:
     # <blockquote><pre>
-    # openConnection().getInputStream()
+    #     openConnection().getInputStream()
     # </pre></blockquote>
     # 
     # @return     an input stream for reading from the URL connection.
@@ -1026,7 +1026,7 @@ module Java::Net
     typesig { [] }
     # Gets the contents of this URL. This method is a shorthand for:
     # <blockquote><pre>
-    # openConnection().getContent()
+    #     openConnection().getContent()
     # </pre></blockquote>
     # 
     # @return     the contents of this URL.
@@ -1039,13 +1039,13 @@ module Java::Net
     typesig { [Array.typed(Class)] }
     # Gets the contents of this URL. This method is a shorthand for:
     # <blockquote><pre>
-    # openConnection().getContent(Class[])
+    #     openConnection().getContent(Class[])
     # </pre></blockquote>
     # 
     # @param classes an array of Java types
     # @return     the content object of this URL that is the first match of
-    # the types specified in the classes array.
-    # null if none of the requested types are supported.
+    #               the types specified in the classes array.
+    #               null if none of the requested types are supported.
     # @exception  IOException  if an I/O exception occurs.
     # @see        java.net.URLConnection#getContent(Class[])
     # @since 1.3
@@ -1067,27 +1067,27 @@ module Java::Net
       alias_method :attr_factory=, :factory=
       
       typesig { [URLStreamHandlerFactory] }
-      # Sets an application's <code>URLStreamHandlerFactory</code>.
-      # This method can be called at most once in a given Java Virtual
-      # Machine.
+      #  Sets an application's <code>URLStreamHandlerFactory</code>.
+      #  This method can be called at most once in a given Java Virtual
+      #  Machine.
       # 
       # <p> The <code>URLStreamHandlerFactory</code> instance is used to
       # construct a stream protocol handler from a protocol name.
       # 
-      # <p> If there is a security manager, this method first calls
-      # the security manager's <code>checkSetFactory</code> method
-      # to ensure the operation is allowed.
-      # This could result in a SecurityException.
+      #  <p> If there is a security manager, this method first calls
+      #  the security manager's <code>checkSetFactory</code> method
+      #  to ensure the operation is allowed.
+      #  This could result in a SecurityException.
       # 
-      # @param      fac   the desired factory.
-      # @exception  Error  if the application has already set a factory.
-      # @exception  SecurityException  if a security manager exists and its
-      # <code>checkSetFactory</code> method doesn't allow
-      # the operation.
-      # @see        java.net.URL#URL(java.lang.String, java.lang.String,
-      # int, java.lang.String)
-      # @see        java.net.URLStreamHandlerFactory
-      # @see        SecurityManager#checkSetFactory
+      #  @param      fac   the desired factory.
+      #  @exception  Error  if the application has already set a factory.
+      #  @exception  SecurityException  if a security manager exists and its
+      #              <code>checkSetFactory</code> method doesn't allow
+      #              the operation.
+      #  @see        java.net.URL#URL(java.lang.String, java.lang.String,
+      #              int, java.lang.String)
+      #  @see        java.net.URLStreamHandlerFactory
+      #  @see        SecurityManager#checkSetFactory
       def set_urlstream_handler_factory(fac)
         synchronized((self.attr_stream_handler_lock)) do
           if (!(self.attr_factory).nil?)
@@ -1209,8 +1209,8 @@ module Java::Net
     # throw an IOException if it does not.
     def write_object(s)
       synchronized(self) do
-        s.default_write_object
-      end # write the fields
+        s.default_write_object # write the fields
+      end
     end
     
     typesig { [Java::Io::ObjectInputStream] }

@@ -376,8 +376,6 @@ module Sun::Security::Jgss::Krb5
     # 
     # Also note that the requests can only be placed before context
     # establishment starts. i.e. when state is STATE_NEW
-    # 
-    # 
     # Requests the desired lifetime. Can only be used on the context
     # initiator's side.
     def request_lifetime(lifetime)
@@ -502,8 +500,6 @@ module Sun::Security::Jgss::Krb5
     
     typesig { [EncryptionKey] }
     # Package private methods invoked by other Krb5 plugin classes.
-    # 
-    # 
     # Get the context specific DESCipher instance, invoked in
     # MessageToken.init()
     def get_cipher_helper(ckey)
@@ -571,8 +567,6 @@ module Sun::Security::Jgss::Krb5
     # for them. They are called as context establishment tokens are
     # received on an acceptor side and the context feature list that
     # the initiator wants becomes known.
-    # 
-    # 
     # This method is also called by InitialToken.OverloadedChecksum if the
     # TGT is not forwardable and the user requested delegation.
     def set_cred_deleg_state(state)
@@ -665,7 +659,7 @@ module Sun::Security::Jgss::Krb5
     # Tests if this is the initiator side of the context.
     # 
     # @return boolean indicating if this is initiator (true)
-    # or target (false)
+    #  or target (false)
     def is_initiator
       return @initiator
     end
@@ -676,7 +670,7 @@ module Sun::Security::Jgss::Krb5
     # functions before being fully established.
     # 
     # @return boolean indicating if per-message methods can
-    # be called.
+    #  be called.
     def is_prot_ready
       return ((@state).equal?(STATE_DONE))
     end
@@ -688,10 +682,10 @@ module Sun::Security::Jgss::Krb5
     # is received from the peer.
     # 
     # @param is contains the token received from the peer. On the
-    # first call it will be ignored.
+    #  first call it will be ignored.
     # @return any token required to be sent to the peer
-    # It is responsibility of the caller
-    # to send the token to its peer for processing.
+    #    It is responsibility of the caller
+    #    to send the token to its peer for processing.
     # @exception GSSException
     def init_sec_context(is, mech_token_size)
       ret_val = nil
@@ -737,8 +731,6 @@ module Sun::Security::Jgss::Krb5
                   # Subject.getSubject
                   # SubjectComber.find
                   # instead of Krb5Util.getTicket
-                  # since it's useSubjectCredsOnly here,
-                  # don't worry about the null
                   return Krb5Util.get_ticket(GSSUtil::CALLER_UNKNOWN, self.attr_my_name.get_krb5principal_name.get_name, self.attr_peer_name.get_krb5principal_name.get_name, acc)
                 end
                 
@@ -880,8 +872,8 @@ module Sun::Security::Jgss::Krb5
     # 
     # @param is contains the token received from the peer.
     # @return any token required to be sent to the peer
-    # It is responsibility of the caller
-    # to send the token to its peer for processing.
+    #    It is responsibility of the caller
+    #    to send the token to its peer for processing.
     # @exception GSSException
     def accept_sec_context(is, mech_token_size)
       ret_val = nil
@@ -938,13 +930,13 @@ module Sun::Security::Jgss::Krb5
     # the specified protection and be <= maxTokSize.
     # 
     # @param qop the quality of protection that the context will be
-    # asked to provide.
+    #  asked to provide.
     # @param confReq a flag indicating whether confidentiality will be
-    # requested or not
+    #  requested or not
     # @param outputSize the maximum size of the output token
     # @return the maximum size for the input message that can be
-    # provided to the wrap() method in order to guarantee that these
-    # requirements are met.
+    #  provided to the wrap() method in order to guarantee that these
+    #  requirements are met.
     # @throws GSSException
     def get_wrap_size_limit(qop, conf_req, max_tok_size)
       ret_val = 0

@@ -72,7 +72,7 @@ module Java::Util
     # if this dictionary contains no entries.
     # 
     # @return  <code>true</code> if this dictionary maps no keys to values;
-    # <code>false</code> otherwise.
+    #          <code>false</code> otherwise.
     def is_empty
       raise NotImplementedError
     end
@@ -111,8 +111,8 @@ module Java::Util
     # 
     # @return  the value to which the key is mapped in this dictionary;
     # @param   key   a key in this dictionary.
-    # <code>null</code> if the key is not mapped to any value in
-    # this dictionary.
+    #          <code>null</code> if the key is not mapped to any value in
+    #          this dictionary.
     # @exception NullPointerException if the <tt>key</tt> is <tt>null</tt>.
     # @see     java.util.Dictionary#put(java.lang.Object, java.lang.Object)
     def get(key)
@@ -127,10 +127,10 @@ module Java::Util
     # If this dictionary already contains an entry for the specified
     # <tt>key</tt>, the value already in this dictionary for that
     # <tt>key</tt> is returned, after modifying the entry to contain the
-    # new element. <p>If this dictionary does not already have an entry
-    # for the specified <tt>key</tt>, an entry is created for the
-    # specified <tt>key</tt> and <tt>value</tt>, and <tt>null</tt> is
-    # returned.
+    #  new element. <p>If this dictionary does not already have an entry
+    #  for the specified <tt>key</tt>, an entry is created for the
+    #  specified <tt>key</tt> and <tt>value</tt>, and <tt>null</tt> is
+    #  returned.
     # <p>
     # The <code>value</code> can be retrieved by calling the
     # <code>get</code> method with a <code>key</code> that is equal to
@@ -139,10 +139,10 @@ module Java::Util
     # @param      key     the hashtable key.
     # @param      value   the value.
     # @return     the previous value to which the <code>key</code> was mapped
-    # in this dictionary, or <code>null</code> if the key did not
-    # have a previous mapping.
+    #             in this dictionary, or <code>null</code> if the key did not
+    #             have a previous mapping.
     # @exception  NullPointerException  if the <code>key</code> or
-    # <code>value</code> is <code>null</code>.
+    #               <code>value</code> is <code>null</code>.
     # @see        java.lang.Object#equals(java.lang.Object)
     # @see        java.util.Dictionary#get(java.lang.Object)
     def put(key, value)
@@ -156,8 +156,8 @@ module Java::Util
     # 
     # @param   key   the key that needs to be removed.
     # @return  the value to which the <code>key</code> had been mapped in this
-    # dictionary, or <code>null</code> if the key did not have a
-    # mapping.
+    #          dictionary, or <code>null</code> if the key did not have a
+    #          mapping.
     # @exception NullPointerException if <tt>key</tt> is <tt>null</tt>.
     def remove(key)
       raise NotImplementedError

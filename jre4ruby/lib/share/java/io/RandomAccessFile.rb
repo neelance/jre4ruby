@@ -129,19 +129,19 @@ module Java::Io
     # @param      name   the system-dependent filename
     # @param      mode   the access <a href="#mode">mode</a>
     # @exception  IllegalArgumentException  if the mode argument is not equal
-    # to one of <tt>"r"</tt>, <tt>"rw"</tt>, <tt>"rws"</tt>, or
-    # <tt>"rwd"</tt>
+    #               to one of <tt>"r"</tt>, <tt>"rw"</tt>, <tt>"rws"</tt>, or
+    #               <tt>"rwd"</tt>
     # @exception FileNotFoundException
-    # if the mode is <tt>"r"</tt> but the given string does not
-    # denote an existing regular file, or if the mode begins with
-    # <tt>"rw"</tt> but the given string does not denote an
-    # existing, writable regular file and a new regular file of
-    # that name cannot be created, or if some other error occurs
-    # while opening or creating the file
+    #            if the mode is <tt>"r"</tt> but the given string does not
+    #            denote an existing regular file, or if the mode begins with
+    #            <tt>"rw"</tt> but the given string does not denote an
+    #            existing, writable regular file and a new regular file of
+    #            that name cannot be created, or if some other error occurs
+    #            while opening or creating the file
     # @exception  SecurityException         if a security manager exists and its
-    # <code>checkRead</code> method denies read access to the file
-    # or the mode is "rw" and the security manager's
-    # <code>checkWrite</code> method denies write access to the file
+    #               <code>checkRead</code> method denies read access to the file
+    #               or the mode is "rw" and the security manager's
+    #               <code>checkWrite</code> method denies write access to the file
     # @see        java.lang.SecurityException
     # @see        java.lang.SecurityManager#checkRead(java.lang.String)
     # @see        java.lang.SecurityManager#checkWrite(java.lang.String)
@@ -163,20 +163,20 @@ module Java::Io
     # <blockquote><table summary="Access mode permitted values and meanings">
     # <tr><th><p align="left">Value</p></th><th><p align="left">Meaning</p></th></tr>
     # <tr><td valign="top"><tt>"r"</tt></td>
-    # <td> Open for reading only.  Invoking any of the <tt>write</tt>
-    # methods of the resulting object will cause an {@link
-    # java.io.IOException} to be thrown. </td></tr>
+    #     <td> Open for reading only.  Invoking any of the <tt>write</tt>
+    #     methods of the resulting object will cause an {@link
+    #     java.io.IOException} to be thrown. </td></tr>
     # <tr><td valign="top"><tt>"rw"</tt></td>
-    # <td> Open for reading and writing.  If the file does not already
-    # exist then an attempt will be made to create it. </td></tr>
+    #     <td> Open for reading and writing.  If the file does not already
+    #     exist then an attempt will be made to create it. </td></tr>
     # <tr><td valign="top"><tt>"rws"</tt></td>
-    # <td> Open for reading and writing, as with <tt>"rw"</tt>, and also
-    # require that every update to the file's content or metadata be
-    # written synchronously to the underlying storage device.  </td></tr>
+    #     <td> Open for reading and writing, as with <tt>"rw"</tt>, and also
+    #     require that every update to the file's content or metadata be
+    #     written synchronously to the underlying storage device.  </td></tr>
     # <tr><td valign="top"><tt>"rwd"&nbsp;&nbsp;</tt></td>
-    # <td> Open for reading and writing, as with <tt>"rw"</tt>, and also
-    # require that every update to the file's content be written
-    # synchronously to the underlying storage device. </td></tr>
+    #     <td> Open for reading and writing, as with <tt>"rw"</tt>, and also
+    #     require that every update to the file's content be written
+    #     synchronously to the underlying storage device. </td></tr>
     # </table></blockquote>
     # 
     # The <tt>"rws"</tt> and <tt>"rwd"</tt> modes work much like the {@link
@@ -206,21 +206,21 @@ module Java::Io
     # 
     # @param      file   the file object
     # @param      mode   the access mode, as described
-    # <a href="#mode">above</a>
+    #                    <a href="#mode">above</a>
     # @exception  IllegalArgumentException  if the mode argument is not equal
-    # to one of <tt>"r"</tt>, <tt>"rw"</tt>, <tt>"rws"</tt>, or
-    # <tt>"rwd"</tt>
+    #               to one of <tt>"r"</tt>, <tt>"rw"</tt>, <tt>"rws"</tt>, or
+    #               <tt>"rwd"</tt>
     # @exception FileNotFoundException
-    # if the mode is <tt>"r"</tt> but the given file object does
-    # not denote an existing regular file, or if the mode begins
-    # with <tt>"rw"</tt> but the given file object does not denote
-    # an existing, writable regular file and a new regular file of
-    # that name cannot be created, or if some other error occurs
-    # while opening or creating the file
+    #            if the mode is <tt>"r"</tt> but the given file object does
+    #            not denote an existing regular file, or if the mode begins
+    #            with <tt>"rw"</tt> but the given file object does not denote
+    #            an existing, writable regular file and a new regular file of
+    #            that name cannot be created, or if some other error occurs
+    #            while opening or creating the file
     # @exception  SecurityException         if a security manager exists and its
-    # <code>checkRead</code> method denies read access to the file
-    # or the mode is "rw" and the security manager's
-    # <code>checkWrite</code> method denies write access to the file
+    #               <code>checkRead</code> method denies read access to the file
+    #               or the mode is "rw" and the security manager's
+    #               <code>checkWrite</code> method denies write access to the file
     # @see        java.lang.SecurityManager#checkRead(java.lang.String)
     # @see        java.lang.SecurityManager#checkWrite(java.lang.String)
     # @see        java.nio.channels.FileChannel#force(boolean)
@@ -329,7 +329,7 @@ module Java::Io
     # 
     # @param name the name of the file
     # @param mode the mode flags, a combination of the O_ constants
-    # defined above
+    #             defined above
     def open(name, mode)
       JNI.call_native_method(:Java_java_io_RandomAccessFile_open, JNI.env, self.jni_id, name.jni_id, mode.to_int)
     end
@@ -337,7 +337,6 @@ module Java::Io
     JNI.load_native_method :Java_java_io_RandomAccessFile_read, [:pointer, :long], :int32
     typesig { [] }
     # 'Read' primitives
-    # 
     # Reads a byte of data from this file. The byte is returned as an
     # integer in the range 0 to 255 (<code>0x00-0x0ff</code>). This
     # method blocks if no input is yet available.
@@ -348,9 +347,9 @@ module Java::Io
     # <code>InputStream</code>.
     # 
     # @return     the next byte of data, or <code>-1</code> if the end of the
-    # file has been reached.
+    #             file has been reached.
     # @exception  IOException  if an I/O error occurs. Not thrown if
-    # end-of-file has been reached.
+    #                          end-of-file has been reached.
     def read
       JNI.call_native_method(:Java_java_io_RandomAccessFile_read, JNI.env, self.jni_id)
     end
@@ -378,11 +377,11 @@ module Java::Io
     # 
     # @param      b     the buffer into which the data is read.
     # @param      off   the start offset in array <code>b</code>
-    # at which the data is written.
+    #                   at which the data is written.
     # @param      len   the maximum number of bytes read.
     # @return     the total number of bytes read into the buffer, or
-    # <code>-1</code> if there is no more data because the end of
-    # the file has been reached.
+    #             <code>-1</code> if there is no more data because the end of
+    #             the file has been reached.
     # @exception  IOException If the first byte cannot be read for any reason
     # other than end of file, or if the random access file has been closed, or if
     # some other I/O error occurs.
@@ -406,8 +405,8 @@ module Java::Io
     # 
     # @param      b   the buffer into which the data is read.
     # @return     the total number of bytes read into the buffer, or
-    # <code>-1</code> if there is no more data because the end of
-    # this file has been reached.
+    #             <code>-1</code> if there is no more data because the end of
+    #             this file has been reached.
     # @exception  IOException If the first byte cannot be read for any reason
     # other than end of file, or if the random access file has been closed, or if
     # some other I/O error occurs.
@@ -425,7 +424,7 @@ module Java::Io
     # 
     # @param      b   the buffer into which the data is read.
     # @exception  EOFException  if this file reaches the end before reading
-    # all the bytes.
+    #               all the bytes.
     # @exception  IOException   if an I/O error occurs.
     def read_fully(b)
       read_fully(b, 0, b.attr_length)
@@ -442,7 +441,7 @@ module Java::Io
     # @param      off   the start offset of the data.
     # @param      len   the number of bytes to read.
     # @exception  EOFException  if this file reaches the end before reading
-    # all the bytes.
+    #               all the bytes.
     # @exception  IOException   if an I/O error occurs.
     def read_fully(b, off, len)
       n = 0
@@ -485,13 +484,12 @@ module Java::Io
       end
       seek(newpos)
       # return the actual number of bytes skipped
-      return RJava.cast_to_int((newpos - pos))
+      return ((newpos - pos)).to_int
     end
     
     JNI.load_native_method :Java_java_io_RandomAccessFile_write, [:pointer, :long, :int32], :void
     typesig { [::Java::Int] }
     # 'Write' primitives
-    # 
     # Writes the specified byte to this file. The write starts at
     # the current file pointer.
     # 
@@ -538,11 +536,10 @@ module Java::Io
     JNI.load_native_method :Java_java_io_RandomAccessFile_getFilePointer, [:pointer, :long], :int64
     typesig { [] }
     # 'Random access' stuff
-    # 
     # Returns the current offset in this file.
     # 
     # @return     the offset from the beginning of the file, in bytes,
-    # at which the next read or write occurs.
+    #             at which the next read or write occurs.
     # @exception  IOException  if an I/O error occurs.
     def get_file_pointer
       JNI.call_native_method(:Java_java_io_RandomAccessFile_getFilePointer, JNI.env, self.jni_id)
@@ -558,10 +555,10 @@ module Java::Io
     # of the file.
     # 
     # @param      pos   the offset position, measured in bytes from the
-    # beginning of the file, at which to set the file
-    # pointer.
+    #                   beginning of the file, at which to set the file
+    #                   pointer.
     # @exception  IOException  if <code>pos</code> is less than
-    # <code>0</code> or if an I/O error occurs.
+    #                          <code>0</code> or if an I/O error occurs.
     def seek(pos)
       JNI.call_native_method(:Java_java_io_RandomAccessFile_seek, JNI.env, self.jni_id, pos.to_int)
     end
@@ -633,9 +630,9 @@ module Java::Io
     end
     
     typesig { [] }
-    # Some "reading/writing Java data types" methods stolen from
-    # DataInputStream and DataOutputStream.
     # 
+    #  Some "reading/writing Java data types" methods stolen from
+    #  DataInputStream and DataOutputStream.
     # 
     # Reads a <code>boolean</code> from this file. This method reads a
     # single byte from the file, starting at the current file pointer.
@@ -662,14 +659,14 @@ module Java::Io
     # <code>0&nbsp;&lt;=&nbsp;b&nbsp;&lt;=&nbsp;255</code>,
     # then the result is:
     # <blockquote><pre>
-    # (byte)(b)
+    #     (byte)(b)
     # </pre></blockquote>
     # <p>
     # This method blocks until the byte is read, the end of the stream
     # is detected, or an exception is thrown.
     # 
     # @return     the next byte of this file as a signed eight-bit
-    # <code>byte</code>.
+    #             <code>byte</code>.
     # @exception  EOFException  if this file has reached the end.
     # @exception  IOException   if an I/O error occurs.
     def read_byte
@@ -689,7 +686,7 @@ module Java::Io
     # is detected, or an exception is thrown.
     # 
     # @return     the next byte of this file, interpreted as an unsigned
-    # eight-bit number.
+    #             eight-bit number.
     # @exception  EOFException  if this file has reached the end.
     # @exception  IOException   if an I/O error occurs.
     def read_unsigned_byte
@@ -708,16 +705,16 @@ module Java::Io
     # between <code>0</code> and <code>255</code>, inclusive, then the
     # result is equal to:
     # <blockquote><pre>
-    # (short)((b1 &lt;&lt; 8) | b2)
+    #     (short)((b1 &lt;&lt; 8) | b2)
     # </pre></blockquote>
     # <p>
     # This method blocks until the two bytes are read, the end of the
     # stream is detected, or an exception is thrown.
     # 
     # @return     the next two bytes of this file, interpreted as a signed
-    # 16-bit number.
+    #             16-bit number.
     # @exception  EOFException  if this file reaches the end before reading
-    # two bytes.
+    #               two bytes.
     # @exception  IOException   if an I/O error occurs.
     def read_short
       ch1 = self.read
@@ -736,16 +733,16 @@ module Java::Io
     # <code>0&nbsp;&lt;=&nbsp;b1, b2&nbsp;&lt;=&nbsp;255</code>,
     # then the result is equal to:
     # <blockquote><pre>
-    # (b1 &lt;&lt; 8) | b2
+    #     (b1 &lt;&lt; 8) | b2
     # </pre></blockquote>
     # <p>
     # This method blocks until the two bytes are read, the end of the
     # stream is detected, or an exception is thrown.
     # 
     # @return     the next two bytes of this file, interpreted as an unsigned
-    # 16-bit integer.
+    #             16-bit integer.
     # @exception  EOFException  if this file reaches the end before reading
-    # two bytes.
+    #               two bytes.
     # @exception  IOException   if an I/O error occurs.
     def read_unsigned_short
       ch1 = self.read
@@ -764,16 +761,16 @@ module Java::Io
     # <code>0&nbsp;&lt;=&nbsp;b1,&nbsp;b2&nbsp;&lt;=&nbsp;255</code>,
     # then the result is equal to:
     # <blockquote><pre>
-    # (char)((b1 &lt;&lt; 8) | b2)
+    #     (char)((b1 &lt;&lt; 8) | b2)
     # </pre></blockquote>
     # <p>
     # This method blocks until the two bytes are read, the end of the
     # stream is detected, or an exception is thrown.
     # 
     # @return     the next two bytes of this file, interpreted as a
-    # <code>char</code>.
+    #                  <code>char</code>.
     # @exception  EOFException  if this file reaches the end before reading
-    # two bytes.
+    #               two bytes.
     # @exception  IOException   if an I/O error occurs.
     def read_char
       ch1 = self.read
@@ -792,16 +789,16 @@ module Java::Io
     # <code>0&nbsp;&lt;=&nbsp;b1, b2, b3, b4&nbsp;&lt;=&nbsp;255</code>,
     # then the result is equal to:
     # <blockquote><pre>
-    # (b1 &lt;&lt; 24) | (b2 &lt;&lt; 16) + (b3 &lt;&lt; 8) + b4
+    #     (b1 &lt;&lt; 24) | (b2 &lt;&lt; 16) + (b3 &lt;&lt; 8) + b4
     # </pre></blockquote>
     # <p>
     # This method blocks until the four bytes are read, the end of the
     # stream is detected, or an exception is thrown.
     # 
     # @return     the next four bytes of this file, interpreted as an
-    # <code>int</code>.
+    #             <code>int</code>.
     # @exception  EOFException  if this file reaches the end before reading
-    # four bytes.
+    #               four bytes.
     # @exception  IOException   if an I/O error occurs.
     def read_int
       ch1 = self.read
@@ -822,24 +819,24 @@ module Java::Io
     # <code>b4</code>, <code>b5</code>, <code>b6</code>,
     # <code>b7</code>, and <code>b8,</code> where:
     # <blockquote><pre>
-    # 0 &lt;= b1, b2, b3, b4, b5, b6, b7, b8 &lt;=255,
+    #     0 &lt;= b1, b2, b3, b4, b5, b6, b7, b8 &lt;=255,
     # </pre></blockquote>
     # <p>
     # then the result is equal to:
     # <p><blockquote><pre>
-    # ((long)b1 &lt;&lt; 56) + ((long)b2 &lt;&lt; 48)
-    # + ((long)b3 &lt;&lt; 40) + ((long)b4 &lt;&lt; 32)
-    # + ((long)b5 &lt;&lt; 24) + ((long)b6 &lt;&lt; 16)
-    # + ((long)b7 &lt;&lt; 8) + b8
+    #     ((long)b1 &lt;&lt; 56) + ((long)b2 &lt;&lt; 48)
+    #     + ((long)b3 &lt;&lt; 40) + ((long)b4 &lt;&lt; 32)
+    #     + ((long)b5 &lt;&lt; 24) + ((long)b6 &lt;&lt; 16)
+    #     + ((long)b7 &lt;&lt; 8) + b8
     # </pre></blockquote>
     # <p>
     # This method blocks until the eight bytes are read, the end of the
     # stream is detected, or an exception is thrown.
     # 
     # @return     the next eight bytes of this file, interpreted as a
-    # <code>long</code>.
+    #             <code>long</code>.
     # @exception  EOFException  if this file reaches the end before reading
-    # eight bytes.
+    #               eight bytes.
     # @exception  IOException   if an I/O error occurs.
     def read_long
       return ((read_int) << 32) + (read_int & 0xffffffff)
@@ -857,9 +854,9 @@ module Java::Io
     # stream is detected, or an exception is thrown.
     # 
     # @return     the next four bytes of this file, interpreted as a
-    # <code>float</code>.
+    #             <code>float</code>.
     # @exception  EOFException  if this file reaches the end before reading
-    # four bytes.
+    #             four bytes.
     # @exception  IOException   if an I/O error occurs.
     # @see        java.io.RandomAccessFile#readInt()
     # @see        java.lang.Float#intBitsToFloat(int)
@@ -879,9 +876,9 @@ module Java::Io
     # stream is detected, or an exception is thrown.
     # 
     # @return     the next eight bytes of this file, interpreted as a
-    # <code>double</code>.
+    #             <code>double</code>.
     # @exception  EOFException  if this file reaches the end before reading
-    # eight bytes.
+    #             eight bytes.
     # @exception  IOException   if an I/O error occurs.
     # @see        java.io.RandomAccessFile#readLong()
     # @see        java.lang.Double#longBitsToDouble(long)
@@ -909,7 +906,7 @@ module Java::Io
     # the end of the file is reached, or an exception is thrown.
     # 
     # @return     the next line of text from this file, or null if end
-    # of file is encountered before even one byte is read.
+    #             of file is encountered before even one byte is read.
     # @exception  IOException  if an I/O error occurs.
     def read_line
       input = StringBuffer.new
@@ -954,10 +951,10 @@ module Java::Io
     # 
     # @return     a Unicode string.
     # @exception  EOFException            if this file reaches the end before
-    # reading all the bytes.
+    #               reading all the bytes.
     # @exception  IOException             if an I/O error occurs.
     # @exception  UTFDataFormatException  if the bytes do not represent
-    # valid modified UTF-8 encoding of a Unicode string.
+    #               valid modified UTF-8 encoding of a Unicode string.
     # @see        java.io.RandomAccessFile#readUnsignedShort()
     def read_utf
       return DataInputStream.read_utf(self)
@@ -1034,14 +1031,14 @@ module Java::Io
     # @param      v   a <code>long</code> to be written.
     # @exception  IOException  if an I/O error occurs.
     def write_long(v)
-      write(RJava.cast_to_int((v >> 56)) & 0xff)
-      write(RJava.cast_to_int((v >> 48)) & 0xff)
-      write(RJava.cast_to_int((v >> 40)) & 0xff)
-      write(RJava.cast_to_int((v >> 32)) & 0xff)
-      write(RJava.cast_to_int((v >> 24)) & 0xff)
-      write(RJava.cast_to_int((v >> 16)) & 0xff)
-      write(RJava.cast_to_int((v >> 8)) & 0xff)
-      write(RJava.cast_to_int((v >> 0)) & 0xff)
+      write(((v >> 56)).to_int & 0xff)
+      write(((v >> 48)).to_int & 0xff)
+      write(((v >> 40)).to_int & 0xff)
+      write(((v >> 32)).to_int & 0xff)
+      write(((v >> 24)).to_int & 0xff)
+      write(((v >> 16)).to_int & 0xff)
+      write(((v >> 8)).to_int & 0xff)
+      write(((v >> 0)).to_int & 0xff)
       # written += 8;
     end
     

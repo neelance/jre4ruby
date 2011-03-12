@@ -38,17 +38,16 @@ module Java::Net
   end
   
   # for javadoc
-  # 
   # An HttpCookie object represents an http cookie, which carries state
   # information between server and user agent. Cookie is widely adopted
   # to create stateful sessions.
   # 
   # <p>There are 3 http cookie specifications:
   # <blockquote>
-  # Netscape draft<br>
-  # RFC 2109 - <a href="http://www.ietf.org/rfc/rfc2109.txt">
+  #   Netscape draft<br>
+  #   RFC 2109 - <a href="http://www.ietf.org/rfc/rfc2109.txt">
   # <i>http://www.ietf.org/rfc/rfc2109.txt</i></a><br>
-  # RFC 2965 - <a href="http://www.ietf.org/rfc/rfc2965.txt">
+  #   RFC 2965 - <a href="http://www.ietf.org/rfc/rfc2965.txt">
   # <i>http://www.ietf.org/rfc/rfc2965.txt</i></a>
   # </blockquote>
   # 
@@ -63,6 +62,7 @@ module Java::Net
     # ---------------- Fields --------------
     # 
     # The value of the cookie itself.
+    # 
     attr_accessor :name
     alias_method :attr_name, :name
     undef_method :name
@@ -79,6 +79,7 @@ module Java::Net
     # value of NAME
     # 
     # Attributes encoded in the header's cookie fields.
+    # 
     attr_accessor :comment
     alias_method :attr_comment, :comment
     undef_method :comment
@@ -145,6 +146,7 @@ module Java::Net
     # 
     # Hold the creation time (in seconds) of the http cookie for later
     # expiration calculation
+    # 
     attr_accessor :when_created
     alias_method :attr_when_created, :when_created
     undef_method :when_created
@@ -152,16 +154,22 @@ module Java::Net
     undef_method :when_created=
     
     class_module.module_eval {
+      # 
       # Since the positive and zero max-age have their meanings,
       # this value serves as a hint as 'not specify max-age'
+      # 
       const_set_lazy(:MAX_AGE_UNSPECIFIED) { -1 }
       const_attr_reader  :MAX_AGE_UNSPECIFIED
       
+      # 
       # date format used by Netscape's cookie draft
+      # 
       const_set_lazy(:NETSCAPE_COOKIE_DATE_FORMAT) { "EEE',' dd-MMM-yyyy HH:mm:ss 'GMT'" }
       const_attr_reader  :NETSCAPE_COOKIE_DATE_FORMAT
       
+      # 
       # constant strings represent set-cookie header token
+      # 
       const_set_lazy(:SET_COOKIE) { "set-cookie:" }
       const_attr_reader  :SET_COOKIE
       
@@ -171,7 +179,6 @@ module Java::Net
     
     typesig { [String, String] }
     # ---------------- Ctors --------------
-    # 
     # Constructs a cookie with a specified name and value.
     # 
     # <p>The name must conform to RFC 2965. That means it can contain
@@ -194,8 +201,8 @@ module Java::Net
     # @param value                     a <code>String</code> specifying the value of the cookie
     # 
     # @throws IllegalArgumentException if the cookie name contains illegal characters
-    # or it is one of the tokens reserved for use
-    # by the cookie protocol
+    #                                  or it is one of the tokens reserved for use
+    #                                  by the cookie protocol
     # @throws NullPointerException     if <tt>name</tt> is <tt>null</tt>
     # @see #setValue
     # @see #setVersion
@@ -231,14 +238,14 @@ module Java::Net
       # utility method instead of another constructor.
       # 
       # @param header    a <tt>String</tt> specifying the set-cookie header.
-      # The header should start with "set-cookie", or "set-cookie2"
-      # token; or it should have no leading token at all.
+      #                  The header should start with "set-cookie", or "set-cookie2"
+      #                  token; or it should have no leading token at all.
       # @return          a List of cookie parsed from header line string
       # @throws IllegalArgumentException if header string violates the cookie
-      # specification's syntax, or the cookie
-      # name contains llegal characters, or
-      # the cookie name is one of the tokens
-      # reserved for use by the cookie protocol
+      #                                  specification's syntax, or the cookie
+      #                                  name contains llegal characters, or
+      #                                  the cookie name is one of the tokens
+      #                                  reserved for use by the cookie protocol
       # @throws NullPointerException     if the header string is <tt>null</tt>
       def parse(header)
         version = guess_cookie_version(header)
@@ -276,11 +283,10 @@ module Java::Net
     
     typesig { [] }
     # ---------------- Public operations --------------
-    # 
     # Reports whether this http cookie has expired or not.
     # 
     # @return  <tt>true</tt> to indicate this http cookie has expired;
-    # otherwise, <tt>false</tt>
+    #          otherwise, <tt>false</tt>
     def has_expired
       if ((@max_age).equal?(0))
         return true
@@ -306,7 +312,7 @@ module Java::Net
     # are not supported by Netscape Version 0 cookies.
     # 
     # @param purpose           a <code>String</code> specifying the comment
-    # to display to the user
+    #                          to display to the user
     # 
     # @see #getComment
     def set_comment(purpose)
@@ -318,7 +324,7 @@ module Java::Net
     # <code>null</code> if the cookie has no comment.
     # 
     # @return                  a <code>String</code> containing the comment,
-    # or <code>null</code> if none
+    #                          or <code>null</code> if none
     # 
     # @see #setComment
     def get_comment
@@ -331,7 +337,7 @@ module Java::Net
     # to the user. Comment url is RFC 2965 only.
     # 
     # @param purpose           a <code>String</code> specifying the comment url
-    # to display to the user
+    #                          to display to the user
     # 
     # @see #getCommentURL
     def set_comment_url(purpose)
@@ -343,7 +349,7 @@ module Java::Net
     # <code>null</code> if the cookie has no comment url.
     # 
     # @return                  a <code>String</code> containing the comment url,
-    # or <code>null</code> if none
+    #                          or <code>null</code> if none
     # 
     # @see #setCommentURL
     def get_comment_url
@@ -376,7 +382,7 @@ module Java::Net
     # to which a cookie may be sent back in a Cookie header.
     # 
     # @param ports     a <tt>String</tt> specify the port list, which is
-    # comma seperated series of digits
+    #                  comma seperated series of digits
     # @see #getPortlist
     def set_portlist(ports)
       @portlist = ports
@@ -386,7 +392,7 @@ module Java::Net
     # Return the port list attribute of the cookie
     # 
     # @return  a <tt>String</tt> contains the port list
-    # or <tt>null</tt> if none
+    #          or <tt>null</tt> if none
     # @see #setPortlist
     def get_portlist
       return @portlist
@@ -404,8 +410,8 @@ module Java::Net
     # 
     # 
     # @param pattern           a <code>String</code> containing the domain name
-    # within which this cookie is visible;
-    # form is according to RFC 2965
+    #                          within which this cookie is visible;
+    #                          form is according to RFC 2965
     # 
     # @see #getDomain
     def set_domain(pattern)
@@ -441,9 +447,9 @@ module Java::Net
     # to be deleted.
     # 
     # @param expiry            an integer specifying the maximum age of the
-    # cookie in seconds; if zero, the cookie
-    # should be discarded immediately;
-    # otherwise, the cookie's max age is unspecified.
+    #                          cookie in seconds; if zero, the cookie
+    #                          should be discarded immediately;
+    #                          otherwise, the cookie's max age is unspecified.
     # 
     # @see #getMaxAge
     def set_max_age(expiry)
@@ -457,7 +463,7 @@ module Java::Net
     # 
     # 
     # @return                  an integer specifying the maximum age of the
-    # cookie in seconds
+    #                          cookie in seconds
     # 
     # 
     # @see #setMaxAge
@@ -494,7 +500,7 @@ module Java::Net
     # 
     # 
     # @return          a <code>String</code> specifying a path that contains
-    # a servlet name, for example, <i>/catalog</i>
+    #                  a servlet name, for example, <i>/catalog</i>
     # 
     # @see #setPath
     def get_path
@@ -508,8 +514,8 @@ module Java::Net
     # <p>The default value is <code>false</code>.
     # 
     # @param flag      if <code>true</code>, sends the cookie from the browser
-    # to the server using only when using a secure protocol;
-    # if <code>false</code>, sent on any protocol
+    #                  to the server using only when using a secure protocol;
+    #                  if <code>false</code>, sent on any protocol
     # 
     # @see #getSecure
     def set_secure(flag)
@@ -522,7 +528,7 @@ module Java::Net
     # browser can send cookies using any protocol.
     # 
     # @return          <code>true</code> if the browser can use
-    # any standard protocol; otherwise, <code>false</code>
+    #                  any standard protocol; otherwise, <code>false</code>
     # 
     # @see #setSecure
     def get_secure
@@ -560,7 +566,7 @@ module Java::Net
     # Returns the value of the cookie.
     # 
     # @return                  a <code>String</code> containing the cookie's
-    # present value
+    #                          present value
     # 
     # @see #setValue
     def get_value
@@ -576,8 +582,8 @@ module Java::Net
     # 
     # 
     # @return                  0 if the cookie complies with the
-    # original Netscape specification; 1
-    # if the cookie complies with RFC 2965/2109
+    #                          original Netscape specification; 1
+    #                          if the cookie complies with RFC 2965/2109
     # 
     # @see #setVersion
     def get_version
@@ -591,8 +597,8 @@ module Java::Net
     # 
     # 
     # @param v                 0 if the cookie should comply with
-    # the original Netscape specification;
-    # 1 if the cookie should comply with RFC 2965/2109
+    #                          the original Netscape specification;
+    #                          1 if the cookie should comply with RFC 2965/2109
     # 
     # @throws IllegalArgumentException if <tt>v</tt> is neither 0 nor 1
     # 
@@ -617,37 +623,37 @@ module Java::Net
       # </blockquote>
       # <p>Host A's name domain-matches host B's if:
       # <blockquote><ul>
-      # <li>their host name strings string-compare equal; or</li>
-      # <li>A is a HDN string and has the form NB, where N is a non-empty
-      # name string, B has the form .B', and B' is a HDN string.  (So,
-      # x.y.com domain-matches .Y.com but not Y.com.)</li>
+      #   <li>their host name strings string-compare equal; or</li>
+      #   <li>A is a HDN string and has the form NB, where N is a non-empty
+      #   name string, B has the form .B', and B' is a HDN string.  (So,
+      #   x.y.com domain-matches .Y.com but not Y.com.)</li>
       # </ul></blockquote>
       # 
       # <p>A host isn't in a domain (RFC 2965 sec. 3.3.2) if:
       # <blockquote><ul>
-      # <li>The value for the Domain attribute contains no embedded dots,
-      # and the value is not .local.</li>
-      # <li>The effective host name that derives from the request-host does
-      # not domain-match the Domain attribute.</li>
-      # <li>The request-host is a HDN (not IP address) and has the form HD,
-      # where D is the value of the Domain attribute, and H is a string
-      # that contains one or more dots.</li>
+      #   <li>The value for the Domain attribute contains no embedded dots,
+      #   and the value is not .local.</li>
+      #   <li>The effective host name that derives from the request-host does
+      #   not domain-match the Domain attribute.</li>
+      #   <li>The request-host is a HDN (not IP address) and has the form HD,
+      #   where D is the value of the Domain attribute, and H is a string
+      #   that contains one or more dots.</li>
       # </ul></blockquote>
       # 
       # <p>Examples:
       # <blockquote><ul>
-      # <li>A Set-Cookie2 from request-host y.x.foo.com for Domain=.foo.com
-      # would be rejected, because H is y.x and contains a dot.</li>
-      # <li>A Set-Cookie2 from request-host x.foo.com for Domain=.foo.com
-      # would be accepted.</li>
-      # <li>A Set-Cookie2 with Domain=.com or Domain=.com., will always be
-      # rejected, because there is no embedded dot.</li>
-      # <li>A Set-Cookie2 with Domain=ajax.com will be accepted, and the
-      # value for Domain will be taken to be .ajax.com, because a dot
-      # gets prepended to the value.</li>
-      # <li>A Set-Cookie2 from request-host example for Domain=.local will
-      # be accepted, because the effective host name for the request-
-      # host is example.local, and example.local domain-matches .local.</li>
+      #   <li>A Set-Cookie2 from request-host y.x.foo.com for Domain=.foo.com
+      #   would be rejected, because H is y.x and contains a dot.</li>
+      #   <li>A Set-Cookie2 from request-host x.foo.com for Domain=.foo.com
+      #   would be accepted.</li>
+      #   <li>A Set-Cookie2 with Domain=.com or Domain=.com., will always be
+      #   rejected, because there is no embedded dot.</li>
+      #   <li>A Set-Cookie2 with Domain=ajax.com will be accepted, and the
+      #   value for Domain will be taken to be .ajax.com, because a dot
+      #   gets prepended to the value.</li>
+      #   <li>A Set-Cookie2 from request-host example for Domain=.local will
+      #   be accepted, because the effective host name for the request-
+      #   host is example.local, and example.local domain-matches .local.</li>
       # </ul></blockquote>
       # 
       # @param domain    the domain name to check host name with
@@ -716,7 +722,7 @@ module Java::Net
     # and have same path (case-sensitive).
     # 
     # @return          <tt>true</tt> if 2 http cookies equal to each other;
-    # otherwise, <tt>false</tt>
+    #                  otherwise, <tt>false</tt>
     def ==(obj)
       if ((obj).equal?(self))
         return true
@@ -726,9 +732,9 @@ module Java::Net
       end
       other = obj
       # One http cookie equals to another cookie (RFC 2965 sec. 3.3.3) if:
-      # 1. they come from same domain (case-insensitive),
-      # 2. have same name (case-insensitive),
-      # 3. and have same path (case-sensitive).
+      #   1. they come from same domain (case-insensitive),
+      #   2. have same name (case-insensitive),
+      #   3. and have same path (case-sensitive).
       return equals_ignore_case(get_name, other.get_name) && equals_ignore_case(get_domain, other.get_domain) && self.==(get_path, other.get_path)
     end
     
@@ -779,7 +785,7 @@ module Java::Net
       # @param value             the <code>String</code> to be tested
       # 
       # @return                  <code>true</code> if the <code>String</code> is
-      # a token; <code>false</code> if it is not
+      #                          a token; <code>false</code> if it is not
       def is_token(value)
         len = value.length
         i = 0
@@ -796,7 +802,7 @@ module Java::Net
       typesig { [String] }
       # @param name      the name to be tested
       # @return          <tt>true</tt> if the name is reserved by cookie
-      # specification, <tt>false</tt> if it is not
+      #                  specification, <tt>false</tt> if it is not
       def is_reserved(name)
         # rfc2965 only
         # rfc2965 only
@@ -816,7 +822,7 @@ module Java::Net
       # @return          an HttpCookie being extracted
       # 
       # @throws IllegalArgumentException if header string violates the cookie
-      # specification
+      #                                  specification
       def parse_internal(header)
         cookie = nil
         namevalue_pair = nil
@@ -1063,14 +1069,13 @@ module Java::Net
           
           private
           alias_method :initialize_anonymous, :initialize
-        end.new_local(self))
+        end.new_local(self)) # Netscape only
         self.attr_assignors.put("expires", Class.new(CookieAttributeAssignor.class == Class ? CookieAttributeAssignor : Object) do
           local_class_in HttpCookie
           include_class_members HttpCookie
           include CookieAttributeAssignor if CookieAttributeAssignor.class == Module
           
           typesig { [HttpCookie, String, String] }
-          # Netscape only
           define_method :assign do |cookie, attr_name, attr_value|
             if ((cookie.get_max_age).equal?(MAX_AGE_UNSPECIFIED))
               cookie.set_max_age(cookie.expiry_date2delta_seconds(attr_value))
@@ -1130,11 +1135,11 @@ module Java::Net
     
     typesig { [String] }
     # @param dateString        a date string in format of
-    # "EEE',' dd-MMM-yyyy HH:mm:ss 'GMT'",
-    # which defined in Netscape cookie spec
+    #                          "EEE',' dd-MMM-yyyy HH:mm:ss 'GMT'",
+    #                          which defined in Netscape cookie spec
     # 
     # @return                  delta seconds between this cookie's creation
-    # time and the time specified by dateString
+    #                          time and the time specified by dateString
     def expiry_date2delta_seconds(date_string)
       df = SimpleDateFormat.new(NETSCAPE_COOKIE_DATE_FORMAT)
       df.set_time_zone(TimeZone.get_time_zone("GMT"))
@@ -1218,9 +1223,9 @@ module Java::Net
       
       typesig { [String] }
       # Split cookie header string according to rfc 2965:
-      # 1) split where it is a comma;
-      # 2) but not the comma surrounding by double-quotes, which is the comma
-      # inside port list or embeded URIs.
+      #   1) split where it is a comma;
+      #   2) but not the comma surrounding by double-quotes, which is the comma
+      #      inside port list or embeded URIs.
       # 
       # @param header            the cookie header string to split
       # 

@@ -22,7 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
 # -- This file was mechanically generated: Do not edit! -- //
 module Java::Nio
   module CharBufferImports #:nodoc:
@@ -40,20 +39,18 @@ module Java::Nio
   # 
   # <ul>
   # 
-  # <li><p> Absolute and relative {@link #get() </code><i>get</i><code>} and
-  # {@link #put(char) </code><i>put</i><code>} methods that read and write
-  # single characters; </p></li>
+  #   <li><p> Absolute and relative {@link #get() </code><i>get</i><code>} and
+  #   {@link #put(char) </code><i>put</i><code>} methods that read and write
+  #   single characters; </p></li>
   # 
-  # <li><p> Relative {@link #get(char[]) </code><i>bulk get</i><code>}
-  # methods that transfer contiguous sequences of characters from this buffer
-  # into an array; and</p></li>
+  #   <li><p> Relative {@link #get(char[]) </code><i>bulk get</i><code>}
+  #   methods that transfer contiguous sequences of characters from this buffer
+  #   into an array; and</p></li>
   # 
-  # <li><p> Relative {@link #put(char[]) </code><i>bulk put</i><code>}
-  # methods that transfer contiguous sequences of characters from a
-  # character array,&#32;a&#32;string, or some other character
-  # buffer into this buffer;&#32;and </p></li>
-  # 
-  # 
+  #   <li><p> Relative {@link #put(char[]) </code><i>bulk put</i><code>}
+  #   methods that transfer contiguous sequences of characters from a
+  #   character array,&#32;a&#32;string, or some other character
+  #   buffer into this buffer;&#32;and </p></li>
   # 
   # 
   # 
@@ -66,9 +63,11 @@ module Java::Nio
   # 
   # 
   # 
-  # <li><p> Methods for {@link #compact </code>compacting<code>}, {@link
-  # #duplicate </code>duplicating<code>}, and {@link #slice
-  # </code>slicing<code>} a character buffer.  </p></li>
+  # 
+  # 
+  #   <li><p> Methods for {@link #compact </code>compacting<code>}, {@link
+  #   #duplicate </code>duplicating<code>}, and {@link #slice
+  #   </code>slicing<code>} a character buffer.  </p></li>
   # 
   # </ul>
   # 
@@ -265,6 +264,7 @@ module Java::Nio
     # These fields are declared here rather than in Heap-X-Buffer in order to
     # reduce the number of virtual method invocations needed to access these
     # values, which is especially costly when coding small buffers.
+    # 
     attr_accessor :hb
     alias_method :attr_hb, :hb
     undef_method :hb
@@ -289,21 +289,20 @@ module Java::Nio
     # Creates a new buffer with the given mark, position, limit, capacity,
     # backing array, and array offset
     # 
-    # package-private
     def initialize(mark, pos, lim, cap, hb, offset)
       @hb = nil
       @offset = 0
       @is_read_only = false
-      super(mark, pos, lim, cap)
+      super(mark, pos, lim, cap) # package-private
       @hb = hb
       @offset = offset
     end
     
     typesig { [::Java::Int, ::Java::Int, ::Java::Int, ::Java::Int] }
     # Creates a new buffer with the given mark, position, limit, and capacity
+    # 
     def initialize(mark, pos, lim, cap)
-      # package-private
-      initialize__char_buffer(mark, pos, lim, cap, nil, 0)
+      initialize__char_buffer(mark, pos, lim, cap, nil, 0) # package-private
     end
     
     class_module.module_eval {
@@ -316,13 +315,13 @@ module Java::Nio
       # offset<code>} will be zero.
       # 
       # @param  capacity
-      # The new buffer's capacity, in characters
+      #         The new buffer's capacity, in characters
       # 
       # @return  The new character buffer
       # 
       # @throws  IllegalArgumentException
-      # If the <tt>capacity</tt> is a negative integer
-      def allocate(capacity)
+      #          If the <tt>capacity</tt> is a negative integer
+      def allocate_(capacity)
         if (capacity < 0)
           raise IllegalArgumentException.new
         end
@@ -341,24 +340,24 @@ module Java::Nio
       # its {@link #arrayOffset </code>array offset<code>} will be zero.  </p>
       # 
       # @param  array
-      # The array that will back the new buffer
+      #         The array that will back the new buffer
       # 
       # @param  offset
-      # The offset of the subarray to be used; must be non-negative and
-      # no larger than <tt>array.length</tt>.  The new buffer's position
-      # will be set to this value.
+      #         The offset of the subarray to be used; must be non-negative and
+      #         no larger than <tt>array.length</tt>.  The new buffer's position
+      #         will be set to this value.
       # 
       # @param  length
-      # The length of the subarray to be used;
-      # must be non-negative and no larger than
-      # <tt>array.length - offset</tt>.
-      # The new buffer's limit will be set to <tt>offset + length</tt>.
+      #         The length of the subarray to be used;
+      #         must be non-negative and no larger than
+      #         <tt>array.length - offset</tt>.
+      #         The new buffer's limit will be set to <tt>offset + length</tt>.
       # 
       # @return  The new character buffer
       # 
       # @throws  IndexOutOfBoundsException
-      # If the preconditions on the <tt>offset</tt> and <tt>length</tt>
-      # parameters do not hold
+      #          If the preconditions on the <tt>offset</tt> and <tt>length</tt>
+      #          parameters do not hold
       def wrap(array, offset, length)
         begin
           return HeapCharBuffer.new(array, offset, length)
@@ -379,7 +378,7 @@ module Java::Nio
       # be zero.  </p>
       # 
       # @param  array
-      # The array that will back this buffer
+      #         The array that will back this buffer
       # 
       # @return  The new character buffer
       def wrap(array)
@@ -395,7 +394,7 @@ module Java::Nio
     # 
     # @param target the buffer to read characters into
     # @return The number of characters added to the buffer, or
-    # -1 if this source of characters is at its end
+    #         -1 if this source of characters is at its end
     # @throws IOException if an I/O error occurs
     # @throws NullPointerException if target is null
     # @throws ReadOnlyBufferException if target is a read only buffer
@@ -433,25 +432,25 @@ module Java::Nio
       # will be <tt>end</tt>, and its mark will be undefined.  </p>
       # 
       # @param  csq
-      # The character sequence from which the new character buffer is to
-      # be created
+      #         The character sequence from which the new character buffer is to
+      #         be created
       # 
       # @param  start
-      # The index of the first character to be used;
-      # must be non-negative and no larger than <tt>csq.length()</tt>.
-      # The new buffer's position will be set to this value.
+      #         The index of the first character to be used;
+      #         must be non-negative and no larger than <tt>csq.length()</tt>.
+      #         The new buffer's position will be set to this value.
       # 
       # @param  end
-      # The index of the character following the last character to be
-      # used; must be no smaller than <tt>start</tt> and no larger
-      # than <tt>csq.length()</tt>.
-      # The new buffer's limit will be set to this value.
+      #         The index of the character following the last character to be
+      #         used; must be no smaller than <tt>start</tt> and no larger
+      #         than <tt>csq.length()</tt>.
+      #         The new buffer's limit will be set to this value.
       # 
       # @return  The new character buffer
       # 
       # @throws  IndexOutOfBoundsException
-      # If the preconditions on the <tt>start</tt> and <tt>end</tt>
-      # parameters do not hold
+      #          If the preconditions on the <tt>start</tt> and <tt>end</tt>
+      #          parameters do not hold
       def wrap(csq, start, end_)
         begin
           return StringCharBuffer.new(csq, start, end_)
@@ -469,8 +468,8 @@ module Java::Nio
       # undefined.  </p>
       # 
       # @param  csq
-      # The character sequence from which the new character buffer is to
-      # be created
+      #         The character sequence from which the new character buffer is to
+      #         be created
       # 
       # @return  The new character buffer
       def wrap(csq)
@@ -539,14 +538,13 @@ module Java::Nio
     
     typesig { [] }
     # -- Singleton get/put methods --
-    # 
     # Relative <i>get</i> method.  Reads the character at this buffer's
     # current position, and then increments the position. </p>
     # 
     # @return  The character at the buffer's current position
     # 
     # @throws  BufferUnderflowException
-    # If the buffer's current position is not smaller than its limit
+    #          If the buffer's current position is not smaller than its limit
     def get
       raise NotImplementedError
     end
@@ -558,15 +556,15 @@ module Java::Nio
     # position, and then increments the position. </p>
     # 
     # @param  c
-    # The character to be written
+    #         The character to be written
     # 
     # @return  This buffer
     # 
     # @throws  BufferOverflowException
-    # If this buffer's current position is not smaller than its limit
+    #          If this buffer's current position is not smaller than its limit
     # 
     # @throws  ReadOnlyBufferException
-    # If this buffer is read-only
+    #          If this buffer is read-only
     def put(c)
       raise NotImplementedError
     end
@@ -576,13 +574,13 @@ module Java::Nio
     # index. </p>
     # 
     # @param  index
-    # The index from which the character will be read
+    #         The index from which the character will be read
     # 
     # @return  The character at the given index
     # 
     # @throws  IndexOutOfBoundsException
-    # If <tt>index</tt> is negative
-    # or not smaller than the buffer's limit
+    #          If <tt>index</tt> is negative
+    #          or not smaller than the buffer's limit
     def get(index)
       raise NotImplementedError
     end
@@ -594,26 +592,25 @@ module Java::Nio
     # index. </p>
     # 
     # @param  index
-    # The index at which the character will be written
+    #         The index at which the character will be written
     # 
     # @param  c
-    # The character value to be written
+    #         The character value to be written
     # 
     # @return  This buffer
     # 
     # @throws  IndexOutOfBoundsException
-    # If <tt>index</tt> is negative
-    # or not smaller than the buffer's limit
+    #          If <tt>index</tt> is negative
+    #          or not smaller than the buffer's limit
     # 
     # @throws  ReadOnlyBufferException
-    # If this buffer is read-only
+    #          If this buffer is read-only
     def put(index, c)
       raise NotImplementedError
     end
     
     typesig { [Array.typed(::Java::Char), ::Java::Int, ::Java::Int] }
     # -- Bulk get operations --
-    # 
     # Relative bulk <i>get</i> method.
     # 
     # <p> This method transfers characters from this buffer into the given
@@ -633,34 +630,34 @@ module Java::Nio
     # the loop
     # 
     # <pre>
-    # for (int i = off; i < off + len; i++)
-    # dst[i] = src.get(); </pre>
+    #     for (int i = off; i < off + len; i++)
+    #         dst[i] = src.get(); </pre>
     # 
     # except that it first checks that there are sufficient characters in
     # this buffer and it is potentially much more efficient. </p>
     # 
     # @param  dst
-    # The array into which characters are to be written
+    #         The array into which characters are to be written
     # 
     # @param  offset
-    # The offset within the array of the first character to be
-    # written; must be non-negative and no larger than
-    # <tt>dst.length</tt>
+    #         The offset within the array of the first character to be
+    #         written; must be non-negative and no larger than
+    #         <tt>dst.length</tt>
     # 
     # @param  length
-    # The maximum number of characters to be written to the given
-    # array; must be non-negative and no larger than
-    # <tt>dst.length - offset</tt>
+    #         The maximum number of characters to be written to the given
+    #         array; must be non-negative and no larger than
+    #         <tt>dst.length - offset</tt>
     # 
     # @return  This buffer
     # 
     # @throws  BufferUnderflowException
-    # If there are fewer than <tt>length</tt> characters
-    # remaining in this buffer
+    #          If there are fewer than <tt>length</tt> characters
+    #          remaining in this buffer
     # 
     # @throws  IndexOutOfBoundsException
-    # If the preconditions on the <tt>offset</tt> and <tt>length</tt>
-    # parameters do not hold
+    #          If the preconditions on the <tt>offset</tt> and <tt>length</tt>
+    #          parameters do not hold
     def get(dst, offset, length_)
       check_bounds(offset, length_, dst.attr_length)
       if (length_ > remaining)
@@ -683,20 +680,19 @@ module Java::Nio
     # <tt>src.get(a)</tt> behaves in exactly the same way as the invocation
     # 
     # <pre>
-    # src.get(a, 0, a.length) </pre>
+    #     src.get(a, 0, a.length) </pre>
     # 
     # @return  This buffer
     # 
     # @throws  BufferUnderflowException
-    # If there are fewer than <tt>length</tt> characters
-    # remaining in this buffer
+    #          If there are fewer than <tt>length</tt> characters
+    #          remaining in this buffer
     def get(dst)
       return get(dst, 0, dst.attr_length)
     end
     
     typesig { [CharBuffer] }
     # -- Bulk put operations --
-    # 
     # Relative bulk <i>put</i> method&nbsp;&nbsp;<i>(optional operation)</i>.
     # 
     # <p> This method transfers the characters remaining in the given source
@@ -715,27 +711,27 @@ module Java::Nio
     # <tt>dst.put(src)</tt> has exactly the same effect as the loop
     # 
     # <pre>
-    # while (src.hasRemaining())
-    # dst.put(src.get()); </pre>
+    #     while (src.hasRemaining())
+    #         dst.put(src.get()); </pre>
     # 
     # except that it first checks that there is sufficient space in this
     # buffer and it is potentially much more efficient. </p>
     # 
     # @param  src
-    # The source buffer from which characters are to be read;
-    # must not be this buffer
+    #         The source buffer from which characters are to be read;
+    #         must not be this buffer
     # 
     # @return  This buffer
     # 
     # @throws  BufferOverflowException
-    # If there is insufficient space in this buffer
-    # for the remaining characters in the source buffer
+    #          If there is insufficient space in this buffer
+    #          for the remaining characters in the source buffer
     # 
     # @throws  IllegalArgumentException
-    # If the source buffer is this buffer
+    #          If the source buffer is this buffer
     # 
     # @throws  ReadOnlyBufferException
-    # If this buffer is read-only
+    #          If this buffer is read-only
     def put(src)
       if ((src).equal?(self))
         raise IllegalArgumentException.new
@@ -772,35 +768,35 @@ module Java::Nio
     # the loop
     # 
     # <pre>
-    # for (int i = off; i < off + len; i++)
-    # dst.put(a[i]); </pre>
+    #     for (int i = off; i < off + len; i++)
+    #         dst.put(a[i]); </pre>
     # 
     # except that it first checks that there is sufficient space in this
     # buffer and it is potentially much more efficient. </p>
     # 
     # @param  src
-    # The array from which characters are to be read
+    #         The array from which characters are to be read
     # 
     # @param  offset
-    # The offset within the array of the first character to be read;
-    # must be non-negative and no larger than <tt>array.length</tt>
+    #         The offset within the array of the first character to be read;
+    #         must be non-negative and no larger than <tt>array.length</tt>
     # 
     # @param  length
-    # The number of characters to be read from the given array;
-    # must be non-negative and no larger than
-    # <tt>array.length - offset</tt>
+    #         The number of characters to be read from the given array;
+    #         must be non-negative and no larger than
+    #         <tt>array.length - offset</tt>
     # 
     # @return  This buffer
     # 
     # @throws  BufferOverflowException
-    # If there is insufficient space in this buffer
+    #          If there is insufficient space in this buffer
     # 
     # @throws  IndexOutOfBoundsException
-    # If the preconditions on the <tt>offset</tt> and <tt>length</tt>
-    # parameters do not hold
+    #          If the preconditions on the <tt>offset</tt> and <tt>length</tt>
+    #          parameters do not hold
     # 
     # @throws  ReadOnlyBufferException
-    # If this buffer is read-only
+    #          If this buffer is read-only
     def put(src, offset, length_)
       check_bounds(offset, length_, src.attr_length)
       if (length_ > remaining)
@@ -824,15 +820,15 @@ module Java::Nio
     # invocation
     # 
     # <pre>
-    # dst.put(a, 0, a.length) </pre>
+    #     dst.put(a, 0, a.length) </pre>
     # 
     # @return  This buffer
     # 
     # @throws  BufferOverflowException
-    # If there is insufficient space in this buffer
+    #          If there is insufficient space in this buffer
     # 
     # @throws  ReadOnlyBufferException
-    # If this buffer is read-only
+    #          If this buffer is read-only
     def put(src)
       return put(src, 0, src.attr_length)
     end
@@ -858,36 +854,36 @@ module Java::Nio
     # as the loop
     # 
     # <pre>
-    # for (int i = start; i < end; i++)
-    # dst.put(src.charAt(i)); </pre>
+    #     for (int i = start; i < end; i++)
+    #         dst.put(src.charAt(i)); </pre>
     # 
     # except that it first checks that there is sufficient space in this
     # buffer and it is potentially much more efficient. </p>
     # 
     # @param  src
-    # The string from which characters are to be read
+    #         The string from which characters are to be read
     # 
     # @param  start
-    # The offset within the string of the first character to be read;
-    # must be non-negative and no larger than
-    # <tt>string.length()</tt>
+    #         The offset within the string of the first character to be read;
+    #         must be non-negative and no larger than
+    #         <tt>string.length()</tt>
     # 
     # @param  end
-    # The offset within the string of the last character to be read,
-    # plus one; must be non-negative and no larger than
-    # <tt>string.length()</tt>
+    #         The offset within the string of the last character to be read,
+    #         plus one; must be non-negative and no larger than
+    #         <tt>string.length()</tt>
     # 
     # @return  This buffer
     # 
     # @throws  BufferOverflowException
-    # If there is insufficient space in this buffer
+    #          If there is insufficient space in this buffer
     # 
     # @throws  IndexOutOfBoundsException
-    # If the preconditions on the <tt>start</tt> and <tt>end</tt>
-    # parameters do not hold
+    #          If the preconditions on the <tt>start</tt> and <tt>end</tt>
+    #          parameters do not hold
     # 
     # @throws  ReadOnlyBufferException
-    # If this buffer is read-only
+    #          If this buffer is read-only
     def put(src, start, end_)
       check_bounds(start, end_ - start, src.length)
       i = start
@@ -906,22 +902,21 @@ module Java::Nio
     # <tt>dst.put(s)</tt> behaves in exactly the same way as the invocation
     # 
     # <pre>
-    # dst.put(s, 0, s.length()) </pre>
+    #     dst.put(s, 0, s.length()) </pre>
     # 
     # @return  This buffer
     # 
     # @throws  BufferOverflowException
-    # If there is insufficient space in this buffer
+    #          If there is insufficient space in this buffer
     # 
     # @throws  ReadOnlyBufferException
-    # If this buffer is read-only
+    #          If this buffer is read-only
     def put(src)
       return put(src, 0, src.length)
     end
     
     typesig { [] }
     # -- Other stuff --
-    # 
     # Tells whether or not this buffer is backed by an accessible character
     # array.
     # 
@@ -930,7 +925,7 @@ module Java::Nio
     # </p>
     # 
     # @return  <tt>true</tt> if, and only if, this buffer
-    # is backed by an array and is not read-only
+    #          is backed by an array and is not read-only
     def has_array
       return (!(@hb).nil?) && !@is_read_only
     end
@@ -949,10 +944,10 @@ module Java::Nio
     # @return  The array that backs this buffer
     # 
     # @throws  ReadOnlyBufferException
-    # If this buffer is backed by an array but is read-only
+    #          If this buffer is backed by an array but is read-only
     # 
     # @throws  UnsupportedOperationException
-    # If this buffer is not backed by an accessible array
+    #          If this buffer is not backed by an accessible array
     def array
       if ((@hb).nil?)
         raise UnsupportedOperationException.new
@@ -975,13 +970,13 @@ module Java::Nio
     # array.  </p>
     # 
     # @return  The offset within this buffer's array
-    # of the first element of the buffer
+    #          of the first element of the buffer
     # 
     # @throws  ReadOnlyBufferException
-    # If this buffer is backed by an array but is read-only
+    #          If this buffer is backed by an array but is read-only
     # 
     # @throws  UnsupportedOperationException
-    # If this buffer is not backed by an accessible array
+    #          If this buffer is not backed by an accessible array
     def array_offset
       if ((@hb).nil?)
         raise UnsupportedOperationException.new
@@ -1029,7 +1024,7 @@ module Java::Nio
     # @return  This buffer
     # 
     # @throws  ReadOnlyBufferException
-    # If this buffer is read-only
+    #          If this buffer is read-only
     def compact
       raise NotImplementedError
     end
@@ -1059,7 +1054,7 @@ module Java::Nio
       p = position
       i = limit - 1
       while i >= p
-        h = 31 * h + RJava.cast_to_int(get(i))
+        h = 31 * h + (get(i)).to_int
         i -= 1
       end
       return h
@@ -1072,14 +1067,14 @@ module Java::Nio
     # 
     # <p><ol>
     # 
-    # <li><p> They have the same element type,  </p></li>
+    #   <li><p> They have the same element type,  </p></li>
     # 
-    # <li><p> They have the same number of remaining elements, and
-    # </p></li>
+    #   <li><p> They have the same number of remaining elements, and
+    #   </p></li>
     # 
-    # <li><p> The two sequences of remaining elements, considered
-    # independently of their starting positions, are pointwise equal.
-    # </p></li>
+    #   <li><p> The two sequences of remaining elements, considered
+    #   independently of their starting positions, are pointwise equal.
+    #   </p></li>
     # 
     # </ol>
     # 
@@ -1088,7 +1083,7 @@ module Java::Nio
     # @param  ob  The object to which this buffer is to be compared
     # 
     # @return  <tt>true</tt> if, and only if, this buffer is equal to the
-    # given object
+    #           given object
     def ==(ob)
       if ((self).equal?(ob))
         return true
@@ -1131,7 +1126,7 @@ module Java::Nio
     # <p> A char buffer is not comparable to any other type of object.
     # 
     # @return  A negative integer, zero, or a positive integer as this buffer
-    # is less than, equal to, or greater than the given buffer
+    #          is less than, equal to, or greater than the given buffer
     def compare_to(that)
       n = self.position + Math.min(self.remaining, that.remaining)
       i = self.position
@@ -1162,7 +1157,6 @@ module Java::Nio
     
     typesig { [] }
     # -- Other char stuff --
-    # 
     # Returns a string containing the characters in this buffer.
     # 
     # <p> The first character of the resulting string will be the character at
@@ -1183,7 +1177,6 @@ module Java::Nio
     typesig { [] }
     # package-private
     # --- Methods to support CharSequence ---
-    # 
     # Returns the length of this character buffer.
     # 
     # <p> When viewed as a character sequence, the length of a character
@@ -1201,14 +1194,14 @@ module Java::Nio
     # position. </p>
     # 
     # @param  index
-    # The index of the character to be read, relative to the position;
-    # must be non-negative and smaller than <tt>remaining()</tt>
+    #         The index of the character to be read, relative to the position;
+    #         must be non-negative and smaller than <tt>remaining()</tt>
     # 
     # @return  The character at index
-    # <tt>position()&nbsp;+&nbsp;index</tt>
+    #          <tt>position()&nbsp;+&nbsp;index</tt>
     # 
     # @throws  IndexOutOfBoundsException
-    # If the preconditions on <tt>index</tt> do not hold
+    #          If the preconditions on <tt>index</tt> do not hold
     def char_at(index)
       return get(position + check_index(index, 1))
     end
@@ -1227,28 +1220,27 @@ module Java::Nio
     # if, and only if, this buffer is read-only.  </p>
     # 
     # @param  start
-    # The index, relative to the current position, of the first
-    # character in the subsequence; must be non-negative and no larger
-    # than <tt>remaining()</tt>
+    #         The index, relative to the current position, of the first
+    #         character in the subsequence; must be non-negative and no larger
+    #         than <tt>remaining()</tt>
     # 
     # @param  end
-    # The index, relative to the current position, of the character
-    # following the last character in the subsequence; must be no
-    # smaller than <tt>start</tt> and no larger than
-    # <tt>remaining()</tt>
+    #         The index, relative to the current position, of the character
+    #         following the last character in the subsequence; must be no
+    #         smaller than <tt>start</tt> and no larger than
+    #         <tt>remaining()</tt>
     # 
     # @return  The new character sequence
     # 
     # @throws  IndexOutOfBoundsException
-    # If the preconditions on <tt>start</tt> and <tt>end</tt>
-    # do not hold
+    #          If the preconditions on <tt>start</tt> and <tt>end</tt>
+    #          do not hold
     def sub_sequence(start, end_)
       raise NotImplementedError
     end
     
     typesig { [CharSequence] }
     # --- Methods to support Appendable ---
-    # 
     # Appends the specified character sequence  to this
     # buffer&nbsp;&nbsp;<i>(optional operation)</i>.
     # 
@@ -1256,7 +1248,7 @@ module Java::Nio
     # behaves in exactly the same way as the invocation
     # 
     # <pre>
-    # dst.put(csq.toString()) </pre>
+    #     dst.put(csq.toString()) </pre>
     # 
     # <p> Depending on the specification of <tt>toString</tt> for the
     # character sequence <tt>csq</tt>, the entire sequence may not be
@@ -1265,17 +1257,17 @@ module Java::Nio
     # content depends upon the buffer's position and limit.
     # 
     # @param  csq
-    # The character sequence to append.  If <tt>csq</tt> is
-    # <tt>null</tt>, then the four characters <tt>"null"</tt> are
-    # appended to this character buffer.
+    #         The character sequence to append.  If <tt>csq</tt> is
+    #         <tt>null</tt>, then the four characters <tt>"null"</tt> are
+    #         appended to this character buffer.
     # 
     # @return  This buffer
     # 
     # @throws  BufferOverflowException
-    # If there is insufficient space in this buffer
+    #          If there is insufficient space in this buffer
     # 
     # @throws  ReadOnlyBufferException
-    # If this buffer is read-only
+    #          If this buffer is read-only
     # 
     # @since  1.5
     def append(csq)
@@ -1295,26 +1287,26 @@ module Java::Nio
     # same way as the invocation
     # 
     # <pre>
-    # dst.put(csq.subSequence(start, end).toString()) </pre>
+    #     dst.put(csq.subSequence(start, end).toString()) </pre>
     # 
     # @param  csq
-    # The character sequence from which a subsequence will be
-    # appended.  If <tt>csq</tt> is <tt>null</tt>, then characters
-    # will be appended as if <tt>csq</tt> contained the four
-    # characters <tt>"null"</tt>.
+    #         The character sequence from which a subsequence will be
+    #         appended.  If <tt>csq</tt> is <tt>null</tt>, then characters
+    #         will be appended as if <tt>csq</tt> contained the four
+    #         characters <tt>"null"</tt>.
     # 
     # @return  This buffer
     # 
     # @throws  BufferOverflowException
-    # If there is insufficient space in this buffer
+    #          If there is insufficient space in this buffer
     # 
     # @throws  IndexOutOfBoundsException
-    # If <tt>start</tt> or <tt>end</tt> are negative, <tt>start</tt>
-    # is greater than <tt>end</tt>, or <tt>end</tt> is greater than
-    # <tt>csq.length()</tt>
+    #          If <tt>start</tt> or <tt>end</tt> are negative, <tt>start</tt>
+    #          is greater than <tt>end</tt>, or <tt>end</tt> is greater than
+    #          <tt>csq.length()</tt>
     # 
     # @throws  ReadOnlyBufferException
-    # If this buffer is read-only
+    #          If this buffer is read-only
     # 
     # @since  1.5
     def append(csq, start, end_)
@@ -1330,18 +1322,18 @@ module Java::Nio
     # behaves in exactly the same way as the invocation
     # 
     # <pre>
-    # dst.put(c) </pre>
+    #     dst.put(c) </pre>
     # 
     # @param  c
-    # The 16-bit character to append
+    #         The 16-bit character to append
     # 
     # @return  This buffer
     # 
     # @throws  BufferOverflowException
-    # If there is insufficient space in this buffer
+    #          If there is insufficient space in this buffer
     # 
     # @throws  ReadOnlyBufferException
-    # If this buffer is read-only
+    #          If this buffer is read-only
     # 
     # @since  1.5
     def append(c)
@@ -1350,7 +1342,6 @@ module Java::Nio
     
     typesig { [] }
     # -- Other byte stuff: Access to binary data --
-    # 
     # Retrieves this buffer's byte order.
     # 
     # <p> The byte order of a character buffer created by allocation or by

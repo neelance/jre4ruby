@@ -312,7 +312,6 @@ module Sun::Security::Ssl
   
   # Inherit chooseEngineClientAlias() and chooseEngineServerAlias() from
   # X509ExtendedKeymanager. It defines them to return null;
-  # 
   # A wrapper class to turn a X509KeyManager into an X509ExtendedKeyManager
   class AbstractWrapper < SSLContextImplImports.const_get :X509ExtendedKeyManager
     include_class_members SSLContextImplImports

@@ -60,12 +60,12 @@ module Java::Util
   # "read" and "write". Their meaning is defined as follows:
   # <P>
   # <DL>
-  # <DT> read
-  # <DD> read permission. Allows <code>System.getProperty</code> to
-  # be called.
-  # <DT> write
-  # <DD> write permission. Allows <code>System.setProperty</code> to
-  # be called.
+  #    <DT> read
+  #    <DD> read permission. Allows <code>System.getProperty</code> to
+  #         be called.
+  #    <DT> write
+  #    <DD> write permission. Allows <code>System.setProperty</code> to
+  #         be called.
   # </DL>
   # <P>
   # The actions string is converted to lowercase before processing.
@@ -130,7 +130,6 @@ module Java::Util
     typesig { [::Java::Int] }
     # Left null as long as possible, then
     # created and re-used in the getAction function.
-    # 
     # initialize a PropertyPermission object. Common to all constructors.
     # Also called during de-serialization.
     # 
@@ -178,7 +177,7 @@ module Java::Util
     # <li> <i>p</i>'s actions are a subset of this
     # object's actions, and <p>
     # <li> <i>p</i>'s name is implied by this object's
-    # name. For example, "java.*" implies "java.home".
+    #      name. For example, "java.*" implies "java.home".
     # </ul>
     # @param p the permission to check against.
     # 
@@ -275,10 +274,11 @@ module Java::Util
           seencomma = false
           while (i >= matchlen && !seencomma)
             case (a[i - matchlen])
-            # FALLTHROUGH
             when Character.new(?,.ord)
               seencomma = true
+              # FALLTHROUGH
             when Character.new(?\s.ord), Character.new(?\r.ord), Character.new(?\n.ord), Character.new(?\f.ord), Character.new(?\t.ord)
+              # FALLTHROUGH
             else
               raise IllegalArgumentException.new("invalid permission: " + actions)
             end
@@ -413,7 +413,6 @@ module Java::Util
     # Boolean saying if "*" is in the collection.
     # 
     # @see #serialPersistentFields
-    # 
     # No sync access; OK for this to be stale.
     attr_accessor :all_allowed
     alias_method :attr_all_allowed, :all_allowed
@@ -438,10 +437,10 @@ module Java::Util
     # @param permission the Permission object to add.
     # 
     # @exception IllegalArgumentException - if the permission is not a
-    # PropertyPermission
+    #                                       PropertyPermission
     # 
     # @exception SecurityException - if this PropertyPermissionCollection
-    # object has been marked readonly
+    #                                object has been marked readonly
     def add(permission)
       if (!(permission.is_a?(PropertyPermission)))
         raise IllegalArgumentException.new("invalid permission: " + RJava.cast_to_string(permission))
@@ -562,19 +561,16 @@ module Java::Util
       # @serial
       # 
       # private Hashtable permissions;
-      # 
       # @serialField permissions java.util.Hashtable
-      # A table of the PropertyPermissions.
+      #     A table of the PropertyPermissions.
       # @serialField all_allowed boolean
-      # boolean saying if "*" is in the collection.
-      const_set_lazy(:SerialPersistentFields) { Array.typed(ObjectStreamField).new([ObjectStreamField.new("permissions", Hashtable), ObjectStreamField.new("all_allowed", Boolean::TYPE), ]) }
+      #     boolean saying if "*" is in the collection.
+      const_set_lazy(:SerialPersistentFields) { Array.typed(ObjectStreamField).new([ObjectStreamField.new("permissions", Hashtable), ObjectStreamField.new("all_allowed", Boolean::TYPE)]) }
       const_attr_reader  :SerialPersistentFields
     }
     
     typesig { [ObjectOutputStream] }
     # @serialData Default fields.
-    # 
-    # 
     # Writes the contents of the perms field out as a Hashtable for
     # serialization compatibility with earlier releases. all_allowed
     # unchanged.

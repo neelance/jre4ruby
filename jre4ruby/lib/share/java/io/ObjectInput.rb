@@ -49,7 +49,7 @@ module Java::Io
     # 
     # @return the object read from the stream
     # @exception java.lang.ClassNotFoundException If the class of a serialized
-    # object cannot be found.
+    #      object cannot be found.
     # @exception IOException If any of the usual Input/Output
     # related exceptions occur.
     def read_object
@@ -60,7 +60,7 @@ module Java::Io
     # Reads a byte of data. This method will block if no input is
     # available.
     # @return  the byte read, or -1 if the end of the
-    # stream is reached.
+    #          stream is reached.
     # @exception IOException If an I/O error has occurred.
     def read
       raise NotImplementedError
@@ -71,7 +71,7 @@ module Java::Io
     # block until some input is available.
     # @param b the buffer into which the data is read
     # @return  the actual number of bytes read, -1 is
-    # returned when the end of the stream is reached.
+    #          returned when the end of the stream is reached.
     # @exception IOException If an I/O error has occurred.
     def read(b)
       raise NotImplementedError
@@ -84,7 +84,7 @@ module Java::Io
     # @param off the start offset of the data
     # @param len the maximum number of bytes read
     # @return  the actual number of bytes read, -1 is
-    # returned when the end of the stream is reached.
+    #          returned when the end of the stream is reached.
     # @exception IOException If an I/O error has occurred.
     def read(b, off, len)
       raise NotImplementedError

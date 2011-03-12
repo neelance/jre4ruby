@@ -210,7 +210,7 @@ module Java::Util
     # @param  initialCapacity The initial capacity of the <tt>WeakHashMap</tt>
     # @param  loadFactor      The load factor of the <tt>WeakHashMap</tt>
     # @throws IllegalArgumentException if the initial capacity is negative,
-    # or if the load factor is nonpositive.
+    #         or if the load factor is nonpositive.
     def initialize(initial_capacity, load_factor)
       @table = nil
       @size = 0
@@ -237,7 +237,7 @@ module Java::Util
       end
       @table = new_table(capacity)
       @load_factor = load_factor
-      @threshold = RJava.cast_to_int((capacity * load_factor))
+      @threshold = ((capacity * load_factor)).to_int
     end
     
     typesig { [::Java::Int] }
@@ -279,13 +279,12 @@ module Java::Util
     # @throws  NullPointerException if the specified map is null
     # @since   1.3
     def initialize(m)
-      initialize__weak_hash_map(Math.max(RJava.cast_to_int((m.size / DEFAULT_LOAD_FACTOR)) + 1, 16), DEFAULT_LOAD_FACTOR)
+      initialize__weak_hash_map(Math.max(((m.size / DEFAULT_LOAD_FACTOR)).to_int + 1, 16), DEFAULT_LOAD_FACTOR)
       put_all(m)
     end
     
     class_module.module_eval {
       # internal utilities
-      # 
       # Value representing null keys inside tables.
       const_set_lazy(:NULL_KEY) { Object.new }
       const_attr_reader  :NULL_KEY
@@ -413,7 +412,7 @@ module Java::Util
     # 
     # @param  key   The key whose presence in this map is to be tested
     # @return <tt>true</tt> if there is a mapping for <tt>key</tt>;
-    # <tt>false</tt> otherwise
+    #         <tt>false</tt> otherwise
     def contains_key(key)
       return !(get_entry(key)).nil?
     end
@@ -441,9 +440,9 @@ module Java::Util
     # @param key key with which the specified value is to be associated.
     # @param value value to be associated with the specified key.
     # @return the previous value associated with <tt>key</tt>, or
-    # <tt>null</tt> if there was no mapping for <tt>key</tt>.
-    # (A <tt>null</tt> return can also indicate that the map
-    # previously associated <tt>null</tt> with <tt>key</tt>.)
+    #         <tt>null</tt> if there was no mapping for <tt>key</tt>.
+    #         (A <tt>null</tt> return can also indicate that the map
+    #         previously associated <tt>null</tt> with <tt>key</tt>.)
     def put(key, value)
       k = mask_null(key)
       h = HashMap.hash(k.hash_code)
@@ -479,9 +478,9 @@ module Java::Util
     # This has the effect of preventing future calls.
     # 
     # @param newCapacity the new capacity, MUST be a power of two;
-    # must be greater than current capacity unless current
-    # capacity is MAXIMUM_CAPACITY (in which case value
-    # is irrelevant).
+    #        must be greater than current capacity unless current
+    #        capacity is MAXIMUM_CAPACITY (in which case value
+    #        is irrelevant).
     def resize(new_capacity)
       old_table = get_table
       old_capacity = old_table.attr_length
@@ -496,7 +495,7 @@ module Java::Util
       # shrinkage, then restore old table.  This should be rare, but avoids
       # unbounded expansion of garbage-filled tables.
       if (@size >= @threshold / 2)
-        @threshold = RJava.cast_to_int((new_capacity * @load_factor))
+        @threshold = ((new_capacity * @load_factor)).to_int
       else
         expunge_stale_entries
         transfer(new_table_, old_table)
@@ -516,7 +515,7 @@ module Java::Util
           key = e.get
           if ((key).nil?)
             e.attr_next = nil # Help GC
-            e.attr_value = nil # "   "
+            e.attr_value = nil #  "   "
             @size -= 1
           else
             i = index_for(e.attr_hash, dest.attr_length)
@@ -549,7 +548,7 @@ module Java::Util
       # By using the conservative calculation, we subject ourself
       # to at most one extra resize.
       if (num_keys_to_be_added > @threshold)
-        target_capacity = RJava.cast_to_int((num_keys_to_be_added / @load_factor + 1))
+        target_capacity = ((num_keys_to_be_added / @load_factor + 1)).to_int
         if (target_capacity > MAXIMUM_CAPACITY)
           target_capacity = MAXIMUM_CAPACITY
         end
@@ -584,7 +583,7 @@ module Java::Util
     # 
     # @param key key whose mapping is to be removed from the map
     # @return the previous value associated with <tt>key</tt>, or
-    # <tt>null</tt> if there was no mapping for <tt>key</tt>
+    #         <tt>null</tt> if there was no mapping for <tt>key</tt>
     def remove(key)
       k = mask_null(key)
       h = HashMap.hash(k.hash_code)
@@ -665,7 +664,7 @@ module Java::Util
     # 
     # @param value value whose presence in this map is to be tested
     # @return <tt>true</tt> if this map maps one or more keys to the
-    # specified value
+    #         specified value
     def contains_value(value)
       if ((value).nil?)
         return contains_null_value

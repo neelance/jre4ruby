@@ -127,7 +127,7 @@ module Java::Net
     # 
     # 
     # @param      port  the port number, or <code>0</code> to use any
-    # free port.
+    #                   free port.
     # 
     # @exception  IOException  if an I/O error occurs when opening the socket.
     # @exception  SecurityException
@@ -169,7 +169,7 @@ module Java::Net
     # <P>
     # 
     # @param      port     the port number, or <code>0</code> to use
-    # any free port.
+    #                      any free port.
     # @param      backlog  the maximum length of the queue.
     # 
     # @exception  IOException  if an I/O error occurs when opening the socket.
@@ -332,11 +332,11 @@ module Java::Net
     # <p>
     # @param   endpoint        The IP address & port number to bind to.
     # @throws  IOException if the bind operation fails, or if the socket
-    # is already bound.
+    #                     is already bound.
     # @throws  SecurityException       if a <code>SecurityManager</code> is present and
     # its <code>checkListen</code> method doesn't allow the operation.
     # @throws  IllegalArgumentException if endpoint is a
-    # SocketAddress subclass not supported by this socket
+    #          SocketAddress subclass not supported by this socket
     # @since 1.4
     def bind(endpoint)
       bind(endpoint, 50)
@@ -355,11 +355,11 @@ module Java::Net
     # @param   endpoint        The IP address & port number to bind to.
     # @param   backlog         The listen backlog length.
     # @throws  IOException if the bind operation fails, or if the socket
-    # is already bound.
+    #                     is already bound.
     # @throws  SecurityException       if a <code>SecurityManager</code> is present and
     # its <code>checkListen</code> method doesn't allow the operation.
     # @throws  IllegalArgumentException if endpoint is a
-    # SocketAddress subclass not supported by this socket
+    #          SocketAddress subclass not supported by this socket
     # @since 1.4
     def bind(endpoint, backlog)
       if (is_closed)
@@ -402,7 +402,7 @@ module Java::Net
     # Returns the local address of this server socket.
     # 
     # @return  the address to which this socket is bound,
-    # or <code>null</code> if the socket is unbound.
+    #          or <code>null</code> if the socket is unbound.
     def get_inet_address
       if (!is_bound)
         return nil
@@ -421,7 +421,7 @@ module Java::Net
     # Returns the port number on which this socket is listening.
     # 
     # @return  the port number to which this socket is listening or
-    # -1 if the socket is not bound yet.
+    #          -1 if the socket is not bound yet.
     def get_local_port
       if (!is_bound)
         return -1
@@ -441,7 +441,7 @@ module Java::Net
     # <code>null</code> if it is not bound yet.
     # 
     # @return a <code>SocketAddress</code> representing the local endpoint of this
-    # socket, or <code>null</code> if it is not bound yet.
+    #         socket, or <code>null</code> if it is not bound yet.
     # @see #getInetAddress()
     # @see #getLocalPort()
     # @see #bind(SocketAddress)
@@ -466,15 +466,15 @@ module Java::Net
     # This could result in a SecurityException.
     # 
     # @exception  IOException  if an I/O error occurs when waiting for a
-    # connection.
+    #               connection.
     # @exception  SecurityException  if a security manager exists and its
-    # <code>checkAccept</code> method doesn't allow the operation.
+    #             <code>checkAccept</code> method doesn't allow the operation.
     # @exception  SocketTimeoutException if a timeout was previously set with setSoTimeout and
-    # the timeout has been reached.
+    #             the timeout has been reached.
     # @exception  java.nio.channels.IllegalBlockingModeException
-    # if this socket has an associated channel, the channel is in
-    # non-blocking mode, and there is no connection ready to be
-    # accepted
+    #             if this socket has an associated channel, the channel is in
+    #             non-blocking mode, and there is no connection ready to be
+    #             accepted
     # 
     # @return the new Socket
     # @see SecurityManager#checkAccept
@@ -500,8 +500,8 @@ module Java::Net
     # 
     # @param s the Socket
     # @throws java.nio.channels.IllegalBlockingModeException
-    # if this socket has an associated channel,
-    # and the channel is in non-blocking mode
+    #         if this socket has an associated channel,
+    #         and the channel is in non-blocking mode
     # @throws IOException if an I/O error occurs when waiting
     # for a connection.
     # @since   JDK1.1
@@ -575,8 +575,8 @@ module Java::Net
     # method.
     # 
     # @return  the server-socket channel associated with this socket,
-    # or <tt>null</tt> if this socket was not created
-    # for a channel
+    #          or <tt>null</tt> if this socket was not created
+    #          for a channel
     # 
     # @since 1.4
     # @spec JSR-51
@@ -679,8 +679,8 @@ module Java::Net
     # 
     # @param on  whether to enable or disable the socket option
     # @exception SocketException if an error occurs enabling or
-    # disabling the <tt>SO_RESUEADDR</tt> socket option,
-    # or the socket is closed.
+    #            disabling the <tt>SO_RESUEADDR</tt> socket option,
+    #            or the socket is closed.
     # @since 1.4
     # @see #getReuseAddress()
     # @see #bind(SocketAddress)
@@ -761,10 +761,10 @@ module Java::Net
       # 
       # @param      fac   the desired factory.
       # @exception  IOException  if an I/O error occurs when setting the
-      # socket factory.
+      #               socket factory.
       # @exception  SocketException  if the factory has already been defined.
       # @exception  SecurityException  if a security manager exists and its
-      # <code>checkSetFactory</code> method doesn't allow the operation.
+      #             <code>checkSetFactory</code> method doesn't allow the operation.
       # @see        java.net.SocketImplFactory#createSocketImpl()
       # @see        SecurityManager#checkSetFactory
       def set_socket_factory(fac)
@@ -878,16 +878,16 @@ module Java::Net
     # requires the socket to be created with the no-argument constructor.
     # 
     # @param  connectionTime
-    # An <tt>int</tt> expressing the relative importance of a short
-    # connection time
+    #         An <tt>int</tt> expressing the relative importance of a short
+    #         connection time
     # 
     # @param  latency
-    # An <tt>int</tt> expressing the relative importance of low
-    # latency
+    #         An <tt>int</tt> expressing the relative importance of low
+    #         latency
     # 
     # @param  bandwidth
-    # An <tt>int</tt> expressing the relative importance of high
-    # bandwidth
+    #         An <tt>int</tt> expressing the relative importance of high
+    #         bandwidth
     # 
     # @since 1.5
     def set_performance_preferences(connection_time, latency, bandwidth)

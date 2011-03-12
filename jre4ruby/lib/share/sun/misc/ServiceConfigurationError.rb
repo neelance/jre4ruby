@@ -33,12 +33,12 @@ module Sun::Misc
   # Error thrown when something goes wrong while looking up service providers.
   # In particular, this error will be thrown in the following situations:
   # 
-  # <ul>
-  # <li> A concrete provider class cannot be found,
-  # <li> A concrete provider class cannot be instantiated,
-  # <li> The format of a provider-configuration file is illegal, or
-  # <li> An IOException occurs while reading a provider-configuration file.
-  # </ul>
+  #   <ul>
+  #   <li> A concrete provider class cannot be found,
+  #   <li> A concrete provider class cannot be instantiated,
+  #   <li> The format of a provider-configuration file is illegal, or
+  #   <li> An IOException occurs while reading a provider-configuration file.
+  #   </ul>
   # 
   # @author Mark Reinhold
   # @since 1.3

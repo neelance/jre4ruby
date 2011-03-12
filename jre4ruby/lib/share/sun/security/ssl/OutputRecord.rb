@@ -225,9 +225,11 @@ module Sun::Security::Ssl
     # are automatically flushing a handshake stream, make sure we
     # have hashed the message first.
     def add_mac(signer)
+      # 
       # when we support compression, hashing can't go here
       # since it'll need to be done on the uncompressed data,
       # and the MAC applies to the compressed data.
+      # 
       if ((@content_type).equal?(self.attr_ct_handshake))
         do_hashes
       end

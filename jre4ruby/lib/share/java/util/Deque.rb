@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # This file is available under and governed by the GNU General Public
 # License version 2 only, as published by the Free Software Foundation.
 # However, the following notice accompanied the original version of this
@@ -61,39 +59,39 @@ module Java::Util
   # 
   # <p>
   # <table BORDER CELLPADDING=3 CELLSPACING=1>
-  # <tr>
-  # <td></td>
-  # <td ALIGN=CENTER COLSPAN = 2> <b>First Element (Head)</b></td>
-  # <td ALIGN=CENTER COLSPAN = 2> <b>Last Element (Tail)</b></td>
-  # </tr>
-  # <tr>
-  # <td></td>
-  # <td ALIGN=CENTER><em>Throws exception</em></td>
-  # <td ALIGN=CENTER><em>Special value</em></td>
-  # <td ALIGN=CENTER><em>Throws exception</em></td>
-  # <td ALIGN=CENTER><em>Special value</em></td>
-  # </tr>
-  # <tr>
-  # <td><b>Insert</b></td>
-  # <td>{@link #addFirst addFirst(e)}</td>
-  # <td>{@link #offerFirst offerFirst(e)}</td>
-  # <td>{@link #addLast addLast(e)}</td>
-  # <td>{@link #offerLast offerLast(e)}</td>
-  # </tr>
-  # <tr>
-  # <td><b>Remove</b></td>
-  # <td>{@link #removeFirst removeFirst()}</td>
-  # <td>{@link #pollFirst pollFirst()}</td>
-  # <td>{@link #removeLast removeLast()}</td>
-  # <td>{@link #pollLast pollLast()}</td>
-  # </tr>
-  # <tr>
-  # <td><b>Examine</b></td>
-  # <td>{@link #getFirst getFirst()}</td>
-  # <td>{@link #peekFirst peekFirst()}</td>
-  # <td>{@link #getLast getLast()}</td>
-  # <td>{@link #peekLast peekLast()}</td>
-  # </tr>
+  #  <tr>
+  #    <td></td>
+  #    <td ALIGN=CENTER COLSPAN = 2> <b>First Element (Head)</b></td>
+  #    <td ALIGN=CENTER COLSPAN = 2> <b>Last Element (Tail)</b></td>
+  #  </tr>
+  #  <tr>
+  #    <td></td>
+  #    <td ALIGN=CENTER><em>Throws exception</em></td>
+  #    <td ALIGN=CENTER><em>Special value</em></td>
+  #    <td ALIGN=CENTER><em>Throws exception</em></td>
+  #    <td ALIGN=CENTER><em>Special value</em></td>
+  #  </tr>
+  #  <tr>
+  #    <td><b>Insert</b></td>
+  #    <td>{@link #addFirst addFirst(e)}</td>
+  #    <td>{@link #offerFirst offerFirst(e)}</td>
+  #    <td>{@link #addLast addLast(e)}</td>
+  #    <td>{@link #offerLast offerLast(e)}</td>
+  #  </tr>
+  #  <tr>
+  #    <td><b>Remove</b></td>
+  #    <td>{@link #removeFirst removeFirst()}</td>
+  #    <td>{@link #pollFirst pollFirst()}</td>
+  #    <td>{@link #removeLast removeLast()}</td>
+  #    <td>{@link #pollLast pollLast()}</td>
+  #  </tr>
+  #  <tr>
+  #    <td><b>Examine</b></td>
+  #    <td>{@link #getFirst getFirst()}</td>
+  #    <td>{@link #peekFirst peekFirst()}</td>
+  #    <td>{@link #getLast getLast()}</td>
+  #    <td>{@link #peekLast peekLast()}</td>
+  #  </tr>
   # </table>
   # 
   # <p>This interface extends the {@link Queue} interface.  When a deque is
@@ -104,34 +102,34 @@ module Java::Util
   # 
   # <p>
   # <table BORDER CELLPADDING=3 CELLSPACING=1>
-  # <tr>
-  # <td ALIGN=CENTER> <b><tt>Queue</tt> Method</b></td>
-  # <td ALIGN=CENTER> <b>Equivalent <tt>Deque</tt> Method</b></td>
-  # </tr>
-  # <tr>
-  # <td>{@link java.util.Queue#add add(e)}</td>
-  # <td>{@link #addLast addLast(e)}</td>
-  # </tr>
-  # <tr>
-  # <td>{@link java.util.Queue#offer offer(e)}</td>
-  # <td>{@link #offerLast offerLast(e)}</td>
-  # </tr>
-  # <tr>
-  # <td>{@link java.util.Queue#remove remove()}</td>
-  # <td>{@link #removeFirst removeFirst()}</td>
-  # </tr>
-  # <tr>
-  # <td>{@link java.util.Queue#poll poll()}</td>
-  # <td>{@link #pollFirst pollFirst()}</td>
-  # </tr>
-  # <tr>
-  # <td>{@link java.util.Queue#element element()}</td>
-  # <td>{@link #getFirst getFirst()}</td>
-  # </tr>
-  # <tr>
-  # <td>{@link java.util.Queue#peek peek()}</td>
-  # <td>{@link #peek peekFirst()}</td>
-  # </tr>
+  #  <tr>
+  #    <td ALIGN=CENTER> <b><tt>Queue</tt> Method</b></td>
+  #    <td ALIGN=CENTER> <b>Equivalent <tt>Deque</tt> Method</b></td>
+  #  </tr>
+  #  <tr>
+  #    <td>{@link java.util.Queue#add add(e)}</td>
+  #    <td>{@link #addLast addLast(e)}</td>
+  #  </tr>
+  #  <tr>
+  #    <td>{@link java.util.Queue#offer offer(e)}</td>
+  #    <td>{@link #offerLast offerLast(e)}</td>
+  #  </tr>
+  #  <tr>
+  #    <td>{@link java.util.Queue#remove remove()}</td>
+  #    <td>{@link #removeFirst removeFirst()}</td>
+  #  </tr>
+  #  <tr>
+  #    <td>{@link java.util.Queue#poll poll()}</td>
+  #    <td>{@link #pollFirst pollFirst()}</td>
+  #  </tr>
+  #  <tr>
+  #    <td>{@link java.util.Queue#element element()}</td>
+  #    <td>{@link #getFirst getFirst()}</td>
+  #  </tr>
+  #  <tr>
+  #    <td>{@link java.util.Queue#peek peek()}</td>
+  #    <td>{@link #peek peekFirst()}</td>
+  #  </tr>
   # </table>
   # 
   # <p>Deques can also be used as LIFO (Last-In-First-Out) stacks.  This
@@ -142,22 +140,22 @@ module Java::Util
   # 
   # <p>
   # <table BORDER CELLPADDING=3 CELLSPACING=1>
-  # <tr>
-  # <td ALIGN=CENTER> <b>Stack Method</b></td>
-  # <td ALIGN=CENTER> <b>Equivalent <tt>Deque</tt> Method</b></td>
-  # </tr>
-  # <tr>
-  # <td>{@link #push push(e)}</td>
-  # <td>{@link #addFirst addFirst(e)}</td>
-  # </tr>
-  # <tr>
-  # <td>{@link #pop pop()}</td>
-  # <td>{@link #removeFirst removeFirst()}</td>
-  # </tr>
-  # <tr>
-  # <td>{@link #peek peek()}</td>
-  # <td>{@link #peekFirst peekFirst()}</td>
-  # </tr>
+  #  <tr>
+  #    <td ALIGN=CENTER> <b>Stack Method</b></td>
+  #    <td ALIGN=CENTER> <b>Equivalent <tt>Deque</tt> Method</b></td>
+  #  </tr>
+  #  <tr>
+  #    <td>{@link #push push(e)}</td>
+  #    <td>{@link #addFirst addFirst(e)}</td>
+  #  </tr>
+  #  <tr>
+  #    <td>{@link #pop pop()}</td>
+  #    <td>{@link #removeFirst removeFirst()}</td>
+  #  </tr>
+  #  <tr>
+  #    <td>{@link #peek peek()}</td>
+  #    <td>{@link #peekFirst peekFirst()}</td>
+  #  </tr>
   # </table>
   # 
   # <p>Note that the {@link #peek peek} method works equally well when
@@ -204,13 +202,13 @@ module Java::Util
     # 
     # @param e the element to add
     # @throws IllegalStateException if the element cannot be added at this
-    # time due to capacity restrictions
+    #         time due to capacity restrictions
     # @throws ClassCastException if the class of the specified element
-    # prevents it from being added to this deque
+    #         prevents it from being added to this deque
     # @throws NullPointerException if the specified element is null and this
-    # deque does not permit null elements
+    #         deque does not permit null elements
     # @throws IllegalArgumentException if some property of the specified
-    # element prevents it from being added to this deque
+    #         element prevents it from being added to this deque
     def add_first(e)
       raise NotImplementedError
     end
@@ -225,13 +223,13 @@ module Java::Util
     # 
     # @param e the element to add
     # @throws IllegalStateException if the element cannot be added at this
-    # time due to capacity restrictions
+    #         time due to capacity restrictions
     # @throws ClassCastException if the class of the specified element
-    # prevents it from being added to this deque
+    #         prevents it from being added to this deque
     # @throws NullPointerException if the specified element is null and this
-    # deque does not permit null elements
+    #         deque does not permit null elements
     # @throws IllegalArgumentException if some property of the specified
-    # element prevents it from being added to this deque
+    #         element prevents it from being added to this deque
     def add_last(e)
       raise NotImplementedError
     end
@@ -244,13 +242,13 @@ module Java::Util
     # 
     # @param e the element to add
     # @return <tt>true</tt> if the element was added to this deque, else
-    # <tt>false</tt>
+    #         <tt>false</tt>
     # @throws ClassCastException if the class of the specified element
-    # prevents it from being added to this deque
+    #         prevents it from being added to this deque
     # @throws NullPointerException if the specified element is null and this
-    # deque does not permit null elements
+    #         deque does not permit null elements
     # @throws IllegalArgumentException if some property of the specified
-    # element prevents it from being added to this deque
+    #         element prevents it from being added to this deque
     def offer_first(e)
       raise NotImplementedError
     end
@@ -263,13 +261,13 @@ module Java::Util
     # 
     # @param e the element to add
     # @return <tt>true</tt> if the element was added to this deque, else
-    # <tt>false</tt>
+    #         <tt>false</tt>
     # @throws ClassCastException if the class of the specified element
-    # prevents it from being added to this deque
+    #         prevents it from being added to this deque
     # @throws NullPointerException if the specified element is null and this
-    # deque does not permit null elements
+    #         deque does not permit null elements
     # @throws IllegalArgumentException if some property of the specified
-    # element prevents it from being added to this deque
+    #         element prevents it from being added to this deque
     def offer_last(e)
       raise NotImplementedError
     end
@@ -367,9 +365,9 @@ module Java::Util
     # @param o element to be removed from this deque, if present
     # @return <tt>true</tt> if an element was removed as a result of this call
     # @throws ClassCastException if the class of the specified element
-    # is incompatible with this deque (optional)
+    #         is incompatible with this deque (optional)
     # @throws NullPointerException if the specified element is null and this
-    # deque does not permit null elements (optional)
+    #         deque does not permit null elements (optional)
     def remove_first_occurrence(o)
       raise NotImplementedError
     end
@@ -386,16 +384,15 @@ module Java::Util
     # @param o element to be removed from this deque, if present
     # @return <tt>true</tt> if an element was removed as a result of this call
     # @throws ClassCastException if the class of the specified element
-    # is incompatible with this deque (optional)
+    #         is incompatible with this deque (optional)
     # @throws NullPointerException if the specified element is null and this
-    # deque does not permit null elements (optional)
+    #         deque does not permit null elements (optional)
     def remove_last_occurrence(o)
       raise NotImplementedError
     end
     
     typesig { [Object] }
     # *** Queue methods ***
-    # 
     # Inserts the specified element into the queue represented by this deque
     # (in other words, at the tail of this deque) if it is possible to do so
     # immediately without violating capacity restrictions, returning
@@ -409,13 +406,13 @@ module Java::Util
     # @param e the element to add
     # @return <tt>true</tt> (as specified by {@link Collection#add})
     # @throws IllegalStateException if the element cannot be added at this
-    # time due to capacity restrictions
+    #         time due to capacity restrictions
     # @throws ClassCastException if the class of the specified element
-    # prevents it from being added to this deque
+    #         prevents it from being added to this deque
     # @throws NullPointerException if the specified element is null and this
-    # deque does not permit null elements
+    #         deque does not permit null elements
     # @throws IllegalArgumentException if some property of the specified
-    # element prevents it from being added to this deque
+    #         element prevents it from being added to this deque
     def add(e)
       raise NotImplementedError
     end
@@ -433,13 +430,13 @@ module Java::Util
     # 
     # @param e the element to add
     # @return <tt>true</tt> if the element was added to this deque, else
-    # <tt>false</tt>
+    #         <tt>false</tt>
     # @throws ClassCastException if the class of the specified element
-    # prevents it from being added to this deque
+    #         prevents it from being added to this deque
     # @throws NullPointerException if the specified element is null and this
-    # deque does not permit null elements
+    #         deque does not permit null elements
     # @throws IllegalArgumentException if some property of the specified
-    # element prevents it from being added to this deque
+    #         element prevents it from being added to this deque
     def offer(e)
       raise NotImplementedError
     end
@@ -466,7 +463,7 @@ module Java::Util
     # <p>This method is equivalent to {@link #pollFirst()}.
     # 
     # @return the first element of this deque, or <tt>null</tt> if
-    # this deque is empty
+    #         this deque is empty
     def poll
       raise NotImplementedError
     end
@@ -493,14 +490,13 @@ module Java::Util
     # <p>This method is equivalent to {@link #peekFirst()}.
     # 
     # @return the head of the queue represented by this deque, or
-    # <tt>null</tt> if this deque is empty
+    #         <tt>null</tt> if this deque is empty
     def peek
       raise NotImplementedError
     end
     
     typesig { [Object] }
     # *** Stack methods ***
-    # 
     # Pushes an element onto the stack represented by this deque (in other
     # words, at the head of this deque) if it is possible to do so
     # immediately without violating capacity restrictions, returning
@@ -511,13 +507,13 @@ module Java::Util
     # 
     # @param e the element to push
     # @throws IllegalStateException if the element cannot be added at this
-    # time due to capacity restrictions
+    #         time due to capacity restrictions
     # @throws ClassCastException if the class of the specified element
-    # prevents it from being added to this deque
+    #         prevents it from being added to this deque
     # @throws NullPointerException if the specified element is null and this
-    # deque does not permit null elements
+    #         deque does not permit null elements
     # @throws IllegalArgumentException if some property of the specified
-    # element prevents it from being added to this deque
+    #         element prevents it from being added to this deque
     def push(e)
       raise NotImplementedError
     end
@@ -529,7 +525,7 @@ module Java::Util
     # <p>This method is equivalent to {@link #removeFirst()}.
     # 
     # @return the element at the front of this deque (which is the top
-    # of the stack represented by this deque)
+    #         of the stack represented by this deque)
     # @throws NoSuchElementException if this deque is empty
     def pop
       raise NotImplementedError
@@ -537,7 +533,6 @@ module Java::Util
     
     typesig { [Object] }
     # *** Collection methods ***
-    # 
     # Removes the first occurrence of the specified element from this deque.
     # If the deque does not contain the element, it is unchanged.
     # More formally, removes the first element <tt>e</tt> such that
@@ -551,9 +546,9 @@ module Java::Util
     # @param o element to be removed from this deque, if present
     # @return <tt>true</tt> if an element was removed as a result of this call
     # @throws ClassCastException if the class of the specified element
-    # is incompatible with this deque (optional)
+    #         is incompatible with this deque (optional)
     # @throws NullPointerException if the specified element is null and this
-    # deque does not permit null elements (optional)
+    #         deque does not permit null elements (optional)
     def remove(o)
       raise NotImplementedError
     end
@@ -567,9 +562,9 @@ module Java::Util
     # @param o element whose presence in this deque is to be tested
     # @return <tt>true</tt> if this deque contains the specified element
     # @throws ClassCastException if the type of the specified element
-    # is incompatible with this deque (optional)
+    #         is incompatible with this deque (optional)
     # @throws NullPointerException if the specified element is null and this
-    # deque does not permit null elements (optional)
+    #         deque does not permit null elements (optional)
     def contains(o)
       raise NotImplementedError
     end

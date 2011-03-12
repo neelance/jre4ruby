@@ -224,9 +224,9 @@ module Java::Net
     # Join the multicast group.
     # @param multicast address to join.
     # @param netIf specifies the local interface to receive multicast
-    # datagram packets
+    #        datagram packets
     # @throws  IllegalArgumentException if mcastaddr is null or is a
-    # SocketAddress subclass not supported by this socket
+    #          SocketAddress subclass not supported by this socket
     # @since 1.4
     def join_group(mcastaddr, net_if)
       if ((mcastaddr).nil? || !(mcastaddr.is_a?(InetSocketAddress)))
@@ -245,7 +245,7 @@ module Java::Net
     # @param multicast address to leave.
     # @param netIf specified the local interface to leave the group at
     # @throws  IllegalArgumentException if mcastaddr is null or is a
-    # SocketAddress subclass not supported by this socket
+    #          SocketAddress subclass not supported by this socket
     # @since 1.4
     def leave_group(mcastaddr, net_if)
       if ((mcastaddr).nil? || !(mcastaddr.is_a?(InetSocketAddress)))
@@ -286,10 +286,10 @@ module Java::Net
         raise SocketException.new("Socket Closed")
       end
       case (opt_id)
-      # check type safety b4 going native.  These should never
-      # fail, since only java.Socket* has access to
-      # PlainSocketImpl.setOption().
       when SO_TIMEOUT
+        # check type safety b4 going native.  These should never
+        # fail, since only java.Socket* has access to
+        # PlainSocketImpl.setOption().
         if ((o).nil? || !(o.is_a?(JavaInteger)))
           raise SocketException.new("bad argument for SO_TIMEOUT")
         end

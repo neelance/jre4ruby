@@ -93,7 +93,6 @@ module Sun::Security::X509
     typesig { [Signature, X500Name] }
     # Constructs a binding between a signature and an X500 name
     # from an X.509 certificate.
-    # 
     # package private  ----hmmmmm ?????
     def initialize(sig, agent)
       @sig = nil

@@ -46,7 +46,6 @@ module Sun::Security::Mscapi
       typesig { [::Java::Int, Array.typed(::Java::Byte)] }
       # TODO - generate the serialVersionUID
       # private static final long serialVersionUID = XXX;
-      # 
       # The CryptGenRandom function fills a buffer with cryptographically random
       # bytes.
       def generate_seed(length, seed)

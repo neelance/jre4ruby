@@ -36,21 +36,21 @@ module Java::Security
   end
   
   # <p>
-  # This ProtectionDomain class encapsulates the characteristics of a domain,
-  # which encloses a set of classes whose instances are granted a set
-  # of permissions when being executed on behalf of a given set of Principals.
-  # <p>
-  # A static set of permissions can be bound to a ProtectionDomain when it is
-  # constructed; such permissions are granted to the domain regardless of the
-  # Policy in force. However, to support dynamic security policies, a
-  # ProtectionDomain can also be constructed such that it is dynamically
-  # mapped to a set of permissions by the current Policy whenever a permission
-  # is checked.
-  # <p>
+  #  This ProtectionDomain class encapsulates the characteristics of a domain,
+  #  which encloses a set of classes whose instances are granted a set
+  #  of permissions when being executed on behalf of a given set of Principals.
+  #  <p>
+  #  A static set of permissions can be bound to a ProtectionDomain when it is
+  #  constructed; such permissions are granted to the domain regardless of the
+  #  Policy in force. However, to support dynamic security policies, a
+  #  ProtectionDomain can also be constructed such that it is dynamically
+  #  mapped to a set of permissions by the current Policy whenever a permission
+  #  is checked.
+  #  <p>
   # 
-  # @author Li Gong
-  # @author Roland Schemers
-  # @author Gary Ellison
+  #  @author Li Gong
+  #  @author Roland Schemers
+  #  @author Gary Ellison
   class ProtectionDomain 
     include_class_members ProtectionDomainImports
     
@@ -105,7 +105,7 @@ module Java::Security
     typesig { [CodeSource, PermissionCollection] }
     # Creates a new ProtectionDomain with the given CodeSource and
     # Permissions. If the permissions object is not null, then
-    # <code>setReadOnly())</code> will be called on the passed in
+    #  <code>setReadOnly())</code> will be called on the passed in
     # Permissions object. The only permissions granted to this domain
     # are the ones specified; the current Policy will not be consulted.
     # 
@@ -288,14 +288,14 @@ module Java::Security
       # . SecurityManager is null
       # 
       # . SecurityManager is not null,
-      # debug is not null,
-      # SecurityManager impelmentation is in bootclasspath,
-      # Policy implementation is in bootclasspath
-      # (the bootclasspath restrictions avoid recursion)
+      #          debug is not null,
+      #          SecurityManager impelmentation is in bootclasspath,
+      #          Policy implementation is in bootclasspath
+      #          (the bootclasspath restrictions avoid recursion)
       # 
       # . SecurityManager is not null,
-      # debug is null,
-      # caller has Policy.getPolicy permission
+      #          debug is null,
+      #          caller has Policy.getPolicy permission
       def see_allp
         sm = System.get_security_manager
         if ((sm).nil?)
@@ -348,6 +348,7 @@ module Java::Security
       e = nil
       pd_vector = ArrayList.new(vcap)
       pl_vector = ArrayList.new(swag)
+      # 
       # Build a vector of domain permissions for subsequent merge
       if (!(@permissions).nil?)
         synchronized((@permissions)) do
@@ -357,6 +358,7 @@ module Java::Security
           end
         end
       end
+      # 
       # Build a vector of Policy permissions for subsequent merge
       if (!(perms).nil?)
         synchronized((perms)) do
@@ -368,6 +370,7 @@ module Java::Security
         end
       end
       if (!(perms).nil? && !(@permissions).nil?)
+        # 
         # Weed out the duplicates from the policy. Unless a refresh
         # has occured since the pd was consed this should result in
         # an empty vector.

@@ -83,7 +83,7 @@ module Java::Net
     # of an IPv6 network, <code>null</code> will be returned.
     # 
     # @return the <code>InetAddress</code> representing the broadcast
-    # address or <code>null</code> if there is no broadcast address.
+    #         address or <code>null</code> if there is no broadcast address.
     def get_broadcast
       return @broadcast
     end
@@ -96,7 +96,7 @@ module Java::Net
     # Typical IPv6 values would be 128 (::1/128) or 10 (fe80::203:baff:fe27:1243/10)
     # 
     # @return a <code>short</code> representing the prefix length for the
-    # subnet of that address.
+    #         subnet of that address.
     def get_network_prefix_length
       return @mask_length
     end
@@ -113,7 +113,7 @@ module Java::Net
     # 
     # @param   obj   the object to compare against.
     # @return  <code>true</code> if the objects are the same;
-    # <code>false</code> otherwise.
+    #          <code>false</code> otherwise.
     # @see     java.net.InterfaceAddress#hashCode()
     def ==(obj)
       if (!(obj.is_a?(InterfaceAddress)))

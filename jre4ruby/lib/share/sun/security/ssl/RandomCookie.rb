@@ -53,7 +53,7 @@ module Sun::Security::Ssl
       temp = System.current_time_millis / 1000
       gmt_unix_time = 0
       if (temp < JavaInteger::MAX_VALUE)
-        gmt_unix_time = RJava.cast_to_int(temp)
+        gmt_unix_time = (temp).to_int
       else
         gmt_unix_time = JavaInteger::MAX_VALUE # Whoops!
       end

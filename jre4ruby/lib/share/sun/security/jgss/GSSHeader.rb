@@ -44,8 +44,6 @@ module Sun::Security::Jgss
   # The format is specified in RFC 2743 section 3.1.
   # 
   # @author Mayank Upadhyay
-  # 
-  # 
   # The RFC states that implementations should explicitly follow the
   # encoding scheme descibed in this section rather than use ASN.1
   # compilers. However, we should consider removing duplicate ASN.1
@@ -103,9 +101,9 @@ module Sun::Security::Jgss
       @mech_oid = nil
       @mech_oid_bytes = nil
       @mech_token_length = 0
-      # debug("Parsing GSS token: ");
+      #      debug("Parsing GSS token: ");
       tag = is.read
-      # debug("tag=" + tag);
+      #      debug("tag=" + tag);
       if (!(tag).equal?(TOKEN_ID))
         raise GSSException.new(GSSException::DEFECTIVE_TOKEN, -1, "GSSHeader did not find the right tag")
       end
@@ -113,10 +111,10 @@ module Sun::Security::Jgss
       temp = DerValue.new(is)
       @mech_oid_bytes = temp.to_byte_array
       @mech_oid = temp.get_oid
-      # debug (" oid=" + mechOid);
-      # debug (" len starting with oid=" + length);
+      #      debug (" oid=" + mechOid);
+      #      debug (" len starting with oid=" + length);
       @mech_token_length = length - @mech_oid_bytes.attr_length
-      # debug("  mechToken length=" + mechTokenLength);
+      #      debug("  mechToken length=" + mechTokenLength);
     end
     
     typesig { [] }
@@ -169,10 +167,10 @@ module Sun::Security::Jgss
         # Subtract maximum len bytes
         max_total_size -= 5
         return max_total_size
-        # Len field and mechanism token must fit in remaining
-        # space. The range of the len field that we allow is
-        # 1 through 5.
-        # 
+        # * Len field and mechanism token must fit in remaining
+        # * space. The range of the len field that we allow is
+        # * 1 through 5.
+        # *
         # 
         # int mechTokenSize = 0;
         # for (int lenFieldSize = 1; lenFieldSize <= 5;
@@ -232,7 +230,6 @@ module Sun::Security::Jgss
     # 
     # @return the length or -1 if indefinite length found.
     # @exception IOException on parsing error or unsupported lengths.
-    # 
     # shameless lifted from sun.security.util.DerInputStream.
     def get_length(in_)
       return get_length(in_.read, in_)
@@ -244,7 +241,6 @@ module Sun::Security::Jgss
     # 
     # @return the length or -1 if indefinite length found.
     # @exception IOException on parsing error or unsupported lengths.
-    # 
     # shameless lifted from sun.security.util.DerInputStream.
     def get_length(len_byte, in_)
       value = 0
@@ -281,7 +277,6 @@ module Sun::Security::Jgss
     # @param out the outputstream to write the length to
     # @return the number of bytes written
     # @exception IOException on writing errors.
-    # 
     # Shameless lifted from sun.security.util.DerOutputStream.
     def put_length(len, out)
       ret_val = 0

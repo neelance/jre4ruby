@@ -53,13 +53,13 @@ module Java::Util
   # <tt>List</tt> implementation should implement this interface if,
   # for typical instances of the class, this loop:
   # <pre>
-  # for (int i=0, n=list.size(); i &lt; n; i++)
-  # list.get(i);
+  #     for (int i=0, n=list.size(); i &lt; n; i++)
+  #         list.get(i);
   # </pre>
   # runs faster than this loop:
   # <pre>
-  # for (Iterator i=list.iterator(); i.hasNext(); )
-  # i.next();
+  #     for (Iterator i=list.iterator(); i.hasNext(); )
+  #         i.next();
   # </pre>
   # 
   # <p>This interface is a member of the

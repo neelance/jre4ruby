@@ -114,9 +114,9 @@ module Java::Lang
   # download class files from a server.  Sample code might look like:
   # 
   # <blockquote><pre>
-  # ClassLoader loader&nbsp;= new NetworkClassLoader(host,&nbsp;port);
-  # Object main&nbsp;= loader.loadClass("Main", true).newInstance();
-  # &nbsp;.&nbsp;.&nbsp;.
+  #   ClassLoader loader&nbsp;= new NetworkClassLoader(host,&nbsp;port);
+  #   Object main&nbsp;= loader.loadClass("Main", true).newInstance();
+  #       &nbsp;.&nbsp;.&nbsp;.
   # </pre></blockquote>
   # 
   # <p> The network class loader subclass must define the methods {@link
@@ -126,20 +126,20 @@ module Java::Lang
   # create a class instance.  A sample implementation is:
   # 
   # <blockquote><pre>
-  # class NetworkClassLoader extends ClassLoader {
-  # String host;
-  # int port;
+  #     class NetworkClassLoader extends ClassLoader {
+  #         String host;
+  #         int port;
   # 
-  # public Class findClass(String name) {
-  # byte[] b = loadClassData(name);
-  # return defineClass(name, b, 0, b.length);
-  # }
+  #         public Class findClass(String name) {
+  #             byte[] b = loadClassData(name);
+  #             return defineClass(name, b, 0, b.length);
+  #         }
   # 
-  # private byte[] loadClassData(String name) {
-  # // load the class data from the connection
-  # &nbsp;.&nbsp;.&nbsp;.
-  # }
-  # }
+  #         private byte[] loadClassData(String name) {
+  #             // load the class data from the connection
+  #             &nbsp;.&nbsp;.&nbsp;.
+  #         }
+  #     }
   # </pre></blockquote>
   # 
   # <h4> <a name="name">Binary names</a> </h4>
@@ -150,10 +150,10 @@ module Java::Lang
   # 
   # <p> Examples of valid class names include:
   # <blockquote><pre>
-  # "java.lang.String"
-  # "javax.swing.JSpinner$DefaultEditor"
-  # "java.security.KeyStore$Builder$FileBuilder$1"
-  # "java.net.URLClassLoader$3$1"
+  #   "java.lang.String"
+  #   "javax.swing.JSpinner$DefaultEditor"
+  #   "java.security.KeyStore$Builder$FileBuilder$1"
+  #   "java.net.URLClassLoader$3$1"
   # </pre></blockquote>
   # 
   # @see      #resolveClass(Class)
@@ -242,12 +242,12 @@ module Java::Lang
     # a security exception.  </p>
     # 
     # @param  parent
-    # The parent class loader
+    #         The parent class loader
     # 
     # @throws  SecurityException
-    # If a security manager exists and its
-    # <tt>checkCreateClassLoader</tt> method doesn't allow creation
-    # of a new class loader.
+    #          If a security manager exists and its
+    #          <tt>checkCreateClassLoader</tt> method doesn't allow creation
+    #          of a new class loader.
     # 
     # @since  1.2
     def initialize(parent)
@@ -282,9 +282,9 @@ module Java::Lang
     # a security exception.  </p>
     # 
     # @throws  SecurityException
-    # If a security manager exists and its
-    # <tt>checkCreateClassLoader</tt> method doesn't allow creation
-    # of a new class loader.
+    #          If a security manager exists and its
+    #          <tt>checkCreateClassLoader</tt> method doesn't allow creation
+    #          of a new class loader.
     def initialize
       @initialized = false
       @parent = nil
@@ -308,7 +308,6 @@ module Java::Lang
     
     typesig { [String] }
     # -- Class --
-    # 
     # Loads the class with the specified <a href="#name">binary name</a>.
     # This method searches for classes in the same manner as the {@link
     # #loadClass(String, boolean)} method.  It is invoked by the Java virtual
@@ -317,12 +316,12 @@ module Java::Lang
     # false)</tt>}.  </p>
     # 
     # @param  name
-    # The <a href="#name">binary name</a> of the class
+    #         The <a href="#name">binary name</a> of the class
     # 
     # @return  The resulting <tt>Class</tt> object
     # 
     # @throws  ClassNotFoundException
-    # If the class was not found
+    #          If the class was not found
     def load_class(name)
       return load_class(name, false)
     end
@@ -334,15 +333,15 @@ module Java::Lang
     # 
     # <p><ol>
     # 
-    # <li><p> Invoke {@link #findLoadedClass(String)} to check if the class
-    # has already been loaded.  </p></li>
+    #   <li><p> Invoke {@link #findLoadedClass(String)} to check if the class
+    #   has already been loaded.  </p></li>
     # 
-    # <li><p> Invoke the {@link #loadClass(String) <tt>loadClass</tt>} method
-    # on the parent class loader.  If the parent is <tt>null</tt> the class
-    # loader built-in to the virtual machine is used, instead.  </p></li>
+    #   <li><p> Invoke the {@link #loadClass(String) <tt>loadClass</tt>} method
+    #   on the parent class loader.  If the parent is <tt>null</tt> the class
+    #   loader built-in to the virtual machine is used, instead.  </p></li>
     # 
-    # <li><p> Invoke the {@link #findClass(String)} method to find the
-    # class.  </p></li>
+    #   <li><p> Invoke the {@link #findClass(String)} method to find the
+    #   class.  </p></li>
     # 
     # </ol>
     # 
@@ -354,15 +353,15 @@ module Java::Lang
     # #findClass(String)}, rather than this method.  </p>
     # 
     # @param  name
-    # The <a href="#name">binary name</a> of the class
+    #         The <a href="#name">binary name</a> of the class
     # 
     # @param  resolve
-    # If <tt>true</tt> then resolve the class
+    #         If <tt>true</tt> then resolve the class
     # 
     # @return  The resulting <tt>Class</tt> object
     # 
     # @throws  ClassNotFoundException
-    # If the class could not be found
+    #          If the class could not be found
     def load_class(name, resolve)
       synchronized(self) do
         # First, check if the class has already been loaded
@@ -435,12 +434,12 @@ module Java::Lang
     # throws a <tt>ClassNotFoundException</tt>.  </p>
     # 
     # @param  name
-    # The <a href="#name">binary name</a> of the class
+    #         The <a href="#name">binary name</a> of the class
     # 
     # @return  The resulting <tt>Class</tt> object
     # 
     # @throws  ClassNotFoundException
-    # If the class could not be found
+    #          If the class could not be found
     # 
     # @since  1.2
     def find_class(name)
@@ -454,27 +453,27 @@ module Java::Lang
     # href="#name">binary name</a> as its first argument, and is more secure.
     # 
     # @param  b
-    # The bytes that make up the class data.  The bytes in positions
-    # <tt>off</tt> through <tt>off+len-1</tt> should have the format
-    # of a valid class file as defined by the <a
-    # href="http://java.sun.com/docs/books/vmspec/">Java Virtual
-    # Machine Specification</a>.
+    #         The bytes that make up the class data.  The bytes in positions
+    #         <tt>off</tt> through <tt>off+len-1</tt> should have the format
+    #         of a valid class file as defined by the <a
+    #         href="http://java.sun.com/docs/books/vmspec/">Java Virtual
+    #         Machine Specification</a>.
     # 
     # @param  off
-    # The start offset in <tt>b</tt> of the class data
+    #         The start offset in <tt>b</tt> of the class data
     # 
     # @param  len
-    # The length of the class data
+    #         The length of the class data
     # 
     # @return  The <tt>Class</tt> object that was created from the specified
-    # class data
+    #          class data
     # 
     # @throws  ClassFormatError
-    # If the data did not contain a valid class
+    #          If the data did not contain a valid class
     # 
     # @throws  IndexOutOfBoundsException
-    # If either <tt>off</tt> or <tt>len</tt> is negative, or if
-    # <tt>off+len</tt> is greater than <tt>b.length</tt>.
+    #          If either <tt>off</tt> or <tt>len</tt> is negative, or if
+    #          <tt>off+len</tt> is greater than <tt>b.length</tt>.
     # 
     # @see  #loadClass(String, boolean)
     # @see  #resolveClass(Class)
@@ -505,37 +504,37 @@ module Java::Lang
     # <tt>ProtectionDomain</tt> as one of its arguments.  </p>
     # 
     # @param  name
-    # The expected <a href="#name">binary name</a> of the class, or
-    # <tt>null</tt> if not known
+    #         The expected <a href="#name">binary name</a> of the class, or
+    #         <tt>null</tt> if not known
     # 
     # @param  b
-    # The bytes that make up the class data.  The bytes in positions
-    # <tt>off</tt> through <tt>off+len-1</tt> should have the format
-    # of a valid class file as defined by the <a
-    # href="http://java.sun.com/docs/books/vmspec/">Java Virtual
-    # Machine Specification</a>.
+    #         The bytes that make up the class data.  The bytes in positions
+    #         <tt>off</tt> through <tt>off+len-1</tt> should have the format
+    #         of a valid class file as defined by the <a
+    #         href="http://java.sun.com/docs/books/vmspec/">Java Virtual
+    #         Machine Specification</a>.
     # 
     # @param  off
-    # The start offset in <tt>b</tt> of the class data
+    #         The start offset in <tt>b</tt> of the class data
     # 
     # @param  len
-    # The length of the class data
+    #         The length of the class data
     # 
     # @return  The <tt>Class</tt> object that was created from the specified
-    # class data.
+    #          class data.
     # 
     # @throws  ClassFormatError
-    # If the data did not contain a valid class
+    #          If the data did not contain a valid class
     # 
     # @throws  IndexOutOfBoundsException
-    # If either <tt>off</tt> or <tt>len</tt> is negative, or if
-    # <tt>off+len</tt> is greater than <tt>b.length</tt>.
+    #          If either <tt>off</tt> or <tt>len</tt> is negative, or if
+    #          <tt>off+len</tt> is greater than <tt>b.length</tt>.
     # 
     # @throws  SecurityException
-    # If an attempt is made to add this class to a package that
-    # contains classes that were signed by a different set of
-    # certificates than this class (which is unsigned), or if
-    # <tt>name</tt> begins with "<tt>java.</tt>".
+    #          If an attempt is made to add this class to a package that
+    #          contains classes that were signed by a different set of
+    #          certificates than this class (which is unsigned), or if
+    #          <tt>name</tt> begins with "<tt>java.</tt>".
     # 
     # @see  #loadClass(String, boolean)
     # @see  #resolveClass(Class)
@@ -549,8 +548,8 @@ module Java::Lang
     
     typesig { [String, ProtectionDomain] }
     # Determine protection domain, and check that:
-    # - not define java.* class,
-    # - signer of this class matches signers for the rest of the classes in package.
+    #  - not define java.* class,
+    #  - signer of this class matches signers for the rest of the classes in package.
     def pre_define_class(name, protection_domain)
       if (!check_name(name))
         raise NoClassDefFoundError.new("IllegalName: " + name)
@@ -581,6 +580,7 @@ module Java::Lang
     def define_transformed_class(name, b, off, len, protection_domain, cfe, source)
       # Class format error - try to transform the bytecode and
       # define the class again
+      # 
       transformers = ClassFileTransformer.get_transformers
       c = nil
       i = 0
@@ -597,6 +597,7 @@ module Java::Lang
       end
       # Rethrow original ClassFormatError if unable to transform
       # bytecode to well-formed
+      # 
       if ((c).nil?)
         raise cfe
       end
@@ -640,44 +641,44 @@ module Java::Lang
     # <tt>NoClassDefFoundError</tt>} will be thrown.  </p>
     # 
     # @param  name
-    # The expected <a href="#name">binary name</a> of the class, or
-    # <tt>null</tt> if not known
+    #         The expected <a href="#name">binary name</a> of the class, or
+    #         <tt>null</tt> if not known
     # 
     # @param  b
-    # The bytes that make up the class data. The bytes in positions
-    # <tt>off</tt> through <tt>off+len-1</tt> should have the format
-    # of a valid class file as defined by the <a
-    # href="http://java.sun.com/docs/books/vmspec/">Java Virtual
-    # Machine Specification</a>.
+    #         The bytes that make up the class data. The bytes in positions
+    #         <tt>off</tt> through <tt>off+len-1</tt> should have the format
+    #         of a valid class file as defined by the <a
+    #         href="http://java.sun.com/docs/books/vmspec/">Java Virtual
+    #         Machine Specification</a>.
     # 
     # @param  off
-    # The start offset in <tt>b</tt> of the class data
+    #         The start offset in <tt>b</tt> of the class data
     # 
     # @param  len
-    # The length of the class data
+    #         The length of the class data
     # 
     # @param  protectionDomain
-    # The ProtectionDomain of the class
+    #         The ProtectionDomain of the class
     # 
     # @return  The <tt>Class</tt> object created from the data,
-    # and optional <tt>ProtectionDomain</tt>.
+    #          and optional <tt>ProtectionDomain</tt>.
     # 
     # @throws  ClassFormatError
-    # If the data did not contain a valid class
+    #          If the data did not contain a valid class
     # 
     # @throws  NoClassDefFoundError
-    # If <tt>name</tt> is not equal to the <a href="#name">binary
-    # name</a> of the class specified by <tt>b</tt>
+    #          If <tt>name</tt> is not equal to the <a href="#name">binary
+    #          name</a> of the class specified by <tt>b</tt>
     # 
     # @throws  IndexOutOfBoundsException
-    # If either <tt>off</tt> or <tt>len</tt> is negative, or if
-    # <tt>off+len</tt> is greater than <tt>b.length</tt>.
+    #          If either <tt>off</tt> or <tt>len</tt> is negative, or if
+    #          <tt>off+len</tt> is greater than <tt>b.length</tt>.
     # 
     # @throws  SecurityException
-    # If an attempt is made to add this class to a package that
-    # contains classes that were signed by a different set of
-    # certificates than this class, or if <tt>name</tt> begins with
-    # "<tt>java.</tt>".
+    #          If an attempt is made to add this class to a package that
+    #          contains classes that were signed by a different set of
+    #          certificates than this class, or if <tt>name</tt> begins with
+    #          "<tt>java.</tt>".
     def define_class(name, b, off, len, protection_domain)
       check
       protection_domain = pre_define_class(name, protection_domain)
@@ -714,41 +715,41 @@ module Java::Lang
     # ...<br>
     # byte[] temp = new byte[</tt><i>bBuffer</i><tt>.{@link java.nio.ByteBuffer#remaining
     # remaining}()];<br>
-    # </tt><i>bBuffer</i><tt>.{@link java.nio.ByteBuffer#get(byte[])
+    #     </tt><i>bBuffer</i><tt>.{@link java.nio.ByteBuffer#get(byte[])
     # get}(temp);<br>
-    # return {@link #defineClass(String, byte[], int, int, ProtectionDomain)
+    #     return {@link #defineClass(String, byte[], int, int, ProtectionDomain)
     # </tt><i>cl</i><tt>.defineClass}(</tt><i>name</i><tt>, temp, 0, temp.length, </tt><i>pd</i><tt>);<br>
     # </tt></blockquote>
     # 
     # @param  name
-    # The expected <a href="#name">binary name</a. of the class, or
-    # <tt>null</tt> if not known
+    #         The expected <a href="#name">binary name</a. of the class, or
+    #         <tt>null</tt> if not known
     # 
     # @param  b
-    # The bytes that make up the class data. The bytes from positions
-    # <tt>b.position()</tt> through <tt>b.position() + b.limit() -1 </tt>
-    # should have the format of a valid class file as defined by the <a
-    # href="http://java.sun.com/docs/books/vmspec/">Java Virtual
-    # Machine Specification</a>.
+    #         The bytes that make up the class data. The bytes from positions
+    #         <tt>b.position()</tt> through <tt>b.position() + b.limit() -1 </tt>
+    #         should have the format of a valid class file as defined by the <a
+    #         href="http://java.sun.com/docs/books/vmspec/">Java Virtual
+    #         Machine Specification</a>.
     # 
     # @param  protectionDomain
-    # The ProtectionDomain of the class, or <tt>null</tt>.
+    #         The ProtectionDomain of the class, or <tt>null</tt>.
     # 
     # @return  The <tt>Class</tt> object created from the data,
-    # and optional <tt>ProtectionDomain</tt>.
+    #          and optional <tt>ProtectionDomain</tt>.
     # 
     # @throws  ClassFormatError
-    # If the data did not contain a valid class.
+    #          If the data did not contain a valid class.
     # 
     # @throws  NoClassDefFoundError
-    # If <tt>name</tt> is not equal to the <a href="#name">binary
-    # name</a> of the class specified by <tt>b</tt>
+    #          If <tt>name</tt> is not equal to the <a href="#name">binary
+    #          name</a> of the class specified by <tt>b</tt>
     # 
     # @throws  SecurityException
-    # If an attempt is made to add this class to a package that
-    # contains classes that were signed by a different set of
-    # certificates than this class, or if <tt>name</tt> begins with
-    # "<tt>java.</tt>".
+    #          If an attempt is made to add this class to a package that
+    #          contains classes that were signed by a different set of
+    #          certificates than this class, or if <tt>name</tt> begins with
+    #          "<tt>java.</tt>".
     # 
     # @see      #defineClass(String, byte[], int, int, ProtectionDomain)
     # 
@@ -904,10 +905,10 @@ module Java::Lang
     # </p>
     # 
     # @param  c
-    # The class to link
+    #         The class to link
     # 
     # @throws  NullPointerException
-    # If <tt>c</tt> is <tt>null</tt>.
+    #          If <tt>c</tt> is <tt>null</tt>.
     # 
     # @see  #defineClass(String, byte[], int, int)
     def resolve_class(c)
@@ -933,12 +934,12 @@ module Java::Lang
     # #findClass(String)}.  </p>
     # 
     # @param  name
-    # The <a href="#name">binary name</a> of the class
+    #         The <a href="#name">binary name</a> of the class
     # 
     # @return  The <tt>Class</tt> object for the specified <tt>name</tt>
     # 
     # @throws  ClassNotFoundException
-    # If the class could not be found
+    #          If the class could not be found
     # 
     # @see  #ClassLoader(ClassLoader)
     # @see  #getParent()
@@ -984,10 +985,10 @@ module Java::Lang
     # <tt>null</tt> is returned.  </p>
     # 
     # @param  name
-    # The <a href="#name">binary name</a> of the class
+    #         The <a href="#name">binary name</a> of the class
     # 
     # @return  The <tt>Class</tt> object, or <tt>null</tt> if the class has
-    # not been loaded
+    #          not been loaded
     # 
     # @since  1.1
     def find_loaded_class(name)
@@ -1009,10 +1010,10 @@ module Java::Lang
     # class.  </p>
     # 
     # @param  c
-    # The <tt>Class</tt> object
+    #         The <tt>Class</tt> object
     # 
     # @param  signers
-    # The signers for the class
+    #         The signers for the class
     # 
     # @since  1.1
     def set_signers(c, signers)
@@ -1022,7 +1023,6 @@ module Java::Lang
     
     typesig { [String] }
     # -- Resource --
-    # 
     # Finds the resource with the given name.  A resource is some data
     # (images, audio, text, etc) that can be accessed by class code in a way
     # that is independent of the location of the code.
@@ -1036,11 +1036,11 @@ module Java::Lang
     # will invoke {@link #findResource(String)} to find the resource.  </p>
     # 
     # @param  name
-    # The resource name
+    #         The resource name
     # 
     # @return  A <tt>URL</tt> object for reading the resource, or
-    # <tt>null</tt> if the resource could not be found or the invoker
-    # doesn't have adequate  privileges to get the resource.
+    #          <tt>null</tt> if the resource could not be found or the invoker
+    #          doesn't have adequate  privileges to get the resource.
     # 
     # @since  1.1
     def get_resource(name)
@@ -1068,15 +1068,15 @@ module Java::Lang
     # #getResource(String)}.  </p>
     # 
     # @param  name
-    # The resource name
+    #         The resource name
     # 
     # @return  An enumeration of {@link java.net.URL <tt>URL</tt>} objects for
-    # the resource.  If no resources could  be found, the enumeration
-    # will be empty.  Resources that the class loader doesn't have
-    # access to will not be in the enumeration.
+    #          the resource.  If no resources could  be found, the enumeration
+    #          will be empty.  Resources that the class loader doesn't have
+    #          access to will not be in the enumeration.
     # 
     # @throws  IOException
-    # If I/O errors occur
+    #          If I/O errors occur
     # 
     # @see  #findResources(String)
     # 
@@ -1097,10 +1097,10 @@ module Java::Lang
     # should override this method to specify where to find resources.  </p>
     # 
     # @param  name
-    # The resource name
+    #         The resource name
     # 
     # @return  A <tt>URL</tt> object for reading the resource, or
-    # <tt>null</tt> if the resource could not be found
+    #          <tt>null</tt> if the resource could not be found
     # 
     # @since  1.2
     def find_resource(name)
@@ -1114,13 +1114,13 @@ module Java::Lang
     # resources from.  </p>
     # 
     # @param  name
-    # The resource name
+    #         The resource name
     # 
     # @return  An enumeration of {@link java.net.URL <tt>URL</tt>} objects for
-    # the resources
+    #          the resources
     # 
     # @throws  IOException
-    # If I/O errors occur
+    #          If I/O errors occur
     # 
     # @since  1.2
     def find_resources(name)
@@ -1134,10 +1134,10 @@ module Java::Lang
       # loader (see {@link #getSystemClassLoader()}).  </p>
       # 
       # @param  name
-      # The resource name
+      #         The resource name
       # 
       # @return  A {@link java.net.URL <tt>URL</tt>} object for reading the
-      # resource, or <tt>null</tt> if the resource could not be found
+      #          resource, or <tt>null</tt> if the resource could not be found
       # 
       # @since  1.1
       def get_system_resource(name)
@@ -1158,13 +1158,13 @@ module Java::Lang
       # #getSystemResource(String)}.  </p>
       # 
       # @param  name
-      # The resource name
+      #         The resource name
       # 
       # @return  An enumeration of resource {@link java.net.URL <tt>URL</tt>}
-      # objects
+      #          objects
       # 
       # @throws  IOException
-      # If I/O errors occur
+      #          If I/O errors occur
       # 
       # @since  1.2
       def get_system_resources(name)
@@ -1240,10 +1240,10 @@ module Java::Lang
     # #getResource(String)}.  </p>
     # 
     # @param  name
-    # The resource name
+    #         The resource name
     # 
     # @return  An input stream for reading the resource, or <tt>null</tt>
-    # if the resource could not be found
+    #          if the resource could not be found
     # 
     # @since  1.1
     def get_resource_as_stream(name)
@@ -1262,10 +1262,10 @@ module Java::Lang
       # system class loader (see {@link #getSystemClassLoader()}).  </p>
       # 
       # @param  name
-      # The resource name
+      #         The resource name
       # 
       # @return  An input stream for reading the resource, or <tt>null</tt>
-      # if the resource could not be found
+      #          if the resource could not be found
       # 
       # @since  1.1
       def get_system_resource_as_stream(name)
@@ -1280,7 +1280,6 @@ module Java::Lang
     
     typesig { [] }
     # -- Hierarchy --
-    # 
     # Returns the parent class loader for delegation. Some implementations may
     # use <tt>null</tt> to represent the bootstrap class loader. This method
     # will return <tt>null</tt> in such implementations if this class loader's
@@ -1299,9 +1298,9 @@ module Java::Lang
     # @return  The parent <tt>ClassLoader</tt>
     # 
     # @throws  SecurityException
-    # If a security manager exists and its <tt>checkPermission</tt>
-    # method doesn't allow access to this class loader's parent class
-    # loader.
+    #          If a security manager exists and its <tt>checkPermission</tt>
+    #          method doesn't allow access to this class loader's parent class
+    #          loader.
     # 
     # @since  1.2
     def get_parent
@@ -1353,24 +1352,24 @@ module Java::Lang
       # <tt>SecurityException</tt> will be thrown.  </p>
       # 
       # @return  The system <tt>ClassLoader</tt> for delegation, or
-      # <tt>null</tt> if none
+      #          <tt>null</tt> if none
       # 
       # @throws  SecurityException
-      # If a security manager exists and its <tt>checkPermission</tt>
-      # method doesn't allow access to the system class loader.
+      #          If a security manager exists and its <tt>checkPermission</tt>
+      #          method doesn't allow access to the system class loader.
       # 
       # @throws  IllegalStateException
-      # If invoked recursively during the construction of the class
-      # loader specified by the "<tt>java.system.class.loader</tt>"
-      # property.
+      #          If invoked recursively during the construction of the class
+      #          loader specified by the "<tt>java.system.class.loader</tt>"
+      #          property.
       # 
       # @throws  Error
-      # If the system property "<tt>java.system.class.loader</tt>"
-      # is defined but the named class could not be loaded, the
-      # provider class does not define the required constructor, or an
-      # exception is thrown by that constructor when it is invoked. The
-      # underlying cause of the error can be retrieved via the
-      # {@link Throwable#getCause()} method.
+      #          If the system property "<tt>java.system.class.loader</tt>"
+      #          is defined but the named class could not be loaded, the
+      #          provider class does not define the required constructor, or an
+      #          exception is thrown by that constructor when it is invoked. The
+      #          underlying cause of the error can be retrieved via the
+      #          {@link Throwable#getCause()} method.
       # 
       # @revised  1.4
       def get_system_class_loader
@@ -1482,7 +1481,6 @@ module Java::Lang
     
     typesig { [String, String, String, String, String, String, String, URL] }
     # -- Package --
-    # 
     # Defines a package by name in this <tt>ClassLoader</tt>.  This allows
     # class loaders to define the packages for their classes. Packages must
     # be created before the class is defined, and package names must be
@@ -1490,36 +1488,36 @@ module Java::Lang
     # created.  </p>
     # 
     # @param  name
-    # The package name
+    #         The package name
     # 
     # @param  specTitle
-    # The specification title
+    #         The specification title
     # 
     # @param  specVersion
-    # The specification version
+    #         The specification version
     # 
     # @param  specVendor
-    # The specification vendor
+    #         The specification vendor
     # 
     # @param  implTitle
-    # The implementation title
+    #         The implementation title
     # 
     # @param  implVersion
-    # The implementation version
+    #         The implementation version
     # 
     # @param  implVendor
-    # The implementation vendor
+    #         The implementation vendor
     # 
     # @param  sealBase
-    # If not <tt>null</tt>, then this package is sealed with
-    # respect to the given code source {@link java.net.URL
-    # <tt>URL</tt>}  object.  Otherwise, the package is not sealed.
+    #         If not <tt>null</tt>, then this package is sealed with
+    #         respect to the given code source {@link java.net.URL
+    #         <tt>URL</tt>}  object.  Otherwise, the package is not sealed.
     # 
     # @return  The newly defined <tt>Package</tt> object
     # 
     # @throws  IllegalArgumentException
-    # If package name duplicates an existing package either in this
-    # class loader or one of its ancestors
+    #          If package name duplicates an existing package either in this
+    #          class loader or one of its ancestors
     # 
     # @since  1.2
     def define_package(name, spec_title, spec_version, spec_vendor, impl_title, impl_version, impl_vendor, seal_base)
@@ -1539,10 +1537,10 @@ module Java::Lang
     # or any of its ancestors.  </p>
     # 
     # @param  name
-    # The package name
+    #         The package name
     # 
     # @return  The <tt>Package</tt> corresponding to the given name, or
-    # <tt>null</tt> if not found
+    #          <tt>null</tt> if not found
     # 
     # @since  1.2
     def get_package(name)
@@ -1567,7 +1565,7 @@ module Java::Lang
     # its ancestors.  </p>
     # 
     # @return  The array of <tt>Package</tt> objects defined by this
-    # <tt>ClassLoader</tt>
+    #          <tt>ClassLoader</tt>
     # 
     # @since  1.2
     def get_packages
@@ -1596,7 +1594,6 @@ module Java::Lang
     
     typesig { [String] }
     # -- Native library access --
-    # 
     # Returns the absolute path name of a native library.  The VM invokes this
     # method to locate the native libraries that belong to classes loaded with
     # this class loader. If this method returns <tt>null</tt>, the VM
@@ -1604,7 +1601,7 @@ module Java::Lang
     # "<tt>java.library.path</tt>" property.  </p>
     # 
     # @param  libname
-    # The library name
+    #         The library name
     # 
     # @return  The absolute path of the native library
     # 
@@ -2046,9 +2043,9 @@ module Java::Lang
     # #setClassAssertionStatus(String, boolean)}.  </p>
     # 
     # @param  enabled
-    # <tt>true</tt> if classes loaded by this class loader will
-    # henceforth have assertions enabled by default, <tt>false</tt>
-    # if they will have assertions disabled by default.
+    #         <tt>true</tt> if classes loaded by this class loader will
+    #         henceforth have assertions enabled by default, <tt>false</tt>
+    #         if they will have assertions disabled by default.
     # 
     # @since  1.4
     def set_default_assertion_status(enabled)
@@ -2083,17 +2080,17 @@ module Java::Lang
     # {@link #setClassAssertionStatus(String, boolean)}.  </p>
     # 
     # @param  packageName
-    # The name of the package whose package default assertion status
-    # is to be set. A <tt>null</tt> value indicates the unnamed
-    # package that is "current"
-    # (<a href="http://java.sun.com/docs/books/jls/">Java Language
-    # Specification</a>, section 7.4.2).
+    #         The name of the package whose package default assertion status
+    #         is to be set. A <tt>null</tt> value indicates the unnamed
+    #         package that is "current"
+    #         (<a href="http://java.sun.com/docs/books/jls/">Java Language
+    #         Specification</a>, section 7.4.2).
     # 
     # @param  enabled
-    # <tt>true</tt> if classes loaded by this classloader and
-    # belonging to the named package or any of its subpackages will
-    # have assertions enabled by default, <tt>false</tt> if they will
-    # have assertions disabled by default.
+    #         <tt>true</tt> if classes loaded by this classloader and
+    #         belonging to the named package or any of its subpackages will
+    #         have assertions enabled by default, <tt>false</tt> if they will
+    #         have assertions disabled by default.
     # 
     # @since  1.4
     def set_package_assertion_status(package_name, enabled)
@@ -2117,13 +2114,13 @@ module Java::Lang
     # have no effect on the actual assertion status of any class. </p>
     # 
     # @param  className
-    # The fully qualified class name of the top-level class whose
-    # assertion status is to be set.
+    #         The fully qualified class name of the top-level class whose
+    #         assertion status is to be set.
     # 
     # @param  enabled
-    # <tt>true</tt> if the named class is to have assertions
-    # enabled when (and if) it is initialized, <tt>false</tt> if the
-    # class is to have assertions disabled.
+    #         <tt>true</tt> if the named class is to have assertions
+    #         enabled when (and if) it is initialized, <tt>false</tt> if the
+    #         class is to have assertions disabled.
     # 
     # @since  1.4
     def set_class_assertion_status(class_name, enabled)
@@ -2165,8 +2162,8 @@ module Java::Lang
     # </p>
     # 
     # @param  className
-    # The fully qualified class name of the class whose desired
-    # assertion status is being queried.
+    #         The fully qualified class name of the class whose desired
+    #         assertion status is being queried.
     # 
     # @return  The desired assertion status of the specified class.
     # 

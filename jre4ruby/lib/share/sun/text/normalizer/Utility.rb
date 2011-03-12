@@ -22,11 +22,8 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
-# 
 # (C) Copyright IBM Corp. 1996-2005 - All Rights Reserved                     *
-# *
+#                                                                             *
 # The original version of this source code and documentation is copyrighted   *
 # and owned by IBM, These materials are provided under terms of a License     *
 # Agreement between IBM and Sun. This technology is protected by multiple     *
@@ -119,8 +116,7 @@ module Sun::Text::Normalizer
         when Character.new(?U.ord)
           min_dig = max_dig = 8
         when Character.new(?x.ord)
-          min_dig = 1
-          # {
+          min_dig = 1 # {
           if (offset < length_ && (UTF16.char_at(s, offset)).equal?(0x7b))
             (offset += 1)
             braces = true
@@ -133,8 +129,7 @@ module Sun::Text::Normalizer
           if (dig >= 0)
             min_dig = 1
             max_dig = 3
-            n = 1
-            # Already have first octal digit
+            n = 1 # Already have first octal digit
             bits_per_digit = 3
             result = dig
           end
@@ -323,7 +318,6 @@ module Sun::Text::Normalizer
       
       typesig { [StringBuffer, ::Java::Int, ::Java::Int, Array.typed(::Java::Char), ::Java::Int] }
       # // for StringPrep
-      # 
       # Similar to StringBuffer.getChars, version 1.3.
       # Since JDK 1.2 implements StringBuffer.getChars differently, this method
       # is here to provide consistent results.
@@ -333,7 +327,7 @@ module Sun::Text::Normalizer
       # @param srcEnd offset to the end of the src to retrieve from
       # @param dst char array to store the retrieved chars
       # @param dstBegin offset to the start of the destination char array to
-      # store the retrieved chars
+      #                 store the retrieved chars
       # @draft since ICU4J 2.0
       def get_chars(src, src_begin, src_end, dst, dst_begin)
         if ((src_begin).equal?(src_end))

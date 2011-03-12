@@ -50,130 +50,128 @@ module Java::Net
   
   # public String toString()
   # {
-  # StringBuffer s = new StringBuffer(super.toString() + "\n" +
-  # "cname = " + cname + "\n" +
-  # "wildcard = " + wildcard + "\n" +
-  # "invalid = " + invalid + "\n" +
-  # "portrange = " + portrange[0] + "," + portrange[1] + "\n");
-  # if (addresses != null) for (int i=0; i<addresses.length; i++) {
-  # s.append( addresses[i].getHostAddress());
-  # s.append("\n");
-  # } else {
-  # s.append("(no addresses)\n");
-  # }
+  #     StringBuffer s = new StringBuffer(super.toString() + "\n" +
+  #         "cname = " + cname + "\n" +
+  #         "wildcard = " + wildcard + "\n" +
+  #         "invalid = " + invalid + "\n" +
+  #         "portrange = " + portrange[0] + "," + portrange[1] + "\n");
+  #     if (addresses != null) for (int i=0; i<addresses.length; i++) {
+  #         s.append( addresses[i].getHostAddress());
+  #         s.append("\n");
+  #     } else {
+  #         s.append("(no addresses)\n");
+  #     }
   # 
-  # return s.toString();
+  #     return s.toString();
   # }
   # 
   # public static void main(String args[]) throws Exception {
-  # SocketPermission this_ = new SocketPermission(args[0], "connect");
-  # SocketPermission that_ = new SocketPermission(args[1], "connect");
-  # System.out.println("-----\n");
-  # System.out.println("this.implies(that) = " + this_.implies(that_));
-  # System.out.println("-----\n");
-  # System.out.println("this = "+this_);
-  # System.out.println("-----\n");
-  # System.out.println("that = "+that_);
-  # System.out.println("-----\n");
+  #     SocketPermission this_ = new SocketPermission(args[0], "connect");
+  #     SocketPermission that_ = new SocketPermission(args[1], "connect");
+  #     System.out.println("-----\n");
+  #     System.out.println("this.implies(that) = " + this_.implies(that_));
+  #     System.out.println("-----\n");
+  #     System.out.println("this = "+this_);
+  #     System.out.println("-----\n");
+  #     System.out.println("that = "+that_);
+  #     System.out.println("-----\n");
   # 
-  # SocketPermissionCollection nps = new SocketPermissionCollection();
-  # nps.add(this_);
-  # nps.add(new SocketPermission("www-leland.stanford.edu","connect"));
-  # nps.add(new SocketPermission("www-sun.com","connect"));
-  # System.out.println("nps.implies(that) = " + nps.implies(that_));
-  # System.out.println("-----\n");
+  #     SocketPermissionCollection nps = new SocketPermissionCollection();
+  #     nps.add(this_);
+  #     nps.add(new SocketPermission("www-leland.stanford.edu","connect"));
+  #     nps.add(new SocketPermission("www-sun.com","connect"));
+  #     System.out.println("nps.implies(that) = " + nps.implies(that_));
+  #     System.out.println("-----\n");
   # }
-  # 
-  # 
-  # This class represents access to a network via sockets.
-  # A SocketPermission consists of a
-  # host specification and a set of "actions" specifying ways to
-  # connect to that host. The host is specified as
-  # <pre>
-  # host = (hostname | IPv4address | iPv6reference) [:portrange]
-  # portrange = portnumber | -portnumber | portnumber-[portnumber]
+  #  This class represents access to a network via sockets.
+  #  A SocketPermission consists of a
+  #  host specification and a set of "actions" specifying ways to
+  #  connect to that host. The host is specified as
+  #  <pre>
+  #     host = (hostname | IPv4address | iPv6reference) [:portrange]
+  #     portrange = portnumber | -portnumber | portnumber-[portnumber]
+  #  </pre>
+  #  The host is expressed as a DNS name, as a numerical IP address,
+  #  or as "localhost" (for the local machine).
+  #  The wildcard "*" may be included once in a DNS name host
+  #  specification. If it is included, it must be in the leftmost
+  #  position, as in "*.sun.com".
+  #  <p>
+  #  The format of the IPv6reference should follow that specified in <a
+  #  href="http://www.ietf.org/rfc/rfc2732.txt"><i>RFC&nbsp;2732: Format
+  #  for Literal IPv6 Addresses in URLs</i></a>:
+  #  <pre>
+  #     ipv6reference = "[" IPv6address "]"
   # </pre>
-  # The host is expressed as a DNS name, as a numerical IP address,
-  # or as "localhost" (for the local machine).
-  # The wildcard "*" may be included once in a DNS name host
-  # specification. If it is included, it must be in the leftmost
-  # position, as in "*.sun.com".
-  # <p>
-  # The format of the IPv6reference should follow that specified in <a
-  # href="http://www.ietf.org/rfc/rfc2732.txt"><i>RFC&nbsp;2732: Format
-  # for Literal IPv6 Addresses in URLs</i></a>:
-  # <pre>
-  # ipv6reference = "[" IPv6address "]"
-  # </pre>
-  # For example, you can construct a SocketPermission instance
-  # as the following:
-  # <pre>
-  # String hostAddress = inetaddress.getHostAddress();
-  # if (inetaddress instanceof Inet6Address) {
-  # sp = new SocketPermission("[" + hostAddress + "]:" + port, action);
-  # } else {
-  # sp = new SocketPermission(hostAddress + ":" + port, action);
-  # }
-  # </pre>
-  # or
-  # <pre>
-  # String host = url.getHost();
-  # sp = new SocketPermission(host + ":" + port, action);
-  # </pre>
-  # <p>
-  # The <A HREF="Inet6Address.html#lform">full uncompressed form</A> of
-  # an IPv6 literal address is also valid.
-  # <p>
-  # The port or portrange is optional. A port specification of the
-  # form "N-", where <i>N</i> is a port number, signifies all ports
-  # numbered <i>N</i> and above, while a specification of the
-  # form "-N" indicates all ports numbered <i>N</i> and below.
-  # <p>
-  # The possible ways to connect to the host are
-  # <pre>
-  # accept
-  # connect
-  # listen
-  # resolve
-  # </pre>
-  # The "listen" action is only meaningful when used with "localhost".
-  # The "resolve" action is implied when any of the other actions are present.
-  # The action "resolve" refers to host/ip name service lookups.
+  #  For example, you can construct a SocketPermission instance
+  #  as the following:
+  #  <pre>
+  #     String hostAddress = inetaddress.getHostAddress();
+  #     if (inetaddress instanceof Inet6Address) {
+  #         sp = new SocketPermission("[" + hostAddress + "]:" + port, action);
+  #     } else {
+  #         sp = new SocketPermission(hostAddress + ":" + port, action);
+  #     }
+  #  </pre>
+  #  or
+  #  <pre>
+  #     String host = url.getHost();
+  #     sp = new SocketPermission(host + ":" + port, action);
+  #  </pre>
+  #  <p>
+  #  The <A HREF="Inet6Address.html#lform">full uncompressed form</A> of
+  #  an IPv6 literal address is also valid.
+  #  <p>
+  #  The port or portrange is optional. A port specification of the
+  #  form "N-", where <i>N</i> is a port number, signifies all ports
+  #  numbered <i>N</i> and above, while a specification of the
+  #  form "-N" indicates all ports numbered <i>N</i> and below.
+  #  <p>
+  #  The possible ways to connect to the host are
+  #  <pre>
+  #  accept
+  #  connect
+  #  listen
+  #  resolve
+  #  </pre>
+  #  The "listen" action is only meaningful when used with "localhost".
+  #  The "resolve" action is implied when any of the other actions are present.
+  #  The action "resolve" refers to host/ip name service lookups.
   # 
-  # <p>As an example of the creation and meaning of SocketPermissions,
-  # note that if the following permission:
+  #  <p>As an example of the creation and meaning of SocketPermissions,
+  #  note that if the following permission:
   # 
-  # <pre>
-  # p1 = new SocketPermission("puffin.eng.sun.com:7777", "connect,accept");
-  # </pre>
+  #  <pre>
+  #    p1 = new SocketPermission("puffin.eng.sun.com:7777", "connect,accept");
+  #  </pre>
   # 
-  # is granted to some code, it allows that code to connect to port 7777 on
-  # <code>puffin.eng.sun.com</code>, and to accept connections on that port.
+  #  is granted to some code, it allows that code to connect to port 7777 on
+  #  <code>puffin.eng.sun.com</code>, and to accept connections on that port.
   # 
-  # <p>Similarly, if the following permission:
+  #  <p>Similarly, if the following permission:
   # 
-  # <pre>
-  # p1 = new SocketPermission("puffin.eng.sun.com:7777", "connect,accept");
-  # p2 = new SocketPermission("localhost:1024-", "accept,connect,listen");
-  # </pre>
+  #  <pre>
+  #    p1 = new SocketPermission("puffin.eng.sun.com:7777", "connect,accept");
+  #    p2 = new SocketPermission("localhost:1024-", "accept,connect,listen");
+  #  </pre>
   # 
-  # is granted to some code, it allows that code to
-  # accept connections on, connect to, or listen on any port between
-  # 1024 and 65535 on the local host.
+  #  is granted to some code, it allows that code to
+  #  accept connections on, connect to, or listen on any port between
+  #  1024 and 65535 on the local host.
   # 
-  # <p>Note: Granting code permission to accept or make connections to remote
-  # hosts may be dangerous because malevolent code can then more easily
-  # transfer and share confidential data among parties who may not
-  # otherwise have access to the data.
+  #  <p>Note: Granting code permission to accept or make connections to remote
+  #  hosts may be dangerous because malevolent code can then more easily
+  #  transfer and share confidential data among parties who may not
+  #  otherwise have access to the data.
   # 
-  # @see java.security.Permissions
-  # @see SocketPermission
+  #  @see java.security.Permissions
+  #  @see SocketPermission
   # 
   # 
-  # @author Marianne Mueller
-  # @author Roland Schemers
+  #  @author Marianne Mueller
+  #  @author Roland Schemers
   # 
-  # @serial exclude
+  #  @serial exclude
   class SocketPermission < SocketPermissionImports.const_get :Permission
     include_class_members SocketPermissionImports
     overload_protected {
@@ -385,13 +383,13 @@ module Java::Net
     # <p>
     # Examples of SocketPermission instantiation are the following:
     # <pre>
-    # nr = new SocketPermission("www.catalog.com", "connect");
-    # nr = new SocketPermission("www.sun.com:80", "connect");
-    # nr = new SocketPermission("*.sun.com", "connect");
-    # nr = new SocketPermission("*.edu", "resolve");
-    # nr = new SocketPermission("204.160.241.0", "connect");
-    # nr = new SocketPermission("localhost:1024-65535", "listen");
-    # nr = new SocketPermission("204.160.241.0:1024-65535", "connect");
+    #    nr = new SocketPermission("www.catalog.com", "connect");
+    #    nr = new SocketPermission("www.sun.com:80", "connect");
+    #    nr = new SocketPermission("*.sun.com", "connect");
+    #    nr = new SocketPermission("*.edu", "resolve");
+    #    nr = new SocketPermission("204.160.241.0", "connect");
+    #    nr = new SocketPermission("localhost:1024-65535", "listen");
+    #    nr = new SocketPermission("204.160.241.0:1024-65535", "connect");
     # </pre>
     # 
     # @param host the hostname or IPaddress of the computer, optionally
@@ -672,10 +670,11 @@ module Java::Net
           seencomma = false
           while (i >= matchlen && !seencomma)
             case (a[i - matchlen])
-            # FALLTHROUGH
             when Character.new(?,.ord)
               seencomma = true
+              # FALLTHROUGH
             when Character.new(?\s.ord), Character.new(?\r.ord), Character.new(?\n.ord), Character.new(?\f.ord), Character.new(?\t.ord)
+              # FALLTHROUGH
             else
               raise IllegalArgumentException.new("invalid permission: " + action)
             end
@@ -944,11 +943,11 @@ module Java::Net
     # current object's actions.
     # <li> Checks that "p"'s port range is included in this port range
     # <li> If this object was initialized with an IP address, checks that
-    # one of "p"'s IP addresses is equal to this object's IP address.
+    #      one of "p"'s IP addresses is equal to this object's IP address.
     # <li> If either object is a wildcard domain (i.e., "*.sun.com"),
-    # attempt to match based on the wildcard.
+    #      attempt to match based on the wildcard.
     # <li> If this object was not initialized with an IP address, attempt
-    # to find a match based on the IP addresses in both objects.
+    #      to find a match based on the IP addresses in both objects.
     # <li> Attempt to match on the canonical hostnames of both objects.
     # </ul>
     # @param p the incoming permission request
@@ -1076,9 +1075,9 @@ module Java::Net
     # @param obj the object to test for equality with this object.
     # 
     # @return true if <i>obj</i> is a SocketPermission, and has the
-    # same hostname, port range, and actions as this
-    # SocketPermission object. However, port range will be ignored
-    # in the comparison if <i>obj</i> only contains the action, 'resolve'.
+    #  same hostname, port range, and actions as this
+    #  SocketPermission object. However, port range will be ignored
+    #  in the comparison if <i>obj</i> only contains the action, 'resolve'.
     def ==(obj)
       if ((obj).equal?(self))
         return true
@@ -1099,10 +1098,10 @@ module Java::Net
         end
       end
       # short cut. This catches:
-      # "crypto" equal to "crypto", or
+      #  "crypto" equal to "crypto", or
       # "1.2.3.4" equal to "1.2.3.4.", or
-      # "*.edu" equal to "*.edu", but it
-      # does not catch "crypto" equal to
+      #  "*.edu" equal to "*.edu", but it
+      #  does not catch "crypto" equal to
       # "crypto.eng.sun.com".
       if (self.get_name.equals_ignore_case(that.get_name))
         return true
@@ -1261,15 +1260,15 @@ module Java::Net
   # if wildcard, its the wild card
   # else its the cname?
   # 
-  # 
-  # @see java.security.Permission
-  # @see java.security.Permissions
-  # @see java.security.PermissionCollection
-  # 
-  # 
-  # @author Roland Schemers
-  # 
-  # @serial include
+  #  *
+  #  * @see java.security.Permission
+  #  * @see java.security.Permissions
+  #  * @see java.security.PermissionCollection
+  #  *
+  #  *
+  #  * @author Roland Schemers
+  #  *
+  #  * @serial include
   class SocketPermissionCollection < SocketPermissionImports.const_get :PermissionCollection
     include_class_members SocketPermissionImports
     overload_protected {
@@ -1298,10 +1297,10 @@ module Java::Net
     # @param permission the Permission object to add.
     # 
     # @exception IllegalArgumentException - if the permission is not a
-    # SocketPermission
+    #                                       SocketPermission
     # 
     # @exception SecurityException - if this SocketPermissionCollection object
-    # has been marked readonly
+    #                                has been marked readonly
     def add(permission)
       if (!(permission.is_a?(SocketPermission)))
         raise IllegalArgumentException.new("invalid permission: " + RJava.cast_to_string(permission))
@@ -1375,17 +1374,14 @@ module Java::Net
       # @serial
       # 
       # private Vector permissions;
-      # 
       # @serialField permissions java.util.Vector
-      # A list of the SocketPermissions for this set.
-      const_set_lazy(:SerialPersistentFields) { Array.typed(ObjectStreamField).new([ObjectStreamField.new("permissions", Vector), ]) }
+      #     A list of the SocketPermissions for this set.
+      const_set_lazy(:SerialPersistentFields) { Array.typed(ObjectStreamField).new([ObjectStreamField.new("permissions", Vector)]) }
       const_attr_reader  :SerialPersistentFields
     }
     
     typesig { [ObjectOutputStream] }
     # @serialData "permissions" field (a Vector containing the SocketPermissions).
-    # 
-    # 
     # Writes the contents of the perms field out as a Vector for
     # serialization compatibility with earlier releases.
     def write_object(out)

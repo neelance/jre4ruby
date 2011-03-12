@@ -123,7 +123,7 @@ module Java::Util::Logging
     # if necessary.  The formatting should include localization.
     # 
     # @param  record  description of the log event. A null record is
-    # silently ignored and is not published
+    #                 silently ignored and is not published
     def publish(record)
       raise NotImplementedError
     end
@@ -143,7 +143,7 @@ module Java::Util::Logging
     # ignored or may throw runtime exceptions.
     # 
     # @exception  SecurityException  if a security manager exists and if
-    # the caller does not have <tt>LoggingPermission("control")</tt>.
+    #             the caller does not have <tt>LoggingPermission("control")</tt>.
     def close
       raise NotImplementedError
     end
@@ -157,7 +157,7 @@ module Java::Util::Logging
     # <p>
     # @param newFormatter the <tt>Formatter</tt> to use (may not be null)
     # @exception  SecurityException  if a security manager exists and if
-    # the caller does not have <tt>LoggingPermission("control")</tt>.
+    #             the caller does not have <tt>LoggingPermission("control")</tt>.
     def set_formatter(new_formatter)
       check_access
       # Check for a null pointer:
@@ -179,11 +179,11 @@ module Java::Util::Logging
     # to the <tt>Handler</tt>.
     # 
     # @param encoding  The name of a supported character encoding.
-    # May be null, to indicate the default platform encoding.
+    #        May be null, to indicate the default platform encoding.
     # @exception  SecurityException  if a security manager exists and if
-    # the caller does not have <tt>LoggingPermission("control")</tt>.
+    #             the caller does not have <tt>LoggingPermission("control")</tt>.
     # @exception  UnsupportedEncodingException if the named encoding is
-    # not supported.
+    #          not supported.
     def set_encoding(encoding)
       check_access
       if (!(encoding).nil?)
@@ -202,7 +202,7 @@ module Java::Util::Logging
     # Return the character encoding for this <tt>Handler</tt>.
     # 
     # @return  The encoding name.  May be null, which indicates the
-    # default encoding should be used.
+    #          default encoding should be used.
     def get_encoding
       return @encoding
     end
@@ -216,7 +216,7 @@ module Java::Util::Logging
     # 
     # @param   newFilter  a <tt>Filter</tt> object (may be null)
     # @exception  SecurityException  if a security manager exists and if
-    # the caller does not have <tt>LoggingPermission("control")</tt>.
+    #             the caller does not have <tt>LoggingPermission("control")</tt>.
     def set_filter(new_filter)
       check_access
       @filter = new_filter
@@ -238,7 +238,7 @@ module Java::Util::Logging
     # 
     # @param em  the new ErrorManager
     # @exception  SecurityException  if a security manager exists and if
-    # the caller does not have <tt>LoggingPermission("control")</tt>.
+    #             the caller does not have <tt>LoggingPermission("control")</tt>.
     def set_error_manager(em)
       check_access
       if ((em).nil?)
@@ -251,7 +251,7 @@ module Java::Util::Logging
     # Retrieves the ErrorManager for this Handler.
     # 
     # @exception  SecurityException  if a security manager exists and if
-    # the caller does not have <tt>LoggingPermission("control")</tt>.
+    #             the caller does not have <tt>LoggingPermission("control")</tt>.
     def get_error_manager
       check_access
       return @error_manager
@@ -286,7 +286,7 @@ module Java::Util::Logging
     # 
     # @param newLevel   the new value for the log level
     # @exception  SecurityException  if a security manager exists and if
-    # the caller does not have <tt>LoggingPermission("control")</tt>.
+    #             the caller does not have <tt>LoggingPermission("control")</tt>.
     def set_level(new_level)
       synchronized(self) do
         if ((new_level).nil?)

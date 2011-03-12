@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # This file is available under and governed by the GNU General Public
 # License version 2 only, as published by the Free Software Foundation.
 # However, the following notice accompanied the original version of this
@@ -57,18 +55,18 @@ module Java::Util::Concurrent
   # 
   # <pre> {@code
   # void solve(Executor e,
-  # Collection<Callable<Result>> solvers)
-  # throws InterruptedException, ExecutionException {
-  # CompletionService<Result> ecs
-  # = new ExecutorCompletionService<Result>(e);
-  # for (Callable<Result> s : solvers)
-  # ecs.submit(s);
-  # int n = solvers.size();
-  # for (int i = 0; i < n; ++i) {
-  # Result r = ecs.take().get();
-  # if (r != null)
-  # use(r);
-  # }
+  #            Collection<Callable<Result>> solvers)
+  #     throws InterruptedException, ExecutionException {
+  #     CompletionService<Result> ecs
+  #         = new ExecutorCompletionService<Result>(e);
+  #     for (Callable<Result> s : solvers)
+  #         ecs.submit(s);
+  #     int n = solvers.size();
+  #     for (int i = 0; i < n; ++i) {
+  #         Result r = ecs.take().get();
+  #         if (r != null)
+  #             use(r);
+  #     }
   # }}</pre>
   # 
   # Suppose instead that you would like to use the first non-null result
@@ -77,34 +75,34 @@ module Java::Util::Concurrent
   # 
   # <pre> {@code
   # void solve(Executor e,
-  # Collection<Callable<Result>> solvers)
-  # throws InterruptedException {
-  # CompletionService<Result> ecs
-  # = new ExecutorCompletionService<Result>(e);
-  # int n = solvers.size();
-  # List<Future<Result>> futures
-  # = new ArrayList<Future<Result>>(n);
-  # Result result = null;
-  # try {
-  # for (Callable<Result> s : solvers)
-  # futures.add(ecs.submit(s));
-  # for (int i = 0; i < n; ++i) {
-  # try {
-  # Result r = ecs.take().get();
-  # if (r != null) {
-  # result = r;
-  # break;
-  # }
-  # } catch (ExecutionException ignore) {}
-  # }
-  # }
-  # finally {
-  # for (Future<Result> f : futures)
-  # f.cancel(true);
-  # }
+  #            Collection<Callable<Result>> solvers)
+  #     throws InterruptedException {
+  #     CompletionService<Result> ecs
+  #         = new ExecutorCompletionService<Result>(e);
+  #     int n = solvers.size();
+  #     List<Future<Result>> futures
+  #         = new ArrayList<Future<Result>>(n);
+  #     Result result = null;
+  #     try {
+  #         for (Callable<Result> s : solvers)
+  #             futures.add(ecs.submit(s));
+  #         for (int i = 0; i < n; ++i) {
+  #             try {
+  #                 Result r = ecs.take().get();
+  #                 if (r != null) {
+  #                     result = r;
+  #                     break;
+  #                 }
+  #             } catch (ExecutionException ignore) {}
+  #         }
+  #     }
+  #     finally {
+  #         for (Future<Result> f : futures)
+  #             f.cancel(true);
+  #     }
   # 
-  # if (result != null)
-  # use(result);
+  #     if (result != null)
+  #         use(result);
   # }}</pre>
   class ExecutorCompletionService 
     include_class_members ExecutorCompletionServiceImports
@@ -201,10 +199,10 @@ module Java::Util::Concurrent
     # 
     # @param executor the executor to use
     # @param completionQueue the queue to use as the completion queue
-    # normally one dedicated for use by this service. This
-    # queue is treated as unbounded -- failed attempted
-    # {@code Queue.add} operations for completed taskes cause
-    # them not to be retrievable.
+    #        normally one dedicated for use by this service. This
+    #        queue is treated as unbounded -- failed attempted
+    #        {@code Queue.add} operations for completed taskes cause
+    #        them not to be retrievable.
     # @throws NullPointerException if executor or completionQueue are {@code null}
     def initialize(executor, completion_queue)
       @executor = nil

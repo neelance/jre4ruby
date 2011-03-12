@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5
@@ -141,7 +139,7 @@ module Sun::Security::Krb5
     typesig { [] }
     # Returns messages like:
     # "Integrity check on decrypted field failed (31) - \
-    # Could not decrypt service ticket"
+    #                         Could not decrypt service ticket"
     # If the error code is 0 then the first half is skipped.
     def get_message
       message = StringBuffer.new

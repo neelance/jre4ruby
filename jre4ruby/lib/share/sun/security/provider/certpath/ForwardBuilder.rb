@@ -159,7 +159,7 @@ module Sun::Security::Provider::Certpath
     # PKIX state (name constraints, policy constraints, etc).
     # 
     # @param currentState the current state.
-    # Must be an instance of <code>ForwardState</code>
+    #        Must be an instance of <code>ForwardState</code>
     # @param certStores list of CertStores
     def get_matching_certs(current_state, cert_stores)
       if (!(Debug).nil?)
@@ -340,34 +340,34 @@ module Sun::Security::Provider::Certpath
       # The preference order is as follows:
       # 
       # Given trusted certificate(s):
-      # Subject:ou=D,ou=C,o=B,c=A
+      #    Subject:ou=D,ou=C,o=B,c=A
       # 
       # Preference order for current cert:
       # 
       # 1) Issuer matches a trusted subject
-      # Issuer: ou=D,ou=C,o=B,c=A
+      #    Issuer: ou=D,ou=C,o=B,c=A
       # 
       # 2) Issuer is a descendant of a trusted subject (in order of
-      # number of links to the trusted subject)
-      # a) Issuer: ou=E,ou=D,ou=C,o=B,c=A        [links=1]
-      # b) Issuer: ou=F,ou=E,ou=D,ou=C,ou=B,c=A  [links=2]
+      #    number of links to the trusted subject)
+      #    a) Issuer: ou=E,ou=D,ou=C,o=B,c=A        [links=1]
+      #    b) Issuer: ou=F,ou=E,ou=D,ou=C,ou=B,c=A  [links=2]
       # 
       # 3) Issuer is an ancestor of a trusted subject (in order of number of
-      # links to the trusted subject)
-      # a) Issuer: ou=C,o=B,c=A [links=1]
-      # b) Issuer: o=B,c=A      [links=2]
+      #    links to the trusted subject)
+      #    a) Issuer: ou=C,o=B,c=A [links=1]
+      #    b) Issuer: o=B,c=A      [links=2]
       # 
       # 4) Issuer is in the same namespace as a trusted subject (in order of
-      # number of links to the trusted subject)
-      # a) Issuer: ou=G,ou=C,o=B,c=A  [links=2]
-      # b) Issuer: ou=H,o=B,c=A       [links=3]
+      #    number of links to the trusted subject)
+      #    a) Issuer: ou=G,ou=C,o=B,c=A  [links=2]
+      #    b) Issuer: ou=H,o=B,c=A       [links=3]
       # 
       # 5) Issuer is an ancestor of certificate subject (in order of number
-      # of links to the certificate subject)
-      # a) Issuer:  ou=K,o=J,c=A
-      # Subject: ou=L,ou=K,o=J,c=A
-      # b) Issuer:  o=J,c=A
-      # Subject: ou=L,ou=K,0=J,c=A
+      #    of links to the certificate subject)
+      #    a) Issuer:  ou=K,o=J,c=A
+      #       Subject: ou=L,ou=K,o=J,c=A
+      #    b) Issuer:  o=J,c=A
+      #       Subject: ou=L,ou=K,0=J,c=A
       # 
       # 6) Any other certificates
       const_set_lazy(:PKIXCertComparator) { Class.new do
@@ -395,14 +395,14 @@ module Sun::Security::Provider::Certpath
         # @param oCert1 First X509Certificate to be compared
         # @param oCert2 Second X509Certificate to be compared
         # @return -1 if oCert1 is preferable to oCert2, or
-        # if oCert1 and oCert2 are equally preferable (in this
-        # case it doesn't matter which is preferable, but we don't
-        # return 0 because the comparator would behave strangely
-        # when used in a SortedSet).
-        # 1 if oCert2 is preferable to oCert1
-        # 0 if oCert1.equals(oCert2). We only return 0 if the
-        # certs are equal so that this comparator behaves
-        # correctly when used in a SortedSet.
+        #            if oCert1 and oCert2 are equally preferable (in this
+        #            case it doesn't matter which is preferable, but we don't
+        #            return 0 because the comparator would behave strangely
+        #            when used in a SortedSet).
+        #          1 if oCert2 is preferable to oCert1
+        #          0 if oCert1.equals(oCert2). We only return 0 if the
+        #          certs are equal so that this comparator behaves
+        #          correctly when used in a SortedSet.
         # @throws ClassCastException if either argument is not of type
         # X509Certificate
         def compare(o_cert1, o_cert2)
@@ -701,8 +701,6 @@ module Sun::Security::Provider::Certpath
       # is a trusted cert, since we are only extracting the
       # subjectDN, and publicKey from the cert
       # in order to verify a previous cert
-      # 
-      # 
       # Check revocation for the previous cert
       if (self.attr_build_params.is_revocation_enabled)
         # first off, see if this cert can authorize revocation...
@@ -789,7 +787,7 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [X509Certificate, LinkedList] }
-    # Adds the certificate to the certPathList
+    #  Adds the certificate to the certPathList
     # 
     # @param cert the certificate to be added
     # @param certPathList the certification path list
@@ -798,7 +796,7 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [LinkedList] }
-    # Removes final certificate from the certPathList
+    #  Removes final certificate from the certPathList
     # 
     # @param certPathList the certification path list
     def remove_final_cert_from_path(cert_path_list)

@@ -49,20 +49,20 @@ module Java::Lang
   # are created. String buffers support mutable strings.
   # Because String objects are immutable they can be shared. For example:
   # <p><blockquote><pre>
-  # String str = "abc";
+  #     String str = "abc";
   # </pre></blockquote><p>
   # is equivalent to:
   # <p><blockquote><pre>
-  # char data[] = {'a', 'b', 'c'};
-  # String str = new String(data);
+  #     char data[] = {'a', 'b', 'c'};
+  #     String str = new String(data);
   # </pre></blockquote><p>
   # Here are some more examples of how strings can be used:
   # <p><blockquote><pre>
-  # System.out.println("abc");
-  # String cde = "cde";
-  # System.out.println("abc" + cde);
-  # String c = "abc".substring(2,3);
-  # String d = cde.substring(1, 2);
+  #     System.out.println("abc");
+  #     String cde = "cde";
+  #     System.out.println("abc" + cde);
+  #     String c = "abc".substring(2,3);
+  #     String d = cde.substring(1, 2);
   # </pre></blockquote>
   # <p>
   # The class <code>String</code> includes methods for examining
@@ -150,7 +150,7 @@ module Java::Lang
       # A String instance is written initially into an ObjectOutputStream in the
       # following format:
       # <pre>
-      # <code>TC_STRING</code> (utf String)
+      #      <code>TC_STRING</code> (utf String)
       # </pre>
       # The String is written by method <code>DataOutput.writeUTF</code>.
       # A new handle is generated to  refer to all future references to the
@@ -181,7 +181,7 @@ module Java::Lang
     # unnecessary since Strings are immutable.
     # 
     # @param  original
-    # A {@code String}
+    #         A {@code String}
     def initialize(original)
       @value = nil
       @offset = 0
@@ -213,7 +213,7 @@ module Java::Lang
     # the character array does not affect the newly created string.
     # 
     # @param  value
-    # The initial value of the string
+    #         The initial value of the string
     def initialize(value)
       @value = nil
       @offset = 0
@@ -234,17 +234,17 @@ module Java::Lang
     # not affect the newly created string.
     # 
     # @param  value
-    # Array that is the source of characters
+    #         Array that is the source of characters
     # 
     # @param  offset
-    # The initial offset
+    #         The initial offset
     # 
     # @param  count
-    # The length
+    #         The length
     # 
     # @throws  IndexOutOfBoundsException
-    # If the {@code offset} and {@code count} arguments index
-    # characters outside the bounds of the {@code value} array
+    #          If the {@code offset} and {@code count} arguments index
+    #          characters outside the bounds of the {@code value} array
     def initialize(value, offset, count)
       @value = nil
       @offset = 0
@@ -275,21 +275,21 @@ module Java::Lang
     # affect the newly created string.
     # 
     # @param  codePoints
-    # Array that is the source of Unicode code points
+    #         Array that is the source of Unicode code points
     # 
     # @param  offset
-    # The initial offset
+    #         The initial offset
     # 
     # @param  count
-    # The length
+    #         The length
     # 
     # @throws  IllegalArgumentException
-    # If any invalid Unicode code point is found in {@code
-    # codePoints}
+    #          If any invalid Unicode code point is found in {@code
+    #          codePoints}
     # 
     # @throws  IndexOutOfBoundsException
-    # If the {@code offset} and {@code count} arguments index
-    # characters outside the bounds of the {@code codePoints} array
+    #          If the {@code offset} and {@code count} arguments index
+    #          characters outside the bounds of the {@code codePoints} array
     # 
     # @since  1.5
     def initialize(code_points, offset, count)
@@ -360,18 +360,18 @@ module Java::Lang
     # default charset.
     # 
     # @param  ascii
-    # The bytes to be converted to characters
+    #         The bytes to be converted to characters
     # 
     # @param  hibyte
-    # The top 8 bits of each 16-bit Unicode code unit
+    #         The top 8 bits of each 16-bit Unicode code unit
     # 
     # @param  offset
-    # The initial offset
+    #         The initial offset
     # @param  count
-    # The length
+    #         The length
     # 
     # @throws  IndexOutOfBoundsException
-    # If the {@code offset} or {@code count} argument is invalid
+    #          If the {@code offset} or {@code count} argument is invalid
     # 
     # @see  #String(byte[], int)
     # @see  #String(byte[], int, int, java.lang.String)
@@ -411,8 +411,8 @@ module Java::Lang
     # <i>b</i> in the byte array such that:
     # 
     # <blockquote><pre>
-    # <b><i>c</i></b> == (char)(((hibyte &amp; 0xff) &lt;&lt; 8)
-    # | (<b><i>b</i></b> &amp; 0xff))
+    #     <b><i>c</i></b> == (char)(((hibyte &amp; 0xff) &lt;&lt; 8)
+    #                         | (<b><i>b</i></b> &amp; 0xff))
     # </pre></blockquote>
     # 
     # @deprecated  This method does not properly convert bytes into
@@ -422,10 +422,10 @@ module Java::Lang
     # default charset.
     # 
     # @param  ascii
-    # The bytes to be converted to characters
+    #         The bytes to be converted to characters
     # 
     # @param  hibyte
-    # The top 8 bits of each 16-bit Unicode code unit
+    #         The top 8 bits of each 16-bit Unicode code unit
     # 
     # @see  #String(byte[], int, int, java.lang.String)
     # @see  #String(byte[], int, int, java.nio.charset.Charset)
@@ -467,24 +467,24 @@ module Java::Lang
     # over the decoding process is required.
     # 
     # @param  bytes
-    # The bytes to be decoded into characters
+    #         The bytes to be decoded into characters
     # 
     # @param  offset
-    # The index of the first byte to decode
+    #         The index of the first byte to decode
     # 
     # @param  length
-    # The number of bytes to decode
+    #         The number of bytes to decode
     # 
     # @param  charsetName
-    # The name of a supported {@linkplain java.nio.charset.Charset
-    # charset}
+    #         The name of a supported {@linkplain java.nio.charset.Charset
+    #         charset}
     # 
     # @throws  UnsupportedEncodingException
-    # If the named charset is not supported
+    #          If the named charset is not supported
     # 
     # @throws  IndexOutOfBoundsException
-    # If the {@code offset} and {@code length} arguments index
-    # characters outside the bounds of the {@code bytes} array
+    #          If the {@code offset} and {@code length} arguments index
+    #          characters outside the bounds of the {@code bytes} array
     # 
     # @since  JDK1.1
     def initialize(bytes, offset, length, charset_name)
@@ -514,21 +514,21 @@ module Java::Lang
     # over the decoding process is required.
     # 
     # @param  bytes
-    # The bytes to be decoded into characters
+    #         The bytes to be decoded into characters
     # 
     # @param  offset
-    # The index of the first byte to decode
+    #         The index of the first byte to decode
     # 
     # @param  length
-    # The number of bytes to decode
+    #         The number of bytes to decode
     # 
     # @param  charset
-    # The {@linkplain java.nio.charset.Charset charset} to be used to
-    # decode the {@code bytes}
+    #         The {@linkplain java.nio.charset.Charset charset} to be used to
+    #         decode the {@code bytes}
     # 
     # @throws  IndexOutOfBoundsException
-    # If the {@code offset} and {@code length} arguments index
-    # characters outside the bounds of the {@code bytes} array
+    #          If the {@code offset} and {@code length} arguments index
+    #          characters outside the bounds of the {@code bytes} array
     # 
     # @since  1.6
     def initialize(bytes, offset, length, charset)
@@ -558,14 +558,14 @@ module Java::Lang
     # over the decoding process is required.
     # 
     # @param  bytes
-    # The bytes to be decoded into characters
+    #         The bytes to be decoded into characters
     # 
     # @param  charsetName
-    # The name of a supported {@linkplain java.nio.charset.Charset
-    # charset}
+    #         The name of a supported {@linkplain java.nio.charset.Charset
+    #         charset}
     # 
     # @throws  UnsupportedEncodingException
-    # If the named charset is not supported
+    #          If the named charset is not supported
     # 
     # @since  JDK1.1
     def initialize(bytes, charset_name)
@@ -584,11 +584,11 @@ module Java::Lang
     # over the decoding process is required.
     # 
     # @param  bytes
-    # The bytes to be decoded into characters
+    #         The bytes to be decoded into characters
     # 
     # @param  charset
-    # The {@linkplain java.nio.charset.Charset charset} to be used to
-    # decode the {@code bytes}
+    #         The {@linkplain java.nio.charset.Charset charset} to be used to
+    #         decode the {@code bytes}
     # 
     # @since  1.6
     def initialize(bytes, charset)
@@ -607,17 +607,17 @@ module Java::Lang
     # over the decoding process is required.
     # 
     # @param  bytes
-    # The bytes to be decoded into characters
+    #         The bytes to be decoded into characters
     # 
     # @param  offset
-    # The index of the first byte to decode
+    #         The index of the first byte to decode
     # 
     # @param  length
-    # The number of bytes to decode
+    #         The number of bytes to decode
     # 
     # @throws  IndexOutOfBoundsException
-    # If the {@code offset} and the {@code length} arguments index
-    # characters outside the bounds of the {@code bytes} array
+    #          If the {@code offset} and the {@code length} arguments index
+    #          characters outside the bounds of the {@code bytes} array
     # 
     # @since  JDK1.1
     def initialize(bytes, offset, length)
@@ -644,7 +644,7 @@ module Java::Lang
     # over the decoding process is required.
     # 
     # @param  bytes
-    # The bytes to be decoded into characters
+    #         The bytes to be decoded into characters
     # 
     # @since  JDK1.1
     def initialize(bytes)
@@ -658,7 +658,7 @@ module Java::Lang
     # does not affect the newly created string.
     # 
     # @param  buffer
-    # A {@code StringBuffer}
+    #         A {@code StringBuffer}
     def initialize(buffer)
       @value = nil
       @offset = 0
@@ -681,7 +681,7 @@ module Java::Lang
     # toString} method is likely to run faster and is generally preferred.
     # 
     # @param   builder
-    # A {@code StringBuilder}
+    #          A {@code StringBuilder}
     # 
     # @since  1.5
     def initialize(builder)
@@ -713,7 +713,7 @@ module Java::Lang
     # code units</a> in the string.
     # 
     # @return  the length of the sequence of characters represented by this
-    # object.
+    #          object.
     def length
       return @count
     end
@@ -742,10 +742,10 @@ module Java::Lang
     # 
     # @param      index   the index of the <code>char</code> value.
     # @return     the <code>char</code> value at the specified index of this string.
-    # The first <code>char</code> value is at index <code>0</code>.
+    #             The first <code>char</code> value is at index <code>0</code>.
     # @exception  IndexOutOfBoundsException  if the <code>index</code>
-    # argument is negative or not less than the length of this
-    # string.
+    #             argument is negative or not less than the length of this
+    #             string.
     def char_at(index)
       if ((index < 0) || (index >= @count))
         raise StringIndexOutOfBoundsException.new(index)
@@ -769,10 +769,10 @@ module Java::Lang
     # 
     # @param      index the index to the <code>char</code> values
     # @return     the code point value of the character at the
-    # <code>index</code>
+    #             <code>index</code>
     # @exception  IndexOutOfBoundsException  if the <code>index</code>
-    # argument is negative or not less than the length of this
-    # string.
+    #             argument is negative or not less than the length of this
+    #             string.
     # @since      1.5
     def code_point_at(index)
       if ((index < 0) || (index >= @count))
@@ -799,8 +799,8 @@ module Java::Lang
     # @param     index the index following the code point that should be returned
     # @return    the Unicode code point value before the given index.
     # @exception IndexOutOfBoundsException if the <code>index</code>
-    # argument is less than 1 or greater than the length
-    # of this string.
+    #            argument is less than 1 or greater than the length
+    #            of this string.
     # @since     1.5
     def code_point_before(index)
       i = index - 1
@@ -848,13 +848,13 @@ module Java::Lang
     # @param codePointOffset the offset in code points
     # @return the index within this <code>String</code>
     # @exception IndexOutOfBoundsException if <code>index</code>
-    # is negative or larger then the length of this
-    # <code>String</code>, or if <code>codePointOffset</code> is positive
-    # and the substring starting with <code>index</code> has fewer
-    # than <code>codePointOffset</code> code points,
-    # or if <code>codePointOffset</code> is negative and the substring
-    # before <code>index</code> has fewer than the absolute value
-    # of <code>codePointOffset</code> code points.
+    #   is negative or larger then the length of this
+    #   <code>String</code>, or if <code>codePointOffset</code> is positive
+    #   and the substring starting with <code>index</code> has fewer
+    #   than <code>codePointOffset</code> code points,
+    #   or if <code>codePointOffset</code> is negative and the substring
+    #   before <code>index</code> has fewer than the absolute value
+    #   of <code>codePointOffset</code> code points.
     # @since 1.5
     def offset_by_code_points(index, code_point_offset)
       if (index < 0 || index > @count)
@@ -881,24 +881,24 @@ module Java::Lang
     # subarray of <code>dst</code> starting at index <code>dstBegin</code>
     # and ending at index:
     # <p><blockquote><pre>
-    # dstbegin + (srcEnd-srcBegin) - 1
+    #     dstbegin + (srcEnd-srcBegin) - 1
     # </pre></blockquote>
     # 
     # @param      srcBegin   index of the first character in the string
-    # to copy.
+    #                        to copy.
     # @param      srcEnd     index after the last character in the string
-    # to copy.
+    #                        to copy.
     # @param      dst        the destination array.
     # @param      dstBegin   the start offset in the destination array.
     # @exception IndexOutOfBoundsException If any of the following
-    # is true:
-    # <ul><li><code>srcBegin</code> is negative.
-    # <li><code>srcBegin</code> is greater than <code>srcEnd</code>
-    # <li><code>srcEnd</code> is greater than the length of this
-    # string
-    # <li><code>dstBegin</code> is negative
-    # <li><code>dstBegin+(srcEnd-srcBegin)</code> is larger than
-    # <code>dst.length</code></ul>
+    #            is true:
+    #            <ul><li><code>srcBegin</code> is negative.
+    #            <li><code>srcBegin</code> is greater than <code>srcEnd</code>
+    #            <li><code>srcEnd</code> is greater than the length of this
+    #                string
+    #            <li><code>dstBegin</code> is negative
+    #            <li><code>dstBegin+(srcEnd-srcBegin)</code> is larger than
+    #                <code>dst.length</code></ul>
     def get_chars(src_begin, src_end, dst, dst_begin)
       if (src_begin < 0)
         raise StringIndexOutOfBoundsException.new(src_begin)
@@ -925,7 +925,7 @@ module Java::Lang
     # dst} starting at index {@code dstBegin} and ending at index:
     # 
     # <blockquote><pre>
-    # dstbegin + (srcEnd-srcBegin) - 1
+    #     dstbegin + (srcEnd-srcBegin) - 1
     # </pre></blockquote>
     # 
     # @deprecated  This method does not properly convert characters into
@@ -933,27 +933,27 @@ module Java::Lang
     # {@link #getBytes()} method, which uses the platform's default charset.
     # 
     # @param  srcBegin
-    # Index of the first character in the string to copy
+    #         Index of the first character in the string to copy
     # 
     # @param  srcEnd
-    # Index after the last character in the string to copy
+    #         Index after the last character in the string to copy
     # 
     # @param  dst
-    # The destination array
+    #         The destination array
     # 
     # @param  dstBegin
-    # The start offset in the destination array
+    #         The start offset in the destination array
     # 
     # @throws  IndexOutOfBoundsException
-    # If any of the following is true:
-    # <ul>
-    # <li> {@code srcBegin} is negative
-    # <li> {@code srcBegin} is greater than {@code srcEnd}
-    # <li> {@code srcEnd} is greater than the length of this String
-    # <li> {@code dstBegin} is negative
-    # <li> {@code dstBegin+(srcEnd-srcBegin)} is larger than {@code
-    # dst.length}
-    # </ul>
+    #          If any of the following is true:
+    #          <ul>
+    #            <li> {@code srcBegin} is negative
+    #            <li> {@code srcBegin} is greater than {@code srcEnd}
+    #            <li> {@code srcEnd} is greater than the length of this String
+    #            <li> {@code dstBegin} is negative
+    #            <li> {@code dstBegin+(srcEnd-srcBegin)} is larger than {@code
+    #                 dst.length}
+    #          </ul>
     def get_bytes(src_begin, src_end, dst, dst_begin)
       if (src_begin < 0)
         raise StringIndexOutOfBoundsException.new(src_begin)
@@ -967,8 +967,7 @@ module Java::Lang
       j = dst_begin
       n = @offset + src_end
       i = @offset + src_begin
-      val = @value
-      # avoid getfield opcode
+      val = @value # avoid getfield opcode
       while (i < n)
         dst[((j += 1) - 1)] = val[((i += 1) - 1)]
       end
@@ -984,13 +983,13 @@ module Java::Lang
     # over the encoding process is required.
     # 
     # @param  charsetName
-    # The name of a supported {@linkplain java.nio.charset.Charset
-    # charset}
+    #         The name of a supported {@linkplain java.nio.charset.Charset
+    #         charset}
     # 
     # @return  The resultant byte array
     # 
     # @throws  UnsupportedEncodingException
-    # If the named charset is not supported
+    #          If the named charset is not supported
     # 
     # @since  JDK1.1
     def get_bytes(charset_name)
@@ -1011,8 +1010,8 @@ module Java::Lang
     # control over the encoding process is required.
     # 
     # @param  charset
-    # The {@linkplain java.nio.charset.Charset} to be used to encode
-    # the {@code String}
+    #         The {@linkplain java.nio.charset.Charset} to be used to encode
+    #         the {@code String}
     # 
     # @return  The resultant byte array
     # 
@@ -1047,10 +1046,10 @@ module Java::Lang
     # object.
     # 
     # @param  anObject
-    # The object to compare this {@code String} against
+    #         The object to compare this {@code String} against
     # 
     # @return  {@code true} if the given object represents a {@code String}
-    # equivalent to this string, {@code false} otherwise
+    #          equivalent to this string, {@code false} otherwise
     # 
     # @see  #compareTo(String)
     # @see  #equalsIgnoreCase(String)
@@ -1083,11 +1082,11 @@ module Java::Lang
     # sequence of characters as the specified {@code StringBuffer}.
     # 
     # @param  sb
-    # The {@code StringBuffer} to compare this {@code String} against
+    #         The {@code StringBuffer} to compare this {@code String} against
     # 
     # @return  {@code true} if this {@code String} represents the same
-    # sequence of characters as the specified {@code StringBuffer},
-    # {@code false} otherwise
+    #          sequence of characters as the specified {@code StringBuffer},
+    #          {@code false} otherwise
     # 
     # @since  1.4
     def content_equals(sb)
@@ -1102,11 +1101,11 @@ module Java::Lang
     # sequence of char values as the specified sequence.
     # 
     # @param  cs
-    # The sequence to compare this {@code String} against
+    #         The sequence to compare this {@code String} against
     # 
     # @return  {@code true} if this {@code String} represents the same
-    # sequence of char values as the specified sequence, {@code
-    # false} otherwise
+    #          sequence of char values as the specified sequence, {@code
+    #          false} otherwise
     # 
     # @since  1.5
     def content_equals(cs)
@@ -1153,22 +1152,22 @@ module Java::Lang
     # <p> Two characters {@code c1} and {@code c2} are considered the same
     # ignoring case if at least one of the following is true:
     # <ul>
-    # <li> The two characters are the same (as compared by the
-    # {@code ==} operator)
-    # <li> Applying the method {@link
-    # java.lang.Character#toUpperCase(char)} to each character
-    # produces the same result
-    # <li> Applying the method {@link
-    # java.lang.Character#toLowerCase(char)} to each character
-    # produces the same result
+    #   <li> The two characters are the same (as compared by the
+    #        {@code ==} operator)
+    #   <li> Applying the method {@link
+    #        java.lang.Character#toUpperCase(char)} to each character
+    #        produces the same result
+    #   <li> Applying the method {@link
+    #        java.lang.Character#toLowerCase(char)} to each character
+    #        produces the same result
     # </ul>
     # 
     # @param  anotherString
-    # The {@code String} to compare this {@code String} against
+    #         The {@code String} to compare this {@code String} against
     # 
     # @return  {@code true} if the argument is not {@code null} and it
-    # represents an equivalent {@code String} ignoring case; {@code
-    # false} otherwise
+    #          represents an equivalent {@code String} ignoring case; {@code
+    #          false} otherwise
     # 
     # @see  #equals(Object)
     def equals_ignore_case(another_string)
@@ -1211,10 +1210,10 @@ module Java::Lang
     # 
     # @param   anotherString   the <code>String</code> to be compared.
     # @return  the value <code>0</code> if the argument string is equal to
-    # this string; a value less than <code>0</code> if this string
-    # is lexicographically less than the string argument; and a
-    # value greater than <code>0</code> if this string is
-    # lexicographically greater than the string argument.
+    #          this string; a value less than <code>0</code> if this string
+    #          is lexicographically less than the string argument; and a
+    #          value greater than <code>0</code> if this string is
+    #          lexicographically greater than the string argument.
     def compare_to(another_string)
       len1 = @count
       len2 = another_string.attr_count
@@ -1321,8 +1320,8 @@ module Java::Lang
     # 
     # @param   str   the <code>String</code> to be compared.
     # @return  a negative integer, zero, or a positive integer as the
-    # specified String is greater than, equal to, or less
-    # than this String, ignoring case considerations.
+    #          specified String is greater than, equal to, or less
+    #          than this String, ignoring case considerations.
     # @see     java.text.Collator#compare(String, String)
     # @since   1.2
     def compare_to_ignore_case(str)
@@ -1354,11 +1353,11 @@ module Java::Lang
     # @param   toffset   the starting offset of the subregion in this string.
     # @param   other     the string argument.
     # @param   ooffset   the starting offset of the subregion in the string
-    # argument.
+    #                    argument.
     # @param   len       the number of characters to compare.
     # @return  <code>true</code> if the specified subregion of this string
-    # exactly matches the specified subregion of the string argument;
-    # <code>false</code> otherwise.
+    #          exactly matches the specified subregion of the string argument;
+    #          <code>false</code> otherwise.
     def region_matches(toffset, other, ooffset, len)
       ta = @value
       to = @offset + toffset
@@ -1403,28 +1402,28 @@ module Java::Lang
     # integer <i>k</i> less than <tt>len</tt> such that:
     # <blockquote><pre>
     # Character.toLowerCase(this.charAt(toffset+k)) !=
-    # Character.toLowerCase(other.charAt(ooffset+k))
+    #         Character.toLowerCase(other.charAt(ooffset+k))
     # </pre></blockquote>
     # and:
     # <blockquote><pre>
     # Character.toUpperCase(this.charAt(toffset+k)) !=
-    # Character.toUpperCase(other.charAt(ooffset+k))
+    #         Character.toUpperCase(other.charAt(ooffset+k))
     # </pre></blockquote>
     # </ul>
     # 
     # @param   ignoreCase   if <code>true</code>, ignore case when comparing
-    # characters.
+    #                       characters.
     # @param   toffset      the starting offset of the subregion in this
-    # string.
+    #                       string.
     # @param   other        the string argument.
     # @param   ooffset      the starting offset of the subregion in the string
-    # argument.
+    #                       argument.
     # @param   len          the number of characters to compare.
     # @return  <code>true</code> if the specified subregion of this string
-    # matches the specified subregion of the string argument;
-    # <code>false</code> otherwise. Whether the matching is exact
-    # or case insensitive depends on the <code>ignoreCase</code>
-    # argument.
+    #          matches the specified subregion of the string argument;
+    #          <code>false</code> otherwise. Whether the matching is exact
+    #          or case insensitive depends on the <code>ignoreCase</code>
+    #          argument.
     def region_matches(ignore_case, toffset, other, ooffset, len)
       ta = @value
       to = @offset + toffset
@@ -1470,15 +1469,15 @@ module Java::Lang
     # @param   prefix    the prefix.
     # @param   toffset   where to begin looking in this string.
     # @return  <code>true</code> if the character sequence represented by the
-    # argument is a prefix of the substring of this object starting
-    # at index <code>toffset</code>; <code>false</code> otherwise.
-    # The result is <code>false</code> if <code>toffset</code> is
-    # negative or greater than the length of this
-    # <code>String</code> object; otherwise the result is the same
-    # as the result of the expression
-    # <pre>
-    # this.substring(toffset).startsWith(prefix)
-    # </pre>
+    #          argument is a prefix of the substring of this object starting
+    #          at index <code>toffset</code>; <code>false</code> otherwise.
+    #          The result is <code>false</code> if <code>toffset</code> is
+    #          negative or greater than the length of this
+    #          <code>String</code> object; otherwise the result is the same
+    #          as the result of the expression
+    #          <pre>
+    #          this.substring(toffset).startsWith(prefix)
+    #          </pre>
     def starts_with(prefix, toffset)
       ta = @value
       to = @offset + toffset
@@ -1502,12 +1501,12 @@ module Java::Lang
     # 
     # @param   prefix   the prefix.
     # @return  <code>true</code> if the character sequence represented by the
-    # argument is a prefix of the character sequence represented by
-    # this string; <code>false</code> otherwise.
-    # Note also that <code>true</code> will be returned if the
-    # argument is an empty string or is equal to this
-    # <code>String</code> object as determined by the
-    # {@link #equals(Object)} method.
+    #          argument is a prefix of the character sequence represented by
+    #          this string; <code>false</code> otherwise.
+    #          Note also that <code>true</code> will be returned if the
+    #          argument is an empty string or is equal to this
+    #          <code>String</code> object as determined by the
+    #          {@link #equals(Object)} method.
     # @since   1. 0
     def starts_with(prefix)
       return starts_with(prefix, 0)
@@ -1518,11 +1517,11 @@ module Java::Lang
     # 
     # @param   suffix   the suffix.
     # @return  <code>true</code> if the character sequence represented by the
-    # argument is a suffix of the character sequence represented by
-    # this object; <code>false</code> otherwise. Note that the
-    # result will be <code>true</code> if the argument is the
-    # empty string or is equal to this <code>String</code> object
-    # as determined by the {@link #equals(Object)} method.
+    #          argument is a suffix of the character sequence represented by
+    #          this object; <code>false</code> otherwise. Note that the
+    #          result will be <code>true</code> if the argument is the
+    #          empty string or is equal to this <code>String</code> object
+    #          as determined by the {@link #equals(Object)} method.
     def ends_with(suffix)
       return starts_with(suffix, @count - suffix.attr_count)
     end
@@ -1576,8 +1575,8 @@ module Java::Lang
     # 
     # @param   ch   a character (Unicode code point).
     # @return  the index of the first occurrence of the character in the
-    # character sequence represented by this object, or
-    # <code>-1</code> if the character does not occur.
+    #          character sequence represented by this object, or
+    #          <code>-1</code> if the character does not occur.
     def index_of(ch)
       return index_of(ch, 0)
     end
@@ -1617,9 +1616,9 @@ module Java::Lang
     # @param   ch          a character (Unicode code point).
     # @param   fromIndex   the index to start the search from.
     # @return  the index of the first occurrence of the character in the
-    # character sequence represented by this object that is greater
-    # than or equal to <code>fromIndex</code>, or <code>-1</code>
-    # if the character does not occur.
+    #          character sequence represented by this object that is greater
+    #          than or equal to <code>fromIndex</code>, or <code>-1</code>
+    #          if the character does not occur.
     def index_of(ch, from_index)
       max = @offset + @count
       v = @value
@@ -1681,8 +1680,8 @@ module Java::Lang
     # 
     # @param   ch   a character (Unicode code point).
     # @return  the index of the last occurrence of the character in the
-    # character sequence represented by this object, or
-    # <code>-1</code> if the character does not occur.
+    #          character sequence represented by this object, or
+    #          <code>-1</code> if the character does not occur.
     def last_index_of(ch)
       return last_index_of(ch, @count - 1)
     end
@@ -1710,16 +1709,16 @@ module Java::Lang
     # 
     # @param   ch          a character (Unicode code point).
     # @param   fromIndex   the index to start the search from. There is no
-    # restriction on the value of <code>fromIndex</code>. If it is
-    # greater than or equal to the length of this string, it has
-    # the same effect as if it were equal to one less than the
-    # length of this string: this entire string may be searched.
-    # If it is negative, it has the same effect as if it were -1:
-    # -1 is returned.
+    #          restriction on the value of <code>fromIndex</code>. If it is
+    #          greater than or equal to the length of this string, it has
+    #          the same effect as if it were equal to one less than the
+    #          length of this string: this entire string may be searched.
+    #          If it is negative, it has the same effect as if it were -1:
+    #          -1 is returned.
     # @return  the index of the last occurrence of the character in the
-    # character sequence represented by this object that is less
-    # than or equal to <code>fromIndex</code>, or <code>-1</code>
-    # if the character does not occur before that point.
+    #          character sequence represented by this object that is less
+    #          than or equal to <code>fromIndex</code>, or <code>-1</code>
+    #          if the character does not occur before that point.
     def last_index_of(ch, from_index)
       min_ = @offset
       v = @value
@@ -1765,9 +1764,9 @@ module Java::Lang
     # 
     # @param   str   any string.
     # @return  if the string argument occurs as a substring within this
-    # object, then the index of the first character of the first
-    # such substring is returned; if it does not occur as a
-    # substring, <code>-1</code> is returned.
+    #          object, then the index of the first character of the first
+    #          such substring is returned; if it does not occur as a
+    #          substring, <code>-1</code> is returned.
     def index_of(str)
       return index_of(str, 0)
     end
@@ -1777,14 +1776,14 @@ module Java::Lang
     # specified substring, starting at the specified index.  The integer
     # returned is the smallest value <tt>k</tt> for which:
     # <blockquote><pre>
-    # k &gt;= Math.min(fromIndex, this.length()) && this.startsWith(str, k)
+    #     k &gt;= Math.min(fromIndex, this.length()) && this.startsWith(str, k)
     # </pre></blockquote>
     # If no such value of <i>k</i> exists, then -1 is returned.
     # 
     # @param   str         the substring for which to search.
     # @param   fromIndex   the index from which to start the search.
     # @return  the index within this string of the first occurrence of the
-    # specified substring, starting at the specified index.
+    #          specified substring, starting at the specified index.
     def index_of(str, from_index)
       return index_of(@value, @offset, @count, str.attr_value, str.attr_offset, str.attr_count, from_index)
     end
@@ -1853,9 +1852,9 @@ module Java::Lang
     # 
     # @param   str   the substring to search for.
     # @return  if the string argument occurs one or more times as a substring
-    # within this object, then the index of the first character of
-    # the last such substring is returned. If it does not occur as
-    # a substring, <code>-1</code> is returned.
+    #          within this object, then the index of the first character of
+    #          the last such substring is returned. If it does not occur as
+    #          a substring, <code>-1</code> is returned.
     def last_index_of(str)
       return last_index_of(str, @count)
     end
@@ -1865,14 +1864,14 @@ module Java::Lang
     # specified substring, searching backward starting at the specified index.
     # The integer returned is the largest value <i>k</i> such that:
     # <blockquote><pre>
-    # k &lt;= Math.min(fromIndex, this.length()) && this.startsWith(str, k)
+    #     k &lt;= Math.min(fromIndex, this.length()) && this.startsWith(str, k)
     # </pre></blockquote>
     # If no such value of <i>k</i> exists, then -1 is returned.
     # 
     # @param   str         the substring to search for.
     # @param   fromIndex   the index to start the search from.
     # @return  the index within this string of the last occurrence of the
-    # specified substring.
+    #          specified substring.
     def last_index_of(str, from_index)
       return last_index_of(@value, @offset, @count, str.attr_value, str.attr_offset, str.attr_count, from_index)
     end
@@ -1945,8 +1944,8 @@ module Java::Lang
     # @param      beginIndex   the beginning index, inclusive.
     # @return     the specified substring.
     # @exception  IndexOutOfBoundsException  if
-    # <code>beginIndex</code> is negative or larger than the
-    # length of this <code>String</code> object.
+    #             <code>beginIndex</code> is negative or larger than the
+    #             length of this <code>String</code> object.
     def substring(begin_index)
       return substring(begin_index, @count)
     end
@@ -1967,11 +1966,11 @@ module Java::Lang
     # @param      endIndex     the ending index, exclusive.
     # @return     the specified substring.
     # @exception  IndexOutOfBoundsException  if the
-    # <code>beginIndex</code> is negative, or
-    # <code>endIndex</code> is larger than the length of
-    # this <code>String</code> object, or
-    # <code>beginIndex</code> is larger than
-    # <code>endIndex</code>.
+    #             <code>beginIndex</code> is negative, or
+    #             <code>endIndex</code> is larger than the length of
+    #             this <code>String</code> object, or
+    #             <code>beginIndex</code> is larger than
+    #             <code>endIndex</code>.
     def substring(begin_index, end_index)
       if (begin_index < 0)
         raise StringIndexOutOfBoundsException.new(begin_index)
@@ -2006,9 +2005,9 @@ module Java::Lang
     # @return     the specified subsequence.
     # 
     # @throws  IndexOutOfBoundsException
-    # if <tt>beginIndex</tt> or <tt>endIndex</tt> are negative,
-    # if <tt>endIndex</tt> is greater than <tt>length()</tt>,
-    # or if <tt>beginIndex</tt> is greater than <tt>startIndex</tt>
+    #          if <tt>beginIndex</tt> or <tt>endIndex</tt> are negative,
+    #          if <tt>endIndex</tt> is greater than <tt>length()</tt>,
+    #          or if <tt>beginIndex</tt> is greater than <tt>startIndex</tt>
     # 
     # @since 1.4
     # @spec JSR-51
@@ -2032,9 +2031,9 @@ module Java::Lang
     # </pre></blockquote>
     # 
     # @param   str   the <code>String</code> that is concatenated to the end
-    # of this <code>String</code>.
+    #                of this <code>String</code>.
     # @return  a string that represents the concatenation of this object's
-    # characters followed by the string argument's characters.
+    #          characters followed by the string argument's characters.
     def concat(str)
       other_len = str.length
       if ((other_len).equal?(0))
@@ -2062,26 +2061,24 @@ module Java::Lang
     # Examples:
     # <blockquote><pre>
     # "mesquite in your cellar".replace('e', 'o')
-    # returns "mosquito in your collar"
+    #         returns "mosquito in your collar"
     # "the war of baronets".replace('r', 'y')
-    # returns "the way of bayonets"
+    #         returns "the way of bayonets"
     # "sparring with a purple porpoise".replace('p', 't')
-    # returns "starring with a turtle tortoise"
+    #         returns "starring with a turtle tortoise"
     # "JonL".replace('q', 'x') returns "JonL" (no change)
     # </pre></blockquote>
     # 
     # @param   oldChar   the old character.
     # @param   newChar   the new character.
     # @return  a string derived from this string by replacing every
-    # occurrence of <code>oldChar</code> with <code>newChar</code>.
+    #          occurrence of <code>oldChar</code> with <code>newChar</code>.
     def replace(old_char, new_char)
       if (!(old_char).equal?(new_char))
         len = @count
         i = -1
-        val = @value
-        # avoid getfield opcode
-        off = @offset
-        # avoid getfield opcode
+        val = @value # avoid getfield opcode
+        off = @offset # avoid getfield opcode
         while ((i += 1) < len)
           if ((val[off + i]).equal?(old_char))
             break
@@ -2118,13 +2115,13 @@ module Java::Lang
     # matches}(</tt><i>regex</i><tt>,</tt> <i>str</i><tt>)</tt></blockquote>
     # 
     # @param   regex
-    # the regular expression to which this string is to be matched
+    #          the regular expression to which this string is to be matched
     # 
     # @return  <tt>true</tt> if, and only if, this string matches the
-    # given regular expression
+    #          given regular expression
     # 
     # @throws  PatternSyntaxException
-    # if the regular expression's syntax is invalid
+    #          if the regular expression's syntax is invalid
     # 
     # @see java.util.regex.Pattern
     # 
@@ -2147,85 +2144,85 @@ module Java::Lang
     end
     
     typesig { [String, String] }
-    # Replaces the first substring of this string that matches the given <a
-    # href="../util/regex/Pattern.html#sum">regular expression</a> with the
-    # given replacement.
+    #  Replaces the first substring of this string that matches the given <a
+    #  href="../util/regex/Pattern.html#sum">regular expression</a> with the
+    #  given replacement.
     # 
-    # <p> An invocation of this method of the form
-    # <i>str</i><tt>.replaceFirst(</tt><i>regex</i><tt>,</tt> <i>repl</i><tt>)</tt>
-    # yields exactly the same result as the expression
+    #  <p> An invocation of this method of the form
+    #  <i>str</i><tt>.replaceFirst(</tt><i>regex</i><tt>,</tt> <i>repl</i><tt>)</tt>
+    #  yields exactly the same result as the expression
     # 
-    # <blockquote><tt>
-    # {@link java.util.regex.Pattern}.{@link java.util.regex.Pattern#compile
-    # compile}(</tt><i>regex</i><tt>).{@link
-    # java.util.regex.Pattern#matcher(java.lang.CharSequence)
-    # matcher}(</tt><i>str</i><tt>).{@link java.util.regex.Matcher#replaceFirst
-    # replaceFirst}(</tt><i>repl</i><tt>)</tt></blockquote>
+    #  <blockquote><tt>
+    #  {@link java.util.regex.Pattern}.{@link java.util.regex.Pattern#compile
+    #  compile}(</tt><i>regex</i><tt>).{@link
+    #  java.util.regex.Pattern#matcher(java.lang.CharSequence)
+    #  matcher}(</tt><i>str</i><tt>).{@link java.util.regex.Matcher#replaceFirst
+    #  replaceFirst}(</tt><i>repl</i><tt>)</tt></blockquote>
     # 
     # <p>
-    # Note that backslashes (<tt>\</tt>) and dollar signs (<tt>$</tt>) in the
-    # replacement string may cause the results to be different than if it were
-    # being treated as a literal replacement string; see
-    # {@link java.util.regex.Matcher#replaceFirst}.
-    # Use {@link java.util.regex.Matcher#quoteReplacement} to suppress the special
-    # meaning of these characters, if desired.
+    #  Note that backslashes (<tt>\</tt>) and dollar signs (<tt>$</tt>) in the
+    #  replacement string may cause the results to be different than if it were
+    #  being treated as a literal replacement string; see
+    #  {@link java.util.regex.Matcher#replaceFirst}.
+    #  Use {@link java.util.regex.Matcher#quoteReplacement} to suppress the special
+    #  meaning of these characters, if desired.
     # 
-    # @param   regex
-    # the regular expression to which this string is to be matched
-    # @param   replacement
-    # the string to be substituted for the first match
+    #  @param   regex
+    #           the regular expression to which this string is to be matched
+    #  @param   replacement
+    #           the string to be substituted for the first match
     # 
-    # @return  The resulting <tt>String</tt>
+    #  @return  The resulting <tt>String</tt>
     # 
-    # @throws  PatternSyntaxException
-    # if the regular expression's syntax is invalid
+    #  @throws  PatternSyntaxException
+    #           if the regular expression's syntax is invalid
     # 
-    # @see java.util.regex.Pattern
+    #  @see java.util.regex.Pattern
     # 
-    # @since 1.4
-    # @spec JSR-51
+    #  @since 1.4
+    #  @spec JSR-51
     def replace_first(regex, replacement)
       return Pattern.compile(regex).matcher(self).replace_first(replacement)
     end
     
     typesig { [String, String] }
-    # Replaces each substring of this string that matches the given <a
-    # href="../util/regex/Pattern.html#sum">regular expression</a> with the
-    # given replacement.
+    #  Replaces each substring of this string that matches the given <a
+    #  href="../util/regex/Pattern.html#sum">regular expression</a> with the
+    #  given replacement.
     # 
-    # <p> An invocation of this method of the form
-    # <i>str</i><tt>.replaceAll(</tt><i>regex</i><tt>,</tt> <i>repl</i><tt>)</tt>
-    # yields exactly the same result as the expression
+    #  <p> An invocation of this method of the form
+    #  <i>str</i><tt>.replaceAll(</tt><i>regex</i><tt>,</tt> <i>repl</i><tt>)</tt>
+    #  yields exactly the same result as the expression
     # 
-    # <blockquote><tt>
-    # {@link java.util.regex.Pattern}.{@link java.util.regex.Pattern#compile
-    # compile}(</tt><i>regex</i><tt>).{@link
-    # java.util.regex.Pattern#matcher(java.lang.CharSequence)
-    # matcher}(</tt><i>str</i><tt>).{@link java.util.regex.Matcher#replaceAll
-    # replaceAll}(</tt><i>repl</i><tt>)</tt></blockquote>
+    #  <blockquote><tt>
+    #  {@link java.util.regex.Pattern}.{@link java.util.regex.Pattern#compile
+    #  compile}(</tt><i>regex</i><tt>).{@link
+    #  java.util.regex.Pattern#matcher(java.lang.CharSequence)
+    #  matcher}(</tt><i>str</i><tt>).{@link java.util.regex.Matcher#replaceAll
+    #  replaceAll}(</tt><i>repl</i><tt>)</tt></blockquote>
     # 
     # <p>
-    # Note that backslashes (<tt>\</tt>) and dollar signs (<tt>$</tt>) in the
-    # replacement string may cause the results to be different than if it were
-    # being treated as a literal replacement string; see
-    # {@link java.util.regex.Matcher#replaceAll Matcher.replaceAll}.
-    # Use {@link java.util.regex.Matcher#quoteReplacement} to suppress the special
-    # meaning of these characters, if desired.
+    #  Note that backslashes (<tt>\</tt>) and dollar signs (<tt>$</tt>) in the
+    #  replacement string may cause the results to be different than if it were
+    #  being treated as a literal replacement string; see
+    #  {@link java.util.regex.Matcher#replaceAll Matcher.replaceAll}.
+    #  Use {@link java.util.regex.Matcher#quoteReplacement} to suppress the special
+    #  meaning of these characters, if desired.
     # 
-    # @param   regex
-    # the regular expression to which this string is to be matched
-    # @param   replacement
-    # the string to be substituted for each match
+    #  @param   regex
+    #           the regular expression to which this string is to be matched
+    #  @param   replacement
+    #           the string to be substituted for each match
     # 
-    # @return  The resulting <tt>String</tt>
+    #  @return  The resulting <tt>String</tt>
     # 
-    # @throws  PatternSyntaxException
-    # if the regular expression's syntax is invalid
+    #  @throws  PatternSyntaxException
+    #           if the regular expression's syntax is invalid
     # 
-    # @see java.util.regex.Pattern
+    #  @see java.util.regex.Pattern
     # 
-    # @since 1.4
-    # @spec JSR-51
+    #  @since 1.4
+    #  @spec JSR-51
     def replace_all(regex, replacement)
       return Pattern.compile(regex).matcher(self).replace_all(replacement)
     end
@@ -2241,7 +2238,7 @@ module Java::Lang
     # @param  replacement The replacement sequence of char values
     # @return  The resulting string
     # @throws NullPointerException if <code>target</code> or
-    # <code>replacement</code> is <code>null</code>.
+    #         <code>replacement</code> is <code>null</code>.
     # @since 1.5
     def replace(target, replacement)
       return Pattern.compile(target.to_s, Pattern::LITERAL).matcher(self).replace_all(Matcher.quote_replacement(replacement.to_s))
@@ -2274,28 +2271,28 @@ module Java::Lang
     # 
     # <blockquote><table cellpadding=1 cellspacing=0 summary="Split example showing regex, limit, and result">
     # <tr>
-    # <th>Regex</th>
-    # <th>Limit</th>
-    # <th>Result</th>
+    #     <th>Regex</th>
+    #     <th>Limit</th>
+    #     <th>Result</th>
     # </tr>
     # <tr><td align=center>:</td>
-    # <td align=center>2</td>
-    # <td><tt>{ "boo", "and:foo" }</tt></td></tr>
+    #     <td align=center>2</td>
+    #     <td><tt>{ "boo", "and:foo" }</tt></td></tr>
     # <tr><td align=center>:</td>
-    # <td align=center>5</td>
-    # <td><tt>{ "boo", "and", "foo" }</tt></td></tr>
+    #     <td align=center>5</td>
+    #     <td><tt>{ "boo", "and", "foo" }</tt></td></tr>
     # <tr><td align=center>:</td>
-    # <td align=center>-2</td>
-    # <td><tt>{ "boo", "and", "foo" }</tt></td></tr>
+    #     <td align=center>-2</td>
+    #     <td><tt>{ "boo", "and", "foo" }</tt></td></tr>
     # <tr><td align=center>o</td>
-    # <td align=center>5</td>
-    # <td><tt>{ "b", "", ":and:f", "", "" }</tt></td></tr>
+    #     <td align=center>5</td>
+    #     <td><tt>{ "b", "", ":and:f", "", "" }</tt></td></tr>
     # <tr><td align=center>o</td>
-    # <td align=center>-2</td>
-    # <td><tt>{ "b", "", ":and:f", "", "" }</tt></td></tr>
+    #     <td align=center>-2</td>
+    #     <td><tt>{ "b", "", ":and:f", "", "" }</tt></td></tr>
     # <tr><td align=center>o</td>
-    # <td align=center>0</td>
-    # <td><tt>{ "b", "", ":and:f" }</tt></td></tr>
+    #     <td align=center>0</td>
+    #     <td><tt>{ "b", "", ":and:f" }</tt></td></tr>
     # </table></blockquote>
     # 
     # <p> An invocation of this method of the form
@@ -2311,16 +2308,16 @@ module Java::Lang
     # 
     # 
     # @param  regex
-    # the delimiting regular expression
+    #         the delimiting regular expression
     # 
     # @param  limit
-    # the result threshold, as described above
+    #         the result threshold, as described above
     # 
     # @return  the array of strings computed by splitting this string
-    # around matches of the given regular expression
+    #          around matches of the given regular expression
     # 
     # @throws  PatternSyntaxException
-    # if the regular expression's syntax is invalid
+    #          if the regular expression's syntax is invalid
     # 
     # @see java.util.regex.Pattern
     # 
@@ -2344,24 +2341,24 @@ module Java::Lang
     # 
     # <blockquote><table cellpadding=1 cellspacing=0 summary="Split examples showing regex and result">
     # <tr>
-    # <th>Regex</th>
-    # <th>Result</th>
+    #  <th>Regex</th>
+    #  <th>Result</th>
     # </tr>
     # <tr><td align=center>:</td>
-    # <td><tt>{ "boo", "and", "foo" }</tt></td></tr>
+    #     <td><tt>{ "boo", "and", "foo" }</tt></td></tr>
     # <tr><td align=center>o</td>
-    # <td><tt>{ "b", "", ":and:f" }</tt></td></tr>
+    #     <td><tt>{ "b", "", ":and:f" }</tt></td></tr>
     # </table></blockquote>
     # 
     # 
     # @param  regex
-    # the delimiting regular expression
+    #         the delimiting regular expression
     # 
     # @return  the array of strings computed by splitting this string
-    # around matches of the given regular expression
+    #          around matches of the given regular expression
     # 
     # @throws  PatternSyntaxException
-    # if the regular expression's syntax is invalid
+    #          if the regular expression's syntax is invalid
     # 
     # @see java.util.regex.Pattern
     # 
@@ -2381,38 +2378,38 @@ module Java::Lang
     # Examples of lowercase  mappings are in the following table:
     # <table border="1" summary="Lowercase mapping examples showing language code of locale, upper case, lower case, and description">
     # <tr>
-    # <th>Language Code of Locale</th>
-    # <th>Upper Case</th>
-    # <th>Lower Case</th>
-    # <th>Description</th>
+    #   <th>Language Code of Locale</th>
+    #   <th>Upper Case</th>
+    #   <th>Lower Case</th>
+    #   <th>Description</th>
     # </tr>
     # <tr>
-    # <td>tr (Turkish)</td>
-    # <td>&#92;u0130</td>
-    # <td>&#92;u0069</td>
-    # <td>capital letter I with dot above -&gt; small letter i</td>
+    #   <td>tr (Turkish)</td>
+    #   <td>&#92;u0130</td>
+    #   <td>&#92;u0069</td>
+    #   <td>capital letter I with dot above -&gt; small letter i</td>
     # </tr>
     # <tr>
-    # <td>tr (Turkish)</td>
-    # <td>&#92;u0049</td>
-    # <td>&#92;u0131</td>
-    # <td>capital letter I -&gt; small letter dotless i </td>
+    #   <td>tr (Turkish)</td>
+    #   <td>&#92;u0049</td>
+    #   <td>&#92;u0131</td>
+    #   <td>capital letter I -&gt; small letter dotless i </td>
     # </tr>
     # <tr>
-    # <td>(all)</td>
-    # <td>French Fries</td>
-    # <td>french fries</td>
-    # <td>lowercased all chars in String</td>
+    #   <td>(all)</td>
+    #   <td>French Fries</td>
+    #   <td>french fries</td>
+    #   <td>lowercased all chars in String</td>
     # </tr>
     # <tr>
-    # <td>(all)</td>
-    # <td><img src="doc-files/capiota.gif" alt="capiota"><img src="doc-files/capchi.gif" alt="capchi">
-    # <img src="doc-files/captheta.gif" alt="captheta"><img src="doc-files/capupsil.gif" alt="capupsil">
-    # <img src="doc-files/capsigma.gif" alt="capsigma"></td>
-    # <td><img src="doc-files/iota.gif" alt="iota"><img src="doc-files/chi.gif" alt="chi">
-    # <img src="doc-files/theta.gif" alt="theta"><img src="doc-files/upsilon.gif" alt="upsilon">
-    # <img src="doc-files/sigma1.gif" alt="sigma"></td>
-    # <td>lowercased all chars in String</td>
+    #   <td>(all)</td>
+    #   <td><img src="doc-files/capiota.gif" alt="capiota"><img src="doc-files/capchi.gif" alt="capchi">
+    #       <img src="doc-files/captheta.gif" alt="captheta"><img src="doc-files/capupsil.gif" alt="capupsil">
+    #       <img src="doc-files/capsigma.gif" alt="capsigma"></td>
+    #   <td><img src="doc-files/iota.gif" alt="iota"><img src="doc-files/chi.gif" alt="chi">
+    #       <img src="doc-files/theta.gif" alt="theta"><img src="doc-files/upsilon.gif" alt="upsilon">
+    #       <img src="doc-files/sigma1.gif" alt="sigma"></td>
+    #   <td>lowercased all chars in String</td>
     # </tr>
     # </table>
     # 
@@ -2450,7 +2447,7 @@ module Java::Lang
       result = CharArray.new(@count)
       result_offset = 0
       # result may grow, so i+resultOffset
-      # is the write location in result
+      #                                * is the write location in result
       # Just copy the first few lowerCase characters.
       System.arraycopy(@value, @offset, result, 0, first_upper)
       lang = locale.get_language
@@ -2461,7 +2458,7 @@ module Java::Lang
       src_count = 0
       i = first_upper
       while i < @count
-        src_char = RJava.cast_to_int(@value[@offset + i])
+        src_char = (@value[@offset + i]).to_int
         if (RJava.cast_to_char(src_char) >= Character::MIN_HIGH_SURROGATE && RJava.cast_to_char(src_char) <= Character::MAX_HIGH_SURROGATE)
           src_char = code_point_at(i)
           src_count = Character.char_count(src_char)
@@ -2540,34 +2537,34 @@ module Java::Lang
     # <p>
     # <table border="1" summary="Examples of locale-sensitive and 1:M case mappings. Shows Language code of locale, lower case, upper case, and description.">
     # <tr>
-    # <th>Language Code of Locale</th>
-    # <th>Lower Case</th>
-    # <th>Upper Case</th>
-    # <th>Description</th>
+    #   <th>Language Code of Locale</th>
+    #   <th>Lower Case</th>
+    #   <th>Upper Case</th>
+    #   <th>Description</th>
     # </tr>
     # <tr>
-    # <td>tr (Turkish)</td>
-    # <td>&#92;u0069</td>
-    # <td>&#92;u0130</td>
-    # <td>small letter i -&gt; capital letter I with dot above</td>
+    #   <td>tr (Turkish)</td>
+    #   <td>&#92;u0069</td>
+    #   <td>&#92;u0130</td>
+    #   <td>small letter i -&gt; capital letter I with dot above</td>
     # </tr>
     # <tr>
-    # <td>tr (Turkish)</td>
-    # <td>&#92;u0131</td>
-    # <td>&#92;u0049</td>
-    # <td>small letter dotless i -&gt; capital letter I</td>
+    #   <td>tr (Turkish)</td>
+    #   <td>&#92;u0131</td>
+    #   <td>&#92;u0049</td>
+    #   <td>small letter dotless i -&gt; capital letter I</td>
     # </tr>
     # <tr>
-    # <td>(all)</td>
-    # <td>&#92;u00df</td>
-    # <td>&#92;u0053 &#92;u0053</td>
-    # <td>small letter sharp s -&gt; two letters: SS</td>
+    #   <td>(all)</td>
+    #   <td>&#92;u00df</td>
+    #   <td>&#92;u0053 &#92;u0053</td>
+    #   <td>small letter sharp s -&gt; two letters: SS</td>
     # </tr>
     # <tr>
-    # <td>(all)</td>
-    # <td>Fahrvergn&uuml;gen</td>
-    # <td>FAHRVERGN&Uuml;GEN</td>
-    # <td></td>
+    #   <td>(all)</td>
+    #   <td>Fahrvergn&uuml;gen</td>
+    #   <td>FAHRVERGN&Uuml;GEN</td>
+    #   <td></td>
     # </tr>
     # </table>
     # @param locale use the case transformation rules for this locale
@@ -2585,7 +2582,7 @@ module Java::Lang
         # Now check if there are any characters that need to be changed.
         first_lower = 0
         while first_lower < @count
-          c = RJava.cast_to_int(@value[@offset + first_lower])
+          c = (@value[@offset + first_lower]).to_int
           src_count = 0
           if ((c >= Character::MIN_HIGH_SURROGATE) && (c <= Character::MAX_HIGH_SURROGATE))
             c = code_point_at(first_lower)
@@ -2601,11 +2598,10 @@ module Java::Lang
         end
         return self
       end
-      result = CharArray.new(@count)
-      # may grow
+      result = CharArray.new(@count) # may grow
       result_offset = 0
       # result may grow, so i+resultOffset
-      # is the write location in result
+      #                                * is the write location in result
       # Just copy the first few upperCase characters.
       System.arraycopy(@value, @offset, result, 0, first_lower)
       lang = locale.get_language
@@ -2616,7 +2612,7 @@ module Java::Lang
       src_count = 0
       i = first_lower
       while i < @count
-        src_char = RJava.cast_to_int(@value[@offset + i])
+        src_char = (@value[@offset + i]).to_int
         if (RJava.cast_to_char(src_char) >= Character::MIN_HIGH_SURROGATE && RJava.cast_to_char(src_char) <= Character::MAX_HIGH_SURROGATE)
           src_char = code_point_at(i)
           src_count = Character.char_count(src_char)
@@ -2715,15 +2711,13 @@ module Java::Lang
     # the beginning and end of a string.
     # 
     # @return  A copy of this string with leading and trailing white
-    # space removed, or this string if it has no leading or
-    # trailing white space.
+    #          space removed, or this string if it has no leading or
+    #          trailing white space.
     def trim
       len = @count
       st = 0
-      off = @offset
-      # avoid getfield opcode
-      val = @value
-      # avoid getfield opcode
+      off = @offset # avoid getfield opcode
+      val = @value # avoid getfield opcode
       while ((st < len) && (val[off + st] <= Character.new(?\s.ord)))
         st += 1
       end
@@ -2745,8 +2739,8 @@ module Java::Lang
     # Converts this string to a new character array.
     # 
     # @return  a newly allocated character array whose length is the length
-    # of this string and whose contents are initialized to contain
-    # the character sequence represented by this string.
+    #          of this string and whose contents are initialized to contain
+    #          the character sequence represented by this string.
     def to_char_array
       result = CharArray.new(@count)
       get_chars(0, @count, result, 0)
@@ -2762,30 +2756,30 @@ module Java::Lang
       # java.util.Locale#getDefault() Locale.getDefault()}.
       # 
       # @param  format
-      # A <a href="../util/Formatter.html#syntax">format string</a>
+      #         A <a href="../util/Formatter.html#syntax">format string</a>
       # 
       # @param  args
-      # Arguments referenced by the format specifiers in the format
-      # string.  If there are more arguments than format specifiers, the
-      # extra arguments are ignored.  The number of arguments is
-      # variable and may be zero.  The maximum number of arguments is
-      # limited by the maximum dimension of a Java array as defined by
-      # the <a href="http://java.sun.com/docs/books/vmspec/">Java
-      # Virtual Machine Specification</a>.  The behaviour on a
-      # <tt>null</tt> argument depends on the <a
-      # href="../util/Formatter.html#syntax">conversion</a>.
+      #         Arguments referenced by the format specifiers in the format
+      #         string.  If there are more arguments than format specifiers, the
+      #         extra arguments are ignored.  The number of arguments is
+      #         variable and may be zero.  The maximum number of arguments is
+      #         limited by the maximum dimension of a Java array as defined by
+      #         the <a href="http://java.sun.com/docs/books/vmspec/">Java
+      #         Virtual Machine Specification</a>.  The behaviour on a
+      #         <tt>null</tt> argument depends on the <a
+      #         href="../util/Formatter.html#syntax">conversion</a>.
       # 
       # @throws  IllegalFormatException
-      # If a format string contains an illegal syntax, a format
-      # specifier that is incompatible with the given arguments,
-      # insufficient arguments given the format string, or other
-      # illegal conditions.  For specification of all possible
-      # formatting errors, see the <a
-      # href="../util/Formatter.html#detail">Details</a> section of the
-      # formatter class specification.
+      #          If a format string contains an illegal syntax, a format
+      #          specifier that is incompatible with the given arguments,
+      #          insufficient arguments given the format string, or other
+      #          illegal conditions.  For specification of all possible
+      #          formatting errors, see the <a
+      #          href="../util/Formatter.html#detail">Details</a> section of the
+      #          formatter class specification.
       # 
       # @throws  NullPointerException
-      # If the <tt>format</tt> is <tt>null</tt>
+      #          If the <tt>format</tt> is <tt>null</tt>
       # 
       # @return  A formatted string
       # 
@@ -2796,8 +2790,8 @@ module Java::Lang
       end
       
       typesig { [String, Array.typed(Object)] }
-      def format(format, args)
-        format(format, *args)
+      def format(format_, args)
+        format(format_, *args)
       end
       
       typesig { [Locale, String, Vararg.new(Object)] }
@@ -2805,47 +2799,47 @@ module Java::Lang
       # and arguments.
       # 
       # @param  l
-      # The {@linkplain java.util.Locale locale} to apply during
-      # formatting.  If <tt>l</tt> is <tt>null</tt> then no localization
-      # is applied.
+      #         The {@linkplain java.util.Locale locale} to apply during
+      #         formatting.  If <tt>l</tt> is <tt>null</tt> then no localization
+      #         is applied.
       # 
       # @param  format
-      # A <a href="../util/Formatter.html#syntax">format string</a>
+      #         A <a href="../util/Formatter.html#syntax">format string</a>
       # 
       # @param  args
-      # Arguments referenced by the format specifiers in the format
-      # string.  If there are more arguments than format specifiers, the
-      # extra arguments are ignored.  The number of arguments is
-      # variable and may be zero.  The maximum number of arguments is
-      # limited by the maximum dimension of a Java array as defined by
-      # the <a href="http://java.sun.com/docs/books/vmspec/">Java
-      # Virtual Machine Specification</a>.  The behaviour on a
-      # <tt>null</tt> argument depends on the <a
-      # href="../util/Formatter.html#syntax">conversion</a>.
+      #         Arguments referenced by the format specifiers in the format
+      #         string.  If there are more arguments than format specifiers, the
+      #         extra arguments are ignored.  The number of arguments is
+      #         variable and may be zero.  The maximum number of arguments is
+      #         limited by the maximum dimension of a Java array as defined by
+      #         the <a href="http://java.sun.com/docs/books/vmspec/">Java
+      #         Virtual Machine Specification</a>.  The behaviour on a
+      #         <tt>null</tt> argument depends on the <a
+      #         href="../util/Formatter.html#syntax">conversion</a>.
       # 
       # @throws  IllegalFormatException
-      # If a format string contains an illegal syntax, a format
-      # specifier that is incompatible with the given arguments,
-      # insufficient arguments given the format string, or other
-      # illegal conditions.  For specification of all possible
-      # formatting errors, see the <a
-      # href="../util/Formatter.html#detail">Details</a> section of the
-      # formatter class specification
+      #          If a format string contains an illegal syntax, a format
+      #          specifier that is incompatible with the given arguments,
+      #          insufficient arguments given the format string, or other
+      #          illegal conditions.  For specification of all possible
+      #          formatting errors, see the <a
+      #          href="../util/Formatter.html#detail">Details</a> section of the
+      #          formatter class specification
       # 
       # @throws  NullPointerException
-      # If the <tt>format</tt> is <tt>null</tt>
+      #          If the <tt>format</tt> is <tt>null</tt>
       # 
       # @return  A formatted string
       # 
       # @see  java.util.Formatter
       # @since  1.5
-      def format(l, format, *args)
-        return Formatter.new(l).format(format, args).to_s
+      def format(l, format_, *args)
+        return Formatter.new(l).format(format_, args).to_s
       end
       
       typesig { [Locale, String, Array.typed(Object)] }
-      def format(l, format, args)
-        format(l, format, *args)
+      def format(l, format_, args)
+        format(l, format_, *args)
       end
       
       typesig { [Object] }
@@ -2853,8 +2847,8 @@ module Java::Lang
       # 
       # @param   obj   an <code>Object</code>.
       # @return  if the argument is <code>null</code>, then a string equal to
-      # <code>"null"</code>; otherwise, the value of
-      # <code>obj.toString()</code> is returned.
+      #          <code>"null"</code>; otherwise, the value of
+      #          <code>obj.toString()</code> is returned.
       # @see     java.lang.Object#toString()
       def value_of(obj)
         return ((obj).nil?) ? "null" : obj.to_s
@@ -2868,7 +2862,7 @@ module Java::Lang
       # 
       # @param   data   a <code>char</code> array.
       # @return  a newly allocated string representing the same sequence of
-      # characters contained in the character array argument.
+      #          characters contained in the character array argument.
       def value_of(data)
         return String.new(data)
       end
@@ -2885,14 +2879,14 @@ module Java::Lang
       # 
       # @param   data     the character array.
       # @param   offset   the initial offset into the value of the
-      # <code>String</code>.
+      #                  <code>String</code>.
       # @param   count    the length of the value of the <code>String</code>.
       # @return  a string representing the sequence of characters contained
-      # in the subarray of the character array argument.
+      #          in the subarray of the character array argument.
       # @exception IndexOutOfBoundsException if <code>offset</code> is
-      # negative, or <code>count</code> is negative, or
-      # <code>offset+count</code> is larger than
-      # <code>data.length</code>.
+      #          negative, or <code>count</code> is negative, or
+      #          <code>offset+count</code> is larger than
+      #          <code>data.length</code>.
       def value_of(data, offset, count)
         return String.new(data, offset, count)
       end
@@ -2905,7 +2899,7 @@ module Java::Lang
       # @param   offset   initial offset of the subarray.
       # @param   count    length of the subarray.
       # @return  a <code>String</code> that contains the characters of the
-      # specified subarray of the character array.
+      #          specified subarray of the character array.
       def copy_value_of(data, offset, count)
         # All public String constructors now copy the data.
         return String.new(data, offset, count)
@@ -2917,7 +2911,7 @@ module Java::Lang
       # 
       # @param   data   the character array.
       # @return  a <code>String</code> that contains the characters of the
-      # character array.
+      #          character array.
       def copy_value_of(data)
         return copy_value_of(data, 0, data.attr_length)
       end
@@ -2927,8 +2921,8 @@ module Java::Lang
       # 
       # @param   b   a <code>boolean</code>.
       # @return  if the argument is <code>true</code>, a string equal to
-      # <code>"true"</code> is returned; otherwise, a string equal to
-      # <code>"false"</code> is returned.
+      #          <code>"true"</code> is returned; otherwise, a string equal to
+      #          <code>"false"</code> is returned.
       def value_of(b)
         return b ? "true" : "false"
       end
@@ -2939,7 +2933,7 @@ module Java::Lang
       # 
       # @param   c   a <code>char</code>.
       # @return  a string of length <code>1</code> containing
-      # as its single character the argument <code>c</code>.
+      #          as its single character the argument <code>c</code>.
       def value_of(c)
         data = Array.typed(::Java::Char).new([c])
         return String.new(0, 1, data)
@@ -3021,7 +3015,7 @@ module Java::Lang
     # Specification</a>
     # 
     # @return  a string that has the same contents as this string, but is
-    # guaranteed to be from a pool of unique strings.
+    #          guaranteed to be from a pool of unique strings.
     def intern
       JNI.call_native_method(:Java_java_lang_String_intern, JNI.env, self.jni_id)
     end

@@ -42,25 +42,23 @@ module Sun::Net::Www::Protocol::Http
   # NTLMAuthentication:
   # 
   # @author Michael McMahon
-  # 
-  # 
   # NTLM authentication is nominally based on the framework defined in RFC2617,
   # but differs from the standard (Basic & Digest) schemes as follows:
   # 
   # 1. A complete authentication requires three request/response transactions
-  # as shown below:
-  # REQ ------------------------------->
-  # <---- 401 (signalling NTLM) --------
+  #    as shown below:
+  #            REQ ------------------------------->
+  #            <---- 401 (signalling NTLM) --------
   # 
-  # REQ (with type1 NTLM msg) --------->
-  # <---- 401 (with type 2 NTLM msg) ---
+  #            REQ (with type1 NTLM msg) --------->
+  #            <---- 401 (with type 2 NTLM msg) ---
   # 
-  # REQ (with type3 NTLM msg) --------->
-  # <---- OK ---------------------------
+  #            REQ (with type3 NTLM msg) --------->
+  #            <---- OK ---------------------------
   # 
   # 2. The scope of the authentication is the TCP connection (which must be kept-alive)
-  # after the type2 response is received. This means that NTLM does not work end-to-end
-  # through a proxy, rather between client and proxy, or between client and server (with no proxy)
+  #    after the type2 response is received. This means that NTLM does not work end-to-end
+  #    through a proxy, rather between client and proxy, or between client and server (with no proxy)
   class NTLMAuthentication < NTLMAuthenticationImports.const_get :AuthenticationInfo
     include_class_members NTLMAuthenticationImports
     
@@ -298,15 +296,14 @@ module Sun::Net::Www::Protocol::Http
     # returning false means we have to go back to the user to ask for a new
     # username password.
     def is_authorization_stale(header)
-      return false
-      # should not be called for ntlm
+      return false # should not be called for ntlm
     end
     
     typesig { [HttpURLConnection, HeaderParser, String] }
     # Set header(s) on the given connection.
     # @param conn The connection to apply the header(s) to
     # @param p A source of header values for this connection, not used because
-    # HeaderParser converts the fields to lower case, use raw instead
+    #          HeaderParser converts the fields to lower case, use raw instead
     # @param raw The raw header field.
     # @return true if all goes well, false if no headers were set.
     def set_headers(conn, p, raw)
@@ -317,8 +314,7 @@ module Sun::Net::Www::Protocol::Http
             # NTLM<sp>
             response = RJava.cast_to_string(build_type1msg)
           else
-            msg = raw.substring(5)
-            # skip NTLM<sp>
+            msg = raw.substring(5) # skip NTLM<sp>
             response = RJava.cast_to_string(build_type3msg(msg))
           end
           conn.set_authentication_property(get_header_name, response)
@@ -400,8 +396,7 @@ module Sun::Net::Www::Protocol::Http
       if (len > 14)
         len = 14
       end
-      System.arraycopy(pwb, 0, pwb1, 0, len)
-      # Zero padded
+      System.arraycopy(pwb, 0, pwb1, 0, len) # Zero padded
       dks1 = DESKeySpec.new(make_des_key(pwb1, 0))
       dks2 = DESKeySpec.new(make_des_key(pwb1, 7))
       key1 = @fac.generate_secret(dks1)

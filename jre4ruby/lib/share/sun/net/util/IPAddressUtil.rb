@@ -133,7 +133,7 @@ module Sun::Net::Util
       typesig { [String] }
       # Convert IPv6 presentation level address to network order binary form.
       # credit:
-      # Converted from C code from Solaris 8 (inet_pton)
+      #  Converted from C code from Solaris 8 (inet_pton)
       # 
       # Any component of the string following a per-cent % is ignored.
       # 
@@ -226,8 +226,7 @@ module Sun::Net::Util
               k += 1
             end
             saw_xdigit = false
-            break
-            # '\0' was seen by inet_pton4().
+            break # '\0' was seen by inet_pton4().
           end
           return nil
         end

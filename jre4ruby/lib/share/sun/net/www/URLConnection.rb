@@ -77,7 +77,7 @@ module Sun::Net::Www
     end
     
     typesig { [] }
-    # Call this routine to get the property list for this object.
+    #  Call this routine to get the property list for this object.
     # Properties (like content-type) that have explicit getXX() methods
     # associated with them should be accessed using those methods.
     def get_properties
@@ -169,7 +169,7 @@ module Sun::Net::Www
     end
     
     typesig { [] }
-    # Call this routine to get the content-type associated with this
+    #  Call this routine to get the content-type associated with this
     # object.
     def get_content_type
       if ((@content_type).nil?)
@@ -209,16 +209,16 @@ module Sun::Net::Www
     typesig { [String] }
     # Set the content type of this URL to a specific value.
     # @param   type    The content type to use.  One of the
-    # content_* static variables in this
-    # class should be used.
-    # eg. setType(URL.content_html);
+    #                  content_* static variables in this
+    #                  class should be used.
+    #                  eg. setType(URL.content_html);
     def set_content_type(type)
       @content_type = type
       @properties.set("content-type", type)
     end
     
     typesig { [] }
-    # Call this routine to get the content-length associated with this
+    #  Call this routine to get the content-length associated with this
     # object.
     def get_content_length
       begin
@@ -238,7 +238,7 @@ module Sun::Net::Www
     end
     
     typesig { [::Java::Int] }
-    # Call this routine to set the content-length associated with this
+    #  Call this routine to set the content-length associated with this
     # object.
     def set_content_length(length)
       @content_length = length
@@ -249,8 +249,6 @@ module Sun::Net::Www
     # Returns true if the data associated with this URL can be cached.
     def can_cache
       return self.attr_url.get_file.index_of(Character.new(??.ord)) < 0
-      # && url.postData == null
-      # REMIND
     end
     
     typesig { [] }

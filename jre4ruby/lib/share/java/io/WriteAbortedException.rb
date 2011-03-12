@@ -94,7 +94,7 @@ module Java::Io
     # Returns the exception that terminated the operation (the <i>cause</i>).
     # 
     # @return  the exception that terminated the operation (the <i>cause</i>),
-    # which may be null.
+    #          which may be null.
     # @since   1.4
     def get_cause
       return @detail

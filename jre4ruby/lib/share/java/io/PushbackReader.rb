@@ -89,7 +89,7 @@ module Java::Io
     # Reads a single character.
     # 
     # @return     The character read, or -1 if the end of the stream has been
-    # reached
+    #             reached
     # 
     # @exception  IOException  If an I/O error occurs
     def read
@@ -111,7 +111,7 @@ module Java::Io
     # @param      len   Maximum number of characters to read
     # 
     # @return     The number of characters read, or -1 if the end of the
-    # stream has been reached
+    #             stream has been reached
     # 
     # @exception  IOException  If an I/O error occurs
     def read(cbuf, off, len)
@@ -160,7 +160,7 @@ module Java::Io
     # @param  c  The int value representing a character to be pushed back
     # 
     # @exception  IOException  If the pushback buffer is full,
-    # or if some other I/O error occurs
+    #                          or if some other I/O error occurs
     def unread(c)
       synchronized((self.attr_lock)) do
         ensure_open
@@ -183,7 +183,7 @@ module Java::Io
     # @param  len   Number of characters to push back
     # 
     # @exception  IOException  If there is insufficient room in the pushback
-    # buffer, or if some other I/O error occurs
+    #                          buffer, or if some other I/O error occurs
     def unread(cbuf, off, len)
       synchronized((self.attr_lock)) do
         ensure_open
@@ -204,7 +204,7 @@ module Java::Io
     # @param  cbuf  Character array to push back
     # 
     # @exception  IOException  If there is insufficient room in the pushback
-    # buffer, or if some other I/O error occurs
+    #                          buffer, or if some other I/O error occurs
     def unread(cbuf)
       unread(cbuf, 0, cbuf.attr_length)
     end

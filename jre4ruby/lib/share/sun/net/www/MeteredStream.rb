@@ -180,10 +180,10 @@ module Sun::Net::Www
           n = self.attr_in.skip(n)
         else
           # just skip min(n, num_bytes_left)
-          min = (n > @expected - @count) ? @expected - @count : RJava.cast_to_int(n)
+          min = (n > @expected - @count) ? @expected - @count : (n).to_int
           n = self.attr_in.skip(min)
         end
-        just_read(RJava.cast_to_int(n))
+        just_read((n).to_int)
         return n
       end
     end

@@ -64,7 +64,6 @@ module Sun::Security::Jgss::Krb5
       # multiple of 8.
       # Use this table as a quick way to obtain padding bytes by
       # indexing it with the number of padding bytes required.
-      # 
       # No, no one escapes padding
       const_set_lazy(:Pads) { Array.typed(Array.typed(::Java::Byte)).new([nil, Array.typed(::Java::Byte).new([0x1]), Array.typed(::Java::Byte).new([0x2, 0x2]), Array.typed(::Java::Byte).new([0x3, 0x3, 0x3]), Array.typed(::Java::Byte).new([0x4, 0x4, 0x4, 0x4]), Array.typed(::Java::Byte).new([0x5, 0x5, 0x5, 0x5, 0x5]), Array.typed(::Java::Byte).new([0x6, 0x6, 0x6, 0x6, 0x6, 0x6]), Array.typed(::Java::Byte).new([0x7, 0x7, 0x7, 0x7, 0x7, 0x7, 0x7]), Array.typed(::Java::Byte).new([0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8])]) }
       const_attr_reader  :Pads
@@ -166,7 +165,6 @@ module Sun::Security::Jgss::Krb5
     # parsed token will be stored.
     # @throws GSSException if the token is defective
     def initialize(context, token_bytes, token_offset, token_len, prop)
-      # Just parse the MessageToken part first
       @read_token_from_input_stream = false
       @is = nil
       @token_bytes = nil
@@ -192,6 +190,7 @@ module Sun::Security::Jgss::Krb5
       @confounder = nil
       @padding = nil
       @privacy = false
+      # Just parse the MessageToken part first
       @read_token_from_input_stream = false
       # Will need the token bytes again when extracting data
       @token_bytes = token_bytes
@@ -212,7 +211,6 @@ module Sun::Security::Jgss::Krb5
     # @throws GSSException if the token is defective or if there is
     # a problem reading from the InputStream
     def initialize(context, is, prop)
-      # Just parse the MessageToken part first
       @read_token_from_input_stream = false
       @is = nil
       @token_bytes = nil
@@ -238,6 +236,7 @@ module Sun::Security::Jgss::Krb5
       @confounder = nil
       @padding = nil
       @privacy = false
+      # Just parse the MessageToken part first
       # Will need the token bytes again when extracting data
       @is = is
       @privacy = prop.get_privacy
@@ -300,16 +299,16 @@ module Sun::Security::Jgss::Krb5
         raise GSSException.new(GSSException::DEFECTIVE_TOKEN, -1, "Insufficient data in " + RJava.cast_to_string(get_token_name(get_token_id)))
       end
       # debug("WrapToken cons: data is token is [" +
-      # getHexBytes(tokenBytes, tokenOffset, tokenLen) + "]\n");
+      #      getHexBytes(tokenBytes, tokenOffset, tokenLen) + "]\n");
       @confounder = Array.typed(::Java::Byte).new(CONFOUNDER_SIZE) { 0 }
       # Do decryption if this token was privacy protected.
       if (@privacy)
         self.attr_cipher_helper.decrypt_data(self, @token_bytes, data_pos, @data_size, data_buf, data_buf_offset)
         # debug("\t\tDecrypted data is [" +
-        # getHexBytes(confounder) + " " +
-        # getHexBytes(dataBuf, dataBufOffset,
-        # dataSize - CONFOUNDER_SIZE - padding.length) +
-        # getHexBytes(padding) +
+        #     getHexBytes(confounder) + " " +
+        #     getHexBytes(dataBuf, dataBufOffset,
+        #             dataSize - CONFOUNDER_SIZE - padding.length) +
+        #     getHexBytes(padding) +
         # "]\n");
       else
         # Token data is in cleartext
@@ -327,7 +326,7 @@ module Sun::Security::Jgss::Krb5
         System.arraycopy(@token_bytes, data_pos + CONFOUNDER_SIZE, data_buf, data_buf_offset, @data_size - CONFOUNDER_SIZE - pad_size)
         # byte[] debugbuf = new byte[dataSize - CONFOUNDER_SIZE - padSize];
         # System.arraycopy(tokenBytes, dataPos + CONFOUNDER_SIZE,
-        # debugbuf, 0, debugbuf.length);
+        #                debugbuf, 0, debugbuf.length);
         # debug("\t\tData is: " + getHexBytes(debugbuf, debugbuf.length));
       end
       # Make sure sign and sequence number are not corrupt
@@ -356,11 +355,11 @@ module Sun::Security::Jgss::Krb5
         if (@privacy)
           self.attr_cipher_helper.decrypt_data(self, @is, @data_size, data_buf, data_buf_offset)
           # debug("\t\tDecrypted data is [" +
-          # getHexBytes(confounder) + " " +
-          # getHexBytes(dataBuf, dataBufOffset,
+          #     getHexBytes(confounder) + " " +
+          #     getHexBytes(dataBuf, dataBufOffset,
           # dataSize - CONFOUNDER_SIZE - padding.length) +
-          # getHexBytes(padding) +
-          # "]\n");
+          #     getHexBytes(padding) +
+          #     "]\n");
         else
           # Token data is in cleartext
           # debug("\t\tNo encryption was performed by peer.\n");
@@ -530,8 +529,7 @@ module Sun::Security::Jgss::Krb5
       # This implementation is way too conservative. And it certainly
       # doesn't return the maximum limit.
       def get_size_limit(qop, conf_req, max_token_size, ch)
-        return (GSSHeader.get_max_mech_token_size(OID, max_token_size) - (get_token_size(ch) + CONFOUNDER_SIZE) - 8)
-        # safety
+        return (GSSHeader.get_max_mech_token_size(OID, max_token_size) - (get_token_size(ch) + CONFOUNDER_SIZE) - 8) # safety
       end
     }
     

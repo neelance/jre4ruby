@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996 - 1998 - All Rights Reserved
 # 
@@ -121,19 +119,19 @@ module Java::Text
   # <blockquote>
   # <pre>
   # public static void main(String args[]) {
-  # if (args.length == 1) {
-  # String stringToExamine = args[0];
-  # //print each word in order
-  # BreakIterator boundary = BreakIterator.getWordInstance();
-  # boundary.setText(stringToExamine);
-  # printEachForward(boundary, stringToExamine);
-  # //print each sentence in reverse order
-  # boundary = BreakIterator.getSentenceInstance(Locale.US);
-  # boundary.setText(stringToExamine);
-  # printEachBackward(boundary, stringToExamine);
-  # printFirst(boundary, stringToExamine);
-  # printLast(boundary, stringToExamine);
-  # }
+  #      if (args.length == 1) {
+  #          String stringToExamine = args[0];
+  #          //print each word in order
+  #          BreakIterator boundary = BreakIterator.getWordInstance();
+  #          boundary.setText(stringToExamine);
+  #          printEachForward(boundary, stringToExamine);
+  #          //print each sentence in reverse order
+  #          boundary = BreakIterator.getSentenceInstance(Locale.US);
+  #          boundary.setText(stringToExamine);
+  #          printEachBackward(boundary, stringToExamine);
+  #          printFirst(boundary, stringToExamine);
+  #          printLast(boundary, stringToExamine);
+  #      }
   # }
   # </pre>
   # </blockquote>
@@ -142,12 +140,12 @@ module Java::Text
   # <blockquote>
   # <pre>
   # public static void printEachForward(BreakIterator boundary, String source) {
-  # int start = boundary.first();
-  # for (int end = boundary.next();
-  # end != BreakIterator.DONE;
-  # start = end, end = boundary.next()) {
-  # System.out.println(source.substring(start,end));
-  # }
+  #     int start = boundary.first();
+  #     for (int end = boundary.next();
+  #          end != BreakIterator.DONE;
+  #          start = end, end = boundary.next()) {
+  #          System.out.println(source.substring(start,end));
+  #     }
   # }
   # </pre>
   # </blockquote>
@@ -156,12 +154,12 @@ module Java::Text
   # <blockquote>
   # <pre>
   # public static void printEachBackward(BreakIterator boundary, String source) {
-  # int end = boundary.last();
-  # for (int start = boundary.previous();
-  # start != BreakIterator.DONE;
-  # end = start, start = boundary.previous()) {
-  # System.out.println(source.substring(start,end));
-  # }
+  #     int end = boundary.last();
+  #     for (int start = boundary.previous();
+  #          start != BreakIterator.DONE;
+  #          end = start, start = boundary.previous()) {
+  #         System.out.println(source.substring(start,end));
+  #     }
   # }
   # </pre>
   # </blockquote>
@@ -170,9 +168,9 @@ module Java::Text
   # <blockquote>
   # <pre>
   # public static void printFirst(BreakIterator boundary, String source) {
-  # int start = boundary.first();
-  # int end = boundary.next();
-  # System.out.println(source.substring(start,end));
+  #     int start = boundary.first();
+  #     int end = boundary.next();
+  #     System.out.println(source.substring(start,end));
   # }
   # </pre>
   # </blockquote>
@@ -181,9 +179,9 @@ module Java::Text
   # <blockquote>
   # <pre>
   # public static void printLast(BreakIterator boundary, String source) {
-  # int end = boundary.last();
-  # int start = boundary.previous();
-  # System.out.println(source.substring(start,end));
+  #     int end = boundary.last();
+  #     int start = boundary.previous();
+  #     System.out.println(source.substring(start,end));
   # }
   # </pre>
   # </blockquote>
@@ -192,9 +190,9 @@ module Java::Text
   # <blockquote>
   # <pre>
   # public static void printAt(BreakIterator boundary, int pos, String source) {
-  # int end = boundary.following(pos);
-  # int start = boundary.previous();
-  # System.out.println(source.substring(start,end));
+  #     int end = boundary.following(pos);
+  #     int start = boundary.previous();
+  #     System.out.println(source.substring(start,end));
   # }
   # </pre>
   # </blockquote>
@@ -203,19 +201,19 @@ module Java::Text
   # <blockquote>
   # <pre>
   # public static int nextWordStartAfter(int pos, String text) {
-  # BreakIterator wb = BreakIterator.getWordInstance();
-  # wb.setText(text);
-  # int last = wb.following(pos);
-  # int current = wb.next();
-  # while (current != BreakIterator.DONE) {
-  # for (int p = last; p < current; p++) {
-  # if (Character.isLetter(text.codePointAt(p)))
-  # return last;
-  # }
-  # last = current;
-  # current = wb.next();
-  # }
-  # return BreakIterator.DONE;
+  #     BreakIterator wb = BreakIterator.getWordInstance();
+  #     wb.setText(text);
+  #     int last = wb.following(pos);
+  #     int current = wb.next();
+  #     while (current != BreakIterator.DONE) {
+  #         for (int p = last; p < current; p++) {
+  #             if (Character.isLetter(text.codePointAt(p)))
+  #                 return last;
+  #         }
+  #         last = current;
+  #         current = wb.next();
+  #     }
+  #     return BreakIterator.DONE;
   # }
   # </pre>
   # (The iterator returned by BreakIterator.getWordInstance() is unique in that
@@ -606,7 +604,7 @@ module Java::Text
       # instance equal to {@link java.util.Locale#US Locale.US}.
       # 
       # @return An array of locales for which localized
-      # <code>BreakIterator</code> instances are available.
+      #         <code>BreakIterator</code> instances are available.
       def get_available_locales
         synchronized(self) do
           pool = LocaleServiceProviderPool.get_pool(BreakIteratorProvider)

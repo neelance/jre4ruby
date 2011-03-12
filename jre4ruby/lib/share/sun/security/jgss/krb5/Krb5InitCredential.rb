@@ -152,7 +152,7 @@ module Sun::Security::Jgss::Krb5
     # @exception GSSException may be thrown
     def get_init_lifetime
       ret_val = 0
-      ret_val = RJava.cast_to_int((get_end_time.get_time - (JavaDate.new.get_time)))
+      ret_val = ((get_end_time.get_time - (JavaDate.new.get_time))).to_int
       return ret_val
     end
     
@@ -200,8 +200,6 @@ module Sun::Security::Jgss::Krb5
     typesig { [] }
     # XXX Call to this.refresh() should refresh the locally cached copy
     # of krb5Credentials also.
-    # 
-    # 
     # Called to invalidate this credential element.
     def dispose
       begin

@@ -22,17 +22,15 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996 - 1998 - All Rights Reserved
 # 
-# The original version of this source code and documentation is copyrighted
+#   The original version of this source code and documentation is copyrighted
 # and owned by Taligent, Inc., a wholly-owned subsidiary of IBM. These
 # materials are provided under terms of a License Agreement between Taligent
 # and Sun. This technology is protected by multiple US and International
 # patents. This notice and attribution to Taligent may not be removed.
-# Taligent is a registered trademark of Taligent, Inc.
+#   Taligent is a registered trademark of Taligent, Inc.
 module Java::Text
   module DecimalFormatSymbolsImports #:nodoc:
     class_module.module_eval {
@@ -142,7 +140,7 @@ module Java::Text
       # instance equal to {@link java.util.Locale#US Locale.US}.
       # 
       # @return An array of locales for which localized
-      # <code>DecimalFormatSymbols</code> instances are available.
+      #         <code>DecimalFormatSymbols</code> instances are available.
       # @since 1.6
       def get_available_locales
         pool = LocaleServiceProviderPool.get_pool(DecimalFormatSymbolsProvider)
@@ -416,7 +414,6 @@ module Java::Text
     # ------------------------------------------------------------
     # BEGIN   Package Private methods ... to be made public later
     # ------------------------------------------------------------
-    # 
     # Returns the character used to separate the mantissa from the exponent.
     def get_exponential_symbol
       return @exponential
@@ -458,7 +455,6 @@ module Java::Text
     # ------------------------------------------------------------
     # END     Package Private methods ... to be made public later
     # ------------------------------------------------------------
-    # 
     # Standard override.
     def clone
       begin
@@ -727,7 +723,6 @@ module Java::Text
     undef_method :monetary_separator=
     
     # Field new in JDK 1.1.6
-    # 
     # The character used to distinguish the exponent in a number formatted
     # in exponential notation, e.g. 'E' for a number such as "1.23E45".
     # <p>
@@ -744,7 +739,6 @@ module Java::Text
     undef_method :exponential=
     
     # Field new in JDK 1.1.6
-    # 
     # The string used to separate the mantissa from the exponent.
     # Examples: "x10^" for 1.23x10^4, "E" for 1.23E4.
     # <p>
@@ -760,7 +754,6 @@ module Java::Text
     undef_method :exponential_separator=
     
     # Field new in JDK 1.6
-    # 
     # The locale of these currency format symbols.
     # 
     # @serial
@@ -786,7 +779,7 @@ module Java::Text
       # The internal serial version which says which version was written
       # - 0 (default) for version up to JDK 1.1.5
       # - 1 for version from JDK 1.1.6, which includes two new fields:
-      # monetarySeparator and exponential.
+      #     monetarySeparator and exponential.
       # - 2 for version from J2SE 1.4, which includes locale field.
       # - 3 for version from J2SE 1.6, which includes exponentialSeparator field.
       const_set_lazy(:CurrentSerialVersion) { 3 }
@@ -799,11 +792,11 @@ module Java::Text
     # <li><b>0</b> (or uninitialized): versions prior to JDK 1.1.6.
     # 
     # <li><b>1</b>: Versions written by JDK 1.1.6 or later, which include
-    # two new fields: <code>monetarySeparator</code> and <code>exponential</code>.
+    #      two new fields: <code>monetarySeparator</code> and <code>exponential</code>.
     # <li><b>2</b>: Versions written by J2SE 1.4 or later, which include a
-    # new <code>locale</code> field.
+    #      new <code>locale</code> field.
     # <li><b>3</b>: Versions written by J2SE 1.6 or later, which include a
-    # new <code>exponentialSeparator</code> field.
+    #      new <code>exponentialSeparator</code> field.
     # </ul>
     # When streaming out a <code>DecimalFormatSymbols</code>, the most recent format
     # (corresponding to the highest allowable <code>serialVersionOnStream</code>)

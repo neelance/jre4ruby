@@ -43,20 +43,20 @@ module Sun::Misc
   # a lock, and one of the methods may throw an exception, you must be
   # prepared to release the lock similarly to the following example:
   # <pre>
-  # class SomeClass {
-  # Lock myLock = new Lock();
+  #      class SomeClass {
+  #          Lock myLock = new Lock();
   # 
-  # void someMethod() {
-  # myLock.lock();
-  # try {
-  # StartOperation();
-  # ContinueOperation();
-  # EndOperation();
-  # } finally {
-  # myLock.unlock();
-  # }
-  # }
-  # }
+  #          void someMethod() {
+  #              myLock.lock();
+  #              try {
+  #                  StartOperation();
+  #                  ContinueOperation();
+  #                  EndOperation();
+  #              } finally {
+  #                  myLock.unlock();
+  #              }
+  #          }
+  #      }
   # </pre>
   # 
   # @author      Peter King
@@ -81,7 +81,7 @@ module Sun::Misc
     # will not return until the lock has been acquired.
     # 
     # @exception  java.lang.InterruptedException if any thread has
-    # interrupted this thread.
+    #               interrupted this thread.
     def lock
       synchronized(self) do
         while (@locked)

@@ -90,9 +90,9 @@ module Sun::Security::Internal::Spec
     # @param serverRandom the server's random value
     # 
     # @throws NullPointerException if premasterSecret, clientRandom,
-    # or serverRandom are null
+    #   or serverRandom are null
     # @throws IllegalArgumentException if minorVersion or majorVersion are
-    # negative or larger than 255
+    #   negative or larger than 255
     def initialize(premaster_secret, major_version, minor_version, client_random, server_random)
       @premaster_secret = nil
       @major_version = 0

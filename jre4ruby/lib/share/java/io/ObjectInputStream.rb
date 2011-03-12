@@ -90,14 +90,14 @@ module Java::Io
   # ObjectOutputStream:
   # <br>
   # <pre>
-  # FileInputStream fis = new FileInputStream("t.tmp");
-  # ObjectInputStream ois = new ObjectInputStream(fis);
+  #      FileInputStream fis = new FileInputStream("t.tmp");
+  #      ObjectInputStream ois = new ObjectInputStream(fis);
   # 
-  # int i = ois.readInt();
-  # String today = (String) ois.readObject();
-  # Date date = (Date) ois.readObject();
+  #      int i = ois.readInt();
+  #      String today = (String) ois.readObject();
+  #      Date date = (Date) ois.readObject();
   # 
-  # ois.close();
+  #      ois.close();
   # </pre>
   # 
   # <p>Classes control how they are serialized by implementing either the
@@ -115,11 +115,11 @@ module Java::Io
   # 
   # <pre>
   # private void writeObject(java.io.ObjectOutputStream stream)
-  # throws IOException;
+  #     throws IOException;
   # private void readObject(java.io.ObjectInputStream stream)
-  # throws IOException, ClassNotFoundException;
+  #     throws IOException, ClassNotFoundException;
   # private void readObjectNoData()
-  # throws ObjectStreamException;
+  #     throws ObjectStreamException;
   # </pre>
   # 
   # <p>The readObject method is responsible for reading and restoring the state
@@ -353,7 +353,7 @@ module Java::Io
     # @throws  StreamCorruptedException if the stream header is incorrect
     # @throws  IOException if an I/O error occurs while reading stream header
     # @throws  SecurityException if untrusted subclass illegally overrides
-    # security-sensitive methods
+    #          security-sensitive methods
     # @throws  NullPointerException if <code>in</code> is <code>null</code>
     # @see     ObjectInputStream#ObjectInputStream()
     # @see     ObjectInputStream#readFields()
@@ -393,8 +393,8 @@ module Java::Io
     # permission to ensure it's ok to enable subclassing.
     # 
     # @throws  SecurityException if a security manager exists and its
-    # <code>checkPermission</code> method denies enabling
-    # subclassing.
+    #          <code>checkPermission</code> method denies enabling
+    #          subclassing.
     # @see SecurityManager#checkPermission
     # @see java.io.SerializablePermission
     def initialize
@@ -443,13 +443,13 @@ module Java::Io
     # caller to ignore or recover the stream state.
     # 
     # @throws  ClassNotFoundException Class of a serialized object cannot be
-    # found.
+    #          found.
     # @throws  InvalidClassException Something is wrong with a class used by
-    # serialization.
+    #          serialization.
     # @throws  StreamCorruptedException Control information in the
-    # stream is inconsistent.
+    #          stream is inconsistent.
     # @throws  OptionalDataException Primitive data was found in the
-    # stream instead of objects.
+    #          stream instead of objects.
     # @throws  IOException Any of the usual Input/Output related exceptions.
     def read_object
       if (@enable_override)
@@ -484,11 +484,11 @@ module Java::Io
     # 
     # @return  the Object read from the stream.
     # @throws  ClassNotFoundException Class definition of a serialized object
-    # cannot be found.
+    #          cannot be found.
     # @throws  OptionalDataException Primitive data was found in the stream
-    # instead of objects.
+    #          instead of objects.
     # @throws  IOException if I/O errors occurred while reading from the
-    # underlying stream
+    #          underlying stream
     # @see #ObjectInputStream()
     # @see #readObject()
     # @since 1.2
@@ -502,14 +502,14 @@ module Java::Io
     # readObject and readUnshared from returning additional references to the
     # deserialized instance obtained via this call.  Specifically:
     # <ul>
-    # <li>If readUnshared is called to deserialize a back-reference (the
-    # stream representation of an object which has been written
-    # previously to the stream), an ObjectStreamException will be
-    # thrown.
+    #   <li>If readUnshared is called to deserialize a back-reference (the
+    #       stream representation of an object which has been written
+    #       previously to the stream), an ObjectStreamException will be
+    #       thrown.
     # 
-    # <li>If readUnshared returns successfully, then any subsequent attempts
-    # to deserialize back-references to the stream handle deserialized
-    # by readUnshared will cause an ObjectStreamException to be thrown.
+    #   <li>If readUnshared returns successfully, then any subsequent attempts
+    #       to deserialize back-references to the stream handle deserialized
+    #       by readUnshared will cause an ObjectStreamException to be thrown.
     # </ul>
     # Deserializing an object via readUnshared invalidates the stream handle
     # associated with the returned object.  Note that this in itself does not
@@ -532,11 +532,11 @@ module Java::Io
     # 
     # @return  reference to deserialized object
     # @throws  ClassNotFoundException if class of an object to deserialize
-    # cannot be found
+    #          cannot be found
     # @throws  StreamCorruptedException if control information in the stream
-    # is inconsistent
+    #          is inconsistent
     # @throws  ObjectStreamException if object to deserialize has already
-    # appeared in stream
+    #          appeared in stream
     # @throws  OptionalDataException if primitive data is next in stream
     # @throws  IOException if an I/O error occurs during deserialization
     # @since   1.4
@@ -569,10 +569,10 @@ module Java::Io
     # called otherwise.
     # 
     # @throws  ClassNotFoundException if the class of a serialized object
-    # could not be found.
+    #          could not be found.
     # @throws  IOException if an I/O error occurs.
     # @throws  NotActiveException if the stream is not currently reading
-    # objects.
+    #          objects.
     def default_read_object
       if ((@cur_context).nil?)
         raise NotActiveException.new("not in call to readObject")
@@ -599,12 +599,12 @@ module Java::Io
     # name.
     # 
     # @return  the <code>GetField</code> object representing the persistent
-    # fields of the object being deserialized
+    #          fields of the object being deserialized
     # @throws  ClassNotFoundException if the class of a serialized object
-    # could not be found.
+    #          could not be found.
     # @throws  IOException if an I/O error occurs.
     # @throws  NotActiveException if the stream is not currently reading
-    # objects.
+    #          objects.
     # @since 1.2
     def read_fields
       if ((@cur_context).nil?)
@@ -634,11 +634,11 @@ module Java::Io
     # 
     # @param   obj the object to receive the validation callback.
     # @param   prio controls the order of callbacks;zero is a good default.
-    # Use higher numbers to be called back earlier, lower numbers for
-    # later callbacks. Within a priority, callbacks are processed in
-    # no particular order.
+    #          Use higher numbers to be called back earlier, lower numbers for
+    #          later callbacks. Within a priority, callbacks are processed in
+    #          no particular order.
     # @throws  NotActiveException The stream is not currently reading objects
-    # so it is invalid to register a callback.
+    #          so it is invalid to register a callback.
     # @throws  InvalidObjectException The validation object is null.
     def register_validation(obj, prio)
       if ((@depth).equal?(0))
@@ -664,7 +664,7 @@ module Java::Io
     # <p>The default implementation of this method in
     # <code>ObjectInputStream</code> returns the result of calling
     # <pre>
-    # Class.forName(desc.getName(), false, loader)
+    #     Class.forName(desc.getName(), false, loader)
     # </pre>
     # where <code>loader</code> is determined as follows: if there is a
     # method on the current thread's stack whose declaring class was
@@ -686,7 +686,7 @@ module Java::Io
     # @return  a <code>Class</code> object corresponding to <code>desc</code>
     # @throws  IOException any of the usual Input/Output exceptions.
     # @throws  ClassNotFoundException if class of a serialized object cannot
-    # be found.
+    #          be found.
     def resolve_class(desc)
       name = desc.get_name
       begin
@@ -725,7 +725,7 @@ module Java::Io
     # parameter.  The <code>Class</code> object for each interface name
     # <code>i</code> is the value returned by calling
     # <pre>
-    # Class.forName(i, false, loader)
+    #     Class.forName(i, false, loader)
     # </pre>
     # where <code>loader</code> is that of the first non-<code>null</code>
     # class loader up the execution stack, or <code>null</code> if no
@@ -743,12 +743,12 @@ module Java::Io
     # <code>IllegalArgumentException</code>.
     # 
     # @param interfaces the list of interface names that were
-    # deserialized in the proxy class descriptor
+    #                deserialized in the proxy class descriptor
     # @return  a proxy class for the specified interfaces
     # @throws        IOException any exception thrown by the underlying
-    # <code>InputStream</code>
+    #                <code>InputStream</code>
     # @throws        ClassNotFoundException if the proxy class or any of the
-    # named interfaces could not be found
+    #                named interfaces could not be found
     # @see ObjectOutputStream#annotateProxyClass(Class)
     # @since 1.3
     def resolve_proxy_class(interfaces)
@@ -823,11 +823,11 @@ module Java::Io
     # stream to be replaced.
     # 
     # @param   enable true for enabling use of <code>resolveObject</code> for
-    # every object being deserialized
+    #          every object being deserialized
     # @return  the previous setting before this method was invoked
     # @throws  SecurityException if a security manager exists and its
-    # <code>checkPermission</code> method denies enabling the stream
-    # to allow objects read from the stream to be replaced.
+    #          <code>checkPermission</code> method denies enabling the stream
+    #          to allow objects read from the stream to be replaced.
     # @see SecurityManager#checkPermission
     # @see java.io.SerializablePermission
     def enable_resolve_object(enable)
@@ -850,9 +850,9 @@ module Java::Io
     # and version number.
     # 
     # @throws  IOException if there are I/O errors while reading from the
-    # underlying <code>InputStream</code>
+    #          underlying <code>InputStream</code>
     # @throws  StreamCorruptedException if control information in the stream
-    # is inconsistent
+    #          is inconsistent
     def read_stream_header
       s0 = @bin.read_short
       s1 = @bin.read_short
@@ -874,7 +874,7 @@ module Java::Io
     # @return  the class descriptor read
     # @throws  IOException If an I/O error has occurred.
     # @throws  ClassNotFoundException If the Class of a serialized object used
-    # in the class descriptor representation cannot be found
+    #          in the class descriptor representation cannot be found
     # @see java.io.ObjectOutputStream#writeClassDescriptor(java.io.ObjectStreamClass)
     # @since 1.3
     def read_class_descriptor
@@ -901,7 +901,7 @@ module Java::Io
     # @param   off the start offset of the data
     # @param   len the maximum number of bytes read
     # @return  the actual number of bytes read, -1 is returned when the end of
-    # the stream is reached.
+    #          the stream is reached.
     # @throws  IOException If an I/O error has occurred.
     # @see java.io.DataInputStream#readFully(byte[],int,int)
     def read(buf, off, len)
@@ -920,7 +920,7 @@ module Java::Io
     # 
     # @return  the number of available bytes.
     # @throws  IOException if there are I/O errors while reading from the
-    # underlying <code>InputStream</code>
+    #          underlying <code>InputStream</code>
     def available
       return @bin.available
     end
@@ -1081,9 +1081,9 @@ module Java::Io
     # 
     # @return  a String copy of the line.
     # @throws  IOException if there are I/O errors while reading from the
-    # underlying <code>InputStream</code>
+    #          underlying <code>InputStream</code>
     # @deprecated This method does not properly convert bytes to characters.
-    # see DataInputStream for the details and alternatives.
+    #          see DataInputStream for the details and alternatives.
     def read_line
       return @bin.read_line
     end
@@ -1095,9 +1095,9 @@ module Java::Io
     # 
     # @return  the String.
     # @throws  IOException if there are I/O errors while reading from the
-    # underlying <code>InputStream</code>
+    #          underlying <code>InputStream</code>
     # @throws  UTFDataFormatException if read bytes do not represent a valid
-    # modified UTF-8 encoding of a string
+    #          modified UTF-8 encoding of a string
     def read_utf
       return @bin.read_utf
     end
@@ -1122,9 +1122,9 @@ module Java::Io
         # @param  name the name of the field
         # @return true, if and only if the named field is defaulted
         # @throws IOException if there are I/O errors while reading from
-        # the underlying <code>InputStream</code>
+        #         the underlying <code>InputStream</code>
         # @throws IllegalArgumentException if <code>name</code> does not
-        # correspond to a serializable field
+        #         correspond to a serializable field
         def defaulted(name)
           raise NotImplementedError
         end
@@ -1134,12 +1134,12 @@ module Java::Io
         # 
         # @param  name the name of the field
         # @param  val the default value to use if <code>name</code> does not
-        # have a value
+        #         have a value
         # @return the value of the named <code>boolean</code> field
         # @throws IOException if there are I/O errors while reading from the
-        # underlying <code>InputStream</code>
+        #         underlying <code>InputStream</code>
         # @throws IllegalArgumentException if type of <code>name</code> is
-        # not serializable or if the field type is incorrect
+        #         not serializable or if the field type is incorrect
         def get(name, val)
           raise NotImplementedError
         end
@@ -1149,12 +1149,12 @@ module Java::Io
         # 
         # @param  name the name of the field
         # @param  val the default value to use if <code>name</code> does not
-        # have a value
+        #         have a value
         # @return the value of the named <code>byte</code> field
         # @throws IOException if there are I/O errors while reading from the
-        # underlying <code>InputStream</code>
+        #         underlying <code>InputStream</code>
         # @throws IllegalArgumentException if type of <code>name</code> is
-        # not serializable or if the field type is incorrect
+        #         not serializable or if the field type is incorrect
         def get(name, val)
           raise NotImplementedError
         end
@@ -1164,12 +1164,12 @@ module Java::Io
         # 
         # @param  name the name of the field
         # @param  val the default value to use if <code>name</code> does not
-        # have a value
+        #         have a value
         # @return the value of the named <code>char</code> field
         # @throws IOException if there are I/O errors while reading from the
-        # underlying <code>InputStream</code>
+        #         underlying <code>InputStream</code>
         # @throws IllegalArgumentException if type of <code>name</code> is
-        # not serializable or if the field type is incorrect
+        #         not serializable or if the field type is incorrect
         def get(name, val)
           raise NotImplementedError
         end
@@ -1179,12 +1179,12 @@ module Java::Io
         # 
         # @param  name the name of the field
         # @param  val the default value to use if <code>name</code> does not
-        # have a value
+        #         have a value
         # @return the value of the named <code>short</code> field
         # @throws IOException if there are I/O errors while reading from the
-        # underlying <code>InputStream</code>
+        #         underlying <code>InputStream</code>
         # @throws IllegalArgumentException if type of <code>name</code> is
-        # not serializable or if the field type is incorrect
+        #         not serializable or if the field type is incorrect
         def get(name, val)
           raise NotImplementedError
         end
@@ -1194,12 +1194,12 @@ module Java::Io
         # 
         # @param  name the name of the field
         # @param  val the default value to use if <code>name</code> does not
-        # have a value
+        #         have a value
         # @return the value of the named <code>int</code> field
         # @throws IOException if there are I/O errors while reading from the
-        # underlying <code>InputStream</code>
+        #         underlying <code>InputStream</code>
         # @throws IllegalArgumentException if type of <code>name</code> is
-        # not serializable or if the field type is incorrect
+        #         not serializable or if the field type is incorrect
         def get(name, val)
           raise NotImplementedError
         end
@@ -1209,12 +1209,12 @@ module Java::Io
         # 
         # @param  name the name of the field
         # @param  val the default value to use if <code>name</code> does not
-        # have a value
+        #         have a value
         # @return the value of the named <code>long</code> field
         # @throws IOException if there are I/O errors while reading from the
-        # underlying <code>InputStream</code>
+        #         underlying <code>InputStream</code>
         # @throws IllegalArgumentException if type of <code>name</code> is
-        # not serializable or if the field type is incorrect
+        #         not serializable or if the field type is incorrect
         def get(name, val)
           raise NotImplementedError
         end
@@ -1224,12 +1224,12 @@ module Java::Io
         # 
         # @param  name the name of the field
         # @param  val the default value to use if <code>name</code> does not
-        # have a value
+        #         have a value
         # @return the value of the named <code>float</code> field
         # @throws IOException if there are I/O errors while reading from the
-        # underlying <code>InputStream</code>
+        #         underlying <code>InputStream</code>
         # @throws IllegalArgumentException if type of <code>name</code> is
-        # not serializable or if the field type is incorrect
+        #         not serializable or if the field type is incorrect
         def get(name, val)
           raise NotImplementedError
         end
@@ -1239,12 +1239,12 @@ module Java::Io
         # 
         # @param  name the name of the field
         # @param  val the default value to use if <code>name</code> does not
-        # have a value
+        #         have a value
         # @return the value of the named <code>double</code> field
         # @throws IOException if there are I/O errors while reading from the
-        # underlying <code>InputStream</code>
+        #         underlying <code>InputStream</code>
         # @throws IllegalArgumentException if type of <code>name</code> is
-        # not serializable or if the field type is incorrect
+        #         not serializable or if the field type is incorrect
         def get(name, val)
           raise NotImplementedError
         end
@@ -1254,12 +1254,12 @@ module Java::Io
         # 
         # @param  name the name of the field
         # @param  val the default value to use if <code>name</code> does not
-        # have a value
+        #         have a value
         # @return the value of the named <code>Object</code> field
         # @throws IOException if there are I/O errors while reading from the
-        # underlying <code>InputStream</code>
+        #         underlying <code>InputStream</code>
         # @throws IllegalArgumentException if type of <code>name</code> is
-        # not serializable or if the field type is incorrect
+        #         not serializable or if the field type is incorrect
         def get(name, val)
           raise NotImplementedError
         end
@@ -1953,7 +1953,6 @@ module Java::Io
       JNI.load_native_method :Java_java_io_ObjectInputStream_bytesToFloats, [:pointer, :long, :long, :int32, :long, :int32, :int32], :void
       typesig { [Array.typed(::Java::Byte), ::Java::Int, Array.typed(::Java::Float), ::Java::Int, ::Java::Int] }
       # Converts specified span of bytes into float values.
-      # 
       # REMIND: remove once hotspot inlines Float.intBitsToFloat
       def bytes_to_floats(src, srcpos, dst, dstpos, nfloats)
         JNI.call_native_method(:Java_java_io_ObjectInputStream_bytesToFloats, JNI.env, self.jni_id, src.jni_id, srcpos.to_int, dst.jni_id, dstpos.to_int, nfloats.to_int)
@@ -1962,7 +1961,6 @@ module Java::Io
       JNI.load_native_method :Java_java_io_ObjectInputStream_bytesToDoubles, [:pointer, :long, :long, :int32, :long, :int32, :int32], :void
       typesig { [Array.typed(::Java::Byte), ::Java::Int, Array.typed(::Java::Double), ::Java::Int, ::Java::Int] }
       # Converts specified span of bytes into double values.
-      # 
       # REMIND: remove once hotspot inlines Double.longBitsToDouble
       def bytes_to_doubles(src, srcpos, dst, dstpos, ndoubles)
         JNI.call_native_method(:Java_java_io_ObjectInputStream_bytesToDoubles, JNI.env, self.jni_id, src.jni_id, srcpos.to_int, dst.jni_id, dstpos.to_int, ndoubles.to_int)
@@ -1975,11 +1973,10 @@ module Java::Io
       # null if only code from the null class loader is on the stack.  This
       # method is also called via reflection by the following RMI-IIOP class:
       # 
-      # com.sun.corba.se.internal.util.JDKClassLoader
+      #     com.sun.corba.se.internal.util.JDKClassLoader
       # 
       # This method should not be removed or its signature changed without
       # corresponding modifications to the above class.
-      # 
       # REMIND: change name to something more accurate?
       def latest_user_defined_loader
         JNI.call_native_method(:Java_java_io_ObjectInputStream_latestUserDefinedLoader, JNI.env, self.jni_id)
@@ -2562,10 +2559,6 @@ module Java::Io
               end
               tc = @in.peek
               case (tc)
-              # TC_RESETs may occur in between data blocks.
-              # Unfortunately, this case must be parsed at a lower
-              # level than other typecodes, since primitive data
-              # reads may span data blocks separated by a TC_RESET.
               when TC_BLOCKDATA
                 if (avail < 2)
                   return self.class::HEADER_BLOCKED
@@ -2583,6 +2576,10 @@ module Java::Io
                 end
                 return len
               when TC_RESET
+                # TC_RESETs may occur in between data blocks.
+                # Unfortunately, this case must be parsed at a lower
+                # level than other typecodes, since primitive data
+                # reads may span data blocks separated by a TC_RESET.
                 @in.read
                 handle_reset
               else
@@ -2675,7 +2672,6 @@ module Java::Io
         
         typesig { [] }
         # ----------------- generic input stream methods ------------------
-        # 
         # The following methods are equivalent to their counterparts in
         # InputStream, except that they interpret data block boundaries and
         # read the requested data from within data blocks when in block data
@@ -2707,11 +2703,11 @@ module Java::Io
               if (@end < 0)
                 break
               end
-              nread = RJava.cast_to_int(Math.min(remain, @end - @pos))
+              nread = (Math.min(remain, @end - @pos)).to_int
               remain -= nread
               @pos += nread
             else
-              nread = RJava.cast_to_int(Math.min(remain, self.class::MAX_BLOCK_SIZE))
+              nread = (Math.min(remain, self.class::MAX_BLOCK_SIZE)).to_int
               if ((nread = @in.read(@buf, 0, nread)) < 0)
                 break
               end
@@ -2794,7 +2790,6 @@ module Java::Io
         
         typesig { [Array.typed(::Java::Byte)] }
         # ----------------- primitive data input methods ------------------
-        # 
         # The following methods are equivalent to their counterparts in
         # DataInputStream, except that they interpret data block boundaries
         # and read the requested data from within data blocks when in block
@@ -2969,7 +2964,6 @@ module Java::Io
         
         typesig { [Array.typed(::Java::Boolean), ::Java::Int, ::Java::Int] }
         # -------------- primitive data array input methods ---------------
-        # 
         # The following methods read in spans of primitive data values.
         # Though equivalent to calling the corresponding primitive read
         # methods repeatedly, these methods are optimized for reading groups
@@ -3174,7 +3168,7 @@ module Java::Io
                   System.arraycopy(@buf, @pos, @buf, 0, avail)
                 end
                 @pos = 0
-                @end = RJava.cast_to_int(Math.min(self.class::MAX_BLOCK_SIZE, utflen))
+                @end = (Math.min(self.class::MAX_BLOCK_SIZE, utflen)).to_int
                 @in.read_fully(@buf, avail, @end - avail)
               end
             end
@@ -3192,7 +3186,7 @@ module Java::Io
           start = @pos
           avail = Math.min(@end - @pos, self.class::CHAR_BUF_SIZE)
           # stop short of last char unless all of utf bytes in buffer
-          stop = @pos + ((utflen > avail) ? avail - 2 : RJava.cast_to_int(utflen))
+          stop = @pos + ((utflen > avail) ? avail - 2 : (utflen).to_int)
           out_of_bounds = false
           begin
             while (@pos < stop)
@@ -3232,7 +3226,7 @@ module Java::Io
               # Fix for 4450867: if a malformed utf char causes the
               # conversion loop to scan past the expected end of the utf
               # string, only consume the expected number of utf bytes.
-              @pos = start + RJava.cast_to_int(utflen)
+              @pos = start + (utflen).to_int
               raise self.class::UTFDataFormatException.new
             end
           end
@@ -3318,7 +3312,6 @@ module Java::Io
       # <p>Note that the exception propagation algorithm used depends on handles
       # being assigned/finished in LIFO order; however, for simplicity as well
       # as memory conservation, it does not enforce this constraint.
-      # 
       # REMIND: add full description of exception propagation algorithm?
       const_set_lazy(:HandleTable) { Class.new do
         include_class_members ObjectInputStream

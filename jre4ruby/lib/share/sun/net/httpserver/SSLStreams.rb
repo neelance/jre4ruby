@@ -364,12 +364,12 @@ module Sun::Net::Httpserver
     }
     
     typesig { [BufType] }
-    def allocate(type)
-      return allocate(type, -1)
+    def allocate_(type)
+      return allocate_(type, -1)
     end
     
     typesig { [BufType, ::Java::Int] }
-    def allocate(type, len)
+    def allocate_(type, len)
       raise AssertError if not (!(@engine).nil?)
       synchronized((self)) do
         size = 0
@@ -392,7 +392,7 @@ module Sun::Net::Httpserver
           end
           size = @app_buf_size
         end
-        return ByteBuffer.allocate(size)
+        return ByteBuffer.allocate_(size)
       end
     end
     
@@ -407,7 +407,7 @@ module Sun::Net::Httpserver
     def realloc(b, flip, type)
       synchronized((self)) do
         nsize = 2 * b.capacity
-        n = allocate(type, nsize)
+        n = allocate_(type, nsize)
         if (flip)
           b.flip
         end
@@ -527,8 +527,8 @@ module Sun::Net::Httpserver
           @engine = engine
           @wrap_lock = Object.new
           @unwrap_lock = Object.new
-          @unwrap_src = allocate(BufType::PACKET)
-          @wrap_dst = allocate(BufType::PACKET)
+          @unwrap_src = allocate_(BufType::PACKET)
+          @wrap_dst = allocate_(BufType::PACKET)
           @sc = SelectorCache.get_selector_cache
           @write_selector = @sc.get_selector
           @wkey = chan.register(@write_selector, SelectionKey::OP_WRITE)
@@ -724,7 +724,7 @@ module Sun::Net::Httpserver
     def do_closure
       begin
         @handshaking.lock
-        tmp = allocate(BufType::APPLICATION)
+        tmp = allocate_(BufType::APPLICATION)
         r = nil
         begin
           tmp.clear
@@ -744,11 +744,10 @@ module Sun::Net::Httpserver
     def do_handshake(hs_status)
       begin
         @handshaking.lock
-        tmp = allocate(BufType::APPLICATION)
+        tmp = allocate_(BufType::APPLICATION)
         while (!(hs_status).equal?(HandshakeStatus::FINISHED) && !(hs_status).equal?(HandshakeStatus::NOT_HANDSHAKING))
           r = nil
           case (hs_status)
-          # fall thru - call wrap again
           when NEED_TASK
             task = nil
             while (!((task = @engine.get_delegated_task)).nil?)
@@ -756,10 +755,12 @@ module Sun::Net::Httpserver
               # running an external Executor
               task.run
             end
+            # fall thru - call wrap again
             tmp.clear
             tmp.flip
             r = @wrapper.wrap_and_send(tmp)
           when NEED_WRAP
+            # fall thru - call wrap again
             tmp.clear
             tmp.flip
             r = @wrapper.wrap_and_send(tmp)
@@ -823,7 +824,7 @@ module Sun::Net::Httpserver
           @eof = false
           @need_data = true
           @single = Array.typed(::Java::Byte).new(1) { 0 }
-          @bbuf = allocate(BufType::APPLICATION)
+          @bbuf = allocate_(BufType::APPLICATION)
         end
         
         typesig { [Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
@@ -865,8 +866,7 @@ module Sun::Net::Httpserver
         
         typesig { [] }
         def mark_supported
-          return false
-          # not possible with SSLEngine
+          return false # not possible with SSLEngine
         end
         
         typesig { [] }
@@ -876,7 +876,7 @@ module Sun::Net::Httpserver
         
         typesig { [::Java::Long] }
         def skip(s)
-          n = RJava.cast_to_int(s)
+          n = (s).to_int
           if (@closed)
             raise self.class::IOException.new("SSL stream is closed")
           end
@@ -895,8 +895,7 @@ module Sun::Net::Httpserver
               @bbuf = (r.attr_buf).equal?(@bbuf) ? @bbuf : r.attr_buf
             end
           end
-          return ret
-          # not reached
+          return ret # not reached
         end
         
         typesig { [] }
@@ -966,7 +965,7 @@ module Sun::Net::Httpserver
           super()
           @closed = false
           @single = Array.typed(::Java::Byte).new(1) { 0 }
-          @buf = allocate(BufType::APPLICATION)
+          @buf = allocate_(BufType::APPLICATION)
         end
         
         typesig { [::Java::Int] }

@@ -56,7 +56,6 @@ module Sun::Util
     # /////////////
     # Constructors
     # /////////////
-    # 
     # Constructs a default BuddhistCalendar using the current time
     # in the default time zone with the default locale.
     def initialize
@@ -100,7 +99,6 @@ module Sun::Util
     # ///////////////
     # Public methods
     # ///////////////
-    # 
     # Compares this BuddhistCalendar to an object reference.
     # @param obj the object reference with which to compare
     # @return true if this object is equal to <code>obj</code>; false otherwise

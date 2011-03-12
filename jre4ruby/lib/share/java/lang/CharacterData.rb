@@ -130,9 +130,9 @@ module Java::Lang
           # fast-path
           return CharacterDataLatin1.attr_instance
         else
-          case (ch >> 16) # plane 00-16
-          # Private Use
+          case (ch >> 16)
           when (0)
+            # plane 00-16
             return CharacterData00.attr_instance
           when (1)
             return CharacterData01.attr_instance
@@ -141,6 +141,7 @@ module Java::Lang
           when (14)
             return CharacterData0E.attr_instance
           when (15), (16)
+            # Private Use
             # Private Use
             return CharacterDataPrivateUse.attr_instance
           else

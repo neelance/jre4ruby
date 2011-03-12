@@ -43,8 +43,8 @@ module Java::Util::Logging
   # <p>The {@link javax.management.ObjectName ObjectName} for uniquely
   # identifying the <tt>LoggingMXBean</tt> within an MBeanServer is:
   # <blockquote>
-  # {@link LogManager#LOGGING_MXBEAN_NAME
-  # <tt>java.util.logging:type=Logging</tt>}
+  #    {@link LogManager#LOGGING_MXBEAN_NAME
+  #           <tt>java.util.logging:type=Logging</tt>}
   # </blockquote>
   # 
   # @see java.lang.management.ManagementFactory
@@ -61,7 +61,7 @@ module Java::Util::Logging
     # of the logger names.
     # 
     # @return A list of <tt>String</tt> each of which is a
-    # currently registered <tt>Logger</tt> name.
+    #         currently registered <tt>Logger</tt> name.
     def get_logger_names
       raise NotImplementedError
     end
@@ -73,7 +73,7 @@ module Java::Util::Logging
     # This method first finds the logger of the given name and
     # then returns the name of the log level by calling:
     # <blockquote>
-    # {@link Logger#getLevel Logger.getLevel()}.{@link Level#getName getName()};
+    #   {@link Logger#getLevel Logger.getLevel()}.{@link Level#getName getName()};
     # </blockquote>
     # 
     # <p>
@@ -84,9 +84,9 @@ module Java::Util::Logging
     # @param loggerName The name of the <tt>Logger</tt> to be retrieved.
     # 
     # @return The name of the log level of the specified logger; or
-    # an empty string if the log level of the specified logger
-    # is <tt>null</tt>.  If the specified logger does not
-    # exist, <tt>null</tt> is returned.
+    #         an empty string if the log level of the specified logger
+    #         is <tt>null</tt>.  If the specified logger does not
+    #         exist, <tt>null</tt> is returned.
     # 
     # @see Logger#getLevel
     def get_logger_level(logger_name)
@@ -104,10 +104,10 @@ module Java::Util::Logging
     # its nearest ancestor with a specific (non-null) level value.
     # 
     # @param loggerName The name of the <tt>Logger</tt> to be set.
-    # Must be non-null.
+    #                   Must be non-null.
     # @param levelName The name of the level to set the specified logger to,
-    # or <tt>null</tt> if to set the level to inherit
-    # from its nearest ancestor.
+    #                 or <tt>null</tt> if to set the level to inherit
+    #                 from its nearest ancestor.
     # 
     # @throws IllegalArgumentException if the specified logger
     # does not exist, or <tt>levelName</tt> is not a valid level name.
@@ -129,9 +129,9 @@ module Java::Util::Logging
     # @param loggerName The name of a <tt>Logger</tt>.
     # 
     # @return the name of the nearest existing parent logger;
-    # an empty string if the specified logger is the root logger.
-    # If the specified logger does not exist, <tt>null</tt>
-    # is returned.
+    #         an empty string if the specified logger is the root logger.
+    #         If the specified logger does not exist, <tt>null</tt>
+    #         is returned.
     def get_parent_logger_name(logger_name)
       raise NotImplementedError
     end

@@ -127,7 +127,7 @@ module Sun::Security::Provider::Certpath
     # set throwable associated with this vertex; default value is null.
     # 
     # @param throwable Throwable associated with this vertex
-    # (or null)
+    #                  (or null)
     def set_throwable(throwable)
       @throwable = throwable
     end

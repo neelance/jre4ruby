@@ -22,17 +22,15 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996-1998 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996-1998 - All Rights Reserved
 # 
-# The original version of this source code and documentation is copyrighted
+#   The original version of this source code and documentation is copyrighted
 # and owned by Taligent, Inc., a wholly-owned subsidiary of IBM. These
 # materials are provided under terms of a License Agreement between Taligent
 # and Sun. This technology is protected by multiple US and International
 # patents. This notice and attribution to Taligent may not be removed.
-# Taligent is a registered trademark of Taligent, Inc.
+#   Taligent is a registered trademark of Taligent, Inc.
 module Java::Util
   module CalendarImports #:nodoc:
     class_module.module_eval {
@@ -78,7 +76,7 @@ module Java::Util
   # calendar fields have been initialized with the current date and time:
   # <blockquote>
   # <pre>
-  # Calendar rightNow = Calendar.getInstance();
+  #     Calendar rightNow = Calendar.getInstance();
   # </pre>
   # </blockquote>
   # 
@@ -185,13 +183,13 @@ module Java::Util
   # interpretation of certain singular times, which are resolved in the
   # following ways:
   # <ol>
-  # <li> 23:59 is the last minute of the day and 00:00 is the first
-  # minute of the next day. Thus, 23:59 on Dec 31, 1999 &lt; 00:00 on
-  # Jan 1, 2000 &lt; 00:01 on Jan 1, 2000.
+  #     <li> 23:59 is the last minute of the day and 00:00 is the first
+  #          minute of the next day. Thus, 23:59 on Dec 31, 1999 &lt; 00:00 on
+  #          Jan 1, 2000 &lt; 00:01 on Jan 1, 2000.
   # 
-  # <li> Although historically not precise, midnight also belongs to "am",
-  # and noon belongs to "pm", so on the same day,
-  # 12:00 am (midnight) &lt; 12:01 am, and 12:00 pm (noon) &lt; 12:01 pm
+  #     <li> Although historically not precise, midnight also belongs to "am",
+  #          and noon belongs to "pm", so on the same day,
+  #          12:00 am (midnight) &lt; 12:01 am, and 12:00 pm (noon) &lt; 12:01 pm
   # </ol>
   # 
   # <p>
@@ -235,23 +233,23 @@ module Java::Util
   # get(f) + delta)</code> with two adjustments:</p>
   # 
   # <blockquote>
-  # <p><strong>Add rule 1</strong>. The value of field <code>f</code>
-  # after the call minus the value of field <code>f</code> before the
-  # call is <code>delta</code>, modulo any overflow that has occurred in
-  # field <code>f</code>. Overflow occurs when a field value exceeds its
-  # range and, as a result, the next larger field is incremented or
-  # decremented and the field value is adjusted back into its range.</p>
+  #   <p><strong>Add rule 1</strong>. The value of field <code>f</code>
+  #   after the call minus the value of field <code>f</code> before the
+  #   call is <code>delta</code>, modulo any overflow that has occurred in
+  #   field <code>f</code>. Overflow occurs when a field value exceeds its
+  #   range and, as a result, the next larger field is incremented or
+  #   decremented and the field value is adjusted back into its range.</p>
   # 
-  # <p><strong>Add rule 2</strong>. If a smaller field is expected to be
-  # invariant, but it is impossible for it to be equal to its
-  # prior value because of changes in its minimum or maximum after field
-  # <code>f</code> is changed or other constraints, such as time zone
-  # offset changes, then its value is adjusted to be as close
-  # as possible to its expected value. A smaller field represents a
-  # smaller unit of time. <code>HOUR</code> is a smaller field than
-  # <code>DAY_OF_MONTH</code>. No adjustment is made to smaller fields
-  # that are not expected to be invariant. The calendar system
-  # determines what fields are expected to be invariant.</p>
+  #   <p><strong>Add rule 2</strong>. If a smaller field is expected to be
+  #   invariant, but it is impossible for it to be equal to its
+  #   prior value because of changes in its minimum or maximum after field
+  #   <code>f</code> is changed or other constraints, such as time zone
+  #   offset changes, then its value is adjusted to be as close
+  #   as possible to its expected value. A smaller field represents a
+  #   smaller unit of time. <code>HOUR</code> is a smaller field than
+  #   <code>DAY_OF_MONTH</code>. No adjustment is made to smaller fields
+  #   that are not expected to be invariant. The calendar system
+  #   determines what fields are expected to be invariant.</p>
   # </blockquote>
   # 
   # <p>In addition, unlike <code>set()</code>, <code>add()</code> forces
@@ -276,10 +274,10 @@ module Java::Util
   # the following adjustment:</p>
   # 
   # <blockquote>
-  # <p><strong>Roll rule</strong>. Larger fields are unchanged after the
-  # call. A larger field represents a larger unit of
-  # time. <code>DAY_OF_MONTH</code> is a larger field than
-  # <code>HOUR</code>.</p>
+  #   <p><strong>Roll rule</strong>. Larger fields are unchanged after the
+  #   call. A larger field represents a larger unit of
+  #   time. <code>DAY_OF_MONTH</code> is a larger field than
+  #   <code>HOUR</code>.</p>
   # </blockquote>
   # 
   # <p><em>Example</em>: See {@link java.util.GregorianCalendar#roll(int, int)}.
@@ -328,34 +326,33 @@ module Java::Util
       # During this process, certain fields may be ignored.  The disambiguation
       # algorithm for resolving which fields to pay attention to is described
       # in the class documentation.
-      # local fields (YEAR, MONTH, DATE, HOUR, MINUTE, etc.)
-      # |
-      # | Using Calendar-specific algorithm
-      # V
-      # local standard millis
-      # |
-      # | Using TimeZone or user-set ZONE_OFFSET / DST_OFFSET
-      # V
-      # UTC millis (in time data member)
+      #   local fields (YEAR, MONTH, DATE, HOUR, MINUTE, etc.)
+      #           |
+      #           | Using Calendar-specific algorithm
+      #           V
+      #   local standard millis
+      #           |
+      #           | Using TimeZone or user-set ZONE_OFFSET / DST_OFFSET
+      #           V
+      #   UTC millis (in time data member)
       # If the user sets the UTC millis using setTime() or setTimeInMillis(),
       # the data flow is as follows.  This is implemented by the Calendar
       # subclass's computeFields() method.
-      # UTC millis (in time data member)
-      # |
-      # | Using TimeZone getOffset()
-      # V
-      # local standard millis
-      # |
-      # | Using Calendar-specific algorithm
-      # V
-      # local fields (YEAR, MONTH, DATE, HOUR, MINUTE, etc.)
+      #   UTC millis (in time data member)
+      #           |
+      #           | Using TimeZone getOffset()
+      #           V
+      #   local standard millis
+      #           |
+      #           | Using Calendar-specific algorithm
+      #           V
+      #   local fields (YEAR, MONTH, DATE, HOUR, MINUTE, etc.)
       # In general, a round trip from fields, through local and UTC millis, and
       # back out to fields is made when necessary.  This is implemented by the
       # complete() method.  Resolving a partial set of fields into a UTC millis
       # value allows all remaining fields to be generated from that value.  If
       # the Calendar is lenient, the fields are also renormalized to standard
       # ranges when they are regenerated.
-      # 
       # Field number for <code>get</code> and <code>set</code> indicating the
       # era, e.g., AD or BC in the Julian calendar. This is a calendar-specific
       # value; see subclass documentation.
@@ -697,7 +694,6 @@ module Java::Util
     # 3. If a single field is set, the time is invalid.
     # Recomputation of the time and fields happens when the object needs
     # to return a result to the user, or use a result for a computation.
-    # 
     # The calendar field values for the currently set time for this calendar.
     # This is an array of <code>FIELD_COUNT</code> integers, with index values
     # <code>ERA</code> through <code>DST_OFFSET</code>.
@@ -828,7 +824,6 @@ module Java::Util
       alias_method :attr_cached_locale_data=, :cached_locale_data=
       
       # Special values of stamp[]
-      # 
       # The corresponding fields[] has no value.
       const_set_lazy(:UNSET) { 0 }
       const_attr_reader  :UNSET
@@ -863,11 +858,11 @@ module Java::Util
       # the internal serial version which says which version was written
       # - 0 (default) for version up to JDK 1.1.5
       # - 1 for version from JDK 1.1.6, which writes a correct 'time' value
-      # as well as compatible values for other fields.  This is a
-      # transitional format.
+      #     as well as compatible values for other fields.  This is a
+      #     transitional format.
       # - 2 (not implemented yet) a future version, in which fields[],
-      # areFieldsSet, and isTimeSet become transient, and isSet[] is
-      # removed. In JDK 1.1.6 we write a format compatible with version 2.
+      #     areFieldsSet, and isTimeSet become transient, and isSet[] is
+      #     removed. In JDK 1.1.6 we write a format compatible with version 2.
       const_set_lazy(:CurrentSerialVersion) { 1 }
       const_attr_reader  :CurrentSerialVersion
     }
@@ -1064,7 +1059,7 @@ module Java::Util
       # instance equal to {@link java.util.Locale#US Locale.US}.
       # 
       # @return An array of locales for which localized
-      # <code>Calendar</code> instances are available.
+      #         <code>Calendar</code> instances are available.
       def get_available_locales
         synchronized(self) do
           return DateFormat.get_available_locales
@@ -1166,7 +1161,7 @@ module Java::Util
     # @param field the given calendar field.
     # @return the value for the given calendar field.
     # @throws ArrayIndexOutOfBoundsException if the specified field is out of range
-    # (<code>field &lt; 0 || field &gt;= FIELD_COUNT</code>).
+    #             (<code>field &lt; 0 || field &gt;= FIELD_COUNT</code>).
     # @see #set(int,int)
     # @see #complete()
     def get(field)
@@ -1191,7 +1186,7 @@ module Java::Util
     # <code>Calendar</code> instance.
     # 
     # @throws IndexOutOfBoundsException if the specified field is out of range
-    # (<code>field &lt; 0 || field &gt;= FIELD_COUNT</code>).
+    #             (<code>field &lt; 0 || field &gt;= FIELD_COUNT</code>).
     # @see #areFieldsSet
     # @see #isTimeSet
     # @see #areAllFieldsSet
@@ -1207,7 +1202,7 @@ module Java::Util
     # @param field the given calendar field.
     # @param value the value to be set for the given calendar field.
     # @throws ArrayIndexOutOfBoundsException if the specified field is out of range
-    # (<code>field &lt; 0 || field &gt;= FIELD_COUNT</code>).
+    #             (<code>field &lt; 0 || field &gt;= FIELD_COUNT</code>).
     # in non-lenient mode.
     # @see #set(int,int,int)
     # @see #set(int,int,int,int,int)
@@ -1380,23 +1375,23 @@ module Java::Util
     # <code>locale</code>.
     # 
     # @param field
-    # the calendar field for which the string representation
-    # is returned
+    #        the calendar field for which the string representation
+    #        is returned
     # @param style
-    # the style applied to the string representation; one of
-    # {@link #SHORT} or {@link #LONG}.
+    #        the style applied to the string representation; one of
+    #        {@link #SHORT} or {@link #LONG}.
     # @param locale
-    # the locale for the string representation
+    #        the locale for the string representation
     # @return the string representation of the given
-    # <code>field</code> in the given <code>style</code>, or
-    # <code>null</code> if no string representation is
-    # applicable.
+    #        <code>field</code> in the given <code>style</code>, or
+    #        <code>null</code> if no string representation is
+    #        applicable.
     # @exception IllegalArgumentException
-    # if <code>field</code> or <code>style</code> is invalid,
-    # or if this <code>Calendar</code> is non-lenient and any
-    # of the calendar fields have invalid values
+    #        if <code>field</code> or <code>style</code> is invalid,
+    #        or if this <code>Calendar</code> is non-lenient and any
+    #        of the calendar fields have invalid values
     # @exception NullPointerException
-    # if <code>locale</code> is null
+    #        if <code>locale</code> is null
     # @since 1.6
     def get_display_name(field, style, locale)
       if (!check_display_name_params(field, style, ALL_STYLES, LONG, locale, ERA_MASK | MONTH_MASK | DAY_OF_WEEK_MASK | AM_PM_MASK))
@@ -1438,22 +1433,22 @@ module Java::Util
     # and {@link DateFormatSymbols#getMonths()}.
     # 
     # @param field
-    # the calendar field for which the display names are returned
+    #        the calendar field for which the display names are returned
     # @param style
-    # the style applied to the display names; one of {@link
-    # #SHORT}, {@link #LONG}, or {@link #ALL_STYLES}.
+    #        the style applied to the display names; one of {@link
+    #        #SHORT}, {@link #LONG}, or {@link #ALL_STYLES}.
     # @param locale
-    # the locale for the display names
+    #        the locale for the display names
     # @return a <code>Map</code> containing all display names in
-    # <code>style</code> and <code>locale</code> and their
-    # field values, or <code>null</code> if no display names
-    # are defined for <code>field</code>
+    #        <code>style</code> and <code>locale</code> and their
+    #        field values, or <code>null</code> if no display names
+    #        are defined for <code>field</code>
     # @exception IllegalArgumentException
-    # if <code>field</code> or <code>style</code> is invalid,
-    # or if this <code>Calendar</code> is non-lenient and any
-    # of the calendar fields have invalid values
+    #        if <code>field</code> or <code>style</code> is invalid,
+    #        or if this <code>Calendar</code> is non-lenient and any
+    #        of the calendar fields have invalid values
     # @exception NullPointerException
-    # if <code>locale</code> is null
+    #        if <code>locale</code> is null
     # @since 1.6
     def get_display_names(field, style, locale)
       if (!check_display_name_params(field, style, ALL_STYLES, LONG, locale, ERA_MASK | MONTH_MASK | DAY_OF_WEEK_MASK | AM_PM_MASK))
@@ -1549,8 +1544,8 @@ module Java::Util
     # @return <code>true</code> if the field has been set externally,
     # <code>false</code> otherwise.
     # @exception IndexOutOfBoundsException if the specified
-    # <code>field</code> is out of range
-    # (<code>field &lt; 0 || field &gt;= FIELD_COUNT</code>).
+    #                <code>field</code> is out of range
+    #               (<code>field &lt; 0 || field &gt;= FIELD_COUNT</code>).
     # @see #selectFields()
     # @see #setFieldsComputed(int)
     def is_externally_set(field)
@@ -1582,8 +1577,8 @@ module Java::Util
     # 
     # @param fieldMask the field to be marked as computed.
     # @exception IndexOutOfBoundsException if the specified
-    # <code>field</code> is out of range
-    # (<code>field &lt; 0 || field &gt;= FIELD_COUNT</code>).
+    #                <code>field</code> is out of range
+    #               (<code>field &lt; 0 || field &gt;= FIELD_COUNT</code>).
     # @see #isExternallySet(int)
     # @see #selectFields()
     def set_fields_computed(field_mask)
@@ -1622,8 +1617,8 @@ module Java::Util
     # @param fieldMask the field mask indicating which calendar fields are in
     # sync with the time value.
     # @exception IndexOutOfBoundsException if the specified
-    # <code>field</code> is out of range
-    # (<code>field &lt; 0 || field &gt;= FIELD_COUNT</code>).
+    #                <code>field</code> is out of range
+    #               (<code>field &lt; 0 || field &gt;= FIELD_COUNT</code>).
     # @see #isExternallySet(int)
     # @see #selectFields()
     def set_fields_normalized(field_mask)
@@ -1705,11 +1700,11 @@ module Java::Util
       end
       # Find the most recent group of fields specifying the day within
       # the year.  These may be any of the following combinations:
-      # MONTH + DAY_OF_MONTH
-      # MONTH + WEEK_OF_MONTH + DAY_OF_WEEK
-      # MONTH + DAY_OF_WEEK_IN_MONTH + DAY_OF_WEEK
-      # DAY_OF_YEAR
-      # WEEK_OF_YEAR + DAY_OF_WEEK
+      #   MONTH + DAY_OF_MONTH
+      #   MONTH + WEEK_OF_MONTH + DAY_OF_WEEK
+      #   MONTH + DAY_OF_WEEK_IN_MONTH + DAY_OF_WEEK
+      #   DAY_OF_YEAR
+      #   WEEK_OF_YEAR + DAY_OF_WEEK
       # We look for the most recent of the fields in each group to determine
       # the age of the group.  For groups involving a week-related field such
       # as WEEK_OF_MONTH, DAY_OF_WEEK_IN_MONTH, or WEEK_OF_YEAR, both the
@@ -1888,7 +1883,7 @@ module Java::Util
       # 'otheritems' represents the hash code for the previous versions.
       otheritems = (@lenient ? 1 : 0) | (@first_day_of_week << 1) | (@minimal_days_in_first_week << 4) | (@zone.hash_code << 7)
       t = get_millis_of(self)
-      return RJava.cast_to_int(t) ^ RJava.cast_to_int((t >> 32)) ^ otheritems
+      return (t).to_int ^ ((t >> 32)).to_int ^ otheritems
     end
     
     typesig { [Object] }
@@ -1896,7 +1891,7 @@ module Java::Util
     # before the time represented by the specified
     # <code>Object</code>. This method is equivalent to:
     # <pre><blockquote>
-    # compareTo(when) < 0
+    #         compareTo(when) < 0
     # </blockquote></pre>
     # if and only if <code>when</code> is a <code>Calendar</code>
     # instance. Otherwise, the method returns <code>false</code>.
@@ -1915,7 +1910,7 @@ module Java::Util
     # after the time represented by the specified
     # <code>Object</code>. This method is equivalent to:
     # <pre><blockquote>
-    # compareTo(when) > 0
+    #         compareTo(when) > 0
     # </blockquote></pre>
     # if and only if <code>when</code> is a <code>Calendar</code>
     # instance. Otherwise, the method returns <code>false</code>.
@@ -1942,7 +1937,7 @@ module Java::Util
     # <code>0</code> if the time of this <code>Calendar</code> is after the
     # time represented by the argument.
     # @exception NullPointerException if the specified <code>Calendar</code> is
-    # <code>null</code>.
+    #            <code>null</code>.
     # @exception IllegalArgumentException if the time value of the
     # specified <code>Calendar</code> object can't be obtained due to
     # any invalid calendar values.

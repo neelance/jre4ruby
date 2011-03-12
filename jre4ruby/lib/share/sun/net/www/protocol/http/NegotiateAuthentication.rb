@@ -45,7 +45,6 @@ module Sun::Net::Www::Protocol::Http
   # Authentication-Info header.
   # 
   # Currently we ignore this header.
-  # 
   # NegotiateAuthentication:
   # 
   # @author weijun.wang@sun.com
@@ -198,15 +197,14 @@ module Sun::Net::Www::Protocol::Http
     # returning false means we have to go back to the user to ask for a new
     # username password.
     def is_authorization_stale(header)
-      return false
-      # should not be called for Negotiate
+      return false # should not be called for Negotiate
     end
     
     typesig { [HttpURLConnection, HeaderParser, String] }
     # Set header(s) on the given connection.
     # @param conn The connection to apply the header(s) to
     # @param p A source of header values for this connection, not used because
-    # HeaderParser converts the fields to lower case, use raw instead
+    #          HeaderParser converts the fields to lower case, use raw instead
     # @param raw The raw header field.
     # @return true if all goes well, false if no headers were set.
     def set_headers(conn, p, raw)
@@ -231,7 +229,7 @@ module Sun::Net::Www::Protocol::Http
     # return the first token.
     # @returns the token
     # @throws IOException if <code>Negotiator.getSupported()</code> or
-    # <code>Negotiator.firstToken()</code> failed.
+    #                     <code>Negotiator.firstToken()</code> failed.
     def first_token
       @negotiator = nil
       if (!(self.attr_cache).nil?)
@@ -259,7 +257,7 @@ module Sun::Net::Www::Protocol::Http
     # @param token the token to be fed into <code>negotiator.nextToken()</code>
     # @returns the token
     # @throws IOException if <code>negotiator.nextToken()</code> throws Exception.
-    # May happen if the input token is invalid.
+    #  May happen if the input token is invalid.
     def next_token(token)
       return @negotiator.next_token(token)
     end
@@ -302,7 +300,7 @@ module Sun::Net::Www::Protocol::Http
       typesig { [String, String] }
       def get_supported(hostname, scheme)
         # These lines are equivalent to
-        # return new NegotiatorImpl(hostname, scheme);
+        #     return new NegotiatorImpl(hostname, scheme);
         # The current implementation will make sure NegotiatorImpl is not
         # directly referenced when compiling, thus smooth the way of building
         # the J2SE platform where HttpURLConnection is a bootstrap class.

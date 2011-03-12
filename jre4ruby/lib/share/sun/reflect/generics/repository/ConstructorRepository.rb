@@ -86,7 +86,6 @@ module Sun::Reflect::Generics::Repository
     
     typesig { [] }
     # public API
-    # 
     # When queried for a particular piece of type information, the
     # general pattern is to consult the corresponding cached value.
     # If the corresponding field is non-null, it is returned.

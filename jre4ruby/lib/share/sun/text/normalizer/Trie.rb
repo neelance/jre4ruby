@@ -22,11 +22,8 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
-# 
 # (C) Copyright IBM Corp. 1996-2005 - All Rights Reserved                     *
-# *
+#                                                                             *
 # The original version of this source code and documentation is copyrighted   *
 # and owned by IBM, These materials are provided under terms of a License     *
 # Agreement between IBM and Sun. This technology is protected by multiple     *
@@ -76,7 +73,6 @@ module Sun::Text::Normalizer
     
     class_module.module_eval {
       # public class declaration ----------------------------------------
-      # 
       # Character data in com.ibm.impl.Trie have different user-specified format
       # for different purposes.
       # This interface specifies methods to be implemented in order for
@@ -91,7 +87,7 @@ module Sun::Text::Normalizer
         # data
         # the index array offset of the indexes for that lead surrogate.
         # @param value data value for a surrogate from the trie, including the
-        # folding offset
+        #        folding offset
         # @return data offset or 0 if there is no data for the lead surrogate
         # @draft 2.1
         def get_folding_offset(value)
@@ -102,14 +98,13 @@ module Sun::Text::Normalizer
     
     typesig { [InputStream, DataManipulate] }
     # protected constructor -------------------------------------------
-    # 
     # Trie constructor for CharTrie use.
     # @param inputStream ICU data file input stream which contains the
-    # trie
+    #                        trie
     # @param dataManipulate object containing the information to parse the
-    # trie data
+    #                       trie data
     # @throws IOException thrown when input stream does not have the
-    # right header.
+    #                        right header.
     # @draft 2.1
     def initialize(input_stream, data_manipulate)
       @m_index_ = nil
@@ -137,7 +132,7 @@ module Sun::Text::Normalizer
     # @param index array to be used for index
     # @param options used by the trie
     # @param dataManipulate object containing the information to parse the
-    # trie data
+    #                       trie data
     # @draft 2.2
     def initialize(index, options, data_manipulate)
       @m_index_ = nil
@@ -155,7 +150,6 @@ module Sun::Text::Normalizer
     
     class_module.module_eval {
       # protected data members ------------------------------------------
-      # 
       # Lead surrogate code points' index displacement in the index array.
       # 0x10000-0xd800=0x2800
       # 0x2800 >> INDEX_STAGE_1_SHIFT_
@@ -227,7 +221,6 @@ module Sun::Text::Normalizer
     
     typesig { [::Java::Char, ::Java::Char] }
     # protected methods -----------------------------------------------
-    # 
     # Gets the offset to the data which the surrogate pair points to.
     # @param lead lead surrogate
     # @param trail trailing surrogate
@@ -298,7 +291,7 @@ module Sun::Text::Normalizer
     typesig { [::Java::Int] }
     # Internal trie getter from a code point.
     # Could be faster(?) but longer with
-    # if((c32)<=0xd7ff) { (result)=_TRIE_GET_RAW(trie, data, 0, c32); }
+    #   if((c32)<=0xd7ff) { (result)=_TRIE_GET_RAW(trie, data, 0, c32); }
     # Gets the offset to data which the codepoint points to
     # @param ch codepoint
     # @return offset to data
@@ -354,7 +347,6 @@ module Sun::Text::Normalizer
     
     class_module.module_eval {
       # private data members --------------------------------------------
-      # 
       # Signature index
       const_set_lazy(:HEADER_SIGNATURE_INDEX_) { 0 }
       const_attr_reader  :HEADER_SIGNATURE_INDEX_
@@ -415,7 +407,6 @@ module Sun::Text::Normalizer
     
     typesig { [::Java::Int] }
     # private methods ---------------------------------------------------
-    # 
     # Authenticates raw data header.
     # Checking the header information, signature and options.
     # @param rawdata array of char data to be checked

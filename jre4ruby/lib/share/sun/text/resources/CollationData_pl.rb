@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996 - 1998 - All Rights Reserved
 # 
@@ -49,20 +47,6 @@ module Sun::Text::Resources
     
     typesig { [] }
     def get_contents
-      # for pl, default sorting except for the following:
-      # add d<stroke> between d and e.
-      # add l<stroke> between l and m.
-      # add z<abovedot> after z.
-      # a < a-ogonek
-      # c < c-acute
-      # tal : d < d-stroke
-      # e < e-ogonek
-      # l < l-stroke
-      # n < n-acute
-      # o < o-acute
-      # s < s-acute
-      # z < z-acute
-      # z-dot-above
       return Array.typed(Array.typed(Object)).new([Array.typed(Object).new(["Rule", ("& A < a".to_u << 0x0328 << " , A".to_u << 0x0328 << " ") + ("& C < c".to_u << 0x0301 << " , C".to_u << 0x0301 << " ") + ("& D < ".to_u << 0x0111 << ", ".to_u << 0x0110 << " ") + ("& E < e".to_u << 0x0328 << " , E".to_u << 0x0328 << " ") + ("& L < ".to_u << 0x0142 << " , ".to_u << 0x0141 << " ") + ("& N < n".to_u << 0x0301 << " , N".to_u << 0x0301 << " ") + ("& O < o".to_u << 0x0301 << " , O".to_u << 0x0301 << " ") + ("& S < s".to_u << 0x0301 << " , S".to_u << 0x0301 << " ") + ("& Z < z".to_u << 0x0301 << " , Z".to_u << 0x0301 << " ") + ("< z".to_u << 0x0307 << " , Z".to_u << 0x0307 << " ")])])
     end
     

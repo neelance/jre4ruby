@@ -44,11 +44,11 @@ module Java::Lang::Management
   # <tr>
   # <td valign=top> <tt>init</tt> </td>
   # <td valign=top> represents the initial amount of memory (in bytes) that
-  # the Java virtual machine requests from the operating system
-  # for memory management during startup.  The Java virtual machine
-  # may request additional memory from the operating system and
-  # may also release memory to the system over time.
-  # The value of <tt>init</tt> may be undefined.
+  #      the Java virtual machine requests from the operating system
+  #      for memory management during startup.  The Java virtual machine
+  #      may request additional memory from the operating system and
+  #      may also release memory to the system over time.
+  #      The value of <tt>init</tt> may be undefined.
   # </td>
   # </tr>
   # <tr>
@@ -59,25 +59,25 @@ module Java::Lang::Management
   # <tr>
   # <td valign=top> <tt>committed</tt> </td>
   # <td valign=top> represents the amount of memory (in bytes) that is
-  # guaranteed to be available for use by the Java virtual machine.
-  # The amount of committed memory may change over time (increase
-  # or decrease).  The Java virtual machine may release memory to
-  # the system and <tt>committed</tt> could be less than <tt>init</tt>.
-  # <tt>committed</tt> will always be greater than
-  # or equal to <tt>used</tt>.
+  #      guaranteed to be available for use by the Java virtual machine.
+  #      The amount of committed memory may change over time (increase
+  #      or decrease).  The Java virtual machine may release memory to
+  #      the system and <tt>committed</tt> could be less than <tt>init</tt>.
+  #      <tt>committed</tt> will always be greater than
+  #      or equal to <tt>used</tt>.
   # </td>
   # </tr>
   # <tr>
   # <td valign=top> <tt>max</tt> </td>
   # <td valign=top> represents the maximum amount of memory (in bytes)
-  # that can be used for memory management. Its value may be undefined.
-  # The maximum amount of memory may change over time if defined.
-  # The amount of used and committed memory will always be less than
-  # or equal to <tt>max</tt> if <tt>max</tt> is defined.
-  # A memory allocation may fail if it attempts to increase the
-  # used memory such that <tt>used &gt committed</tt> even
-  # if <tt>used &lt= max</tt> would still be true (for example,
-  # when the system is low on virtual memory).
+  #      that can be used for memory management. Its value may be undefined.
+  #      The maximum amount of memory may change over time if defined.
+  #      The amount of used and committed memory will always be less than
+  #      or equal to <tt>max</tt> if <tt>max</tt> is defined.
+  #      A memory allocation may fail if it attempts to increase the
+  #      used memory such that <tt>used &gt committed</tt> even
+  #      if <tt>used &lt= max</tt> would still be true (for example,
+  #      when the system is low on virtual memory).
   # </td>
   # </tr>
   # </table>
@@ -86,19 +86,19 @@ module Java::Lang::Management
   # Below is a picture showing an example of a memory pool:
   # <p>
   # <pre>
-  # +----------------------------------------------+
-  # +////////////////           |                  +
-  # +////////////////           |                  +
-  # +----------------------------------------------+
+  #        +----------------------------------------------+
+  #        +////////////////           |                  +
+  #        +////////////////           |                  +
+  #        +----------------------------------------------+
   # 
-  # |--------|
-  # init
-  # |---------------|
-  # used
-  # |---------------------------|
-  # committed
-  # |----------------------------------------------|
-  # max
+  #        |--------|
+  #           init
+  #        |---------------|
+  #               used
+  #        |---------------------------|
+  #                  committed
+  #        |----------------------------------------------|
+  #                            max
   # </pre>
   # 
   # <h4>MXBean Mapping</h4>
@@ -138,23 +138,23 @@ module Java::Lang::Management
     # Constructs a <tt>MemoryUsage</tt> object.
     # 
     # @param init      the initial amount of memory in bytes that
-    # the Java virtual machine allocates;
-    # or <tt>-1</tt> if undefined.
+    #                  the Java virtual machine allocates;
+    #                  or <tt>-1</tt> if undefined.
     # @param used      the amount of used memory in bytes.
     # @param committed the amount of committed memory in bytes.
     # @param max       the maximum amount of memory in bytes that
-    # can be used; or <tt>-1</tt> if undefined.
+    #                  can be used; or <tt>-1</tt> if undefined.
     # 
     # @throws IllegalArgumentException if
     # <ul>
     # <li> the value of <tt>init</tt> or <tt>max</tt> is negative
-    # but not <tt>-1</tt>; or</li>
+    #      but not <tt>-1</tt>; or</li>
     # <li> the value of <tt>used</tt> or <tt>committed</tt> is negative;
-    # or</li>
+    #      or</li>
     # <li> <tt>used</tt> is greater than the value of <tt>committed</tt>;
-    # or</li>
+    #      or</li>
     # <li> <tt>committed</tt> is greater than the value of <tt>max</tt>
-    # <tt>max</tt> if defined.</li>
+    #      <tt>max</tt> if defined.</li>
     # </ul>
     def initialize(init, used, committed, max)
       @init = 0
@@ -267,24 +267,24 @@ module Java::Lang::Management
       # <blockquote>
       # <table border>
       # <tr>
-      # <th align=left>Attribute Name</th>
-      # <th align=left>Type</th>
+      #   <th align=left>Attribute Name</th>
+      #   <th align=left>Type</th>
       # </tr>
       # <tr>
-      # <td>init</td>
-      # <td><tt>java.lang.Long</tt></td>
+      #   <td>init</td>
+      #   <td><tt>java.lang.Long</tt></td>
       # </tr>
       # <tr>
-      # <td>used</td>
-      # <td><tt>java.lang.Long</tt></td>
+      #   <td>used</td>
+      #   <td><tt>java.lang.Long</tt></td>
       # </tr>
       # <tr>
-      # <td>committed</td>
-      # <td><tt>java.lang.Long</tt></td>
+      #   <td>committed</td>
+      #   <td><tt>java.lang.Long</tt></td>
       # </tr>
       # <tr>
-      # <td>max</td>
-      # <td><tt>java.lang.Long</tt></td>
+      #   <td>max</td>
+      #   <td><tt>java.lang.Long</tt></td>
       # </tr>
       # </table>
       # </blockquote>
@@ -292,12 +292,12 @@ module Java::Lang::Management
       # @param cd <tt>CompositeData</tt> representing a <tt>MemoryUsage</tt>
       # 
       # @throws IllegalArgumentException if <tt>cd</tt> does not
-      # represent a <tt>MemoryUsage</tt> with the attributes described
-      # above.
+      #   represent a <tt>MemoryUsage</tt> with the attributes described
+      #   above.
       # 
       # @return a <tt>MemoryUsage</tt> object represented by <tt>cd</tt>
-      # if <tt>cd</tt> is not <tt>null</tt>;
-      # <tt>null</tt> otherwise.
+      #         if <tt>cd</tt> is not <tt>null</tt>;
+      #         <tt>null</tt> otherwise.
       def from(cd)
         if ((cd).nil?)
           return nil

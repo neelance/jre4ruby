@@ -62,14 +62,14 @@ module Java::Util::Regex
     # Constructs a new instance of this class.
     # 
     # @param  desc
-    # A description of the error
+    #         A description of the error
     # 
     # @param  regex
-    # The erroneous pattern
+    #         The erroneous pattern
     # 
     # @param  index
-    # The approximate index in the pattern of the error,
-    # or <tt>-1</tt> if the index is not known
+    #         The approximate index in the pattern of the error,
+    #         or <tt>-1</tt> if the index is not known
     def initialize(desc, regex, index)
       @desc = nil
       @pattern = nil
@@ -84,7 +84,7 @@ module Java::Util::Regex
     # Retrieves the error index.
     # 
     # @return  The approximate index in the pattern of the error,
-    # or <tt>-1</tt> if the index is not known
+    #         or <tt>-1</tt> if the index is not known
     def get_index
       return @index
     end

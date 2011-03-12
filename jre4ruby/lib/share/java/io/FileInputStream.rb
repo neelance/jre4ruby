@@ -114,12 +114,12 @@ module Java::Io
     # 
     # @param      name   the system-dependent file name.
     # @exception  FileNotFoundException  if the file does not exist,
-    # is a directory rather than a regular file,
-    # or for some other reason cannot be opened for
-    # reading.
+    #                   is a directory rather than a regular file,
+    #                   or for some other reason cannot be opened for
+    #                   reading.
     # @exception  SecurityException      if a security manager exists and its
-    # <code>checkRead</code> method denies read access
-    # to the file.
+    #               <code>checkRead</code> method denies read access
+    #               to the file.
     # @see        java.lang.SecurityManager#checkRead(java.lang.String)
     def initialize(name)
       initialize__file_input_stream(!(name).nil? ? JavaFile.new(name) : nil)
@@ -144,11 +144,11 @@ module Java::Io
     # 
     # @param      file   the file to be opened for reading.
     # @exception  FileNotFoundException  if the file does not exist,
-    # is a directory rather than a regular file,
-    # or for some other reason cannot be opened for
-    # reading.
+    #                   is a directory rather than a regular file,
+    #                   or for some other reason cannot be opened for
+    #                   reading.
     # @exception  SecurityException      if a security manager exists and its
-    # <code>checkRead</code> method denies read access to the file.
+    #               <code>checkRead</code> method denies read access to the file.
     # @see        java.io.File#getPath()
     # @see        java.lang.SecurityManager#checkRead(java.lang.String)
     def initialize(file)
@@ -188,8 +188,8 @@ module Java::Io
     # 
     # @param      fdObj   the file descriptor to be opened for reading.
     # @throws     SecurityException      if a security manager exists and its
-    # <code>checkRead</code> method denies read access to the
-    # file descriptor.
+    #                 <code>checkRead</code> method denies read access to the
+    #                 file descriptor.
     # @see        SecurityManager#checkRead(java.io.FileDescriptor)
     def initialize(fd_obj)
       @fd = nil
@@ -228,7 +228,7 @@ module Java::Io
     # if no input is yet available.
     # 
     # @return     the next byte of data, or <code>-1</code> if the end of the
-    # file is reached.
+    #             file is reached.
     # @exception  IOException  if an I/O error occurs.
     def read
       JNI.call_native_method(:Java_java_io_FileInputStream_read, JNI.env, self.jni_id)
@@ -252,8 +252,8 @@ module Java::Io
     # 
     # @param      b   the buffer into which the data is read.
     # @return     the total number of bytes read into the buffer, or
-    # <code>-1</code> if there is no more data because the end of
-    # the file has been reached.
+    #             <code>-1</code> if there is no more data because the end of
+    #             the file has been reached.
     # @exception  IOException  if an I/O error occurs.
     def read(b)
       return read_bytes(b, 0, b.attr_length)
@@ -269,8 +269,8 @@ module Java::Io
     # @param      off   the start offset in the destination array <code>b</code>
     # @param      len   the maximum number of bytes read.
     # @return     the total number of bytes read into the buffer, or
-    # <code>-1</code> if there is no more data because the end of
-    # the file has been reached.
+    #             <code>-1</code> if there is no more data because the end of
+    #             the file has been reached.
     # @exception  NullPointerException If <code>b</code> is <code>null</code>.
     # @exception  IndexOutOfBoundsException If <code>off</code> is negative,
     # <code>len</code> is negative, or <code>len</code> is greater than
@@ -301,7 +301,7 @@ module Java::Io
     # @param      n   the number of bytes to be skipped.
     # @return     the actual number of bytes skipped.
     # @exception  IOException  if n is negative, if the stream does not
-    # support seek, or if an I/O error occurs.
+    #             support seek, or if an I/O error occurs.
     def skip(n)
       JNI.call_native_method(:Java_java_io_FileInputStream_skip, JNI.env, self.jni_id, n.to_int)
     end
@@ -319,9 +319,9 @@ module Java::Io
     # files over slow networks.
     # 
     # @return     an estimate of the number of remaining bytes that can be read
-    # (or skipped over) from this input stream without blocking.
+    #             (or skipped over) from this input stream without blocking.
     # @exception  IOException  if this file input stream has been closed by calling
-    # {@code close} or an I/O error occurs.
+    #             {@code close} or an I/O error occurs.
     def available
       JNI.call_native_method(:Java_java_io_FileInputStream_available, JNI.env, self.jni_id)
     end

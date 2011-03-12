@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # This file is available under and governed by the GNU General Public
 # License version 2 only, as published by the Free Software Foundation.
 # However, the following notice accompanied the original version of this
@@ -59,20 +57,20 @@ module Java::Util::Concurrent
   # <pre>
   # interface ArchiveSearcher { String search(String target); }
   # class App {
-  # ExecutorService executor = ...
-  # ArchiveSearcher searcher = ...
-  # void showSearch(final String target)
-  # throws InterruptedException {
-  # Future&lt;String&gt; future
-  # = executor.submit(new Callable&lt;String&gt;() {
-  # public String call() {
-  # return searcher.search(target);
-  # }});
-  # displayOtherThings(); // do other things while searching
-  # try {
-  # displayText(future.get()); // use future
-  # } catch (ExecutionException ex) { cleanup(); return; }
-  # }
+  #   ExecutorService executor = ...
+  #   ArchiveSearcher searcher = ...
+  #   void showSearch(final String target)
+  #       throws InterruptedException {
+  #     Future&lt;String&gt; future
+  #       = executor.submit(new Callable&lt;String&gt;() {
+  #         public String call() {
+  #             return searcher.search(target);
+  #         }});
+  #     displayOtherThings(); // do other things while searching
+  #     try {
+  #       displayText(future.get()); // use future
+  #     } catch (ExecutionException ex) { cleanup(); return; }
+  #   }
   # }
   # </pre>
   # 
@@ -80,12 +78,12 @@ module Java::Util::Concurrent
   # implements <tt>Runnable</tt>, and so may be executed by an <tt>Executor</tt>.
   # For example, the above construction with <tt>submit</tt> could be replaced by:
   # <pre>
-  # FutureTask&lt;String&gt; future =
-  # new FutureTask&lt;String&gt;(new Callable&lt;String&gt;() {
-  # public String call() {
-  # return searcher.search(target);
-  # }});
-  # executor.execute(future);
+  #     FutureTask&lt;String&gt; future =
+  #       new FutureTask&lt;String&gt;(new Callable&lt;String&gt;() {
+  #         public String call() {
+  #           return searcher.search(target);
+  #       }});
+  #     executor.execute(future);
   # </pre>
   # 
   # <p>Memory consistency effects: Actions taken by the asynchronous computation

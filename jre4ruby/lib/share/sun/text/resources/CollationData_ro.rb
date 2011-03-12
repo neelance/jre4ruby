@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996 - 1998 - All Rights Reserved
 # 
@@ -49,12 +47,6 @@ module Sun::Text::Resources
     
     typesig { [] }
     def get_contents
-      # a < a-breve
-      # d < d-stroke
-      # i < i-circumflex
-      # s < s-cedilla
-      # thorn < t-cedilla
-      # tal : ezh-tail < z-dot-above
       return Array.typed(Array.typed(Object)).new([Array.typed(Object).new(["Rule", ("& A < a".to_u << 0x0306 << " , A".to_u << 0x0306 << " ") + ("& D < ".to_u << 0x0111 << ", ".to_u << 0x0110 << " ") + ("& I < i".to_u << 0x0302 << " , I".to_u << 0x0302 << " ") + ("& S < s".to_u << 0x0327 << " , S".to_u << 0x0327 << " ") + ("& ".to_u << 0x00de << " < t".to_u << 0x0327 << " , T".to_u << 0x0327 << "") + ("& Z < z".to_u << 0x0307 << " , Z".to_u << 0x0307 << " ")])])
     end
     

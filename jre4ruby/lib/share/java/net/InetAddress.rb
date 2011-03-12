@@ -66,29 +66,29 @@ module Java::Net
   # <h4> Address types </h4>
   # 
   # <blockquote><table cellspacing=2 summary="Description of unicast and multicast address types">
-  # <tr><th valign=top><i>unicast</i></th>
-  # <td>An identifier for a single interface. A packet sent to
-  # a unicast address is delivered to the interface identified by
-  # that address.
+  #   <tr><th valign=top><i>unicast</i></th>
+  #       <td>An identifier for a single interface. A packet sent to
+  #         a unicast address is delivered to the interface identified by
+  #         that address.
   # 
-  # <p> The Unspecified Address -- Also called anylocal or wildcard
-  # address. It must never be assigned to any node. It indicates the
-  # absence of an address. One example of its use is as the target of
-  # bind, which allows a server to accept a client connection on any
-  # interface, in case the server host has multiple interfaces.
+  #         <p> The Unspecified Address -- Also called anylocal or wildcard
+  #         address. It must never be assigned to any node. It indicates the
+  #         absence of an address. One example of its use is as the target of
+  #         bind, which allows a server to accept a client connection on any
+  #         interface, in case the server host has multiple interfaces.
   # 
-  # <p> The <i>unspecified</i> address must not be used as
-  # the destination address of an IP packet.
+  #         <p> The <i>unspecified</i> address must not be used as
+  #         the destination address of an IP packet.
   # 
-  # <p> The <i>Loopback</i> Addresses -- This is the address
-  # assigned to the loopback interface. Anything sent to this
-  # IP address loops around and becomes IP input on the local
-  # host. This address is often used when testing a
-  # client.</td></tr>
-  # <tr><th valign=top><i>multicast</i></th>
-  # <td>An identifier for a set of interfaces (typically belonging
-  # to different nodes). A packet sent to a multicast address is
-  # delivered to all interfaces identified by that address.</td></tr>
+  #         <p> The <i>Loopback</i> Addresses -- This is the address
+  #         assigned to the loopback interface. Anything sent to this
+  #         IP address loops around and becomes IP input on the local
+  #         host. This address is often used when testing a
+  #         client.</td></tr>
+  #   <tr><th valign=top><i>multicast</i></th>
+  #       <td>An identifier for a set of interfaces (typically belonging
+  #         to different nodes). A packet sent to a multicast address is
+  #         delivered to all interfaces identified by that address.</td></tr>
   # </table></blockquote>
   # 
   # <h4> IP address scope </h4>
@@ -148,7 +148,7 @@ module Java::Net
   # negative caching TTL value when needed.
   # 
   # <p> Two Java security properties control the TTL values used for
-  # positive and negative host name resolution caching:
+  #  positive and negative host name resolution caching:
   # 
   # <blockquote>
   # <dl>
@@ -305,7 +305,7 @@ module Java::Net
     typesig { [] }
     # Utility routine to check if the InetAddress in a wildcard address.
     # @return a <code>boolean</code> indicating if the Inetaddress is
-    # a wildcard address.
+    #         a wildcard address.
     # @since 1.4
     def is_any_local_address
       return false
@@ -345,8 +345,8 @@ module Java::Net
     # Utility routine to check if the multicast address has global scope.
     # 
     # @return a <code>boolean</code> indicating if the address has
-    # is a multicast address of global scope, false if it is not
-    # of global scope or it is not a multicast address
+    #         is a multicast address of global scope, false if it is not
+    #         of global scope or it is not a multicast address
     # @since 1.4
     def is_mcglobal
       return false
@@ -356,8 +356,8 @@ module Java::Net
     # Utility routine to check if the multicast address has node scope.
     # 
     # @return a <code>boolean</code> indicating if the address has
-    # is a multicast address of node-local scope, false if it is not
-    # of node-local scope or it is not a multicast address
+    #         is a multicast address of node-local scope, false if it is not
+    #         of node-local scope or it is not a multicast address
     # @since 1.4
     def is_mcnode_local
       return false
@@ -367,8 +367,8 @@ module Java::Net
     # Utility routine to check if the multicast address has link scope.
     # 
     # @return a <code>boolean</code> indicating if the address has
-    # is a multicast address of link-local scope, false if it is not
-    # of link-local scope or it is not a multicast address
+    #         is a multicast address of link-local scope, false if it is not
+    #         of link-local scope or it is not a multicast address
     # @since 1.4
     def is_mclink_local
       return false
@@ -378,8 +378,8 @@ module Java::Net
     # Utility routine to check if the multicast address has site scope.
     # 
     # @return a <code>boolean</code> indicating if the address has
-    # is a multicast address of site-local scope, false if it is not
-    # of site-local scope or it is not a multicast address
+    #         is a multicast address of site-local scope, false if it is not
+    #         of site-local scope or it is not a multicast address
     # @since 1.4
     def is_mcsite_local
       return false
@@ -389,9 +389,9 @@ module Java::Net
     # Utility routine to check if the multicast address has organization scope.
     # 
     # @return a <code>boolean</code> indicating if the address has
-    # is a multicast address of organization-local scope,
-    # false if it is not of organization-local scope
-    # or it is not a multicast address
+    #         is a multicast address of organization-local scope,
+    #         false if it is not of organization-local scope
+    #         or it is not a multicast address
     # @since 1.4
     def is_mcorg_local
       return false
@@ -441,12 +441,12 @@ module Java::Net
     # in an IllegalArgumentException being thrown.
     # 
     # @param   netif   the NetworkInterface through which the
-    # test will be done, or null for any interface
+    #                    test will be done, or null for any interface
     # @param   ttl     the maximum numbers of hops to try or 0 for the
-    # default
+    #                  default
     # @param   timeout the time, in milliseconds, before the call aborts
     # @throws  IllegalArgumentException if either <code>timeout</code>
-    # or <code>ttl</code> are negative.
+    #                          or <code>ttl</code> are negative.
     # @return a <code>boolean</code>indicating if the address is reachable.
     # @throws IOException if a network error occurs
     # @since 1.5
@@ -479,8 +479,8 @@ module Java::Net
     # the textual representation of the IP address.
     # 
     # @return  the host name for this IP address, or if the operation
-    # is not allowed by the security check, the textual
-    # representation of the IP address.
+    #    is not allowed by the security check, the textual
+    #    representation of the IP address.
     # 
     # @see InetAddress#getCanonicalHostName
     # @see SecurityManager#checkConnect
@@ -504,8 +504,8 @@ module Java::Net
     # the textual representation of the IP address.
     # 
     # @return  the host name for this IP address, or if the operation
-    # is not allowed by the security check, the textual
-    # representation of the IP address.
+    #    is not allowed by the security check, the textual
+    #    representation of the IP address.
     # 
     # @param check make security check if true
     # 
@@ -531,8 +531,8 @@ module Java::Net
     # the textual representation of the IP address.
     # 
     # @return  the fully qualified domain name for this IP address,
-    # or if the operation is not allowed by the security check,
-    # the textual representation of the IP address.
+    #    or if the operation is not allowed by the security check,
+    #    the textual representation of the IP address.
     # 
     # @see SecurityManager#checkConnect
     # 
@@ -557,8 +557,8 @@ module Java::Net
       # the textual representation of the IP address.
       # 
       # @return  the host name for this IP address, or if the operation
-      # is not allowed by the security check, the textual
-      # representation of the IP address.
+      #    is not allowed by the security check, the textual
+      #    representation of the IP address.
       # 
       # @param check make security check if true
       # 
@@ -647,7 +647,7 @@ module Java::Net
     # 
     # @param   obj   the object to compare against.
     # @return  <code>true</code> if the objects are the same;
-    # <code>false</code> otherwise.
+    #          <code>false</code> otherwise.
     # @see     java.net.InetAddress#getAddress()
     def ==(obj)
       return false
@@ -875,8 +875,8 @@ module Java::Net
           end
           # create new entry and add it to the cache
           # -- as a HashMap replaces existing entries we
-          # don't need to explicitly check if there is
-          # already an entry for this host.
+          #    don't need to explicitly check if there is
+          #    already an entry for this host.
           expiration = 0
           if ((policy).equal?(InetAddressCachePolicy::FOREVER))
             expiration = -1
@@ -1122,10 +1122,10 @@ module Java::Net
       # @param      host   the specified host, or <code>null</code>.
       # @return     an IP address for the given host name.
       # @exception  UnknownHostException  if no IP address for the
-      # <code>host</code> could be found, or if a scope_id was specified
-      # for a global IPv6 address.
+      #               <code>host</code> could be found, or if a scope_id was specified
+      #               for a global IPv6 address.
       # @exception  SecurityException if a security manager exists
-      # and its checkConnect method doesn't allow the operation
+      #             and its checkConnect method doesn't allow the operation
       def get_by_name(host)
         return InetAddress.get_all_by_name(host)[0]
       end
@@ -1168,10 +1168,10 @@ module Java::Net
       # @return     an array of all the IP addresses for a given host name.
       # 
       # @exception  UnknownHostException  if no IP address for the
-      # <code>host</code> could be found, or if a scope_id was specified
-      # for a global IPv6 address.
+      #               <code>host</code> could be found, or if a scope_id was specified
+      #               for a global IPv6 address.
       # @exception  SecurityException  if a security manager exists and its
-      # <code>checkConnect</code> method doesn't allow the operation.
+      #               <code>checkConnect</code> method doesn't allow the operation.
       # 
       # @see SecurityManager#checkConnect
       def get_all_by_name(host)
@@ -1321,22 +1321,22 @@ module Java::Net
         ex = nil
         # Check whether the host is in the lookupTable.
         # 1) If the host isn't in the lookupTable when
-        # checkLookupTable() is called, checkLookupTable()
-        # would add the host in the lookupTable and
-        # return null. So we will do the lookup.
+        #    checkLookupTable() is called, checkLookupTable()
+        #    would add the host in the lookupTable and
+        #    return null. So we will do the lookup.
         # 2) If the host is in the lookupTable when
-        # checkLookupTable() is called, the current thread
-        # would be blocked until the host is removed
-        # from the lookupTable. Then this thread
-        # should try to look up the addressCache.
-        # i) if it found the address in the
-        # addressCache, checkLookupTable()  would
-        # return the address.
-        # ii) if it didn't find the address in the
-        # addressCache for any reason,
-        # it should add the host in the
-        # lookupTable and return null so the
-        # following code would do  a lookup itself.
+        #    checkLookupTable() is called, the current thread
+        #    would be blocked until the host is removed
+        #    from the lookupTable. Then this thread
+        #    should try to look up the addressCache.
+        #     i) if it found the address in the
+        #        addressCache, checkLookupTable()  would
+        #        return the address.
+        #     ii) if it didn't find the address in the
+        #         addressCache for any reason,
+        #         it should add the host in the
+        #         lookupTable and return null so the
+        #         following code would do  a lookup itself.
         if (((obj = check_lookup_table(host))).nil?)
           # This is the first thread which looks up the address
           # this host or the cache entry for this host has been
@@ -1508,7 +1508,7 @@ module Java::Net
       # @return     the address of the local host.
       # 
       # @exception  UnknownHostException  if the local host name could not
-      # be resolved into an address.
+      #             be resolved into an address.
       # 
       # @see SecurityManager#checkConnect
       # @see java.net.InetAddress#getByName(java.lang.String)

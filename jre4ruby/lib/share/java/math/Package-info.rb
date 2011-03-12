@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # Provides classes for performing arbitrary-precision integer
 # arithmetic ({@code BigInteger}) and arbitrary-precision decimal
 # arithmetic ({@code BigDecimal}).  {@code BigInteger} is analogous
@@ -42,11 +40,4 @@ require "rjava"
 # 
 # @since JDK1.1
 module Java::Math
-  module Package-infoImports #:nodoc:
-    class_module.module_eval {
-      include ::Java::Lang
-      include ::Java::Math
-    }
-  end
-  
 end

@@ -22,11 +22,8 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
-# 
 # (C) Copyright IBM Corp. 1996-2005 - All Rights Reserved                     *
-# *
+#                                                                             *
 # The original version of this source code and documentation is copyrighted   *
 # and owned by IBM, These materials are provided under terms of a License     *
 # Agreement between IBM and Sun. This technology is protected by multiple     *
@@ -58,14 +55,14 @@ module Sun::Text::Normalizer
   # "composed" form):
   # 
   # <p>
-  # 00C1    LATIN CAPITAL LETTER A WITH ACUTE
+  #      00C1    LATIN CAPITAL LETTER A WITH ACUTE
   # </p>
   # 
   # or as two separate characters (the "decomposed" form):
   # 
   # <p>
-  # 0041    LATIN CAPITAL LETTER A
-  # 0301    COMBINING ACUTE ACCENT
+  #      0041    LATIN CAPITAL LETTER A
+  #      0301    COMBINING ACUTE ACCENT
   # </p>
   # 
   # To a user of your program, however, both of these sequences should be
@@ -79,15 +76,15 @@ module Sun::Text::Normalizer
   # Similarly, the string "ffi" can be encoded as three separate letters:
   # 
   # <p>
-  # 0066    LATIN SMALL LETTER F
-  # 0066    LATIN SMALL LETTER F
-  # 0069    LATIN SMALL LETTER I
+  #      0066    LATIN SMALL LETTER F
+  #      0066    LATIN SMALL LETTER F
+  #      0069    LATIN SMALL LETTER I
   # </p>
   # 
   # or as the single character
   # 
   # <p>
-  # FB03    LATIN SMALL LIGATURE FFI
+  #      FB03    LATIN SMALL LIGATURE FFI
   # </p>
   # 
   # The ffi ligature is not a distinct semantic character, and strictly speaking
@@ -588,7 +585,6 @@ module Sun::Text::Normalizer
     # -------------------------------------------------------------------------
     # Constructors
     # -------------------------------------------------------------------------
-    # 
     # Creates a new <tt>Normalizer</tt> object for iterating over the
     # normalized form of a given string.
     # <p>
@@ -596,14 +592,14 @@ module Sun::Text::Normalizer
     # <tt>Normalizer</tt> features are to be enabled for this object.
     # <p>
     # @param str  The string to be normalized.  The normalization
-    # will start at the beginning of the string.
+    #              will start at the beginning of the string.
     # 
     # @param mode The normalization mode.
     # 
     # @param opt Any optional features to be enabled.
-    # Currently the only available option is {@link #UNICODE_3_2}.
-    # If you want the default behavior corresponding to one of the
-    # standard Unicode Normalization Forms, use 0 for this argument.
+    #            Currently the only available option is {@link #UNICODE_3_2}.
+    #            If you want the default behavior corresponding to one of the
+    #            standard Unicode Normalization Forms, use 0 for this argument.
     # @stable ICU 2.6
     def initialize(str, mode, opt)
       @buffer = CharArray.new(100)
@@ -625,7 +621,7 @@ module Sun::Text::Normalizer
     # normalized form of the given text.
     # <p>
     # @param iter  The input text to be normalized.  The normalization
-    # will start at the beginning of the string.
+    #              will start at the beginning of the string.
     # 
     # @param mode  The normalization mode.
     def initialize(iter, mode)
@@ -637,14 +633,14 @@ module Sun::Text::Normalizer
     # normalized form of the given text.
     # <p>
     # @param iter  The input text to be normalized.  The normalization
-    # will start at the beginning of the string.
+    #              will start at the beginning of the string.
     # 
     # @param mode  The normalization mode.
     # 
     # @param opt Any optional features to be enabled.
-    # Currently the only available option is {@link #UNICODE_3_2}.
-    # If you want the default behavior corresponding to one of the
-    # standard Unicode Normalization Forms, use 0 for this argument.
+    #            Currently the only available option is {@link #UNICODE_3_2}.
+    #            If you want the default behavior corresponding to one of the
+    #            standard Unicode Normalization Forms, use 0 for this argument.
     # @stable ICU 2.6
     def initialize(iter, mode, opt)
       @buffer = CharArray.new(100)
@@ -690,13 +686,12 @@ module Sun::Text::Normalizer
       # --------------------------------------------------------------------------
       # Static Utility methods
       # --------------------------------------------------------------------------
-      # 
       # Compose a string.
       # The string will be composed to according the the specified mode.
       # @param str        The string to compose.
       # @param compat     If true the string will be composed accoding to
-      # NFKC rules and if false will be composed according to
-      # NFC rules.
+      #                    NFKC rules and if false will be composed according to
+      #                    NFC rules.
       # @param options    The only recognized option is UNICODE_3_2
       # @return String    The composed string
       # @stable ICU 2.6
@@ -739,8 +734,8 @@ module Sun::Text::Normalizer
       # The string will be decomposed to according the the specified mode.
       # @param str       The string to decompose.
       # @param compat    If true the string will be decomposed accoding to NFKD
-      # rules and if false will be decomposed according to NFD
-      # rules.
+      #                   rules and if false will be decomposed according to NFD
+      #                   rules.
       # @return String   The decomposed string
       # @stable ICU 2.8
       def decompose(str, compat)
@@ -752,8 +747,8 @@ module Sun::Text::Normalizer
       # The string will be decomposed to according the the specified mode.
       # @param str     The string to decompose.
       # @param compat  If true the string will be decomposed accoding to NFKD
-      # rules and if false will be decomposed according to NFD
-      # rules.
+      #                 rules and if false will be decomposed according to NFD
+      #                 rules.
       # @param options The normalization options, ORed together (0 for no options).
       # @return String The decomposed string
       # @stable ICU 2.6
@@ -797,13 +792,13 @@ module Sun::Text::Normalizer
       # @param destStart Start index of the destination buffer
       # @param destLimit End index of the destination buffer
       # @param mode      The normalization mode; one of Normalizer.NONE,
-      # Normalizer.NFD, Normalizer.NFC, Normalizer.NFKC,
-      # Normalizer.NFKD, Normalizer.DEFAULT
+      #                   Normalizer.NFD, Normalizer.NFC, Normalizer.NFKC,
+      #                   Normalizer.NFKD, Normalizer.DEFAULT
       # @param options The normalization options, ORed together (0 for no options).
       # @return int      The total buffer size needed;if greater than length of
-      # result, the output was truncated.
+      #                   result, the output was truncated.
       # @exception       IndexOutOfBoundsException if the target capacity is
-      # less than the required length
+      #                   less than the required length
       # @stable ICU 2.6
       def normalize(src, src_start, src_limit, dest, dest_start, dest_limit, mode, options)
         length_ = mode.normalize(src, src_start, src_limit, dest, dest_start, dest_limit, options)
@@ -819,7 +814,6 @@ module Sun::Text::Normalizer
     # -------------------------------------------------------------------------
     # Iteration API
     # -------------------------------------------------------------------------
-    # 
     # Return the current character in the normalized text->
     # @return The codepoint as an int
     # @stable ICU 2.8
@@ -901,10 +895,10 @@ module Sun::Text::Normalizer
     # @param index the desired index in the input text->
     # 
     # @return   the first normalized character that is the result of iterating
-    # forward starting at the given index.
+    #            forward starting at the given index.
     # 
     # @throws IllegalArgumentException if the given index is less than
-    # {@link #getBeginIndex} or greater than {@link #getEndIndex}.
+    #          {@link #getBeginIndex} or greater than {@link #getEndIndex}.
     # @return The codepoint as an int
     # @deprecated ICU 3.2
     # @obsolete ICU 3.2
@@ -971,7 +965,6 @@ module Sun::Text::Normalizer
     # -------------------------------------------------------------------------
     # Property access methods
     # -------------------------------------------------------------------------
-    # 
     # Set the normalization mode for this object.
     # <p>
     # <b>Note:</b>If the normalization mode is changed while iterating
@@ -984,14 +977,14 @@ module Sun::Text::Normalizer
     # @param newMode the new mode for this <tt>Normalizer</tt>.
     # The supported modes are:
     # <ul>
-    # <li>{@link #COMPOSE}        - Unicode canonical decompositiion
-    # followed by canonical composition.
-    # <li>{@link #COMPOSE_COMPAT} - Unicode compatibility decompositiion
-    # follwed by canonical composition.
-    # <li>{@link #DECOMP}         - Unicode canonical decomposition
-    # <li>{@link #DECOMP_COMPAT}  - Unicode compatibility decomposition.
-    # <li>{@link #NO_OP}          - Do nothing but return characters
-    # from the underlying input text.
+    #  <li>{@link #COMPOSE}        - Unicode canonical decompositiion
+    #                                  followed by canonical composition.
+    #  <li>{@link #COMPOSE_COMPAT} - Unicode compatibility decompositiion
+    #                                  follwed by canonical composition.
+    #  <li>{@link #DECOMP}         - Unicode canonical decomposition
+    #  <li>{@link #DECOMP_COMPAT}  - Unicode compatibility decomposition.
+    #  <li>{@link #NO_OP}          - Do nothing but return characters
+    #                                  from the underlying input text.
     # </ul>
     # 
     # @see #getMode
@@ -1044,15 +1037,13 @@ module Sun::Text::Normalizer
       # Private utility methods
       # -------------------------------------------------------------------------
       # backward iteration ---------------------------------------------------
-      # 
       # read backwards and get norm32
       # return 0 if the character is <minC
       # if c2!=0 then (c2, c) is a surrogate pair (reversed - c2 is first
       # surrogate but read second!)
-      # 
-      # unsigned
-      # unsigned
       def get_prev_norm32(src, min_c, mask, chars)
+        # unsigned
+        # unsigned
         norm32 = 0
         ch = 0
         # need src.hasPrevious()
@@ -1098,8 +1089,6 @@ module Sun::Text::Normalizer
         include_class_members NormalizerBase
         
         typesig { [UCharacterIterator, ::Java::Int, ::Java::Int, Array.typed(::Java::Char)] }
-        # unsigned
-        # unsigned
         def is_prev_boundary(src, min_c, mask, chars)
           raise NotImplementedError
         end
@@ -1114,10 +1103,9 @@ module Sun::Text::Normalizer
         # read backwards and check if the lead combining class is 0
         # if c2!=0 then (c2, c) is a surrogate pair (reversed - c2 is first
         # surrogate but read second!)
-        # 
-        # unsigned
-        # unsigned
         def is_prev_boundary(src, min_c, cc_or_qcmask, chars)
+          # unsigned
+          # unsigned
           return NormalizerImpl.is_nfdsafe(get_prev_norm32(src, min_c, cc_or_qcmask, chars), cc_or_qcmask, cc_or_qcmask & NormalizerImpl::QC_MASK)
         end
         
@@ -1138,15 +1126,12 @@ module Sun::Text::Normalizer
         # begins with) a "true starter" (cc==0 and NF*C_YES)
         # if c2!=0 then (c2, c) is a surrogate pair (reversed - c2 is first
         # surrogate but read second!)
-        # 
-        # unsigned
-        # unsigned
         def is_prev_boundary(src, min_c, cc_or_qcmask, chars)
-          norm32 = 0
           # unsigned
+          # unsigned
+          norm32 = 0 # unsigned
           decomp_qcmask = 0
-          decomp_qcmask = (cc_or_qcmask << 2) & 0xf
-          # decomposition quick check mask
+          decomp_qcmask = (cc_or_qcmask << 2) & 0xf # decomposition quick check mask
           norm32 = get_prev_norm32(src, min_c, cc_or_qcmask | decomp_qcmask, chars)
           return NormalizerImpl.is_true_starter(norm32, cc_or_qcmask, decomp_qcmask)
         end
@@ -1160,9 +1145,9 @@ module Sun::Text::Normalizer
       end }
       
       typesig { [UCharacterIterator, IsPrevBoundary, ::Java::Int, ::Java::Int, Array.typed(::Java::Char), Array.typed(::Java::Int)] }
-      # unsigned
-      # mask
       def find_previous_iteration_boundary(src, obj, min_c, mask, buffer, start_index)
+        # unsigned
+        # mask
         chars = CharArray.new(2)
         is_boundary = false
         # fill the buffer from the end backwards
@@ -1199,8 +1184,7 @@ module Sun::Text::Normalizer
       def previous(src, dest, dest_start, dest_limit, mode, do_normalize, p_needed_to_normalize, options)
         is_previous_boundary = nil
         dest_length = 0
-        buffer_length = 0
-        # unsigned
+        buffer_length = 0 # unsigned
         mask = 0
         c = 0
         c2 = 0
@@ -1258,15 +1242,12 @@ module Sun::Text::Normalizer
       end
       
       # forward iteration ----------------------------------------------------
-      # 
       # read forward and check if the character is a next-iteration boundary
       # if c2!=0 then (c, c2) is a surrogate pair
       const_set_lazy(:IsNextBoundary) { Module.new do
         include_class_members NormalizerBase
         
         typesig { [UCharacterIterator, ::Java::Int, ::Java::Int, Array.typed(::Java::Int)] }
-        # unsigned
-        # unsigned
         def is_next_boundary(src, min_c, mask, chars)
           raise NotImplementedError
         end
@@ -1277,11 +1258,10 @@ module Sun::Text::Normalizer
       # return 0 if the character is <minC
       # if c2!=0 then (c2, c) is a surrogate pair
       # always reads complete characters
-      # 
-      # unsigned
-      # unsigned
       # unsigned
       def get_next_norm32(src, min_c, mask, chars)
+        # unsigned
+        # unsigned
         norm32 = 0
         # need src.hasNext() to be true
         chars[0] = src.next_
@@ -1292,8 +1272,7 @@ module Sun::Text::Normalizer
         norm32 = NormalizerImpl.get_norm32(RJava.cast_to_char(chars[0]))
         if (UTF16.is_lead_surrogate(RJava.cast_to_char(chars[0])))
           if (!(src.current).equal?(UCharacterIterator::DONE) && UTF16.is_trail_surrogate(RJava.cast_to_char((chars[1] = src.current))))
-            src.move_index(1)
-            # skip the c2 surrogate
+            src.move_index(1) # skip the c2 surrogate
             if (((norm32 & mask)).equal?(0))
               # irrelevant data
               return 0
@@ -1317,9 +1296,9 @@ module Sun::Text::Normalizer
         include IsNextBoundary
         
         typesig { [class_self::UCharacterIterator, ::Java::Int, ::Java::Int, Array.typed(::Java::Int)] }
-        # unsigned
-        # unsigned
         def is_next_boundary(src, min_c, cc_or_qcmask, chars)
+          # unsigned
+          # unsigned
           return NormalizerImpl.is_nfdsafe(get_next_norm32(src, min_c, cc_or_qcmask, chars), cc_or_qcmask, cc_or_qcmask & NormalizerImpl::QC_MASK)
         end
         
@@ -1340,14 +1319,12 @@ module Sun::Text::Normalizer
         include IsNextBoundary
         
         typesig { [class_self::UCharacterIterator, ::Java::Int, ::Java::Int, Array.typed(::Java::Int)] }
-        # unsigned
-        # unsigned
         def is_next_boundary(src, min_c, cc_or_qcmask, chars)
-          norm32 = 0
           # unsigned
+          # unsigned
+          norm32 = 0 # unsigned
           decomp_qcmask = 0
-          decomp_qcmask = (cc_or_qcmask << 2) & 0xf
-          # decomposition quick check mask
+          decomp_qcmask = (cc_or_qcmask << 2) & 0xf # decomposition quick check mask
           norm32 = get_next_norm32(src, min_c, cc_or_qcmask | decomp_qcmask, chars)
           return NormalizerImpl.is_true_starter(norm32, cc_or_qcmask, decomp_qcmask)
         end
@@ -1361,9 +1338,9 @@ module Sun::Text::Normalizer
       end }
       
       typesig { [UCharacterIterator, IsNextBoundary, ::Java::Int, ::Java::Int, Array.typed(::Java::Char)] }
-      # unsigned
-      # unsigned
       def find_next_iteration_boundary(src, obj, min_c, mask, buffer)
+        # unsigned
+        # unsigned
         if ((src.current).equal?(UCharacterIterator::DONE))
           return 0
         end
@@ -1376,8 +1353,7 @@ module Sun::Text::Normalizer
           if (UTF16.is_trail_surrogate(RJava.cast_to_char((chars[1] = src.next_))))
             buffer[((buffer_index += 1) - 1)] = RJava.cast_to_char(chars[1])
           else
-            src.move_index(-1)
-            # back out the non-trail-surrogate
+            src.move_index(-1) # back out the non-trail-surrogate
           end
         end
         # get all following characters until we see a boundary
@@ -1411,10 +1387,8 @@ module Sun::Text::Normalizer
       
       typesig { [UCharacterIterator, Array.typed(::Java::Char), ::Java::Int, ::Java::Int, NormalizerBase::Mode, ::Java::Boolean, Array.typed(::Java::Boolean), ::Java::Int] }
       def next_(src, dest, dest_start, dest_limit, mode, do_normalize, p_needed_to_normalize, options)
-        is_next_boundary_ = nil
-        # unsigned
-        mask = 0
-        # unsigned
+        is_next_boundary_ = nil # unsigned
+        mask = 0 # unsigned
         buffer_length = 0
         c = 0
         c2 = 0
@@ -1524,8 +1498,8 @@ module Sun::Text::Normalizer
         return mode.is_nfskippable(c)
       end
       
-      # Options
       # 
+      # Options
       # 
       # Default option for Unicode 3.2.0 normalization.
       # Corrigendum 4 was fixed in Unicode 3.2.0 but isn't supported in
@@ -1539,22 +1513,22 @@ module Sun::Text::Normalizer
       # Default option for the latest Unicode normalization. This option is
       # provided mainly for testing.
       # The value zero means that normalization is done with the fixes for
-      # - Corrigendum 4 (Five CJK Canonical Mapping Errors)
-      # - Corrigendum 5 (Normalization Idempotency)
+      #   - Corrigendum 4 (Five CJK Canonical Mapping Errors)
+      #   - Corrigendum 5 (Normalization Idempotency)
       const_set_lazy(:UNICODE_LATEST) { 0x0 }
       const_attr_reader  :UNICODE_LATEST
     }
     
     typesig { [String, Mode] }
+    # 
     # public constructor and methods for java.text.Normalizer and
     # sun.text.Normalizer
-    # 
     # 
     # Creates a new <tt>Normalizer</tt> object for iterating over the
     # normalized form of a given string.
     # 
     # @param str  The string to be normalized.  The normalization
-    # will start at the beginning of the string.
+    #              will start at the beginning of the string.
     # 
     # @param mode The normalization mode.
     def initialize(str, mode)

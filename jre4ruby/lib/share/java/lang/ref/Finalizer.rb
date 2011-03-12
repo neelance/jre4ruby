@@ -39,8 +39,8 @@ module Java::Lang::Ref
       JNI.load_native_method :Java_java_lang_ref_Finalizer_invokeFinalizeMethod, [:pointer, :long, :long], :void
       typesig { [Object] }
       # Package-private; must be in
-      # same package as the Reference
-      # class
+      #                                               same package as the Reference
+      #                                               class
       # A native method that invokes an arbitrary object's finalize method is
       # required since the finalize method is protected
       def invoke_finalize_method(o)
@@ -125,8 +125,7 @@ module Java::Lang::Ref
         if (!(@prev).nil?)
           @prev.attr_next = @next
         end
-        @next = self
-        # Indicates that this has been finalized
+        @next = self # Indicates that this has been finalized
         @prev = self
       end
     end

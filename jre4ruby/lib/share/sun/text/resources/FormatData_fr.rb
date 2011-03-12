@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996 - 1998 - All Rights Reserved
 # 
@@ -50,71 +48,7 @@ module Sun::Text::Resources
     typesig { [] }
     # Overrides ListResourceBundle
     def get_contents
-      # january
-      # february
-      # march
-      # april
-      # may
-      # june
-      # july
-      # august
-      # september
-      # october
-      # november
-      # december
-      # month 13 if applicable
-      # abb january
-      # abb february
-      # abb march
-      # abb april
-      # abb may
-      # abb june
-      # abb july
-      # abb august
-      # abb september
-      # abb october
-      # abb november
-      # abb december
-      # abb mo month 13 if applicable
-      # Sunday
-      # Monday
-      # Tuesday
-      # Wednesday
-      # Thursday
-      # Friday
-      # Saturday
-      # abb Sunday
-      # abb Monday
-      # abb Tuesday
-      # abb Wednesday
-      # abb Thursday
-      # abb Friday
-      # abb Saturday
-      # era strings
-      # decimal pattern
-      # currency pattern
-      # percent pattern
-      # decimal separator
-      # group (thousands) separator
-      # list separator
-      # percent sign
-      # native 0 digit
-      # pattern digit
-      # minus sign
-      # exponential
-      # per mille
-      # infinity
-      # NaN
-      # full time pattern
-      # long time pattern
-      # medium time pattern
-      # short time pattern
-      # full date pattern
-      # long date pattern
-      # medium date pattern
-      # short date pattern
-      # date-time pattern
-      return Array.typed(Array.typed(Object)).new([Array.typed(Object).new(["MonthNames", Array.typed(String).new(["janvier", ("f".to_u << 0x00e9 << "vrier"), "mars", "avril", "mai", "juin", "juillet", ("ao".to_u << 0x00fb << "t"), "septembre", "octobre", "novembre", ("d".to_u << 0x00e9 << "cembre"), ""])]), Array.typed(Object).new(["MonthAbbreviations", Array.typed(String).new(["janv.", ("f".to_u << 0x00e9 << "vr."), "mars", "avr.", "mai", "juin", "juil.", ("ao".to_u << 0x00fb << "t"), "sept.", "oct.", "nov.", ("d".to_u << 0x00e9 << "c."), ""])]), Array.typed(Object).new(["DayNames", Array.typed(String).new(["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"])]), Array.typed(Object).new(["DayAbbreviations", Array.typed(String).new(["dim.", "lun.", "mar.", "mer.", "jeu.", "ven.", "sam."])]), Array.typed(Object).new(["Eras", Array.typed(String).new(["BC", "ap. J.-C."])]), Array.typed(Object).new(["NumberPatterns", Array.typed(String).new(["#,##0.###;-#,##0.###", ("#,##0.00 ".to_u << 0x00A4 << ";-#,##0.00 ".to_u << 0x00A4 << ""), "#,##0 %"])]), Array.typed(Object).new(["NumberElements", Array.typed(String).new([",", ("".to_u << 0x00a0 << ""), ";", "%", "0", "#", "-", "E", ("".to_u << 0x2030 << ""), ("".to_u << 0x221e << ""), ("".to_u << 0xfffd << "")])]), Array.typed(Object).new(["DateTimePatterns", Array.typed(String).new(["HH' h 'mm z", "HH:mm:ss z", "HH:mm:ss", "HH:mm", "EEEE d MMMM yyyy", "d MMMM yyyy", "d MMM yyyy", "dd/MM/yy", "{1} {0}"])]), Array.typed(Object).new(["DateTimePatternChars", "GaMjkHmsSEDFwWxhKzZ"]), ])
+      return Array.typed(Array.typed(Object)).new([Array.typed(Object).new(["MonthNames", Array.typed(String).new(["janvier", ("f".to_u << 0x00e9 << "vrier"), "mars", "avril", "mai", "juin", "juillet", ("ao".to_u << 0x00fb << "t"), "septembre", "octobre", "novembre", ("d".to_u << 0x00e9 << "cembre"), ""])]), Array.typed(Object).new(["MonthAbbreviations", Array.typed(String).new(["janv.", ("f".to_u << 0x00e9 << "vr."), "mars", "avr.", "mai", "juin", "juil.", ("ao".to_u << 0x00fb << "t"), "sept.", "oct.", "nov.", ("d".to_u << 0x00e9 << "c."), ""])]), Array.typed(Object).new(["DayNames", Array.typed(String).new(["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"])]), Array.typed(Object).new(["DayAbbreviations", Array.typed(String).new(["dim.", "lun.", "mar.", "mer.", "jeu.", "ven.", "sam."])]), Array.typed(Object).new(["Eras", Array.typed(String).new(["BC", "ap. J.-C."])]), Array.typed(Object).new(["NumberPatterns", Array.typed(String).new(["#,##0.###;-#,##0.###", ("#,##0.00 ".to_u << 0x00A4 << ";-#,##0.00 ".to_u << 0x00A4 << ""), "#,##0 %"])]), Array.typed(Object).new(["NumberElements", Array.typed(String).new([",", ("".to_u << 0x00a0 << ""), ";", "%", "0", "#", "-", "E", ("".to_u << 0x2030 << ""), ("".to_u << 0x221e << ""), ("".to_u << 0xfffd << "")])]), Array.typed(Object).new(["DateTimePatterns", Array.typed(String).new(["HH' h 'mm z", "HH:mm:ss z", "HH:mm:ss", "HH:mm", "EEEE d MMMM yyyy", "d MMMM yyyy", "d MMM yyyy", "dd/MM/yy", "{1} {0}"])]), Array.typed(Object).new(["DateTimePatternChars", "GaMjkHmsSEDFwWxhKzZ"])])
     end
     
     typesig { [] }

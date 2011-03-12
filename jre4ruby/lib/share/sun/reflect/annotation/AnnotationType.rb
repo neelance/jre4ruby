@@ -87,7 +87,7 @@ module Sun::Reflect::Annotation
       # Returns an AnnotationType instance for the specified annotation type.
       # 
       # @throw IllegalArgumentException if the specified class object for
-      # does not represent a valid annotation type
+      #     does not represent a valid annotation type
       def get_instance(annotation_class)
         synchronized(self) do
           result = Sun::Misc::SharedSecrets.get_java_lang_access.get_annotation_type(annotation_class)
@@ -104,7 +104,7 @@ module Sun::Reflect::Annotation
     # 
     # @param annotationClass the class object for the annotation type
     # @throw IllegalArgumentException if the specified class object for
-    # does not represent a valid annotation type
+    #     does not represent a valid annotation type
     def initialize(annotation_class)
       @member_types = HashMap.new
       @member_defaults = HashMap.new

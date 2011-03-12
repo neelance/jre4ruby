@@ -240,8 +240,7 @@ module Sun::Security::X509
             # subsequent narrows current
             # remove narrower name (subsequent)
             remove(j)
-            j -= 1
-            # continue check with new subsequent
+            j -= 1 # continue check with new subsequent
             j += 1
             next
             # subsequent widens current
@@ -258,12 +257,10 @@ module Sun::Security::X509
           end
           break
           j += 1
-        end
-        # end of this pass of subsequent elements
+        end # end of this pass of subsequent elements
         if (remove1)
           remove(i)
-          i -= 1
-          # check the new i value
+          i -= 1 # check the new i value
         end
         i += 1
       end
@@ -316,31 +313,31 @@ module Sun::Security::X509
     # is performed as follows:
     # <ul>
     # <li>If a name in other narrows all names of the same type in this,
-    # the result will contain the narrower name and none of the
-    # names it narrows.
+    #     the result will contain the narrower name and none of the
+    #     names it narrows.
     # <li>If a name in other widens all names of the same type in this,
-    # the result will not contain the wider name.
+    #     the result will not contain the wider name.
     # <li>If a name in other does not share the same subtree with any name
-    # of the same type in this, then the name is added to the list
-    # of GeneralSubtrees returned.  These names should be added to
-    # the list of names that are specifically excluded.  The reason
-    # is that, if the intersection is empty, then no names of that
-    # type are permitted, and the only way to express this in
-    # NameConstraints is to include the name in excludedNames.
+    #     of the same type in this, then the name is added to the list
+    #     of GeneralSubtrees returned.  These names should be added to
+    #     the list of names that are specifically excluded.  The reason
+    #     is that, if the intersection is empty, then no names of that
+    #     type are permitted, and the only way to express this in
+    #     NameConstraints is to include the name in excludedNames.
     # <li>If a name in this has no name of the same type in other, then
-    # the result contains the name in this.  No name of a given type
-    # means the name type is completely permitted.
+    #     the result contains the name in this.  No name of a given type
+    #     means the name type is completely permitted.
     # <li>If a name in other has no name of the same type in this, then
-    # the result contains the name in other.  This means that
-    # the name is now constrained in some way, whereas before it was
-    # completely permitted.
+    #     the result contains the name in other.  This means that
+    #     the name is now constrained in some way, whereas before it was
+    #     completely permitted.
     # <ul>
     # 
     # @param other GeneralSubtrees to be intersected with this
     # @returns GeneralSubtrees to be merged with excluded; these are
-    # empty-valued name types corresponding to entries that were
-    # of the same type but did not share the same subtree between
-    # this and other. Returns null if no such.
+    #          empty-valued name types corresponding to entries that were
+    #          of the same type but did not share the same subtree between
+    #          this and other. Returns null if no such.
     def intersect(other)
       if ((other).nil?)
         raise NullPointerException.new("other GeneralSubtrees must not be null")
@@ -538,10 +535,9 @@ module Sun::Security::X509
           when GeneralNameInterface::NAME_SAME_TYPE
           end
           j += 1
-        end
+        end # end of this pass of permitted
         i += 1
-      end
-      # end of pass of excluded
+      end # end of pass of excluded
     end
     
     private

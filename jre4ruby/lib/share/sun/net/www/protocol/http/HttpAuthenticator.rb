@@ -41,7 +41,6 @@ module Sun::Net::Www::Protocol::Http
   # @deprecated -- use java.net.Authenticator instead
   # @see java.net.Authenticator
   # 
-  # 
   # REMIND:  Unless compatibility with sun.* API's from 1.2 to 2.0 is
   # a goal, there's no reason to carry this forward into JDK 2.0.
   module HttpAuthenticator
@@ -66,7 +65,7 @@ module Sun::Net::Www::Protocol::Http
     # <-- WWW-Authenticate: Basic realm="WallyWorld"
     # call schemeSupported("Basic"); (return true)
     # call authString(u, "Basic", "WallyWorld", null);
-    # return "QWadhgWERghghWERfdfQ=="
+    #   return "QWadhgWERghghWERfdfQ=="
     # --> GET http://www.authorization-required.com/ HTTP/1.0
     # --> Authorization: Basic QWadhgWERghghWERfdfQ==
     # <-- HTTP/1.0 200 OK

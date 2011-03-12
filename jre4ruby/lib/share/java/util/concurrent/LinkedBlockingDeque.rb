@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # This file is available under and governed by the GNU General Public
 # License version 2 only, as published by the Free Software Foundation.
 # However, the following notice accompanied the original version of this
@@ -78,8 +76,6 @@ module Java::Util::Concurrent
     class_module.module_eval {
       # Implemented as a simple doubly-linked list protected by a
       # single lock and using conditions to manage blocking.
-      # 
-      # 
       # We have "diamond" multiple interface/abstract class inheritance
       # here, and that introduces ambiguities. Often we want the
       # BlockingDeque javadoc combined with the AbstractQueue
@@ -211,7 +207,7 @@ module Java::Util::Concurrent
     # 
     # @param c the collection of elements to initially contain
     # @throws NullPointerException if the specified collection or any
-    # of its elements are null
+    #         of its elements are null
     def initialize(c)
       initialize__linked_blocking_deque(JavaInteger::MAX_VALUE)
       c.each do |e|
@@ -221,7 +217,6 @@ module Java::Util::Concurrent
     
     typesig { [Object] }
     # Basic linking and unlinking operations, called only while holding lock
-    # 
     # Links e as first element, or returns false if full.
     def link_first(e)
       if (@count >= @capacity)
@@ -324,7 +319,6 @@ module Java::Util::Concurrent
     
     typesig { [Object] }
     # BlockingDeque methods
-    # 
     # @throws IllegalStateException {@inheritDoc}
     # @throws NullPointerException  {@inheritDoc}
     def add_first(e)
@@ -644,7 +638,6 @@ module Java::Util::Concurrent
     
     typesig { [Object] }
     # BlockingQueue methods
-    # 
     # Inserts the specified element at the end of this deque unless it would
     # violate capacity restrictions.  When using a capacity-restricted deque,
     # it is generally preferable to use method {@link #offer(Object) offer}.
@@ -652,7 +645,7 @@ module Java::Util::Concurrent
     # <p>This method is equivalent to {@link #addLast}.
     # 
     # @throws IllegalStateException if the element cannot be added at this
-    # time due to capacity restrictions
+    #         time due to capacity restrictions
     # @throws NullPointerException if the specified element is null
     def add(e)
       add_last(e)
@@ -807,7 +800,6 @@ module Java::Util::Concurrent
     
     typesig { [Object] }
     # Stack methods
-    # 
     # @throws IllegalStateException {@inheritDoc}
     # @throws NullPointerException  {@inheritDoc}
     def push(e)
@@ -822,7 +814,6 @@ module Java::Util::Concurrent
     
     typesig { [Object] }
     # Collection methods
-    # 
     # Removes the first occurrence of the specified element from this deque.
     # If the deque does not contain the element, it is unchanged.
     # More formally, removes the first element <tt>e</tt> such that
@@ -948,18 +939,18 @@ module Java::Util::Concurrent
     # allocated array of <tt>String</tt>:
     # 
     # <pre>
-    # String[] y = x.toArray(new String[0]);</pre>
+    #     String[] y = x.toArray(new String[0]);</pre>
     # 
     # Note that <tt>toArray(new Object[0])</tt> is identical in function to
     # <tt>toArray()</tt>.
     # 
     # @param a the array into which the elements of the deque are to
-    # be stored, if it is big enough; otherwise, a new array of the
-    # same runtime type is allocated for this purpose
+    #          be stored, if it is big enough; otherwise, a new array of the
+    #          same runtime type is allocated for this purpose
     # @return an array containing all of the elements in this deque
     # @throws ArrayStoreException if the runtime type of the specified array
-    # is not a supertype of the runtime type of every element in
-    # this deque
+    #         is not a supertype of the runtime type of every element in
+    #         this deque
     # @throws NullPointerException if the specified array is null
     def to_array(a)
       @lock.lock

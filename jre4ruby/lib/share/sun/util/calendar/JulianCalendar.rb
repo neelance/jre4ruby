@@ -212,11 +212,11 @@ module Sun::Util::Calendar
       fd = 4 * (fixed_date - JULIAN_EPOCH) + 1464
       year = 0
       if (fd >= 0)
-        year = RJava.cast_to_int((fd / 1461))
+        year = ((fd / 1461)).to_int
       else
-        year = RJava.cast_to_int(CalendarUtils.floor_divide(fd, 1461))
+        year = (CalendarUtils.floor_divide(fd, 1461)).to_int
       end
-      prior_days = RJava.cast_to_int((fixed_date - get_fixed_date(year, JANUARY, 1, jdate)))
+      prior_days = ((fixed_date - get_fixed_date(year, JANUARY, 1, jdate))).to_int
       is_leap = CalendarUtils.is_julian_leap_year(year)
       if (fixed_date >= get_fixed_date(year, MARCH, 1, jdate))
         prior_days += is_leap ? 1 : 2
@@ -227,7 +227,7 @@ module Sun::Util::Calendar
       else
         month = CalendarUtils.floor_divide(month, 367)
       end
-      day_of_month = RJava.cast_to_int((fixed_date - get_fixed_date(year, month, 1, jdate))) + 1
+      day_of_month = ((fixed_date - get_fixed_date(year, month, 1, jdate))).to_int + 1
       day_of_week = get_day_of_week_from_fixed_date(fixed_date)
       raise AssertError, "negative day of week " + RJava.cast_to_string(day_of_week) if not (day_of_week > 0)
       jdate.set_normalized_year(year)
@@ -241,7 +241,7 @@ module Sun::Util::Calendar
     typesig { [::Java::Long] }
     # Returns the normalized Julian year number of the given fixed date.
     def get_year_from_fixed_date(fixed_date)
-      year = RJava.cast_to_int(CalendarUtils.floor_divide(4 * (fixed_date - JULIAN_EPOCH) + 1464, 1461))
+      year = (CalendarUtils.floor_divide(4 * (fixed_date - JULIAN_EPOCH) + 1464, 1461)).to_int
       return year
     end
     

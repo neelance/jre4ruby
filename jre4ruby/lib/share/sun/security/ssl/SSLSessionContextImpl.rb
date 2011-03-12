@@ -121,7 +121,7 @@ module Sun::Security::Ssl
     
     typesig { [] }
     def get_session_timeout
-      return RJava.cast_to_int((@timeout_millis / 1000))
+      return ((@timeout_millis / 1000)).to_int
     end
     
     typesig { [::Java::Int] }

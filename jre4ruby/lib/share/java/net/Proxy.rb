@@ -166,7 +166,7 @@ module Java::Net
     # <code>null</code> if its a direct connection.
     # 
     # @return a <code>SocketAddress</code> representing the socket end
-    # point of the proxy
+    #         point of the proxy
     def address
       return @sa
     end
@@ -196,7 +196,7 @@ module Java::Net
     # 
     # @param   obj   the object to compare against.
     # @return  <code>true</code> if the objects are the same;
-    # <code>false</code> otherwise.
+    #          <code>false</code> otherwise.
     # @see java.net.InetSocketAddress#equals(java.lang.Object)
     def ==(obj)
       if ((obj).nil? || !(obj.is_a?(Proxy)))

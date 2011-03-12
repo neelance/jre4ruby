@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5::Internal
@@ -42,16 +40,16 @@ module Sun::Security::Krb5::Internal
   # 
   # <xmp>
   # KDC-REP         ::= SEQUENCE {
-  # pvno            [0] INTEGER (5),
-  # msg-type        [1] INTEGER (11 -- AS -- | 13 -- TGS --),
-  # padata          [2] SEQUENCE OF PA-DATA OPTIONAL
-  # -- NOTE: not empty --,
-  # crealm          [3] Realm,
-  # cname           [4] PrincipalName,
-  # ticket          [5] Ticket,
-  # enc-part        [6] EncryptedData
-  # -- EncASRepPart or EncTGSRepPart,
-  # -- as appropriate
+  #         pvno            [0] INTEGER (5),
+  #         msg-type        [1] INTEGER (11 -- AS -- | 13 -- TGS --),
+  #         padata          [2] SEQUENCE OF PA-DATA OPTIONAL
+  #                                   -- NOTE: not empty --,
+  #         crealm          [3] Realm,
+  #         cname           [4] PrincipalName,
+  #         ticket          [5] Ticket,
+  #         enc-part        [6] EncryptedData
+  #                                   -- EncASRepPart or EncTGSRepPart,
+  #                                   -- as appropriate
   # }
   # </xmp>
   # 
@@ -194,13 +192,11 @@ module Sun::Security::Krb5::Internal
     typesig { [DerValue, ::Java::Int] }
     # // Not used? Don't know what keyusage to use here %%%
     # 
-    # public void decrypt(EncryptionKey key) throws Asn1Exception,
-    # IOException, KrbException, RealmException {
-    # encKDCRepPart = new EncKDCRepPart(encPart.decrypt(key),
-    # msgType);
-    # }
-    # 
-    # 
+    #     public void decrypt(EncryptionKey key) throws Asn1Exception,
+    #             IOException, KrbException, RealmException {
+    #             encKDCRepPart = new EncKDCRepPart(encPart.decrypt(key),
+    #                     msgType);
+    #     }
     # Initializes an KDCRep object.
     # 
     # @param encoding a single DER-encoded value.

@@ -36,9 +36,9 @@ module Java::Lang
   # <li>Accessing or modifying the field of a <code>null</code> object.
   # <li>Taking the length of <code>null</code> as if it were an array.
   # <li>Accessing or modifying the slots of <code>null</code> as if it
-  # were an array.
+  #     were an array.
   # <li>Throwing <code>null</code> as if it were a <code>Throwable</code>
-  # value.
+  #     value.
   # </ul>
   # <p>
   # Applications should throw instances of this class to indicate

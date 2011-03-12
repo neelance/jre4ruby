@@ -37,54 +37,54 @@ module Java::Security
     }
   end
   
-  # This class represents a "provider" for the
-  # Java Security API, where a provider implements some or all parts of
-  # Java Security. Services that a provider may implement include:
+  #  This class represents a "provider" for the
+  #  Java Security API, where a provider implements some or all parts of
+  #  Java Security. Services that a provider may implement include:
   # 
-  # <ul>
+  #  <ul>
   # 
-  # <li>Algorithms (such as DSA, RSA, MD5 or SHA-1).
+  #  <li>Algorithms (such as DSA, RSA, MD5 or SHA-1).
   # 
-  # <li>Key generation, conversion, and management facilities (such as for
-  # algorithm-specific keys).
+  #  <li>Key generation, conversion, and management facilities (such as for
+  #  algorithm-specific keys).
   # 
   # </ul>
   # 
-  # <p>Each provider has a name and a version number, and is configured
-  # in each runtime it is installed in.
+  #  <p>Each provider has a name and a version number, and is configured
+  #  in each runtime it is installed in.
   # 
-  # <p>See <a href =
-  # "../../../technotes/guides/security/crypto/CryptoSpec.html#Provider">The Provider Class</a>
-  # in the "Java Cryptography Architecture API Specification &amp; Reference"
-  # for information about how a particular type of provider, the
-  # cryptographic service provider, works and is installed. However,
-  # please note that a provider can be used to implement any security
-  # service in Java that uses a pluggable architecture with a choice
-  # of implementations that fit underneath.
+  #  <p>See <a href =
+  #  "../../../technotes/guides/security/crypto/CryptoSpec.html#Provider">The Provider Class</a>
+  #  in the "Java Cryptography Architecture API Specification &amp; Reference"
+  #  for information about how a particular type of provider, the
+  #  cryptographic service provider, works and is installed. However,
+  #  please note that a provider can be used to implement any security
+  #  service in Java that uses a pluggable architecture with a choice
+  #  of implementations that fit underneath.
   # 
-  # <p>Some provider implementations may encounter unrecoverable internal
-  # errors during their operation, for example a failure to communicate with a
-  # security token. A {@link ProviderException} should be used to indicate
-  # such errors.
+  #  <p>Some provider implementations may encounter unrecoverable internal
+  #  errors during their operation, for example a failure to communicate with a
+  #  security token. A {@link ProviderException} should be used to indicate
+  #  such errors.
   # 
-  # <p>The service type <code>Provider</code> is reserved for use by the
-  # security framework. Services of this type cannot be added, removed,
-  # or modified by applications.
-  # The following attributes are automatically placed in each Provider object:
-  # <table cellspacing=4>
-  # <tr><th>Name</th><th>Value</th>
-  # <tr><td><code>Provider.id name</code></td>
-  # <td><code>String.valueOf(provider.getName())</code></td>
-  # <tr><td><code>Provider.id version</code></td>
-  # <td><code>String.valueOf(provider.getVersion())</code></td>
-  # <tr><td><code>Provider.id info</code></td>
-  # <td><code>String.valueOf(provider.getInfo())</code></td>
-  # <tr><td><code>Provider.id className</code></td>
-  # <td><code>provider.getClass().getName()</code></td>
-  # </table>
+  #  <p>The service type <code>Provider</code> is reserved for use by the
+  #  security framework. Services of this type cannot be added, removed,
+  #  or modified by applications.
+  #  The following attributes are automatically placed in each Provider object:
+  #  <table cellspacing=4>
+  #  <tr><th>Name</th><th>Value</th>
+  #  <tr><td><code>Provider.id name</code></td>
+  # *    <td><code>String.valueOf(provider.getName())</code></td>
+  #  <tr><td><code>Provider.id version</code></td>
+  #      <td><code>String.valueOf(provider.getVersion())</code></td>
+  #  <tr><td><code>Provider.id info</code></td>
+  #      <td><code>String.valueOf(provider.getInfo())</code></td>
+  #  <tr><td><code>Provider.id className</code></td>
+  #      <td><code>provider.getClass().getName()</code></td>
+  #  </table>
   # 
-  # @author Benjamin Renaud
-  # @author Andreas Sterbenz
+  #  @author Benjamin Renaud
+  #  @author Andreas Sterbenz
   class Provider < ProviderImports.const_get :Properties
     include_class_members ProviderImports
     
@@ -213,8 +213,6 @@ module Java::Security
     # override the following methods to ensure that provider
     # information can only be changed if the caller has the appropriate
     # permissions.
-    # 
-    # 
     # Clears this provider so that it no longer contains the properties
     # used to look up facilities implemented by the provider.
     # 
@@ -229,9 +227,9 @@ module Java::Security
     # permission.
     # 
     # @throws  SecurityException
-    # if a security manager exists and its <code>{@link
-    # java.lang.SecurityManager#checkSecurityAccess}</code> method
-    # denies access to clear this provider
+    #          if a security manager exists and its <code>{@link
+    #          java.lang.SecurityManager#checkSecurityAccess}</code> method
+    #          denies access to clear this provider
     # 
     # @since 1.2
     def clear
@@ -249,7 +247,7 @@ module Java::Security
     # 
     # @param inStream   the input stream.
     # @exception  IOException  if an error occurred when reading from the
-    # input stream.
+    #               input stream.
     # @see java.util.Properties#load
     def load(in_stream)
       synchronized(self) do
@@ -350,9 +348,9 @@ module Java::Security
     # (<code>key</code>), or null if it did not have one.
     # 
     # @throws  SecurityException
-    # if a security manager exists and its <code>{@link
-    # java.lang.SecurityManager#checkSecurityAccess}</code> method
-    # denies access to set property values.
+    #          if a security manager exists and its <code>{@link
+    #          java.lang.SecurityManager#checkSecurityAccess}</code> method
+    #          denies access to set property values.
     # 
     # @since 1.2
     def put(key, value)
@@ -386,9 +384,9 @@ module Java::Security
     # or null if the key did not have a mapping.
     # 
     # @throws  SecurityException
-    # if a security manager exists and its <code>{@link
-    # java.lang.SecurityManager#checkSecurityAccess}</code> method
-    # denies access to remove this provider's properties.
+    #          if a security manager exists and its <code>{@link
+    #          java.lang.SecurityManager#checkSecurityAccess}</code> method
+    #          denies access to remove this provider's properties.
     # 
     # @since 1.2
     def remove(key)
@@ -874,9 +872,9 @@ module Java::Security
     # @param s the Service to add
     # 
     # @throws SecurityException
-    # if a security manager exists and its <code>{@link
-    # java.lang.SecurityManager#checkSecurityAccess}</code> method denies
-    # access to set property values.
+    #      if a security manager exists and its <code>{@link
+    #      java.lang.SecurityManager#checkSecurityAccess}</code> method denies
+    #      access to set property values.
     # @throws NullPointerException if s is null
     # 
     # @since 1.5
@@ -918,7 +916,7 @@ module Java::Security
       # use super() to avoid permission check and other processing
       Properties.instance_method(:put).bind(self).call(type + "." + algorithm, s.get_class_name)
       s.get_aliases.each do |alias|
-        Properties.instance_method(:put).bind(self).call(ALIAS_PREFIX + type + "." + alias_, algorithm)
+        Properties.instance_method(:put).bind(self).call(ALIAS_PREFIX + type + "." + RJava.cast_to_string(alias_), algorithm)
       end
       s.attr_attributes.entry_set.each do |entry|
         key = type + "." + algorithm + " " + RJava.cast_to_string(entry.get_key)
@@ -935,7 +933,7 @@ module Java::Security
       # use super() to avoid permission check and other processing
       Properties.instance_method(:remove).bind(self).call(type + "." + algorithm)
       s.get_aliases.each do |alias|
-        Properties.instance_method(:remove).bind(self).call(ALIAS_PREFIX + type + "." + alias_)
+        Properties.instance_method(:remove).bind(self).call(ALIAS_PREFIX + type + "." + RJava.cast_to_string(alias_))
       end
       s.attr_attributes.entry_set.each do |entry|
         key = type + "." + algorithm + " " + RJava.cast_to_string(entry.get_key)
@@ -964,9 +962,9 @@ module Java::Security
     # @param s the Service to be removed
     # 
     # @throws  SecurityException
-    # if a security manager exists and its <code>{@link
-    # java.lang.SecurityManager#checkSecurityAccess}</code> method denies
-    # access to remove this provider's properties.
+    #          if a security manager exists and its <code>{@link
+    #          java.lang.SecurityManager#checkSecurityAccess}</code> method denies
+    #          access to remove this provider's properties.
     # @throws NullPointerException if s is null
     # 
     # @since 1.5
@@ -1327,7 +1325,7 @@ module Java::Security
         # @param className the name of the class implementing this service
         # @param aliases List of aliases or null if algorithm has no aliases
         # @param attributes Map of attributes or null if this implementation
-        # has no attributes
+        #                   has no attributes
         # 
         # @throws NullPointerException if provider, type, algorithm, or
         # className is null
@@ -1411,7 +1409,7 @@ module Java::Security
         # @param name the name of the requested attribute
         # 
         # @return the value of the specified attribute or null if the
-        # attribute is not present
+        #         attribute is not present
         # 
         # @throws NullPointerException if name is null
         def get_attribute(name)

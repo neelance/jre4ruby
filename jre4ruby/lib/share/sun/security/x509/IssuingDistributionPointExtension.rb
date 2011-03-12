@@ -36,36 +36,36 @@ module Sun::Security::X509
     }
   end
   
-  # Represents the CRL Issuing Distribution Point Extension (OID = 2.5.29.28).
-  # 
-  # <p>
-  # The issuing distribution point is a critical CRL extension that
-  # identifies the CRL distribution point and scope for a particular CRL,
-  # and it indicates whether the CRL covers revocation for end entity
-  # certificates only, CA certificates only, attribute certificates only,
-  # or a limited set of reason codes.
-  # 
-  # <p>
-  # The extension is defined in Section 5.2.5 of
-  # <a href="http://www.ietf.org/rfc/rfc3280.txt">Internet X.509 PKI Certific
+  #  * Represents the CRL Issuing Distribution Point Extension (OID = 2.5.29.28).
+  #  *
+  #  * <p>
+  #  * The issuing distribution point is a critical CRL extension that
+  #  * identifies the CRL distribution point and scope for a particular CRL,
+  #  * and it indicates whether the CRL covers revocation for end entity
+  #  * certificates only, CA certificates only, attribute certificates only,
+  #  * or a limited set of reason codes.
+  #  *
+  #  * <p>
+  #  * The extension is defined in Section 5.2.5 of
+  #  * <a href="http://www.ietf.org/rfc/rfc3280.txt">Internet X.509 PKI Certific
   # ate and Certificate Revocation List (CRL) Profile</a>.
-  # 
-  # <p>
-  # Its ASN.1 definition is as follows:
-  # <pre>
-  # id-ce-issuingDistributionPoint OBJECT IDENTIFIER ::= { id-ce 28 }
-  # 
-  # issuingDistributionPoint ::= SEQUENCE {
-  # distributionPoint          [0] DistributionPointName OPTIONAL,
-  # onlyContainsUserCerts      [1] BOOLEAN DEFAULT FALSE,
-  # onlyContainsCACerts        [2] BOOLEAN DEFAULT FALSE,
-  # onlySomeReasons            [3] ReasonFlags OPTIONAL,
-  # indirectCRL                [4] BOOLEAN DEFAULT FALSE,
-  # onlyContainsAttributeCerts [5] BOOLEAN DEFAULT FALSE }
-  # </pre>
-  # 
-  # @see DistributionPoint
-  # @since 1.6
+  #  *
+  #  * <p>
+  #  * Its ASN.1 definition is as follows:
+  #  * <pre>
+  #  *     id-ce-issuingDistributionPoint OBJECT IDENTIFIER ::= { id-ce 28 }
+  #  *
+  #  *     issuingDistributionPoint ::= SEQUENCE {
+  #  *          distributionPoint          [0] DistributionPointName OPTIONAL,
+  #  *          onlyContainsUserCerts      [1] BOOLEAN DEFAULT FALSE,
+  #  *          onlyContainsCACerts        [2] BOOLEAN DEFAULT FALSE,
+  #  *          onlySomeReasons            [3] ReasonFlags OPTIONAL,
+  #  *          indirectCRL                [4] BOOLEAN DEFAULT FALSE,
+  #  *          onlyContainsAttributeCerts [5] BOOLEAN DEFAULT FALSE }
+  #  * </pre>
+  #  *
+  #  * @see DistributionPoint
+  #  * @since 1.6
   class IssuingDistributionPointExtension < IssuingDistributionPointExtensionImports.const_get :Extension
     include_class_members IssuingDistributionPointExtensionImports
     overload_protected {
@@ -164,22 +164,22 @@ module Sun::Security::X509
     # Creates a critical IssuingDistributionPointExtension.
     # 
     # @param distributionPoint the name of the distribution point, or null for
-    # none.
+    #        none.
     # @param revocationReasons the revocation reasons associated with the
-    # distribution point, or null for none.
+    #        distribution point, or null for none.
     # @param hasOnlyUserCerts if <code>true</code> then scope of the CRL
-    # includes only user certificates.
+    #        includes only user certificates.
     # @param hasOnlyCACerts if <code>true</code> then scope of the CRL
-    # includes only CA certificates.
+    #        includes only CA certificates.
     # @param hasOnlyAttributeCerts if <code>true</code> then scope of the CRL
-    # includes only attribute certificates.
+    #        includes only attribute certificates.
     # @param isIndirectCRL if <code>true</code> then the scope of the CRL
-    # includes certificates issued by authorities other than the CRL
-    # issuer. The responsible authority is indicated by a certificate
-    # issuer CRL entry extension.
+    #        includes certificates issued by authorities other than the CRL
+    #        issuer. The responsible authority is indicated by a certificate
+    #        issuer CRL entry extension.
     # @throws IllegalArgumentException if more than one of
-    # <code>hasOnlyUserCerts</code>, <code>hasOnlyCACerts</code>,
-    # <code>hasOnlyAttributeCerts</code> is set to <code>true</code>.
+    #        <code>hasOnlyUserCerts</code>, <code>hasOnlyCACerts</code>,
+    #        <code>hasOnlyAttributeCerts</code> is set to <code>true</code>.
     # @throws IOException on encoding error.
     def initialize(distribution_point, revocation_reasons, has_only_user_certs, has_only_cacerts, has_only_attribute_certs, is_indirect_crl)
       @distribution_point = nil

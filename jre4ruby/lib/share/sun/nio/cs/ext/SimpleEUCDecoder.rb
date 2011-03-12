@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # Simple EUC-like decoder used by IBM01383 and IBM970
 # supports G1 - no support for G2 or G3
 module Sun::Nio::Cs::Ext

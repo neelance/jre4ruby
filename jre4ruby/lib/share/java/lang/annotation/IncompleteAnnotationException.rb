@@ -71,7 +71,7 @@ module Java::Lang::Annotation
     # missing element.
     # 
     # @return the Class object for the annotation type with the
-    # missing element
+    #     missing element
     def annotation_type
       return @annotation_type
     end

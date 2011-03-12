@@ -22,17 +22,15 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996 - 1998 - All Rights Reserved
 # 
-# The original version of this source code and documentation is copyrighted
+#   The original version of this source code and documentation is copyrighted
 # and owned by Taligent, Inc., a wholly-owned subsidiary of IBM. These
 # materials are provided under terms of a License Agreement between Taligent
 # and Sun. This technology is protected by multiple US and International
 # patents. This notice and attribution to Taligent may not be removed.
-# Taligent is a registered trademark of Taligent, Inc.
+#   Taligent is a registered trademark of Taligent, Inc.
 module Java::Text
   module ChoiceFormatImports #:nodoc:
     class_module.module_eval {
@@ -74,13 +72,13 @@ module Java::Text
   # For example,
   # <ul>
   # <li>
-  # <em>limits</em> = {1,2,3,4,5,6,7}<br>
-  # <em>formats</em> = {"Sun","Mon","Tue","Wed","Thur","Fri","Sat"}
+  #     <em>limits</em> = {1,2,3,4,5,6,7}<br>
+  #     <em>formats</em> = {"Sun","Mon","Tue","Wed","Thur","Fri","Sat"}
   # <li>
-  # <em>limits</em> = {0, 1, ChoiceFormat.nextDouble(1)}<br>
-  # <em>formats</em> = {"no files", "one file", "many files"}<br>
-  # (<code>nextDouble</code> can be used to get the next higher double, to
-  # make the half-open interval.)
+  #     <em>limits</em> = {0, 1, ChoiceFormat.nextDouble(1)}<br>
+  #     <em>formats</em> = {"no files", "one file", "many files"}<br>
+  #     (<code>nextDouble</code> can be used to get the next higher double, to
+  #     make the half-open interval.)
   # </ul>
   # 
   # <p>
@@ -92,9 +90,9 @@ module Java::Text
   # ChoiceFormat form = new ChoiceFormat(limits, dayOfWeekNames);
   # ParsePosition status = new ParsePosition(0);
   # for (double i = 0.0; i &lt;= 8.0; ++i) {
-  # status.setIndex(0);
-  # System.out.println(i + " -&gt; " + form.format(i) + " -&gt; "
-  # + form.parse(form.format(i),status));
+  #     status.setIndex(0);
+  #     System.out.println(i + " -&gt; " + form.format(i) + " -&gt; "
+  #                              + form.parse(form.format(i),status));
   # }
   # </pre>
   # </blockquote>
@@ -109,9 +107,9 @@ module Java::Text
   # pattform.setFormats(testFormats);
   # Object[] testArgs = {null, "ADisk", null};
   # for (int i = 0; i &lt; 4; ++i) {
-  # testArgs[0] = new Integer(i);
-  # testArgs[2] = testArgs[0];
-  # System.out.println(pattform.format(testArgs));
+  #     testArgs[0] = new Integer(i);
+  #     testArgs[2] = testArgs[0];
+  #     System.out.println(pattform.format(testArgs));
   # }
   # </pre>
   # </blockquote>
@@ -121,7 +119,7 @@ module Java::Text
   # <blockquote>
   # <pre>
   # ChoiceFormat fmt = new ChoiceFormat(
-  # "-1#is negative| 0#is zero or fraction | 1#is one |1.0&lt;is 1+ |2#is two |2&lt;is more than 2.");
+  #      "-1#is negative| 0#is zero or fraction | 1#is one |1.0&lt;is 1+ |2#is two |2&lt;is more than 2.");
   # System.out.println("Formatter Pattern : " + fmt.toPattern());
   # 
   # System.out.println("Format with -INF : " + fmt.format(Double.NEGATIVE_INFINITY));
@@ -139,16 +137,16 @@ module Java::Text
   # And the output result would be like the following:
   # <pre>
   # <blockquote>
-  # Format with -INF : is negative
-  # Format with -1.0 : is negative
-  # Format with 0 : is zero or fraction
-  # Format with 0.9 : is zero or fraction
-  # Format with 1.0 : is one
-  # Format with 1.5 : is 1+
-  # Format with 2 : is two
-  # Format with 2.1 : is more than 2.
-  # Format with NaN : is negative
-  # Format with +INF : is more than 2.
+  #   Format with -INF : is negative
+  #   Format with -1.0 : is negative
+  #   Format with 0 : is zero or fraction
+  #   Format with 0.9 : is zero or fraction
+  #   Format with 1.0 : is one
+  #   Format with 1.5 : is 1+
+  #   Format with 2 : is two
+  #   Format with 2.1 : is more than 2.
+  #   Format with NaN : is negative
+  #   Format with +INF : is more than 2.
   # </pre>
   # </blockquote>
   # 
@@ -382,7 +380,6 @@ module Java::Text
     
     typesig { [::Java::Long, StringBuffer, FieldPosition] }
     # Overrides
-    # 
     # Specialization of format. This method really calls
     # <code>format(double, StringBuffer, FieldPosition)</code>
     # thus the range of longs that are supported is only equal to
@@ -525,7 +522,6 @@ module Java::Text
     end
     
     # ===============privates===========================
-    # 
     # A list of lower bounds for the choices.  The formatter will return
     # <code>choiceFormats[i]</code> if the number being formatted is greater than or equal to
     # <code>choiceLimits[i]</code> and less than <code>choiceLimits[i+1]</code>.
@@ -552,24 +548,24 @@ module Java::Text
       # static final long SIGNIFICAND   = 0x000FFFFFFFFFFFFFL;
       # 
       # private static double nextDouble (double d, boolean positive) {
-      # if (Double.isNaN(d) || Double.isInfinite(d)) {
-      # return d;
-      # }
-      # long bits = Double.doubleToLongBits(d);
-      # long significand = bits & SIGNIFICAND;
-      # if (bits < 0) {
-      # significand |= (SIGN | EXPONENT);
-      # }
-      # long exponent = bits & EXPONENT;
-      # if (positive) {
-      # significand += 1;
-      # // FIXME fix overflow & underflow
-      # } else {
-      # significand -= 1;
-      # // FIXME fix overflow & underflow
-      # }
-      # bits = exponent | (significand & ~EXPONENT);
-      # return Double.longBitsToDouble(bits);
+      #     if (Double.isNaN(d) || Double.isInfinite(d)) {
+      #             return d;
+      #         }
+      #     long bits = Double.doubleToLongBits(d);
+      #     long significand = bits & SIGNIFICAND;
+      #     if (bits < 0) {
+      #         significand |= (SIGN | EXPONENT);
+      #     }
+      #     long exponent = bits & EXPONENT;
+      #     if (positive) {
+      #         significand += 1;
+      #         // FIXME fix overflow & underflow
+      #     } else {
+      #         significand -= 1;
+      #         // FIXME fix overflow & underflow
+      #     }
+      #     bits = exponent | (significand & ~EXPONENT);
+      #     return Double.longBitsToDouble(bits);
       # }
       const_set_lazy(:SIGN) { -0x8000000000000000 }
       const_attr_reader  :SIGN
@@ -587,9 +583,9 @@ module Java::Text
       # 
       # Does not affect floating-point flags,
       # provided these member functions do not:
-      # Double.longBitsToDouble(long)
-      # Double.doubleToLongBits(double)
-      # Double.isNaN(double)
+      #          Double.longBitsToDouble(long)
+      #          Double.doubleToLongBits(double)
+      #          Double.isNaN(double)
       def next_double(d, positive)
         # filter out NaN's
         if (Double.is_na_n(d))
@@ -614,7 +610,7 @@ module Java::Text
           if (!(magnitude).equal?(POSITIVEINFINITY))
             magnitude += 1
           end
-        # else decrease magnitude
+          # else decrease magnitude
         else
           magnitude -= 1
         end

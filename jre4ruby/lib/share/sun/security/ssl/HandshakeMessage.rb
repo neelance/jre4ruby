@@ -48,8 +48,8 @@ module Sun::Security::Ssl
     }
   end
   
-  # END of nested classes
   # 
+  # END of nested classes
   # 
   # Many data structures are involved in the handshake messages.  These
   # classes are used as structures, with public data members.  They are
@@ -191,12 +191,12 @@ module Sun::Security::Ssl
     end
     
     class_module.module_eval {
+      # 
       # NOTE:  the rest of these classes are nested within this one, and are
       # imported by other classes in this package.  There are a few other
       # handshake message classes, not neatly nested here because of current
       # licensing requirement for native (RSA) methods.  They belong here,
       # but those native methods complicate things a lot!
-      # 
       # 
       # HelloRequest ... SERVER --> CLIENT
       # 
@@ -334,8 +334,6 @@ module Sun::Security::Ssl
         def message_length
           # Add fixed size parts of each field...
           # version + random + session + cipher + compress
-          # 
-          # ... + variable parts
           return (2 + 32 + 1 + 2 + 1 + @session_id.length + (@cipher_suites.size * 2) + @compression_methods.attr_length) + @extensions.length
         end
         
@@ -482,11 +480,11 @@ module Sun::Security::Ssl
         typesig { [] }
         def message_length
           # almost fixed size, except session ID and extensions:
-          # major + minor = 2
-          # random = 32
-          # session ID len field = 1
-          # cipher suite + compression = 3
-          # extensions: if present, 2 + length of extensions
+          #      major + minor = 2
+          #      random = 32
+          #      session ID len field = 1
+          #      cipher suite + compression = 3
+          #      extensions: if present, 2 + length of extensions
           return 38 + @session_id.length + @extensions.length
         end
         
@@ -655,21 +653,21 @@ module Sun::Security::Ssl
       # Key exchange can be viewed as having three modes, which are explicit
       # for the Diffie-Hellman flavors and poorly specified for RSA ones:
       # 
-      # - "Ephemeral" keys.  Here, a "temporary" key is allocated by the
-      # server, and signed.  Diffie-Hellman keys signed using RSA or
-      # DSS are ephemeral (DHE flavor).  RSA keys get used to do the same
-      # thing, to cut the key size down to 512 bits (export restrictions)
-      # or for signing-only RSA certificates.
+      #      - "Ephemeral" keys.  Here, a "temporary" key is allocated by the
+      #        server, and signed.  Diffie-Hellman keys signed using RSA or
+      #        DSS are ephemeral (DHE flavor).  RSA keys get used to do the same
+      #        thing, to cut the key size down to 512 bits (export restrictions)
+      #        or for signing-only RSA certificates.
       # 
-      # - Anonymity.  Here no server certificate is sent, only the public
-      # key of the server.  This case is subject to man-in-the-middle
-      # attacks.  This can be done with Diffie-Hellman keys (DH_anon) or
-      # with RSA keys, but is only used in SSLv3 for DH_anon.
+      #      - Anonymity.  Here no server certificate is sent, only the public
+      #        key of the server.  This case is subject to man-in-the-middle
+      #        attacks.  This can be done with Diffie-Hellman keys (DH_anon) or
+      #        with RSA keys, but is only used in SSLv3 for DH_anon.
       # 
-      # - "Normal" case.  Here a server certificate is sent, and the public
-      # key there is used directly in exchanging the premaster secret.
-      # For example, Diffie-Hellman "DH" flavor, and any RSA flavor with
-      # only 512 bit keys.
+      #      - "Normal" case.  Here a server certificate is sent, and the public
+      #        key there is used directly in exchanging the premaster secret.
+      #        For example, Diffie-Hellman "DH" flavor, and any RSA flavor with
+      #        only 512 bit keys.
       # 
       # If a server certificate is sent, there is no anonymity.  However,
       # when a certificate is sent, ephemeral keys may still be used to
@@ -988,7 +986,7 @@ module Sun::Security::Ssl
           @dh_p = input.get_bytes16
           @dh_g = input.get_bytes16
           @dh_ys = input.get_bytes16
-          signature = 0
+          signature = nil
           if (self.class::DhKeyExchangeFix)
             signature = input.get_bytes16
           else
@@ -1560,7 +1558,9 @@ module Sun::Security::Ssl
         end
         
         typesig { [class_self::HandshakeInStream] }
+        # 
         # Unmarshal the signed data from the input stream.
+        # 
         def initialize(input)
           @signature = nil
           super()

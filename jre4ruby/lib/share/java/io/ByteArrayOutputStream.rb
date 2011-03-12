@@ -166,7 +166,7 @@ module Java::Io
     # Returns the current size of the buffer.
     # 
     # @return  the value of the <code>count</code> field, which is the number
-    # of valid bytes in this output stream.
+    #          of valid bytes in this output stream.
     # @see     java.io.ByteArrayOutputStream#count
     def size
       synchronized(self) do
@@ -206,10 +206,10 @@ module Java::Io
     # over the decoding process is required.
     # 
     # @param  charsetName  the name of a supported
-    # {@linkplain java.nio.charset.Charset </code>charset<code>}
+    #              {@linkplain java.nio.charset.Charset </code>charset<code>}
     # @return String decoded from the buffer's contents.
     # @exception  UnsupportedEncodingException
-    # If the named charset is not supported
+    #             If the named charset is not supported
     # @since   JDK1.1
     def to_s(charset_name)
       synchronized(self) do
@@ -224,7 +224,7 @@ module Java::Io
     # constructed from the corresponding element <i>b</i> in the byte
     # array such that:
     # <blockquote><pre>
-    # c == (char)(((hibyte &amp; 0xff) &lt;&lt; 8) | (b &amp; 0xff))
+    #     c == (char)(((hibyte &amp; 0xff) &lt;&lt; 8) | (b &amp; 0xff))
     # </pre></blockquote>
     # 
     # @deprecated This method does not properly convert bytes into characters.

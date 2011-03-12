@@ -46,14 +46,14 @@ module Sun::Security::X509
   # <pre>
   # ASN.1 definition of Extension:
   # Extension ::= SEQUENCE {
-  # ExtensionId     OBJECT IDENTIFIER,
-  # critical        BOOLEAN DEFAULT FALSE,
-  # extensionValue  OCTET STRING
+  #      ExtensionId     OBJECT IDENTIFIER,
+  #      critical        BOOLEAN DEFAULT FALSE,
+  #      extensionValue  OCTET STRING
   # }
   # </pre>
   # All subclasses need to implement a constructor of the form
   # <pre>
-  # <subclass> (Boolean, Object)
+  #     <subclass> (Boolean, Object)
   # </pre>
   # where the Object is typically an array of DER encoded bytes.
   # <p>

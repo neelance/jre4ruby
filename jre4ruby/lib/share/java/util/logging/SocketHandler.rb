@@ -43,21 +43,21 @@ module Java::Util::Logging
   # (or have invalid values) then the specified default values are used.
   # <ul>
   # <li>   java.util.logging.SocketHandler.level
-  # specifies the default level for the <tt>Handler</tt>
-  # (defaults to <tt>Level.ALL</tt>).
+  #        specifies the default level for the <tt>Handler</tt>
+  #        (defaults to <tt>Level.ALL</tt>).
   # <li>   java.util.logging.SocketHandler.filter
-  # specifies the name of a <tt>Filter</tt> class to use
-  # (defaults to no <tt>Filter</tt>).
+  #        specifies the name of a <tt>Filter</tt> class to use
+  #        (defaults to no <tt>Filter</tt>).
   # <li>   java.util.logging.SocketHandler.formatter
-  # specifies the name of a <tt>Formatter</tt> class to use
-  # (defaults to <tt>java.util.logging.XMLFormatter</tt>).
+  #        specifies the name of a <tt>Formatter</tt> class to use
+  #        (defaults to <tt>java.util.logging.XMLFormatter</tt>).
   # <li>   java.util.logging.SocketHandler.encoding
-  # the name of the character set encoding to use (defaults to
-  # the default platform encoding).
+  #        the name of the character set encoding to use (defaults to
+  #        the default platform encoding).
   # <li>   java.util.logging.SocketHandler.host
-  # specifies the target host name to connect to (no default).
+  #        specifies the target host name to connect to (no default).
   # <li>   java.util.logging.SocketHandler.port
-  # specifies the target TCP port to use (no default).
+  #        specifies the target TCP port to use (no default).
   # </ul>
   # <p>
   # The output IO stream is buffered, but is flushed after each
@@ -119,9 +119,9 @@ module Java::Util::Logging
     # Create a <tt>SocketHandler</tt>, using only <tt>LogManager</tt> properties
     # (or their defaults).
     # @throws IllegalArgumentException if the host or port are invalid or
-    # are not specified as LogManager properties.
+    #          are not specified as LogManager properties.
     # @throws IOException if we are unable to connect to the target
-    # host and port.
+    #         host and port.
     def initialize
       @sock = nil
       @host = nil
@@ -153,7 +153,7 @@ module Java::Util::Logging
     # 
     # @throws IllegalArgumentException if the host or port are invalid.
     # @throws IOException if we are unable to connect to the target
-    # host and port.
+    #         host and port.
     def initialize(host, port)
       @sock = nil
       @host = nil
@@ -188,7 +188,7 @@ module Java::Util::Logging
     # Close this output stream.
     # 
     # @exception  SecurityException  if a security manager exists and if
-    # the caller does not have <tt>LoggingPermission("control")</tt>.
+    #             the caller does not have <tt>LoggingPermission("control")</tt>.
     def close
       synchronized(self) do
         super
@@ -207,7 +207,7 @@ module Java::Util::Logging
     # Format and publish a <tt>LogRecord</tt>.
     # 
     # @param  record  description of the log event. A null record is
-    # silently ignored and is not published
+    #                 silently ignored and is not published
     def publish(record)
       synchronized(self) do
         if (!is_loggable(record))

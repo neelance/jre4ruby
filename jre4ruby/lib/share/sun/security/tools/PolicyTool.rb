@@ -592,7 +592,7 @@ module Sun::Security::Tools
       if ((ToolDialog::X500_PRIN_CLASS == pc.get_name))
         # PolicyParser checks validity of X500Principal name
         # - PolicyTool needs to as well so that it doesn't store
-        # an invalid name that can't be read in later
+        #   an invalid name that can't be read in later
         # 
         # this can throw an IllegalArgumentException
         new_p = X500Principal.new(name)
@@ -1657,14 +1657,14 @@ module Sun::Security::Tools
     typesig { [::Java::Boolean] }
     # pop up a dialog so the user can enter info to add a new PolicyEntry
     # - if edit is TRUE, then the user is editing an existing entry
-    # and we should display the original info as well.
+    #   and we should display the original info as well.
     # 
     # - the other reason we need the 'edit' boolean is we need to know
-    # when we are adding a NEW policy entry.  in this case, we can
-    # not simply update the existing entry, because it doesn't exist.
-    # we ONLY update the GUI listing/info, and then when the user
-    # finally clicks 'OK' or 'DONE', then we can collect that info
-    # and add it to the policy.
+    #   when we are adding a NEW policy entry.  in this case, we can
+    #   not simply update the existing entry, because it doesn't exist.
+    #   we ONLY update the GUI listing/info, and then when the user
+    #   finally clicks 'OK' or 'DONE', then we can collect that info
+    #   and add it to the policy.
     def display_policy_entry_dialog(edit)
       list_index = 0
       entries = nil
@@ -2802,9 +2802,9 @@ module Sun::Security::Tools
   # Event handler for AddEntryDoneButton button
   # 
   # -- if edit is TRUE, then we are EDITing an existing PolicyEntry
-  # and we need to update both the policy and the GUI listing.
-  # if edit is FALSE, then we are ADDing a new PolicyEntry,
-  # so we only need to update the GUI listing.
+  #    and we need to update both the policy and the GUI listing.
+  #    if edit is FALSE, then we are ADDing a new PolicyEntry,
+  #    so we only need to update the GUI listing.
   class AddEntryDoneButtonListener 
     include_class_members PolicyToolImports
     include ActionListener
@@ -4211,8 +4211,8 @@ module Sun::Security::Tools
     
     typesig { [] }
     def initialize
-      # allow user input
       super("DelegationPermission", "javax.security.auth.kerberos.DelegationPermission", Array.typed(String).new([]), nil)
+      # allow user input
     end
     
     private
@@ -4260,8 +4260,8 @@ module Sun::Security::Tools
     
     typesig { [] }
     def initialize
-      # allow user input
       super("MBeanPermission", "javax.management.MBeanPermission", Array.typed(String).new([]), Array.typed(String).new(["addNotificationListener", "getAttribute", "getClassLoader", "getClassLoaderFor", "getClassLoaderRepository", "getDomains", "getMBeanInfo", "getObjectInstance", "instantiate", "invoke", "isInstanceOf", "queryMBeans", "queryNames", "registerMBean", "removeNotificationListener", "setAttribute", "unregisterMBean"]))
+      # allow user input
     end
     
     private
@@ -4309,8 +4309,8 @@ module Sun::Security::Tools
     
     typesig { [] }
     def initialize
-      # allow user input
       super("PrivateCredentialPermission", "javax.security.auth.PrivateCredentialPermission", Array.typed(String).new([]), Array.typed(String).new(["read"]))
+      # allow user input
     end
     
     private
@@ -4322,8 +4322,8 @@ module Sun::Security::Tools
     
     typesig { [] }
     def initialize
-      # allow user input
       super("PropertyPermission", "java.util.PropertyPermission", Array.typed(String).new([]), Array.typed(String).new(["read", "write"]))
+      # allow user input
     end
     
     private
@@ -4347,8 +4347,8 @@ module Sun::Security::Tools
     
     typesig { [] }
     def initialize
+      super("RuntimePermission", "java.lang.RuntimePermission", Array.typed(String).new(["createClassLoader", "getClassLoader", "setContextClassLoader", "enableContextClassLoaderOverride", "setSecurityManage", "createSecurityManager", "getenv.<" + RJava.cast_to_string(PolicyTool.attr_rb.get_string("environment variable name")) + ">", "exitVM", "shutdownHooks", "setFactory", "setIO", "modifyThread", "stopThread", "modifyThreadGroup", "getProtectionDomain", "readFileDescriptor", "writeFileDescriptor", "loadLibrary.<" + RJava.cast_to_string(PolicyTool.attr_rb.get_string("library name")) + ">", "accessClassInPackage.<" + RJava.cast_to_string(PolicyTool.attr_rb.get_string("package name")) + ">", "defineClassInPackage.<" + RJava.cast_to_string(PolicyTool.attr_rb.get_string("package name")) + ">", "accessDeclaredMembers", "queuePrintJob", "getStackTrace", "setDefaultUncaughtExceptionHandler", "preferences", "usePolicy"]), nil)
       # "inheritedChannel"
-      super("RuntimePermission", "java.lang.RuntimePermission", Array.typed(String).new(["createClassLoader", "getClassLoader", "setContextClassLoader", "enableContextClassLoaderOverride", "setSecurityManage", "createSecurityManager", "getenv.<" + RJava.cast_to_string(PolicyTool.attr_rb.get_string("environment variable name")) + ">", "exitVM", "shutdownHooks", "setFactory", "setIO", "modifyThread", "stopThread", "modifyThreadGroup", "getProtectionDomain", "readFileDescriptor", "writeFileDescriptor", "loadLibrary.<" + RJava.cast_to_string(PolicyTool.attr_rb.get_string("library name")) + ">", "accessClassInPackage.<" + RJava.cast_to_string(PolicyTool.attr_rb.get_string("package name")) + ">", "defineClassInPackage.<" + RJava.cast_to_string(PolicyTool.attr_rb.get_string("package name")) + ">", "accessDeclaredMembers", "queuePrintJob", "getStackTrace", "setDefaultUncaughtExceptionHandler", "preferences", "usePolicy", ]), nil)
     end
     
     private
@@ -4360,6 +4360,7 @@ module Sun::Security::Tools
     
     typesig { [] }
     def initialize
+      super("SecurityPermission", "java.security.SecurityPermission", Array.typed(String).new(["createAccessControlContext", "getDomainCombiner", "getPolicy", "setPolicy", "createPolicy.<" + RJava.cast_to_string(PolicyTool.attr_rb.get_string("policy type")) + ">", "getProperty.<" + RJava.cast_to_string(PolicyTool.attr_rb.get_string("property name")) + ">", "setProperty.<" + RJava.cast_to_string(PolicyTool.attr_rb.get_string("property name")) + ">", "insertProvider.<" + RJava.cast_to_string(PolicyTool.attr_rb.get_string("provider name")) + ">", "removeProvider.<" + RJava.cast_to_string(PolicyTool.attr_rb.get_string("provider name")) + ">", "clearProviderProperties.<" + RJava.cast_to_string(PolicyTool.attr_rb.get_string("provider name")) + ">", "putProviderProperty.<" + RJava.cast_to_string(PolicyTool.attr_rb.get_string("provider name")) + ">", "removeProviderProperty.<" + RJava.cast_to_string(PolicyTool.attr_rb.get_string("provider name")) + ">"]), nil)
       # "setSystemScope",
       # "setIdentityPublicKey",
       # "setIdentityInfo",
@@ -4368,7 +4369,6 @@ module Sun::Security::Tools
       # "printIdentity",
       # "getSignerPrivateKey",
       # "setSignerKeyPair"
-      super("SecurityPermission", "java.security.SecurityPermission", Array.typed(String).new(["createAccessControlContext", "getDomainCombiner", "getPolicy", "setPolicy", "createPolicy.<" + RJava.cast_to_string(PolicyTool.attr_rb.get_string("policy type")) + ">", "getProperty.<" + RJava.cast_to_string(PolicyTool.attr_rb.get_string("property name")) + ">", "setProperty.<" + RJava.cast_to_string(PolicyTool.attr_rb.get_string("property name")) + ">", "insertProvider.<" + RJava.cast_to_string(PolicyTool.attr_rb.get_string("provider name")) + ">", "removeProvider.<" + RJava.cast_to_string(PolicyTool.attr_rb.get_string("provider name")) + ">", "clearProviderProperties.<" + RJava.cast_to_string(PolicyTool.attr_rb.get_string("provider name")) + ">", "putProviderProperty.<" + RJava.cast_to_string(PolicyTool.attr_rb.get_string("provider name")) + ">", "removeProviderProperty.<" + RJava.cast_to_string(PolicyTool.attr_rb.get_string("provider name")) + ">", ]), nil)
     end
     
     private
@@ -4392,8 +4392,8 @@ module Sun::Security::Tools
     
     typesig { [] }
     def initialize
-      # allow user input
       super("ServicePermission", "javax.security.auth.kerberos.ServicePermission", Array.typed(String).new([]), Array.typed(String).new(["initiate", "accept"]))
+      # allow user input
     end
     
     private
@@ -4405,8 +4405,8 @@ module Sun::Security::Tools
     
     typesig { [] }
     def initialize
-      # allow user input
       super("SocketPermission", "java.net.SocketPermission", Array.typed(String).new([]), Array.typed(String).new(["accept", "connect", "listen", "resolve"]))
+      # allow user input
     end
     
     private
@@ -4442,13 +4442,14 @@ module Sun::Security::Tools
     
     typesig { [] }
     def initialize
-      # allow user input
       super("SubjectDelegationPermission", "javax.management.remote.SubjectDelegationPermission", Array.typed(String).new([]), nil)
+      # allow user input
     end
     
     private
     alias_method :initialize__subj_deleg_perm, :initialize
   end
   
-  PolicyTool.main($*) if $0 == __FILE__
 end
+
+Sun::Security::Tools::PolicyTool.main($*) if $0 == __FILE__

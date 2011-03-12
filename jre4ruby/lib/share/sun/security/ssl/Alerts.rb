@@ -38,7 +38,6 @@ module Sun::Security::Ssl
     
     class_module.module_eval {
       # Alerts are always a fixed two byte format (level/description).
-      # 
       # warnings and fatal errors are package private facilities/constants
       # Alert levels (enum AlertLevel)
       const_set_lazy(:Alert_warning) { 1 }

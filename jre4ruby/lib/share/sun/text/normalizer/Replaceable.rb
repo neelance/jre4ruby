@@ -22,11 +22,8 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
-# 
 # (C) Copyright IBM Corp. 1996-2005 - All Rights Reserved                     *
-# *
+#                                                                             *
 # The original version of this source code and documentation is copyrighted   *
 # and owned by IBM, These materials are provided under terms of a License     *
 # Agreement between IBM and Sun. This technology is protected by multiple     *
@@ -66,17 +63,17 @@ module Sun::Text::Normalizer
   # <p>For a subclass to support metadata, typical behavior of
   # <code>replace()</code> is the following:
   # <ul>
-  # <li>Set the metadata of the new text to the metadata of the first
-  # character replaced</li>
-  # <li>If no characters are replaced, use the metadata of the
-  # previous character</li>
-  # <li>If there is no previous character (i.e. start == 0), use the
-  # following character</li>
-  # <li>If there is no following character (i.e. the replaceable was
-  # empty), use default metadata<br>
-  # <li>If the code point U+FFFF is seen, it should be interpreted as
-  # a special marker having no metadata<li>
-  # </li>
+  #   <li>Set the metadata of the new text to the metadata of the first
+  #   character replaced</li>
+  #   <li>If no characters are replaced, use the metadata of the
+  #   previous character</li>
+  #   <li>If there is no previous character (i.e. start == 0), use the
+  #   following character</li>
+  #   <li>If there is no following character (i.e. the replaceable was
+  #   empty), use default metadata<br>
+  #   <li>If the code point U+FFFF is seen, it should be interpreted as
+  #   a special marker having no metadata<li>
+  #   </li>
   # </ul>
   # If this is not the behavior, the subclass should document any differences.
   # 
@@ -107,7 +104,6 @@ module Sun::Text::Normalizer
     
     typesig { [::Java::Int, ::Java::Int, Array.typed(::Java::Char), ::Java::Int] }
     # // for StringPrep
-    # 
     # Copies characters from this object into the destination
     # character array.  The first character to be copied is at index
     # <code>srcStart</code>; the last character to be copied is at

@@ -109,7 +109,7 @@ module Sun::Security::Provider::Certpath
     # PKIX state (name constraints, policy constraints, etc).
     # 
     # @param currentState the current state.
-    # Must be an instance of <code>ReverseState</code>
+    #        Must be an instance of <code>ReverseState</code>
     # @param certStores list of CertStores
     def get_matching_certs(curr_state, cert_stores)
       current_state = curr_state
@@ -147,14 +147,12 @@ module Sun::Security::Provider::Certpath
       end
       # If previous cert has a subject key identifier extension,
       # use it to match on authority key identifier extension.
-      # 
-      # if (currentState.subjKeyId != null) {
-      # AuthorityKeyIdentifierExtension authKeyId = new AuthorityKeyIdentifierExtension(
-      # (KeyIdentifier) currentState.subjKeyId.get(SubjectKeyIdentifierExtension.KEY_ID),
-      # null, null);
-      # sel.setAuthorityKeyIdentifier(authKeyId.getExtensionValue());
+      #   if (currentState.subjKeyId != null) {
+      #   AuthorityKeyIdentifierExtension authKeyId = new AuthorityKeyIdentifierExtension(
+      #           (KeyIdentifier) currentState.subjKeyId.get(SubjectKeyIdentifierExtension.KEY_ID),
+      #           null, null);
+      #   sel.setAuthorityKeyIdentifier(authKeyId.getExtensionValue());
       # }
-      # 
       # Require EE certs
       sel.set_basic_constraints(-2)
       # Retrieve matching certs from CertStores
@@ -187,14 +185,12 @@ module Sun::Security::Provider::Certpath
       end
       # If previous cert has a subject key identifier extension,
       # use it to match on authority key identifier extension.
-      # 
-      # if (currentState.subjKeyId != null) {
-      # AuthorityKeyIdentifierExtension authKeyId = new AuthorityKeyIdentifierExtension(
-      # (KeyIdentifier) currentState.subjKeyId.get(SubjectKeyIdentifierExtension.KEY_ID),
-      # null, null);
-      # sel.setAuthorityKeyIdentifier(authKeyId.getExtensionValue());
+      #   if (currentState.subjKeyId != null) {
+      #   AuthorityKeyIdentifierExtension authKeyId = new AuthorityKeyIdentifierExtension(
+      #           (KeyIdentifier) currentState.subjKeyId.get(SubjectKeyIdentifierExtension.KEY_ID),
+      #                           null, null);
+      #   sel.setAuthorityKeyIdentifier(authKeyId.getExtensionValue());
       # }
-      # 
       # Require CA certs
       sel.set_basic_constraints(0)
       # Retrieve matching certs from CertStores
@@ -416,7 +412,7 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [X509Certificate, LinkedList] }
-    # Adds the certificate to the certPathList
+    #  Adds the certificate to the certPathList
     # 
     # @param cert the certificate to be added
     # @param certPathList the certification path list
@@ -425,7 +421,7 @@ module Sun::Security::Provider::Certpath
     end
     
     typesig { [LinkedList] }
-    # Removes final certificate from the certPathList
+    #  Removes final certificate from the certPathList
     # 
     # @param certPathList the certification path list
     def remove_final_cert_from_path(cert_path_list)

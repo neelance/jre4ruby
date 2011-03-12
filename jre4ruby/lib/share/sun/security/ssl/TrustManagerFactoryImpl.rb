@@ -192,9 +192,9 @@ module Sun::Security::Ssl
           alias_method :initialize_anonymous, :initialize
         end.new_local(self))
         # Try:
-        # javax.net.ssl.trustStore  (if this variable exists, stop)
-        # jssecacerts
-        # cacerts
+        #      javax.net.ssl.trustStore  (if this variable exists, stop)
+        #      jssecacerts
+        #      cacerts
         # 
         # If none exists, we use an empty keystore.
         store_file_name = RJava.cast_to_string(props.get("trustStore"))

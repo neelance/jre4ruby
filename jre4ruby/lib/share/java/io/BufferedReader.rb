@@ -44,7 +44,7 @@ module Java::Io
   # 
   # <pre>
   # BufferedReader in
-  # = new BufferedReader(new FileReader("foo.in"));
+  #   = new BufferedReader(new FileReader("foo.in"));
   # </pre>
   # 
   # will buffer the input from the specified file.  Without buffering, each
@@ -239,8 +239,8 @@ module Java::Io
     # Reads a single character.
     # 
     # @return The character read, as an integer in the range
-    # 0 to 65535 (<tt>0x00-0xffff</tt>), or -1 if the
-    # end of the stream has been reached
+    #         0 to 65535 (<tt>0x00-0xffff</tt>), or -1 if the
+    #         end of the stream has been reached
     # @exception  IOException  If an I/O error occurs
     def read
       synchronized((self.attr_lock)) do
@@ -311,14 +311,14 @@ module Java::Io
     # <code>read</code> continues until one of the following conditions becomes
     # true: <ul>
     # 
-    # <li> The specified number of characters have been read,
+    #   <li> The specified number of characters have been read,
     # 
-    # <li> The <code>read</code> method of the underlying stream returns
-    # <code>-1</code>, indicating end-of-file, or
+    #   <li> The <code>read</code> method of the underlying stream returns
+    #   <code>-1</code>, indicating end-of-file, or
     # 
-    # <li> The <code>ready</code> method of the underlying stream
-    # returns <code>false</code>, indicating that further input requests
-    # would block.
+    #   <li> The <code>ready</code> method of the underlying stream
+    #   returns <code>false</code>, indicating that further input requests
+    #   would block.
     # 
     # </ul> If the first <code>read</code> on the underlying stream returns
     # <code>-1</code> to indicate end-of-file then this method returns
@@ -341,7 +341,7 @@ module Java::Io
     # @param      len   Maximum number of characters to read
     # 
     # @return     The number of characters read, or -1 if the end of the
-    # stream has been reached
+    #             stream has been reached
     # 
     # @exception  IOException  If an I/O error occurs
     def read(cbuf, off, len)
@@ -377,8 +377,8 @@ module Java::Io
     # @param      ignoreLF  If true, the next '\n' will be skipped
     # 
     # @return     A String containing the contents of the line, not including
-    # any line-termination characters, or null if the end of the
-    # stream has been reached
+    #             any line-termination characters, or null if the end of the
+    #             stream has been reached
     # 
     # @see        java.io.LineNumberReader#readLine()
     # 
@@ -449,8 +449,8 @@ module Java::Io
     # followed immediately by a linefeed.
     # 
     # @return     A String containing the contents of the line, not including
-    # any line-termination characters, or null if the end of the
-    # stream has been reached
+    #             any line-termination characters, or null if the end of the
+    #             stream has been reached
     # 
     # @exception  IOException  If an I/O error occurs
     def read_line
@@ -540,13 +540,13 @@ module Java::Io
     # will attempt to reposition the stream to this point.
     # 
     # @param readAheadLimit   Limit on the number of characters that may be
-    # read while still preserving the mark. An attempt
-    # to reset the stream after reading characters
-    # up to this limit or beyond may fail.
-    # A limit value larger than the size of the input
-    # buffer will cause a new buffer to be allocated
-    # whose size is no smaller than limit.
-    # Therefore large values should be used with care.
+    #                         read while still preserving the mark. An attempt
+    #                         to reset the stream after reading characters
+    #                         up to this limit or beyond may fail.
+    #                         A limit value larger than the size of the input
+    #                         buffer will cause a new buffer to be allocated
+    #                         whose size is no smaller than limit.
+    #                         Therefore large values should be used with care.
     # 
     # @exception  IllegalArgumentException  If readAheadLimit is < 0
     # @exception  IOException  If an I/O error occurs
@@ -566,7 +566,7 @@ module Java::Io
     # Resets the stream to the most recent mark.
     # 
     # @exception  IOException  If the stream has never been marked,
-    # or if the mark has been invalidated
+    #                          or if the mark has been invalidated
     def reset
       synchronized((self.attr_lock)) do
         ensure_open

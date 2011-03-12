@@ -103,8 +103,8 @@ module Java::Net
     # @param urls the URLs from which to load classes and resources
     # @param parent the parent class loader for delegation
     # @exception  SecurityException  if a security manager exists and its
-    # <code>checkCreateClassLoader</code> method doesn't allow
-    # creation of a class loader.
+    #             <code>checkCreateClassLoader</code> method doesn't allow
+    #             creation of a class loader.
     # @see SecurityManager#checkCreateClassLoader
     def initialize(urls, parent)
       @ucp = nil
@@ -135,8 +135,8 @@ module Java::Net
     # @param urls the URLs from which to load classes and resources
     # 
     # @exception  SecurityException  if a security manager exists and its
-    # <code>checkCreateClassLoader</code> method doesn't allow
-    # creation of a class loader.
+    #             <code>checkCreateClassLoader</code> method doesn't allow
+    #             creation of a class loader.
     # @see SecurityManager#checkCreateClassLoader
     def initialize(urls)
       @ucp = nil
@@ -167,8 +167,8 @@ module Java::Net
     # @param factory the URLStreamHandlerFactory to use when creating URLs
     # 
     # @exception  SecurityException  if a security manager exists and its
-    # <code>checkCreateClassLoader</code> method doesn't allow
-    # creation of a class loader.
+    #             <code>checkCreateClassLoader</code> method doesn't allow
+    #             creation of a class loader.
     # @see SecurityManager#checkCreateClassLoader
     def initialize(urls, parent, factory)
       @ucp = nil
@@ -302,11 +302,11 @@ module Java::Net
     # 
     # @param name  the package name
     # @param man   the Manifest containing package version and sealing
-    # information
+    #              information
     # @param url   the code source url for the package, or null if none
     # @exception   IllegalArgumentException if the package name duplicates
-    # an existing package either in this class loader or one
-    # of its ancestors
+    #              an existing package either in this class loader or one
+    #              of its ancestors
     # @return the newly defined Package object
     def define_package(name, man, url)
       path = name.replace(Character.new(?..ord), Character.new(?/.ord)).concat("/")

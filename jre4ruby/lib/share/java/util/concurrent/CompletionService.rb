@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # This file is available under and governed by the GNU General Public
 # License version 2 only, as published by the Free Software Foundation.
 # However, the following notice accompanied the original version of this
@@ -71,7 +69,7 @@ module Java::Util::Concurrent
     # @param task the task to submit
     # @return a Future representing pending completion of the task
     # @throws RejectedExecutionException if the task cannot be
-    # scheduled for execution
+    #         scheduled for execution
     # @throws NullPointerException if the task is null
     def submit(task)
       raise NotImplementedError
@@ -85,10 +83,10 @@ module Java::Util::Concurrent
     # @param task the task to submit
     # @param result the result to return upon successful completion
     # @return a Future representing pending completion of the task,
-    # and whose <tt>get()</tt> method will return the given
-    # result value upon completion
+    #         and whose <tt>get()</tt> method will return the given
+    #         result value upon completion
     # @throws RejectedExecutionException if the task cannot be
-    # scheduled for execution
+    #         scheduled for execution
     # @throws NullPointerException if the task is null
     def submit(task, result)
       raise NotImplementedError
@@ -109,7 +107,7 @@ module Java::Util::Concurrent
     # completed task or <tt>null</tt> if none are present.
     # 
     # @return the Future representing the next completed task, or
-    # <tt>null</tt> if none are present
+    #         <tt>null</tt> if none are present
     def poll
       raise NotImplementedError
     end
@@ -120,12 +118,12 @@ module Java::Util::Concurrent
     # time if none are yet present.
     # 
     # @param timeout how long to wait before giving up, in units of
-    # <tt>unit</tt>
+    #        <tt>unit</tt>
     # @param unit a <tt>TimeUnit</tt> determining how to interpret the
-    # <tt>timeout</tt> parameter
+    #        <tt>timeout</tt> parameter
     # @return the Future representing the next completed task or
-    # <tt>null</tt> if the specified waiting time elapses
-    # before one is present
+    #         <tt>null</tt> if the specified waiting time elapses
+    #         before one is present
     # @throws InterruptedException if interrupted while waiting
     def poll(timeout, unit)
       raise NotImplementedError

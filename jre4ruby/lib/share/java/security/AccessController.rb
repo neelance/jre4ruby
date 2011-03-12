@@ -74,17 +74,17 @@ module Java::Security
   # The <code>checkPermission </code>method determines whether access
   # is granted or denied based on the following algorithm:
   # 
-  # <pre> {@code
+  #  <pre> {@code
   # for (int i = m; i > 0; i--) {
   # 
-  # if (caller i's domain does not have the permission)
-  # throw AccessControlException
+  #     if (caller i's domain does not have the permission)
+  #         throw AccessControlException
   # 
-  # else if (caller i is marked as privileged) {
-  # if (a context was specified in the call to doPrivileged)
-  # context.checkPermission(permission)
-  # return;
-  # }
+  #     else if (caller i is marked as privileged) {
+  #         if (a context was specified in the call to doPrivileged)
+  #             context.checkPermission(permission)
+  #         return;
+  #     }
   # };
   # 
   # // Next, check the context inherited when the thread was created.
@@ -112,17 +112,17 @@ module Java::Security
   # don't need to return a value from within the "privileged" block, do
   # the following:
   # 
-  # <pre> {@code
+  #  <pre> {@code
   # somemethod() {
-  # ...normal code here...
-  # AccessController.doPrivileged(new PrivilegedAction<Void>() {
-  # public Void run() {
-  # // privileged code goes here, for example:
-  # System.loadLibrary("awt");
-  # return null; // nothing to return
-  # }
-  # });
-  # ...normal code here...
+  #     ...normal code here...
+  #     AccessController.doPrivileged(new PrivilegedAction<Void>() {
+  #         public Void run() {
+  #             // privileged code goes here, for example:
+  #             System.loadLibrary("awt");
+  #             return null; // nothing to return
+  #         }
+  #     });
+  #     ...normal code here...
   # }}</pre>
   # 
   # <p>
@@ -142,16 +142,16 @@ module Java::Security
   # 
   # <p> If you need to return a value, you can do something like the following:
   # 
-  # <pre> {@code
+  #  <pre> {@code
   # somemethod() {
-  # ...normal code here...
-  # String user = AccessController.doPrivileged(
-  # new PrivilegedAction<String>() {
-  # public String run() {
-  # return System.getProperty("user.name");
-  # }
-  # });
-  # ...normal code here...
+  #     ...normal code here...
+  #     String user = AccessController.doPrivileged(
+  #         new PrivilegedAction<String>() {
+  #         public String run() {
+  #             return System.getProperty("user.name");
+  #             }
+  #         });
+  #     ...normal code here...
   # }}</pre>
   # 
   # <p>If the action performed in your <code>run</code> method could
@@ -160,24 +160,24 @@ module Java::Security
   # <code>PrivilegedExceptionAction</code> interface instead of the
   # <code>PrivilegedAction</code> interface:
   # 
-  # <pre> {@code
+  #  <pre> {@code
   # somemethod() throws FileNotFoundException {
-  # ...normal code here...
-  # try {
-  # FileInputStream fis = AccessController.doPrivileged(
-  # new PrivilegedExceptionAction<FileInputStream>() {
-  # public FileInputStream run() throws FileNotFoundException {
-  # return new FileInputStream("someFile");
-  # }
-  # });
-  # } catch (PrivilegedActionException e) {
-  # // e.getException() should be an instance of FileNotFoundException,
-  # // as only "checked" exceptions will be "wrapped" in a
-  # // PrivilegedActionException.
-  # throw (FileNotFoundException) e.getException();
-  # }
-  # ...normal code here...
-  # }}</pre>
+  #     ...normal code here...
+  #     try {
+  #         FileInputStream fis = AccessController.doPrivileged(
+  #         new PrivilegedExceptionAction<FileInputStream>() {
+  #             public FileInputStream run() throws FileNotFoundException {
+  #                 return new FileInputStream("someFile");
+  #             }
+  #         });
+  #     } catch (PrivilegedActionException e) {
+  #         // e.getException() should be an instance of FileNotFoundException,
+  #         // as only "checked" exceptions will be "wrapped" in a
+  #         // PrivilegedActionException.
+  #         throw (FileNotFoundException) e.getException();
+  #     }
+  #     ...normal code here...
+  #  }}</pre>
   # 
   # <p> Be *very* careful in your use of the "privileged" construct, and
   # always remember to make the privileged code section as small as possible.
@@ -218,17 +218,17 @@ module Java::Security
   # to check the context against. In these cases you can use the
   # doPrivileged method that takes a context:
   # 
-  # <pre> {@code
+  #  <pre> {@code
   # somemethod() {
-  # AccessController.doPrivileged(new PrivilegedAction<Object>() {
-  # public Object run() {
-  # // Code goes here. Any permission checks within this
-  # // run method will require that the intersection of the
-  # // callers protection domain and the snapshot's
-  # // context have the desired permission.
-  # }
-  # }, acc);
-  # ...normal code here...
+  #     AccessController.doPrivileged(new PrivilegedAction<Object>() {
+  #         public Object run() {
+  #             // Code goes here. Any permission checks within this
+  #             // run method will require that the intersection of the
+  #             // callers protection domain and the snapshot's
+  #             // context have the desired permission.
+  #         }
+  #     }, acc);
+  #     ...normal code here...
   # }}</pre>
   # 
   # @see AccessControlContext
@@ -315,11 +315,11 @@ module Java::Security
       # 
       # @param action the action to be performed.
       # @param context an <i>access control context</i>
-      # representing the restriction to be applied to the
-      # caller's domain's privileges before performing
-      # the specified action.  If the context is
-      # <code>null</code>,
-      # then no additional restriction is applied.
+      #                representing the restriction to be applied to the
+      #                caller's domain's privileges before performing
+      #                the specified action.  If the context is
+      #                <code>null</code>,
+      #                then no additional restriction is applied.
       # 
       # @return the value returned by the action's <code>run</code> method.
       # 
@@ -348,7 +348,7 @@ module Java::Security
       # @return the value returned by the action's <code>run</code> method
       # 
       # @exception PrivilegedActionException if the specified action's
-      # <code>run</code> method threw a <i>checked</i> exception
+      #         <code>run</code> method threw a <i>checked</i> exception
       # @exception NullPointerException if the action is <code>null</code>
       # 
       # @see #doPrivileged(PrivilegedAction)
@@ -375,7 +375,7 @@ module Java::Security
       # @return the value returned by the action's <code>run</code> method
       # 
       # @exception PrivilegedActionException if the specified action's
-      # <code>run</code> method threw a <i>checked</i> exception
+      #         <code>run</code> method threw a <i>checked</i> exception
       # @exception NullPointerException if the action is <code>null</code>
       # 
       # @see #doPrivileged(PrivilegedAction)
@@ -438,17 +438,17 @@ module Java::Security
       # 
       # @param action the action to be performed
       # @param context an <i>access control context</i>
-      # representing the restriction to be applied to the
-      # caller's domain's privileges before performing
-      # the specified action.  If the context is
-      # <code>null</code>,
-      # then no additional restriction is applied.
+      #                representing the restriction to be applied to the
+      #                caller's domain's privileges before performing
+      #                the specified action.  If the context is
+      #                <code>null</code>,
+      #                then no additional restriction is applied.
       # 
       # @return the value returned by the action's <code>run</code> method
       # 
       # @exception PrivilegedActionException if the specified action's
-      # <code>run</code> method
-      # threw a <i>checked</i> exception
+      #         <code>run</code> method
+      #         threw a <i>checked</i> exception
       # @exception NullPointerException if the action is <code>null</code>
       # 
       # @see #doPrivileged(PrivilegedAction)
@@ -465,7 +465,7 @@ module Java::Security
       # ProtectionDomain.
       # 
       # @return the access control context based on the current stack or
-      # null if there was only privileged system code.
+      #         null if there was only privileged system code.
       def get_stack_access_control_context
         JNI.call_native_method(:Java_java_security_AccessController_getStackAccessControlContext, JNI.env, self.jni_id)
       end
@@ -509,10 +509,10 @@ module Java::Security
       # @param perm the requested permission.
       # 
       # @exception AccessControlException if the specified permission
-      # is not permitted, based on the current security policy.
+      #            is not permitted, based on the current security policy.
       # @exception NullPointerException if the specified permission
-      # is <code>null</code> and is checked based on the
-      # security policy currently in effect.
+      #            is <code>null</code> and is checked based on the
+      #            security policy currently in effect.
       def check_permission(perm)
         # System.err.println("checkPermission "+perm);
         # Thread.currentThread().dumpStack();

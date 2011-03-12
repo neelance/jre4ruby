@@ -55,30 +55,30 @@ module Sun::Security::X509
   # <pre>
   # GeneralName ::= CHOICE {
   # ....
-  # directoryName                   [4]     Name,
+  #     directoryName                   [4]     Name,
   # ....
   # Name ::= CHOICE {
-  # RDNSequence }
+  #   RDNSequence }
   # 
   # RDNSequence ::= SEQUENCE OF RelativeDistinguishedName
   # 
   # RelativeDistinguishedName ::=
-  # SET OF AttributeTypeAndValue
+  #   SET OF AttributeTypeAndValue
   # 
   # AttributeTypeAndValue ::= SEQUENCE {
-  # type     AttributeType,
-  # value    AttributeValue }
+  #   type     AttributeType,
+  #   value    AttributeValue }
   # 
   # AttributeType ::= OBJECT IDENTIFIER
   # 
   # AttributeValue ::= ANY DEFINED BY AttributeType
   # ....
   # DirectoryString ::= CHOICE {
-  # teletexString           TeletexString (SIZE (1..MAX)),
-  # printableString         PrintableString (SIZE (1..MAX)),
-  # universalString         UniversalString (SIZE (1..MAX)),
-  # utf8String              UTF8String (SIZE (1.. MAX)),
-  # bmpString               BMPString (SIZE (1..MAX)) }
+  #       teletexString           TeletexString (SIZE (1..MAX)),
+  #       printableString         PrintableString (SIZE (1..MAX)),
+  #       universalString         UniversalString (SIZE (1..MAX)),
+  #       utf8String              UTF8String (SIZE (1.. MAX)),
+  #       bmpString               BMPString (SIZE (1..MAX)) }
   # </pre>
   # <p>
   # This specification requires only a subset of the name comparison
@@ -86,20 +86,20 @@ module Sun::Security::X509
   # requirements for conforming implementations are as follows:
   # <ol TYPE=a>
   # <li>attribute values encoded in different types (e.g.,
-  # PrintableString and BMPString) may be assumed to represent
-  # different strings;
+  #    PrintableString and BMPString) may be assumed to represent
+  #    different strings;
   # <p>
   # <li>attribute values in types other than PrintableString are case
-  # sensitive (this permits matching of attribute values as binary
-  # objects);
+  #    sensitive (this permits matching of attribute values as binary
+  #    objects);
   # <p>
   # <li>attribute values in PrintableString are not case sensitive
-  # (e.g., "Marianne Swanson" is the same as "MARIANNE SWANSON"); and
+  #    (e.g., "Marianne Swanson" is the same as "MARIANNE SWANSON"); and
   # <p>
   # <li>attribute values in PrintableString are compared after
-  # removing leading and trailing white space and converting internal
-  # substrings of one or more consecutive white space characters to a
-  # single space.
+  #    removing leading and trailing white space and converting internal
+  #    substrings of one or more consecutive white space characters to a
+  #    single space.
   # </ol>
   # <p>
   # These name comparison rules permit a certificate user to validate
@@ -365,9 +365,9 @@ module Sun::Security::X509
     # 
     # @param value a DER-encoded value holding an X.500 name.
     def initialize(value)
+      initialize__x500name(value.to_der_input_stream)
       # Note that toDerInputStream uses only the buffer (data) and not
       # the tag, so an empty SEQUENCE (OF) will yield an empty DerInputStream
-      initialize__x500name(value.to_der_input_stream)
     end
     
     typesig { [DerInputStream] }
@@ -389,7 +389,7 @@ module Sun::Security::X509
     end
     
     typesig { [Array.typed(::Java::Byte)] }
-    # Constructs a name from an ASN.1 encoded byte array.
+    #  Constructs a name from an ASN.1 encoded byte array.
     # 
     # @param name DER-encoded byte array holding an X.500 name.
     def initialize(name)
@@ -823,9 +823,11 @@ module Sun::Security::X509
     
     typesig { [DerInputStream] }
     def parse_der(in_)
+      # 
       # X.500 names are a "SEQUENCE OF" RDNs, which means zero or
       # more and order matters.  We scan them in order, which
       # conventionally is big-endian.
+      # 
       nameseq = nil
       der_bytes = in_.to_byte_array
       begin
@@ -908,8 +910,8 @@ module Sun::Security::X509
     # The following examples show both methods of quoting a comma, so that it
     # is not considered a separator:
     # 
-    # O="Sue, Grabbit and Runn" or
-    # O=Sue\, Grabbit and Runn
+    #     O="Sue, Grabbit and Runn" or
+    #     O=Sue\, Grabbit and Runn
     # 
     # This method can parse 1779 or 2253 DNs and non-standard 3280 keywords.
     # Additional keywords can be specified in the keyword/OID map.
@@ -1026,18 +1028,18 @@ module Sun::Security::X509
       typesig { [::Java::Int, ::Java::Int, String] }
       def escaped(rdn_end, search_offset, dn_string)
         if ((rdn_end).equal?(1) && (dn_string.char_at(rdn_end - 1)).equal?(Character.new(?\\.ord)))
-          # case 1:
-          # \,
+          #  case 1:
+          #  \,
           return true
         else
           if (rdn_end > 1 && (dn_string.char_at(rdn_end - 1)).equal?(Character.new(?\\.ord)) && !(dn_string.char_at(rdn_end - 2)).equal?(Character.new(?\\.ord)))
-            # case 2:
-            # foo\,
+            #  case 2:
+            #  foo\,
             return true
           else
             if (rdn_end > 1 && (dn_string.char_at(rdn_end - 1)).equal?(Character.new(?\\.ord)) && (dn_string.char_at(rdn_end - 2)).equal?(Character.new(?\\.ord)))
-              # case 3:
-              # foo\\\\\,
+              #  case 3:
+              #  foo\\\\\,
               count = 0
               rdn_end -= 1 # back up to last backSlash
               while (rdn_end >= search_offset)
@@ -1211,12 +1213,9 @@ module Sun::Security::X509
         const_set :GENERATIONQUALIFIER_OID, intern(ObjectIdentifier.new_internal(GENERATIONQUALIFIER_DATA))
         # OIDs from other sources which show up in X.500 names we
         # expect to deal with often
-        # 
         # OID for "IP=" IP address attributes, used with SKIP.
         const_set :IpAddress_oid, intern(ObjectIdentifier.new_internal(IpAddress_data))
         # Domain component OID from RFC 1274, RFC 2247, RFC 3280
-        # 
-        # 
         # OID for "DC=" domain component attributes, used with DNS names in DN
         # format
         const_set :DOMAIN_COMPONENT_OID, intern(ObjectIdentifier.new_internal(DOMAIN_COMPONENT_DATA))
@@ -1226,21 +1225,21 @@ module Sun::Security::X509
     }
     
     typesig { [GeneralNameInterface] }
-    # Return constraint type:<ul>
-    # <li>NAME_DIFF_TYPE = -1: input name is different type from this name
-    # (i.e. does not constrain)
-    # <li>NAME_MATCH = 0: input name matches this name
-    # <li>NAME_NARROWS = 1: input name narrows this name
-    # <li>NAME_WIDENS = 2: input name widens this name
-    # <li>NAME_SAME_TYPE = 3: input name does not match or narrow this name,
+    # * Return constraint type:<ul>
+    # *   <li>NAME_DIFF_TYPE = -1: input name is different type from this name
+    # *       (i.e. does not constrain)
+    # *   <li>NAME_MATCH = 0: input name matches this name
+    # *   <li>NAME_NARROWS = 1: input name narrows this name
+    # *   <li>NAME_WIDENS = 2: input name widens this name
+    # *   <li>NAME_SAME_TYPE = 3: input name does not match or narrow this name,
     # &       but is same type
-    # </ul>.  These results are used in checking NameConstraints during
-    # certification path verification.
-    # 
-    # @param inputName to be checked for being constrained
-    # @returns constraint type above
-    # @throws UnsupportedOperationException if name is not exact match, but
-    # narrowing and widening are not supported for this name type.
+    # * </ul>.  These results are used in checking NameConstraints during
+    # * certification path verification.
+    # *
+    # * @param inputName to be checked for being constrained
+    # * @returns constraint type above
+    # * @throws UnsupportedOperationException if name is not exact match, but
+    # *         narrowing and widening are not supported for this name type.
     def constrains(input_name)
       constraint_type = 0
       if ((input_name).nil?)

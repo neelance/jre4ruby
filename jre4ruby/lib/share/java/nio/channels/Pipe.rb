@@ -152,7 +152,7 @@ module Java::Nio::Channels
       # @return  A new pipe
       # 
       # @throws  IOException
-      # If an I/O error occurs
+      #          If an I/O error occurs
       def open
         return SelectorProvider.provider.open_pipe
       end

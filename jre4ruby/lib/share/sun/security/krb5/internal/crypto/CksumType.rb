@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5::Internal::Crypto
@@ -60,17 +58,6 @@ module Sun::Security::Krb5::Internal::Crypto
         cksum_type = nil
         cksum_type_name = nil
         case (cksum_type_const)
-        # currently we don't support MD4.
-        # cksumType = new RsaMd4DesKCksumType();
-        # cksumTypeName =
-        # "sun.security.krb5.internal.crypto.RsaMd4DesKCksumType";
-        # cksumType = new RsaMd4CksumType();
-        # linux box support rsamd4, how to solve conflict?
-        # cksumTypeName =
-        # "sun.security.krb5.internal.crypto.RsaMd4CksumType";
-        # cksumType = new RsaMd4DesCksumType();
-        # cksumTypeName =
-        # "sun.security.krb5.internal.crypto.RsaMd4DesCksumType";
         when Checksum::CKSUMTYPE_CRC32
           cksum_type = Crc32CksumType.new
           cksum_type_name = "sun.security.krb5.internal.crypto.Crc32CksumType"
@@ -99,8 +86,30 @@ module Sun::Security::Krb5::Internal::Crypto
           cksum_type = HmacMd5ArcFourCksumType.new
           cksum_type_name = "sun.security.krb5.internal.crypto.HmacMd5ArcFourCksumType"
         when Checksum::CKSUMTYPE_RSA_MD4_DES_K, Checksum::CKSUMTYPE_RSA_MD4, Checksum::CKSUMTYPE_RSA_MD4_DES
+          # currently we don't support MD4.
+          # cksumType = new RsaMd4DesKCksumType();
+          # cksumTypeName =
+          #          "sun.security.krb5.internal.crypto.RsaMd4DesKCksumType";
+          # cksumType = new RsaMd4CksumType();
+          # linux box support rsamd4, how to solve conflict?
+          # cksumTypeName =
+          #          "sun.security.krb5.internal.crypto.RsaMd4CksumType";
+          # cksumType = new RsaMd4DesCksumType();
+          # cksumTypeName =
+          #          "sun.security.krb5.internal.crypto.RsaMd4DesCksumType";
           raise KdcErrException.new(Krb5::KDC_ERR_SUMTYPE_NOSUPP)
         else
+          # currently we don't support MD4.
+          # cksumType = new RsaMd4DesKCksumType();
+          # cksumTypeName =
+          #          "sun.security.krb5.internal.crypto.RsaMd4DesKCksumType";
+          # cksumType = new RsaMd4CksumType();
+          # linux box support rsamd4, how to solve conflict?
+          # cksumTypeName =
+          #          "sun.security.krb5.internal.crypto.RsaMd4CksumType";
+          # cksumType = new RsaMd4DesCksumType();
+          # cksumTypeName =
+          #          "sun.security.krb5.internal.crypto.RsaMd4DesCksumType";
           raise KdcErrException.new(Krb5::KDC_ERR_SUMTYPE_NOSUPP)
         end
         if (self.attr_debug)

@@ -42,9 +42,11 @@ module Sun::Security::Acl
       include Acl
     }
     
+    # 
     # Maintain four tables. one each for positive and negative
     # ACLs. One each depending on whether the entity is a group
     # or principal.
+    # 
     attr_accessor :allowed_users_table
     alias_method :attr_allowed_users_table, :allowed_users_table
     undef_method :allowed_users_table
@@ -208,22 +210,29 @@ module Sun::Security::Acl
         individual_negative = nil
         group_positive = nil
         group_negative = nil
+        # 
         # canonicalize the sets. That is remove common permissions from
         # positive and negative sets.
+        # 
         group_positive = subtract(get_group_positive(user), get_group_negative(user))
         group_negative = subtract(get_group_negative(user), get_group_positive(user))
         individual_positive = subtract(get_individual_positive(user), get_individual_negative(user))
         individual_negative = subtract(get_individual_negative(user), get_individual_positive(user))
+        # 
         # net positive permissions is individual positive permissions
         # plus (group positive - individual negative).
+        # 
         temp1 = subtract(group_positive, individual_negative)
         net_positive = union(individual_positive, temp1)
         # recalculate the enumeration since we lost it in performing the
         # subtraction
+        # 
         individual_positive = subtract(get_individual_positive(user), get_individual_negative(user))
         individual_negative = subtract(get_individual_negative(user), get_individual_positive(user))
+        # 
         # net negative permissions is individual negative permissions
         # plus (group negative - individual positive).
+        # 
         temp1 = subtract(group_negative, individual_positive)
         net_negative = union(individual_negative, temp1)
         return subtract(net_positive, net_negative)
@@ -274,11 +283,13 @@ module Sun::Security::Acl
     end
     
     typesig { [AclEntry] }
+    # 
     # Find the table that this entry belongs to. There are 4
     # tables that are maintained. One each for postive and
     # negative ACLs and one each for groups and users.
     # This method figures out which
     # table is the one that this AclEntry belongs to.
+    # 
     def find_table(entry)
       acl_table = nil
       p = entry.get_principal
@@ -300,7 +311,9 @@ module Sun::Security::Acl
     
     class_module.module_eval {
       typesig { [Enumeration, Enumeration] }
+      # 
       # returns the set e1 U e2.
+      # 
       def union(e1, e2)
         v = Vector.new(20, 20)
         while (e1.has_more_elements)
@@ -317,7 +330,9 @@ module Sun::Security::Acl
     }
     
     typesig { [Enumeration, Enumeration] }
+    # 
     # returns the set e1 - e2.
+    # 
     def subtract(e1, e2)
       v = Vector.new(20, 20)
       while (e1.has_more_elements)

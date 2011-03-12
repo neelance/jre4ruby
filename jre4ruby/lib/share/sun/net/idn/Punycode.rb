@@ -21,21 +21,17 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
-# 
 # Copyright (C) 2003-2004, International Business Machines Corporation and    *
 # others. All Rights Reserved.                                                *
 # 
-# 
-# 
 # CHANGELOG
-# 2005-05-19 Edward Wang
-# - copy this file from icu4jsrc_3_2/src/com/ibm/icu/text/Punycode.java
-# - move from package com.ibm.icu.text to package sun.net.idn
-# - use ParseException instead of StringPrepParseException
-# 2007-08-14 Martin Buchholz
-# - remove redundant casts
+#      2005-05-19 Edward Wang
+#          - copy this file from icu4jsrc_3_2/src/com/ibm/icu/text/Punycode.java
+#          - move from package com.ibm.icu.text to package sun.net.idn
+#          - use ParseException instead of StringPrepParseException
+#      2007-08-14 Martin Buchholz
+#          - remove redundant casts
+# 
 module Sun::Net::Idn
   module PunycodeImports #:nodoc:
     class_module.module_eval {
@@ -49,7 +45,6 @@ module Sun::Net::Idn
   
   # Ported code from ICU punycode.c
   # @author ram
-  # 
   # Package Private class
   class Punycode 
     include_class_members PunycodeImports
@@ -102,7 +97,7 @@ module Sun::Net::Idn
       const_set_lazy(:CAPITAL_Z) { 0x5a }
       const_attr_reader  :CAPITAL_Z
       
-      # TODO: eliminate the 256 limitation
+      #  TODO: eliminate the 256 limitation
       const_set_lazy(:MAX_CP_COUNT) { 256 }
       const_attr_reader  :MAX_CP_COUNT
       
@@ -240,13 +235,11 @@ module Sun::Net::Idn
         # handledCPCount is the number of code points that have been handled
         # basicLength is the number of basic code points
         # destLength is the number of chars that have been output
-        # 
         # Initialize the state:
         n = INITIAL_N
         delta = 0
-        bias = INITIAL_BIAS
+        bias = INITIAL_BIAS # no op
         # Main encoding loop:
-        # no op
         handled_cpcount = basic_length
         while handled_cpcount < src_cpcount
           # All non-basic code points < n have been handled already.
@@ -254,8 +247,7 @@ module Sun::Net::Idn
           m = 0x7fffffff
           j = 0
           while j < src_cpcount
-            q = cp_buffer[j] & 0x7fffffff
-            # remove case flag from the sign bit
+            q = cp_buffer[j] & 0x7fffffff # remove case flag from the sign bit
             if (n <= q && q < m)
               m = q
             end
@@ -271,8 +263,7 @@ module Sun::Net::Idn
           # Encode a sequence of same code points n
           j = 0
           while j < src_cpcount
-            q = cp_buffer[j] & 0x7fffffff
-            # remove case flag from the sign bit
+            q = cp_buffer[j] & 0x7fffffff # remove case flag from the sign bit
             if (q < n)
               (delta += 1)
             else
@@ -282,13 +273,13 @@ module Sun::Net::Idn
                 q = delta
                 k = BASE
                 loop do
-                  # RAM: comment out the old code for conformance with draft-ietf-idn-punycode-03.txt
+                  #   * RAM: comment out the old code for conformance with draft-ietf-idn-punycode-03.txt
                   # 
                   # t=k-bias;
                   # if(t<TMIN) {
-                  # t=TMIN;
+                  #     t=TMIN;
                   # } else if(t>TMAX) {
-                  # t=TMAX;
+                  #     t=TMAX;
                   # }
                   t = k - bias
                   if (t < TMIN)
@@ -396,12 +387,10 @@ module Sun::Net::Idn
         n = INITIAL_N
         i = 0
         bias = INITIAL_BIAS
-        first_supplementary_index = 1000000000
+        first_supplementary_index = 1000000000 # no op
         # Main decoding loop:
         # Start just after the last delimiter if any
         # basic code points were copied; start at the beginning otherwise.
-        # 
-        # no op
         in_ = basic_length > 0 ? basic_length + 1 : 0
         while in_ < src_length
           # in is the index of the next character to be consumed, and
@@ -411,7 +400,6 @@ module Sun::Net::Idn
           # which gets added to i.  The overflow checking is easier
           # if we increase i as we go, then subtract off its starting
           # value at the end to obtain delta.
-          # 
           # no condition
           oldi = i
           w = 1

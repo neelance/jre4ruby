@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996 - 1998 - All Rights Reserved
 # 
@@ -189,7 +187,7 @@ module Sun::Util::Resources
         # locale list.
         # 
         # @param baseName the resource bundle base name.
-        # locale   the requested locale for the resource bundle.
+        #        locale   the requested locale for the resource bundle.
         # @returns a list of candidate locales to search from.
         # @exception NullPointerException if baseName or locale is null.
         def get_candidate_locales(base_name, locale)
@@ -217,7 +215,7 @@ module Sun::Util::Resources
         # Overrides "getFallbackLocale" to return null so
         # that the fallback locale will be null.
         # @param baseName the resource bundle base name.
-        # locale   the requested locale for the resource bundle.
+        #        locale   the requested locale for the resource bundle.
         # @return null for the fallback locale.
         # @exception NullPointerException if baseName or locale is null.
         def get_fallback_locale(base_name, locale)

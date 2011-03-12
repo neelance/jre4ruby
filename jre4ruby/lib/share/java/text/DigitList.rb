@@ -22,17 +22,15 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996 - 1998 - All Rights Reserved
 # 
-# The original version of this source code and documentation is copyrighted
+#   The original version of this source code and documentation is copyrighted
 # and owned by Taligent, Inc., a wholly-owned subsidiary of IBM. These
 # materials are provided under terms of a License Agreement between Taligent
 # and Sun. This technology is protected by multiple US and International
 # patents. This notice and attribution to Taligent may not be removed.
-# Taligent is a registered trademark of Taligent, Inc.
+#   Taligent is a registered trademark of Taligent, Inc.
 module Java::Text
   module DigitListImports #:nodoc:
     class_module.module_eval {
@@ -83,7 +81,6 @@ module Java::Text
     }
     
     # == Long.toString(Long.MAX_VALUE).length()
-    # 
     # These data members are intentionally public and can be set directly.
     # 
     # The value represented is given by placing the decimal point before
@@ -443,7 +440,7 @@ module Java::Text
     # this method returns true if a one should be generated (e.g., formatting
     # 0.09 with "#.#").
     # @exception ArithmeticException if rounding is needed with rounding
-    # mode being set to RoundingMode.UNNECESSARY
+    #            mode being set to RoundingMode.UNNECESSARY
     # @return true if digit <code>maximumDigits-1</code> should be
     # incremented
     def should_round_up(maximum_digits)

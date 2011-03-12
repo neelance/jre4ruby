@@ -35,31 +35,31 @@ module Sun::Security::X509
     }
   end
   
-  # Represents the Delta CRL Indicator Extension.
-  # 
-  # <p>
-  # The extension identifies a CRL as being a delta CRL.
-  # Delta CRLs contain updates to revocation information previously distributed,
-  # rather than all the information that would appear in a complete CRL.
-  # The extension contains a CRL number that identifies the CRL, complete for a
-  # given scope, that was used as the starting point in the generation of
-  # this delta CRL.
-  # 
-  # <p>
-  # The extension is defined in Section 5.2.4 of
-  # <a href="http://www.ietf.org/rfc/rfc3280.txt">Internet X.509 PKI Certific
+  #  * Represents the Delta CRL Indicator Extension.
+  #  *
+  #  * <p>
+  #  * The extension identifies a CRL as being a delta CRL.
+  #  * Delta CRLs contain updates to revocation information previously distributed,
+  #  * rather than all the information that would appear in a complete CRL.
+  #  * The extension contains a CRL number that identifies the CRL, complete for a
+  #  * given scope, that was used as the starting point in the generation of
+  #  * this delta CRL.
+  #  *
+  #  * <p>
+  #  * The extension is defined in Section 5.2.4 of
+  #  * <a href="http://www.ietf.org/rfc/rfc3280.txt">Internet X.509 PKI Certific
   # ate and Certificate Revocation List (CRL) Profile</a>.
-  # 
-  # <p>
-  # Its ASN.1 definition is as follows:
-  # <pre>
-  # id-ce-deltaCRLIndicator OBJECT IDENTIFIER ::= { id-ce 27 }
-  # 
-  # BaseCRLNumber ::= CRLNumber
-  # CRLNumber ::= INTEGER (0..MAX)
-  # </pre>
-  # 
-  # @since 1.6
+  #  *
+  #  * <p>
+  #  * Its ASN.1 definition is as follows:
+  #  * <pre>
+  #  *     id-ce-deltaCRLIndicator OBJECT IDENTIFIER ::= { id-ce 27 }
+  #  *
+  #  *     BaseCRLNumber ::= CRLNumber
+  #  *     CRLNumber ::= INTEGER (0..MAX)
+  #  * </pre>
+  #  *
+  #  * @since 1.6
   class DeltaCRLIndicatorExtension < DeltaCRLIndicatorExtensionImports.const_get :CRLNumberExtension
     include_class_members DeltaCRLIndicatorExtensionImports
     

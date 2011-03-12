@@ -22,10 +22,8 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # Sort: a class that uses the quicksort algorithm to sort an
-# array of objects.
+#       array of objects.
 # 
 # @author Sunita Mani
 module Sun::Misc
@@ -60,8 +58,7 @@ module Sun::Misc
         last = 0
         if (left >= right)
           # do nothing if array contains fewer than two
-          return
-          # two elements
+          return # two elements
         end
         swap(arr, left, (left + right) / 2)
         last = left

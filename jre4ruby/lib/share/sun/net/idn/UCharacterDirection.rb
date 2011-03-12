@@ -21,18 +21,15 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
-# 
-# 
-# Copyright (C) 1996-2004, International Business Machines Corporation and    *
-# others. All Rights Reserved.                                                *
-# 
-# 
+# /**
+# *******************************************************************************
+# * Copyright (C) 1996-2004, International Business Machines Corporation and    *
+# * others. All Rights Reserved.                                                *
 # CHANGELOG
-# 2005-05-19 Edward Wang
-# - copy this file from icu4jsrc_3_2/src/com/ibm/icu/lang/UCharacterDirection.java
-# - move from package com.ibm.icu.lang to package sun.net.idn
+#      2005-05-19 Edward Wang
+#          - copy this file from icu4jsrc_3_2/src/com/ibm/icu/lang/UCharacterDirection.java
+#          - move from package com.ibm.icu.lang to package sun.net.idn
+# 
 module Sun::Net::Idn
   module UCharacterDirectionImports #:nodoc:
     class_module.module_eval {
@@ -55,7 +52,6 @@ module Sun::Net::Idn
     typesig { [] }
     # private constructor =========================================
     # /CLOVER:OFF
-    # 
     # Private constructor to prevent initialisation
     def initialize
     end
@@ -63,7 +59,6 @@ module Sun::Net::Idn
     class_module.module_eval {
       typesig { [::Java::Int] }
       # /CLOVER:ON
-      # 
       # Gets the name of the argument direction
       # @param dir direction type to retrieve name
       # @return directional name

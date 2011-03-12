@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996 - 1998 - All Rights Reserved
 # 
@@ -54,11 +52,8 @@ module Sun::Text::Resources
       # even if it inherited everything, we would still need this locale to exist
       # to make the resource-bundle lookup mechanism work right.  In that case, we'd
       # define this method as follows:
-      # return new Object[][] { };
-      # decimal pattern
-      # currency pattern
-      # percent pattern
-      return Array.typed(Array.typed(Object)).new([Array.typed(Object).new(["NumberPatterns", Array.typed(String).new(["#,##0.###;-#,##0.###", ("".to_u << 0x00A4 << "#,##0.00;-".to_u << 0x00A4 << "#,##0.00"), "#,##0%"])]), Array.typed(Object).new(["DateTimePatternChars", "GyMdkHmsSEDFwWahKzZ"]), ])
+      #    return new Object[][] { };
+      return Array.typed(Array.typed(Object)).new([Array.typed(Object).new(["NumberPatterns", Array.typed(String).new(["#,##0.###;-#,##0.###", ("".to_u << 0x00A4 << "#,##0.00;-".to_u << 0x00A4 << "#,##0.00"), "#,##0%"])]), Array.typed(Object).new(["DateTimePatternChars", "GyMdkHmsSEDFwWahKzZ"])])
     end
     
     typesig { [] }

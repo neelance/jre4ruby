@@ -43,7 +43,6 @@ module Java::Lang
   # 
   # @author  unascribed
   # @since   JDK1.0
-  # 
   # The locking strategy for this code is to try to lock only one level of the
   # tree wherever possible, but otherwise to lock from the bottom up.
   # That is, from child thread groups to parents.
@@ -152,7 +151,7 @@ module Java::Lang
     # 
     # @param   name   the name of the new thread group.
     # @exception  SecurityException  if the current thread cannot create a
-    # thread in the specified thread group.
+    #               thread in the specified thread group.
     # @see     java.lang.ThreadGroup#checkAccess()
     # @since   JDK1.0
     def initialize(name)
@@ -169,9 +168,9 @@ module Java::Lang
     # @param     parent   the parent thread group.
     # @param     name     the name of the new thread group.
     # @exception  NullPointerException  if the thread group argument is
-    # <code>null</code>.
+    #               <code>null</code>.
     # @exception  SecurityException  if the current thread cannot create a
-    # thread in the specified thread group.
+    #               thread in the specified thread group.
     # @see     java.lang.SecurityException
     # @see     java.lang.ThreadGroup#checkAccess()
     # @since   JDK1.0
@@ -216,9 +215,9 @@ module Java::Lang
     # called with no arguments; this may result in a security exception.
     # 
     # @return  the parent of this thread group. The top-level thread group
-    # is the only thread group whose parent is <code>null</code>.
+    #          is the only thread group whose parent is <code>null</code>.
     # @exception  SecurityException  if the current thread cannot modify
-    # this thread group.
+    #               this thread group.
     # @see        java.lang.ThreadGroup#checkAccess()
     # @see        java.lang.SecurityException
     # @see        java.lang.RuntimePermission
@@ -236,7 +235,7 @@ module Java::Lang
     # priority.
     # 
     # @return  the maximum priority that a thread in this thread group
-    # can have.
+    #          can have.
     # @see     #setMaxPriority
     # @since   JDK1.0
     def get_max_priority
@@ -249,7 +248,7 @@ module Java::Lang
     # thread is stopped or its last thread group is destroyed.
     # 
     # @return  <code>true</code> if this thread group is a daemon thread group;
-    # <code>false</code> otherwise.
+    #          <code>false</code> otherwise.
     # @since   JDK1.0
     def is_daemon
       return @daemon
@@ -276,10 +275,10 @@ module Java::Lang
     # thread is stopped or its last thread group is destroyed.
     # 
     # @param      daemon   if <code>true</code>, marks this thread group as
-    # a daemon thread group; otherwise, marks this
-    # thread group as normal.
+    #                      a daemon thread group; otherwise, marks this
+    #                      thread group as normal.
     # @exception  SecurityException  if the current thread cannot modify
-    # this thread group.
+    #               this thread group.
     # @see        java.lang.SecurityException
     # @see        java.lang.ThreadGroup#checkAccess()
     # @since      JDK1.0
@@ -310,7 +309,7 @@ module Java::Lang
     # 
     # @param      pri   the new priority of the thread group.
     # @exception  SecurityException  if the current thread cannot modify
-    # this thread group.
+    #               this thread group.
     # @see        #getMaxPriority
     # @see        java.lang.SecurityException
     # @see        java.lang.ThreadGroup#checkAccess()
@@ -344,8 +343,8 @@ module Java::Lang
     # 
     # @param   g   a thread group.
     # @return  <code>true</code> if this thread group is the thread group
-    # argument or one of its ancestor thread groups;
-    # <code>false</code> otherwise.
+    #          argument or one of its ancestor thread groups;
+    #          <code>false</code> otherwise.
     # @since   JDK1.0
     def parent_of(g)
       while !(g).nil?
@@ -366,7 +365,7 @@ module Java::Lang
     # in throwing a <code>SecurityException</code>.
     # 
     # @exception  SecurityException  if the current thread is not allowed to
-    # access this thread group.
+    #               access this thread group.
     # @see        java.lang.SecurityManager#checkAccess(java.lang.ThreadGroup)
     # @since      JDK1.0
     def check_access
@@ -385,8 +384,8 @@ module Java::Lang
     # recommended that this method only be used for informational purposes.
     # 
     # @return  an estimate of the number of active threads in this thread
-    # group and in any other thread group that has this thread
-    # group as an ancestor.
+    #          group and in any other thread group that has this thread
+    #          group as an ancestor.
     # @since   JDK1.0
     def active_count
       result = 0
@@ -435,7 +434,7 @@ module Java::Lang
     # @param   list   an array into which to place the list of threads.
     # @return  the number of threads put into the array.
     # @exception  SecurityException  if the current thread does not
-    # have permission to enumerate this thread group.
+    #               have permission to enumerate this thread group.
     # @see     java.lang.ThreadGroup#activeCount()
     # @see     java.lang.ThreadGroup#checkAccess()
     # @since   JDK1.0
@@ -466,11 +465,11 @@ module Java::Lang
     # 
     # @param   list      an array into which to place the list of threads.
     # @param   recurse   a flag indicating whether also to include threads
-    # in thread groups that are subgroups of this
-    # thread group.
+    #                    in thread groups that are subgroups of this
+    #                    thread group.
     # @return  the number of threads placed into the array.
     # @exception  SecurityException  if the current thread does not
-    # have permission to enumerate this thread group.
+    #               have permission to enumerate this thread group.
     # @see     java.lang.ThreadGroup#activeCount()
     # @see     java.lang.ThreadGroup#checkAccess()
     # @since   JDK1.0
@@ -525,7 +524,7 @@ module Java::Lang
     # recommended that this method only be used for informational purposes.
     # 
     # @return  the number of active thread groups with this thread group as
-    # an ancestor.
+    #          an ancestor.
     # @since   JDK1.0
     def active_group_count
       ngroups_snapshot = 0
@@ -571,7 +570,7 @@ module Java::Lang
     # @param   list   an array into which to place the list of thread groups.
     # @return  the number of thread groups put into the array.
     # @exception  SecurityException  if the current thread does not
-    # have permission to enumerate this thread group.
+    #               have permission to enumerate this thread group.
     # @see     java.lang.ThreadGroup#activeGroupCount()
     # @see     java.lang.ThreadGroup#checkAccess()
     # @since   JDK1.0
@@ -602,10 +601,10 @@ module Java::Lang
     # 
     # @param   list      an array into which to place the list of threads.
     # @param   recurse   a flag indicating whether to recursively enumerate
-    # all included thread groups.
+    #                    all included thread groups.
     # @return  the number of thread groups put into the array.
     # @exception  SecurityException  if the current thread does not
-    # have permission to enumerate this thread group.
+    #               have permission to enumerate this thread group.
     # @see     java.lang.ThreadGroup#activeGroupCount()
     # @see     java.lang.ThreadGroup#checkAccess()
     # @since   JDK1.0
@@ -659,14 +658,14 @@ module Java::Lang
     # threads in this thread group and in all of its subgroups.
     # 
     # @exception  SecurityException  if the current thread is not allowed
-    # to access this thread group or any of the threads in
-    # the thread group.
+    #               to access this thread group or any of the threads in
+    #               the thread group.
     # @see        java.lang.SecurityException
     # @see        java.lang.Thread#stop()
     # @see        java.lang.ThreadGroup#checkAccess()
     # @since      JDK1.0
     # @deprecated    This method is inherently unsafe.  See
-    # {@link Thread#stop} for details.
+    #     {@link Thread#stop} for details.
     def stop
       if (stop_or_suspend(false))
         JavaThread.current_thread.stop
@@ -683,8 +682,8 @@ module Java::Lang
     # threads in this thread group and in all of its subgroups.
     # 
     # @exception  SecurityException  if the current thread is not allowed
-    # to access this thread group or any of the threads in
-    # the thread group.
+    #               to access this thread group or any of the threads in
+    #               the thread group.
     # @see        java.lang.Thread#interrupt()
     # @see        java.lang.SecurityException
     # @see        java.lang.ThreadGroup#checkAccess()
@@ -723,14 +722,14 @@ module Java::Lang
     # threads in this thread group and in all of its subgroups.
     # 
     # @exception  SecurityException  if the current thread is not allowed
-    # to access this thread group or any of the threads in
-    # the thread group.
+    #               to access this thread group or any of the threads in
+    #               the thread group.
     # @see        java.lang.Thread#suspend()
     # @see        java.lang.SecurityException
     # @see        java.lang.ThreadGroup#checkAccess()
     # @since      JDK1.0
     # @deprecated    This method is inherently deadlock-prone.  See
-    # {@link Thread#suspend} for details.
+    #     {@link Thread#suspend} for details.
     def suspend
       if (stop_or_suspend(true))
         JavaThread.current_thread.suspend
@@ -743,7 +742,7 @@ module Java::Lang
     # subgroups, except the current thread.  This method returns true
     # if (and only if) the current thread is found to be in this thread
     # group or one of its subgroups.
-    def stop_or_suspend(suspend)
+    def stop_or_suspend(suspend_)
       suicide = false
       us = JavaThread.current_thread
       ngroups_snapshot = 0
@@ -755,7 +754,7 @@ module Java::Lang
           if ((@threads[i]).equal?(us))
             suicide = true
           else
-            if (suspend)
+            if (suspend_)
               @threads[i].suspend
             else
               @threads[i].stop
@@ -770,7 +769,7 @@ module Java::Lang
       end
       i_ = 0
       while i_ < ngroups_snapshot
-        suicide = groups_snapshot[i_].stop_or_suspend(suspend) || suicide
+        suicide = groups_snapshot[i_].stop_or_suspend(suspend_) || suicide
         i_ += 1
       end
       return suicide
@@ -786,16 +785,16 @@ module Java::Lang
     # threads in this thread group and in all of its sub groups.
     # 
     # @exception  SecurityException  if the current thread is not allowed to
-    # access this thread group or any of the threads in the
-    # thread group.
+    #               access this thread group or any of the threads in the
+    #               thread group.
     # @see        java.lang.SecurityException
     # @see        java.lang.Thread#resume()
     # @see        java.lang.ThreadGroup#checkAccess()
     # @since      JDK1.0
     # @deprecated    This method is used solely in conjunction with
-    # <tt>Thread.suspend</tt> and <tt>ThreadGroup.suspend</tt>,
-    # both of which have been deprecated, as they are inherently
-    # deadlock-prone.  See {@link Thread#suspend} for details.
+    #      <tt>Thread.suspend</tt> and <tt>ThreadGroup.suspend</tt>,
+    #       both of which have been deprecated, as they are inherently
+    #       deadlock-prone.  See {@link Thread#suspend} for details.
     def resume
       ngroups_snapshot = 0
       groups_snapshot = nil
@@ -829,9 +828,9 @@ module Java::Lang
     # called with no arguments; this may result in a security exception.
     # 
     # @exception  IllegalThreadStateException  if the thread group is not
-    # empty or if the thread group has already been destroyed.
+    #               empty or if the thread group has already been destroyed.
     # @exception  SecurityException  if the current thread cannot modify this
-    # thread group.
+    #               thread group.
     # @see        java.lang.ThreadGroup#checkAccess()
     # @since      JDK1.0
     def destroy
@@ -1042,21 +1041,21 @@ module Java::Lang
     # <code>ThreadGroup</code> does the following:
     # <ul>
     # <li>If this thread group has a parent thread group, the
-    # <code>uncaughtException</code> method of that parent is called
-    # with the same two arguments.
+    #     <code>uncaughtException</code> method of that parent is called
+    #     with the same two arguments.
     # <li>Otherwise, this method checks to see if there is a
-    # {@linkplain Thread#getDefaultUncaughtExceptionHandler default
-    # uncaught exception handler} installed, and if so, its
-    # <code>uncaughtException</code> method is called with the same
-    # two arguments.
+    #     {@linkplain Thread#getDefaultUncaughtExceptionHandler default
+    #     uncaught exception handler} installed, and if so, its
+    #     <code>uncaughtException</code> method is called with the same
+    #     two arguments.
     # <li>Otherwise, this method determines if the <code>Throwable</code>
-    # argument is an instance of {@link ThreadDeath}. If so, nothing
-    # special is done. Otherwise, a message containing the
-    # thread's name, as returned from the thread's {@link
-    # Thread#getName getName} method, and a stack backtrace,
-    # using the <code>Throwable</code>'s {@link
-    # Throwable#printStackTrace printStackTrace} method, is
-    # printed to the {@linkplain System#err standard error stream}.
+    #     argument is an instance of {@link ThreadDeath}. If so, nothing
+    #     special is done. Otherwise, a message containing the
+    #     thread's name, as returned from the thread's {@link
+    #     Thread#getName getName} method, and a stack backtrace,
+    #     using the <code>Throwable</code>'s {@link
+    #     Throwable#printStackTrace printStackTrace} method, is
+    #     printed to the {@linkplain System#err standard error stream}.
     # </ul>
     # <p>
     # Applications can override this method in subclasses of
@@ -1089,8 +1088,8 @@ module Java::Lang
     # @return true on success
     # @since   JDK1.1
     # @deprecated The definition of this call depends on {@link #suspend},
-    # which is deprecated.  Further, the behavior of this call
-    # was never specified.
+    #             which is deprecated.  Further, the behavior of this call
+    #             was never specified.
     def allow_thread_suspension(b)
       @vm_allow_suspension = b
       if (!b)

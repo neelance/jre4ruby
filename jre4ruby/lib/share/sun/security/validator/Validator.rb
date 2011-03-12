@@ -71,12 +71,12 @@ module Sun::Security::Validator
   # <p>
   # Examples:
   # <pre>
-  # // instantiate validator specifying type, variant, and trust anchors
-  # Validator validator = Validator.getInstance(Validator.TYPE_PKIX,
-  # Validator.VAR_TLS_CLIENT,
-  # trustedCerts);
-  # // validate one or more chains using the validator
-  # validator.validate(chain); // throws CertificateException if failed
+  #   // instantiate validator specifying type, variant, and trust anchors
+  #   Validator validator = Validator.getInstance(Validator.TYPE_PKIX,
+  #                                               Validator.VAR_TLS_CLIENT,
+  #                                               trustedCerts);
+  #   // validate one or more chains using the validator
+  #   validator.validate(chain); // throws CertificateException if failed
   # </pre>
   # 
   # @see SimpleValidator

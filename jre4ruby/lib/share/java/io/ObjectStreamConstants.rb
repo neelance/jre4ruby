@@ -47,8 +47,6 @@ module Java::Io
       const_attr_reader  :STREAM_VERSION
       
       # Each item in the stream is preceded by a tag
-      # 
-      # 
       # First tag value.
       const_set_lazy(:TC_BASE) { 0x70 }
       const_attr_reader  :TC_BASE
@@ -125,7 +123,6 @@ module Java::Io
       const_attr_reader  :BaseWireHandle
       
       # Bit masks for ObjectStreamClass flag.
-      # 
       # Bit mask for ObjectStreamClass flag. Indicates a Serializable class
       # defines its own writeObject method.
       const_set_lazy(:SC_WRITE_METHOD) { 0x1 }
@@ -153,9 +150,7 @@ module Java::Io
       const_set_lazy(:SC_ENUM) { 0x10 }
       const_attr_reader  :SC_ENUM
       
-      # ******************************************************************
       # Security permissions
-      # 
       # Enable substitution of one object for another during
       # serialization/deserialization.
       # 

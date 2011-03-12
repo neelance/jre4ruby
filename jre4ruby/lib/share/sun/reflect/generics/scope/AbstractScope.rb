@@ -57,7 +57,6 @@ module Sun::Reflect::Generics::Scope
     
     typesig { [Object] }
     # the enclosing scope of this scope
-    # 
     # Constructor. Takes a reflective object whose scope the newly
     # constructed instance will represent.
     # @param D - A generic declaration whose scope the newly
@@ -77,7 +76,7 @@ module Sun::Reflect::Generics::Scope
     end
     
     typesig { [] }
-    # This method must be implemented by any concrete subclass.
+    #  This method must be implemented by any concrete subclass.
     # It must return the enclosing scope of this scope. If this scope
     # is a top-level scope, an instance of  DummyScope must be returned.
     # @return The enclosing scope of this scope
@@ -102,8 +101,7 @@ module Sun::Reflect::Generics::Scope
     # @param name - the name of the type variable being looked up
     # @return the requested type variable, if found
     def lookup(name)
-      tas = get_recvr.get_type_parameters
-      # <?>
+      tas = get_recvr.get_type_parameters # <?>
       tas.each do |tv|
         if ((tv.get_name == name))
           return tv

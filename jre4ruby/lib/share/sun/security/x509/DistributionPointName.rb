@@ -43,32 +43,32 @@ module Sun::Security::X509
   # Its ASN.1 definition is:
   # <pre>
   # 
-  # DistributionPointName ::= CHOICE {
-  # fullName                  [0] GeneralNames,
-  # nameRelativeToCRLIssuer   [1] RelativeDistinguishedName }
+  #     DistributionPointName ::= CHOICE {
+  #         fullName                  [0] GeneralNames,
+  #         nameRelativeToCRLIssuer   [1] RelativeDistinguishedName }
   # 
-  # GeneralNames ::= SEQUENCE SIZE (1..MAX) OF GeneralName
+  #     GeneralNames ::= SEQUENCE SIZE (1..MAX) OF GeneralName
   # 
-  # GeneralName ::= CHOICE {
-  # otherName                 [0] INSTANCE OF OTHER-NAME,
-  # rfc822Name                [1] IA5String,
-  # dNSName                   [2] IA5String,
-  # x400Address               [3] ORAddress,
-  # directoryName             [4] Name,
-  # ediPartyName              [5] EDIPartyName,
-  # uniformResourceIdentifier [6] IA5String,
-  # iPAddress                 [7] OCTET STRING,
-  # registeredID              [8] OBJECT IDENTIFIER }
+  #     GeneralName ::= CHOICE {
+  #         otherName                 [0] INSTANCE OF OTHER-NAME,
+  #         rfc822Name                [1] IA5String,
+  #         dNSName                   [2] IA5String,
+  #         x400Address               [3] ORAddress,
+  #         directoryName             [4] Name,
+  #         ediPartyName              [5] EDIPartyName,
+  #         uniformResourceIdentifier [6] IA5String,
+  #         iPAddress                 [7] OCTET STRING,
+  #         registeredID              [8] OBJECT IDENTIFIER }
   # 
-  # RelativeDistinguishedName ::= SET OF AttributeTypeAndValue
+  #     RelativeDistinguishedName ::= SET OF AttributeTypeAndValue
   # 
-  # AttributeTypeAndValue ::= SEQUENCE {
-  # type    AttributeType,
-  # value   AttributeValue }
+  #     AttributeTypeAndValue ::= SEQUENCE {
+  #         type    AttributeType,
+  #         value   AttributeValue }
   # 
-  # AttributeType ::= OBJECT IDENTIFIER
+  #     AttributeType ::= OBJECT IDENTIFIER
   # 
-  # AttributeValue ::= ANY DEFINED BY AttributeType
+  #     AttributeValue ::= ANY DEFINED BY AttributeType
   # 
   # </pre>
   # <p>
@@ -131,7 +131,7 @@ module Sun::Security::X509
     # Creates a distribution point name using a relative name.
     # 
     # @param relativeName the name of the distribution point relative to
-    # the name of the issuer of the CRL.
+    #        the name of the issuer of the CRL.
     # @exception IllegalArgumentException if <code>relativeName</code> is null.
     def initialize(relative_name)
       @full_name = nil

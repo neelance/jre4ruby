@@ -149,12 +149,12 @@ module Java::Net
     # </UL>
     # 
     # @param proxy a {@link java.net.Proxy Proxy} object specifying what kind
-    # of proxying should be used.
+    #              of proxying should be used.
     # @throws IllegalArgumentException if the proxy is of an invalid type
-    # or <code>null</code>.
+    #          or <code>null</code>.
     # @throws SecurityException if a security manager is present and
-    # permission to connect to the proxy is
-    # denied.
+    #                           permission to connect to the proxy is
+    #                           denied.
     # @see java.net.ProxySelector
     # @see java.net.Proxy
     # 
@@ -251,7 +251,7 @@ module Java::Net
     # 
     # @exception  IOException  if an I/O error occurs when creating the socket.
     # @exception  SecurityException  if a security manager exists and its
-    # <code>checkConnect</code> method doesn't allow the operation.
+    #             <code>checkConnect</code> method doesn't allow the operation.
     # @see        java.net.Socket#setSocketImplFactory(java.net.SocketImplFactory)
     # @see        java.net.SocketImpl
     # @see        java.net.SocketImplFactory#createSocketImpl()
@@ -277,7 +277,7 @@ module Java::Net
     # @param      port      the port number.
     # @exception  IOException  if an I/O error occurs when creating the socket.
     # @exception  SecurityException  if a security manager exists and its
-    # <code>checkConnect</code> method doesn't allow the operation.
+    #             <code>checkConnect</code> method doesn't allow the operation.
     # @see        java.net.Socket#setSocketImplFactory(java.net.SocketImplFactory)
     # @see        java.net.SocketImpl
     # @see        java.net.SocketImplFactory#createSocketImpl()
@@ -307,7 +307,7 @@ module Java::Net
     # @param localPort the local port the socket is bound to
     # @exception  IOException  if an I/O error occurs when creating the socket.
     # @exception  SecurityException  if a security manager exists and its
-    # <code>checkConnect</code> method doesn't allow the operation.
+    #             <code>checkConnect</code> method doesn't allow the operation.
     # @see        SecurityManager#checkConnect
     # @since   JDK1.1
     def initialize(host, port, local_addr, local_port)
@@ -330,7 +330,7 @@ module Java::Net
     # @param localPort the local port the socket is bound to
     # @exception  IOException  if an I/O error occurs when creating the socket.
     # @exception  SecurityException  if a security manager exists and its
-    # <code>checkConnect</code> method doesn't allow the operation.
+    #             <code>checkConnect</code> method doesn't allow the operation.
     # @see        SecurityManager#checkConnect
     # @since   JDK1.1
     def initialize(address_, port, local_addr, local_port)
@@ -364,10 +364,10 @@ module Java::Net
     # @param      host     the host name, or <code>null</code> for the loopback address.
     # @param      port     the port number.
     # @param      stream   a <code>boolean</code> indicating whether this is
-    # a stream socket or a datagram socket.
+    #                      a stream socket or a datagram socket.
     # @exception  IOException  if an I/O error occurs when creating the socket.
     # @exception  SecurityException  if a security manager exists and its
-    # <code>checkConnect</code> method doesn't allow the operation.
+    #             <code>checkConnect</code> method doesn't allow the operation.
     # @see        java.net.Socket#setSocketImplFactory(java.net.SocketImplFactory)
     # @see        java.net.SocketImpl
     # @see        java.net.SocketImplFactory#createSocketImpl()
@@ -399,10 +399,10 @@ module Java::Net
     # @param      host     the IP address.
     # @param      port      the port number.
     # @param      stream    if <code>true</code>, create a stream socket;
-    # otherwise, create a datagram socket.
+    #                       otherwise, create a datagram socket.
     # @exception  IOException  if an I/O error occurs when creating the socket.
     # @exception  SecurityException  if a security manager exists and its
-    # <code>checkConnect</code> method doesn't allow the operation.
+    #             <code>checkConnect</code> method doesn't allow the operation.
     # @see        java.net.Socket#setSocketImplFactory(java.net.SocketImplFactory)
     # @see        java.net.SocketImpl
     # @see        java.net.SocketImplFactory#createSocketImpl()
@@ -446,7 +446,7 @@ module Java::Net
     # Creates the socket implementation.
     # 
     # @param stream a <code>boolean</code> value : <code>true</code> for a TCP socket,
-    # <code>false</code> for UDP.
+    #               <code>false</code> for UDP.
     # @throws IOException if creation fails
     # @since 1.4
     def create_impl(stream)
@@ -542,10 +542,10 @@ module Java::Net
     # @param   endpoint the <code>SocketAddress</code>
     # @throws  IOException if an error occurs during the connection
     # @throws  java.nio.channels.IllegalBlockingModeException
-    # if this socket has an associated channel,
-    # and the channel is in non-blocking mode
+    #          if this socket has an associated channel,
+    #          and the channel is in non-blocking mode
     # @throws  IllegalArgumentException if endpoint is null or is a
-    # SocketAddress subclass not supported by this socket
+    #          SocketAddress subclass not supported by this socket
     # @since 1.4
     # @spec JSR-51
     def connect(endpoint)
@@ -562,10 +562,10 @@ module Java::Net
     # @throws  IOException if an error occurs during the connection
     # @throws  SocketTimeoutException if timeout expires before connecting
     # @throws  java.nio.channels.IllegalBlockingModeException
-    # if this socket has an associated channel,
-    # and the channel is in non-blocking mode
+    #          if this socket has an associated channel,
+    #          and the channel is in non-blocking mode
     # @throws  IllegalArgumentException if endpoint is null or is a
-    # SocketAddress subclass not supported by this socket
+    #          SocketAddress subclass not supported by this socket
     # @since 1.4
     # @spec JSR-51
     def connect(endpoint, timeout)
@@ -623,9 +623,9 @@ module Java::Net
     # 
     # @param   bindpoint the <code>SocketAddress</code> to bind to
     # @throws  IOException if the bind operation fails, or if the socket
-    # is already bound.
+    #                     is already bound.
     # @throws  IllegalArgumentException if bindpoint is a
-    # SocketAddress subclass not supported by this socket
+    #          SocketAddress subclass not supported by this socket
     # 
     # @since   1.4
     # @see #isBound
@@ -678,7 +678,7 @@ module Java::Net
     # Returns the address to which the socket is connected.
     # 
     # @return  the remote IP address to which this socket is connected,
-    # or <code>null</code> if the socket is not connected.
+    #          or <code>null</code> if the socket is not connected.
     def get_inet_address
       if (!is_connected)
         return nil
@@ -694,8 +694,8 @@ module Java::Net
     # Gets the local address to which the socket is bound.
     # 
     # @return the local address to which the socket is bound or
-    # <code>InetAddress.anyLocalAddress()</code>
-    # if the socket is not bound yet.
+    #         <code>InetAddress.anyLocalAddress()</code>
+    #         if the socket is not bound yet.
     # @since   JDK1.1
     def get_local_address
       # This is for backward compatibility
@@ -718,7 +718,7 @@ module Java::Net
     # Returns the remote port number to which this socket is connected.
     # 
     # @return  the remote port number to which this socket is connected, or
-    # 0 if the socket is not connected yet.
+    #          0 if the socket is not connected yet.
     def get_port
       if (!is_connected)
         return 0
@@ -735,7 +735,7 @@ module Java::Net
     # Returns the local port number to which this socket is bound.
     # 
     # @return  the local port number to which this socket is bound or -1
-    # if the socket is not bound yet.
+    #          if the socket is not bound yet.
     def get_local_port
       if (!is_bound)
         return -1
@@ -753,7 +753,7 @@ module Java::Net
     # <code>null</code> if it is unconnected.
     # 
     # @return a <code>SocketAddress</code> reprensenting the remote endpoint of this
-    # socket, or <code>null</code> if it is not connected yet.
+    #         socket, or <code>null</code> if it is not connected yet.
     # @see #getInetAddress()
     # @see #getPort()
     # @see #connect(SocketAddress, int)
@@ -771,7 +771,7 @@ module Java::Net
     # <code>null</code> if it is not bound yet.
     # 
     # @return a <code>SocketAddress</code> representing the local endpoint of this
-    # socket, or <code>null</code> if it is not bound yet.
+    #         socket, or <code>null</code> if it is not bound yet.
     # @see #getLocalAddress()
     # @see #getLocalPort()
     # @see #bind(SocketAddress)
@@ -794,8 +794,8 @@ module Java::Net
     # methods.
     # 
     # @return  the socket channel associated with this socket,
-    # or <tt>null</tt> if this socket was not created
-    # for a channel
+    #          or <tt>null</tt> if this socket was not created
+    #          for a channel
     # 
     # @since 1.4
     # @spec JSR-51
@@ -819,20 +819,20 @@ module Java::Net
     # 
     # <ul>
     # 
-    # <li><p>The network software may discard bytes that are buffered
-    # by the socket. Bytes that aren't discarded by the network
-    # software can be read using {@link java.io.InputStream#read read}.
+    #   <li><p>The network software may discard bytes that are buffered
+    #   by the socket. Bytes that aren't discarded by the network
+    #   software can be read using {@link java.io.InputStream#read read}.
     # 
-    # <li><p>If there are no bytes buffered on the socket, or all
-    # buffered bytes have been consumed by
-    # {@link java.io.InputStream#read read}, then all subsequent
-    # calls to {@link java.io.InputStream#read read} will throw an
-    # {@link java.io.IOException IOException}.
+    #   <li><p>If there are no bytes buffered on the socket, or all
+    #   buffered bytes have been consumed by
+    #   {@link java.io.InputStream#read read}, then all subsequent
+    #   calls to {@link java.io.InputStream#read read} will throw an
+    #   {@link java.io.IOException IOException}.
     # 
-    # <li><p>If there are no bytes buffered on the socket, and the
-    # socket has not been closed using {@link #close close}, then
-    # {@link java.io.InputStream#available available} will
-    # return <code>0</code>.
+    #   <li><p>If there are no bytes buffered on the socket, and the
+    #   socket has not been closed using {@link #close close}, then
+    #   {@link java.io.InputStream#available available} will
+    #   return <code>0</code>.
     # 
     # </ul>
     # 
@@ -841,9 +841,9 @@ module Java::Net
     # 
     # @return     an input stream for reading bytes from this socket.
     # @exception  IOException  if an I/O error occurs when creating the
-    # input stream, the socket is closed, the socket is
-    # not connected, or the socket input has been shutdown
-    # using {@link #shutdownInput()}
+    #             input stream, the socket is closed, the socket is
+    #             not connected, or the socket input has been shutdown
+    #             using {@link #shutdownInput()}
     # 
     # @revised 1.4
     # @spec JSR-51
@@ -898,7 +898,7 @@ module Java::Net
     # 
     # @return     an output stream for writing bytes to this socket.
     # @exception  IOException  if an I/O error occurs when creating the
-    # output stream or if the socket is not connected.
+    #               output stream or if the socket is not connected.
     # @revised 1.4
     # @spec JSR-51
     def get_output_stream
@@ -1032,7 +1032,7 @@ module Java::Net
     # and before any future writes to the OutputStream.
     # @param data The byte of data to send
     # @exception IOException if there is an error
-    # sending the data.
+    #  sending the data.
     # @since 1.4
     def send_urgent_data(data)
       if (!get_impl.supports_urgent_data)
@@ -1086,15 +1086,15 @@ module Java::Net
     end
     
     typesig { [::Java::Int] }
-    # Enable/disable SO_TIMEOUT with the specified timeout, in
-    # milliseconds.  With this option set to a non-zero timeout,
-    # a read() call on the InputStream associated with this Socket
-    # will block for only this amount of time.  If the timeout expires,
-    # a <B>java.net.SocketTimeoutException</B> is raised, though the
-    # Socket is still valid. The option <B>must</B> be enabled
-    # prior to entering the blocking operation to have effect. The
-    # timeout must be > 0.
-    # A timeout of zero is interpreted as an infinite timeout.
+    #  Enable/disable SO_TIMEOUT with the specified timeout, in
+    #  milliseconds.  With this option set to a non-zero timeout,
+    #  a read() call on the InputStream associated with this Socket
+    #  will block for only this amount of time.  If the timeout expires,
+    #  a <B>java.net.SocketTimeoutException</B> is raised, though the
+    #  Socket is still valid. The option <B>must</B> be enabled
+    #  prior to entering the blocking operation to have effect. The
+    #  timeout must be > 0.
+    #  A timeout of zero is interpreted as an infinite timeout.
     # @param timeout the specified timeout, in milliseconds.
     # @exception SocketException if there is an error
     # in the underlying protocol, such as a TCP error.
@@ -1394,8 +1394,8 @@ module Java::Net
     # 
     # @param on  whether to enable or disable the socket option
     # @exception SocketException if an error occurs enabling or
-    # disabling the <tt>SO_RESUEADDR</tt> socket option,
-    # or the socket is closed.
+    #            disabling the <tt>SO_RESUEADDR</tt> socket option,
+    #            or the socket is closed.
     # @since 1.4
     # @see #getReuseAddress()
     # @see #bind(SocketAddress)
@@ -1616,10 +1616,10 @@ module Java::Net
       # 
       # @param      fac   the desired factory.
       # @exception  IOException  if an I/O error occurs when setting the
-      # socket factory.
+      #               socket factory.
       # @exception  SocketException  if the factory is already defined.
       # @exception  SecurityException  if a security manager exists and its
-      # <code>checkSetFactory</code> method doesn't allow the operation.
+      #             <code>checkSetFactory</code> method doesn't allow the operation.
       # @see        java.net.SocketImplFactory#createSocketImpl()
       # @see        SecurityManager#checkSetFactory
       def set_socket_impl_factory(fac)
@@ -1661,16 +1661,16 @@ module Java::Net
     # will have no effect.
     # 
     # @param  connectionTime
-    # An <tt>int</tt> expressing the relative importance of a short
-    # connection time
+    #         An <tt>int</tt> expressing the relative importance of a short
+    #         connection time
     # 
     # @param  latency
-    # An <tt>int</tt> expressing the relative importance of low
-    # latency
+    #         An <tt>int</tt> expressing the relative importance of low
+    #         latency
     # 
     # @param  bandwidth
-    # An <tt>int</tt> expressing the relative importance of high
-    # bandwidth
+    #         An <tt>int</tt> expressing the relative importance of high
+    #         bandwidth
     # 
     # @since 1.5
     def set_performance_preferences(connection_time, latency, bandwidth)

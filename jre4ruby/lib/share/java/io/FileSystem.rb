@@ -46,7 +46,6 @@ module Java::Io
     
     typesig { [] }
     # -- Normalization and construction --
-    # 
     # Return the local filesystem's name-separator character.
     def get_separator
       raise NotImplementedError
@@ -99,7 +98,6 @@ module Java::Io
     
     typesig { [JavaFile] }
     # -- Path operations --
-    # 
     # Tell whether or not the given abstract pathname is absolute.
     def is_absolute(f)
       raise NotImplementedError
@@ -187,7 +185,6 @@ module Java::Io
     
     typesig { [String] }
     # -- File operations --
-    # 
     # Create a new empty file with the given pathname.  Return
     # <code>true</code> if the file was created and <code>false</code> if a
     # file or directory with the given pathname already exists.  Throw an
@@ -244,7 +241,6 @@ module Java::Io
     
     typesig { [] }
     # -- Filesystem interface --
-    # 
     # List the available filesystem roots.
     def list_roots
       raise NotImplementedError
@@ -269,7 +265,6 @@ module Java::Io
     
     typesig { [JavaFile, JavaFile] }
     # -- Basic infrastructure --
-    # 
     # Compare two abstract pathnames lexicographically.
     def compare(f1, f2)
       raise NotImplementedError

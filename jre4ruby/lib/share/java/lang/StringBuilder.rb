@@ -96,7 +96,7 @@ module Java::Lang
     # 
     # @param      capacity  the initial capacity.
     # @throws     NegativeArraySizeException  if the <code>capacity</code>
-    # argument is less than <code>0</code>.
+    #               argument is less than <code>0</code>.
     def initialize(capacity)
       super(capacity)
     end
@@ -434,11 +434,11 @@ module Java::Lang
     # (that is, serialize it).
     # 
     # @serialData the number of characters currently stored in the string
-    # builder (<tt>int</tt>), followed by the characters in the
-    # string builder (<tt>char[]</tt>).   The length of the
-    # <tt>char</tt> array may be greater than the number of
-    # characters currently stored in the string builder, in which
-    # case extra characters are ignored.
+    #             builder (<tt>int</tt>), followed by the characters in the
+    #             string builder (<tt>char[]</tt>).   The length of the
+    #             <tt>char</tt> array may be greater than the number of
+    #             characters currently stored in the string builder, in which
+    #             case extra characters are ignored.
     def write_object(s)
       s.default_write_object
       s.write_int(self.attr_count)

@@ -124,15 +124,15 @@ module Sun::Nio::Cs::Ext
       the_bytes = 0
       index = @index1[((ch & @mask1) >> @shift)] + (ch & @mask2)
       if (index < 15000)
-        the_bytes = RJava.cast_to_int((@index2.char_at(index)))
+        the_bytes = ((@index2.char_at(index))).to_int
       else
-        the_bytes = RJava.cast_to_int((@index2a.char_at(index - 15000)))
+        the_bytes = ((@index2a.char_at(index - 15000))).to_int
       end
       if (!(the_bytes).equal?(0))
         return (true)
       end
       # only return true if input char was unicode null - all others are
-      # undefined
+      #     undefined
       return ((ch).equal?(Character.new(0x0000)))
     end
     
@@ -161,9 +161,9 @@ module Sun::Nio::Cs::Ext
           end
           index = @index1[((c & @mask1) >> @shift)] + (c & @mask2)
           if (index < 15000)
-            the_bytes = RJava.cast_to_int((@index2.char_at(index)))
+            the_bytes = ((@index2.char_at(index))).to_int
           else
-            the_bytes = RJava.cast_to_int((@index2a.char_at(index - 15000)))
+            the_bytes = ((@index2a.char_at(index - 15000))).to_int
           end
           @b1 = ((the_bytes & 0xff00) >> 8)
           @b2 = (the_bytes & 0xff)
@@ -211,9 +211,9 @@ module Sun::Nio::Cs::Ext
           end
           index = @index1[((c & @mask1) >> @shift)] + (c & @mask2)
           if (index < 15000)
-            the_bytes = RJava.cast_to_int((@index2.char_at(index)))
+            the_bytes = ((@index2.char_at(index))).to_int
           else
-            the_bytes = RJava.cast_to_int((@index2a.char_at(index - 15000)))
+            the_bytes = ((@index2a.char_at(index - 15000))).to_int
           end
           @b1 = ((the_bytes & 0xff00) >> 8)
           @b2 = (the_bytes & 0xff)

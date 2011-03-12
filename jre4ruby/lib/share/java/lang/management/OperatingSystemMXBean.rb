@@ -44,8 +44,8 @@ module Java::Lang::Management
   # <p>The <tt>ObjectName</tt> for uniquely identifying the MXBean for
   # the operating system within an MBeanServer is:
   # <blockquote>
-  # {@link ManagementFactory#OPERATING_SYSTEM_MXBEAN_NAME
-  # <tt>java.lang:type=OperatingSystem</tt>}
+  #    {@link ManagementFactory#OPERATING_SYSTEM_MXBEAN_NAME
+  #      <tt>java.lang:type=OperatingSystem</tt>}
   # </blockquote>
   # 
   # <p> This interface defines several convenient methods for accessing
@@ -53,9 +53,9 @@ module Java::Lang::Management
   # virtual machine is running.
   # 
   # @see <a href="../../../javax/management/package-summary.html">
-  # JMX Specification.</a>
+  #      JMX Specification.</a>
   # @see <a href="package-summary.html#examples">
-  # Ways to Access MXBeans</a>
+  #      Ways to Access MXBeans</a>
   # 
   # @author  Mandy Chung
   # @since   1.5
@@ -69,9 +69,9 @@ module Java::Lang::Management
     # @return the operating system name.
     # 
     # @throws  java.lang.SecurityException
-    # if a security manager exists and its
-    # <code>checkPropertiesAccess</code> method doesn't allow access
-    # to this system property.
+    #     if a security manager exists and its
+    #     <code>checkPropertiesAccess</code> method doesn't allow access
+    #     to this system property.
     # @see java.lang.SecurityManager#checkPropertyAccess(java.lang.String)
     # @see java.lang.System#getProperty
     def get_name
@@ -85,9 +85,9 @@ module Java::Lang::Management
     # @return the operating system architecture.
     # 
     # @throws  java.lang.SecurityException
-    # if a security manager exists and its
-    # <code>checkPropertiesAccess</code> method doesn't allow access
-    # to this system property.
+    #     if a security manager exists and its
+    #     <code>checkPropertiesAccess</code> method doesn't allow access
+    #     to this system property.
     # @see java.lang.SecurityManager#checkPropertyAccess(java.lang.String)
     # @see java.lang.System#getProperty
     def get_arch
@@ -101,9 +101,9 @@ module Java::Lang::Management
     # @return the operating system version.
     # 
     # @throws  java.lang.SecurityException
-    # if a security manager exists and its
-    # <code>checkPropertiesAccess</code> method doesn't allow access
-    # to this system property.
+    #     if a security manager exists and its
+    #     <code>checkPropertiesAccess</code> method doesn't allow access
+    #     to this system property.
     # @see java.lang.SecurityManager#checkPropertyAccess(java.lang.String)
     # @see java.lang.System#getProperty
     def get_version
@@ -118,7 +118,7 @@ module Java::Lang::Management
     # the virtual machine.
     # 
     # @return  the number of processors available to the virtual
-    # machine; never smaller than one.
+    #          machine; never smaller than one.
     def get_available_processors
       raise NotImplementedError
     end

@@ -105,7 +105,7 @@ module Sun::Security::Jca
       
       # Hardcoded classnames of providers to use for JAR verification.
       # MUST NOT be on the bootclasspath and not in signed JAR files.
-      const_set_lazy(:JarVerificationProviders) { Array.typed(String).new(["sun.security.provider.Sun", "sun.security.rsa.SunRsaSign", BACKUP_PROVIDER_CLASSNAME, ]) }
+      const_set_lazy(:JarVerificationProviders) { Array.typed(String).new(["sun.security.provider.Sun", "sun.security.rsa.SunRsaSign", BACKUP_PROVIDER_CLASSNAME]) }
       const_attr_reader  :JarVerificationProviders
       
       typesig { [] }
@@ -226,13 +226,13 @@ module Sun::Security::Jca
       # 
       # It should be used as follows:
       # 
-      # ProviderList list = ...;
-      # ProviderList oldList = Providers.beginThreadProviderList(list);
-      # try {
-      # // code that needs thread local provider list
-      # } finally {
-      # Providers.endThreadProviderList(oldList);
-      # }
+      #   ProviderList list = ...;
+      #   ProviderList oldList = Providers.beginThreadProviderList(list);
+      #   try {
+      #     // code that needs thread local provider list
+      #   } finally {
+      #     Providers.endThreadProviderList(oldList);
+      #   }
       def begin_thread_provider_list(list)
         synchronized(self) do
           if (!(ProviderList.attr_debug).nil?)

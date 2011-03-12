@@ -51,9 +51,9 @@ module Java::Net
     # written.
     # 
     # @return an OutputStream to which the response body can
-    # be written
+    #         be written
     # @throws IOException if an I/O error occurs while
-    # writing the response body
+    #         writing the response body
     def get_body
       raise NotImplementedError
     end

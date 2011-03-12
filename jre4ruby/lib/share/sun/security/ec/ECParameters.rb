@@ -44,33 +44,33 @@ module Sun::Security::Ec
   # options.
   # 
   # <pre>
-  # EcpkParameters ::= CHOICE {
-  # ecParameters  ECParameters,
-  # namedCurve    OBJECT IDENTIFIER,
-  # implicitlyCA  NULL }
+  #    EcpkParameters ::= CHOICE {
+  #      ecParameters  ECParameters,
+  #      namedCurve    OBJECT IDENTIFIER,
+  #      implicitlyCA  NULL }
   # 
-  # ECParameters ::= SEQUENCE {
-  # version   ECPVer,          -- version is always 1
-  # fieldID   FieldID,         -- identifies the finite field over
-  # -- which the curve is defined
-  # curve     Curve,           -- coefficients a and b of the
-  # -- elliptic curve
-  # base      ECPoint,         -- specifies the base point P
-  # -- on the elliptic curve
-  # order     INTEGER,         -- the order n of the base point
-  # cofactor  INTEGER OPTIONAL -- The integer h = #E(Fq)/n
-  # }
+  #    ECParameters ::= SEQUENCE {
+  #       version   ECPVer,          -- version is always 1
+  #       fieldID   FieldID,         -- identifies the finite field over
+  #                                  -- which the curve is defined
+  #       curve     Curve,           -- coefficients a and b of the
+  #                                  -- elliptic curve
+  #       base      ECPoint,         -- specifies the base point P
+  #                                  -- on the elliptic curve
+  #       order     INTEGER,         -- the order n of the base point
+  #       cofactor  INTEGER OPTIONAL -- The integer h = #E(Fq)/n
+  #       }
   # 
-  # ECPVer ::= INTEGER {ecpVer1(1)}
+  #    ECPVer ::= INTEGER {ecpVer1(1)}
   # 
-  # Curve ::= SEQUENCE {
-  # a         FieldElement,
-  # b         FieldElement,
-  # seed      BIT STRING OPTIONAL }
+  #    Curve ::= SEQUENCE {
+  #       a         FieldElement,
+  #       b         FieldElement,
+  #       seed      BIT STRING OPTIONAL }
   # 
-  # FieldElement ::= OCTET STRING
+  #    FieldElement ::= OCTET STRING
   # 
-  # ECPoint ::= OCTET STRING
+  #    ECPoint ::= OCTET STRING
   # </pre>
   # 
   # @since   1.6
@@ -211,9 +211,8 @@ module Sun::Security::Ec
         raise IOException.new("Only named ECParameters supported")
         # The code below is incomplete.
         # It is left as a starting point for a complete parsing implementation.
-        # 
         # if (encodedParams.tag != DerValue.tag_Sequence) {
-        # throw new IOException("Unsupported EC parameters, tag: " + encodedParams.tag);
+        #     throw new IOException("Unsupported EC parameters, tag: " + encodedParams.tag);
         # }
         # 
         # encodedParams.data.reset();
@@ -222,7 +221,7 @@ module Sun::Security::Ec
         # 
         # int version = in.getInteger();
         # if (version != 1) {
-        # throw new IOException("Unsupported EC parameters version: " + version);
+        #     throw new IOException("Unsupported EC parameters version: " + version);
         # }
         # ECField field = parseField(in);
         # EllipticCurve curve = parseCurve(in, field);
@@ -232,15 +231,15 @@ module Sun::Security::Ec
         # int cofactor = 0;
         # 
         # if (in.available() != 0) {
-        # cofactor = in.getInteger();
+        #     cofactor = in.getInteger();
         # }
         # 
         # // XXX HashAlgorithm optional
         # 
         # if (encodedParams.data.available() != 0) {
-        # throw new IOException("encoded params have " +
-        # encodedParams.data.available() +
-        # " extra bytes");
+        #     throw new IOException("encoded params have " +
+        #                           encodedParams.data.available() +
+        #                           " extra bytes");
         # }
         # 
         # return new ECParameterSpec(curve, point, order, cofactor);
@@ -248,35 +247,34 @@ module Sun::Security::Ec
       
       typesig { [ECParameterSpec] }
       # private static final ObjectIdentifier fieldTypePrime =
-      # ObjectIdentifier.newInternal(new int[] {1, 2, 840, 10045, 1, 1});
+      #     ObjectIdentifier.newInternal(new int[] {1, 2, 840, 10045, 1, 1});
       # 
       # private static final ObjectIdentifier fieldTypeChar2 =
-      # ObjectIdentifier.newInternal(new int[] {1, 2, 840, 10045, 1, 2});
+      #     ObjectIdentifier.newInternal(new int[] {1, 2, 840, 10045, 1, 2});
       # 
       # private static ECField parseField(DerInputStream in) throws IOException {
-      # DerValue v = in.getDerValue();
-      # ObjectIdentifier oid = v.data.getOID();
-      # if (oid.equals(fieldTypePrime) == false) {
-      # throw new IOException("Only prime fields supported: " + oid);
-      # }
-      # BigInteger fieldSize = v.data.getBigInteger();
-      # return new ECFieldFp(fieldSize);
+      #     DerValue v = in.getDerValue();
+      #     ObjectIdentifier oid = v.data.getOID();
+      #     if (oid.equals(fieldTypePrime) == false) {
+      #         throw new IOException("Only prime fields supported: " + oid);
+      #     }
+      #     BigInteger fieldSize = v.data.getBigInteger();
+      #     return new ECFieldFp(fieldSize);
       # }
       # 
       # private static EllipticCurve parseCurve(DerInputStream in, ECField field)
-      # throws IOException {
-      # DerValue v = in.getDerValue();
-      # byte[] ab = v.data.getOctetString();
-      # byte[] bb = v.data.getOctetString();
-      # return new EllipticCurve(field, new BigInteger(1, ab), new BigInteger(1, bb));
+      #         throws IOException {
+      #     DerValue v = in.getDerValue();
+      #     byte[] ab = v.data.getOctetString();
+      #     byte[] bb = v.data.getOctetString();
+      #     return new EllipticCurve(field, new BigInteger(1, ab), new BigInteger(1, bb));
       # }
       # 
       # private static ECPoint parsePoint(DerInputStream in, EllipticCurve curve)
-      # throws IOException {
-      # byte[] data = in.getOctetString();
-      # return decodePoint(data, curve);
+      #         throws IOException {
+      #     byte[] data = in.getOctetString();
+      #     return decodePoint(data, curve);
       # }
-      # 
       # used by ECPublicKeyImpl and ECPrivateKeyImpl
       def get_algorithm_parameters(spec)
         begin

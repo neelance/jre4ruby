@@ -361,8 +361,8 @@ module Sun::Security::Jgss::Wrapper
       @target_name = GSSNameElement.new(info[1], @c_stub)
       @is_initiator = (!(info[2]).equal?(0))
       @is_established = (!(info[3]).equal?(0))
-      @flags = RJava.cast_to_int(info[4])
-      @lifetime = RJava.cast_to_int(info[5])
+      @flags = (info[4]).to_int
+      @lifetime = (info[5]).to_int
       # Do Service Permission check when importing SPNEGO context
       # just to be safe
       mech = @c_stub.get_mech

@@ -176,7 +176,7 @@ module Sun::Security::Ssl
     # 
     # @param type record type
     # @param bb a ByteBuffer in which the position and limit
-    # demarcate the data to be MAC'd.
+    #          demarcate the data to be MAC'd.
     def compute(type, bb)
       return compute(type, bb, nil, 0, bb.remaining)
     end

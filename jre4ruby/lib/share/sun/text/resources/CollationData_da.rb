@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996 - 1998 - All Rights Reserved
 # 
@@ -49,29 +47,6 @@ module Sun::Text::Resources
     
     typesig { [] }
     def get_contents
-      # A; A-acute; A-grave; A-circ, a; a-acute, a-grave, a-circ
-      # c-cedill
-      # eth(icelandic), d-stroke (sami); they looks identically
-      # E; E-acute; E-grave; E-circ; E-diaeresis, e-acute, e-grave; e-circ; e-diaeresis
-      # i-acute
-      # o-acute, o-circ
-      # y-acute, u-diaeresis
-      # ae-ligature and variants
-      # ae-ligature
-      # ae-acute
-      # a-diaeresis
-      # o-stroke and variant
-      # o-slash
-      # o-slash-acute
-      # ; o-diaeresis
-      # nt :  o-double-acute
-      # a-ring and variants
-      # a-ring
-      # a-ring-acute
-      # after a-ring
-      # s-zet
-      # thorn
-      # oe-ligature
       return Array.typed(Array.typed(Object)).new([Array.typed(Object).new(["Rule", ("& A;".to_u << 0x00C1 << ";".to_u << 0x00C0 << ";".to_u << 0x00C2 << ",a;".to_u << 0x00E1 << ";".to_u << 0x00E0 << ";".to_u << 0x00E2 << "") + "<B,b" + ("<C;".to_u << 0x00c7 << ",c;".to_u << 0x00e7 << "") + ("<D;".to_u << 0x00D0 << ";".to_u << 0x0110 << ",d;".to_u << 0x00F0 << ";".to_u << 0x0111 << "") + ("<E;".to_u << 0x00C9 << ";".to_u << 0x00C8 << ";".to_u << 0x00CA << ";".to_u << 0x00CB << ",e;".to_u << 0x00E9 << ";".to_u << 0x00E8 << ";".to_u << 0x00EA << ";".to_u << 0x00EB << "") + "<F,f <G,g <H,h" + ("<I;".to_u << 0x00CD << ",i;".to_u << 0x00ED << "") + "<J,j <K,k <L,l <M,m <N,n" + ("<O;".to_u << 0x00D3 << ";".to_u << 0x00d4 << ",o;".to_u << 0x00F3 << ";".to_u << 0x00f4 << "") + "<P,p <Q,q <R,r <S,s <T,t" + "<U,u <V,v <W,w <X,x" + ("<Y;".to_u << 0x00DD << ";U".to_u << 0x0308 << ",y;".to_u << 0x00FD << ";u".to_u << 0x0308 << "") + "<Z,z" + ("<".to_u << 0x00c6 << ",".to_u << 0x00e6 << "") + (";".to_u << 0x00c6 << "".to_u << 0x0301 << ",".to_u << 0x00e6 << "".to_u << 0x0301 << "") + (";A".to_u << 0x0308 << ",a".to_u << 0x0308 << " ") + ("<".to_u << 0x00d8 << ",".to_u << 0x00f8 << " ") + (";".to_u << 0x00d8 << "".to_u << 0x0301 << ",".to_u << 0x00f8 << "".to_u << 0x0301 << "") + (";O".to_u << 0x0308 << ",o".to_u << 0x0308 << " ") + (";O".to_u << 0x030b << ",o".to_u << 0x030b << "") + ("< ".to_u << 0x00c5 << " , ".to_u << 0x00e5 << "") + (";".to_u << 0x00c5 << "".to_u << 0x0301 << ",".to_u << 0x00e5 << "".to_u << 0x0301 << "") + ", AA , Aa , aA , aa " + ("& ss;".to_u << 0x00DF << "") + ("& th, ".to_u << 0x00FE << " & th, ".to_u << 0x00DE << " ") + ("& oe, ".to_u << 0x0153 << " & oe, ".to_u << 0x0152 << " ")])])
     end
     

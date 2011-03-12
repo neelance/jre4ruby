@@ -122,7 +122,6 @@ module Java::Util
     
     typesig { [] }
     # Query Operations
-    # 
     # Returns the number of key-value mappings in this map.  If the
     # map contains more than <tt>Integer.MAX_VALUE</tt> elements, returns
     # <tt>Integer.MAX_VALUE</tt>.
@@ -149,11 +148,11 @@ module Java::Util
     # 
     # @param key key whose presence in this map is to be tested
     # @return <tt>true</tt> if this map contains a mapping for the specified
-    # key
+    #         key
     # @throws ClassCastException if the key is of an inappropriate type for
-    # this map (optional)
+    #         this map (optional)
     # @throws NullPointerException if the specified key is null and this map
-    # does not permit null keys (optional)
+    #         does not permit null keys (optional)
     def contains_key(key)
       raise NotImplementedError
     end
@@ -168,11 +167,11 @@ module Java::Util
     # 
     # @param value value whose presence in this map is to be tested
     # @return <tt>true</tt> if this map maps one or more keys to the
-    # specified value
+    #         specified value
     # @throws ClassCastException if the value is of an inappropriate type for
-    # this map (optional)
+    #         this map (optional)
     # @throws NullPointerException if the specified value is null and this
-    # map does not permit null values (optional)
+    #         map does not permit null values (optional)
     def contains_value(value)
       raise NotImplementedError
     end
@@ -194,18 +193,17 @@ module Java::Util
     # 
     # @param key the key whose associated value is to be returned
     # @return the value to which the specified key is mapped, or
-    # {@code null} if this map contains no mapping for the key
+    #         {@code null} if this map contains no mapping for the key
     # @throws ClassCastException if the key is of an inappropriate type for
-    # this map (optional)
+    #         this map (optional)
     # @throws NullPointerException if the specified key is null and this map
-    # does not permit null keys (optional)
+    #         does not permit null keys (optional)
     def get(key)
       raise NotImplementedError
     end
     
     typesig { [Object, Object] }
     # Modification Operations
-    # 
     # Associates the specified value with the specified key in this map
     # (optional operation).  If the map previously contained a mapping for
     # the key, the old value is replaced by the specified value.  (A map
@@ -216,18 +214,18 @@ module Java::Util
     # @param key key with which the specified value is to be associated
     # @param value value to be associated with the specified key
     # @return the previous value associated with <tt>key</tt>, or
-    # <tt>null</tt> if there was no mapping for <tt>key</tt>.
-    # (A <tt>null</tt> return can also indicate that the map
-    # previously associated <tt>null</tt> with <tt>key</tt>,
-    # if the implementation supports <tt>null</tt> values.)
+    #         <tt>null</tt> if there was no mapping for <tt>key</tt>.
+    #         (A <tt>null</tt> return can also indicate that the map
+    #         previously associated <tt>null</tt> with <tt>key</tt>,
+    #         if the implementation supports <tt>null</tt> values.)
     # @throws UnsupportedOperationException if the <tt>put</tt> operation
-    # is not supported by this map
+    #         is not supported by this map
     # @throws ClassCastException if the class of the specified key or value
-    # prevents it from being stored in this map
+    #         prevents it from being stored in this map
     # @throws NullPointerException if the specified key or value is null
-    # and this map does not permit null keys or values
+    #         and this map does not permit null keys or values
     # @throws IllegalArgumentException if some property of the specified key
-    # or value prevents it from being stored in this map
+    #         or value prevents it from being stored in this map
     def put(key, value)
       raise NotImplementedError
     end
@@ -252,20 +250,19 @@ module Java::Util
     # 
     # @param key key whose mapping is to be removed from the map
     # @return the previous value associated with <tt>key</tt>, or
-    # <tt>null</tt> if there was no mapping for <tt>key</tt>.
+    #         <tt>null</tt> if there was no mapping for <tt>key</tt>.
     # @throws UnsupportedOperationException if the <tt>remove</tt> operation
-    # is not supported by this map
+    #         is not supported by this map
     # @throws ClassCastException if the key is of an inappropriate type for
-    # this map (optional)
+    #         this map (optional)
     # @throws NullPointerException if the specified key is null and this
-    # map does not permit null keys (optional)
+    #         map does not permit null keys (optional)
     def remove(key)
       raise NotImplementedError
     end
     
     typesig { [Map] }
     # Bulk Operations
-    # 
     # Copies all of the mappings from the specified map to this map
     # (optional operation).  The effect of this call is equivalent to that
     # of calling {@link #put(Object,Object) put(k, v)} on this map once
@@ -275,14 +272,14 @@ module Java::Util
     # 
     # @param m mappings to be stored in this map
     # @throws UnsupportedOperationException if the <tt>putAll</tt> operation
-    # is not supported by this map
+    #         is not supported by this map
     # @throws ClassCastException if the class of a key or value in the
-    # specified map prevents it from being stored in this map
+    #         specified map prevents it from being stored in this map
     # @throws NullPointerException if the specified map is null, or if
-    # this map does not permit null keys or values, and the
-    # specified map contains null keys or values
+    #         this map does not permit null keys or values, and the
+    #         specified map contains null keys or values
     # @throws IllegalArgumentException if some property of a key or value in
-    # the specified map prevents it from being stored in this map
+    #         the specified map prevents it from being stored in this map
     def put_all(m)
       raise NotImplementedError
     end
@@ -292,14 +289,13 @@ module Java::Util
     # The map will be empty after this call returns.
     # 
     # @throws UnsupportedOperationException if the <tt>clear</tt> operation
-    # is not supported by this map
+    #         is not supported by this map
     def clear
       raise NotImplementedError
     end
     
     typesig { [] }
     # Views
-    # 
     # Returns a {@link Set} view of the keys contained in this map.
     # The set is backed by the map, so changes to the map are
     # reflected in the set, and vice-versa.  If the map is modified
@@ -374,8 +370,8 @@ module Java::Util
         # 
         # @return the key corresponding to this entry
         # @throws IllegalStateException implementations may, but are not
-        # required to, throw this exception if the entry has been
-        # removed from the backing map.
+        #         required to, throw this exception if the entry has been
+        #         removed from the backing map.
         def get_key
           raise NotImplementedError
         end
@@ -387,8 +383,8 @@ module Java::Util
         # 
         # @return the value corresponding to this entry
         # @throws IllegalStateException implementations may, but are not
-        # required to, throw this exception if the entry has been
-        # removed from the backing map.
+        #         required to, throw this exception if the entry has been
+        #         removed from the backing map.
         def get_value
           raise NotImplementedError
         end
@@ -402,16 +398,16 @@ module Java::Util
         # @param value new value to be stored in this entry
         # @return old value corresponding to the entry
         # @throws UnsupportedOperationException if the <tt>put</tt> operation
-        # is not supported by the backing map
+        #         is not supported by the backing map
         # @throws ClassCastException if the class of the specified value
-        # prevents it from being stored in the backing map
+        #         prevents it from being stored in the backing map
         # @throws NullPointerException if the backing map does not permit
-        # null values, and the specified value is null
+        #         null values, and the specified value is null
         # @throws IllegalArgumentException if some property of this value
-        # prevents it from being stored in the backing map
+        #         prevents it from being stored in the backing map
         # @throws IllegalStateException implementations may, but are not
-        # required to, throw this exception if the entry has been
-        # removed from the backing map.
+        #         required to, throw this exception if the entry has been
+        #         removed from the backing map.
         def set_value(value)
           raise NotImplementedError
         end
@@ -422,17 +418,17 @@ module Java::Util
         # the two entries represent the same mapping.  More formally, two
         # entries <tt>e1</tt> and <tt>e2</tt> represent the same mapping
         # if<pre>
-        # (e1.getKey()==null ?
-        # e2.getKey()==null : e1.getKey().equals(e2.getKey()))  &amp;&amp;
-        # (e1.getValue()==null ?
-        # e2.getValue()==null : e1.getValue().equals(e2.getValue()))
+        #     (e1.getKey()==null ?
+        #      e2.getKey()==null : e1.getKey().equals(e2.getKey()))  &amp;&amp;
+        #     (e1.getValue()==null ?
+        #      e2.getValue()==null : e1.getValue().equals(e2.getValue()))
         # </pre>
         # This ensures that the <tt>equals</tt> method works properly across
         # different implementations of the <tt>Map.Entry</tt> interface.
         # 
         # @param o object to be compared for equality with this map entry
         # @return <tt>true</tt> if the specified object is equal to this map
-        # entry
+        #         entry
         def ==(o)
           raise NotImplementedError
         end
@@ -440,8 +436,8 @@ module Java::Util
         typesig { [] }
         # Returns the hash code value for this map entry.  The hash code
         # of a map entry <tt>e</tt> is defined to be: <pre>
-        # (e.getKey()==null   ? 0 : e.getKey().hashCode()) ^
-        # (e.getValue()==null ? 0 : e.getValue().hashCode())
+        #     (e.getKey()==null   ? 0 : e.getKey().hashCode()) ^
+        #     (e.getValue()==null ? 0 : e.getValue().hashCode())
         # </pre>
         # This ensures that <tt>e1.equals(e2)</tt> implies that
         # <tt>e1.hashCode()==e2.hashCode()</tt> for any two Entries
@@ -460,7 +456,6 @@ module Java::Util
     
     typesig { [Object] }
     # Comparison and hashing
-    # 
     # Compares the specified object with this map for equality.  Returns
     # <tt>true</tt> if the given object is also a map and the two maps
     # represent the same mappings.  More formally, two maps <tt>m1</tt> and

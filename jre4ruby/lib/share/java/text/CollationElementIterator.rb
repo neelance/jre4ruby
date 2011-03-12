@@ -22,17 +22,15 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996-1998 - All Rights Reserved
 # 
-# The original version of this source code and documentation is copyrighted
+#   The original version of this source code and documentation is copyrighted
 # and owned by Taligent, Inc., a wholly-owned subsidiary of IBM. These
 # materials are provided under terms of a License Agreement between Taligent
 # and Sun. This technology is protected by multiple US and International
 # patents. This notice and attribution to Taligent may not be removed.
-# Taligent is a registered trademark of Taligent, Inc.
+#   Taligent is a registered trademark of Taligent, Inc.
 module Java::Text
   module CollationElementIteratorImports #:nodoc:
     class_module.module_eval {
@@ -79,10 +77,10 @@ module Java::Text
   # <blockquote>
   # <pre>
   # 
-  # String testString = "This is a test";
-  # RuleBasedCollator ruleBasedCollator = (RuleBasedCollator)Collator.getInstance();
-  # CollationElementIterator collationElementIterator = ruleBasedCollator.getCollationElementIterator(testString);
-  # int primaryOrder = CollationElementIterator.primaryOrder(collationElementIterator.next());
+  #  String testString = "This is a test";
+  #  RuleBasedCollator ruleBasedCollator = (RuleBasedCollator)Collator.getInstance();
+  #  CollationElementIterator collationElementIterator = ruleBasedCollator.getCollationElementIterator(testString);
+  #  int primaryOrder = CollationElementIterator.primaryOrder(collationElementIterator.next());
   # </pre>
   # </blockquote>
   # 
@@ -459,7 +457,7 @@ module Java::Text
     # with the specified comparison order.
     # @param order a collation order returned by previous or next.
     # @return the maximum length of any expansion sequences ending
-    # with the specified order.
+    #         with the specified order.
     # @since 1.2
     def get_max_expansion(order)
       return @ordering.get_max_expansion(order)
@@ -506,7 +504,6 @@ module Java::Text
       # ============================================================
       # privates
       # ============================================================
-      # 
       # Determine if a character is a Thai vowel (which sorts after
       # its base consonant).
       def is_thai_pre_vowel(ch)

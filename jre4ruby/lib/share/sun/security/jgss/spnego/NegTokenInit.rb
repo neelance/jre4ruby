@@ -39,10 +39,10 @@ module Sun::Security::Jgss::Spnego
   # as specified in RFC 2478
   # 
   # NegTokenInit ::= SEQUENCE {
-  # mechTypes       [0] MechTypeList  OPTIONAL,
-  # reqFlags        [1] ContextFlags  OPTIONAL,
-  # mechToken       [2] OCTET STRING  OPTIONAL,
-  # mechListMIC     [3] OCTET STRING  OPTIONAL
+  #      mechTypes       [0] MechTypeList  OPTIONAL,
+  #      reqFlags        [1] ContextFlags  OPTIONAL,
+  #      mechToken       [2] OCTET STRING  OPTIONAL,
+  #      mechListMIC     [3] OCTET STRING  OPTIONAL
   # }
   # 
   # MechTypeList ::= SEQUENCE OF MechType
@@ -50,13 +50,13 @@ module Sun::Security::Jgss::Spnego
   # MechType::= OBJECT IDENTIFIER
   # 
   # ContextFlags ::= BIT STRING {
-  # delegFlag       (0),
-  # mutualFlag      (1),
-  # replayFlag      (2),
-  # sequenceFlag    (3),
-  # anonFlag        (4),
-  # confFlag        (5),
-  # integFlag       (6)
+  #      delegFlag       (0),
+  #      mutualFlag      (1),
+  #      replayFlag      (2),
+  #      sequenceFlag    (3),
+  #      anonFlag        (4),
+  #      confFlag        (5),
+  #      integFlag       (6)
   # }
   # 
   # @author Seema Malkani

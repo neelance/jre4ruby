@@ -22,17 +22,15 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996 - All Rights Reserved
 # 
-# The original version of this source code and documentation is copyrighted
+#   The original version of this source code and documentation is copyrighted
 # and owned by Taligent, Inc., a wholly-owned subsidiary of IBM. These
 # materials are provided under terms of a License Agreement between Taligent
 # and Sun. This technology is protected by multiple US and International
 # patents. This notice and attribution to Taligent may not be removed.
-# Taligent is a registered trademark of Taligent, Inc.
+#   Taligent is a registered trademark of Taligent, Inc.
 module Sun::Text
   module CompactByteArrayImports #:nodoc:
     class_module.module_eval {
@@ -51,8 +49,8 @@ module Sun::Text
   # hash table.
   # A compact array of any primitive data type serves two purposes:
   # <UL type = round>
-  # <LI>Fast access of the indexed values.
-  # <LI>Smaller memory footprint.
+  #     <LI>Fast access of the indexed values.
+  #     <LI>Smaller memory footprint.
   # </UL>
   # A compact array is composed of a index array and value array.  The index
   # array contains the indicies of Unicode characters to the value array.
@@ -140,7 +138,7 @@ module Sun::Text
       if (@is_compact)
         expand
       end
-      @values[RJava.cast_to_int(index)] = value
+      @values[(index).to_int] = value
       touch_block(index >> BLOCKSHIFT, value)
     end
     
@@ -325,7 +323,6 @@ module Sun::Text
     # --------------------------------------------------------------
     # package private
     # --------------------------------------------------------------
-    # 
     # Expanding takes the array back to a 65536 element array.
     def expand
       i = 0

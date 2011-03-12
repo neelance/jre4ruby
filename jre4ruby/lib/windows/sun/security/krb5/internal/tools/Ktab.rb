@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5::Internal::Tools
@@ -117,7 +115,7 @@ module Sun::Security::Krb5::Internal::Tools
         end
         begin
           if ((ktab.attr_name).nil?)
-            # ktab.admin = new KeyTabAdmin();    // use the default keytab.
+            #  ktab.admin = new KeyTabAdmin();    // use the default keytab.
             ktab.attr_table = KeyTab.get_instance
             if ((ktab.attr_table).nil?)
               if ((ktab.attr_action).equal?(Character.new(?a.ord)))
@@ -369,5 +367,6 @@ module Sun::Security::Krb5::Internal::Tools
     alias_method :initialize__ktab, :initialize
   end
   
-  Ktab.main($*) if $0 == __FILE__
 end
+
+Sun::Security::Krb5::Internal::Tools::Ktab.main($*) if $0 == __FILE__

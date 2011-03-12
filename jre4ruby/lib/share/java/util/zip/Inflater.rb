@@ -43,30 +43,30 @@ module Java::Util::Zip
   # 
   # <blockquote><pre>
   # try {
-  # // Encode a String into bytes
-  # String inputString = "blahblahblah\u20AC\u20AC";
-  # byte[] input = inputString.getBytes("UTF-8");
+  #     // Encode a String into bytes
+  #     String inputString = "blahblahblah\u20AC\u20AC";
+  #     byte[] input = inputString.getBytes("UTF-8");
   # 
-  # // Compress the bytes
-  # byte[] output = new byte[100];
-  # Deflater compresser = new Deflater();
-  # compresser.setInput(input);
-  # compresser.finish();
-  # int compressedDataLength = compresser.deflate(output);
+  #     // Compress the bytes
+  #     byte[] output = new byte[100];
+  #     Deflater compresser = new Deflater();
+  #     compresser.setInput(input);
+  #     compresser.finish();
+  #     int compressedDataLength = compresser.deflate(output);
   # 
-  # // Decompress the bytes
-  # Inflater decompresser = new Inflater();
-  # decompresser.setInput(output, 0, compressedDataLength);
-  # byte[] result = new byte[100];
-  # int resultLength = decompresser.inflate(result);
-  # decompresser.end();
+  #     // Decompress the bytes
+  #     Inflater decompresser = new Inflater();
+  #     decompresser.setInput(output, 0, compressedDataLength);
+  #     byte[] result = new byte[100];
+  #     int resultLength = decompresser.inflate(result);
+  #     decompresser.end();
   # 
-  # // Decode the bytes into a String
-  # String outputString = new String(result, 0, resultLength, "UTF-8");
+  #     // Decode the bytes into a String
+  #     String outputString = new String(result, 0, resultLength, "UTF-8");
   # } catch(java.io.UnsupportedEncodingException ex) {
-  # // handle
+  #     // handle
   # } catch (java.util.zip.DataFormatException ex) {
-  # // handle
+  #     // handle
   # }
   # </pre></blockquote>
   # 
@@ -315,7 +315,7 @@ module Java::Util::Zip
     # 
     # @return the total number of compressed bytes input so far
     def get_total_in
-      return RJava.cast_to_int(get_bytes_read)
+      return (get_bytes_read).to_int
     end
     
     typesig { [] }
@@ -339,7 +339,7 @@ module Java::Util::Zip
     # 
     # @return the total number of uncompressed bytes output so far
     def get_total_out
-      return RJava.cast_to_int(get_bytes_written)
+      return (get_bytes_written).to_int
     end
     
     typesig { [] }

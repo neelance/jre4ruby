@@ -57,11 +57,11 @@ module Sun::Reflect::Annotation
       # The array must contain an array of annotations as described
       # in the RuntimeVisibleAnnotations_attribute:
       # 
-      # u2 num_annotations;
-      # annotation annotations[num_annotations];
+      #   u2 num_annotations;
+      #   annotation annotations[num_annotations];
       # 
       # @throws AnnotationFormatError if an annotation is found to be
-      # malformed.
+      #         malformed.
       def parse_annotations(raw_annotations, const_pool, container)
         if ((raw_annotations).nil?)
           return Collections.empty_map
@@ -104,11 +104,11 @@ module Sun::Reflect::Annotation
       # The array must contain an array of annotations as described
       # in the RuntimeVisibleParameterAnnotations_attribute:
       # 
-      # u1 num_parameters;
-      # {
-      # u2 num_annotations;
-      # annotation annotations[num_annotations];
-      # } parameter_annotations[num_parameters];
+      #    u1 num_parameters;
+      #    {
+      #        u2 num_annotations;
+      #        annotation annotations[num_annotations];
+      #    } parameter_annotations[num_parameters];
       # 
       # Unlike parseAnnotations, rawAnnotations must not be null!
       # A null value must be handled by the caller.  This is so because
@@ -119,7 +119,7 @@ module Sun::Reflect::Annotation
       # indicates that an AnnotationFormatError should be thrown.
       # 
       # @throws AnnotationFormatError if an annotation is found to be
-      # malformed.
+      #         malformed.
       def parse_parameter_annotations(raw_annotations, const_pool, container)
         begin
           return parse_parameter_annotations2(raw_annotations, const_pool, container)
@@ -167,12 +167,12 @@ module Sun::Reflect::Annotation
       # structure" as described in the RuntimeVisibleAnnotations_attribute:
       # 
       # annotation {
-      # u2    type_index;
-      # u2    num_member_value_pairs;
-      # {    u2    member_name_index;
-      # member_value value;
-      # }    member_value_pairs[num_member_value_pairs];
-      # }
+      #    u2    type_index;
+      #       u2    num_member_value_pairs;
+      #       {    u2    member_name_index;
+      #             member_value value;
+      #       }    member_value_pairs[num_member_value_pairs];
+      #    }
       # }
       # 
       # Returns the annotation, or null if the annotation's type cannot
@@ -252,21 +252,21 @@ module Sun::Reflect::Annotation
       # "member_value structure" as described in the
       # RuntimeVisibleAnnotations_attribute:
       # 
-      # member_value {
-      # u1 tag;
-      # union {
-      # u2   const_value_index;
-      # {
-      # u2   type_name_index;
-      # u2   const_name_index;
-      # } enum_const_value;
-      # u2   class_info_index;
-      # annotation annotation_value;
-      # {
-      # u2    num_values;
-      # member_value values[num_values];
-      # } array_value;
-      # } value;
+      #  member_value {
+      #    u1 tag;
+      #    union {
+      #       u2   const_value_index;
+      #       {
+      #           u2   type_name_index;
+      #           u2   const_name_index;
+      #       } enum_const_value;
+      #       u2   class_info_index;
+      #       annotation annotation_value;
+      #       {
+      #           u2    num_values;
+      #           member_value values[num_values];
+      #       } array_value;
+      #    } value;
       # }
       # 
       # The member must be of the indicated type. If it is not, this
@@ -300,7 +300,7 @@ module Sun::Reflect::Annotation
       # of the type indicated by the specified tag, as described in the
       # RuntimeVisibleAnnotations_attribute:
       # 
-      # u2   const_value_index;
+      #       u2   const_value_index;
       def parse_const(tag, buf, const_pool)
         const_index = buf.get_short & 0xffff
         case (tag)
@@ -333,7 +333,7 @@ module Sun::Reflect::Annotation
       # constant pool.  The cursor of the byte buffer must point to a "class
       # info index" as described in the RuntimeVisibleAnnotations_attribute:
       # 
-      # u2   class_info_index;
+      #       u2   class_info_index;
       def parse_class_value(buf, const_pool, container)
         class_index = buf.get_short & 0xffff
         begin
@@ -380,10 +380,10 @@ module Sun::Reflect::Annotation
       # "enum_const_value structure" as described in the
       # RuntimeVisibleAnnotations_attribute:
       # 
-      # {
-      # u2   type_name_index;
-      # u2   const_name_index;
-      # } enum_const_value;
+      #       {
+      #           u2   type_name_index;
+      #           u2   const_name_index;
+      #       } enum_const_value;
       def parse_enum_value(enum_type, buf, const_pool, container)
         type_name_index = buf.get_short & 0xffff
         type_name_ = const_pool.get_utf8at(type_name_index)
@@ -412,10 +412,10 @@ module Sun::Reflect::Annotation
       # The cursor of the byte buffer must point to an array value struct
       # as specified in the RuntimeVisibleAnnotations_attribute:
       # 
-      # {
-      # u2    num_values;
-      # member_value values[num_values];
-      # } array_value;
+      #       {
+      #           u2    num_values;
+      #           member_value values[num_values];
+      #       } array_value;
       # 
       # If the array values do not match arrayType, an
       # AnnotationTypeMismatchExceptionProxy will be returned.
@@ -721,7 +721,7 @@ module Sun::Reflect::Annotation
       # structure (i.e., after the type index).
       # 
       # @parameter complete true if the byte buffer points to the beginning
-      # of an annotation structure (rather than two bytes in).
+      #     of an annotation structure (rather than two bytes in).
       def skip_annotation(buf, complete)
         if (complete)
           buf.get_short

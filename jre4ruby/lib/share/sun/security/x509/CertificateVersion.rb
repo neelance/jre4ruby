@@ -98,7 +98,7 @@ module Sun::Security::X509
     
     typesig { [] }
     # The default constructor for this class,
-    # sets the version to 0 (i.e. X.509 version 1).
+    #  sets the version to 0 (i.e. X.509 version 1).
     def initialize
       @version = V1
       @version = V1

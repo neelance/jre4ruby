@@ -33,36 +33,36 @@ module Java::Security::Cert
     }
   end
   
-  # <p>Abstract class for a revoked certificate in a CRL (Certificate
-  # Revocation List).
+  #  <p>Abstract class for a revoked certificate in a CRL (Certificate
+  #  Revocation List).
   # 
-  # The ASN.1 definition for <em>revokedCertificates</em> is:
-  # <pre>
-  # revokedCertificates    SEQUENCE OF SEQUENCE  {
-  # userCertificate    CertificateSerialNumber,
-  # revocationDate     ChoiceOfTime,
-  # crlEntryExtensions Extensions OPTIONAL
-  # -- if present, must be v2
-  # }  OPTIONAL
+  #  The ASN.1 definition for <em>revokedCertificates</em> is:
+  #  <pre>
+  #  revokedCertificates    SEQUENCE OF SEQUENCE  {
+  #      userCertificate    CertificateSerialNumber,
+  #      revocationDate     ChoiceOfTime,
+  #      crlEntryExtensions Extensions OPTIONAL
+  #                         -- if present, must be v2
+  #  }  OPTIONAL
   # <p>
-  # CertificateSerialNumber  ::=  INTEGER
+  #  CertificateSerialNumber  ::=  INTEGER
   # <p>
-  # Extensions  ::=  SEQUENCE SIZE (1..MAX) OF Extension
+  #  Extensions  ::=  SEQUENCE SIZE (1..MAX) OF Extension
   # <p>
-  # Extension  ::=  SEQUENCE  {
-  # extnId        OBJECT IDENTIFIER,
-  # critical      BOOLEAN DEFAULT FALSE,
-  # extnValue     OCTET STRING
-  # -- contains a DER encoding of a value
-  # -- of the type registered for use with
-  # -- the extnId object identifier value
-  # }
-  # </pre>
+  #  Extension  ::=  SEQUENCE  {
+  #      extnId        OBJECT IDENTIFIER,
+  #      critical      BOOLEAN DEFAULT FALSE,
+  #      extnValue     OCTET STRING
+  #                    -- contains a DER encoding of a value
+  #                    -- of the type registered for use with
+  #                    -- the extnId object identifier value
+  #  }
+  #  </pre>
   # 
-  # @see X509CRL
-  # @see X509Extension
+  #  @see X509CRL
+  #  @see X509Extension
   # 
-  # @author Hemma Prafullchandra
+  #  @author Hemma Prafullchandra
   class X509CRLEntry 
     include_class_members X509CRLEntryImports
     include X509Extension

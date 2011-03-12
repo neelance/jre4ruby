@@ -89,7 +89,7 @@ module Java::Io
     # Reads a single character.
     # 
     # @return     The character read, or -1 if the end of the stream has been
-    # reached
+    #             reached
     # 
     # @exception  IOException  If an I/O error occurs
     def read
@@ -110,7 +110,7 @@ module Java::Io
     # @param      len   Maximum number of characters to read
     # 
     # @return     The number of characters read, or -1 if the end of the
-    # stream has been reached
+    #             stream has been reached
     # 
     # @exception  IOException  If an I/O error occurs
     def read(cbuf, off, len)
@@ -186,10 +186,10 @@ module Java::Io
     # will reposition the stream to this point.
     # 
     # @param  readAheadLimit  Limit on the number of characters that may be
-    # read while still preserving the mark.  Because
-    # the stream's input comes from a string, there
-    # is no actual limit, so this argument must not
-    # be negative, but is otherwise ignored.
+    #                         read while still preserving the mark.  Because
+    #                         the stream's input comes from a string, there
+    #                         is no actual limit, so this argument must not
+    #                         be negative, but is otherwise ignored.
     # 
     # @exception  IllegalArgumentException  If readAheadLimit is < 0
     # @exception  IOException  If an I/O error occurs

@@ -57,8 +57,8 @@ module Java::Net
     # when using certificate-based cipher suites.
     # 
     # @return an immutable List of Certificate representing the
-    # certificate chain that was sent to the server. If no
-    # certificate chain was sent, null will be returned.
+    #           certificate chain that was sent to the server. If no
+    #           certificate chain was sent, null will be returned.
     # @see #getLocalPrincipal()
     def get_local_certificate_chain
       raise NotImplementedError
@@ -73,7 +73,7 @@ module Java::Net
     # Kerberos, will throw an SSLPeerUnverifiedException.
     # 
     # @return an immutable List of Certificate representing the server's
-    # certificate chain.
+    #         certificate chain.
     # @throws SSLPeerUnverifiedException if the peer is not verified.
     # @see #getPeerPrincipal()
     def get_server_certificate_chain

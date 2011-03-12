@@ -102,11 +102,8 @@ module Sun::Security::Util
       # The type starts at the first byte of the encoding, and
       # is one of these tag_* values.  That may be all the type
       # data that is needed.
-      # 
-      # 
       # These tags are the "universal" tags ... they mean the same
       # in all contexts.  (Mask with 0x1f -- five bits.)
-      # 
       # Tag value indicating an ASN.1 "BOOLEAN" value.
       const_set_lazy(:Tag_Boolean) { 0x1 }
       const_attr_reader  :Tag_Boolean
@@ -172,7 +169,6 @@ module Sun::Security::Util
       const_attr_reader  :Tag_BMPString
       
       # CONSTRUCTED seq/set
-      # 
       # Tag value indicating an ASN.1
       # "SEQUENCE" (zero to N elements, order is significant).
       const_set_lazy(:Tag_Sequence) { 0x30 }
@@ -196,8 +192,6 @@ module Sun::Security::Util
     
     typesig { [] }
     # These values are the high order bits for the other kinds of tags.
-    # 
-    # 
     # Returns true if the tag class is UNIVERSAL.
     def is_universal
       return (((@tag & 0xc0)).equal?(0x0))
@@ -374,7 +368,7 @@ module Sun::Security::Util
     # must hold only one datum.
     # 
     # @param in the input stream holding a single DER datum,
-    # which may be followed by additional data
+    #  which may be followed by additional data
     def initialize(in_)
       @tag = 0
       @buffer = nil
@@ -388,8 +382,6 @@ module Sun::Security::Util
       enc = nil
       @tag = string_tag
       case (string_tag)
-      # TBD: Need encoder for UniversalString before it can
-      # be handled.
       when Tag_PrintableString, Tag_IA5String, Tag_GeneralString
         enc = "ASCII"
       when Tag_T61String
@@ -399,6 +391,8 @@ module Sun::Security::Util
       when Tag_UTF8String
         enc = "UTF8"
       else
+        # TBD: Need encoder for UniversalString before it can
+        # be handled.
         raise IllegalArgumentException.new("Unsupported DER string type")
       end
       buf = value.get_bytes(enc)
@@ -608,7 +602,6 @@ module Sun::Security::Util
     typesig { [] }
     # Returns the name component as a Java string, regardless of its
     # encoding restrictions (ASCII, T61, Printable, IA5, BMP, UTF8).
-    # 
     # TBD: Need encoder for UniversalString before it can be handled.
     def get_as_string
       if ((@tag).equal?(Tag_UTF8String))
@@ -622,8 +615,8 @@ module Sun::Security::Util
           else
             if ((@tag).equal?(Tag_IA5String))
               return get_ia5string
-            # else if (tag == tag_UniversalString)
-            # return getUniversalString();
+              # else if (tag == tag_UniversalString)
+              # return getUniversalString();
             else
               if ((@tag).equal?(Tag_BMPString))
                 return get_bmpstring
@@ -837,7 +830,7 @@ module Sun::Security::Util
         end
         if ((@tag).equal?(Tag_ObjectId))
           return "OID." + RJava.cast_to_string(get_oid)
-        # integers
+          # integers
         else
           return "[DerValue, tag = " + RJava.cast_to_string(@tag) + ", length = " + RJava.cast_to_string(@length) + "]"
         end
@@ -898,18 +891,18 @@ module Sun::Security::Util
           return true
         else
           case (ch)
-          # space
-          # apostrophe
-          # left paren
-          # right paren
-          # plus
-          # comma
-          # hyphen
-          # period
-          # slash
-          # colon
-          # equals
           when Character.new(?\s.ord), Character.new(?\'.ord), Character.new(?(.ord), Character.new(?).ord), Character.new(?+.ord), Character.new(?,.ord), Character.new(?-.ord), Character.new(?..ord), Character.new(?/.ord), Character.new(?:.ord), Character.new(?=.ord), Character.new(??.ord)
+            # space
+            # apostrophe
+            # left paren
+            # right paren
+            # plus
+            # comma
+            # hyphen
+            # period
+            # slash
+            # colon
+            # equals
             # question mark
             return true
           else
@@ -922,7 +915,7 @@ module Sun::Security::Util
       # Create the tag of the attribute.
       # 
       # @params class the tag class type, one of UNIVERSAL, CONTEXT,
-      # APPLICATION or PRIVATE
+      #               APPLICATION or PRIVATE
       # @params form if true, the value is constructed, otherwise it
       # is primitive.
       # @params val the tag value

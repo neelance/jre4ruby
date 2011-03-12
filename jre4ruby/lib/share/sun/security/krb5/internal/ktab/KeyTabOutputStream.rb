@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5::Internal::Ktab
@@ -116,7 +114,7 @@ module Sun::Security::Krb5::Internal::Ktab
       end
       write32(entry.attr_service.get_name_type)
       # time is long, but we only use 4 bytes to store the data.
-      write32(RJava.cast_to_int((entry.attr_timestamp.get_time / 1000)))
+      write32(((entry.attr_timestamp.get_time / 1000)).to_int)
       # the key version might be a 32 bit extended number.
       write8(entry.attr_key_version % 256)
       write16(entry.attr_key_type)
@@ -127,7 +125,7 @@ module Sun::Security::Krb5::Internal::Ktab
       # key version number will be trusted. However, it isn't standardized
       # yet, we won't support it.
       # if (entry.keyVersion >= 256) {
-      # write32(entry.keyVersion);
+      #    write32(entry.keyVersion);
       # }
     end
     

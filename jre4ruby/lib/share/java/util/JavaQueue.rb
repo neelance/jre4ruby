@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # This file is available under and governed by the GNU General Public
 # License version 2 only, as published by the Free Software Foundation.
 # However, the following notice accompanied the original version of this
@@ -52,26 +50,26 @@ module Java::Util
   # 
   # <p>
   # <table BORDER CELLPADDING=3 CELLSPACING=1>
-  # <tr>
-  # <td></td>
-  # <td ALIGN=CENTER><em>Throws exception</em></td>
-  # <td ALIGN=CENTER><em>Returns special value</em></td>
-  # </tr>
-  # <tr>
-  # <td><b>Insert</b></td>
-  # <td>{@link #add add(e)}</td>
-  # <td>{@link #offer offer(e)}</td>
-  # </tr>
-  # <tr>
-  # <td><b>Remove</b></td>
-  # <td>{@link #remove remove()}</td>
-  # <td>{@link #poll poll()}</td>
-  # </tr>
-  # <tr>
-  # <td><b>Examine</b></td>
-  # <td>{@link #element element()}</td>
-  # <td>{@link #peek peek()}</td>
-  # </tr>
+  #  <tr>
+  #    <td></td>
+  #    <td ALIGN=CENTER><em>Throws exception</em></td>
+  #    <td ALIGN=CENTER><em>Returns special value</em></td>
+  #  </tr>
+  #  <tr>
+  #    <td><b>Insert</b></td>
+  #    <td>{@link #add add(e)}</td>
+  #    <td>{@link #offer offer(e)}</td>
+  #  </tr>
+  #  <tr>
+  #    <td><b>Remove</b></td>
+  #    <td>{@link #remove remove()}</td>
+  #    <td>{@link #poll poll()}</td>
+  #  </tr>
+  #  <tr>
+  #    <td><b>Examine</b></td>
+  #    <td>{@link #element element()}</td>
+  #    <td>{@link #peek peek()}</td>
+  #  </tr>
   # </table>
   # 
   # <p>Queues typically, but do not necessarily, order elements in a
@@ -156,13 +154,13 @@ module Java::Util
     # @param e the element to add
     # @return <tt>true</tt> (as specified by {@link Collection#add})
     # @throws IllegalStateException if the element cannot be added at this
-    # time due to capacity restrictions
+    #         time due to capacity restrictions
     # @throws ClassCastException if the class of the specified element
-    # prevents it from being added to this queue
+    #         prevents it from being added to this queue
     # @throws NullPointerException if the specified element is null and
-    # this queue does not permit null elements
+    #         this queue does not permit null elements
     # @throws IllegalArgumentException if some property of this element
-    # prevents it from being added to this queue
+    #         prevents it from being added to this queue
     def add(e)
       raise NotImplementedError
     end
@@ -176,13 +174,13 @@ module Java::Util
     # 
     # @param e the element to add
     # @return <tt>true</tt> if the element was added to this queue, else
-    # <tt>false</tt>
+    #         <tt>false</tt>
     # @throws ClassCastException if the class of the specified element
-    # prevents it from being added to this queue
+    #         prevents it from being added to this queue
     # @throws NullPointerException if the specified element is null and
-    # this queue does not permit null elements
+    #         this queue does not permit null elements
     # @throws IllegalArgumentException if some property of this element
-    # prevents it from being added to this queue
+    #         prevents it from being added to this queue
     def offer(e)
       raise NotImplementedError
     end

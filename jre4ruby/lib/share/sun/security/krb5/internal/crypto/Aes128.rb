@@ -67,7 +67,6 @@ module Sun::Security::Krb5::Internal::Crypto
       
       typesig { [Array.typed(::Java::Byte), ::Java::Int, Array.typed(::Java::Byte), Array.typed(::Java::Byte), ::Java::Int, ::Java::Int] }
       def encrypt(base_key, usage, ivec, plaintext, start, len)
-        # new_ivec
         return CRYPTO.encrypt(base_key, usage, ivec, nil, plaintext, start, len)
       end
       

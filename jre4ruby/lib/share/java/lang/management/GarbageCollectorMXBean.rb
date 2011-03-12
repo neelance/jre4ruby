@@ -48,8 +48,8 @@ module Java::Lang::Management
   # <p>The <tt>ObjectName</tt> for uniquely identifying the MXBean for
   # a garbage collector within an MBeanServer is:
   # <blockquote>
-  # {@link ManagementFactory#GARBAGE_COLLECTOR_MXBEAN_DOMAIN_TYPE
-  # <tt>java.lang:type=GarbageCollector</tt>}<tt>,name=</tt><i>collector's name</i>
+  #   {@link ManagementFactory#GARBAGE_COLLECTOR_MXBEAN_DOMAIN_TYPE
+  #    <tt>java.lang:type=GarbageCollector</tt>}<tt>,name=</tt><i>collector's name</i>
   # </blockquote>
   # 
   # A platform usually includes additional platform-dependent information
@@ -58,9 +58,9 @@ module Java::Lang::Management
   # @see MemoryMXBean
   # 
   # @see <a href="../../../javax/management/package-summary.html">
-  # JMX Specification.</a>
+  #      JMX Specification.</a>
   # @see <a href="package-summary.html#examples">
-  # Ways to Access MXBeans</a>
+  #      Ways to Access MXBeans</a>
   # 
   # @author  Mandy Chung
   # @since   1.5

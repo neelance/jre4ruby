@@ -167,13 +167,13 @@ module Sun::Security::Provider::Certpath
     # according to the PKIX specification.
     # 
     # @param params the parameter set for building a path. Must be an instance
-    # of <code>PKIXBuilderParameters</code>.
+    #  of <code>PKIXBuilderParameters</code>.
     # @return a certification path builder result.
     # @exception CertPathBuilderException Exception thrown if builder is
-    # unable to build a complete certification path from the trusted anchor(s)
-    # to the target subject.
+    #  unable to build a complete certification path from the trusted anchor(s)
+    #  to the target subject.
     # @throws InvalidAlgorithmParameterException if the given parameters are
-    # inappropriate for this certification path builder.
+    #  inappropriate for this certification path builder.
     def engine_build(params)
       if (!(Debug).nil?)
         Debug.println("SunCertPathBuilder.engineBuild(" + RJava.cast_to_string(params) + ")")
@@ -388,11 +388,11 @@ module Sun::Security::Provider::Certpath
           end
           # Certificate is good.
           # If cert completes the path,
-          # process userCheckers that don't support forward checking
-          # and process policies over whole path
-          # and backtrack appropriately if there is a failure
+          #    process userCheckers that don't support forward checking
+          #    and process policies over whole path
+          #    and backtrack appropriately if there is a failure
           # else if cert does not complete the path,
-          # add it to the path
+          #    add it to the path
           if (builder.is_path_completed(cert))
             basic_checker = nil
             if (!(Debug).nil?)

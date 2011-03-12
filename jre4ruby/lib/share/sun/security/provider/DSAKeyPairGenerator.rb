@@ -237,6 +237,7 @@ module Sun::Security::Provider
     def generate_x(seed, q)
       # check out t in the spec.
       t = Array.typed(::Java::Int).new([0x67452301, -0x10325477, -0x67452302, 0x10325476, -0x3c2d1e10])
+      # 
       tmp = DSA._sha_7(seed, t)
       tmp_bytes = Array.typed(::Java::Byte).new(tmp.attr_length * 4) { 0 }
       i = 0

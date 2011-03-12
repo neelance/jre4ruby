@@ -116,12 +116,12 @@ module Sun::Security::Rsa
       # The only difference is the addition of blinding to twart timing attacks.
       # This is described in the RSA Bulletin#2 (Jan 96) among other places.
       # This means instead of implementing RSA as
-      # m = c ^ d mod n (or RSA in CRT variant)
+      #   m = c ^ d mod n (or RSA in CRT variant)
       # we do
-      # r  = random(0, n-1)
-      # c' = c  * r^e  mod n
-      # m' = c' ^ d    mod n (or RSA in CRT variant)
-      # m  = m' * r^-1 mod n (where r^-1 is the modular inverse of r mod n)
+      #   r  = random(0, n-1)
+      #   c' = c  * r^e  mod n
+      #   m' = c' ^ d    mod n (or RSA in CRT variant)
+      #   m  = m' * r^-1 mod n (where r^-1 is the modular inverse of r mod n)
       # This works because r^(e*d) * r^-1 = r * r^-1 = 1 (all mod n)
       # 
       # We do not generate new blinding parameters for each operation but reuse

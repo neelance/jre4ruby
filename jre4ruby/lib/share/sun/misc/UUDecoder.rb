@@ -48,12 +48,12 @@ module Sun::Misc
   # 
   # In this encoding, the buffer prefix is:
   # <pre>
-  # begin [mode] [filename]
+  #     begin [mode] [filename]
   # </pre>
   # 
   # This is followed by one or more lines of the form:
   # <pre>
-  # (len)(data)(data)(data) ...
+  #      (len)(data)(data)(data) ...
   # </pre>
   # where (len) is the number of bytes on this line. Note that groupings
   # are always four characters, even if length is not a multiple of three
@@ -69,11 +69,11 @@ module Sun::Misc
   # CEFormatException. The specific detail messages are:
   # 
   # <pre>
-  # "UUDecoder: No begin line."
-  # "UUDecoder: Malformed begin line."
-  # "UUDecoder: Short Buffer."
-  # "UUDecoder: Bad Line Length."
-  # "UUDecoder: Missing 'end' line."
+  #      "UUDecoder: No begin line."
+  #      "UUDecoder: Malformed begin line."
+  #      "UUDecoder: Short Buffer."
+  #      "UUDecoder: Bad Line Length."
+  #      "UUDecoder: Missing 'end' line."
   # </pre>
   # 
   # @author      Chuck McManis
@@ -89,12 +89,12 @@ module Sun::Misc
     alias_method :attr_buffer_name=, :buffer_name=
     undef_method :buffer_name=
     
-    # Represents UNIX(tm) mode bits. Generally three octal digits
-    # representing read, write, and execute permission of the owner,
-    # group owner, and  others. They should be interpreted as the bit groups:
-    # <pre>
-    # (owner) (group) (others)
-    # rwx      rwx     rwx    (r = read, w = write, x = execute)
+    #  Represents UNIX(tm) mode bits. Generally three octal digits
+    #  representing read, write, and execute permission of the owner,
+    #  group owner, and  others. They should be interpreted as the bit groups:
+    #  <pre>
+    #  (owner) (group) (others)
+    #   rwx      rwx     rwx    (r = read, w = write, x = execute)
     # </pre>
     attr_accessor :mode
     alias_method :attr_mode, :mode
@@ -160,7 +160,7 @@ module Sun::Misc
     
     typesig { [PushbackInputStream, OutputStream] }
     # For uuencoded buffers, the data begins with a line of the form:
-    # begin MODE FILENAME
+    #          begin MODE FILENAME
     # This line always starts in column 1.
     def decode_buffer_prefix(in_stream, out_stream)
       c = 0
@@ -217,10 +217,8 @@ module Sun::Misc
       c = 0
       c = in_stream.read
       if ((c).equal?(Character.new(?\s.ord)))
-        c = in_stream.read
-        # discard the (first)trailing CR or LF
-        c = in_stream.read
-        # check for a second one
+        c = in_stream.read # discard the (first)trailing CR or LF
+        c = in_stream.read # check for a second one
         if ((!(c).equal?(Character.new(?\n.ord))) && (!(c).equal?(-1)))
           in_stream.unread(c)
         end

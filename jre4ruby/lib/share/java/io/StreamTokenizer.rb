@@ -48,7 +48,7 @@ module Java::Io
   # In addition, an instance has four flags. These flags indicate:
   # <ul>
   # <li>Whether line terminators are to be returned as tokens or treated
-  # as white space that merely separates tokens.
+  #     as white space that merely separates tokens.
   # <li>Whether C-style comments are to be recognized and skipped.
   # <li>Whether C++-style comments are to be recognized and skipped.
   # <li>Whether the characters of identifiers are converted to lowercase.
@@ -173,11 +173,11 @@ module Java::Io
     # <li><code>TT_WORD</code> indicates that the token is a word.
     # <li><code>TT_NUMBER</code> indicates that the token is a number.
     # <li><code>TT_EOL</code> indicates that the end of line has been read.
-    # The field can only have this value if the
-    # <code>eolIsSignificant</code> method has been called with the
-    # argument <code>true</code>.
+    #     The field can only have this value if the
+    #     <code>eolIsSignificant</code> method has been called with the
+    #     argument <code>true</code>.
     # <li><code>TT_EOF</code> indicates that the end of the input stream
-    # has been reached.
+    #     has been reached.
     # </ul>
     # <p>
     # The initial value of this field is -4.
@@ -287,14 +287,14 @@ module Java::Io
     # default state:
     # <ul>
     # <li>All byte values <code>'A'</code> through <code>'Z'</code>,
-    # <code>'a'</code> through <code>'z'</code>, and
-    # <code>'&#92;u00A0'</code> through <code>'&#92;u00FF'</code> are
-    # considered to be alphabetic.
+    #     <code>'a'</code> through <code>'z'</code>, and
+    #     <code>'&#92;u00A0'</code> through <code>'&#92;u00FF'</code> are
+    #     considered to be alphabetic.
     # <li>All byte values <code>'&#92;u0000'</code> through
-    # <code>'&#92;u0020'</code> are considered to be white space.
+    #     <code>'&#92;u0020'</code> are considered to be white space.
     # <li><code>'/'</code> is a comment character.
     # <li>Single quote <code>'&#92;''</code> and double quote <code>'"'</code>
-    # are string quote characters.
+    #     are string quote characters.
     # <li>Numbers are parsed.
     # <li>Ends of lines are treated as white space, not as separate tokens.
     # <li>C-style and C++-style comments are not recognized.
@@ -303,8 +303,8 @@ module Java::Io
     # @deprecated As of JDK version 1.1, the preferred way to tokenize an
     # input stream is to convert it into a character stream, for example:
     # <blockquote><pre>
-    # Reader r = new BufferedReader(new InputStreamReader(is));
-    # StreamTokenizer st = new StreamTokenizer(r);
+    #   Reader r = new BufferedReader(new InputStreamReader(is));
+    #   StreamTokenizer st = new StreamTokenizer(r);
     # </pre></blockquote>
     # 
     # @param      is        an input stream.
@@ -480,7 +480,7 @@ module Java::Io
     # syntax table of this tokenizer is modified so that each of the twelve
     # characters:
     # <blockquote><pre>
-    # 0 1 2 3 4 5 6 7 8 9 . -
+    #      0 1 2 3 4 5 6 7 8 9 . -
     # </pre></blockquote>
     # <p>
     # has the "numeric" attribute.
@@ -521,8 +521,8 @@ module Java::Io
     # treated as white space and serve only to separate tokens.
     # 
     # @param   flag   <code>true</code> indicates that end-of-line characters
-    # are separate tokens; <code>false</code> indicates that
-    # end-of-line characters are white space.
+    #                 are separate tokens; <code>false</code> indicates that
+    #                 end-of-line characters are white space.
     # @see     java.io.StreamTokenizer#nextToken()
     # @see     java.io.StreamTokenizer#ttype
     # @see     java.io.StreamTokenizer#TT_EOL
@@ -540,7 +540,7 @@ module Java::Io
     # are not treated specially.
     # 
     # @param   flag   <code>true</code> indicates to recognize and ignore
-    # C-style comments.
+    #                 C-style comments.
     def slash_star_comments(flag)
       @slash_star_comments_p = flag
     end
@@ -556,7 +556,7 @@ module Java::Io
     # comments are not treated specially.
     # 
     # @param   flag   <code>true</code> indicates to recognize and ignore
-    # C++-style comments.
+    #                 C++-style comments.
     def slash_slash_comments(flag)
       @slash_slash_comments_p = flag
     end
@@ -573,7 +573,7 @@ module Java::Io
     # <code>sval</code> field is not modified.
     # 
     # @param   fl   <code>true</code> indicates that all word tokens should
-    # be lowercased.
+    #               be lowercased.
     # @see     java.io.StreamTokenizer#nextToken()
     # @see     java.io.StreamTokenizer#ttype
     # @see     java.io.StreamTokenizer#TT_WORD
@@ -638,8 +638,7 @@ module Java::Io
           return @ttype = TT_EOF
         end
       end
-      @ttype = c
-      # Just to be safe
+      @ttype = c # Just to be safe
       # Set peekc so that the next invocation of nextToken will read
       # another character unless peekc is reset in this invocation
       @peekc = NEED_CHAR
@@ -730,14 +729,13 @@ module Java::Io
         @ttype = c
         i = 0
         # Invariants (because \Octal needs a lookahead):
-        # (i)  c contains char value
-        # (ii) d contains the lookahead
+        #   (i)  c contains char value
+        #   (ii) d contains the lookahead
         d = read
         while (d >= 0 && !(d).equal?(@ttype) && !(d).equal?(Character.new(?\n.ord)) && !(d).equal?(Character.new(?\r.ord)))
           if ((d).equal?(Character.new(?\\.ord)))
             c = read
-            first = c
-            # To allow \377, but not \477
+            first = c # To allow \377, but not \477
             if (c >= Character.new(?0.ord) && c <= Character.new(?7.ord))
               c = c - Character.new(?0.ord)
               c2 = read

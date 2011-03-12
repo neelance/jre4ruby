@@ -370,8 +370,8 @@ module Sun::Security::Mscapi
     # @param key the private key to be associated with the alias
     # @param password the password, which should be <code>null</code>
     # @param chain the certificate chain for the corresponding public
-    # key (only required if the given key is of type
-    # <code>java.security.PrivateKey</code>).
+    #        key (only required if the given key is of type
+    #        <code>java.security.PrivateKey</code>).
     # 
     # @exception KeyStoreException if the given key is not a private key,
     # cannot be protected, or if compatibility mode is disabled and
@@ -680,9 +680,9 @@ module Sun::Security::Mscapi
     # @exception CertificateException if any of the certificates in the
     # keystore could not be loaded
     # @exception SecurityException if the security check for
-    # <code>SecurityPermission("authProvider.<i>name</i>")</code> does not
-    # pass, where <i>name</i> is the value returned by
-    # this provider's <code>getName</code> method.
+    #  <code>SecurityPermission("authProvider.<i>name</i>")</code> does not
+    #  pass, where <i>name</i> is the value returned by
+    #  this provider's <code>getName</code> method.
     def engine_load(stream, password)
       if (!(stream).nil? && !@key_store_compatibility_mode)
         raise IOException.new("Keystore input stream must be null")

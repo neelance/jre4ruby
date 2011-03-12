@@ -132,18 +132,15 @@ module Java::Security
       # Need to maintain serialization interoperability with earlier releases,
       # which had the serializable field:
       # private Hashtable permissions; // keyed on type
-      # 
       # @serialField permissions java.util.Hashtable
-      # A table of the UnresolvedPermissions keyed on type, value is Vector
-      # of permissions
-      const_set_lazy(:SerialPersistentFields) { Array.typed(ObjectStreamField).new([ObjectStreamField.new("permissions", Hashtable), ]) }
+      #     A table of the UnresolvedPermissions keyed on type, value is Vector
+      #     of permissions
+      const_set_lazy(:SerialPersistentFields) { Array.typed(ObjectStreamField).new([ObjectStreamField.new("permissions", Hashtable)]) }
       const_attr_reader  :SerialPersistentFields
     }
     
     typesig { [ObjectOutputStream] }
     # @serialData Default field.
-    # 
-    # 
     # Writes the contents of the perms field out as a Hashtable
     # in which the values are Vectors for
     # serialization compatibility with earlier releases.

@@ -21,24 +21,21 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
-# 
-# 
-# Copyright (C) 2003-2004, International Business Machines Corporation and         *
-# others. All Rights Reserved.                                                *
-# 
-# 
+# /*
+#  *******************************************************************************
+#  * Copyright (C) 2003-2004, International Business Machines Corporation and         *
+#  * others. All Rights Reserved.                                                *
 # 
 # CHANGELOG
-# 2005-05-19 Edward Wang
-# - copy this file from icu4jsrc_3_2/src/com/ibm/icu/text/StringPrep.java
-# - move from package com.ibm.icu.text to package sun.net.idn
-# - use ParseException instead of StringPrepParseException
-# - change 'Normalizer.getUnicodeVersion()' to 'NormalizerImpl.getUnicodeVersion()'
-# - remove all @deprecated tag to make compiler happy
-# 2007-08-14 Martin Buchholz
-# - remove redundant casts
+#      2005-05-19 Edward Wang
+#          - copy this file from icu4jsrc_3_2/src/com/ibm/icu/text/StringPrep.java
+#          - move from package com.ibm.icu.text to package sun.net.idn
+#          - use ParseException instead of StringPrepParseException
+#          - change 'Normalizer.getUnicodeVersion()' to 'NormalizerImpl.getUnicodeVersion()'
+#          - remove all @deprecated tag to make compiler happy
+#      2007-08-14 Martin Buchholz
+#          - remove redundant casts
+# 
 module Sun::Net::Idn
   module StringPrepImports #:nodoc:
     class_module.module_eval {
@@ -69,27 +66,27 @@ module Sun::Net::Idn
   # Unicode Strings are prepared. Each profiles contains tables which describe
   # how a code point should be treated. The tables are broadly classied into
   # <ul>
-  # <li> Unassigned Table: Contains code points that are unassigned
-  # in the Unicode Version supported by StringPrep. Currently
-  # RFC 3454 supports Unicode 3.2. </li>
-  # <li> Prohibited Table: Contains code points that are prohibted from
-  # the output of the StringPrep processing function. </li>
-  # <li> Mapping Table: Contains code ponts that are deleted from the output or case mapped. </li>
+  #     <li> Unassigned Table: Contains code points that are unassigned
+  #          in the Unicode Version supported by StringPrep. Currently
+  #          RFC 3454 supports Unicode 3.2. </li>
+  #     <li> Prohibited Table: Contains code points that are prohibted from
+  #          the output of the StringPrep processing function. </li>
+  #     <li> Mapping Table: Contains code ponts that are deleted from the output or case mapped. </li>
   # </ul>
   # 
   # The procedure for preparing Unicode strings:
   # <ol>
-  # <li> Map: For each character in the input, check if it has a mapping
-  # and, if so, replace it with its mapping. </li>
-  # <li> Normalize: Possibly normalize the result of step 1 using Unicode
-  # normalization. </li>
-  # <li> Prohibit: Check for any characters that are not allowed in the
-  # output.  If any are found, return an error.</li>
-  # <li> Check bidi: Possibly check for right-to-left characters, and if
-  # any are found, make sure that the whole string satisfies the
-  # requirements for bidirectional strings.  If the string does not
-  # satisfy the requirements for bidirectional strings, return an
-  # error.  </li>
+  #      <li> Map: For each character in the input, check if it has a mapping
+  #           and, if so, replace it with its mapping. </li>
+  #      <li> Normalize: Possibly normalize the result of step 1 using Unicode
+  #           normalization. </li>
+  #      <li> Prohibit: Check for any characters that are not allowed in the
+  #           output.  If any are found, return an error.</li>
+  #      <li> Check bidi: Possibly check for right-to-left characters, and if
+  #           any are found, make sure that the whole string satisfies the
+  #           requirements for bidirectional strings.  If the string does not
+  #           satisfy the requirements for bidirectional strings, return an
+  #           error.  </li>
   # </ol>
   # @author Ram Viswanadha
   # @draft ICU 2.8
@@ -177,7 +174,6 @@ module Sun::Net::Idn
       const_attr_reader  :INDEX_TOP
       
       # changing this requires a new formatVersion
-      # 
       # Default buffer size of datafile
       const_set_lazy(:DATA_BUFFER_SIZE) { 25000 }
       const_attr_reader  :DATA_BUFFER_SIZE
@@ -197,7 +193,7 @@ module Sun::Net::Idn
         # Called by com.ibm.icu.util.Trie to extract from a lead surrogate's
         # data the index array offset of the indexes for that lead surrogate.
         # @param property data value for a surrogate from the trie, including
-        # the folding offset
+        #        the folding offset
         # @return data offset or 0 if there is no data for the lead surrogate
         def get_folding_offset(value)
           return value
@@ -291,7 +287,7 @@ module Sun::Net::Idn
         if (!(version.attr_length).equal?(4))
           return nil
         end
-        return VersionInfo.get_instance(RJava.cast_to_int(version[0]), RJava.cast_to_int(version[1]), RJava.cast_to_int(version[2]), RJava.cast_to_int(version[3]))
+        return VersionInfo.get_instance((version[0]).to_int, (version[1]).to_int, (version[2]).to_int, (version[3]).to_int)
       end
     }
     
@@ -330,10 +326,7 @@ module Sun::Net::Idn
       @check_bi_di = ((@indexes[OPTIONS] & CHECK_BIDI_ON) > 0)
       @sprep_uni_ver = get_version_info(reader.get_unicode_version)
       @norm_corr_ver = get_version_info(@indexes[NORM_CORRECTNS_LAST_UNI_VERSION])
-      norm_uni_ver = NormalizerImpl.get_unicode_version
-      # the Unicode version of SPREP file must be less than the Unicode Vesion of the normalization data
-      # the Unicode version of the NormalizationCorrections.txt file should be less than the Unicode Vesion of the normalization data
-      # normalization turned on
+      norm_uni_ver = NormalizerImpl.get_unicode_version # the Unicode version of SPREP file must be less than the Unicode Vesion of the normalization data # the Unicode version of the NormalizationCorrections.txt file should be less than the Unicode Vesion of the normalization data # normalization turned on
       if ((norm_uni_ver <=> @sprep_uni_ver) < 0 && (norm_uni_ver <=> @norm_corr_ver) < 0 && ((@indexes[OPTIONS] & NORMALIZATION_ON) > 0))
         raise IOException.new("Normalization Correction version not supported")
       end
@@ -480,52 +473,48 @@ module Sun::Net::Idn
     
     typesig { [UCharacterIterator, ::Java::Int] }
     # boolean isLabelSeparator(int ch){
-    # int result = getCodePointValue(ch);
-    # if( (result & 0x07)  == LABEL_SEPARATOR){
-    # return true;
+    #     int result = getCodePointValue(ch);
+    #     if( (result & 0x07)  == LABEL_SEPARATOR){
+    #         return true;
+    #     }
+    #     return false;
     # }
-    # return false;
-    # }
-    # 
-    # 
     # 1) Map -- For each character in the input, check if it has a mapping
-    # and, if so, replace it with its mapping.
+    #    and, if so, replace it with its mapping.
     # 
     # 2) Normalize -- Possibly normalize the result of step 1 using Unicode
-    # normalization.
+    #    normalization.
     # 
     # 3) Prohibit -- Check for any characters that are not allowed in the
-    # output.  If any are found, return an error.
+    #    output.  If any are found, return an error.
     # 
     # 4) Check bidi -- Possibly check for right-to-left characters, and if
-    # any are found, make sure that the whole string satisfies the
-    # requirements for bidirectional strings.  If the string does not
-    # satisfy the requirements for bidirectional strings, return an
-    # error.
-    # [Unicode3.2] defines several bidirectional categories; each character
-    # has one bidirectional category assigned to it.  For the purposes of
-    # the requirements below, an "RandALCat character" is a character that
-    # has Unicode bidirectional categories "R" or "AL"; an "LCat character"
-    # is a character that has Unicode bidirectional category "L".  Note
+    #    any are found, make sure that the whole string satisfies the
+    #    requirements for bidirectional strings.  If the string does not
+    #    satisfy the requirements for bidirectional strings, return an
+    #    error.
+    #    [Unicode3.2] defines several bidirectional categories; each character
+    #     has one bidirectional category assigned to it.  For the purposes of
+    #     the requirements below, an "RandALCat character" is a character that
+    #     has Unicode bidirectional categories "R" or "AL"; an "LCat character"
+    #     is a character that has Unicode bidirectional category "L".  Note
     # 
     # 
-    # that there are many characters which fall in neither of the above
-    # definitions; Latin digits (<U+0030> through <U+0039>) are examples of
-    # this because they have bidirectional category "EN".
+    #     that there are many characters which fall in neither of the above
+    #     definitions; Latin digits (<U+0030> through <U+0039>) are examples of
+    #     this because they have bidirectional category "EN".
     # 
-    # In any profile that specifies bidirectional character handling, all
-    # three of the following requirements MUST be met:
+    #     In any profile that specifies bidirectional character handling, all
+    #     three of the following requirements MUST be met:
     # 
-    # 1) The characters in section 5.8 MUST be prohibited.
+    #     1) The characters in section 5.8 MUST be prohibited.
     # 
-    # 2) If a string contains any RandALCat character, the string MUST NOT
-    # contain any LCat character.
+    #     2) If a string contains any RandALCat character, the string MUST NOT
+    #        contain any LCat character.
     # 
-    # 3) If a string contains any RandALCat character, a RandALCat
-    # character MUST be the first character of the string, and a
-    # RandALCat character MUST be the last character of the string.
-    # 
-    # 
+    #     3) If a string contains any RandALCat character, a RandALCat
+    #        character MUST be the first character of the string, and a
+    #        RandALCat character MUST be the last character of the string.
     # Prepare the input buffer for use in applications with the given profile. This operation maps, normalizes(NFKC),
     # checks for prohited and BiDi characters in the order defined by RFC 3454
     # depending on the options specified in the profile.
@@ -533,10 +522,10 @@ module Sun::Net::Idn
     # @param src           A UCharacterIterator object containing the source string
     # @param options       A bit set of options:
     # 
-    # - StringPrep.NONE               Prohibit processing of unassigned code points in the input
+    #  - StringPrep.NONE               Prohibit processing of unassigned code points in the input
     # 
-    # - StringPrep.ALLOW_UNASSIGNED   Treat the unassigned code points are in the input
-    # as normal Unicode code points.
+    #  - StringPrep.ALLOW_UNASSIGNED   Treat the unassigned code points are in the input
+    #                                  as normal Unicode code points.
     # 
     # @return StringBuffer A StringBuffer containing the output
     # @throws ParseException

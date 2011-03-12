@@ -102,8 +102,8 @@ module Sun::Security::Jgss
     
     typesig { [String] }
     # @param name Almost useless, since the (caller, mech) is already passed
-    # into constructor. The only use will be detecting OTHER which
-    # is called in LoginContext
+    #             into constructor. The only use will be detecting OTHER which
+    #             is called in LoginContext
     def get_app_configuration_entry(name)
       entries = nil
       # This is the second call from LoginContext, which we will just ignore
@@ -117,15 +117,15 @@ module Sun::Security::Jgss
       if (("krb5" == @mech_name))
         case (@caller)
         when GSSUtil::CALLER_INITIATE
-          alts = Array.typed(String).new(["com.sun.security.jgss.krb5.initiate", "com.sun.security.jgss.initiate", ])
+          alts = Array.typed(String).new(["com.sun.security.jgss.krb5.initiate", "com.sun.security.jgss.initiate"])
         when GSSUtil::CALLER_ACCEPT
-          alts = Array.typed(String).new(["com.sun.security.jgss.krb5.accept", "com.sun.security.jgss.accept", ])
+          alts = Array.typed(String).new(["com.sun.security.jgss.krb5.accept", "com.sun.security.jgss.accept"])
         when GSSUtil::CALLER_SSL_CLIENT
-          alts = Array.typed(String).new(["com.sun.security.jgss.krb5.initiate", "com.sun.net.ssl.client", ])
+          alts = Array.typed(String).new(["com.sun.security.jgss.krb5.initiate", "com.sun.net.ssl.client"])
         when GSSUtil::CALLER_SSL_SERVER
-          alts = Array.typed(String).new(["com.sun.security.jgss.krb5.accept", "com.sun.net.ssl.server", ])
+          alts = Array.typed(String).new(["com.sun.security.jgss.krb5.accept", "com.sun.net.ssl.server"])
         when GSSUtil::CALLER_HTTP_NEGOTIATE
-          alts = Array.typed(String).new(["com.sun.security.jgss.krb5.initiate", ])
+          alts = Array.typed(String).new(["com.sun.security.jgss.krb5.initiate"])
         when GSSUtil::CALLER_UNKNOWN
           # should never use
           raise AssertionError.new("caller cannot be unknown")
@@ -135,32 +135,31 @@ module Sun::Security::Jgss
       else
         raise IllegalArgumentException.new(@mech_name + " not supported")
         # No other mech at the moment, maybe --
-        # 
         # switch (caller) {
         # case GSSUtil.CALLER_INITIATE:
         # case GSSUtil.CALLER_SSL_CLIENT:
         # case GSSUtil.CALLER_HTTP_NEGOTIATE:
-        # alts = new String[] {
-        # "com.sun.security.jgss." + mechName + ".initiate",
-        # };
-        # break;
+        #     alts = new String[] {
+        #         "com.sun.security.jgss." + mechName + ".initiate",
+        #     };
+        #     break;
         # case GSSUtil.CALLER_ACCEPT:
         # case GSSUtil.CALLER_SSL_SERVER:
-        # alts = new String[] {
-        # "com.sun.security.jgss." + mechName + ".accept",
-        # };
-        # break;
+        #     alts = new String[] {
+        #         "com.sun.security.jgss." + mechName + ".accept",
+        #     };
+        #     break;
         # case GSSUtil.CALLER_UNKNOWN:
-        # // should never use
-        # throw new AssertionError("caller cannot be unknown");
+        #     // should never use
+        #     throw new AssertionError("caller cannot be unknown");
         # default:
-        # throw new AssertionError("caller not defined");
+        #     throw new AssertionError("caller not defined");
         # }
       end
       alts.each do |alt|
         entries = @config.get_app_configuration_entry(alt)
         if (!(Debug).nil?)
-          Debug.println("Trying " + alt + RJava.cast_to_string((((entries).nil?) ? ": does not exist." : ": Found!")))
+          Debug.println("Trying " + RJava.cast_to_string(alt) + RJava.cast_to_string((((entries).nil?) ? ": does not exist." : ": Found!")))
         end
         if (!(entries).nil?)
           break

@@ -64,9 +64,9 @@ module Java::Lang::Reflect
     # is designed primarily for convenient access to marker annotations.
     # 
     # @param annotationClass the Class object corresponding to the
-    # annotation type
+    #        annotation type
     # @return true if an annotation for the specified annotation
-    # type is present on this element, else false
+    #     type is present on this element, else false
     # @throws NullPointerException if the given annotation class is null
     # @since 1.5
     def is_annotation_present(annotation_class)
@@ -78,9 +78,9 @@ module Java::Lang::Reflect
     # such an annotation is present, else null.
     # 
     # @param annotationClass the Class object corresponding to the
-    # annotation type
+    #        annotation type
     # @return this element's annotation for the specified annotation type if
-    # present on this element, else null
+    #     present on this element, else null
     # @throws NullPointerException if the given annotation class is null
     # @since 1.5
     def get_annotation(annotation_class)

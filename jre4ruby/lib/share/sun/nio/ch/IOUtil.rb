@@ -47,7 +47,6 @@ module Sun::Nio::Ch
     class_module.module_eval {
       typesig { [Array.typed(ByteBuffer)] }
       # No instantiation
-      # 
       # Returns the index of first buffer in bufs with remaining,
       # or -1 if there is nothing left
       def remaining(bufs)
@@ -198,7 +197,7 @@ module Sun::Nio::Ch
             # Buffers not completely filled
             if (bytes_written > 0)
               raise AssertError if not ((pos + bytes_written < JavaInteger::MAX_VALUE))
-              new_position = RJava.cast_to_int((pos + bytes_written))
+              new_position = ((pos + bytes_written)).to_int
               next_buffer.position(new_position)
             end
             break
@@ -315,7 +314,7 @@ module Sun::Nio::Ch
             # Buffers not completely filled
             if (bytes_read > 0)
               raise AssertError if not ((pos + bytes_read < JavaInteger::MAX_VALUE))
-              new_position = RJava.cast_to_int((pos + bytes_read))
+              new_position = ((pos + bytes_read)).to_int
               next_buffer.position(new_position)
             end
             break

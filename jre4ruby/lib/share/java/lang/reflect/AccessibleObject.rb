@@ -84,7 +84,7 @@ module Java::Lang::Reflect
       # 
       # @param array the array of AccessibleObjects
       # @param flag  the new value for the {@code accessible} flag
-      # in each object
+      #              in each object
       # @throws SecurityException if the request is denied.
       # @see SecurityManager#checkPermission
       # @see java.lang.RuntimePermission

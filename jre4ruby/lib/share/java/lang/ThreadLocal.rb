@@ -46,21 +46,21 @@ module Java::Lang
   # import java.util.concurrent.atomic.AtomicInteger;
   # 
   # public class ThreadId {
-  # // Atomic integer containing the next thread ID to be assigned
-  # private static final AtomicInteger nextId = new AtomicInteger(0);
+  #     // Atomic integer containing the next thread ID to be assigned
+  #     private static final AtomicInteger nextId = new AtomicInteger(0);
   # 
-  # // Thread local variable containing each thread's ID
-  # private static final ThreadLocal&lt;Integer> threadId =
-  # new ThreadLocal&lt;Integer>() {
-  # &#64;Override protected Integer initialValue() {
-  # return nextId.getAndIncrement();
-  # }
-  # };
+  #     // Thread local variable containing each thread's ID
+  #     private static final ThreadLocal&lt;Integer> threadId =
+  #         new ThreadLocal&lt;Integer>() {
+  #             &#64;Override protected Integer initialValue() {
+  #                 return nextId.getAndIncrement();
+  #         }
+  #     };
   # 
-  # // Returns the current thread's unique ID, assigning it if necessary
-  # public static int get() {
-  # return threadId.get();
-  # }
+  #     // Returns the current thread's unique ID, assigning it if necessary
+  #     public static int get() {
+  #         return threadId.get();
+  #     }
   # }
   # </pre>
   # <p>Each thread holds an implicit reference to its copy of a thread-local
@@ -185,7 +185,7 @@ module Java::Lang
     # method to set the values of thread-locals.
     # 
     # @param value the value to be stored in the current thread's copy of
-    # this thread-local.
+    #        this thread-local.
     def set(value)
       t = JavaThread.current_thread
       map = get_map(t)
@@ -326,7 +326,6 @@ module Java::Lang
         
         typesig { [::Java::Int] }
         # Default to 0
-        # 
         # Set the resize threshold to maintain at worst a 2/3 load factor.
         def set_threshold(len)
           @threshold = len * 2 / 3
@@ -502,7 +501,7 @@ module Java::Lang
         # @param  key the key
         # @param  value the value to be associated with key
         # @param  staleSlot index of the first stale entry encountered while
-        # searching for key.
+        #         searching for key.
         def replace_stale_entry(key, value, stale_slot)
           tab = @table
           len = tab.attr_length

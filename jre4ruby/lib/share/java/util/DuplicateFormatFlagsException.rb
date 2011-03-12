@@ -56,7 +56,7 @@ module Java::Util
     # Constructs an instance of this class with the specified flags.
     # 
     # @param  f
-    # The set of format flags which contain a duplicate flag.
+    #         The set of format flags which contain a duplicate flag.
     def initialize(f)
       @flags = nil
       super()

@@ -262,40 +262,40 @@ module Java::Security
     # <li> If this object's location (getLocation()) is not null, then the
     # following checks are made against this object's location and
     # <i>codesource</i>'s:<p>
-    # <ol>
-    # <li>  <i>codesource</i>'s location must not be null.
+    #   <ol>
+    #     <li>  <i>codesource</i>'s location must not be null.
     # 
-    # <li>  If this object's location
-    # equals <i>codesource</i>'s location, then return true.
+    #     <li>  If this object's location
+    #           equals <i>codesource</i>'s location, then return true.
     # 
-    # <li>  This object's protocol (getLocation().getProtocol()) must be
-    # equal to <i>codesource</i>'s protocol.
+    #     <li>  This object's protocol (getLocation().getProtocol()) must be
+    #           equal to <i>codesource</i>'s protocol.
     # 
-    # <li>  If this object's host (getLocation().getHost()) is not null,
-    # then the SocketPermission
-    # constructed with this object's host must imply the
-    # SocketPermission constructed with <i>codesource</i>'s host.
+    #     <li>  If this object's host (getLocation().getHost()) is not null,
+    #           then the SocketPermission
+    #           constructed with this object's host must imply the
+    #           SocketPermission constructed with <i>codesource</i>'s host.
     # 
-    # <li>  If this object's port (getLocation().getPort()) is not
-    # equal to -1 (that is, if a port is specified), it must equal
-    # <i>codesource</i>'s port.
+    #     <li>  If this object's port (getLocation().getPort()) is not
+    #           equal to -1 (that is, if a port is specified), it must equal
+    #           <i>codesource</i>'s port.
     # 
-    # <li>  If this object's file (getLocation().getFile()) doesn't equal
-    # <i>codesource</i>'s file, then the following checks are made:
-    # If this object's file ends with "/-",
-    # then <i>codesource</i>'s file must start with this object's
-    # file (exclusive the trailing "-").
-    # If this object's file ends with a "/*",
-    # then <i>codesource</i>'s file must start with this object's
-    # file and must not have any further "/" separators.
-    # If this object's file doesn't end with a "/",
-    # then <i>codesource</i>'s file must match this object's
-    # file with a '/' appended.
+    #     <li>  If this object's file (getLocation().getFile()) doesn't equal
+    #           <i>codesource</i>'s file, then the following checks are made:
+    #           If this object's file ends with "/-",
+    #           then <i>codesource</i>'s file must start with this object's
+    #           file (exclusive the trailing "-").
+    #           If this object's file ends with a "/*",
+    #           then <i>codesource</i>'s file must start with this object's
+    #           file and must not have any further "/" separators.
+    #           If this object's file doesn't end with a "/",
+    #           then <i>codesource</i>'s file must match this object's
+    #           file with a '/' appended.
     # 
-    # <li>  If this object's reference (getLocation().getRef()) is
-    # not null, it must equal <i>codesource</i>'s reference.
+    #     <li>  If this object's reference (getLocation().getRef()) is
+    #           not null, it must equal <i>codesource</i>'s reference.
     # 
-    # </ol>
+    #   </ol>
     # </ol>
     # <p>
     # For example, the codesource objects with the following locations
@@ -303,10 +303,10 @@ module Java::Security
     # the codesource with the location "http://java.sun.com/classes/foo.jar"
     # and null certificates:
     # <pre>
-    # http:
-    # http://*.sun.com/classes/*
-    # http://java.sun.com/classes/-
-    # http://java.sun.com/classes/foo.jar
+    #     http:
+    #     http://*.sun.com/classes/*
+    #     http://java.sun.com/classes/-
+    #     http://java.sun.com/classes/foo.jar
     # </pre>
     # 
     # Note that if this CodeSource has a null location and a null
@@ -329,7 +329,7 @@ module Java::Security
     # 
     # @param that the CodeSource to check against.
     # @param strict If true then a strict equality match is performed.
-    # Otherwise a subset match is performed.
+    #               Otherwise a subset match is performed.
     def match_certs(that, strict)
       match = false
       # match any key

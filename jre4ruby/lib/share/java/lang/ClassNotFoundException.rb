@@ -34,7 +34,7 @@ module Java::Lang
   # <ul>
   # <li>The <code>forName</code> method in class <code>Class</code>.
   # <li>The <code>findSystemClass</code> method in class
-  # <code>ClassLoader</code> .
+  #     <code>ClassLoader</code> .
   # <li>The <code>loadClass</code> method in class <code>ClassLoader</code>.
   # </ul>
   # <p>
@@ -86,7 +86,7 @@ module Java::Lang
     # @param   s   the detail message.
     def initialize(s)
       @ex = nil
-      super(s, nil) # Disallow initCause
+      super(s, nil) #  Disallow initCause
     end
     
     typesig { [String, JavaThrowable] }
@@ -99,7 +99,7 @@ module Java::Lang
     # @since 1.2
     def initialize(s, ex)
       @ex = nil
-      super(s, nil) # Disallow initCause
+      super(s, nil) #  Disallow initCause
       @ex = ex
     end
     

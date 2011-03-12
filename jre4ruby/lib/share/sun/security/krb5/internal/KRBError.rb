@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5::Internal
@@ -49,26 +47,26 @@ module Sun::Security::Krb5::Internal
   # 
   # <xmp>
   # KRB-ERROR       ::= [APPLICATION 30] SEQUENCE {
-  # pvno            [0] INTEGER (5),
-  # msg-type        [1] INTEGER (30),
-  # ctime           [2] KerberosTime OPTIONAL,
-  # cusec           [3] Microseconds OPTIONAL,
-  # stime           [4] KerberosTime,
-  # susec           [5] Microseconds,
-  # error-code      [6] Int32,
-  # crealm          [7] Realm OPTIONAL,
-  # cname           [8] PrincipalName OPTIONAL,
-  # realm           [9] Realm -- service realm --,
-  # sname           [10] PrincipalName -- service name --,
-  # e-text          [11] KerberosString OPTIONAL,
-  # e-data          [12] OCTET STRING OPTIONAL
+  #         pvno            [0] INTEGER (5),
+  #         msg-type        [1] INTEGER (30),
+  #         ctime           [2] KerberosTime OPTIONAL,
+  #         cusec           [3] Microseconds OPTIONAL,
+  #         stime           [4] KerberosTime,
+  #         susec           [5] Microseconds,
+  #         error-code      [6] Int32,
+  #         crealm          [7] Realm OPTIONAL,
+  #         cname           [8] PrincipalName OPTIONAL,
+  #         realm           [9] Realm -- service realm --,
+  #         sname           [10] PrincipalName -- service name --,
+  #         e-text          [11] KerberosString OPTIONAL,
+  #         e-data          [12] OCTET STRING OPTIONAL
   # }
   # 
   # METHOD-DATA     ::= SEQUENCE OF PA-DATA
   # 
   # TYPED-DATA      ::= SEQUENCE SIZE (1..MAX) OF SEQUENCE {
-  # data-type       [0] Int32,
-  # data-value      [1] OCTET STRING OPTIONAL
+  #         data-type       [0] Int32,
+  #         data-value      [1] OCTET STRING OPTIONAL
   # }
   # </xmp>
   # 
@@ -357,16 +355,15 @@ module Sun::Security::Krb5::Internal
     # Hence, the ideal procedure to parse e-data should look like:
     # 
     # if (errorCode is KDC_ERR_PREAUTH_REQUIRED) {
-    # parse as METHOD-DATA
+    #    parse as METHOD-DATA
     # } else {
-    # try parsing as TYPED-DATA
+    #    try parsing as TYPED-DATA
     # }
     # 
     # Unfortunately, we know that some implementations also use the
     # METHOD-DATA format for errorcode KDC_ERR_PREAUTH_FAILED, and
     # do not use the TYPED-DATA for other errorcodes (say,
     # KDC_ERR_CLIENT_REVOKED).
-    # 
     # parse the edata field
     def parse_edata(data)
       if ((data).nil?)
@@ -497,7 +494,7 @@ module Sun::Security::Krb5::Internal
     # @exception Asn1Exception if an error occurs while decoding an ASN1 encoded data.
     # @exception IOException if an I/O error occurs while reading encoded data.
     # @exception KrbApErrException if the value read from the DER-encoded data
-    # stream does not match the pre-defined value.
+    #  stream does not match the pre-defined value.
     # @exception RealmException if an error occurs while parsing a Realm object.
     def init(encoding)
       der = nil

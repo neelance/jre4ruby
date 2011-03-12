@@ -46,8 +46,8 @@ module Java::Lang::Management
   # <p>The <tt>ObjectName</tt> for uniquely identifying the MXBean for
   # a memory pool within an <tt>MBeanServer</tt> is:
   # <blockquote>
-  # {@link ManagementFactory#MEMORY_POOL_MXBEAN_DOMAIN_TYPE
-  # <tt>java.lang:type=MemoryPool</tt>}<tt>,name=</tt><i>pool's name</i>
+  #    {@link ManagementFactory#MEMORY_POOL_MXBEAN_DOMAIN_TYPE
+  #    <tt>java.lang:type=MemoryPool</tt>}<tt>,name=</tt><i>pool's name</i>
   # </blockquote>
   # 
   # <h4>Memory Type</h4>
@@ -57,19 +57,19 @@ module Java::Lang::Management
   # memory pools.  Each memory pool represents a memory area
   # of one of the following types:
   # <ul>
-  # <li>{@link MemoryType#HEAP heap}</li>
-  # <li>{@link MemoryType#NON_HEAP non-heap}</li>
+  #   <li>{@link MemoryType#HEAP heap}</li>
+  #   <li>{@link MemoryType#NON_HEAP non-heap}</li>
   # </ul>
   # 
   # <h4>Memory Usage Monitoring</h4>
   # 
   # A memory pool has the following attributes:
   # <ul>
-  # <li><a href="#Usage">Memory usage</a></li>
-  # <li><a href="#PeakUsage">Peak memory usage</a></li>
-  # <li><a href="#UsageThreshold">Usage Threshold</a></li>
-  # <li><a href="#CollectionThreshold">Collection Usage Threshold</a>
-  # (only supported by some <em>garbage-collected</em> memory pools)</li>
+  #   <li><a href="#Usage">Memory usage</a></li>
+  #   <li><a href="#PeakUsage">Peak memory usage</a></li>
+  #   <li><a href="#UsageThreshold">Usage Threshold</a></li>
+  #   <li><a href="#CollectionThreshold">Collection Usage Threshold</a>
+  #       (only supported by some <em>garbage-collected</em> memory pools)</li>
   # </ul>
   # 
   # <h4><a name="Usage">1. Memory Usage</a></h4>
@@ -142,167 +142,167 @@ module Java::Lang::Management
   # <a href="#ThresholdNotification">threshold notification</a> mechanisms.
   # 
   # <ol type="a">
-  # <li><a name="Polling"><b>Polling</b></a>
-  # <p>
-  # An application can continuously monitor its memory usage
-  # by calling either the {@link #getUsage} method for all
-  # memory pools or the {@link #isUsageThresholdExceeded} method
-  # for those memory pools that support a usage threshold.
-  # Below is example code that has a thread delicated for
-  # task distribution and processing.  At every interval,
-  # it will determine if it should receive and process new tasks based
-  # on its memory usage.  If the memory usage exceeds its usage threshold,
-  # it will redistribute all outstanding tasks to other VMs and
-  # stop receiving new tasks until the memory usage returns
-  # below its usage threshold.
+  #   <li><a name="Polling"><b>Polling</b></a>
+  #       <p>
+  #       An application can continuously monitor its memory usage
+  #       by calling either the {@link #getUsage} method for all
+  #       memory pools or the {@link #isUsageThresholdExceeded} method
+  #       for those memory pools that support a usage threshold.
+  #       Below is example code that has a thread delicated for
+  #       task distribution and processing.  At every interval,
+  #       it will determine if it should receive and process new tasks based
+  #       on its memory usage.  If the memory usage exceeds its usage threshold,
+  #       it will redistribute all outstanding tasks to other VMs and
+  #       stop receiving new tasks until the memory usage returns
+  #       below its usage threshold.
   # 
-  # <pre>
-  # // Assume the usage threshold is supported for this pool.
-  # // Set the threshold to myThreshold above which no new tasks
-  # // should be taken.
-  # pool.setUsageThreshold(myThreshold);
-  # ....
+  #       <pre>
+  #       // Assume the usage threshold is supported for this pool.
+  #       // Set the threshold to myThreshold above which no new tasks
+  #       // should be taken.
+  #       pool.setUsageThreshold(myThreshold);
+  #       ....
   # 
-  # boolean lowMemory = false;
-  # while (true) {
-  # if (pool.isUsageThresholdExceeded()) {
-  # // potential low memory, so redistribute tasks to other VMs
-  # lowMemory = true;
-  # redistributeTasks();
-  # // stop receiving new tasks
-  # stopReceivingTasks();
-  # } else {
-  # if (lowMemory) {
-  # // resume receiving tasks
-  # lowMemory = false;
-  # resumeReceivingTasks();
-  # }
-  # // processing outstanding task
-  # ...
-  # }
-  # // sleep for sometime
-  # try {
-  # Thread.sleep(sometime);
-  # } catch (InterruptedException e) {
-  # ...
-  # }
-  # }
-  # </pre>
+  #       boolean lowMemory = false;
+  #       while (true) {
+  #          if (pool.isUsageThresholdExceeded()) {
+  #              // potential low memory, so redistribute tasks to other VMs
+  #              lowMemory = true;
+  #              redistributeTasks();
+  #              // stop receiving new tasks
+  #              stopReceivingTasks();
+  #          } else {
+  #              if (lowMemory) {
+  #                  // resume receiving tasks
+  #                  lowMemory = false;
+  #                  resumeReceivingTasks();
+  #              }
+  #              // processing outstanding task
+  #              ...
+  #          }
+  #          // sleep for sometime
+  #          try {
+  #              Thread.sleep(sometime);
+  #          } catch (InterruptedException e) {
+  #              ...
+  #          }
+  #       }
+  #       </pre>
   # 
   # <hr>
-  # The above example does not differentiate the case where
-  # the memory usage has temporarily dropped below the usage threshold
-  # from the case where the memory usage remains above the threshould
-  # between two iterations.  The usage threshold count returned by
-  # the {@link #getUsageThresholdCount} method
-  # can be used to determine
-  # if the memory usage has returned below the threshold
-  # between two polls.
-  # <p>
-  # Below shows another example that takes some action if a
-  # memory pool is under low memory and ignores the memory usage
-  # changes during the action processing time.
+  #       The above example does not differentiate the case where
+  #       the memory usage has temporarily dropped below the usage threshold
+  #       from the case where the memory usage remains above the threshould
+  #       between two iterations.  The usage threshold count returned by
+  #       the {@link #getUsageThresholdCount} method
+  #       can be used to determine
+  #       if the memory usage has returned below the threshold
+  #       between two polls.
+  #       <p>
+  #       Below shows another example that takes some action if a
+  #       memory pool is under low memory and ignores the memory usage
+  #       changes during the action processing time.
   # 
-  # <pre>
-  # // Assume the usage threshold is supported for this pool.
-  # // Set the threshold to myThreshold which determines if
-  # // the application will take some action under low memory condition.
-  # pool.setUsageThreshold(myThreshold);
+  #       <pre>
+  #       // Assume the usage threshold is supported for this pool.
+  #       // Set the threshold to myThreshold which determines if
+  #       // the application will take some action under low memory condition.
+  #       pool.setUsageThreshold(myThreshold);
   # 
-  # int prevCrossingCount = 0;
-  # while (true) {
-  # // A busy loop to detect when the memory usage
-  # // has exceeded the threshold.
-  # while (!pool.isUsageThresholdExceeded() ||
-  # pool.getUsageThresholdCount() == prevCrossingCount) {
-  # try {
-  # Thread.sleep(sometime)
-  # } catch (InterruptException e) {
-  # ....
-  # }
-  # }
+  #       int prevCrossingCount = 0;
+  #       while (true) {
+  #           // A busy loop to detect when the memory usage
+  #           // has exceeded the threshold.
+  #           while (!pool.isUsageThresholdExceeded() ||
+  #                  pool.getUsageThresholdCount() == prevCrossingCount) {
+  #               try {
+  #                   Thread.sleep(sometime)
+  #               } catch (InterruptException e) {
+  #                   ....
+  #               }
+  #           }
   # 
-  # // Do some processing such as check for memory usage
-  # // and issue a warning
-  # ....
+  #           // Do some processing such as check for memory usage
+  #           // and issue a warning
+  #           ....
   # 
-  # // Gets the current threshold count. The busy loop will then
-  # // ignore any crossing of threshold happens during the processing.
-  # prevCrossingCount = pool.getUsageThresholdCount();
-  # }
-  # </pre><hr>
-  # </li>
-  # <li><a name="ThresholdNotification"><b>Usage Threshold Notifications</b></a>
-  # <p>
-  # Usage threshold notification will be emitted by {@link MemoryMXBean}.
-  # When the Java virtual machine detects that the memory usage of
-  # a memory pool has reached or exceeded the usage threshold
-  # the virtual machine will trigger the <tt>MemoryMXBean</tt> to emit an
-  # {@link MemoryNotificationInfo#MEMORY_THRESHOLD_EXCEEDED
-  # usage threshold exceeded notification}.
-  # Another usage threshold exceeded notification will not be
-  # generated until the usage has fallen below the threshold and
-  # then exceeded it again.
-  # <p>
-  # Below is an example code implementing the same logic as the
-  # first example above but using the usage threshold notification
-  # mechanism to detect low memory conditions instead of polling.
-  # In this example code, upon receiving notification, the notification
-  # listener notifies another thread to perform the actual action
-  # such as to redistribute outstanding tasks, stop receiving tasks,
-  # or resume receiving tasks.
-  # The <tt>handleNotification</tt> method should be designed to
-  # do a very minimal amount of work and return without delay to avoid
-  # causing delay in delivering subsequent notifications.  Time-consuming
-  # actions should be performed by a separate thread.
-  # The notification listener may be invoked by multiple threads
-  # concurrently; so the tasks performed by the listener
-  # should be properly synchronized.
+  #           // Gets the current threshold count. The busy loop will then
+  #           // ignore any crossing of threshold happens during the processing.
+  #           prevCrossingCount = pool.getUsageThresholdCount();
+  #       }
+  #       </pre><hr>
+  #   </li>
+  #   <li><a name="ThresholdNotification"><b>Usage Threshold Notifications</b></a>
+  #       <p>
+  #       Usage threshold notification will be emitted by {@link MemoryMXBean}.
+  #       When the Java virtual machine detects that the memory usage of
+  #       a memory pool has reached or exceeded the usage threshold
+  #       the virtual machine will trigger the <tt>MemoryMXBean</tt> to emit an
+  #       {@link MemoryNotificationInfo#MEMORY_THRESHOLD_EXCEEDED
+  #       usage threshold exceeded notification}.
+  #       Another usage threshold exceeded notification will not be
+  #       generated until the usage has fallen below the threshold and
+  #       then exceeded it again.
+  #       <p>
+  #       Below is an example code implementing the same logic as the
+  #       first example above but using the usage threshold notification
+  #       mechanism to detect low memory conditions instead of polling.
+  #       In this example code, upon receiving notification, the notification
+  #       listener notifies another thread to perform the actual action
+  #       such as to redistribute outstanding tasks, stop receiving tasks,
+  #       or resume receiving tasks.
+  #       The <tt>handleNotification</tt> method should be designed to
+  #       do a very minimal amount of work and return without delay to avoid
+  #       causing delay in delivering subsequent notifications.  Time-consuming
+  #       actions should be performed by a separate thread.
+  #       The notification listener may be invoked by multiple threads
+  #       concurrently; so the tasks performed by the listener
+  #       should be properly synchronized.
   # 
-  # <pre>
-  # class MyListener implements javax.management.NotificationListener {
-  # public void handleNotification(Notification notification, Object handback)  {
-  # String notifType = notification.getType();
-  # if (notifType.equals(MemoryNotificationInfo.MEMORY_THRESHOLD_EXCEEDED)) {
-  # // potential low memory, notify another thread
-  # // to redistribute outstanding tasks to other VMs
-  # // and stop receiving new tasks.
-  # lowMemory = true;
-  # notifyAnotherThread(lowMemory);
-  # }
-  # }
-  # }
+  #       <pre>
+  #       class MyListener implements javax.management.NotificationListener {
+  #            public void handleNotification(Notification notification, Object handback)  {
+  #                String notifType = notification.getType();
+  #                if (notifType.equals(MemoryNotificationInfo.MEMORY_THRESHOLD_EXCEEDED)) {
+  #                    // potential low memory, notify another thread
+  #                    // to redistribute outstanding tasks to other VMs
+  #                    // and stop receiving new tasks.
+  #                    lowMemory = true;
+  #                    notifyAnotherThread(lowMemory);
+  #                }
+  #            }
+  #       }
   # 
-  # // Register MyListener with MemoryMXBean
-  # MemoryMXBean mbean = ManagementFactory.getMemoryMXBean();
-  # NotificationEmitter emitter = (NotificationEmitter) mbean;
-  # MyListener listener = new MyListener();
-  # emitter.addNotificationListener(listener, null, null);
+  #       // Register MyListener with MemoryMXBean
+  #       MemoryMXBean mbean = ManagementFactory.getMemoryMXBean();
+  #       NotificationEmitter emitter = (NotificationEmitter) mbean;
+  #       MyListener listener = new MyListener();
+  #       emitter.addNotificationListener(listener, null, null);
   # 
-  # // Assume this pool supports a usage threshold.
-  # // Set the threshold to myThreshold above which no new tasks
-  # // should be taken.
-  # pool.setUsageThreshold(myThreshold);
+  #       // Assume this pool supports a usage threshold.
+  #       // Set the threshold to myThreshold above which no new tasks
+  #       // should be taken.
+  #       pool.setUsageThreshold(myThreshold);
   # 
-  # // Usage threshold detection is enabled and notification will be
-  # // handled by MyListener.  Continue for other processing.
-  # ....
+  #       // Usage threshold detection is enabled and notification will be
+  #       // handled by MyListener.  Continue for other processing.
+  #       ....
   # 
-  # </pre>
+  #       </pre>
   # <hr>
-  # <p>
-  # There is no guarantee about when the <tt>MemoryMXBean</tt> will emit
-  # a threshold notification and when the notification will be delivered.
-  # When a notification listener is invoked, the memory usage of
-  # the memory pool may have crossed the usage threshold more
-  # than once.
-  # The {@link MemoryNotificationInfo#getCount} method returns the number
-  # of times that the memory usage has crossed the usage threshold
-  # at the point in time when the notification was constructed.
-  # It can be compared with the current usage threshold count returned
-  # by the {@link #getUsageThresholdCount} method to determine if
-  # such situation has occurred.
-  # </li>
+  #       <p>
+  #       There is no guarantee about when the <tt>MemoryMXBean</tt> will emit
+  #       a threshold notification and when the notification will be delivered.
+  #       When a notification listener is invoked, the memory usage of
+  #       the memory pool may have crossed the usage threshold more
+  #       than once.
+  #       The {@link MemoryNotificationInfo#getCount} method returns the number
+  #       of times that the memory usage has crossed the usage threshold
+  #       at the point in time when the notification was constructed.
+  #       It can be compared with the current usage threshold count returned
+  #       by the {@link #getUsageThresholdCount} method to determine if
+  #       such situation has occurred.
+  #   </li>
   # </ol>
   # 
   # <h4><a name="CollectionThreshold">4. Collection Usage Threshold</a></h4>
@@ -354,9 +354,9 @@ module Java::Lang::Management
   # in a similar fashion.
   # 
   # @see <a href="../../../javax/management/package-summary.html">
-  # JMX Specification.</a>
+  #      JMX Specification.</a>
   # @see <a href="package-summary.html#examples">
-  # Ways to Access MXBeans</a>
+  #      Ways to Access MXBeans</a>
   # 
   # @author  Mandy Chung
   # @since   1.5
@@ -435,8 +435,8 @@ module Java::Lang::Management
     # to the current memory usage.
     # 
     # @throws java.lang.SecurityException if a security manager
-    # exists and the caller does not have
-    # ManagementPermission("control").
+    #         exists and the caller does not have
+    #         ManagementPermission("control").
     def reset_peak_usage
       raise NotImplementedError
     end
@@ -447,8 +447,8 @@ module Java::Lang::Management
     # machine removes it from the memory system.
     # 
     # @return <tt>true</tt> if the memory pool is valid in the running
-    # Java virtual machine;
-    # <tt>false</tt> otherwise.
+    #              Java virtual machine;
+    #         <tt>false</tt> otherwise.
     def is_valid
       raise NotImplementedError
     end
@@ -472,7 +472,7 @@ module Java::Lang::Management
     # @return the usage threshold value of this memory pool in bytes.
     # 
     # @throws UnsupportedOperationException if this memory pool
-    # does not support a usage threshold.
+    #         does not support a usage threshold.
     # 
     # @see #isUsageThresholdSupported
     def get_usage_threshold
@@ -490,15 +490,15 @@ module Java::Lang::Management
     # @param threshold the new threshold value in bytes. Must be non-negative.
     # 
     # @throws IllegalArgumentException if <tt>threshold</tt> is negative
-    # or greater than the maximum amount of memory for
-    # this memory pool if defined.
+    #         or greater than the maximum amount of memory for
+    #         this memory pool if defined.
     # 
     # @throws UnsupportedOperationException if this memory pool
-    # does not support a usage threshold.
+    #         does not support a usage threshold.
     # 
     # @throws java.lang.SecurityException if a security manager
-    # exists and the caller does not have
-    # ManagementPermission("control").
+    #         exists and the caller does not have
+    #         ManagementPermission("control").
     # 
     # @see #isUsageThresholdSupported
     # @see <a href="#UsageThreshold">Usage threshold</a>
@@ -515,7 +515,7 @@ module Java::Lang::Management
     # <tt>false</tt> otherwise.
     # 
     # @throws UnsupportedOperationException if this memory pool
-    # does not support a usage threshold.
+    #         does not support a usage threshold.
     def is_usage_threshold_exceeded
       raise NotImplementedError
     end
@@ -551,7 +551,7 @@ module Java::Lang::Management
     # @return the collection usage threshold of this memory pool in bytes.
     # 
     # @throws UnsupportedOperationException if this memory pool
-    # does not support a collection usage threshold.
+    #         does not support a collection usage threshold.
     # 
     # @see #isCollectionUsageThresholdSupported
     def get_collection_usage_threshold
@@ -571,18 +571,18 @@ module Java::Lang::Management
     # if it is set to zero.
     # 
     # @param threshold the new collection usage threshold value in bytes.
-    # Must be non-negative.
+    #              Must be non-negative.
     # 
     # @throws IllegalArgumentException if <tt>threshold</tt> is negative
-    # or greater than the maximum amount of memory for
-    # this memory pool if defined.
+    #         or greater than the maximum amount of memory for
+    #         this memory pool if defined.
     # 
     # @throws UnsupportedOperationException if this memory pool
-    # does not support a collection usage threshold.
+    #         does not support a collection usage threshold.
     # 
     # @throws java.lang.SecurityException if a security manager
-    # exists and the caller does not have
-    # ManagementPermission("control").
+    #         exists and the caller does not have
+    #         ManagementPermission("control").
     # 
     # @see #isCollectionUsageThresholdSupported
     # @see <a href="#CollectionThreshold">Collection usage threshold</a>
@@ -605,7 +605,7 @@ module Java::Lang::Management
     # <tt>false</tt> otherwise.
     # 
     # @throws UnsupportedOperationException if this memory pool
-    # does not support a usage threshold.
+    #         does not support a usage threshold.
     def is_collection_usage_threshold_exceeded
       raise NotImplementedError
     end
@@ -619,7 +619,7 @@ module Java::Lang::Management
     # usage has reached or exceeded the collection usage threshold.
     # 
     # @throws UnsupportedOperationException if this memory pool
-    # does not support a collection usage threshold.
+    #         does not support a collection usage threshold.
     # 
     # @see #isCollectionUsageThresholdSupported
     def get_collection_usage_threshold_count

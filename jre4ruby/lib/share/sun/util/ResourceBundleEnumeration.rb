@@ -60,11 +60,10 @@ module Sun::Util
     
     typesig { [JavaSet, Enumeration] }
     # may remain null
-    # 
     # Constructs a resource bundle enumeration.
     # @param set an set providing some elements of the enumeration
     # @param enumeration an enumeration providing more elements of the enumeration.
-    # enumeration may be null.
+    #        enumeration may be null.
     def initialize(set, enumeration)
       @set = nil
       @iterator = nil

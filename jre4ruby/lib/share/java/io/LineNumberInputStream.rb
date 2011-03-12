@@ -46,9 +46,9 @@ module Java::Io
   # @see        java.io.LineNumberReader
   # @since      JDK1.0
   # @deprecated This class incorrectly assumes that bytes adequately represent
-  # characters.  As of JDK&nbsp;1.1, the preferred way to operate on
-  # character streams is via the new character-stream classes, which
-  # include a class for counting line numbers.
+  #             characters.  As of JDK&nbsp;1.1, the preferred way to operate on
+  #             character streams is via the new character-stream classes, which
+  #             include a class for counting line numbers.
   class LineNumberInputStream < LineNumberInputStreamImports.const_get :FilterInputStream
     include_class_members LineNumberInputStreamImports
     
@@ -109,7 +109,7 @@ module Java::Io
     # converted into a single newline character.
     # 
     # @return     the next byte of data, or <code>-1</code> if the end of this
-    # stream is reached.
+    #             stream is reached.
     # @exception  IOException  if an I/O error occurs.
     # @see        java.io.FilterInputStream#in
     # @see        java.io.LineNumberInputStream#getLineNumber()
@@ -147,8 +147,8 @@ module Java::Io
     # @param      off   the start offset of the data.
     # @param      len   the maximum number of bytes read.
     # @return     the total number of bytes read into the buffer, or
-    # <code>-1</code> if there is no more data because the end of
-    # this stream has been reached.
+    #             <code>-1</code> if there is no more data because the end of
+    #             this stream has been reached.
     # @exception  IOException  if an I/O error occurs.
     # @see        java.io.LineNumberInputStream#read()
     def read(b, off, len)
@@ -204,14 +204,14 @@ module Java::Io
     def skip(n)
       chunk = 2048
       remaining = n
-      data = 0
+      data = nil
       nr = 0
       if (n <= 0)
         return 0
       end
       data = Array.typed(::Java::Byte).new(chunk) { 0 }
       while (remaining > 0)
-        nr = read(data, 0, RJava.cast_to_int(Math.min(chunk, remaining)))
+        nr = read(data, 0, (Math.min(chunk, remaining)).to_int)
         if (nr < 0)
           break
         end
@@ -252,7 +252,7 @@ module Java::Io
     # <i>k</i>/2 <code>'&#92;n'</code> characters.
     # 
     # @return     the number of bytes that can be read from this input stream
-    # without blocking.
+    #             without blocking.
     # @exception  IOException  if an I/O error occurs.
     # @see        java.io.FilterInputStream#in
     def available
@@ -270,7 +270,7 @@ module Java::Io
     # method of the underlying input stream.
     # 
     # @param   readlimit   the maximum limit of bytes that can be read before
-    # the mark position becomes invalid.
+    #                      the mark position becomes invalid.
     # @see     java.io.FilterInputStream#in
     # @see     java.io.LineNumberInputStream#reset()
     def mark(readlimit)

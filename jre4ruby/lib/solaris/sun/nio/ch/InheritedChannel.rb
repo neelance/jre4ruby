@@ -165,9 +165,9 @@ module Sun::Nio::Ch
       def create_channel
         # dup the file descriptor - we do this so that for two reasons :-
         # 1. Avoids any timing issues with FileDescriptor.in being closed
-        # or redirected while we create the channel.
+        #    or redirected while we create the channel.
         # 2. Allows streams based on file descriptor 0 to co-exist with
-        # the channel (closing one doesn't impact the other)
+        #    the channel (closing one doesn't impact the other)
         fd_val = dup(0)
         # Examine the file descriptor - if it's not a socket then we don't
         # create a channel so we release the file descriptor.

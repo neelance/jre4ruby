@@ -52,12 +52,12 @@ module Java::Net
   # <p>
   # Example:
   # <code>
-  # DatagramSocket s = new DatagramSocket(null);
-  # s.bind(new InetSocketAddress(8888));
+  #              DatagramSocket s = new DatagramSocket(null);
+  #              s.bind(new InetSocketAddress(8888));
   # </code>
   # Which is equivalent to:
   # <code>
-  # DatagramSocket s = new DatagramSocket(8888);
+  #              DatagramSocket s = new DatagramSocket(8888);
   # </code>
   # Both cases will create a DatagramSocket able to receive broadcasts on
   # UDP port 8888.
@@ -202,9 +202,9 @@ module Java::Net
     # This could result in a SecurityException.
     # 
     # @exception  SocketException  if the socket could not be opened,
-    # or the socket could not bind to the specified local port.
+    #               or the socket could not bind to the specified local port.
     # @exception  SecurityException  if a security manager exists and its
-    # <code>checkListen</code> method doesn't allow the operation.
+    #             <code>checkListen</code> method doesn't allow the operation.
     # 
     # @see SecurityManager#checkListen
     def initialize
@@ -233,7 +233,7 @@ module Java::Net
     # DatagramSocketImpl.
     # 
     # @param impl an instance of a <B>DatagramSocketImpl</B>
-    # the subclass wishes to use on the DatagramSocket.
+    #        the subclass wishes to use on the DatagramSocket.
     # @since   1.4
     def initialize(impl)
       @created = false
@@ -265,12 +265,12 @@ module Java::Net
     # This could result in a SecurityException.
     # 
     # @param bindaddr local socket address to bind, or <code>null</code>
-    # for an unbound socket.
+    #                 for an unbound socket.
     # 
     # @exception  SocketException  if the socket could not be opened,
-    # or the socket could not bind to the specified local port.
+    #               or the socket could not bind to the specified local port.
     # @exception  SecurityException  if a security manager exists and its
-    # <code>checkListen</code> method doesn't allow the operation.
+    #             <code>checkListen</code> method doesn't allow the operation.
     # 
     # @see SecurityManager#checkListen
     # @since   1.4
@@ -305,9 +305,9 @@ module Java::Net
     # 
     # @param      port port to use.
     # @exception  SocketException  if the socket could not be opened,
-    # or the socket could not bind to the specified local port.
+    #               or the socket could not bind to the specified local port.
     # @exception  SecurityException  if a security manager exists and its
-    # <code>checkListen</code> method doesn't allow the operation.
+    #             <code>checkListen</code> method doesn't allow the operation.
     # 
     # @see SecurityManager#checkListen
     def initialize(port)
@@ -331,9 +331,9 @@ module Java::Net
     # @param laddr local address to bind
     # 
     # @exception  SocketException  if the socket could not be opened,
-    # or the socket could not bind to the specified local port.
+    #               or the socket could not bind to the specified local port.
     # @exception  SecurityException  if a security manager exists and its
-    # <code>checkListen</code> method doesn't allow the operation.
+    #             <code>checkListen</code> method doesn't allow the operation.
     # 
     # @see SecurityManager#checkListen
     # @since   JDK1.1
@@ -410,7 +410,7 @@ module Java::Net
     # creating it if necessary.
     # 
     # @return  the <code>DatagramSocketImpl</code> attached to that
-    # DatagramSocket
+    #          DatagramSocket
     # @throws SocketException if creation fails.
     # @since 1.4
     def get_impl
@@ -421,19 +421,19 @@ module Java::Net
     end
     
     typesig { [SocketAddress] }
-    # Binds this DatagramSocket to a specific address & port.
+    #  Binds this DatagramSocket to a specific address & port.
+    #  <p>
+    #  If the address is <code>null</code>, then the system will pick up
+    #  an ephemeral port and a valid local address to bind the socket.
     # <p>
-    # If the address is <code>null</code>, then the system will pick up
-    # an ephemeral port and a valid local address to bind the socket.
-    # <p>
-    # @param   addr The address & port to bind to.
-    # @throws  SocketException if any error happens during the bind, or if the
-    # socket is already bound.
-    # @throws  SecurityException  if a security manager exists and its
-    # <code>checkListen</code> method doesn't allow the operation.
-    # @throws IllegalArgumentException if addr is a SocketAddress subclass
-    # not supported by this socket.
-    # @since 1.4
+    #  @param   addr The address & port to bind to.
+    #  @throws  SocketException if any error happens during the bind, or if the
+    #           socket is already bound.
+    #  @throws  SecurityException  if a security manager exists and its
+    #              <code>checkListen</code> method doesn't allow the operation.
+    #  @throws IllegalArgumentException if addr is a SocketAddress subclass
+    #          not supported by this socket.
+    #  @since 1.4
     def bind(addr)
       synchronized(self) do
         if (is_closed)
@@ -515,7 +515,7 @@ module Java::Net
     # @param   addr    The remote address.
     # @throws  SocketException if the connect fails
     # @throws  IllegalArgumentException if addr is null or addr is a SocketAddress
-    # subclass not supported by this socket
+    #          subclass not supported by this socket
     # @since 1.4
     # @see #connect
     def connect(addr)
@@ -592,8 +592,8 @@ module Java::Net
     # <code>null</code> if it is unconnected.
     # 
     # @return a <code>SocketAddress</code> representing the remote
-    # endpoint of this socket, or <code>null</code> if it is
-    # not connected yet.
+    #         endpoint of this socket, or <code>null</code> if it is
+    #         not connected yet.
     # @see #getInetAddress()
     # @see #getPort()
     # @see #connect(SocketAddress)
@@ -610,7 +610,7 @@ module Java::Net
     # <code>null</code> if it is not bound yet.
     # 
     # @return a <code>SocketAddress</code> representing the local endpoint of this
-    # socket, or <code>null</code> if it is not bound yet.
+    #         socket, or <code>null</code> if it is not bound yet.
     # @see #getLocalAddress()
     # @see #getLocalPort()
     # @see #bind(SocketAddress)
@@ -648,14 +648,14 @@ module Java::Net
     # 
     # @exception  IOException  if an I/O error occurs.
     # @exception  SecurityException  if a security manager exists and its
-    # <code>checkMulticast</code> or <code>checkConnect</code>
-    # method doesn't allow the send.
+    #             <code>checkMulticast</code> or <code>checkConnect</code>
+    #             method doesn't allow the send.
     # @exception  PortUnreachableException may be thrown if the socket is connected
-    # to a currently unreachable destination. Note, there is no
-    # guarantee that the exception will be thrown.
+    #             to a currently unreachable destination. Note, there is no
+    #             guarantee that the exception will be thrown.
     # @exception  java.nio.channels.IllegalBlockingModeException
-    # if this socket has an associated channel,
-    # and the channel is in non-blocking mode.
+    #             if this socket has an associated channel,
+    #             and the channel is in non-blocking mode.
     # 
     # @see        java.net.DatagramPacket
     # @see        SecurityManager#checkMulticast(InetAddress)
@@ -719,16 +719,16 @@ module Java::Net
     # does not allow it.
     # 
     # @param      p   the <code>DatagramPacket</code> into which to place
-    # the incoming data.
+    #                 the incoming data.
     # @exception  IOException  if an I/O error occurs.
     # @exception  SocketTimeoutException  if setSoTimeout was previously called
-    # and the timeout has expired.
+    #                 and the timeout has expired.
     # @exception  PortUnreachableException may be thrown if the socket is connected
-    # to a currently unreachable destination. Note, there is no guarantee that the
-    # exception will be thrown.
+    #             to a currently unreachable destination. Note, there is no guarantee that the
+    #             exception will be thrown.
     # @exception  java.nio.channels.IllegalBlockingModeException
-    # if this socket has an associated channel,
-    # and the channel is in non-blocking mode.
+    #             if this socket has an associated channel,
+    #             and the channel is in non-blocking mode.
     # @see        java.net.DatagramPacket
     # @see        java.net.DatagramSocket
     # @revised 1.4
@@ -813,10 +813,10 @@ module Java::Net
     # 
     # @see SecurityManager#checkConnect
     # @return  the local address to which the socket is bound, or
-    # an <code>InetAddress</code> representing any local
-    # address if either the socket is not bound, or
-    # the security manager <code>checkConnect</code>
-    # method does not allow the operation
+    #          an <code>InetAddress</code> representing any local
+    #          address if either the socket is not bound, or
+    #          the security manager <code>checkConnect</code>
+    #          method does not allow the operation
     # @since   1.1
     def get_local_address
       if (is_closed)
@@ -855,15 +855,15 @@ module Java::Net
     end
     
     typesig { [::Java::Int] }
-    # Enable/disable SO_TIMEOUT with the specified timeout, in
-    # milliseconds. With this option set to a non-zero timeout,
-    # a call to receive() for this DatagramSocket
-    # will block for only this amount of time.  If the timeout expires,
-    # a <B>java.net.SocketTimeoutException</B> is raised, though the
-    # DatagramSocket is still valid.  The option <B>must</B> be enabled
-    # prior to entering the blocking operation to have effect.  The
-    # timeout must be > 0.
-    # A timeout of zero is interpreted as an infinite timeout.
+    #  Enable/disable SO_TIMEOUT with the specified timeout, in
+    #  milliseconds. With this option set to a non-zero timeout,
+    #  a call to receive() for this DatagramSocket
+    #  will block for only this amount of time.  If the timeout expires,
+    #  a <B>java.net.SocketTimeoutException</B> is raised, though the
+    #  DatagramSocket is still valid.  The option <B>must</B> be enabled
+    #  prior to entering the blocking operation to have effect.  The
+    #  timeout must be > 0.
+    #  A timeout of zero is interpreted as an infinite timeout.
     # 
     # @param timeout the specified timeout in milliseconds.
     # @throws SocketException if there is an error in the underlying protocol, such as an UDP error.
@@ -1052,8 +1052,8 @@ module Java::Net
     # 
     # @param on  whether to enable or disable the
     # @exception SocketException if an error occurs enabling or
-    # disabling the <tt>SO_RESUEADDR</tt> socket option,
-    # or the socket is closed.
+    #            disabling the <tt>SO_RESUEADDR</tt> socket option,
+    #            or the socket is closed.
     # @since 1.4
     # @see #getReuseAddress()
     # @see #bind(SocketAddress)
@@ -1235,7 +1235,7 @@ module Java::Net
     # DatagramChannel.open} method.
     # 
     # @return  the datagram channel associated with this datagram socket,
-    # or <tt>null</tt> if this socket was not created for a channel
+    #          or <tt>null</tt> if this socket was not created for a channel
     # 
     # @since 1.4
     # @spec JSR-51
@@ -1257,32 +1257,32 @@ module Java::Net
       alias_method :attr_factory=, :factory=
       
       typesig { [DatagramSocketImplFactory] }
-      # Sets the datagram socket implementation factory for the
-      # application. The factory can be specified only once.
-      # <p>
-      # When an application creates a new datagram socket, the socket
-      # implementation factory's <code>createDatagramSocketImpl</code> method is
-      # called to create the actual datagram socket implementation.
-      # <p>
-      # Passing <code>null</code> to the method is a no-op unless the factory
-      # was already set.
-      # 
-      # <p>If there is a security manager, this method first calls
-      # the security manager's <code>checkSetFactory</code> method
-      # to ensure the operation is allowed.
-      # This could result in a SecurityException.
-      # 
-      # @param      fac   the desired factory.
-      # @exception  IOException  if an I/O error occurs when setting the
-      # datagram socket factory.
-      # @exception  SocketException  if the factory is already defined.
-      # @exception  SecurityException  if a security manager exists and its
-      # <code>checkSetFactory</code> method doesn't allow the
+      # * Sets the datagram socket implementation factory for the
+      # * application. The factory can be specified only once.
+      # * <p>
+      # * When an application creates a new datagram socket, the socket
+      # * implementation factory's <code>createDatagramSocketImpl</code> method is
+      # * called to create the actual datagram socket implementation.
+      # * <p>
+      # * Passing <code>null</code> to the method is a no-op unless the factory
+      # * was already set.
+      # *
+      # * <p>If there is a security manager, this method first calls
+      # * the security manager's <code>checkSetFactory</code> method
+      # * to ensure the operation is allowed.
+      # * This could result in a SecurityException.
+      # *
+      # * @param      fac   the desired factory.
+      # * @exception  IOException  if an I/O error occurs when setting the
+      # *              datagram socket factory.
+      # * @exception  SocketException  if the factory is already defined.
+      # * @exception  SecurityException  if a security manager exists and its
+      # *             <code>checkSetFactory</code> method doesn't allow the
       # operation.
-      # @see
+      # * @see
       # java.net.DatagramSocketImplFactory#createDatagramSocketImpl()
-      # @see       SecurityManager#checkSetFactory
-      # @since 1.3
+      # * @see       SecurityManager#checkSetFactory
+      # * @since 1.3
       def set_datagram_socket_impl_factory(fac)
         synchronized(self) do
           if (!(self.attr_factory).nil?)

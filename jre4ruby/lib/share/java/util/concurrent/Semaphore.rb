@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # This file is available under and governed by the GNU General Public
 # License version 2 only, as published by the Free Software Foundation.
 # However, the following notice accompanied the original version of this
@@ -54,46 +52,46 @@ module Java::Util::Concurrent
   # a class that uses a semaphore to control access to a pool of items:
   # <pre>
   # class Pool {
-  # private static final int MAX_AVAILABLE = 100;
-  # private final Semaphore available = new Semaphore(MAX_AVAILABLE, true);
+  #   private static final int MAX_AVAILABLE = 100;
+  #   private final Semaphore available = new Semaphore(MAX_AVAILABLE, true);
   # 
-  # public Object getItem() throws InterruptedException {
-  # available.acquire();
-  # return getNextAvailableItem();
-  # }
+  #   public Object getItem() throws InterruptedException {
+  #     available.acquire();
+  #     return getNextAvailableItem();
+  #   }
   # 
-  # public void putItem(Object x) {
-  # if (markAsUnused(x))
-  # available.release();
-  # }
+  #   public void putItem(Object x) {
+  #     if (markAsUnused(x))
+  #       available.release();
+  #   }
   # 
-  # // Not a particularly efficient data structure; just for demo
+  #   // Not a particularly efficient data structure; just for demo
   # 
-  # protected Object[] items = ... whatever kinds of items being managed
-  # protected boolean[] used = new boolean[MAX_AVAILABLE];
+  #   protected Object[] items = ... whatever kinds of items being managed
+  #   protected boolean[] used = new boolean[MAX_AVAILABLE];
   # 
-  # protected synchronized Object getNextAvailableItem() {
-  # for (int i = 0; i < MAX_AVAILABLE; ++i) {
-  # if (!used[i]) {
-  # used[i] = true;
-  # return items[i];
-  # }
-  # }
-  # return null; // not reached
-  # }
+  #   protected synchronized Object getNextAvailableItem() {
+  #     for (int i = 0; i < MAX_AVAILABLE; ++i) {
+  #       if (!used[i]) {
+  #          used[i] = true;
+  #          return items[i];
+  #       }
+  #     }
+  #     return null; // not reached
+  #   }
   # 
-  # protected synchronized boolean markAsUnused(Object item) {
-  # for (int i = 0; i < MAX_AVAILABLE; ++i) {
-  # if (item == items[i]) {
-  # if (used[i]) {
-  # used[i] = false;
-  # return true;
-  # } else
-  # return false;
-  # }
-  # }
-  # return false;
-  # }
+  #   protected synchronized boolean markAsUnused(Object item) {
+  #     for (int i = 0; i < MAX_AVAILABLE; ++i) {
+  #       if (item == items[i]) {
+  #          if (used[i]) {
+  #            used[i] = false;
+  #            return true;
+  #          } else
+  #            return false;
+  #       }
+  #     }
+  #     return false;
+  #   }
   # 
   # }
   # </pre>
@@ -304,8 +302,8 @@ module Java::Util::Concurrent
     # permits and nonfair fairness setting.
     # 
     # @param permits the initial number of permits available.
-    # This value may be negative, in which case releases
-    # must occur before any acquires will be granted.
+    #        This value may be negative, in which case releases
+    #        must occur before any acquires will be granted.
     def initialize(permits)
       @sync = nil
       @sync = NonfairSync.new(permits)
@@ -316,11 +314,11 @@ module Java::Util::Concurrent
     # permits and the given fairness setting.
     # 
     # @param permits the initial number of permits available.
-    # This value may be negative, in which case releases
-    # must occur before any acquires will be granted.
+    #        This value may be negative, in which case releases
+    #        must occur before any acquires will be granted.
     # @param fair {@code true} if this semaphore will guarantee
-    # first-in first-out granting of permits under contention,
-    # else {@code false}
+    #        first-in first-out granting of permits under contention,
+    #        else {@code false}
     def initialize(permits, fair)
       @sync = nil
       @sync = (fair) ? FairSync.new(permits) : NonfairSync.new(permits)
@@ -401,7 +399,7 @@ module Java::Util::Concurrent
     # which is almost equivalent (it also detects interruption).
     # 
     # @return {@code true} if a permit was acquired and {@code false}
-    # otherwise
+    #         otherwise
     def try_acquire
       return @sync.nonfair_try_acquire_shared(1) >= 0
     end
@@ -444,7 +442,7 @@ module Java::Util::Concurrent
     # @param timeout the maximum time to wait for a permit
     # @param unit the time unit of the {@code timeout} argument
     # @return {@code true} if a permit was acquired and {@code false}
-    # if the waiting time elapsed before a permit was acquired
+    #         if the waiting time elapsed before a permit was acquired
     # @throws InterruptedException if the current thread is interrupted
     def try_acquire(timeout, unit)
       return @sync.try_acquire_shared_nanos(1, unit.to_nanos(timeout))
@@ -560,7 +558,7 @@ module Java::Util::Concurrent
     # 
     # @param permits the number of permits to acquire
     # @return {@code true} if the permits were acquired and
-    # {@code false} otherwise
+    #         {@code false} otherwise
     # @throws IllegalArgumentException if {@code permits} is negative
     def try_acquire(permits)
       if (permits < 0)
@@ -615,7 +613,7 @@ module Java::Util::Concurrent
     # @param timeout the maximum time to wait for the permits
     # @param unit the time unit of the {@code timeout} argument
     # @return {@code true} if all permits were acquired and {@code false}
-    # if the waiting time elapsed before all permits were acquired
+    #         if the waiting time elapsed before all permits were acquired
     # @throws InterruptedException if the current thread is interrupted
     # @throws IllegalArgumentException if {@code permits} is negative
     def try_acquire(permits, timeout, unit)
@@ -703,7 +701,7 @@ module Java::Util::Concurrent
     # monitoring of the system state.
     # 
     # @return {@code true} if there may be other threads waiting to
-    # acquire the lock
+    #         acquire the lock
     def has_queued_threads
       return @sync.has_queued_threads
     end

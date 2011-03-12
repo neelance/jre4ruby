@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
 # (C) Copyright IBM Corp. 1996 - 1998 - All Rights Reserved
 # 
@@ -49,15 +47,6 @@ module Sun::Text::Resources
     
     typesig { [] }
     def get_contents
-      # a-umlaut sorts between a and b
-      # c-cedilla sorts between c and d
-      # g-breve sorts between g and h
-      # dotless i, I
-      # dotted i, I
-      # ij ligature sorts between i and j
-      # o-umlaut sorts between o and p
-      # s-cedilla sorts between s and t
-      # u-umlaut sorts between u and v
       return Array.typed(Array.typed(Object)).new([Array.typed(Object).new(["Rule", ("& A < a".to_u << 0x0308 << " , A".to_u << 0x0308 << " ") + ("& C < c".to_u << 0x0327 << " , C".to_u << 0x0327 << " ") + ("& G < g".to_u << 0x0306 << " , G".to_u << 0x0306 << " ") + ("& H < ".to_u << 0x0131 << " , I ") + ("& I < i , ".to_u << 0x0130 << " ") + ("< ".to_u << 0x0132 << " , ".to_u << 0x0133 << " ") + ("& O < o".to_u << 0x0308 << " , O".to_u << 0x0308 << " ") + ("& S < s".to_u << 0x0327 << " , S".to_u << 0x0327 << " ") + ("& U < u".to_u << 0x0308 << " , U".to_u << 0x0308 << " ")])])
     end
     

@@ -174,7 +174,6 @@ module Sun::Security::Jgss
     # Oid to MechanismFactory mapping.
     # @return true if this is a GSS-API property, false otherwise.
     def is_mech_factory_property(prop)
-      # Try ignoring case
       return (prop.starts_with(PROV_PROP_PREFIX) || prop.region_matches(true, 0, PROV_PROP_PREFIX, 0, PROV_PROP_PREFIX_LEN))
     end
     

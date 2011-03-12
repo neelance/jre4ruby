@@ -49,8 +49,8 @@ module Java::Util::Regex
     # @return  The index of the first character matched
     # 
     # @throws  IllegalStateException
-    # If no match has yet been attempted,
-    # or if the previous match operation failed
+    #          If no match has yet been attempted,
+    #          or if the previous match operation failed
     def start
       raise NotImplementedError
     end
@@ -65,19 +65,19 @@ module Java::Util::Regex
     # <i>m.</i><tt>start()</tt>.  </p>
     # 
     # @param  group
-    # The index of a capturing group in this matcher's pattern
+    #         The index of a capturing group in this matcher's pattern
     # 
     # @return  The index of the first character captured by the group,
-    # or <tt>-1</tt> if the match was successful but the group
-    # itself did not match anything
+    #          or <tt>-1</tt> if the match was successful but the group
+    #          itself did not match anything
     # 
     # @throws  IllegalStateException
-    # If no match has yet been attempted,
-    # or if the previous match operation failed
+    #          If no match has yet been attempted,
+    #          or if the previous match operation failed
     # 
     # @throws  IndexOutOfBoundsException
-    # If there is no capturing group in the pattern
-    # with the given index
+    #          If there is no capturing group in the pattern
+    #          with the given index
     def start(group)
       raise NotImplementedError
     end
@@ -88,8 +88,8 @@ module Java::Util::Regex
     # @return  @return  The offset after the last character matched
     # 
     # @throws  IllegalStateException
-    # If no match has yet been attempted,
-    # or if the previous match operation failed
+    #          If no match has yet been attempted,
+    #          or if the previous match operation failed
     def end_
       raise NotImplementedError
     end
@@ -104,19 +104,19 @@ module Java::Util::Regex
     # <i>m.</i><tt>end()</tt>.  </p>
     # 
     # @param  group
-    # The index of a capturing group in this matcher's pattern
+    #         The index of a capturing group in this matcher's pattern
     # 
     # @return  The offset after the last character captured by the group,
-    # or <tt>-1</tt> if the match was successful
-    # but the group itself did not match anything
+    #          or <tt>-1</tt> if the match was successful
+    #          but the group itself did not match anything
     # 
     # @throws  IllegalStateException
-    # If no match has yet been attempted,
-    # or if the previous match operation failed
+    #          If no match has yet been attempted,
+    #          or if the previous match operation failed
     # 
     # @throws  IndexOutOfBoundsException
-    # If there is no capturing group in the pattern
-    # with the given index
+    #          If there is no capturing group in the pattern
+    #          with the given index
     def end_(group)
       raise NotImplementedError
     end
@@ -134,11 +134,11 @@ module Java::Util::Regex
     # successfully matches the empty string in the input.  </p>
     # 
     # @return The (possibly empty) subsequence matched by the previous match,
-    # in string form
+    #         in string form
     # 
     # @throws  IllegalStateException
-    # If no match has yet been attempted,
-    # or if the previous match operation failed
+    #          If no match has yet been attempted,
+    #          or if the previous match operation failed
     def group
       raise NotImplementedError
     end
@@ -164,19 +164,19 @@ module Java::Util::Regex
     # matches the empty string in the input.  </p>
     # 
     # @param  group
-    # The index of a capturing group in this matcher's pattern
+    #         The index of a capturing group in this matcher's pattern
     # 
     # @return  The (possibly empty) subsequence captured by the group
-    # during the previous match, or <tt>null</tt> if the group
-    # failed to match part of the input
+    #          during the previous match, or <tt>null</tt> if the group
+    #          failed to match part of the input
     # 
     # @throws  IllegalStateException
-    # If no match has yet been attempted,
-    # or if the previous match operation failed
+    #          If no match has yet been attempted,
+    #          or if the previous match operation failed
     # 
     # @throws  IndexOutOfBoundsException
-    # If there is no capturing group in the pattern
-    # with the given index
+    #          If there is no capturing group in the pattern
+    #          with the given index
     def group(group)
       raise NotImplementedError
     end

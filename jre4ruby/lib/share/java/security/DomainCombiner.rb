@@ -94,22 +94,22 @@ module Java::Security
     # <p>
     # 
     # @param currentDomains the ProtectionDomains associated with the
-    # current execution Thread, up to the most recent
-    # privileged <code>ProtectionDomain</code>.
-    # The ProtectionDomains are are listed in order of execution,
-    # with the most recently executing <code>ProtectionDomain</code>
-    # residing at the beginning of the array. This parameter may
-    # be <code>null</code> if the current execution Thread
-    # has no associated ProtectionDomains.<p>
+    #          current execution Thread, up to the most recent
+    #          privileged <code>ProtectionDomain</code>.
+    #          The ProtectionDomains are are listed in order of execution,
+    #          with the most recently executing <code>ProtectionDomain</code>
+    #          residing at the beginning of the array. This parameter may
+    #          be <code>null</code> if the current execution Thread
+    #          has no associated ProtectionDomains.<p>
     # 
     # @param assignedDomains an array of inherited ProtectionDomains.
-    # ProtectionDomains may be inherited from a parent Thread,
-    # or from a privileged <code>AccessControlContext</code>.
-    # This parameter may be <code>null</code>
-    # if there are no inherited ProtectionDomains.
+    #          ProtectionDomains may be inherited from a parent Thread,
+    #          or from a privileged <code>AccessControlContext</code>.
+    #          This parameter may be <code>null</code>
+    #          if there are no inherited ProtectionDomains.
     # 
     # @return a new array consisting of the updated ProtectionDomains,
-    # or <code>null</code>.
+    #          or <code>null</code>.
     def combine(current_domains, assigned_domains)
       raise NotImplementedError
     end

@@ -37,26 +37,26 @@ module Java::Security::Cert
     }
   end
   
-  # <p>Abstract class for managing a variety of identity certificates.
-  # An identity certificate is a binding of a principal to a public key which
-  # is vouched for by another principal.  (A principal represents
-  # an entity such as an individual user, a group, or a corporation.)
+  #  <p>Abstract class for managing a variety of identity certificates.
+  #  An identity certificate is a binding of a principal to a public key which
+  #  is vouched for by another principal.  (A principal represents
+  #  an entity such as an individual user, a group, or a corporation.)
   # <p>
-  # This class is an abstraction for certificates that have different
-  # formats but important common uses.  For example, different types of
-  # certificates, such as X.509 and PGP, share general certificate
-  # functionality (like encoding and verifying) and
-  # some types of information (like a public key).
-  # <p>
-  # X.509, PGP, and SDSI certificates can all be implemented by
-  # subclassing the Certificate class, even though they contain different
-  # sets of information, and they store and retrieve the information in
-  # different ways.
+  #  This class is an abstraction for certificates that have different
+  #  formats but important common uses.  For example, different types of
+  #  certificates, such as X.509 and PGP, share general certificate
+  #  functionality (like encoding and verifying) and
+  #  some types of information (like a public key).
+  #  <p>
+  #  X.509, PGP, and SDSI certificates can all be implemented by
+  #  subclassing the Certificate class, even though they contain different
+  #  sets of information, and they store and retrieve the information in
+  #  different ways.
   # 
-  # @see X509Certificate
-  # @see CertificateFactory
+  #  @see X509Certificate
+  #  @see CertificateFactory
   # 
-  # @author Hemma Prafullchandra
+  #  @author Hemma Prafullchandra
   class Certificate 
     include_class_members CertificateImports
     include Java::Io::Serializable
@@ -252,7 +252,7 @@ module Java::Security::Cert
         # @return the resolved Certificate Object
         # 
         # @throws java.io.ObjectStreamException if the Certificate
-        # could not be resolved
+        #      could not be resolved
         def read_resolve
           begin
             cf = CertificateFactory.get_instance(@type)

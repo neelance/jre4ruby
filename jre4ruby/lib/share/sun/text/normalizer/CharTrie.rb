@@ -22,11 +22,8 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
-# 
 # (C) Copyright IBM Corp. 1996-2005 - All Rights Reserved                     *
-# *
+#                                                                             *
 # The original version of this source code and documentation is copyrighted   *
 # and owned by IBM, These materials are provided under terms of a License     *
 # Agreement between IBM and Sun. This technology is protected by multiple     *
@@ -47,7 +44,6 @@ module Sun::Text::Normalizer
   # @author synwee
   # @see com.ibm.icu.impl.Trie
   # @since release 2.1, Jan 01 2002
-  # 
   # note that i need to handle the block calculations later, since chartrie
   # in icu4c uses the same index array.
   class CharTrie < CharTrieImports.const_get :Trie
@@ -55,14 +51,13 @@ module Sun::Text::Normalizer
     
     typesig { [InputStream, DataManipulate] }
     # public constructors ---------------------------------------------
-    # 
     # <p>Creates a new Trie with the settings for the trie data.</p>
     # <p>Unserialize the 32-bit-aligned input stream and use the data for the
     # trie.</p>
     # @param inputStream file input stream to a ICU data file, containing
-    # the trie
+    #                    the trie
     # @param dataManipulate object which provides methods to parse the char
-    # data
+    #                        data
     # @throws IOException thrown when data reading fails
     # @draft 2.1
     def initialize(input_stream, data_manipulate)
@@ -114,7 +109,6 @@ module Sun::Text::Normalizer
     
     typesig { [UCharacterProperty] }
     # public methods --------------------------------------------------
-    # 
     # Java friend implementation
     # To store the index and data array into the argument.
     # @param friend java friend UCharacterProperty object to store the array
@@ -167,7 +161,7 @@ module Sun::Text::Normalizer
     # and a trail surrogate.</p>
     # <p>If the
     # @param leadvalue value associated with the lead surrogate which contains
-    # the folding offset
+    #        the folding offset
     # @param trail surrogate
     # @return trie data value associated with the trail character
     # @draft 2.1
@@ -184,7 +178,6 @@ module Sun::Text::Normalizer
     
     typesig { [InputStream] }
     # protected methods -----------------------------------------------
-    # 
     # <p>Parses the input stream and stores its trie content into a index and
     # data array</p>
     # @param inputStream data input stream containing trie data
@@ -243,7 +236,6 @@ module Sun::Text::Normalizer
     end
     
     # private data members --------------------------------------------
-    # 
     # Default value
     attr_accessor :m_initial_value_
     alias_method :attr_m_initial_value_, :m_initial_value_

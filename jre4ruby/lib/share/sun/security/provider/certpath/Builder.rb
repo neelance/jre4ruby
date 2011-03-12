@@ -169,12 +169,12 @@ module Sun::Security::Provider::Certpath
       # @param base GeneralName at base of subtree
       # @param test GeneralName to be tested against base
       # @param incomparable the value to return if the names are
-      # incomparable
+      #  incomparable
       # @return distance of test name from base, where 0
-      # means exact match, 1 means test is an immediate
-      # child of base, 2 means test is a grandchild, etc.
-      # -1 means test is a parent of base, -2 means test
-      # is a grandparent, etc.
+      #         means exact match, 1 means test is an immediate
+      #         child of base, 2 means test is a grandchild, etc.
+      #         -1 means test is a parent of base, -2 means test
+      #         is a grandparent, etc.
       def distance(base, test, incomparable)
         case (base.constrains(test))
         when GeneralNameInterface::NAME_DIFF_TYPE
@@ -212,12 +212,12 @@ module Sun::Security::Provider::Certpath
       # @param base GeneralName
       # @param test GeneralName to be tested against base
       # @param incomparable the value to return if the names are
-      # incomparable
+      #  incomparable
       # @return distance of test name from base measured in hops in the
-      # namespace hierarchy, where 0 means exact match.  Result
-      # is positive if path is some number of up hops followed by
-      # some number of down hops; result is negative if path is
-      # some number of down hops.
+      #         namespace hierarchy, where 0 means exact match.  Result
+      #         is positive if path is some number of up hops followed by
+      #         some number of down hops; result is negative if path is
+      #         some number of down hops.
       def hops(base, test, incomparable)
         base_rtest = base.constrains(test)
         case (base_rtest)
@@ -269,24 +269,24 @@ module Sun::Security::Provider::Certpath
       # a given target.
       # 
       # @param constraints Current NameConstraints; if null,
-      # then caller must verify NameConstraints
-      # independently, realizing that this certificate
-      # may not actually lead to the target at all.
+      #        then caller must verify NameConstraints
+      #        independently, realizing that this certificate
+      #        may not actually lead to the target at all.
       # @param cert Candidate certificate for chain
       # @param target GeneralNameInterface name of target
       # @return distance from this certificate to target:
       # <ul>
       # <li>-1 means certificate could be CA for target, but
-      # there are no NameConstraints limiting how close
+      #     there are no NameConstraints limiting how close
       # <li> 0 means certificate subject or subjectAltName
-      # matches target
+      #      matches target
       # <li> 1 means certificate is permitted to be CA for
-      # target.
+      #      target.
       # <li> 2 means certificate is permitted to be CA for
-      # parent of target.
+      #      parent of target.
       # <li>&gt;0 in general, means certificate is permitted
-      # to be a CA for this distance higher in the naming
-      # hierarchy than the target, plus 1.
+      #     to be a CA for this distance higher in the naming
+      #     hierarchy than the target, plus 1.
       # </ul>
       # <p>Note that the subject and/or subjectAltName of the
       # candidate cert does not have to be an ancestor of the
@@ -394,15 +394,15 @@ module Sun::Security::Provider::Certpath
     # the certificate policies extension of the certificate that is
     # needed by the builder. The logic applied is as follows:
     # <p>
-    # 1) If some initial policies have been set *and* policy mappings are
-    # inhibited, then acceptable certificates are those that include
-    # the ANY_POLICY OID or with policies that intersect with the
-    # initial policies.
-    # 2) If no initial policies have been set *or* policy mappings are
-    # not inhibited then we don't have much to work with. All we know is
-    # that a certificate must have *some* policy because if it didn't
-    # have any policy then the policy tree would become null (and validation
-    # would fail).
+    #   1) If some initial policies have been set *and* policy mappings are
+    #   inhibited, then acceptable certificates are those that include
+    #   the ANY_POLICY OID or with policies that intersect with the
+    #   initial policies.
+    #   2) If no initial policies have been set *or* policy mappings are
+    #   not inhibited then we don't have much to work with. All we know is
+    #   that a certificate must have *some* policy because if it didn't
+    #   have any policy then the policy tree would become null (and validation
+    #   would fail).
     # 
     # @return the Set of policies any of which must exist in a
     # cert's certificate policies extension in order for a cert to be selected.

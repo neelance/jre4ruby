@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5::Internal::Crypto
@@ -154,7 +152,7 @@ module Sun::Security::Krb5::Internal::Crypto
         sk_spec = SecretKeySpec.new(key, "DES")
         begin
           skf = SecretKeyFactory.get_instance("DES")
-          # SecretKey sk = skf.generateSecret(skSpec);
+          #                  SecretKey sk = skf.generateSecret(skSpec);
           sk = sk_spec
           if (encrypt)
             cipher.init(Cipher::ENCRYPT_MODE, sk, params)

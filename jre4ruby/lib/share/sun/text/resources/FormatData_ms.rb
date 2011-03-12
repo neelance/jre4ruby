@@ -1,8 +1,5 @@
 require "rjava"
-
-# Portions Copyright 2005-2007 Sun Microsystems, Inc.  All Rights Reserved.
-# 
-# 
+ # * Portions Copyright 2005-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # COPYRIGHT AND PERMISSION NOTICE
 # 
 # Copyright (C) 1991-2007 Unicode, Inc. All rights reserved.
@@ -36,7 +33,6 @@ require "rjava"
 # be used in advertising or otherwise to promote the sale, use or other
 # dealings in these Data Files or Software without prior written
 # authorization of the copyright holder.
-# 
 # Generated automatically from the Common Locale Data Repository. DO NOT EDIT!
 module Sun::Text::Resources
   module FormatData_msImports #:nodoc:
@@ -52,7 +48,7 @@ module Sun::Text::Resources
     
     typesig { [] }
     def get_contents
-      return Array.typed(Array.typed(Object)).new([Array.typed(Object).new(["MonthNames", Array.typed(String).new(["Januari", "Februari", "Mac", "April", "Mei", "Jun", "Julai", "Ogos", "September", "Oktober", "November", "Disember", "", ])]), Array.typed(Object).new(["MonthAbbreviations", Array.typed(String).new(["Jan", "Feb", "Mac", "Apr", "Mei", "Jun", "Jul", "Ogos", "Sep", "Okt", "Nov", "Dis", "", ])]), Array.typed(Object).new(["DayNames", Array.typed(String).new(["Ahad", "Isnin", "Selasa", "Rabu", "Khamis", "Jumaat", "Sabtu", ])]), Array.typed(Object).new(["DayAbbreviations", Array.typed(String).new(["Ahd", "Isn", "Sel", "Rab", "Kha", "Jum", "Sab", ])]), Array.typed(Object).new(["Eras", Array.typed(String).new(["BCE", "CE", ])]), Array.typed(Object).new(["NumberPatterns", Array.typed(String).new(["#,##0.###", ("".to_u << 0x00a4 << " #,##0.00"), "#,##0%", ])]), Array.typed(Object).new(["NumberElements", Array.typed(String).new([".", ",", ";", "%", "0", "#", "-", "E", ("".to_u << 0x2030 << ""), ("".to_u << 0x221e << ""), "NaN", ])]), Array.typed(Object).new(["DateTimePatterns", Array.typed(String).new(["HH:mm:ss z", "HH:mm:ss z", "HH:mm:ss", "HH:mm", "EEEE, yyyy MMMM dd", "yyyy MMMM d", "yyyy MMM d", "yy/MM/dd", "{1} {0}", ])]), ])
+      return Array.typed(Array.typed(Object)).new([Array.typed(Object).new(["MonthNames", Array.typed(String).new(["Januari", "Februari", "Mac", "April", "Mei", "Jun", "Julai", "Ogos", "September", "Oktober", "November", "Disember", ""])]), Array.typed(Object).new(["MonthAbbreviations", Array.typed(String).new(["Jan", "Feb", "Mac", "Apr", "Mei", "Jun", "Jul", "Ogos", "Sep", "Okt", "Nov", "Dis", ""])]), Array.typed(Object).new(["DayNames", Array.typed(String).new(["Ahad", "Isnin", "Selasa", "Rabu", "Khamis", "Jumaat", "Sabtu"])]), Array.typed(Object).new(["DayAbbreviations", Array.typed(String).new(["Ahd", "Isn", "Sel", "Rab", "Kha", "Jum", "Sab"])]), Array.typed(Object).new(["Eras", Array.typed(String).new(["BCE", "CE"])]), Array.typed(Object).new(["NumberPatterns", Array.typed(String).new(["#,##0.###", ("".to_u << 0x00a4 << " #,##0.00"), "#,##0%"])]), Array.typed(Object).new(["NumberElements", Array.typed(String).new([".", ",", ";", "%", "0", "#", "-", "E", ("".to_u << 0x2030 << ""), ("".to_u << 0x221e << ""), "NaN"])]), Array.typed(Object).new(["DateTimePatterns", Array.typed(String).new(["HH:mm:ss z", "HH:mm:ss z", "HH:mm:ss", "HH:mm", "EEEE, yyyy MMMM dd", "yyyy MMMM d", "yyyy MMM d", "yy/MM/dd", "{1} {0}"])])])
     end
     
     typesig { [] }

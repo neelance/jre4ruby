@@ -124,7 +124,7 @@ module Sun::Security::X509
     # Default constructor for this object.
     # 
     # @param skipCerts specifies the depth of the certification path.
-    # Use value of -1 to request unlimited depth.
+    #                  Use value of -1 to request unlimited depth.
     def initialize(skip_certs)
       @skip_certs = 0
       super()
@@ -146,7 +146,7 @@ module Sun::Security::X509
     # Create the extension from the passed DER encoded value of the same.
     # 
     # @param critical criticality flag to use.  Must be true for this
-    # extension.
+    #                 extension.
     # @param value a byte array holding the DER-encoded extension value.
     # @exception ClassCastException if value is not an array of bytes
     # @exception IOException on error.
@@ -205,7 +205,7 @@ module Sun::Security::X509
     # 
     # @param name name of attribute to set. Must be SKIP_CERTS.
     # @param obj  value to which attribute is to be set.  Must be Integer
-    # type.
+    #             type.
     # @throws IOException on error
     def set(name, obj)
       if (name.equals_ignore_case(SKIP_CERTS))
@@ -232,7 +232,7 @@ module Sun::Security::X509
     # 
     # @param name name of attribute to get.  Must be SKIP_CERTS.
     # @returns value of the attribute.  In this case it will be of type
-    # Integer.
+    #          Integer.
     # @throws IOException on error
     def get(name)
       if (name.equals_ignore_case(SKIP_CERTS))
@@ -247,8 +247,8 @@ module Sun::Security::X509
     # 
     # @param name name of attribute to delete. Must be SKIP_CERTS.
     # @throws IOException on error.  In this case, IOException will always be
-    # thrown, because the only attribute, SKIP_CERTS, is
-    # required.
+    #                     thrown, because the only attribute, SKIP_CERTS, is
+    #                     required.
     def delete(name)
       if (name.equals_ignore_case(SKIP_CERTS))
         raise IOException.new("Attribute " + SKIP_CERTS + " may not be deleted.")

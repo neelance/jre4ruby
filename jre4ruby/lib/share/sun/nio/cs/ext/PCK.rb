@@ -162,7 +162,7 @@ module Sun::Nio::Cs::Ext
           # PCK uses JIS_X_0208:1983 rather than JIS_X_0208:1997
           case (ch)
           when Character.new(0x2015)
-            return RJava.cast_to_int(0x815c)
+            return (0x815c).to_int
           when Character.new(0x2014)
             return 0
           else

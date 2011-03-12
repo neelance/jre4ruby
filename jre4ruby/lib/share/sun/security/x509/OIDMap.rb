@@ -235,7 +235,7 @@ module Sun::Security::X509
       # 
       # @param name the name of the attr
       # @param oid the string representation of the object identifier for
-      # the class.
+      #         the class.
       # @param clazz the Class object associated with this attribute
       # @exception CertificateException on errors.
       def add_attribute(name, oid, clazz)

@@ -162,6 +162,7 @@ module Sun::Nio::Ch
       typesig { [FileDescriptor, ::Java::Boolean, ::Java::Boolean, Object] }
       # Invoked by getChannel() methods
       # of java.io.File{Input,Output}Stream and RandomAccessFile
+      # 
       def open(fd, readable, writable, parent)
         return FileChannelImpl.new(fd, readable, writable, parent, false)
       end
@@ -211,6 +212,7 @@ module Sun::Nio::Ch
         # will reinvoke our close method, which is defined in the
         # superclass AbstractInterruptibleChannel, but the isOpen logic in
         # that method will prevent this method from being reinvoked.
+        # 
         if (@parent.is_a?(FileInputStream))
           (@parent).close
         else
@@ -479,7 +481,7 @@ module Sun::Nio::Ch
             p = size_
           end
           begin
-            rv = RJava.cast_to_int(position0(@fd, p))
+            rv = (position0(@fd, p)).to_int
           end while (((rv).equal?(IOStatus::INTERRUPTED)) && is_open)
           return self
         ensure
@@ -514,6 +516,7 @@ module Sun::Nio::Ch
     class_module.module_eval {
       # Assume at first that the underlying kernel supports sendfile();
       # set this to false if we find out later that it doesn't
+      # 
       
       def transfer_supported
         defined?(@@transfer_supported) ? @@transfer_supported : @@transfer_supported= true
@@ -527,6 +530,7 @@ module Sun::Nio::Ch
       
       # Assume that the underlying kernel sendfile() will work if the target
       # fd is a pipe; set this to false if we find out later that it doesn't
+      # 
       
       def pipe_supported
         defined?(@@pipe_supported) ? @@pipe_supported : @@pipe_supported= true
@@ -540,6 +544,7 @@ module Sun::Nio::Ch
       
       # Assume that the underlying kernel sendfile() will work if the target
       # fd is a file; set this to false if we find out later that it doesn't
+      # 
       
       def file_supported
         defined?(@@file_supported) ? @@file_supported : @@file_supported= true
@@ -641,7 +646,7 @@ module Sun::Nio::Ch
       begin
         Util.erase(bb)
         while (tw < icount)
-          bb.limit(Math.min(RJava.cast_to_int((icount - tw)), TRANSFER_SIZE))
+          bb.limit(Math.min(((icount - tw)).to_int, TRANSFER_SIZE))
           nr = read(bb, pos)
           if (nr <= 0)
             break
@@ -687,9 +692,9 @@ module Sun::Nio::Ch
       if (position_ > sz)
         return 0
       end
-      icount = RJava.cast_to_int(Math.min(count, JavaInteger::MAX_VALUE))
+      icount = (Math.min(count, JavaInteger::MAX_VALUE)).to_int
       if ((sz - position_) < icount)
-        icount = RJava.cast_to_int((sz - position_))
+        icount = ((sz - position_)).to_int
       end
       n = 0
       # Attempt a direct transfer, if the kernel supports it
@@ -709,7 +714,7 @@ module Sun::Nio::Ch
       # Note we could loop here to accumulate more at once
       synchronized((src.attr_position_lock)) do
         p = src.position
-        icount = RJava.cast_to_int(Math.min(Math.min(count, JavaInteger::MAX_VALUE), src.size - p))
+        icount = (Math.min(Math.min(count, JavaInteger::MAX_VALUE), src.size - p)).to_int
         # ## Bug: Closing this channel will not terminate the write
         bb = src.map(MapMode::READ_ONLY, p, icount)
         begin
@@ -730,14 +735,14 @@ module Sun::Nio::Ch
     typesig { [ReadableByteChannel, ::Java::Long, ::Java::Long] }
     def transfer_from_arbitrary_channel(src, position_, count)
       # Untrusted target: Use a newly-erased buffer
-      c = RJava.cast_to_int(Math.min(count, TRANSFER_SIZE))
+      c = (Math.min(count, TRANSFER_SIZE)).to_int
       bb = Util.get_temporary_direct_buffer(c)
       tw = 0 # Total bytes written
       pos = position_
       begin
         Util.erase(bb)
         while (tw < count)
-          bb.limit(RJava.cast_to_int(Math.min((count - tw), TRANSFER_SIZE)))
+          bb.limit((Math.min((count - tw), TRANSFER_SIZE)).to_int)
           # ## Bug: Will block reading src if this channel
           # ##      is asynchronously closed
           nr = src.read(bb)
@@ -965,7 +970,7 @@ module Sun::Nio::Ch
             return Util.new_mapped_byte_buffer(0, 0, nil)
           end
         end
-        page_position = RJava.cast_to_int((position_ % self.attr_allocation_granularity))
+        page_position = ((position_ % self.attr_allocation_granularity)).to_int
         map_position = position_ - page_position
         map_size = size_ + page_position
         begin
@@ -989,7 +994,7 @@ module Sun::Nio::Ch
         end
         raise AssertError if not ((IOStatus.check_all(addr)))
         raise AssertError if not (((addr % self.attr_allocation_granularity).equal?(0)))
-        isize = RJava.cast_to_int(size_)
+        isize = (size_).to_int
         um = Unmapper.new(addr, size_ + page_position)
         if ((!@writable) || ((imode).equal?(MAP_RO)))
           return Util.new_mapped_byte_buffer_r(isize, addr + page_position, um)
@@ -1165,7 +1170,6 @@ module Sun::Nio::Ch
     
     class_module.module_eval {
       # -- File lock support  --
-      # 
       # A table of FileLocks.
       const_set_lazy(:FileLockTable) { Module.new do
         include_class_members FileChannelImpl
@@ -1174,7 +1178,7 @@ module Sun::Nio::Ch
         # Adds a file lock to the table.
         # 
         # @throws OverlappingFileLockException if the file lock overlaps
-        # with an existing file lock in the table
+        #         with an existing file lock in the table
         def add(fl)
           raise NotImplementedError
         end

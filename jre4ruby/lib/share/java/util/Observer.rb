@@ -47,7 +47,7 @@ module Java::Util
     # 
     # @param   o     the observable object.
     # @param   arg   an argument passed to the <code>notifyObservers</code>
-    # method.
+    #                 method.
     def update(o, arg)
       raise NotImplementedError
     end

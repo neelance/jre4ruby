@@ -43,10 +43,10 @@ module Sun::Misc
   # The simplest way to do that is to read all of the encoded data into a
   # string and then use:
   # <pre>
-  # byte    mydata[];
-  # BASE64Decoder base64 = new BASE64Decoder();
+  #      byte    mydata[];
+  #      BASE64Decoder base64 = new BASE64Decoder();
   # 
-  # mydata = base64.decodeBuffer(bufferString);
+  #      mydata = base64.decodeBuffer(bufferString);
   # </pre>
   # This will decode the String in <i>bufferString</i> and give you an array
   # of bytes in the array <i>myData</i>.
@@ -54,7 +54,7 @@ module Sun::Misc
   # On errors, this class throws a CEFormatException with the following detail
   # strings:
   # <pre>
-  # "BASE64Decoder: Not enough bytes for an atom."
+  #    "BASE64Decoder: Not enough bytes for an atom."
   # </pre>
   # 
   # @author      Chuck McManis
@@ -78,8 +78,7 @@ module Sun::Misc
     class_module.module_eval {
       # This character array provides the character to value map
       # based on RFC1521.
-      # 
-      # 0   1   2   3   4   5   6   7
+      #       0   1   2   3   4   5   6   7
       # 0
       # 1
       # 2
@@ -143,20 +142,23 @@ module Sun::Misc
         rem = 2
       end
       case (rem)
-      # NOBREAK
-      # NOBREAK
       when 4
         d = Pem_convert_array[@decode_buffer[3] & 0xff]
+        # NOBREAK
         c = Pem_convert_array[@decode_buffer[2] & 0xff]
+        # NOBREAK
         b = Pem_convert_array[@decode_buffer[1] & 0xff]
         a = Pem_convert_array[@decode_buffer[0] & 0xff]
       when 3
-        c = Pem_convert_array[@decode_buffer[2] & 0]
-        b = Pem_convert_array[@decode_buffer[1] & 0]
-        a = Pem_convert_array[@decode_buffer[0] & 0]
+        # NOBREAK
+        c = Pem_convert_array[@decode_buffer[2] & 0xff]
+        # NOBREAK
+        b = Pem_convert_array[@decode_buffer[1] & 0xff]
+        a = Pem_convert_array[@decode_buffer[0] & 0xff]
       when 2
-        b = Pem_convert_array[@decode_buffer[1] & 0]
-        a = Pem_convert_array[@decode_buffer[0] & 0]
+        # NOBREAK
+        b = Pem_convert_array[@decode_buffer[1] & 0xff]
+        a = Pem_convert_array[@decode_buffer[0] & 0xff]
       end
       case (rem)
       when 2

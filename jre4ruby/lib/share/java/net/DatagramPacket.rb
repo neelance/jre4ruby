@@ -217,7 +217,7 @@ module Java::Net
     # sent or from which the datagram was received.
     # 
     # @return  the IP address of the machine to which this datagram is being
-    # sent or from which the datagram was received.
+    #          sent or from which the datagram was received.
     # @see     java.net.InetAddress
     # @see #setAddress(java.net.InetAddress)
     def get_address
@@ -231,7 +231,7 @@ module Java::Net
     # being sent or from which the datagram was received.
     # 
     # @return  the port number on the remote host to which this datagram is
-    # being sent or from which the datagram was received.
+    #          being sent or from which the datagram was received.
     # @see #setPort(int)
     def get_port
       synchronized(self) do
@@ -257,7 +257,7 @@ module Java::Net
     # data received.
     # 
     # @return  the offset of the data to be sent or the offset of the
-    # data received.
+    #          data received.
     # 
     # @since 1.2
     def get_offset
@@ -271,7 +271,7 @@ module Java::Net
     # data received.
     # 
     # @return  the length of the data to be sent or the length of the
-    # data received.
+    #          data received.
     # @see #setLength(int)
     def get_length
       synchronized(self) do
@@ -288,7 +288,7 @@ module Java::Net
     # @param offset the offset into the data
     # 
     # @param length the length of the data
-    # and/or the length of the buffer used to receive data
+    #       and/or the length of the buffer used to receive data
     # 
     # @exception NullPointerException if the argument is null
     # 
@@ -343,7 +343,7 @@ module Java::Net
     # 
     # @param address the <code>SocketAddress</code>
     # @throws  IllegalArgumentException if address is null or is a
-    # SocketAddress subclass not supported by this socket
+    #          SocketAddress subclass not supported by this socket
     # 
     # @since 1.4
     # @see #getSocketAddress

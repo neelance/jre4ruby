@@ -52,13 +52,13 @@ module Sun::Security::Ssl
   # suitable D-H parameters are available.
   # 
   # General usage of this class (TLS DHE case):
-  # . if we are server, call DHCrypt(keyLength,random). This generates
-  # an ephemeral keypair of the request length.
-  # . if we are client, call DHCrypt(modulus, base, random). This
-  # generates an ephemeral keypair using the parameters specified by the server.
-  # . send parameters and public value to remote peer
-  # . receive peers ephemeral public key
-  # . call getAgreedSecret() to calculate the shared secret
+  #  . if we are server, call DHCrypt(keyLength,random). This generates
+  #    an ephemeral keypair of the request length.
+  #  . if we are client, call DHCrypt(modulus, base, random). This
+  #    generates an ephemeral keypair using the parameters specified by the server.
+  #  . send parameters and public value to remote peer
+  #  . receive peers ephemeral public key
+  #  . call getAgreedSecret() to calculate the shared secret
   # 
   # In TLS the server chooses the parameter values itself, the client must use
   # those sent to it by the server.
@@ -105,7 +105,6 @@ module Sun::Security::Ssl
     
     typesig { [::Java::Int, SecureRandom] }
     # X (aka y)
-    # 
     # Generate a Diffie-Hellman keypair of the specified size.
     def initialize(key_length, random)
       @modulus = nil
@@ -198,7 +197,7 @@ module Sun::Security::Ssl
     # 
     # @param peerPublicKey the peer's public key.
     # @returns the secret, which is an unsigned big-endian integer
-    # the same size as the Diffie-Hellman modulus.
+    #  the same size as the Diffie-Hellman modulus.
     def get_agreed_secret(peer_public_value)
       begin
         kf = JsseJce.get_key_factory("DiffieHellman")

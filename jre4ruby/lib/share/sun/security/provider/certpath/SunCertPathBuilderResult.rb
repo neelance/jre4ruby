@@ -46,7 +46,6 @@ module Sun::Security::Provider::Certpath
   # 
   # @since       1.4
   # @author      Sean Mullan
-  # 
   # @@@ Note: this class is not in public API and access to adjacency list is
   # @@@ intended for debugging/replay of Sun PKIX CertPathBuilder implementation.
   class SunCertPathBuilderResult < SunCertPathBuilderResultImports.const_get :PKIXCertPathBuilderResult

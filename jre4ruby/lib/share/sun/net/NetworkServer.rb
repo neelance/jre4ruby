@@ -37,7 +37,7 @@ module Sun::Net
   # of server define a new subclass of NetworkServer with a serviceRequest
   # method that services one request.  Start the server by executing:
   # <pre>
-  # new MyServerClass().startServer(port);
+  #      new MyServerClass().startServer(port);
   # </pre>
   class NetworkServer 
     include_class_members NetworkServerImports
@@ -100,7 +100,7 @@ module Sun::Net
         while (true)
           begin
             ns = @server_socket.accept
-            # System.out.print("New connection " + ns + "\n");
+            #                  System.out.print("New connection " + ns + "\n");
             n = clone
             n.attr_server_socket = nil
             n.attr_client_socket = ns
@@ -116,7 +116,7 @@ module Sun::Net
             break
           end
         end
-        # close();
+        #          close();
       else
         begin
           @client_output = PrintStream.new(BufferedOutputStream.new(@client_socket.get_output_stream), false, "ISO8859_1")
@@ -195,5 +195,6 @@ module Sun::Net
     alias_method :initialize__network_server, :initialize
   end
   
-  NetworkServer.main($*) if $0 == __FILE__
 end
+
+Sun::Net::NetworkServer.main($*) if $0 == __FILE__

@@ -72,7 +72,6 @@ module Java::Util
     
     typesig { [] }
     # Query Operations
-    # 
     # Returns an iterator over the elements contained in this collection.
     # 
     # @return an iterator over the elements contained in this collection
@@ -134,10 +133,10 @@ module Java::Util
     # 
     # <p>This method is equivalent to:
     # 
-    # <pre> {@code
+    #  <pre> {@code
     # List<E> list = new ArrayList<E>(size());
     # for (E e : this)
-    # list.add(e);
+    #     list.add(e);
     # return list.toArray();
     # }</pre>
     def to_array
@@ -173,10 +172,10 @@ module Java::Util
     # 
     # <p>This method is equivalent to:
     # 
-    # <pre> {@code
+    #  <pre> {@code
     # List<E> list = new ArrayList<E>(size());
     # for (E e : this)
-    # list.add(e);
+    #     list.add(e);
     # return list.toArray(a);
     # }</pre>
     # 
@@ -212,7 +211,7 @@ module Java::Util
       # @param r the array, replete with previously stored elements
       # @param it the in-progress iterator over this collection
       # @return array containing the elements in the given array, plus any
-      # further elements returned by the iterator, trimmed to size
+      #         further elements returned by the iterator, trimmed to size
       def finish_to_array(r, it)
         i = r.attr_length
         while (it.has_next)
@@ -237,7 +236,6 @@ module Java::Util
     
     typesig { [Object] }
     # Modification Operations
-    # 
     # {@inheritDoc}
     # 
     # <p>This implementation always throws an
@@ -289,7 +287,6 @@ module Java::Util
     
     typesig { [Collection] }
     # Bulk Operations
-    # 
     # {@inheritDoc}
     # 
     # <p>This implementation iterates over the specified collection,
@@ -425,8 +422,7 @@ module Java::Util
     end
     
     typesig { [] }
-    # String conversion
-    # 
+    #  String conversion
     # Returns a string representation of this collection.  The string
     # representation consists of a list of the collection's elements in the
     # order they are returned by its iterator, enclosed in square brackets

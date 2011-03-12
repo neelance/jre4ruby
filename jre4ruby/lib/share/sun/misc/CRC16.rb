@@ -54,7 +54,7 @@ module Sun::Misc
     def update(a_byte)
       a = 0
       b = 0
-      a = RJava.cast_to_int(a_byte)
+      a = (a_byte).to_int
       count = 7
       while count >= 0
         a = a << 1

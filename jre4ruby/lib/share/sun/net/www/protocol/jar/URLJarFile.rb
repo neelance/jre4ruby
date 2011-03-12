@@ -174,7 +174,7 @@ module Sun::Net::Www::Protocol::Jar
     # 
     # @param name the JAR file entry name
     # @return the <code>ZipEntry</code> for the given entry name or
-    # <code>null</code> if not found
+    #         <code>null</code> if not found
     # @see java.util.zip.ZipEntry
     def get_entry(name)
       ze = super(name)

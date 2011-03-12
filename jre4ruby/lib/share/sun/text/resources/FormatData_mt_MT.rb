@@ -1,8 +1,5 @@
 require "rjava"
-
-# Portions Copyright 2005-2007 Sun Microsystems, Inc.  All Rights Reserved.
-# 
-# 
+ # * Portions Copyright 2005-2007 Sun Microsystems, Inc.  All Rights Reserved.
 # COPYRIGHT AND PERMISSION NOTICE
 # 
 # Copyright (C) 1991-2007 Unicode, Inc. All rights reserved.
@@ -36,7 +33,6 @@ require "rjava"
 # be used in advertising or otherwise to promote the sale, use or other
 # dealings in these Data Files or Software without prior written
 # authorization of the copyright holder.
-# 
 # Generated automatically from the Common Locale Data Repository. DO NOT EDIT!
 module Sun::Text::Resources
   module FormatData_mt_MTImports #:nodoc:
@@ -52,7 +48,7 @@ module Sun::Text::Resources
     
     typesig { [] }
     def get_contents
-      return Array.typed(Array.typed(Object)).new([Array.typed(Object).new(["NumberPatterns", Array.typed(String).new(["#,##0.###", ("".to_u << 0x00a4 << "#,##0.00"), "#,##0%", ])]), ])
+      return Array.typed(Array.typed(Object)).new([Array.typed(Object).new(["NumberPatterns", Array.typed(String).new(["#,##0.###", ("".to_u << 0x00a4 << "#,##0.00"), "#,##0%"])])])
     end
     
     typesig { [] }

@@ -163,9 +163,8 @@ module Sun::Net::Ftp
       # these methods are used to determine whether ftp urls are sent to
       # an http server instead of using a direct connection to the
       # host. They aren't used directly here.
-      # 
       # @return if the networking layer should send ftp connections through
-      # a proxy
+      #          a proxy
       def get_use_ftp_proxy
         # if the ftp.proxyHost is set, use it!
         return (!(get_ftp_proxy_host).nil?)
@@ -332,11 +331,12 @@ module Sun::Net::Ftp
     def read_reply
       @last_reply_code = read_server_response
       case (@last_reply_code / 100)
-      # falls into ...
       when 1
         @reply_pending = true
+        # falls into ...
         return self.attr_ftp_success
       when 2, 3
+        # falls into ...
         return self.attr_ftp_success
       when 5
         if ((@last_reply_code).equal?(530))
@@ -359,7 +359,7 @@ module Sun::Net::Ftp
     # 
     # @return          the opened socket
     # @exception       FtpProtocolException if an error occurs when issuing the
-    # PASV command to the ftp server.
+    #                  PASV command to the ftp server.
     def open_passive_data_connection
       server_answer = nil
       port = 0
@@ -367,12 +367,12 @@ module Sun::Net::Ftp
       # Here is the idea:
       # 
       # - First we want to try the new (and IPv6 compatible) EPSV command
-      # But since we want to be nice with NAT software, we'll issue the
-      # EPSV ALL cmd first.
-      # EPSV is documented in RFC2428
+      #   But since we want to be nice with NAT software, we'll issue the
+      #   EPSV ALL cmd first.
+      #   EPSV is documented in RFC2428
       # - If EPSV fails, then we fall back to the older, yet OK PASV command
       # - If PASV fails as well, then we throw an exception and the calling method
-      # will have to try the EPRT or PORT command
+      #   will have to try the EPRT or PORT command
       if ((issue_command("EPSV ALL")).equal?(self.attr_ftp_success))
         # We can safely use EPSV commands
         if ((issue_command("EPSV")).equal?(self.attr_ftp_error))
@@ -381,7 +381,7 @@ module Sun::Net::Ftp
         server_answer = RJava.cast_to_string(get_response_string)
         # The response string from a EPSV command will contain the port number
         # the format will be :
-        # 229 Entering Extended Passive Mode (|||58210|)
+        #  229 Entering Extended Passive Mode (|||58210|)
         # 
         # So we'll use the regular expresions package to parse the output.
         p = Pattern.compile("^229 .* \\(\\|\\|\\|(\\d+)\\|\\)")
@@ -485,7 +485,7 @@ module Sun::Net::Ftp
     # @return          the opened socket
     # 
     # @exception       FtpProtocolException if an error occurs when issuing the
-    # PORT command to the ftp server.
+    #                  PORT command to the ftp server.
     def open_data_connection(cmd)
       port_socket = nil
       client_socket = nil
@@ -582,7 +582,6 @@ module Sun::Net::Ftp
     
     typesig { [String] }
     # public methods
-    # 
     # Open a FTP connection to host <i>host</i>.
     # 
     # @param   host    The hostname of the ftp server
@@ -735,7 +734,7 @@ module Sun::Net::Ftp
     # List (NLST) file names on a remote FTP server
     # 
     # @param   path    pathname to the directory to list, null for current
-    # directory
+    #                  directory
     # @return  the <code>InputStream</code> to read the list from
     # @exception       <code>FtpProtocolException</code>
     def name_list(path)

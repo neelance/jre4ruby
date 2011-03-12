@@ -326,9 +326,9 @@ module Sun::Util::Calendar
       end
       if (index < @transitions.attr_length)
         val = @transitions[index]
-        offset = @offsets[RJava.cast_to_int((val & OFFSET_MASK))] + @raw_offset_diff
+        offset = @offsets[((val & OFFSET_MASK)).to_int] + @raw_offset_diff
         if (!(offsets).nil?)
-          dst = RJava.cast_to_int(((val >> DST_NSHIFT) & 0xf))
+          dst = (((val >> DST_NSHIFT) & 0xf)).to_int
           save = ((dst).equal?(0)) ? 0 : @offsets[dst]
           offsets[0] = offset - save
           offsets[1] = save
@@ -368,10 +368,10 @@ module Sun::Util::Calendar
         val = @transitions[mid]
         mid_val = val >> TRANSITION_NSHIFT # sign extended
         if (!(type).equal?(UTC_TIME))
-          mid_val += @offsets[RJava.cast_to_int((val & OFFSET_MASK))] # wall time
+          mid_val += @offsets[((val & OFFSET_MASK)).to_int] # wall time
         end
         if ((type).equal?(STANDARD_TIME))
-          dst_index = RJava.cast_to_int(((val >> DST_NSHIFT) & 0xf))
+          dst_index = (((val >> DST_NSHIFT) & 0xf)).to_int
           if (!(dst_index).equal?(0))
             mid_val -= @offsets[dst_index] # make it standard time
           end
@@ -406,10 +406,10 @@ module Sun::Util::Calendar
     # instead of calling this method.</em>
     # 
     # @param era       The era of the given date. The value must be either
-    # GregorianCalendar.AD or GregorianCalendar.BC.
+    #                  GregorianCalendar.AD or GregorianCalendar.BC.
     # @param year      The year in the given date.
     # @param month     The month in the given date. Month is 0-based. e.g.,
-    # 0 for January.
+    #                  0 for January.
     # @param day       The day-in-month of the given date.
     # @param dayOfWeek The day-of-week of the given date.
     # @param millis    The milliseconds in day in <em>standard</em> local time.
@@ -532,21 +532,20 @@ module Sun::Util::Calendar
     end
     
     typesig { [] }
-    # /**
-    # * @return the last year in the transition table or -1 if this
-    # * time zone doesn't observe any daylight saving time.
-    # */
-    # public int getMaxTransitionYear() {
-    # if (transitions == null) {
-    # return -1;
-    # }
-    # long val = transitions[transitions.length - 1];
-    # int offset = this.offsets[(int)(val & OFFSET_MASK)] + rawOffsetDiff;
-    # val = (val >> TRANSITION_NSHIFT) + offset;
-    # CalendarDate lastDate = Gregorian.getCalendarDate(val);
-    # return lastDate.getYear();
-    # }
-    # 
+    #    /**
+    #     * @return the last year in the transition table or -1 if this
+    #     * time zone doesn't observe any daylight saving time.
+    #     */
+    #    public int getMaxTransitionYear() {
+    #      if (transitions == null) {
+    #          return -1;
+    #      }
+    #      long val = transitions[transitions.length - 1];
+    #      int offset = this.offsets[(int)(val & OFFSET_MASK)] + rawOffsetDiff;
+    #      val = (val >> TRANSITION_NSHIFT) + offset;
+    #      CalendarDate lastDate = Gregorian.getCalendarDate(val);
+    #      return lastDate.getYear();
+    #    }
     # Returns a string representation of this time zone.
     # @return the string
     def to_s
@@ -775,8 +774,8 @@ module Sun::Util::Calendar
       # time zone IDs.
       # 
       # @return the Map that holds the mappings from alias time zone IDs
-      # to their standard time zone IDs, or null if
-      # <code>ZoneInfoMappings</code> file is not available.
+      #    to their standard time zone IDs, or null if
+      #    <code>ZoneInfoMappings</code> file is not available.
       def get_alias_table
         synchronized(self) do
           aliases = nil

@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # This file is available under and governed by the GNU General Public
 # License version 2 only, as published by the Free Software Foundation.
 # However, the following notice accompanied the original version of this
@@ -139,36 +137,36 @@ module Java::Util::Concurrent::Locks
   # 
   # <pre> {@code
   # class CachedData {
-  # Object data;
-  # volatile boolean cacheValid;
-  # final ReentrantReadWriteLock rwl = new ReentrantReadWriteLock();
+  #   Object data;
+  #   volatile boolean cacheValid;
+  #   final ReentrantReadWriteLock rwl = new ReentrantReadWriteLock();
   # 
-  # void processCachedData() {
-  # rwl.readLock().lock();
-  # if (!cacheValid) {
-  # // Must release read lock before acquiring write lock
-  # rwl.readLock().unlock();
-  # rwl.writeLock().lock();
-  # try {
-  # // Recheck state because another thread might have
-  # // acquired write lock and changed state before we did.
-  # if (!cacheValid) {
-  # data = ...
-  # cacheValid = true;
-  # }
-  # // Downgrade by acquiring read lock before releasing write lock
-  # rwl.readLock().lock();
-  # } finally  {
-  # rwl.writeLock().unlock(); // Unlock write, still hold read
-  # }
-  # }
+  #   void processCachedData() {
+  #     rwl.readLock().lock();
+  #     if (!cacheValid) {
+  #        // Must release read lock before acquiring write lock
+  #        rwl.readLock().unlock();
+  #        rwl.writeLock().lock();
+  #        try {
+  #          // Recheck state because another thread might have
+  #          // acquired write lock and changed state before we did.
+  #          if (!cacheValid) {
+  #            data = ...
+  #            cacheValid = true;
+  #          }
+  #          // Downgrade by acquiring read lock before releasing write lock
+  #          rwl.readLock().lock();
+  #        } finally  {
+  #          rwl.writeLock().unlock(); // Unlock write, still hold read
+  #        }
+  #     }
   # 
-  # try {
-  # use(data);
-  # } finally {
-  # rwl.readLock().unlock();
-  # }
-  # }
+  #     try {
+  #       use(data);
+  #     } finally {
+  #       rwl.readLock().unlock();
+  #     }
+  #   }
   # }}</pre>
   # 
   # ReentrantReadWriteLocks can be used to improve concurrency in some
@@ -181,31 +179,31 @@ module Java::Util::Concurrent::Locks
   # 
   # <pre>{@code
   # class RWDictionary {
-  # private final Map<String, Data> m = new TreeMap<String, Data>();
-  # private final ReentrantReadWriteLock rwl = new ReentrantReadWriteLock();
-  # private final Lock r = rwl.readLock();
-  # private final Lock w = rwl.writeLock();
+  #    private final Map<String, Data> m = new TreeMap<String, Data>();
+  #    private final ReentrantReadWriteLock rwl = new ReentrantReadWriteLock();
+  #    private final Lock r = rwl.readLock();
+  #    private final Lock w = rwl.writeLock();
   # 
-  # public Data get(String key) {
-  # r.lock();
-  # try { return m.get(key); }
-  # finally { r.unlock(); }
-  # }
-  # public String[] allKeys() {
-  # r.lock();
-  # try { return m.keySet().toArray(); }
-  # finally { r.unlock(); }
-  # }
-  # public Data put(String key, Data value) {
-  # w.lock();
-  # try { return m.put(key, value); }
-  # finally { w.unlock(); }
-  # }
-  # public void clear() {
-  # w.lock();
-  # try { m.clear(); }
-  # finally { w.unlock(); }
-  # }
+  #    public Data get(String key) {
+  #        r.lock();
+  #        try { return m.get(key); }
+  #        finally { r.unlock(); }
+  #    }
+  #    public String[] allKeys() {
+  #        r.lock();
+  #        try { return m.keySet().toArray(); }
+  #        finally { r.unlock(); }
+  #    }
+  #    public Data put(String key, Data value) {
+  #        w.lock();
+  #        try { return m.put(key, value); }
+  #        finally { w.unlock(); }
+  #    }
+  #    public void clear() {
+  #        w.lock();
+  #        try { m.clear(); }
+  #        finally { w.unlock(); }
+  #    }
   # }}</pre>
   # 
   # <h3>Implementation Notes</h3>
@@ -406,8 +404,6 @@ module Java::Util::Concurrent::Locks
         # Acquires and releases use the same code for fair and
         # nonfair locks, but differ in whether/how they allow barging
         # when queues are non-empty.
-        # 
-        # 
         # Returns true if the current thread, when trying to acquire
         # the read lock, and otherwise eligible to do so, should block
         # because of policy for overtaking other waiting threads.
@@ -445,13 +441,13 @@ module Java::Util::Concurrent::Locks
         def try_acquire(acquires)
           # Walkthrough:
           # 1. If read count nonzero or write count nonzero
-          # and owner is a different thread, fail.
+          #    and owner is a different thread, fail.
           # 2. If count would saturate, fail. (This can only
-          # happen if count is already nonzero.)
+          #    happen if count is already nonzero.)
           # 3. Otherwise, this thread is eligible for lock if
-          # it is either a reentrant acquire or
-          # queue policy allows it. If so, update state
-          # and set owner.
+          #    it is either a reentrant acquire or
+          #    queue policy allows it. If so, update state
+          #    and set owner.
           current = JavaThread.current_thread
           c = get_state
           w = exclusive_count(c)
@@ -499,16 +495,16 @@ module Java::Util::Concurrent::Locks
           # 1. If write lock held by another thread, fail.
           # 2. If count saturated, throw error.
           # 3. Otherwise, this thread is eligible for
-          # lock wrt state, so ask if it should block
-          # because of queue policy. If not, try
-          # to grant by CASing state and updating count.
-          # Note that step does not check for reentrant
-          # acquires, which is postponed to full version
-          # to avoid having to check hold count in
-          # the more typical non-reentrant case.
+          #    lock wrt state, so ask if it should block
+          #    because of queue policy. If not, try
+          #    to grant by CASing state and updating count.
+          #    Note that step does not check for reentrant
+          #    acquires, which is postponed to full version
+          #    to avoid having to check hold count in
+          #    the more typical non-reentrant case.
           # 4. If step 3 fails either because thread
-          # apparently not eligible or CAS fails,
-          # chain to version with full retry loop.
+          #    apparently not eligible or CAS fails,
+          #    chain to version with full retry loop.
           current = JavaThread.current_thread
           c = get_state
           if (!(exclusive_count(c)).equal?(0) && !(get_exclusive_owner_thread).equal?(current))
@@ -1225,7 +1221,7 @@ module Java::Util::Concurrent::Locks
         # ReentrantReadWriteLock#isWriteLockedByCurrentThread}.
         # 
         # @return {@code true} if the current thread holds this lock and
-        # {@code false} otherwise
+        #         {@code false} otherwise
         # @since 1.6
         def is_held_by_current_thread
           return @sync.is_held_exclusively
@@ -1238,7 +1234,7 @@ module Java::Util::Concurrent::Locks
         # to {@link ReentrantReadWriteLock#getWriteHoldCount}.
         # 
         # @return the number of holds on this lock by the current thread,
-        # or zero if this lock is not held by the current thread
+        #         or zero if this lock is not held by the current thread
         # @since 1.6
         def get_hold_count
           return @sync.get_write_hold_count
@@ -1251,7 +1247,6 @@ module Java::Util::Concurrent::Locks
     
     typesig { [] }
     # Instrumentation and status
-    # 
     # Returns {@code true} if this lock has fairness set true.
     # 
     # @return {@code true} if this lock has fairness set true
@@ -1290,7 +1285,7 @@ module Java::Util::Concurrent::Locks
     # synchronization control.
     # 
     # @return {@code true} if any thread holds the write lock and
-    # {@code false} otherwise
+    #         {@code false} otherwise
     def is_write_locked
       return @sync.is_write_locked
     end
@@ -1299,7 +1294,7 @@ module Java::Util::Concurrent::Locks
     # Queries if the write lock is held by the current thread.
     # 
     # @return {@code true} if the current thread holds the write lock and
-    # {@code false} otherwise
+    #         {@code false} otherwise
     def is_write_locked_by_current_thread
       return @sync.is_held_exclusively
     end
@@ -1310,7 +1305,7 @@ module Java::Util::Concurrent::Locks
     # each lock action that is not matched by an unlock action.
     # 
     # @return the number of holds on the write lock by the current thread,
-    # or zero if the write lock is not held by the current thread
+    #         or zero if the write lock is not held by the current thread
     def get_write_hold_count
       return @sync.get_write_hold_count
     end
@@ -1321,7 +1316,7 @@ module Java::Util::Concurrent::Locks
     # each lock action that is not matched by an unlock action.
     # 
     # @return the number of holds on the read lock by the current thread,
-    # or zero if the read lock is not held by the current thread
+    #         or zero if the read lock is not held by the current thread
     # @since 1.6
     def get_read_hold_count
       return @sync.get_read_hold_count
@@ -1363,7 +1358,7 @@ module Java::Util::Concurrent::Locks
     # primarily for use in monitoring of the system state.
     # 
     # @return {@code true} if there may be other threads waiting to
-    # acquire the lock
+    #         acquire the lock
     def has_queued_threads
       return @sync.has_queued_threads
     end
@@ -1421,7 +1416,7 @@ module Java::Util::Concurrent::Locks
     # @return {@code true} if there are any waiting threads
     # @throws IllegalMonitorStateException if this lock is not held
     # @throws IllegalArgumentException if the given condition is
-    # not associated with this lock
+    #         not associated with this lock
     # @throws NullPointerException if the condition is null
     def has_waiters(condition)
       if ((condition).nil?)
@@ -1445,7 +1440,7 @@ module Java::Util::Concurrent::Locks
     # @return the estimated number of waiting threads
     # @throws IllegalMonitorStateException if this lock is not held
     # @throws IllegalArgumentException if the given condition is
-    # not associated with this lock
+    #         not associated with this lock
     # @throws NullPointerException if the condition is null
     def get_wait_queue_length(condition)
       if ((condition).nil?)
@@ -1471,7 +1466,7 @@ module Java::Util::Concurrent::Locks
     # @return the collection of threads
     # @throws IllegalMonitorStateException if this lock is not held
     # @throws IllegalArgumentException if the given condition is
-    # not associated with this lock
+    #         not associated with this lock
     # @throws NullPointerException if the condition is null
     def get_waiting_threads(condition)
       if ((condition).nil?)

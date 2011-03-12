@@ -35,9 +35,9 @@ module Sun::Security::X509
   # Represent the GeneralSubtree ASN.1 object, whose syntax is:
   # <pre>
   # GeneralSubtree ::= SEQUENCE {
-  # base             GeneralName,
-  # minimum  [0]     BaseDistance DEFAULT 0,
-  # maximum  [1]     BaseDistance OPTIONAL
+  #    base             GeneralName,
+  #    minimum  [0]     BaseDistance DEFAULT 0,
+  #    maximum  [1]     BaseDistance OPTIONAL
   # }
   # BaseDistance ::= INTEGER (0..MAX)
   # </pre>

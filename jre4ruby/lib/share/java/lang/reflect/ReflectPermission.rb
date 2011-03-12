@@ -50,11 +50,11 @@ module Java::Lang::Reflect
   # </tr>
   # 
   # <tr>
-  # <td>suppressAccessChecks</td>
-  # <td>ability to access
+  #   <td>suppressAccessChecks</td>
+  #   <td>ability to access
   # fields and invoke methods in a class. Note that this includes
   # not only public, but protected and private fields and methods as well.</td>
-  # <td>This is dangerous in that information (possibly confidential) and
+  #   <td>This is dangerous in that information (possibly confidential) and
   # methods normally unavailable would be accessible to malicious code.</td>
   # </tr>
   # 

@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5::Internal
@@ -42,12 +40,12 @@ module Sun::Security::Krb5::Internal
   # 
   # <xmp>
   # KDC-REQ              ::= SEQUENCE {
-  # -- NOTE: first tag is [1], not [0]
-  # pvno            [1] INTEGER (5) ,
-  # msg-type        [2] INTEGER (10 -- AS -- | 12 -- TGS --),
-  # padata          [3] SEQUENCE OF PA-DATA OPTIONAL
-  # -- NOTE: not empty --,
-  # req-body        [4] KDC-REQ-BODY
+  #      -- NOTE: first tag is [1], not [0]
+  #      pvno            [1] INTEGER (5) ,
+  #      msg-type        [2] INTEGER (10 -- AS -- | 12 -- TGS --),
+  #      padata          [3] SEQUENCE OF PA-DATA OPTIONAL
+  #                            -- NOTE: not empty --,
+  #      req-body        [4] KDC-REQ-BODY
   # }
   # </xmp>
   # 

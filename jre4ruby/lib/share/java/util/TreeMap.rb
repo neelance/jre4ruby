@@ -64,7 +64,7 @@ module Java::Util
   # {@link Collections#synchronizedSortedMap Collections.synchronizedSortedMap}
   # method.  This is best done at creation time, to prevent accidental
   # unsynchronized access to the map: <pre>
-  # SortedMap m = Collections.synchronizedSortedMap(new TreeMap(...));</pre>
+  #   SortedMap m = Collections.synchronizedSortedMap(new TreeMap(...));</pre>
   # 
   # <p>The iterators returned by the <tt>iterator</tt> method of the collections
   # returned by all of this class's "collection view methods" are
@@ -182,8 +182,8 @@ module Java::Util
     # <tt>ClassCastException</tt>.
     # 
     # @param comparator the comparator that will be used to order this map.
-    # If <tt>null</tt>, the {@linkplain Comparable natural
-    # ordering} of the keys will be used.
+    #        If <tt>null</tt>, the {@linkplain Comparable natural
+    #        ordering} of the keys will be used.
     def initialize(comparator)
       @comparator = nil
       @root = nil
@@ -213,7 +213,7 @@ module Java::Util
     # 
     # @param  m the map whose mappings are to be placed in this map
     # @throws ClassCastException if the keys in m are not {@link Comparable},
-    # or are not mutually comparable
+    #         or are not mutually comparable
     # @throws NullPointerException if the specified map is null
     def initialize(m)
       @comparator = nil
@@ -240,7 +240,7 @@ module Java::Util
     # method runs in linear time.
     # 
     # @param  m the sorted map whose mappings are to be placed in this map,
-    # and whose comparator is to be used to sort this map
+    #         and whose comparator is to be used to sort this map
     # @throws NullPointerException if the specified map is null
     def initialize(m)
       @comparator = nil
@@ -267,7 +267,6 @@ module Java::Util
     
     typesig { [] }
     # Query Operations
-    # 
     # Returns the number of key-value mappings in this map.
     # 
     # @return the number of key-value mappings in this map
@@ -281,12 +280,12 @@ module Java::Util
     # 
     # @param key key whose presence in this map is to be tested
     # @return <tt>true</tt> if this map contains a mapping for the
-    # specified key
+    #         specified key
     # @throws ClassCastException if the specified key cannot be compared
-    # with the keys currently in the map
+    #         with the keys currently in the map
     # @throws NullPointerException if the specified key is null
-    # and this map uses natural ordering, or its comparator
-    # does not permit null keys
+    #         and this map uses natural ordering, or its comparator
+    #         does not permit null keys
     def contains_key(key)
       return !(get_entry(key)).nil?
     end
@@ -301,7 +300,7 @@ module Java::Util
     # 
     # @param value value whose presence in this map is to be tested
     # @return <tt>true</tt> if a mapping to <tt>value</tt> exists;
-    # <tt>false</tt> otherwise
+    #         <tt>false</tt> otherwise
     # @since 1.2
     def contains_value(value)
       e = get_first_entry
@@ -331,10 +330,10 @@ module Java::Util
     # distinguish these two cases.
     # 
     # @throws ClassCastException if the specified key cannot be compared
-    # with the keys currently in the map
+    #         with the keys currently in the map
     # @throws NullPointerException if the specified key is null
-    # and this map uses natural ordering, or its comparator
-    # does not permit null keys
+    #         and this map uses natural ordering, or its comparator
+    #         does not permit null keys
     def get(key)
       p = get_entry(key)
       return ((p).nil? ? nil : p.attr_value)
@@ -364,10 +363,10 @@ module Java::Util
     # 
     # @param  map mappings to be stored in this map
     # @throws ClassCastException if the class of a key or value in
-    # the specified map prevents it from being stored in this map
+    #         the specified map prevents it from being stored in this map
     # @throws NullPointerException if the specified map is null or
-    # the specified map contains a null key and this map does not
-    # permit null keys
+    #         the specified map contains a null key and this map does not
+    #         permit null keys
     def put_all(map)
       map_size = map.size
       if ((@size).equal?(0) && !(map_size).equal?(0) && map.is_a?(SortedMap))
@@ -390,12 +389,12 @@ module Java::Util
     # does not contain an entry for the key.
     # 
     # @return this map's entry for the given key, or <tt>null</tt> if the map
-    # does not contain an entry for the key
+    #         does not contain an entry for the key
     # @throws ClassCastException if the specified key cannot be compared
-    # with the keys currently in the map
+    #         with the keys currently in the map
     # @throws NullPointerException if the specified key is null
-    # and this map uses natural ordering, or its comparator
-    # does not permit null keys
+    #         and this map uses natural ordering, or its comparator
+    #         does not permit null keys
     def get_entry(key_)
       # Offload comparator-based version for sake of performance
       if (!(@comparator).nil?)
@@ -590,14 +589,14 @@ module Java::Util
     # @param value value to be associated with the specified key
     # 
     # @return the previous value associated with <tt>key</tt>, or
-    # <tt>null</tt> if there was no mapping for <tt>key</tt>.
-    # (A <tt>null</tt> return can also indicate that the map
-    # previously associated <tt>null</tt> with <tt>key</tt>.)
+    #         <tt>null</tt> if there was no mapping for <tt>key</tt>.
+    #         (A <tt>null</tt> return can also indicate that the map
+    #         previously associated <tt>null</tt> with <tt>key</tt>.)
     # @throws ClassCastException if the specified key cannot be compared
-    # with the keys currently in the map
+    #         with the keys currently in the map
     # @throws NullPointerException if the specified key is null
-    # and this map uses natural ordering, or its comparator
-    # does not permit null keys
+    #         and this map uses natural ordering, or its comparator
+    #         does not permit null keys
     def put(key_, value)
       t = @root
       if ((t).nil?)
@@ -665,14 +664,14 @@ module Java::Util
     # 
     # @param  key key for which mapping should be removed
     # @return the previous value associated with <tt>key</tt>, or
-    # <tt>null</tt> if there was no mapping for <tt>key</tt>.
-    # (A <tt>null</tt> return can also indicate that the map
-    # previously associated <tt>null</tt> with <tt>key</tt>.)
+    #         <tt>null</tt> if there was no mapping for <tt>key</tt>.
+    #         (A <tt>null</tt> return can also indicate that the map
+    #         previously associated <tt>null</tt> with <tt>key</tt>.)
     # @throws ClassCastException if the specified key cannot be compared
-    # with the keys currently in the map
+    #         with the keys currently in the map
     # @throws NullPointerException if the specified key is null
-    # and this map uses natural ordering, or its comparator
-    # does not permit null keys
+    #         and this map uses natural ordering, or its comparator
+    #         does not permit null keys
     def remove(key_)
       p = get_entry(key_)
       if ((p).nil?)
@@ -722,7 +721,6 @@ module Java::Util
     
     typesig { [] }
     # NavigableMap API methods
-    # 
     # @since 1.6
     def first_entry
       return export_entry(get_first_entry)
@@ -759,8 +757,8 @@ module Java::Util
     typesig { [Object] }
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if the specified key is null
-    # and this map uses natural ordering, or its comparator
-    # does not permit null keys
+    #         and this map uses natural ordering, or its comparator
+    #         does not permit null keys
     # @since 1.6
     def lower_entry(key_)
       return export_entry(get_lower_entry(key_))
@@ -769,8 +767,8 @@ module Java::Util
     typesig { [Object] }
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if the specified key is null
-    # and this map uses natural ordering, or its comparator
-    # does not permit null keys
+    #         and this map uses natural ordering, or its comparator
+    #         does not permit null keys
     # @since 1.6
     def lower_key(key_)
       return key_or_null(get_lower_entry(key_))
@@ -779,8 +777,8 @@ module Java::Util
     typesig { [Object] }
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if the specified key is null
-    # and this map uses natural ordering, or its comparator
-    # does not permit null keys
+    #         and this map uses natural ordering, or its comparator
+    #         does not permit null keys
     # @since 1.6
     def floor_entry(key_)
       return export_entry(get_floor_entry(key_))
@@ -789,8 +787,8 @@ module Java::Util
     typesig { [Object] }
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if the specified key is null
-    # and this map uses natural ordering, or its comparator
-    # does not permit null keys
+    #         and this map uses natural ordering, or its comparator
+    #         does not permit null keys
     # @since 1.6
     def floor_key(key_)
       return key_or_null(get_floor_entry(key_))
@@ -799,8 +797,8 @@ module Java::Util
     typesig { [Object] }
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if the specified key is null
-    # and this map uses natural ordering, or its comparator
-    # does not permit null keys
+    #         and this map uses natural ordering, or its comparator
+    #         does not permit null keys
     # @since 1.6
     def ceiling_entry(key_)
       return export_entry(get_ceiling_entry(key_))
@@ -809,8 +807,8 @@ module Java::Util
     typesig { [Object] }
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if the specified key is null
-    # and this map uses natural ordering, or its comparator
-    # does not permit null keys
+    #         and this map uses natural ordering, or its comparator
+    #         does not permit null keys
     # @since 1.6
     def ceiling_key(key_)
       return key_or_null(get_ceiling_entry(key_))
@@ -819,8 +817,8 @@ module Java::Util
     typesig { [Object] }
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if the specified key is null
-    # and this map uses natural ordering, or its comparator
-    # does not permit null keys
+    #         and this map uses natural ordering, or its comparator
+    #         does not permit null keys
     # @since 1.6
     def higher_entry(key_)
       return export_entry(get_higher_entry(key_))
@@ -829,15 +827,14 @@ module Java::Util
     typesig { [Object] }
     # @throws ClassCastException {@inheritDoc}
     # @throws NullPointerException if the specified key is null
-    # and this map uses natural ordering, or its comparator
-    # does not permit null keys
+    #         and this map uses natural ordering, or its comparator
+    #         does not permit null keys
     # @since 1.6
     def higher_key(key_)
       return key_or_null(get_higher_entry(key_))
     end
     
     # Views
-    # 
     # Fields initialized to contain an instance of the entry set view
     # the first time this view is requested.  Views are stateless, so
     # there's no reason to create more than one.
@@ -937,8 +934,8 @@ module Java::Util
     typesig { [Object, ::Java::Boolean, Object, ::Java::Boolean] }
     # @throws ClassCastException       {@inheritDoc}
     # @throws NullPointerException if <tt>fromKey</tt> or <tt>toKey</tt> is
-    # null and this map uses natural ordering, or its comparator
-    # does not permit null keys
+    #         null and this map uses natural ordering, or its comparator
+    #         does not permit null keys
     # @throws IllegalArgumentException {@inheritDoc}
     # @since 1.6
     def sub_map(from_key, from_inclusive, to_key, to_inclusive)
@@ -948,8 +945,8 @@ module Java::Util
     typesig { [Object, ::Java::Boolean] }
     # @throws ClassCastException       {@inheritDoc}
     # @throws NullPointerException if <tt>toKey</tt> is null
-    # and this map uses natural ordering, or its comparator
-    # does not permit null keys
+    #         and this map uses natural ordering, or its comparator
+    #         does not permit null keys
     # @throws IllegalArgumentException {@inheritDoc}
     # @since 1.6
     def head_map(to_key, inclusive)
@@ -959,8 +956,8 @@ module Java::Util
     typesig { [Object, ::Java::Boolean] }
     # @throws ClassCastException       {@inheritDoc}
     # @throws NullPointerException if <tt>fromKey</tt> is null
-    # and this map uses natural ordering, or its comparator
-    # does not permit null keys
+    #         and this map uses natural ordering, or its comparator
+    #         does not permit null keys
     # @throws IllegalArgumentException {@inheritDoc}
     # @since 1.6
     def tail_map(from_key, inclusive)
@@ -970,8 +967,8 @@ module Java::Util
     typesig { [Object, Object] }
     # @throws ClassCastException       {@inheritDoc}
     # @throws NullPointerException if <tt>fromKey</tt> or <tt>toKey</tt> is
-    # null and this map uses natural ordering, or its comparator
-    # does not permit null keys
+    #         null and this map uses natural ordering, or its comparator
+    #         does not permit null keys
     # @throws IllegalArgumentException {@inheritDoc}
     def sub_map(from_key, to_key)
       return sub_map(from_key, true, to_key, false)
@@ -980,8 +977,8 @@ module Java::Util
     typesig { [Object] }
     # @throws ClassCastException       {@inheritDoc}
     # @throws NullPointerException if <tt>toKey</tt> is null
-    # and this map uses natural ordering, or its comparator
-    # does not permit null keys
+    #         and this map uses natural ordering, or its comparator
+    #         does not permit null keys
     # @throws IllegalArgumentException {@inheritDoc}
     def head_map(to_key)
       return head_map(to_key, false)
@@ -990,8 +987,8 @@ module Java::Util
     typesig { [Object] }
     # @throws ClassCastException       {@inheritDoc}
     # @throws NullPointerException if <tt>fromKey</tt> is null
-    # and this map uses natural ordering, or its comparator
-    # does not permit null keys
+    #         and this map uses natural ordering, or its comparator
+    #         does not permit null keys
     # @throws IllegalArgumentException {@inheritDoc}
     def tail_map(from_key)
       return tail_map(from_key, true)
@@ -1429,7 +1426,6 @@ module Java::Util
     
     typesig { [Object, Object] }
     # Little utilities
-    # 
     # Compares two keys using the correct comparison method for this TreeMap.
     def compare(k1, k2)
       return (@comparator).nil? ? ((k1) <=> k2) : @comparator.compare(k1, k2)
@@ -1466,7 +1462,6 @@ module Java::Util
       end
       
       # SubMaps
-      # 
       # Dummy value serving as unmatchable fence key for unbounded
       # SubMapIterators
       const_set_lazy(:UNBOUNDED) { Object.new }
@@ -2603,7 +2598,7 @@ module Java::Util
         # value.
         # 
         # @return the value associated with the key before this method was
-        # called
+        #         called
         def set_value(value)
           old_value = @value
           @value = value
@@ -2874,7 +2869,7 @@ module Java::Util
           # return if we are the only node.
           @root = nil
         else
-          # No children. Use self as phantom replacement and unlink.
+          #  No children. Use self as phantom replacement and unlink.
           if ((p.attr_color).equal?(BLACK))
             fix_after_deletion(p)
           end
@@ -2960,12 +2955,12 @@ module Java::Util
     # serialize it).
     # 
     # @serialData The <i>size</i> of the TreeMap (the number of key-value
-    # mappings) is emitted (int), followed by the key (Object)
-    # and value (Object) for each key-value mapping represented
-    # by the TreeMap. The key-value mappings are emitted in
-    # key-order (as determined by the TreeMap's Comparator,
-    # or by the keys' natural ordering if the TreeMap has no
-    # Comparator).
+    #             mappings) is emitted (int), followed by the key (Object)
+    #             and value (Object) for each key-value mapping represented
+    #             by the TreeMap. The key-value mappings are emitted in
+    #             key-order (as determined by the TreeMap's Comparator,
+    #             or by the keys' natural ordering if the TreeMap has no
+    #             Comparator).
     def write_object(s)
       # Write out the Comparator and any hidden stuff
       s.default_write_object
@@ -3013,29 +3008,29 @@ module Java::Util
     # parameters, but seems better than alternatives.  The four formats
     # that this method accepts are:
     # 
-    # 1) An iterator of Map.Entries.  (it != null, defaultVal == null).
-    # 2) An iterator of keys.         (it != null, defaultVal != null).
-    # 3) A stream of alternating serialized keys and values.
-    # (it == null, defaultVal == null).
-    # 4) A stream of serialized keys. (it == null, defaultVal != null).
+    #    1) An iterator of Map.Entries.  (it != null, defaultVal == null).
+    #    2) An iterator of keys.         (it != null, defaultVal != null).
+    #    3) A stream of alternating serialized keys and values.
+    #                                   (it == null, defaultVal == null).
+    #    4) A stream of serialized keys. (it == null, defaultVal != null).
     # 
     # It is assumed that the comparator of the TreeMap is already set prior
     # to calling this method.
     # 
     # @param size the number of keys (or key-value pairs) to be read from
-    # the iterator or stream
+    #        the iterator or stream
     # @param it If non-null, new entries are created from entries
-    # or keys read from this iterator.
+    #        or keys read from this iterator.
     # @param str If non-null, new entries are created from keys and
-    # possibly values read from this stream in serialized form.
-    # Exactly one of it and str should be non-null.
+    #        possibly values read from this stream in serialized form.
+    #        Exactly one of it and str should be non-null.
     # @param defaultVal if non-null, this default value is used for
-    # each value in the map.  If null, each value is read from
-    # iterator or stream, as described above.
+    #        each value in the map.  If null, each value is read from
+    #        iterator or stream, as described above.
     # @throws IOException propagated from stream reads. This cannot
-    # occur if str is null.
+    #         occur if str is null.
     # @throws ClassNotFoundException propagated from readObject.
-    # This cannot occur if str is null.
+    #         This cannot occur if str is null.
     def build_from_sorted(size_, it, str, default_val)
       @size = size_
       @root = build_from_sorted(0, 0, size_ - 1, compute_red_level(size_), it, str, default_val)
@@ -3051,9 +3046,9 @@ module Java::Util
     # @param level the current level of tree. Initial call should be 0.
     # @param lo the first element index of this subtree. Initial should be 0.
     # @param hi the last element index of this subtree.  Initial should be
-    # size-1.
+    #        size-1.
     # @param redLevel the level at which nodes should be red.
-    # Must be equal to computeRedLevel for tree of this size.
+    #        Must be equal to computeRedLevel for tree of this size.
     def build_from_sorted(level, lo, hi, red_level, it, str, default_val)
       # Strategy: The root is the middlemost element. To get to it, we
       # have to first recursively construct the entire left subtree,

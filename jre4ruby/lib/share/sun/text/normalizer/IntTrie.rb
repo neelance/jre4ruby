@@ -22,11 +22,8 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
-# 
 # (C) Copyright IBM Corp. 1996-2005 - All Rights Reserved                     *
-# *
+#                                                                             *
 # The original version of this source code and documentation is copyrighted   *
 # and owned by IBM, These materials are provided under terms of a License     *
 # Agreement between IBM and Sun. This technology is protected by multiple     *
@@ -53,14 +50,13 @@ module Sun::Text::Normalizer
     
     typesig { [InputStream, DataManipulate] }
     # public constructors ---------------------------------------------
-    # 
     # <p>Creates a new Trie with the settings for the trie data.</p>
     # <p>Unserialize the 32-bit-aligned input stream and use the data for the
     # trie.</p>
     # @param inputStream file input stream to a ICU data file, containing
-    # the trie
+    #                    the trie
     # @param dataManipulate object which provides methods to parse the char
-    # data
+    #                        data
     # @throws IOException thrown when data reading fails
     # @draft 2.1
     def initialize(input_stream, datamanipulate)
@@ -74,7 +70,6 @@ module Sun::Text::Normalizer
     
     typesig { [::Java::Int] }
     # public methods --------------------------------------------------
-    # 
     # Gets the value associated with the codepoint.
     # If no value is associated with the codepoint, a default value will be
     # returned.
@@ -103,7 +98,7 @@ module Sun::Text::Normalizer
     # Get a value from a folding offset (from the value of a lead surrogate)
     # and a trail surrogate.
     # @param leadvalue the value of a lead surrogate that contains the
-    # folding offset
+    #        folding offset
     # @param trail surrogate
     # @return trie data value associated with the trail character
     # @draft 2.1
@@ -120,7 +115,6 @@ module Sun::Text::Normalizer
     
     typesig { [InputStream] }
     # protected methods -----------------------------------------------
-    # 
     # <p>Parses the input stream and stores its trie content into a index and
     # data array</p>
     # @param inputStream data input stream containing trie data
@@ -180,7 +174,6 @@ module Sun::Text::Normalizer
     
     typesig { [Array.typed(::Java::Char), Array.typed(::Java::Int), ::Java::Int, ::Java::Int, DataManipulate] }
     # package private methods -----------------------------------------
-    # 
     # Internal constructor for builder use
     # @param index the index array to be slotted into this trie
     # @param data the data array to be slotted into this trie
@@ -197,7 +190,6 @@ module Sun::Text::Normalizer
     end
     
     # private data members --------------------------------------------
-    # 
     # Default value
     attr_accessor :m_initial_value_
     alias_method :attr_m_initial_value_, :m_initial_value_

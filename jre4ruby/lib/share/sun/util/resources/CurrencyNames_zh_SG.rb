@@ -45,7 +45,7 @@ module Sun::Util::Resources
     
     typesig { [] }
     def get_contents
-      return Array.typed(Array.typed(Object)).new([Array.typed(Object).new(["CNY", "CNY"]), Array.typed(Object).new(["SGD", "S$"]), ])
+      return Array.typed(Array.typed(Object)).new([Array.typed(Object).new(["CNY", "CNY"]), Array.typed(Object).new(["SGD", "S$"])])
     end
     
     private

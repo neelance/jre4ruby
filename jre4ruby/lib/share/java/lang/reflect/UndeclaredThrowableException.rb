@@ -79,7 +79,7 @@ module Java::Lang::Reflect
     # specified {@code Throwable}.
     # 
     # @param   undeclaredThrowable the undeclared checked exception
-    # that was thrown
+    #          that was thrown
     def initialize(undeclared_throwable)
       @undeclared_throwable = nil
       super(nil) # Disallow initCause
@@ -91,7 +91,7 @@ module Java::Lang::Reflect
     # specified {@code Throwable} and a detail message.
     # 
     # @param   undeclaredThrowable the undeclared checked exception
-    # that was thrown
+    #          that was thrown
     # @param   s the detail message
     def initialize(undeclared_throwable, s)
       @undeclared_throwable = nil

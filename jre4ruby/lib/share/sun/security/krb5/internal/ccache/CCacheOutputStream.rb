@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5::Internal::Ccache
@@ -66,7 +64,6 @@ module Sun::Security::Krb5::Internal::Ccache
     # @param creds the credentials to be written to the output stream.
     # @exception IOException if an I/O exception occurs.
     # @exception Asn1Exception  if an Asn1Exception occurs.
-    # 
     # For object data fields which themselves have multiple data fields, such as PrincipalName, EncryptionKey
     # HostAddresses, AuthorizationData, I created corresponding write methods (writePrincipal,
     # writeKey,...) in each class, since converting the object into FCC format data stream
@@ -75,15 +72,15 @@ module Sun::Security::Krb5::Internal::Ccache
       creds.attr_cname.write_principal(self)
       creds.attr_sname.write_principal(self)
       creds.attr_key.write_key(self)
-      write32(RJava.cast_to_int((creds.attr_authtime.get_time / 1000)))
+      write32(((creds.attr_authtime.get_time / 1000)).to_int)
       if (!(creds.attr_starttime).nil?)
-        write32(RJava.cast_to_int((creds.attr_starttime.get_time / 1000)))
+        write32(((creds.attr_starttime.get_time / 1000)).to_int)
       else
         write32(0)
       end
-      write32(RJava.cast_to_int((creds.attr_endtime.get_time / 1000)))
+      write32(((creds.attr_endtime.get_time / 1000)).to_int)
       if (!(creds.attr_renew_till).nil?)
-        write32(RJava.cast_to_int((creds.attr_renew_till.get_time / 1000)))
+        write32(((creds.attr_renew_till.get_time / 1000)).to_int)
       else
         write32(0)
       end

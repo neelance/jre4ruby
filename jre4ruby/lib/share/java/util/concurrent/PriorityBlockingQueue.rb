@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # This file is available under and governed by the GNU General Public
 # License version 2 only, as published by the Free Software Foundation.
 # However, the following notice accompanied the original version of this
@@ -71,21 +69,21 @@ module Java::Util::Concurrent
   # 
   # <pre>
   # class FIFOEntry&lt;E extends Comparable&lt;? super E&gt;&gt;
-  # implements Comparable&lt;FIFOEntry&lt;E&gt;&gt; {
-  # final static AtomicLong seq = new AtomicLong();
-  # final long seqNum;
-  # final E entry;
-  # public FIFOEntry(E entry) {
-  # seqNum = seq.getAndIncrement();
-  # this.entry = entry;
-  # }
-  # public E getEntry() { return entry; }
-  # public int compareTo(FIFOEntry&lt;E&gt; other) {
-  # int res = entry.compareTo(other.entry);
-  # if (res == 0 &amp;&amp; other.entry != this.entry)
-  # res = (seqNum &lt; other.seqNum ? -1 : 1);
-  # return res;
-  # }
+  #     implements Comparable&lt;FIFOEntry&lt;E&gt;&gt; {
+  #   final static AtomicLong seq = new AtomicLong();
+  #   final long seqNum;
+  #   final E entry;
+  #   public FIFOEntry(E entry) {
+  #     seqNum = seq.getAndIncrement();
+  #     this.entry = entry;
+  #   }
+  #   public E getEntry() { return entry; }
+  #   public int compareTo(FIFOEntry&lt;E&gt; other) {
+  #     int res = entry.compareTo(other.entry);
+  #     if (res == 0 &amp;&amp; other.entry != this.entry)
+  #       res = (seqNum &lt; other.seqNum ? -1 : 1);
+  #     return res;
+  #   }
   # }</pre>
   # 
   # <p>This class is a member of the
@@ -146,7 +144,7 @@ module Java::Util::Concurrent
     # 
     # @param initialCapacity the initial capacity for this priority queue
     # @throws IllegalArgumentException if <tt>initialCapacity</tt> is less
-    # than 1
+    #         than 1
     def initialize(initial_capacity)
       @q = nil
       @lock = nil
@@ -164,10 +162,10 @@ module Java::Util::Concurrent
     # 
     # @param initialCapacity the initial capacity for this priority queue
     # @param  comparator the comparator that will be used to order this
-    # priority queue.  If {@code null}, the {@linkplain Comparable
-    # natural ordering} of the elements will be used.
+    #         priority queue.  If {@code null}, the {@linkplain Comparable
+    #         natural ordering} of the elements will be used.
     # @throws IllegalArgumentException if <tt>initialCapacity</tt> is less
-    # than 1
+    #         than 1
     def initialize(initial_capacity, comparator)
       @q = nil
       @lock = nil
@@ -187,12 +185,12 @@ module Java::Util::Concurrent
     # {@linkplain Comparable natural ordering} of its elements.
     # 
     # @param  c the collection whose elements are to be placed
-    # into this priority queue
+    #         into this priority queue
     # @throws ClassCastException if elements of the specified collection
-    # cannot be compared to one another according to the priority
-    # queue's ordering
+    #         cannot be compared to one another according to the priority
+    #         queue's ordering
     # @throws NullPointerException if the specified collection or any
-    # of its elements are null
+    #         of its elements are null
     def initialize(c)
       @q = nil
       @lock = nil
@@ -209,8 +207,8 @@ module Java::Util::Concurrent
     # @param e the element to add
     # @return <tt>true</tt> (as specified by {@link Collection#add})
     # @throws ClassCastException if the specified element cannot be compared
-    # with elements currently in the priority queue according to the
-    # priority queue's ordering
+    #         with elements currently in the priority queue according to the
+    #         priority queue's ordering
     # @throws NullPointerException if the specified element is null
     def add(e)
       return offer(e)
@@ -222,8 +220,8 @@ module Java::Util::Concurrent
     # @param e the element to add
     # @return <tt>true</tt> (as specified by {@link Queue#offer})
     # @throws ClassCastException if the specified element cannot be compared
-    # with elements currently in the priority queue according to the
-    # priority queue's ordering
+    #         with elements currently in the priority queue according to the
+    #         priority queue's ordering
     # @throws NullPointerException if the specified element is null
     def offer(e)
       lock = @lock
@@ -244,8 +242,8 @@ module Java::Util::Concurrent
     # 
     # @param e the element to add
     # @throws ClassCastException if the specified element cannot be compared
-    # with elements currently in the priority queue according to the
-    # priority queue's ordering
+    #         with elements currently in the priority queue according to the
+    #         priority queue's ordering
     # @throws NullPointerException if the specified element is null
     def put(e)
       offer(e) # never need to block
@@ -260,8 +258,8 @@ module Java::Util::Concurrent
     # @param unit This parameter is ignored as the method never blocks
     # @return <tt>true</tt>
     # @throws ClassCastException if the specified element cannot be compared
-    # with elements currently in the priority queue according to the
-    # priority queue's ordering
+    #         with elements currently in the priority queue according to the
+    #         priority queue's ordering
     # @throws NullPointerException if the specified element is null
     def offer(e, timeout, unit)
       return offer(e) # never need to block
@@ -342,8 +340,8 @@ module Java::Util::Concurrent
     # natural ordering} of its elements.
     # 
     # @return the comparator used to order the elements in this queue,
-    # or <tt>null</tt> if this queue uses the natural
-    # ordering of its elements
+    #         or <tt>null</tt> if this queue uses the natural
+    #         ordering of its elements
     def comparator
       return @q.comparator
     end
@@ -530,18 +528,18 @@ module Java::Util::Concurrent
     # allocated array of <tt>String</tt>:
     # 
     # <pre>
-    # String[] y = x.toArray(new String[0]);</pre>
+    #     String[] y = x.toArray(new String[0]);</pre>
     # 
     # Note that <tt>toArray(new Object[0])</tt> is identical in function to
     # <tt>toArray()</tt>.
     # 
     # @param a the array into which the elements of the queue are to
-    # be stored, if it is big enough; otherwise, a new array of the
-    # same runtime type is allocated for this purpose
+    #          be stored, if it is big enough; otherwise, a new array of the
+    #          same runtime type is allocated for this purpose
     # @return an array containing all of the elements in this queue
     # @throws ArrayStoreException if the runtime type of the specified array
-    # is not a supertype of the runtime type of every element in
-    # this queue
+    #         is not a supertype of the runtime type of every element in
+    #         this queue
     # @throws NullPointerException if the specified array is null
     def to_array(a)
       lock_ = @lock

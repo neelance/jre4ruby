@@ -22,8 +22,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # Provides classes and interfaces for obtaining reflective
 # information about classes and objects.  Reflection allows
 # programmatic access to information about the fields, methods and
@@ -46,11 +44,4 @@ require "rjava"
 # 
 # @since JDK1.1
 module Java::Lang::Reflect
-  module Package-infoImports #:nodoc:
-    class_module.module_eval {
-      include ::Java::Lang
-      include ::Java::Lang::Reflect
-    }
-  end
-  
 end

@@ -58,7 +58,7 @@ module Java::Util
     # point as defined by {@link Character#isValidCodePoint}.
     # 
     # @param  c
-    # The illegal Unicode code point
+    #         The illegal Unicode code point
     def initialize(c)
       @c = 0
       super()

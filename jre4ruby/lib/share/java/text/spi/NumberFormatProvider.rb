@@ -55,9 +55,9 @@ module Java::Text::Spi
     # @param locale the desired locale.
     # @exception NullPointerException if <code>locale</code> is null
     # @exception IllegalArgumentException if <code>locale</code> isn't
-    # one of the locales returned from
-    # {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-    # getAvailableLocales()}.
+    #     one of the locales returned from
+    #     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
+    #     getAvailableLocales()}.
     # @return a currency formatter
     # @see java.text.NumberFormat#getCurrencyInstance(java.util.Locale)
     def get_currency_instance(locale)
@@ -77,9 +77,9 @@ module Java::Text::Spi
     # @param locale the desired locale
     # @exception NullPointerException if <code>locale</code> is null
     # @exception IllegalArgumentException if <code>locale</code> isn't
-    # one of the locales returned from
-    # {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-    # getAvailableLocales()}.
+    #     one of the locales returned from
+    #     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
+    #     getAvailableLocales()}.
     # @return a number format for integer values
     # @see java.text.NumberFormat#getIntegerInstance(java.util.Locale)
     def get_integer_instance(locale)
@@ -93,9 +93,9 @@ module Java::Text::Spi
     # @param locale the desired locale
     # @exception NullPointerException if <code>locale</code> is null
     # @exception IllegalArgumentException if <code>locale</code> isn't
-    # one of the locales returned from
-    # {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-    # getAvailableLocales()}.
+    #     one of the locales returned from
+    #     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
+    #     getAvailableLocales()}.
     # @return a general-purpose number formatter
     # @see java.text.NumberFormat#getNumberInstance(java.util.Locale)
     def get_number_instance(locale)
@@ -109,9 +109,9 @@ module Java::Text::Spi
     # @param locale the desired locale
     # @exception NullPointerException if <code>locale</code> is null
     # @exception IllegalArgumentException if <code>locale</code> isn't
-    # one of the locales returned from
-    # {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-    # getAvailableLocales()}.
+    #     one of the locales returned from
+    #     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
+    #     getAvailableLocales()}.
     # @return a percent formatter
     # @see java.text.NumberFormat#getPercentInstance(java.util.Locale)
     def get_percent_instance(locale)

@@ -107,13 +107,13 @@ module Java::Util::Zip
     # @param off the start offset in the destination array <code>b</code>
     # @param len the maximum number of bytes read
     # @return  the actual number of bytes read, or -1 if the end of the
-    # compressed input stream is reached
+    #          compressed input stream is reached
     # @exception  NullPointerException If <code>buf</code> is <code>null</code>.
     # @exception  IndexOutOfBoundsException If <code>off</code> is negative,
     # <code>len</code> is negative, or <code>len</code> is greater than
     # <code>buf.length - off</code>
     # @exception IOException if an I/O error has occurred or the compressed
-    # input data is corrupt
+    #                        input data is corrupt
     def read(buf, off, len)
       ensure_open
       if (@eos)
@@ -169,7 +169,6 @@ module Java::Util::Zip
     
     typesig { [] }
     # File comment
-    # 
     # Reads GZIP member header.
     def read_header
       in_ = CheckedInputStream.new(self.attr_in, @crc)
@@ -202,7 +201,7 @@ module Java::Util::Zip
       end
       # Check optional header CRC
       if (((flg & FHCRC)).equal?(FHCRC))
-        v = RJava.cast_to_int(@crc.get_value) & 0xffff
+        v = (@crc.get_value).to_int & 0xffff
         if (!(read_ushort(in_)).equal?(v))
           raise IOException.new("Corrupt GZIP header")
         end
@@ -235,7 +234,7 @@ module Java::Util::Zip
     # Reads unsigned short in Intel byte order.
     def read_ushort(in_)
       b = read_ubyte(in_)
-      return (RJava.cast_to_int(read_ubyte(in_)) << 8) | b
+      return ((read_ubyte(in_)).to_int << 8) | b
     end
     
     typesig { [InputStream] }

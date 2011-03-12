@@ -250,12 +250,12 @@ module Sun::Nio::Cs::Ext
       @state = NORMAL_BYTES
       @version_sequence_allowed = true
       @byte_buf = Array.typed(::Java::Byte).new(1) { 0 }
-      @in_bb = ByteBuffer.allocate(16)
+      @in_bb = ByteBuffer.allocate_(16)
       @queue = ByteArrayOutputStream.new
       @encoding_queue = ByteArrayOutputStream.new
       @gl_high = false
       @gr_high = true
-      @fbb = ByteBuffer.allocate(0)
+      @fbb = ByteBuffer.allocate_(0)
       begin
         # Initial state in ISO 2022 designates Latin-1 charset.
         @gl_decoder = Charset.for_name("ASCII").new_decoder
@@ -326,8 +326,7 @@ module Sun::Nio::Cs::Ext
     
     typesig { [::Java::Short, CharBuffer] }
     def normal_bytes(new_byte, cb)
-      cr = CoderResult::UNDERFLOW
-      # C0
+      cr = CoderResult::UNDERFLOW # C0
       if ((new_byte >= 0x0 && new_byte <= 0x1f) || (new_byte >= 0x80 && new_byte <= 0x9f))
         # C1
         new_char = 0
@@ -697,8 +696,8 @@ module Sun::Nio::Cs::Ext
     
     typesig { [::Java::Short, CharBuffer] }
     # Preconditions:
-    # 1. 'queue' contains ControlSequence.escSequence
-    # 2. 'encodingQueue' contains ControlSequence.encoding
+    #   1. 'queue' contains ControlSequence.escSequence
+    #   2. 'encodingQueue' contains ControlSequence.encoding
     def switch_decoder(last_byte, cb)
       cr = CoderResult::UNDERFLOW
       decoder = nil
@@ -780,8 +779,7 @@ module Sun::Nio::Cs::Ext
     
     typesig { [String] }
     def malformed_input(msg)
-      bad_input_length = @queue.size + 1
-      # current byte
+      bad_input_length = @queue.size + 1 # current byte
       @queue.reset
       # TBD: nowhere to put the msg in CoderResult
       return CoderResult.malformed_for_length(bad_input_length)

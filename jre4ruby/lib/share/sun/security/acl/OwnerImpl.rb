@@ -94,7 +94,9 @@ module Sun::Security::Acl
           raise NotOwnerException.new
         end
         e = @owner_group.members
+        # 
         # check if there is atleast 2 members left.
+        # 
         o = e.next_element
         if (e.has_more_elements)
           return @owner_group.remove_member(owner)

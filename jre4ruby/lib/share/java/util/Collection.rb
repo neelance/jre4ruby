@@ -129,7 +129,6 @@ module Java::Util
     
     typesig { [] }
     # Query Operations
-    # 
     # Returns the number of elements in this collection.  If this collection
     # contains more than <tt>Integer.MAX_VALUE</tt> elements, returns
     # <tt>Integer.MAX_VALUE</tt>.
@@ -155,11 +154,11 @@ module Java::Util
     # 
     # @param o element whose presence in this collection is to be tested
     # @return <tt>true</tt> if this collection contains the specified
-    # element
+    #         element
     # @throws ClassCastException if the type of the specified element
-    # is incompatible with this collection (optional)
+    #         is incompatible with this collection (optional)
     # @throws NullPointerException if the specified element is null and this
-    # collection does not permit null elements (optional)
+    #         collection does not permit null elements (optional)
     def contains(o)
       raise NotImplementedError
     end
@@ -222,18 +221,18 @@ module Java::Util
     # allocated array of <tt>String</tt>:
     # 
     # <pre>
-    # String[] y = x.toArray(new String[0]);</pre>
+    #     String[] y = x.toArray(new String[0]);</pre>
     # 
     # Note that <tt>toArray(new Object[0])</tt> is identical in function to
     # <tt>toArray()</tt>.
     # 
     # @param a the array into which the elements of this collection are to be
-    # stored, if it is big enough; otherwise, a new array of the same
-    # runtime type is allocated for this purpose.
+    #        stored, if it is big enough; otherwise, a new array of the same
+    #        runtime type is allocated for this purpose.
     # @return an array containing all of the elements in this collection
     # @throws ArrayStoreException if the runtime type of the specified array
-    # is not a supertype of the runtime type of every element in
-    # this collection
+    #         is not a supertype of the runtime type of every element in
+    #         this collection
     # @throws NullPointerException if the specified array is null
     def to_array(a)
       raise NotImplementedError
@@ -241,7 +240,6 @@ module Java::Util
     
     typesig { [Object] }
     # Modification Operations
-    # 
     # Ensures that this collection contains the specified element (optional
     # operation).  Returns <tt>true</tt> if this collection changed as a
     # result of the call.  (Returns <tt>false</tt> if this collection does
@@ -262,17 +260,17 @@ module Java::Util
     # 
     # @param e element whose presence in this collection is to be ensured
     # @return <tt>true</tt> if this collection changed as a result of the
-    # call
+    #         call
     # @throws UnsupportedOperationException if the <tt>add</tt> operation
-    # is not supported by this collection
+    #         is not supported by this collection
     # @throws ClassCastException if the class of the specified element
-    # prevents it from being added to this collection
+    #         prevents it from being added to this collection
     # @throws NullPointerException if the specified element is null and this
-    # collection does not permit null elements
+    #         collection does not permit null elements
     # @throws IllegalArgumentException if some property of the element
-    # prevents it from being added to this collection
+    #         prevents it from being added to this collection
     # @throws IllegalStateException if the element cannot be added at this
-    # time due to insertion restrictions
+    #         time due to insertion restrictions
     def add(e)
       raise NotImplementedError
     end
@@ -289,30 +287,29 @@ module Java::Util
     # @param o element to be removed from this collection, if present
     # @return <tt>true</tt> if an element was removed as a result of this call
     # @throws ClassCastException if the type of the specified element
-    # is incompatible with this collection (optional)
+    #         is incompatible with this collection (optional)
     # @throws NullPointerException if the specified element is null and this
-    # collection does not permit null elements (optional)
+    #         collection does not permit null elements (optional)
     # @throws UnsupportedOperationException if the <tt>remove</tt> operation
-    # is not supported by this collection
+    #         is not supported by this collection
     def remove(o)
       raise NotImplementedError
     end
     
     typesig { [Collection] }
     # Bulk Operations
-    # 
     # Returns <tt>true</tt> if this collection contains all of the elements
     # in the specified collection.
     # 
     # @param  c collection to be checked for containment in this collection
     # @return <tt>true</tt> if this collection contains all of the elements
-    # in the specified collection
+    #         in the specified collection
     # @throws ClassCastException if the types of one or more elements
-    # in the specified collection are incompatible with this
-    # collection (optional)
+    #         in the specified collection are incompatible with this
+    #         collection (optional)
     # @throws NullPointerException if the specified collection contains one
-    # or more null elements and this collection does not permit null
-    # elements (optional), or if the specified collection is null
+    #         or more null elements and this collection does not permit null
+    #         elements (optional), or if the specified collection is null
     # @see    #contains(Object)
     def contains_all(c)
       raise NotImplementedError
@@ -329,17 +326,17 @@ module Java::Util
     # @param c collection containing elements to be added to this collection
     # @return <tt>true</tt> if this collection changed as a result of the call
     # @throws UnsupportedOperationException if the <tt>addAll</tt> operation
-    # is not supported by this collection
+    #         is not supported by this collection
     # @throws ClassCastException if the class of an element of the specified
-    # collection prevents it from being added to this collection
+    #         collection prevents it from being added to this collection
     # @throws NullPointerException if the specified collection contains a
-    # null element and this collection does not permit null elements,
-    # or if the specified collection is null
+    #         null element and this collection does not permit null elements,
+    #         or if the specified collection is null
     # @throws IllegalArgumentException if some property of an element of the
-    # specified collection prevents it from being added to this
-    # collection
+    #         specified collection prevents it from being added to this
+    #         collection
     # @throws IllegalStateException if not all the elements can be added at
-    # this time due to insertion restrictions
+    #         this time due to insertion restrictions
     # @see #add(Object)
     def add_all(c)
       raise NotImplementedError
@@ -353,15 +350,15 @@ module Java::Util
     # 
     # @param c collection containing elements to be removed from this collection
     # @return <tt>true</tt> if this collection changed as a result of the
-    # call
+    #         call
     # @throws UnsupportedOperationException if the <tt>removeAll</tt> method
-    # is not supported by this collection
+    #         is not supported by this collection
     # @throws ClassCastException if the types of one or more elements
-    # in this collection are incompatible with the specified
-    # collection (optional)
+    #         in this collection are incompatible with the specified
+    #         collection (optional)
     # @throws NullPointerException if this collection contains one or more
-    # null elements and the specified collection does not support
-    # null elements (optional), or if the specified collection is null
+    #         null elements and the specified collection does not support
+    #         null elements (optional), or if the specified collection is null
     # @see #remove(Object)
     # @see #contains(Object)
     def remove_all(c)
@@ -377,13 +374,13 @@ module Java::Util
     # @param c collection containing elements to be retained in this collection
     # @return <tt>true</tt> if this collection changed as a result of the call
     # @throws UnsupportedOperationException if the <tt>retainAll</tt> operation
-    # is not supported by this collection
+    #         is not supported by this collection
     # @throws ClassCastException if the types of one or more elements
-    # in this collection are incompatible with the specified
-    # collection (optional)
+    #         in this collection are incompatible with the specified
+    #         collection (optional)
     # @throws NullPointerException if this collection contains one or more
-    # null elements and the specified collection does not permit null
-    # elements (optional), or if the specified collection is null
+    #         null elements and the specified collection does not permit null
+    #         elements (optional), or if the specified collection is null
     # @see #remove(Object)
     # @see #contains(Object)
     def retain_all(c)
@@ -395,14 +392,13 @@ module Java::Util
     # The collection will be empty after this method returns.
     # 
     # @throws UnsupportedOperationException if the <tt>clear</tt> operation
-    # is not supported by this collection
+    #         is not supported by this collection
     def clear
       raise NotImplementedError
     end
     
     typesig { [Object] }
     # Comparison and hashing
-    # 
     # Compares the specified object with this collection for equality. <p>
     # 
     # While the <tt>Collection</tt> interface adds no stipulations to the

@@ -176,11 +176,7 @@ module Java::Lang
       const_attr_reader  :TYPE
       
       # Normative general types
-      # 
-      # 
       # General character types
-      # 
-      # 
       # General category "Cn" in the Unicode specification.
       # @since   1.1
       const_set_lazy(:UNASSIGNED) { 0 }
@@ -352,7 +348,7 @@ module Java::Lang
       const_attr_reader  :DIRECTIONALITY_RIGHT_TO_LEFT
       
       # Strong bidirectional character type "AL" in the Unicode specification.
-      # @since 1.4
+      #  @since 1.4
       const_set_lazy(:DIRECTIONALITY_RIGHT_TO_LEFT_ARABIC) { 2 }
       const_attr_reader  :DIRECTIONALITY_RIGHT_TO_LEFT_ARABIC
       
@@ -941,11 +937,11 @@ module Java::Lang
           const_attr_reader  :SPECIALS
           
           # @deprecated As of J2SE 5, use {@link #HIGH_SURROGATES},
-          # {@link #HIGH_PRIVATE_USE_SURROGATES}, and
-          # {@link #LOW_SURROGATES}. These new constants match
-          # the block definitions of the Unicode Standard.
-          # The {@link #of(char)} and {@link #of(int)} methods
-          # return the new constants, not SURROGATES_AREA.
+          #             {@link #HIGH_PRIVATE_USE_SURROGATES}, and
+          #             {@link #LOW_SURROGATES}. These new constants match
+          #             the block definitions of the Unicode Standard.
+          #             The {@link #of(char)} and {@link #of(int)} methods
+          #             return the new constants, not SURROGATES_AREA.
           const_set_lazy(:SURROGATES_AREA) { class_self::UnicodeBlock.new("SURROGATES_AREA") }
           const_attr_reader  :SURROGATES_AREA
           
@@ -1408,7 +1404,7 @@ module Java::Lang
           # unassigned
           # Supplementary Private Use Area-A
           # Supplementary Private Use Area-B
-          const_set_lazy(:BlockStarts) { Array.typed(::Java::Int).new([0x0, 0x80, 0x100, 0x180, 0x250, 0x2b0, 0x300, 0x370, 0x400, 0x500, 0x530, 0x590, 0x600, 0x700, 0x750, 0x780, 0x7c0, 0x900, 0x980, 0xa00, 0xa80, 0xb00, 0xb80, 0xc00, 0xc80, 0xd00, 0xd80, 0xe00, 0xe80, 0xf00, 0x1000, 0x10a0, 0x1100, 0x1200, 0x1380, 0x13a0, 0x1400, 0x1680, 0x16a0, 0x1700, 0x1720, 0x1740, 0x1760, 0x1780, 0x1800, 0x18b0, 0x1900, 0x1950, 0x1980, 0x19e0, 0x1a00, 0x1d00, 0x1d80, 0x1e00, 0x1f00, 0x2000, 0x2070, 0x20a0, 0x20d0, 0x2100, 0x2150, 0x2190, 0x2200, 0x2300, 0x2400, 0x2440, 0x2460, 0x2500, 0x2580, 0x25a0, 0x2600, 0x2700, 0x27c0, 0x27f0, 0x2800, 0x2900, 0x2980, 0x2a00, 0x2b00, 0x2c00, 0x2e80, 0x2f00, 0x2fe0, 0x2ff0, 0x3000, 0x3040, 0x30a0, 0x3100, 0x3130, 0x3190, 0x31a0, 0x31c0, 0x31f0, 0x3200, 0x3300, 0x3400, 0x4dc0, 0x4e00, 0xa000, 0xa490, 0xa4d0, 0xac00, 0xd7b0, 0xd800, 0xdb80, 0xdc00, 0xe000, 0xf900, 0xfb00, 0xfb50, 0xfe00, 0xfe10, 0xfe20, 0xfe30, 0xfe50, 0xfe70, 0xff00, 0xfff0, 0x10000, 0x10080, 0x10100, 0x10140, 0x10300, 0x10330, 0x10350, 0x10380, 0x103a0, 0x10400, 0x10450, 0x10480, 0x104b0, 0x10800, 0x10840, 0x1d000, 0x1d100, 0x1d200, 0x1d300, 0x1d360, 0x1d400, 0x1d800, 0x20000, 0x2a6e0, 0x2f800, 0x2fa20, 0xe0000, 0xe0080, 0xe0100, 0xe01f0, 0xf0000, 0x100000, ]) }
+          const_set_lazy(:BlockStarts) { Array.typed(::Java::Int).new([0x0, 0x80, 0x100, 0x180, 0x250, 0x2b0, 0x300, 0x370, 0x400, 0x500, 0x530, 0x590, 0x600, 0x700, 0x750, 0x780, 0x7c0, 0x900, 0x980, 0xa00, 0xa80, 0xb00, 0xb80, 0xc00, 0xc80, 0xd00, 0xd80, 0xe00, 0xe80, 0xf00, 0x1000, 0x10a0, 0x1100, 0x1200, 0x1380, 0x13a0, 0x1400, 0x1680, 0x16a0, 0x1700, 0x1720, 0x1740, 0x1760, 0x1780, 0x1800, 0x18b0, 0x1900, 0x1950, 0x1980, 0x19e0, 0x1a00, 0x1d00, 0x1d80, 0x1e00, 0x1f00, 0x2000, 0x2070, 0x20a0, 0x20d0, 0x2100, 0x2150, 0x2190, 0x2200, 0x2300, 0x2400, 0x2440, 0x2460, 0x2500, 0x2580, 0x25a0, 0x2600, 0x2700, 0x27c0, 0x27f0, 0x2800, 0x2900, 0x2980, 0x2a00, 0x2b00, 0x2c00, 0x2e80, 0x2f00, 0x2fe0, 0x2ff0, 0x3000, 0x3040, 0x30a0, 0x3100, 0x3130, 0x3190, 0x31a0, 0x31c0, 0x31f0, 0x3200, 0x3300, 0x3400, 0x4dc0, 0x4e00, 0xa000, 0xa490, 0xa4d0, 0xac00, 0xd7b0, 0xd800, 0xdb80, 0xdc00, 0xe000, 0xf900, 0xfb00, 0xfb50, 0xfe00, 0xfe10, 0xfe20, 0xfe30, 0xfe50, 0xfe70, 0xff00, 0xfff0, 0x10000, 0x10080, 0x10100, 0x10140, 0x10300, 0x10330, 0x10350, 0x10380, 0x103a0, 0x10400, 0x10450, 0x10480, 0x104b0, 0x10800, 0x10840, 0x1d000, 0x1d100, 0x1d200, 0x1d300, 0x1d360, 0x1d400, 0x1d800, 0x20000, 0x2a6e0, 0x2f800, 0x2fa20, 0xe0000, 0xe0080, 0xe0100, 0xe01f0, 0xf0000, 0x100000]) }
           const_attr_reader  :BlockStarts
           
           const_set_lazy(:Blocks) { Array.typed(self.class::UnicodeBlock).new([self.class::BASIC_LATIN, self.class::LATIN_1_SUPPLEMENT, self.class::LATIN_EXTENDED_A, self.class::LATIN_EXTENDED_B, self.class::IPA_EXTENSIONS, self.class::SPACING_MODIFIER_LETTERS, self.class::COMBINING_DIACRITICAL_MARKS, self.class::GREEK, self.class::CYRILLIC, self.class::CYRILLIC_SUPPLEMENTARY, self.class::ARMENIAN, self.class::HEBREW, self.class::ARABIC, self.class::SYRIAC, nil, self.class::THAANA, nil, self.class::DEVANAGARI, self.class::BENGALI, self.class::GURMUKHI, self.class::GUJARATI, self.class::ORIYA, self.class::TAMIL, self.class::TELUGU, self.class::KANNADA, self.class::MALAYALAM, self.class::SINHALA, self.class::THAI, self.class::LAO, self.class::TIBETAN, self.class::MYANMAR, self.class::GEORGIAN, self.class::HANGUL_JAMO, self.class::ETHIOPIC, nil, self.class::CHEROKEE, self.class::UNIFIED_CANADIAN_ABORIGINAL_SYLLABICS, self.class::OGHAM, self.class::RUNIC, self.class::TAGALOG, self.class::HANUNOO, self.class::BUHID, self.class::TAGBANWA, self.class::KHMER, self.class::MONGOLIAN, nil, self.class::LIMBU, self.class::TAI_LE, nil, self.class::KHMER_SYMBOLS, nil, self.class::PHONETIC_EXTENSIONS, nil, self.class::LATIN_EXTENDED_ADDITIONAL, self.class::GREEK_EXTENDED, self.class::GENERAL_PUNCTUATION, self.class::SUPERSCRIPTS_AND_SUBSCRIPTS, self.class::CURRENCY_SYMBOLS, self.class::COMBINING_MARKS_FOR_SYMBOLS, self.class::LETTERLIKE_SYMBOLS, self.class::NUMBER_FORMS, self.class::ARROWS, self.class::MATHEMATICAL_OPERATORS, self.class::MISCELLANEOUS_TECHNICAL, self.class::CONTROL_PICTURES, self.class::OPTICAL_CHARACTER_RECOGNITION, self.class::ENCLOSED_ALPHANUMERICS, self.class::BOX_DRAWING, self.class::BLOCK_ELEMENTS, self.class::GEOMETRIC_SHAPES, self.class::MISCELLANEOUS_SYMBOLS, self.class::DINGBATS, self.class::MISCELLANEOUS_MATHEMATICAL_SYMBOLS_A, self.class::SUPPLEMENTAL_ARROWS_A, self.class::BRAILLE_PATTERNS, self.class::SUPPLEMENTAL_ARROWS_B, self.class::MISCELLANEOUS_MATHEMATICAL_SYMBOLS_B, self.class::SUPPLEMENTAL_MATHEMATICAL_OPERATORS, self.class::MISCELLANEOUS_SYMBOLS_AND_ARROWS, nil, self.class::CJK_RADICALS_SUPPLEMENT, self.class::KANGXI_RADICALS, nil, self.class::IDEOGRAPHIC_DESCRIPTION_CHARACTERS, self.class::CJK_SYMBOLS_AND_PUNCTUATION, self.class::HIRAGANA, self.class::KATAKANA, self.class::BOPOMOFO, self.class::HANGUL_COMPATIBILITY_JAMO, self.class::KANBUN, self.class::BOPOMOFO_EXTENDED, nil, self.class::KATAKANA_PHONETIC_EXTENSIONS, self.class::ENCLOSED_CJK_LETTERS_AND_MONTHS, self.class::CJK_COMPATIBILITY, self.class::CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A, self.class::YIJING_HEXAGRAM_SYMBOLS, self.class::CJK_UNIFIED_IDEOGRAPHS, self.class::YI_SYLLABLES, self.class::YI_RADICALS, nil, self.class::HANGUL_SYLLABLES, nil, self.class::HIGH_SURROGATES, self.class::HIGH_PRIVATE_USE_SURROGATES, self.class::LOW_SURROGATES, self.class::PRIVATE_USE_AREA, self.class::CJK_COMPATIBILITY_IDEOGRAPHS, self.class::ALPHABETIC_PRESENTATION_FORMS, self.class::ARABIC_PRESENTATION_FORMS_A, self.class::VARIATION_SELECTORS, nil, self.class::COMBINING_HALF_MARKS, self.class::CJK_COMPATIBILITY_FORMS, self.class::SMALL_FORM_VARIANTS, self.class::ARABIC_PRESENTATION_FORMS_B, self.class::HALFWIDTH_AND_FULLWIDTH_FORMS, self.class::SPECIALS, self.class::LINEAR_B_SYLLABARY, self.class::LINEAR_B_IDEOGRAMS, self.class::AEGEAN_NUMBERS, nil, self.class::OLD_ITALIC, self.class::GOTHIC, nil, self.class::UGARITIC, nil, self.class::DESERET, self.class::SHAVIAN, self.class::OSMANYA, nil, self.class::CYPRIOT_SYLLABARY, nil, self.class::BYZANTINE_MUSICAL_SYMBOLS, self.class::MUSICAL_SYMBOLS, nil, self.class::TAI_XUAN_JING_SYMBOLS, nil, self.class::MATHEMATICAL_ALPHANUMERIC_SYMBOLS, nil, self.class::CJK_UNIFIED_IDEOGRAPHS_EXTENSION_B, nil, self.class::CJK_COMPATIBILITY_IDEOGRAPHS_SUPPLEMENT, nil, self.class::TAGS, nil, self.class::VARIATION_SELECTORS_SUPPLEMENT, nil, self.class::SUPPLEMENTARY_PRIVATE_USE_AREA_A, self.class::SUPPLEMENTARY_PRIVATE_USE_AREA_B]) }
@@ -1419,19 +1415,19 @@ module Java::Lang
           # given character, or <code>null</code> if the character is not a
           # member of a defined block.
           # 
-          # <p><b>Note:</b> This method cannot handle <a
-          # href="Character.html#supplementary"> supplementary
-          # characters</a>. To support all Unicode characters,
-          # including supplementary characters, use the {@link
-          # #of(int)} method.
+          #       * <p><b>Note:</b> This method cannot handle <a
+          #       * href="Character.html#supplementary"> supplementary
+          #       * characters</a>. To support all Unicode characters,
+          #       * including supplementary characters, use the {@link
+          #       * #of(int)} method.
           # 
           # @param   c  The character in question
           # @return  The <code>UnicodeBlock</code> instance representing the
-          # Unicode block of which this character is a member, or
-          # <code>null</code> if the character is not a member of any
-          # Unicode block
+          #          Unicode block of which this character is a member, or
+          #          <code>null</code> if the character is not a member of any
+          #          Unicode block
           def of(c)
-            return of(RJava.cast_to_int(c))
+            return of((c).to_int)
           end
           
           typesig { [::Java::Int] }
@@ -1440,15 +1436,15 @@ module Java::Lang
           # <code>null</code> if the character is not a member of a
           # defined block.
           # 
-          # @param   codePoint the character (Unicode code point) in question.
+          #       * @param   codePoint the character (Unicode code point) in question.
           # @return  The <code>UnicodeBlock</code> instance representing the
-          # Unicode block of which this character is a member, or
-          # <code>null</code> if the character is not a member of any
-          # Unicode block
-          # @exception IllegalArgumentException if the specified
-          # <code>codePoint</code> is an invalid Unicode code point.
-          # @see Character#isValidCodePoint(int)
-          # @since   1.5
+          #          Unicode block of which this character is a member, or
+          #          <code>null</code> if the character is not a member of any
+          #          Unicode block
+          #       * @exception IllegalArgumentException if the specified
+          #       * <code>codePoint</code> is an invalid Unicode code point.
+          #       * @see Character#isValidCodePoint(int)
+          #       * @since   1.5
           def of(code_point)
             if (!is_valid_code_point(code_point))
               raise class_self::IllegalArgumentException.new
@@ -1489,7 +1485,7 @@ module Java::Lang
           # <li>The text representation of each constant UnicodeBlock identifier.
           # For example, this method will return the {@link #BASIC_LATIN} block if
           # provided with the "BASIC_LATIN" name. This form replaces all spaces and
-          # hyphens in the canonical name with underscores.
+          #  hyphens in the canonical name with underscores.
           # </ol>
           # Finally, character case is ignored for all of the valid block name forms.
           # For example, "BASIC_LATIN" and "basic_latin" are both valid block names.
@@ -1501,9 +1497,9 @@ module Java::Lang
           # 
           # @param blockName A <code>UnicodeBlock</code> name.
           # @return The <code>UnicodeBlock</code> instance identified
-          # by <code>blockName</code>
+          #         by <code>blockName</code>
           # @throws IllegalArgumentException if <code>blockName</code> is an
-          # invalid name
+          #         invalid name
           # @throws NullPointerException if <code>blockName</code> is null
           # @since 1.5
           def for_name(block_name)
@@ -1540,7 +1536,7 @@ module Java::Lang
     # represents the specified <code>char</code> value.
     # 
     # @param  value   the value to be represented by the
-    # <code>Character</code> object.
+    #                  <code>Character</code> object.
     def initialize(value)
       @value = 0
       super()
@@ -1587,7 +1583,7 @@ module Java::Lang
       def value_of(c)
         if (c <= 127)
           # must cache
-          return CharacterCache.attr_cache[RJava.cast_to_int(c)]
+          return CharacterCache.attr_cache[(c).to_int]
         end
         return Character.new(c)
       end
@@ -1596,7 +1592,7 @@ module Java::Lang
     typesig { [] }
     # Returns the value of this <code>Character</code> object.
     # @return  the primitive <code>char</code> value represented by
-    # this object.
+    #          this object.
     def char_value
       return @value
     end
@@ -1605,7 +1601,7 @@ module Java::Lang
     # Returns a hash code for this <code>Character</code>.
     # @return  a hash code value for this object.
     def hash_code
-      return RJava.cast_to_int(@value)
+      return (@value).to_int
     end
     
     typesig { [Object] }
@@ -1616,7 +1612,7 @@ module Java::Lang
     # 
     # @param   obj   the object to compare with.
     # @return  <code>true</code> if the objects are the same;
-    # <code>false</code> otherwise.
+    #          <code>false</code> otherwise.
     def ==(obj)
       if (obj.is_a?(Character))
         return (@value).equal?((obj).char_value)
@@ -1679,7 +1675,7 @@ module Java::Lang
       # 
       # @param  codePoint the character (Unicode code point) to be tested
       # @return <code>true</code> if the specified character is in the Unicode
-      # supplementary character range; <code>false</code> otherwise.
+      #         supplementary character range; <code>false</code> otherwise.
       # @since  1.5
       def is_supplementary_code_point(code_point)
         return code_point >= MIN_SUPPLEMENTARY_CODE_POINT && code_point <= MAX_CODE_POINT
@@ -1700,8 +1696,8 @@ module Java::Lang
       # 
       # @param   ch   the <code>char</code> value to be tested.
       # @return  <code>true</code> if the <code>char</code> value
-      # is between '&#92;uD800' and '&#92;uDBFF' inclusive;
-      # <code>false</code> otherwise.
+      #          is between '&#92;uD800' and '&#92;uDBFF' inclusive;
+      #          <code>false</code> otherwise.
       # @see     java.lang.Character#isLowSurrogate(char)
       # @see     Character.UnicodeBlock#of(int)
       # @since   1.5
@@ -1722,8 +1718,8 @@ module Java::Lang
       # 
       # @param   ch   the <code>char</code> value to be tested.
       # @return  <code>true</code> if the <code>char</code> value
-      # is between '&#92;uDC00' and '&#92;uDFFF' inclusive;
-      # <code>false</code> otherwise.
+      #          is between '&#92;uDC00' and '&#92;uDFFF' inclusive;
+      #          <code>false</code> otherwise.
       # @see java.lang.Character#isHighSurrogate(char)
       # @since   1.5
       def is_low_surrogate(ch)
@@ -1776,7 +1772,7 @@ module Java::Lang
       # @param  high the high-surrogate code unit
       # @param  low the low-surrogate code unit
       # @return the supplementary code point composed from the
-      # specified surrogate pair.
+      #         specified surrogate pair.
       # @since  1.5
       def to_code_point(high, low)
         return ((high - MIN_HIGH_SURROGATE) << 10) + (low - MIN_LOW_SURROGATE) + MIN_SUPPLEMENTARY_CODE_POINT
@@ -2042,7 +2038,7 @@ module Java::Lang
       # 
       # @param  codePoint a Unicode code point
       # @return a <code>char</code> array having
-      # <code>codePoint</code>'s UTF-16 representation.
+      #         <code>codePoint</code>'s UTF-16 representation.
       # @exception IllegalArgumentException if the specified
       # <code>codePoint</code> is not a valid Unicode code point.
       # @since  1.5
@@ -2159,13 +2155,13 @@ module Java::Lang
       # @return the index within the char sequence
       # @exception NullPointerException if <code>seq</code> is null.
       # @exception IndexOutOfBoundsException if <code>index</code>
-      # is negative or larger then the length of the char sequence,
-      # or if <code>codePointOffset</code> is positive and the
-      # subsequence starting with <code>index</code> has fewer than
-      # <code>codePointOffset</code> code points, or if
-      # <code>codePointOffset</code> is negative and the subsequence
-      # before <code>index</code> has fewer than the absolute value
-      # of <code>codePointOffset</code> code points.
+      #   is negative or larger then the length of the char sequence,
+      #   or if <code>codePointOffset</code> is positive and the
+      #   subsequence starting with <code>index</code> has fewer than
+      #   <code>codePointOffset</code> code points, or if
+      #   <code>codePointOffset</code> is negative and the subsequence
+      #   before <code>index</code> has fewer than the absolute value
+      #   of <code>codePointOffset</code> code points.
       # @since 1.5
       def offset_by_code_points(seq, index, code_point_offset)
         length_ = seq.length
@@ -2223,19 +2219,19 @@ module Java::Lang
       # @return the index within the subarray
       # @exception NullPointerException if <code>a</code> is null.
       # @exception IndexOutOfBoundsException
-      # if <code>start</code> or <code>count</code> is negative,
-      # or if <code>start + count</code> is larger than the length of
-      # the given array,
-      # or if <code>index</code> is less than <code>start</code> or
-      # larger then <code>start + count</code>,
-      # or if <code>codePointOffset</code> is positive and the text range
-      # starting with <code>index</code> and ending with <code>start
-      # + count - 1</code> has fewer than <code>codePointOffset</code> code
-      # points,
-      # or if <code>codePointOffset</code> is negative and the text range
-      # starting with <code>start</code> and ending with <code>index
-      # - 1</code> has fewer than the absolute value of
-      # <code>codePointOffset</code> code points.
+      #   if <code>start</code> or <code>count</code> is negative,
+      #   or if <code>start + count</code> is larger than the length of
+      #   the given array,
+      #   or if <code>index</code> is less than <code>start</code> or
+      #   larger then <code>start + count</code>,
+      #   or if <code>codePointOffset</code> is positive and the text range
+      #   starting with <code>index</code> and ending with <code>start
+      #   + count - 1</code> has fewer than <code>codePointOffset</code> code
+      #   points,
+      #   or if <code>codePointOffset</code> is negative and the text range
+      #   starting with <code>start</code> and ending with <code>index
+      #   - 1</code> has fewer than the absolute value of
+      #   <code>codePointOffset</code> code points.
       # @since 1.5
       def offset_by_code_points(a, start, count, index, code_point_offset)
         if (count > a.attr_length - start || start < 0 || count < 0 || index < start || index > start + count)
@@ -2304,13 +2300,13 @@ module Java::Lang
       # 
       # @param   ch   the character to be tested.
       # @return  <code>true</code> if the character is lowercase;
-      # <code>false</code> otherwise.
+      #          <code>false</code> otherwise.
       # @see     java.lang.Character#isLowerCase(char)
       # @see     java.lang.Character#isTitleCase(char)
       # @see     java.lang.Character#toLowerCase(char)
       # @see     java.lang.Character#getType(char)
       def is_lower_case(ch)
-        return is_lower_case(RJava.cast_to_int(ch))
+        return is_lower_case((ch).to_int)
       end
       
       typesig { [::Java::Int] }
@@ -2333,7 +2329,7 @@ module Java::Lang
       # 
       # @param   codePoint the character (Unicode code point) to be tested.
       # @return  <code>true</code> if the character is lowercase;
-      # <code>false</code> otherwise.
+      #          <code>false</code> otherwise.
       # @see     java.lang.Character#isLowerCase(int)
       # @see     java.lang.Character#isTitleCase(int)
       # @see     java.lang.Character#toLowerCase(int)
@@ -2366,14 +2362,14 @@ module Java::Lang
       # 
       # @param   ch   the character to be tested.
       # @return  <code>true</code> if the character is uppercase;
-      # <code>false</code> otherwise.
+      #          <code>false</code> otherwise.
       # @see     java.lang.Character#isLowerCase(char)
       # @see     java.lang.Character#isTitleCase(char)
       # @see     java.lang.Character#toUpperCase(char)
       # @see     java.lang.Character#getType(char)
       # @since   1.0
       def is_upper_case(ch)
-        return is_upper_case(RJava.cast_to_int(ch))
+        return is_upper_case((ch).to_int)
       end
       
       typesig { [::Java::Int] }
@@ -2394,7 +2390,7 @@ module Java::Lang
       # 
       # @param   codePoint the character (Unicode code point) to be tested.
       # @return  <code>true</code> if the character is uppercase;
-      # <code>false</code> otherwise.
+      #          <code>false</code> otherwise.
       # @see     java.lang.Character#isLowerCase(int)
       # @see     java.lang.Character#isTitleCase(int)
       # @see     java.lang.Character#toUpperCase(int)
@@ -2434,14 +2430,14 @@ module Java::Lang
       # 
       # @param   ch   the character to be tested.
       # @return  <code>true</code> if the character is titlecase;
-      # <code>false</code> otherwise.
+      #          <code>false</code> otherwise.
       # @see     java.lang.Character#isLowerCase(char)
       # @see     java.lang.Character#isUpperCase(char)
       # @see     java.lang.Character#toTitleCase(char)
       # @see     java.lang.Character#getType(char)
       # @since   1.0.2
       def is_title_case(ch)
-        return is_title_case(RJava.cast_to_int(ch))
+        return is_title_case((ch).to_int)
       end
       
       typesig { [::Java::Int] }
@@ -2469,7 +2465,7 @@ module Java::Lang
       # 
       # @param   codePoint the character (Unicode code point) to be tested.
       # @return  <code>true</code> if the character is titlecase;
-      # <code>false</code> otherwise.
+      #          <code>false</code> otherwise.
       # @see     java.lang.Character#isLowerCase(int)
       # @see     java.lang.Character#isUpperCase(int)
       # @see     java.lang.Character#toTitleCase(int)
@@ -2489,15 +2485,15 @@ module Java::Lang
       # Some Unicode character ranges that contain digits:
       # <ul>
       # <li><code>'&#92;u0030'</code> through <code>'&#92;u0039'</code>,
-      # ISO-LATIN-1 digits (<code>'0'</code> through <code>'9'</code>)
+      #     ISO-LATIN-1 digits (<code>'0'</code> through <code>'9'</code>)
       # <li><code>'&#92;u0660'</code> through <code>'&#92;u0669'</code>,
-      # Arabic-Indic digits
+      #     Arabic-Indic digits
       # <li><code>'&#92;u06F0'</code> through <code>'&#92;u06F9'</code>,
-      # Extended Arabic-Indic digits
+      #     Extended Arabic-Indic digits
       # <li><code>'&#92;u0966'</code> through <code>'&#92;u096F'</code>,
-      # Devanagari digits
+      #     Devanagari digits
       # <li><code>'&#92;uFF10'</code> through <code>'&#92;uFF19'</code>,
-      # Fullwidth digits
+      #     Fullwidth digits
       # </ul>
       # 
       # Many other character ranges contain digits as well.
@@ -2509,12 +2505,12 @@ module Java::Lang
       # 
       # @param   ch   the character to be tested.
       # @return  <code>true</code> if the character is a digit;
-      # <code>false</code> otherwise.
+      #          <code>false</code> otherwise.
       # @see     java.lang.Character#digit(char, int)
       # @see     java.lang.Character#forDigit(int, int)
       # @see     java.lang.Character#getType(char)
       def is_digit(ch)
-        return is_digit(RJava.cast_to_int(ch))
+        return is_digit((ch).to_int)
       end
       
       typesig { [::Java::Int] }
@@ -2527,22 +2523,22 @@ module Java::Lang
       # Some Unicode character ranges that contain digits:
       # <ul>
       # <li><code>'&#92;u0030'</code> through <code>'&#92;u0039'</code>,
-      # ISO-LATIN-1 digits (<code>'0'</code> through <code>'9'</code>)
+      #     ISO-LATIN-1 digits (<code>'0'</code> through <code>'9'</code>)
       # <li><code>'&#92;u0660'</code> through <code>'&#92;u0669'</code>,
-      # Arabic-Indic digits
+      #     Arabic-Indic digits
       # <li><code>'&#92;u06F0'</code> through <code>'&#92;u06F9'</code>,
-      # Extended Arabic-Indic digits
+      #     Extended Arabic-Indic digits
       # <li><code>'&#92;u0966'</code> through <code>'&#92;u096F'</code>,
-      # Devanagari digits
+      #     Devanagari digits
       # <li><code>'&#92;uFF10'</code> through <code>'&#92;uFF19'</code>,
-      # Fullwidth digits
+      #     Fullwidth digits
       # </ul>
       # 
       # Many other character ranges contain digits as well.
       # 
       # @param   codePoint the character (Unicode code point) to be tested.
       # @return  <code>true</code> if the character is a digit;
-      # <code>false</code> otherwise.
+      #          <code>false</code> otherwise.
       # @see     java.lang.Character#forDigit(int, int)
       # @see     java.lang.Character#getType(int)
       # @since   1.5
@@ -2566,7 +2562,7 @@ module Java::Lang
       # 
       # @param   ch   the character to be tested
       # @return  <code>true</code> if the character has a defined meaning
-      # in Unicode; <code>false</code> otherwise.
+      #          in Unicode; <code>false</code> otherwise.
       # @see     java.lang.Character#isDigit(char)
       # @see     java.lang.Character#isLetter(char)
       # @see     java.lang.Character#isLetterOrDigit(char)
@@ -2575,7 +2571,7 @@ module Java::Lang
       # @see     java.lang.Character#isUpperCase(char)
       # @since   1.0.2
       def is_defined(ch)
-        return is_defined(RJava.cast_to_int(ch))
+        return is_defined((ch).to_int)
       end
       
       typesig { [::Java::Int] }
@@ -2589,7 +2585,7 @@ module Java::Lang
       # 
       # @param   codePoint the character (Unicode code point) to be tested.
       # @return  <code>true</code> if the character has a defined meaning
-      # in Unicode; <code>false</code> otherwise.
+      #          in Unicode; <code>false</code> otherwise.
       # @see     java.lang.Character#isDigit(int)
       # @see     java.lang.Character#isLetter(int)
       # @see     java.lang.Character#isLetterOrDigit(int)
@@ -2625,7 +2621,7 @@ module Java::Lang
       # 
       # @param   ch   the character to be tested.
       # @return  <code>true</code> if the character is a letter;
-      # <code>false</code> otherwise.
+      #          <code>false</code> otherwise.
       # @see     java.lang.Character#isDigit(char)
       # @see     java.lang.Character#isJavaIdentifierStart(char)
       # @see     java.lang.Character#isJavaLetter(char)
@@ -2636,7 +2632,7 @@ module Java::Lang
       # @see     java.lang.Character#isUnicodeIdentifierStart(char)
       # @see     java.lang.Character#isUpperCase(char)
       def is_letter(ch)
-        return is_letter(RJava.cast_to_int(ch))
+        return is_letter((ch).to_int)
       end
       
       typesig { [::Java::Int] }
@@ -2658,7 +2654,7 @@ module Java::Lang
       # 
       # @param   codePoint the character (Unicode code point) to be tested.
       # @return  <code>true</code> if the character is a letter;
-      # <code>false</code> otherwise.
+      #          <code>false</code> otherwise.
       # @see     java.lang.Character#isDigit(int)
       # @see     java.lang.Character#isJavaIdentifierStart(int)
       # @see     java.lang.Character#isLetterOrDigit(int)
@@ -2686,7 +2682,7 @@ module Java::Lang
       # 
       # @param   ch   the character to be tested.
       # @return  <code>true</code> if the character is a letter or digit;
-      # <code>false</code> otherwise.
+      #          <code>false</code> otherwise.
       # @see     java.lang.Character#isDigit(char)
       # @see     java.lang.Character#isJavaIdentifierPart(char)
       # @see     java.lang.Character#isJavaLetter(char)
@@ -2695,7 +2691,7 @@ module Java::Lang
       # @see     java.lang.Character#isUnicodeIdentifierPart(char)
       # @since   1.0.2
       def is_letter_or_digit(ch)
-        return is_letter_or_digit(RJava.cast_to_int(ch))
+        return is_letter_or_digit((ch).to_int)
       end
       
       typesig { [::Java::Int] }
@@ -2708,7 +2704,7 @@ module Java::Lang
       # 
       # @param   codePoint the character (Unicode code point) to be tested.
       # @return  <code>true</code> if the character is a letter or digit;
-      # <code>false</code> otherwise.
+      #          <code>false</code> otherwise.
       # @see     java.lang.Character#isDigit(int)
       # @see     java.lang.Character#isJavaIdentifierPart(int)
       # @see     java.lang.Character#isLetter(int)
@@ -2733,7 +2729,7 @@ module Java::Lang
       # 
       # @param   ch the character to be tested.
       # @return  <code>true</code> if the character may start a Java
-      # identifier; <code>false</code> otherwise.
+      #          identifier; <code>false</code> otherwise.
       # @see     java.lang.Character#isJavaLetterOrDigit(char)
       # @see     java.lang.Character#isJavaIdentifierStart(char)
       # @see     java.lang.Character#isJavaIdentifierPart(char)
@@ -2766,7 +2762,7 @@ module Java::Lang
       # 
       # @param   ch the character to be tested.
       # @return  <code>true</code> if the character may be part of a
-      # Java identifier; <code>false</code> otherwise.
+      #          Java identifier; <code>false</code> otherwise.
       # @see     java.lang.Character#isJavaLetter(char)
       # @see     java.lang.Character#isJavaIdentifierStart(char)
       # @see     java.lang.Character#isJavaIdentifierPart(char)
@@ -2800,14 +2796,14 @@ module Java::Lang
       # 
       # @param   ch the character to be tested.
       # @return  <code>true</code> if the character may start a Java identifier;
-      # <code>false</code> otherwise.
+      #          <code>false</code> otherwise.
       # @see     java.lang.Character#isJavaIdentifierPart(char)
       # @see     java.lang.Character#isLetter(char)
       # @see     java.lang.Character#isUnicodeIdentifierStart(char)
       # @see     javax.lang.model.SourceVersion#isIdentifier(CharSequence)
       # @since   1.1
       def is_java_identifier_start(ch)
-        return is_java_identifier_start(RJava.cast_to_int(ch))
+        return is_java_identifier_start((ch).to_int)
       end
       
       typesig { [::Java::Int] }
@@ -2818,17 +2814,17 @@ module Java::Lang
       # one of the following conditions is true:
       # <ul>
       # <li> {@link #isLetter(int) isLetter(codePoint)}
-      # returns <code>true</code>
+      #      returns <code>true</code>
       # <li> {@link #getType(int) getType(codePoint)}
-      # returns <code>LETTER_NUMBER</code>
+      #      returns <code>LETTER_NUMBER</code>
       # <li> the referenced character is a currency symbol (such as "$")
       # <li> the referenced character is a connecting punctuation character
-      # (such as "_").
+      #      (such as "_").
       # </ul>
       # 
       # @param   codePoint the character (Unicode code point) to be tested.
       # @return  <code>true</code> if the character may start a Java identifier;
-      # <code>false</code> otherwise.
+      #          <code>false</code> otherwise.
       # @see     java.lang.Character#isJavaIdentifierPart(int)
       # @see     java.lang.Character#isLetter(int)
       # @see     java.lang.Character#isUnicodeIdentifierStart(int)
@@ -2863,7 +2859,7 @@ module Java::Lang
       # 
       # @param   ch      the character to be tested.
       # @return <code>true</code> if the character may be part of a
-      # Java identifier; <code>false</code> otherwise.
+      #          Java identifier; <code>false</code> otherwise.
       # @see     java.lang.Character#isIdentifierIgnorable(char)
       # @see     java.lang.Character#isJavaIdentifierStart(char)
       # @see     java.lang.Character#isLetterOrDigit(char)
@@ -2871,7 +2867,7 @@ module Java::Lang
       # @see     javax.lang.model.SourceVersion#isIdentifier(CharSequence)
       # @since   1.1
       def is_java_identifier_part(ch)
-        return is_java_identifier_part(RJava.cast_to_int(ch))
+        return is_java_identifier_part((ch).to_int)
       end
       
       typesig { [::Java::Int] }
@@ -2895,7 +2891,7 @@ module Java::Lang
       # 
       # @param   codePoint the character (Unicode code point) to be tested.
       # @return <code>true</code> if the character may be part of a
-      # Java identifier; <code>false</code> otherwise.
+      #          Java identifier; <code>false</code> otherwise.
       # @see     java.lang.Character#isIdentifierIgnorable(int)
       # @see     java.lang.Character#isJavaIdentifierStart(int)
       # @see     java.lang.Character#isLetterOrDigit(int)
@@ -2915,7 +2911,7 @@ module Java::Lang
       # <ul>
       # <li> {@link #isLetter(char) isLetter(ch)} returns <code>true</code>
       # <li> {@link #getType(char) getType(ch)} returns
-      # <code>LETTER_NUMBER</code>.
+      #      <code>LETTER_NUMBER</code>.
       # </ul>
       # 
       # <p><b>Note:</b> This method cannot handle <a
@@ -2925,13 +2921,13 @@ module Java::Lang
       # 
       # @param   ch      the character to be tested.
       # @return  <code>true</code> if the character may start a Unicode
-      # identifier; <code>false</code> otherwise.
+      #          identifier; <code>false</code> otherwise.
       # @see     java.lang.Character#isJavaIdentifierStart(char)
       # @see     java.lang.Character#isLetter(char)
       # @see     java.lang.Character#isUnicodeIdentifierPart(char)
       # @since   1.1
       def is_unicode_identifier_start(ch)
-        return is_unicode_identifier_start(RJava.cast_to_int(ch))
+        return is_unicode_identifier_start((ch).to_int)
       end
       
       typesig { [::Java::Int] }
@@ -2942,13 +2938,13 @@ module Java::Lang
       # one of the following conditions is true:
       # <ul>
       # <li> {@link #isLetter(int) isLetter(codePoint)}
-      # returns <code>true</code>
+      #      returns <code>true</code>
       # <li> {@link #getType(int) getType(codePoint)}
-      # returns <code>LETTER_NUMBER</code>.
+      #      returns <code>LETTER_NUMBER</code>.
       # </ul>
       # @param   codePoint the character (Unicode code point) to be tested.
       # @return  <code>true</code> if the character may start a Unicode
-      # identifier; <code>false</code> otherwise.
+      #          identifier; <code>false</code> otherwise.
       # @see     java.lang.Character#isJavaIdentifierStart(int)
       # @see     java.lang.Character#isLetter(int)
       # @see     java.lang.Character#isUnicodeIdentifierPart(int)
@@ -2981,14 +2977,14 @@ module Java::Lang
       # 
       # @param   ch      the character to be tested.
       # @return  <code>true</code> if the character may be part of a
-      # Unicode identifier; <code>false</code> otherwise.
+      #          Unicode identifier; <code>false</code> otherwise.
       # @see     java.lang.Character#isIdentifierIgnorable(char)
       # @see     java.lang.Character#isJavaIdentifierPart(char)
       # @see     java.lang.Character#isLetterOrDigit(char)
       # @see     java.lang.Character#isUnicodeIdentifierStart(char)
       # @since   1.1
       def is_unicode_identifier_part(ch)
-        return is_unicode_identifier_part(RJava.cast_to_int(ch))
+        return is_unicode_identifier_part((ch).to_int)
       end
       
       typesig { [::Java::Int] }
@@ -3009,7 +3005,7 @@ module Java::Lang
       # </ul>
       # @param   codePoint the character (Unicode code point) to be tested.
       # @return  <code>true</code> if the character may be part of a
-      # Unicode identifier; <code>false</code> otherwise.
+      #          Unicode identifier; <code>false</code> otherwise.
       # @see     java.lang.Character#isIdentifierIgnorable(int)
       # @see     java.lang.Character#isJavaIdentifierPart(int)
       # @see     java.lang.Character#isLetterOrDigit(int)
@@ -3044,13 +3040,13 @@ module Java::Lang
       # 
       # @param   ch      the character to be tested.
       # @return  <code>true</code> if the character is an ignorable control
-      # character that may be part of a Java or Unicode identifier;
-      # <code>false</code> otherwise.
+      #          character that may be part of a Java or Unicode identifier;
+      #           <code>false</code> otherwise.
       # @see     java.lang.Character#isJavaIdentifierPart(char)
       # @see     java.lang.Character#isUnicodeIdentifierPart(char)
       # @since   1.1
       def is_identifier_ignorable(ch)
-        return is_identifier_ignorable(RJava.cast_to_int(ch))
+        return is_identifier_ignorable((ch).to_int)
       end
       
       typesig { [::Java::Int] }
@@ -3073,8 +3069,8 @@ module Java::Lang
       # 
       # @param   codePoint the character (Unicode code point) to be tested.
       # @return  <code>true</code> if the character is an ignorable control
-      # character that may be part of a Java or Unicode identifier;
-      # <code>false</code> otherwise.
+      #          character that may be part of a Java or Unicode identifier;
+      #          <code>false</code> otherwise.
       # @see     java.lang.Character#isJavaIdentifierPart(int)
       # @see     java.lang.Character#isUnicodeIdentifierPart(int)
       # @since   1.5
@@ -3105,11 +3101,11 @@ module Java::Lang
       # 
       # @param   ch   the character to be converted.
       # @return  the lowercase equivalent of the character, if any;
-      # otherwise, the character itself.
+      #          otherwise, the character itself.
       # @see     java.lang.Character#isLowerCase(char)
       # @see     java.lang.String#toLowerCase()
       def to_lower_case(ch)
-        return RJava.cast_to_char(to_lower_case(RJava.cast_to_int(ch)))
+        return RJava.cast_to_char(to_lower_case((ch).to_int))
       end
       
       typesig { [::Java::Int] }
@@ -3131,7 +3127,7 @@ module Java::Lang
       # 
       # @param   codePoint   the character (Unicode code point) to be converted.
       # @return  the lowercase equivalent of the character (Unicode code
-      # point), if any; otherwise, the character itself.
+      #          point), if any; otherwise, the character itself.
       # @see     java.lang.Character#isLowerCase(int)
       # @see     java.lang.String#toLowerCase()
       # 
@@ -3163,11 +3159,11 @@ module Java::Lang
       # 
       # @param   ch   the character to be converted.
       # @return  the uppercase equivalent of the character, if any;
-      # otherwise, the character itself.
+      #          otherwise, the character itself.
       # @see     java.lang.Character#isUpperCase(char)
       # @see     java.lang.String#toUpperCase()
       def to_upper_case(ch)
-        return RJava.cast_to_char(to_upper_case(RJava.cast_to_int(ch)))
+        return RJava.cast_to_char(to_upper_case((ch).to_int))
       end
       
       typesig { [::Java::Int] }
@@ -3189,7 +3185,7 @@ module Java::Lang
       # 
       # @param   codePoint   the character (Unicode code point) to be converted.
       # @return  the uppercase equivalent of the character, if any;
-      # otherwise, the character itself.
+      #          otherwise, the character itself.
       # @see     java.lang.Character#isUpperCase(int)
       # @see     java.lang.String#toUpperCase()
       # 
@@ -3220,13 +3216,13 @@ module Java::Lang
       # 
       # @param   ch   the character to be converted.
       # @return  the titlecase equivalent of the character, if any;
-      # otherwise, the character itself.
+      #          otherwise, the character itself.
       # @see     java.lang.Character#isTitleCase(char)
       # @see     java.lang.Character#toLowerCase(char)
       # @see     java.lang.Character#toUpperCase(char)
       # @since   1.0.2
       def to_title_case(ch)
-        return RJava.cast_to_char(to_title_case(RJava.cast_to_int(ch)))
+        return RJava.cast_to_char(to_title_case((ch).to_int))
       end
       
       typesig { [::Java::Int] }
@@ -3246,7 +3242,7 @@ module Java::Lang
       # 
       # @param   codePoint   the character (Unicode code point) to be converted.
       # @return  the titlecase equivalent of the character, if any;
-      # otherwise, the character itself.
+      #          otherwise, the character itself.
       # @see     java.lang.Character#isTitleCase(int)
       # @see     java.lang.Character#toLowerCase(int)
       # @see     java.lang.Character#toUpperCase(int)
@@ -3266,19 +3262,19 @@ module Java::Lang
       # if at least one of the following is true:
       # <ul>
       # <li>The method <code>isDigit</code> is <code>true</code> of the character
-      # and the Unicode decimal digit value of the character (or its
-      # single-character decomposition) is less than the specified radix.
-      # In this case the decimal digit value is returned.
+      #     and the Unicode decimal digit value of the character (or its
+      #     single-character decomposition) is less than the specified radix.
+      #     In this case the decimal digit value is returned.
       # <li>The character is one of the uppercase Latin letters
-      # <code>'A'</code> through <code>'Z'</code> and its code is less than
-      # <code>radix&nbsp;+ 'A'&nbsp;-&nbsp;10</code>.
-      # In this case, <code>ch&nbsp;- 'A'&nbsp;+&nbsp;10</code>
-      # is returned.
+      #     <code>'A'</code> through <code>'Z'</code> and its code is less than
+      #     <code>radix&nbsp;+ 'A'&nbsp;-&nbsp;10</code>.
+      #     In this case, <code>ch&nbsp;- 'A'&nbsp;+&nbsp;10</code>
+      #     is returned.
       # <li>The character is one of the lowercase Latin letters
-      # <code>'a'</code> through <code>'z'</code> and its code is less than
-      # <code>radix&nbsp;+ 'a'&nbsp;-&nbsp;10</code>.
-      # In this case, <code>ch&nbsp;- 'a'&nbsp;+&nbsp;10</code>
-      # is returned.
+      #     <code>'a'</code> through <code>'z'</code> and its code is less than
+      #     <code>radix&nbsp;+ 'a'&nbsp;-&nbsp;10</code>.
+      #     In this case, <code>ch&nbsp;- 'a'&nbsp;+&nbsp;10</code>
+      #     is returned.
       # </ul>
       # 
       # <p><b>Note:</b> This method cannot handle <a
@@ -3289,11 +3285,11 @@ module Java::Lang
       # @param   ch      the character to be converted.
       # @param   radix   the radix.
       # @return  the numeric value represented by the character in the
-      # specified radix.
+      #          specified radix.
       # @see     java.lang.Character#forDigit(int, int)
       # @see     java.lang.Character#isDigit(char)
       def digit(ch, radix)
-        return digit(RJava.cast_to_int(ch), radix)
+        return digit((ch).to_int, radix)
       end
       
       typesig { [::Java::Int, ::Java::Int] }
@@ -3307,25 +3303,25 @@ module Java::Lang
       # if at least one of the following is true:
       # <ul>
       # <li>The method {@link #isDigit(int) isDigit(codePoint)} is <code>true</code> of the character
-      # and the Unicode decimal digit value of the character (or its
-      # single-character decomposition) is less than the specified radix.
-      # In this case the decimal digit value is returned.
+      #     and the Unicode decimal digit value of the character (or its
+      #     single-character decomposition) is less than the specified radix.
+      #     In this case the decimal digit value is returned.
       # <li>The character is one of the uppercase Latin letters
-      # <code>'A'</code> through <code>'Z'</code> and its code is less than
-      # <code>radix&nbsp;+ 'A'&nbsp;-&nbsp;10</code>.
-      # In this case, <code>ch&nbsp;- 'A'&nbsp;+&nbsp;10</code>
-      # is returned.
+      #     <code>'A'</code> through <code>'Z'</code> and its code is less than
+      #     <code>radix&nbsp;+ 'A'&nbsp;-&nbsp;10</code>.
+      #     In this case, <code>ch&nbsp;- 'A'&nbsp;+&nbsp;10</code>
+      #     is returned.
       # <li>The character is one of the lowercase Latin letters
-      # <code>'a'</code> through <code>'z'</code> and its code is less than
-      # <code>radix&nbsp;+ 'a'&nbsp;-&nbsp;10</code>.
-      # In this case, <code>ch&nbsp;- 'a'&nbsp;+&nbsp;10</code>
-      # is returned.
+      #     <code>'a'</code> through <code>'z'</code> and its code is less than
+      #     <code>radix&nbsp;+ 'a'&nbsp;-&nbsp;10</code>.
+      #     In this case, <code>ch&nbsp;- 'a'&nbsp;+&nbsp;10</code>
+      #     is returned.
       # </ul>
       # 
       # @param   codePoint the character (Unicode code point) to be converted.
       # @param   radix   the radix.
       # @return  the numeric value represented by the character in the
-      # specified radix.
+      #          specified radix.
       # @see     java.lang.Character#forDigit(int, int)
       # @see     java.lang.Character#isDigit(int)
       # @since   1.5
@@ -3361,13 +3357,13 @@ module Java::Lang
       # 
       # @param   ch      the character to be converted.
       # @return  the numeric value of the character, as a nonnegative <code>int</code>
-      # value; -2 if the character has a numeric value that is not a
-      # nonnegative integer; -1 if the character has no numeric value.
+      #           value; -2 if the character has a numeric value that is not a
+      #          nonnegative integer; -1 if the character has no numeric value.
       # @see     java.lang.Character#forDigit(int, int)
       # @see     java.lang.Character#isDigit(char)
       # @since   1.1
       def get_numeric_value(ch)
-        return get_numeric_value(RJava.cast_to_int(ch))
+        return get_numeric_value((ch).to_int)
       end
       
       typesig { [::Java::Int] }
@@ -3393,8 +3389,8 @@ module Java::Lang
       # 
       # @param   codePoint the character (Unicode code point) to be converted.
       # @return  the numeric value of the character, as a nonnegative <code>int</code>
-      # value; -2 if the character has a numeric value that is not a
-      # nonnegative integer; -1 if the character has no numeric value.
+      #          value; -2 if the character has a numeric value that is not a
+      #          nonnegative integer; -1 if the character has no numeric value.
       # @see     java.lang.Character#forDigit(int, int)
       # @see     java.lang.Character#isDigit(int)
       # @since   1.5
@@ -3408,20 +3404,20 @@ module Java::Lang
       # characters only:
       # <table>
       # <tr><td><code>'\t'</code></td>            <td><code>'&#92;u0009'</code></td>
-      # <td><code>HORIZONTAL TABULATION</code></td></tr>
+      #     <td><code>HORIZONTAL TABULATION</code></td></tr>
       # <tr><td><code>'\n'</code></td>            <td><code>'&#92;u000A'</code></td>
-      # <td><code>NEW LINE</code></td></tr>
+      #     <td><code>NEW LINE</code></td></tr>
       # <tr><td><code>'\f'</code></td>            <td><code>'&#92;u000C'</code></td>
-      # <td><code>FORM FEED</code></td></tr>
+      #     <td><code>FORM FEED</code></td></tr>
       # <tr><td><code>'\r'</code></td>            <td><code>'&#92;u000D'</code></td>
-      # <td><code>CARRIAGE RETURN</code></td></tr>
+      #     <td><code>CARRIAGE RETURN</code></td></tr>
       # <tr><td><code>'&nbsp;'</code></td>  <td><code>'&#92;u0020'</code></td>
-      # <td><code>SPACE</code></td></tr>
+      #     <td><code>SPACE</code></td></tr>
       # </table>
       # 
       # @param      ch   the character to be tested.
       # @return     <code>true</code> if the character is ISO-LATIN-1 white
-      # space; <code>false</code> otherwise.
+      #             space; <code>false</code> otherwise.
       # @see        java.lang.Character#isSpaceChar(char)
       # @see        java.lang.Character#isWhitespace(char)
       # @deprecated Replaced by isWhitespace(char).
@@ -3448,11 +3444,11 @@ module Java::Lang
       # 
       # @param   ch      the character to be tested.
       # @return  <code>true</code> if the character is a space character;
-      # <code>false</code> otherwise.
+      #          <code>false</code> otherwise.
       # @see     java.lang.Character#isWhitespace(char)
       # @since   1.1
       def is_space_char(ch)
-        return is_space_char(RJava.cast_to_int(ch))
+        return is_space_char((ch).to_int)
       end
       
       typesig { [::Java::Int] }
@@ -3470,7 +3466,7 @@ module Java::Lang
       # 
       # @param   codePoint the character (Unicode code point) to be tested.
       # @return  <code>true</code> if the character is a space character;
-      # <code>false</code> otherwise.
+      #          <code>false</code> otherwise.
       # @see     java.lang.Character#isWhitespace(int)
       # @since   1.5
       def is_space_char(code_point)
@@ -3483,9 +3479,9 @@ module Java::Lang
       # one of the following criteria:
       # <ul>
       # <li> It is a Unicode space character (<code>SPACE_SEPARATOR</code>,
-      # <code>LINE_SEPARATOR</code>, or <code>PARAGRAPH_SEPARATOR</code>)
-      # but is not also a non-breaking space (<code>'&#92;u00A0'</code>,
-      # <code>'&#92;u2007'</code>, <code>'&#92;u202F'</code>).
+      #      <code>LINE_SEPARATOR</code>, or <code>PARAGRAPH_SEPARATOR</code>)
+      #      but is not also a non-breaking space (<code>'&#92;u00A0'</code>,
+      #      <code>'&#92;u2007'</code>, <code>'&#92;u202F'</code>).
       # <li> It is <code>'&#92;u0009'</code>, HORIZONTAL TABULATION.
       # <li> It is <code>'&#92;u000A'</code>, LINE FEED.
       # <li> It is <code>'&#92;u000B'</code>, VERTICAL TABULATION.
@@ -3504,11 +3500,11 @@ module Java::Lang
       # 
       # @param   ch the character to be tested.
       # @return  <code>true</code> if the character is a Java whitespace
-      # character; <code>false</code> otherwise.
+      #          character; <code>false</code> otherwise.
       # @see     java.lang.Character#isSpaceChar(char)
       # @since   1.1
       def is_whitespace(ch)
-        return is_whitespace(RJava.cast_to_int(ch))
+        return is_whitespace((ch).to_int)
       end
       
       typesig { [::Java::Int] }
@@ -3518,9 +3514,9 @@ module Java::Lang
       # following criteria:
       # <ul>
       # <li> It is a Unicode space character ({@link #SPACE_SEPARATOR},
-      # {@link #LINE_SEPARATOR}, or {@link #PARAGRAPH_SEPARATOR})
-      # but is not also a non-breaking space (<code>'&#92;u00A0'</code>,
-      # <code>'&#92;u2007'</code>, <code>'&#92;u202F'</code>).
+      #      {@link #LINE_SEPARATOR}, or {@link #PARAGRAPH_SEPARATOR})
+      #      but is not also a non-breaking space (<code>'&#92;u00A0'</code>,
+      #      <code>'&#92;u2007'</code>, <code>'&#92;u202F'</code>).
       # <li> It is <code>'&#92;u0009'</code>, HORIZONTAL TABULATION.
       # <li> It is <code>'&#92;u000A'</code>, LINE FEED.
       # <li> It is <code>'&#92;u000B'</code>, VERTICAL TABULATION.
@@ -3535,7 +3531,7 @@ module Java::Lang
       # 
       # @param   codePoint the character (Unicode code point) to be tested.
       # @return  <code>true</code> if the character is a Java whitespace
-      # character; <code>false</code> otherwise.
+      #          character; <code>false</code> otherwise.
       # @see     java.lang.Character#isSpaceChar(int)
       # @since   1.5
       def is_whitespace(code_point)
@@ -3556,13 +3552,13 @@ module Java::Lang
       # 
       # @param   ch      the character to be tested.
       # @return  <code>true</code> if the character is an ISO control character;
-      # <code>false</code> otherwise.
+      #          <code>false</code> otherwise.
       # 
       # @see     java.lang.Character#isSpaceChar(char)
       # @see     java.lang.Character#isWhitespace(char)
       # @since   1.1
       def is_isocontrol(ch)
-        return is_isocontrol(RJava.cast_to_int(ch))
+        return is_isocontrol((ch).to_int)
       end
       
       typesig { [::Java::Int] }
@@ -3574,7 +3570,7 @@ module Java::Lang
       # 
       # @param   codePoint the character (Unicode code point) to be tested.
       # @return  <code>true</code> if the character is an ISO control character;
-      # <code>false</code> otherwise.
+      #          <code>false</code> otherwise.
       # @see     java.lang.Character#isSpaceChar(int)
       # @see     java.lang.Character#isWhitespace(int)
       # @since   1.5
@@ -3592,7 +3588,7 @@ module Java::Lang
       # 
       # @param   ch      the character to be tested.
       # @return  a value of type <code>int</code> representing the
-      # character's general category.
+      #          character's general category.
       # @see     java.lang.Character#COMBINING_SPACING_MARK
       # @see     java.lang.Character#CONNECTOR_PUNCTUATION
       # @see     java.lang.Character#CONTROL
@@ -3625,7 +3621,7 @@ module Java::Lang
       # @see     java.lang.Character#UPPERCASE_LETTER
       # @since   1.1
       def get_type(ch)
-        return get_type(RJava.cast_to_int(ch))
+        return get_type((ch).to_int)
       end
       
       typesig { [::Java::Int] }
@@ -3633,7 +3629,7 @@ module Java::Lang
       # 
       # @param   codePoint the character (Unicode code point) to be tested.
       # @return  a value of type <code>int</code> representing the
-      # character's general category.
+      #          character's general category.
       # @see     Character#COMBINING_SPACING_MARK COMBINING_SPACING_MARK
       # @see     Character#CONNECTOR_PUNCTUATION CONNECTOR_PUNCTUATION
       # @see     Character#CONTROL CONTROL
@@ -3688,7 +3684,7 @@ module Java::Lang
       # @param   digit   the number to convert to a character.
       # @param   radix   the radix.
       # @return  the <code>char</code> representation of the specified digit
-      # in the specified radix.
+      #          in the specified radix.
       # @see     java.lang.Character#MIN_RADIX
       # @see     java.lang.Character#MAX_RADIX
       # @see     java.lang.Character#digit(char, int)
@@ -3717,7 +3713,7 @@ module Java::Lang
       # the {@link #getDirectionality(int)} method.
       # 
       # @param  ch <code>char</code> for which the directionality property
-      # is requested.
+      #            is requested.
       # @return the directionality property of the <code>char</code> value.
       # 
       # @see Character#DIRECTIONALITY_UNDEFINED
@@ -3742,7 +3738,7 @@ module Java::Lang
       # @see Character#DIRECTIONALITY_POP_DIRECTIONAL_FORMAT
       # @since 1.4
       def get_directionality(ch)
-        return get_directionality(RJava.cast_to_int(ch))
+        return get_directionality((ch).to_int)
       end
       
       typesig { [::Java::Int] }
@@ -3753,7 +3749,7 @@ module Java::Lang
       # #DIRECTIONALITY_UNDEFINED}.
       # 
       # @param   codePoint the character (Unicode code point) for which
-      # the directionality property is requested.
+      #          the directionality property is requested.
       # @return the directionality property of the character.
       # 
       # @see Character#DIRECTIONALITY_UNDEFINED DIRECTIONALITY_UNDEFINED
@@ -3797,10 +3793,10 @@ module Java::Lang
       # 
       # @param  ch <code>char</code> for which the mirrored property is requested
       # @return <code>true</code> if the char is mirrored, <code>false</code>
-      # if the <code>char</code> is not mirrored or is not defined.
+      #         if the <code>char</code> is not mirrored or is not defined.
       # @since 1.4
       def is_mirrored(ch)
-        return is_mirrored(RJava.cast_to_int(ch))
+        return is_mirrored((ch).to_int)
       end
       
       typesig { [::Java::Int] }
@@ -3815,7 +3811,7 @@ module Java::Lang
       # 
       # @param   codePoint the character (Unicode code point) to be tested.
       # @return  <code>true</code> if the character is mirrored, <code>false</code>
-      # if the character is not mirrored or is not defined.
+      #          if the character is not mirrored or is not defined.
       # @since   1.5
       def is_mirrored(code_point)
         return CharacterData.of(code_point).is_mirrored(code_point)
@@ -3828,13 +3824,13 @@ module Java::Lang
     # @param   anotherCharacter   the <code>Character</code> to be compared.
     # 
     # @return  the value <code>0</code> if the argument <code>Character</code>
-    # is equal to this <code>Character</code>; a value less than
-    # <code>0</code> if this <code>Character</code> is numerically less
-    # than the <code>Character</code> argument; and a value greater than
-    # <code>0</code> if this <code>Character</code> is numerically greater
-    # than the <code>Character</code> argument (unsigned comparison).
-    # Note that this is strictly a numerical comparison; it is not
-    # locale-dependent.
+    #          is equal to this <code>Character</code>; a value less than
+    #          <code>0</code> if this <code>Character</code> is numerically less
+    #          than the <code>Character</code> argument; and a value greater than
+    #          <code>0</code> if this <code>Character</code> is numerically greater
+    #          than the <code>Character</code> argument (unsigned comparison).
+    #          Note that this is strictly a numerical comparison; it is not
+    #          locale-dependent.
     # @since   1.2
     def compare_to(another_character)
       return @value - another_character.attr_value
@@ -3848,8 +3844,8 @@ module Java::Lang
       # 
       # @param   codePoint   the character (Unicode code point) to be converted.
       # @return  either the uppercase equivalent of the character, if
-      # any, or an error flag (<code>Character.ERROR</code>)
-      # that indicates that a 1:M <code>char</code> mapping exists.
+      #          any, or an error flag (<code>Character.ERROR</code>)
+      #          that indicates that a 1:M <code>char</code> mapping exists.
       # @see     java.lang.Character#isLowerCase(char)
       # @see     java.lang.Character#isUpperCase(char)
       # @see     java.lang.Character#toLowerCase(char)
@@ -3888,7 +3884,7 @@ module Java::Lang
       # specified <tt>char</tt> value.
       # 
       # @return the value obtained by reversing (or, equivalently, swapping)
-      # the bytes in the specified <tt>char</tt> value.
+      #     the bytes in the specified <tt>char</tt> value.
       # @since 1.5
       def reverse_bytes(ch)
         return RJava.cast_to_char((((ch & 0xff00) >> 8) | (ch << 8)))

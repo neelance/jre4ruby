@@ -116,7 +116,7 @@ module Java::Util::Prefs
       # into a byte array.
       # 
       # @throw IllegalArgumentException if <tt>s</tt> is not a valid Base64
-      # string.
+      #        string.
       def base64_to_byte_array(s)
         return base64_to_byte_array(s, false)
       end
@@ -126,8 +126,8 @@ module Java::Util::Prefs
       # into a byte array.
       # 
       # @throw IllegalArgumentException or ArrayOutOfBoundsException
-      # if <tt>s</tt> is not a valid alternate representation
-      # Base64 string.
+      #        if <tt>s</tt> is not a valid alternate representation
+      #        Base64 string.
       def alt_base64to_byte_array(s)
         return base64_to_byte_array(s, true)
       end
@@ -186,7 +186,7 @@ module Java::Util::Prefs
       # "Base 64 Alphabet" into its equivalent 6-bit positive integer.
       # 
       # @throw IllegalArgumentException or ArrayOutOfBoundsException if
-      # c is not in the Base64 Alphabet.
+      #        c is not in the Base64 Alphabet.
       def base64to_int(c, alpha_to_int)
         result = alpha_to_int[c]
         if (result < 0)
@@ -248,5 +248,6 @@ module Java::Util::Prefs
     alias_method :initialize__base64, :initialize
   end
   
-  Base64.main($*) if $0 == __FILE__
 end
+
+Java::Util::Prefs::Base64.main($*) if $0 == __FILE__

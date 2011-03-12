@@ -135,8 +135,8 @@ module Sun::Security::Jgss::Krb5
       ret_val = Array.typed(::Java::Byte).new(2 + ap_req_bytes.attr_length) { 0 }
       write_int(Krb5Token::AP_REQ_ID, ret_val, 0)
       System.arraycopy(ap_req_bytes, 0, ret_val, 2, ap_req_bytes.attr_length)
-      # System.out.println("GSS-Token with AP_REQ is:");
-      # System.out.println(getHexBytes(retVal));
+      #      System.out.println("GSS-Token with AP_REQ is:");
+      #      System.out.println(getHexBytes(retVal));
       return ret_val
     end
     

@@ -68,7 +68,7 @@ module Sun::Security::Internal::Spec
     # @param minorVersion the minor number of the protocol version
     # 
     # @throws IllegalArgumentException if minorVersion or majorVersion are
-    # negative or larger than 255
+    #   negative or larger than 255
     def initialize(major_version, minor_version)
       @major_version = 0
       @minor_version = 0

@@ -72,7 +72,6 @@ module Java::Security
     
     typesig { [Object, Guard] }
     # the guard
-    # 
     # Constructs a GuardedObject using the specified object and guard.
     # If the Guard object is null, then no restrictions will
     # be placed on who can access the object.

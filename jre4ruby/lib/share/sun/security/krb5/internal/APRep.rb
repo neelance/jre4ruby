@@ -21,8 +21,6 @@ require "rjava"
 # Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
 # CA 95054 USA or visit www.sun.com if you need additional information or
 # have any questions.
-# 
-# 
 # (C) Copyright IBM Corp. 1999 All Rights Reserved.
 # Copyright 1997 The Open Group Research Institute.  All rights reserved.
 module Sun::Security::Krb5::Internal
@@ -42,9 +40,9 @@ module Sun::Security::Krb5::Internal
   # 
   # <xmp>
   # AP-REP          ::= [APPLICATION 15] SEQUENCE {
-  # pvno            [0] INTEGER (5),
-  # msg-type        [1] INTEGER (15),
-  # enc-part        [2] EncryptedData -- EncAPRepPart
+  #         pvno            [0] INTEGER (5),
+  #         msg-type        [1] INTEGER (15),
+  #         enc-part        [2] EncryptedData -- EncAPRepPart
   # }
   # </xmp>
   # 
@@ -106,7 +104,7 @@ module Sun::Security::Krb5::Internal
     # @exception Asn1Exception if an error occurs while decoding an ASN1 encoded data.
     # @exception IOException if an I/O error occurs while reading encoded data.
     # @exception KrbApErrException if the value read from the DER-encoded data
-    # stream does not match the pre-defined value.
+    #  stream does not match the pre-defined value.
     def init(encoding)
       if ((!((encoding.get_tag & (0x1f))).equal?(Krb5::KRB_AP_REP)) || (!(encoding.is_application).equal?(true)) || (!(encoding.is_constructed).equal?(true)))
         raise Asn1Exception.new(Krb5::ASN1_BAD_ID)
